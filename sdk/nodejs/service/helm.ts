@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/helm:Helm example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/helm:Helm example <app_id>/<svc_id>
  * ```
  */
 export class Helm extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Helm extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/helm:Helm';
+    public static readonly __pulumiType = 'harness:service/helm:Helm';
 
     /**
      * Returns true if the given object is an instance of Helm.  This is designed to work even
@@ -72,7 +72,7 @@ export class Helm extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.HelmVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.HelmVariable[] | undefined>;
 
     /**
      * Create a Helm resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface HelmState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.HelmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.HelmVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface HelmArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.HelmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.HelmVariable>[]>;
 }

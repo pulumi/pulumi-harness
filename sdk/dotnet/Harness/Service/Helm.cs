@@ -38,10 +38,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/helm:Helm example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/helm:Helm example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/helm:Helm")]
+    [HarnessResourceType("harness:service/helm:Helm")]
     public partial class Helm : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -77,12 +77,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Helm(string name, HelmArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/helm:Helm", name, args ?? new HelmArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/helm:Helm", name, args ?? new HelmArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Helm(string name, Input<string> id, HelmState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/helm:Helm", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/helm:Helm", name, state, MakeResourceOptions(options, id))
         {
         }
 

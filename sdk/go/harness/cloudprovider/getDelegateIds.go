@@ -14,7 +14,7 @@ import (
 func GetDelegateIds(ctx *pulumi.Context, args *GetDelegateIdsArgs, opts ...pulumi.InvokeOption) (*GetDelegateIdsResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetDelegateIdsResult
-	err := ctx.Invoke("harness:Cloudprovider/getDelegateIds:getDelegateIds", args, &rv, opts...)
+	err := ctx.Invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

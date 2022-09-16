@@ -27,14 +27,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
@@ -56,15 +56,15 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Export(name="endpoint", type=String.class, parameters={})
-    private Output<String> endpoint;
+    private Output</* @Nullable */ String> endpoint;
 
     /**
      * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
      * `HARNESS_ENDPOINT` environment variable.
      * 
      */
-    public Output<String> endpoint() {
-        return this.endpoint;
+    public Output<Optional<String>> endpoint() {
+        return Codegen.optional(this.endpoint);
     }
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
@@ -95,7 +95,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, ProviderArgs args) {
+    public Provider(String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -104,7 +104,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("harness", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

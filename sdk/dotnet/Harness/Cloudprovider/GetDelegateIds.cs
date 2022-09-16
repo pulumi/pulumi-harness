@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// Use this data source to get a list of delegate ID's matching the specified search criteria.
         /// </summary>
         public static Task<GetDelegateIdsResult> InvokeAsync(GetDelegateIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDelegateIdsResult>("harness:Cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDelegateIdsResult>("harness:cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of delegate ID's matching the specified search criteria.
         /// </summary>
         public static Output<GetDelegateIdsResult> Invoke(GetDelegateIdsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDelegateIdsResult>("harness:Cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetDelegateIdsResult>("harness:cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsInvokeArgs(), options.WithDefaults());
     }
 
 

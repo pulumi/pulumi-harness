@@ -54,10 +54,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness aws cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/aws:Aws example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/aws:Aws example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/aws:Aws")]
+    [HarnessResourceType("harness:cloudprovider/aws:Aws")]
     public partial class Aws : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -123,12 +123,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Aws(string name, AwsArgs? args = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/aws:Aws", name, args ?? new AwsArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/aws:Aws", name, args ?? new AwsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Aws(string name, Input<string> id, AwsState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/aws:Aws", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/aws:Aws", name, state, MakeResourceOptions(options, id))
         {
         }
 

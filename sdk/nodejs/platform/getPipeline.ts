@@ -13,7 +13,7 @@ export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions):
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getPipeline:getPipeline", {
+    return pulumi.runtime.invoke("harness:platform/getPipeline:getPipeline", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

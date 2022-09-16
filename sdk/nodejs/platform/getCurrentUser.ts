@@ -13,7 +13,7 @@ export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentU
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getCurrentUser:getCurrentUser", {
+    return pulumi.runtime.invoke("harness:platform/getCurrentUser:getCurrentUser", {
     }, opts);
 }
 

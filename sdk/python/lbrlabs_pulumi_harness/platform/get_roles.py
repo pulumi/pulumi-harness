@@ -156,7 +156,7 @@ def get_roles(allowed_scope_levels: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_roles(identifier="identifier",
+    example = harness.platform.get_roles(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -177,7 +177,7 @@ def get_roles(allowed_scope_levels: Optional[Sequence[str]] = None,
     __args__['permissions'] = permissions
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
     return AwaitableGetRolesResult(
         allowed_scope_levels=__ret__.allowed_scope_levels,
@@ -208,7 +208,7 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_roles(identifier="identifier",
+    example = harness.platform.get_roles(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```

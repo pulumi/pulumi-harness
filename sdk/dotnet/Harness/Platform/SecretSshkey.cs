@@ -134,10 +134,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using secret sshkey id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/secretSshkey:SecretSshkey example &lt;secret_sshkey_id&gt;
+    ///  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;secret_sshkey_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/secretSshkey:SecretSshkey")]
+    [HarnessResourceType("harness:platform/secretSshkey:SecretSshkey")]
     public partial class SecretSshkey : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -203,12 +203,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretSshkey(string name, SecretSshkeyArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretSshkey:SecretSshkey", name, args ?? new SecretSshkeyArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/secretSshkey:SecretSshkey", name, args ?? new SecretSshkeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecretSshkey(string name, Input<string> id, SecretSshkeyState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretSshkey:SecretSshkey", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/secretSshkey:SecretSshkey", name, state, MakeResourceOptions(options, id))
         {
         }
 

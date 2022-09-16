@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewSsh(ctx, "exampleSsh", &Service.SshArgs{
+//			_, err = service.NewSsh(ctx, "exampleSsh", &service.SshArgs{
 //				AppId:        exampleApplication.ID(),
 //				ArtifactType: pulumi.String("TAR"),
 //				Description:  pulumi.String("Service for deploying applications with SSH."),
@@ -52,7 +52,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/ssh:Ssh example <app_id>/<svc_id>
+//	$ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
 //
 // ```
 type Ssh struct {
@@ -85,7 +85,7 @@ func NewSsh(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Ssh
-	err := ctx.RegisterResource("harness:Service/ssh:Ssh", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/ssh:Ssh", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func NewSsh(ctx *pulumi.Context,
 func GetSsh(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SshState, opts ...pulumi.ResourceOption) (*Ssh, error) {
 	var resource Ssh
-	err := ctx.ReadResource("harness:Service/ssh:Ssh", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/ssh:Ssh", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

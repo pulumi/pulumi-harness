@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Cloudprovider.Datacenter("example", {});
+ * const example = new harness.cloudprovider.Datacenter("example", {});
  * ```
  *
  * ## Import
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness datacenter cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/datacenter:Datacenter example <provider_id>
+ *  $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
  * ```
  */
 export class Datacenter extends pulumi.CustomResource {
@@ -40,7 +40,7 @@ export class Datacenter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/datacenter:Datacenter';
+    public static readonly __pulumiType = 'harness:cloudprovider/datacenter:Datacenter';
 
     /**
      * Returns true if the given object is an instance of Datacenter.  This is designed to work even
@@ -60,7 +60,7 @@ export class Datacenter extends pulumi.CustomResource {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.Cloudprovider.DatacenterUsageScope[] | undefined>;
+    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.DatacenterUsageScope[] | undefined>;
 
     /**
      * Create a Datacenter resource with the given unique name, arguments, and options.
@@ -98,7 +98,7 @@ export interface DatacenterState {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.DatacenterUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[]>;
 }
 
 /**
@@ -112,5 +112,5 @@ export interface DatacenterArgs {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.DatacenterUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.DatacenterUsageScope>[]>;
 }

@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("harness:Platform/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("harness:platform/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness service.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("harness:Platform/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("harness:platform/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.Platform.getResourceGroup({
+ * const test = pulumi.output(harness.platform.getResourceGroup({
  *     identifier: "identifier",
  * }));
  * ```
@@ -26,7 +26,7 @@ export function getResourceGroup(args?: GetResourceGroupArgs, opts?: pulumi.Invo
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getResourceGroup:getResourceGroup", {
+    return pulumi.runtime.invoke("harness:platform/getResourceGroup:getResourceGroup", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -87,7 +87,7 @@ export interface GetResourceGroupResult {
     /**
      * Included scopes
      */
-    readonly includedScopes: outputs.Platform.GetResourceGroupIncludedScope[];
+    readonly includedScopes: outputs.platform.GetResourceGroupIncludedScope[];
     /**
      * Name of the resource.
      */
@@ -103,7 +103,7 @@ export interface GetResourceGroupResult {
     /**
      * Contains resource filter for a resource group
      */
-    readonly resourceFilters: outputs.Platform.GetResourceGroupResourceFilter[];
+    readonly resourceFilters: outputs.platform.GetResourceGroupResourceFilter[];
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */

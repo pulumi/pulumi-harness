@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewLambda(ctx, "exampleLambda", &Service.LambdaArgs{
+//			_, err = service.NewLambda(ctx, "exampleLambda", &service.LambdaArgs{
 //				AppId:       exampleApplication.ID(),
 //				Description: pulumi.String("Service for deploying AWS Lambda functions."),
 //			})
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/lambda:Lambda example <app_id>/<svc_id>
+//	$ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
 //
 // ```
 type Lambda struct {
@@ -79,7 +79,7 @@ func NewLambda(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Lambda
-	err := ctx.RegisterResource("harness:Service/lambda:Lambda", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/lambda:Lambda", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func NewLambda(ctx *pulumi.Context,
 func GetLambda(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *LambdaState, opts ...pulumi.ResourceOption) (*Lambda, error) {
 	var resource Lambda
-	err := ctx.ReadResource("harness:Service/lambda:Lambda", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/lambda:Lambda", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

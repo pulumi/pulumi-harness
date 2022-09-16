@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewAmi(ctx, "exampleAmi", &Service.AmiArgs{
+//			_, err = service.NewAmi(ctx, "exampleAmi", &service.AmiArgs{
 //				AppId:       exampleApplication.ID(),
 //				Description: pulumi.String("Service for deploying AMI's"),
 //			})
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/ami:Ami example <app_id>/<svc_id>
+//	$ pulumi import harness:service/ami:Ami example <app_id>/<svc_id>
 //
 // ```
 type Ami struct {
@@ -79,7 +79,7 @@ func NewAmi(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Ami
-	err := ctx.RegisterResource("harness:Service/ami:Ami", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/ami:Ami", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func NewAmi(ctx *pulumi.Context,
 func GetAmi(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AmiState, opts ...pulumi.ResourceOption) (*Ami, error) {
 	var resource Ami
-	err := ctx.ReadResource("harness:Service/ami:Ami", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/ami:Ami", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

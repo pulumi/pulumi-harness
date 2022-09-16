@@ -199,7 +199,7 @@ class Kubernetes(pulumi.CustomResource):
         # Import using the Harness kubernetes cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/kubernetes:Kubernetes example <provider_id>
+         $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,7 +248,7 @@ class Kubernetes(pulumi.CustomResource):
         # Import using the Harness kubernetes cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/kubernetes:Kubernetes example <provider_id>
+         $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -286,7 +286,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["skip_validation"] = skip_validation
             __props__.__dict__["usage_scopes"] = usage_scopes
         super(Kubernetes, __self__).__init__(
-            'harness:Cloudprovider/kubernetes:Kubernetes',
+            'harness:cloudprovider/kubernetes:Kubernetes',
             resource_name,
             __props__,
             opts)

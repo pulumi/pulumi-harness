@@ -14,7 +14,7 @@ import (
 func LookupInputSet(ctx *pulumi.Context, args *LookupInputSetArgs, opts ...pulumi.InvokeOption) (*LookupInputSetResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupInputSetResult
-	err := ctx.Invoke("harness:Platform/getInputSet:getInputSet", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getInputSet:getInputSet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

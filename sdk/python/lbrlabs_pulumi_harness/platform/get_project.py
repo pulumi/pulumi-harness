@@ -141,9 +141,9 @@ def get_project(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example_by_id = harness.Platform.get_project(identifier="identifier",
+    example_by_id = harness.platform.get_project(identifier="identifier",
         org_id="org_id")
-    example_by_name = harness.Platform.get_project(name="name",
+    example_by_name = harness.platform.get_project(name="name",
         org_id="org_id")
     ```
 
@@ -157,7 +157,7 @@ def get_project(identifier: Optional[str] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
         color=__ret__.color,
@@ -184,9 +184,9 @@ def get_project_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example_by_id = harness.Platform.get_project(identifier="identifier",
+    example_by_id = harness.platform.get_project(identifier="identifier",
         org_id="org_id")
-    example_by_name = harness.Platform.get_project(name="name",
+    example_by_name = harness.platform.get_project(name="name",
         org_id="org_id")
     ```
 

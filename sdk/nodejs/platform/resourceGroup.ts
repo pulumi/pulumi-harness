@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = new harness.Platform.ResourceGroup("test", {
+ * const test = new harness.platform.ResourceGroup("test", {
  *     accountId: "account_id",
  *     allowedScopeLevels: ["account"],
  *     description: "test",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * # Import using resource group id
  *
  * ```sh
- *  $ pulumi import harness:Platform/resourceGroup:ResourceGroup example <resource_group_id>
+ *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {
@@ -60,7 +60,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/resourceGroup:ResourceGroup';
+    public static readonly __pulumiType = 'harness:platform/resourceGroup:ResourceGroup';
 
     /**
      * Returns true if the given object is an instance of ResourceGroup.  This is designed to work even
@@ -96,7 +96,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * Included scopes
      */
-    public readonly includedScopes!: pulumi.Output<outputs.Platform.ResourceGroupIncludedScope[] | undefined>;
+    public readonly includedScopes!: pulumi.Output<outputs.platform.ResourceGroupIncludedScope[] | undefined>;
     /**
      * Name of the resource.
      */
@@ -112,7 +112,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * Contains resource filter for a resource group
      */
-    public readonly resourceFilters!: pulumi.Output<outputs.Platform.ResourceGroupResourceFilter[] | undefined>;
+    public readonly resourceFilters!: pulumi.Output<outputs.platform.ResourceGroupResourceFilter[] | undefined>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -194,7 +194,7 @@ export interface ResourceGroupState {
     /**
      * Included scopes
      */
-    includedScopes?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupIncludedScope>[]>;
+    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**
      * Name of the resource.
      */
@@ -210,7 +210,7 @@ export interface ResourceGroupState {
     /**
      * Contains resource filter for a resource group
      */
-    resourceFilters?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupResourceFilter>[]>;
+    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -244,7 +244,7 @@ export interface ResourceGroupArgs {
     /**
      * Included scopes
      */
-    includedScopes?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupIncludedScope>[]>;
+    includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**
      * Name of the resource.
      */
@@ -260,7 +260,7 @@ export interface ResourceGroupArgs {
     /**
      * Contains resource filter for a resource group
      */
-    resourceFilters?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupResourceFilter>[]>;
+    resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */

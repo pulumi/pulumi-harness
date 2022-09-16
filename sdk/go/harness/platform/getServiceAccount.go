@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetServiceAccount(ctx, &platform.GetServiceAccountArgs{
+//			_, err := platform.LookupServiceAccount(ctx, &platform.LookupServiceAccountArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -41,7 +41,7 @@ import (
 func LookupServiceAccount(ctx *pulumi.Context, args *LookupServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupServiceAccountResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupServiceAccountResult
-	err := ctx.Invoke("harness:Platform/getServiceAccount:getServiceAccount", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getServiceAccount:getServiceAccount", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

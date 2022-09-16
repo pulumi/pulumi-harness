@@ -411,7 +411,7 @@ class SecretSshkey(pulumi.CustomResource):
         # Import using secret sshkey id
 
         ```sh
-         $ pulumi import harness:Platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -512,7 +512,7 @@ class SecretSshkey(pulumi.CustomResource):
         # Import using secret sshkey id
 
         ```sh
-         $ pulumi import harness:Platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -560,7 +560,7 @@ class SecretSshkey(pulumi.CustomResource):
             __props__.__dict__["ssh"] = ssh
             __props__.__dict__["tags"] = tags
         super(SecretSshkey, __self__).__init__(
-            'harness:Platform/secretSshkey:SecretSshkey',
+            'harness:platform/secretSshkey:SecretSshkey',
             resource_name,
             __props__,
             opts)

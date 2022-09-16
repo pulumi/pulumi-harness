@@ -168,7 +168,7 @@ def get_triggers(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_triggers(identifier="identifier",
+    test = harness.platform.get_triggers(identifier="identifier",
         org_id="org_id",
         project_id="project_id",
         target_id="pipeline_id")
@@ -190,7 +190,7 @@ def get_triggers(identifier: Optional[str] = None,
     __args__['projectId'] = project_id
     __args__['targetId'] = target_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult).value
 
     return AwaitableGetTriggersResult(
         description=__ret__.description,
@@ -222,7 +222,7 @@ def get_triggers_output(identifier: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_triggers(identifier="identifier",
+    test = harness.platform.get_triggers(identifier="identifier",
         org_id="org_id",
         project_id="project_id",
         target_id="pipeline_id")

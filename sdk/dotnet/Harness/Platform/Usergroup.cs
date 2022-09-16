@@ -71,10 +71,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using user group id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/usergroup:Usergroup example &lt;usergroup_id&gt;
+    ///  $ pulumi import harness:platform/usergroup:Usergroup example &lt;usergroup_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/usergroup:Usergroup")]
+    [HarnessResourceType("harness:platform/usergroup:Usergroup")]
     public partial class Usergroup : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -176,12 +176,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Usergroup(string name, UsergroupArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/usergroup:Usergroup", name, args ?? new UsergroupArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/usergroup:Usergroup", name, args ?? new UsergroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Usergroup(string name, Input<string> id, UsergroupState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/usergroup:Usergroup", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/usergroup:Usergroup", name, state, MakeResourceOptions(options, id))
         {
         }
 

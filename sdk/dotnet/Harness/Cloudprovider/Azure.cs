@@ -49,10 +49,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness azure cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/azure:Azure example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/azure:Azure example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/azure:Azure")]
+    [HarnessResourceType("harness:cloudprovider/azure:Azure")]
     public partial class Azure : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -94,12 +94,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Azure(string name, AzureArgs args, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/azure:Azure", name, args ?? new AzureArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/azure:Azure", name, args ?? new AzureArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Azure(string name, Input<string> id, AzureState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/azure:Azure", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/azure:Azure", name, state, MakeResourceOptions(options, id))
         {
         }
 

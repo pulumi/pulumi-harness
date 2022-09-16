@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness Tanzu cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/tanzu:Tanzu example <provider_id>
+ *  $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
  * ```
  */
 export class Tanzu extends pulumi.CustomResource {
@@ -52,7 +52,7 @@ export class Tanzu extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/tanzu:Tanzu';
+    public static readonly __pulumiType = 'harness:cloudprovider/tanzu:Tanzu';
 
     /**
      * Returns true if the given object is an instance of Tanzu.  This is designed to work even

@@ -18,10 +18,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using resource group id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/resourceGroup:ResourceGroup example &lt;resource_group_id&gt;
+    ///  $ pulumi import harness:platform/resourceGroup:ResourceGroup example &lt;resource_group_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/resourceGroup:ResourceGroup")]
+    [HarnessResourceType("harness:platform/resourceGroup:ResourceGroup")]
     public partial class ResourceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -99,12 +99,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourceGroup(string name, ResourceGroupArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/resourceGroup:ResourceGroup", name, args ?? new ResourceGroupArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/resourceGroup:ResourceGroup", name, args ?? new ResourceGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResourceGroup(string name, Input<string> id, ResourceGroupState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/resourceGroup:ResourceGroup", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/resourceGroup:ResourceGroup", name, state, MakeResourceOptions(options, id))
         {
         }
 

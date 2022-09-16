@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const keyTabFilePath = new harness.Platform.SecretSshkey("key_tab_file_path", {
+ * const keyTabFilePath = new harness.platform.SecretSshkey("key_tab_file_path", {
  *     description: "test",
  *     identifier: "identifier",
  *     kerberos: {
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     port: 22,
  *     tags: ["foo:bar"],
  * });
- * const _tgt_password = new harness.Platform.SecretSshkey(" tgt_password", {
+ * const _tgt_password = new harness.platform.SecretSshkey(" tgt_password", {
  *     description: "test",
  *     identifier: "identifier",
  *     kerberos: {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     port: 22,
  *     tags: ["foo:bar"],
  * });
- * const sshkeyReference = new harness.Platform.SecretSshkey("sshkey_reference", {
+ * const sshkeyReference = new harness.platform.SecretSshkey("sshkey_reference", {
  *     description: "test",
  *     identifier: "identifier",
  *     port: 22,
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *     },
  *     tags: ["foo:bar"],
  * });
- * const _sshkey_path = new harness.Platform.SecretSshkey(" sshkey_path", {
+ * const _sshkey_path = new harness.platform.SecretSshkey(" sshkey_path", {
  *     description: "test",
  *     identifier: "identifier",
  *     port: 22,
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *     },
  *     tags: ["foo:bar"],
  * });
- * const sshPassword = new harness.Platform.SecretSshkey("ssh_password", {
+ * const sshPassword = new harness.platform.SecretSshkey("ssh_password", {
  *     description: "test",
  *     identifier: "identifier",
  *     port: 22,
@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  * # Import using secret sshkey id
  *
  * ```sh
- *  $ pulumi import harness:Platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+ *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
  * ```
  */
 export class SecretSshkey extends pulumi.CustomResource {
@@ -108,7 +108,7 @@ export class SecretSshkey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/secretSshkey:SecretSshkey';
+    public static readonly __pulumiType = 'harness:platform/secretSshkey:SecretSshkey';
 
     /**
      * Returns true if the given object is an instance of SecretSshkey.  This is designed to work even
@@ -132,7 +132,7 @@ export class SecretSshkey extends pulumi.CustomResource {
     /**
      * Kerberos authentication scheme
      */
-    public readonly kerberos!: pulumi.Output<outputs.Platform.SecretSshkeyKerberos | undefined>;
+    public readonly kerberos!: pulumi.Output<outputs.platform.SecretSshkeyKerberos | undefined>;
     /**
      * Name of the resource.
      */
@@ -152,7 +152,7 @@ export class SecretSshkey extends pulumi.CustomResource {
     /**
      * Kerberos authentication scheme
      */
-    public readonly ssh!: pulumi.Output<outputs.Platform.SecretSshkeySsh | undefined>;
+    public readonly ssh!: pulumi.Output<outputs.platform.SecretSshkeySsh | undefined>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -215,7 +215,7 @@ export interface SecretSshkeyState {
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.Platform.SecretSshkeyKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos>;
     /**
      * Name of the resource.
      */
@@ -235,7 +235,7 @@ export interface SecretSshkeyState {
     /**
      * Kerberos authentication scheme
      */
-    ssh?: pulumi.Input<inputs.Platform.SecretSshkeySsh>;
+    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -257,7 +257,7 @@ export interface SecretSshkeyArgs {
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.Platform.SecretSshkeyKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos>;
     /**
      * Name of the resource.
      */
@@ -277,7 +277,7 @@ export interface SecretSshkeyArgs {
     /**
      * Kerberos authentication scheme
      */
-    ssh?: pulumi.Input<inputs.Platform.SecretSshkeySsh>;
+    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */

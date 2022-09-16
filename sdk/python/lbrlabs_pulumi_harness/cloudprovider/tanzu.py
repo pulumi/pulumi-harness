@@ -255,7 +255,7 @@ class Tanzu(pulumi.CustomResource):
         # Import using the Harness Tanzu cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/tanzu:Tanzu example <provider_id>
+         $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -299,7 +299,7 @@ class Tanzu(pulumi.CustomResource):
         # Import using the Harness Tanzu cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/tanzu:Tanzu example <provider_id>
+         $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -343,7 +343,7 @@ class Tanzu(pulumi.CustomResource):
             __props__.__dict__["username"] = username
             __props__.__dict__["username_secret_name"] = username_secret_name
         super(Tanzu, __self__).__init__(
-            'harness:Cloudprovider/tanzu:Tanzu',
+            'harness:cloudprovider/tanzu:Tanzu',
             resource_name,
             __props__,
             opts)

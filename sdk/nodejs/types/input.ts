@@ -691,7 +691,7 @@ export interface UserGroupSamlSettings {
      */
     ssoProviderId?: pulumi.Input<string>;
 }
-export namespace Cloudprovider {
+export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
          * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
@@ -756,15 +756,15 @@ export namespace Cloudprovider {
         /**
          * Service account configuration for connecting to the Kubernetes cluster
          */
-        oidc?: pulumi.Input<inputs.Cloudprovider.KubernetesAuthenticationOidc>;
+        oidc?: pulumi.Input<inputs.cloudprovider.KubernetesAuthenticationOidc>;
         /**
          * Username and password for authentication to the cluster
          */
-        serviceAccount?: pulumi.Input<inputs.Cloudprovider.KubernetesAuthenticationServiceAccount>;
+        serviceAccount?: pulumi.Input<inputs.cloudprovider.KubernetesAuthenticationServiceAccount>;
         /**
          * Username and password for authentication to the cluster
          */
-        usernamePassword?: pulumi.Input<inputs.Cloudprovider.KubernetesAuthenticationUsernamePassword>;
+        usernamePassword?: pulumi.Input<inputs.cloudprovider.KubernetesAuthenticationUsernamePassword>;
     }
 
     export interface KubernetesAuthenticationOidc {
@@ -806,7 +806,220 @@ export namespace Cloudprovider {
     }
 }
 
-export namespace Platform {
+export namespace platform {
+    export interface AppDynamicsConnectorApiToken {
+        /**
+         * The client id used for connecting to App Dynamics.
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * Reference to the Harness secret containing the App Dynamics client secret.
+         */
+        clientSecretRef: pulumi.Input<string>;
+    }
+
+    export interface AppDynamicsConnectorUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ArtifactoryConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface AwsCCConnectorCrossAccountAccess {
+        /**
+         * The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+         */
+        externalId: pulumi.Input<string>;
+        /**
+         * The ARN of the role to use for cross-account access.
+         */
+        roleArn: pulumi.Input<string>;
+    }
+
+    export interface AwsConnectorCrossAccountAccess {
+        /**
+         * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+         */
+        externalId?: pulumi.Input<string>;
+        /**
+         * The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+         */
+        roleArn: pulumi.Input<string>;
+    }
+
+    export interface AwsConnectorInheritFromDelegate {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AwsConnectorIrsa {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AwsConnectorManual {
+        /**
+         * AWS access key.
+         */
+        accessKey?: pulumi.Input<string>;
+        /**
+         * Reference to the Harness secret containing the aws access key.
+         */
+        accessKeyRef?: pulumi.Input<string>;
+        /**
+         * Connect only use delegates with these tags.
+         */
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Reference to the Harness secret containing the aws secret key.
+         */
+        secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface AwsKmsConnectorCredentials {
+        /**
+         * Connect using STS assume role.
+         */
+        assumeRole?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentialsAssumeRole>;
+        /**
+         * Inherit the credentials from from the delegate.
+         */
+        inheritFromDelegate?: pulumi.Input<boolean>;
+        /**
+         * Specify the AWS key and secret used for authenticating.
+         */
+        manual?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentialsManual>;
+    }
+
+    export interface AwsKmsConnectorCredentialsAssumeRole {
+        duration: pulumi.Input<number>;
+        externalId?: pulumi.Input<string>;
+        roleArn: pulumi.Input<string>;
+    }
+
+    export interface AwsKmsConnectorCredentialsManual {
+        accessKeyRef: pulumi.Input<string>;
+        secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface AwsSecretManagerConnectorCredentials {
+        /**
+         * Connect using STS assume role.
+         */
+        assumeRole?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentialsAssumeRole>;
+        /**
+         * Inherit the credentials from from the delegate.
+         */
+        inheritFromDelegate?: pulumi.Input<boolean>;
+        /**
+         * Specify the AWS key and secret used for authenticating.
+         */
+        manual?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentialsManual>;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsAssumeRole {
+        duration: pulumi.Input<number>;
+        externalId?: pulumi.Input<string>;
+        roleArn: pulumi.Input<string>;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsManual {
+        accessKeyRef: pulumi.Input<string>;
+        secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface BitbucketConnectorApiAuthentication {
+        /**
+         * Personal access token for interacting with the BitBucket api.
+         */
+        tokenRef: pulumi.Input<string>;
+        /**
+         * The username used for connecting to the api.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * The name of the Harness secret containing the username.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface BitbucketConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: pulumi.Input<inputs.platform.BitbucketConnectorCredentialsHttp>;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: pulumi.Input<inputs.platform.BitbucketConnectorCredentialsSsh>;
+    }
+
+    export interface BitbucketConnectorCredentialsHttp {
+        passwordRef?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface BitbucketConnectorCredentialsSsh {
+        sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface DockerConnectorCredentials {
+        /**
+         * The reference to the password to use for the docker registry.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * The username to use for the docker registry.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * The reference to the username to use for the docker registry.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface GcpConnectorInheritFromDelegate {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GcpConnectorManual {
+        /**
+         * The delegates to connect with.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Reference to the Harness secret containing the secret key.
+         */
+        secretKeyRef: pulumi.Input<string>;
+    }
+
     export interface GetUsergroupNotificationConfig {
         /**
          * Group email
@@ -853,6 +1066,223 @@ export namespace Platform {
         type?: pulumi.Input<string>;
     }
 
+    export interface GitConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: pulumi.Input<inputs.platform.GitConnectorCredentialsHttp>;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: pulumi.Input<inputs.platform.GitConnectorCredentialsSsh>;
+    }
+
+    export interface GitConnectorCredentialsHttp {
+        passwordRef: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface GitConnectorCredentialsSsh {
+        sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GithubConnectorApiAuthentication {
+        /**
+         * Configuration for using the github app for interacting with the github api.
+         */
+        githubApp?: pulumi.Input<inputs.platform.GithubConnectorApiAuthenticationGithubApp>;
+        /**
+         * Personal access token for interacting with the github api.
+         */
+        tokenRef?: pulumi.Input<string>;
+    }
+
+    export interface GithubConnectorApiAuthenticationGithubApp {
+        applicationId: pulumi.Input<string>;
+        installationId: pulumi.Input<string>;
+        privateKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GithubConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: pulumi.Input<inputs.platform.GithubConnectorCredentialsHttp>;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: pulumi.Input<inputs.platform.GithubConnectorCredentialsSsh>;
+    }
+
+    export interface GithubConnectorCredentialsHttp {
+        tokenRef: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface GithubConnectorCredentialsSsh {
+        sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GitlabConnectorApiAuthentication {
+        /**
+         * Personal access token for interacting with the gitlab api.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
+    export interface GitlabConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: pulumi.Input<inputs.platform.GitlabConnectorCredentialsHttp>;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: pulumi.Input<inputs.platform.GitlabConnectorCredentialsSsh>;
+    }
+
+    export interface GitlabConnectorCredentialsHttp {
+        passwordRef?: pulumi.Input<string>;
+        tokenRef?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface GitlabConnectorCredentialsSsh {
+        sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface HelmConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface KubernetesConnectorClientKeyCert {
+        /**
+         * Reference to the secret containing the CA certificate for the connector.
+         */
+        caCertRef?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the client certificate for the connector.
+         */
+        clientCertRef: pulumi.Input<string>;
+        /**
+         * The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+         */
+        clientKeyAlgorithm: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the client key passphrase for the connector.
+         */
+        clientKeyPassphraseRef?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the client key for the connector.
+         */
+        clientKeyRef: pulumi.Input<string>;
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: pulumi.Input<string>;
+    }
+
+    export interface KubernetesConnectorInheritFromDelegate {
+        /**
+         * Selectors to use for the delegate.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface KubernetesConnectorOpenidConnect {
+        /**
+         * Reference to the secret containing the client ID for the connector.
+         */
+        clientIdRef: pulumi.Input<string>;
+        /**
+         * The URL of the OpenID Connect issuer.
+         */
+        issuerUrl: pulumi.Input<string>;
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the password for the connector.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Scopes to request for the connector.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Reference to the secret containing the client secret for the connector.
+         */
+        secretRef?: pulumi.Input<string>;
+        /**
+         * Username for the connector.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the username for the connector.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface KubernetesConnectorServiceAccount {
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the service account token for the connector.
+         */
+        serviceAccountTokenRef: pulumi.Input<string>;
+    }
+
+    export interface KubernetesConnectorUsernamePassword {
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the password for the connector.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username for the connector.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the username for the connector.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface NexusConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
     export interface ResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -880,11 +1310,11 @@ export namespace Platform {
         /**
          * Resources for a resource group
          */
-        resources?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupResourceFilterResource>[]>;
+        resources?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilterResource>[]>;
     }
 
     export interface ResourceGroupResourceFilterResource {
-        attributeFilters?: pulumi.Input<pulumi.Input<inputs.Platform.ResourceGroupResourceFilterResourceAttributeFilter>[]>;
+        attributeFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilterResourceAttributeFilter>[]>;
         identifiers?: pulumi.Input<pulumi.Input<string>[]>;
         resourceType: pulumi.Input<string>;
     }
@@ -910,11 +1340,11 @@ export namespace Platform {
         /**
          * Authenticate to App Dynamics using username and password.
          */
-        tgtKeyTabFilePathSpec?: pulumi.Input<inputs.Platform.SecretSshkeyKerberosTgtKeyTabFilePathSpec>;
+        tgtKeyTabFilePathSpec?: pulumi.Input<inputs.platform.SecretSshkeyKerberosTgtKeyTabFilePathSpec>;
         /**
          * Authenticate to App Dynamics using username and password.
          */
-        tgtPasswordSpec?: pulumi.Input<inputs.Platform.SecretSshkeyKerberosTgtPasswordSpec>;
+        tgtPasswordSpec?: pulumi.Input<inputs.platform.SecretSshkeyKerberosTgtPasswordSpec>;
     }
 
     export interface SecretSshkeyKerberosTgtKeyTabFilePathSpec {
@@ -933,15 +1363,15 @@ export namespace Platform {
         /**
          * SSH credential of type keyReference
          */
-        sshPasswordCredential?: pulumi.Input<inputs.Platform.SecretSshkeySshSshPasswordCredential>;
+        sshPasswordCredential?: pulumi.Input<inputs.platform.SecretSshkeySshSshPasswordCredential>;
         /**
          * SSH credential of type keyPath
          */
-        sshkeyPathCredential?: pulumi.Input<inputs.Platform.SecretSshkeySshSshkeyPathCredential>;
+        sshkeyPathCredential?: pulumi.Input<inputs.platform.SecretSshkeySshSshkeyPathCredential>;
         /**
          * SSH credential of type keyReference
          */
-        sshkeyReferenceCredential?: pulumi.Input<inputs.Platform.SecretSshkeySshSshkeyReferenceCredential>;
+        sshkeyReferenceCredential?: pulumi.Input<inputs.platform.SecretSshkeySshSshkeyReferenceCredential>;
     }
 
     export interface SecretSshkeySshSshPasswordCredential {
@@ -983,441 +1413,10 @@ export namespace Platform {
          */
         type?: pulumi.Input<string>;
     }
+
 }
 
-export namespace PlatformConnector {
-    export interface AppDynamicsApiToken {
-        /**
-         * The client id used for connecting to App Dynamics.
-         */
-        clientId: pulumi.Input<string>;
-        /**
-         * Reference to the Harness secret containing the App Dynamics client secret.
-         */
-        clientSecretRef: pulumi.Input<string>;
-    }
-
-    export interface AppDynamicsUsernamePassword {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Username to use for authentication.
-         */
-        username: pulumi.Input<string>;
-    }
-
-    export interface ArtifactoryCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Username to use for authentication.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface AwsCCCrossAccountAccess {
-        /**
-         * The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
-         */
-        externalId: pulumi.Input<string>;
-        /**
-         * The ARN of the role to use for cross-account access.
-         */
-        roleArn: pulumi.Input<string>;
-    }
-
-    export interface AwsCrossAccountAccess {
-        /**
-         * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
-         */
-        externalId?: pulumi.Input<string>;
-        /**
-         * The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
-         */
-        roleArn: pulumi.Input<string>;
-    }
-
-    export interface AwsInheritFromDelegate {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface AwsIrsa {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface AwsKmsCredentials {
-        /**
-         * Connect using STS assume role.
-         */
-        assumeRole?: pulumi.Input<inputs.PlatformConnector.AwsKmsCredentialsAssumeRole>;
-        /**
-         * Inherit the credentials from from the delegate.
-         */
-        inheritFromDelegate?: pulumi.Input<boolean>;
-        /**
-         * Specify the AWS key and secret used for authenticating.
-         */
-        manual?: pulumi.Input<inputs.PlatformConnector.AwsKmsCredentialsManual>;
-    }
-
-    export interface AwsKmsCredentialsAssumeRole {
-        duration: pulumi.Input<number>;
-        externalId?: pulumi.Input<string>;
-        roleArn: pulumi.Input<string>;
-    }
-
-    export interface AwsKmsCredentialsManual {
-        accessKeyRef: pulumi.Input<string>;
-        secretKeyRef: pulumi.Input<string>;
-    }
-
-    export interface AwsManual {
-        /**
-         * AWS access key.
-         */
-        accessKey?: pulumi.Input<string>;
-        /**
-         * Reference to the Harness secret containing the aws access key.
-         */
-        accessKeyRef?: pulumi.Input<string>;
-        /**
-         * Connect only use delegates with these tags.
-         */
-        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Reference to the Harness secret containing the aws secret key.
-         */
-        secretKeyRef: pulumi.Input<string>;
-    }
-
-    export interface AwsSecretManagerCredentials {
-        /**
-         * Connect using STS assume role.
-         */
-        assumeRole?: pulumi.Input<inputs.PlatformConnector.AwsSecretManagerCredentialsAssumeRole>;
-        /**
-         * Inherit the credentials from from the delegate.
-         */
-        inheritFromDelegate?: pulumi.Input<boolean>;
-        /**
-         * Specify the AWS key and secret used for authenticating.
-         */
-        manual?: pulumi.Input<inputs.PlatformConnector.AwsSecretManagerCredentialsManual>;
-    }
-
-    export interface AwsSecretManagerCredentialsAssumeRole {
-        duration: pulumi.Input<number>;
-        externalId?: pulumi.Input<string>;
-        roleArn: pulumi.Input<string>;
-    }
-
-    export interface AwsSecretManagerCredentialsManual {
-        accessKeyRef: pulumi.Input<string>;
-        secretKeyRef: pulumi.Input<string>;
-    }
-
-    export interface BitbucketApiAuthentication {
-        /**
-         * Personal access token for interacting with the BitBucket api.
-         */
-        tokenRef: pulumi.Input<string>;
-        /**
-         * The username used for connecting to the api.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * The name of the Harness secret containing the username.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface BitbucketCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: pulumi.Input<inputs.PlatformConnector.BitbucketCredentialsHttp>;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: pulumi.Input<inputs.PlatformConnector.BitbucketCredentialsSsh>;
-    }
-
-    export interface BitbucketCredentialsHttp {
-        passwordRef?: pulumi.Input<string>;
-        username?: pulumi.Input<string>;
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface BitbucketCredentialsSsh {
-        sshKeyRef: pulumi.Input<string>;
-    }
-
-    export interface DockerCredentials {
-        /**
-         * The reference to the password to use for the docker registry.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * The username to use for the docker registry.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * The reference to the username to use for the docker registry.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface GcpInheritFromDelegate {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GcpManual {
-        /**
-         * The delegates to connect with.
-         */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Reference to the Harness secret containing the secret key.
-         */
-        secretKeyRef: pulumi.Input<string>;
-    }
-
-    export interface GitCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: pulumi.Input<inputs.PlatformConnector.GitCredentialsHttp>;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: pulumi.Input<inputs.PlatformConnector.GitCredentialsSsh>;
-    }
-
-    export interface GitCredentialsHttp {
-        passwordRef: pulumi.Input<string>;
-        username?: pulumi.Input<string>;
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface GitCredentialsSsh {
-        sshKeyRef: pulumi.Input<string>;
-    }
-
-    export interface GithubApiAuthentication {
-        /**
-         * Configuration for using the github app for interacting with the github api.
-         */
-        githubApp?: pulumi.Input<inputs.PlatformConnector.GithubApiAuthenticationGithubApp>;
-        /**
-         * Personal access token for interacting with the github api.
-         */
-        tokenRef?: pulumi.Input<string>;
-    }
-
-    export interface GithubApiAuthenticationGithubApp {
-        applicationId: pulumi.Input<string>;
-        installationId: pulumi.Input<string>;
-        privateKeyRef: pulumi.Input<string>;
-    }
-
-    export interface GithubCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: pulumi.Input<inputs.PlatformConnector.GithubCredentialsHttp>;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: pulumi.Input<inputs.PlatformConnector.GithubCredentialsSsh>;
-    }
-
-    export interface GithubCredentialsHttp {
-        tokenRef: pulumi.Input<string>;
-        username?: pulumi.Input<string>;
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface GithubCredentialsSsh {
-        sshKeyRef: pulumi.Input<string>;
-    }
-
-    export interface GitlabApiAuthentication {
-        /**
-         * Personal access token for interacting with the gitlab api.
-         */
-        tokenRef: pulumi.Input<string>;
-    }
-
-    export interface GitlabCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: pulumi.Input<inputs.PlatformConnector.GitlabCredentialsHttp>;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: pulumi.Input<inputs.PlatformConnector.GitlabCredentialsSsh>;
-    }
-
-    export interface GitlabCredentialsHttp {
-        passwordRef?: pulumi.Input<string>;
-        tokenRef?: pulumi.Input<string>;
-        username?: pulumi.Input<string>;
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface GitlabCredentialsSsh {
-        sshKeyRef: pulumi.Input<string>;
-    }
-
-    export interface HelmCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Username to use for authentication.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface KubernetesClientKeyCert {
-        /**
-         * Reference to the secret containing the CA certificate for the connector.
-         */
-        caCertRef?: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the client certificate for the connector.
-         */
-        clientCertRef: pulumi.Input<string>;
-        /**
-         * The algorithm used to generate the client key for the connector. Valid values are RSA, EC
-         */
-        clientKeyAlgorithm: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the client key passphrase for the connector.
-         */
-        clientKeyPassphraseRef?: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the client key for the connector.
-         */
-        clientKeyRef: pulumi.Input<string>;
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: pulumi.Input<string>;
-    }
-
-    export interface KubernetesInheritFromDelegate {
-        /**
-         * Selectors to use for the delegate.
-         */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface KubernetesOpenidConnect {
-        /**
-         * Reference to the secret containing the client ID for the connector.
-         */
-        clientIdRef: pulumi.Input<string>;
-        /**
-         * The URL of the OpenID Connect issuer.
-         */
-        issuerUrl: pulumi.Input<string>;
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the password for the connector.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Scopes to request for the connector.
-         */
-        scopes?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Reference to the secret containing the client secret for the connector.
-         */
-        secretRef?: pulumi.Input<string>;
-        /**
-         * Username for the connector.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the username for the connector.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface KubernetesServiceAccount {
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the service account token for the connector.
-         */
-        serviceAccountTokenRef: pulumi.Input<string>;
-    }
-
-    export interface KubernetesUsernamePassword {
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the password for the connector.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Username for the connector.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * Reference to the secret containing the username for the connector.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-
-    export interface NexusCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: pulumi.Input<string>;
-        /**
-         * Username to use for authentication.
-         */
-        username?: pulumi.Input<string>;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: pulumi.Input<string>;
-    }
-}
-
-export namespace Service {
+export namespace service {
     export interface AmiVariable {
         /**
          * Name of the variable

@@ -404,7 +404,7 @@ class ResourceGroup(pulumi.CustomResource):
         # Import using resource group id
 
         ```sh
-         $ pulumi import harness:Platform/resourceGroup:ResourceGroup example <resource_group_id>
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -435,7 +435,7 @@ class ResourceGroup(pulumi.CustomResource):
         # Import using resource group id
 
         ```sh
-         $ pulumi import harness:Platform/resourceGroup:ResourceGroup example <resource_group_id>
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -489,7 +489,7 @@ class ResourceGroup(pulumi.CustomResource):
             __props__.__dict__["resource_filters"] = resource_filters
             __props__.__dict__["tags"] = tags
         super(ResourceGroup, __self__).__init__(
-            'harness:Platform/resourceGroup:ResourceGroup',
+            'harness:platform/resourceGroup:ResourceGroup',
             resource_name,
             __props__,
             opts)

@@ -22,7 +22,7 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/organization:Organization';
+    public static readonly __pulumiType = 'harness:platform/organization:Organization';
 
     /**
      * Returns true if the given object is an instance of Organization.  This is designed to work even

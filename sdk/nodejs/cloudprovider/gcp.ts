@@ -23,7 +23,7 @@ export class Gcp extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/gcp:Gcp';
+    public static readonly __pulumiType = 'harness:cloudprovider/gcp:Gcp';
 
     /**
      * Returns true if the given object is an instance of Gcp.  This is designed to work even
@@ -55,7 +55,7 @@ export class Gcp extends pulumi.CustomResource {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.Cloudprovider.GcpUsageScope[] | undefined>;
+    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.GcpUsageScope[] | undefined>;
 
     /**
      * Create a Gcp resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export interface GcpState {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.GcpUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[]>;
 }
 
 /**
@@ -137,5 +137,5 @@ export interface GcpArgs {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.GcpUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[]>;
 }

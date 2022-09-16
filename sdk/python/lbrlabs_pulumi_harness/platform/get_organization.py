@@ -106,7 +106,7 @@ def get_organization(identifier: Optional[str] = None,
     __args__['identifier'] = identifier
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
         description=__ret__.description,

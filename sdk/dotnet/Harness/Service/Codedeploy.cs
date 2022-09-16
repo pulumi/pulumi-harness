@@ -38,10 +38,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/codedeploy:Codedeploy example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/codedeploy:Codedeploy example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/codedeploy:Codedeploy")]
+    [HarnessResourceType("harness:service/codedeploy:Codedeploy")]
     public partial class Codedeploy : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -77,12 +77,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Codedeploy(string name, CodedeployArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/codedeploy:Codedeploy", name, args ?? new CodedeployArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/codedeploy:Codedeploy", name, args ?? new CodedeployArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Codedeploy(string name, Input<string> id, CodedeployState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/codedeploy:Codedeploy", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/codedeploy:Codedeploy", name, state, MakeResourceOptions(options, id))
         {
         }
 

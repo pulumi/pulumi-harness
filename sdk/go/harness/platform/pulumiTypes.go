@@ -10,6 +10,6472 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AppDynamicsConnectorApiToken struct {
+	// The client id used for connecting to App Dynamics.
+	ClientId string `pulumi:"clientId"`
+	// Reference to the Harness secret containing the App Dynamics client secret.
+	ClientSecretRef string `pulumi:"clientSecretRef"`
+}
+
+// AppDynamicsConnectorApiTokenInput is an input type that accepts AppDynamicsConnectorApiTokenArgs and AppDynamicsConnectorApiTokenOutput values.
+// You can construct a concrete instance of `AppDynamicsConnectorApiTokenInput` via:
+//
+//	AppDynamicsConnectorApiTokenArgs{...}
+type AppDynamicsConnectorApiTokenInput interface {
+	pulumi.Input
+
+	ToAppDynamicsConnectorApiTokenOutput() AppDynamicsConnectorApiTokenOutput
+	ToAppDynamicsConnectorApiTokenOutputWithContext(context.Context) AppDynamicsConnectorApiTokenOutput
+}
+
+type AppDynamicsConnectorApiTokenArgs struct {
+	// The client id used for connecting to App Dynamics.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Reference to the Harness secret containing the App Dynamics client secret.
+	ClientSecretRef pulumi.StringInput `pulumi:"clientSecretRef"`
+}
+
+func (AppDynamicsConnectorApiTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (i AppDynamicsConnectorApiTokenArgs) ToAppDynamicsConnectorApiTokenOutput() AppDynamicsConnectorApiTokenOutput {
+	return i.ToAppDynamicsConnectorApiTokenOutputWithContext(context.Background())
+}
+
+func (i AppDynamicsConnectorApiTokenArgs) ToAppDynamicsConnectorApiTokenOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorApiTokenOutput)
+}
+
+func (i AppDynamicsConnectorApiTokenArgs) ToAppDynamicsConnectorApiTokenPtrOutput() AppDynamicsConnectorApiTokenPtrOutput {
+	return i.ToAppDynamicsConnectorApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AppDynamicsConnectorApiTokenArgs) ToAppDynamicsConnectorApiTokenPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorApiTokenOutput).ToAppDynamicsConnectorApiTokenPtrOutputWithContext(ctx)
+}
+
+// AppDynamicsConnectorApiTokenPtrInput is an input type that accepts AppDynamicsConnectorApiTokenArgs, AppDynamicsConnectorApiTokenPtr and AppDynamicsConnectorApiTokenPtrOutput values.
+// You can construct a concrete instance of `AppDynamicsConnectorApiTokenPtrInput` via:
+//
+//	        AppDynamicsConnectorApiTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppDynamicsConnectorApiTokenPtrInput interface {
+	pulumi.Input
+
+	ToAppDynamicsConnectorApiTokenPtrOutput() AppDynamicsConnectorApiTokenPtrOutput
+	ToAppDynamicsConnectorApiTokenPtrOutputWithContext(context.Context) AppDynamicsConnectorApiTokenPtrOutput
+}
+
+type appDynamicsConnectorApiTokenPtrType AppDynamicsConnectorApiTokenArgs
+
+func AppDynamicsConnectorApiTokenPtr(v *AppDynamicsConnectorApiTokenArgs) AppDynamicsConnectorApiTokenPtrInput {
+	return (*appDynamicsConnectorApiTokenPtrType)(v)
+}
+
+func (*appDynamicsConnectorApiTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (i *appDynamicsConnectorApiTokenPtrType) ToAppDynamicsConnectorApiTokenPtrOutput() AppDynamicsConnectorApiTokenPtrOutput {
+	return i.ToAppDynamicsConnectorApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *appDynamicsConnectorApiTokenPtrType) ToAppDynamicsConnectorApiTokenPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorApiTokenPtrOutput)
+}
+
+type AppDynamicsConnectorApiTokenOutput struct{ *pulumi.OutputState }
+
+func (AppDynamicsConnectorApiTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (o AppDynamicsConnectorApiTokenOutput) ToAppDynamicsConnectorApiTokenOutput() AppDynamicsConnectorApiTokenOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorApiTokenOutput) ToAppDynamicsConnectorApiTokenOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorApiTokenOutput) ToAppDynamicsConnectorApiTokenPtrOutput() AppDynamicsConnectorApiTokenPtrOutput {
+	return o.ToAppDynamicsConnectorApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AppDynamicsConnectorApiTokenOutput) ToAppDynamicsConnectorApiTokenPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDynamicsConnectorApiToken) *AppDynamicsConnectorApiToken {
+		return &v
+	}).(AppDynamicsConnectorApiTokenPtrOutput)
+}
+
+// The client id used for connecting to App Dynamics.
+func (o AppDynamicsConnectorApiTokenOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDynamicsConnectorApiToken) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Reference to the Harness secret containing the App Dynamics client secret.
+func (o AppDynamicsConnectorApiTokenOutput) ClientSecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDynamicsConnectorApiToken) string { return v.ClientSecretRef }).(pulumi.StringOutput)
+}
+
+type AppDynamicsConnectorApiTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDynamicsConnectorApiTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (o AppDynamicsConnectorApiTokenPtrOutput) ToAppDynamicsConnectorApiTokenPtrOutput() AppDynamicsConnectorApiTokenPtrOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorApiTokenPtrOutput) ToAppDynamicsConnectorApiTokenPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorApiTokenPtrOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorApiTokenPtrOutput) Elem() AppDynamicsConnectorApiTokenOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorApiToken) AppDynamicsConnectorApiToken {
+		if v != nil {
+			return *v
+		}
+		var ret AppDynamicsConnectorApiToken
+		return ret
+	}).(AppDynamicsConnectorApiTokenOutput)
+}
+
+// The client id used for connecting to App Dynamics.
+func (o AppDynamicsConnectorApiTokenPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorApiToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the Harness secret containing the App Dynamics client secret.
+func (o AppDynamicsConnectorApiTokenPtrOutput) ClientSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorApiToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppDynamicsConnectorUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+}
+
+// AppDynamicsConnectorUsernamePasswordInput is an input type that accepts AppDynamicsConnectorUsernamePasswordArgs and AppDynamicsConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `AppDynamicsConnectorUsernamePasswordInput` via:
+//
+//	AppDynamicsConnectorUsernamePasswordArgs{...}
+type AppDynamicsConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToAppDynamicsConnectorUsernamePasswordOutput() AppDynamicsConnectorUsernamePasswordOutput
+	ToAppDynamicsConnectorUsernamePasswordOutputWithContext(context.Context) AppDynamicsConnectorUsernamePasswordOutput
+}
+
+type AppDynamicsConnectorUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (AppDynamicsConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i AppDynamicsConnectorUsernamePasswordArgs) ToAppDynamicsConnectorUsernamePasswordOutput() AppDynamicsConnectorUsernamePasswordOutput {
+	return i.ToAppDynamicsConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i AppDynamicsConnectorUsernamePasswordArgs) ToAppDynamicsConnectorUsernamePasswordOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorUsernamePasswordOutput)
+}
+
+func (i AppDynamicsConnectorUsernamePasswordArgs) ToAppDynamicsConnectorUsernamePasswordPtrOutput() AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return i.ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i AppDynamicsConnectorUsernamePasswordArgs) ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorUsernamePasswordOutput).ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// AppDynamicsConnectorUsernamePasswordPtrInput is an input type that accepts AppDynamicsConnectorUsernamePasswordArgs, AppDynamicsConnectorUsernamePasswordPtr and AppDynamicsConnectorUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `AppDynamicsConnectorUsernamePasswordPtrInput` via:
+//
+//	        AppDynamicsConnectorUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppDynamicsConnectorUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToAppDynamicsConnectorUsernamePasswordPtrOutput() AppDynamicsConnectorUsernamePasswordPtrOutput
+	ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(context.Context) AppDynamicsConnectorUsernamePasswordPtrOutput
+}
+
+type appDynamicsConnectorUsernamePasswordPtrType AppDynamicsConnectorUsernamePasswordArgs
+
+func AppDynamicsConnectorUsernamePasswordPtr(v *AppDynamicsConnectorUsernamePasswordArgs) AppDynamicsConnectorUsernamePasswordPtrInput {
+	return (*appDynamicsConnectorUsernamePasswordPtrType)(v)
+}
+
+func (*appDynamicsConnectorUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i *appDynamicsConnectorUsernamePasswordPtrType) ToAppDynamicsConnectorUsernamePasswordPtrOutput() AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return i.ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *appDynamicsConnectorUsernamePasswordPtrType) ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppDynamicsConnectorUsernamePasswordPtrOutput)
+}
+
+type AppDynamicsConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (AppDynamicsConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o AppDynamicsConnectorUsernamePasswordOutput) ToAppDynamicsConnectorUsernamePasswordOutput() AppDynamicsConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorUsernamePasswordOutput) ToAppDynamicsConnectorUsernamePasswordOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorUsernamePasswordOutput) ToAppDynamicsConnectorUsernamePasswordPtrOutput() AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return o.ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o AppDynamicsConnectorUsernamePasswordOutput) ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppDynamicsConnectorUsernamePassword) *AppDynamicsConnectorUsernamePassword {
+		return &v
+	}).(AppDynamicsConnectorUsernamePasswordPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o AppDynamicsConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDynamicsConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o AppDynamicsConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AppDynamicsConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AppDynamicsConnectorUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (AppDynamicsConnectorUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o AppDynamicsConnectorUsernamePasswordPtrOutput) ToAppDynamicsConnectorUsernamePasswordPtrOutput() AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorUsernamePasswordPtrOutput) ToAppDynamicsConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) AppDynamicsConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o AppDynamicsConnectorUsernamePasswordPtrOutput) Elem() AppDynamicsConnectorUsernamePasswordOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorUsernamePassword) AppDynamicsConnectorUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret AppDynamicsConnectorUsernamePassword
+		return ret
+	}).(AppDynamicsConnectorUsernamePasswordOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o AppDynamicsConnectorUsernamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o AppDynamicsConnectorUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppDynamicsConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ArtifactoryConnectorCredentials struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// ArtifactoryConnectorCredentialsInput is an input type that accepts ArtifactoryConnectorCredentialsArgs and ArtifactoryConnectorCredentialsOutput values.
+// You can construct a concrete instance of `ArtifactoryConnectorCredentialsInput` via:
+//
+//	ArtifactoryConnectorCredentialsArgs{...}
+type ArtifactoryConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToArtifactoryConnectorCredentialsOutput() ArtifactoryConnectorCredentialsOutput
+	ToArtifactoryConnectorCredentialsOutputWithContext(context.Context) ArtifactoryConnectorCredentialsOutput
+}
+
+type ArtifactoryConnectorCredentialsArgs struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (ArtifactoryConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactoryConnectorCredentials)(nil)).Elem()
+}
+
+func (i ArtifactoryConnectorCredentialsArgs) ToArtifactoryConnectorCredentialsOutput() ArtifactoryConnectorCredentialsOutput {
+	return i.ToArtifactoryConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i ArtifactoryConnectorCredentialsArgs) ToArtifactoryConnectorCredentialsOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactoryConnectorCredentialsOutput)
+}
+
+func (i ArtifactoryConnectorCredentialsArgs) ToArtifactoryConnectorCredentialsPtrOutput() ArtifactoryConnectorCredentialsPtrOutput {
+	return i.ToArtifactoryConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ArtifactoryConnectorCredentialsArgs) ToArtifactoryConnectorCredentialsPtrOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactoryConnectorCredentialsOutput).ToArtifactoryConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// ArtifactoryConnectorCredentialsPtrInput is an input type that accepts ArtifactoryConnectorCredentialsArgs, ArtifactoryConnectorCredentialsPtr and ArtifactoryConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `ArtifactoryConnectorCredentialsPtrInput` via:
+//
+//	        ArtifactoryConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ArtifactoryConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToArtifactoryConnectorCredentialsPtrOutput() ArtifactoryConnectorCredentialsPtrOutput
+	ToArtifactoryConnectorCredentialsPtrOutputWithContext(context.Context) ArtifactoryConnectorCredentialsPtrOutput
+}
+
+type artifactoryConnectorCredentialsPtrType ArtifactoryConnectorCredentialsArgs
+
+func ArtifactoryConnectorCredentialsPtr(v *ArtifactoryConnectorCredentialsArgs) ArtifactoryConnectorCredentialsPtrInput {
+	return (*artifactoryConnectorCredentialsPtrType)(v)
+}
+
+func (*artifactoryConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactoryConnectorCredentials)(nil)).Elem()
+}
+
+func (i *artifactoryConnectorCredentialsPtrType) ToArtifactoryConnectorCredentialsPtrOutput() ArtifactoryConnectorCredentialsPtrOutput {
+	return i.ToArtifactoryConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *artifactoryConnectorCredentialsPtrType) ToArtifactoryConnectorCredentialsPtrOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactoryConnectorCredentialsPtrOutput)
+}
+
+type ArtifactoryConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ArtifactoryConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactoryConnectorCredentials)(nil)).Elem()
+}
+
+func (o ArtifactoryConnectorCredentialsOutput) ToArtifactoryConnectorCredentialsOutput() ArtifactoryConnectorCredentialsOutput {
+	return o
+}
+
+func (o ArtifactoryConnectorCredentialsOutput) ToArtifactoryConnectorCredentialsOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsOutput {
+	return o
+}
+
+func (o ArtifactoryConnectorCredentialsOutput) ToArtifactoryConnectorCredentialsPtrOutput() ArtifactoryConnectorCredentialsPtrOutput {
+	return o.ToArtifactoryConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ArtifactoryConnectorCredentialsOutput) ToArtifactoryConnectorCredentialsPtrOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactoryConnectorCredentials) *ArtifactoryConnectorCredentials {
+		return &v
+	}).(ArtifactoryConnectorCredentialsPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o ArtifactoryConnectorCredentialsOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactoryConnectorCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o ArtifactoryConnectorCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArtifactoryConnectorCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o ArtifactoryConnectorCredentialsOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ArtifactoryConnectorCredentials) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type ArtifactoryConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ArtifactoryConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactoryConnectorCredentials)(nil)).Elem()
+}
+
+func (o ArtifactoryConnectorCredentialsPtrOutput) ToArtifactoryConnectorCredentialsPtrOutput() ArtifactoryConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o ArtifactoryConnectorCredentialsPtrOutput) ToArtifactoryConnectorCredentialsPtrOutputWithContext(ctx context.Context) ArtifactoryConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o ArtifactoryConnectorCredentialsPtrOutput) Elem() ArtifactoryConnectorCredentialsOutput {
+	return o.ApplyT(func(v *ArtifactoryConnectorCredentials) ArtifactoryConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ArtifactoryConnectorCredentials
+		return ret
+	}).(ArtifactoryConnectorCredentialsOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o ArtifactoryConnectorCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArtifactoryConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o ArtifactoryConnectorCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArtifactoryConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o ArtifactoryConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArtifactoryConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsCCConnectorCrossAccountAccess struct {
+	// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of the role to use for cross-account access.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// AwsCCConnectorCrossAccountAccessInput is an input type that accepts AwsCCConnectorCrossAccountAccessArgs and AwsCCConnectorCrossAccountAccessOutput values.
+// You can construct a concrete instance of `AwsCCConnectorCrossAccountAccessInput` via:
+//
+//	AwsCCConnectorCrossAccountAccessArgs{...}
+type AwsCCConnectorCrossAccountAccessInput interface {
+	pulumi.Input
+
+	ToAwsCCConnectorCrossAccountAccessOutput() AwsCCConnectorCrossAccountAccessOutput
+	ToAwsCCConnectorCrossAccountAccessOutputWithContext(context.Context) AwsCCConnectorCrossAccountAccessOutput
+}
+
+type AwsCCConnectorCrossAccountAccessArgs struct {
+	// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of the role to use for cross-account access.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (AwsCCConnectorCrossAccountAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i AwsCCConnectorCrossAccountAccessArgs) ToAwsCCConnectorCrossAccountAccessOutput() AwsCCConnectorCrossAccountAccessOutput {
+	return i.ToAwsCCConnectorCrossAccountAccessOutputWithContext(context.Background())
+}
+
+func (i AwsCCConnectorCrossAccountAccessArgs) ToAwsCCConnectorCrossAccountAccessOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCCConnectorCrossAccountAccessOutput)
+}
+
+func (i AwsCCConnectorCrossAccountAccessArgs) ToAwsCCConnectorCrossAccountAccessPtrOutput() AwsCCConnectorCrossAccountAccessPtrOutput {
+	return i.ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (i AwsCCConnectorCrossAccountAccessArgs) ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCCConnectorCrossAccountAccessOutput).ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(ctx)
+}
+
+// AwsCCConnectorCrossAccountAccessPtrInput is an input type that accepts AwsCCConnectorCrossAccountAccessArgs, AwsCCConnectorCrossAccountAccessPtr and AwsCCConnectorCrossAccountAccessPtrOutput values.
+// You can construct a concrete instance of `AwsCCConnectorCrossAccountAccessPtrInput` via:
+//
+//	        AwsCCConnectorCrossAccountAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsCCConnectorCrossAccountAccessPtrInput interface {
+	pulumi.Input
+
+	ToAwsCCConnectorCrossAccountAccessPtrOutput() AwsCCConnectorCrossAccountAccessPtrOutput
+	ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(context.Context) AwsCCConnectorCrossAccountAccessPtrOutput
+}
+
+type awsCCConnectorCrossAccountAccessPtrType AwsCCConnectorCrossAccountAccessArgs
+
+func AwsCCConnectorCrossAccountAccessPtr(v *AwsCCConnectorCrossAccountAccessArgs) AwsCCConnectorCrossAccountAccessPtrInput {
+	return (*awsCCConnectorCrossAccountAccessPtrType)(v)
+}
+
+func (*awsCCConnectorCrossAccountAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i *awsCCConnectorCrossAccountAccessPtrType) ToAwsCCConnectorCrossAccountAccessPtrOutput() AwsCCConnectorCrossAccountAccessPtrOutput {
+	return i.ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *awsCCConnectorCrossAccountAccessPtrType) ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsCCConnectorCrossAccountAccessPtrOutput)
+}
+
+type AwsCCConnectorCrossAccountAccessOutput struct{ *pulumi.OutputState }
+
+func (AwsCCConnectorCrossAccountAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o AwsCCConnectorCrossAccountAccessOutput) ToAwsCCConnectorCrossAccountAccessOutput() AwsCCConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o AwsCCConnectorCrossAccountAccessOutput) ToAwsCCConnectorCrossAccountAccessOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o AwsCCConnectorCrossAccountAccessOutput) ToAwsCCConnectorCrossAccountAccessPtrOutput() AwsCCConnectorCrossAccountAccessPtrOutput {
+	return o.ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (o AwsCCConnectorCrossAccountAccessOutput) ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsCCConnectorCrossAccountAccess) *AwsCCConnectorCrossAccountAccess {
+		return &v
+	}).(AwsCCConnectorCrossAccountAccessPtrOutput)
+}
+
+// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+func (o AwsCCConnectorCrossAccountAccessOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCCConnectorCrossAccountAccess) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of the role to use for cross-account access.
+func (o AwsCCConnectorCrossAccountAccessOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsCCConnectorCrossAccountAccess) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type AwsCCConnectorCrossAccountAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsCCConnectorCrossAccountAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o AwsCCConnectorCrossAccountAccessPtrOutput) ToAwsCCConnectorCrossAccountAccessPtrOutput() AwsCCConnectorCrossAccountAccessPtrOutput {
+	return o
+}
+
+func (o AwsCCConnectorCrossAccountAccessPtrOutput) ToAwsCCConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsCCConnectorCrossAccountAccessPtrOutput {
+	return o
+}
+
+func (o AwsCCConnectorCrossAccountAccessPtrOutput) Elem() AwsCCConnectorCrossAccountAccessOutput {
+	return o.ApplyT(func(v *AwsCCConnectorCrossAccountAccess) AwsCCConnectorCrossAccountAccess {
+		if v != nil {
+			return *v
+		}
+		var ret AwsCCConnectorCrossAccountAccess
+		return ret
+	}).(AwsCCConnectorCrossAccountAccessOutput)
+}
+
+// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+func (o AwsCCConnectorCrossAccountAccessPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCCConnectorCrossAccountAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the role to use for cross-account access.
+func (o AwsCCConnectorCrossAccountAccessPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCCConnectorCrossAccountAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsConnectorCrossAccountAccess struct {
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+	ExternalId *string `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// AwsConnectorCrossAccountAccessInput is an input type that accepts AwsConnectorCrossAccountAccessArgs and AwsConnectorCrossAccountAccessOutput values.
+// You can construct a concrete instance of `AwsConnectorCrossAccountAccessInput` via:
+//
+//	AwsConnectorCrossAccountAccessArgs{...}
+type AwsConnectorCrossAccountAccessInput interface {
+	pulumi.Input
+
+	ToAwsConnectorCrossAccountAccessOutput() AwsConnectorCrossAccountAccessOutput
+	ToAwsConnectorCrossAccountAccessOutputWithContext(context.Context) AwsConnectorCrossAccountAccessOutput
+}
+
+type AwsConnectorCrossAccountAccessArgs struct {
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (AwsConnectorCrossAccountAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i AwsConnectorCrossAccountAccessArgs) ToAwsConnectorCrossAccountAccessOutput() AwsConnectorCrossAccountAccessOutput {
+	return i.ToAwsConnectorCrossAccountAccessOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorCrossAccountAccessArgs) ToAwsConnectorCrossAccountAccessOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorCrossAccountAccessOutput)
+}
+
+func (i AwsConnectorCrossAccountAccessArgs) ToAwsConnectorCrossAccountAccessPtrOutput() AwsConnectorCrossAccountAccessPtrOutput {
+	return i.ToAwsConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorCrossAccountAccessArgs) ToAwsConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorCrossAccountAccessOutput).ToAwsConnectorCrossAccountAccessPtrOutputWithContext(ctx)
+}
+
+// AwsConnectorCrossAccountAccessPtrInput is an input type that accepts AwsConnectorCrossAccountAccessArgs, AwsConnectorCrossAccountAccessPtr and AwsConnectorCrossAccountAccessPtrOutput values.
+// You can construct a concrete instance of `AwsConnectorCrossAccountAccessPtrInput` via:
+//
+//	        AwsConnectorCrossAccountAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsConnectorCrossAccountAccessPtrInput interface {
+	pulumi.Input
+
+	ToAwsConnectorCrossAccountAccessPtrOutput() AwsConnectorCrossAccountAccessPtrOutput
+	ToAwsConnectorCrossAccountAccessPtrOutputWithContext(context.Context) AwsConnectorCrossAccountAccessPtrOutput
+}
+
+type awsConnectorCrossAccountAccessPtrType AwsConnectorCrossAccountAccessArgs
+
+func AwsConnectorCrossAccountAccessPtr(v *AwsConnectorCrossAccountAccessArgs) AwsConnectorCrossAccountAccessPtrInput {
+	return (*awsConnectorCrossAccountAccessPtrType)(v)
+}
+
+func (*awsConnectorCrossAccountAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i *awsConnectorCrossAccountAccessPtrType) ToAwsConnectorCrossAccountAccessPtrOutput() AwsConnectorCrossAccountAccessPtrOutput {
+	return i.ToAwsConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *awsConnectorCrossAccountAccessPtrType) ToAwsConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorCrossAccountAccessPtrOutput)
+}
+
+type AwsConnectorCrossAccountAccessOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorCrossAccountAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o AwsConnectorCrossAccountAccessOutput) ToAwsConnectorCrossAccountAccessOutput() AwsConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o AwsConnectorCrossAccountAccessOutput) ToAwsConnectorCrossAccountAccessOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o AwsConnectorCrossAccountAccessOutput) ToAwsConnectorCrossAccountAccessPtrOutput() AwsConnectorCrossAccountAccessPtrOutput {
+	return o.ToAwsConnectorCrossAccountAccessPtrOutputWithContext(context.Background())
+}
+
+func (o AwsConnectorCrossAccountAccessOutput) ToAwsConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsConnectorCrossAccountAccess) *AwsConnectorCrossAccountAccess {
+		return &v
+	}).(AwsConnectorCrossAccountAccessPtrOutput)
+}
+
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+func (o AwsConnectorCrossAccountAccessOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsConnectorCrossAccountAccess) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+func (o AwsConnectorCrossAccountAccessOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsConnectorCrossAccountAccess) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type AwsConnectorCrossAccountAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorCrossAccountAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o AwsConnectorCrossAccountAccessPtrOutput) ToAwsConnectorCrossAccountAccessPtrOutput() AwsConnectorCrossAccountAccessPtrOutput {
+	return o
+}
+
+func (o AwsConnectorCrossAccountAccessPtrOutput) ToAwsConnectorCrossAccountAccessPtrOutputWithContext(ctx context.Context) AwsConnectorCrossAccountAccessPtrOutput {
+	return o
+}
+
+func (o AwsConnectorCrossAccountAccessPtrOutput) Elem() AwsConnectorCrossAccountAccessOutput {
+	return o.ApplyT(func(v *AwsConnectorCrossAccountAccess) AwsConnectorCrossAccountAccess {
+		if v != nil {
+			return *v
+		}
+		var ret AwsConnectorCrossAccountAccess
+		return ret
+	}).(AwsConnectorCrossAccountAccessOutput)
+}
+
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+func (o AwsConnectorCrossAccountAccessPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorCrossAccountAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+func (o AwsConnectorCrossAccountAccessPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorCrossAccountAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsConnectorInheritFromDelegate struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// AwsConnectorInheritFromDelegateInput is an input type that accepts AwsConnectorInheritFromDelegateArgs and AwsConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `AwsConnectorInheritFromDelegateInput` via:
+//
+//	AwsConnectorInheritFromDelegateArgs{...}
+type AwsConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToAwsConnectorInheritFromDelegateOutput() AwsConnectorInheritFromDelegateOutput
+	ToAwsConnectorInheritFromDelegateOutputWithContext(context.Context) AwsConnectorInheritFromDelegateOutput
+}
+
+type AwsConnectorInheritFromDelegateArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (AwsConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i AwsConnectorInheritFromDelegateArgs) ToAwsConnectorInheritFromDelegateOutput() AwsConnectorInheritFromDelegateOutput {
+	return i.ToAwsConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorInheritFromDelegateArgs) ToAwsConnectorInheritFromDelegateOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorInheritFromDelegateOutput)
+}
+
+func (i AwsConnectorInheritFromDelegateArgs) ToAwsConnectorInheritFromDelegatePtrOutput() AwsConnectorInheritFromDelegatePtrOutput {
+	return i.ToAwsConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorInheritFromDelegateArgs) ToAwsConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorInheritFromDelegateOutput).ToAwsConnectorInheritFromDelegatePtrOutputWithContext(ctx)
+}
+
+// AwsConnectorInheritFromDelegatePtrInput is an input type that accepts AwsConnectorInheritFromDelegateArgs, AwsConnectorInheritFromDelegatePtr and AwsConnectorInheritFromDelegatePtrOutput values.
+// You can construct a concrete instance of `AwsConnectorInheritFromDelegatePtrInput` via:
+//
+//	        AwsConnectorInheritFromDelegateArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsConnectorInheritFromDelegatePtrInput interface {
+	pulumi.Input
+
+	ToAwsConnectorInheritFromDelegatePtrOutput() AwsConnectorInheritFromDelegatePtrOutput
+	ToAwsConnectorInheritFromDelegatePtrOutputWithContext(context.Context) AwsConnectorInheritFromDelegatePtrOutput
+}
+
+type awsConnectorInheritFromDelegatePtrType AwsConnectorInheritFromDelegateArgs
+
+func AwsConnectorInheritFromDelegatePtr(v *AwsConnectorInheritFromDelegateArgs) AwsConnectorInheritFromDelegatePtrInput {
+	return (*awsConnectorInheritFromDelegatePtrType)(v)
+}
+
+func (*awsConnectorInheritFromDelegatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i *awsConnectorInheritFromDelegatePtrType) ToAwsConnectorInheritFromDelegatePtrOutput() AwsConnectorInheritFromDelegatePtrOutput {
+	return i.ToAwsConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i *awsConnectorInheritFromDelegatePtrType) ToAwsConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorInheritFromDelegatePtrOutput)
+}
+
+type AwsConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o AwsConnectorInheritFromDelegateOutput) ToAwsConnectorInheritFromDelegateOutput() AwsConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o AwsConnectorInheritFromDelegateOutput) ToAwsConnectorInheritFromDelegateOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o AwsConnectorInheritFromDelegateOutput) ToAwsConnectorInheritFromDelegatePtrOutput() AwsConnectorInheritFromDelegatePtrOutput {
+	return o.ToAwsConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (o AwsConnectorInheritFromDelegateOutput) ToAwsConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsConnectorInheritFromDelegate) *AwsConnectorInheritFromDelegate {
+		return &v
+	}).(AwsConnectorInheritFromDelegatePtrOutput)
+}
+
+// The delegates to inherit the credentials from.
+func (o AwsConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type AwsConnectorInheritFromDelegatePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorInheritFromDelegatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o AwsConnectorInheritFromDelegatePtrOutput) ToAwsConnectorInheritFromDelegatePtrOutput() AwsConnectorInheritFromDelegatePtrOutput {
+	return o
+}
+
+func (o AwsConnectorInheritFromDelegatePtrOutput) ToAwsConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) AwsConnectorInheritFromDelegatePtrOutput {
+	return o
+}
+
+func (o AwsConnectorInheritFromDelegatePtrOutput) Elem() AwsConnectorInheritFromDelegateOutput {
+	return o.ApplyT(func(v *AwsConnectorInheritFromDelegate) AwsConnectorInheritFromDelegate {
+		if v != nil {
+			return *v
+		}
+		var ret AwsConnectorInheritFromDelegate
+		return ret
+	}).(AwsConnectorInheritFromDelegateOutput)
+}
+
+// The delegates to inherit the credentials from.
+func (o AwsConnectorInheritFromDelegatePtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsConnectorInheritFromDelegate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsConnectorIrsa struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// AwsConnectorIrsaInput is an input type that accepts AwsConnectorIrsaArgs and AwsConnectorIrsaOutput values.
+// You can construct a concrete instance of `AwsConnectorIrsaInput` via:
+//
+//	AwsConnectorIrsaArgs{...}
+type AwsConnectorIrsaInput interface {
+	pulumi.Input
+
+	ToAwsConnectorIrsaOutput() AwsConnectorIrsaOutput
+	ToAwsConnectorIrsaOutputWithContext(context.Context) AwsConnectorIrsaOutput
+}
+
+type AwsConnectorIrsaArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (AwsConnectorIrsaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorIrsa)(nil)).Elem()
+}
+
+func (i AwsConnectorIrsaArgs) ToAwsConnectorIrsaOutput() AwsConnectorIrsaOutput {
+	return i.ToAwsConnectorIrsaOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorIrsaArgs) ToAwsConnectorIrsaOutputWithContext(ctx context.Context) AwsConnectorIrsaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorIrsaOutput)
+}
+
+func (i AwsConnectorIrsaArgs) ToAwsConnectorIrsaPtrOutput() AwsConnectorIrsaPtrOutput {
+	return i.ToAwsConnectorIrsaPtrOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorIrsaArgs) ToAwsConnectorIrsaPtrOutputWithContext(ctx context.Context) AwsConnectorIrsaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorIrsaOutput).ToAwsConnectorIrsaPtrOutputWithContext(ctx)
+}
+
+// AwsConnectorIrsaPtrInput is an input type that accepts AwsConnectorIrsaArgs, AwsConnectorIrsaPtr and AwsConnectorIrsaPtrOutput values.
+// You can construct a concrete instance of `AwsConnectorIrsaPtrInput` via:
+//
+//	        AwsConnectorIrsaArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsConnectorIrsaPtrInput interface {
+	pulumi.Input
+
+	ToAwsConnectorIrsaPtrOutput() AwsConnectorIrsaPtrOutput
+	ToAwsConnectorIrsaPtrOutputWithContext(context.Context) AwsConnectorIrsaPtrOutput
+}
+
+type awsConnectorIrsaPtrType AwsConnectorIrsaArgs
+
+func AwsConnectorIrsaPtr(v *AwsConnectorIrsaArgs) AwsConnectorIrsaPtrInput {
+	return (*awsConnectorIrsaPtrType)(v)
+}
+
+func (*awsConnectorIrsaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorIrsa)(nil)).Elem()
+}
+
+func (i *awsConnectorIrsaPtrType) ToAwsConnectorIrsaPtrOutput() AwsConnectorIrsaPtrOutput {
+	return i.ToAwsConnectorIrsaPtrOutputWithContext(context.Background())
+}
+
+func (i *awsConnectorIrsaPtrType) ToAwsConnectorIrsaPtrOutputWithContext(ctx context.Context) AwsConnectorIrsaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorIrsaPtrOutput)
+}
+
+type AwsConnectorIrsaOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorIrsaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorIrsa)(nil)).Elem()
+}
+
+func (o AwsConnectorIrsaOutput) ToAwsConnectorIrsaOutput() AwsConnectorIrsaOutput {
+	return o
+}
+
+func (o AwsConnectorIrsaOutput) ToAwsConnectorIrsaOutputWithContext(ctx context.Context) AwsConnectorIrsaOutput {
+	return o
+}
+
+func (o AwsConnectorIrsaOutput) ToAwsConnectorIrsaPtrOutput() AwsConnectorIrsaPtrOutput {
+	return o.ToAwsConnectorIrsaPtrOutputWithContext(context.Background())
+}
+
+func (o AwsConnectorIrsaOutput) ToAwsConnectorIrsaPtrOutputWithContext(ctx context.Context) AwsConnectorIrsaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsConnectorIrsa) *AwsConnectorIrsa {
+		return &v
+	}).(AwsConnectorIrsaPtrOutput)
+}
+
+// The delegates to inherit the credentials from.
+func (o AwsConnectorIrsaOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsConnectorIrsa) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type AwsConnectorIrsaPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorIrsaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorIrsa)(nil)).Elem()
+}
+
+func (o AwsConnectorIrsaPtrOutput) ToAwsConnectorIrsaPtrOutput() AwsConnectorIrsaPtrOutput {
+	return o
+}
+
+func (o AwsConnectorIrsaPtrOutput) ToAwsConnectorIrsaPtrOutputWithContext(ctx context.Context) AwsConnectorIrsaPtrOutput {
+	return o
+}
+
+func (o AwsConnectorIrsaPtrOutput) Elem() AwsConnectorIrsaOutput {
+	return o.ApplyT(func(v *AwsConnectorIrsa) AwsConnectorIrsa {
+		if v != nil {
+			return *v
+		}
+		var ret AwsConnectorIrsa
+		return ret
+	}).(AwsConnectorIrsaOutput)
+}
+
+// The delegates to inherit the credentials from.
+func (o AwsConnectorIrsaPtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsConnectorIrsa) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+type AwsConnectorManual struct {
+	// AWS access key.
+	AccessKey *string `pulumi:"accessKey"`
+	// Reference to the Harness secret containing the aws access key.
+	AccessKeyRef *string `pulumi:"accessKeyRef"`
+	// Connect only use delegates with these tags.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// Reference to the Harness secret containing the aws secret key.
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// AwsConnectorManualInput is an input type that accepts AwsConnectorManualArgs and AwsConnectorManualOutput values.
+// You can construct a concrete instance of `AwsConnectorManualInput` via:
+//
+//	AwsConnectorManualArgs{...}
+type AwsConnectorManualInput interface {
+	pulumi.Input
+
+	ToAwsConnectorManualOutput() AwsConnectorManualOutput
+	ToAwsConnectorManualOutputWithContext(context.Context) AwsConnectorManualOutput
+}
+
+type AwsConnectorManualArgs struct {
+	// AWS access key.
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Reference to the Harness secret containing the aws access key.
+	AccessKeyRef pulumi.StringPtrInput `pulumi:"accessKeyRef"`
+	// Connect only use delegates with these tags.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// Reference to the Harness secret containing the aws secret key.
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (AwsConnectorManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorManual)(nil)).Elem()
+}
+
+func (i AwsConnectorManualArgs) ToAwsConnectorManualOutput() AwsConnectorManualOutput {
+	return i.ToAwsConnectorManualOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorManualArgs) ToAwsConnectorManualOutputWithContext(ctx context.Context) AwsConnectorManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorManualOutput)
+}
+
+func (i AwsConnectorManualArgs) ToAwsConnectorManualPtrOutput() AwsConnectorManualPtrOutput {
+	return i.ToAwsConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (i AwsConnectorManualArgs) ToAwsConnectorManualPtrOutputWithContext(ctx context.Context) AwsConnectorManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorManualOutput).ToAwsConnectorManualPtrOutputWithContext(ctx)
+}
+
+// AwsConnectorManualPtrInput is an input type that accepts AwsConnectorManualArgs, AwsConnectorManualPtr and AwsConnectorManualPtrOutput values.
+// You can construct a concrete instance of `AwsConnectorManualPtrInput` via:
+//
+//	        AwsConnectorManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsConnectorManualPtrInput interface {
+	pulumi.Input
+
+	ToAwsConnectorManualPtrOutput() AwsConnectorManualPtrOutput
+	ToAwsConnectorManualPtrOutputWithContext(context.Context) AwsConnectorManualPtrOutput
+}
+
+type awsConnectorManualPtrType AwsConnectorManualArgs
+
+func AwsConnectorManualPtr(v *AwsConnectorManualArgs) AwsConnectorManualPtrInput {
+	return (*awsConnectorManualPtrType)(v)
+}
+
+func (*awsConnectorManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorManual)(nil)).Elem()
+}
+
+func (i *awsConnectorManualPtrType) ToAwsConnectorManualPtrOutput() AwsConnectorManualPtrOutput {
+	return i.ToAwsConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (i *awsConnectorManualPtrType) ToAwsConnectorManualPtrOutputWithContext(ctx context.Context) AwsConnectorManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsConnectorManualPtrOutput)
+}
+
+type AwsConnectorManualOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsConnectorManual)(nil)).Elem()
+}
+
+func (o AwsConnectorManualOutput) ToAwsConnectorManualOutput() AwsConnectorManualOutput {
+	return o
+}
+
+func (o AwsConnectorManualOutput) ToAwsConnectorManualOutputWithContext(ctx context.Context) AwsConnectorManualOutput {
+	return o
+}
+
+func (o AwsConnectorManualOutput) ToAwsConnectorManualPtrOutput() AwsConnectorManualPtrOutput {
+	return o.ToAwsConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (o AwsConnectorManualOutput) ToAwsConnectorManualPtrOutputWithContext(ctx context.Context) AwsConnectorManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsConnectorManual) *AwsConnectorManual {
+		return &v
+	}).(AwsConnectorManualPtrOutput)
+}
+
+// AWS access key.
+func (o AwsConnectorManualOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsConnectorManual) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the Harness secret containing the aws access key.
+func (o AwsConnectorManualOutput) AccessKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsConnectorManual) *string { return v.AccessKeyRef }).(pulumi.StringPtrOutput)
+}
+
+// Connect only use delegates with these tags.
+func (o AwsConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Harness secret containing the aws secret key.
+func (o AwsConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type AwsConnectorManualPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsConnectorManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsConnectorManual)(nil)).Elem()
+}
+
+func (o AwsConnectorManualPtrOutput) ToAwsConnectorManualPtrOutput() AwsConnectorManualPtrOutput {
+	return o
+}
+
+func (o AwsConnectorManualPtrOutput) ToAwsConnectorManualPtrOutputWithContext(ctx context.Context) AwsConnectorManualPtrOutput {
+	return o
+}
+
+func (o AwsConnectorManualPtrOutput) Elem() AwsConnectorManualOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) AwsConnectorManual {
+		if v != nil {
+			return *v
+		}
+		var ret AwsConnectorManual
+		return ret
+	}).(AwsConnectorManualOutput)
+}
+
+// AWS access key.
+func (o AwsConnectorManualPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the Harness secret containing the aws access key.
+func (o AwsConnectorManualPtrOutput) AccessKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connect only use delegates with these tags.
+func (o AwsConnectorManualPtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Harness secret containing the aws secret key.
+func (o AwsConnectorManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsKmsConnectorCredentials struct {
+	// Connect using STS assume role.
+	AssumeRole *AwsKmsConnectorCredentialsAssumeRole `pulumi:"assumeRole"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manual *AwsKmsConnectorCredentialsManual `pulumi:"manual"`
+}
+
+// AwsKmsConnectorCredentialsInput is an input type that accepts AwsKmsConnectorCredentialsArgs and AwsKmsConnectorCredentialsOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsInput` via:
+//
+//	AwsKmsConnectorCredentialsArgs{...}
+type AwsKmsConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsOutput() AwsKmsConnectorCredentialsOutput
+	ToAwsKmsConnectorCredentialsOutputWithContext(context.Context) AwsKmsConnectorCredentialsOutput
+}
+
+type AwsKmsConnectorCredentialsArgs struct {
+	// Connect using STS assume role.
+	AssumeRole AwsKmsConnectorCredentialsAssumeRolePtrInput `pulumi:"assumeRole"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate pulumi.BoolPtrInput `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manual AwsKmsConnectorCredentialsManualPtrInput `pulumi:"manual"`
+}
+
+func (AwsKmsConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentials)(nil)).Elem()
+}
+
+func (i AwsKmsConnectorCredentialsArgs) ToAwsKmsConnectorCredentialsOutput() AwsKmsConnectorCredentialsOutput {
+	return i.ToAwsKmsConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsArgs) ToAwsKmsConnectorCredentialsOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsOutput)
+}
+
+func (i AwsKmsConnectorCredentialsArgs) ToAwsKmsConnectorCredentialsPtrOutput() AwsKmsConnectorCredentialsPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsArgs) ToAwsKmsConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsOutput).ToAwsKmsConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// AwsKmsConnectorCredentialsPtrInput is an input type that accepts AwsKmsConnectorCredentialsArgs, AwsKmsConnectorCredentialsPtr and AwsKmsConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsPtrInput` via:
+//
+//	        AwsKmsConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsKmsConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsPtrOutput() AwsKmsConnectorCredentialsPtrOutput
+	ToAwsKmsConnectorCredentialsPtrOutputWithContext(context.Context) AwsKmsConnectorCredentialsPtrOutput
+}
+
+type awsKmsConnectorCredentialsPtrType AwsKmsConnectorCredentialsArgs
+
+func AwsKmsConnectorCredentialsPtr(v *AwsKmsConnectorCredentialsArgs) AwsKmsConnectorCredentialsPtrInput {
+	return (*awsKmsConnectorCredentialsPtrType)(v)
+}
+
+func (*awsKmsConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentials)(nil)).Elem()
+}
+
+func (i *awsKmsConnectorCredentialsPtrType) ToAwsKmsConnectorCredentialsPtrOutput() AwsKmsConnectorCredentialsPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsKmsConnectorCredentialsPtrType) ToAwsKmsConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentials)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsOutput) ToAwsKmsConnectorCredentialsOutput() AwsKmsConnectorCredentialsOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOutput) ToAwsKmsConnectorCredentialsOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOutput) ToAwsKmsConnectorCredentialsPtrOutput() AwsKmsConnectorCredentialsPtrOutput {
+	return o.ToAwsKmsConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsKmsConnectorCredentialsOutput) ToAwsKmsConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsKmsConnectorCredentials) *AwsKmsConnectorCredentials {
+		return &v
+	}).(AwsKmsConnectorCredentialsPtrOutput)
+}
+
+// Connect using STS assume role.
+func (o AwsKmsConnectorCredentialsOutput) AssumeRole() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsAssumeRole { return v.AssumeRole }).(AwsKmsConnectorCredentialsAssumeRolePtrOutput)
+}
+
+// Inherit the credentials from from the delegate.
+func (o AwsKmsConnectorCredentialsOutput) InheritFromDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentials) *bool { return v.InheritFromDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the AWS key and secret used for authenticating.
+func (o AwsKmsConnectorCredentialsOutput) Manual() AwsKmsConnectorCredentialsManualPtrOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsManual { return v.Manual }).(AwsKmsConnectorCredentialsManualPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentials)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsPtrOutput) ToAwsKmsConnectorCredentialsPtrOutput() AwsKmsConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsPtrOutput) ToAwsKmsConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsPtrOutput) Elem() AwsKmsConnectorCredentialsOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentials) AwsKmsConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AwsKmsConnectorCredentials
+		return ret
+	}).(AwsKmsConnectorCredentialsOutput)
+}
+
+// Connect using STS assume role.
+func (o AwsKmsConnectorCredentialsPtrOutput) AssumeRole() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsAssumeRole {
+		if v == nil {
+			return nil
+		}
+		return v.AssumeRole
+	}).(AwsKmsConnectorCredentialsAssumeRolePtrOutput)
+}
+
+// Inherit the credentials from from the delegate.
+func (o AwsKmsConnectorCredentialsPtrOutput) InheritFromDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InheritFromDelegate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the AWS key and secret used for authenticating.
+func (o AwsKmsConnectorCredentialsPtrOutput) Manual() AwsKmsConnectorCredentialsManualPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsManual {
+		if v == nil {
+			return nil
+		}
+		return v.Manual
+	}).(AwsKmsConnectorCredentialsManualPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsAssumeRole struct {
+	Duration   int     `pulumi:"duration"`
+	ExternalId *string `pulumi:"externalId"`
+	RoleArn    string  `pulumi:"roleArn"`
+}
+
+// AwsKmsConnectorCredentialsAssumeRoleInput is an input type that accepts AwsKmsConnectorCredentialsAssumeRoleArgs and AwsKmsConnectorCredentialsAssumeRoleOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsAssumeRoleInput` via:
+//
+//	AwsKmsConnectorCredentialsAssumeRoleArgs{...}
+type AwsKmsConnectorCredentialsAssumeRoleInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsAssumeRoleOutput() AwsKmsConnectorCredentialsAssumeRoleOutput
+	ToAwsKmsConnectorCredentialsAssumeRoleOutputWithContext(context.Context) AwsKmsConnectorCredentialsAssumeRoleOutput
+}
+
+type AwsKmsConnectorCredentialsAssumeRoleArgs struct {
+	Duration   pulumi.IntInput       `pulumi:"duration"`
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput    `pulumi:"roleArn"`
+}
+
+func (AwsKmsConnectorCredentialsAssumeRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (i AwsKmsConnectorCredentialsAssumeRoleArgs) ToAwsKmsConnectorCredentialsAssumeRoleOutput() AwsKmsConnectorCredentialsAssumeRoleOutput {
+	return i.ToAwsKmsConnectorCredentialsAssumeRoleOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsAssumeRoleArgs) ToAwsKmsConnectorCredentialsAssumeRoleOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsAssumeRoleOutput)
+}
+
+func (i AwsKmsConnectorCredentialsAssumeRoleArgs) ToAwsKmsConnectorCredentialsAssumeRolePtrOutput() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return i.ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsAssumeRoleArgs) ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsAssumeRoleOutput).ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(ctx)
+}
+
+// AwsKmsConnectorCredentialsAssumeRolePtrInput is an input type that accepts AwsKmsConnectorCredentialsAssumeRoleArgs, AwsKmsConnectorCredentialsAssumeRolePtr and AwsKmsConnectorCredentialsAssumeRolePtrOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsAssumeRolePtrInput` via:
+//
+//	        AwsKmsConnectorCredentialsAssumeRoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsKmsConnectorCredentialsAssumeRolePtrInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsAssumeRolePtrOutput() AwsKmsConnectorCredentialsAssumeRolePtrOutput
+	ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(context.Context) AwsKmsConnectorCredentialsAssumeRolePtrOutput
+}
+
+type awsKmsConnectorCredentialsAssumeRolePtrType AwsKmsConnectorCredentialsAssumeRoleArgs
+
+func AwsKmsConnectorCredentialsAssumeRolePtr(v *AwsKmsConnectorCredentialsAssumeRoleArgs) AwsKmsConnectorCredentialsAssumeRolePtrInput {
+	return (*awsKmsConnectorCredentialsAssumeRolePtrType)(v)
+}
+
+func (*awsKmsConnectorCredentialsAssumeRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (i *awsKmsConnectorCredentialsAssumeRolePtrType) ToAwsKmsConnectorCredentialsAssumeRolePtrOutput() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return i.ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (i *awsKmsConnectorCredentialsAssumeRolePtrType) ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsAssumeRolePtrOutput)
+}
+
+type AwsKmsConnectorCredentialsAssumeRoleOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsAssumeRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ToAwsKmsConnectorCredentialsAssumeRoleOutput() AwsKmsConnectorCredentialsAssumeRoleOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ToAwsKmsConnectorCredentialsAssumeRoleOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRoleOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ToAwsKmsConnectorCredentialsAssumeRolePtrOutput() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o.ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsKmsConnectorCredentialsAssumeRole) *AwsKmsConnectorCredentialsAssumeRole {
+		return &v
+	}).(AwsKmsConnectorCredentialsAssumeRolePtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRoleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type AwsKmsConnectorCredentialsAssumeRolePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsAssumeRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) ToAwsKmsConnectorCredentialsAssumeRolePtrOutput() AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) ToAwsKmsConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsAssumeRolePtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) Elem() AwsKmsConnectorCredentialsAssumeRoleOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) AwsKmsConnectorCredentialsAssumeRole {
+		if v != nil {
+			return *v
+		}
+		var ret AwsKmsConnectorCredentialsAssumeRole
+		return ret
+	}).(AwsKmsConnectorCredentialsAssumeRoleOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsManual struct {
+	AccessKeyRef string `pulumi:"accessKeyRef"`
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// AwsKmsConnectorCredentialsManualInput is an input type that accepts AwsKmsConnectorCredentialsManualArgs and AwsKmsConnectorCredentialsManualOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsManualInput` via:
+//
+//	AwsKmsConnectorCredentialsManualArgs{...}
+type AwsKmsConnectorCredentialsManualInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsManualOutput() AwsKmsConnectorCredentialsManualOutput
+	ToAwsKmsConnectorCredentialsManualOutputWithContext(context.Context) AwsKmsConnectorCredentialsManualOutput
+}
+
+type AwsKmsConnectorCredentialsManualArgs struct {
+	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (AwsKmsConnectorCredentialsManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (i AwsKmsConnectorCredentialsManualArgs) ToAwsKmsConnectorCredentialsManualOutput() AwsKmsConnectorCredentialsManualOutput {
+	return i.ToAwsKmsConnectorCredentialsManualOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsManualArgs) ToAwsKmsConnectorCredentialsManualOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsManualOutput)
+}
+
+func (i AwsKmsConnectorCredentialsManualArgs) ToAwsKmsConnectorCredentialsManualPtrOutput() AwsKmsConnectorCredentialsManualPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsManualArgs) ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsManualOutput).ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(ctx)
+}
+
+// AwsKmsConnectorCredentialsManualPtrInput is an input type that accepts AwsKmsConnectorCredentialsManualArgs, AwsKmsConnectorCredentialsManualPtr and AwsKmsConnectorCredentialsManualPtrOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsManualPtrInput` via:
+//
+//	        AwsKmsConnectorCredentialsManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsKmsConnectorCredentialsManualPtrInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsManualPtrOutput() AwsKmsConnectorCredentialsManualPtrOutput
+	ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(context.Context) AwsKmsConnectorCredentialsManualPtrOutput
+}
+
+type awsKmsConnectorCredentialsManualPtrType AwsKmsConnectorCredentialsManualArgs
+
+func AwsKmsConnectorCredentialsManualPtr(v *AwsKmsConnectorCredentialsManualArgs) AwsKmsConnectorCredentialsManualPtrInput {
+	return (*awsKmsConnectorCredentialsManualPtrType)(v)
+}
+
+func (*awsKmsConnectorCredentialsManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (i *awsKmsConnectorCredentialsManualPtrType) ToAwsKmsConnectorCredentialsManualPtrOutput() AwsKmsConnectorCredentialsManualPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (i *awsKmsConnectorCredentialsManualPtrType) ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsManualPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsManualOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) ToAwsKmsConnectorCredentialsManualOutput() AwsKmsConnectorCredentialsManualOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) ToAwsKmsConnectorCredentialsManualOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) ToAwsKmsConnectorCredentialsManualPtrOutput() AwsKmsConnectorCredentialsManualPtrOutput {
+	return o.ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsKmsConnectorCredentialsManual) *AwsKmsConnectorCredentialsManual {
+		return &v
+	}).(AwsKmsConnectorCredentialsManualPtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) AccessKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
+}
+
+func (o AwsKmsConnectorCredentialsManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type AwsKmsConnectorCredentialsManualPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsManualPtrOutput) ToAwsKmsConnectorCredentialsManualPtrOutput() AwsKmsConnectorCredentialsManualPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsManualPtrOutput) ToAwsKmsConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsManualPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsManualPtrOutput) Elem() AwsKmsConnectorCredentialsManualOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsManual) AwsKmsConnectorCredentialsManual {
+		if v != nil {
+			return *v
+		}
+		var ret AwsKmsConnectorCredentialsManual
+		return ret
+	}).(AwsKmsConnectorCredentialsManualOutput)
+}
+
+func (o AwsKmsConnectorCredentialsManualPtrOutput) AccessKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsKmsConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentials struct {
+	// Connect using STS assume role.
+	AssumeRole *AwsSecretManagerConnectorCredentialsAssumeRole `pulumi:"assumeRole"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manual *AwsSecretManagerConnectorCredentialsManual `pulumi:"manual"`
+}
+
+// AwsSecretManagerConnectorCredentialsInput is an input type that accepts AwsSecretManagerConnectorCredentialsArgs and AwsSecretManagerConnectorCredentialsOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsInput` via:
+//
+//	AwsSecretManagerConnectorCredentialsArgs{...}
+type AwsSecretManagerConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsOutput() AwsSecretManagerConnectorCredentialsOutput
+	ToAwsSecretManagerConnectorCredentialsOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsOutput
+}
+
+type AwsSecretManagerConnectorCredentialsArgs struct {
+	// Connect using STS assume role.
+	AssumeRole AwsSecretManagerConnectorCredentialsAssumeRolePtrInput `pulumi:"assumeRole"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate pulumi.BoolPtrInput `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manual AwsSecretManagerConnectorCredentialsManualPtrInput `pulumi:"manual"`
+}
+
+func (AwsSecretManagerConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentials)(nil)).Elem()
+}
+
+func (i AwsSecretManagerConnectorCredentialsArgs) ToAwsSecretManagerConnectorCredentialsOutput() AwsSecretManagerConnectorCredentialsOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsArgs) ToAwsSecretManagerConnectorCredentialsOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsOutput)
+}
+
+func (i AwsSecretManagerConnectorCredentialsArgs) ToAwsSecretManagerConnectorCredentialsPtrOutput() AwsSecretManagerConnectorCredentialsPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsArgs) ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsOutput).ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// AwsSecretManagerConnectorCredentialsPtrInput is an input type that accepts AwsSecretManagerConnectorCredentialsArgs, AwsSecretManagerConnectorCredentialsPtr and AwsSecretManagerConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsPtrInput` via:
+//
+//	        AwsSecretManagerConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsSecretManagerConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsPtrOutput() AwsSecretManagerConnectorCredentialsPtrOutput
+	ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsPtrOutput
+}
+
+type awsSecretManagerConnectorCredentialsPtrType AwsSecretManagerConnectorCredentialsArgs
+
+func AwsSecretManagerConnectorCredentialsPtr(v *AwsSecretManagerConnectorCredentialsArgs) AwsSecretManagerConnectorCredentialsPtrInput {
+	return (*awsSecretManagerConnectorCredentialsPtrType)(v)
+}
+
+func (*awsSecretManagerConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentials)(nil)).Elem()
+}
+
+func (i *awsSecretManagerConnectorCredentialsPtrType) ToAwsSecretManagerConnectorCredentialsPtrOutput() AwsSecretManagerConnectorCredentialsPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsSecretManagerConnectorCredentialsPtrType) ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentials)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsOutput) ToAwsSecretManagerConnectorCredentialsOutput() AwsSecretManagerConnectorCredentialsOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOutput) ToAwsSecretManagerConnectorCredentialsOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOutput) ToAwsSecretManagerConnectorCredentialsPtrOutput() AwsSecretManagerConnectorCredentialsPtrOutput {
+	return o.ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsSecretManagerConnectorCredentialsOutput) ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentials {
+		return &v
+	}).(AwsSecretManagerConnectorCredentialsPtrOutput)
+}
+
+// Connect using STS assume role.
+func (o AwsSecretManagerConnectorCredentialsOutput) AssumeRole() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsAssumeRole {
+		return v.AssumeRole
+	}).(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput)
+}
+
+// Inherit the credentials from from the delegate.
+func (o AwsSecretManagerConnectorCredentialsOutput) InheritFromDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentials) *bool { return v.InheritFromDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the AWS key and secret used for authenticating.
+func (o AwsSecretManagerConnectorCredentialsOutput) Manual() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsManual {
+		return v.Manual
+	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentials)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) ToAwsSecretManagerConnectorCredentialsPtrOutput() AwsSecretManagerConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) ToAwsSecretManagerConnectorCredentialsPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) Elem() AwsSecretManagerConnectorCredentialsOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentials) AwsSecretManagerConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AwsSecretManagerConnectorCredentials
+		return ret
+	}).(AwsSecretManagerConnectorCredentialsOutput)
+}
+
+// Connect using STS assume role.
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) AssumeRole() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsAssumeRole {
+		if v == nil {
+			return nil
+		}
+		return v.AssumeRole
+	}).(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput)
+}
+
+// Inherit the credentials from from the delegate.
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) InheritFromDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InheritFromDelegate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the AWS key and secret used for authenticating.
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) Manual() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsManual {
+		if v == nil {
+			return nil
+		}
+		return v.Manual
+	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsAssumeRole struct {
+	Duration   int     `pulumi:"duration"`
+	ExternalId *string `pulumi:"externalId"`
+	RoleArn    string  `pulumi:"roleArn"`
+}
+
+// AwsSecretManagerConnectorCredentialsAssumeRoleInput is an input type that accepts AwsSecretManagerConnectorCredentialsAssumeRoleArgs and AwsSecretManagerConnectorCredentialsAssumeRoleOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsAssumeRoleInput` via:
+//
+//	AwsSecretManagerConnectorCredentialsAssumeRoleArgs{...}
+type AwsSecretManagerConnectorCredentialsAssumeRoleInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsAssumeRoleOutput() AwsSecretManagerConnectorCredentialsAssumeRoleOutput
+	ToAwsSecretManagerConnectorCredentialsAssumeRoleOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsAssumeRoleOutput
+}
+
+type AwsSecretManagerConnectorCredentialsAssumeRoleArgs struct {
+	Duration   pulumi.IntInput       `pulumi:"duration"`
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput    `pulumi:"roleArn"`
+}
+
+func (AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (i AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ToAwsSecretManagerConnectorCredentialsAssumeRoleOutput() AwsSecretManagerConnectorCredentialsAssumeRoleOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsAssumeRoleOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ToAwsSecretManagerConnectorCredentialsAssumeRoleOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsAssumeRoleOutput)
+}
+
+func (i AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutput() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsAssumeRoleOutput).ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(ctx)
+}
+
+// AwsSecretManagerConnectorCredentialsAssumeRolePtrInput is an input type that accepts AwsSecretManagerConnectorCredentialsAssumeRoleArgs, AwsSecretManagerConnectorCredentialsAssumeRolePtr and AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsAssumeRolePtrInput` via:
+//
+//	        AwsSecretManagerConnectorCredentialsAssumeRoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsSecretManagerConnectorCredentialsAssumeRolePtrInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutput() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput
+	ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput
+}
+
+type awsSecretManagerConnectorCredentialsAssumeRolePtrType AwsSecretManagerConnectorCredentialsAssumeRoleArgs
+
+func AwsSecretManagerConnectorCredentialsAssumeRolePtr(v *AwsSecretManagerConnectorCredentialsAssumeRoleArgs) AwsSecretManagerConnectorCredentialsAssumeRolePtrInput {
+	return (*awsSecretManagerConnectorCredentialsAssumeRolePtrType)(v)
+}
+
+func (*awsSecretManagerConnectorCredentialsAssumeRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (i *awsSecretManagerConnectorCredentialsAssumeRolePtrType) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutput() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (i *awsSecretManagerConnectorCredentialsAssumeRolePtrType) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsAssumeRoleOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ToAwsSecretManagerConnectorCredentialsAssumeRoleOutput() AwsSecretManagerConnectorCredentialsAssumeRoleOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ToAwsSecretManagerConnectorCredentialsAssumeRoleOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRoleOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutput() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o.ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(context.Background())
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsSecretManagerConnectorCredentialsAssumeRole) *AwsSecretManagerConnectorCredentialsAssumeRole {
+		return &v
+	}).(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsAssumeRole)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutput() AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ToAwsSecretManagerConnectorCredentialsAssumeRolePtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) Elem() AwsSecretManagerConnectorCredentialsAssumeRoleOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) AwsSecretManagerConnectorCredentialsAssumeRole {
+		if v != nil {
+			return *v
+		}
+		var ret AwsSecretManagerConnectorCredentialsAssumeRole
+		return ret
+	}).(AwsSecretManagerConnectorCredentialsAssumeRoleOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsManual struct {
+	AccessKeyRef string `pulumi:"accessKeyRef"`
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// AwsSecretManagerConnectorCredentialsManualInput is an input type that accepts AwsSecretManagerConnectorCredentialsManualArgs and AwsSecretManagerConnectorCredentialsManualOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsManualInput` via:
+//
+//	AwsSecretManagerConnectorCredentialsManualArgs{...}
+type AwsSecretManagerConnectorCredentialsManualInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsManualOutput() AwsSecretManagerConnectorCredentialsManualOutput
+	ToAwsSecretManagerConnectorCredentialsManualOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsManualOutput
+}
+
+type AwsSecretManagerConnectorCredentialsManualArgs struct {
+	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (AwsSecretManagerConnectorCredentialsManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (i AwsSecretManagerConnectorCredentialsManualArgs) ToAwsSecretManagerConnectorCredentialsManualOutput() AwsSecretManagerConnectorCredentialsManualOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsManualOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsManualArgs) ToAwsSecretManagerConnectorCredentialsManualOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsManualOutput)
+}
+
+func (i AwsSecretManagerConnectorCredentialsManualArgs) ToAwsSecretManagerConnectorCredentialsManualPtrOutput() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsManualArgs) ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsManualOutput).ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(ctx)
+}
+
+// AwsSecretManagerConnectorCredentialsManualPtrInput is an input type that accepts AwsSecretManagerConnectorCredentialsManualArgs, AwsSecretManagerConnectorCredentialsManualPtr and AwsSecretManagerConnectorCredentialsManualPtrOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsManualPtrInput` via:
+//
+//	        AwsSecretManagerConnectorCredentialsManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsSecretManagerConnectorCredentialsManualPtrInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsManualPtrOutput() AwsSecretManagerConnectorCredentialsManualPtrOutput
+	ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsManualPtrOutput
+}
+
+type awsSecretManagerConnectorCredentialsManualPtrType AwsSecretManagerConnectorCredentialsManualArgs
+
+func AwsSecretManagerConnectorCredentialsManualPtr(v *AwsSecretManagerConnectorCredentialsManualArgs) AwsSecretManagerConnectorCredentialsManualPtrInput {
+	return (*awsSecretManagerConnectorCredentialsManualPtrType)(v)
+}
+
+func (*awsSecretManagerConnectorCredentialsManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (i *awsSecretManagerConnectorCredentialsManualPtrType) ToAwsSecretManagerConnectorCredentialsManualPtrOutput() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (i *awsSecretManagerConnectorCredentialsManualPtrType) ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsManualOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConnectorCredentialsManualOutput() AwsSecretManagerConnectorCredentialsManualOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConnectorCredentialsManualOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConnectorCredentialsManualPtrOutput() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o.ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(context.Background())
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsSecretManagerConnectorCredentialsManual) *AwsSecretManagerConnectorCredentialsManual {
+		return &v
+	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) AccessKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsManualPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsManual)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) ToAwsSecretManagerConnectorCredentialsManualPtrOutput() AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) ToAwsSecretManagerConnectorCredentialsManualPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsManualPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) Elem() AwsSecretManagerConnectorCredentialsManualOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) AwsSecretManagerConnectorCredentialsManual {
+		if v != nil {
+			return *v
+		}
+		var ret AwsSecretManagerConnectorCredentialsManual
+		return ret
+	}).(AwsSecretManagerConnectorCredentialsManualOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) AccessKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type BitbucketConnectorApiAuthentication struct {
+	// Personal access token for interacting with the BitBucket api.
+	TokenRef string `pulumi:"tokenRef"`
+	// The username used for connecting to the api.
+	Username *string `pulumi:"username"`
+	// The name of the Harness secret containing the username.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// BitbucketConnectorApiAuthenticationInput is an input type that accepts BitbucketConnectorApiAuthenticationArgs and BitbucketConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `BitbucketConnectorApiAuthenticationInput` via:
+//
+//	BitbucketConnectorApiAuthenticationArgs{...}
+type BitbucketConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorApiAuthenticationOutput() BitbucketConnectorApiAuthenticationOutput
+	ToBitbucketConnectorApiAuthenticationOutputWithContext(context.Context) BitbucketConnectorApiAuthenticationOutput
+}
+
+type BitbucketConnectorApiAuthenticationArgs struct {
+	// Personal access token for interacting with the BitBucket api.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// The username used for connecting to the api.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The name of the Harness secret containing the username.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (BitbucketConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i BitbucketConnectorApiAuthenticationArgs) ToBitbucketConnectorApiAuthenticationOutput() BitbucketConnectorApiAuthenticationOutput {
+	return i.ToBitbucketConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorApiAuthenticationArgs) ToBitbucketConnectorApiAuthenticationOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorApiAuthenticationOutput)
+}
+
+func (i BitbucketConnectorApiAuthenticationArgs) ToBitbucketConnectorApiAuthenticationPtrOutput() BitbucketConnectorApiAuthenticationPtrOutput {
+	return i.ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorApiAuthenticationArgs) ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorApiAuthenticationOutput).ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(ctx)
+}
+
+// BitbucketConnectorApiAuthenticationPtrInput is an input type that accepts BitbucketConnectorApiAuthenticationArgs, BitbucketConnectorApiAuthenticationPtr and BitbucketConnectorApiAuthenticationPtrOutput values.
+// You can construct a concrete instance of `BitbucketConnectorApiAuthenticationPtrInput` via:
+//
+//	        BitbucketConnectorApiAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketConnectorApiAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorApiAuthenticationPtrOutput() BitbucketConnectorApiAuthenticationPtrOutput
+	ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(context.Context) BitbucketConnectorApiAuthenticationPtrOutput
+}
+
+type bitbucketConnectorApiAuthenticationPtrType BitbucketConnectorApiAuthenticationArgs
+
+func BitbucketConnectorApiAuthenticationPtr(v *BitbucketConnectorApiAuthenticationArgs) BitbucketConnectorApiAuthenticationPtrInput {
+	return (*bitbucketConnectorApiAuthenticationPtrType)(v)
+}
+
+func (*bitbucketConnectorApiAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i *bitbucketConnectorApiAuthenticationPtrType) ToBitbucketConnectorApiAuthenticationPtrOutput() BitbucketConnectorApiAuthenticationPtrOutput {
+	return i.ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketConnectorApiAuthenticationPtrType) ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorApiAuthenticationPtrOutput)
+}
+
+type BitbucketConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o BitbucketConnectorApiAuthenticationOutput) ToBitbucketConnectorApiAuthenticationOutput() BitbucketConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o BitbucketConnectorApiAuthenticationOutput) ToBitbucketConnectorApiAuthenticationOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o BitbucketConnectorApiAuthenticationOutput) ToBitbucketConnectorApiAuthenticationPtrOutput() BitbucketConnectorApiAuthenticationPtrOutput {
+	return o.ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketConnectorApiAuthenticationOutput) ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketConnectorApiAuthentication) *BitbucketConnectorApiAuthentication {
+		return &v
+	}).(BitbucketConnectorApiAuthenticationPtrOutput)
+}
+
+// Personal access token for interacting with the BitBucket api.
+func (o BitbucketConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+// The username used for connecting to the api.
+func (o BitbucketConnectorApiAuthenticationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorApiAuthentication) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Harness secret containing the username.
+func (o BitbucketConnectorApiAuthenticationOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorApiAuthentication) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type BitbucketConnectorApiAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorApiAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o BitbucketConnectorApiAuthenticationPtrOutput) ToBitbucketConnectorApiAuthenticationPtrOutput() BitbucketConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorApiAuthenticationPtrOutput) ToBitbucketConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) BitbucketConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorApiAuthenticationPtrOutput) Elem() BitbucketConnectorApiAuthenticationOutput {
+	return o.ApplyT(func(v *BitbucketConnectorApiAuthentication) BitbucketConnectorApiAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketConnectorApiAuthentication
+		return ret
+	}).(BitbucketConnectorApiAuthenticationOutput)
+}
+
+// Personal access token for interacting with the BitBucket api.
+func (o BitbucketConnectorApiAuthenticationPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username used for connecting to the api.
+func (o BitbucketConnectorApiAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Harness secret containing the username.
+func (o BitbucketConnectorApiAuthenticationPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type BitbucketConnectorCredentials struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http *BitbucketConnectorCredentialsHttp `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh *BitbucketConnectorCredentialsSsh `pulumi:"ssh"`
+}
+
+// BitbucketConnectorCredentialsInput is an input type that accepts BitbucketConnectorCredentialsArgs and BitbucketConnectorCredentialsOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsInput` via:
+//
+//	BitbucketConnectorCredentialsArgs{...}
+type BitbucketConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsOutput() BitbucketConnectorCredentialsOutput
+	ToBitbucketConnectorCredentialsOutputWithContext(context.Context) BitbucketConnectorCredentialsOutput
+}
+
+type BitbucketConnectorCredentialsArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http BitbucketConnectorCredentialsHttpPtrInput `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh BitbucketConnectorCredentialsSshPtrInput `pulumi:"ssh"`
+}
+
+func (BitbucketConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentials)(nil)).Elem()
+}
+
+func (i BitbucketConnectorCredentialsArgs) ToBitbucketConnectorCredentialsOutput() BitbucketConnectorCredentialsOutput {
+	return i.ToBitbucketConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsArgs) ToBitbucketConnectorCredentialsOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsOutput)
+}
+
+func (i BitbucketConnectorCredentialsArgs) ToBitbucketConnectorCredentialsPtrOutput() BitbucketConnectorCredentialsPtrOutput {
+	return i.ToBitbucketConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsArgs) ToBitbucketConnectorCredentialsPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsOutput).ToBitbucketConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// BitbucketConnectorCredentialsPtrInput is an input type that accepts BitbucketConnectorCredentialsArgs, BitbucketConnectorCredentialsPtr and BitbucketConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsPtrInput` via:
+//
+//	        BitbucketConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsPtrOutput() BitbucketConnectorCredentialsPtrOutput
+	ToBitbucketConnectorCredentialsPtrOutputWithContext(context.Context) BitbucketConnectorCredentialsPtrOutput
+}
+
+type bitbucketConnectorCredentialsPtrType BitbucketConnectorCredentialsArgs
+
+func BitbucketConnectorCredentialsPtr(v *BitbucketConnectorCredentialsArgs) BitbucketConnectorCredentialsPtrInput {
+	return (*bitbucketConnectorCredentialsPtrType)(v)
+}
+
+func (*bitbucketConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentials)(nil)).Elem()
+}
+
+func (i *bitbucketConnectorCredentialsPtrType) ToBitbucketConnectorCredentialsPtrOutput() BitbucketConnectorCredentialsPtrOutput {
+	return i.ToBitbucketConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketConnectorCredentialsPtrType) ToBitbucketConnectorCredentialsPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsPtrOutput)
+}
+
+type BitbucketConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentials)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsOutput) ToBitbucketConnectorCredentialsOutput() BitbucketConnectorCredentialsOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsOutput) ToBitbucketConnectorCredentialsOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsOutput) ToBitbucketConnectorCredentialsPtrOutput() BitbucketConnectorCredentialsPtrOutput {
+	return o.ToBitbucketConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketConnectorCredentialsOutput) ToBitbucketConnectorCredentialsPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketConnectorCredentials) *BitbucketConnectorCredentials {
+		return &v
+	}).(BitbucketConnectorCredentialsPtrOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o BitbucketConnectorCredentialsOutput) Http() BitbucketConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentials) *BitbucketConnectorCredentialsHttp { return v.Http }).(BitbucketConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o BitbucketConnectorCredentialsOutput) Ssh() BitbucketConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentials) *BitbucketConnectorCredentialsSsh { return v.Ssh }).(BitbucketConnectorCredentialsSshPtrOutput)
+}
+
+type BitbucketConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentials)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsPtrOutput) ToBitbucketConnectorCredentialsPtrOutput() BitbucketConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsPtrOutput) ToBitbucketConnectorCredentialsPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsPtrOutput) Elem() BitbucketConnectorCredentialsOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentials) BitbucketConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketConnectorCredentials
+		return ret
+	}).(BitbucketConnectorCredentialsOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o BitbucketConnectorCredentialsPtrOutput) Http() BitbucketConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentials) *BitbucketConnectorCredentialsHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(BitbucketConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o BitbucketConnectorCredentialsPtrOutput) Ssh() BitbucketConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentials) *BitbucketConnectorCredentialsSsh {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(BitbucketConnectorCredentialsSshPtrOutput)
+}
+
+type BitbucketConnectorCredentialsHttp struct {
+	PasswordRef *string `pulumi:"passwordRef"`
+	Username    *string `pulumi:"username"`
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// BitbucketConnectorCredentialsHttpInput is an input type that accepts BitbucketConnectorCredentialsHttpArgs and BitbucketConnectorCredentialsHttpOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsHttpInput` via:
+//
+//	BitbucketConnectorCredentialsHttpArgs{...}
+type BitbucketConnectorCredentialsHttpInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsHttpOutput() BitbucketConnectorCredentialsHttpOutput
+	ToBitbucketConnectorCredentialsHttpOutputWithContext(context.Context) BitbucketConnectorCredentialsHttpOutput
+}
+
+type BitbucketConnectorCredentialsHttpArgs struct {
+	PasswordRef pulumi.StringPtrInput `pulumi:"passwordRef"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (BitbucketConnectorCredentialsHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i BitbucketConnectorCredentialsHttpArgs) ToBitbucketConnectorCredentialsHttpOutput() BitbucketConnectorCredentialsHttpOutput {
+	return i.ToBitbucketConnectorCredentialsHttpOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsHttpArgs) ToBitbucketConnectorCredentialsHttpOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsHttpOutput)
+}
+
+func (i BitbucketConnectorCredentialsHttpArgs) ToBitbucketConnectorCredentialsHttpPtrOutput() BitbucketConnectorCredentialsHttpPtrOutput {
+	return i.ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsHttpArgs) ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsHttpOutput).ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(ctx)
+}
+
+// BitbucketConnectorCredentialsHttpPtrInput is an input type that accepts BitbucketConnectorCredentialsHttpArgs, BitbucketConnectorCredentialsHttpPtr and BitbucketConnectorCredentialsHttpPtrOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsHttpPtrInput` via:
+//
+//	        BitbucketConnectorCredentialsHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketConnectorCredentialsHttpPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsHttpPtrOutput() BitbucketConnectorCredentialsHttpPtrOutput
+	ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(context.Context) BitbucketConnectorCredentialsHttpPtrOutput
+}
+
+type bitbucketConnectorCredentialsHttpPtrType BitbucketConnectorCredentialsHttpArgs
+
+func BitbucketConnectorCredentialsHttpPtr(v *BitbucketConnectorCredentialsHttpArgs) BitbucketConnectorCredentialsHttpPtrInput {
+	return (*bitbucketConnectorCredentialsHttpPtrType)(v)
+}
+
+func (*bitbucketConnectorCredentialsHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i *bitbucketConnectorCredentialsHttpPtrType) ToBitbucketConnectorCredentialsHttpPtrOutput() BitbucketConnectorCredentialsHttpPtrOutput {
+	return i.ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketConnectorCredentialsHttpPtrType) ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsHttpPtrOutput)
+}
+
+type BitbucketConnectorCredentialsHttpOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) ToBitbucketConnectorCredentialsHttpOutput() BitbucketConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) ToBitbucketConnectorCredentialsHttpOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) ToBitbucketConnectorCredentialsHttpPtrOutput() BitbucketConnectorCredentialsHttpPtrOutput {
+	return o.ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketConnectorCredentialsHttp) *BitbucketConnectorCredentialsHttp {
+		return &v
+	}).(BitbucketConnectorCredentialsHttpPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.PasswordRef }).(pulumi.StringPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type BitbucketConnectorCredentialsHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) ToBitbucketConnectorCredentialsHttpPtrOutput() BitbucketConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) ToBitbucketConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) Elem() BitbucketConnectorCredentialsHttpOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) BitbucketConnectorCredentialsHttp {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketConnectorCredentialsHttp
+		return ret
+	}).(BitbucketConnectorCredentialsHttpOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type BitbucketConnectorCredentialsSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// BitbucketConnectorCredentialsSshInput is an input type that accepts BitbucketConnectorCredentialsSshArgs and BitbucketConnectorCredentialsSshOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsSshInput` via:
+//
+//	BitbucketConnectorCredentialsSshArgs{...}
+type BitbucketConnectorCredentialsSshInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsSshOutput() BitbucketConnectorCredentialsSshOutput
+	ToBitbucketConnectorCredentialsSshOutputWithContext(context.Context) BitbucketConnectorCredentialsSshOutput
+}
+
+type BitbucketConnectorCredentialsSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (BitbucketConnectorCredentialsSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i BitbucketConnectorCredentialsSshArgs) ToBitbucketConnectorCredentialsSshOutput() BitbucketConnectorCredentialsSshOutput {
+	return i.ToBitbucketConnectorCredentialsSshOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsSshArgs) ToBitbucketConnectorCredentialsSshOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsSshOutput)
+}
+
+func (i BitbucketConnectorCredentialsSshArgs) ToBitbucketConnectorCredentialsSshPtrOutput() BitbucketConnectorCredentialsSshPtrOutput {
+	return i.ToBitbucketConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketConnectorCredentialsSshArgs) ToBitbucketConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsSshOutput).ToBitbucketConnectorCredentialsSshPtrOutputWithContext(ctx)
+}
+
+// BitbucketConnectorCredentialsSshPtrInput is an input type that accepts BitbucketConnectorCredentialsSshArgs, BitbucketConnectorCredentialsSshPtr and BitbucketConnectorCredentialsSshPtrOutput values.
+// You can construct a concrete instance of `BitbucketConnectorCredentialsSshPtrInput` via:
+//
+//	        BitbucketConnectorCredentialsSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketConnectorCredentialsSshPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketConnectorCredentialsSshPtrOutput() BitbucketConnectorCredentialsSshPtrOutput
+	ToBitbucketConnectorCredentialsSshPtrOutputWithContext(context.Context) BitbucketConnectorCredentialsSshPtrOutput
+}
+
+type bitbucketConnectorCredentialsSshPtrType BitbucketConnectorCredentialsSshArgs
+
+func BitbucketConnectorCredentialsSshPtr(v *BitbucketConnectorCredentialsSshArgs) BitbucketConnectorCredentialsSshPtrInput {
+	return (*bitbucketConnectorCredentialsSshPtrType)(v)
+}
+
+func (*bitbucketConnectorCredentialsSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i *bitbucketConnectorCredentialsSshPtrType) ToBitbucketConnectorCredentialsSshPtrOutput() BitbucketConnectorCredentialsSshPtrOutput {
+	return i.ToBitbucketConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketConnectorCredentialsSshPtrType) ToBitbucketConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketConnectorCredentialsSshPtrOutput)
+}
+
+type BitbucketConnectorCredentialsSshOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsSshOutput) ToBitbucketConnectorCredentialsSshOutput() BitbucketConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsSshOutput) ToBitbucketConnectorCredentialsSshOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsSshOutput) ToBitbucketConnectorCredentialsSshPtrOutput() BitbucketConnectorCredentialsSshPtrOutput {
+	return o.ToBitbucketConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketConnectorCredentialsSshOutput) ToBitbucketConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketConnectorCredentialsSsh) *BitbucketConnectorCredentialsSsh {
+		return &v
+	}).(BitbucketConnectorCredentialsSshPtrOutput)
+}
+
+func (o BitbucketConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type BitbucketConnectorCredentialsSshPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketConnectorCredentialsSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o BitbucketConnectorCredentialsSshPtrOutput) ToBitbucketConnectorCredentialsSshPtrOutput() BitbucketConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsSshPtrOutput) ToBitbucketConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) BitbucketConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o BitbucketConnectorCredentialsSshPtrOutput) Elem() BitbucketConnectorCredentialsSshOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsSsh) BitbucketConnectorCredentialsSsh {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketConnectorCredentialsSsh
+		return ret
+	}).(BitbucketConnectorCredentialsSshOutput)
+}
+
+func (o BitbucketConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketConnectorCredentialsSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type DockerConnectorCredentials struct {
+	// The reference to the password to use for the docker registry.
+	PasswordRef string `pulumi:"passwordRef"`
+	// The username to use for the docker registry.
+	Username *string `pulumi:"username"`
+	// The reference to the username to use for the docker registry.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// DockerConnectorCredentialsInput is an input type that accepts DockerConnectorCredentialsArgs and DockerConnectorCredentialsOutput values.
+// You can construct a concrete instance of `DockerConnectorCredentialsInput` via:
+//
+//	DockerConnectorCredentialsArgs{...}
+type DockerConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToDockerConnectorCredentialsOutput() DockerConnectorCredentialsOutput
+	ToDockerConnectorCredentialsOutputWithContext(context.Context) DockerConnectorCredentialsOutput
+}
+
+type DockerConnectorCredentialsArgs struct {
+	// The reference to the password to use for the docker registry.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// The username to use for the docker registry.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The reference to the username to use for the docker registry.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (DockerConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerConnectorCredentials)(nil)).Elem()
+}
+
+func (i DockerConnectorCredentialsArgs) ToDockerConnectorCredentialsOutput() DockerConnectorCredentialsOutput {
+	return i.ToDockerConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i DockerConnectorCredentialsArgs) ToDockerConnectorCredentialsOutputWithContext(ctx context.Context) DockerConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerConnectorCredentialsOutput)
+}
+
+func (i DockerConnectorCredentialsArgs) ToDockerConnectorCredentialsPtrOutput() DockerConnectorCredentialsPtrOutput {
+	return i.ToDockerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i DockerConnectorCredentialsArgs) ToDockerConnectorCredentialsPtrOutputWithContext(ctx context.Context) DockerConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerConnectorCredentialsOutput).ToDockerConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// DockerConnectorCredentialsPtrInput is an input type that accepts DockerConnectorCredentialsArgs, DockerConnectorCredentialsPtr and DockerConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `DockerConnectorCredentialsPtrInput` via:
+//
+//	        DockerConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DockerConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToDockerConnectorCredentialsPtrOutput() DockerConnectorCredentialsPtrOutput
+	ToDockerConnectorCredentialsPtrOutputWithContext(context.Context) DockerConnectorCredentialsPtrOutput
+}
+
+type dockerConnectorCredentialsPtrType DockerConnectorCredentialsArgs
+
+func DockerConnectorCredentialsPtr(v *DockerConnectorCredentialsArgs) DockerConnectorCredentialsPtrInput {
+	return (*dockerConnectorCredentialsPtrType)(v)
+}
+
+func (*dockerConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerConnectorCredentials)(nil)).Elem()
+}
+
+func (i *dockerConnectorCredentialsPtrType) ToDockerConnectorCredentialsPtrOutput() DockerConnectorCredentialsPtrOutput {
+	return i.ToDockerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *dockerConnectorCredentialsPtrType) ToDockerConnectorCredentialsPtrOutputWithContext(ctx context.Context) DockerConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerConnectorCredentialsPtrOutput)
+}
+
+type DockerConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (DockerConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerConnectorCredentials)(nil)).Elem()
+}
+
+func (o DockerConnectorCredentialsOutput) ToDockerConnectorCredentialsOutput() DockerConnectorCredentialsOutput {
+	return o
+}
+
+func (o DockerConnectorCredentialsOutput) ToDockerConnectorCredentialsOutputWithContext(ctx context.Context) DockerConnectorCredentialsOutput {
+	return o
+}
+
+func (o DockerConnectorCredentialsOutput) ToDockerConnectorCredentialsPtrOutput() DockerConnectorCredentialsPtrOutput {
+	return o.ToDockerConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o DockerConnectorCredentialsOutput) ToDockerConnectorCredentialsPtrOutputWithContext(ctx context.Context) DockerConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerConnectorCredentials) *DockerConnectorCredentials {
+		return &v
+	}).(DockerConnectorCredentialsPtrOutput)
+}
+
+// The reference to the password to use for the docker registry.
+func (o DockerConnectorCredentialsOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerConnectorCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// The username to use for the docker registry.
+func (o DockerConnectorCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerConnectorCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the username to use for the docker registry.
+func (o DockerConnectorCredentialsOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerConnectorCredentials) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type DockerConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerConnectorCredentials)(nil)).Elem()
+}
+
+func (o DockerConnectorCredentialsPtrOutput) ToDockerConnectorCredentialsPtrOutput() DockerConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o DockerConnectorCredentialsPtrOutput) ToDockerConnectorCredentialsPtrOutputWithContext(ctx context.Context) DockerConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o DockerConnectorCredentialsPtrOutput) Elem() DockerConnectorCredentialsOutput {
+	return o.ApplyT(func(v *DockerConnectorCredentials) DockerConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret DockerConnectorCredentials
+		return ret
+	}).(DockerConnectorCredentialsOutput)
+}
+
+// The reference to the password to use for the docker registry.
+func (o DockerConnectorCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for the docker registry.
+func (o DockerConnectorCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the username to use for the docker registry.
+func (o DockerConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpConnectorInheritFromDelegate struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GcpConnectorInheritFromDelegateInput is an input type that accepts GcpConnectorInheritFromDelegateArgs and GcpConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `GcpConnectorInheritFromDelegateInput` via:
+//
+//	GcpConnectorInheritFromDelegateArgs{...}
+type GcpConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToGcpConnectorInheritFromDelegateOutput() GcpConnectorInheritFromDelegateOutput
+	ToGcpConnectorInheritFromDelegateOutputWithContext(context.Context) GcpConnectorInheritFromDelegateOutput
+}
+
+type GcpConnectorInheritFromDelegateArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GcpConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GcpConnectorInheritFromDelegateArgs) ToGcpConnectorInheritFromDelegateOutput() GcpConnectorInheritFromDelegateOutput {
+	return i.ToGcpConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorInheritFromDelegateArgs) ToGcpConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GcpConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorInheritFromDelegateOutput)
+}
+
+// GcpConnectorInheritFromDelegateArrayInput is an input type that accepts GcpConnectorInheritFromDelegateArray and GcpConnectorInheritFromDelegateArrayOutput values.
+// You can construct a concrete instance of `GcpConnectorInheritFromDelegateArrayInput` via:
+//
+//	GcpConnectorInheritFromDelegateArray{ GcpConnectorInheritFromDelegateArgs{...} }
+type GcpConnectorInheritFromDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGcpConnectorInheritFromDelegateArrayOutput() GcpConnectorInheritFromDelegateArrayOutput
+	ToGcpConnectorInheritFromDelegateArrayOutputWithContext(context.Context) GcpConnectorInheritFromDelegateArrayOutput
+}
+
+type GcpConnectorInheritFromDelegateArray []GcpConnectorInheritFromDelegateInput
+
+func (GcpConnectorInheritFromDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GcpConnectorInheritFromDelegateArray) ToGcpConnectorInheritFromDelegateArrayOutput() GcpConnectorInheritFromDelegateArrayOutput {
+	return i.ToGcpConnectorInheritFromDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorInheritFromDelegateArray) ToGcpConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GcpConnectorInheritFromDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorInheritFromDelegateArrayOutput)
+}
+
+type GcpConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GcpConnectorInheritFromDelegateOutput) ToGcpConnectorInheritFromDelegateOutput() GcpConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GcpConnectorInheritFromDelegateOutput) ToGcpConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GcpConnectorInheritFromDelegateOutput {
+	return o
+}
+
+// The delegates to inherit the credentials from.
+func (o GcpConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GcpConnectorInheritFromDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorInheritFromDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GcpConnectorInheritFromDelegateArrayOutput) ToGcpConnectorInheritFromDelegateArrayOutput() GcpConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GcpConnectorInheritFromDelegateArrayOutput) ToGcpConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GcpConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GcpConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) GcpConnectorInheritFromDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpConnectorInheritFromDelegate {
+		return vs[0].([]GcpConnectorInheritFromDelegate)[vs[1].(int)]
+	}).(GcpConnectorInheritFromDelegateOutput)
+}
+
+type GcpConnectorManual struct {
+	// The delegates to connect with.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// Reference to the Harness secret containing the secret key.
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// GcpConnectorManualInput is an input type that accepts GcpConnectorManualArgs and GcpConnectorManualOutput values.
+// You can construct a concrete instance of `GcpConnectorManualInput` via:
+//
+//	GcpConnectorManualArgs{...}
+type GcpConnectorManualInput interface {
+	pulumi.Input
+
+	ToGcpConnectorManualOutput() GcpConnectorManualOutput
+	ToGcpConnectorManualOutputWithContext(context.Context) GcpConnectorManualOutput
+}
+
+type GcpConnectorManualArgs struct {
+	// The delegates to connect with.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// Reference to the Harness secret containing the secret key.
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (GcpConnectorManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorManual)(nil)).Elem()
+}
+
+func (i GcpConnectorManualArgs) ToGcpConnectorManualOutput() GcpConnectorManualOutput {
+	return i.ToGcpConnectorManualOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorManualArgs) ToGcpConnectorManualOutputWithContext(ctx context.Context) GcpConnectorManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorManualOutput)
+}
+
+func (i GcpConnectorManualArgs) ToGcpConnectorManualPtrOutput() GcpConnectorManualPtrOutput {
+	return i.ToGcpConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorManualArgs) ToGcpConnectorManualPtrOutputWithContext(ctx context.Context) GcpConnectorManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorManualOutput).ToGcpConnectorManualPtrOutputWithContext(ctx)
+}
+
+// GcpConnectorManualPtrInput is an input type that accepts GcpConnectorManualArgs, GcpConnectorManualPtr and GcpConnectorManualPtrOutput values.
+// You can construct a concrete instance of `GcpConnectorManualPtrInput` via:
+//
+//	        GcpConnectorManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpConnectorManualPtrInput interface {
+	pulumi.Input
+
+	ToGcpConnectorManualPtrOutput() GcpConnectorManualPtrOutput
+	ToGcpConnectorManualPtrOutputWithContext(context.Context) GcpConnectorManualPtrOutput
+}
+
+type gcpConnectorManualPtrType GcpConnectorManualArgs
+
+func GcpConnectorManualPtr(v *GcpConnectorManualArgs) GcpConnectorManualPtrInput {
+	return (*gcpConnectorManualPtrType)(v)
+}
+
+func (*gcpConnectorManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpConnectorManual)(nil)).Elem()
+}
+
+func (i *gcpConnectorManualPtrType) ToGcpConnectorManualPtrOutput() GcpConnectorManualPtrOutput {
+	return i.ToGcpConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpConnectorManualPtrType) ToGcpConnectorManualPtrOutputWithContext(ctx context.Context) GcpConnectorManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorManualPtrOutput)
+}
+
+type GcpConnectorManualOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorManual)(nil)).Elem()
+}
+
+func (o GcpConnectorManualOutput) ToGcpConnectorManualOutput() GcpConnectorManualOutput {
+	return o
+}
+
+func (o GcpConnectorManualOutput) ToGcpConnectorManualOutputWithContext(ctx context.Context) GcpConnectorManualOutput {
+	return o
+}
+
+func (o GcpConnectorManualOutput) ToGcpConnectorManualPtrOutput() GcpConnectorManualPtrOutput {
+	return o.ToGcpConnectorManualPtrOutputWithContext(context.Background())
+}
+
+func (o GcpConnectorManualOutput) ToGcpConnectorManualPtrOutputWithContext(ctx context.Context) GcpConnectorManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpConnectorManual) *GcpConnectorManual {
+		return &v
+	}).(GcpConnectorManualPtrOutput)
+}
+
+// The delegates to connect with.
+func (o GcpConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Harness secret containing the secret key.
+func (o GcpConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type GcpConnectorManualPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpConnectorManual)(nil)).Elem()
+}
+
+func (o GcpConnectorManualPtrOutput) ToGcpConnectorManualPtrOutput() GcpConnectorManualPtrOutput {
+	return o
+}
+
+func (o GcpConnectorManualPtrOutput) ToGcpConnectorManualPtrOutputWithContext(ctx context.Context) GcpConnectorManualPtrOutput {
+	return o
+}
+
+func (o GcpConnectorManualPtrOutput) Elem() GcpConnectorManualOutput {
+	return o.ApplyT(func(v *GcpConnectorManual) GcpConnectorManual {
+		if v != nil {
+			return *v
+		}
+		var ret GcpConnectorManual
+		return ret
+	}).(GcpConnectorManualOutput)
+}
+
+// The delegates to connect with.
+func (o GcpConnectorManualPtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GcpConnectorManual) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Reference to the Harness secret containing the secret key.
+func (o GcpConnectorManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpConnectorManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitConnectorCredentials struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http *GitConnectorCredentialsHttp `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh *GitConnectorCredentialsSsh `pulumi:"ssh"`
+}
+
+// GitConnectorCredentialsInput is an input type that accepts GitConnectorCredentialsArgs and GitConnectorCredentialsOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsInput` via:
+//
+//	GitConnectorCredentialsArgs{...}
+type GitConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsOutput() GitConnectorCredentialsOutput
+	ToGitConnectorCredentialsOutputWithContext(context.Context) GitConnectorCredentialsOutput
+}
+
+type GitConnectorCredentialsArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http GitConnectorCredentialsHttpPtrInput `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh GitConnectorCredentialsSshPtrInput `pulumi:"ssh"`
+}
+
+func (GitConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentials)(nil)).Elem()
+}
+
+func (i GitConnectorCredentialsArgs) ToGitConnectorCredentialsOutput() GitConnectorCredentialsOutput {
+	return i.ToGitConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsArgs) ToGitConnectorCredentialsOutputWithContext(ctx context.Context) GitConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsOutput)
+}
+
+func (i GitConnectorCredentialsArgs) ToGitConnectorCredentialsPtrOutput() GitConnectorCredentialsPtrOutput {
+	return i.ToGitConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsArgs) ToGitConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsOutput).ToGitConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// GitConnectorCredentialsPtrInput is an input type that accepts GitConnectorCredentialsArgs, GitConnectorCredentialsPtr and GitConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsPtrInput` via:
+//
+//	        GitConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsPtrOutput() GitConnectorCredentialsPtrOutput
+	ToGitConnectorCredentialsPtrOutputWithContext(context.Context) GitConnectorCredentialsPtrOutput
+}
+
+type gitConnectorCredentialsPtrType GitConnectorCredentialsArgs
+
+func GitConnectorCredentialsPtr(v *GitConnectorCredentialsArgs) GitConnectorCredentialsPtrInput {
+	return (*gitConnectorCredentialsPtrType)(v)
+}
+
+func (*gitConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentials)(nil)).Elem()
+}
+
+func (i *gitConnectorCredentialsPtrType) ToGitConnectorCredentialsPtrOutput() GitConnectorCredentialsPtrOutput {
+	return i.ToGitConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *gitConnectorCredentialsPtrType) ToGitConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsPtrOutput)
+}
+
+type GitConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentials)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsOutput) ToGitConnectorCredentialsOutput() GitConnectorCredentialsOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsOutput) ToGitConnectorCredentialsOutputWithContext(ctx context.Context) GitConnectorCredentialsOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsOutput) ToGitConnectorCredentialsPtrOutput() GitConnectorCredentialsPtrOutput {
+	return o.ToGitConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o GitConnectorCredentialsOutput) ToGitConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitConnectorCredentials) *GitConnectorCredentials {
+		return &v
+	}).(GitConnectorCredentialsPtrOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GitConnectorCredentialsOutput) Http() GitConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v GitConnectorCredentials) *GitConnectorCredentialsHttp { return v.Http }).(GitConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GitConnectorCredentialsOutput) Ssh() GitConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v GitConnectorCredentials) *GitConnectorCredentialsSsh { return v.Ssh }).(GitConnectorCredentialsSshPtrOutput)
+}
+
+type GitConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentials)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsPtrOutput) ToGitConnectorCredentialsPtrOutput() GitConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsPtrOutput) ToGitConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsPtrOutput) Elem() GitConnectorCredentialsOutput {
+	return o.ApplyT(func(v *GitConnectorCredentials) GitConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret GitConnectorCredentials
+		return ret
+	}).(GitConnectorCredentialsOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GitConnectorCredentialsPtrOutput) Http() GitConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentials) *GitConnectorCredentialsHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(GitConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GitConnectorCredentialsPtrOutput) Ssh() GitConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentials) *GitConnectorCredentialsSsh {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(GitConnectorCredentialsSshPtrOutput)
+}
+
+type GitConnectorCredentialsHttp struct {
+	PasswordRef string  `pulumi:"passwordRef"`
+	Username    *string `pulumi:"username"`
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// GitConnectorCredentialsHttpInput is an input type that accepts GitConnectorCredentialsHttpArgs and GitConnectorCredentialsHttpOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsHttpInput` via:
+//
+//	GitConnectorCredentialsHttpArgs{...}
+type GitConnectorCredentialsHttpInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsHttpOutput() GitConnectorCredentialsHttpOutput
+	ToGitConnectorCredentialsHttpOutputWithContext(context.Context) GitConnectorCredentialsHttpOutput
+}
+
+type GitConnectorCredentialsHttpArgs struct {
+	PasswordRef pulumi.StringInput    `pulumi:"passwordRef"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (GitConnectorCredentialsHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i GitConnectorCredentialsHttpArgs) ToGitConnectorCredentialsHttpOutput() GitConnectorCredentialsHttpOutput {
+	return i.ToGitConnectorCredentialsHttpOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsHttpArgs) ToGitConnectorCredentialsHttpOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsHttpOutput)
+}
+
+func (i GitConnectorCredentialsHttpArgs) ToGitConnectorCredentialsHttpPtrOutput() GitConnectorCredentialsHttpPtrOutput {
+	return i.ToGitConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsHttpArgs) ToGitConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsHttpOutput).ToGitConnectorCredentialsHttpPtrOutputWithContext(ctx)
+}
+
+// GitConnectorCredentialsHttpPtrInput is an input type that accepts GitConnectorCredentialsHttpArgs, GitConnectorCredentialsHttpPtr and GitConnectorCredentialsHttpPtrOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsHttpPtrInput` via:
+//
+//	        GitConnectorCredentialsHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitConnectorCredentialsHttpPtrInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsHttpPtrOutput() GitConnectorCredentialsHttpPtrOutput
+	ToGitConnectorCredentialsHttpPtrOutputWithContext(context.Context) GitConnectorCredentialsHttpPtrOutput
+}
+
+type gitConnectorCredentialsHttpPtrType GitConnectorCredentialsHttpArgs
+
+func GitConnectorCredentialsHttpPtr(v *GitConnectorCredentialsHttpArgs) GitConnectorCredentialsHttpPtrInput {
+	return (*gitConnectorCredentialsHttpPtrType)(v)
+}
+
+func (*gitConnectorCredentialsHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i *gitConnectorCredentialsHttpPtrType) ToGitConnectorCredentialsHttpPtrOutput() GitConnectorCredentialsHttpPtrOutput {
+	return i.ToGitConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gitConnectorCredentialsHttpPtrType) ToGitConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsHttpPtrOutput)
+}
+
+type GitConnectorCredentialsHttpOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsHttpOutput) ToGitConnectorCredentialsHttpOutput() GitConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsHttpOutput) ToGitConnectorCredentialsHttpOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsHttpOutput) ToGitConnectorCredentialsHttpPtrOutput() GitConnectorCredentialsHttpPtrOutput {
+	return o.ToGitConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GitConnectorCredentialsHttpOutput) ToGitConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitConnectorCredentialsHttp) *GitConnectorCredentialsHttp {
+		return &v
+	}).(GitConnectorCredentialsHttpPtrOutput)
+}
+
+func (o GitConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GitConnectorCredentialsHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GitConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func (o GitConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type GitConnectorCredentialsHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) ToGitConnectorCredentialsHttpPtrOutput() GitConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) ToGitConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) Elem() GitConnectorCredentialsHttpOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsHttp) GitConnectorCredentialsHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GitConnectorCredentialsHttp
+		return ret
+	}).(GitConnectorCredentialsHttpOutput)
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitConnectorCredentialsSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GitConnectorCredentialsSshInput is an input type that accepts GitConnectorCredentialsSshArgs and GitConnectorCredentialsSshOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsSshInput` via:
+//
+//	GitConnectorCredentialsSshArgs{...}
+type GitConnectorCredentialsSshInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsSshOutput() GitConnectorCredentialsSshOutput
+	ToGitConnectorCredentialsSshOutputWithContext(context.Context) GitConnectorCredentialsSshOutput
+}
+
+type GitConnectorCredentialsSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GitConnectorCredentialsSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i GitConnectorCredentialsSshArgs) ToGitConnectorCredentialsSshOutput() GitConnectorCredentialsSshOutput {
+	return i.ToGitConnectorCredentialsSshOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsSshArgs) ToGitConnectorCredentialsSshOutputWithContext(ctx context.Context) GitConnectorCredentialsSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsSshOutput)
+}
+
+func (i GitConnectorCredentialsSshArgs) ToGitConnectorCredentialsSshPtrOutput() GitConnectorCredentialsSshPtrOutput {
+	return i.ToGitConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i GitConnectorCredentialsSshArgs) ToGitConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsSshOutput).ToGitConnectorCredentialsSshPtrOutputWithContext(ctx)
+}
+
+// GitConnectorCredentialsSshPtrInput is an input type that accepts GitConnectorCredentialsSshArgs, GitConnectorCredentialsSshPtr and GitConnectorCredentialsSshPtrOutput values.
+// You can construct a concrete instance of `GitConnectorCredentialsSshPtrInput` via:
+//
+//	        GitConnectorCredentialsSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitConnectorCredentialsSshPtrInput interface {
+	pulumi.Input
+
+	ToGitConnectorCredentialsSshPtrOutput() GitConnectorCredentialsSshPtrOutput
+	ToGitConnectorCredentialsSshPtrOutputWithContext(context.Context) GitConnectorCredentialsSshPtrOutput
+}
+
+type gitConnectorCredentialsSshPtrType GitConnectorCredentialsSshArgs
+
+func GitConnectorCredentialsSshPtr(v *GitConnectorCredentialsSshArgs) GitConnectorCredentialsSshPtrInput {
+	return (*gitConnectorCredentialsSshPtrType)(v)
+}
+
+func (*gitConnectorCredentialsSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i *gitConnectorCredentialsSshPtrType) ToGitConnectorCredentialsSshPtrOutput() GitConnectorCredentialsSshPtrOutput {
+	return i.ToGitConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i *gitConnectorCredentialsSshPtrType) ToGitConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitConnectorCredentialsSshPtrOutput)
+}
+
+type GitConnectorCredentialsSshOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsSshOutput) ToGitConnectorCredentialsSshOutput() GitConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsSshOutput) ToGitConnectorCredentialsSshOutputWithContext(ctx context.Context) GitConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsSshOutput) ToGitConnectorCredentialsSshPtrOutput() GitConnectorCredentialsSshPtrOutput {
+	return o.ToGitConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (o GitConnectorCredentialsSshOutput) ToGitConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitConnectorCredentialsSsh) *GitConnectorCredentialsSsh {
+		return &v
+	}).(GitConnectorCredentialsSshPtrOutput)
+}
+
+func (o GitConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GitConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GitConnectorCredentialsSshPtrOutput struct{ *pulumi.OutputState }
+
+func (GitConnectorCredentialsSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GitConnectorCredentialsSshPtrOutput) ToGitConnectorCredentialsSshPtrOutput() GitConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsSshPtrOutput) ToGitConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GitConnectorCredentialsSshPtrOutput) Elem() GitConnectorCredentialsSshOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsSsh) GitConnectorCredentialsSsh {
+		if v != nil {
+			return *v
+		}
+		var ret GitConnectorCredentialsSsh
+		return ret
+	}).(GitConnectorCredentialsSshOutput)
+}
+
+func (o GitConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitConnectorCredentialsSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorApiAuthentication struct {
+	// Configuration for using the github app for interacting with the github api.
+	GithubApp *GithubConnectorApiAuthenticationGithubApp `pulumi:"githubApp"`
+	// Personal access token for interacting with the github api.
+	TokenRef *string `pulumi:"tokenRef"`
+}
+
+// GithubConnectorApiAuthenticationInput is an input type that accepts GithubConnectorApiAuthenticationArgs and GithubConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `GithubConnectorApiAuthenticationInput` via:
+//
+//	GithubConnectorApiAuthenticationArgs{...}
+type GithubConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGithubConnectorApiAuthenticationOutput() GithubConnectorApiAuthenticationOutput
+	ToGithubConnectorApiAuthenticationOutputWithContext(context.Context) GithubConnectorApiAuthenticationOutput
+}
+
+type GithubConnectorApiAuthenticationArgs struct {
+	// Configuration for using the github app for interacting with the github api.
+	GithubApp GithubConnectorApiAuthenticationGithubAppPtrInput `pulumi:"githubApp"`
+	// Personal access token for interacting with the github api.
+	TokenRef pulumi.StringPtrInput `pulumi:"tokenRef"`
+}
+
+func (GithubConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GithubConnectorApiAuthenticationArgs) ToGithubConnectorApiAuthenticationOutput() GithubConnectorApiAuthenticationOutput {
+	return i.ToGithubConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorApiAuthenticationArgs) ToGithubConnectorApiAuthenticationOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationOutput)
+}
+
+func (i GithubConnectorApiAuthenticationArgs) ToGithubConnectorApiAuthenticationPtrOutput() GithubConnectorApiAuthenticationPtrOutput {
+	return i.ToGithubConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorApiAuthenticationArgs) ToGithubConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationOutput).ToGithubConnectorApiAuthenticationPtrOutputWithContext(ctx)
+}
+
+// GithubConnectorApiAuthenticationPtrInput is an input type that accepts GithubConnectorApiAuthenticationArgs, GithubConnectorApiAuthenticationPtr and GithubConnectorApiAuthenticationPtrOutput values.
+// You can construct a concrete instance of `GithubConnectorApiAuthenticationPtrInput` via:
+//
+//	        GithubConnectorApiAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GithubConnectorApiAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToGithubConnectorApiAuthenticationPtrOutput() GithubConnectorApiAuthenticationPtrOutput
+	ToGithubConnectorApiAuthenticationPtrOutputWithContext(context.Context) GithubConnectorApiAuthenticationPtrOutput
+}
+
+type githubConnectorApiAuthenticationPtrType GithubConnectorApiAuthenticationArgs
+
+func GithubConnectorApiAuthenticationPtr(v *GithubConnectorApiAuthenticationArgs) GithubConnectorApiAuthenticationPtrInput {
+	return (*githubConnectorApiAuthenticationPtrType)(v)
+}
+
+func (*githubConnectorApiAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i *githubConnectorApiAuthenticationPtrType) ToGithubConnectorApiAuthenticationPtrOutput() GithubConnectorApiAuthenticationPtrOutput {
+	return i.ToGithubConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *githubConnectorApiAuthenticationPtrType) ToGithubConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationPtrOutput)
+}
+
+type GithubConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GithubConnectorApiAuthenticationOutput) ToGithubConnectorApiAuthenticationOutput() GithubConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationOutput) ToGithubConnectorApiAuthenticationOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationOutput) ToGithubConnectorApiAuthenticationPtrOutput() GithubConnectorApiAuthenticationPtrOutput {
+	return o.ToGithubConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o GithubConnectorApiAuthenticationOutput) ToGithubConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GithubConnectorApiAuthentication) *GithubConnectorApiAuthentication {
+		return &v
+	}).(GithubConnectorApiAuthenticationPtrOutput)
+}
+
+// Configuration for using the github app for interacting with the github api.
+func (o GithubConnectorApiAuthenticationOutput) GithubApp() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o.ApplyT(func(v GithubConnectorApiAuthentication) *GithubConnectorApiAuthenticationGithubApp {
+		return v.GithubApp
+	}).(GithubConnectorApiAuthenticationGithubAppPtrOutput)
+}
+
+// Personal access token for interacting with the github api.
+func (o GithubConnectorApiAuthenticationOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GithubConnectorApiAuthentication) *string { return v.TokenRef }).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorApiAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorApiAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GithubConnectorApiAuthenticationPtrOutput) ToGithubConnectorApiAuthenticationPtrOutput() GithubConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationPtrOutput) ToGithubConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationPtrOutput) Elem() GithubConnectorApiAuthenticationOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthentication) GithubConnectorApiAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret GithubConnectorApiAuthentication
+		return ret
+	}).(GithubConnectorApiAuthenticationOutput)
+}
+
+// Configuration for using the github app for interacting with the github api.
+func (o GithubConnectorApiAuthenticationPtrOutput) GithubApp() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthentication) *GithubConnectorApiAuthenticationGithubApp {
+		if v == nil {
+			return nil
+		}
+		return v.GithubApp
+	}).(GithubConnectorApiAuthenticationGithubAppPtrOutput)
+}
+
+// Personal access token for interacting with the github api.
+func (o GithubConnectorApiAuthenticationPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorApiAuthenticationGithubApp struct {
+	ApplicationId  string `pulumi:"applicationId"`
+	InstallationId string `pulumi:"installationId"`
+	PrivateKeyRef  string `pulumi:"privateKeyRef"`
+}
+
+// GithubConnectorApiAuthenticationGithubAppInput is an input type that accepts GithubConnectorApiAuthenticationGithubAppArgs and GithubConnectorApiAuthenticationGithubAppOutput values.
+// You can construct a concrete instance of `GithubConnectorApiAuthenticationGithubAppInput` via:
+//
+//	GithubConnectorApiAuthenticationGithubAppArgs{...}
+type GithubConnectorApiAuthenticationGithubAppInput interface {
+	pulumi.Input
+
+	ToGithubConnectorApiAuthenticationGithubAppOutput() GithubConnectorApiAuthenticationGithubAppOutput
+	ToGithubConnectorApiAuthenticationGithubAppOutputWithContext(context.Context) GithubConnectorApiAuthenticationGithubAppOutput
+}
+
+type GithubConnectorApiAuthenticationGithubAppArgs struct {
+	ApplicationId  pulumi.StringInput `pulumi:"applicationId"`
+	InstallationId pulumi.StringInput `pulumi:"installationId"`
+	PrivateKeyRef  pulumi.StringInput `pulumi:"privateKeyRef"`
+}
+
+func (GithubConnectorApiAuthenticationGithubAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (i GithubConnectorApiAuthenticationGithubAppArgs) ToGithubConnectorApiAuthenticationGithubAppOutput() GithubConnectorApiAuthenticationGithubAppOutput {
+	return i.ToGithubConnectorApiAuthenticationGithubAppOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorApiAuthenticationGithubAppArgs) ToGithubConnectorApiAuthenticationGithubAppOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationGithubAppOutput)
+}
+
+func (i GithubConnectorApiAuthenticationGithubAppArgs) ToGithubConnectorApiAuthenticationGithubAppPtrOutput() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return i.ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorApiAuthenticationGithubAppArgs) ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationGithubAppOutput).ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(ctx)
+}
+
+// GithubConnectorApiAuthenticationGithubAppPtrInput is an input type that accepts GithubConnectorApiAuthenticationGithubAppArgs, GithubConnectorApiAuthenticationGithubAppPtr and GithubConnectorApiAuthenticationGithubAppPtrOutput values.
+// You can construct a concrete instance of `GithubConnectorApiAuthenticationGithubAppPtrInput` via:
+//
+//	        GithubConnectorApiAuthenticationGithubAppArgs{...}
+//
+//	or:
+//
+//	        nil
+type GithubConnectorApiAuthenticationGithubAppPtrInput interface {
+	pulumi.Input
+
+	ToGithubConnectorApiAuthenticationGithubAppPtrOutput() GithubConnectorApiAuthenticationGithubAppPtrOutput
+	ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(context.Context) GithubConnectorApiAuthenticationGithubAppPtrOutput
+}
+
+type githubConnectorApiAuthenticationGithubAppPtrType GithubConnectorApiAuthenticationGithubAppArgs
+
+func GithubConnectorApiAuthenticationGithubAppPtr(v *GithubConnectorApiAuthenticationGithubAppArgs) GithubConnectorApiAuthenticationGithubAppPtrInput {
+	return (*githubConnectorApiAuthenticationGithubAppPtrType)(v)
+}
+
+func (*githubConnectorApiAuthenticationGithubAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (i *githubConnectorApiAuthenticationGithubAppPtrType) ToGithubConnectorApiAuthenticationGithubAppPtrOutput() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return i.ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(context.Background())
+}
+
+func (i *githubConnectorApiAuthenticationGithubAppPtrType) ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorApiAuthenticationGithubAppPtrOutput)
+}
+
+type GithubConnectorApiAuthenticationGithubAppOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorApiAuthenticationGithubAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) ToGithubConnectorApiAuthenticationGithubAppOutput() GithubConnectorApiAuthenticationGithubAppOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) ToGithubConnectorApiAuthenticationGithubAppOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) ToGithubConnectorApiAuthenticationGithubAppPtrOutput() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o.ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(context.Background())
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GithubConnectorApiAuthenticationGithubApp) *GithubConnectorApiAuthenticationGithubApp {
+		return &v
+	}).(GithubConnectorApiAuthenticationGithubAppPtrOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) InstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) string { return v.InstallationId }).(pulumi.StringOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppOutput) PrivateKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
+}
+
+type GithubConnectorApiAuthenticationGithubAppPtrOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorApiAuthenticationGithubAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ToGithubConnectorApiAuthenticationGithubAppPtrOutput() GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ToGithubConnectorApiAuthenticationGithubAppPtrOutputWithContext(ctx context.Context) GithubConnectorApiAuthenticationGithubAppPtrOutput {
+	return o
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) Elem() GithubConnectorApiAuthenticationGithubAppOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) GithubConnectorApiAuthenticationGithubApp {
+		if v != nil {
+			return *v
+		}
+		var ret GithubConnectorApiAuthenticationGithubApp
+		return ret
+	}).(GithubConnectorApiAuthenticationGithubAppOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) InstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstallationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) PrivateKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorCredentials struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http *GithubConnectorCredentialsHttp `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh *GithubConnectorCredentialsSsh `pulumi:"ssh"`
+}
+
+// GithubConnectorCredentialsInput is an input type that accepts GithubConnectorCredentialsArgs and GithubConnectorCredentialsOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsInput` via:
+//
+//	GithubConnectorCredentialsArgs{...}
+type GithubConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsOutput() GithubConnectorCredentialsOutput
+	ToGithubConnectorCredentialsOutputWithContext(context.Context) GithubConnectorCredentialsOutput
+}
+
+type GithubConnectorCredentialsArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http GithubConnectorCredentialsHttpPtrInput `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh GithubConnectorCredentialsSshPtrInput `pulumi:"ssh"`
+}
+
+func (GithubConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentials)(nil)).Elem()
+}
+
+func (i GithubConnectorCredentialsArgs) ToGithubConnectorCredentialsOutput() GithubConnectorCredentialsOutput {
+	return i.ToGithubConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsArgs) ToGithubConnectorCredentialsOutputWithContext(ctx context.Context) GithubConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsOutput)
+}
+
+func (i GithubConnectorCredentialsArgs) ToGithubConnectorCredentialsPtrOutput() GithubConnectorCredentialsPtrOutput {
+	return i.ToGithubConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsArgs) ToGithubConnectorCredentialsPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsOutput).ToGithubConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// GithubConnectorCredentialsPtrInput is an input type that accepts GithubConnectorCredentialsArgs, GithubConnectorCredentialsPtr and GithubConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsPtrInput` via:
+//
+//	        GithubConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GithubConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsPtrOutput() GithubConnectorCredentialsPtrOutput
+	ToGithubConnectorCredentialsPtrOutputWithContext(context.Context) GithubConnectorCredentialsPtrOutput
+}
+
+type githubConnectorCredentialsPtrType GithubConnectorCredentialsArgs
+
+func GithubConnectorCredentialsPtr(v *GithubConnectorCredentialsArgs) GithubConnectorCredentialsPtrInput {
+	return (*githubConnectorCredentialsPtrType)(v)
+}
+
+func (*githubConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentials)(nil)).Elem()
+}
+
+func (i *githubConnectorCredentialsPtrType) ToGithubConnectorCredentialsPtrOutput() GithubConnectorCredentialsPtrOutput {
+	return i.ToGithubConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *githubConnectorCredentialsPtrType) ToGithubConnectorCredentialsPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsPtrOutput)
+}
+
+type GithubConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentials)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsOutput) ToGithubConnectorCredentialsOutput() GithubConnectorCredentialsOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsOutput) ToGithubConnectorCredentialsOutputWithContext(ctx context.Context) GithubConnectorCredentialsOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsOutput) ToGithubConnectorCredentialsPtrOutput() GithubConnectorCredentialsPtrOutput {
+	return o.ToGithubConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o GithubConnectorCredentialsOutput) ToGithubConnectorCredentialsPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GithubConnectorCredentials) *GithubConnectorCredentials {
+		return &v
+	}).(GithubConnectorCredentialsPtrOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GithubConnectorCredentialsOutput) Http() GithubConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v GithubConnectorCredentials) *GithubConnectorCredentialsHttp { return v.Http }).(GithubConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GithubConnectorCredentialsOutput) Ssh() GithubConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v GithubConnectorCredentials) *GithubConnectorCredentialsSsh { return v.Ssh }).(GithubConnectorCredentialsSshPtrOutput)
+}
+
+type GithubConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentials)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsPtrOutput) ToGithubConnectorCredentialsPtrOutput() GithubConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsPtrOutput) ToGithubConnectorCredentialsPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsPtrOutput) Elem() GithubConnectorCredentialsOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentials) GithubConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret GithubConnectorCredentials
+		return ret
+	}).(GithubConnectorCredentialsOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GithubConnectorCredentialsPtrOutput) Http() GithubConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentials) *GithubConnectorCredentialsHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(GithubConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GithubConnectorCredentialsPtrOutput) Ssh() GithubConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentials) *GithubConnectorCredentialsSsh {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(GithubConnectorCredentialsSshPtrOutput)
+}
+
+type GithubConnectorCredentialsHttp struct {
+	TokenRef    string  `pulumi:"tokenRef"`
+	Username    *string `pulumi:"username"`
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// GithubConnectorCredentialsHttpInput is an input type that accepts GithubConnectorCredentialsHttpArgs and GithubConnectorCredentialsHttpOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsHttpInput` via:
+//
+//	GithubConnectorCredentialsHttpArgs{...}
+type GithubConnectorCredentialsHttpInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsHttpOutput() GithubConnectorCredentialsHttpOutput
+	ToGithubConnectorCredentialsHttpOutputWithContext(context.Context) GithubConnectorCredentialsHttpOutput
+}
+
+type GithubConnectorCredentialsHttpArgs struct {
+	TokenRef    pulumi.StringInput    `pulumi:"tokenRef"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (GithubConnectorCredentialsHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i GithubConnectorCredentialsHttpArgs) ToGithubConnectorCredentialsHttpOutput() GithubConnectorCredentialsHttpOutput {
+	return i.ToGithubConnectorCredentialsHttpOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsHttpArgs) ToGithubConnectorCredentialsHttpOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsHttpOutput)
+}
+
+func (i GithubConnectorCredentialsHttpArgs) ToGithubConnectorCredentialsHttpPtrOutput() GithubConnectorCredentialsHttpPtrOutput {
+	return i.ToGithubConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsHttpArgs) ToGithubConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsHttpOutput).ToGithubConnectorCredentialsHttpPtrOutputWithContext(ctx)
+}
+
+// GithubConnectorCredentialsHttpPtrInput is an input type that accepts GithubConnectorCredentialsHttpArgs, GithubConnectorCredentialsHttpPtr and GithubConnectorCredentialsHttpPtrOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsHttpPtrInput` via:
+//
+//	        GithubConnectorCredentialsHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GithubConnectorCredentialsHttpPtrInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsHttpPtrOutput() GithubConnectorCredentialsHttpPtrOutput
+	ToGithubConnectorCredentialsHttpPtrOutputWithContext(context.Context) GithubConnectorCredentialsHttpPtrOutput
+}
+
+type githubConnectorCredentialsHttpPtrType GithubConnectorCredentialsHttpArgs
+
+func GithubConnectorCredentialsHttpPtr(v *GithubConnectorCredentialsHttpArgs) GithubConnectorCredentialsHttpPtrInput {
+	return (*githubConnectorCredentialsHttpPtrType)(v)
+}
+
+func (*githubConnectorCredentialsHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i *githubConnectorCredentialsHttpPtrType) ToGithubConnectorCredentialsHttpPtrOutput() GithubConnectorCredentialsHttpPtrOutput {
+	return i.ToGithubConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *githubConnectorCredentialsHttpPtrType) ToGithubConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsHttpPtrOutput)
+}
+
+type GithubConnectorCredentialsHttpOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsHttpOutput) ToGithubConnectorCredentialsHttpOutput() GithubConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsHttpOutput) ToGithubConnectorCredentialsHttpOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsHttpOutput) ToGithubConnectorCredentialsHttpPtrOutput() GithubConnectorCredentialsHttpPtrOutput {
+	return o.ToGithubConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GithubConnectorCredentialsHttpOutput) ToGithubConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GithubConnectorCredentialsHttp) *GithubConnectorCredentialsHttp {
+		return &v
+	}).(GithubConnectorCredentialsHttpPtrOutput)
+}
+
+func (o GithubConnectorCredentialsHttpOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GithubConnectorCredentialsHttp) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+func (o GithubConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GithubConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func (o GithubConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GithubConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorCredentialsHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) ToGithubConnectorCredentialsHttpPtrOutput() GithubConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) ToGithubConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) Elem() GithubConnectorCredentialsHttpOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) GithubConnectorCredentialsHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GithubConnectorCredentialsHttp
+		return ret
+	}).(GithubConnectorCredentialsHttpOutput)
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GithubConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GithubConnectorCredentialsSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GithubConnectorCredentialsSshInput is an input type that accepts GithubConnectorCredentialsSshArgs and GithubConnectorCredentialsSshOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsSshInput` via:
+//
+//	GithubConnectorCredentialsSshArgs{...}
+type GithubConnectorCredentialsSshInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsSshOutput() GithubConnectorCredentialsSshOutput
+	ToGithubConnectorCredentialsSshOutputWithContext(context.Context) GithubConnectorCredentialsSshOutput
+}
+
+type GithubConnectorCredentialsSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GithubConnectorCredentialsSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i GithubConnectorCredentialsSshArgs) ToGithubConnectorCredentialsSshOutput() GithubConnectorCredentialsSshOutput {
+	return i.ToGithubConnectorCredentialsSshOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsSshArgs) ToGithubConnectorCredentialsSshOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsSshOutput)
+}
+
+func (i GithubConnectorCredentialsSshArgs) ToGithubConnectorCredentialsSshPtrOutput() GithubConnectorCredentialsSshPtrOutput {
+	return i.ToGithubConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i GithubConnectorCredentialsSshArgs) ToGithubConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsSshOutput).ToGithubConnectorCredentialsSshPtrOutputWithContext(ctx)
+}
+
+// GithubConnectorCredentialsSshPtrInput is an input type that accepts GithubConnectorCredentialsSshArgs, GithubConnectorCredentialsSshPtr and GithubConnectorCredentialsSshPtrOutput values.
+// You can construct a concrete instance of `GithubConnectorCredentialsSshPtrInput` via:
+//
+//	        GithubConnectorCredentialsSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type GithubConnectorCredentialsSshPtrInput interface {
+	pulumi.Input
+
+	ToGithubConnectorCredentialsSshPtrOutput() GithubConnectorCredentialsSshPtrOutput
+	ToGithubConnectorCredentialsSshPtrOutputWithContext(context.Context) GithubConnectorCredentialsSshPtrOutput
+}
+
+type githubConnectorCredentialsSshPtrType GithubConnectorCredentialsSshArgs
+
+func GithubConnectorCredentialsSshPtr(v *GithubConnectorCredentialsSshArgs) GithubConnectorCredentialsSshPtrInput {
+	return (*githubConnectorCredentialsSshPtrType)(v)
+}
+
+func (*githubConnectorCredentialsSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i *githubConnectorCredentialsSshPtrType) ToGithubConnectorCredentialsSshPtrOutput() GithubConnectorCredentialsSshPtrOutput {
+	return i.ToGithubConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i *githubConnectorCredentialsSshPtrType) ToGithubConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GithubConnectorCredentialsSshPtrOutput)
+}
+
+type GithubConnectorCredentialsSshOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GithubConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsSshOutput) ToGithubConnectorCredentialsSshOutput() GithubConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsSshOutput) ToGithubConnectorCredentialsSshOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsSshOutput) ToGithubConnectorCredentialsSshPtrOutput() GithubConnectorCredentialsSshPtrOutput {
+	return o.ToGithubConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (o GithubConnectorCredentialsSshOutput) ToGithubConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GithubConnectorCredentialsSsh) *GithubConnectorCredentialsSsh {
+		return &v
+	}).(GithubConnectorCredentialsSshPtrOutput)
+}
+
+func (o GithubConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GithubConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GithubConnectorCredentialsSshPtrOutput struct{ *pulumi.OutputState }
+
+func (GithubConnectorCredentialsSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GithubConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GithubConnectorCredentialsSshPtrOutput) ToGithubConnectorCredentialsSshPtrOutput() GithubConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsSshPtrOutput) ToGithubConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GithubConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GithubConnectorCredentialsSshPtrOutput) Elem() GithubConnectorCredentialsSshOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsSsh) GithubConnectorCredentialsSsh {
+		if v != nil {
+			return *v
+		}
+		var ret GithubConnectorCredentialsSsh
+		return ret
+	}).(GithubConnectorCredentialsSshOutput)
+}
+
+func (o GithubConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GithubConnectorCredentialsSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitlabConnectorApiAuthentication struct {
+	// Personal access token for interacting with the gitlab api.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GitlabConnectorApiAuthenticationInput is an input type that accepts GitlabConnectorApiAuthenticationArgs and GitlabConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `GitlabConnectorApiAuthenticationInput` via:
+//
+//	GitlabConnectorApiAuthenticationArgs{...}
+type GitlabConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorApiAuthenticationOutput() GitlabConnectorApiAuthenticationOutput
+	ToGitlabConnectorApiAuthenticationOutputWithContext(context.Context) GitlabConnectorApiAuthenticationOutput
+}
+
+type GitlabConnectorApiAuthenticationArgs struct {
+	// Personal access token for interacting with the gitlab api.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GitlabConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GitlabConnectorApiAuthenticationArgs) ToGitlabConnectorApiAuthenticationOutput() GitlabConnectorApiAuthenticationOutput {
+	return i.ToGitlabConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorApiAuthenticationArgs) ToGitlabConnectorApiAuthenticationOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorApiAuthenticationOutput)
+}
+
+func (i GitlabConnectorApiAuthenticationArgs) ToGitlabConnectorApiAuthenticationPtrOutput() GitlabConnectorApiAuthenticationPtrOutput {
+	return i.ToGitlabConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorApiAuthenticationArgs) ToGitlabConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorApiAuthenticationOutput).ToGitlabConnectorApiAuthenticationPtrOutputWithContext(ctx)
+}
+
+// GitlabConnectorApiAuthenticationPtrInput is an input type that accepts GitlabConnectorApiAuthenticationArgs, GitlabConnectorApiAuthenticationPtr and GitlabConnectorApiAuthenticationPtrOutput values.
+// You can construct a concrete instance of `GitlabConnectorApiAuthenticationPtrInput` via:
+//
+//	        GitlabConnectorApiAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitlabConnectorApiAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorApiAuthenticationPtrOutput() GitlabConnectorApiAuthenticationPtrOutput
+	ToGitlabConnectorApiAuthenticationPtrOutputWithContext(context.Context) GitlabConnectorApiAuthenticationPtrOutput
+}
+
+type gitlabConnectorApiAuthenticationPtrType GitlabConnectorApiAuthenticationArgs
+
+func GitlabConnectorApiAuthenticationPtr(v *GitlabConnectorApiAuthenticationArgs) GitlabConnectorApiAuthenticationPtrInput {
+	return (*gitlabConnectorApiAuthenticationPtrType)(v)
+}
+
+func (*gitlabConnectorApiAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i *gitlabConnectorApiAuthenticationPtrType) ToGitlabConnectorApiAuthenticationPtrOutput() GitlabConnectorApiAuthenticationPtrOutput {
+	return i.ToGitlabConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *gitlabConnectorApiAuthenticationPtrType) ToGitlabConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorApiAuthenticationPtrOutput)
+}
+
+type GitlabConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GitlabConnectorApiAuthenticationOutput) ToGitlabConnectorApiAuthenticationOutput() GitlabConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GitlabConnectorApiAuthenticationOutput) ToGitlabConnectorApiAuthenticationOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GitlabConnectorApiAuthenticationOutput) ToGitlabConnectorApiAuthenticationPtrOutput() GitlabConnectorApiAuthenticationPtrOutput {
+	return o.ToGitlabConnectorApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o GitlabConnectorApiAuthenticationOutput) ToGitlabConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitlabConnectorApiAuthentication) *GitlabConnectorApiAuthentication {
+		return &v
+	}).(GitlabConnectorApiAuthenticationPtrOutput)
+}
+
+// Personal access token for interacting with the gitlab api.
+func (o GitlabConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GitlabConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GitlabConnectorApiAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorApiAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GitlabConnectorApiAuthenticationPtrOutput) ToGitlabConnectorApiAuthenticationPtrOutput() GitlabConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorApiAuthenticationPtrOutput) ToGitlabConnectorApiAuthenticationPtrOutputWithContext(ctx context.Context) GitlabConnectorApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorApiAuthenticationPtrOutput) Elem() GitlabConnectorApiAuthenticationOutput {
+	return o.ApplyT(func(v *GitlabConnectorApiAuthentication) GitlabConnectorApiAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret GitlabConnectorApiAuthentication
+		return ret
+	}).(GitlabConnectorApiAuthenticationOutput)
+}
+
+// Personal access token for interacting with the gitlab api.
+func (o GitlabConnectorApiAuthenticationPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitlabConnectorCredentials struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http *GitlabConnectorCredentialsHttp `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh *GitlabConnectorCredentialsSsh `pulumi:"ssh"`
+}
+
+// GitlabConnectorCredentialsInput is an input type that accepts GitlabConnectorCredentialsArgs and GitlabConnectorCredentialsOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsInput` via:
+//
+//	GitlabConnectorCredentialsArgs{...}
+type GitlabConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsOutput() GitlabConnectorCredentialsOutput
+	ToGitlabConnectorCredentialsOutputWithContext(context.Context) GitlabConnectorCredentialsOutput
+}
+
+type GitlabConnectorCredentialsArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Http GitlabConnectorCredentialsHttpPtrInput `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh GitlabConnectorCredentialsSshPtrInput `pulumi:"ssh"`
+}
+
+func (GitlabConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentials)(nil)).Elem()
+}
+
+func (i GitlabConnectorCredentialsArgs) ToGitlabConnectorCredentialsOutput() GitlabConnectorCredentialsOutput {
+	return i.ToGitlabConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsArgs) ToGitlabConnectorCredentialsOutputWithContext(ctx context.Context) GitlabConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsOutput)
+}
+
+func (i GitlabConnectorCredentialsArgs) ToGitlabConnectorCredentialsPtrOutput() GitlabConnectorCredentialsPtrOutput {
+	return i.ToGitlabConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsArgs) ToGitlabConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsOutput).ToGitlabConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// GitlabConnectorCredentialsPtrInput is an input type that accepts GitlabConnectorCredentialsArgs, GitlabConnectorCredentialsPtr and GitlabConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsPtrInput` via:
+//
+//	        GitlabConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitlabConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsPtrOutput() GitlabConnectorCredentialsPtrOutput
+	ToGitlabConnectorCredentialsPtrOutputWithContext(context.Context) GitlabConnectorCredentialsPtrOutput
+}
+
+type gitlabConnectorCredentialsPtrType GitlabConnectorCredentialsArgs
+
+func GitlabConnectorCredentialsPtr(v *GitlabConnectorCredentialsArgs) GitlabConnectorCredentialsPtrInput {
+	return (*gitlabConnectorCredentialsPtrType)(v)
+}
+
+func (*gitlabConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentials)(nil)).Elem()
+}
+
+func (i *gitlabConnectorCredentialsPtrType) ToGitlabConnectorCredentialsPtrOutput() GitlabConnectorCredentialsPtrOutput {
+	return i.ToGitlabConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *gitlabConnectorCredentialsPtrType) ToGitlabConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsPtrOutput)
+}
+
+type GitlabConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentials)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsOutput) ToGitlabConnectorCredentialsOutput() GitlabConnectorCredentialsOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsOutput) ToGitlabConnectorCredentialsOutputWithContext(ctx context.Context) GitlabConnectorCredentialsOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsOutput) ToGitlabConnectorCredentialsPtrOutput() GitlabConnectorCredentialsPtrOutput {
+	return o.ToGitlabConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o GitlabConnectorCredentialsOutput) ToGitlabConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitlabConnectorCredentials) *GitlabConnectorCredentials {
+		return &v
+	}).(GitlabConnectorCredentialsPtrOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GitlabConnectorCredentialsOutput) Http() GitlabConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentials) *GitlabConnectorCredentialsHttp { return v.Http }).(GitlabConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GitlabConnectorCredentialsOutput) Ssh() GitlabConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentials) *GitlabConnectorCredentialsSsh { return v.Ssh }).(GitlabConnectorCredentialsSshPtrOutput)
+}
+
+type GitlabConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentials)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsPtrOutput) ToGitlabConnectorCredentialsPtrOutput() GitlabConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsPtrOutput) ToGitlabConnectorCredentialsPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsPtrOutput) Elem() GitlabConnectorCredentialsOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentials) GitlabConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret GitlabConnectorCredentials
+		return ret
+	}).(GitlabConnectorCredentialsOutput)
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GitlabConnectorCredentialsPtrOutput) Http() GitlabConnectorCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentials) *GitlabConnectorCredentialsHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(GitlabConnectorCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GitlabConnectorCredentialsPtrOutput) Ssh() GitlabConnectorCredentialsSshPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentials) *GitlabConnectorCredentialsSsh {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(GitlabConnectorCredentialsSshPtrOutput)
+}
+
+type GitlabConnectorCredentialsHttp struct {
+	PasswordRef *string `pulumi:"passwordRef"`
+	TokenRef    *string `pulumi:"tokenRef"`
+	Username    *string `pulumi:"username"`
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// GitlabConnectorCredentialsHttpInput is an input type that accepts GitlabConnectorCredentialsHttpArgs and GitlabConnectorCredentialsHttpOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsHttpInput` via:
+//
+//	GitlabConnectorCredentialsHttpArgs{...}
+type GitlabConnectorCredentialsHttpInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsHttpOutput() GitlabConnectorCredentialsHttpOutput
+	ToGitlabConnectorCredentialsHttpOutputWithContext(context.Context) GitlabConnectorCredentialsHttpOutput
+}
+
+type GitlabConnectorCredentialsHttpArgs struct {
+	PasswordRef pulumi.StringPtrInput `pulumi:"passwordRef"`
+	TokenRef    pulumi.StringPtrInput `pulumi:"tokenRef"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (GitlabConnectorCredentialsHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i GitlabConnectorCredentialsHttpArgs) ToGitlabConnectorCredentialsHttpOutput() GitlabConnectorCredentialsHttpOutput {
+	return i.ToGitlabConnectorCredentialsHttpOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsHttpArgs) ToGitlabConnectorCredentialsHttpOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsHttpOutput)
+}
+
+func (i GitlabConnectorCredentialsHttpArgs) ToGitlabConnectorCredentialsHttpPtrOutput() GitlabConnectorCredentialsHttpPtrOutput {
+	return i.ToGitlabConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsHttpArgs) ToGitlabConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsHttpOutput).ToGitlabConnectorCredentialsHttpPtrOutputWithContext(ctx)
+}
+
+// GitlabConnectorCredentialsHttpPtrInput is an input type that accepts GitlabConnectorCredentialsHttpArgs, GitlabConnectorCredentialsHttpPtr and GitlabConnectorCredentialsHttpPtrOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsHttpPtrInput` via:
+//
+//	        GitlabConnectorCredentialsHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitlabConnectorCredentialsHttpPtrInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsHttpPtrOutput() GitlabConnectorCredentialsHttpPtrOutput
+	ToGitlabConnectorCredentialsHttpPtrOutputWithContext(context.Context) GitlabConnectorCredentialsHttpPtrOutput
+}
+
+type gitlabConnectorCredentialsHttpPtrType GitlabConnectorCredentialsHttpArgs
+
+func GitlabConnectorCredentialsHttpPtr(v *GitlabConnectorCredentialsHttpArgs) GitlabConnectorCredentialsHttpPtrInput {
+	return (*gitlabConnectorCredentialsHttpPtrType)(v)
+}
+
+func (*gitlabConnectorCredentialsHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (i *gitlabConnectorCredentialsHttpPtrType) ToGitlabConnectorCredentialsHttpPtrOutput() GitlabConnectorCredentialsHttpPtrOutput {
+	return i.ToGitlabConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *gitlabConnectorCredentialsHttpPtrType) ToGitlabConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsHttpPtrOutput)
+}
+
+type GitlabConnectorCredentialsHttpOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) ToGitlabConnectorCredentialsHttpOutput() GitlabConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) ToGitlabConnectorCredentialsHttpOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) ToGitlabConnectorCredentialsHttpPtrOutput() GitlabConnectorCredentialsHttpPtrOutput {
+	return o.ToGitlabConnectorCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) ToGitlabConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitlabConnectorCredentialsHttp) *GitlabConnectorCredentialsHttp {
+		return &v
+	}).(GitlabConnectorCredentialsHttpPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.PasswordRef }).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.TokenRef }).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type GitlabConnectorCredentialsHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentialsHttp)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) ToGitlabConnectorCredentialsHttpPtrOutput() GitlabConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) ToGitlabConnectorCredentialsHttpPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) Elem() GitlabConnectorCredentialsHttpOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) GitlabConnectorCredentialsHttp {
+		if v != nil {
+			return *v
+		}
+		var ret GitlabConnectorCredentialsHttp
+		return ret
+	}).(GitlabConnectorCredentialsHttpOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitlabConnectorCredentialsSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GitlabConnectorCredentialsSshInput is an input type that accepts GitlabConnectorCredentialsSshArgs and GitlabConnectorCredentialsSshOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsSshInput` via:
+//
+//	GitlabConnectorCredentialsSshArgs{...}
+type GitlabConnectorCredentialsSshInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsSshOutput() GitlabConnectorCredentialsSshOutput
+	ToGitlabConnectorCredentialsSshOutputWithContext(context.Context) GitlabConnectorCredentialsSshOutput
+}
+
+type GitlabConnectorCredentialsSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GitlabConnectorCredentialsSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i GitlabConnectorCredentialsSshArgs) ToGitlabConnectorCredentialsSshOutput() GitlabConnectorCredentialsSshOutput {
+	return i.ToGitlabConnectorCredentialsSshOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsSshArgs) ToGitlabConnectorCredentialsSshOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsSshOutput)
+}
+
+func (i GitlabConnectorCredentialsSshArgs) ToGitlabConnectorCredentialsSshPtrOutput() GitlabConnectorCredentialsSshPtrOutput {
+	return i.ToGitlabConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i GitlabConnectorCredentialsSshArgs) ToGitlabConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsSshOutput).ToGitlabConnectorCredentialsSshPtrOutputWithContext(ctx)
+}
+
+// GitlabConnectorCredentialsSshPtrInput is an input type that accepts GitlabConnectorCredentialsSshArgs, GitlabConnectorCredentialsSshPtr and GitlabConnectorCredentialsSshPtrOutput values.
+// You can construct a concrete instance of `GitlabConnectorCredentialsSshPtrInput` via:
+//
+//	        GitlabConnectorCredentialsSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitlabConnectorCredentialsSshPtrInput interface {
+	pulumi.Input
+
+	ToGitlabConnectorCredentialsSshPtrOutput() GitlabConnectorCredentialsSshPtrOutput
+	ToGitlabConnectorCredentialsSshPtrOutputWithContext(context.Context) GitlabConnectorCredentialsSshPtrOutput
+}
+
+type gitlabConnectorCredentialsSshPtrType GitlabConnectorCredentialsSshArgs
+
+func GitlabConnectorCredentialsSshPtr(v *GitlabConnectorCredentialsSshArgs) GitlabConnectorCredentialsSshPtrInput {
+	return (*gitlabConnectorCredentialsSshPtrType)(v)
+}
+
+func (*gitlabConnectorCredentialsSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (i *gitlabConnectorCredentialsSshPtrType) ToGitlabConnectorCredentialsSshPtrOutput() GitlabConnectorCredentialsSshPtrOutput {
+	return i.ToGitlabConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i *gitlabConnectorCredentialsSshPtrType) ToGitlabConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitlabConnectorCredentialsSshPtrOutput)
+}
+
+type GitlabConnectorCredentialsSshOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitlabConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsSshOutput) ToGitlabConnectorCredentialsSshOutput() GitlabConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsSshOutput) ToGitlabConnectorCredentialsSshOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsSshOutput) ToGitlabConnectorCredentialsSshPtrOutput() GitlabConnectorCredentialsSshPtrOutput {
+	return o.ToGitlabConnectorCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (o GitlabConnectorCredentialsSshOutput) ToGitlabConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitlabConnectorCredentialsSsh) *GitlabConnectorCredentialsSsh {
+		return &v
+	}).(GitlabConnectorCredentialsSshPtrOutput)
+}
+
+func (o GitlabConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GitlabConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GitlabConnectorCredentialsSshPtrOutput struct{ *pulumi.OutputState }
+
+func (GitlabConnectorCredentialsSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitlabConnectorCredentialsSsh)(nil)).Elem()
+}
+
+func (o GitlabConnectorCredentialsSshPtrOutput) ToGitlabConnectorCredentialsSshPtrOutput() GitlabConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsSshPtrOutput) ToGitlabConnectorCredentialsSshPtrOutputWithContext(ctx context.Context) GitlabConnectorCredentialsSshPtrOutput {
+	return o
+}
+
+func (o GitlabConnectorCredentialsSshPtrOutput) Elem() GitlabConnectorCredentialsSshOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsSsh) GitlabConnectorCredentialsSsh {
+		if v != nil {
+			return *v
+		}
+		var ret GitlabConnectorCredentialsSsh
+		return ret
+	}).(GitlabConnectorCredentialsSshOutput)
+}
+
+func (o GitlabConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitlabConnectorCredentialsSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type HelmConnectorCredentials struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// HelmConnectorCredentialsInput is an input type that accepts HelmConnectorCredentialsArgs and HelmConnectorCredentialsOutput values.
+// You can construct a concrete instance of `HelmConnectorCredentialsInput` via:
+//
+//	HelmConnectorCredentialsArgs{...}
+type HelmConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToHelmConnectorCredentialsOutput() HelmConnectorCredentialsOutput
+	ToHelmConnectorCredentialsOutputWithContext(context.Context) HelmConnectorCredentialsOutput
+}
+
+type HelmConnectorCredentialsArgs struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (HelmConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HelmConnectorCredentials)(nil)).Elem()
+}
+
+func (i HelmConnectorCredentialsArgs) ToHelmConnectorCredentialsOutput() HelmConnectorCredentialsOutput {
+	return i.ToHelmConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i HelmConnectorCredentialsArgs) ToHelmConnectorCredentialsOutputWithContext(ctx context.Context) HelmConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HelmConnectorCredentialsOutput)
+}
+
+func (i HelmConnectorCredentialsArgs) ToHelmConnectorCredentialsPtrOutput() HelmConnectorCredentialsPtrOutput {
+	return i.ToHelmConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i HelmConnectorCredentialsArgs) ToHelmConnectorCredentialsPtrOutputWithContext(ctx context.Context) HelmConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HelmConnectorCredentialsOutput).ToHelmConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// HelmConnectorCredentialsPtrInput is an input type that accepts HelmConnectorCredentialsArgs, HelmConnectorCredentialsPtr and HelmConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `HelmConnectorCredentialsPtrInput` via:
+//
+//	        HelmConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type HelmConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToHelmConnectorCredentialsPtrOutput() HelmConnectorCredentialsPtrOutput
+	ToHelmConnectorCredentialsPtrOutputWithContext(context.Context) HelmConnectorCredentialsPtrOutput
+}
+
+type helmConnectorCredentialsPtrType HelmConnectorCredentialsArgs
+
+func HelmConnectorCredentialsPtr(v *HelmConnectorCredentialsArgs) HelmConnectorCredentialsPtrInput {
+	return (*helmConnectorCredentialsPtrType)(v)
+}
+
+func (*helmConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HelmConnectorCredentials)(nil)).Elem()
+}
+
+func (i *helmConnectorCredentialsPtrType) ToHelmConnectorCredentialsPtrOutput() HelmConnectorCredentialsPtrOutput {
+	return i.ToHelmConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *helmConnectorCredentialsPtrType) ToHelmConnectorCredentialsPtrOutputWithContext(ctx context.Context) HelmConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HelmConnectorCredentialsPtrOutput)
+}
+
+type HelmConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (HelmConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HelmConnectorCredentials)(nil)).Elem()
+}
+
+func (o HelmConnectorCredentialsOutput) ToHelmConnectorCredentialsOutput() HelmConnectorCredentialsOutput {
+	return o
+}
+
+func (o HelmConnectorCredentialsOutput) ToHelmConnectorCredentialsOutputWithContext(ctx context.Context) HelmConnectorCredentialsOutput {
+	return o
+}
+
+func (o HelmConnectorCredentialsOutput) ToHelmConnectorCredentialsPtrOutput() HelmConnectorCredentialsPtrOutput {
+	return o.ToHelmConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o HelmConnectorCredentialsOutput) ToHelmConnectorCredentialsPtrOutputWithContext(ctx context.Context) HelmConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HelmConnectorCredentials) *HelmConnectorCredentials {
+		return &v
+	}).(HelmConnectorCredentialsPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o HelmConnectorCredentialsOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v HelmConnectorCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o HelmConnectorCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HelmConnectorCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o HelmConnectorCredentialsOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HelmConnectorCredentials) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type HelmConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (HelmConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HelmConnectorCredentials)(nil)).Elem()
+}
+
+func (o HelmConnectorCredentialsPtrOutput) ToHelmConnectorCredentialsPtrOutput() HelmConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o HelmConnectorCredentialsPtrOutput) ToHelmConnectorCredentialsPtrOutputWithContext(ctx context.Context) HelmConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o HelmConnectorCredentialsPtrOutput) Elem() HelmConnectorCredentialsOutput {
+	return o.ApplyT(func(v *HelmConnectorCredentials) HelmConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret HelmConnectorCredentials
+		return ret
+	}).(HelmConnectorCredentialsOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o HelmConnectorCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HelmConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o HelmConnectorCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HelmConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HelmConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorClientKeyCert struct {
+	// Reference to the secret containing the CA certificate for the connector.
+	CaCertRef *string `pulumi:"caCertRef"`
+	// Reference to the secret containing the client certificate for the connector.
+	ClientCertRef string `pulumi:"clientCertRef"`
+	// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+	ClientKeyAlgorithm string `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the client key passphrase for the connector.
+	ClientKeyPassphraseRef *string `pulumi:"clientKeyPassphraseRef"`
+	// Reference to the secret containing the client key for the connector.
+	ClientKeyRef string `pulumi:"clientKeyRef"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+}
+
+// KubernetesConnectorClientKeyCertInput is an input type that accepts KubernetesConnectorClientKeyCertArgs and KubernetesConnectorClientKeyCertOutput values.
+// You can construct a concrete instance of `KubernetesConnectorClientKeyCertInput` via:
+//
+//	KubernetesConnectorClientKeyCertArgs{...}
+type KubernetesConnectorClientKeyCertInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorClientKeyCertOutput() KubernetesConnectorClientKeyCertOutput
+	ToKubernetesConnectorClientKeyCertOutputWithContext(context.Context) KubernetesConnectorClientKeyCertOutput
+}
+
+type KubernetesConnectorClientKeyCertArgs struct {
+	// Reference to the secret containing the CA certificate for the connector.
+	CaCertRef pulumi.StringPtrInput `pulumi:"caCertRef"`
+	// Reference to the secret containing the client certificate for the connector.
+	ClientCertRef pulumi.StringInput `pulumi:"clientCertRef"`
+	// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+	ClientKeyAlgorithm pulumi.StringInput `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the client key passphrase for the connector.
+	ClientKeyPassphraseRef pulumi.StringPtrInput `pulumi:"clientKeyPassphraseRef"`
+	// Reference to the secret containing the client key for the connector.
+	ClientKeyRef pulumi.StringInput `pulumi:"clientKeyRef"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+}
+
+func (KubernetesConnectorClientKeyCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (i KubernetesConnectorClientKeyCertArgs) ToKubernetesConnectorClientKeyCertOutput() KubernetesConnectorClientKeyCertOutput {
+	return i.ToKubernetesConnectorClientKeyCertOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorClientKeyCertArgs) ToKubernetesConnectorClientKeyCertOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorClientKeyCertOutput)
+}
+
+func (i KubernetesConnectorClientKeyCertArgs) ToKubernetesConnectorClientKeyCertPtrOutput() KubernetesConnectorClientKeyCertPtrOutput {
+	return i.ToKubernetesConnectorClientKeyCertPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorClientKeyCertArgs) ToKubernetesConnectorClientKeyCertPtrOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorClientKeyCertOutput).ToKubernetesConnectorClientKeyCertPtrOutputWithContext(ctx)
+}
+
+// KubernetesConnectorClientKeyCertPtrInput is an input type that accepts KubernetesConnectorClientKeyCertArgs, KubernetesConnectorClientKeyCertPtr and KubernetesConnectorClientKeyCertPtrOutput values.
+// You can construct a concrete instance of `KubernetesConnectorClientKeyCertPtrInput` via:
+//
+//	        KubernetesConnectorClientKeyCertArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConnectorClientKeyCertPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorClientKeyCertPtrOutput() KubernetesConnectorClientKeyCertPtrOutput
+	ToKubernetesConnectorClientKeyCertPtrOutputWithContext(context.Context) KubernetesConnectorClientKeyCertPtrOutput
+}
+
+type kubernetesConnectorClientKeyCertPtrType KubernetesConnectorClientKeyCertArgs
+
+func KubernetesConnectorClientKeyCertPtr(v *KubernetesConnectorClientKeyCertArgs) KubernetesConnectorClientKeyCertPtrInput {
+	return (*kubernetesConnectorClientKeyCertPtrType)(v)
+}
+
+func (*kubernetesConnectorClientKeyCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (i *kubernetesConnectorClientKeyCertPtrType) ToKubernetesConnectorClientKeyCertPtrOutput() KubernetesConnectorClientKeyCertPtrOutput {
+	return i.ToKubernetesConnectorClientKeyCertPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConnectorClientKeyCertPtrType) ToKubernetesConnectorClientKeyCertPtrOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorClientKeyCertPtrOutput)
+}
+
+type KubernetesConnectorClientKeyCertOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorClientKeyCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (o KubernetesConnectorClientKeyCertOutput) ToKubernetesConnectorClientKeyCertOutput() KubernetesConnectorClientKeyCertOutput {
+	return o
+}
+
+func (o KubernetesConnectorClientKeyCertOutput) ToKubernetesConnectorClientKeyCertOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertOutput {
+	return o
+}
+
+func (o KubernetesConnectorClientKeyCertOutput) ToKubernetesConnectorClientKeyCertPtrOutput() KubernetesConnectorClientKeyCertPtrOutput {
+	return o.ToKubernetesConnectorClientKeyCertPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConnectorClientKeyCertOutput) ToKubernetesConnectorClientKeyCertPtrOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnectorClientKeyCert) *KubernetesConnectorClientKeyCert {
+		return &v
+	}).(KubernetesConnectorClientKeyCertPtrOutput)
+}
+
+// Reference to the secret containing the CA certificate for the connector.
+func (o KubernetesConnectorClientKeyCertOutput) CaCertRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) *string { return v.CaCertRef }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the client certificate for the connector.
+func (o KubernetesConnectorClientKeyCertOutput) ClientCertRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) string { return v.ClientCertRef }).(pulumi.StringOutput)
+}
+
+// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+func (o KubernetesConnectorClientKeyCertOutput) ClientKeyAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) string { return v.ClientKeyAlgorithm }).(pulumi.StringOutput)
+}
+
+// Reference to the secret containing the client key passphrase for the connector.
+func (o KubernetesConnectorClientKeyCertOutput) ClientKeyPassphraseRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) *string { return v.ClientKeyPassphraseRef }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the client key for the connector.
+func (o KubernetesConnectorClientKeyCertOutput) ClientKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) string { return v.ClientKeyRef }).(pulumi.StringOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorClientKeyCertOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorClientKeyCert) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+type KubernetesConnectorClientKeyCertPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorClientKeyCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (o KubernetesConnectorClientKeyCertPtrOutput) ToKubernetesConnectorClientKeyCertPtrOutput() KubernetesConnectorClientKeyCertPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorClientKeyCertPtrOutput) ToKubernetesConnectorClientKeyCertPtrOutputWithContext(ctx context.Context) KubernetesConnectorClientKeyCertPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorClientKeyCertPtrOutput) Elem() KubernetesConnectorClientKeyCertOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) KubernetesConnectorClientKeyCert {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnectorClientKeyCert
+		return ret
+	}).(KubernetesConnectorClientKeyCertOutput)
+}
+
+// Reference to the secret containing the CA certificate for the connector.
+func (o KubernetesConnectorClientKeyCertPtrOutput) CaCertRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the client certificate for the connector.
+func (o KubernetesConnectorClientKeyCertPtrOutput) ClientCertRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+func (o KubernetesConnectorClientKeyCertPtrOutput) ClientKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKeyAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the client key passphrase for the connector.
+func (o KubernetesConnectorClientKeyCertPtrOutput) ClientKeyPassphraseRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKeyPassphraseRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the client key for the connector.
+func (o KubernetesConnectorClientKeyCertPtrOutput) ClientKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorClientKeyCertPtrOutput) MasterUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorClientKeyCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorInheritFromDelegate struct {
+	// Selectors to use for the delegate.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// KubernetesConnectorInheritFromDelegateInput is an input type that accepts KubernetesConnectorInheritFromDelegateArgs and KubernetesConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `KubernetesConnectorInheritFromDelegateInput` via:
+//
+//	KubernetesConnectorInheritFromDelegateArgs{...}
+type KubernetesConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorInheritFromDelegateOutput() KubernetesConnectorInheritFromDelegateOutput
+	ToKubernetesConnectorInheritFromDelegateOutputWithContext(context.Context) KubernetesConnectorInheritFromDelegateOutput
+}
+
+type KubernetesConnectorInheritFromDelegateArgs struct {
+	// Selectors to use for the delegate.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (KubernetesConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i KubernetesConnectorInheritFromDelegateArgs) ToKubernetesConnectorInheritFromDelegateOutput() KubernetesConnectorInheritFromDelegateOutput {
+	return i.ToKubernetesConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorInheritFromDelegateArgs) ToKubernetesConnectorInheritFromDelegateOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorInheritFromDelegateOutput)
+}
+
+func (i KubernetesConnectorInheritFromDelegateArgs) ToKubernetesConnectorInheritFromDelegatePtrOutput() KubernetesConnectorInheritFromDelegatePtrOutput {
+	return i.ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorInheritFromDelegateArgs) ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorInheritFromDelegateOutput).ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(ctx)
+}
+
+// KubernetesConnectorInheritFromDelegatePtrInput is an input type that accepts KubernetesConnectorInheritFromDelegateArgs, KubernetesConnectorInheritFromDelegatePtr and KubernetesConnectorInheritFromDelegatePtrOutput values.
+// You can construct a concrete instance of `KubernetesConnectorInheritFromDelegatePtrInput` via:
+//
+//	        KubernetesConnectorInheritFromDelegateArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConnectorInheritFromDelegatePtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorInheritFromDelegatePtrOutput() KubernetesConnectorInheritFromDelegatePtrOutput
+	ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(context.Context) KubernetesConnectorInheritFromDelegatePtrOutput
+}
+
+type kubernetesConnectorInheritFromDelegatePtrType KubernetesConnectorInheritFromDelegateArgs
+
+func KubernetesConnectorInheritFromDelegatePtr(v *KubernetesConnectorInheritFromDelegateArgs) KubernetesConnectorInheritFromDelegatePtrInput {
+	return (*kubernetesConnectorInheritFromDelegatePtrType)(v)
+}
+
+func (*kubernetesConnectorInheritFromDelegatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i *kubernetesConnectorInheritFromDelegatePtrType) ToKubernetesConnectorInheritFromDelegatePtrOutput() KubernetesConnectorInheritFromDelegatePtrOutput {
+	return i.ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConnectorInheritFromDelegatePtrType) ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorInheritFromDelegatePtrOutput)
+}
+
+type KubernetesConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o KubernetesConnectorInheritFromDelegateOutput) ToKubernetesConnectorInheritFromDelegateOutput() KubernetesConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o KubernetesConnectorInheritFromDelegateOutput) ToKubernetesConnectorInheritFromDelegateOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o KubernetesConnectorInheritFromDelegateOutput) ToKubernetesConnectorInheritFromDelegatePtrOutput() KubernetesConnectorInheritFromDelegatePtrOutput {
+	return o.ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConnectorInheritFromDelegateOutput) ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnectorInheritFromDelegate) *KubernetesConnectorInheritFromDelegate {
+		return &v
+	}).(KubernetesConnectorInheritFromDelegatePtrOutput)
+}
+
+// Selectors to use for the delegate.
+func (o KubernetesConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type KubernetesConnectorInheritFromDelegatePtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorInheritFromDelegatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o KubernetesConnectorInheritFromDelegatePtrOutput) ToKubernetesConnectorInheritFromDelegatePtrOutput() KubernetesConnectorInheritFromDelegatePtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorInheritFromDelegatePtrOutput) ToKubernetesConnectorInheritFromDelegatePtrOutputWithContext(ctx context.Context) KubernetesConnectorInheritFromDelegatePtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorInheritFromDelegatePtrOutput) Elem() KubernetesConnectorInheritFromDelegateOutput {
+	return o.ApplyT(func(v *KubernetesConnectorInheritFromDelegate) KubernetesConnectorInheritFromDelegate {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnectorInheritFromDelegate
+		return ret
+	}).(KubernetesConnectorInheritFromDelegateOutput)
+}
+
+// Selectors to use for the delegate.
+func (o KubernetesConnectorInheritFromDelegatePtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubernetesConnectorInheritFromDelegate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+type KubernetesConnectorOpenidConnect struct {
+	// Reference to the secret containing the client ID for the connector.
+	ClientIdRef string `pulumi:"clientIdRef"`
+	// The URL of the OpenID Connect issuer.
+	IssuerUrl string `pulumi:"issuerUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Scopes to request for the connector.
+	Scopes []string `pulumi:"scopes"`
+	// Reference to the secret containing the client secret for the connector.
+	SecretRef *string `pulumi:"secretRef"`
+	// Username for the connector.
+	Username *string `pulumi:"username"`
+	// Reference to the secret containing the username for the connector.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// KubernetesConnectorOpenidConnectInput is an input type that accepts KubernetesConnectorOpenidConnectArgs and KubernetesConnectorOpenidConnectOutput values.
+// You can construct a concrete instance of `KubernetesConnectorOpenidConnectInput` via:
+//
+//	KubernetesConnectorOpenidConnectArgs{...}
+type KubernetesConnectorOpenidConnectInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorOpenidConnectOutput() KubernetesConnectorOpenidConnectOutput
+	ToKubernetesConnectorOpenidConnectOutputWithContext(context.Context) KubernetesConnectorOpenidConnectOutput
+}
+
+type KubernetesConnectorOpenidConnectArgs struct {
+	// Reference to the secret containing the client ID for the connector.
+	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
+	// The URL of the OpenID Connect issuer.
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Scopes to request for the connector.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Reference to the secret containing the client secret for the connector.
+	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
+	// Username for the connector.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to the secret containing the username for the connector.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (KubernetesConnectorOpenidConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (i KubernetesConnectorOpenidConnectArgs) ToKubernetesConnectorOpenidConnectOutput() KubernetesConnectorOpenidConnectOutput {
+	return i.ToKubernetesConnectorOpenidConnectOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorOpenidConnectArgs) ToKubernetesConnectorOpenidConnectOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorOpenidConnectOutput)
+}
+
+func (i KubernetesConnectorOpenidConnectArgs) ToKubernetesConnectorOpenidConnectPtrOutput() KubernetesConnectorOpenidConnectPtrOutput {
+	return i.ToKubernetesConnectorOpenidConnectPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorOpenidConnectArgs) ToKubernetesConnectorOpenidConnectPtrOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorOpenidConnectOutput).ToKubernetesConnectorOpenidConnectPtrOutputWithContext(ctx)
+}
+
+// KubernetesConnectorOpenidConnectPtrInput is an input type that accepts KubernetesConnectorOpenidConnectArgs, KubernetesConnectorOpenidConnectPtr and KubernetesConnectorOpenidConnectPtrOutput values.
+// You can construct a concrete instance of `KubernetesConnectorOpenidConnectPtrInput` via:
+//
+//	        KubernetesConnectorOpenidConnectArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConnectorOpenidConnectPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorOpenidConnectPtrOutput() KubernetesConnectorOpenidConnectPtrOutput
+	ToKubernetesConnectorOpenidConnectPtrOutputWithContext(context.Context) KubernetesConnectorOpenidConnectPtrOutput
+}
+
+type kubernetesConnectorOpenidConnectPtrType KubernetesConnectorOpenidConnectArgs
+
+func KubernetesConnectorOpenidConnectPtr(v *KubernetesConnectorOpenidConnectArgs) KubernetesConnectorOpenidConnectPtrInput {
+	return (*kubernetesConnectorOpenidConnectPtrType)(v)
+}
+
+func (*kubernetesConnectorOpenidConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (i *kubernetesConnectorOpenidConnectPtrType) ToKubernetesConnectorOpenidConnectPtrOutput() KubernetesConnectorOpenidConnectPtrOutput {
+	return i.ToKubernetesConnectorOpenidConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConnectorOpenidConnectPtrType) ToKubernetesConnectorOpenidConnectPtrOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorOpenidConnectPtrOutput)
+}
+
+type KubernetesConnectorOpenidConnectOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorOpenidConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (o KubernetesConnectorOpenidConnectOutput) ToKubernetesConnectorOpenidConnectOutput() KubernetesConnectorOpenidConnectOutput {
+	return o
+}
+
+func (o KubernetesConnectorOpenidConnectOutput) ToKubernetesConnectorOpenidConnectOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectOutput {
+	return o
+}
+
+func (o KubernetesConnectorOpenidConnectOutput) ToKubernetesConnectorOpenidConnectPtrOutput() KubernetesConnectorOpenidConnectPtrOutput {
+	return o.ToKubernetesConnectorOpenidConnectPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConnectorOpenidConnectOutput) ToKubernetesConnectorOpenidConnectPtrOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnectorOpenidConnect) *KubernetesConnectorOpenidConnect {
+		return &v
+	}).(KubernetesConnectorOpenidConnectPtrOutput)
+}
+
+// Reference to the secret containing the client ID for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) ClientIdRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) string { return v.ClientIdRef }).(pulumi.StringOutput)
+}
+
+// The URL of the OpenID Connect issuer.
+func (o KubernetesConnectorOpenidConnectOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) string { return v.IssuerUrl }).(pulumi.StringOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorOpenidConnectOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+// Reference to the secret containing the password for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Scopes to request for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Reference to the secret containing the client secret for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Username for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the username for the connector.
+func (o KubernetesConnectorOpenidConnectOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorOpenidConnect) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorOpenidConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorOpenidConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (o KubernetesConnectorOpenidConnectPtrOutput) ToKubernetesConnectorOpenidConnectPtrOutput() KubernetesConnectorOpenidConnectPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorOpenidConnectPtrOutput) ToKubernetesConnectorOpenidConnectPtrOutputWithContext(ctx context.Context) KubernetesConnectorOpenidConnectPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorOpenidConnectPtrOutput) Elem() KubernetesConnectorOpenidConnectOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) KubernetesConnectorOpenidConnect {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnectorOpenidConnect
+		return ret
+	}).(KubernetesConnectorOpenidConnectOutput)
+}
+
+// Reference to the secret containing the client ID for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) ClientIdRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientIdRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the OpenID Connect issuer.
+func (o KubernetesConnectorOpenidConnectPtrOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorOpenidConnectPtrOutput) MasterUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the password for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scopes to request for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Reference to the secret containing the client secret for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) SecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the username for the connector.
+func (o KubernetesConnectorOpenidConnectPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorOpenidConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorServiceAccount struct {
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the service account token for the connector.
+	ServiceAccountTokenRef string `pulumi:"serviceAccountTokenRef"`
+}
+
+// KubernetesConnectorServiceAccountInput is an input type that accepts KubernetesConnectorServiceAccountArgs and KubernetesConnectorServiceAccountOutput values.
+// You can construct a concrete instance of `KubernetesConnectorServiceAccountInput` via:
+//
+//	KubernetesConnectorServiceAccountArgs{...}
+type KubernetesConnectorServiceAccountInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorServiceAccountOutput() KubernetesConnectorServiceAccountOutput
+	ToKubernetesConnectorServiceAccountOutputWithContext(context.Context) KubernetesConnectorServiceAccountOutput
+}
+
+type KubernetesConnectorServiceAccountArgs struct {
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the service account token for the connector.
+	ServiceAccountTokenRef pulumi.StringInput `pulumi:"serviceAccountTokenRef"`
+}
+
+func (KubernetesConnectorServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (i KubernetesConnectorServiceAccountArgs) ToKubernetesConnectorServiceAccountOutput() KubernetesConnectorServiceAccountOutput {
+	return i.ToKubernetesConnectorServiceAccountOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorServiceAccountArgs) ToKubernetesConnectorServiceAccountOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorServiceAccountOutput)
+}
+
+func (i KubernetesConnectorServiceAccountArgs) ToKubernetesConnectorServiceAccountPtrOutput() KubernetesConnectorServiceAccountPtrOutput {
+	return i.ToKubernetesConnectorServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorServiceAccountArgs) ToKubernetesConnectorServiceAccountPtrOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorServiceAccountOutput).ToKubernetesConnectorServiceAccountPtrOutputWithContext(ctx)
+}
+
+// KubernetesConnectorServiceAccountPtrInput is an input type that accepts KubernetesConnectorServiceAccountArgs, KubernetesConnectorServiceAccountPtr and KubernetesConnectorServiceAccountPtrOutput values.
+// You can construct a concrete instance of `KubernetesConnectorServiceAccountPtrInput` via:
+//
+//	        KubernetesConnectorServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConnectorServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorServiceAccountPtrOutput() KubernetesConnectorServiceAccountPtrOutput
+	ToKubernetesConnectorServiceAccountPtrOutputWithContext(context.Context) KubernetesConnectorServiceAccountPtrOutput
+}
+
+type kubernetesConnectorServiceAccountPtrType KubernetesConnectorServiceAccountArgs
+
+func KubernetesConnectorServiceAccountPtr(v *KubernetesConnectorServiceAccountArgs) KubernetesConnectorServiceAccountPtrInput {
+	return (*kubernetesConnectorServiceAccountPtrType)(v)
+}
+
+func (*kubernetesConnectorServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (i *kubernetesConnectorServiceAccountPtrType) ToKubernetesConnectorServiceAccountPtrOutput() KubernetesConnectorServiceAccountPtrOutput {
+	return i.ToKubernetesConnectorServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConnectorServiceAccountPtrType) ToKubernetesConnectorServiceAccountPtrOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorServiceAccountPtrOutput)
+}
+
+type KubernetesConnectorServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (o KubernetesConnectorServiceAccountOutput) ToKubernetesConnectorServiceAccountOutput() KubernetesConnectorServiceAccountOutput {
+	return o
+}
+
+func (o KubernetesConnectorServiceAccountOutput) ToKubernetesConnectorServiceAccountOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountOutput {
+	return o
+}
+
+func (o KubernetesConnectorServiceAccountOutput) ToKubernetesConnectorServiceAccountPtrOutput() KubernetesConnectorServiceAccountPtrOutput {
+	return o.ToKubernetesConnectorServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConnectorServiceAccountOutput) ToKubernetesConnectorServiceAccountPtrOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnectorServiceAccount) *KubernetesConnectorServiceAccount {
+		return &v
+	}).(KubernetesConnectorServiceAccountPtrOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorServiceAccountOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorServiceAccount) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+// Reference to the secret containing the service account token for the connector.
+func (o KubernetesConnectorServiceAccountOutput) ServiceAccountTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorServiceAccount) string { return v.ServiceAccountTokenRef }).(pulumi.StringOutput)
+}
+
+type KubernetesConnectorServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (o KubernetesConnectorServiceAccountPtrOutput) ToKubernetesConnectorServiceAccountPtrOutput() KubernetesConnectorServiceAccountPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorServiceAccountPtrOutput) ToKubernetesConnectorServiceAccountPtrOutputWithContext(ctx context.Context) KubernetesConnectorServiceAccountPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorServiceAccountPtrOutput) Elem() KubernetesConnectorServiceAccountOutput {
+	return o.ApplyT(func(v *KubernetesConnectorServiceAccount) KubernetesConnectorServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnectorServiceAccount
+		return ret
+	}).(KubernetesConnectorServiceAccountOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorServiceAccountPtrOutput) MasterUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the service account token for the connector.
+func (o KubernetesConnectorServiceAccountPtrOutput) ServiceAccountTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountTokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorUsernamePassword struct {
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username for the connector.
+	Username *string `pulumi:"username"`
+	// Reference to the secret containing the username for the connector.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// KubernetesConnectorUsernamePasswordInput is an input type that accepts KubernetesConnectorUsernamePasswordArgs and KubernetesConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `KubernetesConnectorUsernamePasswordInput` via:
+//
+//	KubernetesConnectorUsernamePasswordArgs{...}
+type KubernetesConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorUsernamePasswordOutput() KubernetesConnectorUsernamePasswordOutput
+	ToKubernetesConnectorUsernamePasswordOutputWithContext(context.Context) KubernetesConnectorUsernamePasswordOutput
+}
+
+type KubernetesConnectorUsernamePasswordArgs struct {
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username for the connector.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to the secret containing the username for the connector.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (KubernetesConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i KubernetesConnectorUsernamePasswordArgs) ToKubernetesConnectorUsernamePasswordOutput() KubernetesConnectorUsernamePasswordOutput {
+	return i.ToKubernetesConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorUsernamePasswordArgs) ToKubernetesConnectorUsernamePasswordOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorUsernamePasswordOutput)
+}
+
+func (i KubernetesConnectorUsernamePasswordArgs) ToKubernetesConnectorUsernamePasswordPtrOutput() KubernetesConnectorUsernamePasswordPtrOutput {
+	return i.ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConnectorUsernamePasswordArgs) ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorUsernamePasswordOutput).ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// KubernetesConnectorUsernamePasswordPtrInput is an input type that accepts KubernetesConnectorUsernamePasswordArgs, KubernetesConnectorUsernamePasswordPtr and KubernetesConnectorUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `KubernetesConnectorUsernamePasswordPtrInput` via:
+//
+//	        KubernetesConnectorUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConnectorUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConnectorUsernamePasswordPtrOutput() KubernetesConnectorUsernamePasswordPtrOutput
+	ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(context.Context) KubernetesConnectorUsernamePasswordPtrOutput
+}
+
+type kubernetesConnectorUsernamePasswordPtrType KubernetesConnectorUsernamePasswordArgs
+
+func KubernetesConnectorUsernamePasswordPtr(v *KubernetesConnectorUsernamePasswordArgs) KubernetesConnectorUsernamePasswordPtrInput {
+	return (*kubernetesConnectorUsernamePasswordPtrType)(v)
+}
+
+func (*kubernetesConnectorUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i *kubernetesConnectorUsernamePasswordPtrType) ToKubernetesConnectorUsernamePasswordPtrOutput() KubernetesConnectorUsernamePasswordPtrOutput {
+	return i.ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConnectorUsernamePasswordPtrType) ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectorUsernamePasswordPtrOutput)
+}
+
+type KubernetesConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o KubernetesConnectorUsernamePasswordOutput) ToKubernetesConnectorUsernamePasswordOutput() KubernetesConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o KubernetesConnectorUsernamePasswordOutput) ToKubernetesConnectorUsernamePasswordOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o KubernetesConnectorUsernamePasswordOutput) ToKubernetesConnectorUsernamePasswordPtrOutput() KubernetesConnectorUsernamePasswordPtrOutput {
+	return o.ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConnectorUsernamePasswordOutput) ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConnectorUsernamePassword) *KubernetesConnectorUsernamePassword {
+		return &v
+	}).(KubernetesConnectorUsernamePasswordPtrOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorUsernamePasswordOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorUsernamePassword) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+// Reference to the secret containing the password for the connector.
+func (o KubernetesConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username for the connector.
+func (o KubernetesConnectorUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the username for the connector.
+func (o KubernetesConnectorUsernamePasswordOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesConnectorUsernamePassword) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesConnectorUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConnectorUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o KubernetesConnectorUsernamePasswordPtrOutput) ToKubernetesConnectorUsernamePasswordPtrOutput() KubernetesConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorUsernamePasswordPtrOutput) ToKubernetesConnectorUsernamePasswordPtrOutputWithContext(ctx context.Context) KubernetesConnectorUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o KubernetesConnectorUsernamePasswordPtrOutput) Elem() KubernetesConnectorUsernamePasswordOutput {
+	return o.ApplyT(func(v *KubernetesConnectorUsernamePassword) KubernetesConnectorUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConnectorUsernamePassword
+		return ret
+	}).(KubernetesConnectorUsernamePasswordOutput)
+}
+
+// The URL of the Kubernetes cluster.
+func (o KubernetesConnectorUsernamePasswordPtrOutput) MasterUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the password for the connector.
+func (o KubernetesConnectorUsernamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username for the connector.
+func (o KubernetesConnectorUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the secret containing the username for the connector.
+func (o KubernetesConnectorUsernamePasswordPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesConnectorUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type NexusConnectorCredentials struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// NexusConnectorCredentialsInput is an input type that accepts NexusConnectorCredentialsArgs and NexusConnectorCredentialsOutput values.
+// You can construct a concrete instance of `NexusConnectorCredentialsInput` via:
+//
+//	NexusConnectorCredentialsArgs{...}
+type NexusConnectorCredentialsInput interface {
+	pulumi.Input
+
+	ToNexusConnectorCredentialsOutput() NexusConnectorCredentialsOutput
+	ToNexusConnectorCredentialsOutputWithContext(context.Context) NexusConnectorCredentialsOutput
+}
+
+type NexusConnectorCredentialsArgs struct {
+	// Reference to a secret containing the password to use for authentication.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (NexusConnectorCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusConnectorCredentials)(nil)).Elem()
+}
+
+func (i NexusConnectorCredentialsArgs) ToNexusConnectorCredentialsOutput() NexusConnectorCredentialsOutput {
+	return i.ToNexusConnectorCredentialsOutputWithContext(context.Background())
+}
+
+func (i NexusConnectorCredentialsArgs) ToNexusConnectorCredentialsOutputWithContext(ctx context.Context) NexusConnectorCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusConnectorCredentialsOutput)
+}
+
+func (i NexusConnectorCredentialsArgs) ToNexusConnectorCredentialsPtrOutput() NexusConnectorCredentialsPtrOutput {
+	return i.ToNexusConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i NexusConnectorCredentialsArgs) ToNexusConnectorCredentialsPtrOutputWithContext(ctx context.Context) NexusConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusConnectorCredentialsOutput).ToNexusConnectorCredentialsPtrOutputWithContext(ctx)
+}
+
+// NexusConnectorCredentialsPtrInput is an input type that accepts NexusConnectorCredentialsArgs, NexusConnectorCredentialsPtr and NexusConnectorCredentialsPtrOutput values.
+// You can construct a concrete instance of `NexusConnectorCredentialsPtrInput` via:
+//
+//	        NexusConnectorCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NexusConnectorCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToNexusConnectorCredentialsPtrOutput() NexusConnectorCredentialsPtrOutput
+	ToNexusConnectorCredentialsPtrOutputWithContext(context.Context) NexusConnectorCredentialsPtrOutput
+}
+
+type nexusConnectorCredentialsPtrType NexusConnectorCredentialsArgs
+
+func NexusConnectorCredentialsPtr(v *NexusConnectorCredentialsArgs) NexusConnectorCredentialsPtrInput {
+	return (*nexusConnectorCredentialsPtrType)(v)
+}
+
+func (*nexusConnectorCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusConnectorCredentials)(nil)).Elem()
+}
+
+func (i *nexusConnectorCredentialsPtrType) ToNexusConnectorCredentialsPtrOutput() NexusConnectorCredentialsPtrOutput {
+	return i.ToNexusConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *nexusConnectorCredentialsPtrType) ToNexusConnectorCredentialsPtrOutputWithContext(ctx context.Context) NexusConnectorCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NexusConnectorCredentialsPtrOutput)
+}
+
+type NexusConnectorCredentialsOutput struct{ *pulumi.OutputState }
+
+func (NexusConnectorCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NexusConnectorCredentials)(nil)).Elem()
+}
+
+func (o NexusConnectorCredentialsOutput) ToNexusConnectorCredentialsOutput() NexusConnectorCredentialsOutput {
+	return o
+}
+
+func (o NexusConnectorCredentialsOutput) ToNexusConnectorCredentialsOutputWithContext(ctx context.Context) NexusConnectorCredentialsOutput {
+	return o
+}
+
+func (o NexusConnectorCredentialsOutput) ToNexusConnectorCredentialsPtrOutput() NexusConnectorCredentialsPtrOutput {
+	return o.ToNexusConnectorCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o NexusConnectorCredentialsOutput) ToNexusConnectorCredentialsPtrOutputWithContext(ctx context.Context) NexusConnectorCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NexusConnectorCredentials) *NexusConnectorCredentials {
+		return &v
+	}).(NexusConnectorCredentialsPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o NexusConnectorCredentialsOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v NexusConnectorCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o NexusConnectorCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NexusConnectorCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o NexusConnectorCredentialsOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NexusConnectorCredentials) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type NexusConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (NexusConnectorCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NexusConnectorCredentials)(nil)).Elem()
+}
+
+func (o NexusConnectorCredentialsPtrOutput) ToNexusConnectorCredentialsPtrOutput() NexusConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o NexusConnectorCredentialsPtrOutput) ToNexusConnectorCredentialsPtrOutputWithContext(ctx context.Context) NexusConnectorCredentialsPtrOutput {
+	return o
+}
+
+func (o NexusConnectorCredentialsPtrOutput) Elem() NexusConnectorCredentialsOutput {
+	return o.ApplyT(func(v *NexusConnectorCredentials) NexusConnectorCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret NexusConnectorCredentials
+		return ret
+	}).(NexusConnectorCredentialsOutput)
+}
+
+// Reference to a secret containing the password to use for authentication.
+func (o NexusConnectorCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o NexusConnectorCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication.
+func (o NexusConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NexusConnectorCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId *string `pulumi:"accountId"`
@@ -1730,6 +8196,4135 @@ func (o UsergroupNotificationConfigArrayOutput) Index(i pulumi.IntInput) Usergro
 	}).(UsergroupNotificationConfigOutput)
 }
 
+type GetAppDynamicsConnectorApiToken struct {
+	ClientId        string `pulumi:"clientId"`
+	ClientSecretRef string `pulumi:"clientSecretRef"`
+}
+
+// GetAppDynamicsConnectorApiTokenInput is an input type that accepts GetAppDynamicsConnectorApiTokenArgs and GetAppDynamicsConnectorApiTokenOutput values.
+// You can construct a concrete instance of `GetAppDynamicsConnectorApiTokenInput` via:
+//
+//	GetAppDynamicsConnectorApiTokenArgs{...}
+type GetAppDynamicsConnectorApiTokenInput interface {
+	pulumi.Input
+
+	ToGetAppDynamicsConnectorApiTokenOutput() GetAppDynamicsConnectorApiTokenOutput
+	ToGetAppDynamicsConnectorApiTokenOutputWithContext(context.Context) GetAppDynamicsConnectorApiTokenOutput
+}
+
+type GetAppDynamicsConnectorApiTokenArgs struct {
+	ClientId        pulumi.StringInput `pulumi:"clientId"`
+	ClientSecretRef pulumi.StringInput `pulumi:"clientSecretRef"`
+}
+
+func (GetAppDynamicsConnectorApiTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (i GetAppDynamicsConnectorApiTokenArgs) ToGetAppDynamicsConnectorApiTokenOutput() GetAppDynamicsConnectorApiTokenOutput {
+	return i.ToGetAppDynamicsConnectorApiTokenOutputWithContext(context.Background())
+}
+
+func (i GetAppDynamicsConnectorApiTokenArgs) ToGetAppDynamicsConnectorApiTokenOutputWithContext(ctx context.Context) GetAppDynamicsConnectorApiTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDynamicsConnectorApiTokenOutput)
+}
+
+// GetAppDynamicsConnectorApiTokenArrayInput is an input type that accepts GetAppDynamicsConnectorApiTokenArray and GetAppDynamicsConnectorApiTokenArrayOutput values.
+// You can construct a concrete instance of `GetAppDynamicsConnectorApiTokenArrayInput` via:
+//
+//	GetAppDynamicsConnectorApiTokenArray{ GetAppDynamicsConnectorApiTokenArgs{...} }
+type GetAppDynamicsConnectorApiTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetAppDynamicsConnectorApiTokenArrayOutput() GetAppDynamicsConnectorApiTokenArrayOutput
+	ToGetAppDynamicsConnectorApiTokenArrayOutputWithContext(context.Context) GetAppDynamicsConnectorApiTokenArrayOutput
+}
+
+type GetAppDynamicsConnectorApiTokenArray []GetAppDynamicsConnectorApiTokenInput
+
+func (GetAppDynamicsConnectorApiTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (i GetAppDynamicsConnectorApiTokenArray) ToGetAppDynamicsConnectorApiTokenArrayOutput() GetAppDynamicsConnectorApiTokenArrayOutput {
+	return i.ToGetAppDynamicsConnectorApiTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppDynamicsConnectorApiTokenArray) ToGetAppDynamicsConnectorApiTokenArrayOutputWithContext(ctx context.Context) GetAppDynamicsConnectorApiTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDynamicsConnectorApiTokenArrayOutput)
+}
+
+type GetAppDynamicsConnectorApiTokenOutput struct{ *pulumi.OutputState }
+
+func (GetAppDynamicsConnectorApiTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (o GetAppDynamicsConnectorApiTokenOutput) ToGetAppDynamicsConnectorApiTokenOutput() GetAppDynamicsConnectorApiTokenOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorApiTokenOutput) ToGetAppDynamicsConnectorApiTokenOutputWithContext(ctx context.Context) GetAppDynamicsConnectorApiTokenOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorApiTokenOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDynamicsConnectorApiToken) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetAppDynamicsConnectorApiTokenOutput) ClientSecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDynamicsConnectorApiToken) string { return v.ClientSecretRef }).(pulumi.StringOutput)
+}
+
+type GetAppDynamicsConnectorApiTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppDynamicsConnectorApiTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDynamicsConnectorApiToken)(nil)).Elem()
+}
+
+func (o GetAppDynamicsConnectorApiTokenArrayOutput) ToGetAppDynamicsConnectorApiTokenArrayOutput() GetAppDynamicsConnectorApiTokenArrayOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorApiTokenArrayOutput) ToGetAppDynamicsConnectorApiTokenArrayOutputWithContext(ctx context.Context) GetAppDynamicsConnectorApiTokenArrayOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorApiTokenArrayOutput) Index(i pulumi.IntInput) GetAppDynamicsConnectorApiTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppDynamicsConnectorApiToken {
+		return vs[0].([]GetAppDynamicsConnectorApiToken)[vs[1].(int)]
+	}).(GetAppDynamicsConnectorApiTokenOutput)
+}
+
+type GetAppDynamicsConnectorUsernamePassword struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+}
+
+// GetAppDynamicsConnectorUsernamePasswordInput is an input type that accepts GetAppDynamicsConnectorUsernamePasswordArgs and GetAppDynamicsConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `GetAppDynamicsConnectorUsernamePasswordInput` via:
+//
+//	GetAppDynamicsConnectorUsernamePasswordArgs{...}
+type GetAppDynamicsConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToGetAppDynamicsConnectorUsernamePasswordOutput() GetAppDynamicsConnectorUsernamePasswordOutput
+	ToGetAppDynamicsConnectorUsernamePasswordOutputWithContext(context.Context) GetAppDynamicsConnectorUsernamePasswordOutput
+}
+
+type GetAppDynamicsConnectorUsernamePasswordArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetAppDynamicsConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetAppDynamicsConnectorUsernamePasswordArgs) ToGetAppDynamicsConnectorUsernamePasswordOutput() GetAppDynamicsConnectorUsernamePasswordOutput {
+	return i.ToGetAppDynamicsConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i GetAppDynamicsConnectorUsernamePasswordArgs) ToGetAppDynamicsConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetAppDynamicsConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDynamicsConnectorUsernamePasswordOutput)
+}
+
+// GetAppDynamicsConnectorUsernamePasswordArrayInput is an input type that accepts GetAppDynamicsConnectorUsernamePasswordArray and GetAppDynamicsConnectorUsernamePasswordArrayOutput values.
+// You can construct a concrete instance of `GetAppDynamicsConnectorUsernamePasswordArrayInput` via:
+//
+//	GetAppDynamicsConnectorUsernamePasswordArray{ GetAppDynamicsConnectorUsernamePasswordArgs{...} }
+type GetAppDynamicsConnectorUsernamePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetAppDynamicsConnectorUsernamePasswordArrayOutput() GetAppDynamicsConnectorUsernamePasswordArrayOutput
+	ToGetAppDynamicsConnectorUsernamePasswordArrayOutputWithContext(context.Context) GetAppDynamicsConnectorUsernamePasswordArrayOutput
+}
+
+type GetAppDynamicsConnectorUsernamePasswordArray []GetAppDynamicsConnectorUsernamePasswordInput
+
+func (GetAppDynamicsConnectorUsernamePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetAppDynamicsConnectorUsernamePasswordArray) ToGetAppDynamicsConnectorUsernamePasswordArrayOutput() GetAppDynamicsConnectorUsernamePasswordArrayOutput {
+	return i.ToGetAppDynamicsConnectorUsernamePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppDynamicsConnectorUsernamePasswordArray) ToGetAppDynamicsConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetAppDynamicsConnectorUsernamePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppDynamicsConnectorUsernamePasswordArrayOutput)
+}
+
+type GetAppDynamicsConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetAppDynamicsConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordOutput) ToGetAppDynamicsConnectorUsernamePasswordOutput() GetAppDynamicsConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordOutput) ToGetAppDynamicsConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetAppDynamicsConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDynamicsConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppDynamicsConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetAppDynamicsConnectorUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppDynamicsConnectorUsernamePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppDynamicsConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordArrayOutput) ToGetAppDynamicsConnectorUsernamePasswordArrayOutput() GetAppDynamicsConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordArrayOutput) ToGetAppDynamicsConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetAppDynamicsConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetAppDynamicsConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetAppDynamicsConnectorUsernamePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppDynamicsConnectorUsernamePassword {
+		return vs[0].([]GetAppDynamicsConnectorUsernamePassword)[vs[1].(int)]
+	}).(GetAppDynamicsConnectorUsernamePasswordOutput)
+}
+
+type GetArtifactoryConnectorCredential struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetArtifactoryConnectorCredentialInput is an input type that accepts GetArtifactoryConnectorCredentialArgs and GetArtifactoryConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetArtifactoryConnectorCredentialInput` via:
+//
+//	GetArtifactoryConnectorCredentialArgs{...}
+type GetArtifactoryConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetArtifactoryConnectorCredentialOutput() GetArtifactoryConnectorCredentialOutput
+	ToGetArtifactoryConnectorCredentialOutputWithContext(context.Context) GetArtifactoryConnectorCredentialOutput
+}
+
+type GetArtifactoryConnectorCredentialArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetArtifactoryConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactoryConnectorCredential)(nil)).Elem()
+}
+
+func (i GetArtifactoryConnectorCredentialArgs) ToGetArtifactoryConnectorCredentialOutput() GetArtifactoryConnectorCredentialOutput {
+	return i.ToGetArtifactoryConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetArtifactoryConnectorCredentialArgs) ToGetArtifactoryConnectorCredentialOutputWithContext(ctx context.Context) GetArtifactoryConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactoryConnectorCredentialOutput)
+}
+
+// GetArtifactoryConnectorCredentialArrayInput is an input type that accepts GetArtifactoryConnectorCredentialArray and GetArtifactoryConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetArtifactoryConnectorCredentialArrayInput` via:
+//
+//	GetArtifactoryConnectorCredentialArray{ GetArtifactoryConnectorCredentialArgs{...} }
+type GetArtifactoryConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetArtifactoryConnectorCredentialArrayOutput() GetArtifactoryConnectorCredentialArrayOutput
+	ToGetArtifactoryConnectorCredentialArrayOutputWithContext(context.Context) GetArtifactoryConnectorCredentialArrayOutput
+}
+
+type GetArtifactoryConnectorCredentialArray []GetArtifactoryConnectorCredentialInput
+
+func (GetArtifactoryConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactoryConnectorCredential)(nil)).Elem()
+}
+
+func (i GetArtifactoryConnectorCredentialArray) ToGetArtifactoryConnectorCredentialArrayOutput() GetArtifactoryConnectorCredentialArrayOutput {
+	return i.ToGetArtifactoryConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetArtifactoryConnectorCredentialArray) ToGetArtifactoryConnectorCredentialArrayOutputWithContext(ctx context.Context) GetArtifactoryConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactoryConnectorCredentialArrayOutput)
+}
+
+type GetArtifactoryConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactoryConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactoryConnectorCredential)(nil)).Elem()
+}
+
+func (o GetArtifactoryConnectorCredentialOutput) ToGetArtifactoryConnectorCredentialOutput() GetArtifactoryConnectorCredentialOutput {
+	return o
+}
+
+func (o GetArtifactoryConnectorCredentialOutput) ToGetArtifactoryConnectorCredentialOutputWithContext(ctx context.Context) GetArtifactoryConnectorCredentialOutput {
+	return o
+}
+
+func (o GetArtifactoryConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetArtifactoryConnectorCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetArtifactoryConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetArtifactoryConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactoryConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactoryConnectorCredential)(nil)).Elem()
+}
+
+func (o GetArtifactoryConnectorCredentialArrayOutput) ToGetArtifactoryConnectorCredentialArrayOutput() GetArtifactoryConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetArtifactoryConnectorCredentialArrayOutput) ToGetArtifactoryConnectorCredentialArrayOutputWithContext(ctx context.Context) GetArtifactoryConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetArtifactoryConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetArtifactoryConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetArtifactoryConnectorCredential {
+		return vs[0].([]GetArtifactoryConnectorCredential)[vs[1].(int)]
+	}).(GetArtifactoryConnectorCredentialOutput)
+}
+
+type GetAwsCCConnectorCrossAccountAccess struct {
+	ExternalId string `pulumi:"externalId"`
+	RoleArn    string `pulumi:"roleArn"`
+}
+
+// GetAwsCCConnectorCrossAccountAccessInput is an input type that accepts GetAwsCCConnectorCrossAccountAccessArgs and GetAwsCCConnectorCrossAccountAccessOutput values.
+// You can construct a concrete instance of `GetAwsCCConnectorCrossAccountAccessInput` via:
+//
+//	GetAwsCCConnectorCrossAccountAccessArgs{...}
+type GetAwsCCConnectorCrossAccountAccessInput interface {
+	pulumi.Input
+
+	ToGetAwsCCConnectorCrossAccountAccessOutput() GetAwsCCConnectorCrossAccountAccessOutput
+	ToGetAwsCCConnectorCrossAccountAccessOutputWithContext(context.Context) GetAwsCCConnectorCrossAccountAccessOutput
+}
+
+type GetAwsCCConnectorCrossAccountAccessArgs struct {
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetAwsCCConnectorCrossAccountAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i GetAwsCCConnectorCrossAccountAccessArgs) ToGetAwsCCConnectorCrossAccountAccessOutput() GetAwsCCConnectorCrossAccountAccessOutput {
+	return i.ToGetAwsCCConnectorCrossAccountAccessOutputWithContext(context.Background())
+}
+
+func (i GetAwsCCConnectorCrossAccountAccessArgs) ToGetAwsCCConnectorCrossAccountAccessOutputWithContext(ctx context.Context) GetAwsCCConnectorCrossAccountAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsCCConnectorCrossAccountAccessOutput)
+}
+
+// GetAwsCCConnectorCrossAccountAccessArrayInput is an input type that accepts GetAwsCCConnectorCrossAccountAccessArray and GetAwsCCConnectorCrossAccountAccessArrayOutput values.
+// You can construct a concrete instance of `GetAwsCCConnectorCrossAccountAccessArrayInput` via:
+//
+//	GetAwsCCConnectorCrossAccountAccessArray{ GetAwsCCConnectorCrossAccountAccessArgs{...} }
+type GetAwsCCConnectorCrossAccountAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsCCConnectorCrossAccountAccessArrayOutput() GetAwsCCConnectorCrossAccountAccessArrayOutput
+	ToGetAwsCCConnectorCrossAccountAccessArrayOutputWithContext(context.Context) GetAwsCCConnectorCrossAccountAccessArrayOutput
+}
+
+type GetAwsCCConnectorCrossAccountAccessArray []GetAwsCCConnectorCrossAccountAccessInput
+
+func (GetAwsCCConnectorCrossAccountAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i GetAwsCCConnectorCrossAccountAccessArray) ToGetAwsCCConnectorCrossAccountAccessArrayOutput() GetAwsCCConnectorCrossAccountAccessArrayOutput {
+	return i.ToGetAwsCCConnectorCrossAccountAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsCCConnectorCrossAccountAccessArray) ToGetAwsCCConnectorCrossAccountAccessArrayOutputWithContext(ctx context.Context) GetAwsCCConnectorCrossAccountAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsCCConnectorCrossAccountAccessArrayOutput)
+}
+
+type GetAwsCCConnectorCrossAccountAccessOutput struct{ *pulumi.OutputState }
+
+func (GetAwsCCConnectorCrossAccountAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessOutput) ToGetAwsCCConnectorCrossAccountAccessOutput() GetAwsCCConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessOutput) ToGetAwsCCConnectorCrossAccountAccessOutputWithContext(ctx context.Context) GetAwsCCConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsCCConnectorCrossAccountAccess) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsCCConnectorCrossAccountAccess) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsCCConnectorCrossAccountAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsCCConnectorCrossAccountAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsCCConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessArrayOutput) ToGetAwsCCConnectorCrossAccountAccessArrayOutput() GetAwsCCConnectorCrossAccountAccessArrayOutput {
+	return o
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessArrayOutput) ToGetAwsCCConnectorCrossAccountAccessArrayOutputWithContext(ctx context.Context) GetAwsCCConnectorCrossAccountAccessArrayOutput {
+	return o
+}
+
+func (o GetAwsCCConnectorCrossAccountAccessArrayOutput) Index(i pulumi.IntInput) GetAwsCCConnectorCrossAccountAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsCCConnectorCrossAccountAccess {
+		return vs[0].([]GetAwsCCConnectorCrossAccountAccess)[vs[1].(int)]
+	}).(GetAwsCCConnectorCrossAccountAccessOutput)
+}
+
+type GetAwsConnectorCrossAccountAccess struct {
+	ExternalId string `pulumi:"externalId"`
+	RoleArn    string `pulumi:"roleArn"`
+}
+
+// GetAwsConnectorCrossAccountAccessInput is an input type that accepts GetAwsConnectorCrossAccountAccessArgs and GetAwsConnectorCrossAccountAccessOutput values.
+// You can construct a concrete instance of `GetAwsConnectorCrossAccountAccessInput` via:
+//
+//	GetAwsConnectorCrossAccountAccessArgs{...}
+type GetAwsConnectorCrossAccountAccessInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorCrossAccountAccessOutput() GetAwsConnectorCrossAccountAccessOutput
+	ToGetAwsConnectorCrossAccountAccessOutputWithContext(context.Context) GetAwsConnectorCrossAccountAccessOutput
+}
+
+type GetAwsConnectorCrossAccountAccessArgs struct {
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetAwsConnectorCrossAccountAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i GetAwsConnectorCrossAccountAccessArgs) ToGetAwsConnectorCrossAccountAccessOutput() GetAwsConnectorCrossAccountAccessOutput {
+	return i.ToGetAwsConnectorCrossAccountAccessOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorCrossAccountAccessArgs) ToGetAwsConnectorCrossAccountAccessOutputWithContext(ctx context.Context) GetAwsConnectorCrossAccountAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorCrossAccountAccessOutput)
+}
+
+// GetAwsConnectorCrossAccountAccessArrayInput is an input type that accepts GetAwsConnectorCrossAccountAccessArray and GetAwsConnectorCrossAccountAccessArrayOutput values.
+// You can construct a concrete instance of `GetAwsConnectorCrossAccountAccessArrayInput` via:
+//
+//	GetAwsConnectorCrossAccountAccessArray{ GetAwsConnectorCrossAccountAccessArgs{...} }
+type GetAwsConnectorCrossAccountAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorCrossAccountAccessArrayOutput() GetAwsConnectorCrossAccountAccessArrayOutput
+	ToGetAwsConnectorCrossAccountAccessArrayOutputWithContext(context.Context) GetAwsConnectorCrossAccountAccessArrayOutput
+}
+
+type GetAwsConnectorCrossAccountAccessArray []GetAwsConnectorCrossAccountAccessInput
+
+func (GetAwsConnectorCrossAccountAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (i GetAwsConnectorCrossAccountAccessArray) ToGetAwsConnectorCrossAccountAccessArrayOutput() GetAwsConnectorCrossAccountAccessArrayOutput {
+	return i.ToGetAwsConnectorCrossAccountAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorCrossAccountAccessArray) ToGetAwsConnectorCrossAccountAccessArrayOutputWithContext(ctx context.Context) GetAwsConnectorCrossAccountAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorCrossAccountAccessArrayOutput)
+}
+
+type GetAwsConnectorCrossAccountAccessOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorCrossAccountAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o GetAwsConnectorCrossAccountAccessOutput) ToGetAwsConnectorCrossAccountAccessOutput() GetAwsConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o GetAwsConnectorCrossAccountAccessOutput) ToGetAwsConnectorCrossAccountAccessOutputWithContext(ctx context.Context) GetAwsConnectorCrossAccountAccessOutput {
+	return o
+}
+
+func (o GetAwsConnectorCrossAccountAccessOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsConnectorCrossAccountAccess) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetAwsConnectorCrossAccountAccessOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsConnectorCrossAccountAccess) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsConnectorCrossAccountAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorCrossAccountAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorCrossAccountAccess)(nil)).Elem()
+}
+
+func (o GetAwsConnectorCrossAccountAccessArrayOutput) ToGetAwsConnectorCrossAccountAccessArrayOutput() GetAwsConnectorCrossAccountAccessArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorCrossAccountAccessArrayOutput) ToGetAwsConnectorCrossAccountAccessArrayOutputWithContext(ctx context.Context) GetAwsConnectorCrossAccountAccessArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorCrossAccountAccessArrayOutput) Index(i pulumi.IntInput) GetAwsConnectorCrossAccountAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsConnectorCrossAccountAccess {
+		return vs[0].([]GetAwsConnectorCrossAccountAccess)[vs[1].(int)]
+	}).(GetAwsConnectorCrossAccountAccessOutput)
+}
+
+type GetAwsConnectorInheritFromDelegate struct {
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GetAwsConnectorInheritFromDelegateInput is an input type that accepts GetAwsConnectorInheritFromDelegateArgs and GetAwsConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `GetAwsConnectorInheritFromDelegateInput` via:
+//
+//	GetAwsConnectorInheritFromDelegateArgs{...}
+type GetAwsConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorInheritFromDelegateOutput() GetAwsConnectorInheritFromDelegateOutput
+	ToGetAwsConnectorInheritFromDelegateOutputWithContext(context.Context) GetAwsConnectorInheritFromDelegateOutput
+}
+
+type GetAwsConnectorInheritFromDelegateArgs struct {
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GetAwsConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetAwsConnectorInheritFromDelegateArgs) ToGetAwsConnectorInheritFromDelegateOutput() GetAwsConnectorInheritFromDelegateOutput {
+	return i.ToGetAwsConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorInheritFromDelegateArgs) ToGetAwsConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetAwsConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorInheritFromDelegateOutput)
+}
+
+// GetAwsConnectorInheritFromDelegateArrayInput is an input type that accepts GetAwsConnectorInheritFromDelegateArray and GetAwsConnectorInheritFromDelegateArrayOutput values.
+// You can construct a concrete instance of `GetAwsConnectorInheritFromDelegateArrayInput` via:
+//
+//	GetAwsConnectorInheritFromDelegateArray{ GetAwsConnectorInheritFromDelegateArgs{...} }
+type GetAwsConnectorInheritFromDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorInheritFromDelegateArrayOutput() GetAwsConnectorInheritFromDelegateArrayOutput
+	ToGetAwsConnectorInheritFromDelegateArrayOutputWithContext(context.Context) GetAwsConnectorInheritFromDelegateArrayOutput
+}
+
+type GetAwsConnectorInheritFromDelegateArray []GetAwsConnectorInheritFromDelegateInput
+
+func (GetAwsConnectorInheritFromDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetAwsConnectorInheritFromDelegateArray) ToGetAwsConnectorInheritFromDelegateArrayOutput() GetAwsConnectorInheritFromDelegateArrayOutput {
+	return i.ToGetAwsConnectorInheritFromDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorInheritFromDelegateArray) ToGetAwsConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetAwsConnectorInheritFromDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorInheritFromDelegateArrayOutput)
+}
+
+type GetAwsConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetAwsConnectorInheritFromDelegateOutput) ToGetAwsConnectorInheritFromDelegateOutput() GetAwsConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetAwsConnectorInheritFromDelegateOutput) ToGetAwsConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetAwsConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetAwsConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GetAwsConnectorInheritFromDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorInheritFromDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetAwsConnectorInheritFromDelegateArrayOutput) ToGetAwsConnectorInheritFromDelegateArrayOutput() GetAwsConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorInheritFromDelegateArrayOutput) ToGetAwsConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetAwsConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) GetAwsConnectorInheritFromDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsConnectorInheritFromDelegate {
+		return vs[0].([]GetAwsConnectorInheritFromDelegate)[vs[1].(int)]
+	}).(GetAwsConnectorInheritFromDelegateOutput)
+}
+
+type GetAwsConnectorIrsa struct {
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GetAwsConnectorIrsaInput is an input type that accepts GetAwsConnectorIrsaArgs and GetAwsConnectorIrsaOutput values.
+// You can construct a concrete instance of `GetAwsConnectorIrsaInput` via:
+//
+//	GetAwsConnectorIrsaArgs{...}
+type GetAwsConnectorIrsaInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorIrsaOutput() GetAwsConnectorIrsaOutput
+	ToGetAwsConnectorIrsaOutputWithContext(context.Context) GetAwsConnectorIrsaOutput
+}
+
+type GetAwsConnectorIrsaArgs struct {
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GetAwsConnectorIrsaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorIrsa)(nil)).Elem()
+}
+
+func (i GetAwsConnectorIrsaArgs) ToGetAwsConnectorIrsaOutput() GetAwsConnectorIrsaOutput {
+	return i.ToGetAwsConnectorIrsaOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorIrsaArgs) ToGetAwsConnectorIrsaOutputWithContext(ctx context.Context) GetAwsConnectorIrsaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorIrsaOutput)
+}
+
+// GetAwsConnectorIrsaArrayInput is an input type that accepts GetAwsConnectorIrsaArray and GetAwsConnectorIrsaArrayOutput values.
+// You can construct a concrete instance of `GetAwsConnectorIrsaArrayInput` via:
+//
+//	GetAwsConnectorIrsaArray{ GetAwsConnectorIrsaArgs{...} }
+type GetAwsConnectorIrsaArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorIrsaArrayOutput() GetAwsConnectorIrsaArrayOutput
+	ToGetAwsConnectorIrsaArrayOutputWithContext(context.Context) GetAwsConnectorIrsaArrayOutput
+}
+
+type GetAwsConnectorIrsaArray []GetAwsConnectorIrsaInput
+
+func (GetAwsConnectorIrsaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorIrsa)(nil)).Elem()
+}
+
+func (i GetAwsConnectorIrsaArray) ToGetAwsConnectorIrsaArrayOutput() GetAwsConnectorIrsaArrayOutput {
+	return i.ToGetAwsConnectorIrsaArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorIrsaArray) ToGetAwsConnectorIrsaArrayOutputWithContext(ctx context.Context) GetAwsConnectorIrsaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorIrsaArrayOutput)
+}
+
+type GetAwsConnectorIrsaOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorIrsaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorIrsa)(nil)).Elem()
+}
+
+func (o GetAwsConnectorIrsaOutput) ToGetAwsConnectorIrsaOutput() GetAwsConnectorIrsaOutput {
+	return o
+}
+
+func (o GetAwsConnectorIrsaOutput) ToGetAwsConnectorIrsaOutputWithContext(ctx context.Context) GetAwsConnectorIrsaOutput {
+	return o
+}
+
+func (o GetAwsConnectorIrsaOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsConnectorIrsa) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GetAwsConnectorIrsaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorIrsaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorIrsa)(nil)).Elem()
+}
+
+func (o GetAwsConnectorIrsaArrayOutput) ToGetAwsConnectorIrsaArrayOutput() GetAwsConnectorIrsaArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorIrsaArrayOutput) ToGetAwsConnectorIrsaArrayOutputWithContext(ctx context.Context) GetAwsConnectorIrsaArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorIrsaArrayOutput) Index(i pulumi.IntInput) GetAwsConnectorIrsaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsConnectorIrsa {
+		return vs[0].([]GetAwsConnectorIrsa)[vs[1].(int)]
+	}).(GetAwsConnectorIrsaOutput)
+}
+
+type GetAwsConnectorManual struct {
+	AccessKey         string   `pulumi:"accessKey"`
+	AccessKeyRef      string   `pulumi:"accessKeyRef"`
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	SecretKeyRef      string   `pulumi:"secretKeyRef"`
+}
+
+// GetAwsConnectorManualInput is an input type that accepts GetAwsConnectorManualArgs and GetAwsConnectorManualOutput values.
+// You can construct a concrete instance of `GetAwsConnectorManualInput` via:
+//
+//	GetAwsConnectorManualArgs{...}
+type GetAwsConnectorManualInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorManualOutput() GetAwsConnectorManualOutput
+	ToGetAwsConnectorManualOutputWithContext(context.Context) GetAwsConnectorManualOutput
+}
+
+type GetAwsConnectorManualArgs struct {
+	AccessKey         pulumi.StringInput      `pulumi:"accessKey"`
+	AccessKeyRef      pulumi.StringInput      `pulumi:"accessKeyRef"`
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	SecretKeyRef      pulumi.StringInput      `pulumi:"secretKeyRef"`
+}
+
+func (GetAwsConnectorManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorManual)(nil)).Elem()
+}
+
+func (i GetAwsConnectorManualArgs) ToGetAwsConnectorManualOutput() GetAwsConnectorManualOutput {
+	return i.ToGetAwsConnectorManualOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorManualArgs) ToGetAwsConnectorManualOutputWithContext(ctx context.Context) GetAwsConnectorManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorManualOutput)
+}
+
+// GetAwsConnectorManualArrayInput is an input type that accepts GetAwsConnectorManualArray and GetAwsConnectorManualArrayOutput values.
+// You can construct a concrete instance of `GetAwsConnectorManualArrayInput` via:
+//
+//	GetAwsConnectorManualArray{ GetAwsConnectorManualArgs{...} }
+type GetAwsConnectorManualArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsConnectorManualArrayOutput() GetAwsConnectorManualArrayOutput
+	ToGetAwsConnectorManualArrayOutputWithContext(context.Context) GetAwsConnectorManualArrayOutput
+}
+
+type GetAwsConnectorManualArray []GetAwsConnectorManualInput
+
+func (GetAwsConnectorManualArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorManual)(nil)).Elem()
+}
+
+func (i GetAwsConnectorManualArray) ToGetAwsConnectorManualArrayOutput() GetAwsConnectorManualArrayOutput {
+	return i.ToGetAwsConnectorManualArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsConnectorManualArray) ToGetAwsConnectorManualArrayOutputWithContext(ctx context.Context) GetAwsConnectorManualArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsConnectorManualArrayOutput)
+}
+
+type GetAwsConnectorManualOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsConnectorManual)(nil)).Elem()
+}
+
+func (o GetAwsConnectorManualOutput) ToGetAwsConnectorManualOutput() GetAwsConnectorManualOutput {
+	return o
+}
+
+func (o GetAwsConnectorManualOutput) ToGetAwsConnectorManualOutputWithContext(ctx context.Context) GetAwsConnectorManualOutput {
+	return o
+}
+
+func (o GetAwsConnectorManualOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsConnectorManual) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+func (o GetAwsConnectorManualOutput) AccessKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsConnectorManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
+}
+
+func (o GetAwsConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAwsConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type GetAwsConnectorManualArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsConnectorManualArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsConnectorManual)(nil)).Elem()
+}
+
+func (o GetAwsConnectorManualArrayOutput) ToGetAwsConnectorManualArrayOutput() GetAwsConnectorManualArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorManualArrayOutput) ToGetAwsConnectorManualArrayOutputWithContext(ctx context.Context) GetAwsConnectorManualArrayOutput {
+	return o
+}
+
+func (o GetAwsConnectorManualArrayOutput) Index(i pulumi.IntInput) GetAwsConnectorManualOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsConnectorManual {
+		return vs[0].([]GetAwsConnectorManual)[vs[1].(int)]
+	}).(GetAwsConnectorManualOutput)
+}
+
+type GetAwsKmsConnectorCredential struct {
+	AssumeRoles         []GetAwsKmsConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
+	InheritFromDelegate bool                                     `pulumi:"inheritFromDelegate"`
+	Manuals             []GetAwsKmsConnectorCredentialManual     `pulumi:"manuals"`
+}
+
+// GetAwsKmsConnectorCredentialInput is an input type that accepts GetAwsKmsConnectorCredentialArgs and GetAwsKmsConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialInput` via:
+//
+//	GetAwsKmsConnectorCredentialArgs{...}
+type GetAwsKmsConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialOutput() GetAwsKmsConnectorCredentialOutput
+	ToGetAwsKmsConnectorCredentialOutputWithContext(context.Context) GetAwsKmsConnectorCredentialOutput
+}
+
+type GetAwsKmsConnectorCredentialArgs struct {
+	AssumeRoles         GetAwsKmsConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
+	InheritFromDelegate pulumi.BoolInput                                 `pulumi:"inheritFromDelegate"`
+	Manuals             GetAwsKmsConnectorCredentialManualArrayInput     `pulumi:"manuals"`
+}
+
+func (GetAwsKmsConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredential)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialArgs) ToGetAwsKmsConnectorCredentialOutput() GetAwsKmsConnectorCredentialOutput {
+	return i.ToGetAwsKmsConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialArgs) ToGetAwsKmsConnectorCredentialOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialOutput)
+}
+
+// GetAwsKmsConnectorCredentialArrayInput is an input type that accepts GetAwsKmsConnectorCredentialArray and GetAwsKmsConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialArrayInput` via:
+//
+//	GetAwsKmsConnectorCredentialArray{ GetAwsKmsConnectorCredentialArgs{...} }
+type GetAwsKmsConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialArrayOutput() GetAwsKmsConnectorCredentialArrayOutput
+	ToGetAwsKmsConnectorCredentialArrayOutputWithContext(context.Context) GetAwsKmsConnectorCredentialArrayOutput
+}
+
+type GetAwsKmsConnectorCredentialArray []GetAwsKmsConnectorCredentialInput
+
+func (GetAwsKmsConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredential)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialArray) ToGetAwsKmsConnectorCredentialArrayOutput() GetAwsKmsConnectorCredentialArrayOutput {
+	return i.ToGetAwsKmsConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialArray) ToGetAwsKmsConnectorCredentialArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialArrayOutput)
+}
+
+type GetAwsKmsConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredential)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialOutput) ToGetAwsKmsConnectorCredentialOutput() GetAwsKmsConnectorCredentialOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialOutput) ToGetAwsKmsConnectorCredentialOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialOutput) AssumeRoles() GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialAssumeRole { return v.AssumeRoles }).(GetAwsKmsConnectorCredentialAssumeRoleArrayOutput)
+}
+
+func (o GetAwsKmsConnectorCredentialOutput) InheritFromDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredential) bool { return v.InheritFromDelegate }).(pulumi.BoolOutput)
+}
+
+func (o GetAwsKmsConnectorCredentialOutput) Manuals() GetAwsKmsConnectorCredentialManualArrayOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialManual { return v.Manuals }).(GetAwsKmsConnectorCredentialManualArrayOutput)
+}
+
+type GetAwsKmsConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredential)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialArrayOutput) ToGetAwsKmsConnectorCredentialArrayOutput() GetAwsKmsConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialArrayOutput) ToGetAwsKmsConnectorCredentialArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetAwsKmsConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsKmsConnectorCredential {
+		return vs[0].([]GetAwsKmsConnectorCredential)[vs[1].(int)]
+	}).(GetAwsKmsConnectorCredentialOutput)
+}
+
+type GetAwsKmsConnectorCredentialAssumeRole struct {
+	Duration   int    `pulumi:"duration"`
+	ExternalId string `pulumi:"externalId"`
+	RoleArn    string `pulumi:"roleArn"`
+}
+
+// GetAwsKmsConnectorCredentialAssumeRoleInput is an input type that accepts GetAwsKmsConnectorCredentialAssumeRoleArgs and GetAwsKmsConnectorCredentialAssumeRoleOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialAssumeRoleInput` via:
+//
+//	GetAwsKmsConnectorCredentialAssumeRoleArgs{...}
+type GetAwsKmsConnectorCredentialAssumeRoleInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialAssumeRoleOutput() GetAwsKmsConnectorCredentialAssumeRoleOutput
+	ToGetAwsKmsConnectorCredentialAssumeRoleOutputWithContext(context.Context) GetAwsKmsConnectorCredentialAssumeRoleOutput
+}
+
+type GetAwsKmsConnectorCredentialAssumeRoleArgs struct {
+	Duration   pulumi.IntInput    `pulumi:"duration"`
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetAwsKmsConnectorCredentialAssumeRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialAssumeRoleArgs) ToGetAwsKmsConnectorCredentialAssumeRoleOutput() GetAwsKmsConnectorCredentialAssumeRoleOutput {
+	return i.ToGetAwsKmsConnectorCredentialAssumeRoleOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialAssumeRoleArgs) ToGetAwsKmsConnectorCredentialAssumeRoleOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialAssumeRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialAssumeRoleOutput)
+}
+
+// GetAwsKmsConnectorCredentialAssumeRoleArrayInput is an input type that accepts GetAwsKmsConnectorCredentialAssumeRoleArray and GetAwsKmsConnectorCredentialAssumeRoleArrayOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialAssumeRoleArrayInput` via:
+//
+//	GetAwsKmsConnectorCredentialAssumeRoleArray{ GetAwsKmsConnectorCredentialAssumeRoleArgs{...} }
+type GetAwsKmsConnectorCredentialAssumeRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutput() GetAwsKmsConnectorCredentialAssumeRoleArrayOutput
+	ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutputWithContext(context.Context) GetAwsKmsConnectorCredentialAssumeRoleArrayOutput
+}
+
+type GetAwsKmsConnectorCredentialAssumeRoleArray []GetAwsKmsConnectorCredentialAssumeRoleInput
+
+func (GetAwsKmsConnectorCredentialAssumeRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialAssumeRoleArray) ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutput() GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
+	return i.ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialAssumeRoleArray) ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialAssumeRoleArrayOutput)
+}
+
+type GetAwsKmsConnectorCredentialAssumeRoleOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialAssumeRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) ToGetAwsKmsConnectorCredentialAssumeRoleOutput() GetAwsKmsConnectorCredentialAssumeRoleOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) ToGetAwsKmsConnectorCredentialAssumeRoleOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialAssumeRoleOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsKmsConnectorCredentialAssumeRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialAssumeRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleArrayOutput) ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutput() GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleArrayOutput) ToGetAwsKmsConnectorCredentialAssumeRoleArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialAssumeRoleArrayOutput) Index(i pulumi.IntInput) GetAwsKmsConnectorCredentialAssumeRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsKmsConnectorCredentialAssumeRole {
+		return vs[0].([]GetAwsKmsConnectorCredentialAssumeRole)[vs[1].(int)]
+	}).(GetAwsKmsConnectorCredentialAssumeRoleOutput)
+}
+
+type GetAwsKmsConnectorCredentialManual struct {
+	AccessKeyRef string `pulumi:"accessKeyRef"`
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// GetAwsKmsConnectorCredentialManualInput is an input type that accepts GetAwsKmsConnectorCredentialManualArgs and GetAwsKmsConnectorCredentialManualOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialManualInput` via:
+//
+//	GetAwsKmsConnectorCredentialManualArgs{...}
+type GetAwsKmsConnectorCredentialManualInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialManualOutput() GetAwsKmsConnectorCredentialManualOutput
+	ToGetAwsKmsConnectorCredentialManualOutputWithContext(context.Context) GetAwsKmsConnectorCredentialManualOutput
+}
+
+type GetAwsKmsConnectorCredentialManualArgs struct {
+	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (GetAwsKmsConnectorCredentialManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialManual)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialManualArgs) ToGetAwsKmsConnectorCredentialManualOutput() GetAwsKmsConnectorCredentialManualOutput {
+	return i.ToGetAwsKmsConnectorCredentialManualOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialManualArgs) ToGetAwsKmsConnectorCredentialManualOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialManualOutput)
+}
+
+// GetAwsKmsConnectorCredentialManualArrayInput is an input type that accepts GetAwsKmsConnectorCredentialManualArray and GetAwsKmsConnectorCredentialManualArrayOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialManualArrayInput` via:
+//
+//	GetAwsKmsConnectorCredentialManualArray{ GetAwsKmsConnectorCredentialManualArgs{...} }
+type GetAwsKmsConnectorCredentialManualArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialManualArrayOutput() GetAwsKmsConnectorCredentialManualArrayOutput
+	ToGetAwsKmsConnectorCredentialManualArrayOutputWithContext(context.Context) GetAwsKmsConnectorCredentialManualArrayOutput
+}
+
+type GetAwsKmsConnectorCredentialManualArray []GetAwsKmsConnectorCredentialManualInput
+
+func (GetAwsKmsConnectorCredentialManualArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialManual)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialManualArray) ToGetAwsKmsConnectorCredentialManualArrayOutput() GetAwsKmsConnectorCredentialManualArrayOutput {
+	return i.ToGetAwsKmsConnectorCredentialManualArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialManualArray) ToGetAwsKmsConnectorCredentialManualArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialManualArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialManualArrayOutput)
+}
+
+type GetAwsKmsConnectorCredentialManualOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialManual)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialManualOutput) ToGetAwsKmsConnectorCredentialManualOutput() GetAwsKmsConnectorCredentialManualOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialManualOutput) ToGetAwsKmsConnectorCredentialManualOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialManualOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialManualOutput) AccessKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
+}
+
+func (o GetAwsKmsConnectorCredentialManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type GetAwsKmsConnectorCredentialManualArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialManualArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialManual)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialManualArrayOutput) ToGetAwsKmsConnectorCredentialManualArrayOutput() GetAwsKmsConnectorCredentialManualArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialManualArrayOutput) ToGetAwsKmsConnectorCredentialManualArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialManualArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialManualArrayOutput) Index(i pulumi.IntInput) GetAwsKmsConnectorCredentialManualOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsKmsConnectorCredentialManual {
+		return vs[0].([]GetAwsKmsConnectorCredentialManual)[vs[1].(int)]
+	}).(GetAwsKmsConnectorCredentialManualOutput)
+}
+
+type GetAwsSecretManagerConnectorCredential struct {
+	AssumeRoles         []GetAwsSecretManagerConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
+	InheritFromDelegate bool                                               `pulumi:"inheritFromDelegate"`
+	Manuals             []GetAwsSecretManagerConnectorCredentialManual     `pulumi:"manuals"`
+}
+
+// GetAwsSecretManagerConnectorCredentialInput is an input type that accepts GetAwsSecretManagerConnectorCredentialArgs and GetAwsSecretManagerConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialArgs{...}
+type GetAwsSecretManagerConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialOutput() GetAwsSecretManagerConnectorCredentialOutput
+	ToGetAwsSecretManagerConnectorCredentialOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialArgs struct {
+	AssumeRoles         GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
+	InheritFromDelegate pulumi.BoolInput                                           `pulumi:"inheritFromDelegate"`
+	Manuals             GetAwsSecretManagerConnectorCredentialManualArrayInput     `pulumi:"manuals"`
+}
+
+func (GetAwsSecretManagerConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredential)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialArgs) ToGetAwsSecretManagerConnectorCredentialOutput() GetAwsSecretManagerConnectorCredentialOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialArgs) ToGetAwsSecretManagerConnectorCredentialOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialOutput)
+}
+
+// GetAwsSecretManagerConnectorCredentialArrayInput is an input type that accepts GetAwsSecretManagerConnectorCredentialArray and GetAwsSecretManagerConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialArrayInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialArray{ GetAwsSecretManagerConnectorCredentialArgs{...} }
+type GetAwsSecretManagerConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialArrayOutput() GetAwsSecretManagerConnectorCredentialArrayOutput
+	ToGetAwsSecretManagerConnectorCredentialArrayOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialArrayOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialArray []GetAwsSecretManagerConnectorCredentialInput
+
+func (GetAwsSecretManagerConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredential)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialArray) ToGetAwsSecretManagerConnectorCredentialArrayOutput() GetAwsSecretManagerConnectorCredentialArrayOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialArray) ToGetAwsSecretManagerConnectorCredentialArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialArrayOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredential)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOutput) ToGetAwsSecretManagerConnectorCredentialOutput() GetAwsSecretManagerConnectorCredentialOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOutput) ToGetAwsSecretManagerConnectorCredentialOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOutput) AssumeRoles() GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialAssumeRole {
+		return v.AssumeRoles
+	}).(GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput)
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOutput) InheritFromDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) bool { return v.InheritFromDelegate }).(pulumi.BoolOutput)
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOutput) Manuals() GetAwsSecretManagerConnectorCredentialManualArrayOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialManual {
+		return v.Manuals
+	}).(GetAwsSecretManagerConnectorCredentialManualArrayOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredential)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialArrayOutput) ToGetAwsSecretManagerConnectorCredentialArrayOutput() GetAwsSecretManagerConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialArrayOutput) ToGetAwsSecretManagerConnectorCredentialArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetAwsSecretManagerConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsSecretManagerConnectorCredential {
+		return vs[0].([]GetAwsSecretManagerConnectorCredential)[vs[1].(int)]
+	}).(GetAwsSecretManagerConnectorCredentialOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialAssumeRole struct {
+	Duration   int    `pulumi:"duration"`
+	ExternalId string `pulumi:"externalId"`
+	RoleArn    string `pulumi:"roleArn"`
+}
+
+// GetAwsSecretManagerConnectorCredentialAssumeRoleInput is an input type that accepts GetAwsSecretManagerConnectorCredentialAssumeRoleArgs and GetAwsSecretManagerConnectorCredentialAssumeRoleOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialAssumeRoleInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialAssumeRoleArgs{...}
+type GetAwsSecretManagerConnectorCredentialAssumeRoleInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleOutput
+	ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialAssumeRoleArgs struct {
+	Duration   pulumi.IntInput    `pulumi:"duration"`
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetAwsSecretManagerConnectorCredentialAssumeRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialAssumeRoleArgs) ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialAssumeRoleArgs) ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialAssumeRoleOutput)
+}
+
+// GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput is an input type that accepts GetAwsSecretManagerConnectorCredentialAssumeRoleArray and GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialAssumeRoleArray{ GetAwsSecretManagerConnectorCredentialAssumeRoleArgs{...} }
+type GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput
+	ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialAssumeRoleArray []GetAwsSecretManagerConnectorCredentialAssumeRoleInput
+
+func (GetAwsSecretManagerConnectorCredentialAssumeRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialAssumeRoleArray) ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialAssumeRoleArray) ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialAssumeRoleOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ToGetAwsSecretManagerConnectorCredentialAssumeRoleOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialAssumeRole)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput) ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput() GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput) ToGetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput) Index(i pulumi.IntInput) GetAwsSecretManagerConnectorCredentialAssumeRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsSecretManagerConnectorCredentialAssumeRole {
+		return vs[0].([]GetAwsSecretManagerConnectorCredentialAssumeRole)[vs[1].(int)]
+	}).(GetAwsSecretManagerConnectorCredentialAssumeRoleOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialManual struct {
+	AccessKeyRef string `pulumi:"accessKeyRef"`
+	SecretKeyRef string `pulumi:"secretKeyRef"`
+}
+
+// GetAwsSecretManagerConnectorCredentialManualInput is an input type that accepts GetAwsSecretManagerConnectorCredentialManualArgs and GetAwsSecretManagerConnectorCredentialManualOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialManualInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialManualArgs{...}
+type GetAwsSecretManagerConnectorCredentialManualInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialManualOutput() GetAwsSecretManagerConnectorCredentialManualOutput
+	ToGetAwsSecretManagerConnectorCredentialManualOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialManualOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialManualArgs struct {
+	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+}
+
+func (GetAwsSecretManagerConnectorCredentialManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManual)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialManualArgs) ToGetAwsSecretManagerConnectorCredentialManualOutput() GetAwsSecretManagerConnectorCredentialManualOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialManualOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialManualArgs) ToGetAwsSecretManagerConnectorCredentialManualOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialManualOutput)
+}
+
+// GetAwsSecretManagerConnectorCredentialManualArrayInput is an input type that accepts GetAwsSecretManagerConnectorCredentialManualArray and GetAwsSecretManagerConnectorCredentialManualArrayOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialManualArrayInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialManualArray{ GetAwsSecretManagerConnectorCredentialManualArgs{...} }
+type GetAwsSecretManagerConnectorCredentialManualArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialManualArrayOutput() GetAwsSecretManagerConnectorCredentialManualArrayOutput
+	ToGetAwsSecretManagerConnectorCredentialManualArrayOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialManualArrayOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialManualArray []GetAwsSecretManagerConnectorCredentialManualInput
+
+func (GetAwsSecretManagerConnectorCredentialManualArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialManual)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialManualArray) ToGetAwsSecretManagerConnectorCredentialManualArrayOutput() GetAwsSecretManagerConnectorCredentialManualArrayOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialManualArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialManualArray) ToGetAwsSecretManagerConnectorCredentialManualArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialManualArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialManualArrayOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialManualOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManual)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualOutput) ToGetAwsSecretManagerConnectorCredentialManualOutput() GetAwsSecretManagerConnectorCredentialManualOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualOutput) ToGetAwsSecretManagerConnectorCredentialManualOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialManualOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualOutput) AccessKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialManualArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialManualArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialManual)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) ToGetAwsSecretManagerConnectorCredentialManualArrayOutput() GetAwsSecretManagerConnectorCredentialManualArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) ToGetAwsSecretManagerConnectorCredentialManualArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialManualArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) Index(i pulumi.IntInput) GetAwsSecretManagerConnectorCredentialManualOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsSecretManagerConnectorCredentialManual {
+		return vs[0].([]GetAwsSecretManagerConnectorCredentialManual)[vs[1].(int)]
+	}).(GetAwsSecretManagerConnectorCredentialManualOutput)
+}
+
+type GetBitbucketConnectorApiAuthentication struct {
+	TokenRef    string `pulumi:"tokenRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetBitbucketConnectorApiAuthenticationInput is an input type that accepts GetBitbucketConnectorApiAuthenticationArgs and GetBitbucketConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorApiAuthenticationInput` via:
+//
+//	GetBitbucketConnectorApiAuthenticationArgs{...}
+type GetBitbucketConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorApiAuthenticationOutput() GetBitbucketConnectorApiAuthenticationOutput
+	ToGetBitbucketConnectorApiAuthenticationOutputWithContext(context.Context) GetBitbucketConnectorApiAuthenticationOutput
+}
+
+type GetBitbucketConnectorApiAuthenticationArgs struct {
+	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetBitbucketConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorApiAuthenticationArgs) ToGetBitbucketConnectorApiAuthenticationOutput() GetBitbucketConnectorApiAuthenticationOutput {
+	return i.ToGetBitbucketConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorApiAuthenticationArgs) ToGetBitbucketConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetBitbucketConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorApiAuthenticationOutput)
+}
+
+// GetBitbucketConnectorApiAuthenticationArrayInput is an input type that accepts GetBitbucketConnectorApiAuthenticationArray and GetBitbucketConnectorApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorApiAuthenticationArrayInput` via:
+//
+//	GetBitbucketConnectorApiAuthenticationArray{ GetBitbucketConnectorApiAuthenticationArgs{...} }
+type GetBitbucketConnectorApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorApiAuthenticationArrayOutput() GetBitbucketConnectorApiAuthenticationArrayOutput
+	ToGetBitbucketConnectorApiAuthenticationArrayOutputWithContext(context.Context) GetBitbucketConnectorApiAuthenticationArrayOutput
+}
+
+type GetBitbucketConnectorApiAuthenticationArray []GetBitbucketConnectorApiAuthenticationInput
+
+func (GetBitbucketConnectorApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorApiAuthenticationArray) ToGetBitbucketConnectorApiAuthenticationArrayOutput() GetBitbucketConnectorApiAuthenticationArrayOutput {
+	return i.ToGetBitbucketConnectorApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorApiAuthenticationArray) ToGetBitbucketConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorApiAuthenticationArrayOutput)
+}
+
+type GetBitbucketConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorApiAuthenticationOutput) ToGetBitbucketConnectorApiAuthenticationOutput() GetBitbucketConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorApiAuthenticationOutput) ToGetBitbucketConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetBitbucketConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+func (o GetBitbucketConnectorApiAuthenticationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetBitbucketConnectorApiAuthenticationOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetBitbucketConnectorApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorApiAuthenticationArrayOutput) ToGetBitbucketConnectorApiAuthenticationArrayOutput() GetBitbucketConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorApiAuthenticationArrayOutput) ToGetBitbucketConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInput) GetBitbucketConnectorApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBitbucketConnectorApiAuthentication {
+		return vs[0].([]GetBitbucketConnectorApiAuthentication)[vs[1].(int)]
+	}).(GetBitbucketConnectorApiAuthenticationOutput)
+}
+
+type GetBitbucketConnectorCredential struct {
+	Https []GetBitbucketConnectorCredentialHttp `pulumi:"https"`
+	Sshes []GetBitbucketConnectorCredentialSsh  `pulumi:"sshes"`
+}
+
+// GetBitbucketConnectorCredentialInput is an input type that accepts GetBitbucketConnectorCredentialArgs and GetBitbucketConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialInput` via:
+//
+//	GetBitbucketConnectorCredentialArgs{...}
+type GetBitbucketConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialOutput() GetBitbucketConnectorCredentialOutput
+	ToGetBitbucketConnectorCredentialOutputWithContext(context.Context) GetBitbucketConnectorCredentialOutput
+}
+
+type GetBitbucketConnectorCredentialArgs struct {
+	Https GetBitbucketConnectorCredentialHttpArrayInput `pulumi:"https"`
+	Sshes GetBitbucketConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+}
+
+func (GetBitbucketConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredential)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialArgs) ToGetBitbucketConnectorCredentialOutput() GetBitbucketConnectorCredentialOutput {
+	return i.ToGetBitbucketConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialArgs) ToGetBitbucketConnectorCredentialOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialOutput)
+}
+
+// GetBitbucketConnectorCredentialArrayInput is an input type that accepts GetBitbucketConnectorCredentialArray and GetBitbucketConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialArrayInput` via:
+//
+//	GetBitbucketConnectorCredentialArray{ GetBitbucketConnectorCredentialArgs{...} }
+type GetBitbucketConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialArrayOutput() GetBitbucketConnectorCredentialArrayOutput
+	ToGetBitbucketConnectorCredentialArrayOutputWithContext(context.Context) GetBitbucketConnectorCredentialArrayOutput
+}
+
+type GetBitbucketConnectorCredentialArray []GetBitbucketConnectorCredentialInput
+
+func (GetBitbucketConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredential)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialArray) ToGetBitbucketConnectorCredentialArrayOutput() GetBitbucketConnectorCredentialArrayOutput {
+	return i.ToGetBitbucketConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialArray) ToGetBitbucketConnectorCredentialArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialArrayOutput)
+}
+
+type GetBitbucketConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredential)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialOutput) ToGetBitbucketConnectorCredentialOutput() GetBitbucketConnectorCredentialOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialOutput) ToGetBitbucketConnectorCredentialOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialOutput) Https() GetBitbucketConnectorCredentialHttpArrayOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredential) []GetBitbucketConnectorCredentialHttp { return v.Https }).(GetBitbucketConnectorCredentialHttpArrayOutput)
+}
+
+func (o GetBitbucketConnectorCredentialOutput) Sshes() GetBitbucketConnectorCredentialSshArrayOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredential) []GetBitbucketConnectorCredentialSsh { return v.Sshes }).(GetBitbucketConnectorCredentialSshArrayOutput)
+}
+
+type GetBitbucketConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredential)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialArrayOutput) ToGetBitbucketConnectorCredentialArrayOutput() GetBitbucketConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialArrayOutput) ToGetBitbucketConnectorCredentialArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetBitbucketConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBitbucketConnectorCredential {
+		return vs[0].([]GetBitbucketConnectorCredential)[vs[1].(int)]
+	}).(GetBitbucketConnectorCredentialOutput)
+}
+
+type GetBitbucketConnectorCredentialHttp struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetBitbucketConnectorCredentialHttpInput is an input type that accepts GetBitbucketConnectorCredentialHttpArgs and GetBitbucketConnectorCredentialHttpOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialHttpInput` via:
+//
+//	GetBitbucketConnectorCredentialHttpArgs{...}
+type GetBitbucketConnectorCredentialHttpInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialHttpOutput() GetBitbucketConnectorCredentialHttpOutput
+	ToGetBitbucketConnectorCredentialHttpOutputWithContext(context.Context) GetBitbucketConnectorCredentialHttpOutput
+}
+
+type GetBitbucketConnectorCredentialHttpArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetBitbucketConnectorCredentialHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialHttpArgs) ToGetBitbucketConnectorCredentialHttpOutput() GetBitbucketConnectorCredentialHttpOutput {
+	return i.ToGetBitbucketConnectorCredentialHttpOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialHttpArgs) ToGetBitbucketConnectorCredentialHttpOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialHttpOutput)
+}
+
+// GetBitbucketConnectorCredentialHttpArrayInput is an input type that accepts GetBitbucketConnectorCredentialHttpArray and GetBitbucketConnectorCredentialHttpArrayOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialHttpArrayInput` via:
+//
+//	GetBitbucketConnectorCredentialHttpArray{ GetBitbucketConnectorCredentialHttpArgs{...} }
+type GetBitbucketConnectorCredentialHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialHttpArrayOutput() GetBitbucketConnectorCredentialHttpArrayOutput
+	ToGetBitbucketConnectorCredentialHttpArrayOutputWithContext(context.Context) GetBitbucketConnectorCredentialHttpArrayOutput
+}
+
+type GetBitbucketConnectorCredentialHttpArray []GetBitbucketConnectorCredentialHttpInput
+
+func (GetBitbucketConnectorCredentialHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialHttpArray) ToGetBitbucketConnectorCredentialHttpArrayOutput() GetBitbucketConnectorCredentialHttpArrayOutput {
+	return i.ToGetBitbucketConnectorCredentialHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialHttpArray) ToGetBitbucketConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialHttpArrayOutput)
+}
+
+type GetBitbucketConnectorCredentialHttpOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialHttpOutput) ToGetBitbucketConnectorCredentialHttpOutput() GetBitbucketConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialHttpOutput) ToGetBitbucketConnectorCredentialHttpOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetBitbucketConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetBitbucketConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetBitbucketConnectorCredentialHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialHttpArrayOutput) ToGetBitbucketConnectorCredentialHttpArrayOutput() GetBitbucketConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialHttpArrayOutput) ToGetBitbucketConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetBitbucketConnectorCredentialHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBitbucketConnectorCredentialHttp {
+		return vs[0].([]GetBitbucketConnectorCredentialHttp)[vs[1].(int)]
+	}).(GetBitbucketConnectorCredentialHttpOutput)
+}
+
+type GetBitbucketConnectorCredentialSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GetBitbucketConnectorCredentialSshInput is an input type that accepts GetBitbucketConnectorCredentialSshArgs and GetBitbucketConnectorCredentialSshOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialSshInput` via:
+//
+//	GetBitbucketConnectorCredentialSshArgs{...}
+type GetBitbucketConnectorCredentialSshInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialSshOutput() GetBitbucketConnectorCredentialSshOutput
+	ToGetBitbucketConnectorCredentialSshOutputWithContext(context.Context) GetBitbucketConnectorCredentialSshOutput
+}
+
+type GetBitbucketConnectorCredentialSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GetBitbucketConnectorCredentialSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialSshArgs) ToGetBitbucketConnectorCredentialSshOutput() GetBitbucketConnectorCredentialSshOutput {
+	return i.ToGetBitbucketConnectorCredentialSshOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialSshArgs) ToGetBitbucketConnectorCredentialSshOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialSshOutput)
+}
+
+// GetBitbucketConnectorCredentialSshArrayInput is an input type that accepts GetBitbucketConnectorCredentialSshArray and GetBitbucketConnectorCredentialSshArrayOutput values.
+// You can construct a concrete instance of `GetBitbucketConnectorCredentialSshArrayInput` via:
+//
+//	GetBitbucketConnectorCredentialSshArray{ GetBitbucketConnectorCredentialSshArgs{...} }
+type GetBitbucketConnectorCredentialSshArrayInput interface {
+	pulumi.Input
+
+	ToGetBitbucketConnectorCredentialSshArrayOutput() GetBitbucketConnectorCredentialSshArrayOutput
+	ToGetBitbucketConnectorCredentialSshArrayOutputWithContext(context.Context) GetBitbucketConnectorCredentialSshArrayOutput
+}
+
+type GetBitbucketConnectorCredentialSshArray []GetBitbucketConnectorCredentialSshInput
+
+func (GetBitbucketConnectorCredentialSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetBitbucketConnectorCredentialSshArray) ToGetBitbucketConnectorCredentialSshArrayOutput() GetBitbucketConnectorCredentialSshArrayOutput {
+	return i.ToGetBitbucketConnectorCredentialSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetBitbucketConnectorCredentialSshArray) ToGetBitbucketConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBitbucketConnectorCredentialSshArrayOutput)
+}
+
+type GetBitbucketConnectorCredentialSshOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBitbucketConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialSshOutput) ToGetBitbucketConnectorCredentialSshOutput() GetBitbucketConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialSshOutput) ToGetBitbucketConnectorCredentialSshOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBitbucketConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GetBitbucketConnectorCredentialSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBitbucketConnectorCredentialSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBitbucketConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetBitbucketConnectorCredentialSshArrayOutput) ToGetBitbucketConnectorCredentialSshArrayOutput() GetBitbucketConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialSshArrayOutput) ToGetBitbucketConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetBitbucketConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetBitbucketConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) GetBitbucketConnectorCredentialSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBitbucketConnectorCredentialSsh {
+		return vs[0].([]GetBitbucketConnectorCredentialSsh)[vs[1].(int)]
+	}).(GetBitbucketConnectorCredentialSshOutput)
+}
+
+type GetDockerConnectorCredential struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetDockerConnectorCredentialInput is an input type that accepts GetDockerConnectorCredentialArgs and GetDockerConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetDockerConnectorCredentialInput` via:
+//
+//	GetDockerConnectorCredentialArgs{...}
+type GetDockerConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetDockerConnectorCredentialOutput() GetDockerConnectorCredentialOutput
+	ToGetDockerConnectorCredentialOutputWithContext(context.Context) GetDockerConnectorCredentialOutput
+}
+
+type GetDockerConnectorCredentialArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetDockerConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDockerConnectorCredential)(nil)).Elem()
+}
+
+func (i GetDockerConnectorCredentialArgs) ToGetDockerConnectorCredentialOutput() GetDockerConnectorCredentialOutput {
+	return i.ToGetDockerConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetDockerConnectorCredentialArgs) ToGetDockerConnectorCredentialOutputWithContext(ctx context.Context) GetDockerConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDockerConnectorCredentialOutput)
+}
+
+// GetDockerConnectorCredentialArrayInput is an input type that accepts GetDockerConnectorCredentialArray and GetDockerConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetDockerConnectorCredentialArrayInput` via:
+//
+//	GetDockerConnectorCredentialArray{ GetDockerConnectorCredentialArgs{...} }
+type GetDockerConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetDockerConnectorCredentialArrayOutput() GetDockerConnectorCredentialArrayOutput
+	ToGetDockerConnectorCredentialArrayOutputWithContext(context.Context) GetDockerConnectorCredentialArrayOutput
+}
+
+type GetDockerConnectorCredentialArray []GetDockerConnectorCredentialInput
+
+func (GetDockerConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDockerConnectorCredential)(nil)).Elem()
+}
+
+func (i GetDockerConnectorCredentialArray) ToGetDockerConnectorCredentialArrayOutput() GetDockerConnectorCredentialArrayOutput {
+	return i.ToGetDockerConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetDockerConnectorCredentialArray) ToGetDockerConnectorCredentialArrayOutputWithContext(ctx context.Context) GetDockerConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDockerConnectorCredentialArrayOutput)
+}
+
+type GetDockerConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetDockerConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDockerConnectorCredential)(nil)).Elem()
+}
+
+func (o GetDockerConnectorCredentialOutput) ToGetDockerConnectorCredentialOutput() GetDockerConnectorCredentialOutput {
+	return o
+}
+
+func (o GetDockerConnectorCredentialOutput) ToGetDockerConnectorCredentialOutputWithContext(ctx context.Context) GetDockerConnectorCredentialOutput {
+	return o
+}
+
+func (o GetDockerConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetDockerConnectorCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetDockerConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetDockerConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDockerConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDockerConnectorCredential)(nil)).Elem()
+}
+
+func (o GetDockerConnectorCredentialArrayOutput) ToGetDockerConnectorCredentialArrayOutput() GetDockerConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetDockerConnectorCredentialArrayOutput) ToGetDockerConnectorCredentialArrayOutputWithContext(ctx context.Context) GetDockerConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetDockerConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetDockerConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDockerConnectorCredential {
+		return vs[0].([]GetDockerConnectorCredential)[vs[1].(int)]
+	}).(GetDockerConnectorCredentialOutput)
+}
+
+type GetGcpConnectorInheritFromDelegate struct {
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GetGcpConnectorInheritFromDelegateInput is an input type that accepts GetGcpConnectorInheritFromDelegateArgs and GetGcpConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `GetGcpConnectorInheritFromDelegateInput` via:
+//
+//	GetGcpConnectorInheritFromDelegateArgs{...}
+type GetGcpConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorInheritFromDelegateOutput() GetGcpConnectorInheritFromDelegateOutput
+	ToGetGcpConnectorInheritFromDelegateOutputWithContext(context.Context) GetGcpConnectorInheritFromDelegateOutput
+}
+
+type GetGcpConnectorInheritFromDelegateArgs struct {
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GetGcpConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetGcpConnectorInheritFromDelegateArgs) ToGetGcpConnectorInheritFromDelegateOutput() GetGcpConnectorInheritFromDelegateOutput {
+	return i.ToGetGcpConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorInheritFromDelegateArgs) ToGetGcpConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetGcpConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorInheritFromDelegateOutput)
+}
+
+// GetGcpConnectorInheritFromDelegateArrayInput is an input type that accepts GetGcpConnectorInheritFromDelegateArray and GetGcpConnectorInheritFromDelegateArrayOutput values.
+// You can construct a concrete instance of `GetGcpConnectorInheritFromDelegateArrayInput` via:
+//
+//	GetGcpConnectorInheritFromDelegateArray{ GetGcpConnectorInheritFromDelegateArgs{...} }
+type GetGcpConnectorInheritFromDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorInheritFromDelegateArrayOutput() GetGcpConnectorInheritFromDelegateArrayOutput
+	ToGetGcpConnectorInheritFromDelegateArrayOutputWithContext(context.Context) GetGcpConnectorInheritFromDelegateArrayOutput
+}
+
+type GetGcpConnectorInheritFromDelegateArray []GetGcpConnectorInheritFromDelegateInput
+
+func (GetGcpConnectorInheritFromDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetGcpConnectorInheritFromDelegateArray) ToGetGcpConnectorInheritFromDelegateArrayOutput() GetGcpConnectorInheritFromDelegateArrayOutput {
+	return i.ToGetGcpConnectorInheritFromDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorInheritFromDelegateArray) ToGetGcpConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetGcpConnectorInheritFromDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorInheritFromDelegateArrayOutput)
+}
+
+type GetGcpConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetGcpConnectorInheritFromDelegateOutput) ToGetGcpConnectorInheritFromDelegateOutput() GetGcpConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetGcpConnectorInheritFromDelegateOutput) ToGetGcpConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetGcpConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetGcpConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGcpConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GetGcpConnectorInheritFromDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorInheritFromDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetGcpConnectorInheritFromDelegateArrayOutput) ToGetGcpConnectorInheritFromDelegateArrayOutput() GetGcpConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorInheritFromDelegateArrayOutput) ToGetGcpConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetGcpConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) GetGcpConnectorInheritFromDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpConnectorInheritFromDelegate {
+		return vs[0].([]GetGcpConnectorInheritFromDelegate)[vs[1].(int)]
+	}).(GetGcpConnectorInheritFromDelegateOutput)
+}
+
+type GetGcpConnectorManual struct {
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	SecretKeyRef      string   `pulumi:"secretKeyRef"`
+}
+
+// GetGcpConnectorManualInput is an input type that accepts GetGcpConnectorManualArgs and GetGcpConnectorManualOutput values.
+// You can construct a concrete instance of `GetGcpConnectorManualInput` via:
+//
+//	GetGcpConnectorManualArgs{...}
+type GetGcpConnectorManualInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorManualOutput() GetGcpConnectorManualOutput
+	ToGetGcpConnectorManualOutputWithContext(context.Context) GetGcpConnectorManualOutput
+}
+
+type GetGcpConnectorManualArgs struct {
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	SecretKeyRef      pulumi.StringInput      `pulumi:"secretKeyRef"`
+}
+
+func (GetGcpConnectorManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorManual)(nil)).Elem()
+}
+
+func (i GetGcpConnectorManualArgs) ToGetGcpConnectorManualOutput() GetGcpConnectorManualOutput {
+	return i.ToGetGcpConnectorManualOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorManualArgs) ToGetGcpConnectorManualOutputWithContext(ctx context.Context) GetGcpConnectorManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorManualOutput)
+}
+
+// GetGcpConnectorManualArrayInput is an input type that accepts GetGcpConnectorManualArray and GetGcpConnectorManualArrayOutput values.
+// You can construct a concrete instance of `GetGcpConnectorManualArrayInput` via:
+//
+//	GetGcpConnectorManualArray{ GetGcpConnectorManualArgs{...} }
+type GetGcpConnectorManualArrayInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorManualArrayOutput() GetGcpConnectorManualArrayOutput
+	ToGetGcpConnectorManualArrayOutputWithContext(context.Context) GetGcpConnectorManualArrayOutput
+}
+
+type GetGcpConnectorManualArray []GetGcpConnectorManualInput
+
+func (GetGcpConnectorManualArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorManual)(nil)).Elem()
+}
+
+func (i GetGcpConnectorManualArray) ToGetGcpConnectorManualArrayOutput() GetGcpConnectorManualArrayOutput {
+	return i.ToGetGcpConnectorManualArrayOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorManualArray) ToGetGcpConnectorManualArrayOutputWithContext(ctx context.Context) GetGcpConnectorManualArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorManualArrayOutput)
+}
+
+type GetGcpConnectorManualOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorManual)(nil)).Elem()
+}
+
+func (o GetGcpConnectorManualOutput) ToGetGcpConnectorManualOutput() GetGcpConnectorManualOutput {
+	return o
+}
+
+func (o GetGcpConnectorManualOutput) ToGetGcpConnectorManualOutputWithContext(ctx context.Context) GetGcpConnectorManualOutput {
+	return o
+}
+
+func (o GetGcpConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGcpConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGcpConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+type GetGcpConnectorManualArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorManualArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorManual)(nil)).Elem()
+}
+
+func (o GetGcpConnectorManualArrayOutput) ToGetGcpConnectorManualArrayOutput() GetGcpConnectorManualArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorManualArrayOutput) ToGetGcpConnectorManualArrayOutputWithContext(ctx context.Context) GetGcpConnectorManualArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorManualArrayOutput) Index(i pulumi.IntInput) GetGcpConnectorManualOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpConnectorManual {
+		return vs[0].([]GetGcpConnectorManual)[vs[1].(int)]
+	}).(GetGcpConnectorManualOutput)
+}
+
+type GetGitConnectorCredential struct {
+	Https []GetGitConnectorCredentialHttp `pulumi:"https"`
+	Sshes []GetGitConnectorCredentialSsh  `pulumi:"sshes"`
+}
+
+// GetGitConnectorCredentialInput is an input type that accepts GetGitConnectorCredentialArgs and GetGitConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialInput` via:
+//
+//	GetGitConnectorCredentialArgs{...}
+type GetGitConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialOutput() GetGitConnectorCredentialOutput
+	ToGetGitConnectorCredentialOutputWithContext(context.Context) GetGitConnectorCredentialOutput
+}
+
+type GetGitConnectorCredentialArgs struct {
+	Https GetGitConnectorCredentialHttpArrayInput `pulumi:"https"`
+	Sshes GetGitConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+}
+
+func (GetGitConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialArgs) ToGetGitConnectorCredentialOutput() GetGitConnectorCredentialOutput {
+	return i.ToGetGitConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialArgs) ToGetGitConnectorCredentialOutputWithContext(ctx context.Context) GetGitConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialOutput)
+}
+
+// GetGitConnectorCredentialArrayInput is an input type that accepts GetGitConnectorCredentialArray and GetGitConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialArrayInput` via:
+//
+//	GetGitConnectorCredentialArray{ GetGitConnectorCredentialArgs{...} }
+type GetGitConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialArrayOutput() GetGitConnectorCredentialArrayOutput
+	ToGetGitConnectorCredentialArrayOutputWithContext(context.Context) GetGitConnectorCredentialArrayOutput
+}
+
+type GetGitConnectorCredentialArray []GetGitConnectorCredentialInput
+
+func (GetGitConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialArray) ToGetGitConnectorCredentialArrayOutput() GetGitConnectorCredentialArrayOutput {
+	return i.ToGetGitConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialArray) ToGetGitConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialArrayOutput)
+}
+
+type GetGitConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialOutput) ToGetGitConnectorCredentialOutput() GetGitConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialOutput) ToGetGitConnectorCredentialOutputWithContext(ctx context.Context) GetGitConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialOutput) Https() GetGitConnectorCredentialHttpArrayOutput {
+	return o.ApplyT(func(v GetGitConnectorCredential) []GetGitConnectorCredentialHttp { return v.Https }).(GetGitConnectorCredentialHttpArrayOutput)
+}
+
+func (o GetGitConnectorCredentialOutput) Sshes() GetGitConnectorCredentialSshArrayOutput {
+	return o.ApplyT(func(v GetGitConnectorCredential) []GetGitConnectorCredentialSsh { return v.Sshes }).(GetGitConnectorCredentialSshArrayOutput)
+}
+
+type GetGitConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialArrayOutput) ToGetGitConnectorCredentialArrayOutput() GetGitConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialArrayOutput) ToGetGitConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGitConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitConnectorCredential {
+		return vs[0].([]GetGitConnectorCredential)[vs[1].(int)]
+	}).(GetGitConnectorCredentialOutput)
+}
+
+type GetGitConnectorCredentialHttp struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetGitConnectorCredentialHttpInput is an input type that accepts GetGitConnectorCredentialHttpArgs and GetGitConnectorCredentialHttpOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialHttpInput` via:
+//
+//	GetGitConnectorCredentialHttpArgs{...}
+type GetGitConnectorCredentialHttpInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialHttpOutput() GetGitConnectorCredentialHttpOutput
+	ToGetGitConnectorCredentialHttpOutputWithContext(context.Context) GetGitConnectorCredentialHttpOutput
+}
+
+type GetGitConnectorCredentialHttpArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetGitConnectorCredentialHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialHttpArgs) ToGetGitConnectorCredentialHttpOutput() GetGitConnectorCredentialHttpOutput {
+	return i.ToGetGitConnectorCredentialHttpOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialHttpArgs) ToGetGitConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGitConnectorCredentialHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialHttpOutput)
+}
+
+// GetGitConnectorCredentialHttpArrayInput is an input type that accepts GetGitConnectorCredentialHttpArray and GetGitConnectorCredentialHttpArrayOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialHttpArrayInput` via:
+//
+//	GetGitConnectorCredentialHttpArray{ GetGitConnectorCredentialHttpArgs{...} }
+type GetGitConnectorCredentialHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialHttpArrayOutput() GetGitConnectorCredentialHttpArrayOutput
+	ToGetGitConnectorCredentialHttpArrayOutputWithContext(context.Context) GetGitConnectorCredentialHttpArrayOutput
+}
+
+type GetGitConnectorCredentialHttpArray []GetGitConnectorCredentialHttpInput
+
+func (GetGitConnectorCredentialHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialHttpArray) ToGetGitConnectorCredentialHttpArrayOutput() GetGitConnectorCredentialHttpArrayOutput {
+	return i.ToGetGitConnectorCredentialHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialHttpArray) ToGetGitConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialHttpArrayOutput)
+}
+
+type GetGitConnectorCredentialHttpOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialHttpOutput) ToGetGitConnectorCredentialHttpOutput() GetGitConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialHttpOutput) ToGetGitConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGitConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetGitConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetGitConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetGitConnectorCredentialHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialHttpArrayOutput) ToGetGitConnectorCredentialHttpArrayOutput() GetGitConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialHttpArrayOutput) ToGetGitConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetGitConnectorCredentialHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitConnectorCredentialHttp {
+		return vs[0].([]GetGitConnectorCredentialHttp)[vs[1].(int)]
+	}).(GetGitConnectorCredentialHttpOutput)
+}
+
+type GetGitConnectorCredentialSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GetGitConnectorCredentialSshInput is an input type that accepts GetGitConnectorCredentialSshArgs and GetGitConnectorCredentialSshOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialSshInput` via:
+//
+//	GetGitConnectorCredentialSshArgs{...}
+type GetGitConnectorCredentialSshInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialSshOutput() GetGitConnectorCredentialSshOutput
+	ToGetGitConnectorCredentialSshOutputWithContext(context.Context) GetGitConnectorCredentialSshOutput
+}
+
+type GetGitConnectorCredentialSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GetGitConnectorCredentialSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialSshArgs) ToGetGitConnectorCredentialSshOutput() GetGitConnectorCredentialSshOutput {
+	return i.ToGetGitConnectorCredentialSshOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialSshArgs) ToGetGitConnectorCredentialSshOutputWithContext(ctx context.Context) GetGitConnectorCredentialSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialSshOutput)
+}
+
+// GetGitConnectorCredentialSshArrayInput is an input type that accepts GetGitConnectorCredentialSshArray and GetGitConnectorCredentialSshArrayOutput values.
+// You can construct a concrete instance of `GetGitConnectorCredentialSshArrayInput` via:
+//
+//	GetGitConnectorCredentialSshArray{ GetGitConnectorCredentialSshArgs{...} }
+type GetGitConnectorCredentialSshArrayInput interface {
+	pulumi.Input
+
+	ToGetGitConnectorCredentialSshArrayOutput() GetGitConnectorCredentialSshArrayOutput
+	ToGetGitConnectorCredentialSshArrayOutputWithContext(context.Context) GetGitConnectorCredentialSshArrayOutput
+}
+
+type GetGitConnectorCredentialSshArray []GetGitConnectorCredentialSshInput
+
+func (GetGitConnectorCredentialSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGitConnectorCredentialSshArray) ToGetGitConnectorCredentialSshArrayOutput() GetGitConnectorCredentialSshArrayOutput {
+	return i.ToGetGitConnectorCredentialSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitConnectorCredentialSshArray) ToGetGitConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitConnectorCredentialSshArrayOutput)
+}
+
+type GetGitConnectorCredentialSshOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialSshOutput) ToGetGitConnectorCredentialSshOutput() GetGitConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialSshOutput) ToGetGitConnectorCredentialSshOutputWithContext(ctx context.Context) GetGitConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GetGitConnectorCredentialSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitConnectorCredentialSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGitConnectorCredentialSshArrayOutput) ToGetGitConnectorCredentialSshArrayOutput() GetGitConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialSshArrayOutput) ToGetGitConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGitConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGitConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) GetGitConnectorCredentialSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitConnectorCredentialSsh {
+		return vs[0].([]GetGitConnectorCredentialSsh)[vs[1].(int)]
+	}).(GetGitConnectorCredentialSshOutput)
+}
+
+type GetGithubConnectorApiAuthentication struct {
+	GithubApps []GetGithubConnectorApiAuthenticationGithubApp `pulumi:"githubApps"`
+	TokenRef   string                                         `pulumi:"tokenRef"`
+}
+
+// GetGithubConnectorApiAuthenticationInput is an input type that accepts GetGithubConnectorApiAuthenticationArgs and GetGithubConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `GetGithubConnectorApiAuthenticationInput` via:
+//
+//	GetGithubConnectorApiAuthenticationArgs{...}
+type GetGithubConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorApiAuthenticationOutput() GetGithubConnectorApiAuthenticationOutput
+	ToGetGithubConnectorApiAuthenticationOutputWithContext(context.Context) GetGithubConnectorApiAuthenticationOutput
+}
+
+type GetGithubConnectorApiAuthenticationArgs struct {
+	GithubApps GetGithubConnectorApiAuthenticationGithubAppArrayInput `pulumi:"githubApps"`
+	TokenRef   pulumi.StringInput                                     `pulumi:"tokenRef"`
+}
+
+func (GetGithubConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetGithubConnectorApiAuthenticationArgs) ToGetGithubConnectorApiAuthenticationOutput() GetGithubConnectorApiAuthenticationOutput {
+	return i.ToGetGithubConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorApiAuthenticationArgs) ToGetGithubConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorApiAuthenticationOutput)
+}
+
+// GetGithubConnectorApiAuthenticationArrayInput is an input type that accepts GetGithubConnectorApiAuthenticationArray and GetGithubConnectorApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetGithubConnectorApiAuthenticationArrayInput` via:
+//
+//	GetGithubConnectorApiAuthenticationArray{ GetGithubConnectorApiAuthenticationArgs{...} }
+type GetGithubConnectorApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorApiAuthenticationArrayOutput() GetGithubConnectorApiAuthenticationArrayOutput
+	ToGetGithubConnectorApiAuthenticationArrayOutputWithContext(context.Context) GetGithubConnectorApiAuthenticationArrayOutput
+}
+
+type GetGithubConnectorApiAuthenticationArray []GetGithubConnectorApiAuthenticationInput
+
+func (GetGithubConnectorApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetGithubConnectorApiAuthenticationArray) ToGetGithubConnectorApiAuthenticationArrayOutput() GetGithubConnectorApiAuthenticationArrayOutput {
+	return i.ToGetGithubConnectorApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorApiAuthenticationArray) ToGetGithubConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorApiAuthenticationArrayOutput)
+}
+
+type GetGithubConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetGithubConnectorApiAuthenticationOutput) ToGetGithubConnectorApiAuthenticationOutput() GetGithubConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationOutput) ToGetGithubConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationOutput) GithubApps() GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
+	return o.ApplyT(func(v GetGithubConnectorApiAuthentication) []GetGithubConnectorApiAuthenticationGithubApp {
+		return v.GithubApps
+	}).(GetGithubConnectorApiAuthenticationGithubAppArrayOutput)
+}
+
+func (o GetGithubConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetGithubConnectorApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetGithubConnectorApiAuthenticationArrayOutput) ToGetGithubConnectorApiAuthenticationArrayOutput() GetGithubConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationArrayOutput) ToGetGithubConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInput) GetGithubConnectorApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGithubConnectorApiAuthentication {
+		return vs[0].([]GetGithubConnectorApiAuthentication)[vs[1].(int)]
+	}).(GetGithubConnectorApiAuthenticationOutput)
+}
+
+type GetGithubConnectorApiAuthenticationGithubApp struct {
+	ApplicationId  string `pulumi:"applicationId"`
+	InstallationId string `pulumi:"installationId"`
+	PrivateKeyRef  string `pulumi:"privateKeyRef"`
+}
+
+// GetGithubConnectorApiAuthenticationGithubAppInput is an input type that accepts GetGithubConnectorApiAuthenticationGithubAppArgs and GetGithubConnectorApiAuthenticationGithubAppOutput values.
+// You can construct a concrete instance of `GetGithubConnectorApiAuthenticationGithubAppInput` via:
+//
+//	GetGithubConnectorApiAuthenticationGithubAppArgs{...}
+type GetGithubConnectorApiAuthenticationGithubAppInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorApiAuthenticationGithubAppOutput() GetGithubConnectorApiAuthenticationGithubAppOutput
+	ToGetGithubConnectorApiAuthenticationGithubAppOutputWithContext(context.Context) GetGithubConnectorApiAuthenticationGithubAppOutput
+}
+
+type GetGithubConnectorApiAuthenticationGithubAppArgs struct {
+	ApplicationId  pulumi.StringInput `pulumi:"applicationId"`
+	InstallationId pulumi.StringInput `pulumi:"installationId"`
+	PrivateKeyRef  pulumi.StringInput `pulumi:"privateKeyRef"`
+}
+
+func (GetGithubConnectorApiAuthenticationGithubAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (i GetGithubConnectorApiAuthenticationGithubAppArgs) ToGetGithubConnectorApiAuthenticationGithubAppOutput() GetGithubConnectorApiAuthenticationGithubAppOutput {
+	return i.ToGetGithubConnectorApiAuthenticationGithubAppOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorApiAuthenticationGithubAppArgs) ToGetGithubConnectorApiAuthenticationGithubAppOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationGithubAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorApiAuthenticationGithubAppOutput)
+}
+
+// GetGithubConnectorApiAuthenticationGithubAppArrayInput is an input type that accepts GetGithubConnectorApiAuthenticationGithubAppArray and GetGithubConnectorApiAuthenticationGithubAppArrayOutput values.
+// You can construct a concrete instance of `GetGithubConnectorApiAuthenticationGithubAppArrayInput` via:
+//
+//	GetGithubConnectorApiAuthenticationGithubAppArray{ GetGithubConnectorApiAuthenticationGithubAppArgs{...} }
+type GetGithubConnectorApiAuthenticationGithubAppArrayInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorApiAuthenticationGithubAppArrayOutput() GetGithubConnectorApiAuthenticationGithubAppArrayOutput
+	ToGetGithubConnectorApiAuthenticationGithubAppArrayOutputWithContext(context.Context) GetGithubConnectorApiAuthenticationGithubAppArrayOutput
+}
+
+type GetGithubConnectorApiAuthenticationGithubAppArray []GetGithubConnectorApiAuthenticationGithubAppInput
+
+func (GetGithubConnectorApiAuthenticationGithubAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (i GetGithubConnectorApiAuthenticationGithubAppArray) ToGetGithubConnectorApiAuthenticationGithubAppArrayOutput() GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
+	return i.ToGetGithubConnectorApiAuthenticationGithubAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorApiAuthenticationGithubAppArray) ToGetGithubConnectorApiAuthenticationGithubAppArrayOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorApiAuthenticationGithubAppArrayOutput)
+}
+
+type GetGithubConnectorApiAuthenticationGithubAppOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorApiAuthenticationGithubAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ToGetGithubConnectorApiAuthenticationGithubAppOutput() GetGithubConnectorApiAuthenticationGithubAppOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ToGetGithubConnectorApiAuthenticationGithubAppOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationGithubAppOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppOutput) InstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.InstallationId }).(pulumi.StringOutput)
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppOutput) PrivateKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
+}
+
+type GetGithubConnectorApiAuthenticationGithubAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorApiAuthenticationGithubAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorApiAuthenticationGithubApp)(nil)).Elem()
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppArrayOutput) ToGetGithubConnectorApiAuthenticationGithubAppArrayOutput() GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppArrayOutput) ToGetGithubConnectorApiAuthenticationGithubAppArrayOutputWithContext(ctx context.Context) GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorApiAuthenticationGithubAppArrayOutput) Index(i pulumi.IntInput) GetGithubConnectorApiAuthenticationGithubAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGithubConnectorApiAuthenticationGithubApp {
+		return vs[0].([]GetGithubConnectorApiAuthenticationGithubApp)[vs[1].(int)]
+	}).(GetGithubConnectorApiAuthenticationGithubAppOutput)
+}
+
+type GetGithubConnectorCredential struct {
+	Https []GetGithubConnectorCredentialHttp `pulumi:"https"`
+	Sshes []GetGithubConnectorCredentialSsh  `pulumi:"sshes"`
+}
+
+// GetGithubConnectorCredentialInput is an input type that accepts GetGithubConnectorCredentialArgs and GetGithubConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialInput` via:
+//
+//	GetGithubConnectorCredentialArgs{...}
+type GetGithubConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialOutput() GetGithubConnectorCredentialOutput
+	ToGetGithubConnectorCredentialOutputWithContext(context.Context) GetGithubConnectorCredentialOutput
+}
+
+type GetGithubConnectorCredentialArgs struct {
+	Https GetGithubConnectorCredentialHttpArrayInput `pulumi:"https"`
+	Sshes GetGithubConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+}
+
+func (GetGithubConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialArgs) ToGetGithubConnectorCredentialOutput() GetGithubConnectorCredentialOutput {
+	return i.ToGetGithubConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialArgs) ToGetGithubConnectorCredentialOutputWithContext(ctx context.Context) GetGithubConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialOutput)
+}
+
+// GetGithubConnectorCredentialArrayInput is an input type that accepts GetGithubConnectorCredentialArray and GetGithubConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialArrayInput` via:
+//
+//	GetGithubConnectorCredentialArray{ GetGithubConnectorCredentialArgs{...} }
+type GetGithubConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialArrayOutput() GetGithubConnectorCredentialArrayOutput
+	ToGetGithubConnectorCredentialArrayOutputWithContext(context.Context) GetGithubConnectorCredentialArrayOutput
+}
+
+type GetGithubConnectorCredentialArray []GetGithubConnectorCredentialInput
+
+func (GetGithubConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialArray) ToGetGithubConnectorCredentialArrayOutput() GetGithubConnectorCredentialArrayOutput {
+	return i.ToGetGithubConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialArray) ToGetGithubConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialArrayOutput)
+}
+
+type GetGithubConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialOutput) ToGetGithubConnectorCredentialOutput() GetGithubConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialOutput) ToGetGithubConnectorCredentialOutputWithContext(ctx context.Context) GetGithubConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialOutput) Https() GetGithubConnectorCredentialHttpArrayOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredential) []GetGithubConnectorCredentialHttp { return v.Https }).(GetGithubConnectorCredentialHttpArrayOutput)
+}
+
+func (o GetGithubConnectorCredentialOutput) Sshes() GetGithubConnectorCredentialSshArrayOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredential) []GetGithubConnectorCredentialSsh { return v.Sshes }).(GetGithubConnectorCredentialSshArrayOutput)
+}
+
+type GetGithubConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialArrayOutput) ToGetGithubConnectorCredentialArrayOutput() GetGithubConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialArrayOutput) ToGetGithubConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGithubConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGithubConnectorCredential {
+		return vs[0].([]GetGithubConnectorCredential)[vs[1].(int)]
+	}).(GetGithubConnectorCredentialOutput)
+}
+
+type GetGithubConnectorCredentialHttp struct {
+	TokenRef    string `pulumi:"tokenRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetGithubConnectorCredentialHttpInput is an input type that accepts GetGithubConnectorCredentialHttpArgs and GetGithubConnectorCredentialHttpOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialHttpInput` via:
+//
+//	GetGithubConnectorCredentialHttpArgs{...}
+type GetGithubConnectorCredentialHttpInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialHttpOutput() GetGithubConnectorCredentialHttpOutput
+	ToGetGithubConnectorCredentialHttpOutputWithContext(context.Context) GetGithubConnectorCredentialHttpOutput
+}
+
+type GetGithubConnectorCredentialHttpArgs struct {
+	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetGithubConnectorCredentialHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialHttpArgs) ToGetGithubConnectorCredentialHttpOutput() GetGithubConnectorCredentialHttpOutput {
+	return i.ToGetGithubConnectorCredentialHttpOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialHttpArgs) ToGetGithubConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGithubConnectorCredentialHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialHttpOutput)
+}
+
+// GetGithubConnectorCredentialHttpArrayInput is an input type that accepts GetGithubConnectorCredentialHttpArray and GetGithubConnectorCredentialHttpArrayOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialHttpArrayInput` via:
+//
+//	GetGithubConnectorCredentialHttpArray{ GetGithubConnectorCredentialHttpArgs{...} }
+type GetGithubConnectorCredentialHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialHttpArrayOutput() GetGithubConnectorCredentialHttpArrayOutput
+	ToGetGithubConnectorCredentialHttpArrayOutputWithContext(context.Context) GetGithubConnectorCredentialHttpArrayOutput
+}
+
+type GetGithubConnectorCredentialHttpArray []GetGithubConnectorCredentialHttpInput
+
+func (GetGithubConnectorCredentialHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialHttpArray) ToGetGithubConnectorCredentialHttpArrayOutput() GetGithubConnectorCredentialHttpArrayOutput {
+	return i.ToGetGithubConnectorCredentialHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialHttpArray) ToGetGithubConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialHttpArrayOutput)
+}
+
+type GetGithubConnectorCredentialHttpOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialHttpOutput) ToGetGithubConnectorCredentialHttpOutput() GetGithubConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialHttpOutput) ToGetGithubConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGithubConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialHttpOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+func (o GetGithubConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetGithubConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetGithubConnectorCredentialHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialHttpArrayOutput) ToGetGithubConnectorCredentialHttpArrayOutput() GetGithubConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialHttpArrayOutput) ToGetGithubConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetGithubConnectorCredentialHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGithubConnectorCredentialHttp {
+		return vs[0].([]GetGithubConnectorCredentialHttp)[vs[1].(int)]
+	}).(GetGithubConnectorCredentialHttpOutput)
+}
+
+type GetGithubConnectorCredentialSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GetGithubConnectorCredentialSshInput is an input type that accepts GetGithubConnectorCredentialSshArgs and GetGithubConnectorCredentialSshOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialSshInput` via:
+//
+//	GetGithubConnectorCredentialSshArgs{...}
+type GetGithubConnectorCredentialSshInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialSshOutput() GetGithubConnectorCredentialSshOutput
+	ToGetGithubConnectorCredentialSshOutputWithContext(context.Context) GetGithubConnectorCredentialSshOutput
+}
+
+type GetGithubConnectorCredentialSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GetGithubConnectorCredentialSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialSshArgs) ToGetGithubConnectorCredentialSshOutput() GetGithubConnectorCredentialSshOutput {
+	return i.ToGetGithubConnectorCredentialSshOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialSshArgs) ToGetGithubConnectorCredentialSshOutputWithContext(ctx context.Context) GetGithubConnectorCredentialSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialSshOutput)
+}
+
+// GetGithubConnectorCredentialSshArrayInput is an input type that accepts GetGithubConnectorCredentialSshArray and GetGithubConnectorCredentialSshArrayOutput values.
+// You can construct a concrete instance of `GetGithubConnectorCredentialSshArrayInput` via:
+//
+//	GetGithubConnectorCredentialSshArray{ GetGithubConnectorCredentialSshArgs{...} }
+type GetGithubConnectorCredentialSshArrayInput interface {
+	pulumi.Input
+
+	ToGetGithubConnectorCredentialSshArrayOutput() GetGithubConnectorCredentialSshArrayOutput
+	ToGetGithubConnectorCredentialSshArrayOutputWithContext(context.Context) GetGithubConnectorCredentialSshArrayOutput
+}
+
+type GetGithubConnectorCredentialSshArray []GetGithubConnectorCredentialSshInput
+
+func (GetGithubConnectorCredentialSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGithubConnectorCredentialSshArray) ToGetGithubConnectorCredentialSshArrayOutput() GetGithubConnectorCredentialSshArrayOutput {
+	return i.ToGetGithubConnectorCredentialSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetGithubConnectorCredentialSshArray) ToGetGithubConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGithubConnectorCredentialSshArrayOutput)
+}
+
+type GetGithubConnectorCredentialSshOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGithubConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialSshOutput) ToGetGithubConnectorCredentialSshOutput() GetGithubConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialSshOutput) ToGetGithubConnectorCredentialSshOutputWithContext(ctx context.Context) GetGithubConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGithubConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GetGithubConnectorCredentialSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGithubConnectorCredentialSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGithubConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGithubConnectorCredentialSshArrayOutput) ToGetGithubConnectorCredentialSshArrayOutput() GetGithubConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialSshArrayOutput) ToGetGithubConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGithubConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGithubConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) GetGithubConnectorCredentialSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGithubConnectorCredentialSsh {
+		return vs[0].([]GetGithubConnectorCredentialSsh)[vs[1].(int)]
+	}).(GetGithubConnectorCredentialSshOutput)
+}
+
+type GetGitlabConnectorApiAuthentication struct {
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetGitlabConnectorApiAuthenticationInput is an input type that accepts GetGitlabConnectorApiAuthenticationArgs and GetGitlabConnectorApiAuthenticationOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorApiAuthenticationInput` via:
+//
+//	GetGitlabConnectorApiAuthenticationArgs{...}
+type GetGitlabConnectorApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorApiAuthenticationOutput() GetGitlabConnectorApiAuthenticationOutput
+	ToGetGitlabConnectorApiAuthenticationOutputWithContext(context.Context) GetGitlabConnectorApiAuthenticationOutput
+}
+
+type GetGitlabConnectorApiAuthenticationArgs struct {
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetGitlabConnectorApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorApiAuthenticationArgs) ToGetGitlabConnectorApiAuthenticationOutput() GetGitlabConnectorApiAuthenticationOutput {
+	return i.ToGetGitlabConnectorApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorApiAuthenticationArgs) ToGetGitlabConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetGitlabConnectorApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorApiAuthenticationOutput)
+}
+
+// GetGitlabConnectorApiAuthenticationArrayInput is an input type that accepts GetGitlabConnectorApiAuthenticationArray and GetGitlabConnectorApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorApiAuthenticationArrayInput` via:
+//
+//	GetGitlabConnectorApiAuthenticationArray{ GetGitlabConnectorApiAuthenticationArgs{...} }
+type GetGitlabConnectorApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorApiAuthenticationArrayOutput() GetGitlabConnectorApiAuthenticationArrayOutput
+	ToGetGitlabConnectorApiAuthenticationArrayOutputWithContext(context.Context) GetGitlabConnectorApiAuthenticationArrayOutput
+}
+
+type GetGitlabConnectorApiAuthenticationArray []GetGitlabConnectorApiAuthenticationInput
+
+func (GetGitlabConnectorApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorApiAuthenticationArray) ToGetGitlabConnectorApiAuthenticationArrayOutput() GetGitlabConnectorApiAuthenticationArrayOutput {
+	return i.ToGetGitlabConnectorApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorApiAuthenticationArray) ToGetGitlabConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetGitlabConnectorApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorApiAuthenticationArrayOutput)
+}
+
+type GetGitlabConnectorApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorApiAuthenticationOutput) ToGetGitlabConnectorApiAuthenticationOutput() GetGitlabConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetGitlabConnectorApiAuthenticationOutput) ToGetGitlabConnectorApiAuthenticationOutputWithContext(ctx context.Context) GetGitlabConnectorApiAuthenticationOutput {
+	return o
+}
+
+func (o GetGitlabConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetGitlabConnectorApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorApiAuthentication)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorApiAuthenticationArrayOutput) ToGetGitlabConnectorApiAuthenticationArrayOutput() GetGitlabConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorApiAuthenticationArrayOutput) ToGetGitlabConnectorApiAuthenticationArrayOutputWithContext(ctx context.Context) GetGitlabConnectorApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInput) GetGitlabConnectorApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitlabConnectorApiAuthentication {
+		return vs[0].([]GetGitlabConnectorApiAuthentication)[vs[1].(int)]
+	}).(GetGitlabConnectorApiAuthenticationOutput)
+}
+
+type GetGitlabConnectorCredential struct {
+	Https []GetGitlabConnectorCredentialHttp `pulumi:"https"`
+	Sshes []GetGitlabConnectorCredentialSsh  `pulumi:"sshes"`
+}
+
+// GetGitlabConnectorCredentialInput is an input type that accepts GetGitlabConnectorCredentialArgs and GetGitlabConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialInput` via:
+//
+//	GetGitlabConnectorCredentialArgs{...}
+type GetGitlabConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialOutput() GetGitlabConnectorCredentialOutput
+	ToGetGitlabConnectorCredentialOutputWithContext(context.Context) GetGitlabConnectorCredentialOutput
+}
+
+type GetGitlabConnectorCredentialArgs struct {
+	Https GetGitlabConnectorCredentialHttpArrayInput `pulumi:"https"`
+	Sshes GetGitlabConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+}
+
+func (GetGitlabConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialArgs) ToGetGitlabConnectorCredentialOutput() GetGitlabConnectorCredentialOutput {
+	return i.ToGetGitlabConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialArgs) ToGetGitlabConnectorCredentialOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialOutput)
+}
+
+// GetGitlabConnectorCredentialArrayInput is an input type that accepts GetGitlabConnectorCredentialArray and GetGitlabConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialArrayInput` via:
+//
+//	GetGitlabConnectorCredentialArray{ GetGitlabConnectorCredentialArgs{...} }
+type GetGitlabConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialArrayOutput() GetGitlabConnectorCredentialArrayOutput
+	ToGetGitlabConnectorCredentialArrayOutputWithContext(context.Context) GetGitlabConnectorCredentialArrayOutput
+}
+
+type GetGitlabConnectorCredentialArray []GetGitlabConnectorCredentialInput
+
+func (GetGitlabConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredential)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialArray) ToGetGitlabConnectorCredentialArrayOutput() GetGitlabConnectorCredentialArrayOutput {
+	return i.ToGetGitlabConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialArray) ToGetGitlabConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialArrayOutput)
+}
+
+type GetGitlabConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialOutput) ToGetGitlabConnectorCredentialOutput() GetGitlabConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialOutput) ToGetGitlabConnectorCredentialOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialOutput) Https() GetGitlabConnectorCredentialHttpArrayOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredential) []GetGitlabConnectorCredentialHttp { return v.Https }).(GetGitlabConnectorCredentialHttpArrayOutput)
+}
+
+func (o GetGitlabConnectorCredentialOutput) Sshes() GetGitlabConnectorCredentialSshArrayOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredential) []GetGitlabConnectorCredentialSsh { return v.Sshes }).(GetGitlabConnectorCredentialSshArrayOutput)
+}
+
+type GetGitlabConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredential)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialArrayOutput) ToGetGitlabConnectorCredentialArrayOutput() GetGitlabConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialArrayOutput) ToGetGitlabConnectorCredentialArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGitlabConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitlabConnectorCredential {
+		return vs[0].([]GetGitlabConnectorCredential)[vs[1].(int)]
+	}).(GetGitlabConnectorCredentialOutput)
+}
+
+type GetGitlabConnectorCredentialHttp struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	TokenRef    string `pulumi:"tokenRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetGitlabConnectorCredentialHttpInput is an input type that accepts GetGitlabConnectorCredentialHttpArgs and GetGitlabConnectorCredentialHttpOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialHttpInput` via:
+//
+//	GetGitlabConnectorCredentialHttpArgs{...}
+type GetGitlabConnectorCredentialHttpInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialHttpOutput() GetGitlabConnectorCredentialHttpOutput
+	ToGetGitlabConnectorCredentialHttpOutputWithContext(context.Context) GetGitlabConnectorCredentialHttpOutput
+}
+
+type GetGitlabConnectorCredentialHttpArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetGitlabConnectorCredentialHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialHttpArgs) ToGetGitlabConnectorCredentialHttpOutput() GetGitlabConnectorCredentialHttpOutput {
+	return i.ToGetGitlabConnectorCredentialHttpOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialHttpArgs) ToGetGitlabConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialHttpOutput)
+}
+
+// GetGitlabConnectorCredentialHttpArrayInput is an input type that accepts GetGitlabConnectorCredentialHttpArray and GetGitlabConnectorCredentialHttpArrayOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialHttpArrayInput` via:
+//
+//	GetGitlabConnectorCredentialHttpArray{ GetGitlabConnectorCredentialHttpArgs{...} }
+type GetGitlabConnectorCredentialHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialHttpArrayOutput() GetGitlabConnectorCredentialHttpArrayOutput
+	ToGetGitlabConnectorCredentialHttpArrayOutputWithContext(context.Context) GetGitlabConnectorCredentialHttpArrayOutput
+}
+
+type GetGitlabConnectorCredentialHttpArray []GetGitlabConnectorCredentialHttpInput
+
+func (GetGitlabConnectorCredentialHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialHttpArray) ToGetGitlabConnectorCredentialHttpArrayOutput() GetGitlabConnectorCredentialHttpArrayOutput {
+	return i.ToGetGitlabConnectorCredentialHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialHttpArray) ToGetGitlabConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialHttpArrayOutput)
+}
+
+type GetGitlabConnectorCredentialHttpOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) ToGetGitlabConnectorCredentialHttpOutput() GetGitlabConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) ToGetGitlabConnectorCredentialHttpOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialHttpOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetGitlabConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetGitlabConnectorCredentialHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredentialHttp)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialHttpArrayOutput) ToGetGitlabConnectorCredentialHttpArrayOutput() GetGitlabConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialHttpArrayOutput) ToGetGitlabConnectorCredentialHttpArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetGitlabConnectorCredentialHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitlabConnectorCredentialHttp {
+		return vs[0].([]GetGitlabConnectorCredentialHttp)[vs[1].(int)]
+	}).(GetGitlabConnectorCredentialHttpOutput)
+}
+
+type GetGitlabConnectorCredentialSsh struct {
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GetGitlabConnectorCredentialSshInput is an input type that accepts GetGitlabConnectorCredentialSshArgs and GetGitlabConnectorCredentialSshOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialSshInput` via:
+//
+//	GetGitlabConnectorCredentialSshArgs{...}
+type GetGitlabConnectorCredentialSshInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialSshOutput() GetGitlabConnectorCredentialSshOutput
+	ToGetGitlabConnectorCredentialSshOutputWithContext(context.Context) GetGitlabConnectorCredentialSshOutput
+}
+
+type GetGitlabConnectorCredentialSshArgs struct {
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GetGitlabConnectorCredentialSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialSshArgs) ToGetGitlabConnectorCredentialSshOutput() GetGitlabConnectorCredentialSshOutput {
+	return i.ToGetGitlabConnectorCredentialSshOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialSshArgs) ToGetGitlabConnectorCredentialSshOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialSshOutput)
+}
+
+// GetGitlabConnectorCredentialSshArrayInput is an input type that accepts GetGitlabConnectorCredentialSshArray and GetGitlabConnectorCredentialSshArrayOutput values.
+// You can construct a concrete instance of `GetGitlabConnectorCredentialSshArrayInput` via:
+//
+//	GetGitlabConnectorCredentialSshArray{ GetGitlabConnectorCredentialSshArgs{...} }
+type GetGitlabConnectorCredentialSshArrayInput interface {
+	pulumi.Input
+
+	ToGetGitlabConnectorCredentialSshArrayOutput() GetGitlabConnectorCredentialSshArrayOutput
+	ToGetGitlabConnectorCredentialSshArrayOutputWithContext(context.Context) GetGitlabConnectorCredentialSshArrayOutput
+}
+
+type GetGitlabConnectorCredentialSshArray []GetGitlabConnectorCredentialSshInput
+
+func (GetGitlabConnectorCredentialSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (i GetGitlabConnectorCredentialSshArray) ToGetGitlabConnectorCredentialSshArrayOutput() GetGitlabConnectorCredentialSshArrayOutput {
+	return i.ToGetGitlabConnectorCredentialSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitlabConnectorCredentialSshArray) ToGetGitlabConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitlabConnectorCredentialSshArrayOutput)
+}
+
+type GetGitlabConnectorCredentialSshOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitlabConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialSshOutput) ToGetGitlabConnectorCredentialSshOutput() GetGitlabConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialSshOutput) ToGetGitlabConnectorCredentialSshOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialSshOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitlabConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GetGitlabConnectorCredentialSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitlabConnectorCredentialSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitlabConnectorCredentialSsh)(nil)).Elem()
+}
+
+func (o GetGitlabConnectorCredentialSshArrayOutput) ToGetGitlabConnectorCredentialSshArrayOutput() GetGitlabConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialSshArrayOutput) ToGetGitlabConnectorCredentialSshArrayOutputWithContext(ctx context.Context) GetGitlabConnectorCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetGitlabConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) GetGitlabConnectorCredentialSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitlabConnectorCredentialSsh {
+		return vs[0].([]GetGitlabConnectorCredentialSsh)[vs[1].(int)]
+	}).(GetGitlabConnectorCredentialSshOutput)
+}
+
+type GetHelmConnectorCredential struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetHelmConnectorCredentialInput is an input type that accepts GetHelmConnectorCredentialArgs and GetHelmConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetHelmConnectorCredentialInput` via:
+//
+//	GetHelmConnectorCredentialArgs{...}
+type GetHelmConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetHelmConnectorCredentialOutput() GetHelmConnectorCredentialOutput
+	ToGetHelmConnectorCredentialOutputWithContext(context.Context) GetHelmConnectorCredentialOutput
+}
+
+type GetHelmConnectorCredentialArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetHelmConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHelmConnectorCredential)(nil)).Elem()
+}
+
+func (i GetHelmConnectorCredentialArgs) ToGetHelmConnectorCredentialOutput() GetHelmConnectorCredentialOutput {
+	return i.ToGetHelmConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetHelmConnectorCredentialArgs) ToGetHelmConnectorCredentialOutputWithContext(ctx context.Context) GetHelmConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHelmConnectorCredentialOutput)
+}
+
+// GetHelmConnectorCredentialArrayInput is an input type that accepts GetHelmConnectorCredentialArray and GetHelmConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetHelmConnectorCredentialArrayInput` via:
+//
+//	GetHelmConnectorCredentialArray{ GetHelmConnectorCredentialArgs{...} }
+type GetHelmConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetHelmConnectorCredentialArrayOutput() GetHelmConnectorCredentialArrayOutput
+	ToGetHelmConnectorCredentialArrayOutputWithContext(context.Context) GetHelmConnectorCredentialArrayOutput
+}
+
+type GetHelmConnectorCredentialArray []GetHelmConnectorCredentialInput
+
+func (GetHelmConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHelmConnectorCredential)(nil)).Elem()
+}
+
+func (i GetHelmConnectorCredentialArray) ToGetHelmConnectorCredentialArrayOutput() GetHelmConnectorCredentialArrayOutput {
+	return i.ToGetHelmConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetHelmConnectorCredentialArray) ToGetHelmConnectorCredentialArrayOutputWithContext(ctx context.Context) GetHelmConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHelmConnectorCredentialArrayOutput)
+}
+
+type GetHelmConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetHelmConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHelmConnectorCredential)(nil)).Elem()
+}
+
+func (o GetHelmConnectorCredentialOutput) ToGetHelmConnectorCredentialOutput() GetHelmConnectorCredentialOutput {
+	return o
+}
+
+func (o GetHelmConnectorCredentialOutput) ToGetHelmConnectorCredentialOutputWithContext(ctx context.Context) GetHelmConnectorCredentialOutput {
+	return o
+}
+
+func (o GetHelmConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetHelmConnectorCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetHelmConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetHelmConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHelmConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHelmConnectorCredential)(nil)).Elem()
+}
+
+func (o GetHelmConnectorCredentialArrayOutput) ToGetHelmConnectorCredentialArrayOutput() GetHelmConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetHelmConnectorCredentialArrayOutput) ToGetHelmConnectorCredentialArrayOutputWithContext(ctx context.Context) GetHelmConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHelmConnectorCredential {
+		return vs[0].([]GetHelmConnectorCredential)[vs[1].(int)]
+	}).(GetHelmConnectorCredentialOutput)
+}
+
+type GetKubernetesConnectorClientKeyCert struct {
+	CaCertRef              string `pulumi:"caCertRef"`
+	ClientCertRef          string `pulumi:"clientCertRef"`
+	ClientKeyAlgorithm     string `pulumi:"clientKeyAlgorithm"`
+	ClientKeyPassphraseRef string `pulumi:"clientKeyPassphraseRef"`
+	ClientKeyRef           string `pulumi:"clientKeyRef"`
+	MasterUrl              string `pulumi:"masterUrl"`
+}
+
+// GetKubernetesConnectorClientKeyCertInput is an input type that accepts GetKubernetesConnectorClientKeyCertArgs and GetKubernetesConnectorClientKeyCertOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorClientKeyCertInput` via:
+//
+//	GetKubernetesConnectorClientKeyCertArgs{...}
+type GetKubernetesConnectorClientKeyCertInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorClientKeyCertOutput() GetKubernetesConnectorClientKeyCertOutput
+	ToGetKubernetesConnectorClientKeyCertOutputWithContext(context.Context) GetKubernetesConnectorClientKeyCertOutput
+}
+
+type GetKubernetesConnectorClientKeyCertArgs struct {
+	CaCertRef              pulumi.StringInput `pulumi:"caCertRef"`
+	ClientCertRef          pulumi.StringInput `pulumi:"clientCertRef"`
+	ClientKeyAlgorithm     pulumi.StringInput `pulumi:"clientKeyAlgorithm"`
+	ClientKeyPassphraseRef pulumi.StringInput `pulumi:"clientKeyPassphraseRef"`
+	ClientKeyRef           pulumi.StringInput `pulumi:"clientKeyRef"`
+	MasterUrl              pulumi.StringInput `pulumi:"masterUrl"`
+}
+
+func (GetKubernetesConnectorClientKeyCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorClientKeyCertArgs) ToGetKubernetesConnectorClientKeyCertOutput() GetKubernetesConnectorClientKeyCertOutput {
+	return i.ToGetKubernetesConnectorClientKeyCertOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorClientKeyCertArgs) ToGetKubernetesConnectorClientKeyCertOutputWithContext(ctx context.Context) GetKubernetesConnectorClientKeyCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorClientKeyCertOutput)
+}
+
+// GetKubernetesConnectorClientKeyCertArrayInput is an input type that accepts GetKubernetesConnectorClientKeyCertArray and GetKubernetesConnectorClientKeyCertArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorClientKeyCertArrayInput` via:
+//
+//	GetKubernetesConnectorClientKeyCertArray{ GetKubernetesConnectorClientKeyCertArgs{...} }
+type GetKubernetesConnectorClientKeyCertArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorClientKeyCertArrayOutput() GetKubernetesConnectorClientKeyCertArrayOutput
+	ToGetKubernetesConnectorClientKeyCertArrayOutputWithContext(context.Context) GetKubernetesConnectorClientKeyCertArrayOutput
+}
+
+type GetKubernetesConnectorClientKeyCertArray []GetKubernetesConnectorClientKeyCertInput
+
+func (GetKubernetesConnectorClientKeyCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorClientKeyCertArray) ToGetKubernetesConnectorClientKeyCertArrayOutput() GetKubernetesConnectorClientKeyCertArrayOutput {
+	return i.ToGetKubernetesConnectorClientKeyCertArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorClientKeyCertArray) ToGetKubernetesConnectorClientKeyCertArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorClientKeyCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorClientKeyCertArrayOutput)
+}
+
+type GetKubernetesConnectorClientKeyCertOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorClientKeyCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ToGetKubernetesConnectorClientKeyCertOutput() GetKubernetesConnectorClientKeyCertOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ToGetKubernetesConnectorClientKeyCertOutputWithContext(ctx context.Context) GetKubernetesConnectorClientKeyCertOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) CaCertRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.CaCertRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ClientCertRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientCertRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyAlgorithm }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyPassphraseRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyPassphraseRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorClientKeyCertOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+type GetKubernetesConnectorClientKeyCertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorClientKeyCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorClientKeyCert)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorClientKeyCertArrayOutput) ToGetKubernetesConnectorClientKeyCertArrayOutput() GetKubernetesConnectorClientKeyCertArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorClientKeyCertArrayOutput) ToGetKubernetesConnectorClientKeyCertArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorClientKeyCertArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorClientKeyCertArrayOutput) Index(i pulumi.IntInput) GetKubernetesConnectorClientKeyCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesConnectorClientKeyCert {
+		return vs[0].([]GetKubernetesConnectorClientKeyCert)[vs[1].(int)]
+	}).(GetKubernetesConnectorClientKeyCertOutput)
+}
+
+type GetKubernetesConnectorInheritFromDelegate struct {
+	// Selectors to use for the delegate.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GetKubernetesConnectorInheritFromDelegateInput is an input type that accepts GetKubernetesConnectorInheritFromDelegateArgs and GetKubernetesConnectorInheritFromDelegateOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorInheritFromDelegateInput` via:
+//
+//	GetKubernetesConnectorInheritFromDelegateArgs{...}
+type GetKubernetesConnectorInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorInheritFromDelegateOutput() GetKubernetesConnectorInheritFromDelegateOutput
+	ToGetKubernetesConnectorInheritFromDelegateOutputWithContext(context.Context) GetKubernetesConnectorInheritFromDelegateOutput
+}
+
+type GetKubernetesConnectorInheritFromDelegateArgs struct {
+	// Selectors to use for the delegate.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GetKubernetesConnectorInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorInheritFromDelegateArgs) ToGetKubernetesConnectorInheritFromDelegateOutput() GetKubernetesConnectorInheritFromDelegateOutput {
+	return i.ToGetKubernetesConnectorInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorInheritFromDelegateArgs) ToGetKubernetesConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetKubernetesConnectorInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorInheritFromDelegateOutput)
+}
+
+// GetKubernetesConnectorInheritFromDelegateArrayInput is an input type that accepts GetKubernetesConnectorInheritFromDelegateArray and GetKubernetesConnectorInheritFromDelegateArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorInheritFromDelegateArrayInput` via:
+//
+//	GetKubernetesConnectorInheritFromDelegateArray{ GetKubernetesConnectorInheritFromDelegateArgs{...} }
+type GetKubernetesConnectorInheritFromDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorInheritFromDelegateArrayOutput() GetKubernetesConnectorInheritFromDelegateArrayOutput
+	ToGetKubernetesConnectorInheritFromDelegateArrayOutputWithContext(context.Context) GetKubernetesConnectorInheritFromDelegateArrayOutput
+}
+
+type GetKubernetesConnectorInheritFromDelegateArray []GetKubernetesConnectorInheritFromDelegateInput
+
+func (GetKubernetesConnectorInheritFromDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorInheritFromDelegateArray) ToGetKubernetesConnectorInheritFromDelegateArrayOutput() GetKubernetesConnectorInheritFromDelegateArrayOutput {
+	return i.ToGetKubernetesConnectorInheritFromDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorInheritFromDelegateArray) ToGetKubernetesConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorInheritFromDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorInheritFromDelegateArrayOutput)
+}
+
+type GetKubernetesConnectorInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorInheritFromDelegateOutput) ToGetKubernetesConnectorInheritFromDelegateOutput() GetKubernetesConnectorInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorInheritFromDelegateOutput) ToGetKubernetesConnectorInheritFromDelegateOutputWithContext(ctx context.Context) GetKubernetesConnectorInheritFromDelegateOutput {
+	return o
+}
+
+// Selectors to use for the delegate.
+func (o GetKubernetesConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GetKubernetesConnectorInheritFromDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorInheritFromDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorInheritFromDelegateArrayOutput) ToGetKubernetesConnectorInheritFromDelegateArrayOutput() GetKubernetesConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorInheritFromDelegateArrayOutput) ToGetKubernetesConnectorInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) GetKubernetesConnectorInheritFromDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesConnectorInheritFromDelegate {
+		return vs[0].([]GetKubernetesConnectorInheritFromDelegate)[vs[1].(int)]
+	}).(GetKubernetesConnectorInheritFromDelegateOutput)
+}
+
+type GetKubernetesConnectorOpenidConnect struct {
+	ClientIdRef string   `pulumi:"clientIdRef"`
+	IssuerUrl   string   `pulumi:"issuerUrl"`
+	MasterUrl   string   `pulumi:"masterUrl"`
+	PasswordRef string   `pulumi:"passwordRef"`
+	Scopes      []string `pulumi:"scopes"`
+	SecretRef   string   `pulumi:"secretRef"`
+	Username    string   `pulumi:"username"`
+	UsernameRef string   `pulumi:"usernameRef"`
+}
+
+// GetKubernetesConnectorOpenidConnectInput is an input type that accepts GetKubernetesConnectorOpenidConnectArgs and GetKubernetesConnectorOpenidConnectOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorOpenidConnectInput` via:
+//
+//	GetKubernetesConnectorOpenidConnectArgs{...}
+type GetKubernetesConnectorOpenidConnectInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorOpenidConnectOutput() GetKubernetesConnectorOpenidConnectOutput
+	ToGetKubernetesConnectorOpenidConnectOutputWithContext(context.Context) GetKubernetesConnectorOpenidConnectOutput
+}
+
+type GetKubernetesConnectorOpenidConnectArgs struct {
+	ClientIdRef pulumi.StringInput      `pulumi:"clientIdRef"`
+	IssuerUrl   pulumi.StringInput      `pulumi:"issuerUrl"`
+	MasterUrl   pulumi.StringInput      `pulumi:"masterUrl"`
+	PasswordRef pulumi.StringInput      `pulumi:"passwordRef"`
+	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
+	SecretRef   pulumi.StringInput      `pulumi:"secretRef"`
+	Username    pulumi.StringInput      `pulumi:"username"`
+	UsernameRef pulumi.StringInput      `pulumi:"usernameRef"`
+}
+
+func (GetKubernetesConnectorOpenidConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorOpenidConnectArgs) ToGetKubernetesConnectorOpenidConnectOutput() GetKubernetesConnectorOpenidConnectOutput {
+	return i.ToGetKubernetesConnectorOpenidConnectOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorOpenidConnectArgs) ToGetKubernetesConnectorOpenidConnectOutputWithContext(ctx context.Context) GetKubernetesConnectorOpenidConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorOpenidConnectOutput)
+}
+
+// GetKubernetesConnectorOpenidConnectArrayInput is an input type that accepts GetKubernetesConnectorOpenidConnectArray and GetKubernetesConnectorOpenidConnectArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorOpenidConnectArrayInput` via:
+//
+//	GetKubernetesConnectorOpenidConnectArray{ GetKubernetesConnectorOpenidConnectArgs{...} }
+type GetKubernetesConnectorOpenidConnectArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorOpenidConnectArrayOutput() GetKubernetesConnectorOpenidConnectArrayOutput
+	ToGetKubernetesConnectorOpenidConnectArrayOutputWithContext(context.Context) GetKubernetesConnectorOpenidConnectArrayOutput
+}
+
+type GetKubernetesConnectorOpenidConnectArray []GetKubernetesConnectorOpenidConnectInput
+
+func (GetKubernetesConnectorOpenidConnectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorOpenidConnectArray) ToGetKubernetesConnectorOpenidConnectArrayOutput() GetKubernetesConnectorOpenidConnectArrayOutput {
+	return i.ToGetKubernetesConnectorOpenidConnectArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorOpenidConnectArray) ToGetKubernetesConnectorOpenidConnectArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorOpenidConnectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorOpenidConnectArrayOutput)
+}
+
+type GetKubernetesConnectorOpenidConnectOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorOpenidConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) ToGetKubernetesConnectorOpenidConnectOutput() GetKubernetesConnectorOpenidConnectOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) ToGetKubernetesConnectorOpenidConnectOutputWithContext(ctx context.Context) GetKubernetesConnectorOpenidConnectOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) ClientIdRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.ClientIdRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.IssuerUrl }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorOpenidConnectOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetKubernetesConnectorOpenidConnectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorOpenidConnectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorOpenidConnect)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorOpenidConnectArrayOutput) ToGetKubernetesConnectorOpenidConnectArrayOutput() GetKubernetesConnectorOpenidConnectArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorOpenidConnectArrayOutput) ToGetKubernetesConnectorOpenidConnectArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorOpenidConnectArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorOpenidConnectArrayOutput) Index(i pulumi.IntInput) GetKubernetesConnectorOpenidConnectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesConnectorOpenidConnect {
+		return vs[0].([]GetKubernetesConnectorOpenidConnect)[vs[1].(int)]
+	}).(GetKubernetesConnectorOpenidConnectOutput)
+}
+
+type GetKubernetesConnectorServiceAccount struct {
+	MasterUrl              string `pulumi:"masterUrl"`
+	ServiceAccountTokenRef string `pulumi:"serviceAccountTokenRef"`
+}
+
+// GetKubernetesConnectorServiceAccountInput is an input type that accepts GetKubernetesConnectorServiceAccountArgs and GetKubernetesConnectorServiceAccountOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorServiceAccountInput` via:
+//
+//	GetKubernetesConnectorServiceAccountArgs{...}
+type GetKubernetesConnectorServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorServiceAccountOutput() GetKubernetesConnectorServiceAccountOutput
+	ToGetKubernetesConnectorServiceAccountOutputWithContext(context.Context) GetKubernetesConnectorServiceAccountOutput
+}
+
+type GetKubernetesConnectorServiceAccountArgs struct {
+	MasterUrl              pulumi.StringInput `pulumi:"masterUrl"`
+	ServiceAccountTokenRef pulumi.StringInput `pulumi:"serviceAccountTokenRef"`
+}
+
+func (GetKubernetesConnectorServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorServiceAccountArgs) ToGetKubernetesConnectorServiceAccountOutput() GetKubernetesConnectorServiceAccountOutput {
+	return i.ToGetKubernetesConnectorServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorServiceAccountArgs) ToGetKubernetesConnectorServiceAccountOutputWithContext(ctx context.Context) GetKubernetesConnectorServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorServiceAccountOutput)
+}
+
+// GetKubernetesConnectorServiceAccountArrayInput is an input type that accepts GetKubernetesConnectorServiceAccountArray and GetKubernetesConnectorServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorServiceAccountArrayInput` via:
+//
+//	GetKubernetesConnectorServiceAccountArray{ GetKubernetesConnectorServiceAccountArgs{...} }
+type GetKubernetesConnectorServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorServiceAccountArrayOutput() GetKubernetesConnectorServiceAccountArrayOutput
+	ToGetKubernetesConnectorServiceAccountArrayOutputWithContext(context.Context) GetKubernetesConnectorServiceAccountArrayOutput
+}
+
+type GetKubernetesConnectorServiceAccountArray []GetKubernetesConnectorServiceAccountInput
+
+func (GetKubernetesConnectorServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorServiceAccountArray) ToGetKubernetesConnectorServiceAccountArrayOutput() GetKubernetesConnectorServiceAccountArrayOutput {
+	return i.ToGetKubernetesConnectorServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorServiceAccountArray) ToGetKubernetesConnectorServiceAccountArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorServiceAccountArrayOutput)
+}
+
+type GetKubernetesConnectorServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorServiceAccountOutput) ToGetKubernetesConnectorServiceAccountOutput() GetKubernetesConnectorServiceAccountOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorServiceAccountOutput) ToGetKubernetesConnectorServiceAccountOutputWithContext(ctx context.Context) GetKubernetesConnectorServiceAccountOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorServiceAccountOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorServiceAccount) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorServiceAccountOutput) ServiceAccountTokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorServiceAccount) string { return v.ServiceAccountTokenRef }).(pulumi.StringOutput)
+}
+
+type GetKubernetesConnectorServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorServiceAccount)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorServiceAccountArrayOutput) ToGetKubernetesConnectorServiceAccountArrayOutput() GetKubernetesConnectorServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorServiceAccountArrayOutput) ToGetKubernetesConnectorServiceAccountArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorServiceAccountArrayOutput) Index(i pulumi.IntInput) GetKubernetesConnectorServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesConnectorServiceAccount {
+		return vs[0].([]GetKubernetesConnectorServiceAccount)[vs[1].(int)]
+	}).(GetKubernetesConnectorServiceAccountOutput)
+}
+
+type GetKubernetesConnectorUsernamePassword struct {
+	MasterUrl   string `pulumi:"masterUrl"`
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetKubernetesConnectorUsernamePasswordInput is an input type that accepts GetKubernetesConnectorUsernamePasswordArgs and GetKubernetesConnectorUsernamePasswordOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorUsernamePasswordInput` via:
+//
+//	GetKubernetesConnectorUsernamePasswordArgs{...}
+type GetKubernetesConnectorUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorUsernamePasswordOutput() GetKubernetesConnectorUsernamePasswordOutput
+	ToGetKubernetesConnectorUsernamePasswordOutputWithContext(context.Context) GetKubernetesConnectorUsernamePasswordOutput
+}
+
+type GetKubernetesConnectorUsernamePasswordArgs struct {
+	MasterUrl   pulumi.StringInput `pulumi:"masterUrl"`
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetKubernetesConnectorUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorUsernamePasswordArgs) ToGetKubernetesConnectorUsernamePasswordOutput() GetKubernetesConnectorUsernamePasswordOutput {
+	return i.ToGetKubernetesConnectorUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorUsernamePasswordArgs) ToGetKubernetesConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetKubernetesConnectorUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorUsernamePasswordOutput)
+}
+
+// GetKubernetesConnectorUsernamePasswordArrayInput is an input type that accepts GetKubernetesConnectorUsernamePasswordArray and GetKubernetesConnectorUsernamePasswordArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesConnectorUsernamePasswordArrayInput` via:
+//
+//	GetKubernetesConnectorUsernamePasswordArray{ GetKubernetesConnectorUsernamePasswordArgs{...} }
+type GetKubernetesConnectorUsernamePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesConnectorUsernamePasswordArrayOutput() GetKubernetesConnectorUsernamePasswordArrayOutput
+	ToGetKubernetesConnectorUsernamePasswordArrayOutputWithContext(context.Context) GetKubernetesConnectorUsernamePasswordArrayOutput
+}
+
+type GetKubernetesConnectorUsernamePasswordArray []GetKubernetesConnectorUsernamePasswordInput
+
+func (GetKubernetesConnectorUsernamePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (i GetKubernetesConnectorUsernamePasswordArray) ToGetKubernetesConnectorUsernamePasswordArrayOutput() GetKubernetesConnectorUsernamePasswordArrayOutput {
+	return i.ToGetKubernetesConnectorUsernamePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesConnectorUsernamePasswordArray) ToGetKubernetesConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorUsernamePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesConnectorUsernamePasswordArrayOutput)
+}
+
+type GetKubernetesConnectorUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) ToGetKubernetesConnectorUsernamePasswordOutput() GetKubernetesConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) ToGetKubernetesConnectorUsernamePasswordOutputWithContext(ctx context.Context) GetKubernetesConnectorUsernamePasswordOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) MasterUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.MasterUrl }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetKubernetesConnectorUsernamePasswordOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetKubernetesConnectorUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesConnectorUsernamePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesConnectorUsernamePassword)(nil)).Elem()
+}
+
+func (o GetKubernetesConnectorUsernamePasswordArrayOutput) ToGetKubernetesConnectorUsernamePasswordArrayOutput() GetKubernetesConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorUsernamePasswordArrayOutput) ToGetKubernetesConnectorUsernamePasswordArrayOutputWithContext(ctx context.Context) GetKubernetesConnectorUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetKubernetesConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetKubernetesConnectorUsernamePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesConnectorUsernamePassword {
+		return vs[0].([]GetKubernetesConnectorUsernamePassword)[vs[1].(int)]
+	}).(GetKubernetesConnectorUsernamePasswordOutput)
+}
+
+type GetNexusConnectorCredential struct {
+	PasswordRef string `pulumi:"passwordRef"`
+	Username    string `pulumi:"username"`
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetNexusConnectorCredentialInput is an input type that accepts GetNexusConnectorCredentialArgs and GetNexusConnectorCredentialOutput values.
+// You can construct a concrete instance of `GetNexusConnectorCredentialInput` via:
+//
+//	GetNexusConnectorCredentialArgs{...}
+type GetNexusConnectorCredentialInput interface {
+	pulumi.Input
+
+	ToGetNexusConnectorCredentialOutput() GetNexusConnectorCredentialOutput
+	ToGetNexusConnectorCredentialOutputWithContext(context.Context) GetNexusConnectorCredentialOutput
+}
+
+type GetNexusConnectorCredentialArgs struct {
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	Username    pulumi.StringInput `pulumi:"username"`
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetNexusConnectorCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNexusConnectorCredential)(nil)).Elem()
+}
+
+func (i GetNexusConnectorCredentialArgs) ToGetNexusConnectorCredentialOutput() GetNexusConnectorCredentialOutput {
+	return i.ToGetNexusConnectorCredentialOutputWithContext(context.Background())
+}
+
+func (i GetNexusConnectorCredentialArgs) ToGetNexusConnectorCredentialOutputWithContext(ctx context.Context) GetNexusConnectorCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNexusConnectorCredentialOutput)
+}
+
+// GetNexusConnectorCredentialArrayInput is an input type that accepts GetNexusConnectorCredentialArray and GetNexusConnectorCredentialArrayOutput values.
+// You can construct a concrete instance of `GetNexusConnectorCredentialArrayInput` via:
+//
+//	GetNexusConnectorCredentialArray{ GetNexusConnectorCredentialArgs{...} }
+type GetNexusConnectorCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetNexusConnectorCredentialArrayOutput() GetNexusConnectorCredentialArrayOutput
+	ToGetNexusConnectorCredentialArrayOutputWithContext(context.Context) GetNexusConnectorCredentialArrayOutput
+}
+
+type GetNexusConnectorCredentialArray []GetNexusConnectorCredentialInput
+
+func (GetNexusConnectorCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNexusConnectorCredential)(nil)).Elem()
+}
+
+func (i GetNexusConnectorCredentialArray) ToGetNexusConnectorCredentialArrayOutput() GetNexusConnectorCredentialArrayOutput {
+	return i.ToGetNexusConnectorCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetNexusConnectorCredentialArray) ToGetNexusConnectorCredentialArrayOutputWithContext(ctx context.Context) GetNexusConnectorCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNexusConnectorCredentialArrayOutput)
+}
+
+type GetNexusConnectorCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetNexusConnectorCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNexusConnectorCredential)(nil)).Elem()
+}
+
+func (o GetNexusConnectorCredentialOutput) ToGetNexusConnectorCredentialOutput() GetNexusConnectorCredentialOutput {
+	return o
+}
+
+func (o GetNexusConnectorCredentialOutput) ToGetNexusConnectorCredentialOutputWithContext(ctx context.Context) GetNexusConnectorCredentialOutput {
+	return o
+}
+
+func (o GetNexusConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+func (o GetNexusConnectorCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func (o GetNexusConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetNexusConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNexusConnectorCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNexusConnectorCredential)(nil)).Elem()
+}
+
+func (o GetNexusConnectorCredentialArrayOutput) ToGetNexusConnectorCredentialArrayOutput() GetNexusConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetNexusConnectorCredentialArrayOutput) ToGetNexusConnectorCredentialArrayOutputWithContext(ctx context.Context) GetNexusConnectorCredentialArrayOutput {
+	return o
+}
+
+func (o GetNexusConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetNexusConnectorCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNexusConnectorCredential {
+		return vs[0].([]GetNexusConnectorCredential)[vs[1].(int)]
+	}).(GetNexusConnectorCredentialOutput)
+}
+
 type GetResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId string `pulumi:"accountId"`
@@ -3027,6 +13622,86 @@ func (o GetUsergroupNotificationConfigArrayOutput) Index(i pulumi.IntInput) GetU
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorApiTokenInput)(nil)).Elem(), AppDynamicsConnectorApiTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorApiTokenPtrInput)(nil)).Elem(), AppDynamicsConnectorApiTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorUsernamePasswordInput)(nil)).Elem(), AppDynamicsConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorUsernamePasswordPtrInput)(nil)).Elem(), AppDynamicsConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactoryConnectorCredentialsInput)(nil)).Elem(), ArtifactoryConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactoryConnectorCredentialsPtrInput)(nil)).Elem(), ArtifactoryConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCCConnectorCrossAccountAccessInput)(nil)).Elem(), AwsCCConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsCCConnectorCrossAccountAccessPtrInput)(nil)).Elem(), AwsCCConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorCrossAccountAccessInput)(nil)).Elem(), AwsConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorCrossAccountAccessPtrInput)(nil)).Elem(), AwsConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorInheritFromDelegateInput)(nil)).Elem(), AwsConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorInheritFromDelegatePtrInput)(nil)).Elem(), AwsConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorIrsaInput)(nil)).Elem(), AwsConnectorIrsaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorIrsaPtrInput)(nil)).Elem(), AwsConnectorIrsaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorManualInput)(nil)).Elem(), AwsConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsConnectorManualPtrInput)(nil)).Elem(), AwsConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsInput)(nil)).Elem(), AwsKmsConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsPtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsAssumeRoleInput)(nil)).Elem(), AwsKmsConnectorCredentialsAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsAssumeRolePtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsManualInput)(nil)).Elem(), AwsKmsConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsManualPtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsPtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRoleInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRolePtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManualInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManualPtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorApiAuthenticationInput)(nil)).Elem(), BitbucketConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorApiAuthenticationPtrInput)(nil)).Elem(), BitbucketConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsInput)(nil)).Elem(), BitbucketConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsHttpInput)(nil)).Elem(), BitbucketConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsHttpPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsPtrInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorInheritFromDelegateInput)(nil)).Elem(), GcpConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GcpConnectorInheritFromDelegateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualInput)(nil)).Elem(), GcpConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualPtrInput)(nil)).Elem(), GcpConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsPtrInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsHttpInput)(nil)).Elem(), GitConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsHttpPtrInput)(nil)).Elem(), GitConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsSshInput)(nil)).Elem(), GitConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsSshPtrInput)(nil)).Elem(), GitConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationInput)(nil)).Elem(), GithubConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationPtrInput)(nil)).Elem(), GithubConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationGithubAppInput)(nil)).Elem(), GithubConnectorApiAuthenticationGithubAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationGithubAppPtrInput)(nil)).Elem(), GithubConnectorApiAuthenticationGithubAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsInput)(nil)).Elem(), GithubConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsPtrInput)(nil)).Elem(), GithubConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsHttpInput)(nil)).Elem(), GithubConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsHttpPtrInput)(nil)).Elem(), GithubConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsSshInput)(nil)).Elem(), GithubConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorCredentialsSshPtrInput)(nil)).Elem(), GithubConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorApiAuthenticationInput)(nil)).Elem(), GitlabConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorApiAuthenticationPtrInput)(nil)).Elem(), GitlabConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsInput)(nil)).Elem(), GitlabConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsPtrInput)(nil)).Elem(), GitlabConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsHttpInput)(nil)).Elem(), GitlabConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsHttpPtrInput)(nil)).Elem(), GitlabConnectorCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshPtrInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorClientKeyCertInput)(nil)).Elem(), KubernetesConnectorClientKeyCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorClientKeyCertPtrInput)(nil)).Elem(), KubernetesConnectorClientKeyCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorInheritFromDelegateInput)(nil)).Elem(), KubernetesConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorInheritFromDelegatePtrInput)(nil)).Elem(), KubernetesConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorOpenidConnectInput)(nil)).Elem(), KubernetesConnectorOpenidConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorOpenidConnectPtrInput)(nil)).Elem(), KubernetesConnectorOpenidConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorServiceAccountInput)(nil)).Elem(), KubernetesConnectorServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorServiceAccountPtrInput)(nil)).Elem(), KubernetesConnectorServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorUsernamePasswordInput)(nil)).Elem(), KubernetesConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorUsernamePasswordPtrInput)(nil)).Elem(), KubernetesConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsPtrInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupIncludedScopeInput)(nil)).Elem(), ResourceGroupIncludedScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupIncludedScopeArrayInput)(nil)).Elem(), ResourceGroupIncludedScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterInput)(nil)).Elem(), ResourceGroupResourceFilterArgs{})
@@ -3051,6 +13726,86 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeySshSshkeyReferenceCredentialPtrInput)(nil)).Elem(), SecretSshkeySshSshkeyReferenceCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsergroupNotificationConfigInput)(nil)).Elem(), UsergroupNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsergroupNotificationConfigArrayInput)(nil)).Elem(), UsergroupNotificationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorApiTokenInput)(nil)).Elem(), GetAppDynamicsConnectorApiTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorApiTokenArrayInput)(nil)).Elem(), GetAppDynamicsConnectorApiTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorUsernamePasswordInput)(nil)).Elem(), GetAppDynamicsConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorUsernamePasswordArrayInput)(nil)).Elem(), GetAppDynamicsConnectorUsernamePasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactoryConnectorCredentialInput)(nil)).Elem(), GetArtifactoryConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactoryConnectorCredentialArrayInput)(nil)).Elem(), GetArtifactoryConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsCCConnectorCrossAccountAccessInput)(nil)).Elem(), GetAwsCCConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsCCConnectorCrossAccountAccessArrayInput)(nil)).Elem(), GetAwsCCConnectorCrossAccountAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorCrossAccountAccessInput)(nil)).Elem(), GetAwsConnectorCrossAccountAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorCrossAccountAccessArrayInput)(nil)).Elem(), GetAwsConnectorCrossAccountAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorInheritFromDelegateInput)(nil)).Elem(), GetAwsConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GetAwsConnectorInheritFromDelegateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorIrsaInput)(nil)).Elem(), GetAwsConnectorIrsaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorIrsaArrayInput)(nil)).Elem(), GetAwsConnectorIrsaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorManualInput)(nil)).Elem(), GetAwsConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsConnectorManualArrayInput)(nil)).Elem(), GetAwsConnectorManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialInput)(nil)).Elem(), GetAwsKmsConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialAssumeRoleInput)(nil)).Elem(), GetAwsKmsConnectorCredentialAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialAssumeRoleArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialAssumeRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialManualInput)(nil)).Elem(), GetAwsKmsConnectorCredentialManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialManualArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRoleInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialAssumeRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManualInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManualArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorApiAuthenticationInput)(nil)).Elem(), GetBitbucketConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorApiAuthenticationArrayInput)(nil)).Elem(), GetBitbucketConnectorApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialInput)(nil)).Elem(), GetBitbucketConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialArrayInput)(nil)).Elem(), GetBitbucketConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialHttpInput)(nil)).Elem(), GetBitbucketConnectorCredentialHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialHttpArrayInput)(nil)).Elem(), GetBitbucketConnectorCredentialHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialSshInput)(nil)).Elem(), GetBitbucketConnectorCredentialSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialSshArrayInput)(nil)).Elem(), GetBitbucketConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialArrayInput)(nil)).Elem(), GetDockerConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorInheritFromDelegateInput)(nil)).Elem(), GetGcpConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GetGcpConnectorInheritFromDelegateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualInput)(nil)).Elem(), GetGcpConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualArrayInput)(nil)).Elem(), GetGcpConnectorManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialInput)(nil)).Elem(), GetGitConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialArrayInput)(nil)).Elem(), GetGitConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialHttpInput)(nil)).Elem(), GetGitConnectorCredentialHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialHttpArrayInput)(nil)).Elem(), GetGitConnectorCredentialHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialSshInput)(nil)).Elem(), GetGitConnectorCredentialSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialSshArrayInput)(nil)).Elem(), GetGitConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorApiAuthenticationInput)(nil)).Elem(), GetGithubConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorApiAuthenticationArrayInput)(nil)).Elem(), GetGithubConnectorApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorApiAuthenticationGithubAppInput)(nil)).Elem(), GetGithubConnectorApiAuthenticationGithubAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorApiAuthenticationGithubAppArrayInput)(nil)).Elem(), GetGithubConnectorApiAuthenticationGithubAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialInput)(nil)).Elem(), GetGithubConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialArrayInput)(nil)).Elem(), GetGithubConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialHttpInput)(nil)).Elem(), GetGithubConnectorCredentialHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialHttpArrayInput)(nil)).Elem(), GetGithubConnectorCredentialHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialSshInput)(nil)).Elem(), GetGithubConnectorCredentialSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGithubConnectorCredentialSshArrayInput)(nil)).Elem(), GetGithubConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorApiAuthenticationInput)(nil)).Elem(), GetGitlabConnectorApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorApiAuthenticationArrayInput)(nil)).Elem(), GetGitlabConnectorApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialInput)(nil)).Elem(), GetGitlabConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialHttpInput)(nil)).Elem(), GetGitlabConnectorCredentialHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialHttpArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorClientKeyCertInput)(nil)).Elem(), GetKubernetesConnectorClientKeyCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorClientKeyCertArrayInput)(nil)).Elem(), GetKubernetesConnectorClientKeyCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorInheritFromDelegateInput)(nil)).Elem(), GetKubernetesConnectorInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GetKubernetesConnectorInheritFromDelegateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorOpenidConnectInput)(nil)).Elem(), GetKubernetesConnectorOpenidConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorOpenidConnectArrayInput)(nil)).Elem(), GetKubernetesConnectorOpenidConnectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorServiceAccountInput)(nil)).Elem(), GetKubernetesConnectorServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorServiceAccountArrayInput)(nil)).Elem(), GetKubernetesConnectorServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorUsernamePasswordInput)(nil)).Elem(), GetKubernetesConnectorUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorUsernamePasswordArrayInput)(nil)).Elem(), GetKubernetesConnectorUsernamePasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNexusConnectorCredentialInput)(nil)).Elem(), GetNexusConnectorCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNexusConnectorCredentialArrayInput)(nil)).Elem(), GetNexusConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupIncludedScopeInput)(nil)).Elem(), GetResourceGroupIncludedScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupIncludedScopeArrayInput)(nil)).Elem(), GetResourceGroupIncludedScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterInput)(nil)).Elem(), GetResourceGroupResourceFilterArgs{})
@@ -3075,6 +13830,86 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeySshSshkeyReferenceCredentialArrayInput)(nil)).Elem(), GetSecretSshkeySshSshkeyReferenceCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsergroupNotificationConfigInput)(nil)).Elem(), GetUsergroupNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsergroupNotificationConfigArrayInput)(nil)).Elem(), GetUsergroupNotificationConfigArray{})
+	pulumi.RegisterOutputType(AppDynamicsConnectorApiTokenOutput{})
+	pulumi.RegisterOutputType(AppDynamicsConnectorApiTokenPtrOutput{})
+	pulumi.RegisterOutputType(AppDynamicsConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(AppDynamicsConnectorUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(ArtifactoryConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(ArtifactoryConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AwsCCConnectorCrossAccountAccessOutput{})
+	pulumi.RegisterOutputType(AwsCCConnectorCrossAccountAccessPtrOutput{})
+	pulumi.RegisterOutputType(AwsConnectorCrossAccountAccessOutput{})
+	pulumi.RegisterOutputType(AwsConnectorCrossAccountAccessPtrOutput{})
+	pulumi.RegisterOutputType(AwsConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(AwsConnectorInheritFromDelegatePtrOutput{})
+	pulumi.RegisterOutputType(AwsConnectorIrsaOutput{})
+	pulumi.RegisterOutputType(AwsConnectorIrsaPtrOutput{})
+	pulumi.RegisterOutputType(AwsConnectorManualOutput{})
+	pulumi.RegisterOutputType(AwsConnectorManualPtrOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsAssumeRoleOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsAssumeRolePtrOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsManualOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsManualPtrOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsAssumeRoleOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsManualOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsManualPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorApiAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsHttpOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsHttpPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshOutput{})
+	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(DockerConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(DockerConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GcpConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(GcpConnectorInheritFromDelegateArrayOutput{})
+	pulumi.RegisterOutputType(GcpConnectorManualOutput{})
+	pulumi.RegisterOutputType(GcpConnectorManualPtrOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsHttpOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsHttpPtrOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsSshOutput{})
+	pulumi.RegisterOutputType(GitConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationGithubAppOutput{})
+	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationGithubAppPtrOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsHttpOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsHttpPtrOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsSshOutput{})
+	pulumi.RegisterOutputType(GithubConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorApiAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsHttpOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsHttpPtrOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshOutput{})
+	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorClientKeyCertOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorClientKeyCertPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorInheritFromDelegatePtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorOpenidConnectOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorOpenidConnectPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorServiceAccountOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(KubernetesConnectorUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(NexusConnectorCredentialsOutput{})
+	pulumi.RegisterOutputType(NexusConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupIncludedScopeOutput{})
 	pulumi.RegisterOutputType(ResourceGroupIncludedScopeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterOutput{})
@@ -3099,6 +13934,86 @@ func init() {
 	pulumi.RegisterOutputType(SecretSshkeySshSshkeyReferenceCredentialPtrOutput{})
 	pulumi.RegisterOutputType(UsergroupNotificationConfigOutput{})
 	pulumi.RegisterOutputType(UsergroupNotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAppDynamicsConnectorApiTokenOutput{})
+	pulumi.RegisterOutputType(GetAppDynamicsConnectorApiTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetAppDynamicsConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(GetAppDynamicsConnectorUsernamePasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetArtifactoryConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetArtifactoryConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsCCConnectorCrossAccountAccessOutput{})
+	pulumi.RegisterOutputType(GetAwsCCConnectorCrossAccountAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorCrossAccountAccessOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorCrossAccountAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorInheritFromDelegateArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorIrsaOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorIrsaArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorManualOutput{})
+	pulumi.RegisterOutputType(GetAwsConnectorManualArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialAssumeRoleOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialAssumeRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialManualOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialManualArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialAssumeRoleOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialManualOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialManualArrayOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialHttpOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialSshOutput{})
+	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetDockerConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorInheritFromDelegateArrayOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorManualOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorManualArrayOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialHttpOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialSshOutput{})
+	pulumi.RegisterOutputType(GetGitConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorApiAuthenticationGithubAppOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorApiAuthenticationGithubAppArrayOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialHttpOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialSshOutput{})
+	pulumi.RegisterOutputType(GetGithubConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialHttpOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshOutput{})
+	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorClientKeyCertOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorClientKeyCertArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorInheritFromDelegateArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorOpenidConnectOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorOpenidConnectArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(GetKubernetesConnectorUsernamePasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetNexusConnectorCredentialOutput{})
+	pulumi.RegisterOutputType(GetNexusConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupIncludedScopeOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupIncludedScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterOutput{})

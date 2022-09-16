@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewServiceAccount(ctx, "example", &Platform.ServiceAccountArgs{
+//			_, err := platform.NewServiceAccount(ctx, "example", &platform.ServiceAccountArgs{
 //				AccountId:   pulumi.String("account_id"),
 //				Description: pulumi.String("test"),
 //				Email:       pulumi.String("email@service.harness.io"),
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/serviceAccount:ServiceAccount example <service_account_id>
+//	$ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
 //
 // ```
 type ServiceAccount struct {
@@ -87,7 +87,7 @@ func NewServiceAccount(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource ServiceAccount
-	err := ctx.RegisterResource("harness:Platform/serviceAccount:ServiceAccount", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/serviceAccount:ServiceAccount", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +99,7 @@ func NewServiceAccount(ctx *pulumi.Context,
 func GetServiceAccount(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServiceAccountState, opts ...pulumi.ResourceOption) (*ServiceAccount, error) {
 	var resource ServiceAccount
-	err := ctx.ReadResource("harness:Platform/serviceAccount:ServiceAccount", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/serviceAccount:ServiceAccount", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

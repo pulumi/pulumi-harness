@@ -292,7 +292,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
         super(Service, __self__).__init__(
-            'harness:Platform/service:Service',
+            'harness:platform/service:Service',
             resource_name,
             __props__,
             opts)

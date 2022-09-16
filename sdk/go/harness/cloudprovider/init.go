@@ -21,19 +21,19 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "harness:Cloudprovider/aws:Aws":
+	case "harness:cloudprovider/aws:Aws":
 		r = &Aws{}
-	case "harness:Cloudprovider/azure:Azure":
+	case "harness:cloudprovider/azure:Azure":
 		r = &Azure{}
-	case "harness:Cloudprovider/datacenter:Datacenter":
+	case "harness:cloudprovider/datacenter:Datacenter":
 		r = &Datacenter{}
-	case "harness:Cloudprovider/gcp:Gcp":
+	case "harness:cloudprovider/gcp:Gcp":
 		r = &Gcp{}
-	case "harness:Cloudprovider/kubernetes:Kubernetes":
+	case "harness:cloudprovider/kubernetes:Kubernetes":
 		r = &Kubernetes{}
-	case "harness:Cloudprovider/spot:Spot":
+	case "harness:cloudprovider/spot:Spot":
 		r = &Spot{}
-	case "harness:Cloudprovider/tanzu:Tanzu":
+	case "harness:cloudprovider/tanzu:Tanzu":
 		r = &Tanzu{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -50,37 +50,37 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/aws",
+		"cloudprovider/aws",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/azure",
+		"cloudprovider/azure",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/datacenter",
+		"cloudprovider/datacenter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/gcp",
+		"cloudprovider/gcp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/kubernetes",
+		"cloudprovider/kubernetes",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/spot",
+		"cloudprovider/spot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Cloudprovider/tanzu",
+		"cloudprovider/tanzu",
 		&module{version},
 	)
 }

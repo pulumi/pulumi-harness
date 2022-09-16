@@ -20,7 +20,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Cloudprovider.NewAws(ctx, "aws", &Cloudprovider.AwsArgs{
+//			_, err = cloudprovider.NewAws(ctx, "aws", &cloudprovider.AwsArgs{
 //				AccessKeyIdSecretName:     awsAccessKey.Name,
 //				SecretAccessKeySecretName: awsSecretKey.Name,
 //			})
@@ -66,7 +66,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Cloudprovider/aws:Aws example <provider_id>
+//	$ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
 //
 // ```
 type Aws struct {
@@ -101,7 +101,7 @@ func NewAws(ctx *pulumi.Context,
 
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Aws
-	err := ctx.RegisterResource("harness:Cloudprovider/aws:Aws", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:cloudprovider/aws:Aws", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +113,7 @@ func NewAws(ctx *pulumi.Context,
 func GetAws(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AwsState, opts ...pulumi.ResourceOption) (*Aws, error) {
 	var resource Aws
-	err := ctx.ReadResource("harness:Cloudprovider/aws:Aws", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:cloudprovider/aws:Aws", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

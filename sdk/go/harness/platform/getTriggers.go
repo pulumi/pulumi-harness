@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetTriggers(ctx, &platform.GetTriggersArgs{
+//			_, err := platform.LookupTriggers(ctx, &platform.LookupTriggersArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      "org_id",
 //				ProjectId:  "project_id",
@@ -44,7 +44,7 @@ import (
 func LookupTriggers(ctx *pulumi.Context, args *LookupTriggersArgs, opts ...pulumi.InvokeOption) (*LookupTriggersResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupTriggersResult
-	err := ctx.Invoke("harness:Platform/getTriggers:getTriggers", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getTriggers:getTriggers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

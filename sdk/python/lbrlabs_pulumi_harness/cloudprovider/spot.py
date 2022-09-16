@@ -154,7 +154,7 @@ class Spot(pulumi.CustomResource):
         # Import using the Harness Spot cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/spot:Spot example <provider_id>
+         $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -193,7 +193,7 @@ class Spot(pulumi.CustomResource):
         # Import using the Harness Spot cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/spot:Spot example <provider_id>
+         $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -231,7 +231,7 @@ class Spot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'token_secret_name'")
             __props__.__dict__["token_secret_name"] = token_secret_name
         super(Spot, __self__).__init__(
-            'harness:Cloudprovider/spot:Spot',
+            'harness:cloudprovider/spot:Spot',
             resource_name,
             __props__,
             opts)

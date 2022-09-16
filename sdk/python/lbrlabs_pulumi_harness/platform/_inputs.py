@@ -10,6 +10,46 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AppDynamicsConnectorApiTokenArgs',
+    'AppDynamicsConnectorUsernamePasswordArgs',
+    'ArtifactoryConnectorCredentialsArgs',
+    'AwsCCConnectorCrossAccountAccessArgs',
+    'AwsConnectorCrossAccountAccessArgs',
+    'AwsConnectorInheritFromDelegateArgs',
+    'AwsConnectorIrsaArgs',
+    'AwsConnectorManualArgs',
+    'AwsKmsConnectorCredentialsArgs',
+    'AwsKmsConnectorCredentialsAssumeRoleArgs',
+    'AwsKmsConnectorCredentialsManualArgs',
+    'AwsSecretManagerConnectorCredentialsArgs',
+    'AwsSecretManagerConnectorCredentialsAssumeRoleArgs',
+    'AwsSecretManagerConnectorCredentialsManualArgs',
+    'BitbucketConnectorApiAuthenticationArgs',
+    'BitbucketConnectorCredentialsArgs',
+    'BitbucketConnectorCredentialsHttpArgs',
+    'BitbucketConnectorCredentialsSshArgs',
+    'DockerConnectorCredentialsArgs',
+    'GcpConnectorInheritFromDelegateArgs',
+    'GcpConnectorManualArgs',
+    'GitConnectorCredentialsArgs',
+    'GitConnectorCredentialsHttpArgs',
+    'GitConnectorCredentialsSshArgs',
+    'GithubConnectorApiAuthenticationArgs',
+    'GithubConnectorApiAuthenticationGithubAppArgs',
+    'GithubConnectorCredentialsArgs',
+    'GithubConnectorCredentialsHttpArgs',
+    'GithubConnectorCredentialsSshArgs',
+    'GitlabConnectorApiAuthenticationArgs',
+    'GitlabConnectorCredentialsArgs',
+    'GitlabConnectorCredentialsHttpArgs',
+    'GitlabConnectorCredentialsSshArgs',
+    'HelmConnectorCredentialsArgs',
+    'KubernetesConnectorClientKeyCertArgs',
+    'KubernetesConnectorInheritFromDelegateArgs',
+    'KubernetesConnectorOpenidConnectArgs',
+    'KubernetesConnectorServiceAccountArgs',
+    'KubernetesConnectorUsernamePasswordArgs',
+    'NexusConnectorCredentialsArgs',
     'ResourceGroupIncludedScopeArgs',
     'ResourceGroupResourceFilterArgs',
     'ResourceGroupResourceFilterResourceArgs',
@@ -24,6 +64,1691 @@ __all__ = [
     'UsergroupNotificationConfigArgs',
     'GetUsergroupNotificationConfigArgs',
 ]
+
+@pulumi.input_type
+class AppDynamicsConnectorApiTokenArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[str],
+                 client_secret_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] client_id: The client id used for connecting to App Dynamics.
+        :param pulumi.Input[str] client_secret_ref: Reference to the Harness secret containing the App Dynamics client secret.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The client id used for connecting to App Dynamics.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the Harness secret containing the App Dynamics client secret.
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+    @client_secret_ref.setter
+    def client_secret_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_secret_ref", value)
+
+
+@pulumi.input_type
+class AppDynamicsConnectorUsernamePasswordArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ArtifactoryConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class AwsCCConnectorCrossAccountAccessArgs:
+    def __init__(__self__, *,
+                 external_id: pulumi.Input[str],
+                 role_arn: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] external_id: The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+        :param pulumi.Input[str] role_arn: The ARN of the role to use for cross-account access.
+        """
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Input[str]:
+        """
+        The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        The ARN of the role to use for cross-account access.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+
+@pulumi.input_type
+class AwsConnectorCrossAccountAccessArgs:
+    def __init__(__self__, *,
+                 role_arn: pulumi.Input[str],
+                 external_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        :param pulumi.Input[str] external_id: If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+
+@pulumi.input_type
+class AwsConnectorInheritFromDelegateArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class AwsConnectorIrsaArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class AwsConnectorManualArgs:
+    def __init__(__self__, *,
+                 secret_key_ref: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 access_key_ref: Optional[pulumi.Input[str]] = None,
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the aws secret key.
+        :param pulumi.Input[str] access_key: AWS access key.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the aws access key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect only use delegates with these tags.
+        """
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if access_key_ref is not None:
+            pulumi.set(__self__, "access_key_ref", access_key_ref)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the Harness secret containing the aws secret key.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key_ref", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the Harness secret containing the aws access key.
+        """
+        return pulumi.get(self, "access_key_ref")
+
+    @access_key_ref.setter
+    def access_key_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_ref", value)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Connect only use delegates with these tags.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class AwsKmsConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 assume_role: Optional[pulumi.Input['AwsKmsConnectorCredentialsAssumeRoleArgs']] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
+                 manual: Optional[pulumi.Input['AwsKmsConnectorCredentialsManualArgs']] = None):
+        """
+        :param pulumi.Input['AwsKmsConnectorCredentialsAssumeRoleArgs'] assume_role: Connect using STS assume role.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit the credentials from from the delegate.
+        :param pulumi.Input['AwsKmsConnectorCredentialsManualArgs'] manual: Specify the AWS key and secret used for authenticating.
+        """
+        if assume_role is not None:
+            pulumi.set(__self__, "assume_role", assume_role)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter(name="assumeRole")
+    def assume_role(self) -> Optional[pulumi.Input['AwsKmsConnectorCredentialsAssumeRoleArgs']]:
+        """
+        Connect using STS assume role.
+        """
+        return pulumi.get(self, "assume_role")
+
+    @assume_role.setter
+    def assume_role(self, value: Optional[pulumi.Input['AwsKmsConnectorCredentialsAssumeRoleArgs']]):
+        pulumi.set(self, "assume_role", value)
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inherit the credentials from from the delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @inherit_from_delegate.setter
+    def inherit_from_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inherit_from_delegate", value)
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional[pulumi.Input['AwsKmsConnectorCredentialsManualArgs']]:
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+        return pulumi.get(self, "manual")
+
+    @manual.setter
+    def manual(self, value: Optional[pulumi.Input['AwsKmsConnectorCredentialsManualArgs']]):
+        pulumi.set(self, "manual", value)
+
+
+@pulumi.input_type
+class AwsKmsConnectorCredentialsAssumeRoleArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[int],
+                 role_arn: pulumi.Input[str],
+                 external_id: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+
+@pulumi.input_type
+class AwsKmsConnectorCredentialsManualArgs:
+    def __init__(__self__, *,
+                 access_key_ref: pulumi.Input[str],
+                 secret_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_key_ref")
+
+    @access_key_ref.setter
+    def access_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
+class AwsSecretManagerConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 assume_role: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsAssumeRoleArgs']] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
+                 manual: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsManualArgs']] = None):
+        """
+        :param pulumi.Input['AwsSecretManagerConnectorCredentialsAssumeRoleArgs'] assume_role: Connect using STS assume role.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit the credentials from from the delegate.
+        :param pulumi.Input['AwsSecretManagerConnectorCredentialsManualArgs'] manual: Specify the AWS key and secret used for authenticating.
+        """
+        if assume_role is not None:
+            pulumi.set(__self__, "assume_role", assume_role)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter(name="assumeRole")
+    def assume_role(self) -> Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsAssumeRoleArgs']]:
+        """
+        Connect using STS assume role.
+        """
+        return pulumi.get(self, "assume_role")
+
+    @assume_role.setter
+    def assume_role(self, value: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsAssumeRoleArgs']]):
+        pulumi.set(self, "assume_role", value)
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inherit the credentials from from the delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @inherit_from_delegate.setter
+    def inherit_from_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inherit_from_delegate", value)
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsManualArgs']]:
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+        return pulumi.get(self, "manual")
+
+    @manual.setter
+    def manual(self, value: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsManualArgs']]):
+        pulumi.set(self, "manual", value)
+
+
+@pulumi.input_type
+class AwsSecretManagerConnectorCredentialsAssumeRoleArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[int],
+                 role_arn: pulumi.Input[str],
+                 external_id: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+
+@pulumi.input_type
+class AwsSecretManagerConnectorCredentialsManualArgs:
+    def __init__(__self__, *,
+                 access_key_ref: pulumi.Input[str],
+                 secret_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_key_ref")
+
+    @access_key_ref.setter
+    def access_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
+class BitbucketConnectorApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the BitBucket api.
+        :param pulumi.Input[str] username: The username used for connecting to the api.
+        :param pulumi.Input[str] username_ref: The name of the Harness secret containing the username.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        """
+        Personal access token for interacting with the BitBucket api.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username used for connecting to the api.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Harness secret containing the username.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class BitbucketConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 http: Optional[pulumi.Input['BitbucketConnectorCredentialsHttpArgs']] = None,
+                 ssh: Optional[pulumi.Input['BitbucketConnectorCredentialsSshArgs']] = None):
+        """
+        :param pulumi.Input['BitbucketConnectorCredentialsHttpArgs'] http: Authenticate using Username and password over http(s) for the connection.
+        :param pulumi.Input['BitbucketConnectorCredentialsSshArgs'] ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['BitbucketConnectorCredentialsHttpArgs']]:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['BitbucketConnectorCredentialsHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input['BitbucketConnectorCredentialsSshArgs']]:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input['BitbucketConnectorCredentialsSshArgs']]):
+        pulumi.set(self, "ssh", value)
+
+
+@pulumi.input_type
+class BitbucketConnectorCredentialsHttpArgs:
+    def __init__(__self__, *,
+                 password_ref: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class BitbucketConnectorCredentialsSshArgs:
+    def __init__(__self__, *,
+                 ssh_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "ssh_key_ref")
+
+    @ssh_key_ref.setter
+    def ssh_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_key_ref", value)
+
+
+@pulumi.input_type
+class DockerConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: The reference to the password to use for the docker registry.
+        :param pulumi.Input[str] username: The username to use for the docker registry.
+        :param pulumi.Input[str] username_ref: The reference to the username to use for the docker registry.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        The reference to the password to use for the docker registry.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for the docker registry.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference to the username to use for the docker registry.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class GcpConnectorInheritFromDelegateArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class GcpConnectorManualArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 secret_key_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to connect with.
+        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the secret key.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the Harness secret containing the secret key.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
+class GitConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 http: Optional[pulumi.Input['GitConnectorCredentialsHttpArgs']] = None,
+                 ssh: Optional[pulumi.Input['GitConnectorCredentialsSshArgs']] = None):
+        """
+        :param pulumi.Input['GitConnectorCredentialsHttpArgs'] http: Authenticate using Username and password over http(s) for the connection.
+        :param pulumi.Input['GitConnectorCredentialsSshArgs'] ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['GitConnectorCredentialsHttpArgs']]:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['GitConnectorCredentialsHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input['GitConnectorCredentialsSshArgs']]:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input['GitConnectorCredentialsSshArgs']]):
+        pulumi.set(self, "ssh", value)
+
+
+@pulumi.input_type
+class GitConnectorCredentialsHttpArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class GitConnectorCredentialsSshArgs:
+    def __init__(__self__, *,
+                 ssh_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "ssh_key_ref")
+
+    @ssh_key_ref.setter
+    def ssh_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_key_ref", value)
+
+
+@pulumi.input_type
+class GithubConnectorApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 github_app: Optional[pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgs']] = None,
+                 token_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgs'] github_app: Configuration for using the github app for interacting with the github api.
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the github api.
+        """
+        if github_app is not None:
+            pulumi.set(__self__, "github_app", github_app)
+        if token_ref is not None:
+            pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="githubApp")
+    def github_app(self) -> Optional[pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgs']]:
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        return pulumi.get(self, "github_app")
+
+    @github_app.setter
+    def github_app(self, value: Optional[pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgs']]):
+        pulumi.set(self, "github_app", value)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Personal access token for interacting with the github api.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_ref", value)
+
+
+@pulumi.input_type
+class GithubConnectorApiAuthenticationGithubAppArgs:
+    def __init__(__self__, *,
+                 application_id: pulumi.Input[str],
+                 installation_id: pulumi.Input[str],
+                 private_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "installation_id")
+
+    @installation_id.setter
+    def installation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "installation_id", value)
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "private_key_ref")
+
+    @private_key_ref.setter
+    def private_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key_ref", value)
+
+
+@pulumi.input_type
+class GithubConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 http: Optional[pulumi.Input['GithubConnectorCredentialsHttpArgs']] = None,
+                 ssh: Optional[pulumi.Input['GithubConnectorCredentialsSshArgs']] = None):
+        """
+        :param pulumi.Input['GithubConnectorCredentialsHttpArgs'] http: Authenticate using Username and password over http(s) for the connection.
+        :param pulumi.Input['GithubConnectorCredentialsSshArgs'] ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['GithubConnectorCredentialsHttpArgs']]:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['GithubConnectorCredentialsHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input['GithubConnectorCredentialsSshArgs']]:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input['GithubConnectorCredentialsSshArgs']]):
+        pulumi.set(self, "ssh", value)
+
+
+@pulumi.input_type
+class GithubConnectorCredentialsHttpArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class GithubConnectorCredentialsSshArgs:
+    def __init__(__self__, *,
+                 ssh_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "ssh_key_ref")
+
+    @ssh_key_ref.setter
+    def ssh_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_key_ref", value)
+
+
+@pulumi.input_type
+class GitlabConnectorApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the gitlab api.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        """
+        Personal access token for interacting with the gitlab api.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
+
+
+@pulumi.input_type
+class GitlabConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 http: Optional[pulumi.Input['GitlabConnectorCredentialsHttpArgs']] = None,
+                 ssh: Optional[pulumi.Input['GitlabConnectorCredentialsSshArgs']] = None):
+        """
+        :param pulumi.Input['GitlabConnectorCredentialsHttpArgs'] http: Authenticate using Username and password over http(s) for the connection.
+        :param pulumi.Input['GitlabConnectorCredentialsSshArgs'] ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[pulumi.Input['GitlabConnectorCredentialsHttpArgs']]:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[pulumi.Input['GitlabConnectorCredentialsHttpArgs']]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input['GitlabConnectorCredentialsSshArgs']]:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input['GitlabConnectorCredentialsSshArgs']]):
+        pulumi.set(self, "ssh", value)
+
+
+@pulumi.input_type
+class GitlabConnectorCredentialsHttpArgs:
+    def __init__(__self__, *,
+                 password_ref: Optional[pulumi.Input[str]] = None,
+                 token_ref: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
+        if token_ref is not None:
+            pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class GitlabConnectorCredentialsSshArgs:
+    def __init__(__self__, *,
+                 ssh_key_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "ssh_key_ref")
+
+    @ssh_key_ref.setter
+    def ssh_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ssh_key_ref", value)
+
+
+@pulumi.input_type
+class HelmConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class KubernetesConnectorClientKeyCertArgs:
+    def __init__(__self__, *,
+                 client_cert_ref: pulumi.Input[str],
+                 client_key_algorithm: pulumi.Input[str],
+                 client_key_ref: pulumi.Input[str],
+                 master_url: pulumi.Input[str],
+                 ca_cert_ref: Optional[pulumi.Input[str]] = None,
+                 client_key_passphrase_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_cert_ref: Reference to the secret containing the client certificate for the connector.
+        :param pulumi.Input[str] client_key_algorithm: The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+        :param pulumi.Input[str] client_key_ref: Reference to the secret containing the client key for the connector.
+        :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
+        :param pulumi.Input[str] ca_cert_ref: Reference to the secret containing the CA certificate for the connector.
+        :param pulumi.Input[str] client_key_passphrase_ref: Reference to the secret containing the client key passphrase for the connector.
+        """
+        pulumi.set(__self__, "client_cert_ref", client_cert_ref)
+        pulumi.set(__self__, "client_key_algorithm", client_key_algorithm)
+        pulumi.set(__self__, "client_key_ref", client_key_ref)
+        pulumi.set(__self__, "master_url", master_url)
+        if ca_cert_ref is not None:
+            pulumi.set(__self__, "ca_cert_ref", ca_cert_ref)
+        if client_key_passphrase_ref is not None:
+            pulumi.set(__self__, "client_key_passphrase_ref", client_key_passphrase_ref)
+
+    @property
+    @pulumi.getter(name="clientCertRef")
+    def client_cert_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the client certificate for the connector.
+        """
+        return pulumi.get(self, "client_cert_ref")
+
+    @client_cert_ref.setter
+    def client_cert_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_cert_ref", value)
+
+    @property
+    @pulumi.getter(name="clientKeyAlgorithm")
+    def client_key_algorithm(self) -> pulumi.Input[str]:
+        """
+        The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+        """
+        return pulumi.get(self, "client_key_algorithm")
+
+    @client_key_algorithm.setter
+    def client_key_algorithm(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_key_algorithm", value)
+
+    @property
+    @pulumi.getter(name="clientKeyRef")
+    def client_key_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the client key for the connector.
+        """
+        return pulumi.get(self, "client_key_ref")
+
+    @client_key_ref.setter
+    def client_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_key_ref", value)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @master_url.setter
+    def master_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_url", value)
+
+    @property
+    @pulumi.getter(name="caCertRef")
+    def ca_cert_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing the CA certificate for the connector.
+        """
+        return pulumi.get(self, "ca_cert_ref")
+
+    @ca_cert_ref.setter
+    def ca_cert_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_cert_ref", value)
+
+    @property
+    @pulumi.getter(name="clientKeyPassphraseRef")
+    def client_key_passphrase_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing the client key passphrase for the connector.
+        """
+        return pulumi.get(self, "client_key_passphrase_ref")
+
+    @client_key_passphrase_ref.setter
+    def client_key_passphrase_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_key_passphrase_ref", value)
+
+
+@pulumi.input_type
+class KubernetesConnectorInheritFromDelegateArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Selectors to use for the delegate.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Selectors to use for the delegate.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class KubernetesConnectorOpenidConnectArgs:
+    def __init__(__self__, *,
+                 client_id_ref: pulumi.Input[str],
+                 issuer_url: pulumi.Input[str],
+                 master_url: pulumi.Input[str],
+                 password_ref: pulumi.Input[str],
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 secret_ref: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id_ref: Reference to the secret containing the client ID for the connector.
+        :param pulumi.Input[str] issuer_url: The URL of the OpenID Connect issuer.
+        :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
+        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to request for the connector.
+        :param pulumi.Input[str] secret_ref: Reference to the secret containing the client secret for the connector.
+        :param pulumi.Input[str] username: Username for the connector.
+        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector.
+        """
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the client ID for the connector.
+        """
+        return pulumi.get(self, "client_id_ref")
+
+    @client_id_ref.setter
+    def client_id_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id_ref", value)
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the OpenID Connect issuer.
+        """
+        return pulumi.get(self, "issuer_url")
+
+    @issuer_url.setter
+    def issuer_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "issuer_url", value)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @master_url.setter
+    def master_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_url", value)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the password for the connector.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Scopes to request for the connector.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing the client secret for the connector.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for the connector.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing the username for the connector.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class KubernetesConnectorServiceAccountArgs:
+    def __init__(__self__, *,
+                 master_url: pulumi.Input[str],
+                 service_account_token_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
+        :param pulumi.Input[str] service_account_token_ref: Reference to the secret containing the service account token for the connector.
+        """
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "service_account_token_ref", service_account_token_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @master_url.setter
+    def master_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_url", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountTokenRef")
+    def service_account_token_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the service account token for the connector.
+        """
+        return pulumi.get(self, "service_account_token_ref")
+
+    @service_account_token_ref.setter
+    def service_account_token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_token_ref", value)
+
+
+@pulumi.input_type
+class KubernetesConnectorUsernamePasswordArgs:
+    def __init__(__self__, *,
+                 master_url: pulumi.Input[str],
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
+        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector.
+        :param pulumi.Input[str] username: Username for the connector.
+        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector.
+        """
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @master_url.setter
+    def master_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "master_url", value)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the secret containing the password for the connector.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for the connector.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing the username for the connector.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class NexusConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
 
 @pulumi.input_type
 class ResourceGroupIncludedScopeArgs:

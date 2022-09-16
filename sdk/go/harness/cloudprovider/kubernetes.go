@@ -21,8 +21,8 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Cloudprovider.NewKubernetes(ctx, "example", &Cloudprovider.KubernetesArgs{
+//			_, err = cloudprovider.NewKubernetes(ctx, "example", &cloudprovider.KubernetesArgs{
 //				SkipValidation: pulumi.Bool(true),
 //				Authentication: &cloudprovider.KubernetesAuthenticationArgs{
 //					UsernamePassword: &cloudprovider.KubernetesAuthenticationUsernamePasswordArgs{
@@ -74,7 +74,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Cloudprovider/kubernetes:Kubernetes example <provider_id>
+//	$ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
 //
 // ```
 type Kubernetes struct {
@@ -102,7 +102,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Kubernetes
-	err := ctx.RegisterResource("harness:Cloudprovider/kubernetes:Kubernetes", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:cloudprovider/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func NewKubernetes(ctx *pulumi.Context,
 func GetKubernetes(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KubernetesState, opts ...pulumi.ResourceOption) (*Kubernetes, error) {
 	var resource Kubernetes
-	err := ctx.ReadResource("harness:Cloudprovider/kubernetes:Kubernetes", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:cloudprovider/kubernetes:Kubernetes", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

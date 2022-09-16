@@ -220,7 +220,7 @@ class Azure(pulumi.CustomResource):
         # Import using the Harness azure cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/azure:Azure example <provider_id>
+         $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -262,7 +262,7 @@ class Azure(pulumi.CustomResource):
         # Import using the Harness azure cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/azure:Azure example <provider_id>
+         $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -306,7 +306,7 @@ class Azure(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
         super(Azure, __self__).__init__(
-            'harness:Cloudprovider/azure:Azure',
+            'harness:cloudprovider/azure:Azure',
             resource_name,
             __props__,
             opts)

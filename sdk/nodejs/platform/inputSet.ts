@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.InputSet("example", {
+ * const example = new harness.platform.InputSet("example", {
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     pipelineId: "pipeline_id",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * # Import using input set id
  *
  * ```sh
- *  $ pulumi import harness:Platform/inputSet:InputSet example <input_set_id>
+ *  $ pulumi import harness:platform/inputSet:InputSet example <input_set_id>
  * ```
  */
 export class InputSet extends pulumi.CustomResource {
@@ -59,7 +59,7 @@ export class InputSet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/inputSet:InputSet';
+    public static readonly __pulumiType = 'harness:platform/inputSet:InputSet';
 
     /**
      * Returns true if the given object is an instance of InputSet.  This is designed to work even

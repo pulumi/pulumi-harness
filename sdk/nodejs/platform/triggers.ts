@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.Triggers("example", {
+ * const example = new harness.platform.Triggers("example", {
  *     identifier: "identifier",
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * # Import using trigger id
  *
  * ```sh
- *  $ pulumi import harness:Platform/triggers:Triggers example <triggers_id>
+ *  $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
  * ```
  */
 export class Triggers extends pulumi.CustomResource {
@@ -75,7 +75,7 @@ export class Triggers extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/triggers:Triggers';
+    public static readonly __pulumiType = 'harness:platform/triggers:Triggers';
 
     /**
      * Returns true if the given object is an instance of Triggers.  This is designed to work even

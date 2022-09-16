@@ -38,10 +38,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/tanzu:Tanzu example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/tanzu:Tanzu example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/tanzu:Tanzu")]
+    [HarnessResourceType("harness:service/tanzu:Tanzu")]
     public partial class Tanzu : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -77,12 +77,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tanzu(string name, TanzuArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/tanzu:Tanzu", name, args ?? new TanzuArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/tanzu:Tanzu", name, args ?? new TanzuArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Tanzu(string name, Input<string> id, TanzuState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/tanzu:Tanzu", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/tanzu:Tanzu", name, state, MakeResourceOptions(options, id))
         {
         }
 

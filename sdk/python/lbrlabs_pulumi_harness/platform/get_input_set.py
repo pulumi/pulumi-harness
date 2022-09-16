@@ -163,7 +163,7 @@ def get_input_set(identifier: Optional[str] = None,
     __args__['pipelineId'] = pipeline_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getInputSet:getInputSet', __args__, opts=opts, typ=GetInputSetResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getInputSet:getInputSet', __args__, opts=opts, typ=GetInputSetResult).value
 
     return AwaitableGetInputSetResult(
         description=__ret__.description,

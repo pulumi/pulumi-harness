@@ -32,10 +32,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness datacenter cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/datacenter:Datacenter example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/datacenter:Datacenter example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/datacenter:Datacenter")]
+    [HarnessResourceType("harness:cloudprovider/datacenter:Datacenter")]
     public partial class Datacenter : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -59,12 +59,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Datacenter(string name, DatacenterArgs? args = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/datacenter:Datacenter", name, args ?? new DatacenterArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/datacenter:Datacenter", name, args ?? new DatacenterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Datacenter(string name, Input<string> id, DatacenterState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/datacenter:Datacenter", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/datacenter:Datacenter", name, state, MakeResourceOptions(options, id))
         {
         }
 

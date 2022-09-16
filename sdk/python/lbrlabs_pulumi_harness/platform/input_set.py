@@ -331,7 +331,7 @@ class InputSet(pulumi.CustomResource):
         # Import using input set id
 
         ```sh
-         $ pulumi import harness:Platform/inputSet:InputSet example <input_set_id>
+         $ pulumi import harness:platform/inputSet:InputSet example <input_set_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -388,7 +388,7 @@ class InputSet(pulumi.CustomResource):
         # Import using input set id
 
         ```sh
-         $ pulumi import harness:Platform/inputSet:InputSet example <input_set_id>
+         $ pulumi import harness:platform/inputSet:InputSet example <input_set_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -438,7 +438,7 @@ class InputSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
         super(InputSet, __self__).__init__(
-            'harness:Platform/inputSet:InputSet',
+            'harness:platform/inputSet:InputSet',
             resource_name,
             __props__,
             opts)

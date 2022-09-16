@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.Platform.getServiceAccount({
+ * const example = pulumi.output(harness.platform.getServiceAccount({
  *     identifier: "identifier",
  * }));
  * ```
@@ -25,7 +25,7 @@ export function getServiceAccount(args?: GetServiceAccountArgs, opts?: pulumi.In
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getServiceAccount:getServiceAccount", {
+    return pulumi.runtime.invoke("harness:platform/getServiceAccount:getServiceAccount", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

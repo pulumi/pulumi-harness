@@ -653,7 +653,7 @@ export interface UserGroupSamlSettings {
     ssoProviderId?: string;
 }
 
-export namespace Cloudprovider {
+export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
          * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
@@ -718,15 +718,15 @@ export namespace Cloudprovider {
         /**
          * Service account configuration for connecting to the Kubernetes cluster
          */
-        oidc?: outputs.Cloudprovider.KubernetesAuthenticationOidc;
+        oidc?: outputs.cloudprovider.KubernetesAuthenticationOidc;
         /**
          * Username and password for authentication to the cluster
          */
-        serviceAccount?: outputs.Cloudprovider.KubernetesAuthenticationServiceAccount;
+        serviceAccount?: outputs.cloudprovider.KubernetesAuthenticationServiceAccount;
         /**
          * Username and password for authentication to the cluster
          */
-        usernamePassword?: outputs.Cloudprovider.KubernetesAuthenticationUsernamePassword;
+        usernamePassword?: outputs.cloudprovider.KubernetesAuthenticationUsernamePassword;
     }
 
     export interface KubernetesAuthenticationOidc {
@@ -769,7 +769,443 @@ export namespace Cloudprovider {
 
 }
 
-export namespace Platform {
+export namespace platform {
+    export interface AppDynamicsConnectorApiToken {
+        /**
+         * The client id used for connecting to App Dynamics.
+         */
+        clientId: string;
+        /**
+         * Reference to the Harness secret containing the App Dynamics client secret.
+         */
+        clientSecretRef: string;
+    }
+
+    export interface AppDynamicsConnectorUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+    }
+
+    export interface ArtifactoryConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: string;
+    }
+
+    export interface AwsCCConnectorCrossAccountAccess {
+        /**
+         * The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+         */
+        externalId: string;
+        /**
+         * The ARN of the role to use for cross-account access.
+         */
+        roleArn: string;
+    }
+
+    export interface AwsConnectorCrossAccountAccess {
+        /**
+         * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+         */
+        externalId?: string;
+        /**
+         * The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+         */
+        roleArn: string;
+    }
+
+    export interface AwsConnectorInheritFromDelegate {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface AwsConnectorIrsa {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface AwsConnectorManual {
+        /**
+         * AWS access key.
+         */
+        accessKey?: string;
+        /**
+         * Reference to the Harness secret containing the aws access key.
+         */
+        accessKeyRef?: string;
+        /**
+         * Connect only use delegates with these tags.
+         */
+        delegateSelectors?: string[];
+        /**
+         * Reference to the Harness secret containing the aws secret key.
+         */
+        secretKeyRef: string;
+    }
+
+    export interface AwsKmsConnectorCredentials {
+        /**
+         * Connect using STS assume role.
+         */
+        assumeRole?: outputs.platform.AwsKmsConnectorCredentialsAssumeRole;
+        /**
+         * Inherit the credentials from from the delegate.
+         */
+        inheritFromDelegate?: boolean;
+        /**
+         * Specify the AWS key and secret used for authenticating.
+         */
+        manual?: outputs.platform.AwsKmsConnectorCredentialsManual;
+    }
+
+    export interface AwsKmsConnectorCredentialsAssumeRole {
+        duration: number;
+        externalId?: string;
+        roleArn: string;
+    }
+
+    export interface AwsKmsConnectorCredentialsManual {
+        accessKeyRef: string;
+        secretKeyRef: string;
+    }
+
+    export interface AwsSecretManagerConnectorCredentials {
+        /**
+         * Connect using STS assume role.
+         */
+        assumeRole?: outputs.platform.AwsSecretManagerConnectorCredentialsAssumeRole;
+        /**
+         * Inherit the credentials from from the delegate.
+         */
+        inheritFromDelegate?: boolean;
+        /**
+         * Specify the AWS key and secret used for authenticating.
+         */
+        manual?: outputs.platform.AwsSecretManagerConnectorCredentialsManual;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsAssumeRole {
+        duration: number;
+        externalId?: string;
+        roleArn: string;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsManual {
+        accessKeyRef: string;
+        secretKeyRef: string;
+    }
+
+    export interface BitbucketConnectorApiAuthentication {
+        /**
+         * Personal access token for interacting with the BitBucket api.
+         */
+        tokenRef: string;
+        /**
+         * The username used for connecting to the api.
+         */
+        username?: string;
+        /**
+         * The name of the Harness secret containing the username.
+         */
+        usernameRef?: string;
+    }
+
+    export interface BitbucketConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: outputs.platform.BitbucketConnectorCredentialsHttp;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: outputs.platform.BitbucketConnectorCredentialsSsh;
+    }
+
+    export interface BitbucketConnectorCredentialsHttp {
+        passwordRef?: string;
+        username?: string;
+        usernameRef?: string;
+    }
+
+    export interface BitbucketConnectorCredentialsSsh {
+        sshKeyRef: string;
+    }
+
+    export interface DockerConnectorCredentials {
+        /**
+         * The reference to the password to use for the docker registry.
+         */
+        passwordRef: string;
+        /**
+         * The username to use for the docker registry.
+         */
+        username?: string;
+        /**
+         * The reference to the username to use for the docker registry.
+         */
+        usernameRef?: string;
+    }
+
+    export interface GcpConnectorInheritFromDelegate {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface GcpConnectorManual {
+        /**
+         * The delegates to connect with.
+         */
+        delegateSelectors: string[];
+        /**
+         * Reference to the Harness secret containing the secret key.
+         */
+        secretKeyRef: string;
+    }
+
+    export interface GetAppDynamicsConnectorApiToken {
+        clientId: string;
+        clientSecretRef: string;
+    }
+
+    export interface GetAppDynamicsConnectorUsernamePassword {
+        passwordRef: string;
+        username: string;
+    }
+
+    export interface GetArtifactoryConnectorCredential {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetAwsCCConnectorCrossAccountAccess {
+        externalId: string;
+        roleArn: string;
+    }
+
+    export interface GetAwsConnectorCrossAccountAccess {
+        externalId: string;
+        roleArn: string;
+    }
+
+    export interface GetAwsConnectorInheritFromDelegate {
+        delegateSelectors: string[];
+    }
+
+    export interface GetAwsConnectorIrsa {
+        delegateSelectors: string[];
+    }
+
+    export interface GetAwsConnectorManual {
+        accessKey: string;
+        accessKeyRef: string;
+        delegateSelectors: string[];
+        secretKeyRef: string;
+    }
+
+    export interface GetAwsKmsConnectorCredential {
+        assumeRoles: outputs.platform.GetAwsKmsConnectorCredentialAssumeRole[];
+        inheritFromDelegate: boolean;
+        manuals: outputs.platform.GetAwsKmsConnectorCredentialManual[];
+    }
+
+    export interface GetAwsKmsConnectorCredentialAssumeRole {
+        duration: number;
+        externalId: string;
+        roleArn: string;
+    }
+
+    export interface GetAwsKmsConnectorCredentialManual {
+        accessKeyRef: string;
+        secretKeyRef: string;
+    }
+
+    export interface GetAwsSecretManagerConnectorCredential {
+        assumeRoles: outputs.platform.GetAwsSecretManagerConnectorCredentialAssumeRole[];
+        inheritFromDelegate: boolean;
+        manuals: outputs.platform.GetAwsSecretManagerConnectorCredentialManual[];
+    }
+
+    export interface GetAwsSecretManagerConnectorCredentialAssumeRole {
+        duration: number;
+        externalId: string;
+        roleArn: string;
+    }
+
+    export interface GetAwsSecretManagerConnectorCredentialManual {
+        accessKeyRef: string;
+        secretKeyRef: string;
+    }
+
+    export interface GetBitbucketConnectorApiAuthentication {
+        tokenRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetBitbucketConnectorCredential {
+        https: outputs.platform.GetBitbucketConnectorCredentialHttp[];
+        sshes: outputs.platform.GetBitbucketConnectorCredentialSsh[];
+    }
+
+    export interface GetBitbucketConnectorCredentialHttp {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetBitbucketConnectorCredentialSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GetDockerConnectorCredential {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetGcpConnectorInheritFromDelegate {
+        delegateSelectors: string[];
+    }
+
+    export interface GetGcpConnectorManual {
+        delegateSelectors: string[];
+        secretKeyRef: string;
+    }
+
+    export interface GetGitConnectorCredential {
+        https: outputs.platform.GetGitConnectorCredentialHttp[];
+        sshes: outputs.platform.GetGitConnectorCredentialSsh[];
+    }
+
+    export interface GetGitConnectorCredentialHttp {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetGitConnectorCredentialSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GetGithubConnectorApiAuthentication {
+        githubApps: outputs.platform.GetGithubConnectorApiAuthenticationGithubApp[];
+        tokenRef: string;
+    }
+
+    export interface GetGithubConnectorApiAuthenticationGithubApp {
+        applicationId: string;
+        installationId: string;
+        privateKeyRef: string;
+    }
+
+    export interface GetGithubConnectorCredential {
+        https: outputs.platform.GetGithubConnectorCredentialHttp[];
+        sshes: outputs.platform.GetGithubConnectorCredentialSsh[];
+    }
+
+    export interface GetGithubConnectorCredentialHttp {
+        tokenRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetGithubConnectorCredentialSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GetGitlabConnectorApiAuthentication {
+        tokenRef: string;
+    }
+
+    export interface GetGitlabConnectorCredential {
+        https: outputs.platform.GetGitlabConnectorCredentialHttp[];
+        sshes: outputs.platform.GetGitlabConnectorCredentialSsh[];
+    }
+
+    export interface GetGitlabConnectorCredentialHttp {
+        passwordRef: string;
+        tokenRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetGitlabConnectorCredentialSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GetHelmConnectorCredential {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetKubernetesConnectorClientKeyCert {
+        caCertRef: string;
+        clientCertRef: string;
+        clientKeyAlgorithm: string;
+        clientKeyPassphraseRef: string;
+        clientKeyRef: string;
+        masterUrl: string;
+    }
+
+    export interface GetKubernetesConnectorInheritFromDelegate {
+        /**
+         * Selectors to use for the delegate.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface GetKubernetesConnectorOpenidConnect {
+        clientIdRef: string;
+        issuerUrl: string;
+        masterUrl: string;
+        passwordRef: string;
+        scopes: string[];
+        secretRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetKubernetesConnectorServiceAccount {
+        masterUrl: string;
+        serviceAccountTokenRef: string;
+    }
+
+    export interface GetKubernetesConnectorUsernamePassword {
+        masterUrl: string;
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
+    export interface GetNexusConnectorCredential {
+        passwordRef: string;
+        username: string;
+        usernameRef: string;
+    }
+
     export interface GetResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -788,11 +1224,11 @@ export namespace Platform {
 
     export interface GetResourceGroupResourceFilter {
         includeAllResources: boolean;
-        resources: outputs.Platform.GetResourceGroupResourceFilterResource[];
+        resources: outputs.platform.GetResourceGroupResourceFilterResource[];
     }
 
     export interface GetResourceGroupResourceFilterResource {
-        attributeFilters: outputs.Platform.GetResourceGroupResourceFilterResourceAttributeFilter[];
+        attributeFilters: outputs.platform.GetResourceGroupResourceFilterResourceAttributeFilter[];
         identifiers: string[];
         resourceType: string;
     }
@@ -806,8 +1242,8 @@ export namespace Platform {
         principal: string;
         realm: string;
         tgtGenerationMethod: string;
-        tgtKeyTabFilePathSpecs: outputs.Platform.GetSecretSshkeyKerberoTgtKeyTabFilePathSpec[];
-        tgtPasswordSpecs: outputs.Platform.GetSecretSshkeyKerberoTgtPasswordSpec[];
+        tgtKeyTabFilePathSpecs: outputs.platform.GetSecretSshkeyKerberoTgtKeyTabFilePathSpec[];
+        tgtPasswordSpecs: outputs.platform.GetSecretSshkeyKerberoTgtPasswordSpec[];
     }
 
     export interface GetSecretSshkeyKerberoTgtKeyTabFilePathSpec {
@@ -820,9 +1256,9 @@ export namespace Platform {
 
     export interface GetSecretSshkeySsh {
         credentialType: string;
-        sshPasswordCredentials: outputs.Platform.GetSecretSshkeySshSshPasswordCredential[];
-        sshkeyPathCredentials: outputs.Platform.GetSecretSshkeySshSshkeyPathCredential[];
-        sshkeyReferenceCredentials: outputs.Platform.GetSecretSshkeySshSshkeyReferenceCredential[];
+        sshPasswordCredentials: outputs.platform.GetSecretSshkeySshSshPasswordCredential[];
+        sshkeyPathCredentials: outputs.platform.GetSecretSshkeySshSshkeyPathCredential[];
+        sshkeyReferenceCredentials: outputs.platform.GetSecretSshkeySshSshkeyReferenceCredential[];
     }
 
     export interface GetSecretSshkeySshSshPasswordCredential {
@@ -865,6 +1301,223 @@ export namespace Platform {
         type: string;
     }
 
+    export interface GitConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: outputs.platform.GitConnectorCredentialsHttp;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: outputs.platform.GitConnectorCredentialsSsh;
+    }
+
+    export interface GitConnectorCredentialsHttp {
+        passwordRef: string;
+        username?: string;
+        usernameRef?: string;
+    }
+
+    export interface GitConnectorCredentialsSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GithubConnectorApiAuthentication {
+        /**
+         * Configuration for using the github app for interacting with the github api.
+         */
+        githubApp?: outputs.platform.GithubConnectorApiAuthenticationGithubApp;
+        /**
+         * Personal access token for interacting with the github api.
+         */
+        tokenRef?: string;
+    }
+
+    export interface GithubConnectorApiAuthenticationGithubApp {
+        applicationId: string;
+        installationId: string;
+        privateKeyRef: string;
+    }
+
+    export interface GithubConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: outputs.platform.GithubConnectorCredentialsHttp;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: outputs.platform.GithubConnectorCredentialsSsh;
+    }
+
+    export interface GithubConnectorCredentialsHttp {
+        tokenRef: string;
+        username?: string;
+        usernameRef?: string;
+    }
+
+    export interface GithubConnectorCredentialsSsh {
+        sshKeyRef: string;
+    }
+
+    export interface GitlabConnectorApiAuthentication {
+        /**
+         * Personal access token for interacting with the gitlab api.
+         */
+        tokenRef: string;
+    }
+
+    export interface GitlabConnectorCredentials {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        http?: outputs.platform.GitlabConnectorCredentialsHttp;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: outputs.platform.GitlabConnectorCredentialsSsh;
+    }
+
+    export interface GitlabConnectorCredentialsHttp {
+        passwordRef?: string;
+        tokenRef?: string;
+        username?: string;
+        usernameRef?: string;
+    }
+
+    export interface GitlabConnectorCredentialsSsh {
+        sshKeyRef: string;
+    }
+
+    export interface HelmConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: string;
+    }
+
+    export interface KubernetesConnectorClientKeyCert {
+        /**
+         * Reference to the secret containing the CA certificate for the connector.
+         */
+        caCertRef?: string;
+        /**
+         * Reference to the secret containing the client certificate for the connector.
+         */
+        clientCertRef: string;
+        /**
+         * The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+         */
+        clientKeyAlgorithm: string;
+        /**
+         * Reference to the secret containing the client key passphrase for the connector.
+         */
+        clientKeyPassphraseRef?: string;
+        /**
+         * Reference to the secret containing the client key for the connector.
+         */
+        clientKeyRef: string;
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: string;
+    }
+
+    export interface KubernetesConnectorInheritFromDelegate {
+        /**
+         * Selectors to use for the delegate.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface KubernetesConnectorOpenidConnect {
+        /**
+         * Reference to the secret containing the client ID for the connector.
+         */
+        clientIdRef: string;
+        /**
+         * The URL of the OpenID Connect issuer.
+         */
+        issuerUrl: string;
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: string;
+        /**
+         * Reference to the secret containing the password for the connector.
+         */
+        passwordRef: string;
+        /**
+         * Scopes to request for the connector.
+         */
+        scopes?: string[];
+        /**
+         * Reference to the secret containing the client secret for the connector.
+         */
+        secretRef?: string;
+        /**
+         * Username for the connector.
+         */
+        username?: string;
+        /**
+         * Reference to the secret containing the username for the connector.
+         */
+        usernameRef?: string;
+    }
+
+    export interface KubernetesConnectorServiceAccount {
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: string;
+        /**
+         * Reference to the secret containing the service account token for the connector.
+         */
+        serviceAccountTokenRef: string;
+    }
+
+    export interface KubernetesConnectorUsernamePassword {
+        /**
+         * The URL of the Kubernetes cluster.
+         */
+        masterUrl: string;
+        /**
+         * Reference to the secret containing the password for the connector.
+         */
+        passwordRef: string;
+        /**
+         * Username for the connector.
+         */
+        username?: string;
+        /**
+         * Reference to the secret containing the username for the connector.
+         */
+        usernameRef?: string;
+    }
+
+    export interface NexusConnectorCredentials {
+        /**
+         * Reference to a secret containing the password to use for authentication.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication.
+         */
+        usernameRef?: string;
+    }
+
     export interface ResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -892,11 +1545,11 @@ export namespace Platform {
         /**
          * Resources for a resource group
          */
-        resources?: outputs.Platform.ResourceGroupResourceFilterResource[];
+        resources?: outputs.platform.ResourceGroupResourceFilterResource[];
     }
 
     export interface ResourceGroupResourceFilterResource {
-        attributeFilters?: outputs.Platform.ResourceGroupResourceFilterResourceAttributeFilter[];
+        attributeFilters?: outputs.platform.ResourceGroupResourceFilterResourceAttributeFilter[];
         identifiers?: string[];
         resourceType: string;
     }
@@ -922,11 +1575,11 @@ export namespace Platform {
         /**
          * Authenticate to App Dynamics using username and password.
          */
-        tgtKeyTabFilePathSpec?: outputs.Platform.SecretSshkeyKerberosTgtKeyTabFilePathSpec;
+        tgtKeyTabFilePathSpec?: outputs.platform.SecretSshkeyKerberosTgtKeyTabFilePathSpec;
         /**
          * Authenticate to App Dynamics using username and password.
          */
-        tgtPasswordSpec?: outputs.Platform.SecretSshkeyKerberosTgtPasswordSpec;
+        tgtPasswordSpec?: outputs.platform.SecretSshkeyKerberosTgtPasswordSpec;
     }
 
     export interface SecretSshkeyKerberosTgtKeyTabFilePathSpec {
@@ -945,15 +1598,15 @@ export namespace Platform {
         /**
          * SSH credential of type keyReference
          */
-        sshPasswordCredential?: outputs.Platform.SecretSshkeySshSshPasswordCredential;
+        sshPasswordCredential?: outputs.platform.SecretSshkeySshSshPasswordCredential;
         /**
          * SSH credential of type keyPath
          */
-        sshkeyPathCredential?: outputs.Platform.SecretSshkeySshSshkeyPathCredential;
+        sshkeyPathCredential?: outputs.platform.SecretSshkeySshSshkeyPathCredential;
         /**
          * SSH credential of type keyReference
          */
-        sshkeyReferenceCredential?: outputs.Platform.SecretSshkeySshSshkeyReferenceCredential;
+        sshkeyReferenceCredential?: outputs.platform.SecretSshkeySshSshkeyReferenceCredential;
     }
 
     export interface SecretSshkeySshSshPasswordCredential {
@@ -995,666 +1648,9 @@ export namespace Platform {
          */
         type?: string;
     }
-
 }
 
-export namespace PlatformConnector {
-    export interface AppDynamicsApiToken {
-        /**
-         * The client id used for connecting to App Dynamics.
-         */
-        clientId: string;
-        /**
-         * Reference to the Harness secret containing the App Dynamics client secret.
-         */
-        clientSecretRef: string;
-    }
-
-    export interface AppDynamicsUsernamePassword {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: string;
-        /**
-         * Username to use for authentication.
-         */
-        username: string;
-    }
-
-    export interface ArtifactoryCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: string;
-        /**
-         * Username to use for authentication.
-         */
-        username?: string;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: string;
-    }
-
-    export interface AwsCCCrossAccountAccess {
-        /**
-         * The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
-         */
-        externalId: string;
-        /**
-         * The ARN of the role to use for cross-account access.
-         */
-        roleArn: string;
-    }
-
-    export interface AwsCrossAccountAccess {
-        /**
-         * If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
-         */
-        externalId?: string;
-        /**
-         * The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
-         */
-        roleArn: string;
-    }
-
-    export interface AwsInheritFromDelegate {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: string[];
-    }
-
-    export interface AwsIrsa {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: string[];
-    }
-
-    export interface AwsKmsCredentials {
-        /**
-         * Connect using STS assume role.
-         */
-        assumeRole?: outputs.PlatformConnector.AwsKmsCredentialsAssumeRole;
-        /**
-         * Inherit the credentials from from the delegate.
-         */
-        inheritFromDelegate?: boolean;
-        /**
-         * Specify the AWS key and secret used for authenticating.
-         */
-        manual?: outputs.PlatformConnector.AwsKmsCredentialsManual;
-    }
-
-    export interface AwsKmsCredentialsAssumeRole {
-        duration: number;
-        externalId?: string;
-        roleArn: string;
-    }
-
-    export interface AwsKmsCredentialsManual {
-        accessKeyRef: string;
-        secretKeyRef: string;
-    }
-
-    export interface AwsManual {
-        /**
-         * AWS access key.
-         */
-        accessKey?: string;
-        /**
-         * Reference to the Harness secret containing the aws access key.
-         */
-        accessKeyRef?: string;
-        /**
-         * Connect only use delegates with these tags.
-         */
-        delegateSelectors?: string[];
-        /**
-         * Reference to the Harness secret containing the aws secret key.
-         */
-        secretKeyRef: string;
-    }
-
-    export interface AwsSecretManagerCredentials {
-        /**
-         * Connect using STS assume role.
-         */
-        assumeRole?: outputs.PlatformConnector.AwsSecretManagerCredentialsAssumeRole;
-        /**
-         * Inherit the credentials from from the delegate.
-         */
-        inheritFromDelegate?: boolean;
-        /**
-         * Specify the AWS key and secret used for authenticating.
-         */
-        manual?: outputs.PlatformConnector.AwsSecretManagerCredentialsManual;
-    }
-
-    export interface AwsSecretManagerCredentialsAssumeRole {
-        duration: number;
-        externalId?: string;
-        roleArn: string;
-    }
-
-    export interface AwsSecretManagerCredentialsManual {
-        accessKeyRef: string;
-        secretKeyRef: string;
-    }
-
-    export interface BitbucketApiAuthentication {
-        /**
-         * Personal access token for interacting with the BitBucket api.
-         */
-        tokenRef: string;
-        /**
-         * The username used for connecting to the api.
-         */
-        username?: string;
-        /**
-         * The name of the Harness secret containing the username.
-         */
-        usernameRef?: string;
-    }
-
-    export interface BitbucketCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: outputs.PlatformConnector.BitbucketCredentialsHttp;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: outputs.PlatformConnector.BitbucketCredentialsSsh;
-    }
-
-    export interface BitbucketCredentialsHttp {
-        passwordRef?: string;
-        username?: string;
-        usernameRef?: string;
-    }
-
-    export interface BitbucketCredentialsSsh {
-        sshKeyRef: string;
-    }
-
-    export interface DockerCredentials {
-        /**
-         * The reference to the password to use for the docker registry.
-         */
-        passwordRef: string;
-        /**
-         * The username to use for the docker registry.
-         */
-        username?: string;
-        /**
-         * The reference to the username to use for the docker registry.
-         */
-        usernameRef?: string;
-    }
-
-    export interface GcpInheritFromDelegate {
-        /**
-         * The delegates to inherit the credentials from.
-         */
-        delegateSelectors: string[];
-    }
-
-    export interface GcpManual {
-        /**
-         * The delegates to connect with.
-         */
-        delegateSelectors: string[];
-        /**
-         * Reference to the Harness secret containing the secret key.
-         */
-        secretKeyRef: string;
-    }
-
-    export interface GetAppDynamicsApiToken {
-        clientId: string;
-        clientSecretRef: string;
-    }
-
-    export interface GetAppDynamicsUsernamePassword {
-        passwordRef: string;
-        username: string;
-    }
-
-    export interface GetArtifactoryCredential {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetAwsCCCrossAccountAccess {
-        externalId: string;
-        roleArn: string;
-    }
-
-    export interface GetAwsCrossAccountAccess {
-        externalId: string;
-        roleArn: string;
-    }
-
-    export interface GetAwsInheritFromDelegate {
-        delegateSelectors: string[];
-    }
-
-    export interface GetAwsIrsa {
-        delegateSelectors: string[];
-    }
-
-    export interface GetAwsKmsCredential {
-        assumeRoles: outputs.PlatformConnector.GetAwsKmsCredentialAssumeRole[];
-        inheritFromDelegate: boolean;
-        manuals: outputs.PlatformConnector.GetAwsKmsCredentialManual[];
-    }
-
-    export interface GetAwsKmsCredentialAssumeRole {
-        duration: number;
-        externalId: string;
-        roleArn: string;
-    }
-
-    export interface GetAwsKmsCredentialManual {
-        accessKeyRef: string;
-        secretKeyRef: string;
-    }
-
-    export interface GetAwsManual {
-        accessKey: string;
-        accessKeyRef: string;
-        delegateSelectors: string[];
-        secretKeyRef: string;
-    }
-
-    export interface GetAwsSecretManagerCredential {
-        assumeRoles: outputs.PlatformConnector.GetAwsSecretManagerCredentialAssumeRole[];
-        inheritFromDelegate: boolean;
-        manuals: outputs.PlatformConnector.GetAwsSecretManagerCredentialManual[];
-    }
-
-    export interface GetAwsSecretManagerCredentialAssumeRole {
-        duration: number;
-        externalId: string;
-        roleArn: string;
-    }
-
-    export interface GetAwsSecretManagerCredentialManual {
-        accessKeyRef: string;
-        secretKeyRef: string;
-    }
-
-    export interface GetBitbucketApiAuthentication {
-        tokenRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetBitbucketCredential {
-        https: outputs.PlatformConnector.GetBitbucketCredentialHttp[];
-        sshes: outputs.PlatformConnector.GetBitbucketCredentialSsh[];
-    }
-
-    export interface GetBitbucketCredentialHttp {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetBitbucketCredentialSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GetDockerCredential {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetGcpInheritFromDelegate {
-        delegateSelectors: string[];
-    }
-
-    export interface GetGcpManual {
-        delegateSelectors: string[];
-        secretKeyRef: string;
-    }
-
-    export interface GetGitCredential {
-        https: outputs.PlatformConnector.GetGitCredentialHttp[];
-        sshes: outputs.PlatformConnector.GetGitCredentialSsh[];
-    }
-
-    export interface GetGitCredentialHttp {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetGitCredentialSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GetGithubApiAuthentication {
-        githubApps: outputs.PlatformConnector.GetGithubApiAuthenticationGithubApp[];
-        tokenRef: string;
-    }
-
-    export interface GetGithubApiAuthenticationGithubApp {
-        applicationId: string;
-        installationId: string;
-        privateKeyRef: string;
-    }
-
-    export interface GetGithubCredential {
-        https: outputs.PlatformConnector.GetGithubCredentialHttp[];
-        sshes: outputs.PlatformConnector.GetGithubCredentialSsh[];
-    }
-
-    export interface GetGithubCredentialHttp {
-        tokenRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetGithubCredentialSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GetGitlabApiAuthentication {
-        tokenRef: string;
-    }
-
-    export interface GetGitlabCredential {
-        https: outputs.PlatformConnector.GetGitlabCredentialHttp[];
-        sshes: outputs.PlatformConnector.GetGitlabCredentialSsh[];
-    }
-
-    export interface GetGitlabCredentialHttp {
-        passwordRef: string;
-        tokenRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetGitlabCredentialSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GetHelmCredential {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetKubernetesClientKeyCert {
-        caCertRef: string;
-        clientCertRef: string;
-        clientKeyAlgorithm: string;
-        clientKeyPassphraseRef: string;
-        clientKeyRef: string;
-        masterUrl: string;
-    }
-
-    export interface GetKubernetesInheritFromDelegate {
-        /**
-         * Selectors to use for the delegate.
-         */
-        delegateSelectors: string[];
-    }
-
-    export interface GetKubernetesOpenidConnect {
-        clientIdRef: string;
-        issuerUrl: string;
-        masterUrl: string;
-        passwordRef: string;
-        scopes: string[];
-        secretRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetKubernetesServiceAccount {
-        masterUrl: string;
-        serviceAccountTokenRef: string;
-    }
-
-    export interface GetKubernetesUsernamePassword {
-        masterUrl: string;
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GetNexusCredential {
-        passwordRef: string;
-        username: string;
-        usernameRef: string;
-    }
-
-    export interface GitCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: outputs.PlatformConnector.GitCredentialsHttp;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: outputs.PlatformConnector.GitCredentialsSsh;
-    }
-
-    export interface GitCredentialsHttp {
-        passwordRef: string;
-        username?: string;
-        usernameRef?: string;
-    }
-
-    export interface GitCredentialsSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GithubApiAuthentication {
-        /**
-         * Configuration for using the github app for interacting with the github api.
-         */
-        githubApp?: outputs.PlatformConnector.GithubApiAuthenticationGithubApp;
-        /**
-         * Personal access token for interacting with the github api.
-         */
-        tokenRef?: string;
-    }
-
-    export interface GithubApiAuthenticationGithubApp {
-        applicationId: string;
-        installationId: string;
-        privateKeyRef: string;
-    }
-
-    export interface GithubCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: outputs.PlatformConnector.GithubCredentialsHttp;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: outputs.PlatformConnector.GithubCredentialsSsh;
-    }
-
-    export interface GithubCredentialsHttp {
-        tokenRef: string;
-        username?: string;
-        usernameRef?: string;
-    }
-
-    export interface GithubCredentialsSsh {
-        sshKeyRef: string;
-    }
-
-    export interface GitlabApiAuthentication {
-        /**
-         * Personal access token for interacting with the gitlab api.
-         */
-        tokenRef: string;
-    }
-
-    export interface GitlabCredentials {
-        /**
-         * Authenticate using Username and password over http(s) for the connection.
-         */
-        http?: outputs.PlatformConnector.GitlabCredentialsHttp;
-        /**
-         * Authenticate using SSH for the connection.
-         */
-        ssh?: outputs.PlatformConnector.GitlabCredentialsSsh;
-    }
-
-    export interface GitlabCredentialsHttp {
-        passwordRef?: string;
-        tokenRef?: string;
-        username?: string;
-        usernameRef?: string;
-    }
-
-    export interface GitlabCredentialsSsh {
-        sshKeyRef: string;
-    }
-
-    export interface HelmCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: string;
-        /**
-         * Username to use for authentication.
-         */
-        username?: string;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: string;
-    }
-
-    export interface KubernetesClientKeyCert {
-        /**
-         * Reference to the secret containing the CA certificate for the connector.
-         */
-        caCertRef?: string;
-        /**
-         * Reference to the secret containing the client certificate for the connector.
-         */
-        clientCertRef: string;
-        /**
-         * The algorithm used to generate the client key for the connector. Valid values are RSA, EC
-         */
-        clientKeyAlgorithm: string;
-        /**
-         * Reference to the secret containing the client key passphrase for the connector.
-         */
-        clientKeyPassphraseRef?: string;
-        /**
-         * Reference to the secret containing the client key for the connector.
-         */
-        clientKeyRef: string;
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: string;
-    }
-
-    export interface KubernetesInheritFromDelegate {
-        /**
-         * Selectors to use for the delegate.
-         */
-        delegateSelectors: string[];
-    }
-
-    export interface KubernetesOpenidConnect {
-        /**
-         * Reference to the secret containing the client ID for the connector.
-         */
-        clientIdRef: string;
-        /**
-         * The URL of the OpenID Connect issuer.
-         */
-        issuerUrl: string;
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: string;
-        /**
-         * Reference to the secret containing the password for the connector.
-         */
-        passwordRef: string;
-        /**
-         * Scopes to request for the connector.
-         */
-        scopes?: string[];
-        /**
-         * Reference to the secret containing the client secret for the connector.
-         */
-        secretRef?: string;
-        /**
-         * Username for the connector.
-         */
-        username?: string;
-        /**
-         * Reference to the secret containing the username for the connector.
-         */
-        usernameRef?: string;
-    }
-
-    export interface KubernetesServiceAccount {
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: string;
-        /**
-         * Reference to the secret containing the service account token for the connector.
-         */
-        serviceAccountTokenRef: string;
-    }
-
-    export interface KubernetesUsernamePassword {
-        /**
-         * The URL of the Kubernetes cluster.
-         */
-        masterUrl: string;
-        /**
-         * Reference to the secret containing the password for the connector.
-         */
-        passwordRef: string;
-        /**
-         * Username for the connector.
-         */
-        username?: string;
-        /**
-         * Reference to the secret containing the username for the connector.
-         */
-        usernameRef?: string;
-    }
-
-    export interface NexusCredentials {
-        /**
-         * Reference to a secret containing the password to use for authentication.
-         */
-        passwordRef: string;
-        /**
-         * Username to use for authentication.
-         */
-        username?: string;
-        /**
-         * Reference to a secret containing the username to use for authentication.
-         */
-        usernameRef?: string;
-    }
-
-}
-
-export namespace Service {
+export namespace service {
     export interface AmiVariable {
         /**
          * Name of the variable

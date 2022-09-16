@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness aws cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/aws:Aws example <provider_id>
+ *  $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
  * ```
  */
 export class Aws extends pulumi.CustomResource {
@@ -55,7 +55,7 @@ export class Aws extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/aws:Aws';
+    public static readonly __pulumiType = 'harness:cloudprovider/aws:Aws';
 
     /**
      * Returns true if the given object is an instance of Aws.  This is designed to work even
@@ -79,7 +79,7 @@ export class Aws extends pulumi.CustomResource {
     /**
      * Configuration for assuming a cross account role.
      */
-    public readonly assumeCrossAccountRole!: pulumi.Output<outputs.Cloudprovider.AwsAssumeCrossAccountRole | undefined>;
+    public readonly assumeCrossAccountRole!: pulumi.Output<outputs.cloudprovider.AwsAssumeCrossAccountRole | undefined>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
@@ -95,7 +95,7 @@ export class Aws extends pulumi.CustomResource {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.Cloudprovider.AwsUsageScope[] | undefined>;
+    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.AwsUsageScope[] | undefined>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */
@@ -159,7 +159,7 @@ export interface AwsState {
     /**
      * Configuration for assuming a cross account role.
      */
-    assumeCrossAccountRole?: pulumi.Input<inputs.Cloudprovider.AwsAssumeCrossAccountRole>;
+    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
@@ -175,7 +175,7 @@ export interface AwsState {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.AwsUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[]>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */
@@ -201,7 +201,7 @@ export interface AwsArgs {
     /**
      * Configuration for assuming a cross account role.
      */
-    assumeCrossAccountRole?: pulumi.Input<inputs.Cloudprovider.AwsAssumeCrossAccountRole>;
+    assumeCrossAccountRole?: pulumi.Input<inputs.cloudprovider.AwsAssumeCrossAccountRole>;
     /**
      * Select the Delegate to use via one of its Selectors.
      */
@@ -217,7 +217,7 @@ export interface AwsArgs {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.AwsUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.AwsUsageScope>[]>;
     /**
      * Use the EC2 Instance Profile for Service Accounts.
      */

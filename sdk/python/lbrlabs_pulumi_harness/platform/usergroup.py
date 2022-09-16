@@ -575,7 +575,7 @@ class Usergroup(pulumi.CustomResource):
         # Import using user group id
 
         ```sh
-         $ pulumi import harness:Platform/usergroup:Usergroup example <usergroup_id>
+         $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -648,7 +648,7 @@ class Usergroup(pulumi.CustomResource):
         # Import using user group id
 
         ```sh
-         $ pulumi import harness:Platform/usergroup:Usergroup example <usergroup_id>
+         $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -708,7 +708,7 @@ class Usergroup(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["users"] = users
         super(Usergroup, __self__).__init__(
-            'harness:Platform/usergroup:Usergroup',
+            'harness:platform/usergroup:Usergroup',
             resource_name,
             __props__,
             opts)

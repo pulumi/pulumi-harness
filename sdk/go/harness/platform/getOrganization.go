@@ -14,7 +14,7 @@ import (
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult
-	err := ctx.Invoke("harness:Platform/getOrganization:getOrganization", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getOrganization:getOrganization", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

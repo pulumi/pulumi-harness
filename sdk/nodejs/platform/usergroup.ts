@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.Usergroup("example", {
+ * const example = new harness.platform.Usergroup("example", {
  *     externallyManaged: false,
  *     identifier: "identifier",
  *     linkedSsoDisplayName: "linked_sso_display_name",
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * # Import using user group id
  *
  * ```sh
- *  $ pulumi import harness:Platform/usergroup:Usergroup example <usergroup_id>
+ *  $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
  * ```
  */
 export class Usergroup extends pulumi.CustomResource {
@@ -70,7 +70,7 @@ export class Usergroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/usergroup:Usergroup';
+    public static readonly __pulumiType = 'harness:platform/usergroup:Usergroup';
 
     /**
      * Returns true if the given object is an instance of Usergroup.  This is designed to work even
@@ -114,7 +114,7 @@ export class Usergroup extends pulumi.CustomResource {
     /**
      * List of notification settings.
      */
-    public readonly notificationConfigs!: pulumi.Output<outputs.Platform.UsergroupNotificationConfig[] | undefined>;
+    public readonly notificationConfigs!: pulumi.Output<outputs.platform.UsergroupNotificationConfig[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -233,7 +233,7 @@ export interface UsergroupState {
     /**
      * List of notification settings.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.Platform.UsergroupNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
      * Unique identifier of the organization.
      */
@@ -299,7 +299,7 @@ export interface UsergroupArgs {
     /**
      * List of notification settings.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.Platform.UsergroupNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
      * Unique identifier of the organization.
      */

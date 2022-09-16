@@ -35,7 +35,6 @@ export * from "./yamlConfig";
 import * as cloudprovider from "./cloudprovider";
 import * as config from "./config";
 import * as platform from "./platform";
-import * as platformconnector from "./platformconnector";
 import * as service from "./service";
 import * as types from "./types";
 
@@ -43,7 +42,6 @@ export {
     cloudprovider,
     config,
     platform,
-    platformconnector,
     service,
     types,
 };

@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,15 +20,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -50,16 +51,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * `HARNESS_ENDPOINT` environment variable.
      * 
      */
-    @Import(name="endpoint", required=true)
-    private Output<String> endpoint;
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
 
     /**
      * @return The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
      * `HARNESS_ENDPOINT` environment variable.
      * 
      */
-    public Output<String> endpoint() {
-        return this.endpoint;
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
     }
 
     /**
@@ -112,7 +113,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -155,7 +156,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder endpoint(Output<String> endpoint) {
+        public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
@@ -195,8 +196,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
+            $.accountId = Codegen.stringProp("accountId").output().arg($.accountId).env("HARNESS_ACCOUNT_ID").getNullable();
+            $.apiKey = Codegen.stringProp("apiKey").output().arg($.apiKey).env("HARNESS_API_KEY").getNullable();
+            $.endpoint = Codegen.stringProp("endpoint").output().arg($.endpoint).env("HARNESS_ENDPOINT").getNullable();
+            $.platformApiKey = Codegen.stringProp("platformApiKey").output().arg($.platformApiKey).env("HARNESS_PLATFORM_API_KEY").getNullable();
             return $;
         }
     }

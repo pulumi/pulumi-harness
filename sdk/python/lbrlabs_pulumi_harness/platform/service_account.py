@@ -318,7 +318,7 @@ class ServiceAccount(pulumi.CustomResource):
         # Import using secret sshkey id
 
         ```sh
-         $ pulumi import harness:Platform/serviceAccount:ServiceAccount example <service_account_id>
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,7 +360,7 @@ class ServiceAccount(pulumi.CustomResource):
         # Import using secret sshkey id
 
         ```sh
-         $ pulumi import harness:Platform/serviceAccount:ServiceAccount example <service_account_id>
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,7 +406,7 @@ class ServiceAccount(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
         super(ServiceAccount, __self__).__init__(
-            'harness:Platform/serviceAccount:ServiceAccount',
+            'harness:platform/serviceAccount:ServiceAccount',
             resource_name,
             __props__,
             opts)

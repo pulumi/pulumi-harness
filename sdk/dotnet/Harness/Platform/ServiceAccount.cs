@@ -42,10 +42,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using secret sshkey id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/serviceAccount:ServiceAccount example &lt;service_account_id&gt;
+    ///  $ pulumi import harness:platform/serviceAccount:ServiceAccount example &lt;service_account_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/serviceAccount:ServiceAccount")]
+    [HarnessResourceType("harness:platform/serviceAccount:ServiceAccount")]
     public partial class ServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -105,12 +105,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceAccount(string name, ServiceAccountArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/serviceAccount:ServiceAccount", name, args ?? new ServiceAccountArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/serviceAccount:ServiceAccount", name, args ?? new ServiceAccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceAccount(string name, Input<string> id, ServiceAccountState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/serviceAccount:ServiceAccount", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/serviceAccount:ServiceAccount", name, state, MakeResourceOptions(options, id))
         {
         }
 

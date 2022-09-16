@@ -30,35 +30,35 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "harness:Service/ami:Ami":
+            case "harness:service/ami:Ami":
                 return new Ami(name, <any>undefined, { urn })
-            case "harness:Service/codedeploy:Codedeploy":
+            case "harness:service/codedeploy:Codedeploy":
                 return new Codedeploy(name, <any>undefined, { urn })
-            case "harness:Service/ecs:Ecs":
+            case "harness:service/ecs:Ecs":
                 return new Ecs(name, <any>undefined, { urn })
-            case "harness:Service/helm:Helm":
+            case "harness:service/helm:Helm":
                 return new Helm(name, <any>undefined, { urn })
-            case "harness:Service/kubernetes:Kubernetes":
+            case "harness:service/kubernetes:Kubernetes":
                 return new Kubernetes(name, <any>undefined, { urn })
-            case "harness:Service/lambda:Lambda":
+            case "harness:service/lambda:Lambda":
                 return new Lambda(name, <any>undefined, { urn })
-            case "harness:Service/ssh:Ssh":
+            case "harness:service/ssh:Ssh":
                 return new Ssh(name, <any>undefined, { urn })
-            case "harness:Service/tanzu:Tanzu":
+            case "harness:service/tanzu:Tanzu":
                 return new Tanzu(name, <any>undefined, { urn })
-            case "harness:Service/winrm:Winrm":
+            case "harness:service/winrm:Winrm":
                 return new Winrm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("harness", "Service/ami", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/codedeploy", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/ecs", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/helm", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/kubernetes", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/lambda", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/ssh", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/tanzu", _module)
-pulumi.runtime.registerResourceModule("harness", "Service/winrm", _module)
+pulumi.runtime.registerResourceModule("harness", "service/ami", _module)
+pulumi.runtime.registerResourceModule("harness", "service/codedeploy", _module)
+pulumi.runtime.registerResourceModule("harness", "service/ecs", _module)
+pulumi.runtime.registerResourceModule("harness", "service/helm", _module)
+pulumi.runtime.registerResourceModule("harness", "service/kubernetes", _module)
+pulumi.runtime.registerResourceModule("harness", "service/lambda", _module)
+pulumi.runtime.registerResourceModule("harness", "service/ssh", _module)
+pulumi.runtime.registerResourceModule("harness", "service/tanzu", _module)
+pulumi.runtime.registerResourceModule("harness", "service/winrm", _module)

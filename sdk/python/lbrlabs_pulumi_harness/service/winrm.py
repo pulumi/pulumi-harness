@@ -219,7 +219,7 @@ class Winrm(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/winrm:Winrm example <app_id>/<svc_id>
+         $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -257,7 +257,7 @@ class Winrm(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/winrm:Winrm example <app_id>/<svc_id>
+         $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -299,7 +299,7 @@ class Winrm(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["variables"] = variables
         super(Winrm, __self__).__init__(
-            'harness:Service/winrm:Winrm',
+            'harness:service/winrm:Winrm',
             resource_name,
             __props__,
             opts)

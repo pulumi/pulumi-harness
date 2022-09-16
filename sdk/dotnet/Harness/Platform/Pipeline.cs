@@ -118,7 +118,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// });
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/pipeline:Pipeline")]
+    [HarnessResourceType("harness:platform/pipeline:Pipeline")]
     public partial class Pipeline : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -172,12 +172,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Pipeline(string name, PipelineArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/pipeline:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/pipeline:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Pipeline(string name, Input<string> id, PipelineState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/pipeline:Pipeline", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/pipeline:Pipeline", name, state, MakeResourceOptions(options, id))
         {
         }
 

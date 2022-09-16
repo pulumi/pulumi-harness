@@ -22,14 +22,14 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewPipeline(ctx, "example", &Platform.PipelineArgs{
+//			_, err := platform.NewPipeline(ctx, "example", &platform.PipelineArgs{
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.Any(harness_platform_project.Test.Org_id),
 //				ProjectId:  pulumi.Any(harness_platform_project.Test.Id),
@@ -170,7 +170,7 @@ func NewPipeline(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Pipeline
-	err := ctx.RegisterResource("harness:Platform/pipeline:Pipeline", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/pipeline:Pipeline", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -182,7 +182,7 @@ func NewPipeline(ctx *pulumi.Context,
 func GetPipeline(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PipelineState, opts ...pulumi.ResourceOption) (*Pipeline, error) {
 	var resource Pipeline
-	err := ctx.ReadResource("harness:Platform/pipeline:Pipeline", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/pipeline:Pipeline", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

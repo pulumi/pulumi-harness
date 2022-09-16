@@ -70,10 +70,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using trigger id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/triggers:Triggers example &lt;triggers_id&gt;
+    ///  $ pulumi import harness:platform/triggers:Triggers example &lt;triggers_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/triggers:Triggers")]
+    [HarnessResourceType("harness:platform/triggers:Triggers")]
     public partial class Triggers : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -145,12 +145,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Triggers(string name, TriggersArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/triggers:Triggers", name, args ?? new TriggersArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/triggers:Triggers", name, args ?? new TriggersArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Triggers(string name, Input<string> id, TriggersState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/triggers:Triggers", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/triggers:Triggers", name, state, MakeResourceOptions(options, id))
         {
         }
 

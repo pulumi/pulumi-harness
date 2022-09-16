@@ -13,7 +13,7 @@ export function getInputSet(args: GetInputSetArgs, opts?: pulumi.InvokeOptions):
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getInputSet:getInputSet", {
+    return pulumi.runtime.invoke("harness:platform/getInputSet:getInputSet", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

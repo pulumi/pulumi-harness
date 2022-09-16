@@ -11,6 +11,46 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AppDynamicsConnectorApiToken',
+    'AppDynamicsConnectorUsernamePassword',
+    'ArtifactoryConnectorCredentials',
+    'AwsCCConnectorCrossAccountAccess',
+    'AwsConnectorCrossAccountAccess',
+    'AwsConnectorInheritFromDelegate',
+    'AwsConnectorIrsa',
+    'AwsConnectorManual',
+    'AwsKmsConnectorCredentials',
+    'AwsKmsConnectorCredentialsAssumeRole',
+    'AwsKmsConnectorCredentialsManual',
+    'AwsSecretManagerConnectorCredentials',
+    'AwsSecretManagerConnectorCredentialsAssumeRole',
+    'AwsSecretManagerConnectorCredentialsManual',
+    'BitbucketConnectorApiAuthentication',
+    'BitbucketConnectorCredentials',
+    'BitbucketConnectorCredentialsHttp',
+    'BitbucketConnectorCredentialsSsh',
+    'DockerConnectorCredentials',
+    'GcpConnectorInheritFromDelegate',
+    'GcpConnectorManual',
+    'GitConnectorCredentials',
+    'GitConnectorCredentialsHttp',
+    'GitConnectorCredentialsSsh',
+    'GithubConnectorApiAuthentication',
+    'GithubConnectorApiAuthenticationGithubApp',
+    'GithubConnectorCredentials',
+    'GithubConnectorCredentialsHttp',
+    'GithubConnectorCredentialsSsh',
+    'GitlabConnectorApiAuthentication',
+    'GitlabConnectorCredentials',
+    'GitlabConnectorCredentialsHttp',
+    'GitlabConnectorCredentialsSsh',
+    'HelmConnectorCredentials',
+    'KubernetesConnectorClientKeyCert',
+    'KubernetesConnectorInheritFromDelegate',
+    'KubernetesConnectorOpenidConnect',
+    'KubernetesConnectorServiceAccount',
+    'KubernetesConnectorUsernamePassword',
+    'NexusConnectorCredentials',
     'ResourceGroupIncludedScope',
     'ResourceGroupResourceFilter',
     'ResourceGroupResourceFilterResource',
@@ -23,6 +63,46 @@ __all__ = [
     'SecretSshkeySshSshkeyPathCredential',
     'SecretSshkeySshSshkeyReferenceCredential',
     'UsergroupNotificationConfig',
+    'GetAppDynamicsConnectorApiTokenResult',
+    'GetAppDynamicsConnectorUsernamePasswordResult',
+    'GetArtifactoryConnectorCredentialResult',
+    'GetAwsCCConnectorCrossAccountAccessResult',
+    'GetAwsConnectorCrossAccountAccessResult',
+    'GetAwsConnectorInheritFromDelegateResult',
+    'GetAwsConnectorIrsaResult',
+    'GetAwsConnectorManualResult',
+    'GetAwsKmsConnectorCredentialResult',
+    'GetAwsKmsConnectorCredentialAssumeRoleResult',
+    'GetAwsKmsConnectorCredentialManualResult',
+    'GetAwsSecretManagerConnectorCredentialResult',
+    'GetAwsSecretManagerConnectorCredentialAssumeRoleResult',
+    'GetAwsSecretManagerConnectorCredentialManualResult',
+    'GetBitbucketConnectorApiAuthenticationResult',
+    'GetBitbucketConnectorCredentialResult',
+    'GetBitbucketConnectorCredentialHttpResult',
+    'GetBitbucketConnectorCredentialSshResult',
+    'GetDockerConnectorCredentialResult',
+    'GetGcpConnectorInheritFromDelegateResult',
+    'GetGcpConnectorManualResult',
+    'GetGitConnectorCredentialResult',
+    'GetGitConnectorCredentialHttpResult',
+    'GetGitConnectorCredentialSshResult',
+    'GetGithubConnectorApiAuthenticationResult',
+    'GetGithubConnectorApiAuthenticationGithubAppResult',
+    'GetGithubConnectorCredentialResult',
+    'GetGithubConnectorCredentialHttpResult',
+    'GetGithubConnectorCredentialSshResult',
+    'GetGitlabConnectorApiAuthenticationResult',
+    'GetGitlabConnectorCredentialResult',
+    'GetGitlabConnectorCredentialHttpResult',
+    'GetGitlabConnectorCredentialSshResult',
+    'GetHelmConnectorCredentialResult',
+    'GetKubernetesConnectorClientKeyCertResult',
+    'GetKubernetesConnectorInheritFromDelegateResult',
+    'GetKubernetesConnectorOpenidConnectResult',
+    'GetKubernetesConnectorServiceAccountResult',
+    'GetKubernetesConnectorUsernamePasswordResult',
+    'GetNexusConnectorCredentialResult',
     'GetResourceGroupIncludedScopeResult',
     'GetResourceGroupResourceFilterResult',
     'GetResourceGroupResourceFilterResourceResult',
@@ -36,6 +116,1981 @@ __all__ = [
     'GetSecretSshkeySshSshkeyReferenceCredentialResult',
     'GetUsergroupNotificationConfigResult',
 ]
+
+@pulumi.output_type
+class AppDynamicsConnectorApiToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecretRef":
+            suggest = "client_secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppDynamicsConnectorApiToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppDynamicsConnectorApiToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppDynamicsConnectorApiToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret_ref: str):
+        """
+        :param str client_id: The client id used for connecting to App Dynamics.
+        :param str client_secret_ref: Reference to the Harness secret containing the App Dynamics client secret.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client id used for connecting to App Dynamics.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> str:
+        """
+        Reference to the Harness secret containing the App Dynamics client secret.
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+
+@pulumi.output_type
+class AppDynamicsConnectorUsernamePassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppDynamicsConnectorUsernamePassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppDynamicsConnectorUsernamePassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppDynamicsConnectorUsernamePassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str):
+        """
+        :param str password_ref: Reference to a secret containing the password to use for authentication.
+        :param str username: Username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ArtifactoryConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArtifactoryConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArtifactoryConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArtifactoryConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str password_ref: Reference to a secret containing the password to use for authentication.
+        :param str username: Username to use for authentication.
+        :param str username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class AwsCCConnectorCrossAccountAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalId":
+            suggest = "external_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsCCConnectorCrossAccountAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsCCConnectorCrossAccountAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsCCConnectorCrossAccountAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_id: str,
+                 role_arn: str):
+        """
+        :param str external_id: The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+        :param str role_arn: The ARN of the role to use for cross-account access.
+        """
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        """
+        The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        """
+        The ARN of the role to use for cross-account access.
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class AwsConnectorCrossAccountAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleArn":
+            suggest = "role_arn"
+        elif key == "externalId":
+            suggest = "external_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsConnectorCrossAccountAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsConnectorCrossAccountAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsConnectorCrossAccountAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role_arn: str,
+                 external_id: Optional[str] = None):
+        """
+        :param str role_arn: The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        :param str external_id: If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        """
+        The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+        return pulumi.get(self, "external_id")
+
+
+@pulumi.output_type
+class AwsConnectorInheritFromDelegate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsConnectorInheritFromDelegate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsConnectorInheritFromDelegate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsConnectorInheritFromDelegate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class AwsConnectorIrsa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsConnectorIrsa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsConnectorIrsa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsConnectorIrsa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class AwsConnectorManual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretKeyRef":
+            suggest = "secret_key_ref"
+        elif key == "accessKey":
+            suggest = "access_key"
+        elif key == "accessKeyRef":
+            suggest = "access_key_ref"
+        elif key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsConnectorManual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsConnectorManual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsConnectorManual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_key_ref: str,
+                 access_key: Optional[str] = None,
+                 access_key_ref: Optional[str] = None,
+                 delegate_selectors: Optional[Sequence[str]] = None):
+        """
+        :param str secret_key_ref: Reference to the Harness secret containing the aws secret key.
+        :param str access_key: AWS access key.
+        :param str access_key_ref: Reference to the Harness secret containing the aws access key.
+        :param Sequence[str] delegate_selectors: Connect only use delegates with these tags.
+        """
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if access_key_ref is not None:
+            pulumi.set(__self__, "access_key_ref", access_key_ref)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        """
+        Reference to the Harness secret containing the aws secret key.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        """
+        AWS access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> Optional[str]:
+        """
+        Reference to the Harness secret containing the aws access key.
+        """
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[Sequence[str]]:
+        """
+        Connect only use delegates with these tags.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class AwsKmsConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assumeRole":
+            suggest = "assume_role"
+        elif key == "inheritFromDelegate":
+            suggest = "inherit_from_delegate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsKmsConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsKmsConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsKmsConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assume_role: Optional['outputs.AwsKmsConnectorCredentialsAssumeRole'] = None,
+                 inherit_from_delegate: Optional[bool] = None,
+                 manual: Optional['outputs.AwsKmsConnectorCredentialsManual'] = None):
+        """
+        :param 'AwsKmsConnectorCredentialsAssumeRoleArgs' assume_role: Connect using STS assume role.
+        :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
+        :param 'AwsKmsConnectorCredentialsManualArgs' manual: Specify the AWS key and secret used for authenticating.
+        """
+        if assume_role is not None:
+            pulumi.set(__self__, "assume_role", assume_role)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter(name="assumeRole")
+    def assume_role(self) -> Optional['outputs.AwsKmsConnectorCredentialsAssumeRole']:
+        """
+        Connect using STS assume role.
+        """
+        return pulumi.get(self, "assume_role")
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[bool]:
+        """
+        Inherit the credentials from from the delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional['outputs.AwsKmsConnectorCredentialsManual']:
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+        return pulumi.get(self, "manual")
+
+
+@pulumi.output_type
+class AwsKmsConnectorCredentialsAssumeRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleArn":
+            suggest = "role_arn"
+        elif key == "externalId":
+            suggest = "external_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsKmsConnectorCredentialsAssumeRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsKmsConnectorCredentialsAssumeRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsKmsConnectorCredentialsAssumeRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: int,
+                 role_arn: str,
+                 external_id: Optional[str] = None):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_id")
+
+
+@pulumi.output_type
+class AwsKmsConnectorCredentialsManual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyRef":
+            suggest = "access_key_ref"
+        elif key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsKmsConnectorCredentialsManual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsKmsConnectorCredentialsManual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsKmsConnectorCredentialsManual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_ref: str,
+                 secret_key_ref: str):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> str:
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class AwsSecretManagerConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assumeRole":
+            suggest = "assume_role"
+        elif key == "inheritFromDelegate":
+            suggest = "inherit_from_delegate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSecretManagerConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSecretManagerConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assume_role: Optional['outputs.AwsSecretManagerConnectorCredentialsAssumeRole'] = None,
+                 inherit_from_delegate: Optional[bool] = None,
+                 manual: Optional['outputs.AwsSecretManagerConnectorCredentialsManual'] = None):
+        """
+        :param 'AwsSecretManagerConnectorCredentialsAssumeRoleArgs' assume_role: Connect using STS assume role.
+        :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
+        :param 'AwsSecretManagerConnectorCredentialsManualArgs' manual: Specify the AWS key and secret used for authenticating.
+        """
+        if assume_role is not None:
+            pulumi.set(__self__, "assume_role", assume_role)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
+
+    @property
+    @pulumi.getter(name="assumeRole")
+    def assume_role(self) -> Optional['outputs.AwsSecretManagerConnectorCredentialsAssumeRole']:
+        """
+        Connect using STS assume role.
+        """
+        return pulumi.get(self, "assume_role")
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[bool]:
+        """
+        Inherit the credentials from from the delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional['outputs.AwsSecretManagerConnectorCredentialsManual']:
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+        return pulumi.get(self, "manual")
+
+
+@pulumi.output_type
+class AwsSecretManagerConnectorCredentialsAssumeRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleArn":
+            suggest = "role_arn"
+        elif key == "externalId":
+            suggest = "external_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentialsAssumeRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSecretManagerConnectorCredentialsAssumeRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSecretManagerConnectorCredentialsAssumeRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: int,
+                 role_arn: str,
+                 external_id: Optional[str] = None):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_id")
+
+
+@pulumi.output_type
+class AwsSecretManagerConnectorCredentialsManual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyRef":
+            suggest = "access_key_ref"
+        elif key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentialsManual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSecretManagerConnectorCredentialsManual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSecretManagerConnectorCredentialsManual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_ref: str,
+                 secret_key_ref: str):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> str:
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class BitbucketConnectorApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketConnectorApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketConnectorApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketConnectorApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str token_ref: Personal access token for interacting with the BitBucket api.
+        :param str username: The username used for connecting to the api.
+        :param str username_ref: The name of the Harness secret containing the username.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        """
+        Personal access token for interacting with the BitBucket api.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username used for connecting to the api.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        The name of the Harness secret containing the username.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class BitbucketConnectorCredentials(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.BitbucketConnectorCredentialsHttp'] = None,
+                 ssh: Optional['outputs.BitbucketConnectorCredentialsSsh'] = None):
+        """
+        :param 'BitbucketConnectorCredentialsHttpArgs' http: Authenticate using Username and password over http(s) for the connection.
+        :param 'BitbucketConnectorCredentialsSshArgs' ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.BitbucketConnectorCredentialsHttp']:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.BitbucketConnectorCredentialsSsh']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class BitbucketConnectorCredentialsHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketConnectorCredentialsHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketConnectorCredentialsHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketConnectorCredentialsHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: Optional[str] = None,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> Optional[str]:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class BitbucketConnectorCredentialsSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshKeyRef":
+            suggest = "ssh_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BitbucketConnectorCredentialsSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BitbucketConnectorCredentialsSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BitbucketConnectorCredentialsSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class DockerConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DockerConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DockerConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DockerConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str password_ref: The reference to the password to use for the docker registry.
+        :param str username: The username to use for the docker registry.
+        :param str username_ref: The reference to the username to use for the docker registry.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        The reference to the password to use for the docker registry.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to use for the docker registry.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        The reference to the username to use for the docker registry.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GcpConnectorInheritFromDelegate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpConnectorInheritFromDelegate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpConnectorInheritFromDelegate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpConnectorInheritFromDelegate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GcpConnectorManual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+        elif key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpConnectorManual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpConnectorManual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpConnectorManual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 secret_key_ref: str):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to connect with.
+        :param str secret_key_ref: Reference to the Harness secret containing the secret key.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        """
+        Reference to the Harness secret containing the secret key.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GitConnectorCredentials(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.GitConnectorCredentialsHttp'] = None,
+                 ssh: Optional['outputs.GitConnectorCredentialsSsh'] = None):
+        """
+        :param 'GitConnectorCredentialsHttpArgs' http: Authenticate using Username and password over http(s) for the connection.
+        :param 'GitConnectorCredentialsSshArgs' ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.GitConnectorCredentialsHttp']:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.GitConnectorCredentialsSsh']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class GitConnectorCredentialsHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitConnectorCredentialsHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitConnectorCredentialsHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitConnectorCredentialsHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GitConnectorCredentialsSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshKeyRef":
+            suggest = "ssh_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitConnectorCredentialsSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitConnectorCredentialsSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitConnectorCredentialsSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GithubConnectorApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "githubApp":
+            suggest = "github_app"
+        elif key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GithubConnectorApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GithubConnectorApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GithubConnectorApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 github_app: Optional['outputs.GithubConnectorApiAuthenticationGithubApp'] = None,
+                 token_ref: Optional[str] = None):
+        """
+        :param 'GithubConnectorApiAuthenticationGithubAppArgs' github_app: Configuration for using the github app for interacting with the github api.
+        :param str token_ref: Personal access token for interacting with the github api.
+        """
+        if github_app is not None:
+            pulumi.set(__self__, "github_app", github_app)
+        if token_ref is not None:
+            pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="githubApp")
+    def github_app(self) -> Optional['outputs.GithubConnectorApiAuthenticationGithubApp']:
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        return pulumi.get(self, "github_app")
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> Optional[str]:
+        """
+        Personal access token for interacting with the github api.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GithubConnectorApiAuthenticationGithubApp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationId":
+            suggest = "application_id"
+        elif key == "installationId":
+            suggest = "installation_id"
+        elif key == "privateKeyRef":
+            suggest = "private_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GithubConnectorApiAuthenticationGithubApp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GithubConnectorApiAuthenticationGithubApp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GithubConnectorApiAuthenticationGithubApp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_id: str,
+                 installation_id: str,
+                 private_key_ref: str):
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> str:
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> str:
+        return pulumi.get(self, "private_key_ref")
+
+
+@pulumi.output_type
+class GithubConnectorCredentials(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.GithubConnectorCredentialsHttp'] = None,
+                 ssh: Optional['outputs.GithubConnectorCredentialsSsh'] = None):
+        """
+        :param 'GithubConnectorCredentialsHttpArgs' http: Authenticate using Username and password over http(s) for the connection.
+        :param 'GithubConnectorCredentialsSshArgs' ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.GithubConnectorCredentialsHttp']:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.GithubConnectorCredentialsSsh']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class GithubConnectorCredentialsHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GithubConnectorCredentialsHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GithubConnectorCredentialsHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GithubConnectorCredentialsHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GithubConnectorCredentialsSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshKeyRef":
+            suggest = "ssh_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GithubConnectorCredentialsSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GithubConnectorCredentialsSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GithubConnectorCredentialsSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GitlabConnectorApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitlabConnectorApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitlabConnectorApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitlabConnectorApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: str):
+        """
+        :param str token_ref: Personal access token for interacting with the gitlab api.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        """
+        Personal access token for interacting with the gitlab api.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GitlabConnectorCredentials(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.GitlabConnectorCredentialsHttp'] = None,
+                 ssh: Optional['outputs.GitlabConnectorCredentialsSsh'] = None):
+        """
+        :param 'GitlabConnectorCredentialsHttpArgs' http: Authenticate using Username and password over http(s) for the connection.
+        :param 'GitlabConnectorCredentialsSshArgs' ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.GitlabConnectorCredentialsHttp']:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.GitlabConnectorCredentialsSsh']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class GitlabConnectorCredentialsHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "tokenRef":
+            suggest = "token_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitlabConnectorCredentialsHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitlabConnectorCredentialsHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitlabConnectorCredentialsHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: Optional[str] = None,
+                 token_ref: Optional[str] = None,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
+        if token_ref is not None:
+            pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> Optional[str]:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> Optional[str]:
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GitlabConnectorCredentialsSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshKeyRef":
+            suggest = "ssh_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitlabConnectorCredentialsSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitlabConnectorCredentialsSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitlabConnectorCredentialsSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class HelmConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HelmConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HelmConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HelmConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str password_ref: Reference to a secret containing the password to use for authentication.
+        :param str username: Username to use for authentication.
+        :param str username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class KubernetesConnectorClientKeyCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCertRef":
+            suggest = "client_cert_ref"
+        elif key == "clientKeyAlgorithm":
+            suggest = "client_key_algorithm"
+        elif key == "clientKeyRef":
+            suggest = "client_key_ref"
+        elif key == "masterUrl":
+            suggest = "master_url"
+        elif key == "caCertRef":
+            suggest = "ca_cert_ref"
+        elif key == "clientKeyPassphraseRef":
+            suggest = "client_key_passphrase_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorClientKeyCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConnectorClientKeyCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConnectorClientKeyCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_cert_ref: str,
+                 client_key_algorithm: str,
+                 client_key_ref: str,
+                 master_url: str,
+                 ca_cert_ref: Optional[str] = None,
+                 client_key_passphrase_ref: Optional[str] = None):
+        """
+        :param str client_cert_ref: Reference to the secret containing the client certificate for the connector.
+        :param str client_key_algorithm: The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+        :param str client_key_ref: Reference to the secret containing the client key for the connector.
+        :param str master_url: The URL of the Kubernetes cluster.
+        :param str ca_cert_ref: Reference to the secret containing the CA certificate for the connector.
+        :param str client_key_passphrase_ref: Reference to the secret containing the client key passphrase for the connector.
+        """
+        pulumi.set(__self__, "client_cert_ref", client_cert_ref)
+        pulumi.set(__self__, "client_key_algorithm", client_key_algorithm)
+        pulumi.set(__self__, "client_key_ref", client_key_ref)
+        pulumi.set(__self__, "master_url", master_url)
+        if ca_cert_ref is not None:
+            pulumi.set(__self__, "ca_cert_ref", ca_cert_ref)
+        if client_key_passphrase_ref is not None:
+            pulumi.set(__self__, "client_key_passphrase_ref", client_key_passphrase_ref)
+
+    @property
+    @pulumi.getter(name="clientCertRef")
+    def client_cert_ref(self) -> str:
+        """
+        Reference to the secret containing the client certificate for the connector.
+        """
+        return pulumi.get(self, "client_cert_ref")
+
+    @property
+    @pulumi.getter(name="clientKeyAlgorithm")
+    def client_key_algorithm(self) -> str:
+        """
+        The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+        """
+        return pulumi.get(self, "client_key_algorithm")
+
+    @property
+    @pulumi.getter(name="clientKeyRef")
+    def client_key_ref(self) -> str:
+        """
+        Reference to the secret containing the client key for the connector.
+        """
+        return pulumi.get(self, "client_key_ref")
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="caCertRef")
+    def ca_cert_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the CA certificate for the connector.
+        """
+        return pulumi.get(self, "ca_cert_ref")
+
+    @property
+    @pulumi.getter(name="clientKeyPassphraseRef")
+    def client_key_passphrase_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the client key passphrase for the connector.
+        """
+        return pulumi.get(self, "client_key_passphrase_ref")
+
+
+@pulumi.output_type
+class KubernetesConnectorInheritFromDelegate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorInheritFromDelegate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConnectorInheritFromDelegate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConnectorInheritFromDelegate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param Sequence[str] delegate_selectors: Selectors to use for the delegate.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        Selectors to use for the delegate.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class KubernetesConnectorOpenidConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientIdRef":
+            suggest = "client_id_ref"
+        elif key == "issuerUrl":
+            suggest = "issuer_url"
+        elif key == "masterUrl":
+            suggest = "master_url"
+        elif key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "secretRef":
+            suggest = "secret_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorOpenidConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConnectorOpenidConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConnectorOpenidConnect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id_ref: str,
+                 issuer_url: str,
+                 master_url: str,
+                 password_ref: str,
+                 scopes: Optional[Sequence[str]] = None,
+                 secret_ref: Optional[str] = None,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str client_id_ref: Reference to the secret containing the client ID for the connector.
+        :param str issuer_url: The URL of the OpenID Connect issuer.
+        :param str master_url: The URL of the Kubernetes cluster.
+        :param str password_ref: Reference to the secret containing the password for the connector.
+        :param Sequence[str] scopes: Scopes to request for the connector.
+        :param str secret_ref: Reference to the secret containing the client secret for the connector.
+        :param str username: Username for the connector.
+        :param str username_ref: Reference to the secret containing the username for the connector.
+        """
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> str:
+        """
+        Reference to the secret containing the client ID for the connector.
+        """
+        return pulumi.get(self, "client_id_ref")
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> str:
+        """
+        The URL of the OpenID Connect issuer.
+        """
+        return pulumi.get(self, "issuer_url")
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to the secret containing the password for the connector.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        """
+        Scopes to request for the connector.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the client secret for the connector.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username for the connector.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the username for the connector.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class KubernetesConnectorServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "masterUrl":
+            suggest = "master_url"
+        elif key == "serviceAccountTokenRef":
+            suggest = "service_account_token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConnectorServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConnectorServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 master_url: str,
+                 service_account_token_ref: str):
+        """
+        :param str master_url: The URL of the Kubernetes cluster.
+        :param str service_account_token_ref: Reference to the secret containing the service account token for the connector.
+        """
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "service_account_token_ref", service_account_token_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="serviceAccountTokenRef")
+    def service_account_token_ref(self) -> str:
+        """
+        Reference to the secret containing the service account token for the connector.
+        """
+        return pulumi.get(self, "service_account_token_ref")
+
+
+@pulumi.output_type
+class KubernetesConnectorUsernamePassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "masterUrl":
+            suggest = "master_url"
+        elif key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorUsernamePassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConnectorUsernamePassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConnectorUsernamePassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 master_url: str,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str master_url: The URL of the Kubernetes cluster.
+        :param str password_ref: Reference to the secret containing the password for the connector.
+        :param str username: Username for the connector.
+        :param str username_ref: Reference to the secret containing the username for the connector.
+        """
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        """
+        The URL of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to the secret containing the password for the connector.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username for the connector.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the username for the connector.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class NexusConnectorCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NexusConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NexusConnectorCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NexusConnectorCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str password_ref: Reference to a secret containing the password to use for authentication.
+        :param str username: Username to use for authentication.
+        :param str username_ref: Reference to a secret containing the username to use for authentication.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        Reference to a secret containing the username to use for authentication.
+        """
+        return pulumi.get(self, "username_ref")
+
 
 @pulumi.output_type
 class ResourceGroupIncludedScope(dict):
@@ -672,6 +2727,912 @@ class UsergroupNotificationConfig(dict):
         Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetAppDynamicsConnectorApiTokenResult(dict):
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret_ref: str):
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> str:
+        return pulumi.get(self, "client_secret_ref")
+
+
+@pulumi.output_type
+class GetAppDynamicsConnectorUsernamePasswordResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetArtifactoryConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetAwsCCConnectorCrossAccountAccessResult(dict):
+    def __init__(__self__, *,
+                 external_id: str,
+                 role_arn: str):
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetAwsConnectorCrossAccountAccessResult(dict):
+    def __init__(__self__, *,
+                 external_id: str,
+                 role_arn: str):
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetAwsConnectorInheritFromDelegateResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GetAwsConnectorIrsaResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GetAwsConnectorManualResult(dict):
+    def __init__(__self__, *,
+                 access_key: str,
+                 access_key_ref: str,
+                 delegate_selectors: Sequence[str],
+                 secret_key_ref: str):
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> str:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> str:
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GetAwsKmsConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 assume_roles: Sequence['outputs.GetAwsKmsConnectorCredentialAssumeRoleResult'],
+                 inherit_from_delegate: bool,
+                 manuals: Sequence['outputs.GetAwsKmsConnectorCredentialManualResult']):
+        pulumi.set(__self__, "assume_roles", assume_roles)
+        pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        pulumi.set(__self__, "manuals", manuals)
+
+    @property
+    @pulumi.getter(name="assumeRoles")
+    def assume_roles(self) -> Sequence['outputs.GetAwsKmsConnectorCredentialAssumeRoleResult']:
+        return pulumi.get(self, "assume_roles")
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> bool:
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
+    @pulumi.getter
+    def manuals(self) -> Sequence['outputs.GetAwsKmsConnectorCredentialManualResult']:
+        return pulumi.get(self, "manuals")
+
+
+@pulumi.output_type
+class GetAwsKmsConnectorCredentialAssumeRoleResult(dict):
+    def __init__(__self__, *,
+                 duration: int,
+                 external_id: str,
+                 role_arn: str):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetAwsKmsConnectorCredentialManualResult(dict):
+    def __init__(__self__, *,
+                 access_key_ref: str,
+                 secret_key_ref: str):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> str:
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GetAwsSecretManagerConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 assume_roles: Sequence['outputs.GetAwsSecretManagerConnectorCredentialAssumeRoleResult'],
+                 inherit_from_delegate: bool,
+                 manuals: Sequence['outputs.GetAwsSecretManagerConnectorCredentialManualResult']):
+        pulumi.set(__self__, "assume_roles", assume_roles)
+        pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
+        pulumi.set(__self__, "manuals", manuals)
+
+    @property
+    @pulumi.getter(name="assumeRoles")
+    def assume_roles(self) -> Sequence['outputs.GetAwsSecretManagerConnectorCredentialAssumeRoleResult']:
+        return pulumi.get(self, "assume_roles")
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> bool:
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
+    @pulumi.getter
+    def manuals(self) -> Sequence['outputs.GetAwsSecretManagerConnectorCredentialManualResult']:
+        return pulumi.get(self, "manuals")
+
+
+@pulumi.output_type
+class GetAwsSecretManagerConnectorCredentialAssumeRoleResult(dict):
+    def __init__(__self__, *,
+                 duration: int,
+                 external_id: str,
+                 role_arn: str):
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> str:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetAwsSecretManagerConnectorCredentialManualResult(dict):
+    def __init__(__self__, *,
+                 access_key_ref: str,
+                 secret_key_ref: str):
+        pulumi.set(__self__, "access_key_ref", access_key_ref)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> str:
+        return pulumi.get(self, "access_key_ref")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GetBitbucketConnectorApiAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 token_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "token_ref", token_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetBitbucketConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 https: Sequence['outputs.GetBitbucketConnectorCredentialHttpResult'],
+                 sshes: Sequence['outputs.GetBitbucketConnectorCredentialSshResult']):
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "sshes", sshes)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.GetBitbucketConnectorCredentialHttpResult']:
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def sshes(self) -> Sequence['outputs.GetBitbucketConnectorCredentialSshResult']:
+        return pulumi.get(self, "sshes")
+
+
+@pulumi.output_type
+class GetBitbucketConnectorCredentialHttpResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetBitbucketConnectorCredentialSshResult(dict):
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GetDockerConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetGcpConnectorInheritFromDelegateResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GetGcpConnectorManualResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 secret_key_ref: str):
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> str:
+        return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GetGitConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 https: Sequence['outputs.GetGitConnectorCredentialHttpResult'],
+                 sshes: Sequence['outputs.GetGitConnectorCredentialSshResult']):
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "sshes", sshes)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.GetGitConnectorCredentialHttpResult']:
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def sshes(self) -> Sequence['outputs.GetGitConnectorCredentialSshResult']:
+        return pulumi.get(self, "sshes")
+
+
+@pulumi.output_type
+class GetGitConnectorCredentialHttpResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetGitConnectorCredentialSshResult(dict):
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GetGithubConnectorApiAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 github_apps: Sequence['outputs.GetGithubConnectorApiAuthenticationGithubAppResult'],
+                 token_ref: str):
+        pulumi.set(__self__, "github_apps", github_apps)
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="githubApps")
+    def github_apps(self) -> Sequence['outputs.GetGithubConnectorApiAuthenticationGithubAppResult']:
+        return pulumi.get(self, "github_apps")
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GetGithubConnectorApiAuthenticationGithubAppResult(dict):
+    def __init__(__self__, *,
+                 application_id: str,
+                 installation_id: str,
+                 private_key_ref: str):
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> str:
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> str:
+        return pulumi.get(self, "private_key_ref")
+
+
+@pulumi.output_type
+class GetGithubConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 https: Sequence['outputs.GetGithubConnectorCredentialHttpResult'],
+                 sshes: Sequence['outputs.GetGithubConnectorCredentialSshResult']):
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "sshes", sshes)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.GetGithubConnectorCredentialHttpResult']:
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def sshes(self) -> Sequence['outputs.GetGithubConnectorCredentialSshResult']:
+        return pulumi.get(self, "sshes")
+
+
+@pulumi.output_type
+class GetGithubConnectorCredentialHttpResult(dict):
+    def __init__(__self__, *,
+                 token_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "token_ref", token_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetGithubConnectorCredentialSshResult(dict):
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GetGitlabConnectorApiAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 token_ref: str):
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GetGitlabConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 https: Sequence['outputs.GetGitlabConnectorCredentialHttpResult'],
+                 sshes: Sequence['outputs.GetGitlabConnectorCredentialSshResult']):
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "sshes", sshes)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.GetGitlabConnectorCredentialHttpResult']:
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def sshes(self) -> Sequence['outputs.GetGitlabConnectorCredentialSshResult']:
+        return pulumi.get(self, "sshes")
+
+
+@pulumi.output_type
+class GetGitlabConnectorCredentialHttpResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 token_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "token_ref", token_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetGitlabConnectorCredentialSshResult(dict):
+    def __init__(__self__, *,
+                 ssh_key_ref: str):
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> str:
+        return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GetHelmConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetKubernetesConnectorClientKeyCertResult(dict):
+    def __init__(__self__, *,
+                 ca_cert_ref: str,
+                 client_cert_ref: str,
+                 client_key_algorithm: str,
+                 client_key_passphrase_ref: str,
+                 client_key_ref: str,
+                 master_url: str):
+        pulumi.set(__self__, "ca_cert_ref", ca_cert_ref)
+        pulumi.set(__self__, "client_cert_ref", client_cert_ref)
+        pulumi.set(__self__, "client_key_algorithm", client_key_algorithm)
+        pulumi.set(__self__, "client_key_passphrase_ref", client_key_passphrase_ref)
+        pulumi.set(__self__, "client_key_ref", client_key_ref)
+        pulumi.set(__self__, "master_url", master_url)
+
+    @property
+    @pulumi.getter(name="caCertRef")
+    def ca_cert_ref(self) -> str:
+        return pulumi.get(self, "ca_cert_ref")
+
+    @property
+    @pulumi.getter(name="clientCertRef")
+    def client_cert_ref(self) -> str:
+        return pulumi.get(self, "client_cert_ref")
+
+    @property
+    @pulumi.getter(name="clientKeyAlgorithm")
+    def client_key_algorithm(self) -> str:
+        return pulumi.get(self, "client_key_algorithm")
+
+    @property
+    @pulumi.getter(name="clientKeyPassphraseRef")
+    def client_key_passphrase_ref(self) -> str:
+        return pulumi.get(self, "client_key_passphrase_ref")
+
+    @property
+    @pulumi.getter(name="clientKeyRef")
+    def client_key_ref(self) -> str:
+        return pulumi.get(self, "client_key_ref")
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        return pulumi.get(self, "master_url")
+
+
+@pulumi.output_type
+class GetKubernetesConnectorInheritFromDelegateResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param Sequence[str] delegate_selectors: Selectors to use for the delegate.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        Selectors to use for the delegate.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GetKubernetesConnectorOpenidConnectResult(dict):
+    def __init__(__self__, *,
+                 client_id_ref: str,
+                 issuer_url: str,
+                 master_url: str,
+                 password_ref: str,
+                 scopes: Sequence[str],
+                 secret_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "issuer_url", issuer_url)
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "secret_ref", secret_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> str:
+        return pulumi.get(self, "client_id_ref")
+
+    @property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> str:
+        return pulumi.get(self, "issuer_url")
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> str:
+        return pulumi.get(self, "secret_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetKubernetesConnectorServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 master_url: str,
+                 service_account_token_ref: str):
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "service_account_token_ref", service_account_token_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="serviceAccountTokenRef")
+    def service_account_token_ref(self) -> str:
+        return pulumi.get(self, "service_account_token_ref")
+
+
+@pulumi.output_type
+class GetKubernetesConnectorUsernamePasswordResult(dict):
+    def __init__(__self__, *,
+                 master_url: str,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "master_url", master_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="masterUrl")
+    def master_url(self) -> str:
+        return pulumi.get(self, "master_url")
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetNexusConnectorCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        return pulumi.get(self, "username_ref")
 
 
 @pulumi.output_type

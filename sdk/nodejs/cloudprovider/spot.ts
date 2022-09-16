@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness Spot cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/spot:Spot example <provider_id>
+ *  $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
  * ```
  */
 export class Spot extends pulumi.CustomResource {
@@ -50,7 +50,7 @@ export class Spot extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/spot:Spot';
+    public static readonly __pulumiType = 'harness:cloudprovider/spot:Spot';
 
     /**
      * Returns true if the given object is an instance of Spot.  This is designed to work even

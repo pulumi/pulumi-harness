@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetSecretText(ctx, &platform.GetSecretTextArgs{
+//			_, err := platform.LookupSecretText(ctx, &platform.LookupSecretTextArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -41,7 +41,7 @@ import (
 func LookupSecretText(ctx *pulumi.Context, args *LookupSecretTextArgs, opts ...pulumi.InvokeOption) (*LookupSecretTextResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSecretTextResult
-	err := ctx.Invoke("harness:Platform/getSecretText:getSecretText", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getSecretText:getSecretText", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

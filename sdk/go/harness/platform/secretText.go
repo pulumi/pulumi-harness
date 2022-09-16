@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewSecretText(ctx, "test", &Platform.SecretTextArgs{
+//			_, err := platform.NewSecretText(ctx, "test", &platform.SecretTextArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
@@ -52,7 +52,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/secretText:SecretText example <secret_text_id>
+//	$ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
 //
 // ```
 type SecretText struct {
@@ -96,7 +96,7 @@ func NewSecretText(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretText
-	err := ctx.RegisterResource("harness:Platform/secretText:SecretText", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/secretText:SecretText", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +108,7 @@ func NewSecretText(ctx *pulumi.Context,
 func GetSecretText(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SecretTextState, opts ...pulumi.ResourceOption) (*SecretText, error) {
 	var resource SecretText
-	err := ctx.ReadResource("harness:Platform/secretText:SecretText", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/secretText:SecretText", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

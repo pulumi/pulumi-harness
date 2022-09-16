@@ -205,7 +205,7 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
     return AwaitableGetCurrentUserResult(
         admin=__ret__.admin,

@@ -22,14 +22,14 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewTriggers(ctx, "example", &Platform.TriggersArgs{
+//			_, err := platform.NewTriggers(ctx, "example", &platform.TriggersArgs{
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifer"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
@@ -83,7 +83,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/triggers:Triggers example <triggers_id>
+//	$ pulumi import harness:platform/triggers:Triggers example <triggers_id>
 //
 // ```
 type Triggers struct {
@@ -132,7 +132,7 @@ func NewTriggers(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Triggers
-	err := ctx.RegisterResource("harness:Platform/triggers:Triggers", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/triggers:Triggers", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -144,7 +144,7 @@ func NewTriggers(ctx *pulumi.Context,
 func GetTriggers(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *TriggersState, opts ...pulumi.ResourceOption) (*Triggers, error) {
 	var resource Triggers
-	err := ctx.ReadResource("harness:Platform/triggers:Triggers", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/triggers:Triggers", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

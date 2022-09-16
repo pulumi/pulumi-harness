@@ -154,7 +154,7 @@ def get_service_account(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_service_account(identifier="identifier")
+    example = harness.platform.get_service_account(identifier="identifier")
     ```
 
 
@@ -169,7 +169,7 @@ def get_service_account(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getServiceAccount:getServiceAccount', __args__, opts=opts, typ=GetServiceAccountResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getServiceAccount:getServiceAccount', __args__, opts=opts, typ=GetServiceAccountResult).value
 
     return AwaitableGetServiceAccountResult(
         account_id=__ret__.account_id,
@@ -198,7 +198,7 @@ def get_service_account_output(identifier: Optional[pulumi.Input[Optional[str]]]
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_service_account(identifier="identifier")
+    example = harness.platform.get_service_account(identifier="identifier")
     ```
 
 

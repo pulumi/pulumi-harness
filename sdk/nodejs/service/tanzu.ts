@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/tanzu:Tanzu example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/tanzu:Tanzu example <app_id>/<svc_id>
  * ```
  */
 export class Tanzu extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Tanzu extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/tanzu:Tanzu';
+    public static readonly __pulumiType = 'harness:service/tanzu:Tanzu';
 
     /**
      * Returns true if the given object is an instance of Tanzu.  This is designed to work even
@@ -72,7 +72,7 @@ export class Tanzu extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.TanzuVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.TanzuVariable[] | undefined>;
 
     /**
      * Create a Tanzu resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface TanzuState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.TanzuVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.TanzuVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface TanzuArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.TanzuVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.TanzuVariable>[]>;
 }

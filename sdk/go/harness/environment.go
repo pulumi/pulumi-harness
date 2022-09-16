@@ -23,8 +23,8 @@ import (
 //	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testKubernetes, err := Service.NewKubernetes(ctx, "testKubernetes", &Service.KubernetesArgs{
+//			testKubernetes, err := service.NewKubernetes(ctx, "testKubernetes", &service.KubernetesArgs{
 //				AppId:       testApplication.ID(),
 //				HelmVersion: pulumi.String("V2"),
 //				Description: pulumi.String("description"),

@@ -186,7 +186,7 @@ class Ecs(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/ecs:Ecs example <app_id>/<svc_id>
+         $ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -222,7 +222,7 @@ class Ecs(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/ecs:Ecs example <app_id>/<svc_id>
+         $ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,7 +260,7 @@ class Ecs(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["variables"] = variables
         super(Ecs, __self__).__init__(
-            'harness:Service/ecs:Ecs',
+            'harness:service/ecs:Ecs',
             resource_name,
             __props__,
             opts)

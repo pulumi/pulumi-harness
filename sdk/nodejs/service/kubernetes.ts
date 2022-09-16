@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/kubernetes:Kubernetes example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
  * ```
  */
 export class Kubernetes extends pulumi.CustomResource {
@@ -57,7 +57,7 @@ export class Kubernetes extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/kubernetes:Kubernetes';
+    public static readonly __pulumiType = 'harness:service/kubernetes:Kubernetes';
 
     /**
      * Returns true if the given object is an instance of Kubernetes.  This is designed to work even
@@ -89,7 +89,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.KubernetesVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.KubernetesVariable[] | undefined>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -148,7 +148,7 @@ export interface KubernetesState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.KubernetesVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[]>;
 }
 
 /**
@@ -174,5 +174,5 @@ export interface KubernetesArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.KubernetesVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.KubernetesVariable>[]>;
 }

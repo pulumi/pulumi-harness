@@ -47,7 +47,7 @@ func NewService(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Service
-	err := ctx.RegisterResource("harness:Platform/service:Service", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/service:Service", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func NewService(ctx *pulumi.Context,
 func GetService(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServiceState, opts ...pulumi.ResourceOption) (*Service, error) {
 	var resource Service
-	err := ctx.ReadResource("harness:Platform/service:Service", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/service:Service", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

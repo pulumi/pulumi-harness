@@ -15,14 +15,14 @@ public final class Config {
  * 
  */
     public String accountId() {
-        return Codegen.stringProp("accountId").config(config).require();
+        return Codegen.stringProp("accountId").config(config).env("HARNESS_ACCOUNT_ID").require();
     }
 /**
  * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
  * 
  */
     public Optional<String> apiKey() {
-        return Codegen.stringProp("apiKey").config(config).get();
+        return Codegen.stringProp("apiKey").config(config).env("HARNESS_API_KEY").get();
     }
 /**
  * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
@@ -30,7 +30,7 @@ public final class Config {
  * 
  */
     public String endpoint() {
-        return Codegen.stringProp("endpoint").config(config).require();
+        return Codegen.stringProp("endpoint").config(config).env("HARNESS_ENDPOINT").require();
     }
 /**
  * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
@@ -38,6 +38,6 @@ public final class Config {
  * 
  */
     public Optional<String> platformApiKey() {
-        return Codegen.stringProp("platformApiKey").config(config).get();
+        return Codegen.stringProp("platformApiKey").config(config).env("HARNESS_PLATFORM_API_KEY").get();
     }
 }

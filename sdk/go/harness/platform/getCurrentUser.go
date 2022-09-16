@@ -11,7 +11,7 @@ import (
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
-	err := ctx.Invoke("harness:Platform/getCurrentUser:getCurrentUser", nil, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getCurrentUser:getCurrentUser", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

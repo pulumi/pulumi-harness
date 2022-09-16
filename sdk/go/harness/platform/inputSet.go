@@ -22,14 +22,14 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewInputSet(ctx, "example", &Platform.InputSetArgs{
+//			_, err := platform.NewInputSet(ctx, "example", &platform.InputSetArgs{
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("org_id"),
 //				PipelineId: pulumi.String("pipeline_id"),
@@ -69,7 +69,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/inputSet:InputSet example <input_set_id>
+//	$ pulumi import harness:platform/inputSet:InputSet example <input_set_id>
 //
 // ```
 type InputSet struct {
@@ -111,7 +111,7 @@ func NewInputSet(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource InputSet
-	err := ctx.RegisterResource("harness:Platform/inputSet:InputSet", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/inputSet:InputSet", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +123,7 @@ func NewInputSet(ctx *pulumi.Context,
 func GetInputSet(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *InputSetState, opts ...pulumi.ResourceOption) (*InputSet, error) {
 	var resource InputSet
-	err := ctx.ReadResource("harness:Platform/inputSet:InputSet", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/inputSet:InputSet", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

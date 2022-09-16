@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/ami:Ami example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/ami:Ami example <app_id>/<svc_id>
  * ```
  */
 export class Ami extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Ami extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/ami:Ami';
+    public static readonly __pulumiType = 'harness:service/ami:Ami';
 
     /**
      * Returns true if the given object is an instance of Ami.  This is designed to work even
@@ -72,7 +72,7 @@ export class Ami extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.AmiVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.AmiVariable[] | undefined>;
 
     /**
      * Create a Ami resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface AmiState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.AmiVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.AmiVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface AmiArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.AmiVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.AmiVariable>[]>;
 }

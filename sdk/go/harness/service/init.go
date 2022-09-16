@@ -21,23 +21,23 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "harness:Service/ami:Ami":
+	case "harness:service/ami:Ami":
 		r = &Ami{}
-	case "harness:Service/codedeploy:Codedeploy":
+	case "harness:service/codedeploy:Codedeploy":
 		r = &Codedeploy{}
-	case "harness:Service/ecs:Ecs":
+	case "harness:service/ecs:Ecs":
 		r = &Ecs{}
-	case "harness:Service/helm:Helm":
+	case "harness:service/helm:Helm":
 		r = &Helm{}
-	case "harness:Service/kubernetes:Kubernetes":
+	case "harness:service/kubernetes:Kubernetes":
 		r = &Kubernetes{}
-	case "harness:Service/lambda:Lambda":
+	case "harness:service/lambda:Lambda":
 		r = &Lambda{}
-	case "harness:Service/ssh:Ssh":
+	case "harness:service/ssh:Ssh":
 		r = &Ssh{}
-	case "harness:Service/tanzu:Tanzu":
+	case "harness:service/tanzu:Tanzu":
 		r = &Tanzu{}
-	case "harness:Service/winrm:Winrm":
+	case "harness:service/winrm:Winrm":
 		r = &Winrm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -54,47 +54,47 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/ami",
+		"service/ami",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/codedeploy",
+		"service/codedeploy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/ecs",
+		"service/ecs",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/helm",
+		"service/helm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/kubernetes",
+		"service/kubernetes",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/lambda",
+		"service/lambda",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/ssh",
+		"service/ssh",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/tanzu",
+		"service/tanzu",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Service/winrm",
+		"service/winrm",
 		&module{version},
 	)
 }

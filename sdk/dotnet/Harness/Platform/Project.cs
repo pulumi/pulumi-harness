@@ -13,7 +13,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness project.
     /// </summary>
-    [HarnessResourceType("harness:Platform/project:Project")]
+    [HarnessResourceType("harness:platform/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -67,12 +67,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Project(string name, Input<string> id, ProjectState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/project:Project", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/project:Project", name, state, MakeResourceOptions(options, id))
         {
         }
 

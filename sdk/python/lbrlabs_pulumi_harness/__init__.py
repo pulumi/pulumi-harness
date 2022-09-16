@@ -41,15 +41,12 @@ if typing.TYPE_CHECKING:
     config = __config
     import lbrlabs_pulumi_harness.platform as __platform
     platform = __platform
-    import lbrlabs_pulumi_harness.platformconnector as __platformconnector
-    platformconnector = __platformconnector
     import lbrlabs_pulumi_harness.service as __service
     service = __service
 else:
     cloudprovider = _utilities.lazy_import('lbrlabs_pulumi_harness.cloudprovider')
     config = _utilities.lazy_import('lbrlabs_pulumi_harness.config')
     platform = _utilities.lazy_import('lbrlabs_pulumi_harness.platform')
-    platformconnector = _utilities.lazy_import('lbrlabs_pulumi_harness.platformconnector')
     service = _utilities.lazy_import('lbrlabs_pulumi_harness.service')
 
 _utilities.register(
@@ -57,426 +54,58 @@ _utilities.register(
 [
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/aws",
+  "mod": "cloudprovider/aws",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/aws:Aws": "Aws"
+   "harness:cloudprovider/aws:Aws": "Aws"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/azure",
+  "mod": "cloudprovider/azure",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/azure:Azure": "Azure"
+   "harness:cloudprovider/azure:Azure": "Azure"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/datacenter",
+  "mod": "cloudprovider/datacenter",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/datacenter:Datacenter": "Datacenter"
+   "harness:cloudprovider/datacenter:Datacenter": "Datacenter"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/gcp",
+  "mod": "cloudprovider/gcp",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/gcp:Gcp": "Gcp"
+   "harness:cloudprovider/gcp:Gcp": "Gcp"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/kubernetes",
+  "mod": "cloudprovider/kubernetes",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/kubernetes:Kubernetes": "Kubernetes"
+   "harness:cloudprovider/kubernetes:Kubernetes": "Kubernetes"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/spot",
+  "mod": "cloudprovider/spot",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/spot:Spot": "Spot"
+   "harness:cloudprovider/spot:Spot": "Spot"
   }
  },
  {
   "pkg": "harness",
-  "mod": "Cloudprovider/tanzu",
+  "mod": "cloudprovider/tanzu",
   "fqn": "lbrlabs_pulumi_harness.cloudprovider",
   "classes": {
-   "harness:Cloudprovider/tanzu:Tanzu": "Tanzu"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/environment",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/environment:Environment": "Environment"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/inputSet",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/inputSet:InputSet": "InputSet"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/organization",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/organization:Organization": "Organization"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/pipeline",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/pipeline:Pipeline": "Pipeline"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/project",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/project:Project": "Project"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/resourceGroup",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/resourceGroup:ResourceGroup": "ResourceGroup"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/roles",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/roles:Roles": "Roles"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/secretFile",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/secretFile:SecretFile": "SecretFile"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/secretSshkey",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/secretSshkey:SecretSshkey": "SecretSshkey"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/secretText",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/secretText:SecretText": "SecretText"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/service",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/service:Service": "Service"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/serviceAccount",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/serviceAccount:ServiceAccount": "ServiceAccount"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/triggers",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/triggers:Triggers": "Triggers"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Platform/usergroup",
-  "fqn": "lbrlabs_pulumi_harness.platform",
-  "classes": {
-   "harness:Platform/usergroup:Usergroup": "Usergroup"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/appDynamics",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/appDynamics:AppDynamics": "AppDynamics"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/artifactory",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/artifactory:Artifactory": "Artifactory"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/aws",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/aws:Aws": "Aws"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/awsCC",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/awsCC:AwsCC": "AwsCC"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/awsKms",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/awsKms:AwsKms": "AwsKms"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/awsSecretManager",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/awsSecretManager:AwsSecretManager": "AwsSecretManager"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/bitbucket",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/bitbucket:Bitbucket": "Bitbucket"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/datadog",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/datadog:Datadog": "Datadog"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/docker",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/docker:Docker": "Docker"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/dynatrace",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/dynatrace:Dynatrace": "Dynatrace"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/gcp",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/gcp:Gcp": "Gcp"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/git",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/git:Git": "Git"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/github",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/github:Github": "Github"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/gitlab",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/gitlab:Gitlab": "Gitlab"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/helm",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/helm:Helm": "Helm"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/jira",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/jira:Jira": "Jira"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/kubernetes",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/kubernetes:Kubernetes": "Kubernetes"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/newrelic",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/newrelic:Newrelic": "Newrelic"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/nexus",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/nexus:Nexus": "Nexus"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/pagerduty",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/pagerduty:Pagerduty": "Pagerduty"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/prometheus",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/prometheus:Prometheus": "Prometheus"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/splunk",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/splunk:Splunk": "Splunk"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "PlatformConnector/sumologic",
-  "fqn": "lbrlabs_pulumi_harness.platformconnector",
-  "classes": {
-   "harness:PlatformConnector/sumologic:Sumologic": "Sumologic"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/ami",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/ami:Ami": "Ami"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/codedeploy",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/codedeploy:Codedeploy": "Codedeploy"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/ecs",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/ecs:Ecs": "Ecs"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/helm",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/helm:Helm": "Helm"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/kubernetes",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/kubernetes:Kubernetes": "Kubernetes"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/lambda",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/lambda:Lambda": "Lambda"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/ssh",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/ssh:Ssh": "Ssh"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/tanzu",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/tanzu:Tanzu": "Tanzu"
-  }
- },
- {
-  "pkg": "harness",
-  "mod": "Service/winrm",
-  "fqn": "lbrlabs_pulumi_harness.service",
-  "classes": {
-   "harness:Service/winrm:Winrm": "Winrm"
+   "harness:cloudprovider/tanzu:Tanzu": "Tanzu"
   }
  },
  {
@@ -573,6 +202,374 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness",
   "classes": {
    "harness:index/yamlConfig:YamlConfig": "YamlConfig"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/appDynamicsConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/appDynamicsConnector:AppDynamicsConnector": "AppDynamicsConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/artifactoryConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/artifactoryConnector:ArtifactoryConnector": "ArtifactoryConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/awsCCConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/awsCCConnector:AwsCCConnector": "AwsCCConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/awsConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/awsConnector:AwsConnector": "AwsConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/awsKmsConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/awsKmsConnector:AwsKmsConnector": "AwsKmsConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/awsSecretManagerConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector": "AwsSecretManagerConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/bitbucketConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/bitbucketConnector:BitbucketConnector": "BitbucketConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/datadogConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/datadogConnector:DatadogConnector": "DatadogConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dockerConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dockerConnector:DockerConnector": "DockerConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dynatraceConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dynatraceConnector:DynatraceConnector": "DynatraceConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/environment",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gcpConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gcpConnector:GcpConnector": "GcpConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitConnector:GitConnector": "GitConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/githubConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/githubConnector:GithubConnector": "GithubConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitlabConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitlabConnector:GitlabConnector": "GitlabConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/helmConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/helmConnector:HelmConnector": "HelmConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/inputSet",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/inputSet:InputSet": "InputSet"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/jiraConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/jiraConnector:JiraConnector": "JiraConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/kubernetesConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/kubernetesConnector:KubernetesConnector": "KubernetesConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/newrelicConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/newrelicConnector:NewrelicConnector": "NewrelicConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/nexusConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/nexusConnector:NexusConnector": "NexusConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/organization",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/pagerdutyConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/pagerdutyConnector:PagerdutyConnector": "PagerdutyConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/pipeline",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/project",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/prometheusConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/prometheusConnector:PrometheusConnector": "PrometheusConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/resourceGroup",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/resourceGroup:ResourceGroup": "ResourceGroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/roles",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/roles:Roles": "Roles"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/secretFile",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/secretFile:SecretFile": "SecretFile"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/secretSshkey",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/secretSshkey:SecretSshkey": "SecretSshkey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/secretText",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/secretText:SecretText": "SecretText"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/service",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/serviceAccount",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/serviceAccount:ServiceAccount": "ServiceAccount"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/splunkConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/splunkConnector:SplunkConnector": "SplunkConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/sumologicConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/sumologicConnector:SumologicConnector": "SumologicConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/triggers",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/triggers:Triggers": "Triggers"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/usergroup",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/usergroup:Usergroup": "Usergroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/ami",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/ami:Ami": "Ami"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/codedeploy",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/codedeploy:Codedeploy": "Codedeploy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/ecs",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/ecs:Ecs": "Ecs"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/helm",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/helm:Helm": "Helm"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/kubernetes",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/kubernetes:Kubernetes": "Kubernetes"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/lambda",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/lambda:Lambda": "Lambda"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/ssh",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/ssh:Ssh": "Ssh"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/tanzu",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/tanzu:Tanzu": "Tanzu"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "service/winrm",
+  "fqn": "lbrlabs_pulumi_harness.service",
+  "classes": {
+   "harness:service/winrm:Winrm": "Winrm"
   }
  }
 ]

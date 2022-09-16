@@ -21,8 +21,8 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewKubernetes(ctx, "exampleKubernetes", &Service.KubernetesArgs{
+//			_, err = service.NewKubernetes(ctx, "exampleKubernetes", &service.KubernetesArgs{
 //				AppId:       exampleApplication.ID(),
 //				HelmVersion: pulumi.String("V3"),
 //				Description: pulumi.String("Service for deploying Kubernetes manifests"),
@@ -65,7 +65,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/kubernetes:Kubernetes example <app_id>/<svc_id>
+//	$ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
 //
 // ```
 type Kubernetes struct {
@@ -95,7 +95,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Kubernetes
-	err := ctx.RegisterResource("harness:Service/kubernetes:Kubernetes", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +107,7 @@ func NewKubernetes(ctx *pulumi.Context,
 func GetKubernetes(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *KubernetesState, opts ...pulumi.ResourceOption) (*Kubernetes, error) {
 	var resource Kubernetes
-	err := ctx.ReadResource("harness:Service/kubernetes:Kubernetes", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/kubernetes:Kubernetes", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

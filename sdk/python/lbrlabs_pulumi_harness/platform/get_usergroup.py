@@ -241,7 +241,7 @@ def get_usergroup(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_usergroup(name="name",
+    example = harness.platform.get_usergroup(name="name",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -260,7 +260,7 @@ def get_usergroup(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getUsergroup:getUsergroup', __args__, opts=opts, typ=GetUsergroupResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getUsergroup:getUsergroup', __args__, opts=opts, typ=GetUsergroupResult).value
 
     return AwaitableGetUsergroupResult(
         description=__ret__.description,
@@ -297,7 +297,7 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_usergroup(name="name",
+    example = harness.platform.get_usergroup(name="name",
         org_id="org_id",
         project_id="project_id")
     ```

@@ -37,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretFileResult> InvokeAsync(GetSecretFileArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretFileResult>("harness:Platform/getSecretFile:getSecretFile", args ?? new GetSecretFileArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up secert file type secret.
@@ -64,7 +64,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretFileResult> Invoke(GetSecretFileInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretFileResult>("harness:Platform/getSecretFile:getSecretFile", args ?? new GetSecretFileInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileInvokeArgs(), options.WithDefaults());
     }
 
 

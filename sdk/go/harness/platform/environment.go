@@ -48,7 +48,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Environment
-	err := ctx.RegisterResource("harness:Platform/environment:Environment", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/environment:Environment", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func NewEnvironment(ctx *pulumi.Context,
 func GetEnvironment(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EnvironmentState, opts ...pulumi.ResourceOption) (*Environment, error) {
 	var resource Environment
-	err := ctx.ReadResource("harness:Platform/environment:Environment", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/environment:Environment", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

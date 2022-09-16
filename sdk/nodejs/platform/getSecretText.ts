@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.Platform.getSecretText({
+ * const test = pulumi.output(harness.platform.getSecretText({
  *     identifier: "identifier",
  * }));
  * ```
@@ -25,7 +25,7 @@ export function getSecretText(args?: GetSecretTextArgs, opts?: pulumi.InvokeOpti
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getSecretText:getSecretText", {
+    return pulumi.runtime.invoke("harness:platform/getSecretText:getSecretText", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

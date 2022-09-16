@@ -28,7 +28,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
      */
@@ -37,7 +37,7 @@ export class Provider extends pulumi.ProviderResource {
      * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
      * `HARNESS_ENDPOINT` environment variable.
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    public readonly endpoint!: pulumi.Output<string | undefined>;
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
      * variable.
@@ -51,20 +51,14 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'endpoint'");
-            }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["platformApiKey"] = args ? args.platformApiKey : undefined;
+            resourceInputs["accountId"] = (args ? args.accountId : undefined) ?? utilities.getEnv("HARNESS_ACCOUNT_ID");
+            resourceInputs["apiKey"] = (args ? args.apiKey : undefined) ?? utilities.getEnv("HARNESS_API_KEY");
+            resourceInputs["endpoint"] = (args ? args.endpoint : undefined) ?? utilities.getEnv("HARNESS_ENDPOINT");
+            resourceInputs["platformApiKey"] = (args ? args.platformApiKey : undefined) ?? utilities.getEnv("HARNESS_PLATFORM_API_KEY");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -78,7 +72,7 @@ export interface ProviderArgs {
     /**
      * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
      */
@@ -87,7 +81,7 @@ export interface ProviderArgs {
      * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
      * `HARNESS_ENDPOINT` environment variable.
      */
-    endpoint: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
      * variable.

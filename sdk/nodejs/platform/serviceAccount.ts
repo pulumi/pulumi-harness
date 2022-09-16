@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.ServiceAccount("example", {
+ * const example = new harness.platform.ServiceAccount("example", {
  *     accountId: "account_id",
  *     description: "test",
  *     email: "email@service.harness.io",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * # Import using secret sshkey id
  *
  * ```sh
- *  $ pulumi import harness:Platform/serviceAccount:ServiceAccount example <service_account_id>
+ *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
  * ```
  */
 export class ServiceAccount extends pulumi.CustomResource {
@@ -45,7 +45,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/serviceAccount:ServiceAccount';
+    public static readonly __pulumiType = 'harness:platform/serviceAccount:ServiceAccount';
 
     /**
      * Returns true if the given object is an instance of ServiceAccount.  This is designed to work even

@@ -23,7 +23,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
@@ -36,7 +36,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// `HARNESS_ENDPOINT` environment variable.
         /// </summary>
         [Output("endpoint")]
-        public Output<string> Endpoint { get; private set; } = null!;
+        public Output<string?> Endpoint { get; private set; } = null!;
 
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
@@ -53,7 +53,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("harness", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -77,8 +77,8 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// <summary>
         /// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
@@ -90,8 +90,8 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
         /// `HARNESS_ENDPOINT` environment variable.
         /// </summary>
-        [Input("endpoint", required: true)]
-        public Input<string> Endpoint { get; set; } = null!;
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
@@ -102,6 +102,10 @@ namespace Lbrlabs.PulumiPackage.Harness
 
         public ProviderArgs()
         {
+            AccountId = Utilities.GetEnv("HARNESS_ACCOUNT_ID");
+            ApiKey = Utilities.GetEnv("HARNESS_API_KEY");
+            Endpoint = Utilities.GetEnv("HARNESS_ENDPOINT");
+            PlatformApiKey = Utilities.GetEnv("HARNESS_PLATFORM_API_KEY");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

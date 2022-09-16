@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewCodedeploy(ctx, "exampleCodedeploy", &Service.CodedeployArgs{
+//			_, err = service.NewCodedeploy(ctx, "exampleCodedeploy", &service.CodedeployArgs{
 //				AppId:       exampleApplication.ID(),
 //				Description: pulumi.String("Service for AWS codedeploy applications."),
 //			})
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/codedeploy:Codedeploy example <app_id>/<svc_id>
+//	$ pulumi import harness:service/codedeploy:Codedeploy example <app_id>/<svc_id>
 //
 // ```
 type Codedeploy struct {
@@ -79,7 +79,7 @@ func NewCodedeploy(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Codedeploy
-	err := ctx.RegisterResource("harness:Service/codedeploy:Codedeploy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/codedeploy:Codedeploy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func NewCodedeploy(ctx *pulumi.Context,
 func GetCodedeploy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CodedeployState, opts ...pulumi.ResourceOption) (*Codedeploy, error) {
 	var resource Codedeploy
-	err := ctx.ReadResource("harness:Service/codedeploy:Codedeploy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/codedeploy:Codedeploy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

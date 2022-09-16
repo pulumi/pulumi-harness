@@ -48,10 +48,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness Spot cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/spot:Spot example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/spot:Spot example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/spot:Spot")]
+    [HarnessResourceType("harness:cloudprovider/spot:Spot")]
     public partial class Spot : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -81,12 +81,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Spot(string name, SpotArgs args, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/spot:Spot", name, args ?? new SpotArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/spot:Spot", name, args ?? new SpotArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Spot(string name, Input<string> id, SpotState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/spot:Spot", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/spot:Spot", name, state, MakeResourceOptions(options, id))
         {
         }
 

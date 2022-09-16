@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewSecretFile(ctx, "example", &Platform.SecretFileArgs{
+//			_, err := platform.NewSecretFile(ctx, "example", &platform.SecretFileArgs{
 //				Description:             pulumi.String("test"),
 //				FilePath:                pulumi.String("file_path"),
 //				Identifier:              pulumi.String("identifier"),
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/secretFile:SecretFile example <secret_file_id>
+//	$ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
 //
 // ```
 type SecretFile struct {
@@ -93,7 +93,7 @@ func NewSecretFile(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretFile
-	err := ctx.RegisterResource("harness:Platform/secretFile:SecretFile", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/secretFile:SecretFile", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +105,7 @@ func NewSecretFile(ctx *pulumi.Context,
 func GetSecretFile(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SecretFileState, opts ...pulumi.ResourceOption) (*SecretFile, error) {
 	var resource SecretFile
-	err := ctx.ReadResource("harness:Platform/secretFile:SecretFile", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/secretFile:SecretFile", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

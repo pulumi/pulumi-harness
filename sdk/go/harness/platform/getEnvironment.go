@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetEnvironment(ctx, &platform.GetEnvironmentArgs{
+//			_, err := platform.LookupEnvironment(ctx, &platform.LookupEnvironmentArgs{
 //				Name:      pulumi.StringRef("name"),
 //				OrgId:     "org_id",
 //				ProjectId: "project_id",
@@ -43,7 +43,7 @@ import (
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult
-	err := ctx.Invoke("harness:Platform/getEnvironment:getEnvironment", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getEnvironment:getEnvironment", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

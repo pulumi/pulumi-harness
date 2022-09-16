@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/codedeploy:Codedeploy example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/codedeploy:Codedeploy example <app_id>/<svc_id>
  * ```
  */
 export class Codedeploy extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Codedeploy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/codedeploy:Codedeploy';
+    public static readonly __pulumiType = 'harness:service/codedeploy:Codedeploy';
 
     /**
      * Returns true if the given object is an instance of Codedeploy.  This is designed to work even
@@ -72,7 +72,7 @@ export class Codedeploy extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.CodedeployVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.CodedeployVariable[] | undefined>;
 
     /**
      * Create a Codedeploy resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface CodedeployState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.CodedeployVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.CodedeployVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface CodedeployArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.CodedeployVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.CodedeployVariable>[]>;
 }

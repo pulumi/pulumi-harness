@@ -54,10 +54,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/kubernetes:Kubernetes example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/kubernetes:Kubernetes example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/kubernetes:Kubernetes")]
+    [HarnessResourceType("harness:service/kubernetes:Kubernetes")]
     public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -99,12 +99,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Kubernetes(string name, KubernetesArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/kubernetes:Kubernetes", name, args ?? new KubernetesArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/kubernetes:Kubernetes", name, args ?? new KubernetesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Kubernetes(string name, Input<string> id, KubernetesState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/kubernetes:Kubernetes", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/kubernetes:Kubernetes", name, state, MakeResourceOptions(options, id))
         {
         }
 

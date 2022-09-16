@@ -154,7 +154,7 @@ def get_environment(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_environment(name="name",
+    test = harness.platform.get_environment(name="name",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -171,7 +171,7 @@ def get_environment(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
         color=__ret__.color,
@@ -200,7 +200,7 @@ def get_environment_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_environment(name="name",
+    test = harness.platform.get_environment(name="name",
         org_id="org_id",
         project_id="project_id")
     ```

@@ -121,7 +121,7 @@ export class Pipeline extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/pipeline:Pipeline';
+    public static readonly __pulumiType = 'harness:platform/pipeline:Pipeline';
 
     /**
      * Returns true if the given object is an instance of Pipeline.  This is designed to work even

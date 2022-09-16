@@ -218,7 +218,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
         super(Organization, __self__).__init__(
-            'harness:Platform/organization:Organization',
+            'harness:platform/organization:Organization',
             resource_name,
             __props__,
             opts)

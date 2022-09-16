@@ -14,7 +14,7 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getOrganization:getOrganization", {
+    return pulumi.runtime.invoke("harness:platform/getOrganization:getOrganization", {
         "identifier": args.identifier,
         "name": args.name,
     }, opts);

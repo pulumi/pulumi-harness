@@ -50,10 +50,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness Tanzu cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/tanzu:Tanzu example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/tanzu:Tanzu example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/tanzu:Tanzu")]
+    [HarnessResourceType("harness:cloudprovider/tanzu:Tanzu")]
     public partial class Tanzu : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -101,12 +101,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tanzu(string name, TanzuArgs args, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/tanzu:Tanzu", name, args ?? new TanzuArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/tanzu:Tanzu", name, args ?? new TanzuArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Tanzu(string name, Input<string> id, TanzuState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/tanzu:Tanzu", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/tanzu:Tanzu", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -13,7 +13,7 @@ const __config = new pulumi.Config("harness");
 export declare const accountId: string | undefined;
 Object.defineProperty(exports, "accountId", {
     get() {
-        return __config.get("accountId");
+        return __config.get("accountId") ?? utilities.getEnv("HARNESS_ACCOUNT_ID");
     },
     enumerable: true,
 });
@@ -24,7 +24,7 @@ Object.defineProperty(exports, "accountId", {
 export declare const apiKey: string | undefined;
 Object.defineProperty(exports, "apiKey", {
     get() {
-        return __config.get("apiKey");
+        return __config.get("apiKey") ?? utilities.getEnv("HARNESS_API_KEY");
     },
     enumerable: true,
 });
@@ -36,7 +36,7 @@ Object.defineProperty(exports, "apiKey", {
 export declare const endpoint: string | undefined;
 Object.defineProperty(exports, "endpoint", {
     get() {
-        return __config.get("endpoint");
+        return __config.get("endpoint") ?? utilities.getEnv("HARNESS_ENDPOINT");
     },
     enumerable: true,
 });
@@ -48,7 +48,7 @@ Object.defineProperty(exports, "endpoint", {
 export declare const platformApiKey: string | undefined;
 Object.defineProperty(exports, "platformApiKey", {
     get() {
-        return __config.get("platformApiKey");
+        return __config.get("platformApiKey") ?? utilities.getEnv("HARNESS_PLATFORM_API_KEY");
     },
     enumerable: true,
 });

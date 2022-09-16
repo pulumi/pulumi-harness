@@ -316,7 +316,7 @@ class SecretFile(pulumi.CustomResource):
         # Import using secret file id
 
         ```sh
-         $ pulumi import harness:Platform/secretFile:SecretFile example <secret_file_id>
+         $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -358,7 +358,7 @@ class SecretFile(pulumi.CustomResource):
         # Import using secret file id
 
         ```sh
-         $ pulumi import harness:Platform/secretFile:SecretFile example <secret_file_id>
+         $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -408,7 +408,7 @@ class SecretFile(pulumi.CustomResource):
             __props__.__dict__["secret_manager_identifier"] = secret_manager_identifier
             __props__.__dict__["tags"] = tags
         super(SecretFile, __self__).__init__(
-            'harness:Platform/secretFile:SecretFile',
+            'harness:platform/secretFile:SecretFile',
             resource_name,
             __props__,
             opts)

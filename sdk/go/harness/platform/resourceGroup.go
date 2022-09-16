@@ -19,7 +19,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/resourceGroup:ResourceGroup example <resource_group_id>
+//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
 //
 // ```
 type ResourceGroup struct {
@@ -64,7 +64,7 @@ func NewResourceGroup(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource ResourceGroup
-	err := ctx.RegisterResource("harness:Platform/resourceGroup:ResourceGroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/resourceGroup:ResourceGroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func NewResourceGroup(ctx *pulumi.Context,
 func GetResourceGroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ResourceGroupState, opts ...pulumi.ResourceOption) (*ResourceGroup, error) {
 	var resource ResourceGroup
-	err := ctx.ReadResource("harness:Platform/resourceGroup:ResourceGroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/resourceGroup:ResourceGroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

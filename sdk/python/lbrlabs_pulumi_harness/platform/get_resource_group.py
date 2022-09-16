@@ -191,7 +191,7 @@ def get_resource_group(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_resource_group(identifier="identifier")
+    test = harness.platform.get_resource_group(identifier="identifier")
     ```
 
 
@@ -206,7 +206,7 @@ def get_resource_group(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getResourceGroup:getResourceGroup', __args__, opts=opts, typ=GetResourceGroupResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getResourceGroup:getResourceGroup', __args__, opts=opts, typ=GetResourceGroupResult).value
 
     return AwaitableGetResourceGroupResult(
         account_id=__ret__.account_id,
@@ -238,7 +238,7 @@ def get_resource_group_output(identifier: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_resource_group(identifier="identifier")
+    test = harness.platform.get_resource_group(identifier="identifier")
     ```
 
 

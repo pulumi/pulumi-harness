@@ -37,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretSshkeyResult> InvokeAsync(GetSecretSshkeyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretSshkeyResult>("harness:Platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretSshkeyResult>("harness:platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Resource for looking up an SSH Key type secret.
@@ -64,7 +64,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretSshkeyResult> Invoke(GetSecretSshkeyInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretSshkeyResult>("harness:Platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetSecretSshkeyResult>("harness:platform/getSecretSshkey:getSecretSshkey", args ?? new GetSecretSshkeyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -167,7 +167,7 @@ def get_secret_sshkey(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_secret_sshkey(identifier="identifier")
+    example = harness.platform.get_secret_sshkey(identifier="identifier")
     ```
 
 
@@ -182,7 +182,7 @@ def get_secret_sshkey(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getSecretSshkey:getSecretSshkey', __args__, opts=opts, typ=GetSecretSshkeyResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getSecretSshkey:getSecretSshkey', __args__, opts=opts, typ=GetSecretSshkeyResult).value
 
     return AwaitableGetSecretSshkeyResult(
         description=__ret__.description,
@@ -212,7 +212,7 @@ def get_secret_sshkey_output(identifier: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_secret_sshkey(identifier="identifier")
+    example = harness.platform.get_secret_sshkey(identifier="identifier")
     ```
 
 

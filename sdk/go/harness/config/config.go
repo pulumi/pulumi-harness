@@ -10,22 +10,38 @@ import (
 
 // The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
 func GetAccountId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harness:accountId")
+	v, err := config.Try(ctx, "harness:accountId")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "HARNESS_ACCOUNT_ID").(string)
 }
 
 // The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
 func GetApiKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harness:apiKey")
+	v, err := config.Try(ctx, "harness:apiKey")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "HARNESS_API_KEY").(string)
 }
 
 // The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
 // `HARNESS_ENDPOINT` environment variable.
 func GetEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harness:endpoint")
+	v, err := config.Try(ctx, "harness:endpoint")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "HARNESS_ENDPOINT").(string)
 }
 
 // The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
 // variable.
 func GetPlatformApiKey(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harness:platformApiKey")
+	v, err := config.Try(ctx, "harness:platformApiKey")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "HARNESS_PLATFORM_API_KEY").(string)
 }

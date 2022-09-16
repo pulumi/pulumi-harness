@@ -5,13 +5,44 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./appDynamicsConnector";
+export * from "./artifactoryConnector";
+export * from "./awsCCConnector";
+export * from "./awsConnector";
+export * from "./awsKmsConnector";
+export * from "./awsSecretManagerConnector";
+export * from "./bitbucketConnector";
+export * from "./datadogConnector";
+export * from "./dockerConnector";
+export * from "./dynatraceConnector";
 export * from "./environment";
+export * from "./gcpConnector";
+export * from "./getAppDynamicsConnector";
+export * from "./getArtifactoryConnector";
+export * from "./getAwsCCConnector";
+export * from "./getAwsConnector";
+export * from "./getAwsKmsConnector";
+export * from "./getAwsSecretManagerConnector";
+export * from "./getBitbucketConnector";
 export * from "./getCurrentUser";
+export * from "./getDatadogConnector";
+export * from "./getDockerConnector";
+export * from "./getDynatraceConnector";
 export * from "./getEnvironment";
+export * from "./getGcpConnector";
+export * from "./getGitConnector";
+export * from "./getGithubConnector";
+export * from "./getGitlabConnector";
+export * from "./getHelmConnector";
 export * from "./getInputSet";
+export * from "./getJiraConnector";
+export * from "./getKubernetesConnector";
+export * from "./getNexusConnector";
 export * from "./getOrganization";
+export * from "./getPagerdutyConnector";
 export * from "./getPipeline";
 export * from "./getProject";
+export * from "./getPrometheusConnector";
 export * from "./getResourceGroup";
 export * from "./getRoles";
 export * from "./getSecretFile";
@@ -19,12 +50,24 @@ export * from "./getSecretSshkey";
 export * from "./getSecretText";
 export * from "./getService";
 export * from "./getServiceAccount";
+export * from "./getSplunkConnector";
+export * from "./getSumologicConnector";
 export * from "./getTriggers";
 export * from "./getUsergroup";
+export * from "./gitConnector";
+export * from "./githubConnector";
+export * from "./gitlabConnector";
+export * from "./helmConnector";
 export * from "./inputSet";
+export * from "./jiraConnector";
+export * from "./kubernetesConnector";
+export * from "./newrelicConnector";
+export * from "./nexusConnector";
 export * from "./organization";
+export * from "./pagerdutyConnector";
 export * from "./pipeline";
 export * from "./project";
+export * from "./prometheusConnector";
 export * from "./resourceGroup";
 export * from "./roles";
 export * from "./secretFile";
@@ -32,15 +75,38 @@ export * from "./secretSshkey";
 export * from "./secretText";
 export * from "./service";
 export * from "./serviceAccount";
+export * from "./splunkConnector";
+export * from "./sumologicConnector";
 export * from "./triggers";
 export * from "./usergroup";
 
 // Import resources to register:
+import { AppDynamicsConnector } from "./appDynamicsConnector";
+import { ArtifactoryConnector } from "./artifactoryConnector";
+import { AwsCCConnector } from "./awsCCConnector";
+import { AwsConnector } from "./awsConnector";
+import { AwsKmsConnector } from "./awsKmsConnector";
+import { AwsSecretManagerConnector } from "./awsSecretManagerConnector";
+import { BitbucketConnector } from "./bitbucketConnector";
+import { DatadogConnector } from "./datadogConnector";
+import { DockerConnector } from "./dockerConnector";
+import { DynatraceConnector } from "./dynatraceConnector";
 import { Environment } from "./environment";
+import { GcpConnector } from "./gcpConnector";
+import { GitConnector } from "./gitConnector";
+import { GithubConnector } from "./githubConnector";
+import { GitlabConnector } from "./gitlabConnector";
+import { HelmConnector } from "./helmConnector";
 import { InputSet } from "./inputSet";
+import { JiraConnector } from "./jiraConnector";
+import { KubernetesConnector } from "./kubernetesConnector";
+import { NewrelicConnector } from "./newrelicConnector";
+import { NexusConnector } from "./nexusConnector";
 import { Organization } from "./organization";
+import { PagerdutyConnector } from "./pagerdutyConnector";
 import { Pipeline } from "./pipeline";
 import { Project } from "./project";
+import { PrometheusConnector } from "./prometheusConnector";
 import { ResourceGroup } from "./resourceGroup";
 import { Roles } from "./roles";
 import { SecretFile } from "./secretFile";
@@ -48,6 +114,8 @@ import { SecretSshkey } from "./secretSshkey";
 import { SecretText } from "./secretText";
 import { Service } from "./service";
 import { ServiceAccount } from "./serviceAccount";
+import { SplunkConnector } from "./splunkConnector";
+import { SumologicConnector } from "./sumologicConnector";
 import { Triggers } from "./triggers";
 import { Usergroup } from "./usergroup";
 
@@ -55,50 +123,119 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "harness:Platform/environment:Environment":
+            case "harness:platform/appDynamicsConnector:AppDynamicsConnector":
+                return new AppDynamicsConnector(name, <any>undefined, { urn })
+            case "harness:platform/artifactoryConnector:ArtifactoryConnector":
+                return new ArtifactoryConnector(name, <any>undefined, { urn })
+            case "harness:platform/awsCCConnector:AwsCCConnector":
+                return new AwsCCConnector(name, <any>undefined, { urn })
+            case "harness:platform/awsConnector:AwsConnector":
+                return new AwsConnector(name, <any>undefined, { urn })
+            case "harness:platform/awsKmsConnector:AwsKmsConnector":
+                return new AwsKmsConnector(name, <any>undefined, { urn })
+            case "harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector":
+                return new AwsSecretManagerConnector(name, <any>undefined, { urn })
+            case "harness:platform/bitbucketConnector:BitbucketConnector":
+                return new BitbucketConnector(name, <any>undefined, { urn })
+            case "harness:platform/datadogConnector:DatadogConnector":
+                return new DatadogConnector(name, <any>undefined, { urn })
+            case "harness:platform/dockerConnector:DockerConnector":
+                return new DockerConnector(name, <any>undefined, { urn })
+            case "harness:platform/dynatraceConnector:DynatraceConnector":
+                return new DynatraceConnector(name, <any>undefined, { urn })
+            case "harness:platform/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
-            case "harness:Platform/inputSet:InputSet":
+            case "harness:platform/gcpConnector:GcpConnector":
+                return new GcpConnector(name, <any>undefined, { urn })
+            case "harness:platform/gitConnector:GitConnector":
+                return new GitConnector(name, <any>undefined, { urn })
+            case "harness:platform/githubConnector:GithubConnector":
+                return new GithubConnector(name, <any>undefined, { urn })
+            case "harness:platform/gitlabConnector:GitlabConnector":
+                return new GitlabConnector(name, <any>undefined, { urn })
+            case "harness:platform/helmConnector:HelmConnector":
+                return new HelmConnector(name, <any>undefined, { urn })
+            case "harness:platform/inputSet:InputSet":
                 return new InputSet(name, <any>undefined, { urn })
-            case "harness:Platform/organization:Organization":
+            case "harness:platform/jiraConnector:JiraConnector":
+                return new JiraConnector(name, <any>undefined, { urn })
+            case "harness:platform/kubernetesConnector:KubernetesConnector":
+                return new KubernetesConnector(name, <any>undefined, { urn })
+            case "harness:platform/newrelicConnector:NewrelicConnector":
+                return new NewrelicConnector(name, <any>undefined, { urn })
+            case "harness:platform/nexusConnector:NexusConnector":
+                return new NexusConnector(name, <any>undefined, { urn })
+            case "harness:platform/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
-            case "harness:Platform/pipeline:Pipeline":
+            case "harness:platform/pagerdutyConnector:PagerdutyConnector":
+                return new PagerdutyConnector(name, <any>undefined, { urn })
+            case "harness:platform/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
-            case "harness:Platform/project:Project":
+            case "harness:platform/project:Project":
                 return new Project(name, <any>undefined, { urn })
-            case "harness:Platform/resourceGroup:ResourceGroup":
+            case "harness:platform/prometheusConnector:PrometheusConnector":
+                return new PrometheusConnector(name, <any>undefined, { urn })
+            case "harness:platform/resourceGroup:ResourceGroup":
                 return new ResourceGroup(name, <any>undefined, { urn })
-            case "harness:Platform/roles:Roles":
+            case "harness:platform/roles:Roles":
                 return new Roles(name, <any>undefined, { urn })
-            case "harness:Platform/secretFile:SecretFile":
+            case "harness:platform/secretFile:SecretFile":
                 return new SecretFile(name, <any>undefined, { urn })
-            case "harness:Platform/secretSshkey:SecretSshkey":
+            case "harness:platform/secretSshkey:SecretSshkey":
                 return new SecretSshkey(name, <any>undefined, { urn })
-            case "harness:Platform/secretText:SecretText":
+            case "harness:platform/secretText:SecretText":
                 return new SecretText(name, <any>undefined, { urn })
-            case "harness:Platform/service:Service":
+            case "harness:platform/service:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "harness:Platform/serviceAccount:ServiceAccount":
+            case "harness:platform/serviceAccount:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
-            case "harness:Platform/triggers:Triggers":
+            case "harness:platform/splunkConnector:SplunkConnector":
+                return new SplunkConnector(name, <any>undefined, { urn })
+            case "harness:platform/sumologicConnector:SumologicConnector":
+                return new SumologicConnector(name, <any>undefined, { urn })
+            case "harness:platform/triggers:Triggers":
                 return new Triggers(name, <any>undefined, { urn })
-            case "harness:Platform/usergroup:Usergroup":
+            case "harness:platform/usergroup:Usergroup":
                 return new Usergroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("harness", "Platform/environment", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/inputSet", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/organization", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/pipeline", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/project", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/resourceGroup", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/roles", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/secretFile", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/secretSshkey", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/secretText", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/service", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/serviceAccount", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/triggers", _module)
-pulumi.runtime.registerResourceModule("harness", "Platform/usergroup", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/appDynamicsConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/artifactoryConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/awsCCConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/awsConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/awsKmsConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/awsSecretManagerConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/dockerConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/dynatraceConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/environment", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gcpConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/jiraConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/kubernetesConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/newrelicConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/nexusConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/organization", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/pagerdutyConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/pipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/project", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/prometheusConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/resourceGroup", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/roles", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/secretFile", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/secretSshkey", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/secretText", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/service", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/serviceAccount", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/splunkConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/sumologicConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/triggers", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/usergroup", _module)

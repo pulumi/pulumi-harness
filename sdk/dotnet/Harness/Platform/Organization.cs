@@ -13,7 +13,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness organization.
     /// </summary>
-    [HarnessResourceType("harness:Platform/organization:Organization")]
+    [HarnessResourceType("harness:platform/organization:Organization")]
     public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -49,12 +49,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Organization(string name, OrganizationArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/organization:Organization", name, args ?? new OrganizationArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/organization:Organization", name, args ?? new OrganizationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Organization(string name, Input<string> id, OrganizationState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/organization:Organization", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/organization:Organization", name, state, MakeResourceOptions(options, id))
         {
         }
 

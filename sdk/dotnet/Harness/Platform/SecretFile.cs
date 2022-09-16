@@ -42,10 +42,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using secret file id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/secretFile:SecretFile example &lt;secret_file_id&gt;
+    ///  $ pulumi import harness:platform/secretFile:SecretFile example &lt;secret_file_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/secretFile:SecretFile")]
+    [HarnessResourceType("harness:platform/secretFile:SecretFile")]
     public partial class SecretFile : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -105,12 +105,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretFile(string name, SecretFileArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretFile:SecretFile", name, args ?? new SecretFileArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/secretFile:SecretFile", name, args ?? new SecretFileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecretFile(string name, Input<string> id, SecretFileState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretFile:SecretFile", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/secretFile:SecretFile", name, state, MakeResourceOptions(options, id))
         {
         }
 

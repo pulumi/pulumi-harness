@@ -154,7 +154,7 @@ def get_secret_file(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_secret_file(identifier="identifier")
+    example = harness.platform.get_secret_file(identifier="identifier")
     ```
 
 
@@ -169,7 +169,7 @@ def get_secret_file(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getSecretFile:getSecretFile', __args__, opts=opts, typ=GetSecretFileResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getSecretFile:getSecretFile', __args__, opts=opts, typ=GetSecretFileResult).value
 
     return AwaitableGetSecretFileResult(
         description=__ret__.description,
@@ -198,7 +198,7 @@ def get_secret_file_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.Platform.get_secret_file(identifier="identifier")
+    example = harness.platform.get_secret_file(identifier="identifier")
     ```
 
 

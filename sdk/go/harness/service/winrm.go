@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewWinrm(ctx, "exampleWinrm", &Service.WinrmArgs{
+//			_, err = service.NewWinrm(ctx, "exampleWinrm", &service.WinrmArgs{
 //				AppId:        exampleApplication.ID(),
 //				ArtifactType: pulumi.String("IIS_APP"),
 //				Description:  pulumi.String("Service for deploying IIS appliactions using winrm."),
@@ -52,7 +52,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/winrm:Winrm example <app_id>/<svc_id>
+//	$ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
 //
 // ```
 type Winrm struct {
@@ -85,7 +85,7 @@ func NewWinrm(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Winrm
-	err := ctx.RegisterResource("harness:Service/winrm:Winrm", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/winrm:Winrm", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func NewWinrm(ctx *pulumi.Context,
 func GetWinrm(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *WinrmState, opts ...pulumi.ResourceOption) (*Winrm, error) {
 	var resource Winrm
-	err := ctx.ReadResource("harness:Service/winrm:Winrm", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/winrm:Winrm", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

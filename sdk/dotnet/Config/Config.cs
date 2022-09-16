@@ -32,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness
 
         private static readonly Pulumi.Config __config = new Pulumi.Config("harness");
 
-        private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId"));
+        private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId") ?? Utilities.GetEnv("HARNESS_ACCOUNT_ID"));
         /// <summary>
         /// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Lbrlabs.PulumiPackage.Harness
             set => _accountId.Set(value);
         }
 
-        private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey"));
+        private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey") ?? Utilities.GetEnv("HARNESS_API_KEY"));
         /// <summary>
         /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Lbrlabs.PulumiPackage.Harness
             set => _apiKey.Set(value);
         }
 
-        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint"));
+        private static readonly __Value<string?> _endpoint = new __Value<string?>(() => __config.Get("endpoint") ?? Utilities.GetEnv("HARNESS_ENDPOINT"));
         /// <summary>
         /// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
         /// `HARNESS_ENDPOINT` environment variable.
@@ -63,7 +63,7 @@ namespace Lbrlabs.PulumiPackage.Harness
             set => _endpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _platformApiKey = new __Value<string?>(() => __config.Get("platformApiKey"));
+        private static readonly __Value<string?> _platformApiKey = new __Value<string?>(() => __config.Get("platformApiKey") ?? Utilities.GetEnv("HARNESS_PLATFORM_API_KEY"));
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
         /// variable.

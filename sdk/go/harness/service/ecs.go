@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Service"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Service.NewEcs(ctx, "exampleEcs", &Service.EcsArgs{
+//			_, err = service.NewEcs(ctx, "exampleEcs", &service.EcsArgs{
 //				AppId:       exampleApplication.ID(),
 //				Description: pulumi.String("Service for deploying AWS ECS tasks."),
 //			})
@@ -51,7 +51,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Service/ecs:Ecs example <app_id>/<svc_id>
+//	$ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
 //
 // ```
 type Ecs struct {
@@ -79,7 +79,7 @@ func NewEcs(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Ecs
-	err := ctx.RegisterResource("harness:Service/ecs:Ecs", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:service/ecs:Ecs", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func NewEcs(ctx *pulumi.Context,
 func GetEcs(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *EcsState, opts ...pulumi.ResourceOption) (*Ecs, error) {
 	var resource Ecs
-	err := ctx.ReadResource("harness:Service/ecs:Ecs", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:service/ecs:Ecs", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

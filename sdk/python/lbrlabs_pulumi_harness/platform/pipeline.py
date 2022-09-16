@@ -525,7 +525,7 @@ class Pipeline(pulumi.CustomResource):
                 raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
         super(Pipeline, __self__).__init__(
-            'harness:Platform/pipeline:Pipeline',
+            'harness:platform/pipeline:Pipeline',
             resource_name,
             __props__,
             opts)

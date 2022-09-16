@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * # Import using secret text id
  *
  * ```sh
- *  $ pulumi import harness:Platform/secretText:SecretText example <secret_text_id>
+ *  $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
  * ```
  */
 export class SecretText extends pulumi.CustomResource {
@@ -46,7 +46,7 @@ export class SecretText extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/secretText:SecretText';
+    public static readonly __pulumiType = 'harness:platform/secretText:SecretText';
 
     /**
      * Returns true if the given object is an instance of SecretText.  This is designed to work even

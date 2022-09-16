@@ -255,7 +255,7 @@ class Gcp(pulumi.CustomResource):
             __props__.__dict__["skip_validation"] = skip_validation
             __props__.__dict__["usage_scopes"] = usage_scopes
         super(Gcp, __self__).__init__(
-            'harness:Cloudprovider/gcp:Gcp',
+            'harness:cloudprovider/gcp:Gcp',
             resource_name,
             __props__,
             opts)

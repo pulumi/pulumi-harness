@@ -20,15 +20,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewUsergroup(ctx, "example", &Platform.UsergroupArgs{
+//			_, err := platform.NewUsergroup(ctx, "example", &platform.UsergroupArgs{
 //				ExternallyManaged:    pulumi.Bool(false),
 //				Identifier:           pulumi.String("identifier"),
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
@@ -76,7 +76,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/usergroup:Usergroup example <usergroup_id>
+//	$ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
 //
 // ```
 type Usergroup struct {
@@ -126,7 +126,7 @@ func NewUsergroup(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Usergroup
-	err := ctx.RegisterResource("harness:Platform/usergroup:Usergroup", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/usergroup:Usergroup", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func NewUsergroup(ctx *pulumi.Context,
 func GetUsergroup(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *UsergroupState, opts ...pulumi.ResourceOption) (*Usergroup, error) {
 	var resource Usergroup
-	err := ctx.ReadResource("harness:Platform/usergroup:Usergroup", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/usergroup:Usergroup", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

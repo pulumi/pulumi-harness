@@ -27,29 +27,29 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "harness:Cloudprovider/aws:Aws":
+            case "harness:cloudprovider/aws:Aws":
                 return new Aws(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/azure:Azure":
+            case "harness:cloudprovider/azure:Azure":
                 return new Azure(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/datacenter:Datacenter":
+            case "harness:cloudprovider/datacenter:Datacenter":
                 return new Datacenter(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/gcp:Gcp":
+            case "harness:cloudprovider/gcp:Gcp":
                 return new Gcp(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/kubernetes:Kubernetes":
+            case "harness:cloudprovider/kubernetes:Kubernetes":
                 return new Kubernetes(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/spot:Spot":
+            case "harness:cloudprovider/spot:Spot":
                 return new Spot(name, <any>undefined, { urn })
-            case "harness:Cloudprovider/tanzu:Tanzu":
+            case "harness:cloudprovider/tanzu:Tanzu":
                 return new Tanzu(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/aws", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/azure", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/datacenter", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/gcp", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/kubernetes", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/spot", _module)
-pulumi.runtime.registerResourceModule("harness", "Cloudprovider/tanzu", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/aws", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/azure", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/datacenter", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/gcp", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/kubernetes", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/spot", _module)
+pulumi.runtime.registerResourceModule("harness", "cloudprovider/tanzu", _module)

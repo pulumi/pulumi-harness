@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness azure cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/azure:Azure example <provider_id>
+ *  $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
  * ```
  */
 export class Azure extends pulumi.CustomResource {
@@ -51,7 +51,7 @@ export class Azure extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/azure:Azure';
+    public static readonly __pulumiType = 'harness:cloudprovider/azure:Azure';
 
     /**
      * Returns true if the given object is an instance of Azure.  This is designed to work even

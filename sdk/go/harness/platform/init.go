@@ -21,33 +21,79 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "harness:Platform/environment:Environment":
+	case "harness:platform/appDynamicsConnector:AppDynamicsConnector":
+		r = &AppDynamicsConnector{}
+	case "harness:platform/artifactoryConnector:ArtifactoryConnector":
+		r = &ArtifactoryConnector{}
+	case "harness:platform/awsCCConnector:AwsCCConnector":
+		r = &AwsCCConnector{}
+	case "harness:platform/awsConnector:AwsConnector":
+		r = &AwsConnector{}
+	case "harness:platform/awsKmsConnector:AwsKmsConnector":
+		r = &AwsKmsConnector{}
+	case "harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector":
+		r = &AwsSecretManagerConnector{}
+	case "harness:platform/bitbucketConnector:BitbucketConnector":
+		r = &BitbucketConnector{}
+	case "harness:platform/datadogConnector:DatadogConnector":
+		r = &DatadogConnector{}
+	case "harness:platform/dockerConnector:DockerConnector":
+		r = &DockerConnector{}
+	case "harness:platform/dynatraceConnector:DynatraceConnector":
+		r = &DynatraceConnector{}
+	case "harness:platform/environment:Environment":
 		r = &Environment{}
-	case "harness:Platform/inputSet:InputSet":
+	case "harness:platform/gcpConnector:GcpConnector":
+		r = &GcpConnector{}
+	case "harness:platform/gitConnector:GitConnector":
+		r = &GitConnector{}
+	case "harness:platform/githubConnector:GithubConnector":
+		r = &GithubConnector{}
+	case "harness:platform/gitlabConnector:GitlabConnector":
+		r = &GitlabConnector{}
+	case "harness:platform/helmConnector:HelmConnector":
+		r = &HelmConnector{}
+	case "harness:platform/inputSet:InputSet":
 		r = &InputSet{}
-	case "harness:Platform/organization:Organization":
+	case "harness:platform/jiraConnector:JiraConnector":
+		r = &JiraConnector{}
+	case "harness:platform/kubernetesConnector:KubernetesConnector":
+		r = &KubernetesConnector{}
+	case "harness:platform/newrelicConnector:NewrelicConnector":
+		r = &NewrelicConnector{}
+	case "harness:platform/nexusConnector:NexusConnector":
+		r = &NexusConnector{}
+	case "harness:platform/organization:Organization":
 		r = &Organization{}
-	case "harness:Platform/pipeline:Pipeline":
+	case "harness:platform/pagerdutyConnector:PagerdutyConnector":
+		r = &PagerdutyConnector{}
+	case "harness:platform/pipeline:Pipeline":
 		r = &Pipeline{}
-	case "harness:Platform/project:Project":
+	case "harness:platform/project:Project":
 		r = &Project{}
-	case "harness:Platform/resourceGroup:ResourceGroup":
+	case "harness:platform/prometheusConnector:PrometheusConnector":
+		r = &PrometheusConnector{}
+	case "harness:platform/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
-	case "harness:Platform/roles:Roles":
+	case "harness:platform/roles:Roles":
 		r = &Roles{}
-	case "harness:Platform/secretFile:SecretFile":
+	case "harness:platform/secretFile:SecretFile":
 		r = &SecretFile{}
-	case "harness:Platform/secretSshkey:SecretSshkey":
+	case "harness:platform/secretSshkey:SecretSshkey":
 		r = &SecretSshkey{}
-	case "harness:Platform/secretText:SecretText":
+	case "harness:platform/secretText:SecretText":
 		r = &SecretText{}
-	case "harness:Platform/service:Service":
+	case "harness:platform/service:Service":
 		r = &Service{}
-	case "harness:Platform/serviceAccount:ServiceAccount":
+	case "harness:platform/serviceAccount:ServiceAccount":
 		r = &ServiceAccount{}
-	case "harness:Platform/triggers:Triggers":
+	case "harness:platform/splunkConnector:SplunkConnector":
+		r = &SplunkConnector{}
+	case "harness:platform/sumologicConnector:SumologicConnector":
+		r = &SumologicConnector{}
+	case "harness:platform/triggers:Triggers":
 		r = &Triggers{}
-	case "harness:Platform/usergroup:Usergroup":
+	case "harness:platform/usergroup:Usergroup":
 		r = &Usergroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
@@ -64,72 +110,187 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/environment",
+		"platform/appDynamicsConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/inputSet",
+		"platform/artifactoryConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/organization",
+		"platform/awsCCConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/pipeline",
+		"platform/awsConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/project",
+		"platform/awsKmsConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/resourceGroup",
+		"platform/awsSecretManagerConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/roles",
+		"platform/bitbucketConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/secretFile",
+		"platform/datadogConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/secretSshkey",
+		"platform/dockerConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/secretText",
+		"platform/dynatraceConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/service",
+		"platform/environment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/serviceAccount",
+		"platform/gcpConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/triggers",
+		"platform/gitConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"Platform/usergroup",
+		"platform/githubConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitlabConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/helmConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/inputSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/jiraConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/kubernetesConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/newrelicConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/nexusConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/pagerdutyConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/prometheusConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/resourceGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/roles",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/secretFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/secretSshkey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/secretText",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/service",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/serviceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/splunkConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/sumologicConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/triggers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/usergroup",
 		&module{version},
 	)
 }

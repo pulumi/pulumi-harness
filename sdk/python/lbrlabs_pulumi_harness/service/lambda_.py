@@ -186,7 +186,7 @@ class Lambda(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/lambda:Lambda example <app_id>/<svc_id>
+         $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -222,7 +222,7 @@ class Lambda(pulumi.CustomResource):
         # Import using the Harness application id and service id
 
         ```sh
-         $ pulumi import harness:Service/lambda:Lambda example <app_id>/<svc_id>
+         $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,7 +260,7 @@ class Lambda(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["variables"] = variables
         super(Lambda, __self__).__init__(
-            'harness:Service/lambda:Lambda',
+            'harness:service/lambda:Lambda',
             resource_name,
             __props__,
             opts)

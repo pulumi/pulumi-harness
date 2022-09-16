@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetRoles(ctx, &platform.GetRolesArgs{
+//			_, err := platform.LookupRoles(ctx, &platform.LookupRolesArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
@@ -43,7 +43,7 @@ import (
 func LookupRoles(ctx *pulumi.Context, args *LookupRolesArgs, opts ...pulumi.InvokeOption) (*LookupRolesResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupRolesResult
-	err := ctx.Invoke("harness:Platform/getRoles:getRoles", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getRoles:getRoles", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Data source for retrieving a Harness pipeline.
         /// </summary>
         public static Task<GetPipelineResult> InvokeAsync(GetPipelineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("harness:Platform/getPipeline:getPipeline", args ?? new GetPipelineArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("harness:platform/getPipeline:getPipeline", args ?? new GetPipelineArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness pipeline.
         /// </summary>
         public static Output<GetPipelineResult> Invoke(GetPipelineInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPipelineResult>("harness:Platform/getPipeline:getPipeline", args ?? new GetPipelineInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetPipelineResult>("harness:platform/getPipeline:getPipeline", args ?? new GetPipelineInvokeArgs(), options.WithDefaults());
     }
 
 

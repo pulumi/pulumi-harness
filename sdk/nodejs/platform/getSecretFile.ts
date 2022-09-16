@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.Platform.getSecretFile({
+ * const example = pulumi.output(harness.platform.getSecretFile({
  *     identifier: "identifier",
  * }));
  * ```
@@ -25,7 +25,7 @@ export function getSecretFile(args?: GetSecretFileArgs, opts?: pulumi.InvokeOpti
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getSecretFile:getSecretFile", {
+    return pulumi.runtime.invoke("harness:platform/getSecretFile:getSecretFile", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

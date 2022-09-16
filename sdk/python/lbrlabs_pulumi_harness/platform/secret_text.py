@@ -350,7 +350,7 @@ class SecretText(pulumi.CustomResource):
         # Import using secret text id
 
         ```sh
-         $ pulumi import harness:Platform/secretText:SecretText example <secret_text_id>
+         $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,7 +394,7 @@ class SecretText(pulumi.CustomResource):
         # Import using secret text id
 
         ```sh
-         $ pulumi import harness:Platform/secretText:SecretText example <secret_text_id>
+         $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -446,7 +446,7 @@ class SecretText(pulumi.CustomResource):
                 raise TypeError("Missing required property 'value_type'")
             __props__.__dict__["value_type"] = value_type
         super(SecretText, __self__).__init__(
-            'harness:Platform/secretText:SecretText',
+            'harness:platform/secretText:SecretText',
             resource_name,
             __props__,
             opts)

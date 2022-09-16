@@ -20,15 +20,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.NewSecretSshkey(ctx, "keyTabFilePath", &Platform.SecretSshkeyArgs{
+//			_, err := platform.NewSecretSshkey(ctx, "keyTabFilePath", &platform.SecretSshkeyArgs{
 //				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
 //				Kerberos: &platform.SecretSshkeyKerberosArgs{
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Platform.NewSecretSshkey(ctx, " tgtPassword", &Platform.SecretSshkeyArgs{
+//			_, err = platform.NewSecretSshkey(ctx, " tgtPassword", &platform.SecretSshkeyArgs{
 //				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
 //				Kerberos: &platform.SecretSshkeyKerberosArgs{
@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Platform.NewSecretSshkey(ctx, "sshkeyReference", &Platform.SecretSshkeyArgs{
+//			_, err = platform.NewSecretSshkey(ctx, "sshkeyReference", &platform.SecretSshkeyArgs{
 //				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
 //				Port:        pulumi.Int(22),
@@ -85,7 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Platform.NewSecretSshkey(ctx, " sshkeyPath", &Platform.SecretSshkeyArgs{
+//			_, err = platform.NewSecretSshkey(ctx, " sshkeyPath", &platform.SecretSshkeyArgs{
 //				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
 //				Port:        pulumi.Int(22),
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Platform.NewSecretSshkey(ctx, "sshPassword", &Platform.SecretSshkeyArgs{
+//			_, err = platform.NewSecretSshkey(ctx, "sshPassword", &platform.SecretSshkeyArgs{
 //				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
 //				Port:        pulumi.Int(22),
@@ -134,7 +134,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+//	$ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
 //
 // ```
 type SecretSshkey struct {
@@ -172,7 +172,7 @@ func NewSecretSshkey(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretSshkey
-	err := ctx.RegisterResource("harness:Platform/secretSshkey:SecretSshkey", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/secretSshkey:SecretSshkey", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -184,7 +184,7 @@ func NewSecretSshkey(ctx *pulumi.Context,
 func GetSecretSshkey(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SecretSshkeyState, opts ...pulumi.ResourceOption) (*SecretSshkey, error) {
 	var resource SecretSshkey
-	err := ctx.ReadResource("harness:Platform/secretSshkey:SecretSshkey", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/secretSshkey:SecretSshkey", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

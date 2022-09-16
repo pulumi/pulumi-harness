@@ -148,7 +148,7 @@ def get_pipeline(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getPipeline:getPipeline', __args__, opts=opts, typ=GetPipelineResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getPipeline:getPipeline', __args__, opts=opts, typ=GetPipelineResult).value
 
     return AwaitableGetPipelineResult(
         description=__ret__.description,

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/ssh:Ssh example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
  * ```
  */
 export class Ssh extends pulumi.CustomResource {
@@ -45,7 +45,7 @@ export class Ssh extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/ssh:Ssh';
+    public static readonly __pulumiType = 'harness:service/ssh:Ssh';
 
     /**
      * Returns true if the given object is an instance of Ssh.  This is designed to work even
@@ -77,7 +77,7 @@ export class Ssh extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.SshVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.SshVariable[] | undefined>;
 
     /**
      * Create a Ssh resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export interface SshState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.SshVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.SshVariable>[]>;
 }
 
 /**
@@ -165,5 +165,5 @@ export interface SshArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.SshVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.SshVariable>[]>;
 }

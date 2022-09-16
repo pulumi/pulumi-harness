@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetUsergroup(ctx, &platform.GetUsergroupArgs{
+//			_, err := platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
 //				Name:      pulumi.StringRef("name"),
 //				OrgId:     pulumi.StringRef("org_id"),
 //				ProjectId: pulumi.StringRef("project_id"),
@@ -43,7 +43,7 @@ import (
 func LookupUsergroup(ctx *pulumi.Context, args *LookupUsergroupArgs, opts ...pulumi.InvokeOption) (*LookupUsergroupResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupUsergroupResult
-	err := ctx.Invoke("harness:Platform/getUsergroup:getUsergroup", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getUsergroup:getUsergroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

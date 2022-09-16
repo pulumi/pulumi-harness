@@ -318,7 +318,7 @@ class Roles(pulumi.CustomResource):
         # Import using roles id
 
         ```sh
-         $ pulumi import harness:Platform/roles:Roles example <roles_id>
+         $ pulumi import harness:platform/roles:Roles example <roles_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,7 +360,7 @@ class Roles(pulumi.CustomResource):
         # Import using roles id
 
         ```sh
-         $ pulumi import harness:Platform/roles:Roles example <roles_id>
+         $ pulumi import harness:platform/roles:Roles example <roles_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,7 +406,7 @@ class Roles(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
         super(Roles, __self__).__init__(
-            'harness:Platform/roles:Roles',
+            'harness:platform/roles:Roles',
             resource_name,
             __props__,
             opts)

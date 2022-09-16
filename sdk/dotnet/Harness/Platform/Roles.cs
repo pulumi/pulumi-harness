@@ -48,10 +48,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using roles id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/roles:Roles example &lt;roles_id&gt;
+    ///  $ pulumi import harness:platform/roles:Roles example &lt;roles_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/roles:Roles")]
+    [HarnessResourceType("harness:platform/roles:Roles")]
     public partial class Roles : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -111,12 +111,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Roles(string name, RolesArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/roles:Roles", name, args ?? new RolesArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/roles:Roles", name, args ?? new RolesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Roles(string name, Input<string> id, RolesState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/roles:Roles", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/roles:Roles", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnvironmentResult> InvokeAsync(GetEnvironmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("harness:Platform/getEnvironment:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentResult>("harness:platform/getEnvironment:getEnvironment", args ?? new GetEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness environment.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnvironmentResult> Invoke(GetEnvironmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("harness:Platform/getEnvironment:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentResult>("harness:platform/getEnvironment:getEnvironment", args ?? new GetEnvironmentInvokeArgs(), options.WithDefaults());
     }
 
 

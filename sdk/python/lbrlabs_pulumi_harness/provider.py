@@ -14,50 +14,47 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
-                 endpoint: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
                  platform_api_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account_id: The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
+        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
         :param pulumi.Input[str] endpoint: The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
                `HARNESS_ENDPOINT` environment variable.
-        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
         :param pulumi.Input[str] platform_api_key: The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
                variable.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "endpoint", endpoint)
+        if account_id is None:
+            account_id = _utilities.get_env('HARNESS_ACCOUNT_ID')
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if api_key is None:
+            api_key = _utilities.get_env('HARNESS_API_KEY')
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if endpoint is None:
+            endpoint = _utilities.get_env('HARNESS_ENDPOINT')
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if platform_api_key is None:
+            platform_api_key = _utilities.get_env('HARNESS_PLATFORM_API_KEY')
         if platform_api_key is not None:
             pulumi.set(__self__, "platform_api_key", platform_api_key)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
+    def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
+    def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[str]:
-        """
-        The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
-        `HARNESS_ENDPOINT` environment variable.
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[str]):
-        pulumi.set(self, "endpoint", value)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -70,6 +67,19 @@ class ProviderArgs:
     @api_key.setter
     def api_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
+        `HARNESS_ENDPOINT` environment variable.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
 
     @property
     @pulumi.getter(name="platformApiKey")
@@ -114,7 +124,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the harness package. By default, resources use package-wide configuration
@@ -150,13 +160,17 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
+            if account_id is None:
+                account_id = _utilities.get_env('HARNESS_ACCOUNT_ID')
             __props__.__dict__["account_id"] = account_id
+            if api_key is None:
+                api_key = _utilities.get_env('HARNESS_API_KEY')
             __props__.__dict__["api_key"] = api_key
-            if endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoint'")
+            if endpoint is None:
+                endpoint = _utilities.get_env('HARNESS_ENDPOINT')
             __props__.__dict__["endpoint"] = endpoint
+            if platform_api_key is None:
+                platform_api_key = _utilities.get_env('HARNESS_PLATFORM_API_KEY')
             __props__.__dict__["platform_api_key"] = platform_api_key
         super(Provider, __self__).__init__(
             'harness',
@@ -166,7 +180,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
         The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         """
@@ -182,7 +196,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> pulumi.Output[str]:
+    def endpoint(self) -> pulumi.Output[Optional[str]]:
         """
         The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
         `HARNESS_ENDPOINT` environment variable.

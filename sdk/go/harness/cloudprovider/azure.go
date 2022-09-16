@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Cloudprovider.NewAzure(ctx, "azure", &Cloudprovider.AzureArgs{
+//			_, err = cloudprovider.NewAzure(ctx, "azure", &cloudprovider.AzureArgs{
 //				ClientId: pulumi.String("<AZURE_CLIENT_ID>"),
 //				TenantId: pulumi.String("<AZURE_TENANT_ID>"),
 //				Key:      azureKey.Name,
@@ -61,7 +61,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Cloudprovider/azure:Azure example <provider_id>
+//	$ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
 //
 // ```
 type Azure struct {
@@ -97,7 +97,7 @@ func NewAzure(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Azure
-	err := ctx.RegisterResource("harness:Cloudprovider/azure:Azure", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:cloudprovider/azure:Azure", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +109,7 @@ func NewAzure(ctx *pulumi.Context,
 func GetAzure(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *AzureState, opts ...pulumi.ResourceOption) (*Azure, error) {
 	var resource Azure
-	err := ctx.ReadResource("harness:Cloudprovider/azure:Azure", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:cloudprovider/azure:Azure", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

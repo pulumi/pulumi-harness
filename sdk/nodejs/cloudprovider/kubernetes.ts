@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness kubernetes cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:Cloudprovider/kubernetes:Kubernetes example <provider_id>
+ *  $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
  * ```
  */
 export class Kubernetes extends pulumi.CustomResource {
@@ -61,7 +61,7 @@ export class Kubernetes extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Cloudprovider/kubernetes:Kubernetes';
+    public static readonly __pulumiType = 'harness:cloudprovider/kubernetes:Kubernetes';
 
     /**
      * Returns true if the given object is an instance of Kubernetes.  This is designed to work even
@@ -77,7 +77,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Authentication configuration for the Kubernetes cluster
      */
-    public readonly authentication!: pulumi.Output<outputs.Cloudprovider.KubernetesAuthentication>;
+    public readonly authentication!: pulumi.Output<outputs.cloudprovider.KubernetesAuthentication>;
     /**
      * The name of the cloud provider.
      */
@@ -89,7 +89,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    public readonly usageScopes!: pulumi.Output<outputs.Cloudprovider.KubernetesUsageScope[] | undefined>;
+    public readonly usageScopes!: pulumi.Output<outputs.cloudprovider.KubernetesUsageScope[] | undefined>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -130,7 +130,7 @@ export interface KubernetesState {
     /**
      * Authentication configuration for the Kubernetes cluster
      */
-    authentication?: pulumi.Input<inputs.Cloudprovider.KubernetesAuthentication>;
+    authentication?: pulumi.Input<inputs.cloudprovider.KubernetesAuthentication>;
     /**
      * The name of the cloud provider.
      */
@@ -142,7 +142,7 @@ export interface KubernetesState {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.KubernetesUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[]>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface KubernetesArgs {
     /**
      * Authentication configuration for the Kubernetes cluster
      */
-    authentication: pulumi.Input<inputs.Cloudprovider.KubernetesAuthentication>;
+    authentication: pulumi.Input<inputs.cloudprovider.KubernetesAuthentication>;
     /**
      * The name of the cloud provider.
      */
@@ -164,5 +164,5 @@ export interface KubernetesArgs {
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.Cloudprovider.KubernetesUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[]>;
 }

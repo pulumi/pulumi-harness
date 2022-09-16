@@ -57,10 +57,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using input set id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/inputSet:InputSet example &lt;input_set_id&gt;
+    ///  $ pulumi import harness:platform/inputSet:InputSet example &lt;input_set_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/inputSet:InputSet")]
+    [HarnessResourceType("harness:platform/inputSet:InputSet")]
     public partial class InputSet : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -120,12 +120,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InputSet(string name, InputSetArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/inputSet:InputSet", name, args ?? new InputSetArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/inputSet:InputSet", name, args ?? new InputSetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InputSet(string name, Input<string> id, InputSetState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/inputSet:InputSet", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/inputSet:InputSet", name, state, MakeResourceOptions(options, id))
         {
         }
 

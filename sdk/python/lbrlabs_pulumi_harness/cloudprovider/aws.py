@@ -359,7 +359,7 @@ class Aws(pulumi.CustomResource):
         # Import using the Harness aws cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/aws:Aws example <provider_id>
+         $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -407,7 +407,7 @@ class Aws(pulumi.CustomResource):
         # Import using the Harness aws cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/aws:Aws example <provider_id>
+         $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -453,7 +453,7 @@ class Aws(pulumi.CustomResource):
             __props__.__dict__["use_ec2_iam_credentials"] = use_ec2_iam_credentials
             __props__.__dict__["use_irsa"] = use_irsa
         super(Aws, __self__).__init__(
-            'harness:Cloudprovider/aws:Aws',
+            'harness:cloudprovider/aws:Aws',
             resource_name,
             __props__,
             opts)

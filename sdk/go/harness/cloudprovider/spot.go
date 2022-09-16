@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Cloudprovider.NewSpot(ctx, "example", &Cloudprovider.SpotArgs{
+//			_, err = cloudprovider.NewSpot(ctx, "example", &cloudprovider.SpotArgs{
 //				AccountId:       pulumi.String("<SPOT_ACCOUNT_ID>"),
 //				TokenSecretName: spotToken.Name,
 //			})
@@ -60,7 +60,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Cloudprovider/spot:Spot example <provider_id>
+//	$ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
 //
 // ```
 type Spot struct {
@@ -89,7 +89,7 @@ func NewSpot(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Spot
-	err := ctx.RegisterResource("harness:Cloudprovider/spot:Spot", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:cloudprovider/spot:Spot", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,7 +101,7 @@ func NewSpot(ctx *pulumi.Context,
 func GetSpot(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SpotState, opts ...pulumi.ResourceOption) (*Spot, error) {
 	var resource Spot
-	err := ctx.ReadResource("harness:Cloudprovider/spot:Spot", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:cloudprovider/spot:Spot", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

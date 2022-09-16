@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/lambda:Lambda example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
  * ```
  */
 export class Lambda extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Lambda extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/lambda:Lambda';
+    public static readonly __pulumiType = 'harness:service/lambda:Lambda';
 
     /**
      * Returns true if the given object is an instance of Lambda.  This is designed to work even
@@ -72,7 +72,7 @@ export class Lambda extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.LambdaVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.LambdaVariable[] | undefined>;
 
     /**
      * Create a Lambda resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface LambdaState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.LambdaVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface LambdaArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.LambdaVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[]>;
 }

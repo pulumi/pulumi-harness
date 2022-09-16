@@ -25,7 +25,7 @@ export function getDelegateIds(args?: GetDelegateIdsArgs, opts?: pulumi.InvokeOp
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Cloudprovider/getDelegateIds:getDelegateIds", {
+    return pulumi.runtime.invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", {
         "name": args.name,
         "status": args.status,
         "type": args.type,

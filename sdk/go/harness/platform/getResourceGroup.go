@@ -19,15 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Platform"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := Platform.GetResourceGroup(ctx, &platform.GetResourceGroupArgs{
+//			_, err := platform.LookupResourceGroup(ctx, &platform.LookupResourceGroupArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -41,7 +41,7 @@ import (
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupResult
-	err := ctx.Invoke("harness:Platform/getResourceGroup:getResourceGroup", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getResourceGroup:getResourceGroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

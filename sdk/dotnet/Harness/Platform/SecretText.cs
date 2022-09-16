@@ -43,10 +43,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// # Import using secret text id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Platform/secretText:SecretText example &lt;secret_text_id&gt;
+    ///  $ pulumi import harness:platform/secretText:SecretText example &lt;secret_text_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Platform/secretText:SecretText")]
+    [HarnessResourceType("harness:platform/secretText:SecretText")]
     public partial class SecretText : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -112,12 +112,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretText(string name, SecretTextArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretText:SecretText", name, args ?? new SecretTextArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/secretText:SecretText", name, args ?? new SecretTextArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecretText(string name, Input<string> id, SecretTextState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/secretText:SecretText", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/secretText:SecretText", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.SecretFile("example", {
+ * const example = new harness.platform.SecretFile("example", {
  *     description: "test",
  *     filePath: "file_path",
  *     identifier: "identifier",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * # Import using secret file id
  *
  * ```sh
- *  $ pulumi import harness:Platform/secretFile:SecretFile example <secret_file_id>
+ *  $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
  * ```
  */
 export class SecretFile extends pulumi.CustomResource {
@@ -45,7 +45,7 @@ export class SecretFile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/secretFile:SecretFile';
+    public static readonly __pulumiType = 'harness:platform/secretFile:SecretFile';
 
     /**
      * Returns true if the given object is an instance of SecretFile.  This is designed to work even

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.Platform.getSecretSshkey({
+ * const example = pulumi.output(harness.platform.getSecretSshkey({
  *     identifier: "identifier",
  * }));
  * ```
@@ -26,7 +26,7 @@ export function getSecretSshkey(args?: GetSecretSshkeyArgs, opts?: pulumi.Invoke
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getSecretSshkey:getSecretSshkey", {
+    return pulumi.runtime.invoke("harness:platform/getSecretSshkey:getSecretSshkey", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -75,7 +75,7 @@ export interface GetSecretSshkeyResult {
     /**
      * Kerberos authentication scheme
      */
-    readonly kerberos: outputs.Platform.GetSecretSshkeyKerbero[];
+    readonly kerberos: outputs.platform.GetSecretSshkeyKerbero[];
     /**
      * Name of the resource.
      */
@@ -95,7 +95,7 @@ export interface GetSecretSshkeyResult {
     /**
      * Kerberos authentication scheme
      */
-    readonly sshes: outputs.Platform.GetSecretSshkeySsh[];
+    readonly sshes: outputs.platform.GetSecretSshkeySsh[];
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */

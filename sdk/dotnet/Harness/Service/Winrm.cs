@@ -39,10 +39,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/winrm:Winrm example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/winrm:Winrm example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/winrm:Winrm")]
+    [HarnessResourceType("harness:service/winrm:Winrm")]
     public partial class Winrm : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Winrm(string name, WinrmArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/winrm:Winrm", name, args ?? new WinrmArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/winrm:Winrm", name, args ?? new WinrmArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Winrm(string name, Input<string> id, WinrmState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/winrm:Winrm", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/winrm:Winrm", name, state, MakeResourceOptions(options, id))
         {
         }
 

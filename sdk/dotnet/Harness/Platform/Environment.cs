@@ -13,7 +13,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness environment.
     /// </summary>
-    [HarnessResourceType("harness:Platform/environment:Environment")]
+    [HarnessResourceType("harness:platform/environment:Environment")]
     public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -73,12 +73,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Environment(string name, EnvironmentArgs args, CustomResourceOptions? options = null)
-            : base("harness:Platform/environment:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
+            : base("harness:platform/environment:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Environment(string name, Input<string> id, EnvironmentState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Platform/environment:Environment", name, state, MakeResourceOptions(options, id))
+            : base("harness:platform/environment:Environment", name, state, MakeResourceOptions(options, id))
         {
         }
 

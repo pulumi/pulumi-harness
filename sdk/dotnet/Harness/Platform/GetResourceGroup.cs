@@ -37,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceGroupResult> InvokeAsync(GetResourceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("harness:Platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("harness:platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// DataSource for looking up resource group in harness.
@@ -64,7 +64,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceGroupResult> Invoke(GetResourceGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("harness:Platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
+            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("harness:platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

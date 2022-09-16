@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.Platform.getEnvironment({
+ * const test = pulumi.output(harness.platform.getEnvironment({
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -26,7 +26,7 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getEnvironment:getEnvironment", {
+    return pulumi.runtime.invoke("harness:platform/getEnvironment:getEnvironment", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

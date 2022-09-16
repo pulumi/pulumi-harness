@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/ecs:Ecs example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
  * ```
  */
 export class Ecs extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class Ecs extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/ecs:Ecs';
+    public static readonly __pulumiType = 'harness:service/ecs:Ecs';
 
     /**
      * Returns true if the given object is an instance of Ecs.  This is designed to work even
@@ -72,7 +72,7 @@ export class Ecs extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.EcsVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.EcsVariable[] | undefined>;
 
     /**
      * Create a Ecs resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export interface EcsState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.EcsVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.EcsVariable>[]>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface EcsArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.EcsVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.EcsVariable>[]>;
 }

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.Platform.getUsergroup({
+ * const example = pulumi.output(harness.platform.getUsergroup({
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -28,7 +28,7 @@ export function getUsergroup(args?: GetUsergroupArgs, opts?: pulumi.InvokeOption
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getUsergroup:getUsergroup", {
+    return pulumi.runtime.invoke("harness:platform/getUsergroup:getUsergroup", {
         "identifier": args.identifier,
         "name": args.name,
         "notificationConfigs": args.notificationConfigs,
@@ -52,7 +52,7 @@ export interface GetUsergroupArgs {
     /**
      * List of notification settings.
      */
-    notificationConfigs?: inputs.Platform.GetUsergroupNotificationConfig[];
+    notificationConfigs?: inputs.platform.GetUsergroupNotificationConfig[];
     /**
      * Unique identifier of the organization.
      */
@@ -102,7 +102,7 @@ export interface GetUsergroupResult {
     /**
      * List of notification settings.
      */
-    readonly notificationConfigs?: outputs.Platform.GetUsergroupNotificationConfig[];
+    readonly notificationConfigs?: outputs.platform.GetUsergroupNotificationConfig[];
     /**
      * Unique identifier of the organization.
      */
@@ -152,7 +152,7 @@ export interface GetUsergroupOutputArgs {
     /**
      * List of notification settings.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.Platform.GetUsergroupNotificationConfigArgs>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetUsergroupNotificationConfigArgs>[]>;
     /**
      * Unique identifier of the organization.
      */

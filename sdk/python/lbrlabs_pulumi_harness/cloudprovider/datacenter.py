@@ -118,7 +118,7 @@ class Datacenter(pulumi.CustomResource):
         # Import using the Harness datacenter cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/datacenter:Datacenter example <provider_id>
+         $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -149,7 +149,7 @@ class Datacenter(pulumi.CustomResource):
         # Import using the Harness datacenter cloud provider id.
 
         ```sh
-         $ pulumi import harness:Cloudprovider/datacenter:Datacenter example <provider_id>
+         $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -181,7 +181,7 @@ class Datacenter(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["usage_scopes"] = usage_scopes
         super(Datacenter, __self__).__init__(
-            'harness:Cloudprovider/datacenter:Datacenter',
+            'harness:cloudprovider/datacenter:Datacenter',
             resource_name,
             __props__,
             opts)

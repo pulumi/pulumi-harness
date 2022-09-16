@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * # Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:Service/winrm:Winrm example <app_id>/<svc_id>
+ *  $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
  * ```
  */
 export class Winrm extends pulumi.CustomResource {
@@ -45,7 +45,7 @@ export class Winrm extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Service/winrm:Winrm';
+    public static readonly __pulumiType = 'harness:service/winrm:Winrm';
 
     /**
      * Returns true if the given object is an instance of Winrm.  This is designed to work even
@@ -77,7 +77,7 @@ export class Winrm extends pulumi.CustomResource {
     /**
      * Variables to be used in the service
      */
-    public readonly variables!: pulumi.Output<outputs.Service.WinrmVariable[] | undefined>;
+    public readonly variables!: pulumi.Output<outputs.service.WinrmVariable[] | undefined>;
 
     /**
      * Create a Winrm resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export interface WinrmState {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.WinrmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[]>;
 }
 
 /**
@@ -165,5 +165,5 @@ export interface WinrmArgs {
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.Service.WinrmVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.WinrmVariable>[]>;
 }

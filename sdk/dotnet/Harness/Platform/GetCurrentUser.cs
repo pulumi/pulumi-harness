@@ -16,7 +16,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Data source for retrieving the current user based on the API key.
         /// </summary>
         public static Task<GetCurrentUserResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("harness:Platform/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("harness:platform/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

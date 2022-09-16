@@ -13,7 +13,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// <summary>
     /// Resource for creating a GCP cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/gcp:Gcp")]
+    [HarnessResourceType("harness:cloudprovider/gcp:Gcp")]
     public partial class Gcp : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -55,12 +55,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Gcp(string name, GcpArgs? args = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/gcp:Gcp", name, args ?? new GcpArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/gcp:Gcp", name, args ?? new GcpArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Gcp(string name, Input<string> id, GcpState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/gcp:Gcp", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/gcp:Gcp", name, state, MakeResourceOptions(options, id))
         {
         }
 

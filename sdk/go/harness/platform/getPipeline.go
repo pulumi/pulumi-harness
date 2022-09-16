@@ -14,7 +14,7 @@ import (
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult
-	err := ctx.Invoke("harness:Platform/getPipeline:getPipeline", args, &rv, opts...)
+	err := ctx.Invoke("harness:platform/getPipeline:getPipeline", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}

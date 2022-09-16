@@ -62,10 +62,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// # Import using the Harness kubernetes cloud provider id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Cloudprovider/kubernetes:Kubernetes example &lt;provider_id&gt;
+    ///  $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example &lt;provider_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Cloudprovider/kubernetes:Kubernetes")]
+    [HarnessResourceType("harness:cloudprovider/kubernetes:Kubernetes")]
     public partial class Kubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -101,12 +101,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Kubernetes(string name, KubernetesArgs args, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/kubernetes:Kubernetes", name, args ?? new KubernetesArgs(), MakeResourceOptions(options, ""))
+            : base("harness:cloudprovider/kubernetes:Kubernetes", name, args ?? new KubernetesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Kubernetes(string name, Input<string> id, KubernetesState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Cloudprovider/kubernetes:Kubernetes", name, state, MakeResourceOptions(options, id))
+            : base("harness:cloudprovider/kubernetes:Kubernetes", name, state, MakeResourceOptions(options, id))
         {
         }
 

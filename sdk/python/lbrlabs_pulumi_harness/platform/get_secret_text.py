@@ -166,7 +166,7 @@ def get_secret_text(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_secret_text(identifier="identifier")
+    test = harness.platform.get_secret_text(identifier="identifier")
     ```
 
 
@@ -181,7 +181,7 @@ def get_secret_text(identifier: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('harness:Platform/getSecretText:getSecretText', __args__, opts=opts, typ=GetSecretTextResult).value
+    __ret__ = pulumi.runtime.invoke('harness:platform/getSecretText:getSecretText', __args__, opts=opts, typ=GetSecretTextResult).value
 
     return AwaitableGetSecretTextResult(
         description=__ret__.description,
@@ -211,7 +211,7 @@ def get_secret_text_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.Platform.get_secret_text(identifier="identifier")
+    test = harness.platform.get_secret_text(identifier="identifier")
     ```
 
 

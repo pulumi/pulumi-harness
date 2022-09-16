@@ -363,7 +363,7 @@ class Environment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
         super(Environment, __self__).__init__(
-            'harness:Platform/environment:Environment',
+            'harness:platform/environment:Environment',
             resource_name,
             __props__,
             opts)

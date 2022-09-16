@@ -412,7 +412,7 @@ class Triggers(pulumi.CustomResource):
         # Import using trigger id
 
         ```sh
-         $ pulumi import harness:Platform/triggers:Triggers example <triggers_id>
+         $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -487,7 +487,7 @@ class Triggers(pulumi.CustomResource):
         # Import using trigger id
 
         ```sh
-         $ pulumi import harness:Platform/triggers:Triggers example <triggers_id>
+         $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -543,7 +543,7 @@ class Triggers(pulumi.CustomResource):
             __props__.__dict__["target_id"] = target_id
             __props__.__dict__["yaml"] = yaml
         super(Triggers, __self__).__init__(
-            'harness:Platform/triggers:Triggers',
+            'harness:platform/triggers:Triggers',
             resource_name,
             __props__,
             opts)

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.Platform.Roles("example", {
+ * const example = new harness.platform.Roles("example", {
  *     allowedScopeLevels: ["project"],
  *     description: "test",
  *     identifier: "identifier",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * # Import using roles id
  *
  * ```sh
- *  $ pulumi import harness:Platform/roles:Roles example <roles_id>
+ *  $ pulumi import harness:platform/roles:Roles example <roles_id>
  * ```
  */
 export class Roles extends pulumi.CustomResource {
@@ -45,7 +45,7 @@ export class Roles extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'harness:Platform/roles:Roles';
+    public static readonly __pulumiType = 'harness:platform/roles:Roles';
 
     /**
      * Returns true if the given object is an instance of Roles.  This is designed to work even

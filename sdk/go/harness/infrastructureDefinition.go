@@ -21,15 +21,15 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			devKubernetes, err := Cloudprovider.NewKubernetes(ctx, "devKubernetes", &Cloudprovider.KubernetesArgs{
+//			devKubernetes, err := cloudprovider.NewKubernetes(ctx, "devKubernetes", &cloudprovider.KubernetesArgs{
 //				Authentication: &cloudprovider.KubernetesAuthenticationArgs{
 //					DelegateSelectors: pulumi.StringArray{
 //						pulumi.String("k8s"),

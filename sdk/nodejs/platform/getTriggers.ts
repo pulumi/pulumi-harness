@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.Platform.getTriggers({
+ * const test = pulumi.output(harness.platform.getTriggers({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -27,7 +27,7 @@ export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions):
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getTriggers:getTriggers", {
+    return pulumi.runtime.invoke("harness:platform/getTriggers:getTriggers", {
         "identifier": args.identifier,
         "ignoreError": args.ignoreError,
         "name": args.name,

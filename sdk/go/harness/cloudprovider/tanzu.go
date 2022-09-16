@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/Cloudprovider"
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = Cloudprovider.NewTanzu(ctx, "example", &Cloudprovider.TanzuArgs{
+//			_, err = cloudprovider.NewTanzu(ctx, "example", &cloudprovider.TanzuArgs{
 //				Endpoint:           pulumi.String("https://endpoint.com"),
 //				SkipValidation:     pulumi.Bool(true),
 //				Username:           pulumi.String("<USERNAME>"),
@@ -62,7 +62,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import harness:Cloudprovider/tanzu:Tanzu example <provider_id>
+//	$ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
 //
 // ```
 type Tanzu struct {
@@ -97,7 +97,7 @@ func NewTanzu(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Tanzu
-	err := ctx.RegisterResource("harness:Cloudprovider/tanzu:Tanzu", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:cloudprovider/tanzu:Tanzu", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +109,7 @@ func NewTanzu(ctx *pulumi.Context,
 func GetTanzu(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *TanzuState, opts ...pulumi.ResourceOption) (*Tanzu, error) {
 	var resource Tanzu
-	err := ctx.ReadResource("harness:Cloudprovider/tanzu:Tanzu", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:cloudprovider/tanzu:Tanzu", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

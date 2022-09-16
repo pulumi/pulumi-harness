@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.Platform.getRoles({
+ * const example = pulumi.output(harness.platform.getRoles({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -27,7 +27,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getRoles:getRoles", {
+    return pulumi.runtime.invoke("harness:platform/getRoles:getRoles", {
         "allowedScopeLevels": args.allowedScopeLevels,
         "identifier": args.identifier,
         "name": args.name,

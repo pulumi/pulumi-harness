@@ -13,11 +13,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const exampleById = pulumi.output(harness.Platform.getProject({
+ * const exampleById = pulumi.output(harness.platform.getProject({
  *     identifier: "identifier",
  *     orgId: "org_id",
  * }));
- * const exampleByName = pulumi.output(harness.Platform.getProject({
+ * const exampleByName = pulumi.output(harness.platform.getProject({
  *     name: "name",
  *     orgId: "org_id",
  * }));
@@ -29,7 +29,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("harness:Platform/getProject:getProject", {
+    return pulumi.runtime.invoke("harness:platform/getProject:getProject", {
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,

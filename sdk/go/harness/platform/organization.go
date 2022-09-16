@@ -37,7 +37,7 @@ func NewOrganization(ctx *pulumi.Context,
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Organization
-	err := ctx.RegisterResource("harness:Platform/organization:Organization", name, args, &resource, opts...)
+	err := ctx.RegisterResource("harness:platform/organization:Organization", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewOrganization(ctx *pulumi.Context,
 func GetOrganization(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *OrganizationState, opts ...pulumi.ResourceOption) (*Organization, error) {
 	var resource Organization
-	err := ctx.ReadResource("harness:Platform/organization:Organization", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("harness:platform/organization:Organization", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

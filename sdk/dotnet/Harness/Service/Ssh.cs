@@ -39,10 +39,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// # Import using the Harness application id and service id
     /// 
     /// ```sh
-    ///  $ pulumi import harness:Service/ssh:Ssh example &lt;app_id&gt;/&lt;svc_id&gt;
+    ///  $ pulumi import harness:service/ssh:Ssh example &lt;app_id&gt;/&lt;svc_id&gt;
     /// ```
     /// </summary>
-    [HarnessResourceType("harness:Service/ssh:Ssh")]
+    [HarnessResourceType("harness:service/ssh:Ssh")]
     public partial class Ssh : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Ssh(string name, SshArgs args, CustomResourceOptions? options = null)
-            : base("harness:Service/ssh:Ssh", name, args ?? new SshArgs(), MakeResourceOptions(options, ""))
+            : base("harness:service/ssh:Ssh", name, args ?? new SshArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Ssh(string name, Input<string> id, SshState? state = null, CustomResourceOptions? options = null)
-            : base("harness:Service/ssh:Ssh", name, state, MakeResourceOptions(options, id))
+            : base("harness:service/ssh:Ssh", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,12 +18,12 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
 	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
 	// `HARNESS_ENDPOINT` environment variable.
-	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
 	// variable.
 	PlatformApiKey pulumi.StringPtrOutput `pulumi:"platformApiKey"`
@@ -34,14 +33,20 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
+	if isZero(args.AccountId) {
+		args.AccountId = pulumi.StringPtr(getEnvOrDefault("", nil, "HARNESS_ACCOUNT_ID").(string))
 	}
-	if args.Endpoint == nil {
-		return nil, errors.New("invalid value for required argument 'Endpoint'")
+	if isZero(args.ApiKey) {
+		args.ApiKey = pulumi.StringPtr(getEnvOrDefault("", nil, "HARNESS_API_KEY").(string))
+	}
+	if isZero(args.Endpoint) {
+		args.Endpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "HARNESS_ENDPOINT").(string))
+	}
+	if isZero(args.PlatformApiKey) {
+		args.PlatformApiKey = pulumi.StringPtr(getEnvOrDefault("", nil, "HARNESS_PLATFORM_API_KEY").(string))
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Provider
@@ -54,12 +59,12 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
 	ApiKey *string `pulumi:"apiKey"`
 	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
 	// `HARNESS_ENDPOINT` environment variable.
-	Endpoint string `pulumi:"endpoint"`
+	Endpoint *string `pulumi:"endpoint"`
 	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
 	// variable.
 	PlatformApiKey *string `pulumi:"platformApiKey"`
@@ -68,12 +73,12 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
 	ApiKey pulumi.StringPtrInput
 	// The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
 	// `HARNESS_ENDPOINT` environment variable.
-	Endpoint pulumi.StringInput
+	Endpoint pulumi.StringPtrInput
 	// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
 	// variable.
 	PlatformApiKey pulumi.StringPtrInput
@@ -117,8 +122,8 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 }
 
 // The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-func (o ProviderOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
@@ -128,8 +133,8 @@ func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 
 // The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
 // `HARNESS_ENDPOINT` environment variable.
-func (o ProviderOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
 // The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment

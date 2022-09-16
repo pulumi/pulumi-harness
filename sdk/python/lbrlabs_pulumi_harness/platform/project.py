@@ -308,7 +308,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["modules"] = None
         super(Project, __self__).__init__(
-            'harness:Platform/project:Project',
+            'harness:platform/project:Project',
             resource_name,
             __props__,
             opts)
