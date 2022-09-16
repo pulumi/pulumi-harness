@@ -55,6 +55,7 @@ func NewJira(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Jira
 	err := ctx.RegisterResource("harness:PlatformConnector/jira:Jira", name, args, &resource, opts...)
 	if err != nil {

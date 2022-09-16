@@ -87,6 +87,7 @@ func NewSpot(ctx *pulumi.Context,
 	if args.TokenSecretName == nil {
 		return nil, errors.New("invalid value for required argument 'TokenSecretName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Spot
 	err := ctx.RegisterResource("harness:Cloudprovider/spot:Spot", name, args, &resource, opts...)
 	if err != nil {

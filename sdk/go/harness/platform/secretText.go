@@ -94,6 +94,7 @@ func NewSecretText(ctx *pulumi.Context,
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretText
 	err := ctx.RegisterResource("harness:Platform/secretText:SecretText", name, args, &resource, opts...)
 	if err != nil {

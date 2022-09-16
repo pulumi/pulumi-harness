@@ -130,6 +130,7 @@ func NewTriggers(ctx *pulumi.Context,
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Triggers
 	err := ctx.RegisterResource("harness:Platform/triggers:Triggers", name, args, &resource, opts...)
 	if err != nil {

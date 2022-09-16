@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a Harness user group
 func LookupUserGroup(ctx *pulumi.Context, args *LookupUserGroupArgs, opts ...pulumi.InvokeOption) (*LookupUserGroupResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupUserGroupResult
 	err := ctx.Invoke("harness:index/getUserGroup:getUserGroup", args, &rv, opts...)
 	if err != nil {

@@ -95,6 +95,7 @@ func NewTanzu(ctx *pulumi.Context,
 	if args.PasswordSecretName == nil {
 		return nil, errors.New("invalid value for required argument 'PasswordSecretName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Tanzu
 	err := ctx.RegisterResource("harness:Cloudprovider/tanzu:Tanzu", name, args, &resource, opts...)
 	if err != nil {

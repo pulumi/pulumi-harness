@@ -41,6 +41,7 @@ import (
 //
 // ```
 func LookupRoles(ctx *pulumi.Context, args *LookupRolesArgs, opts ...pulumi.InvokeOption) (*LookupRolesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupRolesResult
 	err := ctx.Invoke("harness:Platform/getRoles:getRoles", args, &rv, opts...)
 	if err != nil {

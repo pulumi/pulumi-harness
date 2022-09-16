@@ -12,6 +12,7 @@ import (
 
 // Resource for looking up an App Dynamics connector.
 func LookupArtifactory(ctx *pulumi.Context, args *LookupArtifactoryArgs, opts ...pulumi.InvokeOption) (*LookupArtifactoryResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupArtifactoryResult
 	err := ctx.Invoke("harness:PlatformConnector/getArtifactory:getArtifactory", args, &rv, opts...)
 	if err != nil {

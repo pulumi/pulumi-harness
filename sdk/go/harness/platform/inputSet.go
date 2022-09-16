@@ -109,6 +109,7 @@ func NewInputSet(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource InputSet
 	err := ctx.RegisterResource("harness:Platform/inputSet:InputSet", name, args, &resource, opts...)
 	if err != nil {

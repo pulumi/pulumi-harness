@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'harness', PLUGIN_VERSION])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'harness', PLUGIN_VERSION, '--server', 'github://api.github.com/lbrlabs'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -39,16 +39,16 @@ def readme():
 
 setup(name='lbrlabs_pulumi_harness',
       version=VERSION,
-      description="A Pulumi package for creating and managing xyz cloud resources.",
+      description="A Pulumi package for creating and managing Harness  resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi xyz category/cloud',
+      keywords='pulumi harness lbrlabs',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/pulumi/pulumi-xyz'
+          'Repository': 'https://github.com/lbrlabs/pulumi-harness'
       },
       license='Apache-2.0',
       packages=find_packages(),

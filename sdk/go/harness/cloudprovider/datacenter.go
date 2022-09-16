@@ -61,6 +61,7 @@ func NewDatacenter(ctx *pulumi.Context,
 		args = &DatacenterArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Datacenter
 	err := ctx.RegisterResource("harness:Cloudprovider/datacenter:Datacenter", name, args, &resource, opts...)
 	if err != nil {

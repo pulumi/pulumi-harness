@@ -35,6 +35,7 @@ func NewOrganization(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Organization
 	err := ctx.RegisterResource("harness:Platform/organization:Organization", name, args, &resource, opts...)
 	if err != nil {

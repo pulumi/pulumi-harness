@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Datadog connector.
 func LookupDocker(ctx *pulumi.Context, args *LookupDockerArgs, opts ...pulumi.InvokeOption) (*LookupDockerResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupDockerResult
 	err := ctx.Invoke("harness:PlatformConnector/getDocker:getDocker", args, &rv, opts...)
 	if err != nil {

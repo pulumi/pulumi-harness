@@ -110,6 +110,7 @@ func NewGitConnector(ctx *pulumi.Context,
 	if args.UrlType == nil {
 		return nil, errors.New("invalid value for required argument 'UrlType'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource GitConnector
 	err := ctx.RegisterResource("harness:index/gitConnector:GitConnector", name, args, &resource, opts...)
 	if err != nil {

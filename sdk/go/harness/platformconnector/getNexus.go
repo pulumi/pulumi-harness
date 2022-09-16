@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Nexus connector.
 func LookupNexus(ctx *pulumi.Context, args *LookupNexusArgs, opts ...pulumi.InvokeOption) (*LookupNexusResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupNexusResult
 	err := ctx.Invoke("harness:PlatformConnector/getNexus:getNexus", args, &rv, opts...)
 	if err != nil {

@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up an AWS connector.
 func LookupAws(ctx *pulumi.Context, args *LookupAwsArgs, opts ...pulumi.InvokeOption) (*LookupAwsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAwsResult
 	err := ctx.Invoke("harness:PlatformConnector/getAws:getAws", args, &rv, opts...)
 	if err != nil {

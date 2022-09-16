@@ -12,6 +12,7 @@ import (
 
 // Use this data source to get a list of delegate ID's matching the specified search criteria.
 func GetDelegateIds(ctx *pulumi.Context, args *GetDelegateIdsArgs, opts ...pulumi.InvokeOption) (*GetDelegateIdsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetDelegateIdsResult
 	err := ctx.Invoke("harness:Cloudprovider/getDelegateIds:getDelegateIds", args, &rv, opts...)
 	if err != nil {

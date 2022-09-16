@@ -46,6 +46,7 @@ func NewPrometheus(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Prometheus
 	err := ctx.RegisterResource("harness:PlatformConnector/prometheus:Prometheus", name, args, &resource, opts...)
 	if err != nil {

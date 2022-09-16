@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Dynatrace connector.
 func LookupDynatrace(ctx *pulumi.Context, args *LookupDynatraceArgs, opts ...pulumi.InvokeOption) (*LookupDynatraceResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupDynatraceResult
 	err := ctx.Invoke("harness:PlatformConnector/getDynatrace:getDynatrace", args, &rv, opts...)
 	if err != nil {

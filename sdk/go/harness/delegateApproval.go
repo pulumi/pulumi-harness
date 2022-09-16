@@ -79,6 +79,7 @@ func NewDelegateApproval(ctx *pulumi.Context,
 	if args.DelegateId == nil {
 		return nil, errors.New("invalid value for required argument 'DelegateId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource DelegateApproval
 	err := ctx.RegisterResource("harness:index/delegateApproval:DelegateApproval", name, args, &resource, opts...)
 	if err != nil {

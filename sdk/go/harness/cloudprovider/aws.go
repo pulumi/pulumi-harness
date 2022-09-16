@@ -99,6 +99,7 @@ func NewAws(ctx *pulumi.Context,
 		args = &AwsArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Aws
 	err := ctx.RegisterResource("harness:Cloudprovider/aws:Aws", name, args, &resource, opts...)
 	if err != nil {

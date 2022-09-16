@@ -41,6 +41,7 @@ import (
 //
 // ```
 func LookupUsergroup(ctx *pulumi.Context, args *LookupUsergroupArgs, opts ...pulumi.InvokeOption) (*LookupUsergroupResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupUsergroupResult
 	err := ctx.Invoke("harness:Platform/getUsergroup:getUsergroup", args, &rv, opts...)
 	if err != nil {

@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a Harness application
 func LookupGitConnector(ctx *pulumi.Context, args *LookupGitConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGitConnectorResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGitConnectorResult
 	err := ctx.Invoke("harness:index/getGitConnector:getGitConnector", args, &rv, opts...)
 	if err != nil {

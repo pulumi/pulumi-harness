@@ -43,6 +43,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Endpoint == nil {
 		return nil, errors.New("invalid value for required argument 'Endpoint'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:harness", name, args, &resource, opts...)
 	if err != nil {

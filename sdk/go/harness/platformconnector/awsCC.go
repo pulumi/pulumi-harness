@@ -64,6 +64,7 @@ func NewAwsCC(ctx *pulumi.Context,
 	if args.S3Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'S3Bucket'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource AwsCC
 	err := ctx.RegisterResource("harness:PlatformConnector/awsCC:AwsCC", name, args, &resource, opts...)
 	if err != nil {

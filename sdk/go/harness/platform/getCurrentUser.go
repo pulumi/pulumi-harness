@@ -9,6 +9,7 @@ import (
 
 // Data source for retrieving the current user based on the API key.
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
 	err := ctx.Invoke("harness:Platform/getCurrentUser:getCurrentUser", nil, &rv, opts...)
 	if err != nil {

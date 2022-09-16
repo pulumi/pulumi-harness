@@ -41,6 +41,7 @@ import (
 //
 // ```
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult
 	err := ctx.Invoke("harness:Platform/getEnvironment:getEnvironment", args, &rv, opts...)
 	if err != nil {

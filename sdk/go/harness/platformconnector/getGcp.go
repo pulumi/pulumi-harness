@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Gcp connector.
 func LookupGcp(ctx *pulumi.Context, args *LookupGcpArgs, opts ...pulumi.InvokeOption) (*LookupGcpResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGcpResult
 	err := ctx.Invoke("harness:PlatformConnector/getGcp:getGcp", args, &rv, opts...)
 	if err != nil {

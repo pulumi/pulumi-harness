@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up an AWS KMS connector.
 func LookupAwsKms(ctx *pulumi.Context, args *LookupAwsKmsArgs, opts ...pulumi.InvokeOption) (*LookupAwsKmsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAwsKmsResult
 	err := ctx.Invoke("harness:PlatformConnector/getAwsKms:getAwsKms", args, &rv, opts...)
 	if err != nil {

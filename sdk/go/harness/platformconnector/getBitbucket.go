@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Bitbucket connector.
 func LookupBitbucket(ctx *pulumi.Context, args *LookupBitbucketArgs, opts ...pulumi.InvokeOption) (*LookupBitbucketResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupBitbucketResult
 	err := ctx.Invoke("harness:PlatformConnector/getBitbucket:getBitbucket", args, &rv, opts...)
 	if err != nil {

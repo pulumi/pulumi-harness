@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Harness
+namespace Lbrlabs.PulumiPackage.Harness
 {
     public static class Config
     {

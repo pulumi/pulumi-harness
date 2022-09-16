@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a Harness user
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
 	err := ctx.Invoke("harness:index/getUser:getUser", args, &rv, opts...)
 	if err != nil {

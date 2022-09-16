@@ -40,6 +40,7 @@ import (
 //
 // ```
 func GetDelegate(ctx *pulumi.Context, args *GetDelegateArgs, opts ...pulumi.InvokeOption) (*GetDelegateResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetDelegateResult
 	err := ctx.Invoke("harness:index/getDelegate:getDelegate", args, &rv, opts...)
 	if err != nil {

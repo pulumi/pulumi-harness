@@ -100,6 +100,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args.Authentication == nil {
 		return nil, errors.New("invalid value for required argument 'Authentication'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Kubernetes
 	err := ctx.RegisterResource("harness:Cloudprovider/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {

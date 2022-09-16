@@ -47,6 +47,7 @@ import (
 //
 // ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
 	err := ctx.Invoke("harness:Platform/getProject:getProject", args, &rv, opts...)
 	if err != nil {

@@ -168,6 +168,7 @@ func NewPipeline(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Pipeline
 	err := ctx.RegisterResource("harness:Platform/pipeline:Pipeline", name, args, &resource, opts...)
 	if err != nil {

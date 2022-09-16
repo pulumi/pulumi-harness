@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Prometheus connector.
 func LookupPrometheus(ctx *pulumi.Context, args *LookupPrometheusArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPrometheusResult
 	err := ctx.Invoke("harness:PlatformConnector/getPrometheus:getPrometheus", args, &rv, opts...)
 	if err != nil {

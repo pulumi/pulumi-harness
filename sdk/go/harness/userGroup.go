@@ -49,6 +49,7 @@ func NewUserGroup(ctx *pulumi.Context,
 		args = &UserGroupArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource UserGroup
 	err := ctx.RegisterResource("harness:index/userGroup:UserGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -79,6 +79,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("harness:index/user:User", name, args, &resource, opts...)
 	if err != nil {

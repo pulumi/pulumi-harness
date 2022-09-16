@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Git connector.
 func LookupGit(ctx *pulumi.Context, args *LookupGitArgs, opts ...pulumi.InvokeOption) (*LookupGitResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGitResult
 	err := ctx.Invoke("harness:PlatformConnector/getGit:getGit", args, &rv, opts...)
 	if err != nil {

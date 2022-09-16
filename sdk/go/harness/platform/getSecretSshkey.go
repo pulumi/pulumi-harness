@@ -39,6 +39,7 @@ import (
 //
 // ```
 func LookupSecretSshkey(ctx *pulumi.Context, args *LookupSecretSshkeyArgs, opts ...pulumi.InvokeOption) (*LookupSecretSshkeyResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSecretSshkeyResult
 	err := ctx.Invoke("harness:Platform/getSecretSshkey:getSecretSshkey", args, &rv, opts...)
 	if err != nil {

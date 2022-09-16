@@ -39,6 +39,7 @@ import (
 //
 // ```
 func LookupServiceAccount(ctx *pulumi.Context, args *LookupServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupServiceAccountResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupServiceAccountResult
 	err := ctx.Invoke("harness:Platform/getServiceAccount:getServiceAccount", args, &rv, opts...)
 	if err != nil {

@@ -42,6 +42,7 @@ import (
 //
 // ```
 func LookupTriggers(ctx *pulumi.Context, args *LookupTriggersArgs, opts ...pulumi.InvokeOption) (*LookupTriggersResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupTriggersResult
 	err := ctx.Invoke("harness:Platform/getTriggers:getTriggers", args, &rv, opts...)
 	if err != nil {

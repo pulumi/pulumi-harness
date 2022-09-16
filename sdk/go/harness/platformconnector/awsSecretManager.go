@@ -53,6 +53,7 @@ func NewAwsSecretManager(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource AwsSecretManager
 	err := ctx.RegisterResource("harness:PlatformConnector/awsSecretManager:AwsSecretManager", name, args, &resource, opts...)
 	if err != nil {

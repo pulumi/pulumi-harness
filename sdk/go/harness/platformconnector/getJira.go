@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Jira connector.
 func LookupJira(ctx *pulumi.Context, args *LookupJiraArgs, opts ...pulumi.InvokeOption) (*LookupJiraResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupJiraResult
 	err := ctx.Invoke("harness:PlatformConnector/getJira:getJira", args, &rv, opts...)
 	if err != nil {

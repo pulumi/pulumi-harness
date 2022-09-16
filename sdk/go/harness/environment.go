@@ -119,6 +119,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Environment
 	err := ctx.RegisterResource("harness:index/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

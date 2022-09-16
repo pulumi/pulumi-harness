@@ -47,6 +47,7 @@ func NewAws(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Aws
 	err := ctx.RegisterResource("harness:PlatformConnector/aws:Aws", name, args, &resource, opts...)
 	if err != nil {

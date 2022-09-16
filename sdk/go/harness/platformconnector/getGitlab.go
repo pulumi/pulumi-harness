@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Gitlab connector.
 func LookupGitlab(ctx *pulumi.Context, args *LookupGitlabArgs, opts ...pulumi.InvokeOption) (*LookupGitlabResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGitlabResult
 	err := ctx.Invoke("harness:PlatformConnector/getGitlab:getGitlab", args, &rv, opts...)
 	if err != nil {

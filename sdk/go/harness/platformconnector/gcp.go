@@ -43,6 +43,7 @@ func NewGcp(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Gcp
 	err := ctx.RegisterResource("harness:PlatformConnector/gcp:Gcp", name, args, &resource, opts...)
 	if err != nil {

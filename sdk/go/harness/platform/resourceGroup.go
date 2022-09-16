@@ -62,6 +62,7 @@ func NewResourceGroup(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ResourceGroup
 	err := ctx.RegisterResource("harness:Platform/resourceGroup:ResourceGroup", name, args, &resource, opts...)
 	if err != nil {

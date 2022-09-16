@@ -39,6 +39,7 @@ import (
 //
 // ```
 func LookupSecretText(ctx *pulumi.Context, args *LookupSecretTextArgs, opts ...pulumi.InvokeOption) (*LookupSecretTextResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSecretTextResult
 	err := ctx.Invoke("harness:Platform/getSecretText:getSecretText", args, &rv, opts...)
 	if err != nil {

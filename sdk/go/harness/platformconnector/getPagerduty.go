@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a PagerDuty connector.
 func LookupPagerduty(ctx *pulumi.Context, args *LookupPagerdutyArgs, opts ...pulumi.InvokeOption) (*LookupPagerdutyResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPagerdutyResult
 	err := ctx.Invoke("harness:PlatformConnector/getPagerduty:getPagerduty", args, &rv, opts...)
 	if err != nil {

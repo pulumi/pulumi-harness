@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving information about the current Harness account
 func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ...pulumi.InvokeOption) (*GetCurrentAccountResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetCurrentAccountResult
 	err := ctx.Invoke("harness:index/getCurrentAccount:getCurrentAccount", args, &rv, opts...)
 	if err != nil {

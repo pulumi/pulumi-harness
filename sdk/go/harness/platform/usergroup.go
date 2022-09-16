@@ -124,6 +124,7 @@ func NewUsergroup(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Usergroup
 	err := ctx.RegisterResource("harness:Platform/usergroup:Usergroup", name, args, &resource, opts...)
 	if err != nil {

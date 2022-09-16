@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Kubernetes connector.
 func LookupKubernetes(ctx *pulumi.Context, args *LookupKubernetesArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesResult
 	err := ctx.Invoke("harness:PlatformConnector/getKubernetes:getKubernetes", args, &rv, opts...)
 	if err != nil {

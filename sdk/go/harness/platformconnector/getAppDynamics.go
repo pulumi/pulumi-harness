@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up an App Dynamics connector.
 func LookupAppDynamics(ctx *pulumi.Context, args *LookupAppDynamicsArgs, opts ...pulumi.InvokeOption) (*LookupAppDynamicsResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAppDynamicsResult
 	err := ctx.Invoke("harness:PlatformConnector/getAppDynamics:getAppDynamics", args, &rv, opts...)
 	if err != nil {

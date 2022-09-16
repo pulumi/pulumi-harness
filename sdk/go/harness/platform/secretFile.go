@@ -91,6 +91,7 @@ func NewSecretFile(ctx *pulumi.Context,
 	if args.SecretManagerIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerIdentifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretFile
 	err := ctx.RegisterResource("harness:Platform/secretFile:SecretFile", name, args, &resource, opts...)
 	if err != nil {

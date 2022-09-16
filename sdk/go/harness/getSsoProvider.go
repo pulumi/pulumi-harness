@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving an SSO providers
 func GetSsoProvider(ctx *pulumi.Context, args *GetSsoProviderArgs, opts ...pulumi.InvokeOption) (*GetSsoProviderResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetSsoProviderResult
 	err := ctx.Invoke("harness:index/getSsoProvider:getSsoProvider", args, &rv, opts...)
 	if err != nil {

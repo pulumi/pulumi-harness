@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a yaml config.
 func LookupYamlConfig(ctx *pulumi.Context, args *LookupYamlConfigArgs, opts ...pulumi.InvokeOption) (*LookupYamlConfigResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupYamlConfigResult
 	err := ctx.Invoke("harness:index/getYamlConfig:getYamlConfig", args, &rv, opts...)
 	if err != nil {

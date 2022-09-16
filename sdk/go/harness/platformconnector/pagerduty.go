@@ -46,6 +46,7 @@ func NewPagerduty(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Pagerduty
 	err := ctx.RegisterResource("harness:PlatformConnector/pagerduty:Pagerduty", name, args, &resource, opts...)
 	if err != nil {

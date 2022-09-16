@@ -180,6 +180,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Kubernetes
 	err := ctx.RegisterResource("harness:PlatformConnector/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {

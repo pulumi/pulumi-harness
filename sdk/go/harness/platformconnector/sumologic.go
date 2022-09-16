@@ -56,6 +56,7 @@ func NewSumologic(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Sumologic
 	err := ctx.RegisterResource("harness:PlatformConnector/sumologic:Sumologic", name, args, &resource, opts...)
 	if err != nil {

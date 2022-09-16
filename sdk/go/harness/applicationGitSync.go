@@ -110,6 +110,7 @@ func NewApplicationGitSync(ctx *pulumi.Context,
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ApplicationGitSync
 	err := ctx.RegisterResource("harness:index/applicationGitSync:ApplicationGitSync", name, args, &resource, opts...)
 	if err != nil {

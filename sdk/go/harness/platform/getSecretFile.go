@@ -39,6 +39,7 @@ import (
 //
 // ```
 func LookupSecretFile(ctx *pulumi.Context, args *LookupSecretFileArgs, opts ...pulumi.InvokeOption) (*LookupSecretFileResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSecretFileResult
 	err := ctx.Invoke("harness:Platform/getSecretFile:getSecretFile", args, &rv, opts...)
 	if err != nil {

@@ -56,6 +56,7 @@ func NewNewrelic(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Newrelic
 	err := ctx.RegisterResource("harness:PlatformConnector/newrelic:Newrelic", name, args, &resource, opts...)
 	if err != nil {

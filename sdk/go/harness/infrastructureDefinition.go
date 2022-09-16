@@ -143,6 +143,7 @@ func NewInfrastructureDefinition(ctx *pulumi.Context,
 	if args.EnvId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource InfrastructureDefinition
 	err := ctx.RegisterResource("harness:index/infrastructureDefinition:InfrastructureDefinition", name, args, &resource, opts...)
 	if err != nil {

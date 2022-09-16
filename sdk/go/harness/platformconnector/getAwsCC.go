@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up an AWS Cloud Cost connector.
 func LookupAwsCC(ctx *pulumi.Context, args *LookupAwsCCArgs, opts ...pulumi.InvokeOption) (*LookupAwsCCResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAwsCCResult
 	err := ctx.Invoke("harness:PlatformConnector/getAwsCC:getAwsCC", args, &rv, opts...)
 	if err != nil {

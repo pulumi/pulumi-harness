@@ -77,6 +77,7 @@ func NewHelm(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Helm
 	err := ctx.RegisterResource("harness:Service/helm:Helm", name, args, &resource, opts...)
 	if err != nil {

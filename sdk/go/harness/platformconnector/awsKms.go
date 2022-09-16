@@ -56,6 +56,7 @@ func NewAwsKms(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource AwsKms
 	err := ctx.RegisterResource("harness:PlatformConnector/awsKms:AwsKms", name, args, &resource, opts...)
 	if err != nil {

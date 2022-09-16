@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Helm connector.
 func LookupHelm(ctx *pulumi.Context, args *LookupHelmArgs, opts ...pulumi.InvokeOption) (*LookupHelmResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupHelmResult
 	err := ctx.Invoke("harness:PlatformConnector/getHelm:getHelm", args, &rv, opts...)
 	if err != nil {

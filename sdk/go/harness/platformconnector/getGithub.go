@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Github connector.
 func LookupGithub(ctx *pulumi.Context, args *LookupGithubArgs, opts ...pulumi.InvokeOption) (*LookupGithubResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGithubResult
 	err := ctx.Invoke("harness:PlatformConnector/getGithub:getGithub", args, &rv, opts...)
 	if err != nil {

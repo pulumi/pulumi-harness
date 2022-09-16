@@ -53,6 +53,7 @@ func NewNexus(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Nexus
 	err := ctx.RegisterResource("harness:PlatformConnector/nexus:Nexus", name, args, &resource, opts...)
 	if err != nil {

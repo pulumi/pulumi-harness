@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up an AWS Secret Manager connector.
 func LookupAwsSecretManager(ctx *pulumi.Context, args *LookupAwsSecretManagerArgs, opts ...pulumi.InvokeOption) (*LookupAwsSecretManagerResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAwsSecretManagerResult
 	err := ctx.Invoke("harness:PlatformConnector/getAwsSecretManager:getAwsSecretManager", args, &rv, opts...)
 	if err != nil {

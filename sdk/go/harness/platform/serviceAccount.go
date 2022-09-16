@@ -85,6 +85,7 @@ func NewServiceAccount(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ServiceAccount
 	err := ctx.RegisterResource("harness:Platform/serviceAccount:ServiceAccount", name, args, &resource, opts...)
 	if err != nil {

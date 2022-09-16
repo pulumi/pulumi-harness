@@ -170,6 +170,7 @@ func NewSecretSshkey(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretSshkey
 	err := ctx.RegisterResource("harness:Platform/secretSshkey:SecretSshkey", name, args, &resource, opts...)
 	if err != nil {

@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving an SSH credential.
 func LookupSshCredential(ctx *pulumi.Context, args *LookupSshCredentialArgs, opts ...pulumi.InvokeOption) (*LookupSshCredentialResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSshCredentialResult
 	err := ctx.Invoke("harness:index/getSshCredential:getSshCredential", args, &rv, opts...)
 	if err != nil {

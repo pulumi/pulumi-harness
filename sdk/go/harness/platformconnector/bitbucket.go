@@ -60,6 +60,7 @@ func NewBitbucket(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Bitbucket
 	err := ctx.RegisterResource("harness:PlatformConnector/bitbucket:Bitbucket", name, args, &resource, opts...)
 	if err != nil {

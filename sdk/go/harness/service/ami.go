@@ -77,6 +77,7 @@ func NewAmi(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Ami
 	err := ctx.RegisterResource("harness:Service/ami:Ami", name, args, &resource, opts...)
 	if err != nil {

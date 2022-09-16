@@ -94,6 +94,7 @@ func NewSshCredential(ctx *pulumi.Context,
 		args = &SshCredentialArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource SshCredential
 	err := ctx.RegisterResource("harness:index/sshCredential:SshCredential", name, args, &resource, opts...)
 	if err != nil {

@@ -39,6 +39,7 @@ import (
 //
 // ```
 func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupResourceGroupResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupResourceGroupResult
 	err := ctx.Invoke("harness:Platform/getResourceGroup:getResourceGroup", args, &rv, opts...)
 	if err != nil {

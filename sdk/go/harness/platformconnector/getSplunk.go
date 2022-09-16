@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Splunk connector.
 func LookupSplunk(ctx *pulumi.Context, args *LookupSplunkArgs, opts ...pulumi.InvokeOption) (*LookupSplunkResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSplunkResult
 	err := ctx.Invoke("harness:PlatformConnector/getSplunk:getSplunk", args, &rv, opts...)
 	if err != nil {

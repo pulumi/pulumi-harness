@@ -95,6 +95,7 @@ func NewAzure(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Azure
 	err := ctx.RegisterResource("harness:Cloudprovider/azure:Azure", name, args, &resource, opts...)
 	if err != nil {

@@ -92,6 +92,7 @@ func NewEncryptedText(ctx *pulumi.Context,
 	if args.SecretManagerId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerId'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource EncryptedText
 	err := ctx.RegisterResource("harness:index/encryptedText:EncryptedText", name, args, &resource, opts...)
 	if err != nil {

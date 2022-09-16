@@ -94,6 +94,7 @@ func NewYamlConfig(ctx *pulumi.Context,
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource YamlConfig
 	err := ctx.RegisterResource("harness:index/yamlConfig:YamlConfig", name, args, &resource, opts...)
 	if err != nil {

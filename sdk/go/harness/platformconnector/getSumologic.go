@@ -12,6 +12,7 @@ import (
 
 // Datasource for looking up a Sumologic connector.
 func LookupSumologic(ctx *pulumi.Context, args *LookupSumologicArgs, opts ...pulumi.InvokeOption) (*LookupSumologicResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSumologicResult
 	err := ctx.Invoke("harness:PlatformConnector/getSumologic:getSumologic", args, &rv, opts...)
 	if err != nil {

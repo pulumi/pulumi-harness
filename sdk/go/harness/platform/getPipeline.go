@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a Harness pipeline.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult
 	err := ctx.Invoke("harness:Platform/getPipeline:getPipeline", args, &rv, opts...)
 	if err != nil {

@@ -61,6 +61,7 @@ func NewSplunk(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Splunk
 	err := ctx.RegisterResource("harness:PlatformConnector/splunk:Splunk", name, args, &resource, opts...)
 	if err != nil {

@@ -12,6 +12,7 @@ import (
 
 // Data source for retrieving a Harness application
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
+	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
 	err := ctx.Invoke("harness:index/getApplication:getApplication", args, &rv, opts...)
 	if err != nil {

@@ -33,6 +33,7 @@ func NewGcp(ctx *pulumi.Context,
 		args = &GcpArgs{}
 	}
 
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Gcp
 	err := ctx.RegisterResource("harness:Cloudprovider/gcp:Gcp", name, args, &resource, opts...)
 	if err != nil {

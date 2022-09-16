@@ -83,6 +83,7 @@ func NewSsh(ctx *pulumi.Context,
 	if args.ArtifactType == nil {
 		return nil, errors.New("invalid value for required argument 'ArtifactType'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Ssh
 	err := ctx.RegisterResource("harness:Service/ssh:Ssh", name, args, &resource, opts...)
 	if err != nil {
