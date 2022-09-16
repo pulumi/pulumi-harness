@@ -3,6 +3,7 @@ package harness
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 	"unicode"
 
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
@@ -28,14 +29,28 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+var namespaceMap = map[string]string{
+	"harness": "Harness",
+}
+
 // harnessMember manufactures a type token for the Harness package and the given module and type.
-func harnessMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+func harnessMember(moduleTitle string, fn string, mem string) tokens.ModuleMember {
+	moduleName := strings.ToLower(moduleTitle)
+	namespaceMap[moduleName] = moduleTitle
+	if fn != "" {
+		moduleName += "/" + fn
+	}
+	return tokens.ModuleMember(mainPkg + ":" + moduleName + ":" + mem)
 }
 
 // harnessType manufactures a type token for the Launch Darkly package and the given module and type.
-func harnessType(mod string, typ string) tokens.Type {
-	return tokens.Type(harnessMember(mod, typ))
+func harnessType(mod string, fn string, typ string) tokens.Type {
+	return tokens.Type(harnessMember(mod, fn, typ))
+}
+
+func harnessTypeDefaultFile(mod string, typ string) tokens.Type {
+	fn := string(unicode.ToLower(rune(typ[0]))) + typ[1:]
+	return harnessType(mod, fn, typ)
 }
 
 // harnessDataSource manufactures a standard resource token given a module and resource name.
@@ -43,15 +58,14 @@ func harnessType(mod string, typ string) tokens.Type {
 // source's first character.
 func harnessDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return harnessMember(mod+"/"+fn, res)
+	return harnessMember(mod, fn, res)
 }
 
 // harnessResource manufactures a standard resource token given a module and resource name.
 // It automatically uses the Launch Darkly package and names the file by simply lower casing the resource's
 // first character.
 func harnessResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return harnessType(mod+"/"+fn, res)
+	return harnessTypeDefaultFile(mod, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -95,9 +109,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		IgnoreMappings: []string{
-			"harness_user_group_permissions",
-		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"harness_add_user_to_group":                     {Tok: harnessResource(mainMod, "AddUserToGroup")},
 			"harness_application":                           {Tok: harnessResource(mainMod, "Application")},
