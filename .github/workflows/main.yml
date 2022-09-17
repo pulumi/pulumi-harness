@@ -29,7 +29,7 @@ jobs:
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
-        ref: third_party
+        ref: third_party_bugfix
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -107,7 +107,7 @@ jobs:
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
-        ref: third_party
+        ref: third_party_bugfix
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -212,7 +212,7 @@ jobs:
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
-        ref: third_party
+        ref: third_party_bugfix
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -287,7 +287,7 @@ jobs:
       with:
         path: ci-scripts
         repository: jaxxstorm/scripts
-        ref: third_party
+        ref: third_party_bugfix
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
