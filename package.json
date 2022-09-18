@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@lbrlabs/pulumi-harness": "^0.0.2"
+  }
+}
