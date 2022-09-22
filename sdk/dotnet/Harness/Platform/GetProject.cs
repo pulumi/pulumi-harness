@@ -44,7 +44,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness project.
@@ -78,7 +78,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harness:platform/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up an AWS Secret Manager connector.
         /// </summary>
         public static Task<GetAwsSecretManagerConnectorResult> InvokeAsync(GetAwsSecretManagerConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an AWS Secret Manager connector.
         /// </summary>
         public static Output<GetAwsSecretManagerConnectorResult> Invoke(GetAwsSecretManagerConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

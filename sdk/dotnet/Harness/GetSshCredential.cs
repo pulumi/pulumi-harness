@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving an SSH credential.
         /// </summary>
         public static Task<GetSshCredentialResult> InvokeAsync(GetSshCredentialArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving an SSH credential.
         /// </summary>
         public static Output<GetSshCredentialResult> Invoke(GetSshCredentialInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

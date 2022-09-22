@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Sumologic connector.
         /// </summary>
         public static Task<GetSumologicConnectorResult> InvokeAsync(GetSumologicConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSumologicConnectorResult>("harness:platform/getSumologicConnector:getSumologicConnector", args ?? new GetSumologicConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSumologicConnectorResult>("harness:platform/getSumologicConnector:getSumologicConnector", args ?? new GetSumologicConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Sumologic connector.
         /// </summary>
         public static Output<GetSumologicConnectorResult> Invoke(GetSumologicConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSumologicConnectorResult>("harness:platform/getSumologicConnector:getSumologicConnector", args ?? new GetSumologicConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSumologicConnectorResult>("harness:platform/getSumologicConnector:getSumologicConnector", args ?? new GetSumologicConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

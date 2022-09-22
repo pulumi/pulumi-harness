@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Github connector.
         /// </summary>
         public static Task<GetGithubConnectorResult> InvokeAsync(GetGithubConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Github connector.
         /// </summary>
         public static Output<GetGithubConnectorResult> Invoke(GetGithubConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness user group
         /// </summary>
         public static Task<GetUserGroupResult> InvokeAsync(GetUserGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupResult>("harness:index/getUserGroup:getUserGroup", args ?? new GetUserGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupResult>("harness:index/getUserGroup:getUserGroup", args ?? new GetUserGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness user group
         /// </summary>
         public static Output<GetUserGroupResult> Invoke(GetUserGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserGroupResult>("harness:index/getUserGroup:getUserGroup", args ?? new GetUserGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserGroupResult>("harness:index/getUserGroup:getUserGroup", args ?? new GetUserGroupInvokeArgs(), options.WithDefaults());
     }
 
 

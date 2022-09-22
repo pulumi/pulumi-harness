@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Splunk connector.
         /// </summary>
         public static Task<GetSplunkConnectorResult> InvokeAsync(GetSplunkConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSplunkConnectorResult>("harness:platform/getSplunkConnector:getSplunkConnector", args ?? new GetSplunkConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSplunkConnectorResult>("harness:platform/getSplunkConnector:getSplunkConnector", args ?? new GetSplunkConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Splunk connector.
         /// </summary>
         public static Output<GetSplunkConnectorResult> Invoke(GetSplunkConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSplunkConnectorResult>("harness:platform/getSplunkConnector:getSplunkConnector", args ?? new GetSplunkConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSplunkConnectorResult>("harness:platform/getSplunkConnector:getSplunkConnector", args ?? new GetSplunkConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

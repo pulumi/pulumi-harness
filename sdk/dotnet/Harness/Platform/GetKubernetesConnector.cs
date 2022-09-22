@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Kubernetes connector.
         /// </summary>
         public static Task<GetKubernetesConnectorResult> InvokeAsync(GetKubernetesConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesConnectorResult>("harness:platform/getKubernetesConnector:getKubernetesConnector", args ?? new GetKubernetesConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesConnectorResult>("harness:platform/getKubernetesConnector:getKubernetesConnector", args ?? new GetKubernetesConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Kubernetes connector.
         /// </summary>
         public static Output<GetKubernetesConnectorResult> Invoke(GetKubernetesConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesConnectorResult>("harness:platform/getKubernetesConnector:getKubernetesConnector", args ?? new GetKubernetesConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesConnectorResult>("harness:platform/getKubernetesConnector:getKubernetesConnector", args ?? new GetKubernetesConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness user
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("harness:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("harness:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness user
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("harness:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("harness:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 

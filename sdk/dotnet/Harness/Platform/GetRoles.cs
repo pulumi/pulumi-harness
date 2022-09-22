@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving roles
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
     }
 
 

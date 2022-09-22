@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Resource for looking up an App Dynamics connector.
         /// </summary>
         public static Task<GetArtifactoryConnectorResult> InvokeAsync(GetArtifactoryConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Resource for looking up an App Dynamics connector.
         /// </summary>
         public static Output<GetArtifactoryConnectorResult> Invoke(GetArtifactoryConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

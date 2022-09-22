@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Nexus connector.
         /// </summary>
         public static Task<GetNexusConnectorResult> InvokeAsync(GetNexusConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNexusConnectorResult>("harness:platform/getNexusConnector:getNexusConnector", args ?? new GetNexusConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNexusConnectorResult>("harness:platform/getNexusConnector:getNexusConnector", args ?? new GetNexusConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Nexus connector.
         /// </summary>
         public static Output<GetNexusConnectorResult> Invoke(GetNexusConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNexusConnectorResult>("harness:platform/getNexusConnector:getNexusConnector", args ?? new GetNexusConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNexusConnectorResult>("harness:platform/getNexusConnector:getNexusConnector", args ?? new GetNexusConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up an AWS KMS connector.
         /// </summary>
         public static Task<GetAwsKmsConnectorResult> InvokeAsync(GetAwsKmsConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an AWS KMS connector.
         /// </summary>
         public static Output<GetAwsKmsConnectorResult> Invoke(GetAwsKmsConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

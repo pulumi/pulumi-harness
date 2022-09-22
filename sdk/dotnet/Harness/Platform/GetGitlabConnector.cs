@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Gitlab connector.
         /// </summary>
         public static Task<GetGitlabConnectorResult> InvokeAsync(GetGitlabConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGitlabConnectorResult>("harness:platform/getGitlabConnector:getGitlabConnector", args ?? new GetGitlabConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitlabConnectorResult>("harness:platform/getGitlabConnector:getGitlabConnector", args ?? new GetGitlabConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Gitlab connector.
         /// </summary>
         public static Output<GetGitlabConnectorResult> Invoke(GetGitlabConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGitlabConnectorResult>("harness:platform/getGitlabConnector:getGitlabConnector", args ?? new GetGitlabConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitlabConnectorResult>("harness:platform/getGitlabConnector:getGitlabConnector", args ?? new GetGitlabConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

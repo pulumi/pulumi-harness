@@ -37,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretTextResult> InvokeAsync(GetSecretTextArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextArgs(), options.WithDefaults());
 
         /// <summary>
         /// DataSource for looking up secret of type secret text.
@@ -64,7 +64,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecretTextResult> Invoke(GetSecretTextInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextInvokeArgs(), options.WithDefaults());
     }
 
 

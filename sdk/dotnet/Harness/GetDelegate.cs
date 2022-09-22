@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDelegateResult> InvokeAsync(GetDelegateArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDelegateResult> Invoke(GetDelegateInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateInvokeArgs(), options.WithDefaults());
     }
 
 

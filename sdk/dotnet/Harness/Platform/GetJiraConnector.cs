@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Jira connector.
         /// </summary>
         public static Task<GetJiraConnectorResult> InvokeAsync(GetJiraConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJiraConnectorResult>("harness:platform/getJiraConnector:getJiraConnector", args ?? new GetJiraConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJiraConnectorResult>("harness:platform/getJiraConnector:getJiraConnector", args ?? new GetJiraConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Jira connector.
         /// </summary>
         public static Output<GetJiraConnectorResult> Invoke(GetJiraConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJiraConnectorResult>("harness:platform/getJiraConnector:getJiraConnector", args ?? new GetJiraConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJiraConnectorResult>("harness:platform/getJiraConnector:getJiraConnector", args ?? new GetJiraConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

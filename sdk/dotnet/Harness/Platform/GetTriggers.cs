@@ -40,7 +40,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTriggersResult> InvokeAsync(GetTriggersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("harness:platform/getTriggers:getTriggers", args ?? new GetTriggersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("harness:platform/getTriggers:getTriggers", args ?? new GetTriggersArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness trigger.
@@ -70,7 +70,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTriggersResult> Invoke(GetTriggersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTriggersResult>("harness:platform/getTriggers:getTriggers", args ?? new GetTriggersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTriggersResult>("harness:platform/getTriggers:getTriggers", args ?? new GetTriggersInvokeArgs(), options.WithDefaults());
     }
 
 

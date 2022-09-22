@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up an AWS connector.
         /// </summary>
         public static Task<GetAwsConnectorResult> InvokeAsync(GetAwsConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsConnectorResult>("harness:platform/getAwsConnector:getAwsConnector", args ?? new GetAwsConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsConnectorResult>("harness:platform/getAwsConnector:getAwsConnector", args ?? new GetAwsConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an AWS connector.
         /// </summary>
         public static Output<GetAwsConnectorResult> Invoke(GetAwsConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsConnectorResult>("harness:platform/getAwsConnector:getAwsConnector", args ?? new GetAwsConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsConnectorResult>("harness:platform/getAwsConnector:getAwsConnector", args ?? new GetAwsConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

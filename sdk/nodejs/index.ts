@@ -5,31 +5,131 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./addUserToGroup";
-export * from "./application";
-export * from "./applicationGitSync";
-export * from "./delegateApproval";
-export * from "./encryptedText";
-export * from "./environment";
-export * from "./getApplication";
-export * from "./getCurrentAccount";
-export * from "./getDelegate";
-export * from "./getEncryptedText";
-export * from "./getGitConnector";
-export * from "./getSecretManager";
-export * from "./getService";
-export * from "./getSshCredential";
-export * from "./getSsoProvider";
-export * from "./getUser";
-export * from "./getUserGroup";
-export * from "./getYamlConfig";
-export * from "./gitConnector";
-export * from "./infrastructureDefinition";
-export * from "./provider";
-export * from "./sshCredential";
-export * from "./user";
-export * from "./userGroup";
-export * from "./yamlConfig";
+export { AddUserToGroupArgs, AddUserToGroupState } from "./addUserToGroup";
+export type AddUserToGroup = import("./addUserToGroup").AddUserToGroup;
+export const AddUserToGroup: typeof import("./addUserToGroup").AddUserToGroup = null as any;
+
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+
+export { ApplicationGitSyncArgs, ApplicationGitSyncState } from "./applicationGitSync";
+export type ApplicationGitSync = import("./applicationGitSync").ApplicationGitSync;
+export const ApplicationGitSync: typeof import("./applicationGitSync").ApplicationGitSync = null as any;
+
+export { DelegateApprovalArgs, DelegateApprovalState } from "./delegateApproval";
+export type DelegateApproval = import("./delegateApproval").DelegateApproval;
+export const DelegateApproval: typeof import("./delegateApproval").DelegateApproval = null as any;
+
+export { EncryptedTextArgs, EncryptedTextState } from "./encryptedText";
+export type EncryptedText = import("./encryptedText").EncryptedText;
+export const EncryptedText: typeof import("./encryptedText").EncryptedText = null as any;
+
+export { EnvironmentArgs, EnvironmentState } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+
+export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
+export const getApplication: typeof import("./getApplication").getApplication = null as any;
+export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
+
+export { GetCurrentAccountArgs, GetCurrentAccountResult, GetCurrentAccountOutputArgs } from "./getCurrentAccount";
+export const getCurrentAccount: typeof import("./getCurrentAccount").getCurrentAccount = null as any;
+export const getCurrentAccountOutput: typeof import("./getCurrentAccount").getCurrentAccountOutput = null as any;
+
+export { GetDelegateArgs, GetDelegateResult, GetDelegateOutputArgs } from "./getDelegate";
+export const getDelegate: typeof import("./getDelegate").getDelegate = null as any;
+export const getDelegateOutput: typeof import("./getDelegate").getDelegateOutput = null as any;
+
+export { GetEncryptedTextArgs, GetEncryptedTextResult, GetEncryptedTextOutputArgs } from "./getEncryptedText";
+export const getEncryptedText: typeof import("./getEncryptedText").getEncryptedText = null as any;
+export const getEncryptedTextOutput: typeof import("./getEncryptedText").getEncryptedTextOutput = null as any;
+
+export { GetGitConnectorArgs, GetGitConnectorResult, GetGitConnectorOutputArgs } from "./getGitConnector";
+export const getGitConnector: typeof import("./getGitConnector").getGitConnector = null as any;
+export const getGitConnectorOutput: typeof import("./getGitConnector").getGitConnectorOutput = null as any;
+
+export { GetSecretManagerArgs, GetSecretManagerResult, GetSecretManagerOutputArgs } from "./getSecretManager";
+export const getSecretManager: typeof import("./getSecretManager").getSecretManager = null as any;
+export const getSecretManagerOutput: typeof import("./getSecretManager").getSecretManagerOutput = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { GetSshCredentialArgs, GetSshCredentialResult, GetSshCredentialOutputArgs } from "./getSshCredential";
+export const getSshCredential: typeof import("./getSshCredential").getSshCredential = null as any;
+export const getSshCredentialOutput: typeof import("./getSshCredential").getSshCredentialOutput = null as any;
+
+export { GetSsoProviderArgs, GetSsoProviderResult, GetSsoProviderOutputArgs } from "./getSsoProvider";
+export const getSsoProvider: typeof import("./getSsoProvider").getSsoProvider = null as any;
+export const getSsoProviderOutput: typeof import("./getSsoProvider").getSsoProviderOutput = null as any;
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+
+export { GetUserGroupArgs, GetUserGroupResult, GetUserGroupOutputArgs } from "./getUserGroup";
+export const getUserGroup: typeof import("./getUserGroup").getUserGroup = null as any;
+export const getUserGroupOutput: typeof import("./getUserGroup").getUserGroupOutput = null as any;
+
+export { GetYamlConfigArgs, GetYamlConfigResult, GetYamlConfigOutputArgs } from "./getYamlConfig";
+export const getYamlConfig: typeof import("./getYamlConfig").getYamlConfig = null as any;
+export const getYamlConfigOutput: typeof import("./getYamlConfig").getYamlConfigOutput = null as any;
+
+export { GitConnectorArgs, GitConnectorState } from "./gitConnector";
+export type GitConnector = import("./gitConnector").GitConnector;
+export const GitConnector: typeof import("./gitConnector").GitConnector = null as any;
+
+export { InfrastructureDefinitionArgs, InfrastructureDefinitionState } from "./infrastructureDefinition";
+export type InfrastructureDefinition = import("./infrastructureDefinition").InfrastructureDefinition;
+export const InfrastructureDefinition: typeof import("./infrastructureDefinition").InfrastructureDefinition = null as any;
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+
+export { SshCredentialArgs, SshCredentialState } from "./sshCredential";
+export type SshCredential = import("./sshCredential").SshCredential;
+export const SshCredential: typeof import("./sshCredential").SshCredential = null as any;
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+
+export { UserGroupArgs, UserGroupState } from "./userGroup";
+export type UserGroup = import("./userGroup").UserGroup;
+export const UserGroup: typeof import("./userGroup").UserGroup = null as any;
+
+export { YamlConfigArgs, YamlConfigState } from "./yamlConfig";
+export type YamlConfig = import("./yamlConfig").YamlConfig;
+export const YamlConfig: typeof import("./yamlConfig").YamlConfig = null as any;
+
+utilities.lazyLoad(exports, ["AddUserToGroup"], () => require("./addUserToGroup"));
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
+utilities.lazyLoad(exports, ["ApplicationGitSync"], () => require("./applicationGitSync"));
+utilities.lazyLoad(exports, ["DelegateApproval"], () => require("./delegateApproval"));
+utilities.lazyLoad(exports, ["EncryptedText"], () => require("./encryptedText"));
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
+utilities.lazyLoad(exports, ["getCurrentAccount","getCurrentAccountOutput"], () => require("./getCurrentAccount"));
+utilities.lazyLoad(exports, ["getDelegate","getDelegateOutput"], () => require("./getDelegate"));
+utilities.lazyLoad(exports, ["getEncryptedText","getEncryptedTextOutput"], () => require("./getEncryptedText"));
+utilities.lazyLoad(exports, ["getGitConnector","getGitConnectorOutput"], () => require("./getGitConnector"));
+utilities.lazyLoad(exports, ["getSecretManager","getSecretManagerOutput"], () => require("./getSecretManager"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["getSshCredential","getSshCredentialOutput"], () => require("./getSshCredential"));
+utilities.lazyLoad(exports, ["getSsoProvider","getSsoProviderOutput"], () => require("./getSsoProvider"));
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+utilities.lazyLoad(exports, ["getUserGroup","getUserGroupOutput"], () => require("./getUserGroup"));
+utilities.lazyLoad(exports, ["getYamlConfig","getYamlConfigOutput"], () => require("./getYamlConfig"));
+utilities.lazyLoad(exports, ["GitConnector"], () => require("./gitConnector"));
+utilities.lazyLoad(exports, ["InfrastructureDefinition"], () => require("./infrastructureDefinition"));
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+utilities.lazyLoad(exports, ["SshCredential"], () => require("./sshCredential"));
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+utilities.lazyLoad(exports, ["UserGroup"], () => require("./userGroup"));
+utilities.lazyLoad(exports, ["YamlConfig"], () => require("./yamlConfig"));
 
 // Export sub-modules:
 import * as cloudprovider from "./cloudprovider";
@@ -45,20 +145,6 @@ export {
     service,
     types,
 };
-
-// Import resources to register:
-import { AddUserToGroup } from "./addUserToGroup";
-import { Application } from "./application";
-import { ApplicationGitSync } from "./applicationGitSync";
-import { DelegateApproval } from "./delegateApproval";
-import { EncryptedText } from "./encryptedText";
-import { Environment } from "./environment";
-import { GitConnector } from "./gitConnector";
-import { InfrastructureDefinition } from "./infrastructureDefinition";
-import { SshCredential } from "./sshCredential";
-import { User } from "./user";
-import { UserGroup } from "./userGroup";
-import { YamlConfig } from "./yamlConfig";
 
 const _module = {
     version: utilities.getVersion(),
@@ -105,9 +191,6 @@ pulumi.runtime.registerResourceModule("harness", "index/sshCredential", _module)
 pulumi.runtime.registerResourceModule("harness", "index/user", _module)
 pulumi.runtime.registerResourceModule("harness", "index/userGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "index/yamlConfig", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("harness", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

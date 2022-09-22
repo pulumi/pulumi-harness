@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a yaml config.
         /// </summary>
         public static Task<GetYamlConfigResult> InvokeAsync(GetYamlConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a yaml config.
         /// </summary>
         public static Output<GetYamlConfigResult> Invoke(GetYamlConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigInvokeArgs(), options.WithDefaults());
     }
 
 

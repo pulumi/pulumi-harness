@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving an SSO providers
         /// </summary>
         public static Task<GetSsoProviderResult> InvokeAsync(GetSsoProviderArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving an SSO providers
         /// </summary>
         public static Output<GetSsoProviderResult> Invoke(GetSsoProviderInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderInvokeArgs(), options.WithDefaults());
     }
 
 

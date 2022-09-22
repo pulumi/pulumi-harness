@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up an AWS Cloud Cost connector.
         /// </summary>
         public static Task<GetAwsCCConnectorResult> InvokeAsync(GetAwsCCConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an AWS Cloud Cost connector.
         /// </summary>
         public static Output<GetAwsCCConnectorResult> Invoke(GetAwsCCConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

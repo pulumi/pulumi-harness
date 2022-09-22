@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsergroupResult> InvokeAsync(GetUsergroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness User Group.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsergroupResult> Invoke(GetUsergroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupInvokeArgs(), options.WithDefaults());
     }
 
 

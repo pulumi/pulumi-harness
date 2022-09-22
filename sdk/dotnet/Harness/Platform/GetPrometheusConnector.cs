@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Prometheus connector.
         /// </summary>
         public static Task<GetPrometheusConnectorResult> InvokeAsync(GetPrometheusConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Prometheus connector.
         /// </summary>
         public static Output<GetPrometheusConnectorResult> Invoke(GetPrometheusConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

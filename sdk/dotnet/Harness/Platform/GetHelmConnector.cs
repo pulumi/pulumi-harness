@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Helm connector.
         /// </summary>
         public static Task<GetHelmConnectorResult> InvokeAsync(GetHelmConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Helm connector.
         /// </summary>
         public static Output<GetHelmConnectorResult> Invoke(GetHelmConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

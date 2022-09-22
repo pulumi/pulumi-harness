@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("harness:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("harness:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("harness:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("harness:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Bitbucket connector.
         /// </summary>
         public static Task<GetBitbucketConnectorResult> InvokeAsync(GetBitbucketConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBitbucketConnectorResult>("harness:platform/getBitbucketConnector:getBitbucketConnector", args ?? new GetBitbucketConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBitbucketConnectorResult>("harness:platform/getBitbucketConnector:getBitbucketConnector", args ?? new GetBitbucketConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Bitbucket connector.
         /// </summary>
         public static Output<GetBitbucketConnectorResult> Invoke(GetBitbucketConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBitbucketConnectorResult>("harness:platform/getBitbucketConnector:getBitbucketConnector", args ?? new GetBitbucketConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBitbucketConnectorResult>("harness:platform/getBitbucketConnector:getBitbucketConnector", args ?? new GetBitbucketConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

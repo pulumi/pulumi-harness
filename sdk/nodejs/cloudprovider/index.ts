@@ -5,23 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./aws";
-export * from "./azure";
-export * from "./datacenter";
-export * from "./gcp";
-export * from "./getDelegateIds";
-export * from "./kubernetes";
-export * from "./spot";
-export * from "./tanzu";
+export { AwsArgs, AwsState } from "./aws";
+export type Aws = import("./aws").Aws;
+export const Aws: typeof import("./aws").Aws = null as any;
 
-// Import resources to register:
-import { Aws } from "./aws";
-import { Azure } from "./azure";
-import { Datacenter } from "./datacenter";
-import { Gcp } from "./gcp";
-import { Kubernetes } from "./kubernetes";
-import { Spot } from "./spot";
-import { Tanzu } from "./tanzu";
+export { AzureArgs, AzureState } from "./azure";
+export type Azure = import("./azure").Azure;
+export const Azure: typeof import("./azure").Azure = null as any;
+
+export { DatacenterArgs, DatacenterState } from "./datacenter";
+export type Datacenter = import("./datacenter").Datacenter;
+export const Datacenter: typeof import("./datacenter").Datacenter = null as any;
+
+export { GcpArgs, GcpState } from "./gcp";
+export type Gcp = import("./gcp").Gcp;
+export const Gcp: typeof import("./gcp").Gcp = null as any;
+
+export { GetDelegateIdsArgs, GetDelegateIdsResult, GetDelegateIdsOutputArgs } from "./getDelegateIds";
+export const getDelegateIds: typeof import("./getDelegateIds").getDelegateIds = null as any;
+export const getDelegateIdsOutput: typeof import("./getDelegateIds").getDelegateIdsOutput = null as any;
+
+export { KubernetesArgs, KubernetesState } from "./kubernetes";
+export type Kubernetes = import("./kubernetes").Kubernetes;
+export const Kubernetes: typeof import("./kubernetes").Kubernetes = null as any;
+
+export { SpotArgs, SpotState } from "./spot";
+export type Spot = import("./spot").Spot;
+export const Spot: typeof import("./spot").Spot = null as any;
+
+export { TanzuArgs, TanzuState } from "./tanzu";
+export type Tanzu = import("./tanzu").Tanzu;
+export const Tanzu: typeof import("./tanzu").Tanzu = null as any;
+
+utilities.lazyLoad(exports, ["Aws"], () => require("./aws"));
+utilities.lazyLoad(exports, ["Azure"], () => require("./azure"));
+utilities.lazyLoad(exports, ["Datacenter"], () => require("./datacenter"));
+utilities.lazyLoad(exports, ["Gcp"], () => require("./gcp"));
+utilities.lazyLoad(exports, ["getDelegateIds","getDelegateIdsOutput"], () => require("./getDelegateIds"));
+utilities.lazyLoad(exports, ["Kubernetes"], () => require("./kubernetes"));
+utilities.lazyLoad(exports, ["Spot"], () => require("./spot"));
+utilities.lazyLoad(exports, ["Tanzu"], () => require("./tanzu"));
 
 const _module = {
     version: utilities.getVersion(),

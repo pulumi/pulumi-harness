@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up an App Dynamics connector.
         /// </summary>
         public static Task<GetAppDynamicsConnectorResult> InvokeAsync(GetAppDynamicsConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppDynamicsConnectorResult>("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args ?? new GetAppDynamicsConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppDynamicsConnectorResult>("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args ?? new GetAppDynamicsConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an App Dynamics connector.
         /// </summary>
         public static Output<GetAppDynamicsConnectorResult> Invoke(GetAppDynamicsConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppDynamicsConnectorResult>("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args ?? new GetAppDynamicsConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppDynamicsConnectorResult>("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args ?? new GetAppDynamicsConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -1,16 +1,17 @@
 module github.com/lbrlabs/pulumi-harness/provider
 
-go 1.18
+go 1.19
 
 replace (
 	github.com/harness/terraform-provider-harness/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
+	github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.40.1
 )
 
 require (
 	github.com/harness/terraform-provider-harness/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.30.0
-	github.com/pulumi/pulumi/sdk/v3 v3.40.0
+	github.com/pulumi/pulumi/sdk/v3 v3.40.1
 )
 
 require (
@@ -161,7 +162,7 @@ require (
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.5.4 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.6.0 // indirect
 	github.com/pulumi/pulumi-yaml v0.5.5 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.39.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
@@ -178,7 +179,7 @@ require (
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
-	github.com/spf13/cobra v1.4.0 // indirect
+	github.com/spf13/cobra v1.5.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.0 // indirect
 	github.com/t-tomalak/logrus-easy-formatter v0.0.0-20190827215021-c074f06c5816 // indirect

@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Data source for retrieving a Harness input set.
         /// </summary>
         public static Task<GetInputSetResult> InvokeAsync(GetInputSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness input set.
         /// </summary>
         public static Output<GetInputSetResult> Invoke(GetInputSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetInvokeArgs(), options.WithDefaults());
     }
 
 

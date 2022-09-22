@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness secret manager
         /// </summary>
         public static Task<GetSecretManagerResult> InvokeAsync(GetSecretManagerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness secret manager
         /// </summary>
         public static Output<GetSecretManagerResult> Invoke(GetSecretManagerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerInvokeArgs(), options.WithDefaults());
     }
 
 

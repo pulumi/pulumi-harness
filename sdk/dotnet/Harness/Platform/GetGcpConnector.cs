@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Gcp connector.
         /// </summary>
         public static Task<GetGcpConnectorResult> InvokeAsync(GetGcpConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGcpConnectorResult>("harness:platform/getGcpConnector:getGcpConnector", args ?? new GetGcpConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpConnectorResult>("harness:platform/getGcpConnector:getGcpConnector", args ?? new GetGcpConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Gcp connector.
         /// </summary>
         public static Output<GetGcpConnectorResult> Invoke(GetGcpConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGcpConnectorResult>("harness:platform/getGcpConnector:getGcpConnector", args ?? new GetGcpConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpConnectorResult>("harness:platform/getGcpConnector:getGcpConnector", args ?? new GetGcpConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

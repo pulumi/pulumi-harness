@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a PagerDuty connector.
         /// </summary>
         public static Task<GetPagerdutyConnectorResult> InvokeAsync(GetPagerdutyConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a PagerDuty connector.
         /// </summary>
         public static Output<GetPagerdutyConnectorResult> Invoke(GetPagerdutyConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

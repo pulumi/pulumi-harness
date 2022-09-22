@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Datadog connector.
         /// </summary>
         public static Task<GetDatadogConnectorResult> InvokeAsync(GetDatadogConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatadogConnectorResult>("harness:platform/getDatadogConnector:getDatadogConnector", args ?? new GetDatadogConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatadogConnectorResult>("harness:platform/getDatadogConnector:getDatadogConnector", args ?? new GetDatadogConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Datadog connector.
         /// </summary>
         public static Output<GetDatadogConnectorResult> Invoke(GetDatadogConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatadogConnectorResult>("harness:platform/getDatadogConnector:getDatadogConnector", args ?? new GetDatadogConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatadogConnectorResult>("harness:platform/getDatadogConnector:getDatadogConnector", args ?? new GetDatadogConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

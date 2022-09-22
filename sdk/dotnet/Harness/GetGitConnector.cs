@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Task<GetGitConnectorResult> InvokeAsync(GetGitConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGitConnectorResult>("harness:index/getGitConnector:getGitConnector", args ?? new GetGitConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitConnectorResult>("harness:index/getGitConnector:getGitConnector", args ?? new GetGitConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Output<GetGitConnectorResult> Invoke(GetGitConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGitConnectorResult>("harness:index/getGitConnector:getGitConnector", args ?? new GetGitConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitConnectorResult>("harness:index/getGitConnector:getGitConnector", args ?? new GetGitConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

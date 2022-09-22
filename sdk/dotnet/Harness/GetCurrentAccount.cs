@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving information about the current Harness account
         /// </summary>
         public static Task<GetCurrentAccountResult> InvokeAsync(GetCurrentAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving information about the current Harness account
         /// </summary>
         public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
     }
 
 

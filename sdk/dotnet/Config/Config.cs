@@ -30,7 +30,7 @@ namespace Lbrlabs.PulumiPackage.Harness
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("harness");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("harness");
 
         private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId") ?? Utilities.GetEnv("HARNESS_ACCOUNT_ID"));
         /// <summary>

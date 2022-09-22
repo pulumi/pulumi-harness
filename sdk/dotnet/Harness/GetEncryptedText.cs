@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Task<GetEncryptedTextResult> InvokeAsync(GetEncryptedTextArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness application
         /// </summary>
         public static Output<GetEncryptedTextResult> Invoke(GetEncryptedTextInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextInvokeArgs(), options.WithDefaults());
     }
 
 

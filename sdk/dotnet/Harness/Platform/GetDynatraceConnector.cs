@@ -16,13 +16,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Datasource for looking up a Dynatrace connector.
         /// </summary>
         public static Task<GetDynatraceConnectorResult> InvokeAsync(GetDynatraceConnectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDynatraceConnectorResult>("harness:platform/getDynatraceConnector:getDynatraceConnector", args ?? new GetDynatraceConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynatraceConnectorResult>("harness:platform/getDynatraceConnector:getDynatraceConnector", args ?? new GetDynatraceConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Dynatrace connector.
         /// </summary>
         public static Output<GetDynatraceConnectorResult> Invoke(GetDynatraceConnectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDynatraceConnectorResult>("harness:platform/getDynatraceConnector:getDynatraceConnector", args ?? new GetDynatraceConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDynatraceConnectorResult>("harness:platform/getDynatraceConnector:getDynatraceConnector", args ?? new GetDynatraceConnectorInvokeArgs(), options.WithDefaults());
     }
 
 
