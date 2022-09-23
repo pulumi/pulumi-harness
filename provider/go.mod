@@ -10,7 +10,7 @@ replace (
 
 require (
 	github.com/harness/terraform-provider-harness/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.30.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.30.1
 	github.com/pulumi/pulumi/sdk/v3 v3.40.1
 )
 
@@ -164,7 +164,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.6.0 // indirect
 	github.com/pulumi/pulumi-yaml v0.5.5 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.39.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.40.1 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.8.1 // indirect
