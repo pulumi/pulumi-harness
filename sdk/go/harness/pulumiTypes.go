@@ -4952,145 +4952,145 @@ func (o UserGroupNotificationSettingsPtrOutput) SlackWebhookUrl() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-type UserGroupPermissions struct {
+type UserGroupPermissionsType struct {
 	// The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
 	AccountPermissions []string `pulumi:"accountPermissions"`
 	// Application specific permissions
 	AppPermissions *UserGroupPermissionsAppPermissions `pulumi:"appPermissions"`
 }
 
-// UserGroupPermissionsInput is an input type that accepts UserGroupPermissionsArgs and UserGroupPermissionsOutput values.
-// You can construct a concrete instance of `UserGroupPermissionsInput` via:
+// UserGroupPermissionsTypeInput is an input type that accepts UserGroupPermissionsTypeArgs and UserGroupPermissionsTypeOutput values.
+// You can construct a concrete instance of `UserGroupPermissionsTypeInput` via:
 //
-//	UserGroupPermissionsArgs{...}
-type UserGroupPermissionsInput interface {
+//	UserGroupPermissionsTypeArgs{...}
+type UserGroupPermissionsTypeInput interface {
 	pulumi.Input
 
-	ToUserGroupPermissionsOutput() UserGroupPermissionsOutput
-	ToUserGroupPermissionsOutputWithContext(context.Context) UserGroupPermissionsOutput
+	ToUserGroupPermissionsTypeOutput() UserGroupPermissionsTypeOutput
+	ToUserGroupPermissionsTypeOutputWithContext(context.Context) UserGroupPermissionsTypeOutput
 }
 
-type UserGroupPermissionsArgs struct {
+type UserGroupPermissionsTypeArgs struct {
 	// The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
 	AccountPermissions pulumi.StringArrayInput `pulumi:"accountPermissions"`
 	// Application specific permissions
 	AppPermissions UserGroupPermissionsAppPermissionsPtrInput `pulumi:"appPermissions"`
 }
 
-func (UserGroupPermissionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserGroupPermissions)(nil)).Elem()
+func (UserGroupPermissionsTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroupPermissionsType)(nil)).Elem()
 }
 
-func (i UserGroupPermissionsArgs) ToUserGroupPermissionsOutput() UserGroupPermissionsOutput {
-	return i.ToUserGroupPermissionsOutputWithContext(context.Background())
+func (i UserGroupPermissionsTypeArgs) ToUserGroupPermissionsTypeOutput() UserGroupPermissionsTypeOutput {
+	return i.ToUserGroupPermissionsTypeOutputWithContext(context.Background())
 }
 
-func (i UserGroupPermissionsArgs) ToUserGroupPermissionsOutputWithContext(ctx context.Context) UserGroupPermissionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsOutput)
+func (i UserGroupPermissionsTypeArgs) ToUserGroupPermissionsTypeOutputWithContext(ctx context.Context) UserGroupPermissionsTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsTypeOutput)
 }
 
-func (i UserGroupPermissionsArgs) ToUserGroupPermissionsPtrOutput() UserGroupPermissionsPtrOutput {
-	return i.ToUserGroupPermissionsPtrOutputWithContext(context.Background())
+func (i UserGroupPermissionsTypeArgs) ToUserGroupPermissionsTypePtrOutput() UserGroupPermissionsTypePtrOutput {
+	return i.ToUserGroupPermissionsTypePtrOutputWithContext(context.Background())
 }
 
-func (i UserGroupPermissionsArgs) ToUserGroupPermissionsPtrOutputWithContext(ctx context.Context) UserGroupPermissionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsOutput).ToUserGroupPermissionsPtrOutputWithContext(ctx)
+func (i UserGroupPermissionsTypeArgs) ToUserGroupPermissionsTypePtrOutputWithContext(ctx context.Context) UserGroupPermissionsTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsTypeOutput).ToUserGroupPermissionsTypePtrOutputWithContext(ctx)
 }
 
-// UserGroupPermissionsPtrInput is an input type that accepts UserGroupPermissionsArgs, UserGroupPermissionsPtr and UserGroupPermissionsPtrOutput values.
-// You can construct a concrete instance of `UserGroupPermissionsPtrInput` via:
+// UserGroupPermissionsTypePtrInput is an input type that accepts UserGroupPermissionsTypeArgs, UserGroupPermissionsTypePtr and UserGroupPermissionsTypePtrOutput values.
+// You can construct a concrete instance of `UserGroupPermissionsTypePtrInput` via:
 //
-//	        UserGroupPermissionsArgs{...}
+//	        UserGroupPermissionsTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type UserGroupPermissionsPtrInput interface {
+type UserGroupPermissionsTypePtrInput interface {
 	pulumi.Input
 
-	ToUserGroupPermissionsPtrOutput() UserGroupPermissionsPtrOutput
-	ToUserGroupPermissionsPtrOutputWithContext(context.Context) UserGroupPermissionsPtrOutput
+	ToUserGroupPermissionsTypePtrOutput() UserGroupPermissionsTypePtrOutput
+	ToUserGroupPermissionsTypePtrOutputWithContext(context.Context) UserGroupPermissionsTypePtrOutput
 }
 
-type userGroupPermissionsPtrType UserGroupPermissionsArgs
+type userGroupPermissionsTypePtrType UserGroupPermissionsTypeArgs
 
-func UserGroupPermissionsPtr(v *UserGroupPermissionsArgs) UserGroupPermissionsPtrInput {
-	return (*userGroupPermissionsPtrType)(v)
+func UserGroupPermissionsTypePtr(v *UserGroupPermissionsTypeArgs) UserGroupPermissionsTypePtrInput {
+	return (*userGroupPermissionsTypePtrType)(v)
 }
 
-func (*userGroupPermissionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserGroupPermissions)(nil)).Elem()
+func (*userGroupPermissionsTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserGroupPermissionsType)(nil)).Elem()
 }
 
-func (i *userGroupPermissionsPtrType) ToUserGroupPermissionsPtrOutput() UserGroupPermissionsPtrOutput {
-	return i.ToUserGroupPermissionsPtrOutputWithContext(context.Background())
+func (i *userGroupPermissionsTypePtrType) ToUserGroupPermissionsTypePtrOutput() UserGroupPermissionsTypePtrOutput {
+	return i.ToUserGroupPermissionsTypePtrOutputWithContext(context.Background())
 }
 
-func (i *userGroupPermissionsPtrType) ToUserGroupPermissionsPtrOutputWithContext(ctx context.Context) UserGroupPermissionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsPtrOutput)
+func (i *userGroupPermissionsTypePtrType) ToUserGroupPermissionsTypePtrOutputWithContext(ctx context.Context) UserGroupPermissionsTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPermissionsTypePtrOutput)
 }
 
-type UserGroupPermissionsOutput struct{ *pulumi.OutputState }
+type UserGroupPermissionsTypeOutput struct{ *pulumi.OutputState }
 
-func (UserGroupPermissionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserGroupPermissions)(nil)).Elem()
+func (UserGroupPermissionsTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroupPermissionsType)(nil)).Elem()
 }
 
-func (o UserGroupPermissionsOutput) ToUserGroupPermissionsOutput() UserGroupPermissionsOutput {
+func (o UserGroupPermissionsTypeOutput) ToUserGroupPermissionsTypeOutput() UserGroupPermissionsTypeOutput {
 	return o
 }
 
-func (o UserGroupPermissionsOutput) ToUserGroupPermissionsOutputWithContext(ctx context.Context) UserGroupPermissionsOutput {
+func (o UserGroupPermissionsTypeOutput) ToUserGroupPermissionsTypeOutputWithContext(ctx context.Context) UserGroupPermissionsTypeOutput {
 	return o
 }
 
-func (o UserGroupPermissionsOutput) ToUserGroupPermissionsPtrOutput() UserGroupPermissionsPtrOutput {
-	return o.ToUserGroupPermissionsPtrOutputWithContext(context.Background())
+func (o UserGroupPermissionsTypeOutput) ToUserGroupPermissionsTypePtrOutput() UserGroupPermissionsTypePtrOutput {
+	return o.ToUserGroupPermissionsTypePtrOutputWithContext(context.Background())
 }
 
-func (o UserGroupPermissionsOutput) ToUserGroupPermissionsPtrOutputWithContext(ctx context.Context) UserGroupPermissionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserGroupPermissions) *UserGroupPermissions {
+func (o UserGroupPermissionsTypeOutput) ToUserGroupPermissionsTypePtrOutputWithContext(ctx context.Context) UserGroupPermissionsTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserGroupPermissionsType) *UserGroupPermissionsType {
 		return &v
-	}).(UserGroupPermissionsPtrOutput)
+	}).(UserGroupPermissionsTypePtrOutput)
 }
 
 // The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
-func (o UserGroupPermissionsOutput) AccountPermissions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UserGroupPermissions) []string { return v.AccountPermissions }).(pulumi.StringArrayOutput)
+func (o UserGroupPermissionsTypeOutput) AccountPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserGroupPermissionsType) []string { return v.AccountPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Application specific permissions
-func (o UserGroupPermissionsOutput) AppPermissions() UserGroupPermissionsAppPermissionsPtrOutput {
-	return o.ApplyT(func(v UserGroupPermissions) *UserGroupPermissionsAppPermissions { return v.AppPermissions }).(UserGroupPermissionsAppPermissionsPtrOutput)
+func (o UserGroupPermissionsTypeOutput) AppPermissions() UserGroupPermissionsAppPermissionsPtrOutput {
+	return o.ApplyT(func(v UserGroupPermissionsType) *UserGroupPermissionsAppPermissions { return v.AppPermissions }).(UserGroupPermissionsAppPermissionsPtrOutput)
 }
 
-type UserGroupPermissionsPtrOutput struct{ *pulumi.OutputState }
+type UserGroupPermissionsTypePtrOutput struct{ *pulumi.OutputState }
 
-func (UserGroupPermissionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserGroupPermissions)(nil)).Elem()
+func (UserGroupPermissionsTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserGroupPermissionsType)(nil)).Elem()
 }
 
-func (o UserGroupPermissionsPtrOutput) ToUserGroupPermissionsPtrOutput() UserGroupPermissionsPtrOutput {
+func (o UserGroupPermissionsTypePtrOutput) ToUserGroupPermissionsTypePtrOutput() UserGroupPermissionsTypePtrOutput {
 	return o
 }
 
-func (o UserGroupPermissionsPtrOutput) ToUserGroupPermissionsPtrOutputWithContext(ctx context.Context) UserGroupPermissionsPtrOutput {
+func (o UserGroupPermissionsTypePtrOutput) ToUserGroupPermissionsTypePtrOutputWithContext(ctx context.Context) UserGroupPermissionsTypePtrOutput {
 	return o
 }
 
-func (o UserGroupPermissionsPtrOutput) Elem() UserGroupPermissionsOutput {
-	return o.ApplyT(func(v *UserGroupPermissions) UserGroupPermissions {
+func (o UserGroupPermissionsTypePtrOutput) Elem() UserGroupPermissionsTypeOutput {
+	return o.ApplyT(func(v *UserGroupPermissionsType) UserGroupPermissionsType {
 		if v != nil {
 			return *v
 		}
-		var ret UserGroupPermissions
+		var ret UserGroupPermissionsType
 		return ret
-	}).(UserGroupPermissionsOutput)
+	}).(UserGroupPermissionsTypeOutput)
 }
 
 // The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
-func (o UserGroupPermissionsPtrOutput) AccountPermissions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *UserGroupPermissions) []string {
+func (o UserGroupPermissionsTypePtrOutput) AccountPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserGroupPermissionsType) []string {
 		if v == nil {
 			return nil
 		}
@@ -5099,8 +5099,8 @@ func (o UserGroupPermissionsPtrOutput) AccountPermissions() pulumi.StringArrayOu
 }
 
 // Application specific permissions
-func (o UserGroupPermissionsPtrOutput) AppPermissions() UserGroupPermissionsAppPermissionsPtrOutput {
-	return o.ApplyT(func(v *UserGroupPermissions) *UserGroupPermissionsAppPermissions {
+func (o UserGroupPermissionsTypePtrOutput) AppPermissions() UserGroupPermissionsAppPermissionsPtrOutput {
+	return o.ApplyT(func(v *UserGroupPermissionsType) *UserGroupPermissionsAppPermissions {
 		if v == nil {
 			return nil
 		}
@@ -5109,14 +5109,22 @@ func (o UserGroupPermissionsPtrOutput) AppPermissions() UserGroupPermissionsAppP
 }
 
 type UserGroupPermissionsAppPermissions struct {
-	Alls         []UserGroupPermissionsAppPermissionsAll         `pulumi:"alls"`
-	Deployments  []UserGroupPermissionsAppPermissionsDeployment  `pulumi:"deployments"`
+	// The permission to perform actions against all resources.
+	Alls []UserGroupPermissionsAppPermissionsAll `pulumi:"alls"`
+	// Permission configuration to perform actions against deployments.
+	Deployments []UserGroupPermissionsAppPermissionsDeployment `pulumi:"deployments"`
+	// Permission configuration to perform actions against workflows.
 	Environments []UserGroupPermissionsAppPermissionsEnvironment `pulumi:"environments"`
-	Pipelines    []UserGroupPermissionsAppPermissionsPipeline    `pulumi:"pipelines"`
+	// Permission configuration to perform actions against pipelines.
+	Pipelines []UserGroupPermissionsAppPermissionsPipeline `pulumi:"pipelines"`
+	// Permission configuration to perform actions against provisioners.
 	Provisioners []UserGroupPermissionsAppPermissionsProvisioner `pulumi:"provisioners"`
-	Services     []UserGroupPermissionsAppPermissionsService     `pulumi:"services"`
-	Templates    []UserGroupPermissionsAppPermissionsTemplate    `pulumi:"templates"`
-	Workflows    []UserGroupPermissionsAppPermissionsWorkflow    `pulumi:"workflows"`
+	// Permission configuration to perform actions against services.
+	Services []UserGroupPermissionsAppPermissionsService `pulumi:"services"`
+	// Permission configuration to perform actions against templates.
+	Templates []UserGroupPermissionsAppPermissionsTemplate `pulumi:"templates"`
+	// Permission configuration to perform actions against workflows.
+	Workflows []UserGroupPermissionsAppPermissionsWorkflow `pulumi:"workflows"`
 }
 
 // UserGroupPermissionsAppPermissionsInput is an input type that accepts UserGroupPermissionsAppPermissionsArgs and UserGroupPermissionsAppPermissionsOutput values.
@@ -5131,14 +5139,22 @@ type UserGroupPermissionsAppPermissionsInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsArgs struct {
-	Alls         UserGroupPermissionsAppPermissionsAllArrayInput         `pulumi:"alls"`
-	Deployments  UserGroupPermissionsAppPermissionsDeploymentArrayInput  `pulumi:"deployments"`
+	// The permission to perform actions against all resources.
+	Alls UserGroupPermissionsAppPermissionsAllArrayInput `pulumi:"alls"`
+	// Permission configuration to perform actions against deployments.
+	Deployments UserGroupPermissionsAppPermissionsDeploymentArrayInput `pulumi:"deployments"`
+	// Permission configuration to perform actions against workflows.
 	Environments UserGroupPermissionsAppPermissionsEnvironmentArrayInput `pulumi:"environments"`
-	Pipelines    UserGroupPermissionsAppPermissionsPipelineArrayInput    `pulumi:"pipelines"`
+	// Permission configuration to perform actions against pipelines.
+	Pipelines UserGroupPermissionsAppPermissionsPipelineArrayInput `pulumi:"pipelines"`
+	// Permission configuration to perform actions against provisioners.
 	Provisioners UserGroupPermissionsAppPermissionsProvisionerArrayInput `pulumi:"provisioners"`
-	Services     UserGroupPermissionsAppPermissionsServiceArrayInput     `pulumi:"services"`
-	Templates    UserGroupPermissionsAppPermissionsTemplateArrayInput    `pulumi:"templates"`
-	Workflows    UserGroupPermissionsAppPermissionsWorkflowArrayInput    `pulumi:"workflows"`
+	// Permission configuration to perform actions against services.
+	Services UserGroupPermissionsAppPermissionsServiceArrayInput `pulumi:"services"`
+	// Permission configuration to perform actions against templates.
+	Templates UserGroupPermissionsAppPermissionsTemplateArrayInput `pulumi:"templates"`
+	// Permission configuration to perform actions against workflows.
+	Workflows UserGroupPermissionsAppPermissionsWorkflowArrayInput `pulumi:"workflows"`
 }
 
 func (UserGroupPermissionsAppPermissionsArgs) ElementType() reflect.Type {
@@ -5218,46 +5234,54 @@ func (o UserGroupPermissionsAppPermissionsOutput) ToUserGroupPermissionsAppPermi
 	}).(UserGroupPermissionsAppPermissionsPtrOutput)
 }
 
+// The permission to perform actions against all resources.
 func (o UserGroupPermissionsAppPermissionsOutput) Alls() UserGroupPermissionsAppPermissionsAllArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsAll { return v.Alls }).(UserGroupPermissionsAppPermissionsAllArrayOutput)
 }
 
+// Permission configuration to perform actions against deployments.
 func (o UserGroupPermissionsAppPermissionsOutput) Deployments() UserGroupPermissionsAppPermissionsDeploymentArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsDeployment {
 		return v.Deployments
 	}).(UserGroupPermissionsAppPermissionsDeploymentArrayOutput)
 }
 
+// Permission configuration to perform actions against workflows.
 func (o UserGroupPermissionsAppPermissionsOutput) Environments() UserGroupPermissionsAppPermissionsEnvironmentArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsEnvironment {
 		return v.Environments
 	}).(UserGroupPermissionsAppPermissionsEnvironmentArrayOutput)
 }
 
+// Permission configuration to perform actions against pipelines.
 func (o UserGroupPermissionsAppPermissionsOutput) Pipelines() UserGroupPermissionsAppPermissionsPipelineArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsPipeline {
 		return v.Pipelines
 	}).(UserGroupPermissionsAppPermissionsPipelineArrayOutput)
 }
 
+// Permission configuration to perform actions against provisioners.
 func (o UserGroupPermissionsAppPermissionsOutput) Provisioners() UserGroupPermissionsAppPermissionsProvisionerArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsProvisioner {
 		return v.Provisioners
 	}).(UserGroupPermissionsAppPermissionsProvisionerArrayOutput)
 }
 
+// Permission configuration to perform actions against services.
 func (o UserGroupPermissionsAppPermissionsOutput) Services() UserGroupPermissionsAppPermissionsServiceArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsService {
 		return v.Services
 	}).(UserGroupPermissionsAppPermissionsServiceArrayOutput)
 }
 
+// Permission configuration to perform actions against templates.
 func (o UserGroupPermissionsAppPermissionsOutput) Templates() UserGroupPermissionsAppPermissionsTemplateArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsTemplate {
 		return v.Templates
 	}).(UserGroupPermissionsAppPermissionsTemplateArrayOutput)
 }
 
+// Permission configuration to perform actions against workflows.
 func (o UserGroupPermissionsAppPermissionsOutput) Workflows() UserGroupPermissionsAppPermissionsWorkflowArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsWorkflow {
 		return v.Workflows
@@ -5288,6 +5312,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Elem() UserGroupPermissions
 	}).(UserGroupPermissionsAppPermissionsOutput)
 }
 
+// The permission to perform actions against all resources.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Alls() UserGroupPermissionsAppPermissionsAllArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsAll {
 		if v == nil {
@@ -5297,6 +5322,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Alls() UserGroupPermissions
 	}).(UserGroupPermissionsAppPermissionsAllArrayOutput)
 }
 
+// Permission configuration to perform actions against deployments.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Deployments() UserGroupPermissionsAppPermissionsDeploymentArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsDeployment {
 		if v == nil {
@@ -5306,6 +5332,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Deployments() UserGroupPerm
 	}).(UserGroupPermissionsAppPermissionsDeploymentArrayOutput)
 }
 
+// Permission configuration to perform actions against workflows.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Environments() UserGroupPermissionsAppPermissionsEnvironmentArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsEnvironment {
 		if v == nil {
@@ -5315,6 +5342,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Environments() UserGroupPer
 	}).(UserGroupPermissionsAppPermissionsEnvironmentArrayOutput)
 }
 
+// Permission configuration to perform actions against pipelines.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Pipelines() UserGroupPermissionsAppPermissionsPipelineArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsPipeline {
 		if v == nil {
@@ -5324,6 +5352,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Pipelines() UserGroupPermis
 	}).(UserGroupPermissionsAppPermissionsPipelineArrayOutput)
 }
 
+// Permission configuration to perform actions against provisioners.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Provisioners() UserGroupPermissionsAppPermissionsProvisionerArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsProvisioner {
 		if v == nil {
@@ -5333,6 +5362,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Provisioners() UserGroupPer
 	}).(UserGroupPermissionsAppPermissionsProvisionerArrayOutput)
 }
 
+// Permission configuration to perform actions against services.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Services() UserGroupPermissionsAppPermissionsServiceArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsService {
 		if v == nil {
@@ -5342,6 +5372,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Services() UserGroupPermiss
 	}).(UserGroupPermissionsAppPermissionsServiceArrayOutput)
 }
 
+// Permission configuration to perform actions against templates.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Templates() UserGroupPermissionsAppPermissionsTemplateArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsTemplate {
 		if v == nil {
@@ -5351,6 +5382,7 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Templates() UserGroupPermis
 	}).(UserGroupPermissionsAppPermissionsTemplateArrayOutput)
 }
 
+// Permission configuration to perform actions against workflows.
 func (o UserGroupPermissionsAppPermissionsPtrOutput) Workflows() UserGroupPermissionsAppPermissionsWorkflowArrayOutput {
 	return o.ApplyT(func(v *UserGroupPermissionsAppPermissions) []UserGroupPermissionsAppPermissionsWorkflow {
 		if v == nil {
@@ -6880,8 +6912,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupLdapSettingsPtrInput)(nil)).Elem(), UserGroupLdapSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupNotificationSettingsInput)(nil)).Elem(), UserGroupNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupNotificationSettingsPtrInput)(nil)).Elem(), UserGroupNotificationSettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsInput)(nil)).Elem(), UserGroupPermissionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsPtrInput)(nil)).Elem(), UserGroupPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsTypeInput)(nil)).Elem(), UserGroupPermissionsTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsTypePtrInput)(nil)).Elem(), UserGroupPermissionsTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsAppPermissionsInput)(nil)).Elem(), UserGroupPermissionsAppPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsAppPermissionsPtrInput)(nil)).Elem(), UserGroupPermissionsAppPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPermissionsAppPermissionsAllInput)(nil)).Elem(), UserGroupPermissionsAppPermissionsAllArgs{})
@@ -6962,8 +6994,8 @@ func init() {
 	pulumi.RegisterOutputType(UserGroupLdapSettingsPtrOutput{})
 	pulumi.RegisterOutputType(UserGroupNotificationSettingsOutput{})
 	pulumi.RegisterOutputType(UserGroupNotificationSettingsPtrOutput{})
-	pulumi.RegisterOutputType(UserGroupPermissionsOutput{})
-	pulumi.RegisterOutputType(UserGroupPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(UserGroupPermissionsTypeOutput{})
+	pulumi.RegisterOutputType(UserGroupPermissionsTypePtrOutput{})
 	pulumi.RegisterOutputType(UserGroupPermissionsAppPermissionsOutput{})
 	pulumi.RegisterOutputType(UserGroupPermissionsAppPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(UserGroupPermissionsAppPermissionsAllOutput{})

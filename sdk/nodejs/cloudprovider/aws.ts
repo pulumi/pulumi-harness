@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using the Harness aws cloud provider id.
+ * Import using the Harness aws cloud provider id.
  *
  * ```sh
  *  $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>

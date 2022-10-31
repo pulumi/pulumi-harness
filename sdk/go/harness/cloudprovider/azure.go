@@ -57,7 +57,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness azure cloud provider id.
+// Import using the Harness azure cloud provider id.
 //
 // ```sh
 //

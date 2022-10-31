@@ -26,9 +26,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Harness.Platform.GetEnvironment.Invoke(new()
+        ///     var example = Harness.Platform.GetEnvironment.Invoke(new()
         ///     {
-        ///         Name = "name",
+        ///         Identifier = "identifier",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///     });
@@ -55,9 +55,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Harness.Platform.GetEnvironment.Invoke(new()
+        ///     var example = Harness.Platform.GetEnvironment.Invoke(new()
         ///     {
-        ///         Name = "name",
+        ///         Identifier = "identifier",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///     });
@@ -87,13 +87,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -119,13 +119,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -161,11 +161,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
@@ -176,6 +176,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// The type of environment.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Input Set YAML
+        /// </summary>
+        public readonly string Yaml;
 
         [OutputConstructor]
         private GetEnvironmentResult(
@@ -195,7 +199,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             ImmutableArray<string> tags,
 
-            string type)
+            string type,
+
+            string yaml)
         {
             Color = color;
             Description = description;
@@ -206,6 +212,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             ProjectId = projectId;
             Tags = tags;
             Type = type;
+            Yaml = yaml;
         }
     }
 }

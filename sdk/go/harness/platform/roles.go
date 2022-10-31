@@ -69,11 +69,11 @@ type Roles struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -120,11 +120,11 @@ type rolesState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -139,11 +139,11 @@ type RolesState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// List of the permission identifiers
 	Permissions pulumi.StringArrayInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -162,11 +162,11 @@ type rolesArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -182,11 +182,11 @@ type RolesArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// List of the permission identifiers
 	Permissions pulumi.StringArrayInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -299,7 +299,7 @@ func (o RolesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Roles) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o RolesOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Roles) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -309,7 +309,7 @@ func (o RolesOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Roles) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o RolesOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Roles) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

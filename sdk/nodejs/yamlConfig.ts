@@ -27,13 +27,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Importing a global config only using the yaml path
+ * Importing a global config only using the yaml path
  *
  * ```sh
  *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
  * ```
  *
- * # Importing a service which requires both the application id and the yaml path.
+ *  Importing a service which requires both the application id and the yaml path.
  *
  * ```sh
  *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"

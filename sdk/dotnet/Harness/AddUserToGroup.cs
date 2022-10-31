@@ -41,7 +41,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness user and user group id
+    /// Import using the Harness user and user group id
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin &lt;user_id&gt;/&lt;group_id&gt;

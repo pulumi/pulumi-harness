@@ -216,7 +216,7 @@ class Application(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id
+        Import using the Harness application id
 
         ```sh
          $ pulumi import harness:index/application:Application myapp Xyz123
@@ -254,7 +254,7 @@ class Application(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id
+        Import using the Harness application id
 
         ```sh
          $ pulumi import harness:index/application:Application myapp Xyz123

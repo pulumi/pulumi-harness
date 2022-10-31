@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness pipeline.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = pulumi.output(harness.platform.getPipeline({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * }));
+ * ```
  */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
     if (!opts) {

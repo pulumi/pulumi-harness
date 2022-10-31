@@ -216,7 +216,7 @@ class Winrm(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id and service id
+        Import using the Harness application id and service id
 
         ```sh
          $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
@@ -254,7 +254,7 @@ class Winrm(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id and service id
+        Import using the Harness application id and service id
 
         ```sh
          $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>

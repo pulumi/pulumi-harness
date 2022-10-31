@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the Harness application id and environment id.
+ * Import using the Harness application id and environment id.
  *
  * ```sh
  *  $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>

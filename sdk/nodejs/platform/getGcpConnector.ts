@@ -37,11 +37,11 @@ export interface GetGcpConnectorArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -75,11 +75,11 @@ export interface GetGcpConnectorResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -105,11 +105,11 @@ export interface GetGcpConnectorOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

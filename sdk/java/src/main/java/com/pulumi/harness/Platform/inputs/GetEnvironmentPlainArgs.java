@@ -45,14 +45,14 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId", required=true)
     private String orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {
@@ -60,14 +60,14 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId", required=true)
     private String projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public String projectId() {
@@ -124,7 +124,7 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 

@@ -28,8 +28,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///         OrgId = "orgIdentifer",
     ///         ProjectId = "projectIdentifier",
     ///         TargetId = "pipelineIdentifier",
-    ///         Yaml = @"  ---
-    ///   trigger:
+    ///         Yaml = @"  trigger:
     ///     name: ""name""
     ///     identifier: ""identifier""
     ///     enabled: true
@@ -67,7 +66,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// # Import using trigger id
+    /// Import using trigger id
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/triggers:Triggers example &lt;triggers_id&gt;
@@ -107,13 +106,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -134,7 +133,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// trigger yaml
         /// </summary>
         [Output("yaml")]
-        public Output<string?> Yaml { get; private set; } = null!;
+        public Output<string> Yaml { get; private set; } = null!;
 
 
         /// <summary>
@@ -214,13 +213,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -246,8 +245,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// trigger yaml
         /// </summary>
-        [Input("yaml")]
-        public Input<string>? Yaml { get; set; }
+        [Input("yaml", required: true)]
+        public Input<string> Yaml { get; set; } = null!;
 
         public TriggersArgs()
         {
@@ -288,13 +287,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

@@ -29,8 +29,8 @@ class SecretFileArgs:
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         pulumi.set(__self__, "file_path", file_path)
@@ -111,7 +111,7 @@ class SecretFileArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -123,7 +123,7 @@ class SecretFileArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -161,8 +161,8 @@ class _SecretFileState:
         :param pulumi.Input[str] file_path: Path of the file containing secret value
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
@@ -235,7 +235,7 @@ class _SecretFileState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -247,7 +247,7 @@ class _SecretFileState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -313,7 +313,7 @@ class SecretFile(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret file id
+        Import using secret file id
 
         ```sh
          $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
@@ -325,8 +325,8 @@ class SecretFile(pulumi.CustomResource):
         :param pulumi.Input[str] file_path: Path of the file containing secret value
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
@@ -355,7 +355,7 @@ class SecretFile(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret file id
+        Import using secret file id
 
         ```sh
          $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
@@ -436,8 +436,8 @@ class SecretFile(pulumi.CustomResource):
         :param pulumi.Input[str] file_path: Path of the file containing secret value
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
@@ -491,7 +491,7 @@ class SecretFile(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -499,7 +499,7 @@ class SecretFile(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

@@ -37,7 +37,7 @@ type UserGroup struct {
 	// The notification settings of the user group.
 	NotificationSettings UserGroupNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
 	// The permissions of the user group.
-	Permissions UserGroupPermissionsPtrOutput `pulumi:"permissions"`
+	Permissions UserGroupPermissionsTypePtrOutput `pulumi:"permissions"`
 	// The SAML settings for the user group.
 	SamlSettings UserGroupSamlSettingsPtrOutput `pulumi:"samlSettings"`
 }
@@ -85,7 +85,7 @@ type userGroupState struct {
 	// The notification settings of the user group.
 	NotificationSettings *UserGroupNotificationSettings `pulumi:"notificationSettings"`
 	// The permissions of the user group.
-	Permissions *UserGroupPermissions `pulumi:"permissions"`
+	Permissions *UserGroupPermissionsType `pulumi:"permissions"`
 	// The SAML settings for the user group.
 	SamlSettings *UserGroupSamlSettings `pulumi:"samlSettings"`
 }
@@ -104,7 +104,7 @@ type UserGroupState struct {
 	// The notification settings of the user group.
 	NotificationSettings UserGroupNotificationSettingsPtrInput
 	// The permissions of the user group.
-	Permissions UserGroupPermissionsPtrInput
+	Permissions UserGroupPermissionsTypePtrInput
 	// The SAML settings for the user group.
 	SamlSettings UserGroupSamlSettingsPtrInput
 }
@@ -123,7 +123,7 @@ type userGroupArgs struct {
 	// The notification settings of the user group.
 	NotificationSettings *UserGroupNotificationSettings `pulumi:"notificationSettings"`
 	// The permissions of the user group.
-	Permissions *UserGroupPermissions `pulumi:"permissions"`
+	Permissions *UserGroupPermissionsType `pulumi:"permissions"`
 	// The SAML settings for the user group.
 	SamlSettings *UserGroupSamlSettings `pulumi:"samlSettings"`
 }
@@ -139,7 +139,7 @@ type UserGroupArgs struct {
 	// The notification settings of the user group.
 	NotificationSettings UserGroupNotificationSettingsPtrInput
 	// The permissions of the user group.
-	Permissions UserGroupPermissionsPtrInput
+	Permissions UserGroupPermissionsTypePtrInput
 	// The SAML settings for the user group.
 	SamlSettings UserGroupSamlSettingsPtrInput
 }
@@ -262,8 +262,8 @@ func (o UserGroupOutput) NotificationSettings() UserGroupNotificationSettingsPtr
 }
 
 // The permissions of the user group.
-func (o UserGroupOutput) Permissions() UserGroupPermissionsPtrOutput {
-	return o.ApplyT(func(v *UserGroup) UserGroupPermissionsPtrOutput { return v.Permissions }).(UserGroupPermissionsPtrOutput)
+func (o UserGroupOutput) Permissions() UserGroupPermissionsTypePtrOutput {
+	return o.ApplyT(func(v *UserGroup) UserGroupPermissionsTypePtrOutput { return v.Permissions }).(UserGroupPermissionsTypePtrOutput)
 }
 
 // The SAML settings for the user group.

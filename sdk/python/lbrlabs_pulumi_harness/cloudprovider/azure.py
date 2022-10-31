@@ -217,7 +217,7 @@ class Azure(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness azure cloud provider id.
+        Import using the Harness azure cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
@@ -259,7 +259,7 @@ class Azure(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness azure cloud provider id.
+        Import using the Harness azure cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>

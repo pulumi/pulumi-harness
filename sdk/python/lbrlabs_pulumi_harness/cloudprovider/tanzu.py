@@ -252,7 +252,7 @@ class Tanzu(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness Tanzu cloud provider id.
+        Import using the Harness Tanzu cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
@@ -296,7 +296,7 @@ class Tanzu(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness Tanzu cloud provider id.
+        Import using the Harness Tanzu cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>

@@ -20,14 +20,13 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupResourceGroup(ctx, &platform.LookupResourceGroupArgs{
+//			_, err = platform.LookupResourceGroup(ctx, &platform.LookupResourceGroupArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -54,9 +53,9 @@ type LookupResourceGroupArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -78,9 +77,9 @@ type LookupResourceGroupResult struct {
 	IncludedScopes []GetResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []GetResourceGroupResourceFilter `pulumi:"resourceFilters"`
@@ -107,9 +106,9 @@ type LookupResourceGroupOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -172,12 +171,12 @@ func (o LookupResourceGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupResourceGroupResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupResourceGroupResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

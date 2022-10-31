@@ -49,7 +49,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness git connector id
+    /// Import using the Harness git connector id
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/gitConnector:GitConnector example &lt;connector_id&gt;

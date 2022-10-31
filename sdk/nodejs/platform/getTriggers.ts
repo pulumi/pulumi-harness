@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.platform.getTriggers({
+ * const example = pulumi.output(harness.platform.getTriggers({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",

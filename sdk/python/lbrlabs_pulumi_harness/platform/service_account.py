@@ -14,32 +14,30 @@ __all__ = ['ServiceAccountArgs', 'ServiceAccount']
 @pulumi.input_type
 class ServiceAccountArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 email: pulumi.Input[str],
                  identifier: pulumi.Input[str],
-                 account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 email: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServiceAccount resource.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity.
-        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] email: Email of the Service Account.
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "identifier", identifier)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if email is not None:
-            pulumi.set(__self__, "email", email)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -48,6 +46,30 @@ class ServiceAccountArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        Account Identifier for the Entity.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        Email of the Service Account.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter
@@ -62,18 +84,6 @@ class ServiceAccountArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account Identifier for the Entity.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -84,18 +94,6 @@ class ServiceAccountArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Email of the Service Account.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter
@@ -113,7 +111,7 @@ class ServiceAccountArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -125,7 +123,7 @@ class ServiceAccountArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -164,8 +162,8 @@ class _ServiceAccountState:
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         if account_id is not None:
@@ -249,7 +247,7 @@ class _ServiceAccountState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -261,7 +259,7 @@ class _ServiceAccountState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -315,7 +313,7 @@ class ServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret sshkey id
+        Import using secret sshkey id
 
         ```sh
          $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
@@ -328,8 +326,8 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         ...
@@ -357,7 +355,7 @@ class ServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret sshkey id
+        Import using secret sshkey id
 
         ```sh
          $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
@@ -395,8 +393,12 @@ class ServiceAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceAccountArgs.__new__(ServiceAccountArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
+            if email is None and not opts.urn:
+                raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -435,8 +437,8 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -455,7 +457,7 @@ class ServiceAccount(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account Identifier for the Entity.
         """
@@ -471,7 +473,7 @@ class ServiceAccount(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def email(self) -> pulumi.Output[Optional[str]]:
+    def email(self) -> pulumi.Output[str]:
         """
         Email of the Service Account.
         """
@@ -497,7 +499,7 @@ class ServiceAccount(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -505,7 +507,7 @@ class ServiceAccount(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

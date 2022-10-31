@@ -22,7 +22,6 @@ import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,7 +69,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness kubernetes cloud provider id.
+// Import using the Harness kubernetes cloud provider id.
 //
 // ```sh
 //

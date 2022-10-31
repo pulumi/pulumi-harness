@@ -50,7 +50,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+    /// Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/encryptedText:EncryptedText example &lt;secret_id&gt;
@@ -125,6 +125,10 @@ namespace Lbrlabs.PulumiPackage.Harness
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/lbrlabs",
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -190,11 +194,21 @@ namespace Lbrlabs.PulumiPackage.Harness
             set => _usageScopes = value;
         }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the secret.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public EncryptedTextArgs()
         {
@@ -246,11 +260,21 @@ namespace Lbrlabs.PulumiPackage.Harness
             set => _usageScopes = value;
         }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The value of the secret.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public EncryptedTextState()
         {

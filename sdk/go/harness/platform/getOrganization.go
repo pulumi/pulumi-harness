@@ -11,6 +11,32 @@ import (
 )
 
 // Data source for retrieving a Harness organization
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = platform.LookupOrganization(ctx, &platform.LookupOrganizationArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult

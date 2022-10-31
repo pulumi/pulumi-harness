@@ -18,7 +18,35 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness User Group.
+ * Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+ * 
+ *         The following fields need to be populated for LDAP SSO Providers:
+ *     	
+ *         - linked_sso_id
+ *     	
+ *         - linked_sso_display_name
+ *     	
+ *         - sso_group_id
+ *     	
+ *         - sso_group_name
+ *     	
+ *         - linked_sso_type
+ *     	
+ *         - sso_linked
+ *     	
+ *         The following fields need to be populated for SAML SSO Providers:
+ *     	
+ *         - linked_sso_id
+ *     	
+ *         - linked_sso_display_name
+ *     	
+ *         - sso_group_name
+ *     	
+ *         - sso_group_id // same as sso_group_name
+ *     	
+ *         - linked_sso_type
+ *     	
+ *         - sso_linked
  * 
  * ## Example Usage
  * ```java
@@ -43,12 +71,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Usergroup(&#34;example&#34;, UsergroupArgs.builder()        
+ *         var ssoTypeSaml = new Usergroup(&#34;ssoTypeSaml&#34;, UsergroupArgs.builder()        
  *             .externallyManaged(false)
  *             .identifier(&#34;identifier&#34;)
  *             .linkedSsoDisplayName(&#34;linked_sso_display_name&#34;)
  *             .linkedSsoId(&#34;linked_sso_id&#34;)
  *             .linkedSsoType(&#34;SAML&#34;)
+ *             .notificationConfigs(            
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .slackWebhookUrl(&#34;https://google.com&#34;)
+ *                     .type(&#34;SLACK&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .groupEmail(&#34;email@email.com&#34;)
+ *                     .type(&#34;EMAIL&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .microsoftTeamsWebhookUrl(&#34;https://google.com&#34;)
+ *                     .type(&#34;MSTEAMS&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .pagerDutyKey(&#34;pagerDutyKey&#34;)
+ *                     .type(&#34;PAGERDUTY&#34;)
+ *                     .build())
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .ssoGroupId(&#34;sso_group_name&#34;)
+ *             .ssoGroupName(&#34;sso_group_name&#34;)
+ *             .ssoLinked(true)
+ *             .users(&#34;user_id&#34;)
+ *             .build());
+ * 
+ *         var ssoTypeLdap = new Usergroup(&#34;ssoTypeLdap&#34;, UsergroupArgs.builder()        
+ *             .externallyManaged(false)
+ *             .identifier(&#34;identifier&#34;)
+ *             .linkedSsoDisplayName(&#34;linked_sso_display_name&#34;)
+ *             .linkedSsoId(&#34;linked_sso_id&#34;)
+ *             .linkedSsoType(&#34;LDAP&#34;)
  *             .notificationConfigs(            
  *                 UsergroupNotificationConfigArgs.builder()
  *                     .slackWebhookUrl(&#34;https://google.com&#34;)
@@ -80,7 +139,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using user group id
+ * Import using user group id
  * 
  * ```sh
  *  $ pulumi import harness:platform/usergroup:Usergroup example &lt;usergroup_id&gt;
@@ -202,28 +261,28 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationConfigs);
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {

@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import the status of the delegate approval.
+    /// Import the status of the delegate approval.
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/delegateApproval:DelegateApproval example &lt;delegate_id&gt;

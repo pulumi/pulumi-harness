@@ -14,12 +14,58 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     {
         /// <summary>
         /// Data source for retrieving a Harness pipeline.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipeline.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPipelineResult> InvokeAsync(GetPipelineArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelineResult>("harness:platform/getPipeline:getPipeline", args ?? new GetPipelineArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness pipeline.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipeline.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPipelineResult> Invoke(GetPipelineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineResult>("harness:platform/getPipeline:getPipeline", args ?? new GetPipelineInvokeArgs(), options.WithDefaults());

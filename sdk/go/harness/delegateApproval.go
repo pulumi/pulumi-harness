@@ -48,7 +48,7 @@ import (
 //
 // ## Import
 //
-// # Import the status of the delegate approval.
+// Import the status of the delegate approval.
 //
 // ```sh
 //

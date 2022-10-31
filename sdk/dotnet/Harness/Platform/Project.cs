@@ -12,6 +12,32 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.Project("test", new()
+    ///     {
+    ///         Color = "#0063F7",
+    ///         Identifier = "testproject",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import using the organization id and the project id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/project:Project example &lt;organization_id&gt;/&lt;project_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
@@ -47,7 +73,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -130,7 +156,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -192,7 +218,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

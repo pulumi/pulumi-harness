@@ -36,7 +36,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness application id and service id
+    /// Import using the Harness application id and service id
     /// 
     /// ```sh
     ///  $ pulumi import harness:service/ssh:Ssh example &lt;app_id&gt;/&lt;svc_id&gt;

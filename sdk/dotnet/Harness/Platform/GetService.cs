@@ -28,7 +28,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {
         ///     var example = Harness.Platform.GetService.Invoke(new()
         ///     {
-        ///         Name = "name",
+        ///         Identifier = "identifier",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///     });
@@ -57,7 +57,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {
         ///     var example = Harness.Platform.GetService.Invoke(new()
         ///     {
-        ///         Name = "name",
+        ///         Identifier = "identifier",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///     });
@@ -87,13 +87,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -119,13 +119,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -157,17 +157,21 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
         /// Tags to associate with the resource. Tags should be in the form `name:value`.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Input Set YAML
+        /// </summary>
+        public readonly string Yaml;
 
         [OutputConstructor]
         private GetServiceResult(
@@ -183,7 +187,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string projectId,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            string yaml)
         {
             Description = description;
             Id = id;
@@ -192,6 +198,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             OrgId = orgId;
             ProjectId = projectId;
             Tags = tags;
+            Yaml = yaml;
         }
     }
 }

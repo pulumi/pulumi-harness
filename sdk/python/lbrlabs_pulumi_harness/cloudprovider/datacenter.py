@@ -115,7 +115,7 @@ class Datacenter(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness datacenter cloud provider id.
+        Import using the Harness datacenter cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
@@ -146,7 +146,7 @@ class Datacenter(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness datacenter cloud provider id.
+        Import using the Harness datacenter cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>

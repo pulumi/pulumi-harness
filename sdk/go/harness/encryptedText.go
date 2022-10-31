@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+// Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
 //
 // ```sh
 //
@@ -92,6 +92,13 @@ func NewEncryptedText(ctx *pulumi.Context,
 	if args.SecretManagerId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerId'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource EncryptedText
 	err := ctx.RegisterResource("harness:index/encryptedText:EncryptedText", name, args, &resource, opts...)

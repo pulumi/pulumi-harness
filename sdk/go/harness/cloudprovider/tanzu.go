@@ -58,7 +58,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness Tanzu cloud provider id.
+// Import using the Harness Tanzu cloud provider id.
 //
 // ```sh
 //

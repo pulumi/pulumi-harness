@@ -27,11 +27,11 @@ class SecretTextArgs:
         The set of arguments for constructing a SecretText resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
-        :param pulumi.Input[str] value_type: This has details to specify if the secret value is inline or referenced.
+        :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] value: Value of the Secret
         """
@@ -79,7 +79,7 @@ class SecretTextArgs:
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Input[str]:
         """
-        This has details to specify if the secret value is inline or referenced.
+        This has details to specify if the secret value is Inline or Reference.
         """
         return pulumi.get(self, "value_type")
 
@@ -115,7 +115,7 @@ class SecretTextArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -127,7 +127,7 @@ class SecretTextArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -177,12 +177,12 @@ class _SecretTextState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] value: Value of the Secret
-        :param pulumi.Input[str] value_type: This has details to specify if the secret value is inline or referenced.
+        :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -243,7 +243,7 @@ class _SecretTextState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -255,7 +255,7 @@ class _SecretTextState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -303,7 +303,7 @@ class _SecretTextState:
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
         """
-        This has details to specify if the secret value is inline or referenced.
+        This has details to specify if the secret value is Inline or Reference.
         """
         return pulumi.get(self, "value_type")
 
@@ -347,7 +347,7 @@ class SecretText(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret text id
+        Import using secret text id
 
         ```sh
          $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
@@ -358,12 +358,12 @@ class SecretText(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] value: Value of the Secret
-        :param pulumi.Input[str] value_type: This has details to specify if the secret value is inline or referenced.
+        :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
         ...
     @overload
@@ -391,7 +391,7 @@ class SecretText(pulumi.CustomResource):
 
         ## Import
 
-        # Import using secret text id
+        Import using secret text id
 
         ```sh
          $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
@@ -474,12 +474,12 @@ class SecretText(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] value: Value of the Secret
-        :param pulumi.Input[str] value_type: This has details to specify if the secret value is inline or referenced.
+        :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -524,7 +524,7 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -532,7 +532,7 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -564,7 +564,7 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Output[str]:
         """
-        This has details to specify if the secret value is inline or referenced.
+        This has details to specify if the secret value is Inline or Reference.
         """
         return pulumi.get(self, "value_type")
 

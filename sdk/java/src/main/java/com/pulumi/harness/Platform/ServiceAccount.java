@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using secret sshkey id
+ * Import using secret sshkey id
  * 
  * ```sh
  *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example &lt;service_account_id&gt;
@@ -68,14 +68,14 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Account Identifier for the Entity.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Description of the resource.
@@ -96,14 +96,14 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="email", type=String.class, parameters={})
-    private Output</* @Nullable */ String> email;
+    private Output<String> email;
 
     /**
      * @return Email of the Service Account.
      * 
      */
-    public Output<Optional<String>> email() {
-        return Codegen.optional(this.email);
+    public Output<String> email() {
+        return this.email;
     }
     /**
      * Unique identifier of the resource.
@@ -134,28 +134,28 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {

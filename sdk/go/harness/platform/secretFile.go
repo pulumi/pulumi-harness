@@ -65,9 +65,9 @@ type SecretFile struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringOutput `pulumi:"secretManagerIdentifier"`
@@ -122,9 +122,9 @@ type secretFileState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier *string `pulumi:"secretManagerIdentifier"`
@@ -141,9 +141,9 @@ type SecretFileState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringPtrInput
@@ -164,9 +164,9 @@ type secretFileArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
@@ -184,9 +184,9 @@ type SecretFileArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringInput
@@ -301,12 +301,12 @@ func (o SecretFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o SecretFileOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o SecretFileOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

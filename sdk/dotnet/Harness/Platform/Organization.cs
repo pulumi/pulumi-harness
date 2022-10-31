@@ -12,6 +12,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness organization.
+    /// 
+    /// ## Import
+    /// 
+    /// Import using organization id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/organization:Organization example &lt;organization_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/organization:Organization")]
     public partial class Organization : global::Pulumi.CustomResource

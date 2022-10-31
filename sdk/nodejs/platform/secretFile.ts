@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using secret file id
+ * Import using secret file id
  *
  * ```sh
  *  $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
@@ -75,11 +75,11 @@ export class SecretFile extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -158,11 +158,11 @@ export interface SecretFileState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -196,11 +196,11 @@ export interface SecretFileArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

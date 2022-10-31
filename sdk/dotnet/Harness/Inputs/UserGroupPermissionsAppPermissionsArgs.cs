@@ -15,6 +15,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
     {
         [Input("alls")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsAllArgs>? _alls;
+
+        /// <summary>
+        /// The permission to perform actions against all resources.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsAllArgs> Alls
         {
             get => _alls ?? (_alls = new InputList<Inputs.UserGroupPermissionsAppPermissionsAllArgs>());
@@ -23,6 +27,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("deployments")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsDeploymentArgs>? _deployments;
+
+        /// <summary>
+        /// Permission configuration to perform actions against deployments.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsDeploymentArgs> Deployments
         {
             get => _deployments ?? (_deployments = new InputList<Inputs.UserGroupPermissionsAppPermissionsDeploymentArgs>());
@@ -31,6 +39,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("environments")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsEnvironmentArgs>? _environments;
+
+        /// <summary>
+        /// Permission configuration to perform actions against workflows.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsEnvironmentArgs> Environments
         {
             get => _environments ?? (_environments = new InputList<Inputs.UserGroupPermissionsAppPermissionsEnvironmentArgs>());
@@ -39,6 +51,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("pipelines")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsPipelineArgs>? _pipelines;
+
+        /// <summary>
+        /// Permission configuration to perform actions against pipelines.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsPipelineArgs> Pipelines
         {
             get => _pipelines ?? (_pipelines = new InputList<Inputs.UserGroupPermissionsAppPermissionsPipelineArgs>());
@@ -47,6 +63,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("provisioners")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsProvisionerArgs>? _provisioners;
+
+        /// <summary>
+        /// Permission configuration to perform actions against provisioners.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsProvisionerArgs> Provisioners
         {
             get => _provisioners ?? (_provisioners = new InputList<Inputs.UserGroupPermissionsAppPermissionsProvisionerArgs>());
@@ -55,6 +75,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("services")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsServiceArgs>? _services;
+
+        /// <summary>
+        /// Permission configuration to perform actions against services.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsServiceArgs> Services
         {
             get => _services ?? (_services = new InputList<Inputs.UserGroupPermissionsAppPermissionsServiceArgs>());
@@ -63,6 +87,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("templates")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsTemplateArgs>? _templates;
+
+        /// <summary>
+        /// Permission configuration to perform actions against templates.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsTemplateArgs> Templates
         {
             get => _templates ?? (_templates = new InputList<Inputs.UserGroupPermissionsAppPermissionsTemplateArgs>());
@@ -71,6 +99,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
 
         [Input("workflows")]
         private InputList<Inputs.UserGroupPermissionsAppPermissionsWorkflowArgs>? _workflows;
+
+        /// <summary>
+        /// Permission configuration to perform actions against workflows.
+        /// </summary>
         public InputList<Inputs.UserGroupPermissionsAppPermissionsWorkflowArgs> Workflows
         {
             get => _workflows ?? (_workflows = new InputList<Inputs.UserGroupPermissionsAppPermissionsWorkflowArgs>());

@@ -6,6 +6,26 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = new harness.platform.Project("test", {
+ *     color: "#0063F7",
+ *     identifier: "testproject",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using the organization id and the project id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -56,7 +76,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -130,7 +150,7 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -160,7 +180,7 @@ export interface ProjectArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**

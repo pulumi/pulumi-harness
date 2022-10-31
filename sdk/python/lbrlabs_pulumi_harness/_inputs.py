@@ -2038,6 +2038,16 @@ class UserGroupPermissionsAppPermissionsArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]] = None,
                  templates: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]] = None,
                  workflows: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]] alls: The permission to perform actions against all resources.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]] deployments: Permission configuration to perform actions against deployments.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]] environments: Permission configuration to perform actions against workflows.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]] pipelines: Permission configuration to perform actions against pipelines.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]] provisioners: Permission configuration to perform actions against provisioners.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]] services: Permission configuration to perform actions against services.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]] templates: Permission configuration to perform actions against templates.
+        :param pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]] workflows: Permission configuration to perform actions against workflows.
+        """
         if alls is not None:
             pulumi.set(__self__, "alls", alls)
         if deployments is not None:
@@ -2058,6 +2068,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def alls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]:
+        """
+        The permission to perform actions against all resources.
+        """
         return pulumi.get(self, "alls")
 
     @alls.setter
@@ -2067,6 +2080,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]:
+        """
+        Permission configuration to perform actions against deployments.
+        """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
@@ -2076,6 +2092,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]:
+        """
+        Permission configuration to perform actions against workflows.
+        """
         return pulumi.get(self, "environments")
 
     @environments.setter
@@ -2085,6 +2104,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def pipelines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]:
+        """
+        Permission configuration to perform actions against pipelines.
+        """
         return pulumi.get(self, "pipelines")
 
     @pipelines.setter
@@ -2094,6 +2116,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def provisioners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]:
+        """
+        Permission configuration to perform actions against provisioners.
+        """
         return pulumi.get(self, "provisioners")
 
     @provisioners.setter
@@ -2103,6 +2128,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]:
+        """
+        Permission configuration to perform actions against services.
+        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -2112,6 +2140,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]:
+        """
+        Permission configuration to perform actions against templates.
+        """
         return pulumi.get(self, "templates")
 
     @templates.setter
@@ -2121,6 +2152,9 @@ class UserGroupPermissionsAppPermissionsArgs:
     @property
     @pulumi.getter
     def workflows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]:
+        """
+        Permission configuration to perform actions against workflows.
+        """
         return pulumi.get(self, "workflows")
 
     @workflows.setter

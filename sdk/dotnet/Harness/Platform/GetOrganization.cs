@@ -14,12 +14,54 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     {
         /// <summary>
         /// Data source for retrieving a Harness organization
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Harness.Platform.GetOrganization.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("harness:platform/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness organization
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Harness.Platform.GetOrganization.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("harness:platform/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());

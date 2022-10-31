@@ -7,7 +7,35 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness User Group.
+ * Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+ *
+ *         The following fields need to be populated for LDAP SSO Providers:
+ *     	
+ *         - linkedSsoId
+ *     	
+ *         - linkedSsoDisplayName
+ *     	
+ *         - ssoGroupId
+ *     	
+ *         - ssoGroupName
+ *     	
+ *         - linkedSsoType
+ *     	
+ *         - ssoLinked
+ *     	
+ *         The following fields need to be populated for SAML SSO Providers:
+ *     	
+ *         - linkedSsoId
+ *     	
+ *         - linkedSsoDisplayName
+ *     	
+ *         - ssoGroupName
+ *     	
+ *         - ssoGroupId // same as ssoGroupName
+ *     	
+ *         - linkedSsoType
+ *     	
+ *         - ssoLinked
  *
  * ## Example Usage
  *
@@ -15,12 +43,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.platform.Usergroup("example", {
+ * const ssoTypeSaml = new harness.platform.Usergroup("sso_type_saml", {
  *     externallyManaged: false,
  *     identifier: "identifier",
  *     linkedSsoDisplayName: "linked_sso_display_name",
  *     linkedSsoId: "linked_sso_id",
  *     linkedSsoType: "SAML",
+ *     notificationConfigs: [
+ *         {
+ *             slackWebhookUrl: "https://google.com",
+ *             type: "SLACK",
+ *         },
+ *         {
+ *             groupEmail: "email@email.com",
+ *             type: "EMAIL",
+ *         },
+ *         {
+ *             microsoftTeamsWebhookUrl: "https://google.com",
+ *             type: "MSTEAMS",
+ *         },
+ *         {
+ *             pagerDutyKey: "pagerDutyKey",
+ *             type: "PAGERDUTY",
+ *         },
+ *     ],
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     ssoGroupId: "sso_group_name", // When sso linked type is saml sso_group_id is same as sso_group_name
+ *     ssoGroupName: "sso_group_name",
+ *     ssoLinked: true,
+ *     users: ["user_id"],
+ * });
+ * const ssoTypeLdap = new harness.platform.Usergroup("sso_type_ldap", {
+ *     externallyManaged: false,
+ *     identifier: "identifier",
+ *     linkedSsoDisplayName: "linked_sso_display_name",
+ *     linkedSsoId: "linked_sso_id",
+ *     linkedSsoType: "LDAP",
  *     notificationConfigs: [
  *         {
  *             slackWebhookUrl: "https://google.com",
@@ -50,7 +109,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using user group id
+ * Import using user group id
  *
  * ```sh
  *  $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
@@ -117,11 +176,11 @@ export class Usergroup extends pulumi.CustomResource {
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.platform.UsergroupNotificationConfig[] | undefined>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -236,11 +295,11 @@ export interface UsergroupState {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -302,11 +361,11 @@ export interface UsergroupArgs {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

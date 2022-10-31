@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the id of the user group
+    /// Import using the id of the user group
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/userGroup:UserGroup example &lt;USER_GROUP_ID&gt;

@@ -12,6 +12,74 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness project.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Yaml = @"  service:
+    ///     name: name
+    ///     identifier: identifier
+    ///     serviceDefinition:
+    ///       spec:
+    ///         manifests:
+    ///           - manifest:
+    ///               identifier: manifest1
+    ///               type: K8sManifest
+    ///               spec:
+    ///                 store:
+    ///                   type: Github
+    ///                   spec:
+    ///                     connectorRef: &lt;+input&gt;
+    ///                     gitFetchType: Branch
+    ///                     paths:
+    ///                       - files1
+    ///                     repoName: &lt;+input&gt;
+    ///                     branch: master
+    ///                 skipResourceVersioning: false
+    ///         configFiles:
+    ///           - configFile:
+    ///               identifier: configFile1
+    ///               spec:
+    ///                 store:
+    ///                   type: Harness
+    ///                   spec:
+    ///                     files:
+    ///                       - &lt;+org.description&gt;
+    ///         variables:
+    ///           - name: var1
+    ///             type: String
+    ///             value: val1
+    ///           - name: var2
+    ///             type: String
+    ///             value: val2
+    ///       type: Kubernetes
+    ///     gitOpsEnabled: false
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import using service id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/service:Service example &lt;service_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/service:Service")]
     public partial class Service : global::Pulumi.CustomResource
@@ -35,13 +103,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -51,6 +119,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Service YAML
+        /// </summary>
+        [Output("yaml")]
+        public Output<string> Yaml { get; private set; } = null!;
 
 
         /// <summary>
@@ -118,13 +192,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -140,6 +214,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Service YAML
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public ServiceArgs()
         {
@@ -168,13 +248,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -190,6 +270,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Service YAML
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public ServiceState()
         {

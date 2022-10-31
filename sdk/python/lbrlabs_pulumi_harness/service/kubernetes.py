@@ -229,7 +229,7 @@ class Kubernetes(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id and service id
+        Import using the Harness application id and service id
 
         ```sh
          $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
@@ -279,7 +279,7 @@ class Kubernetes(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id and service id
+        Import using the Harness application id and service id
 
         ```sh
          $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>

@@ -38,12 +38,12 @@ public final class GetEnvironmentResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private String projectId;
@@ -57,6 +57,11 @@ public final class GetEnvironmentResult {
      * 
      */
     private String type;
+    /**
+     * @return Input Set YAML
+     * 
+     */
+    private String yaml;
 
     private GetEnvironmentResult() {}
     /**
@@ -95,14 +100,14 @@ public final class GetEnvironmentResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {
         return this.orgId;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public String projectId() {
@@ -121,6 +126,13 @@ public final class GetEnvironmentResult {
      */
     public String type() {
         return this.type;
+    }
+    /**
+     * @return Input Set YAML
+     * 
+     */
+    public String yaml() {
+        return this.yaml;
     }
 
     public static Builder builder() {
@@ -141,6 +153,7 @@ public final class GetEnvironmentResult {
         private String projectId;
         private List<String> tags;
         private String type;
+        private String yaml;
         public Builder() {}
         public Builder(GetEnvironmentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -153,6 +166,7 @@ public final class GetEnvironmentResult {
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
+    	      this.yaml = defaults.yaml;
         }
 
         @CustomType.Setter
@@ -203,6 +217,11 @@ public final class GetEnvironmentResult {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
+        public Builder yaml(String yaml) {
+            this.yaml = Objects.requireNonNull(yaml);
+            return this;
+        }
         public GetEnvironmentResult build() {
             final var o = new GetEnvironmentResult();
             o.color = color;
@@ -214,6 +233,7 @@ public final class GetEnvironmentResult {
             o.projectId = projectId;
             o.tags = tags;
             o.type = type;
+            o.yaml = yaml;
             return o;
         }
     }

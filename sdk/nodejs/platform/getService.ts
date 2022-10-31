@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = pulumi.output(harness.platform.getService({
- *     name: "name",
+ *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  * }));
@@ -47,11 +47,11 @@ export interface GetServiceArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: string;
 }
@@ -77,17 +77,21 @@ export interface GetServiceResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId: string;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
     readonly tags: string[];
+    /**
+     * Input Set YAML
+     */
+    readonly yaml: string;
 }
 
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
@@ -107,11 +111,11 @@ export interface GetServiceOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: pulumi.Input<string>;
 }

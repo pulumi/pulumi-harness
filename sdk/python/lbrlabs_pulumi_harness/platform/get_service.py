@@ -21,7 +21,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None):
+    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, yaml=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -43,6 +43,9 @@ class GetServiceResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if yaml and not isinstance(yaml, str):
+            raise TypeError("Expected argument 'yaml' to be a str")
+        pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -80,7 +83,7 @@ class GetServiceResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -88,7 +91,7 @@ class GetServiceResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -99,6 +102,14 @@ class GetServiceResult:
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> str:
+        """
+        Input Set YAML
+        """
+        return pulumi.get(self, "yaml")
 
 
 class AwaitableGetServiceResult(GetServiceResult):
@@ -113,7 +124,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
-            tags=self.tags)
+            tags=self.tags,
+            yaml=self.yaml)
 
 
 def get_service(identifier: Optional[str] = None,
@@ -130,7 +142,7 @@ def get_service(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_service(name="name",
+    example = harness.platform.get_service(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -138,8 +150,8 @@ def get_service(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -156,7 +168,8 @@ def get_service(identifier: Optional[str] = None,
         name=__ret__.name,
         org_id=__ret__.org_id,
         project_id=__ret__.project_id,
-        tags=__ret__.tags)
+        tags=__ret__.tags,
+        yaml=__ret__.yaml)
 
 
 @_utilities.lift_output_func(get_service)
@@ -174,7 +187,7 @@ def get_service_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_service(name="name",
+    example = harness.platform.get_service(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -182,7 +195,7 @@ def get_service_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using the Harness datacenter cloud provider id.
+ * Import using the Harness datacenter cloud provider id.
  * 
  * ```sh
  *  $ pulumi import harness:cloudprovider/datacenter:Datacenter example &lt;provider_id&gt;

@@ -20,14 +20,13 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupSecretFile(ctx, &platform.LookupSecretFileArgs{
+//			_, err = platform.LookupSecretFile(ctx, &platform.LookupSecretFileArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -54,9 +53,9 @@ type LookupSecretFileArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -72,9 +71,9 @@ type LookupSecretFileResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
@@ -101,9 +100,9 @@ type LookupSecretFileOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -151,12 +150,12 @@ func (o LookupSecretFileResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupSecretFileResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupSecretFileResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

@@ -18,29 +18,30 @@ class TriggersArgs:
                  org_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
                  target_id: pulumi.Input[str],
+                 yaml: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  if_match: Optional[pulumi.Input[str]] = None,
                  ignore_error: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 yaml: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Triggers resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
+        :param pulumi.Input[str] yaml: trigger yaml
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] yaml: trigger yaml
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "yaml", yaml)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if if_match is not None:
@@ -51,8 +52,6 @@ class TriggersArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if yaml is not None:
-            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -70,7 +69,7 @@ class TriggersArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -82,7 +81,7 @@ class TriggersArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -101,6 +100,18 @@ class TriggersArgs:
     @target_id.setter
     def target_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_id", value)
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> pulumi.Input[str]:
+        """
+        trigger yaml
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: pulumi.Input[str]):
+        pulumi.set(self, "yaml", value)
 
     @property
     @pulumi.getter
@@ -162,18 +173,6 @@ class TriggersArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
-    @property
-    @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[str]]:
-        """
-        trigger yaml
-        """
-        return pulumi.get(self, "yaml")
-
-    @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "yaml", value)
-
 
 @pulumi.input_type
 class _TriggersState:
@@ -195,8 +194,8 @@ class _TriggersState:
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
         :param pulumi.Input[str] yaml: trigger yaml
@@ -286,7 +285,7 @@ class _TriggersState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -298,7 +297,7 @@ class _TriggersState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -373,8 +372,7 @@ class Triggers(pulumi.CustomResource):
             org_id="orgIdentifer",
             project_id="projectIdentifier",
             target_id="pipelineIdentifier",
-            yaml=\"\"\"  ---
-          trigger:
+            yaml=\"\"\"  trigger:
             name: "name"
             identifier: "identifier"
             enabled: true
@@ -409,7 +407,7 @@ class Triggers(pulumi.CustomResource):
 
         ## Import
 
-        # Import using trigger id
+        Import using trigger id
 
         ```sh
          $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
@@ -422,8 +420,8 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
         :param pulumi.Input[str] yaml: trigger yaml
@@ -448,8 +446,7 @@ class Triggers(pulumi.CustomResource):
             org_id="orgIdentifer",
             project_id="projectIdentifier",
             target_id="pipelineIdentifier",
-            yaml=\"\"\"  ---
-          trigger:
+            yaml=\"\"\"  trigger:
             name: "name"
             identifier: "identifier"
             enabled: true
@@ -484,7 +481,7 @@ class Triggers(pulumi.CustomResource):
 
         ## Import
 
-        # Import using trigger id
+        Import using trigger id
 
         ```sh
          $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
@@ -541,6 +538,8 @@ class Triggers(pulumi.CustomResource):
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__.__dict__["target_id"] = target_id
+            if yaml is None and not opts.urn:
+                raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
         super(Triggers, __self__).__init__(
             'harness:platform/triggers:Triggers',
@@ -574,8 +573,8 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
         :param pulumi.Input[str] yaml: trigger yaml
@@ -640,7 +639,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -648,7 +647,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -670,7 +669,7 @@ class Triggers(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def yaml(self) -> pulumi.Output[Optional[str]]:
+    def yaml(self) -> pulumi.Output[str]:
         """
         trigger yaml
         """

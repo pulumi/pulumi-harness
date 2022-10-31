@@ -18,6 +18,45 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness project.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Project;
+ * import com.pulumi.harness.platform.ProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Project(&#34;test&#34;, ProjectArgs.builder()        
+ *             .color(&#34;#0063F7&#34;)
+ *             .identifier(&#34;testproject&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import using the organization id and the project id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/project:Project example &lt;organization_id&gt;/&lt;project_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
@@ -92,14 +131,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {

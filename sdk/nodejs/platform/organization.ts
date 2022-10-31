@@ -6,6 +6,31 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const thisOrganization = new harness.Organization("this", {
+ *     description: "An example organization",
+ *     identifier: "MyOrg",
+ *     name: "My Otganization",
+ *     tags: [
+ *         "foo:bar",
+ *         "baz:qux",
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using organization id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/organization:Organization example <organization_id>
+ * ```
  */
 export class Organization extends pulumi.CustomResource {
     /**

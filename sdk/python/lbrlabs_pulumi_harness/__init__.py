@@ -11,6 +11,7 @@ from .application_git_sync import *
 from .delegate_approval import *
 from .encrypted_text import *
 from .environment import *
+from .environment_service_overrides import *
 from .get_application import *
 from .get_current_account import *
 from .get_delegate import *
@@ -29,6 +30,7 @@ from .provider import *
 from .ssh_credential import *
 from .user import *
 from .user_group import *
+from .user_group_permissions import *
 from .yaml_config import *
 from ._inputs import *
 from . import outputs
@@ -158,6 +160,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "index/environmentServiceOverrides",
+  "fqn": "lbrlabs_pulumi_harness",
+  "classes": {
+   "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides": "EnvironmentServiceOverrides"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "index/gitConnector",
   "fqn": "lbrlabs_pulumi_harness",
   "classes": {
@@ -194,6 +204,14 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness",
   "classes": {
    "harness:index/userGroup:UserGroup": "UserGroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "index/userGroupPermissions",
+  "fqn": "lbrlabs_pulumi_harness",
+  "classes": {
+   "harness:index/userGroupPermissions:UserGroupPermissions": "UserGroupPermissions"
   }
  },
  {
@@ -294,6 +312,30 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/environmentClustersMapping",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/environmentClustersMapping:EnvironmentClustersMapping": "EnvironmentClustersMapping"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/environmentGroup",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/environmentGroup:EnvironmentGroup": "EnvironmentGroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/environmentServiceOverrides",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides": "EnvironmentServiceOverrides"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/gcpConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
@@ -306,6 +348,30 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/gitConnector:GitConnector": "GitConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsAgent",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsAgent:GitOpsAgent": "GitOpsAgent"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsCluster",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsCluster:GitOpsCluster": "GitOpsCluster"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsRepository",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsRepository:GitOpsRepository": "GitOpsRepository"
   }
  },
  {
@@ -330,6 +396,14 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/helmConnector:HelmConnector": "HelmConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/infrastructure",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infrastructure:Infrastructure": "Infrastructure"
   }
  },
  {
@@ -422,6 +496,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/roleAssignments",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/roleAssignments:RoleAssignments": "RoleAssignments"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/roles",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
@@ -498,6 +580,22 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/usergroup:Usergroup": "Usergroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/variables",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/variables:Variables": "Variables"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/vaultConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/vaultConnector:VaultConnector": "VaultConnector"
   }
  },
  {

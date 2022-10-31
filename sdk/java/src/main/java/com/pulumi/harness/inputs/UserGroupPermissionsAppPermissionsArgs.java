@@ -23,58 +23,122 @@ public final class UserGroupPermissionsAppPermissionsArgs extends com.pulumi.res
 
     public static final UserGroupPermissionsAppPermissionsArgs Empty = new UserGroupPermissionsAppPermissionsArgs();
 
+    /**
+     * The permission to perform actions against all resources.
+     * 
+     */
     @Import(name="alls")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsAllArgs>> alls;
 
+    /**
+     * @return The permission to perform actions against all resources.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsAllArgs>>> alls() {
         return Optional.ofNullable(this.alls);
     }
 
+    /**
+     * Permission configuration to perform actions against deployments.
+     * 
+     */
     @Import(name="deployments")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsDeploymentArgs>> deployments;
 
+    /**
+     * @return Permission configuration to perform actions against deployments.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsDeploymentArgs>>> deployments() {
         return Optional.ofNullable(this.deployments);
     }
 
+    /**
+     * Permission configuration to perform actions against workflows.
+     * 
+     */
     @Import(name="environments")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsEnvironmentArgs>> environments;
 
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsEnvironmentArgs>>> environments() {
         return Optional.ofNullable(this.environments);
     }
 
+    /**
+     * Permission configuration to perform actions against pipelines.
+     * 
+     */
     @Import(name="pipelines")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsPipelineArgs>> pipelines;
 
+    /**
+     * @return Permission configuration to perform actions against pipelines.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsPipelineArgs>>> pipelines() {
         return Optional.ofNullable(this.pipelines);
     }
 
+    /**
+     * Permission configuration to perform actions against provisioners.
+     * 
+     */
     @Import(name="provisioners")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsProvisionerArgs>> provisioners;
 
+    /**
+     * @return Permission configuration to perform actions against provisioners.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsProvisionerArgs>>> provisioners() {
         return Optional.ofNullable(this.provisioners);
     }
 
+    /**
+     * Permission configuration to perform actions against services.
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsServiceArgs>> services;
 
+    /**
+     * @return Permission configuration to perform actions against services.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsServiceArgs>>> services() {
         return Optional.ofNullable(this.services);
     }
 
+    /**
+     * Permission configuration to perform actions against templates.
+     * 
+     */
     @Import(name="templates")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsTemplateArgs>> templates;
 
+    /**
+     * @return Permission configuration to perform actions against templates.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsTemplateArgs>>> templates() {
         return Optional.ofNullable(this.templates);
     }
 
+    /**
+     * Permission configuration to perform actions against workflows.
+     * 
+     */
     @Import(name="workflows")
     private @Nullable Output<List<UserGroupPermissionsAppPermissionsWorkflowArgs>> workflows;
 
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     public Optional<Output<List<UserGroupPermissionsAppPermissionsWorkflowArgs>>> workflows() {
         return Optional.ofNullable(this.workflows);
     }
@@ -110,106 +174,250 @@ public final class UserGroupPermissionsAppPermissionsArgs extends com.pulumi.res
             $ = new UserGroupPermissionsAppPermissionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alls The permission to perform actions against all resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alls(@Nullable Output<List<UserGroupPermissionsAppPermissionsAllArgs>> alls) {
             $.alls = alls;
             return this;
         }
 
+        /**
+         * @param alls The permission to perform actions against all resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alls(List<UserGroupPermissionsAppPermissionsAllArgs> alls) {
             return alls(Output.of(alls));
         }
 
+        /**
+         * @param alls The permission to perform actions against all resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alls(UserGroupPermissionsAppPermissionsAllArgs... alls) {
             return alls(List.of(alls));
         }
 
+        /**
+         * @param deployments Permission configuration to perform actions against deployments.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployments(@Nullable Output<List<UserGroupPermissionsAppPermissionsDeploymentArgs>> deployments) {
             $.deployments = deployments;
             return this;
         }
 
+        /**
+         * @param deployments Permission configuration to perform actions against deployments.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployments(List<UserGroupPermissionsAppPermissionsDeploymentArgs> deployments) {
             return deployments(Output.of(deployments));
         }
 
+        /**
+         * @param deployments Permission configuration to perform actions against deployments.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployments(UserGroupPermissionsAppPermissionsDeploymentArgs... deployments) {
             return deployments(List.of(deployments));
         }
 
+        /**
+         * @param environments Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environments(@Nullable Output<List<UserGroupPermissionsAppPermissionsEnvironmentArgs>> environments) {
             $.environments = environments;
             return this;
         }
 
+        /**
+         * @param environments Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environments(List<UserGroupPermissionsAppPermissionsEnvironmentArgs> environments) {
             return environments(Output.of(environments));
         }
 
+        /**
+         * @param environments Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environments(UserGroupPermissionsAppPermissionsEnvironmentArgs... environments) {
             return environments(List.of(environments));
         }
 
+        /**
+         * @param pipelines Permission configuration to perform actions against pipelines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelines(@Nullable Output<List<UserGroupPermissionsAppPermissionsPipelineArgs>> pipelines) {
             $.pipelines = pipelines;
             return this;
         }
 
+        /**
+         * @param pipelines Permission configuration to perform actions against pipelines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelines(List<UserGroupPermissionsAppPermissionsPipelineArgs> pipelines) {
             return pipelines(Output.of(pipelines));
         }
 
+        /**
+         * @param pipelines Permission configuration to perform actions against pipelines.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelines(UserGroupPermissionsAppPermissionsPipelineArgs... pipelines) {
             return pipelines(List.of(pipelines));
         }
 
+        /**
+         * @param provisioners Permission configuration to perform actions against provisioners.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioners(@Nullable Output<List<UserGroupPermissionsAppPermissionsProvisionerArgs>> provisioners) {
             $.provisioners = provisioners;
             return this;
         }
 
+        /**
+         * @param provisioners Permission configuration to perform actions against provisioners.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioners(List<UserGroupPermissionsAppPermissionsProvisionerArgs> provisioners) {
             return provisioners(Output.of(provisioners));
         }
 
+        /**
+         * @param provisioners Permission configuration to perform actions against provisioners.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioners(UserGroupPermissionsAppPermissionsProvisionerArgs... provisioners) {
             return provisioners(List.of(provisioners));
         }
 
+        /**
+         * @param services Permission configuration to perform actions against services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<List<UserGroupPermissionsAppPermissionsServiceArgs>> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Permission configuration to perform actions against services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(List<UserGroupPermissionsAppPermissionsServiceArgs> services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param services Permission configuration to perform actions against services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(UserGroupPermissionsAppPermissionsServiceArgs... services) {
             return services(List.of(services));
         }
 
+        /**
+         * @param templates Permission configuration to perform actions against templates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templates(@Nullable Output<List<UserGroupPermissionsAppPermissionsTemplateArgs>> templates) {
             $.templates = templates;
             return this;
         }
 
+        /**
+         * @param templates Permission configuration to perform actions against templates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templates(List<UserGroupPermissionsAppPermissionsTemplateArgs> templates) {
             return templates(Output.of(templates));
         }
 
+        /**
+         * @param templates Permission configuration to perform actions against templates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templates(UserGroupPermissionsAppPermissionsTemplateArgs... templates) {
             return templates(List.of(templates));
         }
 
+        /**
+         * @param workflows Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workflows(@Nullable Output<List<UserGroupPermissionsAppPermissionsWorkflowArgs>> workflows) {
             $.workflows = workflows;
             return this;
         }
 
+        /**
+         * @param workflows Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workflows(List<UserGroupPermissionsAppPermissionsWorkflowArgs> workflows) {
             return workflows(Output.of(workflows));
         }
 
+        /**
+         * @param workflows Permission configuration to perform actions against workflows.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workflows(UserGroupPermissionsAppPermissionsWorkflowArgs... workflows) {
             return workflows(List.of(workflows));
         }

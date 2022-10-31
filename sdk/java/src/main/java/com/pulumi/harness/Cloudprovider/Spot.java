@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using the Harness Spot cloud provider id.
+ * Import using the Harness Spot cloud provider id.
  * 
  * ```sh
  *  $ pulumi import harness:cloudprovider/spot:Spot example &lt;provider_id&gt;

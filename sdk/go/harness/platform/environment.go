@@ -12,11 +12,102 @@ import (
 )
 
 // Resource for creating a Harness environment.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("baz"),
+//				},
+//				Type: pulumi.String("PreProduction"),
+//				Yaml: pulumi.String(fmt.Sprintf(`			   environment:
+//	         name: name
+//	         identifier: identifier
+//	         orgIdentifier: org_id
+//	         projectIdentifier: project_id
+//	         type: PreProduction
+//	         tags:
+//	           foo: bar
+//	           baz: ""
+//	         variables:
+//	           - name: envVar1
+//	             type: String
+//	             value: v1
+//	             description: ""
+//	           - name: envVar2
+//	             type: String
+//	             value: v2
+//	             description: ""
+//	         overrides:
+//	           manifests:
+//	             - manifest:
+//	                 identifier: manifestEnv
+//	                 type: Values
+//	                 spec:
+//	                   store:
+//	                     type: Git
+//	                     spec:
+//	                       connectorRef: <+input>
+//	                       gitFetchType: Branch
+//	                       paths:
+//	                         - file1
+//	                       repoName: <+input>
+//	                       branch: master
+//	           configFiles:
+//	             - configFile:
+//	                 identifier: configFileEnv
+//	                 spec:
+//	                   store:
+//	                     type: Harness
+//	                     spec:
+//	                       files:
+//	                         - account:/Add-ons/svcOverrideTest
+//	                       secretFiles: []
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import using environment id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/environment:Environment example <environment_id>
+//
+// ```
 type Environment struct {
 	pulumi.CustomResourceState
 
 	// Color of the environment.
-	Color pulumi.StringPtrOutput `pulumi:"color"`
+	Color pulumi.StringOutput `pulumi:"color"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -24,13 +115,15 @@ type Environment struct {
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Environment YAML
+	Yaml pulumi.StringPtrOutput `pulumi:"yaml"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -42,6 +135,12 @@ func NewEnvironment(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -85,6 +184,8 @@ type environmentState struct {
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type *string `pulumi:"type"`
+	// Environment YAML
+	Yaml *string `pulumi:"yaml"`
 }
 
 type EnvironmentState struct {
@@ -104,6 +205,8 @@ type EnvironmentState struct {
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringPtrInput
+	// Environment YAML
+	Yaml pulumi.StringPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -120,13 +223,15 @@ type environmentArgs struct {
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
-	OrgId *string `pulumi:"orgId"`
+	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type string `pulumi:"type"`
+	// Environment YAML
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -140,13 +245,15 @@ type EnvironmentArgs struct {
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
-	OrgId pulumi.StringPtrInput
+	OrgId pulumi.StringInput
 	// Unique identifier of the project.
-	ProjectId pulumi.StringPtrInput
+	ProjectId pulumi.StringInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringInput
+	// Environment YAML
+	Yaml pulumi.StringPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -237,8 +344,8 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 }
 
 // Color of the environment.
-func (o EnvironmentOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Color }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
 
 // Description of the resource.
@@ -257,13 +364,13 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 }
 
 // Unique identifier of the organization.
-func (o EnvironmentOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the project.
-func (o EnvironmentOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -274,6 +381,11 @@ func (o EnvironmentOutput) Tags() pulumi.StringArrayOutput {
 // The type of environment. Valid values are PreProduction, Production
 func (o EnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Environment YAML
+func (o EnvironmentOutput) Yaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Yaml }).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }

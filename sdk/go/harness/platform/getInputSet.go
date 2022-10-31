@@ -27,11 +27,11 @@ type LookupInputSetArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId string `pulumi:"pipelineId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -45,11 +45,11 @@ type LookupInputSetResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId string `pulumi:"pipelineId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -76,11 +76,11 @@ type LookupInputSetOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -123,7 +123,7 @@ func (o LookupInputSetResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInputSetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupInputSetResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -133,7 +133,7 @@ func (o LookupInputSetResultOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.PipelineId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupInputSetResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }

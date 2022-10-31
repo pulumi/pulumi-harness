@@ -12,6 +12,88 @@ import (
 )
 
 // Resource for creating a Harness project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				OrgId:       pulumi.String("org_id"),
+//				ProjectId:   pulumi.String("project_id"),
+//				Yaml: pulumi.String(fmt.Sprintf(`  service:
+//	    name: name
+//	    identifier: identifier
+//	    serviceDefinition:
+//	      spec:
+//	        manifests:
+//	          - manifest:
+//	              identifier: manifest1
+//	              type: K8sManifest
+//	              spec:
+//	                store:
+//	                  type: Github
+//	                  spec:
+//	                    connectorRef: <+input>
+//	                    gitFetchType: Branch
+//	                    paths:
+//	                      - files1
+//	                    repoName: <+input>
+//	                    branch: master
+//	                skipResourceVersioning: false
+//	        configFiles:
+//	          - configFile:
+//	              identifier: configFile1
+//	              spec:
+//	                store:
+//	                  type: Harness
+//	                  spec:
+//	                    files:
+//	                      - <+org.description>
+//	        variables:
+//	          - name: var1
+//	            type: String
+//	            value: val1
+//	          - name: var2
+//	            type: String
+//	            value: val2
+//	      type: Kubernetes
+//	    gitOpsEnabled: false
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import using service id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/service:Service example <service_id>
+//
+// ```
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -21,12 +103,14 @@ type Service struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Service YAML
+	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -74,12 +158,14 @@ type serviceState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
+	// Service YAML
+	Yaml *string `pulumi:"yaml"`
 }
 
 type ServiceState struct {
@@ -89,12 +175,14 @@ type ServiceState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
+	// Service YAML
+	Yaml pulumi.StringPtrInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -108,12 +196,14 @@ type serviceArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
+	// Service YAML
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -124,12 +214,14 @@ type ServiceArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
+	// Service YAML
+	Yaml pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -234,12 +326,12 @@ func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o ServiceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o ServiceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -247,6 +339,11 @@ func (o ServiceOutput) ProjectId() pulumi.StringOutput {
 // Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Service YAML
+func (o ServiceOutput) Yaml() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }

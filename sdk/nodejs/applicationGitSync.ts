@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the Harness application id
+ * Import using the Harness application id
  *
  * ```sh
  *  $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123

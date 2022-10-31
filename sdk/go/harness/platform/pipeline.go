@@ -31,93 +31,93 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipeline(ctx, "example", &platform.PipelineArgs{
 //				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.Any(harness_platform_project.Test.Org_id),
-//				ProjectId:  pulumi.Any(harness_platform_project.Test.Id),
-//				Yaml: pulumi.String(fmt.Sprintf(`pipeline:
-//	    name: name
-//	    identifier: identifier
-//	    allowStageExecutions: false
-//	    projectIdentifier: projectIdentifier
-//	    orgIdentifier: orgIdentifier
-//	    tags: {}
-//	    stages:
-//	        - stage:
-//	            name: dep
-//	            identifier: dep
-//	            description: ""
-//	            type: Deployment
-//	            spec:
-//	                serviceConfig:
-//	                    serviceRef: service
-//	                    serviceDefinition:
-//	                        type: Kubernetes
-//	                        spec:
-//	                            variables: []
-//	                infrastructure:
-//	                    environmentRef: testenv
-//	                    infrastructureDefinition:
-//	                        type: KubernetesDirect
-//	                        spec:
-//	                            connectorRef: testconf
-//	                            namespace: test
-//	                            releaseName: release-<+INFRA_KEY>
-//	                    allowSimultaneousDeployments: false
-//	                execution:
-//	                    steps:
-//	                        - stepGroup:
-//	                                name: Canary Deployment
-//	                                identifier: canaryDepoyment
-//	                                steps:
-//	                                    - step:
-//	                                        name: Canary Deployment
-//	                                        identifier: canaryDeployment
-//	                                        type: K8sCanaryDeploy
-//	                                        timeout: 10m
-//	                                        spec:
-//	                                            instanceSelection:
-//	                                                type: Count
-//	                                                spec:
-//	                                                    count: 1
-//	                                            skipDryRun: false
-//	                                    - step:
-//	                                        name: Canary Delete
-//	                                        identifier: canaryDelete
-//	                                        type: K8sCanaryDelete
-//	                                        timeout: 10m
-//	                                        spec: {}
-//	                                rollbackSteps:
-//	                                    - step:
-//	                                        name: Canary Delete
-//	                                        identifier: rollbackCanaryDelete
-//	                                        type: K8sCanaryDelete
-//	                                        timeout: 10m
-//	                                        spec: {}
-//	                        - stepGroup:
-//	                                name: Primary Deployment
-//	                                identifier: primaryDepoyment
-//	                                steps:
-//	                                    - step:
-//	                                        name: Rolling Deployment
-//	                                        identifier: rollingDeployment
-//	                                        type: K8sRollingDeploy
-//	                                        timeout: 10m
-//	                                        spec:
-//	                                            skipDryRun: false
-//	                                rollbackSteps:
-//	                                    - step:
-//	                                        name: Rolling Rollback
-//	                                        identifier: rollingRollback
-//	                                        type: K8sRollingRollback
-//	                                        timeout: 10m
-//	                                        spec: {}
-//	                    rollbackSteps: []
-//	            tags: {}
-//	            failureStrategies:
-//	                - onFailure:
-//	                        errors:
-//	                            - AllErrors
-//	                        action:
-//	                            type: StageRollback
+//				OrgId:      pulumi.String("orgIdentifier"),
+//				ProjectId:  pulumi.String("projectIdentifier"),
+//				Yaml: pulumi.String(fmt.Sprintf(`    pipeline:
+//	        name: name
+//	        identifier: identifier
+//	        allowStageExecutions: false
+//	        projectIdentifier: projectIdentifier
+//	        orgIdentifier: orgIdentifier
+//	        tags: {}
+//	        stages:
+//	            - stage:
+//	                name: dep
+//	                identifier: dep
+//	                description: ""
+//	                type: Deployment
+//	                spec:
+//	                    serviceConfig:
+//	                        serviceRef: service
+//	                        serviceDefinition:
+//	                            type: Kubernetes
+//	                            spec:
+//	                                variables: []
+//	                    infrastructure:
+//	                        environmentRef: testenv
+//	                        infrastructureDefinition:
+//	                            type: KubernetesDirect
+//	                            spec:
+//	                                connectorRef: testconf
+//	                                namespace: test
+//	                                releaseName: release-<+INFRA_KEY>
+//	                        allowSimultaneousDeployments: false
+//	                    execution:
+//	                        steps:
+//	                            - stepGroup:
+//	                                    name: Canary Deployment
+//	                                    identifier: canaryDepoyment
+//	                                    steps:
+//	                                        - step:
+//	                                            name: Canary Deployment
+//	                                            identifier: canaryDeployment
+//	                                            type: K8sCanaryDeploy
+//	                                            timeout: 10m
+//	                                            spec:
+//	                                                instanceSelection:
+//	                                                    type: Count
+//	                                                    spec:
+//	                                                        count: 1
+//	                                                skipDryRun: false
+//	                                        - step:
+//	                                            name: Canary Delete
+//	                                            identifier: canaryDelete
+//	                                            type: K8sCanaryDelete
+//	                                            timeout: 10m
+//	                                            spec: {}
+//	                                    rollbackSteps:
+//	                                        - step:
+//	                                            name: Canary Delete
+//	                                            identifier: rollbackCanaryDelete
+//	                                            type: K8sCanaryDelete
+//	                                            timeout: 10m
+//	                                            spec: {}
+//	                            - stepGroup:
+//	                                    name: Primary Deployment
+//	                                    identifier: primaryDepoyment
+//	                                    steps:
+//	                                        - step:
+//	                                            name: Rolling Deployment
+//	                                            identifier: rollingDeployment
+//	                                            type: K8sRollingDeploy
+//	                                            timeout: 10m
+//	                                            spec:
+//	                                                skipDryRun: false
+//	                                    rollbackSteps:
+//	                                        - step:
+//	                                            name: Rolling Rollback
+//	                                            identifier: rollingRollback
+//	                                            type: K8sRollingRollback
+//	                                            timeout: 10m
+//	                                            spec: {}
+//	                        rollbackSteps: []
+//	                tags: {}
+//	                failureStrategies:
+//	                    - onFailure:
+//	                            errors:
+//	                                - AllErrors
+//	                            action:
+//	                                type: StageRollback
 //
 // `)),
 //
@@ -130,6 +130,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// # Import using pipeline id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+//
+// ```
 type Pipeline struct {
 	pulumi.CustomResourceState
 
@@ -139,9 +149,9 @@ type Pipeline struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -197,9 +207,9 @@ type pipelineState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -214,9 +224,9 @@ type PipelineState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -235,9 +245,9 @@ type pipelineArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -253,9 +263,9 @@ type PipelineArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -365,12 +375,12 @@ func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o PipelineOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o PipelineOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

@@ -12,6 +12,84 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness environment.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "baz",
+    ///         },
+    ///         Type = "PreProduction",
+    ///         Yaml = @"			   environment:
+    ///          name: name
+    ///          identifier: identifier
+    ///          orgIdentifier: org_id
+    ///          projectIdentifier: project_id
+    ///          type: PreProduction
+    ///          tags:
+    ///            foo: bar
+    ///            baz: """"
+    ///          variables:
+    ///            - name: envVar1
+    ///              type: String
+    ///              value: v1
+    ///              description: """"
+    ///            - name: envVar2
+    ///              type: String
+    ///              value: v2
+    ///              description: """"
+    ///          overrides:
+    ///            manifests:
+    ///              - manifest:
+    ///                  identifier: manifestEnv
+    ///                  type: Values
+    ///                  spec:
+    ///                    store:
+    ///                      type: Git
+    ///                      spec:
+    ///                        connectorRef: &lt;+input&gt;
+    ///                        gitFetchType: Branch
+    ///                        paths:
+    ///                          - file1
+    ///                        repoName: &lt;+input&gt;
+    ///                        branch: master
+    ///            configFiles:
+    ///              - configFile:
+    ///                  identifier: configFileEnv
+    ///                  spec:
+    ///                    store:
+    ///                      type: Harness
+    ///                      spec:
+    ///                        files:
+    ///                          - account:/Add-ons/svcOverrideTest
+    ///                        secretFiles: []
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import using environment id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/environment:Environment example &lt;environment_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/environment:Environment")]
     public partial class Environment : global::Pulumi.CustomResource
@@ -20,7 +98,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Color of the environment.
         /// </summary>
         [Output("color")]
-        public Output<string?> Color { get; private set; } = null!;
+        public Output<string> Color { get; private set; } = null!;
 
         /// <summary>
         /// Description of the resource.
@@ -44,13 +122,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
-        public Output<string?> OrgId { get; private set; } = null!;
+        public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
-        public Output<string?> ProjectId { get; private set; } = null!;
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -63,6 +141,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment YAML
+        /// </summary>
+        [Output("yaml")]
+        public Output<string?> Yaml { get; private set; } = null!;
 
 
         /// <summary>
@@ -138,14 +222,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
+        [Input("orgId", required: true)]
+        public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -164,6 +248,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// Environment YAML
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public EnvironmentArgs()
         {
@@ -226,6 +316,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Environment YAML
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public EnvironmentState()
         {

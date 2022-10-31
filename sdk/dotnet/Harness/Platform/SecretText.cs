@@ -40,7 +40,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// # Import using secret text id
+    /// Import using secret text id
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/secretText:SecretText example &lt;secret_text_id&gt;
@@ -68,13 +68,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> Value { get; private set; } = null!;
 
         /// <summary>
-        /// This has details to specify if the secret value is inline or referenced.
+        /// This has details to specify if the secret value is Inline or Reference.
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -169,13 +169,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -205,7 +205,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// This has details to specify if the secret value is inline or referenced.
+        /// This has details to specify if the secret value is Inline or Reference.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -237,13 +237,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -273,7 +273,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// This has details to specify if the secret value is inline or referenced.
+        /// This has details to specify if the secret value is Inline or Reference.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

@@ -35,7 +35,7 @@ export interface GetInputSetArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: string;
     /**
@@ -43,7 +43,7 @@ export interface GetInputSetArgs {
      */
     pipelineId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: string;
 }
@@ -69,7 +69,7 @@ export interface GetInputSetResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId: string;
     /**
@@ -77,7 +77,7 @@ export interface GetInputSetResult {
      */
     readonly pipelineId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId: string;
     /**
@@ -107,7 +107,7 @@ export interface GetInputSetOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**
@@ -115,7 +115,7 @@ export interface GetInputSetOutputArgs {
      */
     pipelineId: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: pulumi.Input<string>;
 }

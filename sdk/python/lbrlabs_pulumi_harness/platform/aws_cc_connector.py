@@ -37,8 +37,8 @@ class AwsCCConnectorArgs:
         :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -158,7 +158,7 @@ class AwsCCConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -170,7 +170,7 @@ class AwsCCConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -213,8 +213,8 @@ class _AwsCCConnectorState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -318,7 +318,7 @@ class _AwsCCConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -330,7 +330,7 @@ class _AwsCCConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -403,8 +403,8 @@ class AwsCCConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -510,8 +510,8 @@ class AwsCCConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -585,7 +585,7 @@ class AwsCCConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -593,7 +593,7 @@ class AwsCCConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

@@ -23,7 +23,6 @@ import (
 //	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -158,9 +157,9 @@ type KubernetesConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrOutput `pulumi:"openidConnect"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrOutput `pulumi:"serviceAccount"`
@@ -217,9 +216,9 @@ type kubernetesConnectorState struct {
 	Name *string `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect *KubernetesConnectorOpenidConnect `pulumi:"openidConnect"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount *KubernetesConnectorServiceAccount `pulumi:"serviceAccount"`
@@ -244,9 +243,9 @@ type KubernetesConnectorState struct {
 	Name pulumi.StringPtrInput
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrInput
@@ -275,9 +274,9 @@ type kubernetesConnectorArgs struct {
 	Name *string `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect *KubernetesConnectorOpenidConnect `pulumi:"openidConnect"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount *KubernetesConnectorServiceAccount `pulumi:"serviceAccount"`
@@ -303,9 +302,9 @@ type KubernetesConnectorArgs struct {
 	Name pulumi.StringPtrInput
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrInput
@@ -439,12 +438,12 @@ func (o KubernetesConnectorOutput) OpenidConnect() KubernetesConnectorOpenidConn
 	return o.ApplyT(func(v *KubernetesConnector) KubernetesConnectorOpenidConnectPtrOutput { return v.OpenidConnect }).(KubernetesConnectorOpenidConnectPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o KubernetesConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o KubernetesConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

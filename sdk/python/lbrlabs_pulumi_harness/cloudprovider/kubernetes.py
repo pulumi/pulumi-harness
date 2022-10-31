@@ -196,7 +196,7 @@ class Kubernetes(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness kubernetes cloud provider id.
+        Import using the Harness kubernetes cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
@@ -245,7 +245,7 @@ class Kubernetes(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness kubernetes cloud provider id.
+        Import using the Harness kubernetes cloud provider id.
 
         ```sh
          $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using the Harness aws cloud provider id.
+ * Import using the Harness aws cloud provider id.
  * 
  * ```sh
  *  $ pulumi import harness:cloudprovider/aws:Aws example &lt;provider_id&gt;

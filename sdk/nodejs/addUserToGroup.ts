@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the Harness user and user group id
+ * Import using the Harness user and user group id
  *
  * ```sh
  *  $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>

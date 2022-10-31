@@ -21,7 +21,7 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, color=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, type=None):
+    def __init__(__self__, color=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, type=None, yaml=None):
         if color and not isinstance(color, str):
             raise TypeError("Expected argument 'color' to be a str")
         pulumi.set(__self__, "color", color)
@@ -49,6 +49,9 @@ class GetEnvironmentResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if yaml and not isinstance(yaml, str):
+            raise TypeError("Expected argument 'yaml' to be a str")
+        pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -94,7 +97,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -102,7 +105,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -122,6 +125,14 @@ class GetEnvironmentResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> str:
+        """
+        Input Set YAML
+        """
+        return pulumi.get(self, "yaml")
+
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
@@ -137,7 +148,8 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags,
-            type=self.type)
+            type=self.type,
+            yaml=self.yaml)
 
 
 def get_environment(identifier: Optional[str] = None,
@@ -154,7 +166,7 @@ def get_environment(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_environment(name="name",
+    example = harness.platform.get_environment(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -162,8 +174,8 @@ def get_environment(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -182,7 +194,8 @@ def get_environment(identifier: Optional[str] = None,
         org_id=__ret__.org_id,
         project_id=__ret__.project_id,
         tags=__ret__.tags,
-        type=__ret__.type)
+        type=__ret__.type,
+        yaml=__ret__.yaml)
 
 
 @_utilities.lift_output_func(get_environment)
@@ -200,7 +213,7 @@ def get_environment_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_environment(name="name",
+    example = harness.platform.get_environment(identifier="identifier",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -208,7 +221,7 @@ def get_environment_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

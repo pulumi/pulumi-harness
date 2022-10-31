@@ -583,13 +583,37 @@ export interface UserGroupPermissions {
 }
 
 export interface UserGroupPermissionsAppPermissions {
+    /**
+     * The permission to perform actions against all resources.
+     */
     alls?: outputs.UserGroupPermissionsAppPermissionsAll[];
+    /**
+     * Permission configuration to perform actions against deployments.
+     */
     deployments?: outputs.UserGroupPermissionsAppPermissionsDeployment[];
+    /**
+     * Permission configuration to perform actions against workflows.
+     */
     environments?: outputs.UserGroupPermissionsAppPermissionsEnvironment[];
+    /**
+     * Permission configuration to perform actions against pipelines.
+     */
     pipelines?: outputs.UserGroupPermissionsAppPermissionsPipeline[];
+    /**
+     * Permission configuration to perform actions against provisioners.
+     */
     provisioners?: outputs.UserGroupPermissionsAppPermissionsProvisioner[];
+    /**
+     * Permission configuration to perform actions against services.
+     */
     services?: outputs.UserGroupPermissionsAppPermissionsService[];
+    /**
+     * Permission configuration to perform actions against templates.
+     */
     templates?: outputs.UserGroupPermissionsAppPermissionsTemplate[];
+    /**
+     * Permission configuration to perform actions against workflows.
+     */
     workflows?: outputs.UserGroupPermissionsAppPermissionsWorkflow[];
 }
 
@@ -966,6 +990,21 @@ export namespace platform {
         usernameRef?: string;
     }
 
+    export interface EnvironmentClustersMappingCluster {
+        /**
+         * account Identifier of the account
+         */
+        identifier?: string;
+        /**
+         * name of the cluster
+         */
+        name?: string;
+        /**
+         * scope at which the cluster exists in harness gitops, project vs org vs account
+         */
+        scope?: string;
+    }
+
     export interface GcpConnectorInheritFromDelegate {
         /**
          * The delegates to inherit the credentials from.
@@ -1156,6 +1195,141 @@ export namespace platform {
         sshKeyRef: string;
     }
 
+    export interface GetGitopsAgentMetadata {
+        highAvailability?: boolean;
+        namespace: string;
+    }
+
+    export interface GetGitopsClusterQuery {
+        ids?: outputs.platform.GetGitopsClusterQueryId[];
+        name?: string;
+        server?: string;
+    }
+
+    export interface GetGitopsClusterQueryId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GetGitopsClusterRequest {
+        clusters?: outputs.platform.GetGitopsClusterRequestCluster[];
+        ids?: outputs.platform.GetGitopsClusterRequestId[];
+        updateMasks?: outputs.platform.GetGitopsClusterRequestUpdateMask[];
+        updatedFields?: string[];
+        upsert?: boolean;
+    }
+
+    export interface GetGitopsClusterRequestCluster {
+        annotations?: {[key: string]: string};
+        clusterResources?: boolean;
+        configs?: outputs.platform.GetGitopsClusterRequestClusterConfig[];
+        infos?: outputs.platform.GetGitopsClusterRequestClusterInfo[];
+        labels?: {[key: string]: string};
+        name?: string;
+        namespaces?: string[];
+        project?: string;
+        refreshRequestedAts?: outputs.platform.GetGitopsClusterRequestClusterRefreshRequestedAt[];
+        server: string;
+        shard?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfig {
+        awsAuthConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigAwsAuthConfig[];
+        bearerToken?: string;
+        clusterConnectionType?: string;
+        execProviderConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigExecProviderConfig[];
+        password?: string;
+        tlsClientConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigTlsClientConfig[];
+        username?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigAwsAuthConfig {
+        clusterName?: string;
+        roleARN?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigExecProviderConfig {
+        apiVersion?: string;
+        args?: string[];
+        command?: string;
+        env?: {[key: string]: string};
+        installHint?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigTlsClientConfig {
+        caData?: string;
+        certData?: string;
+        insecure?: boolean;
+        keyData?: string;
+        serverName?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfo {
+        apiVersions?: string[];
+        applicationsCount?: string;
+        cacheInfos?: outputs.platform.GetGitopsClusterRequestClusterInfoCacheInfo[];
+        connectionStates?: outputs.platform.GetGitopsClusterRequestClusterInfoConnectionState[];
+        serverVersion?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoCacheInfo {
+        apisCount?: string;
+        lastCacheSyncTime?: string;
+        resourcesCount?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionState {
+        attemptedAts?: outputs.platform.GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt[];
+        message?: string;
+        status?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterRefreshRequestedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GetGitopsClusterRequestId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GetGitopsClusterRequestUpdateMask {
+        paths?: any[][];
+    }
+
+    export interface GetGitopsRepositoryRepo {
+        connectionType: string;
+        enableLfs?: boolean;
+        enableOci?: boolean;
+        githubAppEnterpriseBaseUrl?: string;
+        githubAppId?: string;
+        githubAppInstallationId?: string;
+        githubAppPrivateKey?: string;
+        inheritedCreds?: boolean;
+        insecure?: boolean;
+        insecureIgnoreHostKey?: boolean;
+        name?: string;
+        password?: string;
+        project: string;
+        proxy?: string;
+        repo: string;
+        sshPrivateKey?: string;
+        tlsClientCertData?: string;
+        tlsClientCertKey?: string;
+        type_: string;
+        username?: string;
+    }
+
+    export interface GetGitopsRepositoryUpdateMask {
+        paths?: string[];
+    }
+
     export interface GetHelmConnectorCredential {
         passwordRef: string;
         username: string;
@@ -1207,6 +1381,23 @@ export namespace platform {
         usernameRef: string;
     }
 
+    export interface GetPermissionsPermission {
+        action: string;
+        allowedScopeLevels: string[];
+        identifier: string;
+        includeInAllRoles: boolean;
+        name: string;
+        resourceType: string;
+        status: string;
+    }
+
+    export interface GetPrometheusConnectorHeader {
+        encryptedValueRef: string;
+        key: string;
+        value: string;
+        valueEncrypted: boolean;
+    }
+
     export interface GetResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -1214,11 +1405,11 @@ export namespace platform {
         accountId: string;
         filter: string;
         /**
-         * Unique identifier of the organization.
+         * Unique identifier of the Organization.
          */
         orgId: string;
         /**
-         * Unique identifier of the project.
+         * Unique identifier of the Project.
          */
         projectId: string;
     }
@@ -1237,6 +1428,21 @@ export namespace platform {
     export interface GetResourceGroupResourceFilterResourceAttributeFilter {
         attributeName: string;
         attributeValues: string[];
+    }
+
+    export interface GetRoleAssignmentsPrincipal {
+        /**
+         * Identifier.
+         */
+        identifier: string;
+        /**
+         * Scope level.
+         */
+        scopeLevel: string;
+        /**
+         * Type.
+         */
+        type: string;
     }
 
     export interface GetSecretSshkeyKerbero {
@@ -1321,6 +1527,141 @@ export namespace platform {
 
     export interface GitConnectorCredentialsSsh {
         sshKeyRef: string;
+    }
+
+    export interface GitOpsAgentMetadata {
+        highAvailability?: boolean;
+        namespace?: string;
+    }
+
+    export interface GitOpsClusterQuery {
+        ids?: outputs.platform.GitOpsClusterQueryId[];
+        name?: string;
+        server?: string;
+    }
+
+    export interface GitOpsClusterQueryId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GitOpsClusterRequest {
+        clusters?: outputs.platform.GitOpsClusterRequestCluster[];
+        ids?: outputs.platform.GitOpsClusterRequestId[];
+        updateMasks?: outputs.platform.GitOpsClusterRequestUpdateMask[];
+        updatedFields?: string[];
+        upsert?: boolean;
+    }
+
+    export interface GitOpsClusterRequestCluster {
+        annotations?: {[key: string]: string};
+        clusterResources?: boolean;
+        configs?: outputs.platform.GitOpsClusterRequestClusterConfig[];
+        infos: outputs.platform.GitOpsClusterRequestClusterInfo[];
+        labels?: {[key: string]: string};
+        name?: string;
+        namespaces?: string[];
+        project: string;
+        refreshRequestedAts?: outputs.platform.GitOpsClusterRequestClusterRefreshRequestedAt[];
+        server: string;
+        shard?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterConfig {
+        awsAuthConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigAwsAuthConfig[];
+        bearerToken?: string;
+        clusterConnectionType?: string;
+        execProviderConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig[];
+        password?: string;
+        tlsClientConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigTlsClientConfig[];
+        username?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigAwsAuthConfig {
+        clusterName?: string;
+        roleARN?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigExecProviderConfig {
+        apiVersion?: string;
+        args?: string[];
+        command?: string;
+        env?: {[key: string]: string};
+        installHint?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
+        caData?: string;
+        certData?: string;
+        insecure?: boolean;
+        keyData?: string;
+        serverName?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterInfo {
+        apiVersions?: string[];
+        applicationsCount?: string;
+        cacheInfos?: outputs.platform.GitOpsClusterRequestClusterInfoCacheInfo[];
+        connectionStates?: outputs.platform.GitOpsClusterRequestClusterInfoConnectionState[];
+        serverVersion?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoCacheInfo {
+        apisCount?: string;
+        lastCacheSyncTime?: string;
+        resourcesCount?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoConnectionState {
+        attemptedAts?: outputs.platform.GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt[];
+        message?: string;
+        status?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GitOpsClusterRequestClusterRefreshRequestedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GitOpsClusterRequestId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GitOpsClusterRequestUpdateMask {
+        paths?: string[];
+    }
+
+    export interface GitOpsRepositoryRepo {
+        connectionType: string;
+        enableLfs?: boolean;
+        enableOci?: boolean;
+        githubAppEnterpriseBaseUrl?: string;
+        githubAppId?: string;
+        githubAppInstallationId?: string;
+        githubAppPrivateKey?: string;
+        inheritedCreds?: boolean;
+        insecure?: boolean;
+        insecureIgnoreHostKey?: boolean;
+        name?: string;
+        password?: string;
+        project: string;
+        proxy?: string;
+        repo: string;
+        sshPrivateKey?: string;
+        tlsClientCertData?: string;
+        tlsClientCertKey?: string;
+        type_: string;
+        username?: string;
+    }
+
+    export interface GitOpsRepositoryUpdateMask {
+        paths?: string[];
     }
 
     export interface GithubConnectorApiAuthentication {
@@ -1519,6 +1860,25 @@ export namespace platform {
         usernameRef?: string;
     }
 
+    export interface PrometheusConnectorHeader {
+        /**
+         * Encrypted value reference.
+         */
+        encryptedValueRef?: string;
+        /**
+         * Key.
+         */
+        key: string;
+        /**
+         * Value.
+         */
+        value?: string;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: boolean;
+    }
+
     export interface ResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -1558,6 +1918,21 @@ export namespace platform {
     export interface ResourceGroupResourceFilterResourceAttributeFilter {
         attributeName?: string;
         attributeValues?: string[];
+    }
+
+    export interface RoleAssignmentsPrincipal {
+        /**
+         * Identifier.
+         */
+        identifier?: string;
+        /**
+         * Scope level.
+         */
+        scopeLevel: string;
+        /**
+         * Type.
+         */
+        type?: string;
     }
 
     export interface SecretSshkeyKerberos {
@@ -1649,6 +2024,18 @@ export namespace platform {
          */
         type?: string;
     }
+
+    export interface VariablesSpec {
+        /**
+         * FixedValue of the variable
+         */
+        fixedValue: string;
+        /**
+         * Type of Value of the Variable. For now only FIXED is supported
+         */
+        valueType: string;
+    }
+
 }
 
 export namespace service {

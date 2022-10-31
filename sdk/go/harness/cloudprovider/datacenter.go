@@ -38,7 +38,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness datacenter cloud provider id.
+// Import using the Harness datacenter cloud provider id.
 //
 // ```sh
 //

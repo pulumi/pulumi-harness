@@ -12,6 +12,16 @@ import (
 )
 
 // Resource for creating a Harness organization.
+//
+// ## Import
+//
+// # Import using organization id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/organization:Organization example <organization_id>
+//
+// ```
 type Organization struct {
 	pulumi.CustomResourceState
 

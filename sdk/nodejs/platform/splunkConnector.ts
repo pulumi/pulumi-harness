@@ -56,7 +56,7 @@ export class SplunkConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -64,7 +64,7 @@ export class SplunkConnector extends pulumi.CustomResource {
      */
     public readonly passwordRef!: pulumi.Output<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export interface SplunkConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface SplunkConnectorState {
      */
     passwordRef?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface SplunkConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -221,7 +221,7 @@ export interface SplunkConnectorArgs {
      */
     passwordRef: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

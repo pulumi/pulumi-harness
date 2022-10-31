@@ -18,6 +18,88 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness project.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service(&#34;example&#34;, ServiceArgs.builder()        
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .yaml(&#34;&#34;&#34;
+ *   service:
+ *     name: name
+ *     identifier: identifier
+ *     serviceDefinition:
+ *       spec:
+ *         manifests:
+ *           - manifest:
+ *               identifier: manifest1
+ *               type: K8sManifest
+ *               spec:
+ *                 store:
+ *                   type: Github
+ *                   spec:
+ *                     connectorRef: &lt;+input&gt;
+ *                     gitFetchType: Branch
+ *                     paths:
+ *                       - files1
+ *                     repoName: &lt;+input&gt;
+ *                     branch: master
+ *                 skipResourceVersioning: false
+ *         configFiles:
+ *           - configFile:
+ *               identifier: configFile1
+ *               spec:
+ *                 store:
+ *                   type: Harness
+ *                   spec:
+ *                     files:
+ *                       - &lt;+org.description&gt;
+ *         variables:
+ *           - name: var1
+ *             type: String
+ *             value: val1
+ *           - name: var2
+ *             type: String
+ *             value: val2
+ *       type: Kubernetes
+ *     gitOpsEnabled: false
+ * 
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import using service id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/service:Service example &lt;service_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
@@ -64,28 +146,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<String> projectId() {
@@ -104,6 +186,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Service YAML
+     * 
+     */
+    @Export(name="yaml", type=String.class, parameters={})
+    private Output<String> yaml;
+
+    /**
+     * @return Service YAML
+     * 
+     */
+    public Output<String> yaml() {
+        return this.yaml;
     }
 
     /**

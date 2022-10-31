@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using kubernetes connector id
+ * Import using kubernetes connector id
  * 
  * ```sh
  *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example &lt;connector_id&gt;
@@ -229,28 +229,28 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openidConnect);
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {

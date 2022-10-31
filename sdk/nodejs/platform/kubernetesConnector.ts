@@ -80,7 +80,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using kubernetes connector id
+ * Import using kubernetes connector id
  *
  * ```sh
  *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
@@ -143,11 +143,11 @@ export class KubernetesConnector extends pulumi.CustomResource {
      */
     public readonly openidConnect!: pulumi.Output<outputs.platform.KubernetesConnectorOpenidConnect | undefined>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -244,11 +244,11 @@ export interface KubernetesConnectorState {
      */
     openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -298,11 +298,11 @@ export interface KubernetesConnectorArgs {
      */
     openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

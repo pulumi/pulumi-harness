@@ -270,7 +270,7 @@ class UserGroup(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the id of the user group
+        Import using the id of the user group
 
         ```sh
          $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
@@ -296,7 +296,7 @@ class UserGroup(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the id of the user group
+        Import using the id of the user group
 
         ```sh
          $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>

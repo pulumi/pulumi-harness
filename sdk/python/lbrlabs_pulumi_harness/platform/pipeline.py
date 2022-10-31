@@ -24,8 +24,8 @@ class PipelineArgs:
         """
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] yaml: YAML of the pipeline.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -58,7 +58,7 @@ class PipelineArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -70,7 +70,7 @@ class PipelineArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -142,8 +142,8 @@ class _PipelineState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] yaml: YAML of the pipeline.
         """
@@ -202,7 +202,7 @@ class _PipelineState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -214,7 +214,7 @@ class _PipelineState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -271,94 +271,103 @@ class Pipeline(pulumi.CustomResource):
 
         example = harness.platform.Pipeline("example",
             identifier="identifier",
-            org_id=harness_platform_project["test"]["org_id"],
-            project_id=harness_platform_project["test"]["id"],
-            yaml=\"\"\"pipeline:
-            name: name
-            identifier: identifier
-            allowStageExecutions: false
-            projectIdentifier: projectIdentifier
-            orgIdentifier: orgIdentifier
-            tags: {}
-            stages:
-                - stage:
-                    name: dep
-                    identifier: dep
-                    description: ""
-                    type: Deployment
-                    spec:
-                        serviceConfig:
-                            serviceRef: service
-                            serviceDefinition:
-                                type: Kubernetes
-                                spec:
-                                    variables: []
-                        infrastructure:
-                            environmentRef: testenv
-                            infrastructureDefinition:
-                                type: KubernetesDirect
-                                spec:
-                                    connectorRef: testconf
-                                    namespace: test
-                                    releaseName: release-<+INFRA_KEY>
-                            allowSimultaneousDeployments: false
-                        execution:
-                            steps:
-                                - stepGroup:
-                                        name: Canary Deployment
-                                        identifier: canaryDepoyment
-                                        steps:
-                                            - step:
-                                                name: Canary Deployment
-                                                identifier: canaryDeployment
-                                                type: K8sCanaryDeploy
-                                                timeout: 10m
-                                                spec:
-                                                    instanceSelection:
-                                                        type: Count
-                                                        spec:
-                                                            count: 1
-                                                    skipDryRun: false
-                                            - step:
-                                                name: Canary Delete
-                                                identifier: canaryDelete
-                                                type: K8sCanaryDelete
-                                                timeout: 10m
-                                                spec: {}
-                                        rollbackSteps:
-                                            - step:
-                                                name: Canary Delete
-                                                identifier: rollbackCanaryDelete
-                                                type: K8sCanaryDelete
-                                                timeout: 10m
-                                                spec: {}
-                                - stepGroup:
-                                        name: Primary Deployment
-                                        identifier: primaryDepoyment
-                                        steps:
-                                            - step:
-                                                name: Rolling Deployment
-                                                identifier: rollingDeployment
-                                                type: K8sRollingDeploy
-                                                timeout: 10m
-                                                spec:
-                                                    skipDryRun: false
-                                        rollbackSteps:
-                                            - step:
-                                                name: Rolling Rollback
-                                                identifier: rollingRollback
-                                                type: K8sRollingRollback
-                                                timeout: 10m
-                                                spec: {}
-                            rollbackSteps: []
-                    tags: {}
-                    failureStrategies:
-                        - onFailure:
-                                errors:
-                                    - AllErrors
-                                action:
-                                    type: StageRollback
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            yaml=\"\"\"    pipeline:
+                name: name
+                identifier: identifier
+                allowStageExecutions: false
+                projectIdentifier: projectIdentifier
+                orgIdentifier: orgIdentifier
+                tags: {}
+                stages:
+                    - stage:
+                        name: dep
+                        identifier: dep
+                        description: ""
+                        type: Deployment
+                        spec:
+                            serviceConfig:
+                                serviceRef: service
+                                serviceDefinition:
+                                    type: Kubernetes
+                                    spec:
+                                        variables: []
+                            infrastructure:
+                                environmentRef: testenv
+                                infrastructureDefinition:
+                                    type: KubernetesDirect
+                                    spec:
+                                        connectorRef: testconf
+                                        namespace: test
+                                        releaseName: release-<+INFRA_KEY>
+                                allowSimultaneousDeployments: false
+                            execution:
+                                steps:
+                                    - stepGroup:
+                                            name: Canary Deployment
+                                            identifier: canaryDepoyment
+                                            steps:
+                                                - step:
+                                                    name: Canary Deployment
+                                                    identifier: canaryDeployment
+                                                    type: K8sCanaryDeploy
+                                                    timeout: 10m
+                                                    spec:
+                                                        instanceSelection:
+                                                            type: Count
+                                                            spec:
+                                                                count: 1
+                                                        skipDryRun: false
+                                                - step:
+                                                    name: Canary Delete
+                                                    identifier: canaryDelete
+                                                    type: K8sCanaryDelete
+                                                    timeout: 10m
+                                                    spec: {}
+                                            rollbackSteps:
+                                                - step:
+                                                    name: Canary Delete
+                                                    identifier: rollbackCanaryDelete
+                                                    type: K8sCanaryDelete
+                                                    timeout: 10m
+                                                    spec: {}
+                                    - stepGroup:
+                                            name: Primary Deployment
+                                            identifier: primaryDepoyment
+                                            steps:
+                                                - step:
+                                                    name: Rolling Deployment
+                                                    identifier: rollingDeployment
+                                                    type: K8sRollingDeploy
+                                                    timeout: 10m
+                                                    spec:
+                                                        skipDryRun: false
+                                            rollbackSteps:
+                                                - step:
+                                                    name: Rolling Rollback
+                                                    identifier: rollingRollback
+                                                    type: K8sRollingRollback
+                                                    timeout: 10m
+                                                    spec: {}
+                                rollbackSteps: []
+                        tags: {}
+                        failureStrategies:
+                            - onFailure:
+                                    errors:
+                                        - AllErrors
+                                    action:
+                                        type: StageRollback
+
         \"\"\")
+        ```
+
+        ## Import
+
+        Import using pipeline id
+
+        ```sh
+         $ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -366,8 +375,8 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] yaml: YAML of the pipeline.
         """
@@ -388,94 +397,103 @@ class Pipeline(pulumi.CustomResource):
 
         example = harness.platform.Pipeline("example",
             identifier="identifier",
-            org_id=harness_platform_project["test"]["org_id"],
-            project_id=harness_platform_project["test"]["id"],
-            yaml=\"\"\"pipeline:
-            name: name
-            identifier: identifier
-            allowStageExecutions: false
-            projectIdentifier: projectIdentifier
-            orgIdentifier: orgIdentifier
-            tags: {}
-            stages:
-                - stage:
-                    name: dep
-                    identifier: dep
-                    description: ""
-                    type: Deployment
-                    spec:
-                        serviceConfig:
-                            serviceRef: service
-                            serviceDefinition:
-                                type: Kubernetes
-                                spec:
-                                    variables: []
-                        infrastructure:
-                            environmentRef: testenv
-                            infrastructureDefinition:
-                                type: KubernetesDirect
-                                spec:
-                                    connectorRef: testconf
-                                    namespace: test
-                                    releaseName: release-<+INFRA_KEY>
-                            allowSimultaneousDeployments: false
-                        execution:
-                            steps:
-                                - stepGroup:
-                                        name: Canary Deployment
-                                        identifier: canaryDepoyment
-                                        steps:
-                                            - step:
-                                                name: Canary Deployment
-                                                identifier: canaryDeployment
-                                                type: K8sCanaryDeploy
-                                                timeout: 10m
-                                                spec:
-                                                    instanceSelection:
-                                                        type: Count
-                                                        spec:
-                                                            count: 1
-                                                    skipDryRun: false
-                                            - step:
-                                                name: Canary Delete
-                                                identifier: canaryDelete
-                                                type: K8sCanaryDelete
-                                                timeout: 10m
-                                                spec: {}
-                                        rollbackSteps:
-                                            - step:
-                                                name: Canary Delete
-                                                identifier: rollbackCanaryDelete
-                                                type: K8sCanaryDelete
-                                                timeout: 10m
-                                                spec: {}
-                                - stepGroup:
-                                        name: Primary Deployment
-                                        identifier: primaryDepoyment
-                                        steps:
-                                            - step:
-                                                name: Rolling Deployment
-                                                identifier: rollingDeployment
-                                                type: K8sRollingDeploy
-                                                timeout: 10m
-                                                spec:
-                                                    skipDryRun: false
-                                        rollbackSteps:
-                                            - step:
-                                                name: Rolling Rollback
-                                                identifier: rollingRollback
-                                                type: K8sRollingRollback
-                                                timeout: 10m
-                                                spec: {}
-                            rollbackSteps: []
-                    tags: {}
-                    failureStrategies:
-                        - onFailure:
-                                errors:
-                                    - AllErrors
-                                action:
-                                    type: StageRollback
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            yaml=\"\"\"    pipeline:
+                name: name
+                identifier: identifier
+                allowStageExecutions: false
+                projectIdentifier: projectIdentifier
+                orgIdentifier: orgIdentifier
+                tags: {}
+                stages:
+                    - stage:
+                        name: dep
+                        identifier: dep
+                        description: ""
+                        type: Deployment
+                        spec:
+                            serviceConfig:
+                                serviceRef: service
+                                serviceDefinition:
+                                    type: Kubernetes
+                                    spec:
+                                        variables: []
+                            infrastructure:
+                                environmentRef: testenv
+                                infrastructureDefinition:
+                                    type: KubernetesDirect
+                                    spec:
+                                        connectorRef: testconf
+                                        namespace: test
+                                        releaseName: release-<+INFRA_KEY>
+                                allowSimultaneousDeployments: false
+                            execution:
+                                steps:
+                                    - stepGroup:
+                                            name: Canary Deployment
+                                            identifier: canaryDepoyment
+                                            steps:
+                                                - step:
+                                                    name: Canary Deployment
+                                                    identifier: canaryDeployment
+                                                    type: K8sCanaryDeploy
+                                                    timeout: 10m
+                                                    spec:
+                                                        instanceSelection:
+                                                            type: Count
+                                                            spec:
+                                                                count: 1
+                                                        skipDryRun: false
+                                                - step:
+                                                    name: Canary Delete
+                                                    identifier: canaryDelete
+                                                    type: K8sCanaryDelete
+                                                    timeout: 10m
+                                                    spec: {}
+                                            rollbackSteps:
+                                                - step:
+                                                    name: Canary Delete
+                                                    identifier: rollbackCanaryDelete
+                                                    type: K8sCanaryDelete
+                                                    timeout: 10m
+                                                    spec: {}
+                                    - stepGroup:
+                                            name: Primary Deployment
+                                            identifier: primaryDepoyment
+                                            steps:
+                                                - step:
+                                                    name: Rolling Deployment
+                                                    identifier: rollingDeployment
+                                                    type: K8sRollingDeploy
+                                                    timeout: 10m
+                                                    spec:
+                                                        skipDryRun: false
+                                            rollbackSteps:
+                                                - step:
+                                                    name: Rolling Rollback
+                                                    identifier: rollingRollback
+                                                    type: K8sRollingRollback
+                                                    timeout: 10m
+                                                    spec: {}
+                                rollbackSteps: []
+                        tags: {}
+                        failureStrategies:
+                            - onFailure:
+                                    errors:
+                                        - AllErrors
+                                    action:
+                                        type: StageRollback
+
         \"\"\")
+        ```
+
+        ## Import
+
+        Import using pipeline id
+
+        ```sh
+         $ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -551,8 +569,8 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] yaml: YAML of the pipeline.
         """
@@ -597,7 +615,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -605,7 +623,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

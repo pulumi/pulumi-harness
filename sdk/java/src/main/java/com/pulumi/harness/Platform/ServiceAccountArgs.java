@@ -20,15 +20,15 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
      * Account Identifier for the Entity.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Account Identifier for the Entity.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -50,15 +50,15 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
      * Email of the Service Account.
      * 
      */
-    @Import(name="email")
-    private @Nullable Output<String> email;
+    @Import(name="email", required=true)
+    private Output<String> email;
 
     /**
      * @return Email of the Service Account.
      * 
      */
-    public Optional<Output<String>> email() {
-        return Optional.ofNullable(this.email);
+    public Output<String> email() {
+        return this.email;
     }
 
     /**
@@ -92,14 +92,14 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -107,14 +107,14 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -173,7 +173,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -215,7 +215,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder email(@Nullable Output<String> email) {
+        public Builder email(Output<String> email) {
             $.email = email;
             return this;
         }
@@ -273,7 +273,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -346,6 +346,8 @@ public final class ServiceAccountArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ServiceAccountArgs build() {
+            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
             return $;
         }

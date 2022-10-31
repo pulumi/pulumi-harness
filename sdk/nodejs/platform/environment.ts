@@ -6,6 +6,76 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     tags: [
+ *         "foo:bar",
+ *         "baz",
+ *     ],
+ *     type: "PreProduction",
+ *     yaml: `			   environment:
+ *          name: name
+ *          identifier: identifier
+ *          orgIdentifier: org_id
+ *          projectIdentifier: project_id
+ *          type: PreProduction
+ *          tags:
+ *            foo: bar
+ *            baz: ""
+ *          variables:
+ *            - name: envVar1
+ *              type: String
+ *              value: v1
+ *              description: ""
+ *            - name: envVar2
+ *              type: String
+ *              value: v2
+ *              description: ""
+ *          overrides:
+ *            manifests:
+ *              - manifest:
+ *                  identifier: manifestEnv
+ *                  type: Values
+ *                  spec:
+ *                    store:
+ *                      type: Git
+ *                      spec:
+ *                        connectorRef: <+input>
+ *                        gitFetchType: Branch
+ *                        paths:
+ *                          - file1
+ *                        repoName: <+input>
+ *                        branch: master
+ *            configFiles:
+ *              - configFile:
+ *                  identifier: configFileEnv
+ *                  spec:
+ *                    store:
+ *                      type: Harness
+ *                      spec:
+ *                        files:
+ *                          - account:/Add-ons/svcOverrideTest
+ *                        secretFiles: []
+ * `,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using environment id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/environment:Environment example <environment_id>
+ * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**
@@ -38,7 +108,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Color of the environment.
      */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
@@ -54,11 +124,11 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string | undefined>;
+    public readonly orgId!: pulumi.Output<string>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -67,6 +137,10 @@ export class Environment extends pulumi.CustomResource {
      * The type of environment. Valid values are PreProduction, Production
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * Environment YAML
+     */
+    public readonly yaml!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -89,10 +163,17 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["yaml"] = state ? state.yaml : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
+            }
+            if ((!args || args.orgId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'orgId'");
+            }
+            if ((!args || args.projectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -105,6 +186,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["yaml"] = args ? args.yaml : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
@@ -147,6 +229,10 @@ export interface EnvironmentState {
      * The type of environment. Valid values are PreProduction, Production
      */
     type?: pulumi.Input<string>;
+    /**
+     * Environment YAML
+     */
+    yaml?: pulumi.Input<string>;
 }
 
 /**
@@ -172,11 +258,11 @@ export interface EnvironmentArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
@@ -185,4 +271,8 @@ export interface EnvironmentArgs {
      * The type of environment. Valid values are PreProduction, Production
      */
     type: pulumi.Input<string>;
+    /**
+     * Environment YAML
+     */
+    yaml?: pulumi.Input<string>;
 }

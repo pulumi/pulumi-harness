@@ -74,7 +74,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness application id and environment id.
+    /// Import using the Harness application id and environment id.
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/environment:Environment dev &lt;application_id&gt;/&lt;environment_id&gt;

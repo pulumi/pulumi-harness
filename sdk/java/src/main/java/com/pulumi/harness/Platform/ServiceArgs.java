@@ -62,14 +62,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {
@@ -77,14 +77,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<String> projectId() {
@@ -106,6 +106,21 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Service YAML
+     * 
+     */
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
+
+    /**
+     * @return Service YAML
+     * 
+     */
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
+    }
+
     private ServiceArgs() {}
 
     private ServiceArgs(ServiceArgs $) {
@@ -115,6 +130,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
+        this.yaml = $.yaml;
     }
 
     public static Builder builder() {
@@ -199,7 +215,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -210,7 +226,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -220,7 +236,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -231,7 +247,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -269,6 +285,27 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param yaml Service YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(@Nullable Output<String> yaml) {
+            $.yaml = yaml;
+            return this;
+        }
+
+        /**
+         * @param yaml Service YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(String yaml) {
+            return yaml(Output.of(yaml));
         }
 
         public ServiceArgs build() {

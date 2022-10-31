@@ -46,7 +46,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness azure cloud provider id.
+    /// Import using the Harness azure cloud provider id.
     /// 
     /// ```sh
     ///  $ pulumi import harness:cloudprovider/azure:Azure example &lt;provider_id&gt;

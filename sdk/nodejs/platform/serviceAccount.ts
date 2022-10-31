@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using secret sshkey id
+ * Import using secret sshkey id
  *
  * ```sh
  *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
@@ -61,7 +61,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * Account Identifier for the Entity.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Description of the resource.
      */
@@ -69,7 +69,7 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * Email of the Service Account.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    public readonly email!: pulumi.Output<string>;
     /**
      * Unique identifier of the resource.
      */
@@ -79,11 +79,11 @@ export class ServiceAccount extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -114,6 +114,12 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServiceAccountArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.email === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'email'");
+            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -156,11 +162,11 @@ export interface ServiceAccountState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -176,7 +182,7 @@ export interface ServiceAccountArgs {
     /**
      * Account Identifier for the Entity.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * Description of the resource.
      */
@@ -184,7 +190,7 @@ export interface ServiceAccountArgs {
     /**
      * Email of the Service Account.
      */
-    email?: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * Unique identifier of the resource.
      */
@@ -194,11 +200,11 @@ export interface ServiceAccountArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

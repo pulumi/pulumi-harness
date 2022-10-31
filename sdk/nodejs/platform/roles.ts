@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using roles id
+ * Import using roles id
  *
  * ```sh
  *  $ pulumi import harness:platform/roles:Roles example <roles_id>
@@ -75,7 +75,7 @@ export class Roles extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -83,7 +83,7 @@ export class Roles extends pulumi.CustomResource {
      */
     public readonly permissions!: pulumi.Output<string[] | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -152,7 +152,7 @@ export interface RolesState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -160,7 +160,7 @@ export interface RolesState {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -190,7 +190,7 @@ export interface RolesArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface RolesArgs {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

@@ -291,7 +291,7 @@ class EncryptedText(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+        Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
 
         ```sh
          $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
@@ -339,7 +339,7 @@ class EncryptedText(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+        Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
 
         ```sh
          $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
@@ -384,7 +384,9 @@ class EncryptedText(pulumi.CustomResource):
             __props__.__dict__["secret_manager_id"] = secret_manager_id
             __props__.__dict__["secret_reference"] = secret_reference
             __props__.__dict__["usage_scopes"] = usage_scopes
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EncryptedText, __self__).__init__(
             'harness:index/encryptedText:EncryptedText',
             resource_name,

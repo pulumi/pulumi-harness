@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import the status of the delegate approval.
+ * Import the status of the delegate approval.
  *
  * ```sh
  *  $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>

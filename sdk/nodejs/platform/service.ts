@@ -6,6 +6,67 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Service("example", {
+ *     description: "test",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     yaml: `  service:
+ *     name: name
+ *     identifier: identifier
+ *     serviceDefinition:
+ *       spec:
+ *         manifests:
+ *           - manifest:
+ *               identifier: manifest1
+ *               type: K8sManifest
+ *               spec:
+ *                 store:
+ *                   type: Github
+ *                   spec:
+ *                     connectorRef: <+input>
+ *                     gitFetchType: Branch
+ *                     paths:
+ *                       - files1
+ *                     repoName: <+input>
+ *                     branch: master
+ *                 skipResourceVersioning: false
+ *         configFiles:
+ *           - configFile:
+ *               identifier: configFile1
+ *               spec:
+ *                 store:
+ *                   type: Harness
+ *                   spec:
+ *                     files:
+ *                       - <+org.description>
+ *         variables:
+ *           - name: var1
+ *             type: String
+ *             value: val1
+ *           - name: var2
+ *             type: String
+ *             value: val2
+ *       type: Kubernetes
+ *     gitOpsEnabled: false
+ * `,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using service id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/service:Service example <service_id>
+ * ```
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -48,17 +109,21 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Service YAML
+     */
+    public readonly yaml!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -79,6 +144,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["yaml"] = state ? state.yaml : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.identifier === undefined) && !opts.urn) {
@@ -96,6 +162,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["yaml"] = args ? args.yaml : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -119,17 +186,21 @@ export interface ServiceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Service YAML
+     */
+    yaml?: pulumi.Input<string>;
 }
 
 /**
@@ -149,15 +220,19 @@ export interface ServiceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: pulumi.Input<string>;
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Service YAML
+     */
+    yaml?: pulumi.Input<string>;
 }

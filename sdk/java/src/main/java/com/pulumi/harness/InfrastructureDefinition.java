@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using the Harness application id, environment id, and infrastructure definition id
+ * Import using the Harness application id, environment id, and infrastructure definition id
  * 
  * ```sh
  *  $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example &lt;app_id&gt;/&lt;env_id&gt;/&lt;infradef_id&gt;

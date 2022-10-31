@@ -12,6 +12,53 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Prometheus connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.PrometheusConnector("example", new()
+    ///     {
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Headers = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PrometheusConnectorHeaderArgs
+    ///             {
+    ///                 EncryptedValueRef = "account.secret_identifier",
+    ///                 Key = "key",
+    ///                 Value = "value",
+    ///                 ValueEncrypted = true,
+    ///             },
+    ///         },
+    ///         Identifier = "idntifier",
+    ///         PasswordRef = "account.secret_identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://prometheus.com/",
+    ///         UserName = "user_name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import using prometheus connector id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example &lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/prometheusConnector:PrometheusConnector")]
     public partial class PrometheusConnector : global::Pulumi.CustomResource
@@ -29,6 +76,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Headers.
+        /// </summary>
+        [Output("headers")]
+        public Output<ImmutableArray<Outputs.PrometheusConnectorHeader>> Headers { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -41,13 +94,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Password reference.
+        /// </summary>
+        [Output("passwordRef")]
+        public Output<string?> PasswordRef { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique identifier of the Project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -63,6 +122,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        /// <summary>
+        /// User name.
+        /// </summary>
+        [Output("userName")]
+        public Output<string?> UserName { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,6 +194,18 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("headers")]
+        private InputList<Inputs.PrometheusConnectorHeaderArgs>? _headers;
+
+        /// <summary>
+        /// Headers.
+        /// </summary>
+        public InputList<Inputs.PrometheusConnectorHeaderArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.PrometheusConnectorHeaderArgs>());
+            set => _headers = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -142,13 +219,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Password reference.
+        /// </summary>
+        [Input("passwordRef")]
+        public Input<string>? PasswordRef { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -170,6 +253,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
+
+        /// <summary>
+        /// User name.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public PrometheusConnectorArgs()
         {
@@ -197,6 +286,18 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("headers")]
+        private InputList<Inputs.PrometheusConnectorHeaderGetArgs>? _headers;
+
+        /// <summary>
+        /// Headers.
+        /// </summary>
+        public InputList<Inputs.PrometheusConnectorHeaderGetArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.PrometheusConnectorHeaderGetArgs>());
+            set => _headers = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -210,13 +311,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Password reference.
+        /// </summary>
+        [Input("passwordRef")]
+        public Input<string>? PasswordRef { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -238,6 +345,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// User name.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public PrometheusConnectorState()
         {

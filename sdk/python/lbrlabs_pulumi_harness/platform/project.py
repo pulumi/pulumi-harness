@@ -23,7 +23,7 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[str] color: Color of the project.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -56,7 +56,7 @@ class ProjectArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -130,7 +130,7 @@ class _ProjectState:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] modules: Modules in the project.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         if color is not None:
@@ -212,7 +212,7 @@ class _ProjectState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -248,13 +248,32 @@ class Project(pulumi.CustomResource):
         """
         Resource for creating a Harness project.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.Project("test",
+            color="#0063F7",
+            identifier="testproject")
+        ```
+
+        ## Import
+
+        Import using the organization id and the project id
+
+        ```sh
+         $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the project.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         ...
@@ -265,6 +284,25 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.Project("test",
+            color="#0063F7",
+            identifier="testproject")
+        ```
+
+        ## Import
+
+        Import using the organization id and the project id
+
+        ```sh
+         $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -336,7 +374,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] modules: Modules in the project.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -396,7 +434,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 

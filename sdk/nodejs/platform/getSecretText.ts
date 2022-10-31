@@ -46,11 +46,11 @@ export interface GetSecretTextArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -76,11 +76,11 @@ export interface GetSecretTextResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -96,7 +96,7 @@ export interface GetSecretTextResult {
      */
     readonly value: string;
     /**
-     * This has details to specify if the secret value is inline or referenced.
+     * This has details to specify if the secret value is Inline or Reference.
      */
     readonly valueType: string;
 }
@@ -118,11 +118,11 @@ export interface GetSecretTextOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

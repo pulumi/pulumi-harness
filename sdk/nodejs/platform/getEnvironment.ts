@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.platform.getEnvironment({
- *     name: "name",
+ * const example = pulumi.output(harness.platform.getEnvironment({
+ *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  * }));
@@ -47,11 +47,11 @@ export interface GetEnvironmentArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: string;
 }
@@ -81,11 +81,11 @@ export interface GetEnvironmentResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId: string;
     /**
@@ -96,6 +96,10 @@ export interface GetEnvironmentResult {
      * The type of environment.
      */
     readonly type: string;
+    /**
+     * Input Set YAML
+     */
+    readonly yaml: string;
 }
 
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
@@ -115,11 +119,11 @@ export interface GetEnvironmentOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: pulumi.Input<string>;
 }

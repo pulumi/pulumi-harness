@@ -11,7 +11,35 @@ using Pulumi;
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness User Group.
+    /// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+    /// 
+    ///         The following fields need to be populated for LDAP SSO Providers:
+    ///     	
+    ///         - linked_sso_id
+    ///     	
+    ///         - linked_sso_display_name
+    ///     	
+    ///         - sso_group_id
+    ///     	
+    ///         - sso_group_name
+    ///     	
+    ///         - linked_sso_type
+    ///     	
+    ///         - sso_linked
+    ///     	
+    ///         The following fields need to be populated for SAML SSO Providers:
+    ///     	
+    ///         - linked_sso_id
+    ///     	
+    ///         - linked_sso_display_name
+    ///     	
+    ///         - sso_group_name
+    ///     	
+    ///         - sso_group_id // same as sso_group_name
+    ///     	
+    ///         - linked_sso_type
+    ///     	
+    ///         - sso_linked
     /// 
     /// ## Example Usage
     /// 
@@ -22,13 +50,54 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Harness.Platform.Usergroup("example", new()
+    ///     var ssoTypeSaml = new Harness.Platform.Usergroup("ssoTypeSaml", new()
     ///     {
     ///         ExternallyManaged = false,
     ///         Identifier = "identifier",
     ///         LinkedSsoDisplayName = "linked_sso_display_name",
     ///         LinkedSsoId = "linked_sso_id",
     ///         LinkedSsoType = "SAML",
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 SlackWebhookUrl = "https://google.com",
+    ///                 Type = "SLACK",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 GroupEmail = "email@email.com",
+    ///                 Type = "EMAIL",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 MicrosoftTeamsWebhookUrl = "https://google.com",
+    ///                 Type = "MSTEAMS",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 PagerDutyKey = "pagerDutyKey",
+    ///                 Type = "PAGERDUTY",
+    ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         SsoGroupId = "sso_group_name",
+    ///         SsoGroupName = "sso_group_name",
+    ///         SsoLinked = true,
+    ///         Users = new[]
+    ///         {
+    ///             "user_id",
+    ///         },
+    ///     });
+    /// 
+    ///     var ssoTypeLdap = new Harness.Platform.Usergroup("ssoTypeLdap", new()
+    ///     {
+    ///         ExternallyManaged = false,
+    ///         Identifier = "identifier",
+    ///         LinkedSsoDisplayName = "linked_sso_display_name",
+    ///         LinkedSsoId = "linked_sso_id",
+    ///         LinkedSsoType = "LDAP",
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -68,7 +137,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// # Import using user group id
+    /// Import using user group id
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/usergroup:Usergroup example &lt;usergroup_id&gt;
@@ -126,13 +195,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<ImmutableArray<Outputs.UsergroupNotificationConfig>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -269,13 +338,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -385,13 +454,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

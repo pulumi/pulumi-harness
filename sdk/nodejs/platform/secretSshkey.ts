@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using secret sshkey id
+ * Import using secret sshkey id
  *
  * ```sh
  *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
@@ -139,7 +139,7 @@ export class SecretSshkey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -147,7 +147,7 @@ export class SecretSshkey extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -222,7 +222,7 @@ export interface SecretSshkeyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -230,7 +230,7 @@ export interface SecretSshkeyState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -264,7 +264,7 @@ export interface SecretSshkeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -272,7 +272,7 @@ export interface SecretSshkeyArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
