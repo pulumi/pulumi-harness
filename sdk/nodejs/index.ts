@@ -8,128 +8,138 @@ import * as utilities from "./utilities";
 export { AddUserToGroupArgs, AddUserToGroupState } from "./addUserToGroup";
 export type AddUserToGroup = import("./addUserToGroup").AddUserToGroup;
 export const AddUserToGroup: typeof import("./addUserToGroup").AddUserToGroup = null as any;
+utilities.lazyLoad(exports, ["AddUserToGroup"], () => require("./addUserToGroup"));
 
 export { ApplicationArgs, ApplicationState } from "./application";
 export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
 export { ApplicationGitSyncArgs, ApplicationGitSyncState } from "./applicationGitSync";
 export type ApplicationGitSync = import("./applicationGitSync").ApplicationGitSync;
 export const ApplicationGitSync: typeof import("./applicationGitSync").ApplicationGitSync = null as any;
+utilities.lazyLoad(exports, ["ApplicationGitSync"], () => require("./applicationGitSync"));
 
 export { DelegateApprovalArgs, DelegateApprovalState } from "./delegateApproval";
 export type DelegateApproval = import("./delegateApproval").DelegateApproval;
 export const DelegateApproval: typeof import("./delegateApproval").DelegateApproval = null as any;
+utilities.lazyLoad(exports, ["DelegateApproval"], () => require("./delegateApproval"));
 
 export { EncryptedTextArgs, EncryptedTextState } from "./encryptedText";
 export type EncryptedText = import("./encryptedText").EncryptedText;
 export const EncryptedText: typeof import("./encryptedText").EncryptedText = null as any;
+utilities.lazyLoad(exports, ["EncryptedText"], () => require("./encryptedText"));
 
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+
+export { EnvironmentServiceOverridesArgs, EnvironmentServiceOverridesState } from "./environmentServiceOverrides";
+export type EnvironmentServiceOverrides = import("./environmentServiceOverrides").EnvironmentServiceOverrides;
+export const EnvironmentServiceOverrides: typeof import("./environmentServiceOverrides").EnvironmentServiceOverrides = null as any;
+utilities.lazyLoad(exports, ["EnvironmentServiceOverrides"], () => require("./environmentServiceOverrides"));
 
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
 
 export { GetCurrentAccountArgs, GetCurrentAccountResult, GetCurrentAccountOutputArgs } from "./getCurrentAccount";
 export const getCurrentAccount: typeof import("./getCurrentAccount").getCurrentAccount = null as any;
 export const getCurrentAccountOutput: typeof import("./getCurrentAccount").getCurrentAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentAccount","getCurrentAccountOutput"], () => require("./getCurrentAccount"));
 
 export { GetDelegateArgs, GetDelegateResult, GetDelegateOutputArgs } from "./getDelegate";
 export const getDelegate: typeof import("./getDelegate").getDelegate = null as any;
 export const getDelegateOutput: typeof import("./getDelegate").getDelegateOutput = null as any;
+utilities.lazyLoad(exports, ["getDelegate","getDelegateOutput"], () => require("./getDelegate"));
 
 export { GetEncryptedTextArgs, GetEncryptedTextResult, GetEncryptedTextOutputArgs } from "./getEncryptedText";
 export const getEncryptedText: typeof import("./getEncryptedText").getEncryptedText = null as any;
 export const getEncryptedTextOutput: typeof import("./getEncryptedText").getEncryptedTextOutput = null as any;
+utilities.lazyLoad(exports, ["getEncryptedText","getEncryptedTextOutput"], () => require("./getEncryptedText"));
 
 export { GetGitConnectorArgs, GetGitConnectorResult, GetGitConnectorOutputArgs } from "./getGitConnector";
 export const getGitConnector: typeof import("./getGitConnector").getGitConnector = null as any;
 export const getGitConnectorOutput: typeof import("./getGitConnector").getGitConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getGitConnector","getGitConnectorOutput"], () => require("./getGitConnector"));
 
 export { GetSecretManagerArgs, GetSecretManagerResult, GetSecretManagerOutputArgs } from "./getSecretManager";
 export const getSecretManager: typeof import("./getSecretManager").getSecretManager = null as any;
 export const getSecretManagerOutput: typeof import("./getSecretManager").getSecretManagerOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretManager","getSecretManagerOutput"], () => require("./getSecretManager"));
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
 export { GetSshCredentialArgs, GetSshCredentialResult, GetSshCredentialOutputArgs } from "./getSshCredential";
 export const getSshCredential: typeof import("./getSshCredential").getSshCredential = null as any;
 export const getSshCredentialOutput: typeof import("./getSshCredential").getSshCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getSshCredential","getSshCredentialOutput"], () => require("./getSshCredential"));
 
 export { GetSsoProviderArgs, GetSsoProviderResult, GetSsoProviderOutputArgs } from "./getSsoProvider";
 export const getSsoProvider: typeof import("./getSsoProvider").getSsoProvider = null as any;
 export const getSsoProviderOutput: typeof import("./getSsoProvider").getSsoProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoProvider","getSsoProviderOutput"], () => require("./getSsoProvider"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
 export { GetUserGroupArgs, GetUserGroupResult, GetUserGroupOutputArgs } from "./getUserGroup";
 export const getUserGroup: typeof import("./getUserGroup").getUserGroup = null as any;
 export const getUserGroupOutput: typeof import("./getUserGroup").getUserGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroup","getUserGroupOutput"], () => require("./getUserGroup"));
 
 export { GetYamlConfigArgs, GetYamlConfigResult, GetYamlConfigOutputArgs } from "./getYamlConfig";
 export const getYamlConfig: typeof import("./getYamlConfig").getYamlConfig = null as any;
 export const getYamlConfigOutput: typeof import("./getYamlConfig").getYamlConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getYamlConfig","getYamlConfigOutput"], () => require("./getYamlConfig"));
 
 export { GitConnectorArgs, GitConnectorState } from "./gitConnector";
 export type GitConnector = import("./gitConnector").GitConnector;
 export const GitConnector: typeof import("./gitConnector").GitConnector = null as any;
+utilities.lazyLoad(exports, ["GitConnector"], () => require("./gitConnector"));
 
 export { InfrastructureDefinitionArgs, InfrastructureDefinitionState } from "./infrastructureDefinition";
 export type InfrastructureDefinition = import("./infrastructureDefinition").InfrastructureDefinition;
 export const InfrastructureDefinition: typeof import("./infrastructureDefinition").InfrastructureDefinition = null as any;
+utilities.lazyLoad(exports, ["InfrastructureDefinition"], () => require("./infrastructureDefinition"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 export { SshCredentialArgs, SshCredentialState } from "./sshCredential";
 export type SshCredential = import("./sshCredential").SshCredential;
 export const SshCredential: typeof import("./sshCredential").SshCredential = null as any;
+utilities.lazyLoad(exports, ["SshCredential"], () => require("./sshCredential"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 export { UserGroupArgs, UserGroupState } from "./userGroup";
 export type UserGroup = import("./userGroup").UserGroup;
 export const UserGroup: typeof import("./userGroup").UserGroup = null as any;
+utilities.lazyLoad(exports, ["UserGroup"], () => require("./userGroup"));
+
+export { UserGroupPermissionsArgs, UserGroupPermissionsState } from "./userGroupPermissions";
+export type UserGroupPermissions = import("./userGroupPermissions").UserGroupPermissions;
+export const UserGroupPermissions: typeof import("./userGroupPermissions").UserGroupPermissions = null as any;
+utilities.lazyLoad(exports, ["UserGroupPermissions"], () => require("./userGroupPermissions"));
 
 export { YamlConfigArgs, YamlConfigState } from "./yamlConfig";
 export type YamlConfig = import("./yamlConfig").YamlConfig;
 export const YamlConfig: typeof import("./yamlConfig").YamlConfig = null as any;
-
-utilities.lazyLoad(exports, ["AddUserToGroup"], () => require("./addUserToGroup"));
-utilities.lazyLoad(exports, ["Application"], () => require("./application"));
-utilities.lazyLoad(exports, ["ApplicationGitSync"], () => require("./applicationGitSync"));
-utilities.lazyLoad(exports, ["DelegateApproval"], () => require("./delegateApproval"));
-utilities.lazyLoad(exports, ["EncryptedText"], () => require("./encryptedText"));
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
-utilities.lazyLoad(exports, ["getCurrentAccount","getCurrentAccountOutput"], () => require("./getCurrentAccount"));
-utilities.lazyLoad(exports, ["getDelegate","getDelegateOutput"], () => require("./getDelegate"));
-utilities.lazyLoad(exports, ["getEncryptedText","getEncryptedTextOutput"], () => require("./getEncryptedText"));
-utilities.lazyLoad(exports, ["getGitConnector","getGitConnectorOutput"], () => require("./getGitConnector"));
-utilities.lazyLoad(exports, ["getSecretManager","getSecretManagerOutput"], () => require("./getSecretManager"));
-utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
-utilities.lazyLoad(exports, ["getSshCredential","getSshCredentialOutput"], () => require("./getSshCredential"));
-utilities.lazyLoad(exports, ["getSsoProvider","getSsoProviderOutput"], () => require("./getSsoProvider"));
-utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
-utilities.lazyLoad(exports, ["getUserGroup","getUserGroupOutput"], () => require("./getUserGroup"));
-utilities.lazyLoad(exports, ["getYamlConfig","getYamlConfigOutput"], () => require("./getYamlConfig"));
-utilities.lazyLoad(exports, ["GitConnector"], () => require("./gitConnector"));
-utilities.lazyLoad(exports, ["InfrastructureDefinition"], () => require("./infrastructureDefinition"));
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
-utilities.lazyLoad(exports, ["SshCredential"], () => require("./sshCredential"));
-utilities.lazyLoad(exports, ["User"], () => require("./user"));
-utilities.lazyLoad(exports, ["UserGroup"], () => require("./userGroup"));
 utilities.lazyLoad(exports, ["YamlConfig"], () => require("./yamlConfig"));
+
 
 // Export sub-modules:
 import * as cloudprovider from "./cloudprovider";
@@ -162,6 +172,8 @@ const _module = {
                 return new EncryptedText(name, <any>undefined, { urn })
             case "harness:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides":
+                return new EnvironmentServiceOverrides(name, <any>undefined, { urn })
             case "harness:index/gitConnector:GitConnector":
                 return new GitConnector(name, <any>undefined, { urn })
             case "harness:index/infrastructureDefinition:InfrastructureDefinition":
@@ -172,6 +184,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "harness:index/userGroup:UserGroup":
                 return new UserGroup(name, <any>undefined, { urn })
+            case "harness:index/userGroupPermissions:UserGroupPermissions":
+                return new UserGroupPermissions(name, <any>undefined, { urn })
             case "harness:index/yamlConfig:YamlConfig":
                 return new YamlConfig(name, <any>undefined, { urn })
             default:
@@ -185,11 +199,13 @@ pulumi.runtime.registerResourceModule("harness", "index/applicationGitSync", _mo
 pulumi.runtime.registerResourceModule("harness", "index/delegateApproval", _module)
 pulumi.runtime.registerResourceModule("harness", "index/encryptedText", _module)
 pulumi.runtime.registerResourceModule("harness", "index/environment", _module)
+pulumi.runtime.registerResourceModule("harness", "index/environmentServiceOverrides", _module)
 pulumi.runtime.registerResourceModule("harness", "index/gitConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "index/infrastructureDefinition", _module)
 pulumi.runtime.registerResourceModule("harness", "index/sshCredential", _module)
 pulumi.runtime.registerResourceModule("harness", "index/user", _module)
 pulumi.runtime.registerResourceModule("harness", "index/userGroup", _module)
+pulumi.runtime.registerResourceModule("harness", "index/userGroupPermissions", _module)
 pulumi.runtime.registerResourceModule("harness", "index/yamlConfig", _module)
 pulumi.runtime.registerResourcePackage("harness", {
     version: utilities.getVersion(),

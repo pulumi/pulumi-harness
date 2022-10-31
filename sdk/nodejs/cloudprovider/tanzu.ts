@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using the Harness Tanzu cloud provider id.
+ * Import using the Harness Tanzu cloud provider id.
  *
  * ```sh
  *  $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>

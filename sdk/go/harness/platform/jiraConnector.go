@@ -23,11 +23,11 @@ type JiraConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Reference to a secret containing the password to use for authentication.
 	PasswordRef pulumi.StringOutput `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -86,11 +86,11 @@ type jiraConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// Reference to a secret containing the password to use for authentication.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -111,11 +111,11 @@ type JiraConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// Reference to a secret containing the password to use for authentication.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -140,11 +140,11 @@ type jiraConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// Reference to a secret containing the password to use for authentication.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -166,11 +166,11 @@ type JiraConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// Reference to a secret containing the password to use for authentication.
 	PasswordRef pulumi.StringInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -289,7 +289,7 @@ func (o JiraConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o JiraConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -299,7 +299,7 @@ func (o JiraConnectorOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o JiraConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

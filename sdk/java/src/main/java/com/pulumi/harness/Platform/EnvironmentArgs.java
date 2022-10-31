@@ -80,30 +80,30 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      * Unique identifier of the organization.
      * 
      */
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
+    @Import(name="orgId", required=true)
+    private Output<String> orgId;
 
     /**
      * @return Unique identifier of the organization.
      * 
      */
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
+    public Output<String> orgId() {
+        return this.orgId;
     }
 
     /**
      * Unique identifier of the project.
      * 
      */
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="projectId", required=true)
+    private Output<String> projectId;
 
     /**
      * @return Unique identifier of the project.
      * 
      */
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
 
     /**
@@ -136,6 +136,21 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         return this.type;
     }
 
+    /**
+     * Environment YAML
+     * 
+     */
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
+
+    /**
+     * @return Environment YAML
+     * 
+     */
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
+    }
+
     private EnvironmentArgs() {}
 
     private EnvironmentArgs(EnvironmentArgs $) {
@@ -147,6 +162,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.type = $.type;
+        this.yaml = $.yaml;
     }
 
     public static Builder builder() {
@@ -257,7 +273,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder orgId(@Nullable Output<String> orgId) {
+        public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
@@ -278,7 +294,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder projectId(@Nullable Output<String> projectId) {
+        public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -345,8 +361,31 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
             return type(Output.of(type));
         }
 
+        /**
+         * @param yaml Environment YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(@Nullable Output<String> yaml) {
+            $.yaml = yaml;
+            return this;
+        }
+
+        /**
+         * @param yaml Environment YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(String yaml) {
+            return yaml(Output.of(yaml));
+        }
+
         public EnvironmentArgs build() {
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
+            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }

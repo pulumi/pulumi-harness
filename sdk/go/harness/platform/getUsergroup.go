@@ -20,14 +20,21 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
+//			_, err = platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
 //				Name:      pulumi.StringRef("name"),
 //				OrgId:     pulumi.StringRef("org_id"),
 //				ProjectId: pulumi.StringRef("project_id"),
@@ -58,9 +65,9 @@ type LookupUsergroupArgs struct {
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []GetUsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -84,9 +91,9 @@ type LookupUsergroupResult struct {
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []GetUsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId string `pulumi:"ssoGroupId"`
@@ -121,9 +128,9 @@ type LookupUsergroupOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs GetUsergroupNotificationConfigArrayInput `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -191,12 +198,12 @@ func (o LookupUsergroupResultOutput) NotificationConfigs() GetUsergroupNotificat
 	return o.ApplyT(func(v LookupUsergroupResult) []GetUsergroupNotificationConfig { return v.NotificationConfigs }).(GetUsergroupNotificationConfigArrayOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupUsergroupResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupUsergroupResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

@@ -54,7 +54,7 @@ export interface GetRolesArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
@@ -62,7 +62,7 @@ export interface GetRolesArgs {
      */
     permissions?: string[];
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -92,7 +92,7 @@ export interface GetRolesResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
@@ -100,7 +100,7 @@ export interface GetRolesResult {
      */
     readonly permissions?: string[];
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -130,7 +130,7 @@ export interface GetRolesOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -138,7 +138,7 @@ export interface GetRolesOutputArgs {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

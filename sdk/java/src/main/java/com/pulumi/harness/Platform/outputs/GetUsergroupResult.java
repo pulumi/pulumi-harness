@@ -60,12 +60,12 @@ public final class GetUsergroupResult {
      */
     private @Nullable List<GetUsergroupNotificationConfig> notificationConfigs;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private @Nullable String projectId;
@@ -160,14 +160,14 @@ public final class GetUsergroupResult {
         return this.notificationConfigs == null ? List.of() : this.notificationConfigs;
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {

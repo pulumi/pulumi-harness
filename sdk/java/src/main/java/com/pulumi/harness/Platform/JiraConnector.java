@@ -78,14 +78,14 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
@@ -106,14 +106,14 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
         return this.passwordRef;
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {

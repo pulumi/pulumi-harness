@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using the Harness Spot cloud provider id.
+ * Import using the Harness Spot cloud provider id.
  *
  * ```sh
  *  $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>

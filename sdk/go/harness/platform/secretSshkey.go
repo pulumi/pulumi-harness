@@ -21,7 +21,6 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -148,11 +147,11 @@ type SecretSshkey struct {
 	Kerberos SecretSshkeyKerberosPtrOutput `pulumi:"kerberos"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// SSH port
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrOutput `pulumi:"ssh"`
@@ -201,11 +200,11 @@ type secretSshkeyState struct {
 	Kerberos *SecretSshkeyKerberos `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port *int `pulumi:"port"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh *SecretSshkeySsh `pulumi:"ssh"`
@@ -222,11 +221,11 @@ type SecretSshkeyState struct {
 	Kerberos SecretSshkeyKerberosPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// SSH port
 	Port pulumi.IntPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrInput
@@ -247,11 +246,11 @@ type secretSshkeyArgs struct {
 	Kerberos *SecretSshkeyKerberos `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port *int `pulumi:"port"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh *SecretSshkeySsh `pulumi:"ssh"`
@@ -269,11 +268,11 @@ type SecretSshkeyArgs struct {
 	Kerberos SecretSshkeyKerberosPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// SSH port
 	Port pulumi.IntPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrInput
@@ -388,7 +387,7 @@ func (o SecretSshkeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o SecretSshkeyOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -398,7 +397,7 @@ func (o SecretSshkeyOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o SecretSshkeyOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

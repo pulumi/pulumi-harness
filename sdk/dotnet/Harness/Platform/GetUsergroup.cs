@@ -26,7 +26,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetUsergroup.Invoke(new()
+        ///     var exampleById = Harness.Platform.GetUsergroup.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        ///     var exampleByName = Harness.Platform.GetUsergroup.Invoke(new()
         ///     {
         ///         Name = "name",
         ///         OrgId = "org_id",
@@ -55,7 +62,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetUsergroup.Invoke(new()
+        ///     var exampleById = Harness.Platform.GetUsergroup.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        ///     var exampleByName = Harness.Platform.GetUsergroup.Invoke(new()
         ///     {
         ///         Name = "name",
         ///         OrgId = "org_id",
@@ -99,13 +113,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -143,13 +157,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -201,11 +215,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsergroupNotificationConfigResult> NotificationConfigs;
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Unique identifier of the Organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the project.
+        /// Unique identifier of the Project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>

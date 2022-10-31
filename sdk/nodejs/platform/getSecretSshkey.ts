@@ -48,11 +48,11 @@ export interface GetSecretSshkeyArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -82,7 +82,7 @@ export interface GetSecretSshkeyResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
@@ -90,7 +90,7 @@ export interface GetSecretSshkeyResult {
      */
     readonly port: number;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -120,11 +120,11 @@ export interface GetSecretSshkeyOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

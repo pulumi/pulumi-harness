@@ -60,11 +60,11 @@ export class NewrelicConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -158,11 +158,11 @@ export interface NewrelicConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -204,11 +204,11 @@ export interface NewrelicConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

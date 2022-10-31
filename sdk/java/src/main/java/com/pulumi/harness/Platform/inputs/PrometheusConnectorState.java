@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.PrometheusConnectorHeaderArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Headers.
+     * 
+     */
+    @Import(name="headers")
+    private @Nullable Output<List<PrometheusConnectorHeaderArgs>> headers;
+
+    /**
+     * @return Headers.
+     * 
+     */
+    public Optional<Output<List<PrometheusConnectorHeaderArgs>>> headers() {
+        return Optional.ofNullable(this.headers);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -77,14 +93,14 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -92,14 +108,29 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     * 
+     */
+    @Import(name="passwordRef")
+    private @Nullable Output<String> passwordRef;
+
+    /**
+     * @return Password reference.
+     * 
+     */
+    public Optional<Output<String>> passwordRef() {
+        return Optional.ofNullable(this.passwordRef);
+    }
+
+    /**
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -136,17 +167,35 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * User name.
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable Output<String> userName;
+
+    /**
+     * @return User name.
+     * 
+     */
+    public Optional<Output<String>> userName() {
+        return Optional.ofNullable(this.userName);
+    }
+
     private PrometheusConnectorState() {}
 
     private PrometheusConnectorState(PrometheusConnectorState $) {
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.headers = $.headers;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
+        this.passwordRef = $.passwordRef;
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.url = $.url;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -220,6 +269,37 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param headers Headers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(@Nullable Output<List<PrometheusConnectorHeaderArgs>> headers) {
+            $.headers = headers;
+            return this;
+        }
+
+        /**
+         * @param headers Headers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(List<PrometheusConnectorHeaderArgs> headers) {
+            return headers(Output.of(headers));
+        }
+
+        /**
+         * @param headers Headers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(PrometheusConnectorHeaderArgs... headers) {
+            return headers(List.of(headers));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -262,7 +342,7 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -273,7 +353,7 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -283,7 +363,28 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param passwordRef Password reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordRef(@Nullable Output<String> passwordRef) {
+            $.passwordRef = passwordRef;
+            return this;
+        }
+
+        /**
+         * @param passwordRef Password reference.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordRef(String passwordRef) {
+            return passwordRef(Output.of(passwordRef));
+        }
+
+        /**
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -294,7 +395,7 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -353,6 +454,27 @@ public final class PrometheusConnectorState extends com.pulumi.resources.Resourc
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param userName User name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable Output<String> userName) {
+            $.userName = userName;
+            return this;
+        }
+
+        /**
+         * @param userName User name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(String userName) {
+            return userName(Output.of(userName));
         }
 
         public PrometheusConnectorState build() {

@@ -2,10 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Prometheus connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = pulumi.output(harness.platform.getPrometheusConnector({
+ *     identifier: "identifier",
+ * }));
+ * ```
  */
 export function getPrometheusConnector(args?: GetPrometheusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusConnectorResult> {
     args = args || {};
@@ -35,11 +48,11 @@ export interface GetPrometheusConnectorArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -57,6 +70,10 @@ export interface GetPrometheusConnectorResult {
      */
     readonly description: string;
     /**
+     * Headers.
+     */
+    readonly headers: outputs.platform.GetPrometheusConnectorHeader[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -69,11 +86,15 @@ export interface GetPrometheusConnectorResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     */
+    readonly passwordRef: string;
+    /**
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -84,6 +105,10 @@ export interface GetPrometheusConnectorResult {
      * Url of the Prometheus server.
      */
     readonly url: string;
+    /**
+     * User name.
+     */
+    readonly userName: string;
 }
 
 export function getPrometheusConnectorOutput(args?: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusConnectorResult> {
@@ -103,11 +128,11 @@ export interface GetPrometheusConnectorOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

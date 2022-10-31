@@ -64,9 +64,9 @@ type SecretText struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringOutput `pulumi:"secretManagerIdentifier"`
@@ -74,7 +74,7 @@ type SecretText struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Value of the Secret
 	Value pulumi.StringPtrOutput `pulumi:"value"`
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -123,9 +123,9 @@ type secretTextState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier *string `pulumi:"secretManagerIdentifier"`
@@ -133,7 +133,7 @@ type secretTextState struct {
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
 	Value *string `pulumi:"value"`
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -144,9 +144,9 @@ type SecretTextState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringPtrInput
@@ -154,7 +154,7 @@ type SecretTextState struct {
 	Tags pulumi.StringArrayInput
 	// Value of the Secret
 	Value pulumi.StringPtrInput
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringPtrInput
 }
 
@@ -169,9 +169,9 @@ type secretTextArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
@@ -179,7 +179,7 @@ type secretTextArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
 	Value *string `pulumi:"value"`
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -191,9 +191,9 @@ type SecretTextArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringInput
@@ -201,7 +201,7 @@ type SecretTextArgs struct {
 	Tags pulumi.StringArrayInput
 	// Value of the Secret
 	Value pulumi.StringPtrInput
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringInput
 }
 
@@ -307,12 +307,12 @@ func (o SecretTextOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o SecretTextOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o SecretTextOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -332,7 +332,7 @@ func (o SecretTextOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// This has details to specify if the secret value is inline or referenced.
+// This has details to specify if the secret value is Inline or Reference.
 func (o SecretTextOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

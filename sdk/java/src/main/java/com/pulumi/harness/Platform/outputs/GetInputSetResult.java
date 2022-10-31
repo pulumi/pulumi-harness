@@ -33,7 +33,7 @@ public final class GetInputSetResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private String orgId;
@@ -43,7 +43,7 @@ public final class GetInputSetResult {
      */
     private String pipelineId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private String projectId;
@@ -88,7 +88,7 @@ public final class GetInputSetResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {
@@ -102,7 +102,7 @@ public final class GetInputSetResult {
         return this.pipelineId;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public String projectId() {

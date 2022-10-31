@@ -106,7 +106,7 @@ class GetArtifactoryConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -114,7 +114,7 @@ class GetArtifactoryConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -164,8 +164,8 @@ def get_artifactory_connector(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -200,7 +200,7 @@ def get_artifactory_connector_output(identifier: Optional[pulumi.Input[Optional[
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

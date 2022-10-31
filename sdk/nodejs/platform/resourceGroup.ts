@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using resource group id
+ * Import using resource group id
  *
  * ```sh
  *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
@@ -103,11 +103,11 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -201,11 +201,11 @@ export interface ResourceGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -251,11 +251,11 @@ export interface ResourceGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**

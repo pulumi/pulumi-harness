@@ -15,7 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getUsergroup({
+ * const exampleById = pulumi.output(harness.platform.getUsergroup({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * }));
+ * const exampleByName = pulumi.output(harness.platform.getUsergroup({
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -55,11 +60,11 @@ export interface GetUsergroupArgs {
      */
     notificationConfigs?: inputs.platform.GetUsergroupNotificationConfig[];
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: string;
 }
@@ -105,11 +110,11 @@ export interface GetUsergroupResult {
      */
     readonly notificationConfigs?: outputs.platform.GetUsergroupNotificationConfig[];
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     readonly projectId?: string;
     /**
@@ -155,11 +160,11 @@ export interface GetUsergroupOutputArgs {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetUsergroupNotificationConfigArgs>[]>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
 }

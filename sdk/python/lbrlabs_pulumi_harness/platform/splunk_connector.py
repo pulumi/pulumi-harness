@@ -35,8 +35,8 @@ class SplunkConnectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -157,7 +157,7 @@ class SplunkConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -169,7 +169,7 @@ class SplunkConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -211,9 +211,9 @@ class _SplunkConnectorState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[str] password_ref: The reference to the Harness secret containing the Splunk password.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the Splunk server.
         :param pulumi.Input[str] username: The username used for connecting to Splunk.
@@ -305,7 +305,7 @@ class _SplunkConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -329,7 +329,7 @@ class _SplunkConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -401,9 +401,9 @@ class SplunkConnector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[str] password_ref: The reference to the Harness secret containing the Splunk password.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the Splunk server.
         :param pulumi.Input[str] username: The username used for connecting to Splunk.
@@ -506,9 +506,9 @@ class SplunkConnector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
         :param pulumi.Input[str] password_ref: The reference to the Harness secret containing the Splunk password.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the Splunk server.
         :param pulumi.Input[str] username: The username used for connecting to Splunk.
@@ -574,7 +574,7 @@ class SplunkConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -590,7 +590,7 @@ class SplunkConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

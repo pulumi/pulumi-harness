@@ -43,7 +43,7 @@ public final class GetProjectResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private String orgId;
@@ -97,7 +97,7 @@ public final class GetProjectResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {

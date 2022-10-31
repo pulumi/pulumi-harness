@@ -36,8 +36,8 @@ class AppDynamicsConnectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs'] username_password: Authenticate to App Dynamics using username and password.
         """
@@ -149,7 +149,7 @@ class AppDynamicsConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -161,7 +161,7 @@ class AppDynamicsConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -216,8 +216,8 @@ class _AppDynamicsConnectorState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the App Dynamics controller.
         :param pulumi.Input['AppDynamicsConnectorUsernamePasswordArgs'] username_password: Authenticate to App Dynamics using username and password.
@@ -321,7 +321,7 @@ class _AppDynamicsConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -333,7 +333,7 @@ class _AppDynamicsConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -406,8 +406,8 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the App Dynamics controller.
         :param pulumi.Input[pulumi.InputType['AppDynamicsConnectorUsernamePasswordArgs']] username_password: Authenticate to App Dynamics using username and password.
@@ -507,8 +507,8 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] url: Url of the App Dynamics controller.
         :param pulumi.Input[pulumi.InputType['AppDynamicsConnectorUsernamePasswordArgs']] username_password: Authenticate to App Dynamics using username and password.
@@ -582,7 +582,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -590,7 +590,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

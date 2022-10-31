@@ -149,7 +149,7 @@ class GetUsergroupResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -157,7 +157,7 @@ class GetUsergroupResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -241,7 +241,10 @@ def get_usergroup(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_usergroup(name="name",
+    example_by_id = harness.platform.get_usergroup(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    example_by_name = harness.platform.get_usergroup(name="name",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -250,8 +253,8 @@ def get_usergroup(identifier: Optional[str] = None,
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']] notification_configs: List of notification settings.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -297,7 +300,10 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_usergroup(name="name",
+    example_by_id = harness.platform.get_usergroup(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    example_by_name = harness.platform.get_usergroup(name="name",
         org_id="org_id",
         project_id="project_id")
     ```
@@ -306,7 +312,7 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']] notification_configs: List of notification settings.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

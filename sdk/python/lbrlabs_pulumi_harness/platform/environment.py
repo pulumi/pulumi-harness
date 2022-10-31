@@ -15,25 +15,29 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
+                 org_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 org_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] yaml: Environment YAML
         """
         pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "type", type)
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -41,12 +45,10 @@ class EnvironmentArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -59,6 +61,30 @@ class EnvironmentArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[str]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -109,30 +135,6 @@ class EnvironmentArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "org_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -143,6 +145,18 @@ class EnvironmentArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment YAML
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
 
 
 @pulumi.input_type
@@ -155,7 +169,8 @@ class _EnvironmentState:
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] color: Color of the environment.
@@ -166,6 +181,7 @@ class _EnvironmentState:
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
+        :param pulumi.Input[str] yaml: Environment YAML
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -183,6 +199,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -280,6 +298,18 @@ class _EnvironmentState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment YAML
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 class Environment(pulumi.CustomResource):
     @overload
@@ -294,9 +324,80 @@ class Environment(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness environment.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.Environment("example",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            tags=[
+                "foo:bar",
+                "baz",
+            ],
+            type="PreProduction",
+            yaml=\"\"\"			   environment:
+                 name: name
+                 identifier: identifier
+                 orgIdentifier: org_id
+                 projectIdentifier: project_id
+                 type: PreProduction
+                 tags:
+                   foo: bar
+                   baz: ""
+                 variables:
+                   - name: envVar1
+                     type: String
+                     value: v1
+                     description: ""
+                   - name: envVar2
+                     type: String
+                     value: v2
+                     description: ""
+                 overrides:
+                   manifests:
+                     - manifest:
+                         identifier: manifestEnv
+                         type: Values
+                         spec:
+                           store:
+                             type: Git
+                             spec:
+                               connectorRef: <+input>
+                               gitFetchType: Branch
+                               paths:
+                                 - file1
+                               repoName: <+input>
+                               branch: master
+                   configFiles:
+                     - configFile:
+                         identifier: configFileEnv
+                         spec:
+                           store:
+                             type: Harness
+                             spec:
+                               files:
+                                 - account:/Add-ons/svcOverrideTest
+                               secretFiles: []
+
+        \"\"\")
+        ```
+
+        ## Import
+
+        Import using environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <environment_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -308,6 +409,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
+        :param pulumi.Input[str] yaml: Environment YAML
         """
         ...
     @overload
@@ -317,6 +419,76 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness environment.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.Environment("example",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            tags=[
+                "foo:bar",
+                "baz",
+            ],
+            type="PreProduction",
+            yaml=\"\"\"			   environment:
+                 name: name
+                 identifier: identifier
+                 orgIdentifier: org_id
+                 projectIdentifier: project_id
+                 type: PreProduction
+                 tags:
+                   foo: bar
+                   baz: ""
+                 variables:
+                   - name: envVar1
+                     type: String
+                     value: v1
+                     description: ""
+                   - name: envVar2
+                     type: String
+                     value: v2
+                     description: ""
+                 overrides:
+                   manifests:
+                     - manifest:
+                         identifier: manifestEnv
+                         type: Values
+                         spec:
+                           store:
+                             type: Git
+                             spec:
+                               connectorRef: <+input>
+                               gitFetchType: Branch
+                               paths:
+                                 - file1
+                               repoName: <+input>
+                               branch: master
+                   configFiles:
+                     - configFile:
+                         identifier: configFileEnv
+                         spec:
+                           store:
+                             type: Harness
+                             spec:
+                               files:
+                                 - account:/Add-ons/svcOverrideTest
+                               secretFiles: []
+
+        \"\"\")
+        ```
+
+        ## Import
+
+        Import using environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <environment_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
@@ -341,6 +513,7 @@ class Environment(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,12 +529,17 @@ class Environment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
+            if org_id is None and not opts.urn:
+                raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["yaml"] = yaml
         super(Environment, __self__).__init__(
             'harness:platform/environment:Environment',
             resource_name,
@@ -379,7 +557,8 @@ class Environment(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'Environment':
+            type: Optional[pulumi.Input[str]] = None,
+            yaml: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -395,6 +574,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
+        :param pulumi.Input[str] yaml: Environment YAML
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -408,11 +588,12 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
+        __props__.__dict__["yaml"] = yaml
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def color(self) -> pulumi.Output[Optional[str]]:
+    def color(self) -> pulumi.Output[str]:
         """
         Color of the environment.
         """
@@ -444,7 +625,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[Optional[str]]:
+    def org_id(self) -> pulumi.Output[str]:
         """
         Unique identifier of the organization.
         """
@@ -452,7 +633,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[Optional[str]]:
+    def project_id(self) -> pulumi.Output[str]:
         """
         Unique identifier of the project.
         """
@@ -473,4 +654,12 @@ class Environment(pulumi.CustomResource):
         The type of environment. Valid values are PreProduction, Production
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> pulumi.Output[Optional[str]]:
+        """
+        Environment YAML
+        """
+        return pulumi.get(self, "yaml")
 

@@ -18,6 +18,96 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness environment.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Environment;
+ * import com.pulumi.harness.platform.EnvironmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Environment(&#34;example&#34;, EnvironmentArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .tags(            
+ *                 &#34;foo:bar&#34;,
+ *                 &#34;baz&#34;)
+ *             .type(&#34;PreProduction&#34;)
+ *             .yaml(&#34;&#34;&#34;
+ * 			   environment:
+ *          name: name
+ *          identifier: identifier
+ *          orgIdentifier: org_id
+ *          projectIdentifier: project_id
+ *          type: PreProduction
+ *          tags:
+ *            foo: bar
+ *            baz: &#34;&#34;
+ *          variables:
+ *            - name: envVar1
+ *              type: String
+ *              value: v1
+ *              description: &#34;&#34;
+ *            - name: envVar2
+ *              type: String
+ *              value: v2
+ *              description: &#34;&#34;
+ *          overrides:
+ *            manifests:
+ *              - manifest:
+ *                  identifier: manifestEnv
+ *                  type: Values
+ *                  spec:
+ *                    store:
+ *                      type: Git
+ *                      spec:
+ *                        connectorRef: &lt;+input&gt;
+ *                        gitFetchType: Branch
+ *                        paths:
+ *                          - file1
+ *                        repoName: &lt;+input&gt;
+ *                        branch: master
+ *            configFiles:
+ *              - configFile:
+ *                  identifier: configFileEnv
+ *                  spec:
+ *                    store:
+ *                      type: Harness
+ *                      spec:
+ *                        files:
+ *                          - account:/Add-ons/svcOverrideTest
+ *                        secretFiles: []
+ * 
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import using environment id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/environment:Environment example &lt;environment_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/environment:Environment")
 public class Environment extends com.pulumi.resources.CustomResource {
@@ -26,14 +116,14 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="color", type=String.class, parameters={})
-    private Output</* @Nullable */ String> color;
+    private Output<String> color;
 
     /**
      * @return Color of the environment.
      * 
      */
-    public Output<Optional<String>> color() {
-        return Codegen.optional(this.color);
+    public Output<String> color() {
+        return this.color;
     }
     /**
      * Description of the resource.
@@ -82,28 +172,28 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> orgId;
+    private Output<String> orgId;
 
     /**
      * @return Unique identifier of the organization.
      * 
      */
-    public Output<Optional<String>> orgId() {
-        return Codegen.optional(this.orgId);
+    public Output<String> orgId() {
+        return this.orgId;
     }
     /**
      * Unique identifier of the project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> projectId;
+    private Output<String> projectId;
 
     /**
      * @return Unique identifier of the project.
      * 
      */
-    public Output<Optional<String>> projectId() {
-        return Codegen.optional(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
      * Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -132,6 +222,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Environment YAML
+     * 
+     */
+    @Export(name="yaml", type=String.class, parameters={})
+    private Output</* @Nullable */ String> yaml;
+
+    /**
+     * @return Environment YAML
+     * 
+     */
+    public Output<Optional<String>> yaml() {
+        return Codegen.optional(this.yaml);
     }
 
     /**

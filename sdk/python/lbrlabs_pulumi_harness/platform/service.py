@@ -19,15 +19,17 @@ class ServiceArgs:
                  project_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] yaml: Service YAML
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -38,6 +40,8 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -55,7 +59,7 @@ class ServiceArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -67,7 +71,7 @@ class ServiceArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -111,6 +115,18 @@ class ServiceArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service YAML
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 @pulumi.input_type
 class _ServiceState:
@@ -120,15 +136,17 @@ class _ServiceState:
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] yaml: Service YAML
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -142,6 +160,8 @@ class _ServiceState:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -183,7 +203,7 @@ class _ServiceState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -195,7 +215,7 @@ class _ServiceState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -215,6 +235,18 @@ class _ServiceState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service YAML
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 class Service(pulumi.CustomResource):
     @overload
@@ -227,18 +259,81 @@ class Service(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            description="test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            yaml=\"\"\"  service:
+            name: name
+            identifier: identifier
+            serviceDefinition:
+              spec:
+                manifests:
+                  - manifest:
+                      identifier: manifest1
+                      type: K8sManifest
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: <+input>
+                            gitFetchType: Branch
+                            paths:
+                              - files1
+                            repoName: <+input>
+                            branch: master
+                        skipResourceVersioning: false
+                configFiles:
+                  - configFile:
+                      identifier: configFile1
+                      spec:
+                        store:
+                          type: Harness
+                          spec:
+                            files:
+                              - <+org.description>
+                variables:
+                  - name: var1
+                    type: String
+                    value: val1
+                  - name: var2
+                    type: String
+                    value: val2
+              type: Kubernetes
+            gitOpsEnabled: false
+
+        \"\"\")
+        ```
+
+        ## Import
+
+        Import using service id
+
+        ```sh
+         $ pulumi import harness:platform/service:Service example <service_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] yaml: Service YAML
         """
         ...
     @overload
@@ -248,6 +343,67 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            description="test",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            yaml=\"\"\"  service:
+            name: name
+            identifier: identifier
+            serviceDefinition:
+              spec:
+                manifests:
+                  - manifest:
+                      identifier: manifest1
+                      type: K8sManifest
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: <+input>
+                            gitFetchType: Branch
+                            paths:
+                              - files1
+                            repoName: <+input>
+                            branch: master
+                        skipResourceVersioning: false
+                configFiles:
+                  - configFile:
+                      identifier: configFile1
+                      spec:
+                        store:
+                          type: Harness
+                          spec:
+                            files:
+                              - <+org.description>
+                variables:
+                  - name: var1
+                    type: String
+                    value: val1
+                  - name: var2
+                    type: String
+                    value: val2
+              type: Kubernetes
+            gitOpsEnabled: false
+
+        \"\"\")
+        ```
+
+        ## Import
+
+        Import using service id
+
+        ```sh
+         $ pulumi import harness:platform/service:Service example <service_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
@@ -270,6 +426,7 @@ class Service(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -291,6 +448,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["yaml"] = yaml
         super(Service, __self__).__init__(
             'harness:platform/service:Service',
             resource_name,
@@ -306,7 +464,8 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Service':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            yaml: Optional[pulumi.Input[str]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -317,9 +476,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] yaml: Service YAML
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,6 +491,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["yaml"] = yaml
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -361,7 +522,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -369,7 +530,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -380,4 +541,12 @@ class Service(pulumi.CustomResource):
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> pulumi.Output[str]:
+        """
+        Service YAML
+        """
+        return pulumi.get(self, "yaml")
 

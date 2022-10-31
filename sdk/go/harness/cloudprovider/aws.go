@@ -62,7 +62,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness aws cloud provider id.
+// Import using the Harness aws cloud provider id.
 //
 // ```sh
 //

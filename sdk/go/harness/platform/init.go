@@ -43,16 +43,30 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DynatraceConnector{}
 	case "harness:platform/environment:Environment":
 		r = &Environment{}
+	case "harness:platform/environmentClustersMapping:EnvironmentClustersMapping":
+		r = &EnvironmentClustersMapping{}
+	case "harness:platform/environmentGroup:EnvironmentGroup":
+		r = &EnvironmentGroup{}
+	case "harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides":
+		r = &EnvironmentServiceOverrides{}
 	case "harness:platform/gcpConnector:GcpConnector":
 		r = &GcpConnector{}
 	case "harness:platform/gitConnector:GitConnector":
 		r = &GitConnector{}
+	case "harness:platform/gitOpsAgent:GitOpsAgent":
+		r = &GitOpsAgent{}
+	case "harness:platform/gitOpsCluster:GitOpsCluster":
+		r = &GitOpsCluster{}
+	case "harness:platform/gitOpsRepository:GitOpsRepository":
+		r = &GitOpsRepository{}
 	case "harness:platform/githubConnector:GithubConnector":
 		r = &GithubConnector{}
 	case "harness:platform/gitlabConnector:GitlabConnector":
 		r = &GitlabConnector{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
+	case "harness:platform/infrastructure:Infrastructure":
+		r = &Infrastructure{}
 	case "harness:platform/inputSet:InputSet":
 		r = &InputSet{}
 	case "harness:platform/jiraConnector:JiraConnector":
@@ -75,6 +89,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PrometheusConnector{}
 	case "harness:platform/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
+	case "harness:platform/roleAssignments:RoleAssignments":
+		r = &RoleAssignments{}
 	case "harness:platform/roles:Roles":
 		r = &Roles{}
 	case "harness:platform/secretFile:SecretFile":
@@ -95,6 +111,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Triggers{}
 	case "harness:platform/usergroup:Usergroup":
 		r = &Usergroup{}
+	case "harness:platform/variables:Variables":
+		r = &Variables{}
+	case "harness:platform/vaultConnector:VaultConnector":
+		r = &VaultConnector{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -165,12 +185,42 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/environmentClustersMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/environmentGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/environmentServiceOverrides",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/gcpConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/gitConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitOpsAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitOpsCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitOpsRepository",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -186,6 +236,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/helmConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infrastructure",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -245,6 +300,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/roleAssignments",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/roles",
 		&module{version},
 	)
@@ -291,6 +351,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/usergroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/variables",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/vaultConnector",
 		&module{version},
 	)
 }

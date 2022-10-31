@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the email address of the user
+ * Import using the email address of the user
  *
  * ```sh
  *  $ pulumi import harness:index/user:User john_doe john.doe@example.com

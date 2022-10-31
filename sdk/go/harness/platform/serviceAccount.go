@@ -58,18 +58,18 @@ type ServiceAccount struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier for the Entity.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Email of the Service Account.
-	Email pulumi.StringPtrOutput `pulumi:"email"`
+	Email pulumi.StringOutput `pulumi:"email"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -82,6 +82,12 @@ func NewServiceAccount(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -118,9 +124,9 @@ type serviceAccountState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -137,9 +143,9 @@ type ServiceAccountState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -151,18 +157,18 @@ func (ServiceAccountState) ElementType() reflect.Type {
 
 type serviceAccountArgs struct {
 	// Account Identifier for the Entity.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Email of the Service Account.
-	Email *string `pulumi:"email"`
+	Email string `pulumi:"email"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -171,18 +177,18 @@ type serviceAccountArgs struct {
 // The set of arguments for constructing a ServiceAccount resource.
 type ServiceAccountArgs struct {
 	// Account Identifier for the Entity.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Email of the Service Account.
-	Email pulumi.StringPtrInput
+	Email pulumi.StringInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -276,8 +282,8 @@ func (o ServiceAccountOutput) ToServiceAccountOutputWithContext(ctx context.Cont
 }
 
 // Account Identifier for the Entity.
-func (o ServiceAccountOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ServiceAccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Description of the resource.
@@ -286,8 +292,8 @@ func (o ServiceAccountOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Email of the Service Account.
-func (o ServiceAccountOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+func (o ServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the resource.
@@ -300,12 +306,12 @@ func (o ServiceAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o ServiceAccountOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o ServiceAccountOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

@@ -622,13 +622,37 @@ export interface UserGroupPermissions {
 }
 
 export interface UserGroupPermissionsAppPermissions {
+    /**
+     * The permission to perform actions against all resources.
+     */
     alls?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsAll>[]>;
+    /**
+     * Permission configuration to perform actions against deployments.
+     */
     deployments?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsDeployment>[]>;
+    /**
+     * Permission configuration to perform actions against workflows.
+     */
     environments?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsEnvironment>[]>;
+    /**
+     * Permission configuration to perform actions against pipelines.
+     */
     pipelines?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsPipeline>[]>;
+    /**
+     * Permission configuration to perform actions against provisioners.
+     */
     provisioners?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsProvisioner>[]>;
+    /**
+     * Permission configuration to perform actions against services.
+     */
     services?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsService>[]>;
+    /**
+     * Permission configuration to perform actions against templates.
+     */
     templates?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsTemplate>[]>;
+    /**
+     * Permission configuration to perform actions against workflows.
+     */
     workflows?: pulumi.Input<pulumi.Input<inputs.UserGroupPermissionsAppPermissionsWorkflow>[]>;
 }
 
@@ -1003,6 +1027,21 @@ export namespace platform {
         usernameRef?: pulumi.Input<string>;
     }
 
+    export interface EnvironmentClustersMappingCluster {
+        /**
+         * account Identifier of the account
+         */
+        identifier?: pulumi.Input<string>;
+        /**
+         * name of the cluster
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * scope at which the cluster exists in harness gitops, project vs org vs account
+         */
+        scope?: pulumi.Input<string>;
+    }
+
     export interface GcpConnectorInheritFromDelegate {
         /**
          * The delegates to inherit the credentials from.
@@ -1019,6 +1058,306 @@ export namespace platform {
          * Reference to the Harness secret containing the secret key.
          */
         secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsAgentMetadata {
+        highAvailability?: boolean;
+        namespace: string;
+    }
+
+    export interface GetGitopsAgentMetadataArgs {
+        highAvailability?: pulumi.Input<boolean>;
+        namespace: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterQuery {
+        ids?: inputs.platform.GetGitopsClusterQueryId[];
+        name?: string;
+        server?: string;
+    }
+
+    export interface GetGitopsClusterQueryArgs {
+        ids?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterQueryIdArgs>[]>;
+        name?: pulumi.Input<string>;
+        server?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterQueryId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GetGitopsClusterQueryIdArgs {
+        type?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequest {
+        clusters?: inputs.platform.GetGitopsClusterRequestCluster[];
+        ids?: inputs.platform.GetGitopsClusterRequestId[];
+        updateMasks?: inputs.platform.GetGitopsClusterRequestUpdateMask[];
+        updatedFields?: string[];
+        upsert?: boolean;
+    }
+
+    export interface GetGitopsClusterRequestArgs {
+        clusters?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterArgs>[]>;
+        ids?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestIdArgs>[]>;
+        updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestUpdateMaskArgs>[]>;
+        updatedFields?: pulumi.Input<pulumi.Input<string>[]>;
+        upsert?: pulumi.Input<boolean>;
+    }
+
+    export interface GetGitopsClusterRequestCluster {
+        annotations?: {[key: string]: string};
+        clusterResources?: boolean;
+        configs?: inputs.platform.GetGitopsClusterRequestClusterConfig[];
+        infos?: inputs.platform.GetGitopsClusterRequestClusterInfo[];
+        labels?: {[key: string]: string};
+        name?: string;
+        namespaces?: string[];
+        project?: string;
+        refreshRequestedAts?: inputs.platform.GetGitopsClusterRequestClusterRefreshRequestedAt[];
+        server: string;
+        shard?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterArgs {
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        clusterResources?: pulumi.Input<boolean>;
+        configs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterConfigArgs>[]>;
+        infos?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterInfoArgs>[]>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        name?: pulumi.Input<string>;
+        namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        project?: pulumi.Input<string>;
+        refreshRequestedAts?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterRefreshRequestedAtArgs>[]>;
+        server: pulumi.Input<string>;
+        shard?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfig {
+        awsAuthConfigs?: inputs.platform.GetGitopsClusterRequestClusterConfigAwsAuthConfig[];
+        bearerToken?: string;
+        clusterConnectionType?: string;
+        execProviderConfigs?: inputs.platform.GetGitopsClusterRequestClusterConfigExecProviderConfig[];
+        password?: string;
+        tlsClientConfigs?: inputs.platform.GetGitopsClusterRequestClusterConfigTlsClientConfig[];
+        username?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigArgs {
+        awsAuthConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs>[]>;
+        bearerToken?: pulumi.Input<string>;
+        clusterConnectionType?: pulumi.Input<string>;
+        execProviderConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterConfigExecProviderConfigArgs>[]>;
+        password?: pulumi.Input<string>;
+        tlsClientConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterConfigTlsClientConfigArgs>[]>;
+        username?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigAwsAuthConfig {
+        clusterName?: string;
+        roleARN?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs {
+        clusterName?: pulumi.Input<string>;
+        roleARN?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigExecProviderConfig {
+        apiVersion?: string;
+        args?: string[];
+        command?: string;
+        env?: {[key: string]: string};
+        installHint?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigExecProviderConfigArgs {
+        apiVersion?: pulumi.Input<string>;
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        command?: pulumi.Input<string>;
+        env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        installHint?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigTlsClientConfig {
+        caData?: string;
+        certData?: string;
+        insecure?: boolean;
+        keyData?: string;
+        serverName?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterConfigTlsClientConfigArgs {
+        caData?: pulumi.Input<string>;
+        certData?: pulumi.Input<string>;
+        insecure?: pulumi.Input<boolean>;
+        keyData?: pulumi.Input<string>;
+        serverName?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfo {
+        apiVersions?: string[];
+        applicationsCount?: string;
+        cacheInfos?: inputs.platform.GetGitopsClusterRequestClusterInfoCacheInfo[];
+        connectionStates?: inputs.platform.GetGitopsClusterRequestClusterInfoConnectionState[];
+        serverVersion?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoArgs {
+        apiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+        applicationsCount?: pulumi.Input<string>;
+        cacheInfos?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterInfoCacheInfoArgs>[]>;
+        connectionStates?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterInfoConnectionStateArgs>[]>;
+        serverVersion?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoCacheInfo {
+        apisCount?: string;
+        lastCacheSyncTime?: string;
+        resourcesCount?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoCacheInfoArgs {
+        apisCount?: pulumi.Input<string>;
+        lastCacheSyncTime?: pulumi.Input<string>;
+        resourcesCount?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionState {
+        attemptedAts?: inputs.platform.GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt[];
+        message?: string;
+        status?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionStateArgs {
+        attemptedAts?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs>[]>;
+        message?: pulumi.Input<string>;
+        status?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs {
+        nanos?: pulumi.Input<number>;
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestClusterRefreshRequestedAt {
+        nanos?: number;
+        seconds?: string;
+    }
+
+    export interface GetGitopsClusterRequestClusterRefreshRequestedAtArgs {
+        nanos?: pulumi.Input<number>;
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestId {
+        type?: string;
+        value?: string;
+    }
+
+    export interface GetGitopsClusterRequestIdArgs {
+        type?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsClusterRequestUpdateMask {
+        paths?: any[][];
+    }
+
+    export interface GetGitopsClusterRequestUpdateMaskArgs {
+        paths?: pulumi.Input<pulumi.Input<any[]>[]>;
+    }
+
+    export interface GetGitopsRepositoryRepo {
+        connectionType: string;
+        enableLfs?: boolean;
+        enableOci?: boolean;
+        githubAppEnterpriseBaseUrl?: string;
+        githubAppId?: string;
+        githubAppInstallationId?: string;
+        githubAppPrivateKey?: string;
+        inheritedCreds?: boolean;
+        insecure?: boolean;
+        insecureIgnoreHostKey?: boolean;
+        name?: string;
+        password?: string;
+        project?: string;
+        proxy?: string;
+        repo: string;
+        sshPrivateKey?: string;
+        tlsClientCertData?: string;
+        tlsClientCertKey?: string;
+        type_?: string;
+        username?: string;
+    }
+
+    export interface GetGitopsRepositoryRepoArgs {
+        connectionType: pulumi.Input<string>;
+        enableLfs?: pulumi.Input<boolean>;
+        enableOci?: pulumi.Input<boolean>;
+        githubAppEnterpriseBaseUrl?: pulumi.Input<string>;
+        githubAppId?: pulumi.Input<string>;
+        githubAppInstallationId?: pulumi.Input<string>;
+        githubAppPrivateKey?: pulumi.Input<string>;
+        inheritedCreds?: pulumi.Input<boolean>;
+        insecure?: pulumi.Input<boolean>;
+        insecureIgnoreHostKey?: pulumi.Input<boolean>;
+        name?: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
+        project?: pulumi.Input<string>;
+        proxy?: pulumi.Input<string>;
+        repo: pulumi.Input<string>;
+        sshPrivateKey?: pulumi.Input<string>;
+        tlsClientCertData?: pulumi.Input<string>;
+        tlsClientCertKey?: pulumi.Input<string>;
+        type_?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsRepositoryUpdateMask {
+        paths?: string[];
+    }
+
+    export interface GetGitopsRepositoryUpdateMaskArgs {
+        paths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRoleAssignmentsPrincipal {
+        /**
+         * Identifier.
+         */
+        identifier?: string;
+        /**
+         * Scope level.
+         */
+        scopeLevel?: string;
+        /**
+         * Type.
+         */
+        type?: string;
+    }
+
+    export interface GetRoleAssignmentsPrincipalArgs {
+        /**
+         * Identifier.
+         */
+        identifier?: pulumi.Input<string>;
+        /**
+         * Scope level.
+         */
+        scopeLevel?: pulumi.Input<string>;
+        /**
+         * Type.
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface GetUsergroupNotificationConfig {
@@ -1086,6 +1425,141 @@ export namespace platform {
 
     export interface GitConnectorCredentialsSsh {
         sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GitOpsAgentMetadata {
+        highAvailability?: pulumi.Input<boolean>;
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterQuery {
+        ids?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQueryId>[]>;
+        name?: pulumi.Input<string>;
+        server?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterQueryId {
+        type?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequest {
+        clusters?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestCluster>[]>;
+        ids?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestId>[]>;
+        updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestUpdateMask>[]>;
+        updatedFields?: pulumi.Input<pulumi.Input<string>[]>;
+        upsert?: pulumi.Input<boolean>;
+    }
+
+    export interface GitOpsClusterRequestCluster {
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        clusterResources?: pulumi.Input<boolean>;
+        configs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfig>[]>;
+        infos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterInfo>[]>;
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        name?: pulumi.Input<string>;
+        namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        project?: pulumi.Input<string>;
+        refreshRequestedAts?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterRefreshRequestedAt>[]>;
+        server: pulumi.Input<string>;
+        shard?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterConfig {
+        awsAuthConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigAwsAuthConfig>[]>;
+        bearerToken?: pulumi.Input<string>;
+        clusterConnectionType?: pulumi.Input<string>;
+        execProviderConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig>[]>;
+        password?: pulumi.Input<string>;
+        tlsClientConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigTlsClientConfig>[]>;
+        username?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigAwsAuthConfig {
+        clusterName?: pulumi.Input<string>;
+        roleARN?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigExecProviderConfig {
+        apiVersion?: pulumi.Input<string>;
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        command?: pulumi.Input<string>;
+        env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        installHint?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
+        caData?: pulumi.Input<string>;
+        certData?: pulumi.Input<string>;
+        insecure?: pulumi.Input<boolean>;
+        keyData?: pulumi.Input<string>;
+        serverName?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterInfo {
+        apiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+        applicationsCount?: pulumi.Input<string>;
+        cacheInfos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterInfoCacheInfo>[]>;
+        connectionStates?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterInfoConnectionState>[]>;
+        serverVersion?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoCacheInfo {
+        apisCount?: pulumi.Input<string>;
+        lastCacheSyncTime?: pulumi.Input<string>;
+        resourcesCount?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoConnectionState {
+        attemptedAts?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt>[]>;
+        message?: pulumi.Input<string>;
+        status?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt {
+        nanos?: pulumi.Input<number>;
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestClusterRefreshRequestedAt {
+        nanos?: pulumi.Input<number>;
+        seconds?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestId {
+        type?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsClusterRequestUpdateMask {
+        paths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GitOpsRepositoryRepo {
+        connectionType: pulumi.Input<string>;
+        enableLfs?: pulumi.Input<boolean>;
+        enableOci?: pulumi.Input<boolean>;
+        githubAppEnterpriseBaseUrl?: pulumi.Input<string>;
+        githubAppId?: pulumi.Input<string>;
+        githubAppInstallationId?: pulumi.Input<string>;
+        githubAppPrivateKey?: pulumi.Input<string>;
+        inheritedCreds?: pulumi.Input<boolean>;
+        insecure?: pulumi.Input<boolean>;
+        insecureIgnoreHostKey?: pulumi.Input<boolean>;
+        name?: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
+        project?: pulumi.Input<string>;
+        proxy?: pulumi.Input<string>;
+        repo: pulumi.Input<string>;
+        sshPrivateKey?: pulumi.Input<string>;
+        tlsClientCertData?: pulumi.Input<string>;
+        tlsClientCertKey?: pulumi.Input<string>;
+        type_?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsRepositoryUpdateMask {
+        paths?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GithubConnectorApiAuthentication {
@@ -1284,6 +1758,25 @@ export namespace platform {
         usernameRef?: pulumi.Input<string>;
     }
 
+    export interface PrometheusConnectorHeader {
+        /**
+         * Encrypted value reference.
+         */
+        encryptedValueRef?: pulumi.Input<string>;
+        /**
+         * Key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: pulumi.Input<boolean>;
+    }
+
     export interface ResourceGroupIncludedScope {
         /**
          * Account Identifier of the account
@@ -1323,6 +1816,21 @@ export namespace platform {
     export interface ResourceGroupResourceFilterResourceAttributeFilter {
         attributeName?: pulumi.Input<string>;
         attributeValues?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RoleAssignmentsPrincipal {
+        /**
+         * Identifier.
+         */
+        identifier?: pulumi.Input<string>;
+        /**
+         * Scope level.
+         */
+        scopeLevel?: pulumi.Input<string>;
+        /**
+         * Type.
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface SecretSshkeyKerberos {
@@ -1415,6 +1923,16 @@ export namespace platform {
         type?: pulumi.Input<string>;
     }
 
+    export interface VariablesSpec {
+        /**
+         * FixedValue of the variable
+         */
+        fixedValue: pulumi.Input<string>;
+        /**
+         * Type of Value of the Variable. For now only FIXED is supported
+         */
+        valueType: pulumi.Input<string>;
+    }
 }
 
 export namespace service {

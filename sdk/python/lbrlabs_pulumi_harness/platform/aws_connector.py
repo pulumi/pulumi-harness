@@ -35,8 +35,8 @@ class AwsConnectorArgs:
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -147,7 +147,7 @@ class AwsConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -159,7 +159,7 @@ class AwsConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -202,8 +202,8 @@ class _AwsConnectorState:
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         if cross_account_access is not None:
@@ -315,7 +315,7 @@ class _AwsConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -327,7 +327,7 @@ class _AwsConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -376,8 +376,8 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[pulumi.InputType['AwsConnectorManualArgs']] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         ...
@@ -469,8 +469,8 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[pulumi.InputType['AwsConnectorManualArgs']] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -549,7 +549,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -557,7 +557,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

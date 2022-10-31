@@ -136,6 +136,17 @@ def get_pipeline(identifier: Optional[str] = None,
     """
     Data source for retrieving a Harness pipeline.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_pipeline(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
@@ -169,6 +180,17 @@ def get_pipeline_output(identifier: Optional[pulumi.Input[Optional[str]]] = None
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineResult]:
     """
     Data source for retrieving a Harness pipeline.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_pipeline(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
 
 
     :param str identifier: Unique identifier of the resource.

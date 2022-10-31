@@ -34,8 +34,7 @@ import (
 //				OrgId:      pulumi.String("orgIdentifer"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
 //				TargetId:   pulumi.String("pipelineIdentifier"),
-//				Yaml: pulumi.String(fmt.Sprintf(`  ---
-//	  trigger:
+//				Yaml: pulumi.String(fmt.Sprintf(`  trigger:
 //	    name: "name"
 //	    identifier: "identifier"
 //	    enabled: true
@@ -99,16 +98,16 @@ type Triggers struct {
 	IgnoreError pulumi.BoolPtrOutput `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// trigger yaml
-	Yaml pulumi.StringPtrOutput `pulumi:"yaml"`
+	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
 // NewTriggers registers a new resource with the given unique name, arguments, and options.
@@ -129,6 +128,9 @@ func NewTriggers(ctx *pulumi.Context,
 	}
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
+	}
+	if args.Yaml == nil {
+		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Triggers
@@ -163,9 +165,9 @@ type triggersState struct {
 	IgnoreError *bool `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -186,9 +188,9 @@ type TriggersState struct {
 	IgnoreError pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -213,16 +215,16 @@ type triggersArgs struct {
 	IgnoreError *bool `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId string `pulumi:"targetId"`
 	// trigger yaml
-	Yaml *string `pulumi:"yaml"`
+	Yaml string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Triggers resource.
@@ -237,16 +239,16 @@ type TriggersArgs struct {
 	IgnoreError pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
 	// Identifier of the target pipeline
 	TargetId pulumi.StringInput
 	// trigger yaml
-	Yaml pulumi.StringPtrInput
+	Yaml pulumi.StringInput
 }
 
 func (TriggersArgs) ElementType() reflect.Type {
@@ -361,12 +363,12 @@ func (o TriggersOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o TriggersOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o TriggersOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -382,8 +384,8 @@ func (o TriggersOutput) TargetId() pulumi.StringOutput {
 }
 
 // trigger yaml
-func (o TriggersOutput) Yaml() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Triggers) pulumi.StringPtrOutput { return v.Yaml }).(pulumi.StringPtrOutput)
+func (o TriggersOutput) Yaml() pulumi.StringOutput {
+	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }
 
 type TriggersArrayOutput struct{ *pulumi.OutputState }

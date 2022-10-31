@@ -722,7 +722,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id, environment id, and infrastructure definition id
+        Import using the Harness application id, environment id, and infrastructure definition id
 
         ```sh
          $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
@@ -788,7 +788,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
 
         ## Import
 
-        # Import using the Harness application id, environment id, and infrastructure definition id
+        Import using the Harness application id, environment id, and infrastructure definition id
 
         ```sh
          $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>

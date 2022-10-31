@@ -11,7 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness User Group.
+// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+//
+//	The following fields need to be populated for LDAP SSO Providers:
+//
+//	- linkedSsoId
+//
+//	- linkedSsoDisplayName
+//
+//	- ssoGroupId
+//
+//	- ssoGroupName
+//
+//	- linkedSsoType
+//
+//	- ssoLinked
+//
+//	The following fields need to be populated for SAML SSO Providers:
+//
+//	- linkedSsoId
+//
+//	- linkedSsoDisplayName
+//
+//	- ssoGroupName
+//
+//	- ssoGroupId // same as ssoGroupName
+//
+//	- linkedSsoType
+//
+//	- ssoLinked
 //
 // ## Example Usage
 //
@@ -21,19 +49,54 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewUsergroup(ctx, "example", &platform.UsergroupArgs{
+//			_, err := platform.NewUsergroup(ctx, "ssoTypeSaml", &platform.UsergroupArgs{
 //				ExternallyManaged:    pulumi.Bool(false),
 //				Identifier:           pulumi.String("identifier"),
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
 //				LinkedSsoId:          pulumi.String("linked_sso_id"),
 //				LinkedSsoType:        pulumi.String("SAML"),
+//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
+//					&platform.UsergroupNotificationConfigArgs{
+//						SlackWebhookUrl: pulumi.String("https://google.com"),
+//						Type:            pulumi.String("SLACK"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						GroupEmail: pulumi.String("email@email.com"),
+//						Type:       pulumi.String("EMAIL"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
+//						Type:                     pulumi.String("MSTEAMS"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						PagerDutyKey: pulumi.String("pagerDutyKey"),
+//						Type:         pulumi.String("PAGERDUTY"),
+//					},
+//				},
+//				OrgId:        pulumi.String("org_id"),
+//				ProjectId:    pulumi.String("project_id"),
+//				SsoGroupId:   pulumi.String("sso_group_name"),
+//				SsoGroupName: pulumi.String("sso_group_name"),
+//				SsoLinked:    pulumi.Bool(true),
+//				Users: pulumi.StringArray{
+//					pulumi.String("user_id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewUsergroup(ctx, "ssoTypeLdap", &platform.UsergroupArgs{
+//				ExternallyManaged:    pulumi.Bool(false),
+//				Identifier:           pulumi.String("identifier"),
+//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
+//				LinkedSsoId:          pulumi.String("linked_sso_id"),
+//				LinkedSsoType:        pulumi.String("LDAP"),
 //				NotificationConfigs: platform.UsergroupNotificationConfigArray{
 //					&platform.UsergroupNotificationConfigArgs{
 //						SlackWebhookUrl: pulumi.String("https://google.com"),
@@ -98,9 +161,9 @@ type Usergroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrOutput `pulumi:"ssoGroupId"`
@@ -163,9 +226,9 @@ type usergroupState struct {
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []UsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId *string `pulumi:"ssoGroupId"`
@@ -196,9 +259,9 @@ type UsergroupState struct {
 	Name pulumi.StringPtrInput
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrInput
@@ -233,9 +296,9 @@ type usergroupArgs struct {
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []UsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId *string `pulumi:"ssoGroupId"`
@@ -267,9 +330,9 @@ type UsergroupArgs struct {
 	Name pulumi.StringPtrInput
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrInput
@@ -410,12 +473,12 @@ func (o UsergroupOutput) NotificationConfigs() UsergroupNotificationConfigArrayO
 	return o.ApplyT(func(v *Usergroup) UsergroupNotificationConfigArrayOutput { return v.NotificationConfigs }).(UsergroupNotificationConfigArrayOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o UsergroupOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o UsergroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

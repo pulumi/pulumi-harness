@@ -11,6 +11,34 @@ import (
 )
 
 // Data source for retrieving a Harness pipeline.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = platform.LookupPipeline(ctx, &platform.LookupPipelineArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//				OrgId:      "org_id",
+//				ProjectId:  "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult

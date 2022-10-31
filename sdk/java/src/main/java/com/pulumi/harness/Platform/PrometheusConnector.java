@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.PrometheusConnectorArgs;
 import com.pulumi.harness.platform.inputs.PrometheusConnectorState;
+import com.pulumi.harness.platform.outputs.PrometheusConnectorHeader;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,57 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Prometheus connector.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.PrometheusConnector;
+ * import com.pulumi.harness.platform.PrometheusConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.PrometheusConnectorHeaderArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new PrometheusConnector(&#34;example&#34;, PrometheusConnectorArgs.builder()        
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .headers(PrometheusConnectorHeaderArgs.builder()
+ *                 .encryptedValueRef(&#34;account.secret_identifier&#34;)
+ *                 .key(&#34;key&#34;)
+ *                 .value(&#34;value&#34;)
+ *                 .valueEncrypted(true)
+ *                 .build())
+ *             .identifier(&#34;idntifier&#34;)
+ *             .passwordRef(&#34;account.secret_identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://prometheus.com/&#34;)
+ *             .userName(&#34;user_name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import using prometheus connector id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example &lt;connector_id&gt;
+ * ```
  * 
  */
 @ResourceType(type="harness:platform/prometheusConnector:PrometheusConnector")
@@ -50,6 +102,20 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Headers.
+     * 
+     */
+    @Export(name="headers", type=List.class, parameters={PrometheusConnectorHeader.class})
+    private Output</* @Nullable */ List<PrometheusConnectorHeader>> headers;
+
+    /**
+     * @return Headers.
+     * 
+     */
+    public Output<Optional<List<PrometheusConnectorHeader>>> headers() {
+        return Codegen.optional(this.headers);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -78,28 +144,42 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     * 
+     */
+    @Export(name="passwordRef", type=String.class, parameters={})
+    private Output</* @Nullable */ String> passwordRef;
+
+    /**
+     * @return Password reference.
+     * 
+     */
+    public Output<Optional<String>> passwordRef() {
+        return Codegen.optional(this.passwordRef);
+    }
+    /**
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -132,6 +212,20 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    /**
+     * User name.
+     * 
+     */
+    @Export(name="userName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> userName;
+
+    /**
+     * @return User name.
+     * 
+     */
+    public Output<Optional<String>> userName() {
+        return Codegen.optional(this.userName);
     }
 
     /**

@@ -3055,6 +3055,121 @@ func (o DockerConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentClustersMappingCluster struct {
+	// account Identifier of the account
+	Identifier *string `pulumi:"identifier"`
+	// name of the cluster
+	Name *string `pulumi:"name"`
+	// scope at which the cluster exists in harness gitops, project vs org vs account
+	Scope *string `pulumi:"scope"`
+}
+
+// EnvironmentClustersMappingClusterInput is an input type that accepts EnvironmentClustersMappingClusterArgs and EnvironmentClustersMappingClusterOutput values.
+// You can construct a concrete instance of `EnvironmentClustersMappingClusterInput` via:
+//
+//	EnvironmentClustersMappingClusterArgs{...}
+type EnvironmentClustersMappingClusterInput interface {
+	pulumi.Input
+
+	ToEnvironmentClustersMappingClusterOutput() EnvironmentClustersMappingClusterOutput
+	ToEnvironmentClustersMappingClusterOutputWithContext(context.Context) EnvironmentClustersMappingClusterOutput
+}
+
+type EnvironmentClustersMappingClusterArgs struct {
+	// account Identifier of the account
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// name of the cluster
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// scope at which the cluster exists in harness gitops, project vs org vs account
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+}
+
+func (EnvironmentClustersMappingClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClustersMappingCluster)(nil)).Elem()
+}
+
+func (i EnvironmentClustersMappingClusterArgs) ToEnvironmentClustersMappingClusterOutput() EnvironmentClustersMappingClusterOutput {
+	return i.ToEnvironmentClustersMappingClusterOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClustersMappingClusterArgs) ToEnvironmentClustersMappingClusterOutputWithContext(ctx context.Context) EnvironmentClustersMappingClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClustersMappingClusterOutput)
+}
+
+// EnvironmentClustersMappingClusterArrayInput is an input type that accepts EnvironmentClustersMappingClusterArray and EnvironmentClustersMappingClusterArrayOutput values.
+// You can construct a concrete instance of `EnvironmentClustersMappingClusterArrayInput` via:
+//
+//	EnvironmentClustersMappingClusterArray{ EnvironmentClustersMappingClusterArgs{...} }
+type EnvironmentClustersMappingClusterArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentClustersMappingClusterArrayOutput() EnvironmentClustersMappingClusterArrayOutput
+	ToEnvironmentClustersMappingClusterArrayOutputWithContext(context.Context) EnvironmentClustersMappingClusterArrayOutput
+}
+
+type EnvironmentClustersMappingClusterArray []EnvironmentClustersMappingClusterInput
+
+func (EnvironmentClustersMappingClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentClustersMappingCluster)(nil)).Elem()
+}
+
+func (i EnvironmentClustersMappingClusterArray) ToEnvironmentClustersMappingClusterArrayOutput() EnvironmentClustersMappingClusterArrayOutput {
+	return i.ToEnvironmentClustersMappingClusterArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentClustersMappingClusterArray) ToEnvironmentClustersMappingClusterArrayOutputWithContext(ctx context.Context) EnvironmentClustersMappingClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentClustersMappingClusterArrayOutput)
+}
+
+type EnvironmentClustersMappingClusterOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClustersMappingClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentClustersMappingCluster)(nil)).Elem()
+}
+
+func (o EnvironmentClustersMappingClusterOutput) ToEnvironmentClustersMappingClusterOutput() EnvironmentClustersMappingClusterOutput {
+	return o
+}
+
+func (o EnvironmentClustersMappingClusterOutput) ToEnvironmentClustersMappingClusterOutputWithContext(ctx context.Context) EnvironmentClustersMappingClusterOutput {
+	return o
+}
+
+// account Identifier of the account
+func (o EnvironmentClustersMappingClusterOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentClustersMappingCluster) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// name of the cluster
+func (o EnvironmentClustersMappingClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentClustersMappingCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// scope at which the cluster exists in harness gitops, project vs org vs account
+func (o EnvironmentClustersMappingClusterOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentClustersMappingCluster) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentClustersMappingClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentClustersMappingClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentClustersMappingCluster)(nil)).Elem()
+}
+
+func (o EnvironmentClustersMappingClusterArrayOutput) ToEnvironmentClustersMappingClusterArrayOutput() EnvironmentClustersMappingClusterArrayOutput {
+	return o
+}
+
+func (o EnvironmentClustersMappingClusterArrayOutput) ToEnvironmentClustersMappingClusterArrayOutputWithContext(ctx context.Context) EnvironmentClustersMappingClusterArrayOutput {
+	return o
+}
+
+func (o EnvironmentClustersMappingClusterArrayOutput) Index(i pulumi.IntInput) EnvironmentClustersMappingClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentClustersMappingCluster {
+		return vs[0].([]EnvironmentClustersMappingCluster)[vs[1].(int)]
+	}).(EnvironmentClustersMappingClusterOutput)
+}
+
 type GcpConnectorInheritFromDelegate struct {
 	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
@@ -3758,6 +3873,2090 @@ func (o GitConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput 
 		}
 		return &v.SshKeyRef
 	}).(pulumi.StringPtrOutput)
+}
+
+type GitOpsAgentMetadata struct {
+	HighAvailability *bool   `pulumi:"highAvailability"`
+	Namespace        *string `pulumi:"namespace"`
+}
+
+// GitOpsAgentMetadataInput is an input type that accepts GitOpsAgentMetadataArgs and GitOpsAgentMetadataOutput values.
+// You can construct a concrete instance of `GitOpsAgentMetadataInput` via:
+//
+//	GitOpsAgentMetadataArgs{...}
+type GitOpsAgentMetadataInput interface {
+	pulumi.Input
+
+	ToGitOpsAgentMetadataOutput() GitOpsAgentMetadataOutput
+	ToGitOpsAgentMetadataOutputWithContext(context.Context) GitOpsAgentMetadataOutput
+}
+
+type GitOpsAgentMetadataArgs struct {
+	HighAvailability pulumi.BoolPtrInput   `pulumi:"highAvailability"`
+	Namespace        pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GitOpsAgentMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsAgentMetadata)(nil)).Elem()
+}
+
+func (i GitOpsAgentMetadataArgs) ToGitOpsAgentMetadataOutput() GitOpsAgentMetadataOutput {
+	return i.ToGitOpsAgentMetadataOutputWithContext(context.Background())
+}
+
+func (i GitOpsAgentMetadataArgs) ToGitOpsAgentMetadataOutputWithContext(ctx context.Context) GitOpsAgentMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsAgentMetadataOutput)
+}
+
+// GitOpsAgentMetadataArrayInput is an input type that accepts GitOpsAgentMetadataArray and GitOpsAgentMetadataArrayOutput values.
+// You can construct a concrete instance of `GitOpsAgentMetadataArrayInput` via:
+//
+//	GitOpsAgentMetadataArray{ GitOpsAgentMetadataArgs{...} }
+type GitOpsAgentMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsAgentMetadataArrayOutput() GitOpsAgentMetadataArrayOutput
+	ToGitOpsAgentMetadataArrayOutputWithContext(context.Context) GitOpsAgentMetadataArrayOutput
+}
+
+type GitOpsAgentMetadataArray []GitOpsAgentMetadataInput
+
+func (GitOpsAgentMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsAgentMetadata)(nil)).Elem()
+}
+
+func (i GitOpsAgentMetadataArray) ToGitOpsAgentMetadataArrayOutput() GitOpsAgentMetadataArrayOutput {
+	return i.ToGitOpsAgentMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsAgentMetadataArray) ToGitOpsAgentMetadataArrayOutputWithContext(ctx context.Context) GitOpsAgentMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsAgentMetadataArrayOutput)
+}
+
+type GitOpsAgentMetadataOutput struct{ *pulumi.OutputState }
+
+func (GitOpsAgentMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsAgentMetadata)(nil)).Elem()
+}
+
+func (o GitOpsAgentMetadataOutput) ToGitOpsAgentMetadataOutput() GitOpsAgentMetadataOutput {
+	return o
+}
+
+func (o GitOpsAgentMetadataOutput) ToGitOpsAgentMetadataOutputWithContext(ctx context.Context) GitOpsAgentMetadataOutput {
+	return o
+}
+
+func (o GitOpsAgentMetadataOutput) HighAvailability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsAgentMetadata) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsAgentMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsAgentMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsAgentMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsAgentMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsAgentMetadata)(nil)).Elem()
+}
+
+func (o GitOpsAgentMetadataArrayOutput) ToGitOpsAgentMetadataArrayOutput() GitOpsAgentMetadataArrayOutput {
+	return o
+}
+
+func (o GitOpsAgentMetadataArrayOutput) ToGitOpsAgentMetadataArrayOutputWithContext(ctx context.Context) GitOpsAgentMetadataArrayOutput {
+	return o
+}
+
+func (o GitOpsAgentMetadataArrayOutput) Index(i pulumi.IntInput) GitOpsAgentMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsAgentMetadata {
+		return vs[0].([]GitOpsAgentMetadata)[vs[1].(int)]
+	}).(GitOpsAgentMetadataOutput)
+}
+
+type GitOpsClusterQuery struct {
+	Ids    []GitOpsClusterQueryId `pulumi:"ids"`
+	Name   *string                `pulumi:"name"`
+	Server *string                `pulumi:"server"`
+}
+
+// GitOpsClusterQueryInput is an input type that accepts GitOpsClusterQueryArgs and GitOpsClusterQueryOutput values.
+// You can construct a concrete instance of `GitOpsClusterQueryInput` via:
+//
+//	GitOpsClusterQueryArgs{...}
+type GitOpsClusterQueryInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterQueryOutput() GitOpsClusterQueryOutput
+	ToGitOpsClusterQueryOutputWithContext(context.Context) GitOpsClusterQueryOutput
+}
+
+type GitOpsClusterQueryArgs struct {
+	Ids    GitOpsClusterQueryIdArrayInput `pulumi:"ids"`
+	Name   pulumi.StringPtrInput          `pulumi:"name"`
+	Server pulumi.StringPtrInput          `pulumi:"server"`
+}
+
+func (GitOpsClusterQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterQuery)(nil)).Elem()
+}
+
+func (i GitOpsClusterQueryArgs) ToGitOpsClusterQueryOutput() GitOpsClusterQueryOutput {
+	return i.ToGitOpsClusterQueryOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterQueryArgs) ToGitOpsClusterQueryOutputWithContext(ctx context.Context) GitOpsClusterQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterQueryOutput)
+}
+
+// GitOpsClusterQueryArrayInput is an input type that accepts GitOpsClusterQueryArray and GitOpsClusterQueryArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterQueryArrayInput` via:
+//
+//	GitOpsClusterQueryArray{ GitOpsClusterQueryArgs{...} }
+type GitOpsClusterQueryArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterQueryArrayOutput() GitOpsClusterQueryArrayOutput
+	ToGitOpsClusterQueryArrayOutputWithContext(context.Context) GitOpsClusterQueryArrayOutput
+}
+
+type GitOpsClusterQueryArray []GitOpsClusterQueryInput
+
+func (GitOpsClusterQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterQuery)(nil)).Elem()
+}
+
+func (i GitOpsClusterQueryArray) ToGitOpsClusterQueryArrayOutput() GitOpsClusterQueryArrayOutput {
+	return i.ToGitOpsClusterQueryArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterQueryArray) ToGitOpsClusterQueryArrayOutputWithContext(ctx context.Context) GitOpsClusterQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterQueryArrayOutput)
+}
+
+type GitOpsClusterQueryOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterQuery)(nil)).Elem()
+}
+
+func (o GitOpsClusterQueryOutput) ToGitOpsClusterQueryOutput() GitOpsClusterQueryOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryOutput) ToGitOpsClusterQueryOutputWithContext(ctx context.Context) GitOpsClusterQueryOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryOutput) Ids() GitOpsClusterQueryIdArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterQuery) []GitOpsClusterQueryId { return v.Ids }).(GitOpsClusterQueryIdArrayOutput)
+}
+
+func (o GitOpsClusterQueryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterQuery) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterQueryOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterQuery) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterQuery)(nil)).Elem()
+}
+
+func (o GitOpsClusterQueryArrayOutput) ToGitOpsClusterQueryArrayOutput() GitOpsClusterQueryArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryArrayOutput) ToGitOpsClusterQueryArrayOutputWithContext(ctx context.Context) GitOpsClusterQueryArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryArrayOutput) Index(i pulumi.IntInput) GitOpsClusterQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterQuery {
+		return vs[0].([]GitOpsClusterQuery)[vs[1].(int)]
+	}).(GitOpsClusterQueryOutput)
+}
+
+type GitOpsClusterQueryId struct {
+	Type  *string `pulumi:"type"`
+	Value *string `pulumi:"value"`
+}
+
+// GitOpsClusterQueryIdInput is an input type that accepts GitOpsClusterQueryIdArgs and GitOpsClusterQueryIdOutput values.
+// You can construct a concrete instance of `GitOpsClusterQueryIdInput` via:
+//
+//	GitOpsClusterQueryIdArgs{...}
+type GitOpsClusterQueryIdInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterQueryIdOutput() GitOpsClusterQueryIdOutput
+	ToGitOpsClusterQueryIdOutputWithContext(context.Context) GitOpsClusterQueryIdOutput
+}
+
+type GitOpsClusterQueryIdArgs struct {
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitOpsClusterQueryIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterQueryId)(nil)).Elem()
+}
+
+func (i GitOpsClusterQueryIdArgs) ToGitOpsClusterQueryIdOutput() GitOpsClusterQueryIdOutput {
+	return i.ToGitOpsClusterQueryIdOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterQueryIdArgs) ToGitOpsClusterQueryIdOutputWithContext(ctx context.Context) GitOpsClusterQueryIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterQueryIdOutput)
+}
+
+// GitOpsClusterQueryIdArrayInput is an input type that accepts GitOpsClusterQueryIdArray and GitOpsClusterQueryIdArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterQueryIdArrayInput` via:
+//
+//	GitOpsClusterQueryIdArray{ GitOpsClusterQueryIdArgs{...} }
+type GitOpsClusterQueryIdArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterQueryIdArrayOutput() GitOpsClusterQueryIdArrayOutput
+	ToGitOpsClusterQueryIdArrayOutputWithContext(context.Context) GitOpsClusterQueryIdArrayOutput
+}
+
+type GitOpsClusterQueryIdArray []GitOpsClusterQueryIdInput
+
+func (GitOpsClusterQueryIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterQueryId)(nil)).Elem()
+}
+
+func (i GitOpsClusterQueryIdArray) ToGitOpsClusterQueryIdArrayOutput() GitOpsClusterQueryIdArrayOutput {
+	return i.ToGitOpsClusterQueryIdArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterQueryIdArray) ToGitOpsClusterQueryIdArrayOutputWithContext(ctx context.Context) GitOpsClusterQueryIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterQueryIdArrayOutput)
+}
+
+type GitOpsClusterQueryIdOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterQueryIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterQueryId)(nil)).Elem()
+}
+
+func (o GitOpsClusterQueryIdOutput) ToGitOpsClusterQueryIdOutput() GitOpsClusterQueryIdOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryIdOutput) ToGitOpsClusterQueryIdOutputWithContext(ctx context.Context) GitOpsClusterQueryIdOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryIdOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterQueryId) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterQueryIdOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterQueryId) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterQueryIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterQueryIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterQueryId)(nil)).Elem()
+}
+
+func (o GitOpsClusterQueryIdArrayOutput) ToGitOpsClusterQueryIdArrayOutput() GitOpsClusterQueryIdArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryIdArrayOutput) ToGitOpsClusterQueryIdArrayOutputWithContext(ctx context.Context) GitOpsClusterQueryIdArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterQueryIdArrayOutput) Index(i pulumi.IntInput) GitOpsClusterQueryIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterQueryId {
+		return vs[0].([]GitOpsClusterQueryId)[vs[1].(int)]
+	}).(GitOpsClusterQueryIdOutput)
+}
+
+type GitOpsClusterRequest struct {
+	Clusters      []GitOpsClusterRequestCluster    `pulumi:"clusters"`
+	Ids           []GitOpsClusterRequestId         `pulumi:"ids"`
+	UpdateMasks   []GitOpsClusterRequestUpdateMask `pulumi:"updateMasks"`
+	UpdatedFields []string                         `pulumi:"updatedFields"`
+	Upsert        *bool                            `pulumi:"upsert"`
+}
+
+// GitOpsClusterRequestInput is an input type that accepts GitOpsClusterRequestArgs and GitOpsClusterRequestOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestInput` via:
+//
+//	GitOpsClusterRequestArgs{...}
+type GitOpsClusterRequestInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestOutput() GitOpsClusterRequestOutput
+	ToGitOpsClusterRequestOutputWithContext(context.Context) GitOpsClusterRequestOutput
+}
+
+type GitOpsClusterRequestArgs struct {
+	Clusters      GitOpsClusterRequestClusterArrayInput    `pulumi:"clusters"`
+	Ids           GitOpsClusterRequestIdArrayInput         `pulumi:"ids"`
+	UpdateMasks   GitOpsClusterRequestUpdateMaskArrayInput `pulumi:"updateMasks"`
+	UpdatedFields pulumi.StringArrayInput                  `pulumi:"updatedFields"`
+	Upsert        pulumi.BoolPtrInput                      `pulumi:"upsert"`
+}
+
+func (GitOpsClusterRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequest)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestArgs) ToGitOpsClusterRequestOutput() GitOpsClusterRequestOutput {
+	return i.ToGitOpsClusterRequestOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestArgs) ToGitOpsClusterRequestOutputWithContext(ctx context.Context) GitOpsClusterRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestOutput)
+}
+
+// GitOpsClusterRequestArrayInput is an input type that accepts GitOpsClusterRequestArray and GitOpsClusterRequestArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestArrayInput` via:
+//
+//	GitOpsClusterRequestArray{ GitOpsClusterRequestArgs{...} }
+type GitOpsClusterRequestArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestArrayOutput() GitOpsClusterRequestArrayOutput
+	ToGitOpsClusterRequestArrayOutputWithContext(context.Context) GitOpsClusterRequestArrayOutput
+}
+
+type GitOpsClusterRequestArray []GitOpsClusterRequestInput
+
+func (GitOpsClusterRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequest)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestArray) ToGitOpsClusterRequestArrayOutput() GitOpsClusterRequestArrayOutput {
+	return i.ToGitOpsClusterRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestArray) ToGitOpsClusterRequestArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestArrayOutput)
+}
+
+type GitOpsClusterRequestOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequest)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestOutput) ToGitOpsClusterRequestOutput() GitOpsClusterRequestOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestOutput) ToGitOpsClusterRequestOutputWithContext(ctx context.Context) GitOpsClusterRequestOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestOutput) Clusters() GitOpsClusterRequestClusterArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequest) []GitOpsClusterRequestCluster { return v.Clusters }).(GitOpsClusterRequestClusterArrayOutput)
+}
+
+func (o GitOpsClusterRequestOutput) Ids() GitOpsClusterRequestIdArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequest) []GitOpsClusterRequestId { return v.Ids }).(GitOpsClusterRequestIdArrayOutput)
+}
+
+func (o GitOpsClusterRequestOutput) UpdateMasks() GitOpsClusterRequestUpdateMaskArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequest) []GitOpsClusterRequestUpdateMask { return v.UpdateMasks }).(GitOpsClusterRequestUpdateMaskArrayOutput)
+}
+
+func (o GitOpsClusterRequestOutput) UpdatedFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequest) []string { return v.UpdatedFields }).(pulumi.StringArrayOutput)
+}
+
+func (o GitOpsClusterRequestOutput) Upsert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequest) *bool { return v.Upsert }).(pulumi.BoolPtrOutput)
+}
+
+type GitOpsClusterRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequest)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestArrayOutput) ToGitOpsClusterRequestArrayOutput() GitOpsClusterRequestArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestArrayOutput) ToGitOpsClusterRequestArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequest {
+		return vs[0].([]GitOpsClusterRequest)[vs[1].(int)]
+	}).(GitOpsClusterRequestOutput)
+}
+
+type GitOpsClusterRequestCluster struct {
+	Annotations         map[string]string                               `pulumi:"annotations"`
+	ClusterResources    *bool                                           `pulumi:"clusterResources"`
+	Configs             []GitOpsClusterRequestClusterConfig             `pulumi:"configs"`
+	Infos               []GitOpsClusterRequestClusterInfo               `pulumi:"infos"`
+	Labels              map[string]string                               `pulumi:"labels"`
+	Name                *string                                         `pulumi:"name"`
+	Namespaces          []string                                        `pulumi:"namespaces"`
+	Project             *string                                         `pulumi:"project"`
+	RefreshRequestedAts []GitOpsClusterRequestClusterRefreshRequestedAt `pulumi:"refreshRequestedAts"`
+	Server              string                                          `pulumi:"server"`
+	Shard               *string                                         `pulumi:"shard"`
+}
+
+// GitOpsClusterRequestClusterInput is an input type that accepts GitOpsClusterRequestClusterArgs and GitOpsClusterRequestClusterOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInput` via:
+//
+//	GitOpsClusterRequestClusterArgs{...}
+type GitOpsClusterRequestClusterInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterOutput() GitOpsClusterRequestClusterOutput
+	ToGitOpsClusterRequestClusterOutputWithContext(context.Context) GitOpsClusterRequestClusterOutput
+}
+
+type GitOpsClusterRequestClusterArgs struct {
+	Annotations         pulumi.StringMapInput                                   `pulumi:"annotations"`
+	ClusterResources    pulumi.BoolPtrInput                                     `pulumi:"clusterResources"`
+	Configs             GitOpsClusterRequestClusterConfigArrayInput             `pulumi:"configs"`
+	Infos               GitOpsClusterRequestClusterInfoArrayInput               `pulumi:"infos"`
+	Labels              pulumi.StringMapInput                                   `pulumi:"labels"`
+	Name                pulumi.StringPtrInput                                   `pulumi:"name"`
+	Namespaces          pulumi.StringArrayInput                                 `pulumi:"namespaces"`
+	Project             pulumi.StringPtrInput                                   `pulumi:"project"`
+	RefreshRequestedAts GitOpsClusterRequestClusterRefreshRequestedAtArrayInput `pulumi:"refreshRequestedAts"`
+	Server              pulumi.StringInput                                      `pulumi:"server"`
+	Shard               pulumi.StringPtrInput                                   `pulumi:"shard"`
+}
+
+func (GitOpsClusterRequestClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestCluster)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterArgs) ToGitOpsClusterRequestClusterOutput() GitOpsClusterRequestClusterOutput {
+	return i.ToGitOpsClusterRequestClusterOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterArgs) ToGitOpsClusterRequestClusterOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterOutput)
+}
+
+// GitOpsClusterRequestClusterArrayInput is an input type that accepts GitOpsClusterRequestClusterArray and GitOpsClusterRequestClusterArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterArrayInput` via:
+//
+//	GitOpsClusterRequestClusterArray{ GitOpsClusterRequestClusterArgs{...} }
+type GitOpsClusterRequestClusterArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterArrayOutput() GitOpsClusterRequestClusterArrayOutput
+	ToGitOpsClusterRequestClusterArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterArrayOutput
+}
+
+type GitOpsClusterRequestClusterArray []GitOpsClusterRequestClusterInput
+
+func (GitOpsClusterRequestClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestCluster)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterArray) ToGitOpsClusterRequestClusterArrayOutput() GitOpsClusterRequestClusterArrayOutput {
+	return i.ToGitOpsClusterRequestClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterArray) ToGitOpsClusterRequestClusterArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterArrayOutput)
+}
+
+type GitOpsClusterRequestClusterOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestCluster)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterOutput) ToGitOpsClusterRequestClusterOutput() GitOpsClusterRequestClusterOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterOutput) ToGitOpsClusterRequestClusterOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) ClusterResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) *bool { return v.ClusterResources }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Configs() GitOpsClusterRequestClusterConfigArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterConfig { return v.Configs }).(GitOpsClusterRequestClusterConfigArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Infos() GitOpsClusterRequestClusterInfoArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterInfo { return v.Infos }).(GitOpsClusterRequestClusterInfoArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) RefreshRequestedAts() GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterRefreshRequestedAt {
+		return v.RefreshRequestedAts
+	}).(GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) string { return v.Server }).(pulumi.StringOutput)
+}
+
+func (o GitOpsClusterRequestClusterOutput) Shard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Shard }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestCluster)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterArrayOutput) ToGitOpsClusterRequestClusterArrayOutput() GitOpsClusterRequestClusterArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterArrayOutput) ToGitOpsClusterRequestClusterArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestCluster {
+		return vs[0].([]GitOpsClusterRequestCluster)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterOutput)
+}
+
+type GitOpsClusterRequestClusterConfig struct {
+	AwsAuthConfigs        []GitOpsClusterRequestClusterConfigAwsAuthConfig      `pulumi:"awsAuthConfigs"`
+	BearerToken           *string                                               `pulumi:"bearerToken"`
+	ClusterConnectionType *string                                               `pulumi:"clusterConnectionType"`
+	ExecProviderConfigs   []GitOpsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
+	Password              *string                                               `pulumi:"password"`
+	TlsClientConfigs      []GitOpsClusterRequestClusterConfigTlsClientConfig    `pulumi:"tlsClientConfigs"`
+	Username              *string                                               `pulumi:"username"`
+}
+
+// GitOpsClusterRequestClusterConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigArgs and GitOpsClusterRequestClusterConfigOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigInput` via:
+//
+//	GitOpsClusterRequestClusterConfigArgs{...}
+type GitOpsClusterRequestClusterConfigInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigOutput() GitOpsClusterRequestClusterConfigOutput
+	ToGitOpsClusterRequestClusterConfigOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigOutput
+}
+
+type GitOpsClusterRequestClusterConfigArgs struct {
+	AwsAuthConfigs        GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput      `pulumi:"awsAuthConfigs"`
+	BearerToken           pulumi.StringPtrInput                                         `pulumi:"bearerToken"`
+	ClusterConnectionType pulumi.StringPtrInput                                         `pulumi:"clusterConnectionType"`
+	ExecProviderConfigs   GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
+	Password              pulumi.StringPtrInput                                         `pulumi:"password"`
+	TlsClientConfigs      GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput    `pulumi:"tlsClientConfigs"`
+	Username              pulumi.StringPtrInput                                         `pulumi:"username"`
+}
+
+func (GitOpsClusterRequestClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigArgs) ToGitOpsClusterRequestClusterConfigOutput() GitOpsClusterRequestClusterConfigOutput {
+	return i.ToGitOpsClusterRequestClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigArgs) ToGitOpsClusterRequestClusterConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigOutput)
+}
+
+// GitOpsClusterRequestClusterConfigArrayInput is an input type that accepts GitOpsClusterRequestClusterConfigArray and GitOpsClusterRequestClusterConfigArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigArrayInput` via:
+//
+//	GitOpsClusterRequestClusterConfigArray{ GitOpsClusterRequestClusterConfigArgs{...} }
+type GitOpsClusterRequestClusterConfigArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigArrayOutput() GitOpsClusterRequestClusterConfigArrayOutput
+	ToGitOpsClusterRequestClusterConfigArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigArrayOutput
+}
+
+type GitOpsClusterRequestClusterConfigArray []GitOpsClusterRequestClusterConfigInput
+
+func (GitOpsClusterRequestClusterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigArray) ToGitOpsClusterRequestClusterConfigArrayOutput() GitOpsClusterRequestClusterConfigArrayOutput {
+	return i.ToGitOpsClusterRequestClusterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigArray) ToGitOpsClusterRequestClusterConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigArrayOutput)
+}
+
+type GitOpsClusterRequestClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) ToGitOpsClusterRequestClusterConfigOutput() GitOpsClusterRequestClusterConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) ToGitOpsClusterRequestClusterConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) AwsAuthConfigs() GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigAwsAuthConfig {
+		return v.AwsAuthConfigs
+	}).(GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) ClusterConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) ExecProviderConfigs() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigExecProviderConfig {
+		return v.ExecProviderConfigs
+	}).(GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) TlsClientConfigs() GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigTlsClientConfig {
+		return v.TlsClientConfigs
+	}).(GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigArrayOutput) ToGitOpsClusterRequestClusterConfigArrayOutput() GitOpsClusterRequestClusterConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigArrayOutput) ToGitOpsClusterRequestClusterConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterConfig {
+		return vs[0].([]GitOpsClusterRequestClusterConfig)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterConfigOutput)
+}
+
+type GitOpsClusterRequestClusterConfigAwsAuthConfig struct {
+	ClusterName *string `pulumi:"clusterName"`
+	RoleARN     *string `pulumi:"roleARN"`
+}
+
+// GitOpsClusterRequestClusterConfigAwsAuthConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigAwsAuthConfigArgs and GitOpsClusterRequestClusterConfigAwsAuthConfigOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigAwsAuthConfigInput` via:
+//
+//	GitOpsClusterRequestClusterConfigAwsAuthConfigArgs{...}
+type GitOpsClusterRequestClusterConfigAwsAuthConfigInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigOutput
+	ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigOutput
+}
+
+type GitOpsClusterRequestClusterConfigAwsAuthConfigArgs struct {
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	RoleARN     pulumi.StringPtrInput `pulumi:"roleARN"`
+}
+
+func (GitOpsClusterRequestClusterConfigAwsAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigAwsAuthConfigArgs) ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return i.ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigAwsAuthConfigArgs) ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigAwsAuthConfigOutput)
+}
+
+// GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput is an input type that accepts GitOpsClusterRequestClusterConfigAwsAuthConfigArray and GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput` via:
+//
+//	GitOpsClusterRequestClusterConfigAwsAuthConfigArray{ GitOpsClusterRequestClusterConfigAwsAuthConfigArgs{...} }
+type GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput
+	ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput
+}
+
+type GitOpsClusterRequestClusterConfigAwsAuthConfigArray []GitOpsClusterRequestClusterConfigAwsAuthConfigInput
+
+func (GitOpsClusterRequestClusterConfigAwsAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigAwsAuthConfigArray) ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return i.ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigAwsAuthConfigArray) ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
+}
+
+type GitOpsClusterRequestClusterConfigAwsAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ToGitOpsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigAwsAuthConfig) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) RoleARN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigAwsAuthConfig) *string { return v.RoleARN }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ToGitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterConfigAwsAuthConfig {
+		return vs[0].([]GitOpsClusterRequestClusterConfigAwsAuthConfig)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterConfigAwsAuthConfigOutput)
+}
+
+type GitOpsClusterRequestClusterConfigExecProviderConfig struct {
+	ApiVersion  *string           `pulumi:"apiVersion"`
+	Args        []string          `pulumi:"args"`
+	Command     *string           `pulumi:"command"`
+	Env         map[string]string `pulumi:"env"`
+	InstallHint *string           `pulumi:"installHint"`
+}
+
+// GitOpsClusterRequestClusterConfigExecProviderConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigExecProviderConfigArgs and GitOpsClusterRequestClusterConfigExecProviderConfigOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigExecProviderConfigInput` via:
+//
+//	GitOpsClusterRequestClusterConfigExecProviderConfigArgs{...}
+type GitOpsClusterRequestClusterConfigExecProviderConfigInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigExecProviderConfigOutput() GitOpsClusterRequestClusterConfigExecProviderConfigOutput
+	ToGitOpsClusterRequestClusterConfigExecProviderConfigOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigOutput
+}
+
+type GitOpsClusterRequestClusterConfigExecProviderConfigArgs struct {
+	ApiVersion  pulumi.StringPtrInput   `pulumi:"apiVersion"`
+	Args        pulumi.StringArrayInput `pulumi:"args"`
+	Command     pulumi.StringPtrInput   `pulumi:"command"`
+	Env         pulumi.StringMapInput   `pulumi:"env"`
+	InstallHint pulumi.StringPtrInput   `pulumi:"installHint"`
+}
+
+func (GitOpsClusterRequestClusterConfigExecProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigExecProviderConfigArgs) ToGitOpsClusterRequestClusterConfigExecProviderConfigOutput() GitOpsClusterRequestClusterConfigExecProviderConfigOutput {
+	return i.ToGitOpsClusterRequestClusterConfigExecProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigExecProviderConfigArgs) ToGitOpsClusterRequestClusterConfigExecProviderConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigExecProviderConfigOutput)
+}
+
+// GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput is an input type that accepts GitOpsClusterRequestClusterConfigExecProviderConfigArray and GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput` via:
+//
+//	GitOpsClusterRequestClusterConfigExecProviderConfigArray{ GitOpsClusterRequestClusterConfigExecProviderConfigArgs{...} }
+type GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput
+	ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput
+}
+
+type GitOpsClusterRequestClusterConfigExecProviderConfigArray []GitOpsClusterRequestClusterConfigExecProviderConfigInput
+
+func (GitOpsClusterRequestClusterConfigExecProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigExecProviderConfigArray) ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return i.ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigExecProviderConfigArray) ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput)
+}
+
+type GitOpsClusterRequestClusterConfigExecProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ToGitOpsClusterRequestClusterConfigExecProviderConfigOutput() GitOpsClusterRequestClusterConfigExecProviderConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ToGitOpsClusterRequestClusterConfigExecProviderConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) InstallHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.InstallHint }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput) ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput) ToGitOpsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterConfigExecProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterConfigExecProviderConfig {
+		return vs[0].([]GitOpsClusterRequestClusterConfigExecProviderConfig)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterConfigExecProviderConfigOutput)
+}
+
+type GitOpsClusterRequestClusterConfigTlsClientConfig struct {
+	CaData     *string `pulumi:"caData"`
+	CertData   *string `pulumi:"certData"`
+	Insecure   *bool   `pulumi:"insecure"`
+	KeyData    *string `pulumi:"keyData"`
+	ServerName *string `pulumi:"serverName"`
+}
+
+// GitOpsClusterRequestClusterConfigTlsClientConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigTlsClientConfigArgs and GitOpsClusterRequestClusterConfigTlsClientConfigOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigTlsClientConfigInput` via:
+//
+//	GitOpsClusterRequestClusterConfigTlsClientConfigArgs{...}
+type GitOpsClusterRequestClusterConfigTlsClientConfigInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigTlsClientConfigOutput() GitOpsClusterRequestClusterConfigTlsClientConfigOutput
+	ToGitOpsClusterRequestClusterConfigTlsClientConfigOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigOutput
+}
+
+type GitOpsClusterRequestClusterConfigTlsClientConfigArgs struct {
+	CaData     pulumi.StringPtrInput `pulumi:"caData"`
+	CertData   pulumi.StringPtrInput `pulumi:"certData"`
+	Insecure   pulumi.BoolPtrInput   `pulumi:"insecure"`
+	KeyData    pulumi.StringPtrInput `pulumi:"keyData"`
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+}
+
+func (GitOpsClusterRequestClusterConfigTlsClientConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigTlsClientConfigArgs) ToGitOpsClusterRequestClusterConfigTlsClientConfigOutput() GitOpsClusterRequestClusterConfigTlsClientConfigOutput {
+	return i.ToGitOpsClusterRequestClusterConfigTlsClientConfigOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigTlsClientConfigArgs) ToGitOpsClusterRequestClusterConfigTlsClientConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigTlsClientConfigOutput)
+}
+
+// GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput is an input type that accepts GitOpsClusterRequestClusterConfigTlsClientConfigArray and GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput` via:
+//
+//	GitOpsClusterRequestClusterConfigTlsClientConfigArray{ GitOpsClusterRequestClusterConfigTlsClientConfigArgs{...} }
+type GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput() GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput
+	ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput
+}
+
+type GitOpsClusterRequestClusterConfigTlsClientConfigArray []GitOpsClusterRequestClusterConfigTlsClientConfigInput
+
+func (GitOpsClusterRequestClusterConfigTlsClientConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterConfigTlsClientConfigArray) ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput() GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return i.ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterConfigTlsClientConfigArray) ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput)
+}
+
+type GitOpsClusterRequestClusterConfigTlsClientConfigOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ToGitOpsClusterRequestClusterConfigTlsClientConfigOutput() GitOpsClusterRequestClusterConfigTlsClientConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ToGitOpsClusterRequestClusterConfigTlsClientConfigOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) CaData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.CaData }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) CertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.CertData }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput) ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput() GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput) ToGitOpsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterConfigTlsClientConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterConfigTlsClientConfig {
+		return vs[0].([]GitOpsClusterRequestClusterConfigTlsClientConfig)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterConfigTlsClientConfigOutput)
+}
+
+type GitOpsClusterRequestClusterInfo struct {
+	ApiVersions       []string                                         `pulumi:"apiVersions"`
+	ApplicationsCount *string                                          `pulumi:"applicationsCount"`
+	CacheInfos        []GitOpsClusterRequestClusterInfoCacheInfo       `pulumi:"cacheInfos"`
+	ConnectionStates  []GitOpsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
+	ServerVersion     *string                                          `pulumi:"serverVersion"`
+}
+
+// GitOpsClusterRequestClusterInfoInput is an input type that accepts GitOpsClusterRequestClusterInfoArgs and GitOpsClusterRequestClusterInfoOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoInput` via:
+//
+//	GitOpsClusterRequestClusterInfoArgs{...}
+type GitOpsClusterRequestClusterInfoInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoOutput() GitOpsClusterRequestClusterInfoOutput
+	ToGitOpsClusterRequestClusterInfoOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoOutput
+}
+
+type GitOpsClusterRequestClusterInfoArgs struct {
+	ApiVersions       pulumi.StringArrayInput                                  `pulumi:"apiVersions"`
+	ApplicationsCount pulumi.StringPtrInput                                    `pulumi:"applicationsCount"`
+	CacheInfos        GitOpsClusterRequestClusterInfoCacheInfoArrayInput       `pulumi:"cacheInfos"`
+	ConnectionStates  GitOpsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
+	ServerVersion     pulumi.StringPtrInput                                    `pulumi:"serverVersion"`
+}
+
+func (GitOpsClusterRequestClusterInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoArgs) ToGitOpsClusterRequestClusterInfoOutput() GitOpsClusterRequestClusterInfoOutput {
+	return i.ToGitOpsClusterRequestClusterInfoOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoArgs) ToGitOpsClusterRequestClusterInfoOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoOutput)
+}
+
+// GitOpsClusterRequestClusterInfoArrayInput is an input type that accepts GitOpsClusterRequestClusterInfoArray and GitOpsClusterRequestClusterInfoArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoArrayInput` via:
+//
+//	GitOpsClusterRequestClusterInfoArray{ GitOpsClusterRequestClusterInfoArgs{...} }
+type GitOpsClusterRequestClusterInfoArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoArrayOutput() GitOpsClusterRequestClusterInfoArrayOutput
+	ToGitOpsClusterRequestClusterInfoArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoArrayOutput
+}
+
+type GitOpsClusterRequestClusterInfoArray []GitOpsClusterRequestClusterInfoInput
+
+func (GitOpsClusterRequestClusterInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoArray) ToGitOpsClusterRequestClusterInfoArrayOutput() GitOpsClusterRequestClusterInfoArrayOutput {
+	return i.ToGitOpsClusterRequestClusterInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoArray) ToGitOpsClusterRequestClusterInfoArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoArrayOutput)
+}
+
+type GitOpsClusterRequestClusterInfoOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ToGitOpsClusterRequestClusterInfoOutput() GitOpsClusterRequestClusterInfoOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ToGitOpsClusterRequestClusterInfoOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ApiVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []string { return v.ApiVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ApplicationsCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) *string { return v.ApplicationsCount }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) CacheInfos() GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []GitOpsClusterRequestClusterInfoCacheInfo {
+		return v.CacheInfos
+	}).(GitOpsClusterRequestClusterInfoCacheInfoArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ConnectionStates() GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []GitOpsClusterRequestClusterInfoConnectionState {
+		return v.ConnectionStates
+	}).(GitOpsClusterRequestClusterInfoConnectionStateArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoArrayOutput) ToGitOpsClusterRequestClusterInfoArrayOutput() GitOpsClusterRequestClusterInfoArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoArrayOutput) ToGitOpsClusterRequestClusterInfoArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterInfo {
+		return vs[0].([]GitOpsClusterRequestClusterInfo)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterInfoOutput)
+}
+
+type GitOpsClusterRequestClusterInfoCacheInfo struct {
+	ApisCount         *string `pulumi:"apisCount"`
+	LastCacheSyncTime *string `pulumi:"lastCacheSyncTime"`
+	ResourcesCount    *string `pulumi:"resourcesCount"`
+}
+
+// GitOpsClusterRequestClusterInfoCacheInfoInput is an input type that accepts GitOpsClusterRequestClusterInfoCacheInfoArgs and GitOpsClusterRequestClusterInfoCacheInfoOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoCacheInfoInput` via:
+//
+//	GitOpsClusterRequestClusterInfoCacheInfoArgs{...}
+type GitOpsClusterRequestClusterInfoCacheInfoInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoCacheInfoOutput() GitOpsClusterRequestClusterInfoCacheInfoOutput
+	ToGitOpsClusterRequestClusterInfoCacheInfoOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoCacheInfoOutput
+}
+
+type GitOpsClusterRequestClusterInfoCacheInfoArgs struct {
+	ApisCount         pulumi.StringPtrInput `pulumi:"apisCount"`
+	LastCacheSyncTime pulumi.StringPtrInput `pulumi:"lastCacheSyncTime"`
+	ResourcesCount    pulumi.StringPtrInput `pulumi:"resourcesCount"`
+}
+
+func (GitOpsClusterRequestClusterInfoCacheInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoCacheInfoArgs) ToGitOpsClusterRequestClusterInfoCacheInfoOutput() GitOpsClusterRequestClusterInfoCacheInfoOutput {
+	return i.ToGitOpsClusterRequestClusterInfoCacheInfoOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoCacheInfoArgs) ToGitOpsClusterRequestClusterInfoCacheInfoOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoCacheInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoCacheInfoOutput)
+}
+
+// GitOpsClusterRequestClusterInfoCacheInfoArrayInput is an input type that accepts GitOpsClusterRequestClusterInfoCacheInfoArray and GitOpsClusterRequestClusterInfoCacheInfoArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoCacheInfoArrayInput` via:
+//
+//	GitOpsClusterRequestClusterInfoCacheInfoArray{ GitOpsClusterRequestClusterInfoCacheInfoArgs{...} }
+type GitOpsClusterRequestClusterInfoCacheInfoArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutput() GitOpsClusterRequestClusterInfoCacheInfoArrayOutput
+	ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoCacheInfoArrayOutput
+}
+
+type GitOpsClusterRequestClusterInfoCacheInfoArray []GitOpsClusterRequestClusterInfoCacheInfoInput
+
+func (GitOpsClusterRequestClusterInfoCacheInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoCacheInfoArray) ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutput() GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return i.ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoCacheInfoArray) ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoCacheInfoArrayOutput)
+}
+
+type GitOpsClusterRequestClusterInfoCacheInfoOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoCacheInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ToGitOpsClusterRequestClusterInfoCacheInfoOutput() GitOpsClusterRequestClusterInfoCacheInfoOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ToGitOpsClusterRequestClusterInfoCacheInfoOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoCacheInfoOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ApisCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.ApisCount }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) LastCacheSyncTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.LastCacheSyncTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ResourcesCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.ResourcesCount }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterInfoCacheInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoCacheInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoArrayOutput) ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutput() GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoArrayOutput) ToGitOpsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoCacheInfoArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterInfoCacheInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterInfoCacheInfo {
+		return vs[0].([]GitOpsClusterRequestClusterInfoCacheInfo)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterInfoCacheInfoOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionState struct {
+	AttemptedAts []GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt `pulumi:"attemptedAts"`
+	Message      *string                                                     `pulumi:"message"`
+	Status       *string                                                     `pulumi:"status"`
+}
+
+// GitOpsClusterRequestClusterInfoConnectionStateInput is an input type that accepts GitOpsClusterRequestClusterInfoConnectionStateArgs and GitOpsClusterRequestClusterInfoConnectionStateOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoConnectionStateInput` via:
+//
+//	GitOpsClusterRequestClusterInfoConnectionStateArgs{...}
+type GitOpsClusterRequestClusterInfoConnectionStateInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoConnectionStateOutput() GitOpsClusterRequestClusterInfoConnectionStateOutput
+	ToGitOpsClusterRequestClusterInfoConnectionStateOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoConnectionStateOutput
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateArgs struct {
+	AttemptedAts GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput `pulumi:"attemptedAts"`
+	Message      pulumi.StringPtrInput                                               `pulumi:"message"`
+	Status       pulumi.StringPtrInput                                               `pulumi:"status"`
+}
+
+func (GitOpsClusterRequestClusterInfoConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateArgs) ToGitOpsClusterRequestClusterInfoConnectionStateOutput() GitOpsClusterRequestClusterInfoConnectionStateOutput {
+	return i.ToGitOpsClusterRequestClusterInfoConnectionStateOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateArgs) ToGitOpsClusterRequestClusterInfoConnectionStateOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoConnectionStateOutput)
+}
+
+// GitOpsClusterRequestClusterInfoConnectionStateArrayInput is an input type that accepts GitOpsClusterRequestClusterInfoConnectionStateArray and GitOpsClusterRequestClusterInfoConnectionStateArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoConnectionStateArrayInput` via:
+//
+//	GitOpsClusterRequestClusterInfoConnectionStateArray{ GitOpsClusterRequestClusterInfoConnectionStateArgs{...} }
+type GitOpsClusterRequestClusterInfoConnectionStateArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateArrayOutput
+	ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoConnectionStateArrayOutput
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateArray []GitOpsClusterRequestClusterInfoConnectionStateInput
+
+func (GitOpsClusterRequestClusterInfoConnectionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateArray) ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return i.ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateArray) ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoConnectionStateArrayOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) ToGitOpsClusterRequestClusterInfoConnectionStateOutput() GitOpsClusterRequestClusterInfoConnectionStateOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) ToGitOpsClusterRequestClusterInfoConnectionStateOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) AttemptedAts() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) []GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt {
+		return v.AttemptedAts
+	}).(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoConnectionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateArrayOutput) ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateArrayOutput) ToGitOpsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterInfoConnectionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterInfoConnectionState {
+		return vs[0].([]GitOpsClusterRequestClusterInfoConnectionState)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterInfoConnectionStateOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt struct {
+	Nanos   *int    `pulumi:"nanos"`
+	Seconds *string `pulumi:"seconds"`
+}
+
+// GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput is an input type that accepts GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs and GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput` via:
+//
+//	GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{...}
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput
+	ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs struct {
+	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return i.ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput)
+}
+
+// GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput is an input type that accepts GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray and GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput` via:
+//
+//	GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray{ GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{...} }
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput
+	ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray []GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput
+
+func (GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return i.ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ToGitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt {
+		return vs[0].([]GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput)
+}
+
+type GitOpsClusterRequestClusterRefreshRequestedAt struct {
+	Nanos   *int    `pulumi:"nanos"`
+	Seconds *string `pulumi:"seconds"`
+}
+
+// GitOpsClusterRequestClusterRefreshRequestedAtInput is an input type that accepts GitOpsClusterRequestClusterRefreshRequestedAtArgs and GitOpsClusterRequestClusterRefreshRequestedAtOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterRefreshRequestedAtInput` via:
+//
+//	GitOpsClusterRequestClusterRefreshRequestedAtArgs{...}
+type GitOpsClusterRequestClusterRefreshRequestedAtInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterRefreshRequestedAtOutput() GitOpsClusterRequestClusterRefreshRequestedAtOutput
+	ToGitOpsClusterRequestClusterRefreshRequestedAtOutputWithContext(context.Context) GitOpsClusterRequestClusterRefreshRequestedAtOutput
+}
+
+type GitOpsClusterRequestClusterRefreshRequestedAtArgs struct {
+	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (GitOpsClusterRequestClusterRefreshRequestedAtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterRefreshRequestedAtArgs) ToGitOpsClusterRequestClusterRefreshRequestedAtOutput() GitOpsClusterRequestClusterRefreshRequestedAtOutput {
+	return i.ToGitOpsClusterRequestClusterRefreshRequestedAtOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterRefreshRequestedAtArgs) ToGitOpsClusterRequestClusterRefreshRequestedAtOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterRefreshRequestedAtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterRefreshRequestedAtOutput)
+}
+
+// GitOpsClusterRequestClusterRefreshRequestedAtArrayInput is an input type that accepts GitOpsClusterRequestClusterRefreshRequestedAtArray and GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestClusterRefreshRequestedAtArrayInput` via:
+//
+//	GitOpsClusterRequestClusterRefreshRequestedAtArray{ GitOpsClusterRequestClusterRefreshRequestedAtArgs{...} }
+type GitOpsClusterRequestClusterRefreshRequestedAtArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutput() GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput
+	ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(context.Context) GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput
+}
+
+type GitOpsClusterRequestClusterRefreshRequestedAtArray []GitOpsClusterRequestClusterRefreshRequestedAtInput
+
+func (GitOpsClusterRequestClusterRefreshRequestedAtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestClusterRefreshRequestedAtArray) ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutput() GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return i.ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestClusterRefreshRequestedAtArray) ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput)
+}
+
+type GitOpsClusterRequestClusterRefreshRequestedAtOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterRefreshRequestedAtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) ToGitOpsClusterRequestClusterRefreshRequestedAtOutput() GitOpsClusterRequestClusterRefreshRequestedAtOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) ToGitOpsClusterRequestClusterRefreshRequestedAtOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterRefreshRequestedAtOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterRefreshRequestedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterRefreshRequestedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput) ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutput() GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput) ToGitOpsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestClusterRefreshRequestedAtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestClusterRefreshRequestedAt {
+		return vs[0].([]GitOpsClusterRequestClusterRefreshRequestedAt)[vs[1].(int)]
+	}).(GitOpsClusterRequestClusterRefreshRequestedAtOutput)
+}
+
+type GitOpsClusterRequestId struct {
+	Type  *string `pulumi:"type"`
+	Value *string `pulumi:"value"`
+}
+
+// GitOpsClusterRequestIdInput is an input type that accepts GitOpsClusterRequestIdArgs and GitOpsClusterRequestIdOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestIdInput` via:
+//
+//	GitOpsClusterRequestIdArgs{...}
+type GitOpsClusterRequestIdInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestIdOutput() GitOpsClusterRequestIdOutput
+	ToGitOpsClusterRequestIdOutputWithContext(context.Context) GitOpsClusterRequestIdOutput
+}
+
+type GitOpsClusterRequestIdArgs struct {
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitOpsClusterRequestIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestId)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestIdArgs) ToGitOpsClusterRequestIdOutput() GitOpsClusterRequestIdOutput {
+	return i.ToGitOpsClusterRequestIdOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestIdArgs) ToGitOpsClusterRequestIdOutputWithContext(ctx context.Context) GitOpsClusterRequestIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestIdOutput)
+}
+
+// GitOpsClusterRequestIdArrayInput is an input type that accepts GitOpsClusterRequestIdArray and GitOpsClusterRequestIdArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestIdArrayInput` via:
+//
+//	GitOpsClusterRequestIdArray{ GitOpsClusterRequestIdArgs{...} }
+type GitOpsClusterRequestIdArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestIdArrayOutput() GitOpsClusterRequestIdArrayOutput
+	ToGitOpsClusterRequestIdArrayOutputWithContext(context.Context) GitOpsClusterRequestIdArrayOutput
+}
+
+type GitOpsClusterRequestIdArray []GitOpsClusterRequestIdInput
+
+func (GitOpsClusterRequestIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestId)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestIdArray) ToGitOpsClusterRequestIdArrayOutput() GitOpsClusterRequestIdArrayOutput {
+	return i.ToGitOpsClusterRequestIdArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestIdArray) ToGitOpsClusterRequestIdArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestIdArrayOutput)
+}
+
+type GitOpsClusterRequestIdOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestId)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestIdOutput) ToGitOpsClusterRequestIdOutput() GitOpsClusterRequestIdOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestIdOutput) ToGitOpsClusterRequestIdOutputWithContext(ctx context.Context) GitOpsClusterRequestIdOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestIdOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestId) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsClusterRequestIdOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestId) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsClusterRequestIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestId)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestIdArrayOutput) ToGitOpsClusterRequestIdArrayOutput() GitOpsClusterRequestIdArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestIdArrayOutput) ToGitOpsClusterRequestIdArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestIdArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestIdArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestId {
+		return vs[0].([]GitOpsClusterRequestId)[vs[1].(int)]
+	}).(GitOpsClusterRequestIdOutput)
+}
+
+type GitOpsClusterRequestUpdateMask struct {
+	Paths []string `pulumi:"paths"`
+}
+
+// GitOpsClusterRequestUpdateMaskInput is an input type that accepts GitOpsClusterRequestUpdateMaskArgs and GitOpsClusterRequestUpdateMaskOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestUpdateMaskInput` via:
+//
+//	GitOpsClusterRequestUpdateMaskArgs{...}
+type GitOpsClusterRequestUpdateMaskInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestUpdateMaskOutput() GitOpsClusterRequestUpdateMaskOutput
+	ToGitOpsClusterRequestUpdateMaskOutputWithContext(context.Context) GitOpsClusterRequestUpdateMaskOutput
+}
+
+type GitOpsClusterRequestUpdateMaskArgs struct {
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+}
+
+func (GitOpsClusterRequestUpdateMaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestUpdateMaskArgs) ToGitOpsClusterRequestUpdateMaskOutput() GitOpsClusterRequestUpdateMaskOutput {
+	return i.ToGitOpsClusterRequestUpdateMaskOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestUpdateMaskArgs) ToGitOpsClusterRequestUpdateMaskOutputWithContext(ctx context.Context) GitOpsClusterRequestUpdateMaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestUpdateMaskOutput)
+}
+
+// GitOpsClusterRequestUpdateMaskArrayInput is an input type that accepts GitOpsClusterRequestUpdateMaskArray and GitOpsClusterRequestUpdateMaskArrayOutput values.
+// You can construct a concrete instance of `GitOpsClusterRequestUpdateMaskArrayInput` via:
+//
+//	GitOpsClusterRequestUpdateMaskArray{ GitOpsClusterRequestUpdateMaskArgs{...} }
+type GitOpsClusterRequestUpdateMaskArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsClusterRequestUpdateMaskArrayOutput() GitOpsClusterRequestUpdateMaskArrayOutput
+	ToGitOpsClusterRequestUpdateMaskArrayOutputWithContext(context.Context) GitOpsClusterRequestUpdateMaskArrayOutput
+}
+
+type GitOpsClusterRequestUpdateMaskArray []GitOpsClusterRequestUpdateMaskInput
+
+func (GitOpsClusterRequestUpdateMaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (i GitOpsClusterRequestUpdateMaskArray) ToGitOpsClusterRequestUpdateMaskArrayOutput() GitOpsClusterRequestUpdateMaskArrayOutput {
+	return i.ToGitOpsClusterRequestUpdateMaskArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsClusterRequestUpdateMaskArray) ToGitOpsClusterRequestUpdateMaskArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestUpdateMaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsClusterRequestUpdateMaskArrayOutput)
+}
+
+type GitOpsClusterRequestUpdateMaskOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestUpdateMaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestUpdateMaskOutput) ToGitOpsClusterRequestUpdateMaskOutput() GitOpsClusterRequestUpdateMaskOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestUpdateMaskOutput) ToGitOpsClusterRequestUpdateMaskOutputWithContext(ctx context.Context) GitOpsClusterRequestUpdateMaskOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestUpdateMaskOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestUpdateMask) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type GitOpsClusterRequestUpdateMaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsClusterRequestUpdateMaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (o GitOpsClusterRequestUpdateMaskArrayOutput) ToGitOpsClusterRequestUpdateMaskArrayOutput() GitOpsClusterRequestUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestUpdateMaskArrayOutput) ToGitOpsClusterRequestUpdateMaskArrayOutputWithContext(ctx context.Context) GitOpsClusterRequestUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GitOpsClusterRequestUpdateMaskArrayOutput) Index(i pulumi.IntInput) GitOpsClusterRequestUpdateMaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsClusterRequestUpdateMask {
+		return vs[0].([]GitOpsClusterRequestUpdateMask)[vs[1].(int)]
+	}).(GitOpsClusterRequestUpdateMaskOutput)
+}
+
+type GitOpsRepositoryRepo struct {
+	ConnectionType             string  `pulumi:"connectionType"`
+	EnableLfs                  *bool   `pulumi:"enableLfs"`
+	EnableOci                  *bool   `pulumi:"enableOci"`
+	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppId                *string `pulumi:"githubAppId"`
+	GithubAppInstallationId    *string `pulumi:"githubAppInstallationId"`
+	GithubAppPrivateKey        *string `pulumi:"githubAppPrivateKey"`
+	InheritedCreds             *bool   `pulumi:"inheritedCreds"`
+	Insecure                   *bool   `pulumi:"insecure"`
+	InsecureIgnoreHostKey      *bool   `pulumi:"insecureIgnoreHostKey"`
+	Name                       *string `pulumi:"name"`
+	Password                   *string `pulumi:"password"`
+	Project                    *string `pulumi:"project"`
+	Proxy                      *string `pulumi:"proxy"`
+	Repo                       string  `pulumi:"repo"`
+	SshPrivateKey              *string `pulumi:"sshPrivateKey"`
+	TlsClientCertData          *string `pulumi:"tlsClientCertData"`
+	TlsClientCertKey           *string `pulumi:"tlsClientCertKey"`
+	Type_                      *string `pulumi:"type_"`
+	Username                   *string `pulumi:"username"`
+}
+
+// GitOpsRepositoryRepoInput is an input type that accepts GitOpsRepositoryRepoArgs and GitOpsRepositoryRepoOutput values.
+// You can construct a concrete instance of `GitOpsRepositoryRepoInput` via:
+//
+//	GitOpsRepositoryRepoArgs{...}
+type GitOpsRepositoryRepoInput interface {
+	pulumi.Input
+
+	ToGitOpsRepositoryRepoOutput() GitOpsRepositoryRepoOutput
+	ToGitOpsRepositoryRepoOutputWithContext(context.Context) GitOpsRepositoryRepoOutput
+}
+
+type GitOpsRepositoryRepoArgs struct {
+	ConnectionType             pulumi.StringInput    `pulumi:"connectionType"`
+	EnableLfs                  pulumi.BoolPtrInput   `pulumi:"enableLfs"`
+	EnableOci                  pulumi.BoolPtrInput   `pulumi:"enableOci"`
+	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppId                pulumi.StringPtrInput `pulumi:"githubAppId"`
+	GithubAppInstallationId    pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
+	GithubAppPrivateKey        pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
+	InheritedCreds             pulumi.BoolPtrInput   `pulumi:"inheritedCreds"`
+	Insecure                   pulumi.BoolPtrInput   `pulumi:"insecure"`
+	InsecureIgnoreHostKey      pulumi.BoolPtrInput   `pulumi:"insecureIgnoreHostKey"`
+	Name                       pulumi.StringPtrInput `pulumi:"name"`
+	Password                   pulumi.StringPtrInput `pulumi:"password"`
+	Project                    pulumi.StringPtrInput `pulumi:"project"`
+	Proxy                      pulumi.StringPtrInput `pulumi:"proxy"`
+	Repo                       pulumi.StringInput    `pulumi:"repo"`
+	SshPrivateKey              pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	TlsClientCertData          pulumi.StringPtrInput `pulumi:"tlsClientCertData"`
+	TlsClientCertKey           pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
+	Type_                      pulumi.StringPtrInput `pulumi:"type_"`
+	Username                   pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GitOpsRepositoryRepoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsRepositoryRepo)(nil)).Elem()
+}
+
+func (i GitOpsRepositoryRepoArgs) ToGitOpsRepositoryRepoOutput() GitOpsRepositoryRepoOutput {
+	return i.ToGitOpsRepositoryRepoOutputWithContext(context.Background())
+}
+
+func (i GitOpsRepositoryRepoArgs) ToGitOpsRepositoryRepoOutputWithContext(ctx context.Context) GitOpsRepositoryRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsRepositoryRepoOutput)
+}
+
+// GitOpsRepositoryRepoArrayInput is an input type that accepts GitOpsRepositoryRepoArray and GitOpsRepositoryRepoArrayOutput values.
+// You can construct a concrete instance of `GitOpsRepositoryRepoArrayInput` via:
+//
+//	GitOpsRepositoryRepoArray{ GitOpsRepositoryRepoArgs{...} }
+type GitOpsRepositoryRepoArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsRepositoryRepoArrayOutput() GitOpsRepositoryRepoArrayOutput
+	ToGitOpsRepositoryRepoArrayOutputWithContext(context.Context) GitOpsRepositoryRepoArrayOutput
+}
+
+type GitOpsRepositoryRepoArray []GitOpsRepositoryRepoInput
+
+func (GitOpsRepositoryRepoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsRepositoryRepo)(nil)).Elem()
+}
+
+func (i GitOpsRepositoryRepoArray) ToGitOpsRepositoryRepoArrayOutput() GitOpsRepositoryRepoArrayOutput {
+	return i.ToGitOpsRepositoryRepoArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsRepositoryRepoArray) ToGitOpsRepositoryRepoArrayOutputWithContext(ctx context.Context) GitOpsRepositoryRepoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsRepositoryRepoArrayOutput)
+}
+
+type GitOpsRepositoryRepoOutput struct{ *pulumi.OutputState }
+
+func (GitOpsRepositoryRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsRepositoryRepo)(nil)).Elem()
+}
+
+func (o GitOpsRepositoryRepoOutput) ToGitOpsRepositoryRepoOutput() GitOpsRepositoryRepoOutput {
+	return o
+}
+
+func (o GitOpsRepositoryRepoOutput) ToGitOpsRepositoryRepoOutputWithContext(ctx context.Context) GitOpsRepositoryRepoOutput {
+	return o
+}
+
+func (o GitOpsRepositoryRepoOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) EnableLfs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.EnableLfs }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) EnableOci() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) GithubAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.GithubAppId }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) GithubAppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.GithubAppInstallationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) GithubAppPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.GithubAppPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) InheritedCreds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.InheritedCreds }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) InsecureIgnoreHostKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.InsecureIgnoreHostKey }).(pulumi.BoolPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) SshPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.SshPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) TlsClientCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.TlsClientCertData }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) TlsClientCertKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.TlsClientCertKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Type_() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Type_ }).(pulumi.StringPtrOutput)
+}
+
+func (o GitOpsRepositoryRepoOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GitOpsRepositoryRepoArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsRepositoryRepoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsRepositoryRepo)(nil)).Elem()
+}
+
+func (o GitOpsRepositoryRepoArrayOutput) ToGitOpsRepositoryRepoArrayOutput() GitOpsRepositoryRepoArrayOutput {
+	return o
+}
+
+func (o GitOpsRepositoryRepoArrayOutput) ToGitOpsRepositoryRepoArrayOutputWithContext(ctx context.Context) GitOpsRepositoryRepoArrayOutput {
+	return o
+}
+
+func (o GitOpsRepositoryRepoArrayOutput) Index(i pulumi.IntInput) GitOpsRepositoryRepoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsRepositoryRepo {
+		return vs[0].([]GitOpsRepositoryRepo)[vs[1].(int)]
+	}).(GitOpsRepositoryRepoOutput)
+}
+
+type GitOpsRepositoryUpdateMask struct {
+	Paths []string `pulumi:"paths"`
+}
+
+// GitOpsRepositoryUpdateMaskInput is an input type that accepts GitOpsRepositoryUpdateMaskArgs and GitOpsRepositoryUpdateMaskOutput values.
+// You can construct a concrete instance of `GitOpsRepositoryUpdateMaskInput` via:
+//
+//	GitOpsRepositoryUpdateMaskArgs{...}
+type GitOpsRepositoryUpdateMaskInput interface {
+	pulumi.Input
+
+	ToGitOpsRepositoryUpdateMaskOutput() GitOpsRepositoryUpdateMaskOutput
+	ToGitOpsRepositoryUpdateMaskOutputWithContext(context.Context) GitOpsRepositoryUpdateMaskOutput
+}
+
+type GitOpsRepositoryUpdateMaskArgs struct {
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+}
+
+func (GitOpsRepositoryUpdateMaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (i GitOpsRepositoryUpdateMaskArgs) ToGitOpsRepositoryUpdateMaskOutput() GitOpsRepositoryUpdateMaskOutput {
+	return i.ToGitOpsRepositoryUpdateMaskOutputWithContext(context.Background())
+}
+
+func (i GitOpsRepositoryUpdateMaskArgs) ToGitOpsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GitOpsRepositoryUpdateMaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsRepositoryUpdateMaskOutput)
+}
+
+// GitOpsRepositoryUpdateMaskArrayInput is an input type that accepts GitOpsRepositoryUpdateMaskArray and GitOpsRepositoryUpdateMaskArrayOutput values.
+// You can construct a concrete instance of `GitOpsRepositoryUpdateMaskArrayInput` via:
+//
+//	GitOpsRepositoryUpdateMaskArray{ GitOpsRepositoryUpdateMaskArgs{...} }
+type GitOpsRepositoryUpdateMaskArrayInput interface {
+	pulumi.Input
+
+	ToGitOpsRepositoryUpdateMaskArrayOutput() GitOpsRepositoryUpdateMaskArrayOutput
+	ToGitOpsRepositoryUpdateMaskArrayOutputWithContext(context.Context) GitOpsRepositoryUpdateMaskArrayOutput
+}
+
+type GitOpsRepositoryUpdateMaskArray []GitOpsRepositoryUpdateMaskInput
+
+func (GitOpsRepositoryUpdateMaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (i GitOpsRepositoryUpdateMaskArray) ToGitOpsRepositoryUpdateMaskArrayOutput() GitOpsRepositoryUpdateMaskArrayOutput {
+	return i.ToGitOpsRepositoryUpdateMaskArrayOutputWithContext(context.Background())
+}
+
+func (i GitOpsRepositoryUpdateMaskArray) ToGitOpsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GitOpsRepositoryUpdateMaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitOpsRepositoryUpdateMaskArrayOutput)
+}
+
+type GitOpsRepositoryUpdateMaskOutput struct{ *pulumi.OutputState }
+
+func (GitOpsRepositoryUpdateMaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitOpsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (o GitOpsRepositoryUpdateMaskOutput) ToGitOpsRepositoryUpdateMaskOutput() GitOpsRepositoryUpdateMaskOutput {
+	return o
+}
+
+func (o GitOpsRepositoryUpdateMaskOutput) ToGitOpsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GitOpsRepositoryUpdateMaskOutput {
+	return o
+}
+
+func (o GitOpsRepositoryUpdateMaskOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitOpsRepositoryUpdateMask) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type GitOpsRepositoryUpdateMaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GitOpsRepositoryUpdateMaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitOpsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (o GitOpsRepositoryUpdateMaskArrayOutput) ToGitOpsRepositoryUpdateMaskArrayOutput() GitOpsRepositoryUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GitOpsRepositoryUpdateMaskArrayOutput) ToGitOpsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GitOpsRepositoryUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GitOpsRepositoryUpdateMaskArrayOutput) Index(i pulumi.IntInput) GitOpsRepositoryUpdateMaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitOpsRepositoryUpdateMask {
+		return vs[0].([]GitOpsRepositoryUpdateMask)[vs[1].(int)]
+	}).(GitOpsRepositoryUpdateMaskOutput)
 }
 
 type GithubConnectorApiAuthentication struct {
@@ -6476,6 +8675,130 @@ func (o NexusConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrometheusConnectorHeader struct {
+	// Encrypted value reference.
+	EncryptedValueRef *string `pulumi:"encryptedValueRef"`
+	// Key.
+	Key string `pulumi:"key"`
+	// Value.
+	Value *string `pulumi:"value"`
+	// Encrypted value.
+	ValueEncrypted *bool `pulumi:"valueEncrypted"`
+}
+
+// PrometheusConnectorHeaderInput is an input type that accepts PrometheusConnectorHeaderArgs and PrometheusConnectorHeaderOutput values.
+// You can construct a concrete instance of `PrometheusConnectorHeaderInput` via:
+//
+//	PrometheusConnectorHeaderArgs{...}
+type PrometheusConnectorHeaderInput interface {
+	pulumi.Input
+
+	ToPrometheusConnectorHeaderOutput() PrometheusConnectorHeaderOutput
+	ToPrometheusConnectorHeaderOutputWithContext(context.Context) PrometheusConnectorHeaderOutput
+}
+
+type PrometheusConnectorHeaderArgs struct {
+	// Encrypted value reference.
+	EncryptedValueRef pulumi.StringPtrInput `pulumi:"encryptedValueRef"`
+	// Key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Encrypted value.
+	ValueEncrypted pulumi.BoolPtrInput `pulumi:"valueEncrypted"`
+}
+
+func (PrometheusConnectorHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (i PrometheusConnectorHeaderArgs) ToPrometheusConnectorHeaderOutput() PrometheusConnectorHeaderOutput {
+	return i.ToPrometheusConnectorHeaderOutputWithContext(context.Background())
+}
+
+func (i PrometheusConnectorHeaderArgs) ToPrometheusConnectorHeaderOutputWithContext(ctx context.Context) PrometheusConnectorHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusConnectorHeaderOutput)
+}
+
+// PrometheusConnectorHeaderArrayInput is an input type that accepts PrometheusConnectorHeaderArray and PrometheusConnectorHeaderArrayOutput values.
+// You can construct a concrete instance of `PrometheusConnectorHeaderArrayInput` via:
+//
+//	PrometheusConnectorHeaderArray{ PrometheusConnectorHeaderArgs{...} }
+type PrometheusConnectorHeaderArrayInput interface {
+	pulumi.Input
+
+	ToPrometheusConnectorHeaderArrayOutput() PrometheusConnectorHeaderArrayOutput
+	ToPrometheusConnectorHeaderArrayOutputWithContext(context.Context) PrometheusConnectorHeaderArrayOutput
+}
+
+type PrometheusConnectorHeaderArray []PrometheusConnectorHeaderInput
+
+func (PrometheusConnectorHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (i PrometheusConnectorHeaderArray) ToPrometheusConnectorHeaderArrayOutput() PrometheusConnectorHeaderArrayOutput {
+	return i.ToPrometheusConnectorHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i PrometheusConnectorHeaderArray) ToPrometheusConnectorHeaderArrayOutputWithContext(ctx context.Context) PrometheusConnectorHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusConnectorHeaderArrayOutput)
+}
+
+type PrometheusConnectorHeaderOutput struct{ *pulumi.OutputState }
+
+func (PrometheusConnectorHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (o PrometheusConnectorHeaderOutput) ToPrometheusConnectorHeaderOutput() PrometheusConnectorHeaderOutput {
+	return o
+}
+
+func (o PrometheusConnectorHeaderOutput) ToPrometheusConnectorHeaderOutputWithContext(ctx context.Context) PrometheusConnectorHeaderOutput {
+	return o
+}
+
+// Encrypted value reference.
+func (o PrometheusConnectorHeaderOutput) EncryptedValueRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusConnectorHeader) *string { return v.EncryptedValueRef }).(pulumi.StringPtrOutput)
+}
+
+// Key.
+func (o PrometheusConnectorHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusConnectorHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value.
+func (o PrometheusConnectorHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusConnectorHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Encrypted value.
+func (o PrometheusConnectorHeaderOutput) ValueEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrometheusConnectorHeader) *bool { return v.ValueEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+type PrometheusConnectorHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (PrometheusConnectorHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (o PrometheusConnectorHeaderArrayOutput) ToPrometheusConnectorHeaderArrayOutput() PrometheusConnectorHeaderArrayOutput {
+	return o
+}
+
+func (o PrometheusConnectorHeaderArrayOutput) ToPrometheusConnectorHeaderArrayOutputWithContext(ctx context.Context) PrometheusConnectorHeaderArrayOutput {
+	return o
+}
+
+func (o PrometheusConnectorHeaderArrayOutput) Index(i pulumi.IntInput) PrometheusConnectorHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusConnectorHeader {
+		return vs[0].([]PrometheusConnectorHeader)[vs[1].(int)]
+	}).(PrometheusConnectorHeaderOutput)
+}
+
 type ResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId *string `pulumi:"accountId"`
@@ -6912,6 +9235,121 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceGroupResourceFilterResourceAttributeFilter {
 		return vs[0].([]ResourceGroupResourceFilterResourceAttributeFilter)[vs[1].(int)]
 	}).(ResourceGroupResourceFilterResourceAttributeFilterOutput)
+}
+
+type RoleAssignmentsPrincipal struct {
+	// Identifier.
+	Identifier *string `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel *string `pulumi:"scopeLevel"`
+	// Type.
+	Type *string `pulumi:"type"`
+}
+
+// RoleAssignmentsPrincipalInput is an input type that accepts RoleAssignmentsPrincipalArgs and RoleAssignmentsPrincipalOutput values.
+// You can construct a concrete instance of `RoleAssignmentsPrincipalInput` via:
+//
+//	RoleAssignmentsPrincipalArgs{...}
+type RoleAssignmentsPrincipalInput interface {
+	pulumi.Input
+
+	ToRoleAssignmentsPrincipalOutput() RoleAssignmentsPrincipalOutput
+	ToRoleAssignmentsPrincipalOutputWithContext(context.Context) RoleAssignmentsPrincipalOutput
+}
+
+type RoleAssignmentsPrincipalArgs struct {
+	// Identifier.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel pulumi.StringPtrInput `pulumi:"scopeLevel"`
+	// Type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RoleAssignmentsPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (i RoleAssignmentsPrincipalArgs) ToRoleAssignmentsPrincipalOutput() RoleAssignmentsPrincipalOutput {
+	return i.ToRoleAssignmentsPrincipalOutputWithContext(context.Background())
+}
+
+func (i RoleAssignmentsPrincipalArgs) ToRoleAssignmentsPrincipalOutputWithContext(ctx context.Context) RoleAssignmentsPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentsPrincipalOutput)
+}
+
+// RoleAssignmentsPrincipalArrayInput is an input type that accepts RoleAssignmentsPrincipalArray and RoleAssignmentsPrincipalArrayOutput values.
+// You can construct a concrete instance of `RoleAssignmentsPrincipalArrayInput` via:
+//
+//	RoleAssignmentsPrincipalArray{ RoleAssignmentsPrincipalArgs{...} }
+type RoleAssignmentsPrincipalArrayInput interface {
+	pulumi.Input
+
+	ToRoleAssignmentsPrincipalArrayOutput() RoleAssignmentsPrincipalArrayOutput
+	ToRoleAssignmentsPrincipalArrayOutputWithContext(context.Context) RoleAssignmentsPrincipalArrayOutput
+}
+
+type RoleAssignmentsPrincipalArray []RoleAssignmentsPrincipalInput
+
+func (RoleAssignmentsPrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (i RoleAssignmentsPrincipalArray) ToRoleAssignmentsPrincipalArrayOutput() RoleAssignmentsPrincipalArrayOutput {
+	return i.ToRoleAssignmentsPrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i RoleAssignmentsPrincipalArray) ToRoleAssignmentsPrincipalArrayOutputWithContext(ctx context.Context) RoleAssignmentsPrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentsPrincipalArrayOutput)
+}
+
+type RoleAssignmentsPrincipalOutput struct{ *pulumi.OutputState }
+
+func (RoleAssignmentsPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (o RoleAssignmentsPrincipalOutput) ToRoleAssignmentsPrincipalOutput() RoleAssignmentsPrincipalOutput {
+	return o
+}
+
+func (o RoleAssignmentsPrincipalOutput) ToRoleAssignmentsPrincipalOutputWithContext(ctx context.Context) RoleAssignmentsPrincipalOutput {
+	return o
+}
+
+// Identifier.
+func (o RoleAssignmentsPrincipalOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleAssignmentsPrincipal) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Scope level.
+func (o RoleAssignmentsPrincipalOutput) ScopeLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleAssignmentsPrincipal) *string { return v.ScopeLevel }).(pulumi.StringPtrOutput)
+}
+
+// Type.
+func (o RoleAssignmentsPrincipalOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleAssignmentsPrincipal) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RoleAssignmentsPrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (RoleAssignmentsPrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (o RoleAssignmentsPrincipalArrayOutput) ToRoleAssignmentsPrincipalArrayOutput() RoleAssignmentsPrincipalArrayOutput {
+	return o
+}
+
+func (o RoleAssignmentsPrincipalArrayOutput) ToRoleAssignmentsPrincipalArrayOutputWithContext(ctx context.Context) RoleAssignmentsPrincipalArrayOutput {
+	return o
+}
+
+func (o RoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) RoleAssignmentsPrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleAssignmentsPrincipal {
+		return vs[0].([]RoleAssignmentsPrincipal)[vs[1].(int)]
+	}).(RoleAssignmentsPrincipalOutput)
 }
 
 type SecretSshkeyKerberos struct {
@@ -8194,6 +10632,162 @@ func (o UsergroupNotificationConfigArrayOutput) Index(i pulumi.IntInput) Usergro
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsergroupNotificationConfig {
 		return vs[0].([]UsergroupNotificationConfig)[vs[1].(int)]
 	}).(UsergroupNotificationConfigOutput)
+}
+
+type VariablesSpec struct {
+	// FixedValue of the variable
+	FixedValue string `pulumi:"fixedValue"`
+	// Type of Value of the Variable. For now only FIXED is supported
+	ValueType string `pulumi:"valueType"`
+}
+
+// VariablesSpecInput is an input type that accepts VariablesSpecArgs and VariablesSpecOutput values.
+// You can construct a concrete instance of `VariablesSpecInput` via:
+//
+//	VariablesSpecArgs{...}
+type VariablesSpecInput interface {
+	pulumi.Input
+
+	ToVariablesSpecOutput() VariablesSpecOutput
+	ToVariablesSpecOutputWithContext(context.Context) VariablesSpecOutput
+}
+
+type VariablesSpecArgs struct {
+	// FixedValue of the variable
+	FixedValue pulumi.StringInput `pulumi:"fixedValue"`
+	// Type of Value of the Variable. For now only FIXED is supported
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (VariablesSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VariablesSpec)(nil)).Elem()
+}
+
+func (i VariablesSpecArgs) ToVariablesSpecOutput() VariablesSpecOutput {
+	return i.ToVariablesSpecOutputWithContext(context.Background())
+}
+
+func (i VariablesSpecArgs) ToVariablesSpecOutputWithContext(ctx context.Context) VariablesSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VariablesSpecOutput)
+}
+
+func (i VariablesSpecArgs) ToVariablesSpecPtrOutput() VariablesSpecPtrOutput {
+	return i.ToVariablesSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VariablesSpecArgs) ToVariablesSpecPtrOutputWithContext(ctx context.Context) VariablesSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VariablesSpecOutput).ToVariablesSpecPtrOutputWithContext(ctx)
+}
+
+// VariablesSpecPtrInput is an input type that accepts VariablesSpecArgs, VariablesSpecPtr and VariablesSpecPtrOutput values.
+// You can construct a concrete instance of `VariablesSpecPtrInput` via:
+//
+//	        VariablesSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VariablesSpecPtrInput interface {
+	pulumi.Input
+
+	ToVariablesSpecPtrOutput() VariablesSpecPtrOutput
+	ToVariablesSpecPtrOutputWithContext(context.Context) VariablesSpecPtrOutput
+}
+
+type variablesSpecPtrType VariablesSpecArgs
+
+func VariablesSpecPtr(v *VariablesSpecArgs) VariablesSpecPtrInput {
+	return (*variablesSpecPtrType)(v)
+}
+
+func (*variablesSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VariablesSpec)(nil)).Elem()
+}
+
+func (i *variablesSpecPtrType) ToVariablesSpecPtrOutput() VariablesSpecPtrOutput {
+	return i.ToVariablesSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *variablesSpecPtrType) ToVariablesSpecPtrOutputWithContext(ctx context.Context) VariablesSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VariablesSpecPtrOutput)
+}
+
+type VariablesSpecOutput struct{ *pulumi.OutputState }
+
+func (VariablesSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VariablesSpec)(nil)).Elem()
+}
+
+func (o VariablesSpecOutput) ToVariablesSpecOutput() VariablesSpecOutput {
+	return o
+}
+
+func (o VariablesSpecOutput) ToVariablesSpecOutputWithContext(ctx context.Context) VariablesSpecOutput {
+	return o
+}
+
+func (o VariablesSpecOutput) ToVariablesSpecPtrOutput() VariablesSpecPtrOutput {
+	return o.ToVariablesSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VariablesSpecOutput) ToVariablesSpecPtrOutputWithContext(ctx context.Context) VariablesSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VariablesSpec) *VariablesSpec {
+		return &v
+	}).(VariablesSpecPtrOutput)
+}
+
+// FixedValue of the variable
+func (o VariablesSpecOutput) FixedValue() pulumi.StringOutput {
+	return o.ApplyT(func(v VariablesSpec) string { return v.FixedValue }).(pulumi.StringOutput)
+}
+
+// Type of Value of the Variable. For now only FIXED is supported
+func (o VariablesSpecOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v VariablesSpec) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type VariablesSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VariablesSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VariablesSpec)(nil)).Elem()
+}
+
+func (o VariablesSpecPtrOutput) ToVariablesSpecPtrOutput() VariablesSpecPtrOutput {
+	return o
+}
+
+func (o VariablesSpecPtrOutput) ToVariablesSpecPtrOutputWithContext(ctx context.Context) VariablesSpecPtrOutput {
+	return o
+}
+
+func (o VariablesSpecPtrOutput) Elem() VariablesSpecOutput {
+	return o.ApplyT(func(v *VariablesSpec) VariablesSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VariablesSpec
+		return ret
+	}).(VariablesSpecOutput)
+}
+
+// FixedValue of the variable
+func (o VariablesSpecPtrOutput) FixedValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VariablesSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FixedValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Value of the Variable. For now only FIXED is supported
+func (o VariablesSpecPtrOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VariablesSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueType
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppDynamicsConnectorApiToken struct {
@@ -11544,6 +14138,2090 @@ func (o GetGitlabConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetGitlabConnectorCredentialSshOutput)
 }
 
+type GetGitopsAgentMetadata struct {
+	HighAvailability *bool  `pulumi:"highAvailability"`
+	Namespace        string `pulumi:"namespace"`
+}
+
+// GetGitopsAgentMetadataInput is an input type that accepts GetGitopsAgentMetadataArgs and GetGitopsAgentMetadataOutput values.
+// You can construct a concrete instance of `GetGitopsAgentMetadataInput` via:
+//
+//	GetGitopsAgentMetadataArgs{...}
+type GetGitopsAgentMetadataInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentMetadataOutput() GetGitopsAgentMetadataOutput
+	ToGetGitopsAgentMetadataOutputWithContext(context.Context) GetGitopsAgentMetadataOutput
+}
+
+type GetGitopsAgentMetadataArgs struct {
+	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
+	Namespace        pulumi.StringInput  `pulumi:"namespace"`
+}
+
+func (GetGitopsAgentMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentMetadata)(nil)).Elem()
+}
+
+func (i GetGitopsAgentMetadataArgs) ToGetGitopsAgentMetadataOutput() GetGitopsAgentMetadataOutput {
+	return i.ToGetGitopsAgentMetadataOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentMetadataArgs) ToGetGitopsAgentMetadataOutputWithContext(ctx context.Context) GetGitopsAgentMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentMetadataOutput)
+}
+
+// GetGitopsAgentMetadataArrayInput is an input type that accepts GetGitopsAgentMetadataArray and GetGitopsAgentMetadataArrayOutput values.
+// You can construct a concrete instance of `GetGitopsAgentMetadataArrayInput` via:
+//
+//	GetGitopsAgentMetadataArray{ GetGitopsAgentMetadataArgs{...} }
+type GetGitopsAgentMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentMetadataArrayOutput() GetGitopsAgentMetadataArrayOutput
+	ToGetGitopsAgentMetadataArrayOutputWithContext(context.Context) GetGitopsAgentMetadataArrayOutput
+}
+
+type GetGitopsAgentMetadataArray []GetGitopsAgentMetadataInput
+
+func (GetGitopsAgentMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsAgentMetadata)(nil)).Elem()
+}
+
+func (i GetGitopsAgentMetadataArray) ToGetGitopsAgentMetadataArrayOutput() GetGitopsAgentMetadataArrayOutput {
+	return i.ToGetGitopsAgentMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentMetadataArray) ToGetGitopsAgentMetadataArrayOutputWithContext(ctx context.Context) GetGitopsAgentMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentMetadataArrayOutput)
+}
+
+type GetGitopsAgentMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentMetadata)(nil)).Elem()
+}
+
+func (o GetGitopsAgentMetadataOutput) ToGetGitopsAgentMetadataOutput() GetGitopsAgentMetadataOutput {
+	return o
+}
+
+func (o GetGitopsAgentMetadataOutput) ToGetGitopsAgentMetadataOutputWithContext(ctx context.Context) GetGitopsAgentMetadataOutput {
+	return o
+}
+
+func (o GetGitopsAgentMetadataOutput) HighAvailability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentMetadata) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsAgentMetadataOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsAgentMetadata) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type GetGitopsAgentMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsAgentMetadata)(nil)).Elem()
+}
+
+func (o GetGitopsAgentMetadataArrayOutput) ToGetGitopsAgentMetadataArrayOutput() GetGitopsAgentMetadataArrayOutput {
+	return o
+}
+
+func (o GetGitopsAgentMetadataArrayOutput) ToGetGitopsAgentMetadataArrayOutputWithContext(ctx context.Context) GetGitopsAgentMetadataArrayOutput {
+	return o
+}
+
+func (o GetGitopsAgentMetadataArrayOutput) Index(i pulumi.IntInput) GetGitopsAgentMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsAgentMetadata {
+		return vs[0].([]GetGitopsAgentMetadata)[vs[1].(int)]
+	}).(GetGitopsAgentMetadataOutput)
+}
+
+type GetGitopsClusterQuery struct {
+	Ids    []GetGitopsClusterQueryId `pulumi:"ids"`
+	Name   *string                   `pulumi:"name"`
+	Server *string                   `pulumi:"server"`
+}
+
+// GetGitopsClusterQueryInput is an input type that accepts GetGitopsClusterQueryArgs and GetGitopsClusterQueryOutput values.
+// You can construct a concrete instance of `GetGitopsClusterQueryInput` via:
+//
+//	GetGitopsClusterQueryArgs{...}
+type GetGitopsClusterQueryInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterQueryOutput() GetGitopsClusterQueryOutput
+	ToGetGitopsClusterQueryOutputWithContext(context.Context) GetGitopsClusterQueryOutput
+}
+
+type GetGitopsClusterQueryArgs struct {
+	Ids    GetGitopsClusterQueryIdArrayInput `pulumi:"ids"`
+	Name   pulumi.StringPtrInput             `pulumi:"name"`
+	Server pulumi.StringPtrInput             `pulumi:"server"`
+}
+
+func (GetGitopsClusterQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterQuery)(nil)).Elem()
+}
+
+func (i GetGitopsClusterQueryArgs) ToGetGitopsClusterQueryOutput() GetGitopsClusterQueryOutput {
+	return i.ToGetGitopsClusterQueryOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterQueryArgs) ToGetGitopsClusterQueryOutputWithContext(ctx context.Context) GetGitopsClusterQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterQueryOutput)
+}
+
+// GetGitopsClusterQueryArrayInput is an input type that accepts GetGitopsClusterQueryArray and GetGitopsClusterQueryArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterQueryArrayInput` via:
+//
+//	GetGitopsClusterQueryArray{ GetGitopsClusterQueryArgs{...} }
+type GetGitopsClusterQueryArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterQueryArrayOutput() GetGitopsClusterQueryArrayOutput
+	ToGetGitopsClusterQueryArrayOutputWithContext(context.Context) GetGitopsClusterQueryArrayOutput
+}
+
+type GetGitopsClusterQueryArray []GetGitopsClusterQueryInput
+
+func (GetGitopsClusterQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterQuery)(nil)).Elem()
+}
+
+func (i GetGitopsClusterQueryArray) ToGetGitopsClusterQueryArrayOutput() GetGitopsClusterQueryArrayOutput {
+	return i.ToGetGitopsClusterQueryArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterQueryArray) ToGetGitopsClusterQueryArrayOutputWithContext(ctx context.Context) GetGitopsClusterQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterQueryArrayOutput)
+}
+
+type GetGitopsClusterQueryOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterQuery)(nil)).Elem()
+}
+
+func (o GetGitopsClusterQueryOutput) ToGetGitopsClusterQueryOutput() GetGitopsClusterQueryOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryOutput) ToGetGitopsClusterQueryOutputWithContext(ctx context.Context) GetGitopsClusterQueryOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryOutput) Ids() GetGitopsClusterQueryIdArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterQuery) []GetGitopsClusterQueryId { return v.Ids }).(GetGitopsClusterQueryIdArrayOutput)
+}
+
+func (o GetGitopsClusterQueryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterQuery) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterQueryOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterQuery) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterQuery)(nil)).Elem()
+}
+
+func (o GetGitopsClusterQueryArrayOutput) ToGetGitopsClusterQueryArrayOutput() GetGitopsClusterQueryArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryArrayOutput) ToGetGitopsClusterQueryArrayOutputWithContext(ctx context.Context) GetGitopsClusterQueryArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterQuery {
+		return vs[0].([]GetGitopsClusterQuery)[vs[1].(int)]
+	}).(GetGitopsClusterQueryOutput)
+}
+
+type GetGitopsClusterQueryId struct {
+	Type  *string `pulumi:"type"`
+	Value *string `pulumi:"value"`
+}
+
+// GetGitopsClusterQueryIdInput is an input type that accepts GetGitopsClusterQueryIdArgs and GetGitopsClusterQueryIdOutput values.
+// You can construct a concrete instance of `GetGitopsClusterQueryIdInput` via:
+//
+//	GetGitopsClusterQueryIdArgs{...}
+type GetGitopsClusterQueryIdInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterQueryIdOutput() GetGitopsClusterQueryIdOutput
+	ToGetGitopsClusterQueryIdOutputWithContext(context.Context) GetGitopsClusterQueryIdOutput
+}
+
+type GetGitopsClusterQueryIdArgs struct {
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetGitopsClusterQueryIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterQueryId)(nil)).Elem()
+}
+
+func (i GetGitopsClusterQueryIdArgs) ToGetGitopsClusterQueryIdOutput() GetGitopsClusterQueryIdOutput {
+	return i.ToGetGitopsClusterQueryIdOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterQueryIdArgs) ToGetGitopsClusterQueryIdOutputWithContext(ctx context.Context) GetGitopsClusterQueryIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterQueryIdOutput)
+}
+
+// GetGitopsClusterQueryIdArrayInput is an input type that accepts GetGitopsClusterQueryIdArray and GetGitopsClusterQueryIdArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterQueryIdArrayInput` via:
+//
+//	GetGitopsClusterQueryIdArray{ GetGitopsClusterQueryIdArgs{...} }
+type GetGitopsClusterQueryIdArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterQueryIdArrayOutput() GetGitopsClusterQueryIdArrayOutput
+	ToGetGitopsClusterQueryIdArrayOutputWithContext(context.Context) GetGitopsClusterQueryIdArrayOutput
+}
+
+type GetGitopsClusterQueryIdArray []GetGitopsClusterQueryIdInput
+
+func (GetGitopsClusterQueryIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterQueryId)(nil)).Elem()
+}
+
+func (i GetGitopsClusterQueryIdArray) ToGetGitopsClusterQueryIdArrayOutput() GetGitopsClusterQueryIdArrayOutput {
+	return i.ToGetGitopsClusterQueryIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterQueryIdArray) ToGetGitopsClusterQueryIdArrayOutputWithContext(ctx context.Context) GetGitopsClusterQueryIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterQueryIdArrayOutput)
+}
+
+type GetGitopsClusterQueryIdOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterQueryIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterQueryId)(nil)).Elem()
+}
+
+func (o GetGitopsClusterQueryIdOutput) ToGetGitopsClusterQueryIdOutput() GetGitopsClusterQueryIdOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryIdOutput) ToGetGitopsClusterQueryIdOutputWithContext(ctx context.Context) GetGitopsClusterQueryIdOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryIdOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterQueryId) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterQueryIdOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterQueryId) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterQueryIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterQueryIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterQueryId)(nil)).Elem()
+}
+
+func (o GetGitopsClusterQueryIdArrayOutput) ToGetGitopsClusterQueryIdArrayOutput() GetGitopsClusterQueryIdArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryIdArrayOutput) ToGetGitopsClusterQueryIdArrayOutputWithContext(ctx context.Context) GetGitopsClusterQueryIdArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterQueryIdArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterQueryIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterQueryId {
+		return vs[0].([]GetGitopsClusterQueryId)[vs[1].(int)]
+	}).(GetGitopsClusterQueryIdOutput)
+}
+
+type GetGitopsClusterRequest struct {
+	Clusters      []GetGitopsClusterRequestCluster    `pulumi:"clusters"`
+	Ids           []GetGitopsClusterRequestId         `pulumi:"ids"`
+	UpdateMasks   []GetGitopsClusterRequestUpdateMask `pulumi:"updateMasks"`
+	UpdatedFields []string                            `pulumi:"updatedFields"`
+	Upsert        *bool                               `pulumi:"upsert"`
+}
+
+// GetGitopsClusterRequestInput is an input type that accepts GetGitopsClusterRequestArgs and GetGitopsClusterRequestOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestInput` via:
+//
+//	GetGitopsClusterRequestArgs{...}
+type GetGitopsClusterRequestInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestOutput() GetGitopsClusterRequestOutput
+	ToGetGitopsClusterRequestOutputWithContext(context.Context) GetGitopsClusterRequestOutput
+}
+
+type GetGitopsClusterRequestArgs struct {
+	Clusters      GetGitopsClusterRequestClusterArrayInput    `pulumi:"clusters"`
+	Ids           GetGitopsClusterRequestIdArrayInput         `pulumi:"ids"`
+	UpdateMasks   GetGitopsClusterRequestUpdateMaskArrayInput `pulumi:"updateMasks"`
+	UpdatedFields pulumi.StringArrayInput                     `pulumi:"updatedFields"`
+	Upsert        pulumi.BoolPtrInput                         `pulumi:"upsert"`
+}
+
+func (GetGitopsClusterRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequest)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestArgs) ToGetGitopsClusterRequestOutput() GetGitopsClusterRequestOutput {
+	return i.ToGetGitopsClusterRequestOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestArgs) ToGetGitopsClusterRequestOutputWithContext(ctx context.Context) GetGitopsClusterRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestOutput)
+}
+
+// GetGitopsClusterRequestArrayInput is an input type that accepts GetGitopsClusterRequestArray and GetGitopsClusterRequestArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestArrayInput` via:
+//
+//	GetGitopsClusterRequestArray{ GetGitopsClusterRequestArgs{...} }
+type GetGitopsClusterRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestArrayOutput() GetGitopsClusterRequestArrayOutput
+	ToGetGitopsClusterRequestArrayOutputWithContext(context.Context) GetGitopsClusterRequestArrayOutput
+}
+
+type GetGitopsClusterRequestArray []GetGitopsClusterRequestInput
+
+func (GetGitopsClusterRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequest)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestArray) ToGetGitopsClusterRequestArrayOutput() GetGitopsClusterRequestArrayOutput {
+	return i.ToGetGitopsClusterRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestArray) ToGetGitopsClusterRequestArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestArrayOutput)
+}
+
+type GetGitopsClusterRequestOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequest)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestOutput) ToGetGitopsClusterRequestOutput() GetGitopsClusterRequestOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestOutput) ToGetGitopsClusterRequestOutputWithContext(ctx context.Context) GetGitopsClusterRequestOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestOutput) Clusters() GetGitopsClusterRequestClusterArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestCluster { return v.Clusters }).(GetGitopsClusterRequestClusterArrayOutput)
+}
+
+func (o GetGitopsClusterRequestOutput) Ids() GetGitopsClusterRequestIdArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestId { return v.Ids }).(GetGitopsClusterRequestIdArrayOutput)
+}
+
+func (o GetGitopsClusterRequestOutput) UpdateMasks() GetGitopsClusterRequestUpdateMaskArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestUpdateMask { return v.UpdateMasks }).(GetGitopsClusterRequestUpdateMaskArrayOutput)
+}
+
+func (o GetGitopsClusterRequestOutput) UpdatedFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequest) []string { return v.UpdatedFields }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGitopsClusterRequestOutput) Upsert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequest) *bool { return v.Upsert }).(pulumi.BoolPtrOutput)
+}
+
+type GetGitopsClusterRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequest)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestArrayOutput) ToGetGitopsClusterRequestArrayOutput() GetGitopsClusterRequestArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestArrayOutput) ToGetGitopsClusterRequestArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequest {
+		return vs[0].([]GetGitopsClusterRequest)[vs[1].(int)]
+	}).(GetGitopsClusterRequestOutput)
+}
+
+type GetGitopsClusterRequestCluster struct {
+	Annotations         map[string]string                                  `pulumi:"annotations"`
+	ClusterResources    *bool                                              `pulumi:"clusterResources"`
+	Configs             []GetGitopsClusterRequestClusterConfig             `pulumi:"configs"`
+	Infos               []GetGitopsClusterRequestClusterInfo               `pulumi:"infos"`
+	Labels              map[string]string                                  `pulumi:"labels"`
+	Name                *string                                            `pulumi:"name"`
+	Namespaces          []string                                           `pulumi:"namespaces"`
+	Project             *string                                            `pulumi:"project"`
+	RefreshRequestedAts []GetGitopsClusterRequestClusterRefreshRequestedAt `pulumi:"refreshRequestedAts"`
+	Server              string                                             `pulumi:"server"`
+	Shard               *string                                            `pulumi:"shard"`
+}
+
+// GetGitopsClusterRequestClusterInput is an input type that accepts GetGitopsClusterRequestClusterArgs and GetGitopsClusterRequestClusterOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInput` via:
+//
+//	GetGitopsClusterRequestClusterArgs{...}
+type GetGitopsClusterRequestClusterInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterOutput() GetGitopsClusterRequestClusterOutput
+	ToGetGitopsClusterRequestClusterOutputWithContext(context.Context) GetGitopsClusterRequestClusterOutput
+}
+
+type GetGitopsClusterRequestClusterArgs struct {
+	Annotations         pulumi.StringMapInput                                      `pulumi:"annotations"`
+	ClusterResources    pulumi.BoolPtrInput                                        `pulumi:"clusterResources"`
+	Configs             GetGitopsClusterRequestClusterConfigArrayInput             `pulumi:"configs"`
+	Infos               GetGitopsClusterRequestClusterInfoArrayInput               `pulumi:"infos"`
+	Labels              pulumi.StringMapInput                                      `pulumi:"labels"`
+	Name                pulumi.StringPtrInput                                      `pulumi:"name"`
+	Namespaces          pulumi.StringArrayInput                                    `pulumi:"namespaces"`
+	Project             pulumi.StringPtrInput                                      `pulumi:"project"`
+	RefreshRequestedAts GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput `pulumi:"refreshRequestedAts"`
+	Server              pulumi.StringInput                                         `pulumi:"server"`
+	Shard               pulumi.StringPtrInput                                      `pulumi:"shard"`
+}
+
+func (GetGitopsClusterRequestClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestCluster)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterArgs) ToGetGitopsClusterRequestClusterOutput() GetGitopsClusterRequestClusterOutput {
+	return i.ToGetGitopsClusterRequestClusterOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterArgs) ToGetGitopsClusterRequestClusterOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterOutput)
+}
+
+// GetGitopsClusterRequestClusterArrayInput is an input type that accepts GetGitopsClusterRequestClusterArray and GetGitopsClusterRequestClusterArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterArray{ GetGitopsClusterRequestClusterArgs{...} }
+type GetGitopsClusterRequestClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterArrayOutput() GetGitopsClusterRequestClusterArrayOutput
+	ToGetGitopsClusterRequestClusterArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterArrayOutput
+}
+
+type GetGitopsClusterRequestClusterArray []GetGitopsClusterRequestClusterInput
+
+func (GetGitopsClusterRequestClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestCluster)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterArray) ToGetGitopsClusterRequestClusterArrayOutput() GetGitopsClusterRequestClusterArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterArray) ToGetGitopsClusterRequestClusterArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestCluster)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterOutput) ToGetGitopsClusterRequestClusterOutput() GetGitopsClusterRequestClusterOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterOutput) ToGetGitopsClusterRequestClusterOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) ClusterResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *bool { return v.ClusterResources }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Configs() GetGitopsClusterRequestClusterConfigArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterConfig { return v.Configs }).(GetGitopsClusterRequestClusterConfigArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Infos() GetGitopsClusterRequestClusterInfoArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterInfo { return v.Infos }).(GetGitopsClusterRequestClusterInfoArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) RefreshRequestedAts() GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterRefreshRequestedAt {
+		return v.RefreshRequestedAts
+	}).(GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) string { return v.Server }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsClusterRequestClusterOutput) Shard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Shard }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestCluster)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterArrayOutput) ToGetGitopsClusterRequestClusterArrayOutput() GetGitopsClusterRequestClusterArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterArrayOutput) ToGetGitopsClusterRequestClusterArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestCluster {
+		return vs[0].([]GetGitopsClusterRequestCluster)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterOutput)
+}
+
+type GetGitopsClusterRequestClusterConfig struct {
+	AwsAuthConfigs        []GetGitopsClusterRequestClusterConfigAwsAuthConfig      `pulumi:"awsAuthConfigs"`
+	BearerToken           *string                                                  `pulumi:"bearerToken"`
+	ClusterConnectionType *string                                                  `pulumi:"clusterConnectionType"`
+	ExecProviderConfigs   []GetGitopsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
+	Password              *string                                                  `pulumi:"password"`
+	TlsClientConfigs      []GetGitopsClusterRequestClusterConfigTlsClientConfig    `pulumi:"tlsClientConfigs"`
+	Username              *string                                                  `pulumi:"username"`
+}
+
+// GetGitopsClusterRequestClusterConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigArgs and GetGitopsClusterRequestClusterConfigOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigArgs{...}
+type GetGitopsClusterRequestClusterConfigInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigOutput() GetGitopsClusterRequestClusterConfigOutput
+	ToGetGitopsClusterRequestClusterConfigOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigOutput
+}
+
+type GetGitopsClusterRequestClusterConfigArgs struct {
+	AwsAuthConfigs        GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput      `pulumi:"awsAuthConfigs"`
+	BearerToken           pulumi.StringPtrInput                                            `pulumi:"bearerToken"`
+	ClusterConnectionType pulumi.StringPtrInput                                            `pulumi:"clusterConnectionType"`
+	ExecProviderConfigs   GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
+	Password              pulumi.StringPtrInput                                            `pulumi:"password"`
+	TlsClientConfigs      GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput    `pulumi:"tlsClientConfigs"`
+	Username              pulumi.StringPtrInput                                            `pulumi:"username"`
+}
+
+func (GetGitopsClusterRequestClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigArgs) ToGetGitopsClusterRequestClusterConfigOutput() GetGitopsClusterRequestClusterConfigOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigArgs) ToGetGitopsClusterRequestClusterConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigOutput)
+}
+
+// GetGitopsClusterRequestClusterConfigArrayInput is an input type that accepts GetGitopsClusterRequestClusterConfigArray and GetGitopsClusterRequestClusterConfigArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigArray{ GetGitopsClusterRequestClusterConfigArgs{...} }
+type GetGitopsClusterRequestClusterConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigArrayOutput() GetGitopsClusterRequestClusterConfigArrayOutput
+	ToGetGitopsClusterRequestClusterConfigArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigArrayOutput
+}
+
+type GetGitopsClusterRequestClusterConfigArray []GetGitopsClusterRequestClusterConfigInput
+
+func (GetGitopsClusterRequestClusterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigArray) ToGetGitopsClusterRequestClusterConfigArrayOutput() GetGitopsClusterRequestClusterConfigArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigArray) ToGetGitopsClusterRequestClusterConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) ToGetGitopsClusterRequestClusterConfigOutput() GetGitopsClusterRequestClusterConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) ToGetGitopsClusterRequestClusterConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) AwsAuthConfigs() GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigAwsAuthConfig {
+		return v.AwsAuthConfigs
+	}).(GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) ClusterConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) ExecProviderConfigs() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigExecProviderConfig {
+		return v.ExecProviderConfigs
+	}).(GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) TlsClientConfigs() GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigTlsClientConfig {
+		return v.TlsClientConfigs
+	}).(GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigArrayOutput() GetGitopsClusterRequestClusterConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterConfig {
+		return vs[0].([]GetGitopsClusterRequestClusterConfig)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterConfigOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigAwsAuthConfig struct {
+	ClusterName *string `pulumi:"clusterName"`
+	RoleARN     *string `pulumi:"roleARN"`
+}
+
+// GetGitopsClusterRequestClusterConfigAwsAuthConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs and GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigAwsAuthConfigInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs{...}
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput
+	ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput
+}
+
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs struct {
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	RoleARN     pulumi.StringPtrInput `pulumi:"roleARN"`
+}
+
+func (GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput)
+}
+
+// GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput is an input type that accepts GetGitopsClusterRequestClusterConfigAwsAuthConfigArray and GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigAwsAuthConfigArray{ GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs{...} }
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput
+	ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput
+}
+
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigArray []GetGitopsClusterRequestClusterConfigAwsAuthConfigInput
+
+func (GetGitopsClusterRequestClusterConfigAwsAuthConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigAwsAuthConfigArray) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigAwsAuthConfigArray) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigAwsAuthConfig) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) RoleARN() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigAwsAuthConfig) *string { return v.RoleARN }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigAwsAuthConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput() GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterConfigAwsAuthConfig {
+		return vs[0].([]GetGitopsClusterRequestClusterConfigAwsAuthConfig)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigExecProviderConfig struct {
+	ApiVersion  *string           `pulumi:"apiVersion"`
+	Args        []string          `pulumi:"args"`
+	Command     *string           `pulumi:"command"`
+	Env         map[string]string `pulumi:"env"`
+	InstallHint *string           `pulumi:"installHint"`
+}
+
+// GetGitopsClusterRequestClusterConfigExecProviderConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigExecProviderConfigArgs and GetGitopsClusterRequestClusterConfigExecProviderConfigOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigExecProviderConfigInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigExecProviderConfigArgs{...}
+type GetGitopsClusterRequestClusterConfigExecProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigOutput
+	ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigOutput
+}
+
+type GetGitopsClusterRequestClusterConfigExecProviderConfigArgs struct {
+	ApiVersion  pulumi.StringPtrInput   `pulumi:"apiVersion"`
+	Args        pulumi.StringArrayInput `pulumi:"args"`
+	Command     pulumi.StringPtrInput   `pulumi:"command"`
+	Env         pulumi.StringMapInput   `pulumi:"env"`
+	InstallHint pulumi.StringPtrInput   `pulumi:"installHint"`
+}
+
+func (GetGitopsClusterRequestClusterConfigExecProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigExecProviderConfigArgs) ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigExecProviderConfigArgs) ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigExecProviderConfigOutput)
+}
+
+// GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput is an input type that accepts GetGitopsClusterRequestClusterConfigExecProviderConfigArray and GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigExecProviderConfigArray{ GetGitopsClusterRequestClusterConfigExecProviderConfigArgs{...} }
+type GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput
+	ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput
+}
+
+type GetGitopsClusterRequestClusterConfigExecProviderConfigArray []GetGitopsClusterRequestClusterConfigExecProviderConfigInput
+
+func (GetGitopsClusterRequestClusterConfigExecProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigExecProviderConfigArray) ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigExecProviderConfigArray) ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigExecProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ToGetGitopsClusterRequestClusterConfigExecProviderConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) InstallHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.InstallHint }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigExecProviderConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterConfigExecProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterConfigExecProviderConfig {
+		return vs[0].([]GetGitopsClusterRequestClusterConfigExecProviderConfig)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterConfigExecProviderConfigOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigTlsClientConfig struct {
+	CaData     *string `pulumi:"caData"`
+	CertData   *string `pulumi:"certData"`
+	Insecure   *bool   `pulumi:"insecure"`
+	KeyData    *string `pulumi:"keyData"`
+	ServerName *string `pulumi:"serverName"`
+}
+
+// GetGitopsClusterRequestClusterConfigTlsClientConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigTlsClientConfigArgs and GetGitopsClusterRequestClusterConfigTlsClientConfigOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigTlsClientConfigInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigTlsClientConfigArgs{...}
+type GetGitopsClusterRequestClusterConfigTlsClientConfigInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigOutput
+	ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigOutput
+}
+
+type GetGitopsClusterRequestClusterConfigTlsClientConfigArgs struct {
+	CaData     pulumi.StringPtrInput `pulumi:"caData"`
+	CertData   pulumi.StringPtrInput `pulumi:"certData"`
+	Insecure   pulumi.BoolPtrInput   `pulumi:"insecure"`
+	KeyData    pulumi.StringPtrInput `pulumi:"keyData"`
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
+}
+
+func (GetGitopsClusterRequestClusterConfigTlsClientConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigTlsClientConfigArgs) ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigTlsClientConfigArgs) ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigTlsClientConfigOutput)
+}
+
+// GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput is an input type that accepts GetGitopsClusterRequestClusterConfigTlsClientConfigArray and GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterConfigTlsClientConfigArray{ GetGitopsClusterRequestClusterConfigTlsClientConfigArgs{...} }
+type GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput
+	ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput
+}
+
+type GetGitopsClusterRequestClusterConfigTlsClientConfigArray []GetGitopsClusterRequestClusterConfigTlsClientConfigInput
+
+func (GetGitopsClusterRequestClusterConfigTlsClientConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterConfigTlsClientConfigArray) ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterConfigTlsClientConfigArray) ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigTlsClientConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ToGetGitopsClusterRequestClusterConfigTlsClientConfigOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) CaData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.CaData }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) CertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.CertData }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.ServerName }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterConfigTlsClientConfig)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput() GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput) ToGetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterConfigTlsClientConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterConfigTlsClientConfig {
+		return vs[0].([]GetGitopsClusterRequestClusterConfigTlsClientConfig)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterConfigTlsClientConfigOutput)
+}
+
+type GetGitopsClusterRequestClusterInfo struct {
+	ApiVersions       []string                                            `pulumi:"apiVersions"`
+	ApplicationsCount *string                                             `pulumi:"applicationsCount"`
+	CacheInfos        []GetGitopsClusterRequestClusterInfoCacheInfo       `pulumi:"cacheInfos"`
+	ConnectionStates  []GetGitopsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
+	ServerVersion     *string                                             `pulumi:"serverVersion"`
+}
+
+// GetGitopsClusterRequestClusterInfoInput is an input type that accepts GetGitopsClusterRequestClusterInfoArgs and GetGitopsClusterRequestClusterInfoOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoArgs{...}
+type GetGitopsClusterRequestClusterInfoInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoOutput() GetGitopsClusterRequestClusterInfoOutput
+	ToGetGitopsClusterRequestClusterInfoOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoOutput
+}
+
+type GetGitopsClusterRequestClusterInfoArgs struct {
+	ApiVersions       pulumi.StringArrayInput                                     `pulumi:"apiVersions"`
+	ApplicationsCount pulumi.StringPtrInput                                       `pulumi:"applicationsCount"`
+	CacheInfos        GetGitopsClusterRequestClusterInfoCacheInfoArrayInput       `pulumi:"cacheInfos"`
+	ConnectionStates  GetGitopsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
+	ServerVersion     pulumi.StringPtrInput                                       `pulumi:"serverVersion"`
+}
+
+func (GetGitopsClusterRequestClusterInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoArgs) ToGetGitopsClusterRequestClusterInfoOutput() GetGitopsClusterRequestClusterInfoOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoArgs) ToGetGitopsClusterRequestClusterInfoOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoOutput)
+}
+
+// GetGitopsClusterRequestClusterInfoArrayInput is an input type that accepts GetGitopsClusterRequestClusterInfoArray and GetGitopsClusterRequestClusterInfoArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoArray{ GetGitopsClusterRequestClusterInfoArgs{...} }
+type GetGitopsClusterRequestClusterInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoArrayOutput() GetGitopsClusterRequestClusterInfoArrayOutput
+	ToGetGitopsClusterRequestClusterInfoArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoArrayOutput
+}
+
+type GetGitopsClusterRequestClusterInfoArray []GetGitopsClusterRequestClusterInfoInput
+
+func (GetGitopsClusterRequestClusterInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoArray) ToGetGitopsClusterRequestClusterInfoArrayOutput() GetGitopsClusterRequestClusterInfoArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoArray) ToGetGitopsClusterRequestClusterInfoArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ToGetGitopsClusterRequestClusterInfoOutput() GetGitopsClusterRequestClusterInfoOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ToGetGitopsClusterRequestClusterInfoOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ApiVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []string { return v.ApiVersions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ApplicationsCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) *string { return v.ApplicationsCount }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) CacheInfos() GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []GetGitopsClusterRequestClusterInfoCacheInfo {
+		return v.CacheInfos
+	}).(GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ConnectionStates() GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []GetGitopsClusterRequestClusterInfoConnectionState {
+		return v.ConnectionStates
+	}).(GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfo)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoArrayOutput) ToGetGitopsClusterRequestClusterInfoArrayOutput() GetGitopsClusterRequestClusterInfoArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoArrayOutput) ToGetGitopsClusterRequestClusterInfoArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterInfo {
+		return vs[0].([]GetGitopsClusterRequestClusterInfo)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterInfoOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoCacheInfo struct {
+	ApisCount         *string `pulumi:"apisCount"`
+	LastCacheSyncTime *string `pulumi:"lastCacheSyncTime"`
+	ResourcesCount    *string `pulumi:"resourcesCount"`
+}
+
+// GetGitopsClusterRequestClusterInfoCacheInfoInput is an input type that accepts GetGitopsClusterRequestClusterInfoCacheInfoArgs and GetGitopsClusterRequestClusterInfoCacheInfoOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoCacheInfoInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoCacheInfoArgs{...}
+type GetGitopsClusterRequestClusterInfoCacheInfoInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoCacheInfoOutput() GetGitopsClusterRequestClusterInfoCacheInfoOutput
+	ToGetGitopsClusterRequestClusterInfoCacheInfoOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoCacheInfoOutput
+}
+
+type GetGitopsClusterRequestClusterInfoCacheInfoArgs struct {
+	ApisCount         pulumi.StringPtrInput `pulumi:"apisCount"`
+	LastCacheSyncTime pulumi.StringPtrInput `pulumi:"lastCacheSyncTime"`
+	ResourcesCount    pulumi.StringPtrInput `pulumi:"resourcesCount"`
+}
+
+func (GetGitopsClusterRequestClusterInfoCacheInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoCacheInfoArgs) ToGetGitopsClusterRequestClusterInfoCacheInfoOutput() GetGitopsClusterRequestClusterInfoCacheInfoOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoCacheInfoOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoCacheInfoArgs) ToGetGitopsClusterRequestClusterInfoCacheInfoOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoCacheInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoCacheInfoOutput)
+}
+
+// GetGitopsClusterRequestClusterInfoCacheInfoArrayInput is an input type that accepts GetGitopsClusterRequestClusterInfoCacheInfoArray and GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoCacheInfoArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoCacheInfoArray{ GetGitopsClusterRequestClusterInfoCacheInfoArgs{...} }
+type GetGitopsClusterRequestClusterInfoCacheInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutput() GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput
+	ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput
+}
+
+type GetGitopsClusterRequestClusterInfoCacheInfoArray []GetGitopsClusterRequestClusterInfoCacheInfoInput
+
+func (GetGitopsClusterRequestClusterInfoCacheInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoCacheInfoArray) ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutput() GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoCacheInfoArray) ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoCacheInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoCacheInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ToGetGitopsClusterRequestClusterInfoCacheInfoOutput() GetGitopsClusterRequestClusterInfoCacheInfoOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ToGetGitopsClusterRequestClusterInfoCacheInfoOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoCacheInfoOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ApisCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.ApisCount }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) LastCacheSyncTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.LastCacheSyncTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ResourcesCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.ResourcesCount }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoCacheInfo)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput) ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutput() GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput) ToGetGitopsClusterRequestClusterInfoCacheInfoArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterInfoCacheInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterInfoCacheInfo {
+		return vs[0].([]GetGitopsClusterRequestClusterInfoCacheInfo)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterInfoCacheInfoOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionState struct {
+	AttemptedAts []GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt `pulumi:"attemptedAts"`
+	Message      *string                                                        `pulumi:"message"`
+	Status       *string                                                        `pulumi:"status"`
+}
+
+// GetGitopsClusterRequestClusterInfoConnectionStateInput is an input type that accepts GetGitopsClusterRequestClusterInfoConnectionStateArgs and GetGitopsClusterRequestClusterInfoConnectionStateOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoConnectionStateInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoConnectionStateArgs{...}
+type GetGitopsClusterRequestClusterInfoConnectionStateInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoConnectionStateOutput() GetGitopsClusterRequestClusterInfoConnectionStateOutput
+	ToGetGitopsClusterRequestClusterInfoConnectionStateOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoConnectionStateOutput
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateArgs struct {
+	AttemptedAts GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput `pulumi:"attemptedAts"`
+	Message      pulumi.StringPtrInput                                                  `pulumi:"message"`
+	Status       pulumi.StringPtrInput                                                  `pulumi:"status"`
+}
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateArgs) ToGetGitopsClusterRequestClusterInfoConnectionStateOutput() GetGitopsClusterRequestClusterInfoConnectionStateOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoConnectionStateOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateArgs) ToGetGitopsClusterRequestClusterInfoConnectionStateOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoConnectionStateOutput)
+}
+
+// GetGitopsClusterRequestClusterInfoConnectionStateArrayInput is an input type that accepts GetGitopsClusterRequestClusterInfoConnectionStateArray and GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoConnectionStateArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoConnectionStateArray{ GetGitopsClusterRequestClusterInfoConnectionStateArgs{...} }
+type GetGitopsClusterRequestClusterInfoConnectionStateArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput
+	ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateArray []GetGitopsClusterRequestClusterInfoConnectionStateInput
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateArray) ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateArray) ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateOutput() GetGitopsClusterRequestClusterInfoConnectionStateOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) AttemptedAts() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) []GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt {
+		return v.AttemptedAts
+	}).(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoConnectionState)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterInfoConnectionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterInfoConnectionState {
+		return vs[0].([]GetGitopsClusterRequestClusterInfoConnectionState)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterInfoConnectionStateOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt struct {
+	Nanos   *int    `pulumi:"nanos"`
+	Seconds *string `pulumi:"seconds"`
+}
+
+// GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput is an input type that accepts GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs and GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{...}
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput
+	ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs struct {
+	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput)
+}
+
+// GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput is an input type that accepts GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray and GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray{ GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{...} }
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput
+	ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray []GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) ToGetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt {
+		return vs[0].([]GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput)
+}
+
+type GetGitopsClusterRequestClusterRefreshRequestedAt struct {
+	Nanos   *int    `pulumi:"nanos"`
+	Seconds *string `pulumi:"seconds"`
+}
+
+// GetGitopsClusterRequestClusterRefreshRequestedAtInput is an input type that accepts GetGitopsClusterRequestClusterRefreshRequestedAtArgs and GetGitopsClusterRequestClusterRefreshRequestedAtOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterRefreshRequestedAtInput` via:
+//
+//	GetGitopsClusterRequestClusterRefreshRequestedAtArgs{...}
+type GetGitopsClusterRequestClusterRefreshRequestedAtInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterRefreshRequestedAtOutput() GetGitopsClusterRequestClusterRefreshRequestedAtOutput
+	ToGetGitopsClusterRequestClusterRefreshRequestedAtOutputWithContext(context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtOutput
+}
+
+type GetGitopsClusterRequestClusterRefreshRequestedAtArgs struct {
+	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (GetGitopsClusterRequestClusterRefreshRequestedAtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterRefreshRequestedAtArgs) ToGetGitopsClusterRequestClusterRefreshRequestedAtOutput() GetGitopsClusterRequestClusterRefreshRequestedAtOutput {
+	return i.ToGetGitopsClusterRequestClusterRefreshRequestedAtOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterRefreshRequestedAtArgs) ToGetGitopsClusterRequestClusterRefreshRequestedAtOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterRefreshRequestedAtOutput)
+}
+
+// GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput is an input type that accepts GetGitopsClusterRequestClusterRefreshRequestedAtArray and GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput` via:
+//
+//	GetGitopsClusterRequestClusterRefreshRequestedAtArray{ GetGitopsClusterRequestClusterRefreshRequestedAtArgs{...} }
+type GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput() GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput
+	ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput
+}
+
+type GetGitopsClusterRequestClusterRefreshRequestedAtArray []GetGitopsClusterRequestClusterRefreshRequestedAtInput
+
+func (GetGitopsClusterRequestClusterRefreshRequestedAtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestClusterRefreshRequestedAtArray) ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput() GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return i.ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestClusterRefreshRequestedAtArray) ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput)
+}
+
+type GetGitopsClusterRequestClusterRefreshRequestedAtOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterRefreshRequestedAtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) ToGetGitopsClusterRequestClusterRefreshRequestedAtOutput() GetGitopsClusterRequestClusterRefreshRequestedAtOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) ToGetGitopsClusterRequestClusterRefreshRequestedAtOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterRefreshRequestedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterRefreshRequestedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestClusterRefreshRequestedAt)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput) ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput() GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput) ToGetGitopsClusterRequestClusterRefreshRequestedAtArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestClusterRefreshRequestedAtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestClusterRefreshRequestedAt {
+		return vs[0].([]GetGitopsClusterRequestClusterRefreshRequestedAt)[vs[1].(int)]
+	}).(GetGitopsClusterRequestClusterRefreshRequestedAtOutput)
+}
+
+type GetGitopsClusterRequestId struct {
+	Type  *string `pulumi:"type"`
+	Value *string `pulumi:"value"`
+}
+
+// GetGitopsClusterRequestIdInput is an input type that accepts GetGitopsClusterRequestIdArgs and GetGitopsClusterRequestIdOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestIdInput` via:
+//
+//	GetGitopsClusterRequestIdArgs{...}
+type GetGitopsClusterRequestIdInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestIdOutput() GetGitopsClusterRequestIdOutput
+	ToGetGitopsClusterRequestIdOutputWithContext(context.Context) GetGitopsClusterRequestIdOutput
+}
+
+type GetGitopsClusterRequestIdArgs struct {
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetGitopsClusterRequestIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestId)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestIdArgs) ToGetGitopsClusterRequestIdOutput() GetGitopsClusterRequestIdOutput {
+	return i.ToGetGitopsClusterRequestIdOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestIdArgs) ToGetGitopsClusterRequestIdOutputWithContext(ctx context.Context) GetGitopsClusterRequestIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestIdOutput)
+}
+
+// GetGitopsClusterRequestIdArrayInput is an input type that accepts GetGitopsClusterRequestIdArray and GetGitopsClusterRequestIdArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestIdArrayInput` via:
+//
+//	GetGitopsClusterRequestIdArray{ GetGitopsClusterRequestIdArgs{...} }
+type GetGitopsClusterRequestIdArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestIdArrayOutput() GetGitopsClusterRequestIdArrayOutput
+	ToGetGitopsClusterRequestIdArrayOutputWithContext(context.Context) GetGitopsClusterRequestIdArrayOutput
+}
+
+type GetGitopsClusterRequestIdArray []GetGitopsClusterRequestIdInput
+
+func (GetGitopsClusterRequestIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestId)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestIdArray) ToGetGitopsClusterRequestIdArrayOutput() GetGitopsClusterRequestIdArrayOutput {
+	return i.ToGetGitopsClusterRequestIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestIdArray) ToGetGitopsClusterRequestIdArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestIdArrayOutput)
+}
+
+type GetGitopsClusterRequestIdOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestId)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestIdOutput) ToGetGitopsClusterRequestIdOutput() GetGitopsClusterRequestIdOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestIdOutput) ToGetGitopsClusterRequestIdOutputWithContext(ctx context.Context) GetGitopsClusterRequestIdOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestIdOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestId) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsClusterRequestIdOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestId) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsClusterRequestIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestId)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestIdArrayOutput) ToGetGitopsClusterRequestIdArrayOutput() GetGitopsClusterRequestIdArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestIdArrayOutput) ToGetGitopsClusterRequestIdArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestIdArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestIdArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestId {
+		return vs[0].([]GetGitopsClusterRequestId)[vs[1].(int)]
+	}).(GetGitopsClusterRequestIdOutput)
+}
+
+type GetGitopsClusterRequestUpdateMask struct {
+	Paths [][]interface{} `pulumi:"paths"`
+}
+
+// GetGitopsClusterRequestUpdateMaskInput is an input type that accepts GetGitopsClusterRequestUpdateMaskArgs and GetGitopsClusterRequestUpdateMaskOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestUpdateMaskInput` via:
+//
+//	GetGitopsClusterRequestUpdateMaskArgs{...}
+type GetGitopsClusterRequestUpdateMaskInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestUpdateMaskOutput() GetGitopsClusterRequestUpdateMaskOutput
+	ToGetGitopsClusterRequestUpdateMaskOutputWithContext(context.Context) GetGitopsClusterRequestUpdateMaskOutput
+}
+
+type GetGitopsClusterRequestUpdateMaskArgs struct {
+	Paths pulumi.ArrayArrayInput `pulumi:"paths"`
+}
+
+func (GetGitopsClusterRequestUpdateMaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestUpdateMaskArgs) ToGetGitopsClusterRequestUpdateMaskOutput() GetGitopsClusterRequestUpdateMaskOutput {
+	return i.ToGetGitopsClusterRequestUpdateMaskOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestUpdateMaskArgs) ToGetGitopsClusterRequestUpdateMaskOutputWithContext(ctx context.Context) GetGitopsClusterRequestUpdateMaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestUpdateMaskOutput)
+}
+
+// GetGitopsClusterRequestUpdateMaskArrayInput is an input type that accepts GetGitopsClusterRequestUpdateMaskArray and GetGitopsClusterRequestUpdateMaskArrayOutput values.
+// You can construct a concrete instance of `GetGitopsClusterRequestUpdateMaskArrayInput` via:
+//
+//	GetGitopsClusterRequestUpdateMaskArray{ GetGitopsClusterRequestUpdateMaskArgs{...} }
+type GetGitopsClusterRequestUpdateMaskArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsClusterRequestUpdateMaskArrayOutput() GetGitopsClusterRequestUpdateMaskArrayOutput
+	ToGetGitopsClusterRequestUpdateMaskArrayOutputWithContext(context.Context) GetGitopsClusterRequestUpdateMaskArrayOutput
+}
+
+type GetGitopsClusterRequestUpdateMaskArray []GetGitopsClusterRequestUpdateMaskInput
+
+func (GetGitopsClusterRequestUpdateMaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (i GetGitopsClusterRequestUpdateMaskArray) ToGetGitopsClusterRequestUpdateMaskArrayOutput() GetGitopsClusterRequestUpdateMaskArrayOutput {
+	return i.ToGetGitopsClusterRequestUpdateMaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsClusterRequestUpdateMaskArray) ToGetGitopsClusterRequestUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestUpdateMaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsClusterRequestUpdateMaskArrayOutput)
+}
+
+type GetGitopsClusterRequestUpdateMaskOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestUpdateMaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestUpdateMaskOutput) ToGetGitopsClusterRequestUpdateMaskOutput() GetGitopsClusterRequestUpdateMaskOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestUpdateMaskOutput) ToGetGitopsClusterRequestUpdateMaskOutputWithContext(ctx context.Context) GetGitopsClusterRequestUpdateMaskOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestUpdateMaskOutput) Paths() pulumi.ArrayArrayOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestUpdateMask) [][]interface{} { return v.Paths }).(pulumi.ArrayArrayOutput)
+}
+
+type GetGitopsClusterRequestUpdateMaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsClusterRequestUpdateMaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsClusterRequestUpdateMask)(nil)).Elem()
+}
+
+func (o GetGitopsClusterRequestUpdateMaskArrayOutput) ToGetGitopsClusterRequestUpdateMaskArrayOutput() GetGitopsClusterRequestUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestUpdateMaskArrayOutput) ToGetGitopsClusterRequestUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsClusterRequestUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GetGitopsClusterRequestUpdateMaskArrayOutput) Index(i pulumi.IntInput) GetGitopsClusterRequestUpdateMaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsClusterRequestUpdateMask {
+		return vs[0].([]GetGitopsClusterRequestUpdateMask)[vs[1].(int)]
+	}).(GetGitopsClusterRequestUpdateMaskOutput)
+}
+
+type GetGitopsRepositoryRepo struct {
+	ConnectionType             string  `pulumi:"connectionType"`
+	EnableLfs                  *bool   `pulumi:"enableLfs"`
+	EnableOci                  *bool   `pulumi:"enableOci"`
+	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppId                *string `pulumi:"githubAppId"`
+	GithubAppInstallationId    *string `pulumi:"githubAppInstallationId"`
+	GithubAppPrivateKey        *string `pulumi:"githubAppPrivateKey"`
+	InheritedCreds             *bool   `pulumi:"inheritedCreds"`
+	Insecure                   *bool   `pulumi:"insecure"`
+	InsecureIgnoreHostKey      *bool   `pulumi:"insecureIgnoreHostKey"`
+	Name                       *string `pulumi:"name"`
+	Password                   *string `pulumi:"password"`
+	Project                    string  `pulumi:"project"`
+	Proxy                      *string `pulumi:"proxy"`
+	Repo                       string  `pulumi:"repo"`
+	SshPrivateKey              *string `pulumi:"sshPrivateKey"`
+	TlsClientCertData          *string `pulumi:"tlsClientCertData"`
+	TlsClientCertKey           *string `pulumi:"tlsClientCertKey"`
+	Type_                      string  `pulumi:"type_"`
+	Username                   *string `pulumi:"username"`
+}
+
+// GetGitopsRepositoryRepoInput is an input type that accepts GetGitopsRepositoryRepoArgs and GetGitopsRepositoryRepoOutput values.
+// You can construct a concrete instance of `GetGitopsRepositoryRepoInput` via:
+//
+//	GetGitopsRepositoryRepoArgs{...}
+type GetGitopsRepositoryRepoInput interface {
+	pulumi.Input
+
+	ToGetGitopsRepositoryRepoOutput() GetGitopsRepositoryRepoOutput
+	ToGetGitopsRepositoryRepoOutputWithContext(context.Context) GetGitopsRepositoryRepoOutput
+}
+
+type GetGitopsRepositoryRepoArgs struct {
+	ConnectionType             pulumi.StringInput    `pulumi:"connectionType"`
+	EnableLfs                  pulumi.BoolPtrInput   `pulumi:"enableLfs"`
+	EnableOci                  pulumi.BoolPtrInput   `pulumi:"enableOci"`
+	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppId                pulumi.StringPtrInput `pulumi:"githubAppId"`
+	GithubAppInstallationId    pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
+	GithubAppPrivateKey        pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
+	InheritedCreds             pulumi.BoolPtrInput   `pulumi:"inheritedCreds"`
+	Insecure                   pulumi.BoolPtrInput   `pulumi:"insecure"`
+	InsecureIgnoreHostKey      pulumi.BoolPtrInput   `pulumi:"insecureIgnoreHostKey"`
+	Name                       pulumi.StringPtrInput `pulumi:"name"`
+	Password                   pulumi.StringPtrInput `pulumi:"password"`
+	Project                    pulumi.StringInput    `pulumi:"project"`
+	Proxy                      pulumi.StringPtrInput `pulumi:"proxy"`
+	Repo                       pulumi.StringInput    `pulumi:"repo"`
+	SshPrivateKey              pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	TlsClientCertData          pulumi.StringPtrInput `pulumi:"tlsClientCertData"`
+	TlsClientCertKey           pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
+	Type_                      pulumi.StringInput    `pulumi:"type_"`
+	Username                   pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetGitopsRepositoryRepoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsRepositoryRepo)(nil)).Elem()
+}
+
+func (i GetGitopsRepositoryRepoArgs) ToGetGitopsRepositoryRepoOutput() GetGitopsRepositoryRepoOutput {
+	return i.ToGetGitopsRepositoryRepoOutputWithContext(context.Background())
+}
+
+func (i GetGitopsRepositoryRepoArgs) ToGetGitopsRepositoryRepoOutputWithContext(ctx context.Context) GetGitopsRepositoryRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryRepoOutput)
+}
+
+// GetGitopsRepositoryRepoArrayInput is an input type that accepts GetGitopsRepositoryRepoArray and GetGitopsRepositoryRepoArrayOutput values.
+// You can construct a concrete instance of `GetGitopsRepositoryRepoArrayInput` via:
+//
+//	GetGitopsRepositoryRepoArray{ GetGitopsRepositoryRepoArgs{...} }
+type GetGitopsRepositoryRepoArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsRepositoryRepoArrayOutput() GetGitopsRepositoryRepoArrayOutput
+	ToGetGitopsRepositoryRepoArrayOutputWithContext(context.Context) GetGitopsRepositoryRepoArrayOutput
+}
+
+type GetGitopsRepositoryRepoArray []GetGitopsRepositoryRepoInput
+
+func (GetGitopsRepositoryRepoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsRepositoryRepo)(nil)).Elem()
+}
+
+func (i GetGitopsRepositoryRepoArray) ToGetGitopsRepositoryRepoArrayOutput() GetGitopsRepositoryRepoArrayOutput {
+	return i.ToGetGitopsRepositoryRepoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsRepositoryRepoArray) ToGetGitopsRepositoryRepoArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryRepoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryRepoArrayOutput)
+}
+
+type GetGitopsRepositoryRepoOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsRepositoryRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsRepositoryRepo)(nil)).Elem()
+}
+
+func (o GetGitopsRepositoryRepoOutput) ToGetGitopsRepositoryRepoOutput() GetGitopsRepositoryRepoOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryRepoOutput) ToGetGitopsRepositoryRepoOutputWithContext(ctx context.Context) GetGitopsRepositoryRepoOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryRepoOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) EnableLfs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableLfs }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) EnableOci() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) GithubAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) GithubAppInstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppInstallationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) GithubAppPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) InheritedCreds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InheritedCreds }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) InsecureIgnoreHostKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InsecureIgnoreHostKey }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) SshPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.SshPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) TlsClientCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertData }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) TlsClientCertKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Type_() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Type_ }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsRepositoryRepoOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsRepositoryRepoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsRepositoryRepoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsRepositoryRepo)(nil)).Elem()
+}
+
+func (o GetGitopsRepositoryRepoArrayOutput) ToGetGitopsRepositoryRepoArrayOutput() GetGitopsRepositoryRepoArrayOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryRepoArrayOutput) ToGetGitopsRepositoryRepoArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryRepoArrayOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryRepoArrayOutput) Index(i pulumi.IntInput) GetGitopsRepositoryRepoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsRepositoryRepo {
+		return vs[0].([]GetGitopsRepositoryRepo)[vs[1].(int)]
+	}).(GetGitopsRepositoryRepoOutput)
+}
+
+type GetGitopsRepositoryUpdateMask struct {
+	Paths []string `pulumi:"paths"`
+}
+
+// GetGitopsRepositoryUpdateMaskInput is an input type that accepts GetGitopsRepositoryUpdateMaskArgs and GetGitopsRepositoryUpdateMaskOutput values.
+// You can construct a concrete instance of `GetGitopsRepositoryUpdateMaskInput` via:
+//
+//	GetGitopsRepositoryUpdateMaskArgs{...}
+type GetGitopsRepositoryUpdateMaskInput interface {
+	pulumi.Input
+
+	ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput
+	ToGetGitopsRepositoryUpdateMaskOutputWithContext(context.Context) GetGitopsRepositoryUpdateMaskOutput
+}
+
+type GetGitopsRepositoryUpdateMaskArgs struct {
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+}
+
+func (GetGitopsRepositoryUpdateMaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (i GetGitopsRepositoryUpdateMaskArgs) ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput {
+	return i.ToGetGitopsRepositoryUpdateMaskOutputWithContext(context.Background())
+}
+
+func (i GetGitopsRepositoryUpdateMaskArgs) ToGetGitopsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryUpdateMaskOutput)
+}
+
+// GetGitopsRepositoryUpdateMaskArrayInput is an input type that accepts GetGitopsRepositoryUpdateMaskArray and GetGitopsRepositoryUpdateMaskArrayOutput values.
+// You can construct a concrete instance of `GetGitopsRepositoryUpdateMaskArrayInput` via:
+//
+//	GetGitopsRepositoryUpdateMaskArray{ GetGitopsRepositoryUpdateMaskArgs{...} }
+type GetGitopsRepositoryUpdateMaskArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput
+	ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(context.Context) GetGitopsRepositoryUpdateMaskArrayOutput
+}
+
+type GetGitopsRepositoryUpdateMaskArray []GetGitopsRepositoryUpdateMaskInput
+
+func (GetGitopsRepositoryUpdateMaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (i GetGitopsRepositoryUpdateMaskArray) ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput {
+	return i.ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsRepositoryUpdateMaskArray) ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryUpdateMaskArrayOutput)
+}
+
+type GetGitopsRepositoryUpdateMaskOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsRepositoryUpdateMaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (o GetGitopsRepositoryUpdateMaskOutput) ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryUpdateMaskOutput) ToGetGitopsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryUpdateMaskOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryUpdateMask) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type GetGitopsRepositoryUpdateMaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsRepositoryUpdateMaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsRepositoryUpdateMask)(nil)).Elem()
+}
+
+func (o GetGitopsRepositoryUpdateMaskArrayOutput) ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryUpdateMaskArrayOutput) ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskArrayOutput {
+	return o
+}
+
+func (o GetGitopsRepositoryUpdateMaskArrayOutput) Index(i pulumi.IntInput) GetGitopsRepositoryUpdateMaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsRepositoryUpdateMask {
+		return vs[0].([]GetGitopsRepositoryUpdateMask)[vs[1].(int)]
+	}).(GetGitopsRepositoryUpdateMaskOutput)
+}
+
 type GetHelmConnectorCredential struct {
 	PasswordRef string `pulumi:"passwordRef"`
 	Username    string `pulumi:"username"`
@@ -12325,13 +17003,255 @@ func (o GetNexusConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetNexu
 	}).(GetNexusConnectorCredentialOutput)
 }
 
+type GetPermissionsPermission struct {
+	Action             string   `pulumi:"action"`
+	AllowedScopeLevels []string `pulumi:"allowedScopeLevels"`
+	Identifier         string   `pulumi:"identifier"`
+	IncludeInAllRoles  bool     `pulumi:"includeInAllRoles"`
+	Name               string   `pulumi:"name"`
+	ResourceType       string   `pulumi:"resourceType"`
+	Status             string   `pulumi:"status"`
+}
+
+// GetPermissionsPermissionInput is an input type that accepts GetPermissionsPermissionArgs and GetPermissionsPermissionOutput values.
+// You can construct a concrete instance of `GetPermissionsPermissionInput` via:
+//
+//	GetPermissionsPermissionArgs{...}
+type GetPermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToGetPermissionsPermissionOutput() GetPermissionsPermissionOutput
+	ToGetPermissionsPermissionOutputWithContext(context.Context) GetPermissionsPermissionOutput
+}
+
+type GetPermissionsPermissionArgs struct {
+	Action             pulumi.StringInput      `pulumi:"action"`
+	AllowedScopeLevels pulumi.StringArrayInput `pulumi:"allowedScopeLevels"`
+	Identifier         pulumi.StringInput      `pulumi:"identifier"`
+	IncludeInAllRoles  pulumi.BoolInput        `pulumi:"includeInAllRoles"`
+	Name               pulumi.StringInput      `pulumi:"name"`
+	ResourceType       pulumi.StringInput      `pulumi:"resourceType"`
+	Status             pulumi.StringInput      `pulumi:"status"`
+}
+
+func (GetPermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPermissionsPermission)(nil)).Elem()
+}
+
+func (i GetPermissionsPermissionArgs) ToGetPermissionsPermissionOutput() GetPermissionsPermissionOutput {
+	return i.ToGetPermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i GetPermissionsPermissionArgs) ToGetPermissionsPermissionOutputWithContext(ctx context.Context) GetPermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPermissionsPermissionOutput)
+}
+
+// GetPermissionsPermissionArrayInput is an input type that accepts GetPermissionsPermissionArray and GetPermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `GetPermissionsPermissionArrayInput` via:
+//
+//	GetPermissionsPermissionArray{ GetPermissionsPermissionArgs{...} }
+type GetPermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetPermissionsPermissionArrayOutput() GetPermissionsPermissionArrayOutput
+	ToGetPermissionsPermissionArrayOutputWithContext(context.Context) GetPermissionsPermissionArrayOutput
+}
+
+type GetPermissionsPermissionArray []GetPermissionsPermissionInput
+
+func (GetPermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPermissionsPermission)(nil)).Elem()
+}
+
+func (i GetPermissionsPermissionArray) ToGetPermissionsPermissionArrayOutput() GetPermissionsPermissionArrayOutput {
+	return i.ToGetPermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPermissionsPermissionArray) ToGetPermissionsPermissionArrayOutputWithContext(ctx context.Context) GetPermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPermissionsPermissionArrayOutput)
+}
+
+type GetPermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (GetPermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPermissionsPermission)(nil)).Elem()
+}
+
+func (o GetPermissionsPermissionOutput) ToGetPermissionsPermissionOutput() GetPermissionsPermissionOutput {
+	return o
+}
+
+func (o GetPermissionsPermissionOutput) ToGetPermissionsPermissionOutputWithContext(ctx context.Context) GetPermissionsPermissionOutput {
+	return o
+}
+
+func (o GetPermissionsPermissionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetPermissionsPermissionOutput) AllowedScopeLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) []string { return v.AllowedScopeLevels }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPermissionsPermissionOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o GetPermissionsPermissionOutput) IncludeInAllRoles() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) bool { return v.IncludeInAllRoles }).(pulumi.BoolOutput)
+}
+
+func (o GetPermissionsPermissionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPermissionsPermissionOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+func (o GetPermissionsPermissionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPermissionsPermission)(nil)).Elem()
+}
+
+func (o GetPermissionsPermissionArrayOutput) ToGetPermissionsPermissionArrayOutput() GetPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetPermissionsPermissionArrayOutput) ToGetPermissionsPermissionArrayOutputWithContext(ctx context.Context) GetPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) GetPermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPermissionsPermission {
+		return vs[0].([]GetPermissionsPermission)[vs[1].(int)]
+	}).(GetPermissionsPermissionOutput)
+}
+
+type GetPrometheusConnectorHeader struct {
+	EncryptedValueRef string `pulumi:"encryptedValueRef"`
+	Key               string `pulumi:"key"`
+	Value             string `pulumi:"value"`
+	ValueEncrypted    bool   `pulumi:"valueEncrypted"`
+}
+
+// GetPrometheusConnectorHeaderInput is an input type that accepts GetPrometheusConnectorHeaderArgs and GetPrometheusConnectorHeaderOutput values.
+// You can construct a concrete instance of `GetPrometheusConnectorHeaderInput` via:
+//
+//	GetPrometheusConnectorHeaderArgs{...}
+type GetPrometheusConnectorHeaderInput interface {
+	pulumi.Input
+
+	ToGetPrometheusConnectorHeaderOutput() GetPrometheusConnectorHeaderOutput
+	ToGetPrometheusConnectorHeaderOutputWithContext(context.Context) GetPrometheusConnectorHeaderOutput
+}
+
+type GetPrometheusConnectorHeaderArgs struct {
+	EncryptedValueRef pulumi.StringInput `pulumi:"encryptedValueRef"`
+	Key               pulumi.StringInput `pulumi:"key"`
+	Value             pulumi.StringInput `pulumi:"value"`
+	ValueEncrypted    pulumi.BoolInput   `pulumi:"valueEncrypted"`
+}
+
+func (GetPrometheusConnectorHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (i GetPrometheusConnectorHeaderArgs) ToGetPrometheusConnectorHeaderOutput() GetPrometheusConnectorHeaderOutput {
+	return i.ToGetPrometheusConnectorHeaderOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusConnectorHeaderArgs) ToGetPrometheusConnectorHeaderOutputWithContext(ctx context.Context) GetPrometheusConnectorHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusConnectorHeaderOutput)
+}
+
+// GetPrometheusConnectorHeaderArrayInput is an input type that accepts GetPrometheusConnectorHeaderArray and GetPrometheusConnectorHeaderArrayOutput values.
+// You can construct a concrete instance of `GetPrometheusConnectorHeaderArrayInput` via:
+//
+//	GetPrometheusConnectorHeaderArray{ GetPrometheusConnectorHeaderArgs{...} }
+type GetPrometheusConnectorHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheusConnectorHeaderArrayOutput() GetPrometheusConnectorHeaderArrayOutput
+	ToGetPrometheusConnectorHeaderArrayOutputWithContext(context.Context) GetPrometheusConnectorHeaderArrayOutput
+}
+
+type GetPrometheusConnectorHeaderArray []GetPrometheusConnectorHeaderInput
+
+func (GetPrometheusConnectorHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (i GetPrometheusConnectorHeaderArray) ToGetPrometheusConnectorHeaderArrayOutput() GetPrometheusConnectorHeaderArrayOutput {
+	return i.ToGetPrometheusConnectorHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheusConnectorHeaderArray) ToGetPrometheusConnectorHeaderArrayOutputWithContext(ctx context.Context) GetPrometheusConnectorHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheusConnectorHeaderArrayOutput)
+}
+
+type GetPrometheusConnectorHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusConnectorHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (o GetPrometheusConnectorHeaderOutput) ToGetPrometheusConnectorHeaderOutput() GetPrometheusConnectorHeaderOutput {
+	return o
+}
+
+func (o GetPrometheusConnectorHeaderOutput) ToGetPrometheusConnectorHeaderOutputWithContext(ctx context.Context) GetPrometheusConnectorHeaderOutput {
+	return o
+}
+
+func (o GetPrometheusConnectorHeaderOutput) EncryptedValueRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.EncryptedValueRef }).(pulumi.StringOutput)
+}
+
+func (o GetPrometheusConnectorHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetPrometheusConnectorHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func (o GetPrometheusConnectorHeaderOutput) ValueEncrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPrometheusConnectorHeader) bool { return v.ValueEncrypted }).(pulumi.BoolOutput)
+}
+
+type GetPrometheusConnectorHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheusConnectorHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheusConnectorHeader)(nil)).Elem()
+}
+
+func (o GetPrometheusConnectorHeaderArrayOutput) ToGetPrometheusConnectorHeaderArrayOutput() GetPrometheusConnectorHeaderArrayOutput {
+	return o
+}
+
+func (o GetPrometheusConnectorHeaderArrayOutput) ToGetPrometheusConnectorHeaderArrayOutputWithContext(ctx context.Context) GetPrometheusConnectorHeaderArrayOutput {
+	return o
+}
+
+func (o GetPrometheusConnectorHeaderArrayOutput) Index(i pulumi.IntInput) GetPrometheusConnectorHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheusConnectorHeader {
+		return vs[0].([]GetPrometheusConnectorHeader)[vs[1].(int)]
+	}).(GetPrometheusConnectorHeaderOutput)
+}
+
 type GetResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId string `pulumi:"accountId"`
 	Filter    string `pulumi:"filter"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -12350,9 +17270,9 @@ type GetResourceGroupIncludedScopeArgs struct {
 	// Account Identifier of the account
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	Filter    pulumi.StringInput `pulumi:"filter"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -12416,12 +17336,12 @@ func (o GetResourceGroupIncludedScopeOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o GetResourceGroupIncludedScopeOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o GetResourceGroupIncludedScopeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -12752,6 +17672,121 @@ func (o GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupResourceFilterResourceAttributeFilter {
 		return vs[0].([]GetResourceGroupResourceFilterResourceAttributeFilter)[vs[1].(int)]
 	}).(GetResourceGroupResourceFilterResourceAttributeFilterOutput)
+}
+
+type GetRoleAssignmentsPrincipal struct {
+	// Identifier.
+	Identifier string `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel string `pulumi:"scopeLevel"`
+	// Type.
+	Type string `pulumi:"type"`
+}
+
+// GetRoleAssignmentsPrincipalInput is an input type that accepts GetRoleAssignmentsPrincipalArgs and GetRoleAssignmentsPrincipalOutput values.
+// You can construct a concrete instance of `GetRoleAssignmentsPrincipalInput` via:
+//
+//	GetRoleAssignmentsPrincipalArgs{...}
+type GetRoleAssignmentsPrincipalInput interface {
+	pulumi.Input
+
+	ToGetRoleAssignmentsPrincipalOutput() GetRoleAssignmentsPrincipalOutput
+	ToGetRoleAssignmentsPrincipalOutputWithContext(context.Context) GetRoleAssignmentsPrincipalOutput
+}
+
+type GetRoleAssignmentsPrincipalArgs struct {
+	// Identifier.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel pulumi.StringInput `pulumi:"scopeLevel"`
+	// Type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRoleAssignmentsPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (i GetRoleAssignmentsPrincipalArgs) ToGetRoleAssignmentsPrincipalOutput() GetRoleAssignmentsPrincipalOutput {
+	return i.ToGetRoleAssignmentsPrincipalOutputWithContext(context.Background())
+}
+
+func (i GetRoleAssignmentsPrincipalArgs) ToGetRoleAssignmentsPrincipalOutputWithContext(ctx context.Context) GetRoleAssignmentsPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAssignmentsPrincipalOutput)
+}
+
+// GetRoleAssignmentsPrincipalArrayInput is an input type that accepts GetRoleAssignmentsPrincipalArray and GetRoleAssignmentsPrincipalArrayOutput values.
+// You can construct a concrete instance of `GetRoleAssignmentsPrincipalArrayInput` via:
+//
+//	GetRoleAssignmentsPrincipalArray{ GetRoleAssignmentsPrincipalArgs{...} }
+type GetRoleAssignmentsPrincipalArrayInput interface {
+	pulumi.Input
+
+	ToGetRoleAssignmentsPrincipalArrayOutput() GetRoleAssignmentsPrincipalArrayOutput
+	ToGetRoleAssignmentsPrincipalArrayOutputWithContext(context.Context) GetRoleAssignmentsPrincipalArrayOutput
+}
+
+type GetRoleAssignmentsPrincipalArray []GetRoleAssignmentsPrincipalInput
+
+func (GetRoleAssignmentsPrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (i GetRoleAssignmentsPrincipalArray) ToGetRoleAssignmentsPrincipalArrayOutput() GetRoleAssignmentsPrincipalArrayOutput {
+	return i.ToGetRoleAssignmentsPrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoleAssignmentsPrincipalArray) ToGetRoleAssignmentsPrincipalArrayOutputWithContext(ctx context.Context) GetRoleAssignmentsPrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAssignmentsPrincipalArrayOutput)
+}
+
+type GetRoleAssignmentsPrincipalOutput struct{ *pulumi.OutputState }
+
+func (GetRoleAssignmentsPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (o GetRoleAssignmentsPrincipalOutput) ToGetRoleAssignmentsPrincipalOutput() GetRoleAssignmentsPrincipalOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsPrincipalOutput) ToGetRoleAssignmentsPrincipalOutputWithContext(ctx context.Context) GetRoleAssignmentsPrincipalOutput {
+	return o
+}
+
+// Identifier.
+func (o GetRoleAssignmentsPrincipalOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Scope level.
+func (o GetRoleAssignmentsPrincipalOutput) ScopeLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.ScopeLevel }).(pulumi.StringOutput)
+}
+
+// Type.
+func (o GetRoleAssignmentsPrincipalOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRoleAssignmentsPrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoleAssignmentsPrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleAssignmentsPrincipal)(nil)).Elem()
+}
+
+func (o GetRoleAssignmentsPrincipalArrayOutput) ToGetRoleAssignmentsPrincipalArrayOutput() GetRoleAssignmentsPrincipalArrayOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsPrincipalArrayOutput) ToGetRoleAssignmentsPrincipalArrayOutputWithContext(ctx context.Context) GetRoleAssignmentsPrincipalArrayOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) GetRoleAssignmentsPrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleAssignmentsPrincipal {
+		return vs[0].([]GetRoleAssignmentsPrincipal)[vs[1].(int)]
+	}).(GetRoleAssignmentsPrincipalOutput)
 }
 
 type GetSecretSshkeyKerbero struct {
@@ -13660,6 +18695,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsPtrInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClustersMappingClusterInput)(nil)).Elem(), EnvironmentClustersMappingClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentClustersMappingClusterArrayInput)(nil)).Elem(), EnvironmentClustersMappingClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorInheritFromDelegateInput)(nil)).Elem(), GcpConnectorInheritFromDelegateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GcpConnectorInheritFromDelegateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualInput)(nil)).Elem(), GcpConnectorManualArgs{})
@@ -13670,6 +18707,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsHttpPtrInput)(nil)).Elem(), GitConnectorCredentialsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsSshInput)(nil)).Elem(), GitConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsSshPtrInput)(nil)).Elem(), GitConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsAgentMetadataInput)(nil)).Elem(), GitOpsAgentMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsAgentMetadataArrayInput)(nil)).Elem(), GitOpsAgentMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterQueryInput)(nil)).Elem(), GitOpsClusterQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterQueryArrayInput)(nil)).Elem(), GitOpsClusterQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterQueryIdInput)(nil)).Elem(), GitOpsClusterQueryIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterQueryIdArrayInput)(nil)).Elem(), GitOpsClusterQueryIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestInput)(nil)).Elem(), GitOpsClusterRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestArrayInput)(nil)).Elem(), GitOpsClusterRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInput)(nil)).Elem(), GitOpsClusterRequestClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigAwsAuthConfigInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigAwsAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigAwsAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigExecProviderConfigInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigExecProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigExecProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigTlsClientConfigInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigTlsClientConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterConfigTlsClientConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoCacheInfoInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoCacheInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoCacheInfoArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoCacheInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoConnectionStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoConnectionStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterRefreshRequestedAtInput)(nil)).Elem(), GitOpsClusterRequestClusterRefreshRequestedAtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestClusterRefreshRequestedAtArrayInput)(nil)).Elem(), GitOpsClusterRequestClusterRefreshRequestedAtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestIdInput)(nil)).Elem(), GitOpsClusterRequestIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestIdArrayInput)(nil)).Elem(), GitOpsClusterRequestIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestUpdateMaskInput)(nil)).Elem(), GitOpsClusterRequestUpdateMaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsClusterRequestUpdateMaskArrayInput)(nil)).Elem(), GitOpsClusterRequestUpdateMaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsRepositoryRepoInput)(nil)).Elem(), GitOpsRepositoryRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsRepositoryRepoArrayInput)(nil)).Elem(), GitOpsRepositoryRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsRepositoryUpdateMaskInput)(nil)).Elem(), GitOpsRepositoryUpdateMaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitOpsRepositoryUpdateMaskArrayInput)(nil)).Elem(), GitOpsRepositoryUpdateMaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationInput)(nil)).Elem(), GithubConnectorApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationPtrInput)(nil)).Elem(), GithubConnectorApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GithubConnectorApiAuthenticationGithubAppInput)(nil)).Elem(), GithubConnectorApiAuthenticationGithubAppArgs{})
@@ -13702,6 +18775,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectorUsernamePasswordPtrInput)(nil)).Elem(), KubernetesConnectorUsernamePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsPtrInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderInput)(nil)).Elem(), PrometheusConnectorHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderArrayInput)(nil)).Elem(), PrometheusConnectorHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupIncludedScopeInput)(nil)).Elem(), ResourceGroupIncludedScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupIncludedScopeArrayInput)(nil)).Elem(), ResourceGroupIncludedScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterInput)(nil)).Elem(), ResourceGroupResourceFilterArgs{})
@@ -13710,6 +18785,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterResourceArrayInput)(nil)).Elem(), ResourceGroupResourceFilterResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterResourceAttributeFilterInput)(nil)).Elem(), ResourceGroupResourceFilterResourceAttributeFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), ResourceGroupResourceFilterResourceAttributeFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalInput)(nil)).Elem(), RoleAssignmentsPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalArrayInput)(nil)).Elem(), RoleAssignmentsPrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosInput)(nil)).Elem(), SecretSshkeyKerberosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosPtrInput)(nil)).Elem(), SecretSshkeyKerberosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeyKerberosTgtKeyTabFilePathSpecInput)(nil)).Elem(), SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs{})
@@ -13726,6 +18803,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretSshkeySshSshkeyReferenceCredentialPtrInput)(nil)).Elem(), SecretSshkeySshSshkeyReferenceCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsergroupNotificationConfigInput)(nil)).Elem(), UsergroupNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsergroupNotificationConfigArrayInput)(nil)).Elem(), UsergroupNotificationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VariablesSpecInput)(nil)).Elem(), VariablesSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VariablesSpecPtrInput)(nil)).Elem(), VariablesSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorApiTokenInput)(nil)).Elem(), GetAppDynamicsConnectorApiTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorApiTokenArrayInput)(nil)).Elem(), GetAppDynamicsConnectorApiTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDynamicsConnectorUsernamePasswordInput)(nil)).Elem(), GetAppDynamicsConnectorUsernamePasswordArgs{})
@@ -13792,6 +18871,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialHttpArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialHttpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentMetadataInput)(nil)).Elem(), GetGitopsAgentMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentMetadataArrayInput)(nil)).Elem(), GetGitopsAgentMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterQueryInput)(nil)).Elem(), GetGitopsClusterQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterQueryArrayInput)(nil)).Elem(), GetGitopsClusterQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterQueryIdInput)(nil)).Elem(), GetGitopsClusterQueryIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterQueryIdArrayInput)(nil)).Elem(), GetGitopsClusterQueryIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestInput)(nil)).Elem(), GetGitopsClusterRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestArrayInput)(nil)).Elem(), GetGitopsClusterRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInput)(nil)).Elem(), GetGitopsClusterRequestClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigAwsAuthConfigInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigAwsAuthConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigExecProviderConfigInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigExecProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigExecProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigTlsClientConfigInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigTlsClientConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterConfigTlsClientConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoCacheInfoInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoCacheInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoCacheInfoArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoCacheInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoConnectionStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoConnectionStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterRefreshRequestedAtInput)(nil)).Elem(), GetGitopsClusterRequestClusterRefreshRequestedAtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput)(nil)).Elem(), GetGitopsClusterRequestClusterRefreshRequestedAtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestIdInput)(nil)).Elem(), GetGitopsClusterRequestIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestIdArrayInput)(nil)).Elem(), GetGitopsClusterRequestIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestUpdateMaskInput)(nil)).Elem(), GetGitopsClusterRequestUpdateMaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsClusterRequestUpdateMaskArrayInput)(nil)).Elem(), GetGitopsClusterRequestUpdateMaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoInput)(nil)).Elem(), GetGitopsRepositoryRepoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoArrayInput)(nil)).Elem(), GetGitopsRepositoryRepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryUpdateMaskInput)(nil)).Elem(), GetGitopsRepositoryUpdateMaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryUpdateMaskArrayInput)(nil)).Elem(), GetGitopsRepositoryUpdateMaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorClientKeyCertInput)(nil)).Elem(), GetKubernetesConnectorClientKeyCertArgs{})
@@ -13806,6 +18921,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesConnectorUsernamePasswordArrayInput)(nil)).Elem(), GetKubernetesConnectorUsernamePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNexusConnectorCredentialInput)(nil)).Elem(), GetNexusConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNexusConnectorCredentialArrayInput)(nil)).Elem(), GetNexusConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionInput)(nil)).Elem(), GetPermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionArrayInput)(nil)).Elem(), GetPermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusConnectorHeaderInput)(nil)).Elem(), GetPrometheusConnectorHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusConnectorHeaderArrayInput)(nil)).Elem(), GetPrometheusConnectorHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupIncludedScopeInput)(nil)).Elem(), GetResourceGroupIncludedScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupIncludedScopeArrayInput)(nil)).Elem(), GetResourceGroupIncludedScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterInput)(nil)).Elem(), GetResourceGroupResourceFilterArgs{})
@@ -13814,6 +18933,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterResourceArrayInput)(nil)).Elem(), GetResourceGroupResourceFilterResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterResourceAttributeFilterInput)(nil)).Elem(), GetResourceGroupResourceFilterResourceAttributeFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), GetResourceGroupResourceFilterResourceAttributeFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalArrayInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoInput)(nil)).Elem(), GetSecretSshkeyKerberoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoArrayInput)(nil)).Elem(), GetSecretSshkeyKerberoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretSshkeyKerberoTgtKeyTabFilePathSpecInput)(nil)).Elem(), GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArgs{})
@@ -13868,6 +18989,8 @@ func init() {
 	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshPtrOutput{})
 	pulumi.RegisterOutputType(DockerConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(DockerConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentClustersMappingClusterOutput{})
+	pulumi.RegisterOutputType(EnvironmentClustersMappingClusterArrayOutput{})
 	pulumi.RegisterOutputType(GcpConnectorInheritFromDelegateOutput{})
 	pulumi.RegisterOutputType(GcpConnectorInheritFromDelegateArrayOutput{})
 	pulumi.RegisterOutputType(GcpConnectorManualOutput{})
@@ -13878,6 +19001,42 @@ func init() {
 	pulumi.RegisterOutputType(GitConnectorCredentialsHttpPtrOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsSshOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(GitOpsAgentMetadataOutput{})
+	pulumi.RegisterOutputType(GitOpsAgentMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterQueryOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterQueryArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterQueryIdOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterQueryIdArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigAwsAuthConfigOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigExecProviderConfigOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigTlsClientConfigOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoCacheInfoOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoCacheInfoArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoConnectionStateOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoConnectionStateArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterRefreshRequestedAtOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestIdOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestIdArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestUpdateMaskOutput{})
+	pulumi.RegisterOutputType(GitOpsClusterRequestUpdateMaskArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsRepositoryRepoOutput{})
+	pulumi.RegisterOutputType(GitOpsRepositoryRepoArrayOutput{})
+	pulumi.RegisterOutputType(GitOpsRepositoryUpdateMaskOutput{})
+	pulumi.RegisterOutputType(GitOpsRepositoryUpdateMaskArrayOutput{})
 	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(GithubConnectorApiAuthenticationGithubAppOutput{})
@@ -13910,6 +19069,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesConnectorUsernamePasswordPtrOutput{})
 	pulumi.RegisterOutputType(NexusConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(NexusConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusConnectorHeaderOutput{})
+	pulumi.RegisterOutputType(PrometheusConnectorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupIncludedScopeOutput{})
 	pulumi.RegisterOutputType(ResourceGroupIncludedScopeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterOutput{})
@@ -13918,6 +19079,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterResourceArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterResourceAttributeFilterOutput{})
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
+	pulumi.RegisterOutputType(RoleAssignmentsPrincipalOutput{})
+	pulumi.RegisterOutputType(RoleAssignmentsPrincipalArrayOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosPtrOutput{})
 	pulumi.RegisterOutputType(SecretSshkeyKerberosTgtKeyTabFilePathSpecOutput{})
@@ -13934,6 +19097,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretSshkeySshSshkeyReferenceCredentialPtrOutput{})
 	pulumi.RegisterOutputType(UsergroupNotificationConfigOutput{})
 	pulumi.RegisterOutputType(UsergroupNotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(VariablesSpecOutput{})
+	pulumi.RegisterOutputType(VariablesSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAppDynamicsConnectorApiTokenOutput{})
 	pulumi.RegisterOutputType(GetAppDynamicsConnectorApiTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetAppDynamicsConnectorUsernamePasswordOutput{})
@@ -14000,6 +19165,42 @@ func init() {
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialHttpArrayOutput{})
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshOutput{})
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentMetadataOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterQueryOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterQueryArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterQueryIdOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterQueryIdArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigExecProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigTlsClientConfigOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoCacheInfoOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoConnectionStateOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterRefreshRequestedAtOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestIdOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestIdArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestUpdateMaskOutput{})
+	pulumi.RegisterOutputType(GetGitopsClusterRequestUpdateMaskArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsRepositoryRepoOutput{})
+	pulumi.RegisterOutputType(GetGitopsRepositoryRepoArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsRepositoryUpdateMaskOutput{})
+	pulumi.RegisterOutputType(GetGitopsRepositoryUpdateMaskArrayOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesConnectorClientKeyCertOutput{})
@@ -14014,6 +19215,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesConnectorUsernamePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetNexusConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetNexusConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetPermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(GetPermissionsPermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheusConnectorHeaderOutput{})
+	pulumi.RegisterOutputType(GetPrometheusConnectorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupIncludedScopeOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupIncludedScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterOutput{})
@@ -14022,6 +19227,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterResourceAttributeFilterOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalOutput{})
+	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretSshkeyKerberoTgtKeyTabFilePathSpecOutput{})

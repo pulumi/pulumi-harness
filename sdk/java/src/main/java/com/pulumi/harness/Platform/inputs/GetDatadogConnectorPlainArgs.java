@@ -61,14 +61,14 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
@@ -76,14 +76,14 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {
@@ -162,7 +162,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 

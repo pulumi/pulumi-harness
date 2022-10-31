@@ -27,9 +27,9 @@ type LookupAwsCCConnectorArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -49,9 +49,9 @@ type LookupAwsCCConnectorResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName string `pulumi:"reportName"`
@@ -80,9 +80,9 @@ type LookupAwsCCConnectorOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -142,12 +142,12 @@ func (o LookupAwsCCConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupAwsCCConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupAwsCCConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

@@ -26,7 +26,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Harness.Platform.GetTriggers.Invoke(new()
+        ///     var example = Harness.Platform.GetTriggers.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
         ///         OrgId = "org_id",
@@ -56,7 +56,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Harness.Platform.GetTriggers.Invoke(new()
+        ///     var example = Harness.Platform.GetTriggers.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
         ///         OrgId = "org_id",

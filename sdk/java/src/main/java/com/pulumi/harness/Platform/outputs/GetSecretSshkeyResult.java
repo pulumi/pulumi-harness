@@ -41,7 +41,7 @@ public final class GetSecretSshkeyResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private @Nullable String orgId;
@@ -51,7 +51,7 @@ public final class GetSecretSshkeyResult {
      */
     private Integer port;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private @Nullable String projectId;
@@ -103,7 +103,7 @@ public final class GetSecretSshkeyResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
@@ -117,7 +117,7 @@ public final class GetSecretSshkeyResult {
         return this.port;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {

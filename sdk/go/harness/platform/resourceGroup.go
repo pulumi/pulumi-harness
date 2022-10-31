@@ -39,9 +39,9 @@ type ResourceGroup struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayOutput `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayOutput `pulumi:"resourceFilters"`
@@ -99,9 +99,9 @@ type resourceGroupState struct {
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []ResourceGroupResourceFilter `pulumi:"resourceFilters"`
@@ -124,9 +124,9 @@ type ResourceGroupState struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayInput
@@ -153,9 +153,9 @@ type resourceGroupArgs struct {
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []ResourceGroupResourceFilter `pulumi:"resourceFilters"`
@@ -179,9 +179,9 @@ type ResourceGroupArgs struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayInput
@@ -311,12 +311,12 @@ func (o ResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o ResourceGroupOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o ResourceGroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

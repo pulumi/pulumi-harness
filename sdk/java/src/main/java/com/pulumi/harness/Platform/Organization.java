@@ -18,6 +18,16 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness organization.
  * 
+ * ## Example Usage
+ * 
+ * ## Import
+ * 
+ * Import using organization id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/organization:Organization example &lt;organization_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/organization:Organization")
 public class Organization extends com.pulumi.resources.CustomResource {

@@ -168,7 +168,7 @@ def get_triggers(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_triggers(identifier="identifier",
+    example = harness.platform.get_triggers(identifier="identifier",
         org_id="org_id",
         project_id="project_id",
         target_id="pipeline_id")
@@ -222,7 +222,7 @@ def get_triggers_output(identifier: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_triggers(identifier="identifier",
+    example = harness.platform.get_triggers(identifier="identifier",
         org_id="org_id",
         project_id="project_id",
         target_id="pipeline_id")

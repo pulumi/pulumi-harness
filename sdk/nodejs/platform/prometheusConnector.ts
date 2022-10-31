@@ -2,10 +2,43 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Prometheus connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.PrometheusConnector("example", {
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     headers: [{
+ *         encryptedValueRef: "account.secret_identifier",
+ *         key: "key",
+ *         value: "value",
+ *         valueEncrypted: true,
+ *     }],
+ *     identifier: "idntifier",
+ *     passwordRef: "account.secret_identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://prometheus.com/",
+ *     userName: "user_name",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using prometheus connector id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <connector_id>
+ * ```
  */
 export class PrometheusConnector extends pulumi.CustomResource {
     /**
@@ -44,6 +77,10 @@ export class PrometheusConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Headers.
+     */
+    public readonly headers!: pulumi.Output<outputs.platform.PrometheusConnectorHeader[] | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -52,11 +89,15 @@ export class PrometheusConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     */
+    public readonly passwordRef!: pulumi.Output<string | undefined>;
+    /**
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -67,6 +108,10 @@ export class PrometheusConnector extends pulumi.CustomResource {
      * Url of the Prometheus server.
      */
     public readonly url!: pulumi.Output<string>;
+    /**
+     * User name.
+     */
+    public readonly userName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a PrometheusConnector resource with the given unique name, arguments, and options.
@@ -83,12 +128,15 @@ export class PrometheusConnector extends pulumi.CustomResource {
             const state = argsOrState as PrometheusConnectorState | undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["headers"] = state ? state.headers : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["passwordRef"] = state ? state.passwordRef : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as PrometheusConnectorArgs | undefined;
             if ((!args || args.identifier === undefined) && !opts.urn) {
@@ -99,12 +147,15 @@ export class PrometheusConnector extends pulumi.CustomResource {
             }
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["headers"] = args ? args.headers : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["passwordRef"] = args ? args.passwordRef : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrometheusConnector.__pulumiType, name, resourceInputs, opts);
@@ -124,6 +175,10 @@ export interface PrometheusConnectorState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Headers.
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.platform.PrometheusConnectorHeader>[]>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -132,11 +187,15 @@ export interface PrometheusConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     */
+    passwordRef?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -147,6 +206,10 @@ export interface PrometheusConnectorState {
      * Url of the Prometheus server.
      */
     url?: pulumi.Input<string>;
+    /**
+     * User name.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -162,6 +225,10 @@ export interface PrometheusConnectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Headers.
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.platform.PrometheusConnectorHeader>[]>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
@@ -170,11 +237,15 @@ export interface PrometheusConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Password reference.
+     */
+    passwordRef?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -185,4 +256,8 @@ export interface PrometheusConnectorArgs {
      * Url of the Prometheus server.
      */
     url: pulumi.Input<string>;
+    /**
+     * User name.
+     */
+    userName?: pulumi.Input<string>;
 }

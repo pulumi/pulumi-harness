@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness Spot cloud provider id.
+// Import using the Harness Spot cloud provider id.
 //
 // ```sh
 //

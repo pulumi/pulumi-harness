@@ -86,7 +86,7 @@ class GetInputSetResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -102,7 +102,7 @@ class GetInputSetResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -152,9 +152,9 @@ def get_input_set(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
+    :param str org_id: Unique identifier of the Organization.
     :param str pipeline_id: Identifier of the pipeline
-    :param str project_id: Unique identifier of the project.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -190,8 +190,8 @@ def get_input_set_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
+    :param str org_id: Unique identifier of the Organization.
     :param str pipeline_id: Identifier of the pipeline
-    :param str project_id: Unique identifier of the project.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

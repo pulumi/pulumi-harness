@@ -20,14 +20,13 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupSecretSshkey(ctx, &platform.LookupSecretSshkeyArgs{
+//			_, err = platform.LookupSecretSshkey(ctx, &platform.LookupSecretSshkeyArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -54,9 +53,9 @@ type LookupSecretSshkeyArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -72,11 +71,11 @@ type LookupSecretSshkeyResult struct {
 	Kerberos []GetSecretSshkeyKerbero `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port int `pulumi:"port"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Sshes []GetSecretSshkeySsh `pulumi:"sshes"`
@@ -103,9 +102,9 @@ type LookupSecretSshkeyOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -153,7 +152,7 @@ func (o LookupSecretSshkeyResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupSecretSshkeyResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -163,7 +162,7 @@ func (o LookupSecretSshkeyResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupSecretSshkeyResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

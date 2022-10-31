@@ -136,6 +136,21 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Environment YAML
+     * 
+     */
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
+
+    /**
+     * @return Environment YAML
+     * 
+     */
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
+    }
+
     private EnvironmentState() {}
 
     private EnvironmentState(EnvironmentState $) {
@@ -147,6 +162,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.type = $.type;
+        this.yaml = $.yaml;
     }
 
     public static Builder builder() {
@@ -343,6 +359,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param yaml Environment YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(@Nullable Output<String> yaml) {
+            $.yaml = yaml;
+            return this;
+        }
+
+        /**
+         * @param yaml Environment YAML
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(String yaml) {
+            return yaml(Output.of(yaml));
         }
 
         public EnvironmentState build() {

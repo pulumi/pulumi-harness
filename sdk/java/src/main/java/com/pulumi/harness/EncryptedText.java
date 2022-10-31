@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+ * Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
  * 
  * ```sh
  *  $ pulumi import harness:index/encryptedText:EncryptedText example &lt;secret_id&gt;
@@ -207,6 +207,9 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "value"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

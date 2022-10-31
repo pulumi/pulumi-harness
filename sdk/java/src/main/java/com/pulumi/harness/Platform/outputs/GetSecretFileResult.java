@@ -38,12 +38,12 @@ public final class GetSecretFileResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private @Nullable String projectId;
@@ -95,14 +95,14 @@ public final class GetSecretFileResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {

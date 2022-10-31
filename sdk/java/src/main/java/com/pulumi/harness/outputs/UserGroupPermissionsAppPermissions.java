@@ -18,37 +18,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserGroupPermissionsAppPermissions {
+    /**
+     * @return The permission to perform actions against all resources.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsAll> alls;
+    /**
+     * @return Permission configuration to perform actions against deployments.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsDeployment> deployments;
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsEnvironment> environments;
+    /**
+     * @return Permission configuration to perform actions against pipelines.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsPipeline> pipelines;
+    /**
+     * @return Permission configuration to perform actions against provisioners.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsProvisioner> provisioners;
+    /**
+     * @return Permission configuration to perform actions against services.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsService> services;
+    /**
+     * @return Permission configuration to perform actions against templates.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsTemplate> templates;
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     private @Nullable List<UserGroupPermissionsAppPermissionsWorkflow> workflows;
 
     private UserGroupPermissionsAppPermissions() {}
+    /**
+     * @return The permission to perform actions against all resources.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsAll> alls() {
         return this.alls == null ? List.of() : this.alls;
     }
+    /**
+     * @return Permission configuration to perform actions against deployments.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsDeployment> deployments() {
         return this.deployments == null ? List.of() : this.deployments;
     }
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsEnvironment> environments() {
         return this.environments == null ? List.of() : this.environments;
     }
+    /**
+     * @return Permission configuration to perform actions against pipelines.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsPipeline> pipelines() {
         return this.pipelines == null ? List.of() : this.pipelines;
     }
+    /**
+     * @return Permission configuration to perform actions against provisioners.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsProvisioner> provisioners() {
         return this.provisioners == null ? List.of() : this.provisioners;
     }
+    /**
+     * @return Permission configuration to perform actions against services.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsService> services() {
         return this.services == null ? List.of() : this.services;
     }
+    /**
+     * @return Permission configuration to perform actions against templates.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsTemplate> templates() {
         return this.templates == null ? List.of() : this.templates;
     }
+    /**
+     * @return Permission configuration to perform actions against workflows.
+     * 
+     */
     public List<UserGroupPermissionsAppPermissionsWorkflow> workflows() {
         return this.workflows == null ? List.of() : this.workflows;
     }

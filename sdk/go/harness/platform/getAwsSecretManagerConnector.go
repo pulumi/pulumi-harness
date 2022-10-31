@@ -27,9 +27,9 @@ type LookupAwsSecretManagerConnectorArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -47,9 +47,9 @@ type LookupAwsSecretManagerConnectorResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
@@ -78,9 +78,9 @@ type LookupAwsSecretManagerConnectorOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -135,12 +135,12 @@ func (o LookupAwsSecretManagerConnectorResultOutput) Name() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupAwsSecretManagerConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupAwsSecretManagerConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

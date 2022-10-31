@@ -24,7 +24,6 @@ import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,7 +83,7 @@ import (
 //
 // ## Import
 //
-// # Import using the Harness application id and environment id.
+// Import using the Harness application id and environment id.
 //
 // ```sh
 //

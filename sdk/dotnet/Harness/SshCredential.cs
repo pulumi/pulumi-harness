@@ -59,7 +59,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ## Import
     /// 
-    /// # Import using the Harness ssh credential id
+    /// Import using the Harness ssh credential id
     /// 
     /// ```sh
     ///  $ pulumi import harness:index/sshCredential:SshCredential example &lt;credential_id&gt;

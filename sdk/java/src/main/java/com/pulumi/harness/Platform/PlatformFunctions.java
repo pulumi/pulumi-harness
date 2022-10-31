@@ -29,6 +29,10 @@ import com.pulumi.harness.platform.inputs.GetDockerConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDynatraceConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetDynatraceConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetEnvironmentArgs;
+import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingPlainArgs;
+import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
+import com.pulumi.harness.platform.inputs.GetEnvironmentGroupPlainArgs;
 import com.pulumi.harness.platform.inputs.GetEnvironmentPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGcpConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGcpConnectorPlainArgs;
@@ -38,8 +42,16 @@ import com.pulumi.harness.platform.inputs.GetGithubConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGithubConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitlabConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetGitlabConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsClusterPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsRepositoryPlainArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
+import com.pulumi.harness.platform.inputs.GetInfrastructurePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInputSetArgs;
 import com.pulumi.harness.platform.inputs.GetInputSetPlainArgs;
 import com.pulumi.harness.platform.inputs.GetJiraConnectorArgs;
@@ -52,6 +64,8 @@ import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
 import com.pulumi.harness.platform.inputs.GetOrganizationPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+import com.pulumi.harness.platform.inputs.GetPermissionsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetPipelinePlainArgs;
 import com.pulumi.harness.platform.inputs.GetProjectArgs;
@@ -60,6 +74,8 @@ import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetPrometheusConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetResourceGroupArgs;
 import com.pulumi.harness.platform.inputs.GetResourceGroupPlainArgs;
+import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
+import com.pulumi.harness.platform.inputs.GetRoleAssignmentsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetRolesArgs;
 import com.pulumi.harness.platform.inputs.GetRolesPlainArgs;
 import com.pulumi.harness.platform.inputs.GetSecretFileArgs;
@@ -80,6 +96,8 @@ import com.pulumi.harness.platform.inputs.GetTriggersArgs;
 import com.pulumi.harness.platform.inputs.GetTriggersPlainArgs;
 import com.pulumi.harness.platform.inputs.GetUsergroupArgs;
 import com.pulumi.harness.platform.inputs.GetUsergroupPlainArgs;
+import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+import com.pulumi.harness.platform.inputs.GetVaultConnectorPlainArgs;
 import com.pulumi.harness.platform.outputs.GetAppDynamicsConnectorResult;
 import com.pulumi.harness.platform.outputs.GetArtifactoryConnectorResult;
 import com.pulumi.harness.platform.outputs.GetAwsCCConnectorResult;
@@ -91,22 +109,30 @@ import com.pulumi.harness.platform.outputs.GetCurrentUserResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDockerConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDynatraceConnectorResult;
+import com.pulumi.harness.platform.outputs.GetEnvironmentClustersMappingResult;
+import com.pulumi.harness.platform.outputs.GetEnvironmentGroupResult;
 import com.pulumi.harness.platform.outputs.GetEnvironmentResult;
 import com.pulumi.harness.platform.outputs.GetGcpConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGithubConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitlabConnectorResult;
+import com.pulumi.harness.platform.outputs.GetGitopsAgentResult;
+import com.pulumi.harness.platform.outputs.GetGitopsClusterResult;
+import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
+import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
 import com.pulumi.harness.platform.outputs.GetInputSetResult;
 import com.pulumi.harness.platform.outputs.GetJiraConnectorResult;
 import com.pulumi.harness.platform.outputs.GetKubernetesConnectorResult;
 import com.pulumi.harness.platform.outputs.GetNexusConnectorResult;
 import com.pulumi.harness.platform.outputs.GetOrganizationResult;
 import com.pulumi.harness.platform.outputs.GetPagerdutyConnectorResult;
+import com.pulumi.harness.platform.outputs.GetPermissionsResult;
 import com.pulumi.harness.platform.outputs.GetPipelineResult;
 import com.pulumi.harness.platform.outputs.GetProjectResult;
 import com.pulumi.harness.platform.outputs.GetPrometheusConnectorResult;
 import com.pulumi.harness.platform.outputs.GetResourceGroupResult;
+import com.pulumi.harness.platform.outputs.GetRoleAssignmentsResult;
 import com.pulumi.harness.platform.outputs.GetRolesResult;
 import com.pulumi.harness.platform.outputs.GetSecretFileResult;
 import com.pulumi.harness.platform.outputs.GetSecretSshkeyResult;
@@ -117,6 +143,7 @@ import com.pulumi.harness.platform.outputs.GetSplunkConnectorResult;
 import com.pulumi.harness.platform.outputs.GetSumologicConnectorResult;
 import com.pulumi.harness.platform.outputs.GetTriggersResult;
 import com.pulumi.harness.platform.outputs.GetUsergroupResult;
+import com.pulumi.harness.platform.outputs.GetVaultConnectorResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -608,8 +635,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(&#34;name&#34;)
+     *         final var example = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -647,8 +674,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(&#34;name&#34;)
+     *         final var example = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -686,8 +713,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(&#34;name&#34;)
+     *         final var example = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -725,8 +752,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(&#34;name&#34;)
+     *         final var example = PlatformFunctions.getEnvironment(GetEnvironmentArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -738,6 +765,318 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnvironmentClustersMappingResult> getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs args) {
+        return getEnvironmentClustersMapping(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentClustersMappingResult> getEnvironmentClustersMappingPlain(GetEnvironmentClustersMappingPlainArgs args) {
+        return getEnvironmentClustersMappingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnvironmentClustersMappingResult> getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", TypeShape.of(GetEnvironmentClustersMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Cluster.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentClustersMappingResult> getEnvironmentClustersMappingPlain(GetEnvironmentClustersMappingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", TypeShape.of(GetEnvironmentClustersMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness environment group.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentGroup(GetEnvironmentGroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnvironmentGroupResult> getEnvironmentGroup(GetEnvironmentGroupArgs args) {
+        return getEnvironmentGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness environment group.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentGroup(GetEnvironmentGroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentGroupResult> getEnvironmentGroupPlain(GetEnvironmentGroupPlainArgs args) {
+        return getEnvironmentGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness environment group.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentGroup(GetEnvironmentGroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnvironmentGroupResult> getEnvironmentGroup(GetEnvironmentGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getEnvironmentGroup:getEnvironmentGroup", TypeShape.of(GetEnvironmentGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness environment group.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getEnvironmentGroup(GetEnvironmentGroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentGroupResult> getEnvironmentGroupPlain(GetEnvironmentGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getEnvironmentGroup:getEnvironmentGroup", TypeShape.of(GetEnvironmentGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a Gcp connector.
@@ -907,6 +1246,42 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetGitlabConnectorResult> getGitlabConnectorPlain(GetGitlabConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitlabConnector:getGitlabConnector", TypeShape.of(GetGitlabConnectorResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGitopsAgentResult> getGitopsAgent(GetGitopsAgentArgs args) {
+        return getGitopsAgent(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGitopsAgentResult> getGitopsAgentPlain(GetGitopsAgentPlainArgs args) {
+        return getGitopsAgentPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGitopsAgentResult> getGitopsAgent(GetGitopsAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsAgent:getGitopsAgent", TypeShape.of(GetGitopsAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGitopsAgentResult> getGitopsAgentPlain(GetGitopsAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAgent:getGitopsAgent", TypeShape.of(GetGitopsAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGitopsClusterResult> getGitopsCluster(GetGitopsClusterArgs args) {
+        return getGitopsCluster(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGitopsClusterResult> getGitopsClusterPlain(GetGitopsClusterPlainArgs args) {
+        return getGitopsClusterPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGitopsClusterResult> getGitopsCluster(GetGitopsClusterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsCluster:getGitopsCluster", TypeShape.of(GetGitopsClusterResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGitopsClusterResult> getGitopsClusterPlain(GetGitopsClusterPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsCluster:getGitopsCluster", TypeShape.of(GetGitopsClusterResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGitopsRepositoryResult> getGitopsRepository(GetGitopsRepositoryArgs args) {
+        return getGitopsRepository(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGitopsRepositoryResult> getGitopsRepositoryPlain(GetGitopsRepositoryPlainArgs args) {
+        return getGitopsRepositoryPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGitopsRepositoryResult> getGitopsRepository(GetGitopsRepositoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsRepository:getGitopsRepository", TypeShape.of(GetGitopsRepositoryResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGitopsRepositoryResult> getGitopsRepositoryPlain(GetGitopsRepositoryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsRepository:getGitopsRepository", TypeShape.of(GetGitopsRepositoryResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Datasource for looking up a Helm connector.
      * 
@@ -948,6 +1323,170 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetHelmConnectorResult> getHelmConnectorPlain(GetHelmConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getHelmConnector:getHelmConnector", TypeShape.of(GetHelmConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Infrastructure.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfrastructure(GetInfrastructureArgs.builder()
+     *             .envId(&#34;env_id&#34;)
+     *             .identifier(&#34;identifier&#34;)
+     *             .name(&#34;name&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInfrastructureResult> getInfrastructure(GetInfrastructureArgs args) {
+        return getInfrastructure(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Infrastructure.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfrastructure(GetInfrastructureArgs.builder()
+     *             .envId(&#34;env_id&#34;)
+     *             .identifier(&#34;identifier&#34;)
+     *             .name(&#34;name&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureResult> getInfrastructurePlain(GetInfrastructurePlainArgs args) {
+        return getInfrastructurePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Infrastructure.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfrastructure(GetInfrastructureArgs.builder()
+     *             .envId(&#34;env_id&#34;)
+     *             .identifier(&#34;identifier&#34;)
+     *             .name(&#34;name&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInfrastructureResult> getInfrastructure(GetInfrastructureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfrastructure:getInfrastructure", TypeShape.of(GetInfrastructureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Infrastructure.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getInfrastructure(GetInfrastructureArgs.builder()
+     *             .envId(&#34;env_id&#34;)
+     *             .identifier(&#34;identifier&#34;)
+     *             .name(&#34;name&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInfrastructureResult> getInfrastructurePlain(GetInfrastructurePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfrastructure:getInfrastructure", TypeShape.of(GetInfrastructureResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness input set.
@@ -1106,12 +1645,72 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Harness organization
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationResult> getOrganization() {
         return getOrganization(GetOrganizationArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness organization
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
@@ -1120,12 +1719,72 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Harness organization
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
         return getOrganization(args, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving a Harness organization
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
@@ -1134,12 +1793,72 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Harness organization
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness organization
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = PlatformFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
@@ -1188,7 +1907,267 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getPagerdutyConnector:getPagerdutyConnector", TypeShape.of(GetPagerdutyConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPermissionsResult> getPermissions() {
+        return getPermissions(GetPermissionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPermissionsResult> getPermissionsPlain() {
+        return getPermissionsPlain(GetPermissionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPermissionsResult> getPermissions(GetPermissionsArgs args) {
+        return getPermissions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPermissionsResult> getPermissionsPlain(GetPermissionsPlainArgs args) {
+        return getPermissionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPermissionsResult> getPermissions(GetPermissionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getPermissions:getPermissions", TypeShape.of(GetPermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving permissions.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPermissions(GetPermissionsArgs.builder()
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPermissionsResult> getPermissionsPlain(GetPermissionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getPermissions:getPermissions", TypeShape.of(GetPermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Harness pipeline.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPipeline(GetPipelineArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPipelineResult> getPipeline(GetPipelineArgs args) {
@@ -1197,6 +2176,38 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Harness pipeline.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPipeline(GetPipelineArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetPipelineResult> getPipelinePlain(GetPipelinePlainArgs args) {
         return getPipelinePlain(args, InvokeOptions.Empty);
@@ -1204,12 +2215,76 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving a Harness pipeline.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPipeline(GetPipelineArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPipelineResult> getPipeline(GetPipelineArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getPipeline:getPipeline", TypeShape.of(GetPipelineResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness pipeline.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPipelineArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPipeline(GetPipelineArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPipelineResult> getPipelinePlain(GetPipelinePlainArgs args, InvokeOptions options) {
@@ -1390,12 +2465,72 @@ public final class PlatformFunctions {
     /**
      * Datasource for looking up a Prometheus connector.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPrometheusConnectorResult> getPrometheusConnector() {
         return getPrometheusConnector(GetPrometheusConnectorArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Datasource for looking up a Prometheus connector.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrometheusConnectorResult> getPrometheusConnectorPlain() {
@@ -1404,12 +2539,72 @@ public final class PlatformFunctions {
     /**
      * Datasource for looking up a Prometheus connector.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPrometheusConnectorResult> getPrometheusConnector(GetPrometheusConnectorArgs args) {
         return getPrometheusConnector(args, InvokeOptions.Empty);
     }
     /**
      * Datasource for looking up a Prometheus connector.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrometheusConnectorResult> getPrometheusConnectorPlain(GetPrometheusConnectorPlainArgs args) {
@@ -1418,12 +2613,72 @@ public final class PlatformFunctions {
     /**
      * Datasource for looking up a Prometheus connector.
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetPrometheusConnectorResult> getPrometheusConnector(GetPrometheusConnectorArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getPrometheusConnector:getPrometheusConnector", TypeShape.of(GetPrometheusConnectorResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a Prometheus connector.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getPrometheusConnector(GetPrometheusConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPrometheusConnectorResult> getPrometheusConnectorPlain(GetPrometheusConnectorPlainArgs args, InvokeOptions options) {
@@ -1650,6 +2905,162 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetResourceGroupResult> getResourceGroupPlain(GetResourceGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getResourceGroup:getResourceGroup", TypeShape.of(GetResourceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving role assignment.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getRoleAssignments(GetRoleAssignmentsArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRoleAssignmentsResult> getRoleAssignments(GetRoleAssignmentsArgs args) {
+        return getRoleAssignments(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving role assignment.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getRoleAssignments(GetRoleAssignmentsArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRoleAssignmentsResult> getRoleAssignmentsPlain(GetRoleAssignmentsPlainArgs args) {
+        return getRoleAssignmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving role assignment.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getRoleAssignments(GetRoleAssignmentsArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRoleAssignmentsResult> getRoleAssignments(GetRoleAssignmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getRoleAssignments:getRoleAssignments", TypeShape.of(GetRoleAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving role assignment.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetRoleAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getRoleAssignments(GetRoleAssignmentsArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRoleAssignmentsResult> getRoleAssignmentsPlain(GetRoleAssignmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getRoleAssignments:getRoleAssignments", TypeShape.of(GetRoleAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving roles
@@ -2577,7 +3988,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;name&#34;)
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -2616,7 +4027,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;name&#34;)
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -2655,7 +4066,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;name&#34;)
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -2694,7 +4105,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;name&#34;)
+     *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
      *             .build());
@@ -3038,7 +4449,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
+     *         final var example = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
      *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3078,7 +4489,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
+     *         final var example = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
      *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3118,7 +4529,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
+     *         final var example = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
      *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3158,7 +4569,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
+     *         final var example = PlatformFunctions.getTriggers(GetTriggersArgs.builder()
      *             .identifier(&#34;identifier&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3198,7 +4609,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3237,7 +4654,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3276,7 +4699,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3315,7 +4744,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3354,7 +4789,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3393,7 +4834,13 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *         final var exampleById = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .orgId(&#34;org_id&#34;)
+     *             .projectId(&#34;project_id&#34;)
+     *             .build());
+     * 
+     *         final var exampleByName = PlatformFunctions.getUsergroup(GetUsergroupArgs.builder()
      *             .name(&#34;name&#34;)
      *             .orgId(&#34;org_id&#34;)
      *             .projectId(&#34;project_id&#34;)
@@ -3406,5 +4853,227 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetUsergroupResult> getUsergroupPlain(GetUsergroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getUsergroup:getUsergroup", TypeShape.of(GetUsergroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVaultConnectorResult> getVaultConnector() {
+        return getVaultConnector(GetVaultConnectorArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVaultConnectorResult> getVaultConnectorPlain() {
+        return getVaultConnectorPlain(GetVaultConnectorPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVaultConnectorResult> getVaultConnector(GetVaultConnectorArgs args) {
+        return getVaultConnector(args, InvokeOptions.Empty);
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVaultConnectorResult> getVaultConnectorPlain(GetVaultConnectorPlainArgs args) {
+        return getVaultConnectorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVaultConnectorResult> getVaultConnector(GetVaultConnectorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getVaultConnector:getVaultConnector", TypeShape.of(GetVaultConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * DataSource for looking up a Vault connector in Harness.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetVaultConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getVaultConnector(GetVaultConnectorArgs.builder()
+     *             .identifier(&#34;identifier&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVaultConnectorResult> getVaultConnectorPlain(GetVaultConnectorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getVaultConnector:getVaultConnector", TypeShape.of(GetVaultConnectorResult.class), args, Utilities.withVersion(options));
     }
 }

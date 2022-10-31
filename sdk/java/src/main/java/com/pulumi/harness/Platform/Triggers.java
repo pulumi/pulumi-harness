@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  *             .projectId(&#34;projectIdentifier&#34;)
  *             .targetId(&#34;pipelineIdentifier&#34;)
  *             .yaml(&#34;&#34;&#34;
- *   ---
  *   trigger:
  *     name: &#34;name&#34;
  *     identifier: &#34;identifier&#34;
@@ -87,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using trigger id
+ * Import using trigger id
  * 
  * ```sh
  *  $ pulumi import harness:platform/triggers:Triggers example &lt;triggers_id&gt;
@@ -167,28 +166,28 @@ public class Triggers extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<String> projectId() {
@@ -227,14 +226,14 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="yaml", type=String.class, parameters={})
-    private Output</* @Nullable */ String> yaml;
+    private Output<String> yaml;
 
     /**
      * @return trigger yaml
      * 
      */
-    public Output<Optional<String>> yaml() {
-        return Codegen.optional(this.yaml);
+    public Output<String> yaml() {
+        return this.yaml;
     }
 
     /**

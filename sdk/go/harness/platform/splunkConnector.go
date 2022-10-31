@@ -25,11 +25,11 @@ type SplunkConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// The reference to the Harness secret containing the Splunk password.
 	PasswordRef pulumi.StringOutput `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -94,11 +94,11 @@ type splunkConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// The reference to the Harness secret containing the Splunk password.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -119,11 +119,11 @@ type SplunkConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// The reference to the Harness secret containing the Splunk password.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -148,11 +148,11 @@ type splunkConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// The reference to the Harness secret containing the Splunk password.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -174,11 +174,11 @@ type SplunkConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
 	// The reference to the Harness secret containing the Splunk password.
 	PasswordRef pulumi.StringInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags pulumi.StringArrayInput
@@ -300,7 +300,7 @@ func (o SplunkConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o SplunkConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -310,7 +310,7 @@ func (o SplunkConnectorOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o SplunkConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

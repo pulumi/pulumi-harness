@@ -20,14 +20,13 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupRoles(ctx, &platform.LookupRolesArgs{
+//			_, err = platform.LookupRoles(ctx, &platform.LookupRolesArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
@@ -58,11 +57,11 @@ type LookupRolesArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -78,11 +77,11 @@ type LookupRolesResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
@@ -109,11 +108,11 @@ type LookupRolesOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -161,7 +160,7 @@ func (o LookupRolesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupRolesResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +170,7 @@ func (o LookupRolesResultOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRolesResult) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupRolesResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

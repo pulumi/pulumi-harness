@@ -32,6 +32,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EncryptedText{}
 	case "harness:index/environment:Environment":
 		r = &Environment{}
+	case "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides":
+		r = &EnvironmentServiceOverrides{}
 	case "harness:index/gitConnector:GitConnector":
 		r = &GitConnector{}
 	case "harness:index/infrastructureDefinition:InfrastructureDefinition":
@@ -42,6 +44,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "harness:index/userGroup:UserGroup":
 		r = &UserGroup{}
+	case "harness:index/userGroupPermissions:UserGroupPermissions":
+		r = &UserGroupPermissions{}
 	case "harness:index/yamlConfig:YamlConfig":
 		r = &YamlConfig{}
 	default:
@@ -104,6 +108,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"index/environmentServiceOverrides",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"index/gitConnector",
 		&module{version},
 	)
@@ -125,6 +134,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"index/userGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"index/userGroupPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

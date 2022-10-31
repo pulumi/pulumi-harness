@@ -20,14 +20,13 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupSecretText(ctx, &platform.LookupSecretTextArgs{
+//			_, err = platform.LookupSecretText(ctx, &platform.LookupSecretTextArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -54,9 +53,9 @@ type LookupSecretTextArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -70,9 +69,9 @@ type LookupSecretTextResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
@@ -80,7 +79,7 @@ type LookupSecretTextResult struct {
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
 	Value string `pulumi:"value"`
-	// This has details to specify if the secret value is inline or referenced.
+	// This has details to specify if the secret value is Inline or Reference.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -103,9 +102,9 @@ type LookupSecretTextOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -148,12 +147,12 @@ func (o LookupSecretTextResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupSecretTextResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupSecretTextResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -173,7 +172,7 @@ func (o LookupSecretTextResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// This has details to specify if the secret value is inline or referenced.
+// This has details to specify if the secret value is Inline or Reference.
 func (o LookupSecretTextResultOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) string { return v.ValueType }).(pulumi.StringOutput)
 }

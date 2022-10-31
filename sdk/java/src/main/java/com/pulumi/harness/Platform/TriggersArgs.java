@@ -93,14 +93,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {
@@ -108,14 +108,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<String> projectId() {
@@ -156,15 +156,15 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
      * trigger yaml
      * 
      */
-    @Import(name="yaml")
-    private @Nullable Output<String> yaml;
+    @Import(name="yaml", required=true)
+    private Output<String> yaml;
 
     /**
      * @return trigger yaml
      * 
      */
-    public Optional<Output<String>> yaml() {
-        return Optional.ofNullable(this.yaml);
+    public Output<String> yaml() {
+        return this.yaml;
     }
 
     private TriggersArgs() {}
@@ -306,7 +306,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Unique identifier of the Organization.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Unique identifier of the Project.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder yaml(@Nullable Output<String> yaml) {
+        public Builder yaml(Output<String> yaml) {
             $.yaml = yaml;
             return this;
         }
@@ -425,6 +425,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
             $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
             $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             $.targetId = Objects.requireNonNull($.targetId, "expected parameter 'targetId' to be non-null");
+            $.yaml = Objects.requireNonNull($.yaml, "expected parameter 'yaml' to be non-null");
             return $;
         }
     }

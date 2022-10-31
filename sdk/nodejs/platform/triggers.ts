@@ -18,8 +18,7 @@ import * as utilities from "../utilities";
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
  *     targetId: "pipelineIdentifier",
- *     yaml: `  ---
- *   trigger:
+ *     yaml: `  trigger:
  *     name: "name"
  *     identifier: "identifier"
  *     enabled: true
@@ -54,7 +53,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * # Import using trigger id
+ * Import using trigger id
  *
  * ```sh
  *  $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
@@ -109,11 +108,11 @@ export class Triggers extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -127,7 +126,7 @@ export class Triggers extends pulumi.CustomResource {
     /**
      * trigger yaml
      */
-    public readonly yaml!: pulumi.Output<string | undefined>;
+    public readonly yaml!: pulumi.Output<string>;
 
     /**
      * Create a Triggers resource with the given unique name, arguments, and options.
@@ -165,6 +164,9 @@ export class Triggers extends pulumi.CustomResource {
             }
             if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
+            }
+            if ((!args || args.yaml === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'yaml'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -207,11 +209,11 @@ export interface TriggersState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -253,11 +255,11 @@ export interface TriggersArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      */
     projectId: pulumi.Input<string>;
     /**
@@ -271,5 +273,5 @@ export interface TriggersArgs {
     /**
      * trigger yaml
      */
-    yaml?: pulumi.Input<string>;
+    yaml: pulumi.Input<string>;
 }

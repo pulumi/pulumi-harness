@@ -116,7 +116,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -124,7 +124,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -177,8 +177,8 @@ def get_datadog_connector(delegate_selectors: Optional[Sequence[str]] = None,
     :param Sequence[str] delegate_selectors: Connect using only the delegates which have these tags.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['delegateSelectors'] = delegate_selectors
@@ -217,7 +217,7 @@ def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optio
     :param Sequence[str] delegate_selectors: Connect using only the delegates which have these tags.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
-    :param str project_id: Unique identifier of the project.
+    :param str org_id: Unique identifier of the Organization.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

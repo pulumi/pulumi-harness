@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the Harness encrypted text format. # NOTEThe secret value cannot be decrypted and imported.
+ * Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
  *
  * ```sh
  *  $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
@@ -129,9 +129,11 @@ export class EncryptedText extends pulumi.CustomResource {
             resourceInputs["secretManagerId"] = args ? args.secretManagerId : undefined;
             resourceInputs["secretReference"] = args ? args.secretReference : undefined;
             resourceInputs["usageScopes"] = args ? args.usageScopes : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EncryptedText.__pulumiType, name, resourceInputs, opts);
     }
 }

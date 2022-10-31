@@ -20,17 +20,16 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupService(ctx, &platform.LookupServiceArgs{
-//				Name:      pulumi.StringRef("name"),
-//				OrgId:     "org_id",
-//				ProjectId: "project_id",
+//			_, err = platform.LookupService(ctx, &platform.LookupServiceArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//				OrgId:      "org_id",
+//				ProjectId:  "project_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,9 +55,9 @@ type LookupServiceArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -72,12 +71,14 @@ type LookupServiceResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId string `pulumi:"projectId"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
 	Tags []string `pulumi:"tags"`
+	// Input Set YAML
+	Yaml string `pulumi:"yaml"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -99,9 +100,9 @@ type LookupServiceOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -144,12 +145,12 @@ func (o LookupServiceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o LookupServiceResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o LookupServiceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -157,6 +158,11 @@ func (o LookupServiceResultOutput) ProjectId() pulumi.StringOutput {
 // Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o LookupServiceResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Input Set YAML
+func (o LookupServiceResultOutput) Yaml() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Yaml }).(pulumi.StringOutput)
 }
 
 func init() {

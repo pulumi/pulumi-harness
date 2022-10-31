@@ -16,12 +16,12 @@ public final class GetResourceGroupIncludedScope {
     private String accountId;
     private String filter;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private String projectId;
@@ -38,14 +38,14 @@ public final class GetResourceGroupIncludedScope {
         return this.filter;
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {
         return this.orgId;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public String projectId() {

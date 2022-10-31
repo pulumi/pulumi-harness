@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * # Import using the Harness ssh credential id
+ * Import using the Harness ssh credential id
  *
  * ```sh
  *  $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>

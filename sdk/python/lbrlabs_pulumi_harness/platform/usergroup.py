@@ -41,8 +41,8 @@ class UsergroupArgs:
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
         :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
@@ -179,7 +179,7 @@ class UsergroupArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -191,7 +191,7 @@ class UsergroupArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -288,8 +288,8 @@ class _UsergroupState:
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
         :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
@@ -427,7 +427,7 @@ class _UsergroupState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -439,7 +439,7 @@ class _UsergroupState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -530,7 +530,35 @@ class Usergroup(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness User Group.
+        Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+
+                The following fields need to be populated for LDAP SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_id
+            	
+                - sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+            	
+                The following fields need to be populated for SAML SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_name
+            	
+                - sso_group_id // same as sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
 
         ## Example Usage
 
@@ -538,12 +566,42 @@ class Usergroup(pulumi.CustomResource):
         import pulumi
         import lbrlabs_pulumi_harness as harness
 
-        example = harness.platform.Usergroup("example",
+        sso_type_saml = harness.platform.Usergroup("ssoTypeSaml",
             externally_managed=False,
             identifier="identifier",
             linked_sso_display_name="linked_sso_display_name",
             linked_sso_id="linked_sso_id",
             linked_sso_type="SAML",
+            notification_configs=[
+                harness.platform.UsergroupNotificationConfigArgs(
+                    slack_webhook_url="https://google.com",
+                    type="SLACK",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    group_email="email@email.com",
+                    type="EMAIL",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    microsoft_teams_webhook_url="https://google.com",
+                    type="MSTEAMS",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    pager_duty_key="pagerDutyKey",
+                    type="PAGERDUTY",
+                ),
+            ],
+            org_id="org_id",
+            project_id="project_id",
+            sso_group_id="sso_group_name",
+            sso_group_name="sso_group_name",
+            sso_linked=True,
+            users=["user_id"])
+        sso_type_ldap = harness.platform.Usergroup("ssoTypeLdap",
+            externally_managed=False,
+            identifier="identifier",
+            linked_sso_display_name="linked_sso_display_name",
+            linked_sso_id="linked_sso_id",
+            linked_sso_type="LDAP",
             notification_configs=[
                 harness.platform.UsergroupNotificationConfigArgs(
                     slack_webhook_url="https://google.com",
@@ -572,7 +630,7 @@ class Usergroup(pulumi.CustomResource):
 
         ## Import
 
-        # Import using user group id
+        Import using user group id
 
         ```sh
          $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
@@ -588,8 +646,8 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
         :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
@@ -603,7 +661,35 @@ class Usergroup(pulumi.CustomResource):
                  args: UsergroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness User Group.
+        Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+
+                The following fields need to be populated for LDAP SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_id
+            	
+                - sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
+            	
+                The following fields need to be populated for SAML SSO Providers:
+            	
+                - linked_sso_id
+            	
+                - linked_sso_display_name
+            	
+                - sso_group_name
+            	
+                - sso_group_id // same as sso_group_name
+            	
+                - linked_sso_type
+            	
+                - sso_linked
 
         ## Example Usage
 
@@ -611,12 +697,42 @@ class Usergroup(pulumi.CustomResource):
         import pulumi
         import lbrlabs_pulumi_harness as harness
 
-        example = harness.platform.Usergroup("example",
+        sso_type_saml = harness.platform.Usergroup("ssoTypeSaml",
             externally_managed=False,
             identifier="identifier",
             linked_sso_display_name="linked_sso_display_name",
             linked_sso_id="linked_sso_id",
             linked_sso_type="SAML",
+            notification_configs=[
+                harness.platform.UsergroupNotificationConfigArgs(
+                    slack_webhook_url="https://google.com",
+                    type="SLACK",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    group_email="email@email.com",
+                    type="EMAIL",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    microsoft_teams_webhook_url="https://google.com",
+                    type="MSTEAMS",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    pager_duty_key="pagerDutyKey",
+                    type="PAGERDUTY",
+                ),
+            ],
+            org_id="org_id",
+            project_id="project_id",
+            sso_group_id="sso_group_name",
+            sso_group_name="sso_group_name",
+            sso_linked=True,
+            users=["user_id"])
+        sso_type_ldap = harness.platform.Usergroup("ssoTypeLdap",
+            externally_managed=False,
+            identifier="identifier",
+            linked_sso_display_name="linked_sso_display_name",
+            linked_sso_id="linked_sso_id",
+            linked_sso_type="LDAP",
             notification_configs=[
                 harness.platform.UsergroupNotificationConfigArgs(
                     slack_webhook_url="https://google.com",
@@ -645,7 +761,7 @@ class Usergroup(pulumi.CustomResource):
 
         ## Import
 
-        # Import using user group id
+        Import using user group id
 
         ```sh
          $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
@@ -747,8 +863,8 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the Project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
         :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
@@ -844,7 +960,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -852,7 +968,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.harness.platform.outputs.GetPrometheusConnectorHeader;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,11 @@ public final class GetPrometheusConnectorResult {
      */
     private String description;
     /**
+     * @return Headers.
+     * 
+     */
+    private List<GetPrometheusConnectorHeader> headers;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -38,12 +44,17 @@ public final class GetPrometheusConnectorResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Password reference.
+     * 
+     */
+    private String passwordRef;
+    /**
+     * @return Unique identifier of the Project.
      * 
      */
     private @Nullable String projectId;
@@ -57,6 +68,11 @@ public final class GetPrometheusConnectorResult {
      * 
      */
     private String url;
+    /**
+     * @return User name.
+     * 
+     */
+    private String userName;
 
     private GetPrometheusConnectorResult() {}
     /**
@@ -72,6 +88,13 @@ public final class GetPrometheusConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Headers.
+     * 
+     */
+    public List<GetPrometheusConnectorHeader> headers() {
+        return this.headers;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -95,14 +118,21 @@ public final class GetPrometheusConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Password reference.
+     * 
+     */
+    public String passwordRef() {
+        return this.passwordRef;
+    }
+    /**
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {
@@ -122,6 +152,13 @@ public final class GetPrometheusConnectorResult {
     public String url() {
         return this.url;
     }
+    /**
+     * @return User name.
+     * 
+     */
+    public String userName() {
+        return this.userName;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -134,25 +171,31 @@ public final class GetPrometheusConnectorResult {
     public static final class Builder {
         private List<String> delegateSelectors;
         private String description;
+        private List<GetPrometheusConnectorHeader> headers;
         private String id;
         private @Nullable String identifier;
         private @Nullable String name;
         private @Nullable String orgId;
+        private String passwordRef;
         private @Nullable String projectId;
         private List<String> tags;
         private String url;
+        private String userName;
         public Builder() {}
         public Builder(GetPrometheusConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.headers = defaults.headers;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
+    	      this.passwordRef = defaults.passwordRef;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.url = defaults.url;
+    	      this.userName = defaults.userName;
         }
 
         @CustomType.Setter
@@ -167,6 +210,14 @@ public final class GetPrometheusConnectorResult {
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
+        }
+        @CustomType.Setter
+        public Builder headers(List<GetPrometheusConnectorHeader> headers) {
+            this.headers = Objects.requireNonNull(headers);
+            return this;
+        }
+        public Builder headers(GetPrometheusConnectorHeader... headers) {
+            return headers(List.of(headers));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -189,6 +240,11 @@ public final class GetPrometheusConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder passwordRef(String passwordRef) {
+            this.passwordRef = Objects.requireNonNull(passwordRef);
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
@@ -206,17 +262,25 @@ public final class GetPrometheusConnectorResult {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
+        public Builder userName(String userName) {
+            this.userName = Objects.requireNonNull(userName);
+            return this;
+        }
         public GetPrometheusConnectorResult build() {
             final var o = new GetPrometheusConnectorResult();
             o.delegateSelectors = delegateSelectors;
             o.description = description;
+            o.headers = headers;
             o.id = id;
             o.identifier = identifier;
             o.name = name;
             o.orgId = orgId;
+            o.passwordRef = passwordRef;
             o.projectId = projectId;
             o.tags = tags;
             o.url = url;
+            o.userName = userName;
             return o;
         }
     }

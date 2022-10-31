@@ -14,13 +14,37 @@ namespace Lbrlabs.PulumiPackage.Harness.Outputs
     [OutputType]
     public sealed class UserGroupPermissionsAppPermissions
     {
+        /// <summary>
+        /// The permission to perform actions against all resources.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsAll> Alls;
+        /// <summary>
+        /// Permission configuration to perform actions against deployments.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsDeployment> Deployments;
+        /// <summary>
+        /// Permission configuration to perform actions against workflows.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsEnvironment> Environments;
+        /// <summary>
+        /// Permission configuration to perform actions against pipelines.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsPipeline> Pipelines;
+        /// <summary>
+        /// Permission configuration to perform actions against provisioners.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsProvisioner> Provisioners;
+        /// <summary>
+        /// Permission configuration to perform actions against services.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsService> Services;
+        /// <summary>
+        /// Permission configuration to perform actions against templates.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsTemplate> Templates;
+        /// <summary>
+        /// Permission configuration to perform actions against workflows.
+        /// </summary>
         public readonly ImmutableArray<Outputs.UserGroupPermissionsAppPermissionsWorkflow> Workflows;
 
         [OutputConstructor]

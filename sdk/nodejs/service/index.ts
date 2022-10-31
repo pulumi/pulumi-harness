@@ -8,48 +8,48 @@ import * as utilities from "../utilities";
 export { AmiArgs, AmiState } from "./ami";
 export type Ami = import("./ami").Ami;
 export const Ami: typeof import("./ami").Ami = null as any;
+utilities.lazyLoad(exports, ["Ami"], () => require("./ami"));
 
 export { CodedeployArgs, CodedeployState } from "./codedeploy";
 export type Codedeploy = import("./codedeploy").Codedeploy;
 export const Codedeploy: typeof import("./codedeploy").Codedeploy = null as any;
+utilities.lazyLoad(exports, ["Codedeploy"], () => require("./codedeploy"));
 
 export { EcsArgs, EcsState } from "./ecs";
 export type Ecs = import("./ecs").Ecs;
 export const Ecs: typeof import("./ecs").Ecs = null as any;
+utilities.lazyLoad(exports, ["Ecs"], () => require("./ecs"));
 
 export { HelmArgs, HelmState } from "./helm";
 export type Helm = import("./helm").Helm;
 export const Helm: typeof import("./helm").Helm = null as any;
+utilities.lazyLoad(exports, ["Helm"], () => require("./helm"));
 
 export { KubernetesArgs, KubernetesState } from "./kubernetes";
 export type Kubernetes = import("./kubernetes").Kubernetes;
 export const Kubernetes: typeof import("./kubernetes").Kubernetes = null as any;
+utilities.lazyLoad(exports, ["Kubernetes"], () => require("./kubernetes"));
 
 export { LambdaArgs, LambdaState } from "./lambda";
 export type Lambda = import("./lambda").Lambda;
 export const Lambda: typeof import("./lambda").Lambda = null as any;
+utilities.lazyLoad(exports, ["Lambda"], () => require("./lambda"));
 
 export { SshArgs, SshState } from "./ssh";
 export type Ssh = import("./ssh").Ssh;
 export const Ssh: typeof import("./ssh").Ssh = null as any;
+utilities.lazyLoad(exports, ["Ssh"], () => require("./ssh"));
 
 export { TanzuArgs, TanzuState } from "./tanzu";
 export type Tanzu = import("./tanzu").Tanzu;
 export const Tanzu: typeof import("./tanzu").Tanzu = null as any;
+utilities.lazyLoad(exports, ["Tanzu"], () => require("./tanzu"));
 
 export { WinrmArgs, WinrmState } from "./winrm";
 export type Winrm = import("./winrm").Winrm;
 export const Winrm: typeof import("./winrm").Winrm = null as any;
-
-utilities.lazyLoad(exports, ["Ami"], () => require("./ami"));
-utilities.lazyLoad(exports, ["Codedeploy"], () => require("./codedeploy"));
-utilities.lazyLoad(exports, ["Ecs"], () => require("./ecs"));
-utilities.lazyLoad(exports, ["Helm"], () => require("./helm"));
-utilities.lazyLoad(exports, ["Kubernetes"], () => require("./kubernetes"));
-utilities.lazyLoad(exports, ["Lambda"], () => require("./lambda"));
-utilities.lazyLoad(exports, ["Ssh"], () => require("./ssh"));
-utilities.lazyLoad(exports, ["Tanzu"], () => require("./tanzu"));
 utilities.lazyLoad(exports, ["Winrm"], () => require("./winrm"));
+
 
 const _module = {
     version: utilities.getVersion(),

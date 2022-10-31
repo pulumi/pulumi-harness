@@ -38,7 +38,7 @@ public final class GetRolesResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private @Nullable String orgId;
@@ -48,7 +48,7 @@ public final class GetRolesResult {
      */
     private @Nullable List<String> permissions;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private @Nullable String projectId;
@@ -95,7 +95,7 @@ public final class GetRolesResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Optional<String> orgId() {
@@ -109,7 +109,7 @@ public final class GetRolesResult {
         return this.permissions == null ? List.of() : this.permissions;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Optional<String> projectId() {

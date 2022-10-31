@@ -27,9 +27,9 @@ type AwsCCConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName pulumi.StringOutput `pulumi:"reportName"`
@@ -99,9 +99,9 @@ type awsCCConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName *string `pulumi:"reportName"`
@@ -124,9 +124,9 @@ type AwsCCConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName pulumi.StringPtrInput
@@ -153,9 +153,9 @@ type awsCCConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName string `pulumi:"reportName"`
@@ -179,9 +179,9 @@ type AwsCCConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName pulumi.StringInput
@@ -308,12 +308,12 @@ func (o AwsCCConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o AwsCCConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o AwsCCConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

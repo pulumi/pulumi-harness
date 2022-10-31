@@ -98,6 +98,15 @@ def get_organization(identifier: Optional[str] = None,
     """
     Data source for retrieving a Harness organization
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    this = harness.platform.get_organization(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
@@ -122,6 +131,15 @@ def get_organization_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Data source for retrieving a Harness organization
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    this = harness.platform.get_organization(identifier="identifier")
+    ```
 
 
     :param str identifier: Unique identifier of the resource.

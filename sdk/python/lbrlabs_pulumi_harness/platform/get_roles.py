@@ -94,7 +94,7 @@ class GetRolesResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the organization.
+        Unique identifier of the Organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -110,7 +110,7 @@ class GetRolesResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the project.
+        Unique identifier of the Project.
         """
         return pulumi.get(self, "project_id")
 
@@ -165,9 +165,9 @@ def get_roles(allowed_scope_levels: Optional[Sequence[str]] = None,
     :param Sequence[str] allowed_scope_levels: The scope levels at which this role can be used
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
+    :param str org_id: Unique identifier of the Organization.
     :param Sequence[str] permissions: List of the permission identifiers
-    :param str project_id: Unique identifier of the project.
+    :param str project_id: Unique identifier of the Project.
     """
     __args__ = dict()
     __args__['allowedScopeLevels'] = allowed_scope_levels
@@ -217,8 +217,8 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
     :param Sequence[str] allowed_scope_levels: The scope levels at which this role can be used
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the organization.
+    :param str org_id: Unique identifier of the Organization.
     :param Sequence[str] permissions: List of the permission identifiers
-    :param str project_id: Unique identifier of the project.
+    :param str project_id: Unique identifier of the Project.
     """
     ...

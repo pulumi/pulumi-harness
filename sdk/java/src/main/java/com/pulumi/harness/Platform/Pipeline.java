@@ -42,99 +42,108 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Pipeline(&#34;example&#34;, PipelineArgs.builder()        
  *             .identifier(&#34;identifier&#34;)
- *             .orgId(harness_platform_project.test().org_id())
- *             .projectId(harness_platform_project.test().id())
+ *             .orgId(&#34;orgIdentifier&#34;)
+ *             .projectId(&#34;projectIdentifier&#34;)
  *             .yaml(&#34;&#34;&#34;
- * pipeline:
- *     name: name
- *     identifier: identifier
- *     allowStageExecutions: false
- *     projectIdentifier: projectIdentifier
- *     orgIdentifier: orgIdentifier
- *     tags: {}
- *     stages:
- *         - stage:
- *             name: dep
- *             identifier: dep
- *             description: &#34;&#34;
- *             type: Deployment
- *             spec:
- *                 serviceConfig:
- *                     serviceRef: service
- *                     serviceDefinition:
- *                         type: Kubernetes
- *                         spec:
- *                             variables: []
- *                 infrastructure:
- *                     environmentRef: testenv
- *                     infrastructureDefinition:
- *                         type: KubernetesDirect
- *                         spec:
- *                             connectorRef: testconf
- *                             namespace: test
- *                             releaseName: release-&lt;+INFRA_KEY&gt;
- *                     allowSimultaneousDeployments: false
- *                 execution:
- *                     steps:
- *                         - stepGroup:
- *                                 name: Canary Deployment
- *                                 identifier: canaryDepoyment
- *                                 steps:
- *                                     - step:
- *                                         name: Canary Deployment
- *                                         identifier: canaryDeployment
- *                                         type: K8sCanaryDeploy
- *                                         timeout: 10m
- *                                         spec:
- *                                             instanceSelection:
- *                                                 type: Count
- *                                                 spec:
- *                                                     count: 1
- *                                             skipDryRun: false
- *                                     - step:
- *                                         name: Canary Delete
- *                                         identifier: canaryDelete
- *                                         type: K8sCanaryDelete
- *                                         timeout: 10m
- *                                         spec: {}
- *                                 rollbackSteps:
- *                                     - step:
- *                                         name: Canary Delete
- *                                         identifier: rollbackCanaryDelete
- *                                         type: K8sCanaryDelete
- *                                         timeout: 10m
- *                                         spec: {}
- *                         - stepGroup:
- *                                 name: Primary Deployment
- *                                 identifier: primaryDepoyment
- *                                 steps:
- *                                     - step:
- *                                         name: Rolling Deployment
- *                                         identifier: rollingDeployment
- *                                         type: K8sRollingDeploy
- *                                         timeout: 10m
- *                                         spec:
- *                                             skipDryRun: false
- *                                 rollbackSteps:
- *                                     - step:
- *                                         name: Rolling Rollback
- *                                         identifier: rollingRollback
- *                                         type: K8sRollingRollback
- *                                         timeout: 10m
- *                                         spec: {}
- *                     rollbackSteps: []
- *             tags: {}
- *             failureStrategies:
- *                 - onFailure:
- *                         errors:
- *                             - AllErrors
- *                         action:
- *                             type: StageRollback
+ *     pipeline:
+ *         name: name
+ *         identifier: identifier
+ *         allowStageExecutions: false
+ *         projectIdentifier: projectIdentifier
+ *         orgIdentifier: orgIdentifier
+ *         tags: {}
+ *         stages:
+ *             - stage:
+ *                 name: dep
+ *                 identifier: dep
+ *                 description: &#34;&#34;
+ *                 type: Deployment
+ *                 spec:
+ *                     serviceConfig:
+ *                         serviceRef: service
+ *                         serviceDefinition:
+ *                             type: Kubernetes
+ *                             spec:
+ *                                 variables: []
+ *                     infrastructure:
+ *                         environmentRef: testenv
+ *                         infrastructureDefinition:
+ *                             type: KubernetesDirect
+ *                             spec:
+ *                                 connectorRef: testconf
+ *                                 namespace: test
+ *                                 releaseName: release-&lt;+INFRA_KEY&gt;
+ *                         allowSimultaneousDeployments: false
+ *                     execution:
+ *                         steps:
+ *                             - stepGroup:
+ *                                     name: Canary Deployment
+ *                                     identifier: canaryDepoyment
+ *                                     steps:
+ *                                         - step:
+ *                                             name: Canary Deployment
+ *                                             identifier: canaryDeployment
+ *                                             type: K8sCanaryDeploy
+ *                                             timeout: 10m
+ *                                             spec:
+ *                                                 instanceSelection:
+ *                                                     type: Count
+ *                                                     spec:
+ *                                                         count: 1
+ *                                                 skipDryRun: false
+ *                                         - step:
+ *                                             name: Canary Delete
+ *                                             identifier: canaryDelete
+ *                                             type: K8sCanaryDelete
+ *                                             timeout: 10m
+ *                                             spec: {}
+ *                                     rollbackSteps:
+ *                                         - step:
+ *                                             name: Canary Delete
+ *                                             identifier: rollbackCanaryDelete
+ *                                             type: K8sCanaryDelete
+ *                                             timeout: 10m
+ *                                             spec: {}
+ *                             - stepGroup:
+ *                                     name: Primary Deployment
+ *                                     identifier: primaryDepoyment
+ *                                     steps:
+ *                                         - step:
+ *                                             name: Rolling Deployment
+ *                                             identifier: rollingDeployment
+ *                                             type: K8sRollingDeploy
+ *                                             timeout: 10m
+ *                                             spec:
+ *                                                 skipDryRun: false
+ *                                     rollbackSteps:
+ *                                         - step:
+ *                                             name: Rolling Rollback
+ *                                             identifier: rollingRollback
+ *                                             type: K8sRollingRollback
+ *                                             timeout: 10m
+ *                                             spec: {}
+ *                         rollbackSteps: []
+ *                 tags: {}
+ *                 failureStrategies:
+ *                     - onFailure:
+ *                             errors:
+ *                                 - AllErrors
+ *                             action:
+ *                                 type: StageRollback
+ * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }
  * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import using pipeline id
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/pipeline:Pipeline example &lt;pipeline_id&gt;
  * ```
  * 
  */
@@ -183,28 +192,28 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<String> projectId() {

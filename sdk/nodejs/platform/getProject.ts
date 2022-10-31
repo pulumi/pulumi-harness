@@ -49,7 +49,7 @@ export interface GetProjectArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: string;
 }
@@ -83,7 +83,7 @@ export interface GetProjectResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     readonly orgId: string;
     /**
@@ -109,7 +109,7 @@ export interface GetProjectOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      */
     orgId: pulumi.Input<string>;
 }

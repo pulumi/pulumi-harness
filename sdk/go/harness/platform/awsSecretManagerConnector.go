@@ -25,9 +25,9 @@ type AwsSecretManagerConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -86,9 +86,9 @@ type awsSecretManagerConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region *string `pulumi:"region"`
@@ -109,9 +109,9 @@ type AwsSecretManagerConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringPtrInput
@@ -136,9 +136,9 @@ type awsSecretManagerConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
@@ -160,9 +160,9 @@ type AwsSecretManagerConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the organization.
+	// Unique identifier of the Organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the project.
+	// Unique identifier of the Project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringInput
@@ -284,12 +284,12 @@ func (o AwsSecretManagerConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Unique identifier of the Organization.
 func (o AwsSecretManagerConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Unique identifier of the Project.
 func (o AwsSecretManagerConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

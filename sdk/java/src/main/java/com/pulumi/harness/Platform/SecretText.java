@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * # Import using secret text id
+ * Import using secret text id
  * 
  * ```sh
  *  $ pulumi import harness:platform/secretText:SecretText example &lt;secret_text_id&gt;
@@ -107,28 +107,28 @@ public class SecretText extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Unique identifier of the Organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Unique identifier of the Project.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -177,14 +177,14 @@ public class SecretText extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.value);
     }
     /**
-     * This has details to specify if the secret value is inline or referenced.
+     * This has details to specify if the secret value is Inline or Reference.
      * 
      */
     @Export(name="valueType", type=String.class, parameters={})
     private Output<String> valueType;
 
     /**
-     * @return This has details to specify if the secret value is inline or referenced.
+     * @return This has details to specify if the secret value is Inline or Reference.
      * 
      */
     public Output<String> valueType() {

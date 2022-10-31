@@ -33,12 +33,12 @@ public final class GetServiceResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     private String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     private String projectId;
@@ -47,6 +47,11 @@ public final class GetServiceResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Input Set YAML
+     * 
+     */
+    private String yaml;
 
     private GetServiceResult() {}
     /**
@@ -78,14 +83,14 @@ public final class GetServiceResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Unique identifier of the Organization.
      * 
      */
     public String orgId() {
         return this.orgId;
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Unique identifier of the Project.
      * 
      */
     public String projectId() {
@@ -97,6 +102,13 @@ public final class GetServiceResult {
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return Input Set YAML
+     * 
+     */
+    public String yaml() {
+        return this.yaml;
     }
 
     public static Builder builder() {
@@ -115,6 +127,7 @@ public final class GetServiceResult {
         private String orgId;
         private String projectId;
         private List<String> tags;
+        private String yaml;
         public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -125,6 +138,7 @@ public final class GetServiceResult {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
+    	      this.yaml = defaults.yaml;
         }
 
         @CustomType.Setter
@@ -165,6 +179,11 @@ public final class GetServiceResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder yaml(String yaml) {
+            this.yaml = Objects.requireNonNull(yaml);
+            return this;
+        }
         public GetServiceResult build() {
             final var o = new GetServiceResult();
             o.description = description;
@@ -174,6 +193,7 @@ public final class GetServiceResult {
             o.orgId = orgId;
             o.projectId = projectId;
             o.tags = tags;
+            o.yaml = yaml;
             return o;
         }
     }
