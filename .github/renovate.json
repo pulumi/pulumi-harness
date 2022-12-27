@@ -3,5 +3,11 @@
   "extends": [
     "config:base"
   ],
- "ignorePaths": ["sdk/**"]
+  "ignorePaths": [
+      "sdk/dotnet/**",
+      "sdk/go/**",
+      "sdk/java/**",
+      "sdk/nodejs/**",
+      "sdk/python/**"
+  ],
 }
