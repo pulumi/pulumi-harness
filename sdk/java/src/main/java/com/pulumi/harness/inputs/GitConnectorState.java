@@ -140,14 +140,14 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The url of the git repository or account/organization
+     * The URL of the git repository or account/organization
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The url of the git repository or account/organization
+     * @return The URL of the git repository or account/organization
      * 
      */
     public Optional<Output<String>> url() {
@@ -429,7 +429,7 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the git repository or account/organization
+         * @param url The URL of the git repository or account/organization
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class GitConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The url of the git repository or account/organization
+         * @param url The URL of the git repository or account/organization
          * 
          * @return builder
          * 

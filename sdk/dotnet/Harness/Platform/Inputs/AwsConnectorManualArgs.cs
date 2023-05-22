@@ -20,7 +20,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// Reference to the Harness secret containing the aws access key.
+        /// Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("accessKeyRef")]
         public Input<string>? AccessKeyRef { get; set; }
@@ -38,7 +38,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Reference to the Harness secret containing the aws secret key.
+        /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("secretKeyRef", required: true)]
         public Input<string> SecretKeyRef { get; set; } = null!;

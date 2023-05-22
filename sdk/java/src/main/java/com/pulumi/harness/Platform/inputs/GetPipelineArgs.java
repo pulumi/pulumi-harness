@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.GetPipelineGitDetailsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GetPipelineArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPipelineArgs Empty = new GetPipelineArgs();
+
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<GetPipelineGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<Output<GetPipelineGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -78,6 +94,7 @@ public final class GetPipelineArgs extends com.pulumi.resources.InvokeArgs {
     private GetPipelineArgs() {}
 
     private GetPipelineArgs(GetPipelineArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -100,6 +117,27 @@ public final class GetPipelineArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetPipelineArgs defaults) {
             $ = new GetPipelineArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<GetPipelineGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(GetPipelineGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**

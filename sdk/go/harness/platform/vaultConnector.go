@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -175,11 +175,27 @@ import (
 //
 // ## Import
 //
-// # Import using vault connector id
+// # Import account level vault connector
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
+//
+// ```
+//
+//	Import org level vault connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level vault connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
 //
 // ```
 type VaultConnector struct {
@@ -213,14 +229,14 @@ type VaultConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Vault namespace where the Secret will be created.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Read only.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Boolean value to indicate if AppRole token renewal is enabled or not.
-	RenewAppRoleToken pulumi.BoolPtrOutput `pulumi:"renewAppRoleToken"`
+	RenewAppRoleToken pulumi.BoolOutput `pulumi:"renewAppRoleToken"`
 	// The time interval for the token renewal.
 	RenewalIntervalMinutes pulumi.IntOutput `pulumi:"renewalIntervalMinutes"`
 	// Manually entered Secret Engine.
@@ -235,7 +251,7 @@ type VaultConnector struct {
 	ServiceAccountTokenPath pulumi.StringPtrOutput `pulumi:"serviceAccountTokenPath"`
 	// The location from which the authentication token should be read.
 	SinkPath pulumi.StringPtrOutput `pulumi:"sinkPath"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrOutput `pulumi:"useAwsIam"`
@@ -320,9 +336,9 @@ type vaultConnectorState struct {
 	Name *string `pulumi:"name"`
 	// Vault namespace where the Secret will be created.
 	Namespace *string `pulumi:"namespace"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Read only.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -342,7 +358,7 @@ type vaultConnectorState struct {
 	ServiceAccountTokenPath *string `pulumi:"serviceAccountTokenPath"`
 	// The location from which the authentication token should be read.
 	SinkPath *string `pulumi:"sinkPath"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam *bool `pulumi:"useAwsIam"`
@@ -389,9 +405,9 @@ type VaultConnectorState struct {
 	Name pulumi.StringPtrInput
 	// Vault namespace where the Secret will be created.
 	Namespace pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Read only.
 	ReadOnly pulumi.BoolPtrInput
@@ -411,7 +427,7 @@ type VaultConnectorState struct {
 	ServiceAccountTokenPath pulumi.StringPtrInput
 	// The location from which the authentication token should be read.
 	SinkPath pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrInput
@@ -462,9 +478,9 @@ type vaultConnectorArgs struct {
 	Name *string `pulumi:"name"`
 	// Vault namespace where the Secret will be created.
 	Namespace *string `pulumi:"namespace"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Read only.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -484,7 +500,7 @@ type vaultConnectorArgs struct {
 	ServiceAccountTokenPath *string `pulumi:"serviceAccountTokenPath"`
 	// The location from which the authentication token should be read.
 	SinkPath *string `pulumi:"sinkPath"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam *bool `pulumi:"useAwsIam"`
@@ -532,9 +548,9 @@ type VaultConnectorArgs struct {
 	Name pulumi.StringPtrInput
 	// Vault namespace where the Secret will be created.
 	Namespace pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Read only.
 	ReadOnly pulumi.BoolPtrInput
@@ -554,7 +570,7 @@ type VaultConnectorArgs struct {
 	ServiceAccountTokenPath pulumi.StringPtrInput
 	// The location from which the authentication token should be read.
 	SinkPath pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrInput
@@ -729,12 +745,12 @@ func (o VaultConnectorOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o VaultConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o VaultConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -745,8 +761,8 @@ func (o VaultConnectorOutput) ReadOnly() pulumi.BoolPtrOutput {
 }
 
 // Boolean value to indicate if AppRole token renewal is enabled or not.
-func (o VaultConnectorOutput) RenewAppRoleToken() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VaultConnector) pulumi.BoolPtrOutput { return v.RenewAppRoleToken }).(pulumi.BoolPtrOutput)
+func (o VaultConnectorOutput) RenewAppRoleToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VaultConnector) pulumi.BoolOutput { return v.RenewAppRoleToken }).(pulumi.BoolOutput)
 }
 
 // The time interval for the token renewal.
@@ -784,7 +800,7 @@ func (o VaultConnectorOutput) SinkPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.SinkPath }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o VaultConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

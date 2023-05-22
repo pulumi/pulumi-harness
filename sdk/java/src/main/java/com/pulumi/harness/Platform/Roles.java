@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Roles(&#34;example&#34;, RolesArgs.builder()        
- *             .allowedScopeLevels(&#34;project&#34;)
+ *             .allowedScopeLevels(&#34;account&#34;)
  *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
- *             .permissions(&#34;core_pipeline_edit&#34;)
+ *             .permissions(&#34;core_resourcegroup_view&#34;)
  *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
@@ -54,10 +54,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using roles id
+ * Import account level roles
  * 
  * ```sh
  *  $ pulumi import harness:platform/roles:Roles example &lt;roles_id&gt;
+ * ```
+ * 
+ *  Import org level roles
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/roles:Roles example &lt;ord_id&gt;/&lt;roles_id&gt;
+ * ```
+ * 
+ *  Import project level roles
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/roles:Roles example &lt;org_id&gt;/&lt;project_id&gt;/&lt;roles_id&gt;
  * ```
  * 
  */
@@ -67,7 +79,7 @@ public class Roles extends com.pulumi.resources.CustomResource {
      * The scope levels at which this role can be used
      * 
      */
-    @Export(name="allowedScopeLevels", type=List.class, parameters={String.class})
+    @Export(name="allowedScopeLevels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedScopeLevels;
 
     /**
@@ -81,7 +93,7 @@ public class Roles extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +107,7 @@ public class Roles extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -109,7 +121,7 @@ public class Roles extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -120,14 +132,14 @@ public class Roles extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
@@ -137,7 +149,7 @@ public class Roles extends com.pulumi.resources.CustomResource {
      * List of the permission identifiers
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={String.class})
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> permissions;
 
     /**
@@ -148,28 +160,28 @@ public class Roles extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permissions);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

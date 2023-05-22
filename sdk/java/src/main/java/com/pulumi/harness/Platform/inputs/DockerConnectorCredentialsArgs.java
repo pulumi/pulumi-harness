@@ -16,14 +16,14 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
     public static final DockerConnectorCredentialsArgs Empty = new DockerConnectorCredentialsArgs();
 
     /**
-     * The reference to the password to use for the docker registry.
+     * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return The reference to the password to use for the docker registry.
+     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
@@ -46,14 +46,14 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The reference to the username to use for the docker registry.
+     * The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return The reference to the username to use for the docker registry.
+     * @return The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -87,7 +87,7 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param passwordRef The reference to the password to use for the docker registry.
+         * @param passwordRef The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param passwordRef The reference to the password to use for the docker registry.
+         * @param passwordRef The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param usernameRef The reference to the username to use for the docker registry.
+         * @param usernameRef The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DockerConnectorCredentialsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param usernameRef The reference to the username to use for the docker registry.
+         * @param usernameRef The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

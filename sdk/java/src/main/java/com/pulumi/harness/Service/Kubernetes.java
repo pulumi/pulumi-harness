@@ -81,7 +81,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * The id of the application the service belongs to
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -95,7 +95,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * Description of th service
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * The version of Helm to use. Options are `V2` and `V3`. Defaults to &#39;V2&#39;. Only used when `type` is `KUBERNETES` or `HELM`.
      * 
      */
-    @Export(name="helmVersion", type=String.class, parameters={})
+    @Export(name="helmVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> helmVersion;
 
     /**
@@ -123,7 +123,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * Name of the service
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * Variables to be used in the service
      * 
      */
-    @Export(name="variables", type=List.class, parameters={KubernetesVariable.class})
+    @Export(name="variables", refs={List.class,KubernetesVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesVariable>> variables;
 
     /**

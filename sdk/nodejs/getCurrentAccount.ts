@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  */
 export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentAccountResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getCurrentAccount:getCurrentAccount", {
         "id": args.id,
     }, opts);
@@ -46,9 +43,11 @@ export interface GetCurrentAccountResult {
      */
     readonly id?: string;
 }
-
+/**
+ * Data source for retrieving information about the current Harness account
+ */
 export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentAccountResult> {
-    return pulumi.output(args).apply(a => getCurrentAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getCurrentAccount(a, opts))
 }
 
 /**

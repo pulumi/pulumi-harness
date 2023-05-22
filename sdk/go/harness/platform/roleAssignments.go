@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +28,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewRoleAssignments(ctx, "example1RoleAssignments", &platform.RoleAssignmentsArgs{
-//				Identifier:              pulumi.String("identifier"),
 //				OrgId:                   pulumi.String("org_id"),
 //				ProjectId:               pulumi.String("project_id"),
 //				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
@@ -45,7 +45,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewRoleAssignments(ctx, "example1Platform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				Identifier:              pulumi.String("identifier"),
 //				OrgId:                   pulumi.String("org_id"),
 //				ProjectId:               pulumi.String("project_id"),
 //				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
@@ -81,7 +80,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewRoleAssignments(ctx, "example2Platform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				Identifier:              pulumi.String("identifier"),
 //				OrgId:                   pulumi.String("org_id"),
 //				ProjectId:               pulumi.String("project_id"),
 //				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
@@ -99,7 +97,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewRoleAssignments(ctx, "example2HarnessPlatform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				Identifier:              pulumi.String("identifier"),
 //				OrgId:                   pulumi.String("org_id"),
 //				ProjectId:               pulumi.String("project_id"),
 //				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
@@ -124,11 +121,27 @@ import (
 //
 // ## Import
 //
-// # Import using roleassignments id
+// # Import account level role assignments
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
+//
+// ```
+//
+//	Import org level role assignments
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
+//
+// ```
+//
+//	Import project level role assignments
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
 //
 // ```
 type RoleAssignments struct {
@@ -137,7 +150,7 @@ type RoleAssignments struct {
 	// Disabled or not.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Identifier for role assignment.
-	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Managed or not.
 	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
 	// Org identifier.
@@ -147,18 +160,27 @@ type RoleAssignments struct {
 	// Project Identifier
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Resource group identifier.
-	ResourceGroupIdentifier pulumi.StringPtrOutput `pulumi:"resourceGroupIdentifier"`
+	ResourceGroupIdentifier pulumi.StringOutput `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
-	RoleIdentifier pulumi.StringPtrOutput `pulumi:"roleIdentifier"`
+	RoleIdentifier pulumi.StringOutput `pulumi:"roleIdentifier"`
 }
 
 // NewRoleAssignments registers a new resource with the given unique name, arguments, and options.
 func NewRoleAssignments(ctx *pulumi.Context,
 	name string, args *RoleAssignmentsArgs, opts ...pulumi.ResourceOption) (*RoleAssignments, error) {
 	if args == nil {
-		args = &RoleAssignmentsArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Principals == nil {
+		return nil, errors.New("invalid value for required argument 'Principals'")
+	}
+	if args.ResourceGroupIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceGroupIdentifier'")
+	}
+	if args.RoleIdentifier == nil {
+		return nil, errors.New("invalid value for required argument 'RoleIdentifier'")
+	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource RoleAssignments
 	err := ctx.RegisterResource("harness:platform/roleAssignments:RoleAssignments", name, args, &resource, opts...)
@@ -237,9 +259,9 @@ type roleAssignmentsArgs struct {
 	// Project Identifier
 	ProjectId *string `pulumi:"projectId"`
 	// Resource group identifier.
-	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
+	ResourceGroupIdentifier string `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
-	RoleIdentifier *string `pulumi:"roleIdentifier"`
+	RoleIdentifier string `pulumi:"roleIdentifier"`
 }
 
 // The set of arguments for constructing a RoleAssignments resource.
@@ -257,9 +279,9 @@ type RoleAssignmentsArgs struct {
 	// Project Identifier
 	ProjectId pulumi.StringPtrInput
 	// Resource group identifier.
-	ResourceGroupIdentifier pulumi.StringPtrInput
+	ResourceGroupIdentifier pulumi.StringInput
 	// Role identifier.
-	RoleIdentifier pulumi.StringPtrInput
+	RoleIdentifier pulumi.StringInput
 }
 
 func (RoleAssignmentsArgs) ElementType() reflect.Type {
@@ -355,8 +377,8 @@ func (o RoleAssignmentsOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // Identifier for role assignment.
-func (o RoleAssignmentsOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleAssignments) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o RoleAssignmentsOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignments) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Managed or not.
@@ -380,13 +402,13 @@ func (o RoleAssignmentsOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 // Resource group identifier.
-func (o RoleAssignmentsOutput) ResourceGroupIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleAssignments) pulumi.StringPtrOutput { return v.ResourceGroupIdentifier }).(pulumi.StringPtrOutput)
+func (o RoleAssignmentsOutput) ResourceGroupIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignments) pulumi.StringOutput { return v.ResourceGroupIdentifier }).(pulumi.StringOutput)
 }
 
 // Role identifier.
-func (o RoleAssignmentsOutput) RoleIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoleAssignments) pulumi.StringPtrOutput { return v.RoleIdentifier }).(pulumi.StringPtrOutput)
+func (o RoleAssignmentsOutput) RoleIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignments) pulumi.StringOutput { return v.RoleIdentifier }).(pulumi.StringOutput)
 }
 
 type RoleAssignmentsArrayOutput struct{ *pulumi.OutputState }

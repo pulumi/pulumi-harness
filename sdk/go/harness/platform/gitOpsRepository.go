@@ -7,36 +7,94 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating Harness Gitops Repositories.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitOpsRepository(ctx, "example", &platform.GitOpsRepositoryArgs{
+//				AccountId:  pulumi.String("account_id"),
+//				AgentId:    pulumi.String("agent_id"),
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Repos: platform.GitOpsRepositoryRepoArray{
+//					&platform.GitOpsRepositoryRepoArgs{
+//						ConnectionType: pulumi.String("HTTPS_ANONYMOUS"),
+//						Insecure:       pulumi.Bool(true),
+//						Name:           pulumi.String("repo_name"),
+//						Repo:           pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
+//					},
+//				},
+//				Upsert: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import a Account level Gitops Repository
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+//
+// ```
+//
+//	Import a Project level Gitops Repository
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
+//
+// ```
 type GitOpsRepository struct {
 	pulumi.CustomResourceState
 
-	// account identifier of the cluster.
+	// Account identifier of the GitOps repository.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// agent identifier of the cluster.
-	AgentId pulumi.StringPtrOutput `pulumi:"agentId"`
-	// Credentials only of the Repo.
+	// Agent identifier of the GitOps repository.
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
+	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrOutput `pulumi:"credsOnly"`
-	// identifier of the cluster.
+	// Identifier of the GitOps repository.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// project identifier of the cluster.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Force refresh query for Repo.
+	// Project identifier of the GitOps repository.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Indicates to force refresh query for repository.
 	QueryForceRefresh pulumi.BoolPtrOutput `pulumi:"queryForceRefresh"`
-	// Project to Query for Repo.
+	// Project to query for the GitOps repo.
 	QueryProject pulumi.StringPtrOutput `pulumi:"queryProject"`
-	// Repo to Query.
+	// GitOps repository to query.
 	QueryRepo pulumi.StringPtrOutput `pulumi:"queryRepo"`
-	// Repo Details that need to be stored.
+	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayOutput `pulumi:"repos"`
-	// Update mask of the Repository.
+	// Update mask of the repository.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayOutput `pulumi:"updateMasks"`
-	// Upsert the Repo Details.
+	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrOutput `pulumi:"upsert"`
 }
 
@@ -50,11 +108,11 @@ func NewGitOpsRepository(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	if args.Repos == nil {
 		return nil, errors.New("invalid value for required argument 'Repos'")
@@ -82,56 +140,56 @@ func GetGitOpsRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitOpsRepository resources.
 type gitOpsRepositoryState struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps repository.
 	AccountId *string `pulumi:"accountId"`
-	// agent identifier of the cluster.
+	// Agent identifier of the GitOps repository.
 	AgentId *string `pulumi:"agentId"`
-	// Credentials only of the Repo.
+	// Indicates if to operate on credential set instead of repository.
 	CredsOnly *bool `pulumi:"credsOnly"`
-	// identifier of the cluster.
+	// Identifier of the GitOps repository.
 	Identifier *string `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the GitOps repository.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the cluster.
+	// Project identifier of the GitOps repository.
 	ProjectId *string `pulumi:"projectId"`
-	// Force refresh query for Repo.
+	// Indicates to force refresh query for repository.
 	QueryForceRefresh *bool `pulumi:"queryForceRefresh"`
-	// Project to Query for Repo.
+	// Project to query for the GitOps repo.
 	QueryProject *string `pulumi:"queryProject"`
-	// Repo to Query.
+	// GitOps repository to query.
 	QueryRepo *string `pulumi:"queryRepo"`
-	// Repo Details that need to be stored.
+	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
-	// Update mask of the Repository.
+	// Update mask of the repository.
 	UpdateMasks []GitOpsRepositoryUpdateMask `pulumi:"updateMasks"`
-	// Upsert the Repo Details.
+	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 type GitOpsRepositoryState struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps repository.
 	AccountId pulumi.StringPtrInput
-	// agent identifier of the cluster.
+	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringPtrInput
-	// Credentials only of the Repo.
+	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrInput
-	// identifier of the cluster.
+	// Identifier of the GitOps repository.
 	Identifier pulumi.StringPtrInput
-	// organization identifier of the cluster.
+	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the cluster.
+	// Project identifier of the GitOps repository.
 	ProjectId pulumi.StringPtrInput
-	// Force refresh query for Repo.
+	// Indicates to force refresh query for repository.
 	QueryForceRefresh pulumi.BoolPtrInput
-	// Project to Query for Repo.
+	// Project to query for the GitOps repo.
 	QueryProject pulumi.StringPtrInput
-	// Repo to Query.
+	// GitOps repository to query.
 	QueryRepo pulumi.StringPtrInput
-	// Repo Details that need to be stored.
+	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
-	// Update mask of the Repository.
+	// Update mask of the repository.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayInput
-	// Upsert the Repo Details.
+	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -140,57 +198,57 @@ func (GitOpsRepositoryState) ElementType() reflect.Type {
 }
 
 type gitOpsRepositoryArgs struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps repository.
 	AccountId string `pulumi:"accountId"`
-	// agent identifier of the cluster.
-	AgentId *string `pulumi:"agentId"`
-	// Credentials only of the Repo.
+	// Agent identifier of the GitOps repository.
+	AgentId string `pulumi:"agentId"`
+	// Indicates if to operate on credential set instead of repository.
 	CredsOnly *bool `pulumi:"credsOnly"`
-	// identifier of the cluster.
+	// Identifier of the GitOps repository.
 	Identifier string `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the GitOps repository.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the cluster.
-	ProjectId string `pulumi:"projectId"`
-	// Force refresh query for Repo.
+	// Project identifier of the GitOps repository.
+	ProjectId *string `pulumi:"projectId"`
+	// Indicates to force refresh query for repository.
 	QueryForceRefresh *bool `pulumi:"queryForceRefresh"`
-	// Project to Query for Repo.
+	// Project to query for the GitOps repo.
 	QueryProject *string `pulumi:"queryProject"`
-	// Repo to Query.
+	// GitOps repository to query.
 	QueryRepo *string `pulumi:"queryRepo"`
-	// Repo Details that need to be stored.
+	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
-	// Update mask of the Repository.
+	// Update mask of the repository.
 	UpdateMasks []GitOpsRepositoryUpdateMask `pulumi:"updateMasks"`
-	// Upsert the Repo Details.
+	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 // The set of arguments for constructing a GitOpsRepository resource.
 type GitOpsRepositoryArgs struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps repository.
 	AccountId pulumi.StringInput
-	// agent identifier of the cluster.
-	AgentId pulumi.StringPtrInput
-	// Credentials only of the Repo.
+	// Agent identifier of the GitOps repository.
+	AgentId pulumi.StringInput
+	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrInput
-	// identifier of the cluster.
+	// Identifier of the GitOps repository.
 	Identifier pulumi.StringInput
-	// organization identifier of the cluster.
+	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the cluster.
-	ProjectId pulumi.StringInput
-	// Force refresh query for Repo.
+	// Project identifier of the GitOps repository.
+	ProjectId pulumi.StringPtrInput
+	// Indicates to force refresh query for repository.
 	QueryForceRefresh pulumi.BoolPtrInput
-	// Project to Query for Repo.
+	// Project to query for the GitOps repo.
 	QueryProject pulumi.StringPtrInput
-	// Repo to Query.
+	// GitOps repository to query.
 	QueryRepo pulumi.StringPtrInput
-	// Repo Details that need to be stored.
+	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
-	// Update mask of the Repository.
+	// Update mask of the repository.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayInput
-	// Upsert the Repo Details.
+	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -281,62 +339,62 @@ func (o GitOpsRepositoryOutput) ToGitOpsRepositoryOutputWithContext(ctx context.
 	return o
 }
 
-// account identifier of the cluster.
+// Account identifier of the GitOps repository.
 func (o GitOpsRepositoryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// agent identifier of the cluster.
-func (o GitOpsRepositoryOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.AgentId }).(pulumi.StringPtrOutput)
+// Agent identifier of the GitOps repository.
+func (o GitOpsRepositoryOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// Credentials only of the Repo.
+// Indicates if to operate on credential set instead of repository.
 func (o GitOpsRepositoryOutput) CredsOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.CredsOnly }).(pulumi.BoolPtrOutput)
 }
 
-// identifier of the cluster.
+// Identifier of the GitOps repository.
 func (o GitOpsRepositoryOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// organization identifier of the cluster.
+// Organization identifier of the GitOps repository.
 func (o GitOpsRepositoryOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// project identifier of the cluster.
-func (o GitOpsRepositoryOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// Project identifier of the GitOps repository.
+func (o GitOpsRepositoryOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Force refresh query for Repo.
+// Indicates to force refresh query for repository.
 func (o GitOpsRepositoryOutput) QueryForceRefresh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.QueryForceRefresh }).(pulumi.BoolPtrOutput)
 }
 
-// Project to Query for Repo.
+// Project to query for the GitOps repo.
 func (o GitOpsRepositoryOutput) QueryProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.QueryProject }).(pulumi.StringPtrOutput)
 }
 
-// Repo to Query.
+// GitOps repository to query.
 func (o GitOpsRepositoryOutput) QueryRepo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.QueryRepo }).(pulumi.StringPtrOutput)
 }
 
-// Repo Details that need to be stored.
+// Repo details holding application configurations.
 func (o GitOpsRepositoryOutput) Repos() GitOpsRepositoryRepoArrayOutput {
 	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryRepoArrayOutput { return v.Repos }).(GitOpsRepositoryRepoArrayOutput)
 }
 
-// Update mask of the Repository.
+// Update mask of the repository.
 func (o GitOpsRepositoryOutput) UpdateMasks() GitOpsRepositoryUpdateMaskArrayOutput {
 	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryUpdateMaskArrayOutput { return v.UpdateMasks }).(GitOpsRepositoryUpdateMaskArrayOutput)
 }
 
-// Upsert the Repo Details.
+// Indicates if the GitOps repository should be updated if existing and inserted if not.
 func (o GitOpsRepositoryOutput) Upsert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.Upsert }).(pulumi.BoolPtrOutput)
 }

@@ -2548,6 +2548,265 @@ func (o InfrastructureDefinitionAzureWebappPtrOutput) SubscriptionId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type InfrastructureDefinitionCustom struct {
+	// The template version
+	DeploymentTypeTemplateVersion string `pulumi:"deploymentTypeTemplateVersion"`
+	// Variables to be used in the service
+	Variables []InfrastructureDefinitionCustomVariable `pulumi:"variables"`
+}
+
+// InfrastructureDefinitionCustomInput is an input type that accepts InfrastructureDefinitionCustomArgs and InfrastructureDefinitionCustomOutput values.
+// You can construct a concrete instance of `InfrastructureDefinitionCustomInput` via:
+//
+//	InfrastructureDefinitionCustomArgs{...}
+type InfrastructureDefinitionCustomInput interface {
+	pulumi.Input
+
+	ToInfrastructureDefinitionCustomOutput() InfrastructureDefinitionCustomOutput
+	ToInfrastructureDefinitionCustomOutputWithContext(context.Context) InfrastructureDefinitionCustomOutput
+}
+
+type InfrastructureDefinitionCustomArgs struct {
+	// The template version
+	DeploymentTypeTemplateVersion pulumi.StringInput `pulumi:"deploymentTypeTemplateVersion"`
+	// Variables to be used in the service
+	Variables InfrastructureDefinitionCustomVariableArrayInput `pulumi:"variables"`
+}
+
+func (InfrastructureDefinitionCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureDefinitionCustom)(nil)).Elem()
+}
+
+func (i InfrastructureDefinitionCustomArgs) ToInfrastructureDefinitionCustomOutput() InfrastructureDefinitionCustomOutput {
+	return i.ToInfrastructureDefinitionCustomOutputWithContext(context.Background())
+}
+
+func (i InfrastructureDefinitionCustomArgs) ToInfrastructureDefinitionCustomOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureDefinitionCustomOutput)
+}
+
+func (i InfrastructureDefinitionCustomArgs) ToInfrastructureDefinitionCustomPtrOutput() InfrastructureDefinitionCustomPtrOutput {
+	return i.ToInfrastructureDefinitionCustomPtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureDefinitionCustomArgs) ToInfrastructureDefinitionCustomPtrOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureDefinitionCustomOutput).ToInfrastructureDefinitionCustomPtrOutputWithContext(ctx)
+}
+
+// InfrastructureDefinitionCustomPtrInput is an input type that accepts InfrastructureDefinitionCustomArgs, InfrastructureDefinitionCustomPtr and InfrastructureDefinitionCustomPtrOutput values.
+// You can construct a concrete instance of `InfrastructureDefinitionCustomPtrInput` via:
+//
+//	        InfrastructureDefinitionCustomArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureDefinitionCustomPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureDefinitionCustomPtrOutput() InfrastructureDefinitionCustomPtrOutput
+	ToInfrastructureDefinitionCustomPtrOutputWithContext(context.Context) InfrastructureDefinitionCustomPtrOutput
+}
+
+type infrastructureDefinitionCustomPtrType InfrastructureDefinitionCustomArgs
+
+func InfrastructureDefinitionCustomPtr(v *InfrastructureDefinitionCustomArgs) InfrastructureDefinitionCustomPtrInput {
+	return (*infrastructureDefinitionCustomPtrType)(v)
+}
+
+func (*infrastructureDefinitionCustomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureDefinitionCustom)(nil)).Elem()
+}
+
+func (i *infrastructureDefinitionCustomPtrType) ToInfrastructureDefinitionCustomPtrOutput() InfrastructureDefinitionCustomPtrOutput {
+	return i.ToInfrastructureDefinitionCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureDefinitionCustomPtrType) ToInfrastructureDefinitionCustomPtrOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureDefinitionCustomPtrOutput)
+}
+
+type InfrastructureDefinitionCustomOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureDefinitionCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureDefinitionCustom)(nil)).Elem()
+}
+
+func (o InfrastructureDefinitionCustomOutput) ToInfrastructureDefinitionCustomOutput() InfrastructureDefinitionCustomOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomOutput) ToInfrastructureDefinitionCustomOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomOutput) ToInfrastructureDefinitionCustomPtrOutput() InfrastructureDefinitionCustomPtrOutput {
+	return o.ToInfrastructureDefinitionCustomPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureDefinitionCustomOutput) ToInfrastructureDefinitionCustomPtrOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureDefinitionCustom) *InfrastructureDefinitionCustom {
+		return &v
+	}).(InfrastructureDefinitionCustomPtrOutput)
+}
+
+// The template version
+func (o InfrastructureDefinitionCustomOutput) DeploymentTypeTemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureDefinitionCustom) string { return v.DeploymentTypeTemplateVersion }).(pulumi.StringOutput)
+}
+
+// Variables to be used in the service
+func (o InfrastructureDefinitionCustomOutput) Variables() InfrastructureDefinitionCustomVariableArrayOutput {
+	return o.ApplyT(func(v InfrastructureDefinitionCustom) []InfrastructureDefinitionCustomVariable { return v.Variables }).(InfrastructureDefinitionCustomVariableArrayOutput)
+}
+
+type InfrastructureDefinitionCustomPtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureDefinitionCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureDefinitionCustom)(nil)).Elem()
+}
+
+func (o InfrastructureDefinitionCustomPtrOutput) ToInfrastructureDefinitionCustomPtrOutput() InfrastructureDefinitionCustomPtrOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomPtrOutput) ToInfrastructureDefinitionCustomPtrOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomPtrOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomPtrOutput) Elem() InfrastructureDefinitionCustomOutput {
+	return o.ApplyT(func(v *InfrastructureDefinitionCustom) InfrastructureDefinitionCustom {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureDefinitionCustom
+		return ret
+	}).(InfrastructureDefinitionCustomOutput)
+}
+
+// The template version
+func (o InfrastructureDefinitionCustomPtrOutput) DeploymentTypeTemplateVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureDefinitionCustom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentTypeTemplateVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Variables to be used in the service
+func (o InfrastructureDefinitionCustomPtrOutput) Variables() InfrastructureDefinitionCustomVariableArrayOutput {
+	return o.ApplyT(func(v *InfrastructureDefinitionCustom) []InfrastructureDefinitionCustomVariable {
+		if v == nil {
+			return nil
+		}
+		return v.Variables
+	}).(InfrastructureDefinitionCustomVariableArrayOutput)
+}
+
+type InfrastructureDefinitionCustomVariable struct {
+	// The name of the infrastructure definition
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// InfrastructureDefinitionCustomVariableInput is an input type that accepts InfrastructureDefinitionCustomVariableArgs and InfrastructureDefinitionCustomVariableOutput values.
+// You can construct a concrete instance of `InfrastructureDefinitionCustomVariableInput` via:
+//
+//	InfrastructureDefinitionCustomVariableArgs{...}
+type InfrastructureDefinitionCustomVariableInput interface {
+	pulumi.Input
+
+	ToInfrastructureDefinitionCustomVariableOutput() InfrastructureDefinitionCustomVariableOutput
+	ToInfrastructureDefinitionCustomVariableOutputWithContext(context.Context) InfrastructureDefinitionCustomVariableOutput
+}
+
+type InfrastructureDefinitionCustomVariableArgs struct {
+	// The name of the infrastructure definition
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (InfrastructureDefinitionCustomVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureDefinitionCustomVariable)(nil)).Elem()
+}
+
+func (i InfrastructureDefinitionCustomVariableArgs) ToInfrastructureDefinitionCustomVariableOutput() InfrastructureDefinitionCustomVariableOutput {
+	return i.ToInfrastructureDefinitionCustomVariableOutputWithContext(context.Background())
+}
+
+func (i InfrastructureDefinitionCustomVariableArgs) ToInfrastructureDefinitionCustomVariableOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureDefinitionCustomVariableOutput)
+}
+
+// InfrastructureDefinitionCustomVariableArrayInput is an input type that accepts InfrastructureDefinitionCustomVariableArray and InfrastructureDefinitionCustomVariableArrayOutput values.
+// You can construct a concrete instance of `InfrastructureDefinitionCustomVariableArrayInput` via:
+//
+//	InfrastructureDefinitionCustomVariableArray{ InfrastructureDefinitionCustomVariableArgs{...} }
+type InfrastructureDefinitionCustomVariableArrayInput interface {
+	pulumi.Input
+
+	ToInfrastructureDefinitionCustomVariableArrayOutput() InfrastructureDefinitionCustomVariableArrayOutput
+	ToInfrastructureDefinitionCustomVariableArrayOutputWithContext(context.Context) InfrastructureDefinitionCustomVariableArrayOutput
+}
+
+type InfrastructureDefinitionCustomVariableArray []InfrastructureDefinitionCustomVariableInput
+
+func (InfrastructureDefinitionCustomVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureDefinitionCustomVariable)(nil)).Elem()
+}
+
+func (i InfrastructureDefinitionCustomVariableArray) ToInfrastructureDefinitionCustomVariableArrayOutput() InfrastructureDefinitionCustomVariableArrayOutput {
+	return i.ToInfrastructureDefinitionCustomVariableArrayOutputWithContext(context.Background())
+}
+
+func (i InfrastructureDefinitionCustomVariableArray) ToInfrastructureDefinitionCustomVariableArrayOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureDefinitionCustomVariableArrayOutput)
+}
+
+type InfrastructureDefinitionCustomVariableOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureDefinitionCustomVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureDefinitionCustomVariable)(nil)).Elem()
+}
+
+func (o InfrastructureDefinitionCustomVariableOutput) ToInfrastructureDefinitionCustomVariableOutput() InfrastructureDefinitionCustomVariableOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomVariableOutput) ToInfrastructureDefinitionCustomVariableOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomVariableOutput {
+	return o
+}
+
+// The name of the infrastructure definition
+func (o InfrastructureDefinitionCustomVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureDefinitionCustomVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o InfrastructureDefinitionCustomVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InfrastructureDefinitionCustomVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type InfrastructureDefinitionCustomVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureDefinitionCustomVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfrastructureDefinitionCustomVariable)(nil)).Elem()
+}
+
+func (o InfrastructureDefinitionCustomVariableArrayOutput) ToInfrastructureDefinitionCustomVariableArrayOutput() InfrastructureDefinitionCustomVariableArrayOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomVariableArrayOutput) ToInfrastructureDefinitionCustomVariableArrayOutputWithContext(ctx context.Context) InfrastructureDefinitionCustomVariableArrayOutput {
+	return o
+}
+
+func (o InfrastructureDefinitionCustomVariableArrayOutput) Index(i pulumi.IntInput) InfrastructureDefinitionCustomVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfrastructureDefinitionCustomVariable {
+		return vs[0].([]InfrastructureDefinitionCustomVariable)[vs[1].(int)]
+	}).(InfrastructureDefinitionCustomVariableOutput)
+}
+
 type InfrastructureDefinitionDatacenterSsh struct {
 	// The name of the cloud provider to connect with.
 	CloudProviderName string `pulumi:"cloudProviderName"`
@@ -6523,6 +6782,130 @@ func (o GetEncryptedTextUsageScopeArrayOutput) Index(i pulumi.IntInput) GetEncry
 	}).(GetEncryptedTextUsageScopeOutput)
 }
 
+type GetEnvironmentVariableOverride struct {
+	// The name of the variable
+	Name string `pulumi:"name"`
+	// The name of the service
+	ServiceName string `pulumi:"serviceName"`
+	// The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+	Type string `pulumi:"type"`
+	// The value of the service variable
+	Value string `pulumi:"value"`
+}
+
+// GetEnvironmentVariableOverrideInput is an input type that accepts GetEnvironmentVariableOverrideArgs and GetEnvironmentVariableOverrideOutput values.
+// You can construct a concrete instance of `GetEnvironmentVariableOverrideInput` via:
+//
+//	GetEnvironmentVariableOverrideArgs{...}
+type GetEnvironmentVariableOverrideInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentVariableOverrideOutput() GetEnvironmentVariableOverrideOutput
+	ToGetEnvironmentVariableOverrideOutputWithContext(context.Context) GetEnvironmentVariableOverrideOutput
+}
+
+type GetEnvironmentVariableOverrideArgs struct {
+	// The name of the variable
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the service
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value of the service variable
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetEnvironmentVariableOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentVariableOverride)(nil)).Elem()
+}
+
+func (i GetEnvironmentVariableOverrideArgs) ToGetEnvironmentVariableOverrideOutput() GetEnvironmentVariableOverrideOutput {
+	return i.ToGetEnvironmentVariableOverrideOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentVariableOverrideArgs) ToGetEnvironmentVariableOverrideOutputWithContext(ctx context.Context) GetEnvironmentVariableOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentVariableOverrideOutput)
+}
+
+// GetEnvironmentVariableOverrideArrayInput is an input type that accepts GetEnvironmentVariableOverrideArray and GetEnvironmentVariableOverrideArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentVariableOverrideArrayInput` via:
+//
+//	GetEnvironmentVariableOverrideArray{ GetEnvironmentVariableOverrideArgs{...} }
+type GetEnvironmentVariableOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentVariableOverrideArrayOutput() GetEnvironmentVariableOverrideArrayOutput
+	ToGetEnvironmentVariableOverrideArrayOutputWithContext(context.Context) GetEnvironmentVariableOverrideArrayOutput
+}
+
+type GetEnvironmentVariableOverrideArray []GetEnvironmentVariableOverrideInput
+
+func (GetEnvironmentVariableOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentVariableOverride)(nil)).Elem()
+}
+
+func (i GetEnvironmentVariableOverrideArray) ToGetEnvironmentVariableOverrideArrayOutput() GetEnvironmentVariableOverrideArrayOutput {
+	return i.ToGetEnvironmentVariableOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentVariableOverrideArray) ToGetEnvironmentVariableOverrideArrayOutputWithContext(ctx context.Context) GetEnvironmentVariableOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentVariableOverrideArrayOutput)
+}
+
+type GetEnvironmentVariableOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentVariableOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentVariableOverride)(nil)).Elem()
+}
+
+func (o GetEnvironmentVariableOverrideOutput) ToGetEnvironmentVariableOverrideOutput() GetEnvironmentVariableOverrideOutput {
+	return o
+}
+
+func (o GetEnvironmentVariableOverrideOutput) ToGetEnvironmentVariableOverrideOutputWithContext(ctx context.Context) GetEnvironmentVariableOverrideOutput {
+	return o
+}
+
+// The name of the variable
+func (o GetEnvironmentVariableOverrideOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentVariableOverride) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the service
+func (o GetEnvironmentVariableOverrideOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentVariableOverride) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+func (o GetEnvironmentVariableOverrideOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentVariableOverride) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the service variable
+func (o GetEnvironmentVariableOverrideOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentVariableOverride) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentVariableOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentVariableOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentVariableOverride)(nil)).Elem()
+}
+
+func (o GetEnvironmentVariableOverrideArrayOutput) ToGetEnvironmentVariableOverrideArrayOutput() GetEnvironmentVariableOverrideArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentVariableOverrideArrayOutput) ToGetEnvironmentVariableOverrideArrayOutputWithContext(ctx context.Context) GetEnvironmentVariableOverrideArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentVariableOverrideArrayOutput) Index(i pulumi.IntInput) GetEnvironmentVariableOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentVariableOverride {
+		return vs[0].([]GetEnvironmentVariableOverride)[vs[1].(int)]
+	}).(GetEnvironmentVariableOverrideOutput)
+}
+
 type GetGitConnectorCommitDetail struct {
 	AuthorEmailId string `pulumi:"authorEmailId"`
 	AuthorName    string `pulumi:"authorName"`
@@ -6859,6 +7242,320 @@ func (o GetSshCredentialUsageScopeArrayOutput) Index(i pulumi.IntInput) GetSshCr
 	}).(GetSshCredentialUsageScopeOutput)
 }
 
+type GetTriggerCondition struct {
+	OnWebhooks           []GetTriggerConditionOnWebhook `pulumi:"onWebhooks"`
+	TriggerConditionType string                         `pulumi:"triggerConditionType"`
+}
+
+// GetTriggerConditionInput is an input type that accepts GetTriggerConditionArgs and GetTriggerConditionOutput values.
+// You can construct a concrete instance of `GetTriggerConditionInput` via:
+//
+//	GetTriggerConditionArgs{...}
+type GetTriggerConditionInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionOutput() GetTriggerConditionOutput
+	ToGetTriggerConditionOutputWithContext(context.Context) GetTriggerConditionOutput
+}
+
+type GetTriggerConditionArgs struct {
+	OnWebhooks           GetTriggerConditionOnWebhookArrayInput `pulumi:"onWebhooks"`
+	TriggerConditionType pulumi.StringInput                     `pulumi:"triggerConditionType"`
+}
+
+func (GetTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerCondition)(nil)).Elem()
+}
+
+func (i GetTriggerConditionArgs) ToGetTriggerConditionOutput() GetTriggerConditionOutput {
+	return i.ToGetTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionArgs) ToGetTriggerConditionOutputWithContext(ctx context.Context) GetTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionOutput)
+}
+
+// GetTriggerConditionArrayInput is an input type that accepts GetTriggerConditionArray and GetTriggerConditionArrayOutput values.
+// You can construct a concrete instance of `GetTriggerConditionArrayInput` via:
+//
+//	GetTriggerConditionArray{ GetTriggerConditionArgs{...} }
+type GetTriggerConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionArrayOutput() GetTriggerConditionArrayOutput
+	ToGetTriggerConditionArrayOutputWithContext(context.Context) GetTriggerConditionArrayOutput
+}
+
+type GetTriggerConditionArray []GetTriggerConditionInput
+
+func (GetTriggerConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerCondition)(nil)).Elem()
+}
+
+func (i GetTriggerConditionArray) ToGetTriggerConditionArrayOutput() GetTriggerConditionArrayOutput {
+	return i.ToGetTriggerConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionArray) ToGetTriggerConditionArrayOutputWithContext(ctx context.Context) GetTriggerConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionArrayOutput)
+}
+
+type GetTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerCondition)(nil)).Elem()
+}
+
+func (o GetTriggerConditionOutput) ToGetTriggerConditionOutput() GetTriggerConditionOutput {
+	return o
+}
+
+func (o GetTriggerConditionOutput) ToGetTriggerConditionOutputWithContext(ctx context.Context) GetTriggerConditionOutput {
+	return o
+}
+
+func (o GetTriggerConditionOutput) OnWebhooks() GetTriggerConditionOnWebhookArrayOutput {
+	return o.ApplyT(func(v GetTriggerCondition) []GetTriggerConditionOnWebhook { return v.OnWebhooks }).(GetTriggerConditionOnWebhookArrayOutput)
+}
+
+func (o GetTriggerConditionOutput) TriggerConditionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerCondition) string { return v.TriggerConditionType }).(pulumi.StringOutput)
+}
+
+type GetTriggerConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerCondition)(nil)).Elem()
+}
+
+func (o GetTriggerConditionArrayOutput) ToGetTriggerConditionArrayOutput() GetTriggerConditionArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionArrayOutput) ToGetTriggerConditionArrayOutputWithContext(ctx context.Context) GetTriggerConditionArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionArrayOutput) Index(i pulumi.IntInput) GetTriggerConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerCondition {
+		return vs[0].([]GetTriggerCondition)[vs[1].(int)]
+	}).(GetTriggerConditionOutput)
+}
+
+type GetTriggerConditionOnWebhook struct {
+	WebhookDetails []GetTriggerConditionOnWebhookWebhookDetail `pulumi:"webhookDetails"`
+}
+
+// GetTriggerConditionOnWebhookInput is an input type that accepts GetTriggerConditionOnWebhookArgs and GetTriggerConditionOnWebhookOutput values.
+// You can construct a concrete instance of `GetTriggerConditionOnWebhookInput` via:
+//
+//	GetTriggerConditionOnWebhookArgs{...}
+type GetTriggerConditionOnWebhookInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionOnWebhookOutput() GetTriggerConditionOnWebhookOutput
+	ToGetTriggerConditionOnWebhookOutputWithContext(context.Context) GetTriggerConditionOnWebhookOutput
+}
+
+type GetTriggerConditionOnWebhookArgs struct {
+	WebhookDetails GetTriggerConditionOnWebhookWebhookDetailArrayInput `pulumi:"webhookDetails"`
+}
+
+func (GetTriggerConditionOnWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerConditionOnWebhook)(nil)).Elem()
+}
+
+func (i GetTriggerConditionOnWebhookArgs) ToGetTriggerConditionOnWebhookOutput() GetTriggerConditionOnWebhookOutput {
+	return i.ToGetTriggerConditionOnWebhookOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionOnWebhookArgs) ToGetTriggerConditionOnWebhookOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionOnWebhookOutput)
+}
+
+// GetTriggerConditionOnWebhookArrayInput is an input type that accepts GetTriggerConditionOnWebhookArray and GetTriggerConditionOnWebhookArrayOutput values.
+// You can construct a concrete instance of `GetTriggerConditionOnWebhookArrayInput` via:
+//
+//	GetTriggerConditionOnWebhookArray{ GetTriggerConditionOnWebhookArgs{...} }
+type GetTriggerConditionOnWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionOnWebhookArrayOutput() GetTriggerConditionOnWebhookArrayOutput
+	ToGetTriggerConditionOnWebhookArrayOutputWithContext(context.Context) GetTriggerConditionOnWebhookArrayOutput
+}
+
+type GetTriggerConditionOnWebhookArray []GetTriggerConditionOnWebhookInput
+
+func (GetTriggerConditionOnWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerConditionOnWebhook)(nil)).Elem()
+}
+
+func (i GetTriggerConditionOnWebhookArray) ToGetTriggerConditionOnWebhookArrayOutput() GetTriggerConditionOnWebhookArrayOutput {
+	return i.ToGetTriggerConditionOnWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionOnWebhookArray) ToGetTriggerConditionOnWebhookArrayOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionOnWebhookArrayOutput)
+}
+
+type GetTriggerConditionOnWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionOnWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerConditionOnWebhook)(nil)).Elem()
+}
+
+func (o GetTriggerConditionOnWebhookOutput) ToGetTriggerConditionOnWebhookOutput() GetTriggerConditionOnWebhookOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookOutput) ToGetTriggerConditionOnWebhookOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookOutput) WebhookDetails() GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhook) []GetTriggerConditionOnWebhookWebhookDetail {
+		return v.WebhookDetails
+	}).(GetTriggerConditionOnWebhookWebhookDetailArrayOutput)
+}
+
+type GetTriggerConditionOnWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionOnWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerConditionOnWebhook)(nil)).Elem()
+}
+
+func (o GetTriggerConditionOnWebhookArrayOutput) ToGetTriggerConditionOnWebhookArrayOutput() GetTriggerConditionOnWebhookArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookArrayOutput) ToGetTriggerConditionOnWebhookArrayOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookArrayOutput) Index(i pulumi.IntInput) GetTriggerConditionOnWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerConditionOnWebhook {
+		return vs[0].([]GetTriggerConditionOnWebhook)[vs[1].(int)]
+	}).(GetTriggerConditionOnWebhookOutput)
+}
+
+type GetTriggerConditionOnWebhookWebhookDetail struct {
+	Header       string `pulumi:"header"`
+	Method       string `pulumi:"method"`
+	Payload      string `pulumi:"payload"`
+	WebhookToken string `pulumi:"webhookToken"`
+	WebhookUrl   string `pulumi:"webhookUrl"`
+}
+
+// GetTriggerConditionOnWebhookWebhookDetailInput is an input type that accepts GetTriggerConditionOnWebhookWebhookDetailArgs and GetTriggerConditionOnWebhookWebhookDetailOutput values.
+// You can construct a concrete instance of `GetTriggerConditionOnWebhookWebhookDetailInput` via:
+//
+//	GetTriggerConditionOnWebhookWebhookDetailArgs{...}
+type GetTriggerConditionOnWebhookWebhookDetailInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionOnWebhookWebhookDetailOutput() GetTriggerConditionOnWebhookWebhookDetailOutput
+	ToGetTriggerConditionOnWebhookWebhookDetailOutputWithContext(context.Context) GetTriggerConditionOnWebhookWebhookDetailOutput
+}
+
+type GetTriggerConditionOnWebhookWebhookDetailArgs struct {
+	Header       pulumi.StringInput `pulumi:"header"`
+	Method       pulumi.StringInput `pulumi:"method"`
+	Payload      pulumi.StringInput `pulumi:"payload"`
+	WebhookToken pulumi.StringInput `pulumi:"webhookToken"`
+	WebhookUrl   pulumi.StringInput `pulumi:"webhookUrl"`
+}
+
+func (GetTriggerConditionOnWebhookWebhookDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerConditionOnWebhookWebhookDetail)(nil)).Elem()
+}
+
+func (i GetTriggerConditionOnWebhookWebhookDetailArgs) ToGetTriggerConditionOnWebhookWebhookDetailOutput() GetTriggerConditionOnWebhookWebhookDetailOutput {
+	return i.ToGetTriggerConditionOnWebhookWebhookDetailOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionOnWebhookWebhookDetailArgs) ToGetTriggerConditionOnWebhookWebhookDetailOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookWebhookDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionOnWebhookWebhookDetailOutput)
+}
+
+// GetTriggerConditionOnWebhookWebhookDetailArrayInput is an input type that accepts GetTriggerConditionOnWebhookWebhookDetailArray and GetTriggerConditionOnWebhookWebhookDetailArrayOutput values.
+// You can construct a concrete instance of `GetTriggerConditionOnWebhookWebhookDetailArrayInput` via:
+//
+//	GetTriggerConditionOnWebhookWebhookDetailArray{ GetTriggerConditionOnWebhookWebhookDetailArgs{...} }
+type GetTriggerConditionOnWebhookWebhookDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerConditionOnWebhookWebhookDetailArrayOutput() GetTriggerConditionOnWebhookWebhookDetailArrayOutput
+	ToGetTriggerConditionOnWebhookWebhookDetailArrayOutputWithContext(context.Context) GetTriggerConditionOnWebhookWebhookDetailArrayOutput
+}
+
+type GetTriggerConditionOnWebhookWebhookDetailArray []GetTriggerConditionOnWebhookWebhookDetailInput
+
+func (GetTriggerConditionOnWebhookWebhookDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerConditionOnWebhookWebhookDetail)(nil)).Elem()
+}
+
+func (i GetTriggerConditionOnWebhookWebhookDetailArray) ToGetTriggerConditionOnWebhookWebhookDetailArrayOutput() GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
+	return i.ToGetTriggerConditionOnWebhookWebhookDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerConditionOnWebhookWebhookDetailArray) ToGetTriggerConditionOnWebhookWebhookDetailArrayOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerConditionOnWebhookWebhookDetailArrayOutput)
+}
+
+type GetTriggerConditionOnWebhookWebhookDetailOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionOnWebhookWebhookDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerConditionOnWebhookWebhookDetail)(nil)).Elem()
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) ToGetTriggerConditionOnWebhookWebhookDetailOutput() GetTriggerConditionOnWebhookWebhookDetailOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) ToGetTriggerConditionOnWebhookWebhookDetailOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookWebhookDetailOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Method }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Payload }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) WebhookToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.WebhookToken }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailOutput) WebhookUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.WebhookUrl }).(pulumi.StringOutput)
+}
+
+type GetTriggerConditionOnWebhookWebhookDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerConditionOnWebhookWebhookDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerConditionOnWebhookWebhookDetail)(nil)).Elem()
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailArrayOutput) ToGetTriggerConditionOnWebhookWebhookDetailArrayOutput() GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailArrayOutput) ToGetTriggerConditionOnWebhookWebhookDetailArrayOutputWithContext(ctx context.Context) GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
+	return o
+}
+
+func (o GetTriggerConditionOnWebhookWebhookDetailArrayOutput) Index(i pulumi.IntInput) GetTriggerConditionOnWebhookWebhookDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerConditionOnWebhookWebhookDetail {
+		return vs[0].([]GetTriggerConditionOnWebhookWebhookDetail)[vs[1].(int)]
+	}).(GetTriggerConditionOnWebhookWebhookDetailOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptedTextUsageScopeInput)(nil)).Elem(), EncryptedTextUsageScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptedTextUsageScopeArrayInput)(nil)).Elem(), EncryptedTextUsageScopeArray{})
@@ -6884,6 +7581,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionAzureVmssPtrInput)(nil)).Elem(), InfrastructureDefinitionAzureVmssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionAzureWebappInput)(nil)).Elem(), InfrastructureDefinitionAzureWebappArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionAzureWebappPtrInput)(nil)).Elem(), InfrastructureDefinitionAzureWebappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionCustomInput)(nil)).Elem(), InfrastructureDefinitionCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionCustomPtrInput)(nil)).Elem(), InfrastructureDefinitionCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionCustomVariableInput)(nil)).Elem(), InfrastructureDefinitionCustomVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionCustomVariableArrayInput)(nil)).Elem(), InfrastructureDefinitionCustomVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionDatacenterSshInput)(nil)).Elem(), InfrastructureDefinitionDatacenterSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionDatacenterSshPtrInput)(nil)).Elem(), InfrastructureDefinitionDatacenterSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureDefinitionDatacenterWinrmInput)(nil)).Elem(), InfrastructureDefinitionDatacenterWinrmArgs{})
@@ -6936,12 +7637,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupSamlSettingsPtrInput)(nil)).Elem(), UserGroupSamlSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEncryptedTextUsageScopeInput)(nil)).Elem(), GetEncryptedTextUsageScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEncryptedTextUsageScopeArrayInput)(nil)).Elem(), GetEncryptedTextUsageScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentVariableOverrideInput)(nil)).Elem(), GetEnvironmentVariableOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentVariableOverrideArrayInput)(nil)).Elem(), GetEnvironmentVariableOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCommitDetailInput)(nil)).Elem(), GetGitConnectorCommitDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCommitDetailArrayInput)(nil)).Elem(), GetGitConnectorCommitDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretManagerUsageScopeInput)(nil)).Elem(), GetSecretManagerUsageScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretManagerUsageScopeArrayInput)(nil)).Elem(), GetSecretManagerUsageScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshCredentialUsageScopeInput)(nil)).Elem(), GetSshCredentialUsageScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshCredentialUsageScopeArrayInput)(nil)).Elem(), GetSshCredentialUsageScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionInput)(nil)).Elem(), GetTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionArrayInput)(nil)).Elem(), GetTriggerConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionOnWebhookInput)(nil)).Elem(), GetTriggerConditionOnWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionOnWebhookArrayInput)(nil)).Elem(), GetTriggerConditionOnWebhookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionOnWebhookWebhookDetailInput)(nil)).Elem(), GetTriggerConditionOnWebhookWebhookDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerConditionOnWebhookWebhookDetailArrayInput)(nil)).Elem(), GetTriggerConditionOnWebhookWebhookDetailArray{})
 	pulumi.RegisterOutputType(EncryptedTextUsageScopeOutput{})
 	pulumi.RegisterOutputType(EncryptedTextUsageScopeArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableOverrideOutput{})
@@ -6966,6 +7675,10 @@ func init() {
 	pulumi.RegisterOutputType(InfrastructureDefinitionAzureVmssPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureDefinitionAzureWebappOutput{})
 	pulumi.RegisterOutputType(InfrastructureDefinitionAzureWebappPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureDefinitionCustomOutput{})
+	pulumi.RegisterOutputType(InfrastructureDefinitionCustomPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureDefinitionCustomVariableOutput{})
+	pulumi.RegisterOutputType(InfrastructureDefinitionCustomVariableArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureDefinitionDatacenterSshOutput{})
 	pulumi.RegisterOutputType(InfrastructureDefinitionDatacenterSshPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureDefinitionDatacenterWinrmOutput{})
@@ -7018,10 +7731,18 @@ func init() {
 	pulumi.RegisterOutputType(UserGroupSamlSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetEncryptedTextUsageScopeOutput{})
 	pulumi.RegisterOutputType(GetEncryptedTextUsageScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentVariableOverrideOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentVariableOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCommitDetailOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCommitDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretManagerUsageScopeOutput{})
 	pulumi.RegisterOutputType(GetSecretManagerUsageScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetSshCredentialUsageScopeOutput{})
 	pulumi.RegisterOutputType(GetSshCredentialUsageScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionOnWebhookOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionOnWebhookArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionOnWebhookWebhookDetailOutput{})
+	pulumi.RegisterOutputType(GetTriggerConditionOnWebhookWebhookDetailArrayOutput{})
 }

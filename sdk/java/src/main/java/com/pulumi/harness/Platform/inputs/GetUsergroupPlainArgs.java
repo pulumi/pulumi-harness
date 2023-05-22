@@ -62,14 +62,14 @@ public final class GetUsergroupPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
@@ -77,14 +77,14 @@ public final class GetUsergroupPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -163,7 +163,7 @@ public final class GetUsergroupPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetUsergroupPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 

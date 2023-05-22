@@ -16,14 +16,14 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
     public static final GetDatadogConnectorPlainArgs Empty = new GetDatadogConnectorPlainArgs();
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable List<String> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<List<String>> delegateSelectors() {
@@ -34,15 +34,15 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
      * Unique identifier of the resource.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable String identifier;
+    @Import(name="identifier", required=true)
+    private String identifier;
 
     /**
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
 
     /**
@@ -61,14 +61,14 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
@@ -76,14 +76,14 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -119,7 +119,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable String identifier) {
+        public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -162,7 +162,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -184,6 +184,7 @@ public final class GetDatadogConnectorPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetDatadogConnectorPlainArgs build() {
+            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
             return $;
         }
     }

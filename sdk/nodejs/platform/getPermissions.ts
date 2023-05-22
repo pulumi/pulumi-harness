@@ -15,19 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.platform.getPermissions({
+ * const test = harness.platform.getPermissions({
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getPermissions(args?: GetPermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPermissions:getPermissions", {
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -69,9 +66,23 @@ export interface GetPermissionsResult {
      */
     readonly projectId?: string;
 }
-
+/**
+ * Data source for retrieving permissions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getPermissions({
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getPermissionsOutput(args?: GetPermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsResult> {
-    return pulumi.output(args).apply(a => getPermissions(a, opts))
+    return pulumi.output(args).apply((a: any) => getPermissions(a, opts))
 }
 
 /**

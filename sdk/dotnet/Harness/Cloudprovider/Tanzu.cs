@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// using Harness = Pulumi.Harness;
@@ -31,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     ///     var tanzuPassword = new Harness.EncryptedText("tanzuPassword", new()
     ///     {
     ///         Value = "&lt;PASSWORD&gt;",
-    ///         SecretManagerId = @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult).Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     ///     var example = new Harness.Cloudprovider.Tanzu("example", new()

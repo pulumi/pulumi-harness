@@ -20,14 +20,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     public static final GitOpsRepositoryState Empty = new GitOpsRepositoryState();
 
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps repository.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return account identifier of the cluster.
+     * @return Account identifier of the GitOps repository.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -35,14 +35,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps repository.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return agent identifier of the cluster.
+     * @return Agent identifier of the GitOps repository.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -50,14 +50,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Credentials only of the Repo.
+     * Indicates if to operate on credential set instead of repository.
      * 
      */
     @Import(name="credsOnly")
     private @Nullable Output<Boolean> credsOnly;
 
     /**
-     * @return Credentials only of the Repo.
+     * @return Indicates if to operate on credential set instead of repository.
      * 
      */
     public Optional<Output<Boolean>> credsOnly() {
@@ -65,14 +65,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps repository.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return Identifier of the GitOps repository.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -80,14 +80,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the GitOps repository.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return organization identifier of the cluster.
+     * @return Organization identifier of the GitOps repository.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -95,14 +95,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps repository.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return project identifier of the cluster.
+     * @return Project identifier of the GitOps repository.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -110,14 +110,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Force refresh query for Repo.
+     * Indicates to force refresh query for repository.
      * 
      */
     @Import(name="queryForceRefresh")
     private @Nullable Output<Boolean> queryForceRefresh;
 
     /**
-     * @return Force refresh query for Repo.
+     * @return Indicates to force refresh query for repository.
      * 
      */
     public Optional<Output<Boolean>> queryForceRefresh() {
@@ -125,14 +125,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Project to Query for Repo.
+     * Project to query for the GitOps repo.
      * 
      */
     @Import(name="queryProject")
     private @Nullable Output<String> queryProject;
 
     /**
-     * @return Project to Query for Repo.
+     * @return Project to query for the GitOps repo.
      * 
      */
     public Optional<Output<String>> queryProject() {
@@ -140,14 +140,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Repo to Query.
+     * GitOps repository to query.
      * 
      */
     @Import(name="queryRepo")
     private @Nullable Output<String> queryRepo;
 
     /**
-     * @return Repo to Query.
+     * @return GitOps repository to query.
      * 
      */
     public Optional<Output<String>> queryRepo() {
@@ -155,14 +155,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Repo Details that need to be stored.
+     * Repo details holding application configurations.
      * 
      */
     @Import(name="repos")
     private @Nullable Output<List<GitOpsRepositoryRepoArgs>> repos;
 
     /**
-     * @return Repo Details that need to be stored.
+     * @return Repo details holding application configurations.
      * 
      */
     public Optional<Output<List<GitOpsRepositoryRepoArgs>>> repos() {
@@ -170,14 +170,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Update mask of the Repository.
+     * Update mask of the repository.
      * 
      */
     @Import(name="updateMasks")
     private @Nullable Output<List<GitOpsRepositoryUpdateMaskArgs>> updateMasks;
 
     /**
-     * @return Update mask of the Repository.
+     * @return Update mask of the repository.
      * 
      */
     public Optional<Output<List<GitOpsRepositoryUpdateMaskArgs>>> updateMasks() {
@@ -185,14 +185,14 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Upsert the Repo Details.
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
      * 
      */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
     /**
-     * @return Upsert the Repo Details.
+     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
      * 
      */
     public Optional<Output<Boolean>> upsert() {
@@ -235,7 +235,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId account identifier of the cluster.
+         * @param accountId Account identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId account identifier of the cluster.
+         * @param accountId Account identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param agentId agent identifier of the cluster.
+         * @param agentId Agent identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param agentId agent identifier of the cluster.
+         * @param agentId Agent identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param credsOnly Credentials only of the Repo.
+         * @param credsOnly Indicates if to operate on credential set instead of repository.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param credsOnly Credentials only of the Repo.
+         * @param credsOnly Indicates if to operate on credential set instead of repository.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier Identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier Identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgId organization identifier of the cluster.
+         * @param orgId Organization identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgId organization identifier of the cluster.
+         * @param orgId Organization identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId project identifier of the cluster.
+         * @param projectId Project identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId project identifier of the cluster.
+         * @param projectId Project identifier of the GitOps repository.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryForceRefresh Force refresh query for Repo.
+         * @param queryForceRefresh Indicates to force refresh query for repository.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryForceRefresh Force refresh query for Repo.
+         * @param queryForceRefresh Indicates to force refresh query for repository.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryProject Project to Query for Repo.
+         * @param queryProject Project to query for the GitOps repo.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryProject Project to Query for Repo.
+         * @param queryProject Project to query for the GitOps repo.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryRepo Repo to Query.
+         * @param queryRepo GitOps repository to query.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryRepo Repo to Query.
+         * @param queryRepo GitOps repository to query.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param repos Repo Details that need to be stored.
+         * @param repos Repo details holding application configurations.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param repos Repo Details that need to be stored.
+         * @param repos Repo details holding application configurations.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param repos Repo Details that need to be stored.
+         * @param repos Repo details holding application configurations.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateMasks Update mask of the Repository.
+         * @param updateMasks Update mask of the repository.
          * 
          * @return builder
          * 
@@ -466,7 +466,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateMasks Update mask of the Repository.
+         * @param updateMasks Update mask of the repository.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateMasks Update mask of the Repository.
+         * @param updateMasks Update mask of the repository.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upsert Upsert the Repo Details.
+         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upsert Upsert the Repo Details.
+         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
          * 
          * @return builder
          * 

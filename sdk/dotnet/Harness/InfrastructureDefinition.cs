@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -42,6 +43,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     ///         Type = "NON_PROD",
     ///     });
     /// 
+    ///     // Creating a infrastructure of type KUBERNETES
     ///     var k8s = new Harness.InfrastructureDefinition("k8s", new()
     ///     {
     ///         AppId = example.Id,
@@ -52,7 +54,52 @@ namespace Lbrlabs.PulumiPackage.Harness
     ///         {
     ///             CloudProviderName = devKubernetes.Name,
     ///             Namespace = "dev",
-    ///             ReleaseName = service.Name,
+    ///             ReleaseName = "${service.name}",
+    ///         },
+    ///     });
+    /// 
+    ///     // Creating a Deployment Template for CUSTOM infrastructure type
+    ///     var exampleYaml = new Harness.YamlConfig("exampleYaml", new()
+    ///     {
+    ///         Path = "Setup/Template Library/Example Folder/deployment_template.yaml",
+    ///         Content = @$"harnessApiVersion: '1.0'
+    /// type: CUSTOM_DEPLOYMENT_TYPE
+    /// fetchInstanceScript: |-
+    ///   set -ex
+    ///   curl http://{url}/{file_name} &gt; {INSTANCE_OUTPUT_PATH}
+    /// hostAttributes:
+    ///   hostname: host
+    /// hostObjectArrayPath: hosts
+    /// variables:
+    /// - name: url
+    /// - name: file_name
+    /// ",
+    ///     });
+    /// 
+    ///     // Creating a infrastructure of type CUSTOM
+    ///     var custom = new Harness.InfrastructureDefinition("custom", new()
+    ///     {
+    ///         AppId = example.Id,
+    ///         EnvId = devEnvironment.Id,
+    ///         CloudProviderType = "CUSTOM",
+    ///         DeploymentType = "CUSTOM",
+    ///         DeploymentTemplateUri = exampleYaml.Name.Apply(name =&gt; $"Example Folder/{name}"),
+    ///         Custom = new Harness.Inputs.InfrastructureDefinitionCustomArgs
+    ///         {
+    ///             DeploymentTypeTemplateVersion = "1",
+    ///             Variables = new[]
+    ///             {
+    ///                 new Harness.Inputs.InfrastructureDefinitionCustomVariableArgs
+    ///                 {
+    ///                     Name = "url",
+    ///                     Value = "localhost:8081",
+    ///                 },
+    ///                 new Harness.Inputs.InfrastructureDefinitionCustomVariableArgs
+    ///                 {
+    ///                     Name = "file_name",
+    ///                     Value = "instances.json",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -125,6 +172,12 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Output<string> CloudProviderType { get; private set; } = null!;
 
         /// <summary>
+        /// The configuration details for Custom deployments.
+        /// </summary>
+        [Output("custom")]
+        public Output<Outputs.InfrastructureDefinitionCustom?> Custom { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration details for SSH datacenter deployments.
         /// </summary>
         [Output("datacenterSsh")]
@@ -143,7 +196,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Output<string?> DeploymentTemplateUri { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         /// </summary>
         [Output("deploymentType")]
         public Output<string> DeploymentType { get; private set; } = null!;
@@ -292,6 +345,12 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string> CloudProviderType { get; set; } = null!;
 
         /// <summary>
+        /// The configuration details for Custom deployments.
+        /// </summary>
+        [Input("custom")]
+        public Input<Inputs.InfrastructureDefinitionCustomArgs>? Custom { get; set; }
+
+        /// <summary>
         /// The configuration details for SSH datacenter deployments.
         /// </summary>
         [Input("datacenterSsh")]
@@ -310,7 +369,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? DeploymentTemplateUri { get; set; }
 
         /// <summary>
-        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         /// </summary>
         [Input("deploymentType", required: true)]
         public Input<string> DeploymentType { get; set; } = null!;
@@ -426,6 +485,12 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? CloudProviderType { get; set; }
 
         /// <summary>
+        /// The configuration details for Custom deployments.
+        /// </summary>
+        [Input("custom")]
+        public Input<Inputs.InfrastructureDefinitionCustomGetArgs>? Custom { get; set; }
+
+        /// <summary>
         /// The configuration details for SSH datacenter deployments.
         /// </summary>
         [Input("datacenterSsh")]
@@ -444,7 +509,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? DeploymentTemplateUri { get; set; }
 
         /// <summary>
-        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        /// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }

@@ -18,171 +18,231 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating Harness Gitops Repositories.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.GitOpsRepository;
+ * import com.pulumi.harness.platform.GitOpsRepositoryArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsRepositoryRepoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new GitOpsRepository(&#34;example&#34;, GitOpsRepositoryArgs.builder()        
+ *             .accountId(&#34;account_id&#34;)
+ *             .agentId(&#34;agent_id&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .repos(GitOpsRepositoryRepoArgs.builder()
+ *                 .connectionType(&#34;HTTPS_ANONYMOUS&#34;)
+ *                 .insecure(true)
+ *                 .name(&#34;repo_name&#34;)
+ *                 .repo(&#34;https://github.com/willycoll/argocd-example-apps.git&#34;)
+ *                 .build())
+ *             .upsert(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import a Account level Gitops Repository
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;agent_id&gt;/&lt;respository_id&gt;
+ * ```
+ * 
+ *  Import a Project level Gitops Repository
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;respository_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:platform/gitOpsRepository:GitOpsRepository")
 public class GitOpsRepository extends com.pulumi.resources.CustomResource {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps repository.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the cluster.
+     * @return Account identifier of the GitOps repository.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps repository.
      * 
      */
-    @Export(name="agentId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> agentId;
+    @Export(name="agentId", refs={String.class}, tree="[0]")
+    private Output<String> agentId;
 
     /**
-     * @return agent identifier of the cluster.
+     * @return Agent identifier of the GitOps repository.
      * 
      */
-    public Output<Optional<String>> agentId() {
-        return Codegen.optional(this.agentId);
+    public Output<String> agentId() {
+        return this.agentId;
     }
     /**
-     * Credentials only of the Repo.
+     * Indicates if to operate on credential set instead of repository.
      * 
      */
-    @Export(name="credsOnly", type=Boolean.class, parameters={})
+    @Export(name="credsOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> credsOnly;
 
     /**
-     * @return Credentials only of the Repo.
+     * @return Indicates if to operate on credential set instead of repository.
      * 
      */
     public Output<Optional<Boolean>> credsOnly() {
         return Codegen.optional(this.credsOnly);
     }
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps repository.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return Identifier of the GitOps repository.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the GitOps repository.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return organization identifier of the cluster.
+     * @return Organization identifier of the GitOps repository.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps repository.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
-    private Output<String> projectId;
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return project identifier of the cluster.
+     * @return Project identifier of the GitOps repository.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<Optional<String>> projectId() {
+        return Codegen.optional(this.projectId);
     }
     /**
-     * Force refresh query for Repo.
+     * Indicates to force refresh query for repository.
      * 
      */
-    @Export(name="queryForceRefresh", type=Boolean.class, parameters={})
+    @Export(name="queryForceRefresh", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> queryForceRefresh;
 
     /**
-     * @return Force refresh query for Repo.
+     * @return Indicates to force refresh query for repository.
      * 
      */
     public Output<Optional<Boolean>> queryForceRefresh() {
         return Codegen.optional(this.queryForceRefresh);
     }
     /**
-     * Project to Query for Repo.
+     * Project to query for the GitOps repo.
      * 
      */
-    @Export(name="queryProject", type=String.class, parameters={})
+    @Export(name="queryProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryProject;
 
     /**
-     * @return Project to Query for Repo.
+     * @return Project to query for the GitOps repo.
      * 
      */
     public Output<Optional<String>> queryProject() {
         return Codegen.optional(this.queryProject);
     }
     /**
-     * Repo to Query.
+     * GitOps repository to query.
      * 
      */
-    @Export(name="queryRepo", type=String.class, parameters={})
+    @Export(name="queryRepo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryRepo;
 
     /**
-     * @return Repo to Query.
+     * @return GitOps repository to query.
      * 
      */
     public Output<Optional<String>> queryRepo() {
         return Codegen.optional(this.queryRepo);
     }
     /**
-     * Repo Details that need to be stored.
+     * Repo details holding application configurations.
      * 
      */
-    @Export(name="repos", type=List.class, parameters={GitOpsRepositoryRepo.class})
+    @Export(name="repos", refs={List.class,GitOpsRepositoryRepo.class}, tree="[0,1]")
     private Output<List<GitOpsRepositoryRepo>> repos;
 
     /**
-     * @return Repo Details that need to be stored.
+     * @return Repo details holding application configurations.
      * 
      */
     public Output<List<GitOpsRepositoryRepo>> repos() {
         return this.repos;
     }
     /**
-     * Update mask of the Repository.
+     * Update mask of the repository.
      * 
      */
-    @Export(name="updateMasks", type=List.class, parameters={GitOpsRepositoryUpdateMask.class})
+    @Export(name="updateMasks", refs={List.class,GitOpsRepositoryUpdateMask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitOpsRepositoryUpdateMask>> updateMasks;
 
     /**
-     * @return Update mask of the Repository.
+     * @return Update mask of the repository.
      * 
      */
     public Output<Optional<List<GitOpsRepositoryUpdateMask>>> updateMasks() {
         return Codegen.optional(this.updateMasks);
     }
     /**
-     * Upsert the Repo Details.
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
      * 
      */
-    @Export(name="upsert", type=Boolean.class, parameters={})
+    @Export(name="upsert", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upsert;
 
     /**
-     * @return Upsert the Repo Details.
+     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
      * 
      */
     public Output<Optional<Boolean>> upsert() {

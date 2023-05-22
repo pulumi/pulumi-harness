@@ -11,6 +11,32 @@ import (
 )
 
 // Resource for looking up an App Dynamics connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupArtifactoryConnector(ctx, &platform.LookupArtifactoryConnectorArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupArtifactoryConnector(ctx *pulumi.Context, args *LookupArtifactoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupArtifactoryConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupArtifactoryConnectorResult
@@ -27,9 +53,9 @@ type LookupArtifactoryConnectorArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -37,7 +63,7 @@ type LookupArtifactoryConnectorArgs struct {
 type LookupArtifactoryConnectorResult struct {
 	// Credentials to use for authentication.
 	Credentials []GetArtifactoryConnectorCredential `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
@@ -47,11 +73,11 @@ type LookupArtifactoryConnectorResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Artifactory server.
 	Url string `pulumi:"url"`
@@ -76,9 +102,9 @@ type LookupArtifactoryConnectorOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -106,7 +132,7 @@ func (o LookupArtifactoryConnectorResultOutput) Credentials() GetArtifactoryConn
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) []GetArtifactoryConnectorCredential { return v.Credentials }).(GetArtifactoryConnectorCredentialArrayOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupArtifactoryConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -131,17 +157,17 @@ func (o LookupArtifactoryConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupArtifactoryConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupArtifactoryConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupArtifactoryConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupArtifactoryConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

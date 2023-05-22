@@ -102,7 +102,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The id of the application.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -116,7 +116,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The description of the environment.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,7 +130,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The name of the environment.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The type of the environment. Valid values are `PROD` and `NON_PROD`
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -158,7 +158,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Override for a service variable
      * 
      */
-    @Export(name="variableOverrides", type=List.class, parameters={EnvironmentVariableOverride.class})
+    @Export(name="variableOverrides", refs={List.class,EnvironmentVariableOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EnvironmentVariableOverride>> variableOverrides;
 
     /**

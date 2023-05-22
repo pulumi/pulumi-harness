@@ -43,7 +43,7 @@ public final class GetRoleAssignmentsResult {
      * @return Principal.
      * 
      */
-    private @Nullable List<GetRoleAssignmentsPrincipal> principals;
+    private List<GetRoleAssignmentsPrincipal> principals;
     /**
      * @return Project Identifier
      * 
@@ -101,7 +101,7 @@ public final class GetRoleAssignmentsResult {
      * 
      */
     public List<GetRoleAssignmentsPrincipal> principals() {
-        return this.principals == null ? List.of() : this.principals;
+        return this.principals;
     }
     /**
      * @return Project Identifier
@@ -139,7 +139,7 @@ public final class GetRoleAssignmentsResult {
         private String identifier;
         private Boolean managed;
         private @Nullable String orgId;
-        private @Nullable List<GetRoleAssignmentsPrincipal> principals;
+        private List<GetRoleAssignmentsPrincipal> principals;
         private @Nullable String projectId;
         private String resourceGroupIdentifier;
         private String roleIdentifier;
@@ -183,8 +183,8 @@ public final class GetRoleAssignmentsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder principals(@Nullable List<GetRoleAssignmentsPrincipal> principals) {
-            this.principals = principals;
+        public Builder principals(List<GetRoleAssignmentsPrincipal> principals) {
+            this.principals = Objects.requireNonNull(principals);
             return this;
         }
         public Builder principals(GetRoleAssignmentsPrincipal... principals) {

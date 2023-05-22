@@ -15,36 +15,42 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
-                 org_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] yaml: Environment YAML
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "type", type)
         if color is not None:
             pulumi.set(__self__, "color", color)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if yaml is not None:
@@ -61,30 +67,6 @@ class EnvironmentArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Input[str]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "org_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -123,6 +105,18 @@ class EnvironmentArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable this flag for force deletion of environment
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -135,10 +129,34 @@ class EnvironmentArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -150,7 +168,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Environment YAML
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -164,6 +182,7 @@ class _EnvironmentState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -175,18 +194,21 @@ class _EnvironmentState:
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[str] yaml: Environment YAML
+        :param pulumi.Input[str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -225,6 +247,18 @@ class _EnvironmentState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable this flag for force deletion of environment
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -278,7 +312,7 @@ class _EnvironmentState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -302,7 +336,7 @@ class _EnvironmentState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Environment YAML
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -318,6 +352,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -393,23 +428,36 @@ class Environment(pulumi.CustomResource):
 
         ## Import
 
-        Import using environment id
+        Import account level environment id
 
         ```sh
          $ pulumi import harness:platform/environment:Environment example <environment_id>
+        ```
+
+         Import org level environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
+        ```
+
+         Import project level environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[str] yaml: Environment YAML
+        :param pulumi.Input[str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -484,10 +532,22 @@ class Environment(pulumi.CustomResource):
 
         ## Import
 
-        Import using environment id
+        Import account level environment id
 
         ```sh
          $ pulumi import harness:platform/environment:Environment example <environment_id>
+        ```
+
+         Import org level environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
+        ```
+
+         Import project level environment id
+
+        ```sh
+         $ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -507,6 +567,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -525,15 +586,12 @@ class Environment(pulumi.CustomResource):
 
             __props__.__dict__["color"] = color
             __props__.__dict__["description"] = description
+            __props__.__dict__["force_delete"] = force_delete
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
-            if org_id is None and not opts.urn:
-                raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
@@ -552,6 +610,7 @@ class Environment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -568,13 +627,14 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[str] yaml: Environment YAML
+        :param pulumi.Input[str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -582,6 +642,7 @@ class Environment(pulumi.CustomResource):
 
         __props__.__dict__["color"] = color
         __props__.__dict__["description"] = description
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -608,6 +669,14 @@ class Environment(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[str]:
+        """
+        Enable this flag for force deletion of environment
+        """
+        return pulumi.get(self, "force_delete")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -625,7 +694,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[str]:
+    def org_id(self) -> pulumi.Output[Optional[str]]:
         """
         Unique identifier of the organization.
         """
@@ -633,7 +702,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    def project_id(self) -> pulumi.Output[Optional[str]]:
         """
         Unique identifier of the project.
         """
@@ -643,7 +712,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -659,7 +728,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[Optional[str]]:
         """
-        Environment YAML
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

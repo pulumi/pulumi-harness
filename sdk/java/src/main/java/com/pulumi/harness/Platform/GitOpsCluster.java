@@ -17,101 +17,189 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating a Harness Gitops Cluster.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.GitOpsCluster;
+ * import com.pulumi.harness.platform.GitOpsClusterArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsClusterRequestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleGitOpsCluster = new GitOpsCluster(&#34;exampleGitOpsCluster&#34;, GitOpsClusterArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .accountId(&#34;account_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .agentId(&#34;agent_id&#34;)
+ *             .requests(GitOpsClusterRequestArgs.builder()
+ *                 .upsert(false)
+ *                 .clusters(GitOpsClusterRequestClusterArgs.builder()
+ *                     .server(&#34;https://kubernetes.default.svc&#34;)
+ *                     .name(&#34;name&#34;)
+ *                     .configs(GitOpsClusterRequestClusterConfigArgs.builder()
+ *                         .tlsClientConfigs(GitOpsClusterRequestClusterConfigTlsClientConfigArgs.builder()
+ *                             .insecure(true)
+ *                             .build())
+ *                         .clusterConnectionType(&#34;IN_CLUSTER&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var examplePlatform_gitOpsClusterGitOpsCluster = new GitOpsCluster(&#34;examplePlatform/gitOpsClusterGitOpsCluster&#34;, GitOpsClusterArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .accountId(&#34;account_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .agentId(&#34;agent_id&#34;)
+ *             .requests(GitOpsClusterRequestArgs.builder()
+ *                 .upsert(false)
+ *                 .tags(&#34;foo:bar&#34;)
+ *                 .clusters(GitOpsClusterRequestClusterArgs.builder()
+ *                     .server(&#34;https://kubernetes.default.svc&#34;)
+ *                     .name(&#34;name&#34;)
+ *                     .configs(GitOpsClusterRequestClusterConfigArgs.builder()
+ *                         .tlsClientConfigs(GitOpsClusterRequestClusterConfigTlsClientConfigArgs.builder()
+ *                             .insecure(true)
+ *                             .build())
+ *                         .clusterConnectionType(&#34;IN_CLUSTER&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import a Account level Gitops Cluster
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;agent_id&gt;/&lt;cluster_id&gt;
+ * ```
+ * 
+ *  Import a Project level Gitops Cluster
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;cluster_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:platform/gitOpsCluster:GitOpsCluster")
 public class GitOpsCluster extends com.pulumi.resources.CustomResource {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps cluster.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the cluster.
+     * @return Account identifier of the GitOps cluster.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps cluster.
      * 
      */
-    @Export(name="agentId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> agentId;
+    @Export(name="agentId", refs={String.class}, tree="[0]")
+    private Output<String> agentId;
 
     /**
-     * @return agent identifier of the cluster.
+     * @return Agent identifier of the GitOps cluster.
      * 
      */
-    public Output<Optional<String>> agentId() {
-        return Codegen.optional(this.agentId);
+    public Output<String> agentId() {
+        return this.agentId;
     }
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps cluster.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return Identifier of the GitOps cluster.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the cluster.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return organization identifier of the cluster.
+     * @return Organization identifier of the cluster.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps cluster.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
-    private Output<String> projectId;
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return project identifier of the cluster.
+     * @return Project identifier of the GitOps cluster.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<Optional<String>> projectId() {
+        return Codegen.optional(this.projectId);
     }
     /**
-     * query for cluster resources
+     * Query for the GitOps cluster resources.
      * 
      */
-    @Export(name="queries", type=List.class, parameters={GitOpsClusterQuery.class})
+    @Export(name="queries", refs={List.class,GitOpsClusterQuery.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitOpsClusterQuery>> queries;
 
     /**
-     * @return query for cluster resources
+     * @return Query for the GitOps cluster resources.
      * 
      */
     public Output<Optional<List<GitOpsClusterQuery>>> queries() {
         return Codegen.optional(this.queries);
     }
     /**
-     * Cluster create/Update request.
+     * Cluster create or update request.
      * 
      */
-    @Export(name="requests", type=List.class, parameters={GitOpsClusterRequest.class})
+    @Export(name="requests", refs={List.class,GitOpsClusterRequest.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitOpsClusterRequest>> requests;
 
     /**
-     * @return Cluster create/Update request.
+     * @return Cluster create or update request.
      * 
      */
     public Output<Optional<List<GitOpsClusterRequest>>> requests() {

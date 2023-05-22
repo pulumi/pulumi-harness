@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -40,10 +41,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using user group id
+    /// Import account level variables
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/variables:Variables example &lt;variable_id&gt;
+    /// ```
+    /// 
+    ///  Import org level variables
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/variables:Variables example &lt;ord_id&gt;/&lt;variable_id&gt;
+    /// ```
+    /// 
+    ///  Import project level variables
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/variables:Variables example &lt;org_id&gt;/&lt;project_id&gt;/&lt;variable_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/variables:Variables")]

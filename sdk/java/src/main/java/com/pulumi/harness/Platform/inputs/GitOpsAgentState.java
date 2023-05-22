@@ -19,14 +19,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     public static final GitOpsAgentState Empty = new GitOpsAgentState();
 
     /**
-     * account identifier of the agent.
+     * Account identifier of the GitOps agent.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return account identifier of the agent.
+     * @return Account identifier of the GitOps agent.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,14 +34,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * description of the agent.
+     * Description of the GitOps agent.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return description of the agent.
+     * @return Description of the GitOps agent.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,14 +49,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * identifier of the agent.
+     * Identifier of the GitOps agent.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return identifier of the agent.
+     * @return Identifier of the GitOps agent.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -64,14 +64,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tags for the agent.
+     * Metadata of the agent.
      * 
      */
     @Import(name="metadatas")
     private @Nullable Output<List<GitOpsAgentMetadataArgs>> metadatas;
 
     /**
-     * @return tags for the agent.
+     * @return Metadata of the agent.
      * 
      */
     public Optional<Output<List<GitOpsAgentMetadataArgs>>> metadatas() {
@@ -79,14 +79,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the agent.
+     * Name of the GitOps agent.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name of the agent.
+     * @return Name of the GitOps agent.
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,14 +94,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * org identifier of the agent.
+     * Organization identifier of the GitOps agent.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return org identifier of the agent.
+     * @return Organization identifier of the GitOps agent.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -109,14 +109,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * org identifier of the agent.
+     * Project identifier of the GitOps agent.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return org identifier of the agent.
+     * @return Project identifier of the GitOps agent.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -124,14 +124,14 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tags for the agent.
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return tags for the agent.
+     * @return Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -139,14 +139,16 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * type of the agent.
+     * Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return type of the agent.
+     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
      * 
      */
     public Optional<Output<String>> type() {
@@ -186,7 +188,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId account identifier of the agent.
+         * @param accountId Account identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -197,7 +199,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId account identifier of the agent.
+         * @param accountId Account identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -207,7 +209,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description description of the agent.
+         * @param description Description of the GitOps agent.
          * 
          * @return builder
          * 
@@ -218,7 +220,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description description of the agent.
+         * @param description Description of the GitOps agent.
          * 
          * @return builder
          * 
@@ -228,7 +230,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier identifier of the agent.
+         * @param identifier Identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -239,7 +241,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier identifier of the agent.
+         * @param identifier Identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -249,7 +251,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas tags for the agent.
+         * @param metadatas Metadata of the agent.
          * 
          * @return builder
          * 
@@ -260,7 +262,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas tags for the agent.
+         * @param metadatas Metadata of the agent.
          * 
          * @return builder
          * 
@@ -270,7 +272,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas tags for the agent.
+         * @param metadatas Metadata of the agent.
          * 
          * @return builder
          * 
@@ -280,7 +282,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the agent.
+         * @param name Name of the GitOps agent.
          * 
          * @return builder
          * 
@@ -291,7 +293,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the agent.
+         * @param name Name of the GitOps agent.
          * 
          * @return builder
          * 
@@ -301,7 +303,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId org identifier of the agent.
+         * @param orgId Organization identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -312,7 +314,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId org identifier of the agent.
+         * @param orgId Organization identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -322,7 +324,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId org identifier of the agent.
+         * @param projectId Project identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -333,7 +335,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId org identifier of the agent.
+         * @param projectId Project identifier of the GitOps agent.
          * 
          * @return builder
          * 
@@ -343,7 +345,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags tags for the agent.
+         * @param tags Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
          * 
          * @return builder
          * 
@@ -354,7 +356,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags tags for the agent.
+         * @param tags Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
          * 
          * @return builder
          * 
@@ -364,7 +366,8 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type type of the agent.
+         * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
+         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
          * 
          * @return builder
          * 
@@ -375,7 +378,8 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type type of the agent.
+         * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
+         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
          * 
          * @return builder
          * 

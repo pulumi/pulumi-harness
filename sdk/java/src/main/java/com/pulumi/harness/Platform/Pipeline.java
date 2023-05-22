@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.PipelineArgs;
 import com.pulumi.harness.platform.inputs.PipelineState;
+import com.pulumi.harness.platform.outputs.PipelineGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.Pipeline;
  * import com.pulumi.harness.platform.PipelineArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineGitDetailsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,6 +44,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Pipeline(&#34;example&#34;, PipelineArgs.builder()        
+ *             .gitDetails(PipelineGitDetailsArgs.builder()
+ *                 .branchName(&#34;branchName&#34;)
+ *                 .commitMessage(&#34;commitMessage&#34;)
+ *                 .connectorRef(&#34;connectorRef&#34;)
+ *                 .filePath(&#34;filePath&#34;)
+ *                 .repoName(&#34;repoName&#34;)
+ *                 .storeType(&#34;REMOTE&#34;)
+ *                 .build())
  *             .identifier(&#34;identifier&#34;)
  *             .orgId(&#34;orgIdentifier&#34;)
  *             .projectId(&#34;projectIdentifier&#34;)
@@ -140,10 +151,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using pipeline id
+ * Import pipeline
  * 
  * ```sh
- *  $ pulumi import harness:platform/pipeline:Pipeline example &lt;pipeline_id&gt;
+ *  $ pulumi import harness:platform/pipeline:Pipeline example &lt;org_id&gt;/&lt;project_id&gt;/&lt;pipeline_id&gt;
  * ```
  * 
  */
@@ -153,7 +164,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -164,10 +175,24 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Export(name="gitDetails", refs={PipelineGitDetails.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineGitDetails> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Output<Optional<PipelineGitDetails>> gitDetails() {
+        return Codegen.optional(this.gitDetails);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -181,7 +206,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -192,56 +217,84 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * YAML of the pipeline.
+     * If true, returns Pipeline YAML with Templates applied on it.
      * 
      */
-    @Export(name="yaml", type=String.class, parameters={})
+    @Export(name="templateApplied", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> templateApplied;
+
+    /**
+     * @return If true, returns Pipeline YAML with Templates applied on it.
+     * 
+     */
+    public Output<Optional<Boolean>> templateApplied() {
+        return Codegen.optional(this.templateApplied);
+    }
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    @Export(name="templateAppliedPipelineYaml", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> templateAppliedPipelineYaml;
+
+    /**
+     * @return Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    public Output<Optional<String>> templateAppliedPipelineYaml() {
+        return Codegen.optional(this.templateAppliedPipelineYaml);
+    }
+    /**
+     * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * 
+     */
+    @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return YAML of the pipeline.
+     * @return YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

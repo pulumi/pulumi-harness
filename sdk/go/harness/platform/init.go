@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "harness:platform/apiKey:ApiKey":
+		r = &ApiKey{}
 	case "harness:platform/appDynamicsConnector:AppDynamicsConnector":
 		r = &AppDynamicsConnector{}
 	case "harness:platform/artifactoryConnector:ArtifactoryConnector":
@@ -35,6 +37,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsSecretManagerConnector{}
 	case "harness:platform/bitbucketConnector:BitbucketConnector":
 		r = &BitbucketConnector{}
+	case "harness:platform/ccmFilters:CcmFilters":
+		r = &CcmFilters{}
+	case "harness:platform/connectorAzureCloudCost:ConnectorAzureCloudCost":
+		r = &ConnectorAzureCloudCost{}
+	case "harness:platform/connectorAzureCloudProvider:ConnectorAzureCloudProvider":
+		r = &ConnectorAzureCloudProvider{}
+	case "harness:platform/connectorAzureKeyVault:ConnectorAzureKeyVault":
+		r = &ConnectorAzureKeyVault{}
+	case "harness:platform/connectorGcpCloudCost:ConnectorGcpCloudCost":
+		r = &ConnectorGcpCloudCost{}
+	case "harness:platform/connectorGcpSecretManager:ConnectorGcpSecretManager":
+		r = &ConnectorGcpSecretManager{}
+	case "harness:platform/connectorJenkins:ConnectorJenkins":
+		r = &ConnectorJenkins{}
+	case "harness:platform/connectorKubernetesCloudCost:ConnectorKubernetesCloudCost":
+		r = &ConnectorKubernetesCloudCost{}
+	case "harness:platform/connectorOciHelm:ConnectorOciHelm":
+		r = &ConnectorOciHelm{}
+	case "harness:platform/connectorServiceNow:ConnectorServiceNow":
+		r = &ConnectorServiceNow{}
+	case "harness:platform/connectorSpot:ConnectorSpot":
+		r = &ConnectorSpot{}
+	case "harness:platform/connectorTas:ConnectorTas":
+		r = &ConnectorTas{}
+	case "harness:platform/connectorTerraformCloud:ConnectorTerraformCloud":
+		r = &ConnectorTerraformCloud{}
 	case "harness:platform/datadogConnector:DatadogConnector":
 		r = &DatadogConnector{}
 	case "harness:platform/dockerConnector:DockerConnector":
@@ -49,6 +77,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnvironmentGroup{}
 	case "harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides":
 		r = &EnvironmentServiceOverrides{}
+	case "harness:platform/featureFlag:FeatureFlag":
+		r = &FeatureFlag{}
+	case "harness:platform/ffApiKey:FfApiKey":
+		r = &FfApiKey{}
+	case "harness:platform/filters:Filters":
+		r = &Filters{}
 	case "harness:platform/gcpConnector:GcpConnector":
 		r = &GcpConnector{}
 	case "harness:platform/gitConnector:GitConnector":
@@ -63,6 +97,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GithubConnector{}
 	case "harness:platform/gitlabConnector:GitlabConnector":
 		r = &GitlabConnector{}
+	case "harness:platform/gitopsApplications:GitopsApplications":
+		r = &GitopsApplications{}
+	case "harness:platform/gitopsGnupg:GitopsGnupg":
+		r = &GitopsGnupg{}
+	case "harness:platform/gitopsRepoCert:GitopsRepoCert":
+		r = &GitopsRepoCert{}
+	case "harness:platform/gitopsRepoCred:GitopsRepoCred":
+		r = &GitopsRepoCred{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
 	case "harness:platform/infrastructure:Infrastructure":
@@ -73,6 +115,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JiraConnector{}
 	case "harness:platform/kubernetesConnector:KubernetesConnector":
 		r = &KubernetesConnector{}
+	case "harness:platform/manualFreeze:ManualFreeze":
+		r = &ManualFreeze{}
+	case "harness:platform/monitoredService:MonitoredService":
+		r = &MonitoredService{}
 	case "harness:platform/newrelicConnector:NewrelicConnector":
 		r = &NewrelicConnector{}
 	case "harness:platform/nexusConnector:NexusConnector":
@@ -83,6 +129,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PagerdutyConnector{}
 	case "harness:platform/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "harness:platform/pipelineFilters:PipelineFilters":
+		r = &PipelineFilters{}
+	case "harness:platform/policy:Policy":
+		r = &Policy{}
+	case "harness:platform/policyset:Policyset":
+		r = &Policyset{}
 	case "harness:platform/project:Project":
 		r = &Project{}
 	case "harness:platform/prometheusConnector:PrometheusConnector":
@@ -103,12 +155,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Service{}
 	case "harness:platform/serviceAccount:ServiceAccount":
 		r = &ServiceAccount{}
+	case "harness:platform/slo:Slo":
+		r = &Slo{}
 	case "harness:platform/splunkConnector:SplunkConnector":
 		r = &SplunkConnector{}
 	case "harness:platform/sumologicConnector:SumologicConnector":
 		r = &SumologicConnector{}
+	case "harness:platform/template:Template":
+		r = &Template{}
+	case "harness:platform/templateFilters:TemplateFilters":
+		r = &TemplateFilters{}
 	case "harness:platform/triggers:Triggers":
 		r = &Triggers{}
+	case "harness:platform/user:User":
+		r = &User{}
 	case "harness:platform/usergroup:Usergroup":
 		r = &Usergroup{}
 	case "harness:platform/variables:Variables":
@@ -128,6 +188,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/apiKey",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/appDynamicsConnector",
@@ -161,6 +226,71 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/bitbucketConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/ccmFilters",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorAzureCloudCost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorAzureCloudProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorAzureKeyVault",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorGcpCloudCost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorGcpSecretManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorJenkins",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorKubernetesCloudCost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorOciHelm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorServiceNow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorSpot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorTas",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorTerraformCloud",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -200,6 +330,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/featureFlag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/ffApiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/filters",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/gcpConnector",
 		&module{version},
 	)
@@ -235,6 +380,26 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/gitopsApplications",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsGnupg",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsRepoCert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsRepoCred",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/helmConnector",
 		&module{version},
 	)
@@ -260,6 +425,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/manualFreeze",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/monitoredService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/newrelicConnector",
 		&module{version},
 	)
@@ -281,6 +456,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/pipelineFilters",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/policy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/policyset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -335,6 +525,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/slo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/splunkConnector",
 		&module{version},
 	)
@@ -345,7 +540,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/template",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/templateFilters",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/triggers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

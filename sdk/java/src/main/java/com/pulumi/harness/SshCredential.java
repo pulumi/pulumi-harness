@@ -21,64 +21,6 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an encrypted text secret
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.tls.PrivateKey;
- * import com.pulumi.tls.PrivateKeyArgs;
- * import com.pulumi.harness.HarnessFunctions;
- * import com.pulumi.harness.inputs.GetSecretManagerArgs;
- * import com.pulumi.harness.EncryptedText;
- * import com.pulumi.harness.EncryptedTextArgs;
- * import com.pulumi.harness.SshCredential;
- * import com.pulumi.harness.SshCredentialArgs;
- * import com.pulumi.harness.inputs.SshCredentialSshAuthenticationArgs;
- * import com.pulumi.harness.inputs.SshCredentialSshAuthenticationInlineSshArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var harnessDeployKey = new PrivateKey(&#34;harnessDeployKey&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
- *             .rsaBits(4096)
- *             .build());
- * 
- *         final var secretManager = HarnessFunctions.getSecretManager(GetSecretManagerArgs.builder()
- *             .default_(true)
- *             .build());
- * 
- *         var mySecret = new EncryptedText(&#34;mySecret&#34;, EncryptedTextArgs.builder()        
- *             .value(harnessDeployKey.privateKeyPem())
- *             .secretManagerId(secretManager.applyValue(getSecretManagerResult -&gt; getSecretManagerResult.id()))
- *             .build());
- * 
- *         var sshCreds = new SshCredential(&#34;sshCreds&#34;, SshCredentialArgs.builder()        
- *             .sshAuthentication(SshCredentialSshAuthenticationArgs.builder()
- *                 .port(22)
- *                 .username(&#34;git&#34;)
- *                 .inlineSsh(SshCredentialSshAuthenticationInlineSshArgs.builder()
- *                     .sshKeyFileId(mySecret.id())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Import using the Harness ssh credential id
@@ -94,7 +36,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
      * 
      */
-    @Export(name="kerberosAuthentication", type=SshCredentialKerberosAuthentication.class, parameters={})
+    @Export(name="kerberosAuthentication", refs={SshCredentialKerberosAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ SshCredentialKerberosAuthentication> kerberosAuthentication;
 
     /**
@@ -108,7 +50,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Name of the encrypted text secret
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -122,7 +64,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
      * 
      */
-    @Export(name="sshAuthentication", type=SshCredentialSshAuthentication.class, parameters={})
+    @Export(name="sshAuthentication", refs={SshCredentialSshAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ SshCredentialSshAuthentication> sshAuthentication;
 
     /**
@@ -136,7 +78,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={SshCredentialUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,SshCredentialUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SshCredentialUsageScope>> usageScopes;
 
     /**

@@ -7,24 +7,40 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GithubConnectorApiAuthenticationGithubAppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GithubConnectorApiAuthenticationGithubAppArgs Empty = new GithubConnectorApiAuthenticationGithubAppArgs();
 
-    @Import(name="applicationId", required=true)
-    private Output<String> applicationId;
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
-    public Output<String> applicationId() {
-        return this.applicationId;
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
     }
 
-    @Import(name="installationId", required=true)
-    private Output<String> installationId;
+    @Import(name="applicationIdRef")
+    private @Nullable Output<String> applicationIdRef;
 
-    public Output<String> installationId() {
-        return this.installationId;
+    public Optional<Output<String>> applicationIdRef() {
+        return Optional.ofNullable(this.applicationIdRef);
+    }
+
+    @Import(name="installationId")
+    private @Nullable Output<String> installationId;
+
+    public Optional<Output<String>> installationId() {
+        return Optional.ofNullable(this.installationId);
+    }
+
+    @Import(name="installationIdRef")
+    private @Nullable Output<String> installationIdRef;
+
+    public Optional<Output<String>> installationIdRef() {
+        return Optional.ofNullable(this.installationIdRef);
     }
 
     @Import(name="privateKeyRef", required=true)
@@ -38,7 +54,9 @@ public final class GithubConnectorApiAuthenticationGithubAppArgs extends com.pul
 
     private GithubConnectorApiAuthenticationGithubAppArgs(GithubConnectorApiAuthenticationGithubAppArgs $) {
         this.applicationId = $.applicationId;
+        this.applicationIdRef = $.applicationIdRef;
         this.installationId = $.installationId;
+        this.installationIdRef = $.installationIdRef;
         this.privateKeyRef = $.privateKeyRef;
     }
 
@@ -60,7 +78,7 @@ public final class GithubConnectorApiAuthenticationGithubAppArgs extends com.pul
             $ = new GithubConnectorApiAuthenticationGithubAppArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder applicationId(Output<String> applicationId) {
+        public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
@@ -69,13 +87,31 @@ public final class GithubConnectorApiAuthenticationGithubAppArgs extends com.pul
             return applicationId(Output.of(applicationId));
         }
 
-        public Builder installationId(Output<String> installationId) {
+        public Builder applicationIdRef(@Nullable Output<String> applicationIdRef) {
+            $.applicationIdRef = applicationIdRef;
+            return this;
+        }
+
+        public Builder applicationIdRef(String applicationIdRef) {
+            return applicationIdRef(Output.of(applicationIdRef));
+        }
+
+        public Builder installationId(@Nullable Output<String> installationId) {
             $.installationId = installationId;
             return this;
         }
 
         public Builder installationId(String installationId) {
             return installationId(Output.of(installationId));
+        }
+
+        public Builder installationIdRef(@Nullable Output<String> installationIdRef) {
+            $.installationIdRef = installationIdRef;
+            return this;
+        }
+
+        public Builder installationIdRef(String installationIdRef) {
+            return installationIdRef(Output.of(installationIdRef));
         }
 
         public Builder privateKeyRef(Output<String> privateKeyRef) {
@@ -88,8 +124,6 @@ public final class GithubConnectorApiAuthenticationGithubAppArgs extends com.pul
         }
 
         public GithubConnectorApiAuthenticationGithubAppArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.installationId = Objects.requireNonNull($.installationId, "expected parameter 'installationId' to be non-null");
             $.privateKeyRef = Objects.requireNonNull($.privateKeyRef, "expected parameter 'privateKeyRef' to be non-null");
             return $;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,14 +14,14 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
     public static final GetUsergroupNotificationConfig Empty = new GetUsergroupNotificationConfig();
 
     /**
-     * Group email
+     * Group email.
      * 
      */
     @Import(name="groupEmail", required=true)
     private String groupEmail;
 
     /**
-     * @return Group email
+     * @return Group email.
      * 
      */
     public String groupEmail() {
@@ -28,14 +29,14 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
     }
 
     /**
-     * Url of Microsoft teams webhook
+     * Url of Microsoft teams webhook.
      * 
      */
     @Import(name="microsoftTeamsWebhookUrl", required=true)
     private String microsoftTeamsWebhookUrl;
 
     /**
-     * @return Url of Microsoft teams webhook
+     * @return Url of Microsoft teams webhook.
      * 
      */
     public String microsoftTeamsWebhookUrl() {
@@ -43,14 +44,14 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
     }
 
     /**
-     * Pager duty key
+     * Pager duty key.
      * 
      */
     @Import(name="pagerDutyKey", required=true)
     private String pagerDutyKey;
 
     /**
-     * @return Pager duty key
+     * @return Pager duty key.
      * 
      */
     public String pagerDutyKey() {
@@ -58,14 +59,29 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
     }
 
     /**
-     * Url of slack webhook
+     * Send email to all the group members.
+     * 
+     */
+    @Import(name="sendEmailToAllUsers", required=true)
+    private Boolean sendEmailToAllUsers;
+
+    /**
+     * @return Send email to all the group members.
+     * 
+     */
+    public Boolean sendEmailToAllUsers() {
+        return this.sendEmailToAllUsers;
+    }
+
+    /**
+     * Url of slack webhook.
      * 
      */
     @Import(name="slackWebhookUrl", required=true)
     private String slackWebhookUrl;
 
     /**
-     * @return Url of slack webhook
+     * @return Url of slack webhook.
      * 
      */
     public String slackWebhookUrl() {
@@ -73,14 +89,14 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
     }
 
     /**
-     * Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+     * Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
      * 
      */
     @Import(name="type", required=true)
     private String type;
 
     /**
-     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
      * 
      */
     public String type() {
@@ -93,6 +109,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         this.groupEmail = $.groupEmail;
         this.microsoftTeamsWebhookUrl = $.microsoftTeamsWebhookUrl;
         this.pagerDutyKey = $.pagerDutyKey;
+        this.sendEmailToAllUsers = $.sendEmailToAllUsers;
         this.slackWebhookUrl = $.slackWebhookUrl;
         this.type = $.type;
     }
@@ -116,7 +133,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         }
 
         /**
-         * @param groupEmail Group email
+         * @param groupEmail Group email.
          * 
          * @return builder
          * 
@@ -127,7 +144,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         }
 
         /**
-         * @param microsoftTeamsWebhookUrl Url of Microsoft teams webhook
+         * @param microsoftTeamsWebhookUrl Url of Microsoft teams webhook.
          * 
          * @return builder
          * 
@@ -138,7 +155,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         }
 
         /**
-         * @param pagerDutyKey Pager duty key
+         * @param pagerDutyKey Pager duty key.
          * 
          * @return builder
          * 
@@ -149,7 +166,18 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         }
 
         /**
-         * @param slackWebhookUrl Url of slack webhook
+         * @param sendEmailToAllUsers Send email to all the group members.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendEmailToAllUsers(Boolean sendEmailToAllUsers) {
+            $.sendEmailToAllUsers = sendEmailToAllUsers;
+            return this;
+        }
+
+        /**
+         * @param slackWebhookUrl Url of slack webhook.
          * 
          * @return builder
          * 
@@ -160,7 +188,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
         }
 
         /**
-         * @param type Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+         * @param type Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
          * 
          * @return builder
          * 
@@ -174,6 +202,7 @@ public final class GetUsergroupNotificationConfig extends com.pulumi.resources.I
             $.groupEmail = Objects.requireNonNull($.groupEmail, "expected parameter 'groupEmail' to be non-null");
             $.microsoftTeamsWebhookUrl = Objects.requireNonNull($.microsoftTeamsWebhookUrl, "expected parameter 'microsoftTeamsWebhookUrl' to be non-null");
             $.pagerDutyKey = Objects.requireNonNull($.pagerDutyKey, "expected parameter 'pagerDutyKey' to be non-null");
+            $.sendEmailToAllUsers = Objects.requireNonNull($.sendEmailToAllUsers, "expected parameter 'sendEmailToAllUsers' to be non-null");
             $.slackWebhookUrl = Objects.requireNonNull($.slackWebhookUrl, "expected parameter 'slackWebhookUrl' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;

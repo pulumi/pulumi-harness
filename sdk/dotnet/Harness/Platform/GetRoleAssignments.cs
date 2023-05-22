@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -50,6 +51,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -86,18 +88,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [Input("orgId")]
         public string? OrgId { get; set; }
 
-        [Input("principals")]
-        private List<Inputs.GetRoleAssignmentsPrincipalArgs>? _principals;
-
-        /// <summary>
-        /// Principal.
-        /// </summary>
-        public List<Inputs.GetRoleAssignmentsPrincipalArgs> Principals
-        {
-            get => _principals ?? (_principals = new List<Inputs.GetRoleAssignmentsPrincipalArgs>());
-            set => _principals = value;
-        }
-
         /// <summary>
         /// Project Identifier
         /// </summary>
@@ -123,18 +113,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
-
-        [Input("principals")]
-        private InputList<Inputs.GetRoleAssignmentsPrincipalInputArgs>? _principals;
-
-        /// <summary>
-        /// Principal.
-        /// </summary>
-        public InputList<Inputs.GetRoleAssignmentsPrincipalInputArgs> Principals
-        {
-            get => _principals ?? (_principals = new InputList<Inputs.GetRoleAssignmentsPrincipalInputArgs>());
-            set => _principals = value;
-        }
 
         /// <summary>
         /// Project Identifier

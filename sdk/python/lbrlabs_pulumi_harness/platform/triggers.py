@@ -27,15 +27,15 @@ class TriggersArgs:
         """
         The set of arguments for constructing a Triggers resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
-        :param pulumi.Input[str] yaml: trigger yaml
+        :param pulumi.Input[str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -69,7 +69,7 @@ class TriggersArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -81,7 +81,7 @@ class TriggersArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -105,7 +105,7 @@ class TriggersArgs:
     @pulumi.getter
     def yaml(self) -> pulumi.Input[str]:
         """
-        trigger yaml
+        trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -165,7 +165,7 @@ class TriggersArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -194,11 +194,11 @@ class _TriggersState:
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
-        :param pulumi.Input[str] yaml: trigger yaml
+        :param pulumi.Input[str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -285,7 +285,7 @@ class _TriggersState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -297,7 +297,7 @@ class _TriggersState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -309,7 +309,7 @@ class _TriggersState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -333,7 +333,7 @@ class _TriggersState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        trigger yaml
+        trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -359,8 +359,6 @@ class Triggers(pulumi.CustomResource):
                  yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for craeting triggers in Harness.
-
         ## Example Usage
 
         ```python
@@ -407,10 +405,10 @@ class Triggers(pulumi.CustomResource):
 
         ## Import
 
-        Import using trigger id
+        Import trigger
 
         ```sh
-         $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
+         $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -420,11 +418,11 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
-        :param pulumi.Input[str] yaml: trigger yaml
+        :param pulumi.Input[str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -433,8 +431,6 @@ class Triggers(pulumi.CustomResource):
                  args: TriggersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for craeting triggers in Harness.
-
         ## Example Usage
 
         ```python
@@ -481,10 +477,10 @@ class Triggers(pulumi.CustomResource):
 
         ## Import
 
-        Import using trigger id
+        Import trigger
 
         ```sh
-         $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
+         $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -573,11 +569,11 @@ class Triggers(pulumi.CustomResource):
         :param pulumi.Input[str] if_match: if-Match
         :param pulumi.Input[bool] ignore_error: ignore error default false
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] target_id: Identifier of the target pipeline
-        :param pulumi.Input[str] yaml: trigger yaml
+        :param pulumi.Input[str] yaml: trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -639,7 +635,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -647,7 +643,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -655,7 +651,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -671,7 +667,7 @@ class Triggers(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[str]:
         """
-        trigger yaml
+        trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

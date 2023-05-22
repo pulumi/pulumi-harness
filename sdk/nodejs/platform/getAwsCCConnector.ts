@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up an AWS Cloud Cost connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsCCConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getAwsCCConnector(args?: GetAwsCCConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsCCConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getAwsCCConnector(args: GetAwsCCConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsCCConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsCCConnector:getAwsCCConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetAwsCCConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -73,17 +80,17 @@ export interface GetAwsCCConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -95,13 +102,26 @@ export interface GetAwsCCConnectorResult {
      */
     readonly s3Bucket: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getAwsCCConnectorOutput(args?: GetAwsCCConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCCConnectorResult> {
-    return pulumi.output(args).apply(a => getAwsCCConnector(a, opts))
+/**
+ * Datasource for looking up an AWS Cloud Cost connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsCCConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getAwsCCConnectorOutput(args: GetAwsCCConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCCConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getAwsCCConnector(a, opts))
 }
 
 /**
@@ -111,17 +131,17 @@ export interface GetAwsCCConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,97 +28,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipeline(ctx, "example", &platform.PipelineArgs{
+//				GitDetails: &platform.PipelineGitDetailsArgs{
+//					BranchName:    pulumi.String("branchName"),
+//					CommitMessage: pulumi.String("commitMessage"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					FilePath:      pulumi.String("filePath"),
+//					RepoName:      pulumi.String("repoName"),
+//					StoreType:     pulumi.String("REMOTE"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifier"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
-//				Yaml: pulumi.String(fmt.Sprintf(`    pipeline:
-//	        name: name
-//	        identifier: identifier
-//	        allowStageExecutions: false
-//	        projectIdentifier: projectIdentifier
-//	        orgIdentifier: orgIdentifier
-//	        tags: {}
-//	        stages:
-//	            - stage:
-//	                name: dep
-//	                identifier: dep
-//	                description: ""
-//	                type: Deployment
-//	                spec:
-//	                    serviceConfig:
-//	                        serviceRef: service
-//	                        serviceDefinition:
-//	                            type: Kubernetes
-//	                            spec:
-//	                                variables: []
-//	                    infrastructure:
-//	                        environmentRef: testenv
-//	                        infrastructureDefinition:
-//	                            type: KubernetesDirect
-//	                            spec:
-//	                                connectorRef: testconf
-//	                                namespace: test
-//	                                releaseName: release-<+INFRA_KEY>
-//	                        allowSimultaneousDeployments: false
-//	                    execution:
-//	                        steps:
-//	                            - stepGroup:
-//	                                    name: Canary Deployment
-//	                                    identifier: canaryDepoyment
-//	                                    steps:
-//	                                        - step:
-//	                                            name: Canary Deployment
-//	                                            identifier: canaryDeployment
-//	                                            type: K8sCanaryDeploy
-//	                                            timeout: 10m
-//	                                            spec:
-//	                                                instanceSelection:
-//	                                                    type: Count
-//	                                                    spec:
-//	                                                        count: 1
-//	                                                skipDryRun: false
-//	                                        - step:
-//	                                            name: Canary Delete
-//	                                            identifier: canaryDelete
-//	                                            type: K8sCanaryDelete
-//	                                            timeout: 10m
-//	                                            spec: {}
-//	                                    rollbackSteps:
-//	                                        - step:
-//	                                            name: Canary Delete
-//	                                            identifier: rollbackCanaryDelete
-//	                                            type: K8sCanaryDelete
-//	                                            timeout: 10m
-//	                                            spec: {}
-//	                            - stepGroup:
-//	                                    name: Primary Deployment
-//	                                    identifier: primaryDepoyment
-//	                                    steps:
-//	                                        - step:
-//	                                            name: Rolling Deployment
-//	                                            identifier: rollingDeployment
-//	                                            type: K8sRollingDeploy
-//	                                            timeout: 10m
-//	                                            spec:
-//	                                                skipDryRun: false
-//	                                    rollbackSteps:
-//	                                        - step:
-//	                                            name: Rolling Rollback
-//	                                            identifier: rollingRollback
-//	                                            type: K8sRollingRollback
-//	                                            timeout: 10m
-//	                                            spec: {}
-//	                        rollbackSteps: []
-//	                tags: {}
-//	                failureStrategies:
-//	                    - onFailure:
-//	                            errors:
-//	                                - AllErrors
-//	                            action:
-//	                                type: StageRollback
-//
-// `)),
-//
+//				Yaml:       pulumi.String("    pipeline:\n        name: name\n        identifier: identifier\n        allowStageExecutions: false\n        projectIdentifier: projectIdentifier\n        orgIdentifier: orgIdentifier\n        tags: {}\n        stages:\n            - stage:\n                name: dep\n                identifier: dep\n                description: \"\"\n                type: Deployment\n                spec:\n                    serviceConfig:\n                        serviceRef: service\n                        serviceDefinition:\n                            type: Kubernetes\n                            spec:\n                                variables: []\n                    infrastructure:\n                        environmentRef: testenv\n                        infrastructureDefinition:\n                            type: KubernetesDirect\n                            spec:\n                                connectorRef: testconf\n                                namespace: test\n                                releaseName: release-<+INFRA_KEY>\n                        allowSimultaneousDeployments: false\n                    execution:\n                        steps:\n                            - stepGroup:\n                                    name: Canary Deployment\n                                    identifier: canaryDepoyment\n                                    steps:\n                                        - step:\n                                            name: Canary Deployment\n                                            identifier: canaryDeployment\n                                            type: K8sCanaryDeploy\n                                            timeout: 10m\n                                            spec:\n                                                instanceSelection:\n                                                    type: Count\n                                                    spec:\n                                                        count: 1\n                                                skipDryRun: false\n                                        - step:\n                                            name: Canary Delete\n                                            identifier: canaryDelete\n                                            type: K8sCanaryDelete\n                                            timeout: 10m\n                                            spec: {}\n                                    rollbackSteps:\n                                        - step:\n                                            name: Canary Delete\n                                            identifier: rollbackCanaryDelete\n                                            type: K8sCanaryDelete\n                                            timeout: 10m\n                                            spec: {}\n                            - stepGroup:\n                                    name: Primary Deployment\n                                    identifier: primaryDepoyment\n                                    steps:\n                                        - step:\n                                            name: Rolling Deployment\n                                            identifier: rollingDeployment\n                                            type: K8sRollingDeploy\n                                            timeout: 10m\n                                            spec:\n                                                skipDryRun: false\n                                    rollbackSteps:\n                                        - step:\n                                            name: Rolling Rollback\n                                            identifier: rollingRollback\n                                            type: K8sRollingRollback\n                                            timeout: 10m\n                                            spec: {}\n                        rollbackSteps: []\n                tags: {}\n                failureStrategies:\n                    - onFailure:\n                            errors:\n                                - AllErrors\n                            action:\n                                type: StageRollback\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -133,11 +52,11 @@ import (
 //
 // ## Import
 //
-// # Import using pipeline id
+// # Import pipeline
 //
 // ```sh
 //
-//	$ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+//	$ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
 //
 // ```
 type Pipeline struct {
@@ -145,17 +64,23 @@ type Pipeline struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrOutput `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrOutput `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -203,34 +128,46 @@ func GetPipeline(ctx *pulumi.Context,
 type pipelineState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied *bool `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml *string `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type PipelineState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrInput
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrInput
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -241,17 +178,23 @@ func (PipelineState) ElementType() reflect.Type {
 type pipelineArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied *bool `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml *string `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -259,17 +202,23 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrInput
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrInput
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -365,6 +314,11 @@ func (o PipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Contains parameters related to creating an Entity for Git Experience.
+func (o PipelineOutput) GitDetails() PipelineGitDetailsPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineGitDetailsPtrOutput { return v.GitDetails }).(PipelineGitDetailsPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o PipelineOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -375,22 +329,32 @@ func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o PipelineOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o PipelineOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o PipelineOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// YAML of the pipeline.
+// If true, returns Pipeline YAML with Templates applied on it.
+func (o PipelineOutput) TemplateApplied() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.TemplateApplied }).(pulumi.BoolPtrOutput)
+}
+
+// Pipeline YAML after resolving Templates (returned as a String).
+func (o PipelineOutput) TemplateAppliedPipelineYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.TemplateAppliedPipelineYaml }).(pulumi.StringPtrOutput)
+}
+
+// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o PipelineOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

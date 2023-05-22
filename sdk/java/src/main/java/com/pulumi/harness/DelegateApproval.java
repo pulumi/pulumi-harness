@@ -69,7 +69,7 @@ public class DelegateApproval extends com.pulumi.resources.CustomResource {
      * Whether or not to approve the delegate.
      * 
      */
-    @Export(name="approve", type=Boolean.class, parameters={})
+    @Export(name="approve", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> approve;
 
     /**
@@ -83,7 +83,7 @@ public class DelegateApproval extends com.pulumi.resources.CustomResource {
      * The id of the delegate.
      * 
      */
-    @Export(name="delegateId", type=String.class, parameters={})
+    @Export(name="delegateId", refs={String.class}, tree="[0]")
     private Output<String> delegateId;
 
     /**
@@ -97,7 +97,7 @@ public class DelegateApproval extends com.pulumi.resources.CustomResource {
      * The status of the delegate.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

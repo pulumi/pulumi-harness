@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsClusterQuery {
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     private @Nullable List<GetGitopsClusterQueryId> ids;
+    /**
+     * @return Name of the GitOps cluster.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Server of the GitOps cluster.
+     * 
+     */
     private @Nullable String server;
 
     private GetGitopsClusterQuery() {}
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     public List<GetGitopsClusterQueryId> ids() {
         return this.ids == null ? List.of() : this.ids;
     }
+    /**
+     * @return Name of the GitOps cluster.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Server of the GitOps cluster.
+     * 
+     */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }

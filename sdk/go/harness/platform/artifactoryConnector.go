@@ -7,17 +7,99 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an Artifactory connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				OrgId:     pulumi.Any(harness_platform_project.Test.Org_id),
+//				ProjectId: pulumi.Any(harness_platform_project.Test.Id),
+//				Url:       pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewArtifactoryConnector(ctx, "test", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				OrgId:     pulumi.Any(harness_platform_project.Test.Org_id),
+//				ProjectId: pulumi.Any(harness_platform_project.Test.Id),
+//				Url:       pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level artifactory connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
+//
+// ```
+//
+//	Import org level artifactory connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level artifactory connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type ArtifactoryConnector struct {
 	pulumi.CustomResourceState
 
 	// Credentials to use for authentication.
 	Credentials ArtifactoryConnectorCredentialsPtrOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,11 +107,11 @@ type ArtifactoryConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// URL of the Artifactory server.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -73,7 +155,7 @@ func GetArtifactoryConnector(ctx *pulumi.Context,
 type artifactoryConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials *ArtifactoryConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -81,11 +163,11 @@ type artifactoryConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Artifactory server.
 	Url *string `pulumi:"url"`
@@ -94,7 +176,7 @@ type artifactoryConnectorState struct {
 type ArtifactoryConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials ArtifactoryConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -102,11 +184,11 @@ type ArtifactoryConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the Artifactory server.
 	Url pulumi.StringPtrInput
@@ -119,7 +201,7 @@ func (ArtifactoryConnectorState) ElementType() reflect.Type {
 type artifactoryConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *ArtifactoryConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -127,11 +209,11 @@ type artifactoryConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Artifactory server.
 	Url string `pulumi:"url"`
@@ -141,7 +223,7 @@ type artifactoryConnectorArgs struct {
 type ArtifactoryConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials ArtifactoryConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -149,11 +231,11 @@ type ArtifactoryConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the Artifactory server.
 	Url pulumi.StringInput
@@ -251,7 +333,7 @@ func (o ArtifactoryConnectorOutput) Credentials() ArtifactoryConnectorCredential
 	return o.ApplyT(func(v *ArtifactoryConnector) ArtifactoryConnectorCredentialsPtrOutput { return v.Credentials }).(ArtifactoryConnectorCredentialsPtrOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o ArtifactoryConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ArtifactoryConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -271,17 +353,17 @@ func (o ArtifactoryConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactoryConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o ArtifactoryConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactoryConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o ArtifactoryConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactoryConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o ArtifactoryConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ArtifactoryConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

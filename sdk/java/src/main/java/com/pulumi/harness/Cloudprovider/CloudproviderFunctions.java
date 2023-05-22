@@ -17,16 +17,12 @@ public final class CloudproviderFunctions {
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetDelegateIdsResult> getDelegateIds() {
         return getDelegateIds(GetDelegateIdsArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetDelegateIdsResult> getDelegateIdsPlain() {
@@ -35,16 +31,12 @@ public final class CloudproviderFunctions {
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetDelegateIdsResult> getDelegateIds(GetDelegateIdsArgs args) {
         return getDelegateIds(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetDelegateIdsResult> getDelegateIdsPlain(GetDelegateIdsPlainArgs args) {
@@ -53,16 +45,12 @@ public final class CloudproviderFunctions {
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetDelegateIdsResult> getDelegateIds(GetDelegateIdsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", TypeShape.of(GetDelegateIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetDelegateIdsResult> getDelegateIdsPlain(GetDelegateIdsPlainArgs args, InvokeOptions options) {

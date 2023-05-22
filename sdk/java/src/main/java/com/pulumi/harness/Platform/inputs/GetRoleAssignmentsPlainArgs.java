@@ -4,9 +4,7 @@
 package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.harness.platform.inputs.GetRoleAssignmentsPrincipal;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,21 +45,6 @@ public final class GetRoleAssignmentsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Principal.
-     * 
-     */
-    @Import(name="principals")
-    private @Nullable List<GetRoleAssignmentsPrincipal> principals;
-
-    /**
-     * @return Principal.
-     * 
-     */
-    public Optional<List<GetRoleAssignmentsPrincipal>> principals() {
-        return Optional.ofNullable(this.principals);
-    }
-
-    /**
      * Project Identifier
      * 
      */
@@ -81,7 +64,6 @@ public final class GetRoleAssignmentsPlainArgs extends com.pulumi.resources.Invo
     private GetRoleAssignmentsPlainArgs(GetRoleAssignmentsPlainArgs $) {
         this.identifier = $.identifier;
         this.orgId = $.orgId;
-        this.principals = $.principals;
         this.projectId = $.projectId;
     }
 
@@ -123,27 +105,6 @@ public final class GetRoleAssignmentsPlainArgs extends com.pulumi.resources.Invo
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
-        }
-
-        /**
-         * @param principals Principal.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principals(@Nullable List<GetRoleAssignmentsPrincipal> principals) {
-            $.principals = principals;
-            return this;
-        }
-
-        /**
-         * @param principals Principal.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principals(GetRoleAssignmentsPrincipal... principals) {
-            return principals(List.of(principals));
         }
 
         /**

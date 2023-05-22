@@ -45,6 +45,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -67,6 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
     ///             {
     ///                 GroupEmail = "email@email.com",
+    ///                 SendEmailToAllUsers = true,
     ///                 Type = "EMAIL",
     ///             },
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -108,6 +110,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
     ///             {
     ///                 GroupEmail = "email@email.com",
+    ///                 SendEmailToAllUsers = true,
     ///                 Type = "EMAIL",
     ///             },
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -132,15 +135,70 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     // Create user group by adding user emails
+    ///     var example = new Harness.Platform.Usergroup("example", new()
+    ///     {
+    ///         ExternallyManaged = false,
+    ///         Identifier = "identifier",
+    ///         LinkedSsoDisplayName = "linked_sso_display_name",
+    ///         LinkedSsoId = "linked_sso_id",
+    ///         LinkedSsoType = "SAML",
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 SlackWebhookUrl = "https://google.com",
+    ///                 Type = "SLACK",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 GroupEmail = "email@email.com",
+    ///                 SendEmailToAllUsers = true,
+    ///                 Type = "EMAIL",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 MicrosoftTeamsWebhookUrl = "https://google.com",
+    ///                 Type = "MSTEAMS",
+    ///             },
+    ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
+    ///             {
+    ///                 PagerDutyKey = "pagerDutyKey",
+    ///                 Type = "PAGERDUTY",
+    ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         SsoGroupId = "sso_group_name",
+    ///         SsoGroupName = "sso_group_name",
+    ///         SsoLinked = true,
+    ///         UserEmails = new[]
+    ///         {
+    ///             "user@email.com",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Import using user group id
+    /// Import account level user group
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/usergroup:Usergroup example &lt;usergroup_id&gt;
+    /// ```
+    /// 
+    ///  Import org level user group
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/usergroup:Usergroup example &lt;ord_id&gt;/&lt;usergroup_id&gt;
+    /// ```
+    /// 
+    ///  Import project level user group
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/usergroup:Usergroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;usergroup_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/usergroup:Usergroup")]
@@ -177,7 +235,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> LinkedSsoId { get; private set; } = null!;
 
         /// <summary>
-        /// Type of linked SSO
+        /// Type of linked SSO.
         /// </summary>
         [Output("linkedSsoType")]
         public Output<string?> LinkedSsoType { get; private set; } = null!;
@@ -195,13 +253,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<ImmutableArray<Outputs.UsergroupNotificationConfig>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -219,19 +277,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> SsoGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether sso is linked or not
+        /// Whether sso is linked or not.
         /// </summary>
         [Output("ssoLinked")]
         public Output<bool> SsoLinked { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// List of users in the UserGroup.
+        /// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        /// </summary>
+        [Output("userEmails")]
+        public Output<ImmutableArray<string>> UserEmails { get; private set; } = null!;
+
+        /// <summary>
+        /// List of users in the UserGroup. Either provide list of users or list of user emails.
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -314,7 +378,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? LinkedSsoId { get; set; }
 
         /// <summary>
-        /// Type of linked SSO
+        /// Type of linked SSO.
         /// </summary>
         [Input("linkedSsoType")]
         public Input<string>? LinkedSsoType { get; set; }
@@ -338,13 +402,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -362,7 +426,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? SsoGroupName { get; set; }
 
         /// <summary>
-        /// Whether sso is linked or not
+        /// Whether sso is linked or not.
         /// </summary>
         [Input("ssoLinked")]
         public Input<bool>? SsoLinked { get; set; }
@@ -371,7 +435,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -379,11 +443,23 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             set => _tags = value;
         }
 
+        [Input("userEmails")]
+        private InputList<string>? _userEmails;
+
+        /// <summary>
+        /// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        /// </summary>
+        public InputList<string> UserEmails
+        {
+            get => _userEmails ?? (_userEmails = new InputList<string>());
+            set => _userEmails = value;
+        }
+
         [Input("users")]
         private InputList<string>? _users;
 
         /// <summary>
-        /// List of users in the UserGroup.
+        /// List of users in the UserGroup. Either provide list of users or list of user emails.
         /// </summary>
         public InputList<string> Users
         {
@@ -430,7 +506,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? LinkedSsoId { get; set; }
 
         /// <summary>
-        /// Type of linked SSO
+        /// Type of linked SSO.
         /// </summary>
         [Input("linkedSsoType")]
         public Input<string>? LinkedSsoType { get; set; }
@@ -454,13 +530,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -478,7 +554,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? SsoGroupName { get; set; }
 
         /// <summary>
-        /// Whether sso is linked or not
+        /// Whether sso is linked or not.
         /// </summary>
         [Input("ssoLinked")]
         public Input<bool>? SsoLinked { get; set; }
@@ -487,7 +563,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -495,11 +571,23 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             set => _tags = value;
         }
 
+        [Input("userEmails")]
+        private InputList<string>? _userEmails;
+
+        /// <summary>
+        /// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        /// </summary>
+        public InputList<string> UserEmails
+        {
+            get => _userEmails ?? (_userEmails = new InputList<string>());
+            set => _userEmails = value;
+        }
+
         [Input("users")]
         private InputList<string>? _users;
 
         /// <summary>
-        /// List of users in the UserGroup.
+        /// List of users in the UserGroup. Either provide list of users or list of user emails.
         /// </summary>
         public InputList<string> Users
         {

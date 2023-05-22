@@ -14,25 +14,61 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsClusterResult {
+    /**
+     * @return Account identifier of the GitOps cluster.
+     * 
+     */
     private String accountId;
-    private @Nullable String agentId;
+    /**
+     * @return Agent identifier of the GitOps cluster.
+     * 
+     */
+    private String agentId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Identifier of the GitOps cluster.
+     * 
+     */
     private String identifier;
+    /**
+     * @return Organization identifier of the cluster.
+     * 
+     */
     private @Nullable String orgId;
-    private String projectId;
+    /**
+     * @return Project identifier of the GitOps cluster.
+     * 
+     */
+    private @Nullable String projectId;
+    /**
+     * @return Query for the GitOps cluster resources.
+     * 
+     */
     private @Nullable List<GetGitopsClusterQuery> queries;
-    private @Nullable List<GetGitopsClusterRequest> requests;
+    /**
+     * @return Cluster create or update request.
+     * 
+     */
+    private List<GetGitopsClusterRequest> requests;
 
     private GetGitopsClusterResult() {}
+    /**
+     * @return Account identifier of the GitOps cluster.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    /**
+     * @return Agent identifier of the GitOps cluster.
+     * 
+     */
+    public String agentId() {
+        return this.agentId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -41,20 +77,40 @@ public final class GetGitopsClusterResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifier of the GitOps cluster.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return Organization identifier of the cluster.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
-    public String projectId() {
-        return this.projectId;
+    /**
+     * @return Project identifier of the GitOps cluster.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Query for the GitOps cluster resources.
+     * 
+     */
     public List<GetGitopsClusterQuery> queries() {
         return this.queries == null ? List.of() : this.queries;
     }
+    /**
+     * @return Cluster create or update request.
+     * 
+     */
     public List<GetGitopsClusterRequest> requests() {
-        return this.requests == null ? List.of() : this.requests;
+        return this.requests;
     }
 
     public static Builder builder() {
@@ -67,13 +123,13 @@ public final class GetGitopsClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String agentId;
+        private String agentId;
         private String id;
         private String identifier;
         private @Nullable String orgId;
-        private String projectId;
+        private @Nullable String projectId;
         private @Nullable List<GetGitopsClusterQuery> queries;
-        private @Nullable List<GetGitopsClusterRequest> requests;
+        private List<GetGitopsClusterRequest> requests;
         public Builder() {}
         public Builder(GetGitopsClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,8 +149,8 @@ public final class GetGitopsClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder agentId(@Nullable String agentId) {
-            this.agentId = agentId;
+        public Builder agentId(String agentId) {
+            this.agentId = Objects.requireNonNull(agentId);
             return this;
         }
         @CustomType.Setter
@@ -113,8 +169,8 @@ public final class GetGitopsClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -126,8 +182,8 @@ public final class GetGitopsClusterResult {
             return queries(List.of(queries));
         }
         @CustomType.Setter
-        public Builder requests(@Nullable List<GetGitopsClusterRequest> requests) {
-            this.requests = requests;
+        public Builder requests(List<GetGitopsClusterRequest> requests) {
+            this.requests = Objects.requireNonNull(requests);
             return this;
         }
         public Builder requests(GetGitopsClusterRequest... requests) {

@@ -14,7 +14,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class KubernetesConnectorOpenidConnectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the secret containing the client ID for the connector.
+        /// Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("clientIdRef", required: true)]
         public Input<string> ClientIdRef { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string> MasterUrl { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the secret containing the password for the connector.
+        /// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef", required: true)]
         public Input<string> PasswordRef { get; set; } = null!;
@@ -50,7 +50,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Reference to the secret containing the client secret for the connector.
+        /// Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("secretRef")]
         public Input<string>? SecretRef { get; set; }
@@ -62,7 +62,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Reference to the secret containing the username for the connector.
+        /// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("usernameRef")]
         public Input<string>? UsernameRef { get; set; }

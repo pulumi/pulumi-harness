@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Splunk connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupSplunkConnector(ctx, &platform.LookupSplunkConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSplunkConnector(ctx *pulumi.Context, args *LookupSplunkConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSplunkConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSplunkConnectorResult
@@ -24,12 +50,12 @@ func LookupSplunkConnector(ctx *pulumi.Context, args *LookupSplunkConnectorArgs,
 // A collection of arguments for invoking getSplunkConnector.
 type LookupSplunkConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -37,25 +63,25 @@ type LookupSplunkConnectorArgs struct {
 type LookupSplunkConnectorResult struct {
 	// Splunk account id.
 	AccountId string `pulumi:"accountId"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url string `pulumi:"url"`
 	// The username used for connecting to Splunk.
 	Username string `pulumi:"username"`
@@ -77,12 +103,12 @@ func LookupSplunkConnectorOutput(ctx *pulumi.Context, args LookupSplunkConnector
 // A collection of arguments for invoking getSplunkConnector.
 type LookupSplunkConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -110,7 +136,7 @@ func (o LookupSplunkConnectorResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupSplunkConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -126,8 +152,8 @@ func (o LookupSplunkConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupSplunkConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupSplunkConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -135,27 +161,27 @@ func (o LookupSplunkConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupSplunkConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// The reference to the Harness secret containing the Splunk password.
+// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupSplunkConnectorResultOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupSplunkConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupSplunkConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Splunk server.
+// URL of the Splunk server.
 func (o LookupSplunkConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSplunkConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

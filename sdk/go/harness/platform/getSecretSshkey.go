@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupSecretSshkey(ctx, &platform.LookupSecretSshkeyArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupSecretSshkey(ctx, &platform.LookupSecretSshkeyArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,12 +50,12 @@ func LookupSecretSshkey(ctx *pulumi.Context, args *LookupSecretSshkeyArgs, opts 
 // A collection of arguments for invoking getSecretSshkey.
 type LookupSecretSshkeyArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -66,20 +66,20 @@ type LookupSecretSshkeyResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Kerberos authentication scheme
 	Kerberos []GetSecretSshkeyKerbero `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port int `pulumi:"port"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Sshes []GetSecretSshkeySsh `pulumi:"sshes"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -99,12 +99,12 @@ func LookupSecretSshkeyOutput(ctx *pulumi.Context, args LookupSecretSshkeyOutput
 // A collection of arguments for invoking getSecretSshkey.
 type LookupSecretSshkeyOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -138,8 +138,8 @@ func (o LookupSecretSshkeyResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupSecretSshkeyResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupSecretSshkeyResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretSshkeyResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Kerberos authentication scheme
@@ -152,7 +152,7 @@ func (o LookupSecretSshkeyResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupSecretSshkeyResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -162,7 +162,7 @@ func (o LookupSecretSshkeyResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupSecretSshkeyResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -172,7 +172,7 @@ func (o LookupSecretSshkeyResultOutput) Sshes() GetSecretSshkeySshArrayOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) []GetSecretSshkeySsh { return v.Sshes }).(GetSecretSshkeySshArrayOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupSecretSshkeyResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecretSshkeyResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

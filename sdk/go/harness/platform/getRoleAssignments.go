@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupRoleAssignments(ctx, &platform.LookupRoleAssignmentsArgs{
+//			_, err := platform.LookupRoleAssignments(ctx, &platform.LookupRoleAssignmentsArgs{
 //				Identifier: "identifier",
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
@@ -55,8 +55,6 @@ type LookupRoleAssignmentsArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Org identifier.
 	OrgId *string `pulumi:"orgId"`
-	// Principal.
-	Principals []GetRoleAssignmentsPrincipal `pulumi:"principals"`
 	// Project Identifier
 	ProjectId *string `pulumi:"projectId"`
 }
@@ -102,8 +100,6 @@ type LookupRoleAssignmentsOutputArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Org identifier.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Principal.
-	Principals GetRoleAssignmentsPrincipalArrayInput `pulumi:"principals"`
 	// Project Identifier
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }

@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.harness.platform.inputs.GetGitopsRepositoryRepoArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepositoryUpdateMaskArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -19,86 +18,167 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetGitopsRepositoryArgs Empty = new GetGitopsRepositoryArgs();
 
+    /**
+     * Account identifier of the GitOps repository.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Account identifier of the GitOps repository.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    @Import(name="agentId")
-    private @Nullable Output<String> agentId;
+    /**
+     * Agent identifier of the GitOps repository.
+     * 
+     */
+    @Import(name="agentId", required=true)
+    private Output<String> agentId;
 
-    public Optional<Output<String>> agentId() {
-        return Optional.ofNullable(this.agentId);
+    /**
+     * @return Agent identifier of the GitOps repository.
+     * 
+     */
+    public Output<String> agentId() {
+        return this.agentId;
     }
 
+    /**
+     * Indicates if to operate on credential set instead of repository.
+     * 
+     */
     @Import(name="credsOnly")
     private @Nullable Output<Boolean> credsOnly;
 
+    /**
+     * @return Indicates if to operate on credential set instead of repository.
+     * 
+     */
     public Optional<Output<Boolean>> credsOnly() {
         return Optional.ofNullable(this.credsOnly);
     }
 
+    /**
+     * Identifier of the GitOps repository.
+     * 
+     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
+    /**
+     * @return Identifier of the GitOps repository.
+     * 
+     */
     public Output<String> identifier() {
         return this.identifier;
     }
 
+    /**
+     * Organization identifier of the GitOps repository.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization identifier of the GitOps repository.
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    /**
+     * Project identifier of the GitOps repository.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
-    public Output<String> projectId() {
-        return this.projectId;
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Indicates to force refresh query for repository.
+     * 
+     */
     @Import(name="queryForceRefresh")
     private @Nullable Output<Boolean> queryForceRefresh;
 
+    /**
+     * @return Indicates to force refresh query for repository.
+     * 
+     */
     public Optional<Output<Boolean>> queryForceRefresh() {
         return Optional.ofNullable(this.queryForceRefresh);
     }
 
+    /**
+     * Project to query for the GitOps repo.
+     * 
+     */
     @Import(name="queryProject")
     private @Nullable Output<String> queryProject;
 
+    /**
+     * @return Project to query for the GitOps repo.
+     * 
+     */
     public Optional<Output<String>> queryProject() {
         return Optional.ofNullable(this.queryProject);
     }
 
+    /**
+     * GitOps repository to query.
+     * 
+     */
     @Import(name="queryRepo")
     private @Nullable Output<String> queryRepo;
 
+    /**
+     * @return GitOps repository to query.
+     * 
+     */
     public Optional<Output<String>> queryRepo() {
         return Optional.ofNullable(this.queryRepo);
     }
 
-    @Import(name="repos", required=true)
-    private Output<List<GetGitopsRepositoryRepoArgs>> repos;
-
-    public Output<List<GetGitopsRepositoryRepoArgs>> repos() {
-        return this.repos;
-    }
-
+    /**
+     * Update mask of the repository.
+     * 
+     */
     @Import(name="updateMasks")
     private @Nullable Output<List<GetGitopsRepositoryUpdateMaskArgs>> updateMasks;
 
+    /**
+     * @return Update mask of the repository.
+     * 
+     */
     public Optional<Output<List<GetGitopsRepositoryUpdateMaskArgs>>> updateMasks() {
         return Optional.ofNullable(this.updateMasks);
     }
 
+    /**
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * 
+     */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
+    /**
+     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * 
+     */
     public Optional<Output<Boolean>> upsert() {
         return Optional.ofNullable(this.upsert);
     }
@@ -115,7 +195,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         this.queryForceRefresh = $.queryForceRefresh;
         this.queryProject = $.queryProject;
         this.queryRepo = $.queryRepo;
-        this.repos = $.repos;
         this.updateMasks = $.updateMasks;
         this.upsert = $.upsert;
     }
@@ -138,127 +217,251 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
             $ = new GetGitopsRepositoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
-        public Builder agentId(@Nullable Output<String> agentId) {
+        /**
+         * @param agentId Agent identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentId(Output<String> agentId) {
             $.agentId = agentId;
             return this;
         }
 
+        /**
+         * @param agentId Agent identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agentId(String agentId) {
             return agentId(Output.of(agentId));
         }
 
+        /**
+         * @param credsOnly Indicates if to operate on credential set instead of repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credsOnly(@Nullable Output<Boolean> credsOnly) {
             $.credsOnly = credsOnly;
             return this;
         }
 
+        /**
+         * @param credsOnly Indicates if to operate on credential set instead of repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credsOnly(Boolean credsOnly) {
             return credsOnly(Output.of(credsOnly));
         }
 
+        /**
+         * @param identifier Identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param identifier Identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 
+        /**
+         * @param orgId Organization identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
-        public Builder projectId(Output<String> projectId) {
+        /**
+         * @param projectId Project identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId Project identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param queryForceRefresh Indicates to force refresh query for repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryForceRefresh(@Nullable Output<Boolean> queryForceRefresh) {
             $.queryForceRefresh = queryForceRefresh;
             return this;
         }
 
+        /**
+         * @param queryForceRefresh Indicates to force refresh query for repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryForceRefresh(Boolean queryForceRefresh) {
             return queryForceRefresh(Output.of(queryForceRefresh));
         }
 
+        /**
+         * @param queryProject Project to query for the GitOps repo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryProject(@Nullable Output<String> queryProject) {
             $.queryProject = queryProject;
             return this;
         }
 
+        /**
+         * @param queryProject Project to query for the GitOps repo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryProject(String queryProject) {
             return queryProject(Output.of(queryProject));
         }
 
+        /**
+         * @param queryRepo GitOps repository to query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryRepo(@Nullable Output<String> queryRepo) {
             $.queryRepo = queryRepo;
             return this;
         }
 
+        /**
+         * @param queryRepo GitOps repository to query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryRepo(String queryRepo) {
             return queryRepo(Output.of(queryRepo));
         }
 
-        public Builder repos(Output<List<GetGitopsRepositoryRepoArgs>> repos) {
-            $.repos = repos;
-            return this;
-        }
-
-        public Builder repos(List<GetGitopsRepositoryRepoArgs> repos) {
-            return repos(Output.of(repos));
-        }
-
-        public Builder repos(GetGitopsRepositoryRepoArgs... repos) {
-            return repos(List.of(repos));
-        }
-
+        /**
+         * @param updateMasks Update mask of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(@Nullable Output<List<GetGitopsRepositoryUpdateMaskArgs>> updateMasks) {
             $.updateMasks = updateMasks;
             return this;
         }
 
+        /**
+         * @param updateMasks Update mask of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(List<GetGitopsRepositoryUpdateMaskArgs> updateMasks) {
             return updateMasks(Output.of(updateMasks));
         }
 
+        /**
+         * @param updateMasks Update mask of the repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(GetGitopsRepositoryUpdateMaskArgs... updateMasks) {
             return updateMasks(List.of(updateMasks));
         }
 
+        /**
+         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upsert(@Nullable Output<Boolean> upsert) {
             $.upsert = upsert;
             return this;
         }
 
+        /**
+         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upsert(Boolean upsert) {
             return upsert(Output.of(upsert));
         }
 
         public GetGitopsRepositoryArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.agentId = Objects.requireNonNull($.agentId, "expected parameter 'agentId' to be non-null");
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.repos = Objects.requireNonNull($.repos, "expected parameter 'repos' to be non-null");
             return $;
         }
     }

@@ -19,7 +19,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
-        /// Reference to the Harness secret containing the aws access key.
+        /// Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? AccessKeyRef;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
-        /// Reference to the Harness secret containing the aws secret key.
+        /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string SecretKeyRef;
 

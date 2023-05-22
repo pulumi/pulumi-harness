@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupTriggers(ctx, &platform.LookupTriggersArgs{
+//			_, err := platform.LookupTriggers(ctx, &platform.LookupTriggersArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      "org_id",
 //				ProjectId:  "project_id",
@@ -82,7 +82,7 @@ type LookupTriggersResult struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId string `pulumi:"targetId"`
@@ -173,7 +173,7 @@ func (o LookupTriggersResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggersResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupTriggersResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTriggersResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

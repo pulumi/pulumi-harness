@@ -12,6 +12,63 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating an AWS Cloud Cost connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.AwsCCConnector("test", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         CrossAccountAccess = new Harness.Platform.Inputs.AwsCCConnectorCrossAccountAccessArgs
+    ///         {
+    ///             ExternalId = "external_id",
+    ///             RoleArn = "role_arn",
+    ///         },
+    ///         Description = "test",
+    ///         FeaturesEnableds = new[]
+    ///         {
+    ///             "OPTIMIZATION",
+    ///             "VISIBILITY",
+    ///             "BILLING",
+    ///         },
+    ///         Identifier = "identifier",
+    ///         ReportName = "report_name",
+    ///         S3Bucket = "s3bucket",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level aws cloud cost connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level aws cloud cost connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level aws cloud cost connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/awsCCConnector:AwsCCConnector")]
     public partial class AwsCCConnector : global::Pulumi.CustomResource
@@ -53,13 +110,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -77,7 +134,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> S3Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -172,13 +229,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -199,7 +256,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -258,13 +315,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -285,7 +342,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

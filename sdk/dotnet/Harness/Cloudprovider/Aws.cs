@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// using Harness = Pulumi.Harness;
@@ -31,13 +32,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     ///     var awsAccessKey = new Harness.EncryptedText("awsAccessKey", new()
     ///     {
     ///         Value = "&lt;ACCESS_KEY_ID&gt;",
-    ///         SecretManagerId = @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult).Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     ///     var awsSecretKey = new Harness.EncryptedText("awsSecretKey", new()
     ///     {
     ///         Value = "&lt;SECRET_KEY_ID&gt;",
-    ///         SecretManagerId = @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult).Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     ///     var aws = new Harness.Cloudprovider.Aws("aws", new()

@@ -107,7 +107,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// </summary>
         public readonly string SshSettingId;
         /// <summary>
-        /// The url of the git repository or account/organization.
+        /// The URL of the git repository or account/organization.
         /// </summary>
         public readonly string Url;
         /// <summary>

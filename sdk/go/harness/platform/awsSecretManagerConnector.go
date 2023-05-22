@@ -7,17 +7,85 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS Secret Manager connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAwsSecretManagerConnector(ctx, "test", &platform.AwsSecretManagerConnectorArgs{
+//				Credentials: &platform.AwsSecretManagerConnectorCredentialsArgs{
+//					AssumeRole: &platform.AwsSecretManagerConnectorCredentialsAssumeRoleArgs{
+//						Duration:   pulumi.Int(900),
+//						ExternalId: pulumi.String("externalid"),
+//						RoleArn:    pulumi.String("somerolearn"),
+//					},
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description:      pulumi.String("test"),
+//				Identifier:       pulumi.String("identifier"),
+//				Region:           pulumi.String("us-east-1"),
+//				SecretNamePrefix: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level aws secret manager connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
+//
+// ```
+//
+//	Import org level aws secret manager connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level aws secret manager connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type AwsSecretManagerConnector struct {
 	pulumi.CustomResourceState
 
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,15 +93,15 @@ type AwsSecretManagerConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A prefix to be added to all secrets.
 	SecretNamePrefix pulumi.StringPtrOutput `pulumi:"secretNamePrefix"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -76,9 +144,9 @@ func GetAwsSecretManagerConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsSecretManagerConnector resources.
 type awsSecretManagerConnectorState struct {
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials *AwsSecretManagerConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -86,22 +154,22 @@ type awsSecretManagerConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region *string `pulumi:"region"`
 	// A prefix to be added to all secrets.
 	SecretNamePrefix *string `pulumi:"secretNamePrefix"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type AwsSecretManagerConnectorState struct {
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -109,15 +177,15 @@ type AwsSecretManagerConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringPtrInput
 	// A prefix to be added to all secrets.
 	SecretNamePrefix pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -126,9 +194,9 @@ func (AwsSecretManagerConnectorState) ElementType() reflect.Type {
 }
 
 type awsSecretManagerConnectorArgs struct {
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -136,23 +204,23 @@ type awsSecretManagerConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
 	// A prefix to be added to all secrets.
 	SecretNamePrefix *string `pulumi:"secretNamePrefix"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AwsSecretManagerConnector resource.
 type AwsSecretManagerConnectorArgs struct {
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -160,15 +228,15 @@ type AwsSecretManagerConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringInput
 	// A prefix to be added to all secrets.
 	SecretNamePrefix pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -259,12 +327,12 @@ func (o AwsSecretManagerConnectorOutput) ToAwsSecretManagerConnectorOutputWithCo
 	return o
 }
 
-// The credentials to use for connecting to aws.
+// Credentials to connect to AWS.
 func (o AwsSecretManagerConnectorOutput) Credentials() AwsSecretManagerConnectorCredentialsOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) AwsSecretManagerConnectorCredentialsOutput { return v.Credentials }).(AwsSecretManagerConnectorCredentialsOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o AwsSecretManagerConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -284,12 +352,12 @@ func (o AwsSecretManagerConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o AwsSecretManagerConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o AwsSecretManagerConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -304,7 +372,7 @@ func (o AwsSecretManagerConnectorOutput) SecretNamePrefix() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.SecretNamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o AwsSecretManagerConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

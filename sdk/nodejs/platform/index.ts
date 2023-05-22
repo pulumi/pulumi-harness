@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ApiKeyArgs, ApiKeyState } from "./apiKey";
+export type ApiKey = import("./apiKey").ApiKey;
+export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
+utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
+
 export { AppDynamicsConnectorArgs, AppDynamicsConnectorState } from "./appDynamicsConnector";
 export type AppDynamicsConnector = import("./appDynamicsConnector").AppDynamicsConnector;
 export const AppDynamicsConnector: typeof import("./appDynamicsConnector").AppDynamicsConnector = null as any;
@@ -39,6 +44,71 @@ export { BitbucketConnectorArgs, BitbucketConnectorState } from "./bitbucketConn
 export type BitbucketConnector = import("./bitbucketConnector").BitbucketConnector;
 export const BitbucketConnector: typeof import("./bitbucketConnector").BitbucketConnector = null as any;
 utilities.lazyLoad(exports, ["BitbucketConnector"], () => require("./bitbucketConnector"));
+
+export { CcmFiltersArgs, CcmFiltersState } from "./ccmFilters";
+export type CcmFilters = import("./ccmFilters").CcmFilters;
+export const CcmFilters: typeof import("./ccmFilters").CcmFilters = null as any;
+utilities.lazyLoad(exports, ["CcmFilters"], () => require("./ccmFilters"));
+
+export { ConnectorAzureCloudCostArgs, ConnectorAzureCloudCostState } from "./connectorAzureCloudCost";
+export type ConnectorAzureCloudCost = import("./connectorAzureCloudCost").ConnectorAzureCloudCost;
+export const ConnectorAzureCloudCost: typeof import("./connectorAzureCloudCost").ConnectorAzureCloudCost = null as any;
+utilities.lazyLoad(exports, ["ConnectorAzureCloudCost"], () => require("./connectorAzureCloudCost"));
+
+export { ConnectorAzureCloudProviderArgs, ConnectorAzureCloudProviderState } from "./connectorAzureCloudProvider";
+export type ConnectorAzureCloudProvider = import("./connectorAzureCloudProvider").ConnectorAzureCloudProvider;
+export const ConnectorAzureCloudProvider: typeof import("./connectorAzureCloudProvider").ConnectorAzureCloudProvider = null as any;
+utilities.lazyLoad(exports, ["ConnectorAzureCloudProvider"], () => require("./connectorAzureCloudProvider"));
+
+export { ConnectorAzureKeyVaultArgs, ConnectorAzureKeyVaultState } from "./connectorAzureKeyVault";
+export type ConnectorAzureKeyVault = import("./connectorAzureKeyVault").ConnectorAzureKeyVault;
+export const ConnectorAzureKeyVault: typeof import("./connectorAzureKeyVault").ConnectorAzureKeyVault = null as any;
+utilities.lazyLoad(exports, ["ConnectorAzureKeyVault"], () => require("./connectorAzureKeyVault"));
+
+export { ConnectorGcpCloudCostArgs, ConnectorGcpCloudCostState } from "./connectorGcpCloudCost";
+export type ConnectorGcpCloudCost = import("./connectorGcpCloudCost").ConnectorGcpCloudCost;
+export const ConnectorGcpCloudCost: typeof import("./connectorGcpCloudCost").ConnectorGcpCloudCost = null as any;
+utilities.lazyLoad(exports, ["ConnectorGcpCloudCost"], () => require("./connectorGcpCloudCost"));
+
+export { ConnectorGcpSecretManagerArgs, ConnectorGcpSecretManagerState } from "./connectorGcpSecretManager";
+export type ConnectorGcpSecretManager = import("./connectorGcpSecretManager").ConnectorGcpSecretManager;
+export const ConnectorGcpSecretManager: typeof import("./connectorGcpSecretManager").ConnectorGcpSecretManager = null as any;
+utilities.lazyLoad(exports, ["ConnectorGcpSecretManager"], () => require("./connectorGcpSecretManager"));
+
+export { ConnectorJenkinsArgs, ConnectorJenkinsState } from "./connectorJenkins";
+export type ConnectorJenkins = import("./connectorJenkins").ConnectorJenkins;
+export const ConnectorJenkins: typeof import("./connectorJenkins").ConnectorJenkins = null as any;
+utilities.lazyLoad(exports, ["ConnectorJenkins"], () => require("./connectorJenkins"));
+
+export { ConnectorKubernetesCloudCostArgs, ConnectorKubernetesCloudCostState } from "./connectorKubernetesCloudCost";
+export type ConnectorKubernetesCloudCost = import("./connectorKubernetesCloudCost").ConnectorKubernetesCloudCost;
+export const ConnectorKubernetesCloudCost: typeof import("./connectorKubernetesCloudCost").ConnectorKubernetesCloudCost = null as any;
+utilities.lazyLoad(exports, ["ConnectorKubernetesCloudCost"], () => require("./connectorKubernetesCloudCost"));
+
+export { ConnectorOciHelmArgs, ConnectorOciHelmState } from "./connectorOciHelm";
+export type ConnectorOciHelm = import("./connectorOciHelm").ConnectorOciHelm;
+export const ConnectorOciHelm: typeof import("./connectorOciHelm").ConnectorOciHelm = null as any;
+utilities.lazyLoad(exports, ["ConnectorOciHelm"], () => require("./connectorOciHelm"));
+
+export { ConnectorServiceNowArgs, ConnectorServiceNowState } from "./connectorServiceNow";
+export type ConnectorServiceNow = import("./connectorServiceNow").ConnectorServiceNow;
+export const ConnectorServiceNow: typeof import("./connectorServiceNow").ConnectorServiceNow = null as any;
+utilities.lazyLoad(exports, ["ConnectorServiceNow"], () => require("./connectorServiceNow"));
+
+export { ConnectorSpotArgs, ConnectorSpotState } from "./connectorSpot";
+export type ConnectorSpot = import("./connectorSpot").ConnectorSpot;
+export const ConnectorSpot: typeof import("./connectorSpot").ConnectorSpot = null as any;
+utilities.lazyLoad(exports, ["ConnectorSpot"], () => require("./connectorSpot"));
+
+export { ConnectorTasArgs, ConnectorTasState } from "./connectorTas";
+export type ConnectorTas = import("./connectorTas").ConnectorTas;
+export const ConnectorTas: typeof import("./connectorTas").ConnectorTas = null as any;
+utilities.lazyLoad(exports, ["ConnectorTas"], () => require("./connectorTas"));
+
+export { ConnectorTerraformCloudArgs, ConnectorTerraformCloudState } from "./connectorTerraformCloud";
+export type ConnectorTerraformCloud = import("./connectorTerraformCloud").ConnectorTerraformCloud;
+export const ConnectorTerraformCloud: typeof import("./connectorTerraformCloud").ConnectorTerraformCloud = null as any;
+utilities.lazyLoad(exports, ["ConnectorTerraformCloud"], () => require("./connectorTerraformCloud"));
 
 export { DatadogConnectorArgs, DatadogConnectorState } from "./datadogConnector";
 export type DatadogConnector = import("./datadogConnector").DatadogConnector;
@@ -75,10 +145,30 @@ export type EnvironmentServiceOverrides = import("./environmentServiceOverrides"
 export const EnvironmentServiceOverrides: typeof import("./environmentServiceOverrides").EnvironmentServiceOverrides = null as any;
 utilities.lazyLoad(exports, ["EnvironmentServiceOverrides"], () => require("./environmentServiceOverrides"));
 
+export { FeatureFlagArgs, FeatureFlagState } from "./featureFlag";
+export type FeatureFlag = import("./featureFlag").FeatureFlag;
+export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
+utilities.lazyLoad(exports, ["FeatureFlag"], () => require("./featureFlag"));
+
+export { FfApiKeyArgs, FfApiKeyState } from "./ffApiKey";
+export type FfApiKey = import("./ffApiKey").FfApiKey;
+export const FfApiKey: typeof import("./ffApiKey").FfApiKey = null as any;
+utilities.lazyLoad(exports, ["FfApiKey"], () => require("./ffApiKey"));
+
+export { FiltersArgs, FiltersState } from "./filters";
+export type Filters = import("./filters").Filters;
+export const Filters: typeof import("./filters").Filters = null as any;
+utilities.lazyLoad(exports, ["Filters"], () => require("./filters"));
+
 export { GcpConnectorArgs, GcpConnectorState } from "./gcpConnector";
 export type GcpConnector = import("./gcpConnector").GcpConnector;
 export const GcpConnector: typeof import("./gcpConnector").GcpConnector = null as any;
 utilities.lazyLoad(exports, ["GcpConnector"], () => require("./gcpConnector"));
+
+export { GetApikeyArgs, GetApikeyResult, GetApikeyOutputArgs } from "./getApikey";
+export const getApikey: typeof import("./getApikey").getApikey = null as any;
+export const getApikeyOutput: typeof import("./getApikey").getApikeyOutput = null as any;
+utilities.lazyLoad(exports, ["getApikey","getApikeyOutput"], () => require("./getApikey"));
 
 export { GetAppDynamicsConnectorArgs, GetAppDynamicsConnectorResult, GetAppDynamicsConnectorOutputArgs } from "./getAppDynamicsConnector";
 export const getAppDynamicsConnector: typeof import("./getAppDynamicsConnector").getAppDynamicsConnector = null as any;
@@ -115,6 +205,71 @@ export const getBitbucketConnector: typeof import("./getBitbucketConnector").get
 export const getBitbucketConnectorOutput: typeof import("./getBitbucketConnector").getBitbucketConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getBitbucketConnector","getBitbucketConnectorOutput"], () => require("./getBitbucketConnector"));
 
+export { GetCcmFiltersArgs, GetCcmFiltersResult, GetCcmFiltersOutputArgs } from "./getCcmFilters";
+export const getCcmFilters: typeof import("./getCcmFilters").getCcmFilters = null as any;
+export const getCcmFiltersOutput: typeof import("./getCcmFilters").getCcmFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getCcmFilters","getCcmFiltersOutput"], () => require("./getCcmFilters"));
+
+export { GetConnectorAzureCloudCostArgs, GetConnectorAzureCloudCostResult, GetConnectorAzureCloudCostOutputArgs } from "./getConnectorAzureCloudCost";
+export const getConnectorAzureCloudCost: typeof import("./getConnectorAzureCloudCost").getConnectorAzureCloudCost = null as any;
+export const getConnectorAzureCloudCostOutput: typeof import("./getConnectorAzureCloudCost").getConnectorAzureCloudCostOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorAzureCloudCost","getConnectorAzureCloudCostOutput"], () => require("./getConnectorAzureCloudCost"));
+
+export { GetConnectorAzureCloudProviderArgs, GetConnectorAzureCloudProviderResult, GetConnectorAzureCloudProviderOutputArgs } from "./getConnectorAzureCloudProvider";
+export const getConnectorAzureCloudProvider: typeof import("./getConnectorAzureCloudProvider").getConnectorAzureCloudProvider = null as any;
+export const getConnectorAzureCloudProviderOutput: typeof import("./getConnectorAzureCloudProvider").getConnectorAzureCloudProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorAzureCloudProvider","getConnectorAzureCloudProviderOutput"], () => require("./getConnectorAzureCloudProvider"));
+
+export { GetConnectorAzureKeyVaultArgs, GetConnectorAzureKeyVaultResult, GetConnectorAzureKeyVaultOutputArgs } from "./getConnectorAzureKeyVault";
+export const getConnectorAzureKeyVault: typeof import("./getConnectorAzureKeyVault").getConnectorAzureKeyVault = null as any;
+export const getConnectorAzureKeyVaultOutput: typeof import("./getConnectorAzureKeyVault").getConnectorAzureKeyVaultOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorAzureKeyVault","getConnectorAzureKeyVaultOutput"], () => require("./getConnectorAzureKeyVault"));
+
+export { GetConnectorGcpCloudCostArgs, GetConnectorGcpCloudCostResult, GetConnectorGcpCloudCostOutputArgs } from "./getConnectorGcpCloudCost";
+export const getConnectorGcpCloudCost: typeof import("./getConnectorGcpCloudCost").getConnectorGcpCloudCost = null as any;
+export const getConnectorGcpCloudCostOutput: typeof import("./getConnectorGcpCloudCost").getConnectorGcpCloudCostOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorGcpCloudCost","getConnectorGcpCloudCostOutput"], () => require("./getConnectorGcpCloudCost"));
+
+export { GetConnectorGcpSecretManagerArgs, GetConnectorGcpSecretManagerResult, GetConnectorGcpSecretManagerOutputArgs } from "./getConnectorGcpSecretManager";
+export const getConnectorGcpSecretManager: typeof import("./getConnectorGcpSecretManager").getConnectorGcpSecretManager = null as any;
+export const getConnectorGcpSecretManagerOutput: typeof import("./getConnectorGcpSecretManager").getConnectorGcpSecretManagerOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorGcpSecretManager","getConnectorGcpSecretManagerOutput"], () => require("./getConnectorGcpSecretManager"));
+
+export { GetConnectorJenkinsArgs, GetConnectorJenkinsResult, GetConnectorJenkinsOutputArgs } from "./getConnectorJenkins";
+export const getConnectorJenkins: typeof import("./getConnectorJenkins").getConnectorJenkins = null as any;
+export const getConnectorJenkinsOutput: typeof import("./getConnectorJenkins").getConnectorJenkinsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorJenkins","getConnectorJenkinsOutput"], () => require("./getConnectorJenkins"));
+
+export { GetConnectorKubernetesCloudCostArgs, GetConnectorKubernetesCloudCostResult, GetConnectorKubernetesCloudCostOutputArgs } from "./getConnectorKubernetesCloudCost";
+export const getConnectorKubernetesCloudCost: typeof import("./getConnectorKubernetesCloudCost").getConnectorKubernetesCloudCost = null as any;
+export const getConnectorKubernetesCloudCostOutput: typeof import("./getConnectorKubernetesCloudCost").getConnectorKubernetesCloudCostOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorKubernetesCloudCost","getConnectorKubernetesCloudCostOutput"], () => require("./getConnectorKubernetesCloudCost"));
+
+export { GetConnectorOciHelmArgs, GetConnectorOciHelmResult, GetConnectorOciHelmOutputArgs } from "./getConnectorOciHelm";
+export const getConnectorOciHelm: typeof import("./getConnectorOciHelm").getConnectorOciHelm = null as any;
+export const getConnectorOciHelmOutput: typeof import("./getConnectorOciHelm").getConnectorOciHelmOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorOciHelm","getConnectorOciHelmOutput"], () => require("./getConnectorOciHelm"));
+
+export { GetConnectorServiceNowArgs, GetConnectorServiceNowResult, GetConnectorServiceNowOutputArgs } from "./getConnectorServiceNow";
+export const getConnectorServiceNow: typeof import("./getConnectorServiceNow").getConnectorServiceNow = null as any;
+export const getConnectorServiceNowOutput: typeof import("./getConnectorServiceNow").getConnectorServiceNowOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorServiceNow","getConnectorServiceNowOutput"], () => require("./getConnectorServiceNow"));
+
+export { GetConnectorSpotArgs, GetConnectorSpotResult, GetConnectorSpotOutputArgs } from "./getConnectorSpot";
+export const getConnectorSpot: typeof import("./getConnectorSpot").getConnectorSpot = null as any;
+export const getConnectorSpotOutput: typeof import("./getConnectorSpot").getConnectorSpotOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorSpot","getConnectorSpotOutput"], () => require("./getConnectorSpot"));
+
+export { GetConnectorTasArgs, GetConnectorTasResult, GetConnectorTasOutputArgs } from "./getConnectorTas";
+export const getConnectorTas: typeof import("./getConnectorTas").getConnectorTas = null as any;
+export const getConnectorTasOutput: typeof import("./getConnectorTas").getConnectorTasOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorTas","getConnectorTasOutput"], () => require("./getConnectorTas"));
+
+export { GetConnectorTerraformCloudArgs, GetConnectorTerraformCloudResult, GetConnectorTerraformCloudOutputArgs } from "./getConnectorTerraformCloud";
+export const getConnectorTerraformCloud: typeof import("./getConnectorTerraformCloud").getConnectorTerraformCloud = null as any;
+export const getConnectorTerraformCloudOutput: typeof import("./getConnectorTerraformCloud").getConnectorTerraformCloudOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorTerraformCloud","getConnectorTerraformCloudOutput"], () => require("./getConnectorTerraformCloud"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
@@ -149,6 +304,16 @@ export const getEnvironmentGroup: typeof import("./getEnvironmentGroup").getEnvi
 export const getEnvironmentGroupOutput: typeof import("./getEnvironmentGroup").getEnvironmentGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironmentGroup","getEnvironmentGroupOutput"], () => require("./getEnvironmentGroup"));
 
+export { GetEnvironmentServiceOverridesArgs, GetEnvironmentServiceOverridesResult, GetEnvironmentServiceOverridesOutputArgs } from "./getEnvironmentServiceOverrides";
+export const getEnvironmentServiceOverrides: typeof import("./getEnvironmentServiceOverrides").getEnvironmentServiceOverrides = null as any;
+export const getEnvironmentServiceOverridesOutput: typeof import("./getEnvironmentServiceOverrides").getEnvironmentServiceOverridesOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentServiceOverrides","getEnvironmentServiceOverridesOutput"], () => require("./getEnvironmentServiceOverrides"));
+
+export { GetFiltersArgs, GetFiltersResult, GetFiltersOutputArgs } from "./getFilters";
+export const getFilters: typeof import("./getFilters").getFilters = null as any;
+export const getFiltersOutput: typeof import("./getFilters").getFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getFilters","getFiltersOutput"], () => require("./getFilters"));
+
 export { GetGcpConnectorArgs, GetGcpConnectorResult, GetGcpConnectorOutputArgs } from "./getGcpConnector";
 export const getGcpConnector: typeof import("./getGcpConnector").getGcpConnector = null as any;
 export const getGcpConnectorOutput: typeof import("./getGcpConnector").getGcpConnectorOutput = null as any;
@@ -174,10 +339,35 @@ export const getGitopsAgent: typeof import("./getGitopsAgent").getGitopsAgent = 
 export const getGitopsAgentOutput: typeof import("./getGitopsAgent").getGitopsAgentOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsAgent","getGitopsAgentOutput"], () => require("./getGitopsAgent"));
 
+export { GetGitopsAgentDeployYamlArgs, GetGitopsAgentDeployYamlResult, GetGitopsAgentDeployYamlOutputArgs } from "./getGitopsAgentDeployYaml";
+export const getGitopsAgentDeployYaml: typeof import("./getGitopsAgentDeployYaml").getGitopsAgentDeployYaml = null as any;
+export const getGitopsAgentDeployYamlOutput: typeof import("./getGitopsAgentDeployYaml").getGitopsAgentDeployYamlOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsAgentDeployYaml","getGitopsAgentDeployYamlOutput"], () => require("./getGitopsAgentDeployYaml"));
+
+export { GetGitopsApplicationsArgs, GetGitopsApplicationsResult, GetGitopsApplicationsOutputArgs } from "./getGitopsApplications";
+export const getGitopsApplications: typeof import("./getGitopsApplications").getGitopsApplications = null as any;
+export const getGitopsApplicationsOutput: typeof import("./getGitopsApplications").getGitopsApplicationsOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsApplications","getGitopsApplicationsOutput"], () => require("./getGitopsApplications"));
+
 export { GetGitopsClusterArgs, GetGitopsClusterResult, GetGitopsClusterOutputArgs } from "./getGitopsCluster";
 export const getGitopsCluster: typeof import("./getGitopsCluster").getGitopsCluster = null as any;
 export const getGitopsClusterOutput: typeof import("./getGitopsCluster").getGitopsClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsCluster","getGitopsClusterOutput"], () => require("./getGitopsCluster"));
+
+export { GetGitopsGnupgArgs, GetGitopsGnupgResult, GetGitopsGnupgOutputArgs } from "./getGitopsGnupg";
+export const getGitopsGnupg: typeof import("./getGitopsGnupg").getGitopsGnupg = null as any;
+export const getGitopsGnupgOutput: typeof import("./getGitopsGnupg").getGitopsGnupgOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsGnupg","getGitopsGnupgOutput"], () => require("./getGitopsGnupg"));
+
+export { GetGitopsRepoCertArgs, GetGitopsRepoCertResult, GetGitopsRepoCertOutputArgs } from "./getGitopsRepoCert";
+export const getGitopsRepoCert: typeof import("./getGitopsRepoCert").getGitopsRepoCert = null as any;
+export const getGitopsRepoCertOutput: typeof import("./getGitopsRepoCert").getGitopsRepoCertOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsRepoCert","getGitopsRepoCertOutput"], () => require("./getGitopsRepoCert"));
+
+export { GetGitopsRepoCredArgs, GetGitopsRepoCredResult, GetGitopsRepoCredOutputArgs } from "./getGitopsRepoCred";
+export const getGitopsRepoCred: typeof import("./getGitopsRepoCred").getGitopsRepoCred = null as any;
+export const getGitopsRepoCredOutput: typeof import("./getGitopsRepoCred").getGitopsRepoCredOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsRepoCred","getGitopsRepoCredOutput"], () => require("./getGitopsRepoCred"));
 
 export { GetGitopsRepositoryArgs, GetGitopsRepositoryResult, GetGitopsRepositoryOutputArgs } from "./getGitopsRepository";
 export const getGitopsRepository: typeof import("./getGitopsRepository").getGitopsRepository = null as any;
@@ -209,6 +399,16 @@ export const getKubernetesConnector: typeof import("./getKubernetesConnector").g
 export const getKubernetesConnectorOutput: typeof import("./getKubernetesConnector").getKubernetesConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesConnector","getKubernetesConnectorOutput"], () => require("./getKubernetesConnector"));
 
+export { GetManualFreezeArgs, GetManualFreezeResult, GetManualFreezeOutputArgs } from "./getManualFreeze";
+export const getManualFreeze: typeof import("./getManualFreeze").getManualFreeze = null as any;
+export const getManualFreezeOutput: typeof import("./getManualFreeze").getManualFreezeOutput = null as any;
+utilities.lazyLoad(exports, ["getManualFreeze","getManualFreezeOutput"], () => require("./getManualFreeze"));
+
+export { GetMonitoredServiceArgs, GetMonitoredServiceResult, GetMonitoredServiceOutputArgs } from "./getMonitoredService";
+export const getMonitoredService: typeof import("./getMonitoredService").getMonitoredService = null as any;
+export const getMonitoredServiceOutput: typeof import("./getMonitoredService").getMonitoredServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitoredService","getMonitoredServiceOutput"], () => require("./getMonitoredService"));
+
 export { GetNexusConnectorArgs, GetNexusConnectorResult, GetNexusConnectorOutputArgs } from "./getNexusConnector";
 export const getNexusConnector: typeof import("./getNexusConnector").getNexusConnector = null as any;
 export const getNexusConnectorOutput: typeof import("./getNexusConnector").getNexusConnectorOutput = null as any;
@@ -233,6 +433,21 @@ export { GetPipelineArgs, GetPipelineResult, GetPipelineOutputArgs } from "./get
 export const getPipeline: typeof import("./getPipeline").getPipeline = null as any;
 export const getPipelineOutput: typeof import("./getPipeline").getPipelineOutput = null as any;
 utilities.lazyLoad(exports, ["getPipeline","getPipelineOutput"], () => require("./getPipeline"));
+
+export { GetPipelineFiltersArgs, GetPipelineFiltersResult, GetPipelineFiltersOutputArgs } from "./getPipelineFilters";
+export const getPipelineFilters: typeof import("./getPipelineFilters").getPipelineFilters = null as any;
+export const getPipelineFiltersOutput: typeof import("./getPipelineFilters").getPipelineFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineFilters","getPipelineFiltersOutput"], () => require("./getPipelineFilters"));
+
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
+export { GetPolicysetArgs, GetPolicysetResult, GetPolicysetOutputArgs } from "./getPolicyset";
+export const getPolicyset: typeof import("./getPolicyset").getPolicyset = null as any;
+export const getPolicysetOutput: typeof import("./getPolicyset").getPolicysetOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyset","getPolicysetOutput"], () => require("./getPolicyset"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
@@ -284,6 +499,11 @@ export const getServiceAccount: typeof import("./getServiceAccount").getServiceA
 export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
 
+export { GetSloArgs, GetSloResult, GetSloOutputArgs } from "./getSlo";
+export const getSlo: typeof import("./getSlo").getSlo = null as any;
+export const getSloOutput: typeof import("./getSlo").getSloOutput = null as any;
+utilities.lazyLoad(exports, ["getSlo","getSloOutput"], () => require("./getSlo"));
+
 export { GetSplunkConnectorArgs, GetSplunkConnectorResult, GetSplunkConnectorOutputArgs } from "./getSplunkConnector";
 export const getSplunkConnector: typeof import("./getSplunkConnector").getSplunkConnector = null as any;
 export const getSplunkConnectorOutput: typeof import("./getSplunkConnector").getSplunkConnectorOutput = null as any;
@@ -294,15 +514,35 @@ export const getSumologicConnector: typeof import("./getSumologicConnector").get
 export const getSumologicConnectorOutput: typeof import("./getSumologicConnector").getSumologicConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getSumologicConnector","getSumologicConnectorOutput"], () => require("./getSumologicConnector"));
 
+export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./getTemplate";
+export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
+export const getTemplateOutput: typeof import("./getTemplate").getTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplate","getTemplateOutput"], () => require("./getTemplate"));
+
+export { GetTemplateFiltersArgs, GetTemplateFiltersResult, GetTemplateFiltersOutputArgs } from "./getTemplateFilters";
+export const getTemplateFilters: typeof import("./getTemplateFilters").getTemplateFilters = null as any;
+export const getTemplateFiltersOutput: typeof import("./getTemplateFilters").getTemplateFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplateFilters","getTemplateFiltersOutput"], () => require("./getTemplateFilters"));
+
 export { GetTriggersArgs, GetTriggersResult, GetTriggersOutputArgs } from "./getTriggers";
 export const getTriggers: typeof import("./getTriggers").getTriggers = null as any;
 export const getTriggersOutput: typeof import("./getTriggers").getTriggersOutput = null as any;
 utilities.lazyLoad(exports, ["getTriggers","getTriggersOutput"], () => require("./getTriggers"));
 
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
 export { GetUsergroupArgs, GetUsergroupResult, GetUsergroupOutputArgs } from "./getUsergroup";
 export const getUsergroup: typeof import("./getUsergroup").getUsergroup = null as any;
 export const getUsergroupOutput: typeof import("./getUsergroup").getUsergroupOutput = null as any;
 utilities.lazyLoad(exports, ["getUsergroup","getUsergroupOutput"], () => require("./getUsergroup"));
+
+export { GetVariablesArgs, GetVariablesResult, GetVariablesOutputArgs } from "./getVariables";
+export const getVariables: typeof import("./getVariables").getVariables = null as any;
+export const getVariablesOutput: typeof import("./getVariables").getVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getVariables","getVariablesOutput"], () => require("./getVariables"));
 
 export { GetVaultConnectorArgs, GetVaultConnectorResult, GetVaultConnectorOutputArgs } from "./getVaultConnector";
 export const getVaultConnector: typeof import("./getVaultConnector").getVaultConnector = null as any;
@@ -339,6 +579,26 @@ export type GitlabConnector = import("./gitlabConnector").GitlabConnector;
 export const GitlabConnector: typeof import("./gitlabConnector").GitlabConnector = null as any;
 utilities.lazyLoad(exports, ["GitlabConnector"], () => require("./gitlabConnector"));
 
+export { GitopsApplicationsArgs, GitopsApplicationsState } from "./gitopsApplications";
+export type GitopsApplications = import("./gitopsApplications").GitopsApplications;
+export const GitopsApplications: typeof import("./gitopsApplications").GitopsApplications = null as any;
+utilities.lazyLoad(exports, ["GitopsApplications"], () => require("./gitopsApplications"));
+
+export { GitopsGnupgArgs, GitopsGnupgState } from "./gitopsGnupg";
+export type GitopsGnupg = import("./gitopsGnupg").GitopsGnupg;
+export const GitopsGnupg: typeof import("./gitopsGnupg").GitopsGnupg = null as any;
+utilities.lazyLoad(exports, ["GitopsGnupg"], () => require("./gitopsGnupg"));
+
+export { GitopsRepoCertArgs, GitopsRepoCertState } from "./gitopsRepoCert";
+export type GitopsRepoCert = import("./gitopsRepoCert").GitopsRepoCert;
+export const GitopsRepoCert: typeof import("./gitopsRepoCert").GitopsRepoCert = null as any;
+utilities.lazyLoad(exports, ["GitopsRepoCert"], () => require("./gitopsRepoCert"));
+
+export { GitopsRepoCredArgs, GitopsRepoCredState } from "./gitopsRepoCred";
+export type GitopsRepoCred = import("./gitopsRepoCred").GitopsRepoCred;
+export const GitopsRepoCred: typeof import("./gitopsRepoCred").GitopsRepoCred = null as any;
+utilities.lazyLoad(exports, ["GitopsRepoCred"], () => require("./gitopsRepoCred"));
+
 export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
 export const HelmConnector: typeof import("./helmConnector").HelmConnector = null as any;
@@ -364,6 +624,16 @@ export type KubernetesConnector = import("./kubernetesConnector").KubernetesConn
 export const KubernetesConnector: typeof import("./kubernetesConnector").KubernetesConnector = null as any;
 utilities.lazyLoad(exports, ["KubernetesConnector"], () => require("./kubernetesConnector"));
 
+export { ManualFreezeArgs, ManualFreezeState } from "./manualFreeze";
+export type ManualFreeze = import("./manualFreeze").ManualFreeze;
+export const ManualFreeze: typeof import("./manualFreeze").ManualFreeze = null as any;
+utilities.lazyLoad(exports, ["ManualFreeze"], () => require("./manualFreeze"));
+
+export { MonitoredServiceArgs, MonitoredServiceState } from "./monitoredService";
+export type MonitoredService = import("./monitoredService").MonitoredService;
+export const MonitoredService: typeof import("./monitoredService").MonitoredService = null as any;
+utilities.lazyLoad(exports, ["MonitoredService"], () => require("./monitoredService"));
+
 export { NewrelicConnectorArgs, NewrelicConnectorState } from "./newrelicConnector";
 export type NewrelicConnector = import("./newrelicConnector").NewrelicConnector;
 export const NewrelicConnector: typeof import("./newrelicConnector").NewrelicConnector = null as any;
@@ -388,6 +658,21 @@ export { PipelineArgs, PipelineState } from "./pipeline";
 export type Pipeline = import("./pipeline").Pipeline;
 export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
 utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
+
+export { PipelineFiltersArgs, PipelineFiltersState } from "./pipelineFilters";
+export type PipelineFilters = import("./pipelineFilters").PipelineFilters;
+export const PipelineFilters: typeof import("./pipelineFilters").PipelineFilters = null as any;
+utilities.lazyLoad(exports, ["PipelineFilters"], () => require("./pipelineFilters"));
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
+export { PolicysetArgs, PolicysetState } from "./policyset";
+export type Policyset = import("./policyset").Policyset;
+export const Policyset: typeof import("./policyset").Policyset = null as any;
+utilities.lazyLoad(exports, ["Policyset"], () => require("./policyset"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -439,6 +724,11 @@ export type ServiceAccount = import("./serviceAccount").ServiceAccount;
 export const ServiceAccount: typeof import("./serviceAccount").ServiceAccount = null as any;
 utilities.lazyLoad(exports, ["ServiceAccount"], () => require("./serviceAccount"));
 
+export { SloArgs, SloState } from "./slo";
+export type Slo = import("./slo").Slo;
+export const Slo: typeof import("./slo").Slo = null as any;
+utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
+
 export { SplunkConnectorArgs, SplunkConnectorState } from "./splunkConnector";
 export type SplunkConnector = import("./splunkConnector").SplunkConnector;
 export const SplunkConnector: typeof import("./splunkConnector").SplunkConnector = null as any;
@@ -449,10 +739,25 @@ export type SumologicConnector = import("./sumologicConnector").SumologicConnect
 export const SumologicConnector: typeof import("./sumologicConnector").SumologicConnector = null as any;
 utilities.lazyLoad(exports, ["SumologicConnector"], () => require("./sumologicConnector"));
 
+export { TemplateArgs, TemplateState } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
+
+export { TemplateFiltersArgs, TemplateFiltersState } from "./templateFilters";
+export type TemplateFilters = import("./templateFilters").TemplateFilters;
+export const TemplateFilters: typeof import("./templateFilters").TemplateFilters = null as any;
+utilities.lazyLoad(exports, ["TemplateFilters"], () => require("./templateFilters"));
+
 export { TriggersArgs, TriggersState } from "./triggers";
 export type Triggers = import("./triggers").Triggers;
 export const Triggers: typeof import("./triggers").Triggers = null as any;
 utilities.lazyLoad(exports, ["Triggers"], () => require("./triggers"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 export { UsergroupArgs, UsergroupState } from "./usergroup";
 export type Usergroup = import("./usergroup").Usergroup;
@@ -474,6 +779,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "harness:platform/apiKey:ApiKey":
+                return new ApiKey(name, <any>undefined, { urn })
             case "harness:platform/appDynamicsConnector:AppDynamicsConnector":
                 return new AppDynamicsConnector(name, <any>undefined, { urn })
             case "harness:platform/artifactoryConnector:ArtifactoryConnector":
@@ -488,6 +795,32 @@ const _module = {
                 return new AwsSecretManagerConnector(name, <any>undefined, { urn })
             case "harness:platform/bitbucketConnector:BitbucketConnector":
                 return new BitbucketConnector(name, <any>undefined, { urn })
+            case "harness:platform/ccmFilters:CcmFilters":
+                return new CcmFilters(name, <any>undefined, { urn })
+            case "harness:platform/connectorAzureCloudCost:ConnectorAzureCloudCost":
+                return new ConnectorAzureCloudCost(name, <any>undefined, { urn })
+            case "harness:platform/connectorAzureCloudProvider:ConnectorAzureCloudProvider":
+                return new ConnectorAzureCloudProvider(name, <any>undefined, { urn })
+            case "harness:platform/connectorAzureKeyVault:ConnectorAzureKeyVault":
+                return new ConnectorAzureKeyVault(name, <any>undefined, { urn })
+            case "harness:platform/connectorGcpCloudCost:ConnectorGcpCloudCost":
+                return new ConnectorGcpCloudCost(name, <any>undefined, { urn })
+            case "harness:platform/connectorGcpSecretManager:ConnectorGcpSecretManager":
+                return new ConnectorGcpSecretManager(name, <any>undefined, { urn })
+            case "harness:platform/connectorJenkins:ConnectorJenkins":
+                return new ConnectorJenkins(name, <any>undefined, { urn })
+            case "harness:platform/connectorKubernetesCloudCost:ConnectorKubernetesCloudCost":
+                return new ConnectorKubernetesCloudCost(name, <any>undefined, { urn })
+            case "harness:platform/connectorOciHelm:ConnectorOciHelm":
+                return new ConnectorOciHelm(name, <any>undefined, { urn })
+            case "harness:platform/connectorServiceNow:ConnectorServiceNow":
+                return new ConnectorServiceNow(name, <any>undefined, { urn })
+            case "harness:platform/connectorSpot:ConnectorSpot":
+                return new ConnectorSpot(name, <any>undefined, { urn })
+            case "harness:platform/connectorTas:ConnectorTas":
+                return new ConnectorTas(name, <any>undefined, { urn })
+            case "harness:platform/connectorTerraformCloud:ConnectorTerraformCloud":
+                return new ConnectorTerraformCloud(name, <any>undefined, { urn })
             case "harness:platform/datadogConnector:DatadogConnector":
                 return new DatadogConnector(name, <any>undefined, { urn })
             case "harness:platform/dockerConnector:DockerConnector":
@@ -502,6 +835,12 @@ const _module = {
                 return new EnvironmentGroup(name, <any>undefined, { urn })
             case "harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides":
                 return new EnvironmentServiceOverrides(name, <any>undefined, { urn })
+            case "harness:platform/featureFlag:FeatureFlag":
+                return new FeatureFlag(name, <any>undefined, { urn })
+            case "harness:platform/ffApiKey:FfApiKey":
+                return new FfApiKey(name, <any>undefined, { urn })
+            case "harness:platform/filters:Filters":
+                return new Filters(name, <any>undefined, { urn })
             case "harness:platform/gcpConnector:GcpConnector":
                 return new GcpConnector(name, <any>undefined, { urn })
             case "harness:platform/gitConnector:GitConnector":
@@ -516,6 +855,14 @@ const _module = {
                 return new GithubConnector(name, <any>undefined, { urn })
             case "harness:platform/gitlabConnector:GitlabConnector":
                 return new GitlabConnector(name, <any>undefined, { urn })
+            case "harness:platform/gitopsApplications:GitopsApplications":
+                return new GitopsApplications(name, <any>undefined, { urn })
+            case "harness:platform/gitopsGnupg:GitopsGnupg":
+                return new GitopsGnupg(name, <any>undefined, { urn })
+            case "harness:platform/gitopsRepoCert:GitopsRepoCert":
+                return new GitopsRepoCert(name, <any>undefined, { urn })
+            case "harness:platform/gitopsRepoCred:GitopsRepoCred":
+                return new GitopsRepoCred(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
@@ -526,6 +873,10 @@ const _module = {
                 return new JiraConnector(name, <any>undefined, { urn })
             case "harness:platform/kubernetesConnector:KubernetesConnector":
                 return new KubernetesConnector(name, <any>undefined, { urn })
+            case "harness:platform/manualFreeze:ManualFreeze":
+                return new ManualFreeze(name, <any>undefined, { urn })
+            case "harness:platform/monitoredService:MonitoredService":
+                return new MonitoredService(name, <any>undefined, { urn })
             case "harness:platform/newrelicConnector:NewrelicConnector":
                 return new NewrelicConnector(name, <any>undefined, { urn })
             case "harness:platform/nexusConnector:NexusConnector":
@@ -536,6 +887,12 @@ const _module = {
                 return new PagerdutyConnector(name, <any>undefined, { urn })
             case "harness:platform/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
+            case "harness:platform/pipelineFilters:PipelineFilters":
+                return new PipelineFilters(name, <any>undefined, { urn })
+            case "harness:platform/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
+            case "harness:platform/policyset:Policyset":
+                return new Policyset(name, <any>undefined, { urn })
             case "harness:platform/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "harness:platform/prometheusConnector:PrometheusConnector":
@@ -556,12 +913,20 @@ const _module = {
                 return new Service(name, <any>undefined, { urn })
             case "harness:platform/serviceAccount:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
+            case "harness:platform/slo:Slo":
+                return new Slo(name, <any>undefined, { urn })
             case "harness:platform/splunkConnector:SplunkConnector":
                 return new SplunkConnector(name, <any>undefined, { urn })
             case "harness:platform/sumologicConnector:SumologicConnector":
                 return new SumologicConnector(name, <any>undefined, { urn })
+            case "harness:platform/template:Template":
+                return new Template(name, <any>undefined, { urn })
+            case "harness:platform/templateFilters:TemplateFilters":
+                return new TemplateFilters(name, <any>undefined, { urn })
             case "harness:platform/triggers:Triggers":
                 return new Triggers(name, <any>undefined, { urn })
+            case "harness:platform/user:User":
+                return new User(name, <any>undefined, { urn })
             case "harness:platform/usergroup:Usergroup":
                 return new Usergroup(name, <any>undefined, { urn })
             case "harness:platform/variables:Variables":
@@ -573,6 +938,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("harness", "platform/apiKey", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/appDynamicsConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/artifactoryConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/awsCCConnector", _module)
@@ -580,6 +946,19 @@ pulumi.runtime.registerResourceModule("harness", "platform/awsConnector", _modul
 pulumi.runtime.registerResourceModule("harness", "platform/awsKmsConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/awsSecretManagerConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/ccmFilters", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureCloudCost", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureCloudProvider", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureKeyVault", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpCloudCost", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpSecretManager", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorJenkins", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorKubernetesCloudCost", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorOciHelm", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorServiceNow", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorSpot", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorTas", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorTerraformCloud", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dockerConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dynatraceConnector", _module)
@@ -587,6 +966,9 @@ pulumi.runtime.registerResourceModule("harness", "platform/environment", _module
 pulumi.runtime.registerResourceModule("harness", "platform/environmentClustersMapping", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/environmentGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/environmentServiceOverrides", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/featureFlag", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/ffApiKey", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/filters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gcpConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitOpsAgent", _module)
@@ -594,16 +976,25 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitOpsCluster", _modu
 pulumi.runtime.registerResourceModule("harness", "platform/gitOpsRepository", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsApplications", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsGnupg", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsRepoCert", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsRepoCred", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jiraConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/kubernetesConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/manualFreeze", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/monitoredService", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/newrelicConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/nexusConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/organization", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pagerdutyConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/pipelineFilters", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/policy", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/policyset", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/project", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/prometheusConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/resourceGroup", _module)
@@ -614,9 +1005,13 @@ pulumi.runtime.registerResourceModule("harness", "platform/secretSshkey", _modul
 pulumi.runtime.registerResourceModule("harness", "platform/secretText", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/service", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceAccount", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/slo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/splunkConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/sumologicConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/template", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/templateFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/triggers", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/user", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/usergroup", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/variables", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/vaultConnector", _module)

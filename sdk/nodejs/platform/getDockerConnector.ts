@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Datadog connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getDockerConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getDockerConnector(args?: GetDockerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDockerConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getDockerConnector(args: GetDockerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDockerConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDockerConnector:getDockerConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetDockerConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -55,7 +62,7 @@ export interface GetDockerConnectorResult {
      */
     readonly credentials: outputs.platform.GetDockerConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -69,21 +76,21 @@ export interface GetDockerConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -91,13 +98,26 @@ export interface GetDockerConnectorResult {
      */
     readonly type: string;
     /**
-     * The url of the docker registry.
+     * The URL of the docker registry.
      */
     readonly url: string;
 }
-
-export function getDockerConnectorOutput(args?: GetDockerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerConnectorResult> {
-    return pulumi.output(args).apply(a => getDockerConnector(a, opts))
+/**
+ * Datasource for looking up a Datadog connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getDockerConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getDockerConnectorOutput(args: GetDockerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getDockerConnector(a, opts))
 }
 
 /**
@@ -107,17 +127,17 @@ export interface GetDockerConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const test = new harness.YamlConfig("test", {
  *     content: `harnessApiVersion: '1.0'
@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  * - k8s
  * skipValidation: true
  * useKubernetesDelegate: true
+ *
  * `,
  *     path: "Setup/Cloud Providers/Kubernetes.yaml",
  * });

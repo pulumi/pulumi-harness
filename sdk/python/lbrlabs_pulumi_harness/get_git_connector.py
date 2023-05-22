@@ -139,7 +139,7 @@ class GetGitConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        The url of the git repository or account/organization.
+        The URL of the git repository or account/organization.
         """
         return pulumi.get(self, "url")
 

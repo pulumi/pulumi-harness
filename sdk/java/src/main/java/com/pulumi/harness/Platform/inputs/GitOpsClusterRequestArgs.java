@@ -20,37 +20,92 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
 
     public static final GitOpsClusterRequestArgs Empty = new GitOpsClusterRequestArgs();
 
+    /**
+     * GitOps cluster details.
+     * 
+     */
     @Import(name="clusters")
     private @Nullable Output<List<GitOpsClusterRequestClusterArgs>> clusters;
 
+    /**
+     * @return GitOps cluster details.
+     * 
+     */
     public Optional<Output<List<GitOpsClusterRequestClusterArgs>>> clusters() {
         return Optional.ofNullable(this.clusters);
     }
 
+    /**
+     * Cluster server URL or the cluster name.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<GitOpsClusterRequestIdArgs>> ids;
 
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     public Optional<Output<List<GitOpsClusterRequestIdArgs>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Tags associated with the clusters
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return Tags associated with the clusters
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Update mask of the GitOps cluster.
+     * 
+     */
     @Import(name="updateMasks")
     private @Nullable Output<List<GitOpsClusterRequestUpdateMaskArgs>> updateMasks;
 
+    /**
+     * @return Update mask of the GitOps cluster.
+     * 
+     */
     public Optional<Output<List<GitOpsClusterRequestUpdateMaskArgs>>> updateMasks() {
         return Optional.ofNullable(this.updateMasks);
     }
 
+    /**
+     * Fields which are updated.
+     * 
+     */
     @Import(name="updatedFields")
     private @Nullable Output<List<String>> updatedFields;
 
+    /**
+     * @return Fields which are updated.
+     * 
+     */
     public Optional<Output<List<String>>> updatedFields() {
         return Optional.ofNullable(this.updatedFields);
     }
 
+    /**
+     * Indicates if the GitOps cluster should be updated if existing and inserted if not.
+     * 
+     */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
+    /**
+     * @return Indicates if the GitOps cluster should be updated if existing and inserted if not.
+     * 
+     */
     public Optional<Output<Boolean>> upsert() {
         return Optional.ofNullable(this.upsert);
     }
@@ -60,6 +115,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
     private GitOpsClusterRequestArgs(GitOpsClusterRequestArgs $) {
         this.clusters = $.clusters;
         this.ids = $.ids;
+        this.tags = $.tags;
         this.updateMasks = $.updateMasks;
         this.updatedFields = $.updatedFields;
         this.upsert = $.upsert;
@@ -83,63 +139,178 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
             $ = new GitOpsClusterRequestArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clusters GitOps cluster details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusters(@Nullable Output<List<GitOpsClusterRequestClusterArgs>> clusters) {
             $.clusters = clusters;
             return this;
         }
 
+        /**
+         * @param clusters GitOps cluster details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusters(List<GitOpsClusterRequestClusterArgs> clusters) {
             return clusters(Output.of(clusters));
         }
 
+        /**
+         * @param clusters GitOps cluster details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusters(GitOpsClusterRequestClusterArgs... clusters) {
             return clusters(List.of(clusters));
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<GitOpsClusterRequestIdArgs>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<GitOpsClusterRequestIdArgs> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(GitOpsClusterRequestIdArgs... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param tags Tags associated with the clusters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags associated with the clusters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags associated with the clusters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
+         * @param updateMasks Update mask of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(@Nullable Output<List<GitOpsClusterRequestUpdateMaskArgs>> updateMasks) {
             $.updateMasks = updateMasks;
             return this;
         }
 
+        /**
+         * @param updateMasks Update mask of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(List<GitOpsClusterRequestUpdateMaskArgs> updateMasks) {
             return updateMasks(Output.of(updateMasks));
         }
 
+        /**
+         * @param updateMasks Update mask of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateMasks(GitOpsClusterRequestUpdateMaskArgs... updateMasks) {
             return updateMasks(List.of(updateMasks));
         }
 
+        /**
+         * @param updatedFields Fields which are updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedFields(@Nullable Output<List<String>> updatedFields) {
             $.updatedFields = updatedFields;
             return this;
         }
 
+        /**
+         * @param updatedFields Fields which are updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedFields(List<String> updatedFields) {
             return updatedFields(Output.of(updatedFields));
         }
 
+        /**
+         * @param updatedFields Fields which are updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedFields(String... updatedFields) {
             return updatedFields(List.of(updatedFields));
         }
 
+        /**
+         * @param upsert Indicates if the GitOps cluster should be updated if existing and inserted if not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upsert(@Nullable Output<Boolean> upsert) {
             $.upsert = upsert;
             return this;
         }
 
+        /**
+         * @param upsert Indicates if the GitOps cluster should be updated if existing and inserted if not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upsert(Boolean upsert) {
             return upsert(Output.of(upsert));
         }

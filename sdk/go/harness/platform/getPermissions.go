@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.GetPermissions(ctx, &platform.GetPermissionsArgs{
+//			_, err := platform.GetPermissions(ctx, &platform.GetPermissionsArgs{
 //				OrgId:     pulumi.StringRef("org_id"),
 //				ProjectId: pulumi.StringRef("project_id"),
 //			}, nil)

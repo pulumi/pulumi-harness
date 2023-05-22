@@ -12,12 +12,75 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Jira connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.JiraConnector("test", new()
+    ///     {
+    ///         Auth = new Harness.Platform.Inputs.JiraConnectorAuthArgs
+    ///         {
+    ///             AuthType = "UsernamePassword",
+    ///             UsernamePassword = new Harness.Platform.Inputs.JiraConnectorAuthUsernamePasswordArgs
+    ///             {
+    ///                 PasswordRef = "account.secret_id",
+    ///                 Username = "admin",
+    ///             },
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://jira.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level jira connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level jira connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level jira connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/jiraConnector:JiraConnector")]
     public partial class JiraConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// The credentials to use for the jira authentication.
+        /// </summary>
+        [Output("auth")]
+        public Output<Outputs.JiraConnectorAuth> Auth { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -41,31 +104,31 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Reference to a secret containing the password to use for authentication.
+        /// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("passwordRef")]
         public Output<string> PasswordRef { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Url of the Jira server.
+        /// URL of the Jira server.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -74,13 +137,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Username to use for authentication.
         /// </summary>
         [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
+        public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Reference to a secret containing the username to use for authentication.
+        /// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("usernameRef")]
-        public Output<string?> UsernameRef { get; private set; } = null!;
+        public Output<string> UsernameRef { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,11 +192,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class JiraConnectorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The credentials to use for the jira authentication.
+        /// </summary>
+        [Input("auth", required: true)]
+        public Input<Inputs.JiraConnectorAuthArgs> Auth { get; set; } = null!;
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -160,19 +229,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Reference to a secret containing the password to use for authentication.
+        /// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("passwordRef", required: true)]
-        public Input<string> PasswordRef { get; set; } = null!;
+        [Input("passwordRef")]
+        public Input<string>? PasswordRef { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -181,7 +250,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -190,7 +259,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the Jira server.
+        /// URL of the Jira server.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -202,7 +271,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Reference to a secret containing the username to use for authentication.
+        /// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("usernameRef")]
         public Input<string>? UsernameRef { get; set; }
@@ -215,11 +284,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class JiraConnectorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The credentials to use for the jira authentication.
+        /// </summary>
+        [Input("auth")]
+        public Input<Inputs.JiraConnectorAuthGetArgs>? Auth { get; set; }
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -246,19 +321,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Reference to a secret containing the password to use for authentication.
+        /// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef")]
         public Input<string>? PasswordRef { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -267,7 +342,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -276,7 +351,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the Jira server.
+        /// URL of the Jira server.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -288,7 +363,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Reference to a secret containing the username to use for authentication.
+        /// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("usernameRef")]
         public Input<string>? UsernameRef { get; set; }

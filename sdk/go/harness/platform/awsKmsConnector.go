@@ -7,19 +7,83 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS KMS connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAwsKmsConnector(ctx, "test", &platform.AwsKmsConnectorArgs{
+//				ArnRef: pulumi.String("account.secret_id"),
+//				Credentials: &platform.AwsKmsConnectorCredentialsArgs{
+//					InheritFromDelegate: pulumi.Bool(true),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifer"),
+//				Region:      pulumi.String("us-east-1"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level awskms connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
+//
+// ```
+//
+//	Import org level awskms connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level awskms connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type AwsKmsConnector struct {
 	pulumi.CustomResourceState
 
-	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef pulumi.StringOutput `pulumi:"arnRef"`
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -27,13 +91,13 @@ type AwsKmsConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -79,11 +143,11 @@ func GetAwsKmsConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsKmsConnector resources.
 type awsKmsConnectorState struct {
-	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef *string `pulumi:"arnRef"`
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials *AwsKmsConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -91,22 +155,22 @@ type awsKmsConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region *string `pulumi:"region"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type AwsKmsConnectorState struct {
-	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef pulumi.StringPtrInput
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -114,13 +178,13 @@ type AwsKmsConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -129,11 +193,11 @@ func (AwsKmsConnectorState) ElementType() reflect.Type {
 }
 
 type awsKmsConnectorArgs struct {
-	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef string `pulumi:"arnRef"`
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -141,23 +205,23 @@ type awsKmsConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a AwsKmsConnector resource.
 type AwsKmsConnectorArgs struct {
-	// A reference to the Harness secret containing the ARN of the AWS KMS.
+	// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ArnRef pulumi.StringInput
-	// The credentials to use for connecting to aws.
+	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -165,13 +229,13 @@ type AwsKmsConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -262,17 +326,17 @@ func (o AwsKmsConnectorOutput) ToAwsKmsConnectorOutputWithContext(ctx context.Co
 	return o
 }
 
-// A reference to the Harness secret containing the ARN of the AWS KMS.
+// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsKmsConnectorOutput) ArnRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringOutput { return v.ArnRef }).(pulumi.StringOutput)
 }
 
-// The credentials to use for connecting to aws.
+// Credentials to connect to AWS.
 func (o AwsKmsConnectorOutput) Credentials() AwsKmsConnectorCredentialsOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) AwsKmsConnectorCredentialsOutput { return v.Credentials }).(AwsKmsConnectorCredentialsOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o AwsKmsConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -292,12 +356,12 @@ func (o AwsKmsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o AwsKmsConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o AwsKmsConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -307,7 +371,7 @@ func (o AwsKmsConnectorOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o AwsKmsConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

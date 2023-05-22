@@ -16,8 +16,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         [Input("encryptedPassphrase")]
         public Input<string>? EncryptedPassphrase { get; set; }
 
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;

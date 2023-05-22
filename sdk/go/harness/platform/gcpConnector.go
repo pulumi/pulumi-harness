@@ -7,11 +7,74 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Gcp connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGcpConnector(ctx, "test", &platform.GcpConnectorArgs{
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				InheritFromDelegates: platform.GcpConnectorInheritFromDelegateArray{
+//					&platform.GcpConnectorInheritFromDelegateArgs{
+//						DelegateSelectors: pulumi.StringArray{
+//							pulumi.String("harness-delegate"),
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level gcp connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
+//
+// ```
+//
+//	Import org level gcp connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level gcp connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type GcpConnector struct {
 	pulumi.CustomResourceState
 
@@ -25,11 +88,11 @@ type GcpConnector struct {
 	Manual GcpConnectorManualPtrOutput `pulumi:"manual"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -76,11 +139,11 @@ type gcpConnectorState struct {
 	Manual *GcpConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -95,11 +158,11 @@ type GcpConnectorState struct {
 	Manual GcpConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -118,11 +181,11 @@ type gcpConnectorArgs struct {
 	Manual *GcpConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -138,11 +201,11 @@ type GcpConnectorArgs struct {
 	Manual GcpConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -258,17 +321,17 @@ func (o GcpConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o GcpConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o GcpConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o GcpConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -33,7 +33,7 @@ public final class GetOrganizationResult {
      */
     private @Nullable String name;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -68,7 +68,7 @@ public final class GetOrganizationResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {

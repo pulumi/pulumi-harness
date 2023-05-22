@@ -30,6 +30,7 @@ class UsergroupArgs:
                  sso_group_name: Optional[pulumi.Input[str]] = None,
                  sso_linked: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Usergroup resource.
@@ -38,16 +39,17 @@ class UsergroupArgs:
         :param pulumi.Input[bool] externally_managed: Whether the user group is externally managed.
         :param pulumi.Input[str] linked_sso_display_name: Name of the linked SSO.
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
-        :param pulumi.Input[str] linked_sso_type: Type of linked SSO
+        :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
-        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup.
+        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
@@ -76,6 +78,8 @@ class UsergroupArgs:
             pulumi.set(__self__, "sso_linked", sso_linked)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_emails is not None:
+            pulumi.set(__self__, "user_emails", user_emails)
         if users is not None:
             pulumi.set(__self__, "users", users)
 
@@ -143,7 +147,7 @@ class UsergroupArgs:
     @pulumi.getter(name="linkedSsoType")
     def linked_sso_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of linked SSO
+        Type of linked SSO.
         """
         return pulumi.get(self, "linked_sso_type")
 
@@ -179,7 +183,7 @@ class UsergroupArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -191,7 +195,7 @@ class UsergroupArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -227,7 +231,7 @@ class UsergroupArgs:
     @pulumi.getter(name="ssoLinked")
     def sso_linked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether sso is linked or not
+        Whether sso is linked or not.
         """
         return pulumi.get(self, "sso_linked")
 
@@ -239,7 +243,7 @@ class UsergroupArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -248,10 +252,22 @@ class UsergroupArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="userEmails")
+    def user_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        """
+        return pulumi.get(self, "user_emails")
+
+    @user_emails.setter
+    def user_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_emails", value)
+
+    @property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of users in the UserGroup.
+        List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         return pulumi.get(self, "users")
 
@@ -277,6 +293,7 @@ class _UsergroupState:
                  sso_group_name: Optional[pulumi.Input[str]] = None,
                  sso_linked: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Usergroup resources.
@@ -285,16 +302,17 @@ class _UsergroupState:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] linked_sso_display_name: Name of the linked SSO.
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
-        :param pulumi.Input[str] linked_sso_type: Type of linked SSO
+        :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
-        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup.
+        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -324,6 +342,8 @@ class _UsergroupState:
             pulumi.set(__self__, "sso_linked", sso_linked)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_emails is not None:
+            pulumi.set(__self__, "user_emails", user_emails)
         if users is not None:
             pulumi.set(__self__, "users", users)
 
@@ -391,7 +411,7 @@ class _UsergroupState:
     @pulumi.getter(name="linkedSsoType")
     def linked_sso_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of linked SSO
+        Type of linked SSO.
         """
         return pulumi.get(self, "linked_sso_type")
 
@@ -427,7 +447,7 @@ class _UsergroupState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -439,7 +459,7 @@ class _UsergroupState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -475,7 +495,7 @@ class _UsergroupState:
     @pulumi.getter(name="ssoLinked")
     def sso_linked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether sso is linked or not
+        Whether sso is linked or not.
         """
         return pulumi.get(self, "sso_linked")
 
@@ -487,7 +507,7 @@ class _UsergroupState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -496,10 +516,22 @@ class _UsergroupState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="userEmails")
+    def user_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        """
+        return pulumi.get(self, "user_emails")
+
+    @user_emails.setter
+    def user_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_emails", value)
+
+    @property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of users in the UserGroup.
+        List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         return pulumi.get(self, "users")
 
@@ -527,6 +559,7 @@ class Usergroup(pulumi.CustomResource):
                  sso_group_name: Optional[pulumi.Input[str]] = None,
                  sso_linked: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -579,6 +612,7 @@ class Usergroup(pulumi.CustomResource):
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
                     group_email="email@email.com",
+                    send_email_to_all_users=True,
                     type="EMAIL",
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
@@ -609,6 +643,7 @@ class Usergroup(pulumi.CustomResource):
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
                     group_email="email@email.com",
+                    send_email_to_all_users=True,
                     type="EMAIL",
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
@@ -626,14 +661,58 @@ class Usergroup(pulumi.CustomResource):
             sso_group_name="sso_group_name",
             sso_linked=True,
             users=["user_id"])
+        # Create user group by adding user emails
+        example = harness.platform.Usergroup("example",
+            externally_managed=False,
+            identifier="identifier",
+            linked_sso_display_name="linked_sso_display_name",
+            linked_sso_id="linked_sso_id",
+            linked_sso_type="SAML",
+            notification_configs=[
+                harness.platform.UsergroupNotificationConfigArgs(
+                    slack_webhook_url="https://google.com",
+                    type="SLACK",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    group_email="email@email.com",
+                    send_email_to_all_users=True,
+                    type="EMAIL",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    microsoft_teams_webhook_url="https://google.com",
+                    type="MSTEAMS",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    pager_duty_key="pagerDutyKey",
+                    type="PAGERDUTY",
+                ),
+            ],
+            org_id="org_id",
+            project_id="project_id",
+            sso_group_id="sso_group_name",
+            sso_group_name="sso_group_name",
+            sso_linked=True,
+            user_emails=["user@email.com"])
         ```
 
         ## Import
 
-        Import using user group id
+        Import account level user group
 
         ```sh
          $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
+        ```
+
+         Import org level user group
+
+        ```sh
+         $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
+        ```
+
+         Import project level user group
+
+        ```sh
+         $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -643,16 +722,17 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] linked_sso_display_name: Name of the linked SSO.
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
-        :param pulumi.Input[str] linked_sso_type: Type of linked SSO
+        :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
-        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup.
+        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         ...
     @overload
@@ -710,6 +790,7 @@ class Usergroup(pulumi.CustomResource):
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
                     group_email="email@email.com",
+                    send_email_to_all_users=True,
                     type="EMAIL",
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
@@ -740,6 +821,7 @@ class Usergroup(pulumi.CustomResource):
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
                     group_email="email@email.com",
+                    send_email_to_all_users=True,
                     type="EMAIL",
                 ),
                 harness.platform.UsergroupNotificationConfigArgs(
@@ -757,14 +839,58 @@ class Usergroup(pulumi.CustomResource):
             sso_group_name="sso_group_name",
             sso_linked=True,
             users=["user_id"])
+        # Create user group by adding user emails
+        example = harness.platform.Usergroup("example",
+            externally_managed=False,
+            identifier="identifier",
+            linked_sso_display_name="linked_sso_display_name",
+            linked_sso_id="linked_sso_id",
+            linked_sso_type="SAML",
+            notification_configs=[
+                harness.platform.UsergroupNotificationConfigArgs(
+                    slack_webhook_url="https://google.com",
+                    type="SLACK",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    group_email="email@email.com",
+                    send_email_to_all_users=True,
+                    type="EMAIL",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    microsoft_teams_webhook_url="https://google.com",
+                    type="MSTEAMS",
+                ),
+                harness.platform.UsergroupNotificationConfigArgs(
+                    pager_duty_key="pagerDutyKey",
+                    type="PAGERDUTY",
+                ),
+            ],
+            org_id="org_id",
+            project_id="project_id",
+            sso_group_id="sso_group_name",
+            sso_group_name="sso_group_name",
+            sso_linked=True,
+            user_emails=["user@email.com"])
         ```
 
         ## Import
 
-        Import using user group id
+        Import account level user group
 
         ```sh
          $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
+        ```
+
+         Import org level user group
+
+        ```sh
+         $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
+        ```
+
+         Import project level user group
+
+        ```sh
+         $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -796,6 +922,7 @@ class Usergroup(pulumi.CustomResource):
                  sso_group_name: Optional[pulumi.Input[str]] = None,
                  sso_linked: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -822,6 +949,7 @@ class Usergroup(pulumi.CustomResource):
             __props__.__dict__["sso_group_name"] = sso_group_name
             __props__.__dict__["sso_linked"] = sso_linked
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["user_emails"] = user_emails
             __props__.__dict__["users"] = users
         super(Usergroup, __self__).__init__(
             'harness:platform/usergroup:Usergroup',
@@ -847,6 +975,7 @@ class Usergroup(pulumi.CustomResource):
             sso_group_name: Optional[pulumi.Input[str]] = None,
             sso_linked: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Usergroup':
         """
         Get an existing Usergroup resource's state with the given name, id, and optional extra
@@ -860,16 +989,17 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] linked_sso_display_name: Name of the linked SSO.
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
-        :param pulumi.Input[str] linked_sso_type: Type of linked SSO
+        :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
         :param pulumi.Input[str] sso_group_name: Name of the SSO userGroup.
-        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup.
+        :param pulumi.Input[bool] sso_linked: Whether sso is linked or not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_emails: List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -889,6 +1019,7 @@ class Usergroup(pulumi.CustomResource):
         __props__.__dict__["sso_group_name"] = sso_group_name
         __props__.__dict__["sso_linked"] = sso_linked
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["user_emails"] = user_emails
         __props__.__dict__["users"] = users
         return Usergroup(resource_name, opts=opts, __props__=__props__)
 
@@ -936,7 +1067,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="linkedSsoType")
     def linked_sso_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of linked SSO
+        Type of linked SSO.
         """
         return pulumi.get(self, "linked_sso_type")
 
@@ -960,7 +1091,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -968,7 +1099,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -992,7 +1123,7 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter(name="ssoLinked")
     def sso_linked(self) -> pulumi.Output[bool]:
         """
-        Whether sso is linked or not
+        Whether sso is linked or not.
         """
         return pulumi.get(self, "sso_linked")
 
@@ -1000,15 +1131,23 @@ class Usergroup(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userEmails")
+    def user_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of user emails in the UserGroup. Either provide list of users or list of user emails.
+        """
+        return pulumi.get(self, "user_emails")
 
     @property
     @pulumi.getter
     def users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of users in the UserGroup.
+        List of users in the UserGroup. Either provide list of users or list of user emails.
         """
         return pulumi.get(self, "users")
 

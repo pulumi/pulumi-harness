@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDelegate, err := harness.GetDelegate(ctx, &GetDelegateArgs{
+//			testDelegate, err := harness.GetDelegate(ctx, &harness.GetDelegateArgs{
 //				Name: pulumi.StringRef("my-delegate"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = harness.NewDelegateApproval(ctx, "testDelegateApproval", &harness.DelegateApprovalArgs{
-//				DelegateId: pulumi.String(testDelegate.Id),
+//				DelegateId: *pulumi.String(testDelegate.Id),
 //				Approve:    pulumi.Bool(true),
 //			})
 //			if err != nil {

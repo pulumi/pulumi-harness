@@ -15,23 +15,27 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class UsergroupNotificationConfig
     {
         /// <summary>
-        /// Group email
+        /// Group email.
         /// </summary>
         public readonly string? GroupEmail;
         /// <summary>
-        /// Url of Microsoft teams webhook
+        /// Url of Microsoft teams webhook.
         /// </summary>
         public readonly string? MicrosoftTeamsWebhookUrl;
         /// <summary>
-        /// Pager duty key
+        /// Pager duty key.
         /// </summary>
         public readonly string? PagerDutyKey;
         /// <summary>
-        /// Url of slack webhook
+        /// Send email to all the group members.
+        /// </summary>
+        public readonly bool? SendEmailToAllUsers;
+        /// <summary>
+        /// Url of slack webhook.
         /// </summary>
         public readonly string? SlackWebhookUrl;
         /// <summary>
-        /// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        /// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         /// </summary>
         public readonly string? Type;
 
@@ -43,6 +47,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             string? pagerDutyKey,
 
+            bool? sendEmailToAllUsers,
+
             string? slackWebhookUrl,
 
             string? type)
@@ -50,6 +56,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
             GroupEmail = groupEmail;
             MicrosoftTeamsWebhookUrl = microsoftTeamsWebhookUrl;
             PagerDutyKey = pagerDutyKey;
+            SendEmailToAllUsers = sendEmailToAllUsers;
             SlackWebhookUrl = slackWebhookUrl;
             Type = type;
         }

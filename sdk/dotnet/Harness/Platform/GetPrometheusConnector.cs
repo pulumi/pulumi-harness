@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -36,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetPrometheusConnectorResult> InvokeAsync(GetPrometheusConnectorArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetPrometheusConnectorResult> InvokeAsync(GetPrometheusConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorArgs(), options.WithDefaults());
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -63,7 +65,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetPrometheusConnectorResult> Invoke(GetPrometheusConnectorInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetPrometheusConnectorResult> Invoke(GetPrometheusConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusConnectorResult>("harness:platform/getPrometheusConnector:getPrometheusConnector", args ?? new GetPrometheusConnectorInvokeArgs(), options.WithDefaults());
     }
 
@@ -73,8 +75,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -83,13 +85,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -105,8 +107,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -115,13 +117,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -137,7 +139,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GetPrometheusConnectorResult
     {
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
@@ -155,29 +157,29 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Password reference.
+        /// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Url of the Prometheus server.
+        /// URL of the Prometheus server.
         /// </summary>
         public readonly string Url;
         /// <summary>
@@ -195,7 +197,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string id,
 
-            string? identifier,
+            string identifier,
 
             string? name,
 

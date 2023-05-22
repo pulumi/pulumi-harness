@@ -15,7 +15,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class GetGitopsClusterRequestResult
     {
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterResult> Clusters;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestIdResult> Ids;
+        public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestUpdateMaskResult> UpdateMasks;
         public readonly ImmutableArray<string> UpdatedFields;
         public readonly bool? Upsert;
@@ -26,6 +30,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsClusterRequestIdResult> ids,
 
+            ImmutableArray<string> tags,
+
             ImmutableArray<Outputs.GetGitopsClusterRequestUpdateMaskResult> updateMasks,
 
             ImmutableArray<string> updatedFields,
@@ -34,6 +40,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         {
             Clusters = clusters;
             Ids = ids;
+            Tags = tags;
             UpdateMasks = updateMasks;
             UpdatedFields = updatedFields;
             Upsert = upsert;

@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetJiraConnectorResult',
@@ -21,7 +22,10 @@ class GetJiraConnectorResult:
     """
     A collection of values returned by getJiraConnector.
     """
-    def __init__(__self__, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, password_ref=None, project_id=None, tags=None, url=None, username=None, username_ref=None):
+    def __init__(__self__, auths=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, password_ref=None, project_id=None, tags=None, url=None, username=None, username_ref=None):
+        if auths and not isinstance(auths, list):
+            raise TypeError("Expected argument 'auths' to be a list")
+        pulumi.set(__self__, "auths", auths)
         if delegate_selectors and not isinstance(delegate_selectors, list):
             raise TypeError("Expected argument 'delegate_selectors' to be a list")
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
@@ -60,10 +64,18 @@ class GetJiraConnectorResult:
         pulumi.set(__self__, "username_ref", username_ref)
 
     @property
+    @pulumi.getter
+    def auths(self) -> Sequence['outputs.GetJiraConnectorAuthResult']:
+        """
+        The credentials to use for the jira authentication.
+        """
+        return pulumi.get(self, "auths")
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -85,7 +97,7 @@ class GetJiraConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -103,7 +115,7 @@ class GetJiraConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -111,7 +123,7 @@ class GetJiraConnectorResult:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> str:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -119,7 +131,7 @@ class GetJiraConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -127,7 +139,7 @@ class GetJiraConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -135,7 +147,7 @@ class GetJiraConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        Url of the Jira server.
+        URL of the Jira server.
         """
         return pulumi.get(self, "url")
 
@@ -151,7 +163,7 @@ class GetJiraConnectorResult:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> str:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -162,6 +174,7 @@ class AwaitableGetJiraConnectorResult(GetJiraConnectorResult):
         if False:
             yield self
         return GetJiraConnectorResult(
+            auths=self.auths,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
             id=self.id,
@@ -184,11 +197,20 @@ def get_jira_connector(identifier: Optional[str] = None,
     """
     Datasource for looking up a Jira connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_jira_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -199,6 +221,7 @@ def get_jira_connector(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getJiraConnector:getJiraConnector', __args__, opts=opts, typ=GetJiraConnectorResult).value
 
     return AwaitableGetJiraConnectorResult(
+        auths=__ret__.auths,
         delegate_selectors=__ret__.delegate_selectors,
         description=__ret__.description,
         id=__ret__.id,
@@ -214,7 +237,7 @@ def get_jira_connector(identifier: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_jira_connector)
-def get_jira_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_jira_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               org_id: Optional[pulumi.Input[Optional[str]]] = None,
                               project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -222,10 +245,19 @@ def get_jira_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] 
     """
     Datasource for looking up a Jira connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_jira_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

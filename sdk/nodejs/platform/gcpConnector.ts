@@ -8,6 +8,43 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Gcp connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Credentials inherit_from_delegate
+ * const test = new harness.platform.GcpConnector("test", {
+ *     description: "test",
+ *     identifier: "identifier",
+ *     inheritFromDelegates: [{
+ *         delegateSelectors: ["harness-delegate"],
+ *     }],
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level gcp connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
+ * ```
+ *
+ *  Import org level gcp connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level gcp connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class GcpConnector extends pulumi.CustomResource {
     /**
@@ -58,15 +95,15 @@ export class GcpConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -135,15 +172,15 @@ export interface GcpConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -173,15 +210,15 @@ export interface GcpConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

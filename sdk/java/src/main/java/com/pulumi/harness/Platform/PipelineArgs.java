@@ -5,6 +5,8 @@ package com.pulumi.harness.platform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.PipelineGitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +31,21 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<PipelineGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<Output<PipelineGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     /**
@@ -62,14 +79,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
@@ -77,14 +94,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<String> projectId() {
@@ -92,14 +109,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -107,14 +124,44 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * YAML of the pipeline.
+     * If true, returns Pipeline YAML with Templates applied on it.
+     * 
+     */
+    @Import(name="templateApplied")
+    private @Nullable Output<Boolean> templateApplied;
+
+    /**
+     * @return If true, returns Pipeline YAML with Templates applied on it.
+     * 
+     */
+    public Optional<Output<Boolean>> templateApplied() {
+        return Optional.ofNullable(this.templateApplied);
+    }
+
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    @Import(name="templateAppliedPipelineYaml")
+    private @Nullable Output<String> templateAppliedPipelineYaml;
+
+    /**
+     * @return Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    public Optional<Output<String>> templateAppliedPipelineYaml() {
+        return Optional.ofNullable(this.templateAppliedPipelineYaml);
+    }
+
+    /**
+     * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml", required=true)
     private Output<String> yaml;
 
     /**
-     * @return YAML of the pipeline.
+     * @return YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {
@@ -125,11 +172,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
     private PipelineArgs(PipelineArgs $) {
         this.description = $.description;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
+        this.templateApplied = $.templateApplied;
+        this.templateAppliedPipelineYaml = $.templateAppliedPipelineYaml;
         this.yaml = $.yaml;
     }
 
@@ -170,6 +220,27 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<PipelineGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(PipelineGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**
@@ -215,7 +286,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -226,7 +297,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -236,7 +307,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -247,7 +318,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -257,7 +328,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -268,7 +339,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -278,7 +349,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -288,7 +359,49 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml YAML of the pipeline.
+         * @param templateApplied If true, returns Pipeline YAML with Templates applied on it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateApplied(@Nullable Output<Boolean> templateApplied) {
+            $.templateApplied = templateApplied;
+            return this;
+        }
+
+        /**
+         * @param templateApplied If true, returns Pipeline YAML with Templates applied on it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateApplied(Boolean templateApplied) {
+            return templateApplied(Output.of(templateApplied));
+        }
+
+        /**
+         * @param templateAppliedPipelineYaml Pipeline YAML after resolving Templates (returned as a String).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateAppliedPipelineYaml(@Nullable Output<String> templateAppliedPipelineYaml) {
+            $.templateAppliedPipelineYaml = templateAppliedPipelineYaml;
+            return this;
+        }
+
+        /**
+         * @param templateAppliedPipelineYaml Pipeline YAML after resolving Templates (returned as a String).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateAppliedPipelineYaml(String templateAppliedPipelineYaml) {
+            return templateAppliedPipelineYaml(Output.of(templateAppliedPipelineYaml));
+        }
+
+        /**
+         * @param yaml YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -299,7 +412,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml YAML of the pipeline.
+         * @param yaml YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

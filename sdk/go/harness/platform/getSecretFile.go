@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupSecretFile(ctx, &platform.LookupSecretFileArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupSecretFile(ctx, &platform.LookupSecretFileArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,12 +50,12 @@ func LookupSecretFile(ctx *pulumi.Context, args *LookupSecretFileArgs, opts ...p
 // A collection of arguments for invoking getSecretFile.
 type LookupSecretFileArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -68,16 +68,16 @@ type LookupSecretFileResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -97,12 +97,12 @@ func LookupSecretFileOutput(ctx *pulumi.Context, args LookupSecretFileOutputArgs
 // A collection of arguments for invoking getSecretFile.
 type LookupSecretFileOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -141,8 +141,8 @@ func (o LookupSecretFileResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupSecretFileResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupSecretFileResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretFileResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -150,12 +150,12 @@ func (o LookupSecretFileResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupSecretFileResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupSecretFileResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -165,7 +165,7 @@ func (o LookupSecretFileResultOutput) SecretManagerIdentifier() pulumi.StringOut
 	return o.ApplyT(func(v LookupSecretFileResult) string { return v.SecretManagerIdentifier }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupSecretFileResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecretFileResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

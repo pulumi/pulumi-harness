@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for craeting triggers in Harness.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -86,10 +84,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using trigger id
+ * Import trigger
  * 
  * ```sh
- *  $ pulumi import harness:platform/triggers:Triggers example &lt;triggers_id&gt;
+ *  $ pulumi import harness:platform/triggers:Triggers example &lt;org_id&gt;/&lt;project_id&gt;/&lt;target_id&gt;/&lt;triggers_id&gt;
  * ```
  * 
  */
@@ -99,7 +97,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +111,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -127,7 +125,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * if-Match
      * 
      */
-    @Export(name="ifMatch", type=String.class, parameters={})
+    @Export(name="ifMatch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ifMatch;
 
     /**
@@ -141,7 +139,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * ignore error default false
      * 
      */
-    @Export(name="ignoreError", type=Boolean.class, parameters={})
+    @Export(name="ignoreError", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreError;
 
     /**
@@ -155,7 +153,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -166,42 +164,42 @@ public class Triggers extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -211,7 +209,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * Identifier of the target pipeline
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
@@ -222,14 +220,14 @@ public class Triggers extends com.pulumi.resources.CustomResource {
         return this.targetId;
     }
     /**
-     * trigger yaml
+     * trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    @Export(name="yaml", type=String.class, parameters={})
+    @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return trigger yaml
+     * @return trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

@@ -9,10 +9,12 @@ import (
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
 	"github.com/lbrlabs/pulumi-harness/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -110,23 +112,22 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"harness_add_user_to_group":                      {Tok: harnessResource(mainMod, "AddUserToGroup")},
-			"harness_application":                            {Tok: harnessResource(mainMod, "Application")},
-			"harness_application_gitsync":                    {Tok: harnessResource(mainMod, "ApplicationGitSync")},
-			"harness_cloudprovider_aws":                      {Tok: harnessResource(cloudProviderMod, "Aws")},
-			"harness_cloudprovider_azure":                    {Tok: harnessResource(cloudProviderMod, "Azure")},
-			"harness_cloudprovider_datacenter":               {Tok: harnessResource(cloudProviderMod, "Datacenter")},
-			"harness_cloudprovider_gcp":                      {Tok: harnessResource(cloudProviderMod, "Gcp")},
-			"harness_cloudprovider_kubernetes":               {Tok: harnessResource(cloudProviderMod, "Kubernetes")},
-			"harness_cloudprovider_spot":                     {Tok: harnessResource(cloudProviderMod, "Spot")},
-			"harness_cloudprovider_tanzu":                    {Tok: harnessResource(cloudProviderMod, "Tanzu")},
-			"harness_delegate_approval":                      {Tok: harnessResource(mainMod, "DelegateApproval")},
-			"harness_encrypted_text":                         {Tok: harnessResource(mainMod, "EncryptedText")},
+			"harness_add_user_to_group":        {Tok: harnessResource(mainMod, "AddUserToGroup")},
+			"harness_application":              {Tok: harnessResource(mainMod, "Application")},
+			"harness_application_gitsync":      {Tok: harnessResource(mainMod, "ApplicationGitSync")},
+			"harness_cloudprovider_aws":        {Tok: harnessResource(cloudProviderMod, "Aws")},
+			"harness_cloudprovider_azure":      {Tok: harnessResource(cloudProviderMod, "Azure")},
+			"harness_cloudprovider_datacenter": {Tok: harnessResource(cloudProviderMod, "Datacenter")},
+			"harness_cloudprovider_gcp":        {Tok: harnessResource(cloudProviderMod, "Gcp")},
+			"harness_cloudprovider_kubernetes": {Tok: harnessResource(cloudProviderMod, "Kubernetes")},
+			"harness_cloudprovider_spot":       {Tok: harnessResource(cloudProviderMod, "Spot")},
+			"harness_cloudprovider_tanzu":      {Tok: harnessResource(cloudProviderMod, "Tanzu")},
+			"harness_delegate_approval":        {Tok: harnessResource(mainMod, "DelegateApproval")}, "harness_encrypted_text": {Tok: harnessResource(mainMod, "EncryptedText")},
 			"harness_environment":                            {Tok: harnessResource(mainMod, "Environment")},
-			"harness_environment_service_overrides":          {Tok: harnessResource(mainMod, "EnvironmentServiceOverrides")},
 			"harness_git_connector":                          {Tok: harnessResource(mainMod, "GitConnector")},
 			"harness_infrastructure_definition":              {Tok: harnessResource(mainMod, "InfrastructureDefinition")},
 			"harness_platform_connector_appdynamics":         {Tok: harnessResource(platformMod, "AppDynamicsConnector")},
+			"harness_platform_apikey":                        {Tok: harnessResource(platformMod, "ApiKey")},
 			"harness_platform_connector_artifactory":         {Tok: harnessResource(platformMod, "ArtifactoryConnector")},
 			"harness_platform_connector_aws":                 {Tok: harnessResource(platformMod, "AwsConnector")},
 			"harness_platform_connector_aws_secret_manager":  {Tok: harnessResource(platformMod, "AwsSecretManagerConnector")},
@@ -194,6 +195,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_delegate":        {Tok: harnessDataSource(mainMod, "getDelegate")},
 			"harness_delegate_ids":    {Tok: harnessDataSource(cloudProviderMod, "getDelegateIds")},
 			"harness_encrypted_text":  {Tok: harnessDataSource(mainMod, "getEncryptedText")},
+			"harness_delegate_ds":     {Tok: harnessDataSource(mainMod, "getDelegateDs")},
 			//"harness_environment":                            {Tok: harnessDataSource(mainMod, "Environment")},
 			//"harness_environment_service_overrides":         {Tok: harnessDataSource(mainMod, "EnvironmentServiceOverrides")},
 			"harness_git_connector":                         {Tok: harnessDataSource(mainMod, "getGitConnector")},
@@ -287,6 +289,14 @@ func Provider() tfbridge.ProviderInfo {
 			RootNamespace: "Lbrlabs.PulumiPackage",
 		},
 	}
+
+	err := x.ComputeDefaults(&prov, x.TokensMappedModules("harness_", mainMod,
+		map[string]string{
+			"platform":      "platform",
+			"cloudprovider": "cloudprovider",
+			"service":       "service",
+		}, x.MakeStandardToken(mainPkg)))
+	contract.AssertNoErrorf(err, "failed to compute default token mappings")
 
 	prov.SetAutonaming(255, "-")
 

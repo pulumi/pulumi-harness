@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -38,52 +36,7 @@ import (
 //					pulumi.String("baz"),
 //				},
 //				Type: pulumi.String("PreProduction"),
-//				Yaml: pulumi.String(fmt.Sprintf(`			   environment:
-//	         name: name
-//	         identifier: identifier
-//	         orgIdentifier: org_id
-//	         projectIdentifier: project_id
-//	         type: PreProduction
-//	         tags:
-//	           foo: bar
-//	           baz: ""
-//	         variables:
-//	           - name: envVar1
-//	             type: String
-//	             value: v1
-//	             description: ""
-//	           - name: envVar2
-//	             type: String
-//	             value: v2
-//	             description: ""
-//	         overrides:
-//	           manifests:
-//	             - manifest:
-//	                 identifier: manifestEnv
-//	                 type: Values
-//	                 spec:
-//	                   store:
-//	                     type: Git
-//	                     spec:
-//	                       connectorRef: <+input>
-//	                       gitFetchType: Branch
-//	                       paths:
-//	                         - file1
-//	                       repoName: <+input>
-//	                       branch: master
-//	           configFiles:
-//	             - configFile:
-//	                 identifier: configFileEnv
-//	                 spec:
-//	                   store:
-//	                     type: Harness
-//	                     spec:
-//	                       files:
-//	                         - account:/Add-ons/svcOverrideTest
-//	                       secretFiles: []
-//
-// `)),
-//
+//				Yaml: pulumi.String("			   environment:\n         name: name\n         identifier: identifier\n         orgIdentifier: org_id\n         projectIdentifier: project_id\n         type: PreProduction\n         tags:\n           foo: bar\n           baz: \"\"\n         variables:\n           - name: envVar1\n             type: String\n             value: v1\n             description: \"\"\n           - name: envVar2\n             type: String\n             value: v2\n             description: \"\"\n         overrides:\n           manifests:\n             - manifest:\n                 identifier: manifestEnv\n                 type: Values\n                 spec:\n                   store:\n                     type: Git\n                     spec:\n                       connectorRef: <+input>\n                       gitFetchType: Branch\n                       paths:\n                         - file1\n                       repoName: <+input>\n                       branch: master\n           configFiles:\n             - configFile:\n                 identifier: configFileEnv\n                 spec:\n                   store:\n                     type: Harness\n                     spec:\n                       files:\n                         - account:/Add-ons/svcOverrideTest\n                       secretFiles: []\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -96,11 +49,27 @@ import (
 //
 // ## Import
 //
-// # Import using environment id
+// # Import account level environment id
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/environment:Environment example <environment_id>
+//
+// ```
+//
+//	Import org level environment id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
+//
+// ```
+//
+//	Import project level environment id
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
 //
 // ```
 type Environment struct {
@@ -110,19 +79,21 @@ type Environment struct {
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable this flag for force deletion of environment
+	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
-	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Environment YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrOutput `pulumi:"yaml"`
 }
 
@@ -135,12 +106,6 @@ func NewEnvironment(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.OrgId == nil {
-		return nil, errors.New("invalid value for required argument 'OrgId'")
-	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -172,6 +137,8 @@ type environmentState struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of environment
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -180,11 +147,11 @@ type environmentState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type *string `pulumi:"type"`
-	// Environment YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -193,6 +160,8 @@ type EnvironmentState struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of environment
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -201,11 +170,11 @@ type EnvironmentState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringPtrInput
-	// Environment YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -218,19 +187,21 @@ type environmentArgs struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of environment
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
-	OrgId string `pulumi:"orgId"`
+	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
-	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type string `pulumi:"type"`
-	// Environment YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -240,19 +211,21 @@ type EnvironmentArgs struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of environment
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
-	OrgId pulumi.StringInput
+	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
-	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	ProjectId pulumi.StringPtrInput
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringInput
-	// Environment YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -353,6 +326,11 @@ func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Enable this flag for force deletion of environment
+func (o EnvironmentOutput) ForceDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+}
+
 // Unique identifier of the resource.
 func (o EnvironmentOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -364,16 +342,16 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 }
 
 // Unique identifier of the organization.
-func (o EnvironmentOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+func (o EnvironmentOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the project.
-func (o EnvironmentOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+func (o EnvironmentOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o EnvironmentOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -383,7 +361,7 @@ func (o EnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Environment YAML
+// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o EnvironmentOutput) Yaml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Yaml }).(pulumi.StringPtrOutput)
 }

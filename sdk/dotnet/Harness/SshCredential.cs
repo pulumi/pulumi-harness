@@ -13,50 +13,6 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// <summary>
     /// Resource for creating an encrypted text secret
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Harness = Lbrlabs.PulumiPackage.Harness;
-    /// using Harness = Pulumi.Harness;
-    /// using Tls = Pulumi.Tls;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var harnessDeployKey = new Tls.PrivateKey("harnessDeployKey", new()
-    ///     {
-    ///         Algorithm = "RSA",
-    ///         RsaBits = 4096,
-    ///     });
-    /// 
-    ///     var secretManager = Harness.GetSecretManager.Invoke(new()
-    ///     {
-    ///         Default = true,
-    ///     });
-    /// 
-    ///     var mySecret = new Harness.EncryptedText("mySecret", new()
-    ///     {
-    ///         Value = harnessDeployKey.PrivateKeyPem,
-    ///         SecretManagerId = secretManager.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id),
-    ///     });
-    /// 
-    ///     var sshCreds = new Harness.SshCredential("sshCreds", new()
-    ///     {
-    ///         SshAuthentication = new Harness.Inputs.SshCredentialSshAuthenticationArgs
-    ///         {
-    ///             Port = 22,
-    ///             Username = "git",
-    ///             InlineSsh = new Harness.Inputs.SshCredentialSshAuthenticationInlineSshArgs
-    ///             {
-    ///                 SshKeyFileId = mySecret.Id,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Import using the Harness ssh credential id

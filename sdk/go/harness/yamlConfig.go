@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,17 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewYamlConfig(ctx, "test", &harness.YamlConfigArgs{
-//				Content: pulumi.String(fmt.Sprintf(`harnessApiVersion: '1.0'
-//
-// type: KUBERNETES_CLUSTER
-// delegateSelectors:
-// - k8s
-// skipValidation: true
-// useKubernetesDelegate: true
-//
-// `)),
-//
-//				Path: pulumi.String("Setup/Cloud Providers/Kubernetes.yaml"),
+//				Content: pulumi.String("harnessApiVersion: '1.0'\ntype: KUBERNETES_CLUSTER\ndelegateSelectors:\n- k8s\nskipValidation: true\nuseKubernetesDelegate: true\n\n"),
+//				Path:    pulumi.String("Setup/Cloud Providers/Kubernetes.yaml"),
 //			})
 //			if err != nil {
 //				return err

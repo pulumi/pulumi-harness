@@ -30,14 +30,14 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Reference to the Harness secret containing the secret key.
+     * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="secretKeyRef", required=true)
     private Output<String> secretKeyRef;
 
     /**
-     * @return Reference to the Harness secret containing the secret key.
+     * @return Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> secretKeyRef() {
@@ -101,7 +101,7 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretKeyRef Reference to the Harness secret containing the secret key.
+         * @param secretKeyRef Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretKeyRef Reference to the Harness secret containing the secret key.
+         * @param secretKeyRef Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

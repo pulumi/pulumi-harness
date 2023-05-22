@@ -6,6 +6,44 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Splunk connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.SplunkConnector("test", {
+ *     accountId: "splunk_account_id",
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     passwordRef: "account.secret_id",
+ *     tags: ["foo:bar"],
+ *     url: "https://splunk.com/",
+ *     username: "username",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level splunk connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
+ * ```
+ *
+ *  Import org level splunk connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level splunk connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class SplunkConnector extends pulumi.CustomResource {
     /**
@@ -40,7 +78,7 @@ export class SplunkConnector extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -56,23 +94,23 @@ export class SplunkConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * The reference to the Harness secret containing the Splunk password.
+     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly passwordRef!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the Splunk server.
+     * URL of the Splunk server.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -147,7 +185,7 @@ export interface SplunkConnectorState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -163,23 +201,23 @@ export interface SplunkConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * The reference to the Harness secret containing the Splunk password.
+     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     passwordRef?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Splunk server.
+     * URL of the Splunk server.
      */
     url?: pulumi.Input<string>;
     /**
@@ -197,7 +235,7 @@ export interface SplunkConnectorArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -213,23 +251,23 @@ export interface SplunkConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * The reference to the Harness secret containing the Splunk password.
+     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     passwordRef: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Splunk server.
+     * URL of the Splunk server.
      */
     url: pulumi.Input<string>;
     /**

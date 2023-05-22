@@ -14,6 +14,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GitOpsRepositoryUpdateMask
     {
+        /// <summary>
+        /// The set of field mask paths.
+        /// </summary>
         public readonly ImmutableArray<string> Paths;
 
         [OutputConstructor]

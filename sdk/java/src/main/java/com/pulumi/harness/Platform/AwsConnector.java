@@ -29,7 +29,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
      * 
      */
-    @Export(name="crossAccountAccess", type=AwsConnectorCrossAccountAccess.class, parameters={})
+    @Export(name="crossAccountAccess", refs={AwsConnectorCrossAccountAccess.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorCrossAccountAccess> crossAccountAccess;
 
     /**
@@ -43,7 +43,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -57,7 +57,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -71,7 +71,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Inherit credentials from the delegate.
      * 
      */
-    @Export(name="inheritFromDelegate", type=AwsConnectorInheritFromDelegate.class, parameters={})
+    @Export(name="inheritFromDelegate", refs={AwsConnectorInheritFromDelegate.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorInheritFromDelegate> inheritFromDelegate;
 
     /**
@@ -85,7 +85,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Use IAM role for service accounts.
      * 
      */
-    @Export(name="irsa", type=AwsConnectorIrsa.class, parameters={})
+    @Export(name="irsa", refs={AwsConnectorIrsa.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorIrsa> irsa;
 
     /**
@@ -99,7 +99,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Use IAM role for service accounts.
      * 
      */
-    @Export(name="manual", type=AwsConnectorManual.class, parameters={})
+    @Export(name="manual", refs={AwsConnectorManual.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorManual> manual;
 
     /**
@@ -113,7 +113,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,42 +124,42 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

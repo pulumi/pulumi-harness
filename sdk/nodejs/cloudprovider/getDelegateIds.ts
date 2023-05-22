@@ -6,25 +6,11 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get a list of delegate ID's matching the specified search criteria.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = pulumi.output(harness.DelegateDs({
- *     name: "harness-delegate",
- * }));
- * ```
  */
 export function getDelegateIds(args?: GetDelegateIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegateIdsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", {
         "name": args.name,
         "status": args.status,
@@ -75,9 +61,11 @@ export interface GetDelegateIdsResult {
      */
     readonly type?: string;
 }
-
+/**
+ * Use this data source to get a list of delegate ID's matching the specified search criteria.
+ */
 export function getDelegateIdsOutput(args?: GetDelegateIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegateIdsResult> {
-    return pulumi.output(args).apply(a => getDelegateIds(a, opts))
+    return pulumi.output(args).apply((a: any) => getDelegateIds(a, opts))
 }
 
 /**

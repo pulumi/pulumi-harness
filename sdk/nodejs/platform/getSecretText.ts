@@ -13,18 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = pulumi.output(harness.platform.getSecretText({
+ * const test = harness.platform.getSecretText({
  *     identifier: "identifier",
- * }));
+ * });
  * ```
  */
-export function getSecretText(args?: GetSecretTextArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretTextResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getSecretText(args: GetSecretTextArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretTextResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretText:getSecretText", {
         "identifier": args.identifier,
         "name": args.name,
@@ -40,17 +36,17 @@ export interface GetSecretTextArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -70,17 +66,17 @@ export interface GetSecretTextResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -88,7 +84,7 @@ export interface GetSecretTextResult {
      */
     readonly secretManagerIdentifier: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -100,9 +96,22 @@ export interface GetSecretTextResult {
      */
     readonly valueType: string;
 }
-
-export function getSecretTextOutput(args?: GetSecretTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretTextResult> {
-    return pulumi.output(args).apply(a => getSecretText(a, opts))
+/**
+ * DataSource for looking up secret of type secret text.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getSecretText({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getSecretTextOutput(args: GetSecretTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretTextResult> {
+    return pulumi.output(args).apply((a: any) => getSecretText(a, opts))
 }
 
 /**
@@ -112,17 +121,17 @@ export interface GetSecretTextOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

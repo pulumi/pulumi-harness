@@ -14,14 +14,14 @@ public final class GitlabConnectorApiAuthenticationArgs extends com.pulumi.resou
     public static final GitlabConnectorApiAuthenticationArgs Empty = new GitlabConnectorApiAuthenticationArgs();
 
     /**
-     * Personal access token for interacting with the gitlab api.
+     * Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="tokenRef", required=true)
     private Output<String> tokenRef;
 
     /**
-     * @return Personal access token for interacting with the gitlab api.
+     * @return Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> tokenRef() {
@@ -53,7 +53,7 @@ public final class GitlabConnectorApiAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the gitlab api.
+         * @param tokenRef Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class GitlabConnectorApiAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the gitlab api.
+         * @param tokenRef Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

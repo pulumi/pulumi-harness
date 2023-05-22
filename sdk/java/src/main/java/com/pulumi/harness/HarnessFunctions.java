@@ -16,6 +16,8 @@ import com.pulumi.harness.inputs.GetDelegateArgs;
 import com.pulumi.harness.inputs.GetDelegatePlainArgs;
 import com.pulumi.harness.inputs.GetEncryptedTextArgs;
 import com.pulumi.harness.inputs.GetEncryptedTextPlainArgs;
+import com.pulumi.harness.inputs.GetEnvironmentArgs;
+import com.pulumi.harness.inputs.GetEnvironmentPlainArgs;
 import com.pulumi.harness.inputs.GetGitConnectorArgs;
 import com.pulumi.harness.inputs.GetGitConnectorPlainArgs;
 import com.pulumi.harness.inputs.GetSecretManagerArgs;
@@ -26,6 +28,8 @@ import com.pulumi.harness.inputs.GetSshCredentialArgs;
 import com.pulumi.harness.inputs.GetSshCredentialPlainArgs;
 import com.pulumi.harness.inputs.GetSsoProviderArgs;
 import com.pulumi.harness.inputs.GetSsoProviderPlainArgs;
+import com.pulumi.harness.inputs.GetTriggerArgs;
+import com.pulumi.harness.inputs.GetTriggerPlainArgs;
 import com.pulumi.harness.inputs.GetUserArgs;
 import com.pulumi.harness.inputs.GetUserGroupArgs;
 import com.pulumi.harness.inputs.GetUserGroupPlainArgs;
@@ -36,11 +40,13 @@ import com.pulumi.harness.outputs.GetApplicationResult;
 import com.pulumi.harness.outputs.GetCurrentAccountResult;
 import com.pulumi.harness.outputs.GetDelegateResult;
 import com.pulumi.harness.outputs.GetEncryptedTextResult;
+import com.pulumi.harness.outputs.GetEnvironmentResult;
 import com.pulumi.harness.outputs.GetGitConnectorResult;
 import com.pulumi.harness.outputs.GetSecretManagerResult;
 import com.pulumi.harness.outputs.GetServiceResult;
 import com.pulumi.harness.outputs.GetSshCredentialResult;
 import com.pulumi.harness.outputs.GetSsoProviderResult;
+import com.pulumi.harness.outputs.GetTriggerResult;
 import com.pulumi.harness.outputs.GetUserGroupResult;
 import com.pulumi.harness.outputs.GetUserResult;
 import com.pulumi.harness.outputs.GetYamlConfigResult;
@@ -408,6 +414,34 @@ public final class HarnessFunctions {
         return Deployment.getInstance().invokeAsync("harness:index/getEncryptedText:getEncryptedText", TypeShape.of(GetEncryptedTextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args) {
+        return getEnvironment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args) {
+        return getEnvironmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:index/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Harness application
      * 
      */
@@ -602,6 +636,258 @@ public final class HarnessFunctions {
      */
     public static CompletableFuture<GetSsoProviderResult> getSsoProviderPlain(GetSsoProviderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getSsoProvider:getSsoProvider", TypeShape.of(GetSsoProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTriggerResult> getTrigger() {
+        return getTrigger(GetTriggerArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTriggerResult> getTriggerPlain() {
+        return getTriggerPlain(GetTriggerPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args) {
+        return getTrigger(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args) {
+        return getTriggerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId(&#34;app_id&#34;)
+     *             .name(&#34;name&#34;)
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id(&#34;trigger_id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:index/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness user

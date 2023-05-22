@@ -75,7 +75,7 @@ public class Spot extends com.pulumi.resources.CustomResource {
      * The Spot account ID
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -89,7 +89,7 @@ public class Spot extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -103,7 +103,7 @@ public class Spot extends com.pulumi.resources.CustomResource {
      * The name of the Harness secret containing the spot account token
      * 
      */
-    @Export(name="tokenSecretName", type=String.class, parameters={})
+    @Export(name="tokenSecretName", refs={String.class}, tree="[0]")
     private Output<String> tokenSecretName;
 
     /**

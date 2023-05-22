@@ -7,20 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for craeting triggers in Harness.
-//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,38 +30,7 @@ import (
 //				OrgId:      pulumi.String("orgIdentifer"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
 //				TargetId:   pulumi.String("pipelineIdentifier"),
-//				Yaml: pulumi.String(fmt.Sprintf(`  trigger:
-//	    name: "name"
-//	    identifier: "identifier"
-//	    enabled: true
-//	    description: ""
-//	    tags: {}
-//	    projectIdentifier: "projectIdentifier"
-//	    orgIdentifier: "orgIdentifer"
-//	    pipelineIdentifier: "pipelineIdentifier"
-//	    source:
-//	      type: "Webhook"
-//	      spec:
-//	        type: "Github"
-//	        spec:
-//	          type: "Push"
-//	          spec:
-//	            connectorRef: "account.TestAccResourceConnectorGithub_Ssh_IZBeG"
-//	            autoAbortPreviousExecutions: false
-//	            payloadConditions:
-//	            - key: "changedFiles"
-//	              operator: "Equals"
-//	              value: "value"
-//	            - key: "targetBranch"
-//	              operator: "Equals"
-//	              value: "value"
-//	            headerConditions: []
-//	            repoName: "repoName"
-//	            actions: []
-//	    inputYaml: "pipeline: {}\n"
-//
-// `)),
-//
+//				Yaml:       pulumi.String("  trigger:\n    name: \"name\"\n    identifier: \"identifier\"\n    enabled: true\n    description: \"\"\n    tags: {}\n    projectIdentifier: \"projectIdentifier\"\n    orgIdentifier: \"orgIdentifer\"\n    pipelineIdentifier: \"pipelineIdentifier\"\n    source:\n      type: \"Webhook\"\n      spec:\n        type: \"Github\"\n        spec:\n          type: \"Push\"\n          spec:\n            connectorRef: \"account.TestAccResourceConnectorGithub_Ssh_IZBeG\"\n            autoAbortPreviousExecutions: false\n            payloadConditions:\n            - key: \"changedFiles\"\n              operator: \"Equals\"\n              value: \"value\"\n            - key: \"targetBranch\"\n              operator: \"Equals\"\n              value: \"value\"\n            headerConditions: []\n            repoName: \"repoName\"\n            actions: []\n    inputYaml: \"pipeline: {}\\n\"\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -78,11 +43,11 @@ import (
 //
 // ## Import
 //
-// # Import using trigger id
+// # Import trigger
 //
 // ```sh
 //
-//	$ pulumi import harness:platform/triggers:Triggers example <triggers_id>
+//	$ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
 //
 // ```
 type Triggers struct {
@@ -98,15 +63,15 @@ type Triggers struct {
 	IgnoreError pulumi.BoolPtrOutput `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
-	// trigger yaml
+	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -165,15 +130,15 @@ type triggersState struct {
 	IgnoreError *bool `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId *string `pulumi:"targetId"`
-	// trigger yaml
+	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -188,15 +153,15 @@ type TriggersState struct {
 	IgnoreError pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Identifier of the target pipeline
 	TargetId pulumi.StringPtrInput
-	// trigger yaml
+	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -215,15 +180,15 @@ type triggersArgs struct {
 	IgnoreError *bool `pulumi:"ignoreError"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Identifier of the target pipeline
 	TargetId string `pulumi:"targetId"`
-	// trigger yaml
+	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -239,15 +204,15 @@ type TriggersArgs struct {
 	IgnoreError pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Identifier of the target pipeline
 	TargetId pulumi.StringInput
-	// trigger yaml
+	// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -363,17 +328,17 @@ func (o TriggersOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o TriggersOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o TriggersOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o TriggersOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -383,7 +348,7 @@ func (o TriggersOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
 }
 
-// trigger yaml
+// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o TriggersOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Triggers) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

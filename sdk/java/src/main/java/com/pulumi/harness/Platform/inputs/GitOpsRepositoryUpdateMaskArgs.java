@@ -16,9 +16,17 @@ public final class GitOpsRepositoryUpdateMaskArgs extends com.pulumi.resources.R
 
     public static final GitOpsRepositoryUpdateMaskArgs Empty = new GitOpsRepositoryUpdateMaskArgs();
 
+    /**
+     * The set of field mask paths.
+     * 
+     */
     @Import(name="paths")
     private @Nullable Output<List<String>> paths;
 
+    /**
+     * @return The set of field mask paths.
+     * 
+     */
     public Optional<Output<List<String>>> paths() {
         return Optional.ofNullable(this.paths);
     }
@@ -47,15 +55,33 @@ public final class GitOpsRepositoryUpdateMaskArgs extends com.pulumi.resources.R
             $ = new GitOpsRepositoryUpdateMaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param paths The set of field mask paths.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(@Nullable Output<List<String>> paths) {
             $.paths = paths;
             return this;
         }
 
+        /**
+         * @param paths The set of field mask paths.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(List<String> paths) {
             return paths(Output.of(paths));
         }
 
+        /**
+         * @param paths The set of field mask paths.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }

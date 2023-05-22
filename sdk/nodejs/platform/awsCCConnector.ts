@@ -8,6 +8,51 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an AWS Cloud Cost connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.AwsCCConnector("test", {
+ *     accountId: "account_id",
+ *     crossAccountAccess: {
+ *         externalId: "external_id",
+ *         roleArn: "role_arn",
+ *     },
+ *     description: "test",
+ *     featuresEnableds: [
+ *         "OPTIMIZATION",
+ *         "VISIBILITY",
+ *         "BILLING",
+ *     ],
+ *     identifier: "identifier",
+ *     reportName: "report_name",
+ *     s3Bucket: "s3bucket",
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level aws cloud cost connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <connector_id>
+ * ```
+ *
+ *  Import org level aws cloud cost connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level aws cloud cost connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class AwsCCConnector extends pulumi.CustomResource {
     /**
@@ -62,11 +107,11 @@ export class AwsCCConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -78,7 +123,7 @@ export class AwsCCConnector extends pulumi.CustomResource {
      */
     public readonly s3Bucket!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -172,11 +217,11 @@ export interface AwsCCConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -188,7 +233,7 @@ export interface AwsCCConnectorState {
      */
     s3Bucket?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -222,11 +267,11 @@ export interface AwsCCConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -238,7 +283,7 @@ export interface AwsCCConnectorArgs {
      */
     s3Bucket: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

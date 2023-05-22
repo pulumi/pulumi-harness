@@ -8,6 +8,60 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an App Dynamics connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Authentication mechanism as api token
+ * const token = new harness.platform.AppDynamicsConnector("token", {
+ *     accountName: "myaccount",
+ *     apiToken: {
+ *         clientId: "client_id",
+ *         clientSecretRef: "account.secret_id",
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://appdynamics.com/",
+ * });
+ * // Authentication mechanism as username and password
+ * const test = new harness.platform.AppDynamicsConnector("test", {
+ *     accountName: "myaccount",
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://appdynamics.com/",
+ *     usernamePassword: {
+ *         passwordRef: "account.secret_id",
+ *         username: "username",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level appdynamics connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <connector_id>
+ * ```
+ *
+ *  Import org level appdynamics connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level appdynamics connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class AppDynamicsConnector extends pulumi.CustomResource {
     /**
@@ -46,7 +100,7 @@ export class AppDynamicsConnector extends pulumi.CustomResource {
      */
     public readonly apiToken!: pulumi.Output<outputs.platform.AppDynamicsConnectorApiToken | undefined>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -62,19 +116,19 @@ export class AppDynamicsConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -147,7 +201,7 @@ export interface AppDynamicsConnectorState {
      */
     apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -163,19 +217,19 @@ export interface AppDynamicsConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      */
     url?: pulumi.Input<string>;
     /**
@@ -197,7 +251,7 @@ export interface AppDynamicsConnectorArgs {
      */
     apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -213,19 +267,19 @@ export interface AppDynamicsConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      */
     url: pulumi.Input<string>;
     /**

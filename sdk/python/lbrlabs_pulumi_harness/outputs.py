@@ -23,6 +23,8 @@ __all__ = [
     'InfrastructureDefinitionAwsWinrm',
     'InfrastructureDefinitionAzureVmss',
     'InfrastructureDefinitionAzureWebapp',
+    'InfrastructureDefinitionCustom',
+    'InfrastructureDefinitionCustomVariable',
     'InfrastructureDefinitionDatacenterSsh',
     'InfrastructureDefinitionDatacenterWinrm',
     'InfrastructureDefinitionKubernetes',
@@ -49,9 +51,13 @@ __all__ = [
     'UserGroupPermissionsAppPermissionsWorkflow',
     'UserGroupSamlSettings',
     'GetEncryptedTextUsageScopeResult',
+    'GetEnvironmentVariableOverrideResult',
     'GetGitConnectorCommitDetailResult',
     'GetSecretManagerUsageScopeResult',
     'GetSshCredentialUsageScopeResult',
+    'GetTriggerConditionResult',
+    'GetTriggerConditionOnWebhookResult',
+    'GetTriggerConditionOnWebhookWebhookDetailResult',
 ]
 
 @pulumi.output_type
@@ -1244,6 +1250,78 @@ class InfrastructureDefinitionAzureWebapp(dict):
 
 
 @pulumi.output_type
+class InfrastructureDefinitionCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentTypeTemplateVersion":
+            suggest = "deployment_type_template_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureDefinitionCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureDefinitionCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureDefinitionCustom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment_type_template_version: str,
+                 variables: Optional[Sequence['outputs.InfrastructureDefinitionCustomVariable']] = None):
+        """
+        :param str deployment_type_template_version: The template version
+        :param Sequence['InfrastructureDefinitionCustomVariableArgs'] variables: Variables to be used in the service
+        """
+        pulumi.set(__self__, "deployment_type_template_version", deployment_type_template_version)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter(name="deploymentTypeTemplateVersion")
+    def deployment_type_template_version(self) -> str:
+        """
+        The template version
+        """
+        return pulumi.get(self, "deployment_type_template_version")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[Sequence['outputs.InfrastructureDefinitionCustomVariable']]:
+        """
+        Variables to be used in the service
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class InfrastructureDefinitionCustomVariable(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the infrastructure definition
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the infrastructure definition
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class InfrastructureDefinitionDatacenterSsh(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2296,25 +2374,21 @@ class UserGroupPermissionsAppPermissionsDeployment(dict):
 
     def __init__(__self__, *,
                  actions: Sequence[str],
-                 filters: Sequence[str],
                  app_ids: Optional[Sequence[str]] = None,
-                 env_ids: Optional[Sequence[str]] = None):
+                 env_ids: Optional[Sequence[str]] = None,
+                 filters: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         return pulumi.get(self, "actions")
-
-    @property
-    @pulumi.getter
-    def filters(self) -> Sequence[str]:
-        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter(name="appIds")
@@ -2325,6 +2399,11 @@ class UserGroupPermissionsAppPermissionsDeployment(dict):
     @pulumi.getter(name="envIds")
     def env_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "env_ids")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filters")
 
 
 @pulumi.output_type
@@ -2350,25 +2429,21 @@ class UserGroupPermissionsAppPermissionsEnvironment(dict):
 
     def __init__(__self__, *,
                  actions: Sequence[str],
-                 filters: Sequence[str],
                  app_ids: Optional[Sequence[str]] = None,
-                 env_ids: Optional[Sequence[str]] = None):
+                 env_ids: Optional[Sequence[str]] = None,
+                 filters: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         return pulumi.get(self, "actions")
-
-    @property
-    @pulumi.getter
-    def filters(self) -> Sequence[str]:
-        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter(name="appIds")
@@ -2379,6 +2454,11 @@ class UserGroupPermissionsAppPermissionsEnvironment(dict):
     @pulumi.getter(name="envIds")
     def env_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "env_ids")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filters")
 
 
 @pulumi.output_type
@@ -2404,25 +2484,21 @@ class UserGroupPermissionsAppPermissionsPipeline(dict):
 
     def __init__(__self__, *,
                  actions: Sequence[str],
-                 filters: Sequence[str],
                  app_ids: Optional[Sequence[str]] = None,
-                 env_ids: Optional[Sequence[str]] = None):
+                 env_ids: Optional[Sequence[str]] = None,
+                 filters: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         return pulumi.get(self, "actions")
-
-    @property
-    @pulumi.getter
-    def filters(self) -> Sequence[str]:
-        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter(name="appIds")
@@ -2433,6 +2509,11 @@ class UserGroupPermissionsAppPermissionsPipeline(dict):
     @pulumi.getter(name="envIds")
     def env_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "env_ids")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filters")
 
 
 @pulumi.output_type
@@ -2597,12 +2678,13 @@ class UserGroupPermissionsAppPermissionsWorkflow(dict):
 
     def __init__(__self__, *,
                  actions: Sequence[str],
-                 filters: Sequence[str],
-                 app_ids: Optional[Sequence[str]] = None):
+                 app_ids: Optional[Sequence[str]] = None,
+                 filters: Optional[Sequence[str]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
@@ -2610,14 +2692,14 @@ class UserGroupPermissionsAppPermissionsWorkflow(dict):
         return pulumi.get(self, "actions")
 
     @property
-    @pulumi.getter
-    def filters(self) -> Sequence[str]:
-        return pulumi.get(self, "filters")
-
-    @property
     @pulumi.getter(name="appIds")
     def app_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "app_ids")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filters")
 
 
 @pulumi.output_type
@@ -2711,6 +2793,57 @@ class GetEncryptedTextUsageScopeResult(dict):
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
+
+
+@pulumi.output_type
+class GetEnvironmentVariableOverrideResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 service_name: str,
+                 type: str,
+                 value: str):
+        """
+        :param str name: The name of the variable
+        :param str service_name: The name of the service
+        :param str type: The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+        :param str value: The value of the service variable
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the variable
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of the service
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the service variable
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2823,5 +2956,76 @@ class GetSshCredentialUsageScopeResult(dict):
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
+
+
+@pulumi.output_type
+class GetTriggerConditionResult(dict):
+    def __init__(__self__, *,
+                 on_webhooks: Sequence['outputs.GetTriggerConditionOnWebhookResult'],
+                 trigger_condition_type: str):
+        pulumi.set(__self__, "on_webhooks", on_webhooks)
+        pulumi.set(__self__, "trigger_condition_type", trigger_condition_type)
+
+    @property
+    @pulumi.getter(name="onWebhooks")
+    def on_webhooks(self) -> Sequence['outputs.GetTriggerConditionOnWebhookResult']:
+        return pulumi.get(self, "on_webhooks")
+
+    @property
+    @pulumi.getter(name="triggerConditionType")
+    def trigger_condition_type(self) -> str:
+        return pulumi.get(self, "trigger_condition_type")
+
+
+@pulumi.output_type
+class GetTriggerConditionOnWebhookResult(dict):
+    def __init__(__self__, *,
+                 webhook_details: Sequence['outputs.GetTriggerConditionOnWebhookWebhookDetailResult']):
+        pulumi.set(__self__, "webhook_details", webhook_details)
+
+    @property
+    @pulumi.getter(name="webhookDetails")
+    def webhook_details(self) -> Sequence['outputs.GetTriggerConditionOnWebhookWebhookDetailResult']:
+        return pulumi.get(self, "webhook_details")
+
+
+@pulumi.output_type
+class GetTriggerConditionOnWebhookWebhookDetailResult(dict):
+    def __init__(__self__, *,
+                 header: str,
+                 method: str,
+                 payload: str,
+                 webhook_token: str,
+                 webhook_url: str):
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "payload", payload)
+        pulumi.set(__self__, "webhook_token", webhook_token)
+        pulumi.set(__self__, "webhook_url", webhook_url)
+
+    @property
+    @pulumi.getter
+    def header(self) -> str:
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter
+    def method(self) -> str:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def payload(self) -> str:
+        return pulumi.get(self, "payload")
+
+    @property
+    @pulumi.getter(name="webhookToken")
+    def webhook_token(self) -> str:
+        return pulumi.get(self, "webhook_token")
+
+    @property
+    @pulumi.getter(name="webhookUrl")
+    def webhook_url(self) -> str:
+        return pulumi.get(self, "webhook_url")
 
 

@@ -5,63 +5,74 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.harness.platform.inputs.GetGitopsAgentMetadataArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetGitopsAgentArgs Empty = new GetGitopsAgentArgs();
 
+    /**
+     * Account identifier of the GitOps agent.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Account identifier of the GitOps agent.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
+    /**
+     * Identifier of the GitOps agent.
+     * 
+     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
+    /**
+     * @return Identifier of the GitOps agent.
+     * 
+     */
     public Output<String> identifier() {
         return this.identifier;
     }
 
-    @Import(name="metadatas", required=true)
-    private Output<List<GetGitopsAgentMetadataArgs>> metadatas;
+    /**
+     * Organization identifier of the GitOps agent.
+     * 
+     */
+    @Import(name="orgId")
+    private @Nullable Output<String> orgId;
 
-    public Output<List<GetGitopsAgentMetadataArgs>> metadatas() {
-        return this.metadatas;
+    /**
+     * @return Organization identifier of the GitOps agent.
+     * 
+     */
+    public Optional<Output<String>> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    /**
+     * Project identifier of the GitOps agent.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
-    public Output<String> name() {
-        return this.name;
-    }
-
-    @Import(name="orgId", required=true)
-    private Output<String> orgId;
-
-    public Output<String> orgId() {
-        return this.orgId;
-    }
-
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
-
-    public Output<String> projectId() {
-        return this.projectId;
-    }
-
-    @Import(name="type", required=true)
-    private Output<String> type;
-
-    public Output<String> type() {
-        return this.type;
+    /**
+     * @return Project identifier of the GitOps agent.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     private GetGitopsAgentArgs() {}
@@ -69,11 +80,8 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
     private GetGitopsAgentArgs(GetGitopsAgentArgs $) {
         this.accountId = $.accountId;
         this.identifier = $.identifier;
-        this.metadatas = $.metadatas;
-        this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -94,81 +102,93 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetGitopsAgentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param identifier Identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param identifier Identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }
 
-        public Builder metadatas(Output<List<GetGitopsAgentMetadataArgs>> metadatas) {
-            $.metadatas = metadatas;
-            return this;
-        }
-
-        public Builder metadatas(List<GetGitopsAgentMetadataArgs> metadatas) {
-            return metadatas(Output.of(metadatas));
-        }
-
-        public Builder metadatas(GetGitopsAgentMetadataArgs... metadatas) {
-            return metadatas(List.of(metadatas));
-        }
-
-        public Builder name(Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
-        public Builder orgId(Output<String> orgId) {
+        /**
+         * @param orgId Organization identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
-        public Builder projectId(Output<String> projectId) {
+        /**
+         * @param projectId Project identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId Project identifier of the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        public Builder type(Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        public Builder type(String type) {
-            return type(Output.of(type));
         }
 
         public GetGitopsAgentArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.metadatas = Objects.requireNonNull($.metadatas, "expected parameter 'metadatas' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

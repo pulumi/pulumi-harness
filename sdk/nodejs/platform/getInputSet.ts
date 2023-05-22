@@ -2,18 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving a Harness input set.
  */
 export function getInputSet(args: GetInputSetArgs, opts?: pulumi.InvokeOptions): Promise<GetInputSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInputSet:getInputSet", {
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -27,6 +27,10 @@ export function getInputSet(args: GetInputSetArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetInputSetArgs {
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: inputs.platform.GetInputSetGitDetails;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: string;
@@ -35,7 +39,7 @@ export interface GetInputSetArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: string;
     /**
@@ -43,7 +47,7 @@ export interface GetInputSetArgs {
      */
     pipelineId: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId: string;
 }
@@ -57,6 +61,10 @@ export interface GetInputSetResult {
      */
     readonly description: string;
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    readonly gitDetails?: outputs.platform.GetInputSetGitDetails;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -69,7 +77,7 @@ export interface GetInputSetResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId: string;
     /**
@@ -77,11 +85,11 @@ export interface GetInputSetResult {
      */
     readonly pipelineId: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -89,15 +97,21 @@ export interface GetInputSetResult {
      */
     readonly yaml: string;
 }
-
+/**
+ * Data source for retrieving a Harness input set.
+ */
 export function getInputSetOutput(args: GetInputSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInputSetResult> {
-    return pulumi.output(args).apply(a => getInputSet(a, opts))
+    return pulumi.output(args).apply((a: any) => getInputSet(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getInputSet.
  */
 export interface GetInputSetOutputArgs {
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: pulumi.Input<inputs.platform.GetInputSetGitDetailsArgs>;
     /**
      * Unique identifier of the resource.
      */
@@ -107,7 +121,7 @@ export interface GetInputSetOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
     /**
@@ -115,7 +129,7 @@ export interface GetInputSetOutputArgs {
      */
     pipelineId: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId: pulumi.Input<string>;
 }

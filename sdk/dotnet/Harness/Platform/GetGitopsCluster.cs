@@ -12,9 +12,67 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     public static class GetGitopsCluster
     {
+        /// <summary>
+        /// Data source for fetching a Harness GitOps Cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsCluster.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         AgentId = "agent_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGitopsClusterResult> InvokeAsync(GetGitopsClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsClusterResult>("harness:platform/getGitopsCluster:getGitopsCluster", args ?? new GetGitopsClusterArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for fetching a Harness GitOps Cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsCluster.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         AgentId = "agent_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGitopsClusterResult> Invoke(GetGitopsClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsClusterResult>("harness:platform/getGitopsCluster:getGitopsCluster", args ?? new GetGitopsClusterInvokeArgs(), options.WithDefaults());
     }
@@ -22,35 +80,46 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsClusterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps cluster.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("agentId")]
-        public string? AgentId { get; set; }
+        /// <summary>
+        /// Agent identifier of the GitOps cluster.
+        /// </summary>
+        [Input("agentId", required: true)]
+        public string AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the GitOps cluster.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier of the cluster.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
-        [Input("projectId", required: true)]
-        public string ProjectId { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps cluster.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         [Input("queries")]
         private List<Inputs.GetGitopsClusterQueryArgs>? _queries;
+
+        /// <summary>
+        /// Query for the GitOps cluster resources.
+        /// </summary>
         public List<Inputs.GetGitopsClusterQueryArgs> Queries
         {
             get => _queries ?? (_queries = new List<Inputs.GetGitopsClusterQueryArgs>());
             set => _queries = value;
-        }
-
-        [Input("requests")]
-        private List<Inputs.GetGitopsClusterRequestArgs>? _requests;
-        public List<Inputs.GetGitopsClusterRequestArgs> Requests
-        {
-            get => _requests ?? (_requests = new List<Inputs.GetGitopsClusterRequestArgs>());
-            set => _requests = value;
         }
 
         public GetGitopsClusterArgs()
@@ -61,35 +130,46 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps cluster.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("agentId")]
-        public Input<string>? AgentId { get; set; }
+        /// <summary>
+        /// Agent identifier of the GitOps cluster.
+        /// </summary>
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the GitOps cluster.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier of the cluster.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps cluster.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("queries")]
         private InputList<Inputs.GetGitopsClusterQueryInputArgs>? _queries;
+
+        /// <summary>
+        /// Query for the GitOps cluster resources.
+        /// </summary>
         public InputList<Inputs.GetGitopsClusterQueryInputArgs> Queries
         {
             get => _queries ?? (_queries = new InputList<Inputs.GetGitopsClusterQueryInputArgs>());
             set => _queries = value;
-        }
-
-        [Input("requests")]
-        private InputList<Inputs.GetGitopsClusterRequestInputArgs>? _requests;
-        public InputList<Inputs.GetGitopsClusterRequestInputArgs> Requests
-        {
-            get => _requests ?? (_requests = new InputList<Inputs.GetGitopsClusterRequestInputArgs>());
-            set => _requests = value;
         }
 
         public GetGitopsClusterInvokeArgs()
@@ -102,23 +182,44 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     [OutputType]
     public sealed class GetGitopsClusterResult
     {
+        /// <summary>
+        /// Account identifier of the GitOps cluster.
+        /// </summary>
         public readonly string AccountId;
-        public readonly string? AgentId;
+        /// <summary>
+        /// Agent identifier of the GitOps cluster.
+        /// </summary>
+        public readonly string AgentId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifier of the GitOps cluster.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// Organization identifier of the cluster.
+        /// </summary>
         public readonly string? OrgId;
-        public readonly string ProjectId;
+        /// <summary>
+        /// Project identifier of the GitOps cluster.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
+        /// Query for the GitOps cluster resources.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterQueryResult> Queries;
+        /// <summary>
+        /// Cluster create or update request.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestResult> Requests;
 
         [OutputConstructor]
         private GetGitopsClusterResult(
             string accountId,
 
-            string? agentId,
+            string agentId,
 
             string id,
 
@@ -126,7 +227,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string? orgId,
 
-            string projectId,
+            string? projectId,
 
             ImmutableArray<Outputs.GetGitopsClusterQueryResult> queries,
 

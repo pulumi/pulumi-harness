@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -75,10 +76,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using service id
+    /// Import account level service
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/service:Service example &lt;service_id&gt;
+    /// ```
+    /// 
+    ///  Import org level service
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/service:Service example &lt;org_id&gt;/&lt;service_id&gt;
+    /// ```
+    /// 
+    ///  Import project level service
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/service:Service example &lt;org_id&gt;/&lt;project_id&gt;/&lt;service_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/service:Service")]
@@ -89,6 +102,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable this flag for force deletion of service
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -103,25 +122,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
+        public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service YAML
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -180,6 +199,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of service
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -192,22 +217,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -216,7 +241,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
@@ -236,6 +261,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of service
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
@@ -248,13 +279,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -263,7 +294,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -272,7 +303,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

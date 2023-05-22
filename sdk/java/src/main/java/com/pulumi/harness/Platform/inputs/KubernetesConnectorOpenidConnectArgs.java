@@ -17,14 +17,14 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
     public static final KubernetesConnectorOpenidConnectArgs Empty = new KubernetesConnectorOpenidConnectArgs();
 
     /**
-     * Reference to the secret containing the client ID for the connector.
+     * Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="clientIdRef", required=true)
     private Output<String> clientIdRef;
 
     /**
-     * @return Reference to the secret containing the client ID for the connector.
+     * @return Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> clientIdRef() {
@@ -62,14 +62,14 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the password for the connector.
+     * Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return Reference to the secret containing the password for the connector.
+     * @return Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
@@ -92,14 +92,14 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the client secret for the connector.
+     * Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="secretRef")
     private @Nullable Output<String> secretRef;
 
     /**
-     * @return Reference to the secret containing the client secret for the connector.
+     * @return Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> secretRef() {
@@ -122,14 +122,14 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the username for the connector.
+     * Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return Reference to the secret containing the username for the connector.
+     * @return Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -168,7 +168,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientIdRef Reference to the secret containing the client ID for the connector.
+         * @param clientIdRef Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientIdRef Reference to the secret containing the client ID for the connector.
+         * @param clientIdRef Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passwordRef Reference to the secret containing the password for the connector.
+         * @param passwordRef Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passwordRef Reference to the secret containing the password for the connector.
+         * @param passwordRef Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param secretRef Reference to the secret containing the client secret for the connector.
+         * @param secretRef Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param secretRef Reference to the secret containing the client secret for the connector.
+         * @param secretRef Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param usernameRef Reference to the secret containing the username for the connector.
+         * @param usernameRef Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class KubernetesConnectorOpenidConnectArgs extends com.pulumi.resou
         }
 
         /**
-         * @param usernameRef Reference to the secret containing the username for the connector.
+         * @param usernameRef Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

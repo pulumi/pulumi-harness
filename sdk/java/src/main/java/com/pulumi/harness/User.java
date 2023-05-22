@@ -64,7 +64,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The email of the user.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -78,7 +78,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignore_changes = [&#34;group_ids&#34;] }`.
      * 
      */
-    @Export(name="groupIds", type=List.class, parameters={String.class})
+    @Export(name="groupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupIds;
 
     /**
@@ -92,7 +92,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Flag indicating whether or not the users email has been verified.
      * 
      */
-    @Export(name="isEmailVerified", type=Boolean.class, parameters={})
+    @Export(name="isEmailVerified", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEmailVerified;
 
     /**
@@ -106,7 +106,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Flag indicating whether or not the user was imported from an identity provider.
      * 
      */
-    @Export(name="isImportedFromIdentityProvider", type=Boolean.class, parameters={})
+    @Export(name="isImportedFromIdentityProvider", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isImportedFromIdentityProvider;
 
     /**
@@ -120,7 +120,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Flag indicating whether or not the users password has expired.
      * 
      */
-    @Export(name="isPasswordExpired", type=Boolean.class, parameters={})
+    @Export(name="isPasswordExpired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isPasswordExpired;
 
     /**
@@ -134,7 +134,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Flag indicating whether or not two-factor authentication is enabled for the user.
      * 
      */
-    @Export(name="isTwoFactorAuthEnabled", type=Boolean.class, parameters={})
+    @Export(name="isTwoFactorAuthEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isTwoFactorAuthEnabled;
 
     /**
@@ -148,7 +148,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Flag indicating whether or not the user is locked out.
      * 
      */
-    @Export(name="isUserLocked", type=Boolean.class, parameters={})
+    @Export(name="isUserLocked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isUserLocked;
 
     /**
@@ -162,7 +162,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of the user.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

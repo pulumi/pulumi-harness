@@ -6,6 +6,61 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment service overrides.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const example = new harness.platform.EnvironmentServiceOverrides("example", {
+ *     envId: "environmentIdentifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ *     serviceId: "serviceIdentifier",
+ *     yaml: `        serviceOverrides:
+ *           environmentRef: environmentIdentifier
+ *           serviceRef: serviceIdentifier
+ *           variables:
+ *            - name: asda
+ *              type: String
+ *              value: asddad
+ *           manifests:
+ *              - manifest:
+ *                  identifier: manifestEnv
+ *                  type: Values
+ *                  spec:
+ *                    store:
+ *                      type: Git
+ *                      spec:
+ *                        connectorRef: <+input>
+ *                        gitFetchType: Branch
+ *                        paths:
+ *                          - file1
+ *                        repoName: <+input>
+ *                        branch: master
+ *           configFiles:
+ *              - configFile:
+ *                  identifier: configFileEnv
+ *                  spec:
+ *                    store:
+ *                      type: Harness
+ *                      spec:
+ *                        files:
+ *                          - account:/Add-ons/svcOverrideTest
+ *                        secretFiles: []
+ *
+ * `,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import using serviceoverride id
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+ * ```
  */
 export class EnvironmentServiceOverrides extends pulumi.CustomResource {
     /**
@@ -46,17 +101,17 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
     /**
      * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
     /**
      * The service ID to which the overrides applies.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
-     * Environment Service Overrides YAML
+     * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -83,15 +138,6 @@ export class EnvironmentServiceOverrides extends pulumi.CustomResource {
             const args = argsOrState as EnvironmentServiceOverridesArgs | undefined;
             if ((!args || args.envId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
-            }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'orgId'");
-            }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
             }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
@@ -136,7 +182,7 @@ export interface EnvironmentServiceOverridesState {
      */
     serviceId?: pulumi.Input<string>;
     /**
-     * Environment Service Overrides YAML
+     * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -152,21 +198,21 @@ export interface EnvironmentServiceOverridesArgs {
     /**
      * identifier of the service overrides.
      */
-    identifier: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
     /**
      * Unique identifier of the organization.
      */
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * Unique identifier of the project.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * The service ID to which the overrides applies.
      */
     serviceId: pulumi.Input<string>;
     /**
-     * Environment Service Overrides YAML
+     * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml: pulumi.Input<string>;
 }

@@ -99,7 +99,7 @@ class GetProjectResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -107,7 +107,7 @@ class GetProjectResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -150,7 +150,7 @@ def get_project(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -193,6 +193,6 @@ def get_project_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     """
     ...

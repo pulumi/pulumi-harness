@@ -26,12 +26,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupInfrastructure(ctx, &platform.LookupInfrastructureArgs{
+//			_, err := platform.LookupInfrastructure(ctx, &platform.LookupInfrastructureArgs{
 //				EnvId:      "env_id",
-//				Identifier: pulumi.StringRef("identifier"),
+//				Identifier: "identifier",
 //				Name:       pulumi.StringRef("name"),
-//				OrgId:      "org_id",
-//				ProjectId:  "project_id",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,18 +56,18 @@ type LookupInfrastructureArgs struct {
 	// environment identifier.
 	EnvId string `pulumi:"envId"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getInfrastructure.
 type LookupInfrastructureResult struct {
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 	DeploymentType string `pulumi:"deploymentType"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
@@ -76,16 +76,16 @@ type LookupInfrastructureResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type string `pulumi:"type"`
 	// Infrastructure YAML
 	Yaml string `pulumi:"yaml"`
@@ -109,13 +109,13 @@ type LookupInfrastructureOutputArgs struct {
 	// environment identifier.
 	EnvId pulumi.StringInput `pulumi:"envId"`
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (LookupInfrastructureOutputArgs) ElementType() reflect.Type {
@@ -137,7 +137,7 @@ func (o LookupInfrastructureResultOutput) ToLookupInfrastructureResultOutputWith
 	return o
 }
 
-// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 func (o LookupInfrastructureResultOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.DeploymentType }).(pulumi.StringOutput)
 }
@@ -158,8 +158,8 @@ func (o LookupInfrastructureResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupInfrastructureResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInfrastructureResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupInfrastructureResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -167,22 +167,22 @@ func (o LookupInfrastructureResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
-func (o LookupInfrastructureResultOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.OrgId }).(pulumi.StringOutput)
+// Unique identifier of the organization.
+func (o LookupInfrastructureResultOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInfrastructureResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
-func (o LookupInfrastructureResultOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.ProjectId }).(pulumi.StringOutput)
+// Unique identifier of the project.
+func (o LookupInfrastructureResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInfrastructureResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupInfrastructureResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 func (o LookupInfrastructureResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.Type }).(pulumi.StringOutput)
 }

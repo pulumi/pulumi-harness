@@ -6,14 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a PagerDuty connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPagerdutyConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getPagerdutyConnector(args?: GetPagerdutyConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPagerdutyConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getPagerdutyConnector(args: GetPagerdutyConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPagerdutyConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPagerdutyConnector:getPagerdutyConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -29,17 +36,17 @@ export interface GetPagerdutyConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -49,11 +56,11 @@ export interface GetPagerdutyConnectorArgs {
  */
 export interface GetPagerdutyConnectorResult {
     /**
-     * Reference to the Harness secret containing the api token.
+     * Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly apiTokenRef: string;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -67,27 +74,40 @@ export interface GetPagerdutyConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getPagerdutyConnectorOutput(args?: GetPagerdutyConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPagerdutyConnectorResult> {
-    return pulumi.output(args).apply(a => getPagerdutyConnector(a, opts))
+/**
+ * Datasource for looking up a PagerDuty connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPagerdutyConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getPagerdutyConnectorOutput(args: GetPagerdutyConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPagerdutyConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getPagerdutyConnector(a, opts))
 }
 
 /**
@@ -97,17 +117,17 @@ export interface GetPagerdutyConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

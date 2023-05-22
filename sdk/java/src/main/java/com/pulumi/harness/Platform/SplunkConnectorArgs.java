@@ -32,14 +32,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -92,14 +92,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -107,14 +107,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The reference to the Harness secret containing the Splunk password.
+     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return The reference to the Harness secret containing the Splunk password.
+     * @return The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
@@ -122,14 +122,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -137,14 +137,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -152,14 +152,14 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Url of the Splunk server.
+     * URL of the Splunk server.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Url of the Splunk server.
+     * @return URL of the Splunk server.
      * 
      */
     public Output<String> url() {
@@ -237,7 +237,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param passwordRef The reference to the Harness secret containing the Splunk password.
+         * @param passwordRef The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param passwordRef The reference to the Harness secret containing the Splunk password.
+         * @param passwordRef The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url Url of the Splunk server.
+         * @param url URL of the Splunk server.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class SplunkConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url Url of the Splunk server.
+         * @param url URL of the Splunk server.
          * 
          * @return builder
          * 

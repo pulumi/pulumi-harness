@@ -6,6 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating Harness Gitops Repositories.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const example = new harness.platform.GitOpsRepository("example", {
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     repos: [{
+ *         connectionType: "HTTPS_ANONYMOUS",
+ *         insecure: true,
+ *         name: "repo_name",
+ *         repo: "https://github.com/willycoll/argocd-example-apps.git",
+ *     }],
+ *     upsert: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import a Account level Gitops Repository
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+ * ```
+ *
+ *  Import a Project level Gitops Repository
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
+ * ```
+ */
 export class GitOpsRepository extends pulumi.CustomResource {
     /**
      * Get an existing GitOpsRepository resource's state with the given name, ID, and optional extra
@@ -35,51 +74,51 @@ export class GitOpsRepository extends pulumi.CustomResource {
     }
 
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps repository.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps repository.
      */
-    public readonly agentId!: pulumi.Output<string | undefined>;
+    public readonly agentId!: pulumi.Output<string>;
     /**
-     * Credentials only of the Repo.
+     * Indicates if to operate on credential set instead of repository.
      */
     public readonly credsOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps repository.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the GitOps repository.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps repository.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Force refresh query for Repo.
+     * Indicates to force refresh query for repository.
      */
     public readonly queryForceRefresh!: pulumi.Output<boolean | undefined>;
     /**
-     * Project to Query for Repo.
+     * Project to query for the GitOps repo.
      */
     public readonly queryProject!: pulumi.Output<string | undefined>;
     /**
-     * Repo to Query.
+     * GitOps repository to query.
      */
     public readonly queryRepo!: pulumi.Output<string | undefined>;
     /**
-     * Repo Details that need to be stored.
+     * Repo details holding application configurations.
      */
     public readonly repos!: pulumi.Output<outputs.platform.GitOpsRepositoryRepo[]>;
     /**
-     * Update mask of the Repository.
+     * Update mask of the repository.
      */
     public readonly updateMasks!: pulumi.Output<outputs.platform.GitOpsRepositoryUpdateMask[] | undefined>;
     /**
-     * Upsert the Repo Details.
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
     public readonly upsert!: pulumi.Output<boolean | undefined>;
 
@@ -113,11 +152,11 @@ export class GitOpsRepository extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
+            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
             }
             if ((!args || args.repos === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repos'");
@@ -145,51 +184,51 @@ export class GitOpsRepository extends pulumi.CustomResource {
  */
 export interface GitOpsRepositoryState {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps repository.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps repository.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * Credentials only of the Repo.
+     * Indicates if to operate on credential set instead of repository.
      */
     credsOnly?: pulumi.Input<boolean>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps repository.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the GitOps repository.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps repository.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Force refresh query for Repo.
+     * Indicates to force refresh query for repository.
      */
     queryForceRefresh?: pulumi.Input<boolean>;
     /**
-     * Project to Query for Repo.
+     * Project to query for the GitOps repo.
      */
     queryProject?: pulumi.Input<string>;
     /**
-     * Repo to Query.
+     * GitOps repository to query.
      */
     queryRepo?: pulumi.Input<string>;
     /**
-     * Repo Details that need to be stored.
+     * Repo details holding application configurations.
      */
     repos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[]>;
     /**
-     * Update mask of the Repository.
+     * Update mask of the repository.
      */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
     /**
-     * Upsert the Repo Details.
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }
@@ -199,51 +238,51 @@ export interface GitOpsRepositoryState {
  */
 export interface GitOpsRepositoryArgs {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps repository.
      */
     accountId: pulumi.Input<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps repository.
      */
-    agentId?: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
-     * Credentials only of the Repo.
+     * Indicates if to operate on credential set instead of repository.
      */
     credsOnly?: pulumi.Input<boolean>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps repository.
      */
     identifier: pulumi.Input<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the GitOps repository.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps repository.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
-     * Force refresh query for Repo.
+     * Indicates to force refresh query for repository.
      */
     queryForceRefresh?: pulumi.Input<boolean>;
     /**
-     * Project to Query for Repo.
+     * Project to query for the GitOps repo.
      */
     queryProject?: pulumi.Input<string>;
     /**
-     * Repo to Query.
+     * GitOps repository to query.
      */
     queryRepo?: pulumi.Input<string>;
     /**
-     * Repo Details that need to be stored.
+     * Repo details holding application configurations.
      */
     repos: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[]>;
     /**
-     * Update mask of the Repository.
+     * Update mask of the repository.
      */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
     /**
-     * Upsert the Repo Details.
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }

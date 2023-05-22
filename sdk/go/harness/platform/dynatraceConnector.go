@@ -7,17 +7,78 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Dynatrace connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewDynatraceConnector(ctx, "test", &platform.DynatraceConnectorArgs{
+//				ApiTokenRef: pulumi.String("account.secret_id"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://dynatrace.com/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level dynatrace connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <connector_id>
+//
+// ```
+//
+//	Import org level dynatrace connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level dynatrace connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type DynatraceConnector struct {
 	pulumi.CustomResourceState
 
-	// The reference to the Harness secret containing the api token.
+	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef pulumi.StringOutput `pulumi:"apiTokenRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,13 +86,13 @@ type DynatraceConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the Dynatrace server.
+	// URL of the Dynatrace server.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -74,9 +135,9 @@ func GetDynatraceConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DynatraceConnector resources.
 type dynatraceConnectorState struct {
-	// The reference to the Harness secret containing the api token.
+	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef *string `pulumi:"apiTokenRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -84,20 +145,20 @@ type dynatraceConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Dynatrace server.
+	// URL of the Dynatrace server.
 	Url *string `pulumi:"url"`
 }
 
 type DynatraceConnectorState struct {
-	// The reference to the Harness secret containing the api token.
+	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef pulumi.StringPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -105,13 +166,13 @@ type DynatraceConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Dynatrace server.
+	// URL of the Dynatrace server.
 	Url pulumi.StringPtrInput
 }
 
@@ -120,9 +181,9 @@ func (DynatraceConnectorState) ElementType() reflect.Type {
 }
 
 type dynatraceConnectorArgs struct {
-	// The reference to the Harness secret containing the api token.
+	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -130,21 +191,21 @@ type dynatraceConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Dynatrace server.
+	// URL of the Dynatrace server.
 	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a DynatraceConnector resource.
 type DynatraceConnectorArgs struct {
-	// The reference to the Harness secret containing the api token.
+	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef pulumi.StringInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -152,13 +213,13 @@ type DynatraceConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Dynatrace server.
+	// URL of the Dynatrace server.
 	Url pulumi.StringInput
 }
 
@@ -249,12 +310,12 @@ func (o DynatraceConnectorOutput) ToDynatraceConnectorOutputWithContext(ctx cont
 	return o
 }
 
-// The reference to the Harness secret containing the api token.
+// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o DynatraceConnectorOutput) ApiTokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringOutput { return v.ApiTokenRef }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o DynatraceConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -274,22 +335,22 @@ func (o DynatraceConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o DynatraceConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o DynatraceConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o DynatraceConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Dynatrace server.
+// URL of the Dynatrace server.
 func (o DynatraceConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynatraceConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

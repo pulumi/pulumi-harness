@@ -12,24 +12,78 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating an AWS KMS connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Credentials inherit_from_delegate
+    ///     var test = new Harness.Platform.AwsKmsConnector("test", new()
+    ///     {
+    ///         ArnRef = "account.secret_id",
+    ///         Credentials = new Harness.Platform.Inputs.AwsKmsConnectorCredentialsArgs
+    ///         {
+    ///             InheritFromDelegate = true,
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifer",
+    ///         Region = "us-east-1",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level awskms connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level awskms connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level awskms connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/awsKmsConnector:AwsKmsConnector")]
     public partial class AwsKmsConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("arnRef")]
         public Output<string> ArnRef { get; private set; } = null!;
 
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Output("credentials")]
         public Output<Outputs.AwsKmsConnectorCredentials> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -53,13 +107,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -71,7 +125,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -124,13 +178,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class AwsKmsConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("arnRef", required: true)]
         public Input<string> ArnRef { get; set; } = null!;
 
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Input("credentials", required: true)]
         public Input<Inputs.AwsKmsConnectorCredentialsArgs> Credentials { get; set; } = null!;
@@ -139,7 +193,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -166,13 +220,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -187,7 +241,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -204,13 +258,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class AwsKmsConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A reference to the Harness secret containing the ARN of the AWS KMS.
+        /// A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("arnRef")]
         public Input<string>? ArnRef { get; set; }
 
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Input("credentials")]
         public Input<Inputs.AwsKmsConnectorCredentialsGetArgs>? Credentials { get; set; }
@@ -219,7 +273,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -246,13 +300,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -267,7 +321,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

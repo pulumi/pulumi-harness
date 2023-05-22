@@ -6,6 +6,43 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Datadog connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.DatadogConnector("test", {
+ *     apiKeyRef: "account.secret_id",
+ *     applicationKeyRef: "account.secret_id",
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://datadog.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level datadog connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <connector_id>
+ * ```
+ *
+ *  Import org level datadog connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level datadog connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class DatadogConnector extends pulumi.CustomResource {
     /**
@@ -36,15 +73,15 @@ export class DatadogConnector extends pulumi.CustomResource {
     }
 
     /**
-     * Reference to the Harness secret containing the api key.
+     * Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly apiKeyRef!: pulumi.Output<string>;
     /**
-     * Reference to the Harness secret containing the application key.
+     * Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly applicationKeyRef!: pulumi.Output<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -60,19 +97,19 @@ export class DatadogConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the Datadog server.
+     * URL of the Datadog server.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -134,15 +171,15 @@ export class DatadogConnector extends pulumi.CustomResource {
  */
 export interface DatadogConnectorState {
     /**
-     * Reference to the Harness secret containing the api key.
+     * Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiKeyRef?: pulumi.Input<string>;
     /**
-     * Reference to the Harness secret containing the application key.
+     * Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     applicationKeyRef?: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -158,19 +195,19 @@ export interface DatadogConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Datadog server.
+     * URL of the Datadog server.
      */
     url?: pulumi.Input<string>;
 }
@@ -180,15 +217,15 @@ export interface DatadogConnectorState {
  */
 export interface DatadogConnectorArgs {
     /**
-     * Reference to the Harness secret containing the api key.
+     * Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiKeyRef: pulumi.Input<string>;
     /**
-     * Reference to the Harness secret containing the application key.
+     * Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     applicationKeyRef: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -204,19 +241,19 @@ export interface DatadogConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Datadog server.
+     * URL of the Datadog server.
      */
     url: pulumi.Input<string>;
 }

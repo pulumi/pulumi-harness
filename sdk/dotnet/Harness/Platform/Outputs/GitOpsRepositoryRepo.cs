@@ -14,25 +14,85 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GitOpsRepositoryRepo
     {
+        /// <summary>
+        /// Identifies the authentication method used to connect to the repository.
+        /// </summary>
         public readonly string ConnectionType;
+        /// <summary>
+        /// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+        /// </summary>
         public readonly bool? EnableLfs;
+        /// <summary>
+        /// Indicates if helm-oci support must be enabled for this repo.
+        /// </summary>
         public readonly bool? EnableOci;
+        /// <summary>
+        /// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        /// </summary>
         public readonly string? GithubAppEnterpriseBaseUrl;
+        /// <summary>
+        /// Id of the GitHub app used to access the repo.
+        /// </summary>
         public readonly string? GithubAppId;
+        /// <summary>
+        /// Installation id of the GitHub app used to access the repo.
+        /// </summary>
         public readonly string? GithubAppInstallationId;
+        /// <summary>
+        /// GitHub app private key PEM data.
+        /// </summary>
         public readonly string? GithubAppPrivateKey;
+        /// <summary>
+        /// Indicates if the credentials were inherited from a credential set.
+        /// </summary>
         public readonly bool? InheritedCreds;
+        /// <summary>
+        /// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+        /// </summary>
         public readonly bool? Insecure;
+        /// <summary>
+        /// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        /// </summary>
         public readonly bool? InsecureIgnoreHostKey;
+        /// <summary>
+        /// Name to be used for this repo. Only used with Helm repos.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Password or PAT used for authenticating at the remote repository.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// The HTTP/HTTPS proxy used to access the repo.
+        /// </summary>
         public readonly string? Proxy;
+        /// <summary>
+        /// URL to the remote repository.
+        /// </summary>
         public readonly string Repo;
+        /// <summary>
+        /// PEM data for authenticating at the repo server. Only used with Git repos.
+        /// </summary>
         public readonly string? SshPrivateKey;
+        /// <summary>
+        /// Certificate in PEM format for authenticating at the repo server.
+        /// </summary>
         public readonly string? TlsClientCertData;
+        /// <summary>
+        /// Private key in PEM format for authenticating at the repo server.
+        /// </summary>
         public readonly string? TlsClientCertKey;
+        /// <summary>
+        /// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+        /// </summary>
         public readonly string? Type_;
+        /// <summary>
+        /// Username used for authenticating at the remote repository.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

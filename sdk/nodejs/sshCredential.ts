@@ -9,34 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Resource for creating an encrypted text secret
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- * import * as harness from "@pulumi/harness";
- * import * as tls from "@pulumi/tls";
- *
- * const harnessDeployKey = new tls.PrivateKey("harnessDeployKey", {
- *     algorithm: "RSA",
- *     rsaBits: 4096,
- * });
- * const secretManager = harness.getSecretManager({
- *     "default": true,
- * });
- * const mySecret = new harness.EncryptedText("mySecret", {
- *     value: harnessDeployKey.privateKeyPem,
- *     secretManagerId: secretManager.then(secretManager => secretManager.id),
- * });
- * const sshCreds = new harness.SshCredential("sshCreds", {sshAuthentication: {
- *     port: 22,
- *     username: "git",
- *     inlineSsh: {
- *         sshKeyFileId: mySecret.id,
- *     },
- * }});
- * ```
- *
  * ## Import
  *
  * Import using the Harness ssh credential id

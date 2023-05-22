@@ -7,26 +7,130 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness Gitops Cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitOpsCluster(ctx, "exampleGitOpsCluster", &platform.GitOpsClusterArgs{
+//				Identifier: pulumi.String("identifier"),
+//				AccountId:  pulumi.String("account_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				AgentId:    pulumi.String("agent_id"),
+//				Requests: platform.GitOpsClusterRequestArray{
+//					&platform.GitOpsClusterRequestArgs{
+//						Upsert: pulumi.Bool(false),
+//						Clusters: platform.GitOpsClusterRequestClusterArray{
+//							&platform.GitOpsClusterRequestClusterArgs{
+//								Server: pulumi.String("https://kubernetes.default.svc"),
+//								Name:   pulumi.String("name"),
+//								Configs: platform.GitOpsClusterRequestClusterConfigArray{
+//									&platform.GitOpsClusterRequestClusterConfigArgs{
+//										TlsClientConfigs: platform.GitOpsClusterRequestClusterConfigTlsClientConfigArray{
+//											&platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs{
+//												Insecure: pulumi.Bool(true),
+//											},
+//										},
+//										ClusterConnectionType: pulumi.String("IN_CLUSTER"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGitOpsCluster(ctx, "examplePlatform/gitOpsClusterGitOpsCluster", &platform.GitOpsClusterArgs{
+//				Identifier: pulumi.String("identifier"),
+//				AccountId:  pulumi.String("account_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				AgentId:    pulumi.String("agent_id"),
+//				Requests: platform.GitOpsClusterRequestArray{
+//					&platform.GitOpsClusterRequestArgs{
+//						Upsert: pulumi.Bool(false),
+//						Tags: pulumi.StringArray{
+//							pulumi.String("foo:bar"),
+//						},
+//						Clusters: platform.GitOpsClusterRequestClusterArray{
+//							&platform.GitOpsClusterRequestClusterArgs{
+//								Server: pulumi.String("https://kubernetes.default.svc"),
+//								Name:   pulumi.String("name"),
+//								Configs: platform.GitOpsClusterRequestClusterConfigArray{
+//									&platform.GitOpsClusterRequestClusterConfigArgs{
+//										TlsClientConfigs: platform.GitOpsClusterRequestClusterConfigTlsClientConfigArray{
+//											&platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs{
+//												Insecure: pulumi.Bool(true),
+//											},
+//										},
+//										ClusterConnectionType: pulumi.String("IN_CLUSTER"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import a Account level Gitops Cluster
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+//
+// ```
+//
+//	Import a Project level Gitops Cluster
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
+//
+// ```
 type GitOpsCluster struct {
 	pulumi.CustomResourceState
 
-	// account identifier of the cluster.
+	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// agent identifier of the cluster.
-	AgentId pulumi.StringPtrOutput `pulumi:"agentId"`
-	// identifier of the cluster.
+	// Agent identifier of the GitOps cluster.
+	AgentId pulumi.StringOutput `pulumi:"agentId"`
+	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the cluster.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// project identifier of the cluster.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// query for cluster resources
+	// Project identifier of the GitOps cluster.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Query for the GitOps cluster resources.
 	Queries GitOpsClusterQueryArrayOutput `pulumi:"queries"`
-	// Cluster create/Update request.
+	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayOutput `pulumi:"requests"`
 }
 
@@ -40,11 +144,11 @@ func NewGitOpsCluster(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource GitOpsCluster
@@ -69,36 +173,36 @@ func GetGitOpsCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitOpsCluster resources.
 type gitOpsClusterState struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps cluster.
 	AccountId *string `pulumi:"accountId"`
-	// agent identifier of the cluster.
+	// Agent identifier of the GitOps cluster.
 	AgentId *string `pulumi:"agentId"`
-	// identifier of the cluster.
+	// Identifier of the GitOps cluster.
 	Identifier *string `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the cluster.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the cluster.
+	// Project identifier of the GitOps cluster.
 	ProjectId *string `pulumi:"projectId"`
-	// query for cluster resources
+	// Query for the GitOps cluster resources.
 	Queries []GitOpsClusterQuery `pulumi:"queries"`
-	// Cluster create/Update request.
+	// Cluster create or update request.
 	Requests []GitOpsClusterRequest `pulumi:"requests"`
 }
 
 type GitOpsClusterState struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringPtrInput
-	// agent identifier of the cluster.
+	// Agent identifier of the GitOps cluster.
 	AgentId pulumi.StringPtrInput
-	// identifier of the cluster.
+	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringPtrInput
-	// organization identifier of the cluster.
+	// Organization identifier of the cluster.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the cluster.
+	// Project identifier of the GitOps cluster.
 	ProjectId pulumi.StringPtrInput
-	// query for cluster resources
+	// Query for the GitOps cluster resources.
 	Queries GitOpsClusterQueryArrayInput
-	// Cluster create/Update request.
+	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayInput
 }
 
@@ -107,37 +211,37 @@ func (GitOpsClusterState) ElementType() reflect.Type {
 }
 
 type gitOpsClusterArgs struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps cluster.
 	AccountId string `pulumi:"accountId"`
-	// agent identifier of the cluster.
-	AgentId *string `pulumi:"agentId"`
-	// identifier of the cluster.
+	// Agent identifier of the GitOps cluster.
+	AgentId string `pulumi:"agentId"`
+	// Identifier of the GitOps cluster.
 	Identifier string `pulumi:"identifier"`
-	// organization identifier of the cluster.
+	// Organization identifier of the cluster.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the cluster.
-	ProjectId string `pulumi:"projectId"`
-	// query for cluster resources
+	// Project identifier of the GitOps cluster.
+	ProjectId *string `pulumi:"projectId"`
+	// Query for the GitOps cluster resources.
 	Queries []GitOpsClusterQuery `pulumi:"queries"`
-	// Cluster create/Update request.
+	// Cluster create or update request.
 	Requests []GitOpsClusterRequest `pulumi:"requests"`
 }
 
 // The set of arguments for constructing a GitOpsCluster resource.
 type GitOpsClusterArgs struct {
-	// account identifier of the cluster.
+	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringInput
-	// agent identifier of the cluster.
-	AgentId pulumi.StringPtrInput
-	// identifier of the cluster.
+	// Agent identifier of the GitOps cluster.
+	AgentId pulumi.StringInput
+	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringInput
-	// organization identifier of the cluster.
+	// Organization identifier of the cluster.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the cluster.
-	ProjectId pulumi.StringInput
-	// query for cluster resources
+	// Project identifier of the GitOps cluster.
+	ProjectId pulumi.StringPtrInput
+	// Query for the GitOps cluster resources.
 	Queries GitOpsClusterQueryArrayInput
-	// Cluster create/Update request.
+	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayInput
 }
 
@@ -228,37 +332,37 @@ func (o GitOpsClusterOutput) ToGitOpsClusterOutputWithContext(ctx context.Contex
 	return o
 }
 
-// account identifier of the cluster.
+// Account identifier of the GitOps cluster.
 func (o GitOpsClusterOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// agent identifier of the cluster.
-func (o GitOpsClusterOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringPtrOutput { return v.AgentId }).(pulumi.StringPtrOutput)
+// Agent identifier of the GitOps cluster.
+func (o GitOpsClusterOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// identifier of the cluster.
+// Identifier of the GitOps cluster.
 func (o GitOpsClusterOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// organization identifier of the cluster.
+// Organization identifier of the cluster.
 func (o GitOpsClusterOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// project identifier of the cluster.
-func (o GitOpsClusterOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// Project identifier of the GitOps cluster.
+func (o GitOpsClusterOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// query for cluster resources
+// Query for the GitOps cluster resources.
 func (o GitOpsClusterOutput) Queries() GitOpsClusterQueryArrayOutput {
 	return o.ApplyT(func(v *GitOpsCluster) GitOpsClusterQueryArrayOutput { return v.Queries }).(GitOpsClusterQueryArrayOutput)
 }
 
-// Cluster create/Update request.
+// Cluster create or update request.
 func (o GitOpsClusterOutput) Requests() GitOpsClusterRequestArrayOutput {
 	return o.ApplyT(func(v *GitOpsCluster) GitOpsClusterRequestArrayOutput { return v.Requests }).(GitOpsClusterRequestArrayOutput)
 }

@@ -12,59 +12,6 @@ import (
 
 // Resource for creating an encrypted text secret
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			harnessDeployKey, err := tls.NewPrivateKey(ctx, "harnessDeployKey", &tls.PrivateKeyArgs{
-//				Algorithm: pulumi.String("RSA"),
-//				RsaBits:   pulumi.Int(4096),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secretManager, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
-//				Default: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			mySecret, err := harness.NewEncryptedText(ctx, "mySecret", &harness.EncryptedTextArgs{
-//				Value:           harnessDeployKey.PrivateKeyPem,
-//				SecretManagerId: pulumi.String(secretManager.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harness.NewSshCredential(ctx, "sshCreds", &harness.SshCredentialArgs{
-//				SshAuthentication: &SshCredentialSshAuthenticationArgs{
-//					Port:     pulumi.Int(22),
-//					Username: pulumi.String("git"),
-//					InlineSsh: &SshCredentialSshAuthenticationInlineSshArgs{
-//						SshKeyFileId: mySecret.ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Import using the Harness ssh credential id

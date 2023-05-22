@@ -28,8 +28,34 @@ __all__ = [
     'BitbucketConnectorCredentialsArgs',
     'BitbucketConnectorCredentialsHttpArgs',
     'BitbucketConnectorCredentialsSshArgs',
+    'CcmFiltersFilterPropertiesArgs',
+    'ConnectorAzureCloudCostBillingExportSpecArgs',
+    'ConnectorAzureCloudProviderCredentialsArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs',
+    'ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs',
+    'ConnectorGcpCloudCostBillingExportSpecArgs',
+    'ConnectorJenkinsAuthArgs',
+    'ConnectorJenkinsAuthJenkinsBearerTokenArgs',
+    'ConnectorJenkinsAuthJenkinsUserNamePasswordArgs',
+    'ConnectorOciHelmCredentialsArgs',
+    'ConnectorServiceNowAuthArgs',
+    'ConnectorServiceNowAuthAdfsArgs',
+    'ConnectorServiceNowAuthUsernamePasswordArgs',
+    'ConnectorSpotPermanentTokenArgs',
+    'ConnectorTasCredentialsArgs',
+    'ConnectorTasCredentialsTasManualDetailsArgs',
+    'ConnectorTerraformCloudCredentialsArgs',
+    'ConnectorTerraformCloudCredentialsApiTokenArgs',
     'DockerConnectorCredentialsArgs',
     'EnvironmentClustersMappingClusterArgs',
+    'FeatureFlagGitDetailsArgs',
+    'FeatureFlagVariationArgs',
+    'FiltersFilterPropertiesArgs',
     'GcpConnectorInheritFromDelegateArgs',
     'GcpConnectorManualArgs',
     'GitConnectorCredentialsArgs',
@@ -62,13 +88,57 @@ __all__ = [
     'GitlabConnectorCredentialsArgs',
     'GitlabConnectorCredentialsHttpArgs',
     'GitlabConnectorCredentialsSshArgs',
+    'GitopsApplicationsApplicationArgs',
+    'GitopsApplicationsApplicationMetadataArgs',
+    'GitopsApplicationsApplicationMetadataOwnerReferenceArgs',
+    'GitopsApplicationsApplicationSpecArgs',
+    'GitopsApplicationsApplicationSpecDestinationArgs',
+    'GitopsApplicationsApplicationSpecSourceArgs',
+    'GitopsApplicationsApplicationSpecSourceDirectoryArgs',
+    'GitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs',
+    'GitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs',
+    'GitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs',
+    'GitopsApplicationsApplicationSpecSourceHelmArgs',
+    'GitopsApplicationsApplicationSpecSourceHelmFileParameterArgs',
+    'GitopsApplicationsApplicationSpecSourceHelmParameterArgs',
+    'GitopsApplicationsApplicationSpecSourceKsonnetArgs',
+    'GitopsApplicationsApplicationSpecSourceKsonnetParameterArgs',
+    'GitopsApplicationsApplicationSpecSourceKustomizeArgs',
+    'GitopsApplicationsApplicationSpecSourcePluginArgs',
+    'GitopsApplicationsApplicationSpecSourcePluginEnvArgs',
+    'GitopsApplicationsApplicationSpecSyncPolicyArgs',
+    'GitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs',
+    'GitopsApplicationsApplicationSpecSyncPolicyRetryArgs',
+    'GitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs',
+    'GitopsGnupgRequestArgs',
+    'GitopsGnupgRequestPublickeyArgs',
+    'GitopsRepoCertRequestArgs',
+    'GitopsRepoCertRequestCertificateArgs',
+    'GitopsRepoCertRequestCertificateItemArgs',
+    'GitopsRepoCertRequestCertificateMetadataArgs',
+    'GitopsRepoCredCredArgs',
     'HelmConnectorCredentialsArgs',
+    'InputSetGitDetailsArgs',
+    'JiraConnectorAuthArgs',
+    'JiraConnectorAuthUsernamePasswordArgs',
     'KubernetesConnectorClientKeyCertArgs',
     'KubernetesConnectorInheritFromDelegateArgs',
     'KubernetesConnectorOpenidConnectArgs',
     'KubernetesConnectorServiceAccountArgs',
     'KubernetesConnectorUsernamePasswordArgs',
+    'ManualFreezeCurrentOrUpcomingWindowArgs',
+    'ManualFreezeFreezeWindowArgs',
+    'ManualFreezeFreezeWindowRecurrenceArgs',
+    'ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs',
+    'MonitoredServiceRequestArgs',
+    'MonitoredServiceRequestChangeSourceArgs',
+    'MonitoredServiceRequestDependencyArgs',
+    'MonitoredServiceRequestHealthSourceArgs',
+    'MonitoredServiceRequestNotificationRuleRefArgs',
     'NexusConnectorCredentialsArgs',
+    'PipelineFiltersFilterPropertiesArgs',
+    'PipelineGitDetailsArgs',
+    'PolicysetPolicyArgs',
     'PrometheusConnectorHeaderArgs',
     'ResourceGroupIncludedScopeArgs',
     'ResourceGroupResourceFilterArgs',
@@ -82,27 +152,46 @@ __all__ = [
     'SecretSshkeySshSshPasswordCredentialArgs',
     'SecretSshkeySshSshkeyPathCredentialArgs',
     'SecretSshkeySshSshkeyReferenceCredentialArgs',
+    'SloRequestArgs',
+    'SloRequestNotificationRuleRefArgs',
+    'SloRequestSloTargetArgs',
+    'TemplateFiltersFilterPropertiesArgs',
+    'TemplateGitDetailsArgs',
+    'UserRoleBindingArgs',
     'UsergroupNotificationConfigArgs',
     'VariablesSpecArgs',
-    'GetGitopsAgentMetadataArgs',
+    'GetGitopsApplicationsApplicationArgs',
+    'GetGitopsApplicationsApplicationMetadataArgs',
+    'GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs',
+    'GetGitopsApplicationsApplicationSpecArgs',
+    'GetGitopsApplicationsApplicationSpecDestinationArgs',
+    'GetGitopsApplicationsApplicationSpecSourceArgs',
+    'GetGitopsApplicationsApplicationSpecSourceDirectoryArgs',
+    'GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs',
+    'GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs',
+    'GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs',
+    'GetGitopsApplicationsApplicationSpecSourceHelmArgs',
+    'GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs',
+    'GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs',
+    'GetGitopsApplicationsApplicationSpecSourceKsonnetArgs',
+    'GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs',
+    'GetGitopsApplicationsApplicationSpecSourceKustomizeArgs',
+    'GetGitopsApplicationsApplicationSpecSourcePluginArgs',
+    'GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs',
+    'GetGitopsApplicationsApplicationSpecSyncPolicyArgs',
+    'GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs',
+    'GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs',
+    'GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs',
     'GetGitopsClusterQueryArgs',
     'GetGitopsClusterQueryIdArgs',
-    'GetGitopsClusterRequestArgs',
-    'GetGitopsClusterRequestClusterArgs',
-    'GetGitopsClusterRequestClusterConfigArgs',
-    'GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs',
-    'GetGitopsClusterRequestClusterConfigExecProviderConfigArgs',
-    'GetGitopsClusterRequestClusterConfigTlsClientConfigArgs',
-    'GetGitopsClusterRequestClusterInfoArgs',
-    'GetGitopsClusterRequestClusterInfoCacheInfoArgs',
-    'GetGitopsClusterRequestClusterInfoConnectionStateArgs',
-    'GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs',
-    'GetGitopsClusterRequestClusterRefreshRequestedAtArgs',
-    'GetGitopsClusterRequestIdArgs',
-    'GetGitopsClusterRequestUpdateMaskArgs',
-    'GetGitopsRepositoryRepoArgs',
+    'GetGitopsGnupgRequestArgs',
+    'GetGitopsGnupgRequestPublickeyArgs',
+    'GetGitopsRepoCredCredArgs',
     'GetGitopsRepositoryUpdateMaskArgs',
-    'GetRoleAssignmentsPrincipalArgs',
+    'GetInputSetGitDetailsArgs',
+    'GetPipelineGitDetailsArgs',
+    'GetPolicysetPolicyArgs',
+    'GetTemplateGitDetailsArgs',
     'GetUsergroupNotificationConfigArgs',
 ]
 
@@ -113,7 +202,7 @@ class AppDynamicsConnectorApiTokenArgs:
                  client_secret_ref: pulumi.Input[str]):
         """
         :param pulumi.Input[str] client_id: The client id used for connecting to App Dynamics.
-        :param pulumi.Input[str] client_secret_ref: Reference to the Harness secret containing the App Dynamics client secret.
+        :param pulumi.Input[str] client_secret_ref: Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret_ref", client_secret_ref)
@@ -134,7 +223,7 @@ class AppDynamicsConnectorApiTokenArgs:
     @pulumi.getter(name="clientSecretRef")
     def client_secret_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the Harness secret containing the App Dynamics client secret.
+        Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "client_secret_ref")
 
@@ -149,7 +238,7 @@ class AppDynamicsConnectorUsernamePasswordArgs:
                  password_ref: pulumi.Input[str],
                  username: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username to use for authentication.
         """
         pulumi.set(__self__, "password_ref", password_ref)
@@ -159,7 +248,7 @@ class AppDynamicsConnectorUsernamePasswordArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -187,9 +276,9 @@ class ArtifactoryConnectorCredentialsArgs:
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "password_ref", password_ref)
         if username is not None:
@@ -201,7 +290,7 @@ class ArtifactoryConnectorCredentialsArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -225,7 +314,7 @@ class ArtifactoryConnectorCredentialsArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -361,9 +450,9 @@ class AwsConnectorManualArgs:
                  access_key_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the aws secret key.
+        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] access_key: AWS access key.
-        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the aws access key.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect only use delegates with these tags.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -378,7 +467,7 @@ class AwsConnectorManualArgs:
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the Harness secret containing the aws secret key.
+        Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -402,7 +491,7 @@ class AwsConnectorManualArgs:
     @pulumi.getter(name="accessKeyRef")
     def access_key_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the Harness secret containing the aws access key.
+        Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_key_ref")
 
@@ -672,9 +761,9 @@ class BitbucketConnectorApiAuthenticationArgs:
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] token_ref: Personal access token for interacting with the BitBucket api.
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: The username used for connecting to the api.
-        :param pulumi.Input[str] username_ref: The name of the Harness secret containing the username.
+        :param pulumi.Input[str] username_ref: The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "token_ref", token_ref)
         if username is not None:
@@ -686,7 +775,7 @@ class BitbucketConnectorApiAuthenticationArgs:
     @pulumi.getter(name="tokenRef")
     def token_ref(self) -> pulumi.Input[str]:
         """
-        Personal access token for interacting with the BitBucket api.
+        Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "token_ref")
 
@@ -710,7 +799,7 @@ class BitbucketConnectorApiAuthenticationArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Harness secret containing the username.
+        The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -816,15 +905,514 @@ class BitbucketConnectorCredentialsSshArgs:
 
 
 @pulumi.input_type
-class DockerConnectorCredentialsArgs:
+class CcmFiltersFilterPropertiesArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter_type: Type of CCM filters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        """
+        Type of CCM filters.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudCostBillingExportSpecArgs:
+    def __init__(__self__, *,
+                 container_name: pulumi.Input[str],
+                 directory_name: pulumi.Input[str],
+                 report_name: pulumi.Input[str],
+                 storage_account_name: pulumi.Input[str],
+                 subscription_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] container_name: Name of the container.
+        :param pulumi.Input[str] directory_name: Name of the directory.
+        :param pulumi.Input[str] report_name: Name of the report.
+        :param pulumi.Input[str] storage_account_name: Name of the storage account.
+        :param pulumi.Input[str] subscription_id: Subsription Id.
+        """
+        pulumi.set(__self__, "container_name", container_name)
+        pulumi.set(__self__, "directory_name", directory_name)
+        pulumi.set(__self__, "report_name", report_name)
+        pulumi.set(__self__, "storage_account_name", storage_account_name)
+        pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> pulumi.Input[str]:
+        """
+        Name of the container.
+        """
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter(name="directoryName")
+    def directory_name(self) -> pulumi.Input[str]:
+        """
+        Name of the directory.
+        """
+        return pulumi.get(self, "directory_name")
+
+    @directory_name.setter
+    def directory_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "directory_name", value)
+
+    @property
+    @pulumi.getter(name="reportName")
+    def report_name(self) -> pulumi.Input[str]:
+        """
+        Name of the report.
+        """
+        return pulumi.get(self, "report_name")
+
+    @report_name.setter
+    def report_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "report_name", value)
+
+    @property
+    @pulumi.getter(name="storageAccountName")
+    def storage_account_name(self) -> pulumi.Input[str]:
+        """
+        Name of the storage account.
+        """
+        return pulumi.get(self, "storage_account_name")
+
+    @storage_account_name.setter
+    def storage_account_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_account_name", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Input[str]:
+        """
+        Subsription Id.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subscription_id", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 azure_inherit_from_delegate_details: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs']] = None,
+                 azure_manual_details: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs']] = None):
+        """
+        :param pulumi.Input[str] type: Type can either be InheritFromDelegate or ManualConfig.
+        :param pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs'] azure_inherit_from_delegate_details: Authenticate to Azure Cloud Provider using details inheriting from delegate.
+        :param pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs'] azure_manual_details: Authenticate to Azure Cloud Provider using manual details.
+        """
+        pulumi.set(__self__, "type", type)
+        if azure_inherit_from_delegate_details is not None:
+            pulumi.set(__self__, "azure_inherit_from_delegate_details", azure_inherit_from_delegate_details)
+        if azure_manual_details is not None:
+            pulumi.set(__self__, "azure_manual_details", azure_manual_details)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type can either be InheritFromDelegate or ManualConfig.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="azureInheritFromDelegateDetails")
+    def azure_inherit_from_delegate_details(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs']]:
+        """
+        Authenticate to Azure Cloud Provider using details inheriting from delegate.
+        """
+        return pulumi.get(self, "azure_inherit_from_delegate_details")
+
+    @azure_inherit_from_delegate_details.setter
+    def azure_inherit_from_delegate_details(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs']]):
+        pulumi.set(self, "azure_inherit_from_delegate_details", value)
+
+    @property
+    @pulumi.getter(name="azureManualDetails")
+    def azure_manual_details(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs']]:
+        """
+        Authenticate to Azure Cloud Provider using manual details.
+        """
+        return pulumi.get(self, "azure_manual_details")
+
+    @azure_manual_details.setter
+    def azure_manual_details(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs']]):
+        pulumi.set(self, "azure_manual_details", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsArgs:
+    def __init__(__self__, *,
+                 auth: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthArgs']] = None):
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+
+    @property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthArgs']]:
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 azure_msi_auth_ua: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs']] = None):
+        pulumi.set(__self__, "type", type)
+        if azure_msi_auth_ua is not None:
+            pulumi.set(__self__, "azure_msi_auth_ua", azure_msi_auth_ua)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="azureMsiAuthUa")
+    def azure_msi_auth_ua(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs']]:
+        return pulumi.get(self, "azure_msi_auth_ua")
+
+    @azure_msi_auth_ua.setter
+    def azure_msi_auth_ua(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs']]):
+        pulumi.set(self, "azure_msi_auth_ua", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None):
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureManualDetailsArgs:
+    def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 auth: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthArgs']] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthArgs']]:
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthArgs:
+    def __init__(__self__, *,
+                 azure_client_key_cert: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs']] = None,
+                 azure_client_secret_key: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if azure_client_key_cert is not None:
+            pulumi.set(__self__, "azure_client_key_cert", azure_client_key_cert)
+        if azure_client_secret_key is not None:
+            pulumi.set(__self__, "azure_client_secret_key", azure_client_secret_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="azureClientKeyCert")
+    def azure_client_key_cert(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs']]:
+        return pulumi.get(self, "azure_client_key_cert")
+
+    @azure_client_key_cert.setter
+    def azure_client_key_cert(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs']]):
+        pulumi.set(self, "azure_client_key_cert", value)
+
+    @property
+    @pulumi.getter(name="azureClientSecretKey")
+    def azure_client_secret_key(self) -> Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs']]:
+        return pulumi.get(self, "azure_client_secret_key")
+
+    @azure_client_secret_key.setter
+    def azure_client_secret_key(self, value: Optional[pulumi.Input['ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs']]):
+        pulumi.set(self, "azure_client_secret_key", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs:
+    def __init__(__self__, *,
+                 certificate_ref: Optional[pulumi.Input[str]] = None):
+        if certificate_ref is not None:
+            pulumi.set(__self__, "certificate_ref", certificate_ref)
+
+    @property
+    @pulumi.getter(name="certificateRef")
+    def certificate_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_ref")
+
+    @certificate_ref.setter
+    def certificate_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_ref", value)
+
+
+@pulumi.input_type
+class ConnectorAzureCloudProviderCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs:
+    def __init__(__self__, *,
+                 secret_ref: Optional[pulumi.Input[str]] = None):
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_ref", value)
+
+
+@pulumi.input_type
+class ConnectorGcpCloudCostBillingExportSpecArgs:
+    def __init__(__self__, *,
+                 data_set_id: pulumi.Input[str],
+                 table_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] data_set_id: Data Set Id.
+        :param pulumi.Input[str] table_id: Table Id.
+        """
+        pulumi.set(__self__, "data_set_id", data_set_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="dataSetId")
+    def data_set_id(self) -> pulumi.Input[str]:
+        """
+        Data Set Id.
+        """
+        return pulumi.get(self, "data_set_id")
+
+    @data_set_id.setter
+    def data_set_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_set_id", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> pulumi.Input[str]:
+        """
+        Table Id.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_id", value)
+
+
+@pulumi.input_type
+class ConnectorJenkinsAuthArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 jenkins_bearer_token: Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsBearerTokenArgs']] = None,
+                 jenkins_user_name_password: Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsUserNamePasswordArgs']] = None):
+        """
+        :param pulumi.Input[str] type: Can be one of UsernamePassword, Anonymous, Bearer Token(HTTP Header)
+        :param pulumi.Input['ConnectorJenkinsAuthJenkinsBearerTokenArgs'] jenkins_bearer_token: Authenticate to App Dynamics using bearer token.
+        :param pulumi.Input['ConnectorJenkinsAuthJenkinsUserNamePasswordArgs'] jenkins_user_name_password: Authenticate to App Dynamics using user name and password.
+        """
+        pulumi.set(__self__, "type", type)
+        if jenkins_bearer_token is not None:
+            pulumi.set(__self__, "jenkins_bearer_token", jenkins_bearer_token)
+        if jenkins_user_name_password is not None:
+            pulumi.set(__self__, "jenkins_user_name_password", jenkins_user_name_password)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Can be one of UsernamePassword, Anonymous, Bearer Token(HTTP Header)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="jenkinsBearerToken")
+    def jenkins_bearer_token(self) -> Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsBearerTokenArgs']]:
+        """
+        Authenticate to App Dynamics using bearer token.
+        """
+        return pulumi.get(self, "jenkins_bearer_token")
+
+    @jenkins_bearer_token.setter
+    def jenkins_bearer_token(self, value: Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsBearerTokenArgs']]):
+        pulumi.set(self, "jenkins_bearer_token", value)
+
+    @property
+    @pulumi.getter(name="jenkinsUserNamePassword")
+    def jenkins_user_name_password(self) -> Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsUserNamePasswordArgs']]:
+        """
+        Authenticate to App Dynamics using user name and password.
+        """
+        return pulumi.get(self, "jenkins_user_name_password")
+
+    @jenkins_user_name_password.setter
+    def jenkins_user_name_password(self, value: Optional[pulumi.Input['ConnectorJenkinsAuthJenkinsUserNamePasswordArgs']]):
+        pulumi.set(self, "jenkins_user_name_password", value)
+
+
+@pulumi.input_type
+class ConnectorJenkinsAuthJenkinsBearerTokenArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
+
+
+@pulumi.input_type
+class ConnectorJenkinsAuthJenkinsUserNamePasswordArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class ConnectorOciHelmCredentialsArgs:
     def __init__(__self__, *,
                  password_ref: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] password_ref: The reference to the password to use for the docker registry.
-        :param pulumi.Input[str] username: The username to use for the docker registry.
-        :param pulumi.Input[str] username_ref: The reference to the username to use for the docker registry.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "password_ref", password_ref)
         if username is not None:
@@ -836,7 +1424,441 @@ class DockerConnectorCredentialsArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        The reference to the password to use for the docker registry.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class ConnectorServiceNowAuthArgs:
+    def __init__(__self__, *,
+                 auth_type: pulumi.Input[str],
+                 adfs: Optional[pulumi.Input['ConnectorServiceNowAuthAdfsArgs']] = None,
+                 username_password: Optional[pulumi.Input['ConnectorServiceNowAuthUsernamePasswordArgs']] = None):
+        """
+        :param pulumi.Input[str] auth_type: Authentication types for Jira connector
+        :param pulumi.Input['ConnectorServiceNowAuthAdfsArgs'] adfs: Authenticate using adfs client credentials with certificate.
+        :param pulumi.Input['ConnectorServiceNowAuthUsernamePasswordArgs'] username_password: Authenticate using username password.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if adfs is not None:
+            pulumi.set(__self__, "adfs", adfs)
+        if username_password is not None:
+            pulumi.set(__self__, "username_password", username_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> pulumi.Input[str]:
+        """
+        Authentication types for Jira connector
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter
+    def adfs(self) -> Optional[pulumi.Input['ConnectorServiceNowAuthAdfsArgs']]:
+        """
+        Authenticate using adfs client credentials with certificate.
+        """
+        return pulumi.get(self, "adfs")
+
+    @adfs.setter
+    def adfs(self, value: Optional[pulumi.Input['ConnectorServiceNowAuthAdfsArgs']]):
+        pulumi.set(self, "adfs", value)
+
+    @property
+    @pulumi.getter(name="usernamePassword")
+    def username_password(self) -> Optional[pulumi.Input['ConnectorServiceNowAuthUsernamePasswordArgs']]:
+        """
+        Authenticate using username password.
+        """
+        return pulumi.get(self, "username_password")
+
+    @username_password.setter
+    def username_password(self, value: Optional[pulumi.Input['ConnectorServiceNowAuthUsernamePasswordArgs']]):
+        pulumi.set(self, "username_password", value)
+
+
+@pulumi.input_type
+class ConnectorServiceNowAuthAdfsArgs:
+    def __init__(__self__, *,
+                 adfs_url: pulumi.Input[str],
+                 certificate_ref: pulumi.Input[str],
+                 client_id_ref: pulumi.Input[str],
+                 private_key_ref: pulumi.Input[str],
+                 resource_id_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "adfs_url", adfs_url)
+        pulumi.set(__self__, "certificate_ref", certificate_ref)
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+        pulumi.set(__self__, "resource_id_ref", resource_id_ref)
+
+    @property
+    @pulumi.getter(name="adfsUrl")
+    def adfs_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "adfs_url")
+
+    @adfs_url.setter
+    def adfs_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "adfs_url", value)
+
+    @property
+    @pulumi.getter(name="certificateRef")
+    def certificate_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_ref")
+
+    @certificate_ref.setter
+    def certificate_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_ref", value)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id_ref")
+
+    @client_id_ref.setter
+    def client_id_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id_ref", value)
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "private_key_ref")
+
+    @private_key_ref.setter
+    def private_key_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key_ref", value)
+
+    @property
+    @pulumi.getter(name="resourceIdRef")
+    def resource_id_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_id_ref")
+
+    @resource_id_ref.setter
+    def resource_id_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_id_ref", value)
+
+
+@pulumi.input_type
+class ConnectorServiceNowAuthUsernamePasswordArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class ConnectorSpotPermanentTokenArgs:
+    def __init__(__self__, *,
+                 api_token_ref: pulumi.Input[str],
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 spot_account_id: Optional[pulumi.Input[str]] = None,
+                 spot_account_id_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_token_ref: Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect only using delegates with these tags.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[str] spot_account_id: Spot account id.
+        :param pulumi.Input[str] spot_account_id_ref: Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "api_token_ref", api_token_ref)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if spot_account_id is not None:
+            pulumi.set(__self__, "spot_account_id", spot_account_id)
+        if spot_account_id_ref is not None:
+            pulumi.set(__self__, "spot_account_id_ref", spot_account_id_ref)
+
+    @property
+    @pulumi.getter(name="apiTokenRef")
+    def api_token_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "api_token_ref")
+
+    @api_token_ref.setter
+    def api_token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_token_ref", value)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Connect only using delegates with these tags.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="spotAccountId")
+    def spot_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Spot account id.
+        """
+        return pulumi.get(self, "spot_account_id")
+
+    @spot_account_id.setter
+    def spot_account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_account_id", value)
+
+    @property
+    @pulumi.getter(name="spotAccountIdRef")
+    def spot_account_id_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "spot_account_id_ref")
+
+    @spot_account_id_ref.setter
+    def spot_account_id_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_account_id_ref", value)
+
+
+@pulumi.input_type
+class ConnectorTasCredentialsArgs:
+    def __init__(__self__, *,
+                 tas_manual_details: pulumi.Input['ConnectorTasCredentialsTasManualDetailsArgs'],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input['ConnectorTasCredentialsTasManualDetailsArgs'] tas_manual_details: Authenticate to Tas using manual details.
+        :param pulumi.Input[str] type: Type can be ManualConfig.
+        """
+        pulumi.set(__self__, "tas_manual_details", tas_manual_details)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="tasManualDetails")
+    def tas_manual_details(self) -> pulumi.Input['ConnectorTasCredentialsTasManualDetailsArgs']:
+        """
+        Authenticate to Tas using manual details.
+        """
+        return pulumi.get(self, "tas_manual_details")
+
+    @tas_manual_details.setter
+    def tas_manual_details(self, value: pulumi.Input['ConnectorTasCredentialsTasManualDetailsArgs']):
+        pulumi.set(self, "tas_manual_details", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type can be ManualConfig.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ConnectorTasCredentialsTasManualDetailsArgs:
+    def __init__(__self__, *,
+                 endpoint_url: pulumi.Input[str],
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "endpoint_url", endpoint_url)
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "endpoint_url")
+
+    @endpoint_url.setter
+    def endpoint_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_url", value)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class ConnectorTerraformCloudCredentialsArgs:
+    def __init__(__self__, *,
+                 api_token: pulumi.Input['ConnectorTerraformCloudCredentialsApiTokenArgs']):
+        """
+        :param pulumi.Input['ConnectorTerraformCloudCredentialsApiTokenArgs'] api_token: API token credentials to use for authentication.
+        """
+        pulumi.set(__self__, "api_token", api_token)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> pulumi.Input['ConnectorTerraformCloudCredentialsApiTokenArgs']:
+        """
+        API token credentials to use for authentication.
+        """
+        return pulumi.get(self, "api_token")
+
+    @api_token.setter
+    def api_token(self, value: pulumi.Input['ConnectorTerraformCloudCredentialsApiTokenArgs']):
+        pulumi.set(self, "api_token", value)
+
+
+@pulumi.input_type
+class ConnectorTerraformCloudCredentialsApiTokenArgs:
+    def __init__(__self__, *,
+                 api_token_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "api_token_ref", api_token_ref)
+
+    @property
+    @pulumi.getter(name="apiTokenRef")
+    def api_token_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_token_ref")
+
+    @api_token_ref.setter
+    def api_token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_token_ref", value)
+
+
+@pulumi.input_type
+class DockerConnectorCredentialsArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] username: The username to use for the docker registry.
+        :param pulumi.Input[str] username_ref: The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -860,7 +1882,7 @@ class DockerConnectorCredentialsArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        The reference to the username to use for the docker registry.
+        The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -925,6 +1947,133 @@ class EnvironmentClustersMappingClusterArgs:
 
 
 @pulumi.input_type
+class FeatureFlagGitDetailsArgs:
+    def __init__(__self__, *,
+                 commit_msg: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] commit_msg: The commit message to use as part of a gitsync operation
+        """
+        pulumi.set(__self__, "commit_msg", commit_msg)
+
+    @property
+    @pulumi.getter(name="commitMsg")
+    def commit_msg(self) -> pulumi.Input[str]:
+        """
+        The commit message to use as part of a gitsync operation
+        """
+        return pulumi.get(self, "commit_msg")
+
+    @commit_msg.setter
+    def commit_msg(self, value: pulumi.Input[str]):
+        pulumi.set(self, "commit_msg", value)
+
+
+@pulumi.input_type
+class FeatureFlagVariationArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 identifier: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] description: The description of the variation
+        :param pulumi.Input[str] identifier: The identifier of the variation
+        :param pulumi.Input[str] name: The user friendly name of the variation
+        :param pulumi.Input[str] value: The value of the variation
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the variation
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the variation
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The user friendly name of the variation
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the variation
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class FiltersFilterPropertiesArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter_type: Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        """
+        Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
 class GcpConnectorInheritFromDelegateArgs:
     def __init__(__self__, *,
                  delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -953,7 +2102,7 @@ class GcpConnectorManualArgs:
                  secret_key_ref: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to connect with.
-        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the secret key.
+        :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -974,7 +2123,7 @@ class GcpConnectorManualArgs:
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the Harness secret containing the secret key.
+        Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -1083,6 +2232,10 @@ class GitOpsAgentMetadataArgs:
     def __init__(__self__, *,
                  high_availability: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] high_availability: Indicates if the deployment should be deployed using the deploy-ha.yaml
+        :param pulumi.Input[str] namespace: The k8s namespace that this agent resides in.
+        """
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
         if namespace is not None:
@@ -1091,6 +2244,9 @@ class GitOpsAgentMetadataArgs:
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the deployment should be deployed using the deploy-ha.yaml
+        """
         return pulumi.get(self, "high_availability")
 
     @high_availability.setter
@@ -1100,6 +2256,9 @@ class GitOpsAgentMetadataArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The k8s namespace that this agent resides in.
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -1113,6 +2272,11 @@ class GitOpsClusterQueryArgs:
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryIdArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  server: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryIdArgs']]] ids: Cluster server URL or the cluster name.
+        :param pulumi.Input[str] name: Name of the GitOps cluster.
+        :param pulumi.Input[str] server: Server of the GitOps cluster.
+        """
         if ids is not None:
             pulumi.set(__self__, "ids", ids)
         if name is not None:
@@ -1123,6 +2287,9 @@ class GitOpsClusterQueryArgs:
     @property
     @pulumi.getter
     def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryIdArgs']]]]:
+        """
+        Cluster server URL or the cluster name.
+        """
         return pulumi.get(self, "ids")
 
     @ids.setter
@@ -1132,6 +2299,9 @@ class GitOpsClusterQueryArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps cluster.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1141,6 +2311,9 @@ class GitOpsClusterQueryArgs:
     @property
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server of the GitOps cluster.
+        """
         return pulumi.get(self, "server")
 
     @server.setter
@@ -1182,13 +2355,24 @@ class GitOpsClusterRequestArgs:
     def __init__(__self__, *,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterArgs']]]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestIdArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_masks: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestUpdateMaskArgs']]]] = None,
                  updated_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterArgs']]] clusters: GitOps cluster details.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestIdArgs']]] ids: Cluster server URL or the cluster name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the clusters
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestUpdateMaskArgs']]] update_masks: Update mask of the GitOps cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] updated_fields: Fields which are updated.
+        :param pulumi.Input[bool] upsert: Indicates if the GitOps cluster should be updated if existing and inserted if not.
+        """
         if clusters is not None:
             pulumi.set(__self__, "clusters", clusters)
         if ids is not None:
             pulumi.set(__self__, "ids", ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_masks is not None:
             pulumi.set(__self__, "update_masks", update_masks)
         if updated_fields is not None:
@@ -1199,6 +2383,9 @@ class GitOpsClusterRequestArgs:
     @property
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterArgs']]]]:
+        """
+        GitOps cluster details.
+        """
         return pulumi.get(self, "clusters")
 
     @clusters.setter
@@ -1208,6 +2395,9 @@ class GitOpsClusterRequestArgs:
     @property
     @pulumi.getter
     def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestIdArgs']]]]:
+        """
+        Cluster server URL or the cluster name.
+        """
         return pulumi.get(self, "ids")
 
     @ids.setter
@@ -1215,8 +2405,23 @@ class GitOpsClusterRequestArgs:
         pulumi.set(self, "ids", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the clusters
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="updateMasks")
     def update_masks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestUpdateMaskArgs']]]]:
+        """
+        Update mask of the GitOps cluster.
+        """
         return pulumi.get(self, "update_masks")
 
     @update_masks.setter
@@ -1226,6 +2431,9 @@ class GitOpsClusterRequestArgs:
     @property
     @pulumi.getter(name="updatedFields")
     def updated_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fields which are updated.
+        """
         return pulumi.get(self, "updated_fields")
 
     @updated_fields.setter
@@ -1235,6 +2443,9 @@ class GitOpsClusterRequestArgs:
     @property
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the GitOps cluster should be updated if existing and inserted if not.
+        """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
@@ -1245,10 +2456,10 @@ class GitOpsClusterRequestArgs:
 @pulumi.input_type
 class GitOpsClusterRequestClusterArgs:
     def __init__(__self__, *,
+                 configs: pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]],
                  server: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cluster_resources: Optional[pulumi.Input[bool]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]]] = None,
                  infos: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterInfoArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1256,13 +2467,12 @@ class GitOpsClusterRequestClusterArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  refresh_requested_ats: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterRefreshRequestedAtArgs']]]] = None,
                  shard: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "server", server)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if cluster_resources is not None:
             pulumi.set(__self__, "cluster_resources", cluster_resources)
-        if configs is not None:
-            pulumi.set(__self__, "configs", configs)
         if infos is not None:
             pulumi.set(__self__, "infos", infos)
         if labels is not None:
@@ -1277,6 +2487,15 @@ class GitOpsClusterRequestClusterArgs:
             pulumi.set(__self__, "refresh_requested_ats", refresh_requested_ats)
         if shard is not None:
             pulumi.set(__self__, "shard", shard)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]]:
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]]):
+        pulumi.set(self, "configs", value)
 
     @property
     @pulumi.getter
@@ -1304,15 +2523,6 @@ class GitOpsClusterRequestClusterArgs:
     @cluster_resources.setter
     def cluster_resources(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cluster_resources", value)
-
-    @property
-    @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]]]:
-        return pulumi.get(self, "configs")
-
-    @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgs']]]]):
-        pulumi.set(self, "configs", value)
 
     @property
     @pulumi.getter
@@ -1900,6 +3110,28 @@ class GitOpsRepositoryRepoArgs:
                  tls_client_cert_key: Optional[pulumi.Input[str]] = None,
                  type_: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_type: Identifies the authentication method used to connect to the repository.
+        :param pulumi.Input[str] repo: URL to the remote repository.
+        :param pulumi.Input[bool] enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+        :param pulumi.Input[bool] enable_oci: Indicates if helm-oci support must be enabled for this repo.
+        :param pulumi.Input[str] github_app_enterprise_base_url: Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        :param pulumi.Input[str] github_app_id: Id of the GitHub app used to access the repo.
+        :param pulumi.Input[str] github_app_installation_id: Installation id of the GitHub app used to access the repo.
+        :param pulumi.Input[str] github_app_private_key: GitHub app private key PEM data.
+        :param pulumi.Input[bool] inherited_creds: Indicates if the credentials were inherited from a credential set.
+        :param pulumi.Input[bool] insecure: Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+        :param pulumi.Input[bool] insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        :param pulumi.Input[str] name: Name to be used for this repo. Only used with Helm repos.
+        :param pulumi.Input[str] password: Password or PAT used for authenticating at the remote repository.
+        :param pulumi.Input[str] project: Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        :param pulumi.Input[str] proxy: The HTTP/HTTPS proxy used to access the repo.
+        :param pulumi.Input[str] ssh_private_key: PEM data for authenticating at the repo server. Only used with Git repos.
+        :param pulumi.Input[str] tls_client_cert_data: Certificate in PEM format for authenticating at the repo server.
+        :param pulumi.Input[str] tls_client_cert_key: Private key in PEM format for authenticating at the repo server.
+        :param pulumi.Input[str] type_: Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+        :param pulumi.Input[str] username: Username used for authenticating at the remote repository.
+        """
         pulumi.set(__self__, "connection_type", connection_type)
         pulumi.set(__self__, "repo", repo)
         if enable_lfs is not None:
@@ -1942,6 +3174,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[str]:
+        """
+        Identifies the authentication method used to connect to the repository.
+        """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
@@ -1951,6 +3186,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def repo(self) -> pulumi.Input[str]:
+        """
+        URL to the remote repository.
+        """
         return pulumi.get(self, "repo")
 
     @repo.setter
@@ -1960,6 +3198,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="enableLfs")
     def enable_lfs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+        """
         return pulumi.get(self, "enable_lfs")
 
     @enable_lfs.setter
@@ -1969,6 +3210,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="enableOci")
     def enable_oci(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if helm-oci support must be enabled for this repo.
+        """
         return pulumi.get(self, "enable_oci")
 
     @enable_oci.setter
@@ -1978,6 +3222,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppEnterpriseBaseUrl")
     def github_app_enterprise_base_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        """
         return pulumi.get(self, "github_app_enterprise_base_url")
 
     @github_app_enterprise_base_url.setter
@@ -1987,6 +3234,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppId")
     def github_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of the GitHub app used to access the repo.
+        """
         return pulumi.get(self, "github_app_id")
 
     @github_app_id.setter
@@ -1996,6 +3246,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppInstallationId")
     def github_app_installation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Installation id of the GitHub app used to access the repo.
+        """
         return pulumi.get(self, "github_app_installation_id")
 
     @github_app_installation_id.setter
@@ -2005,6 +3258,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppPrivateKey")
     def github_app_private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        GitHub app private key PEM data.
+        """
         return pulumi.get(self, "github_app_private_key")
 
     @github_app_private_key.setter
@@ -2014,6 +3270,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="inheritedCreds")
     def inherited_creds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the credentials were inherited from a credential set.
+        """
         return pulumi.get(self, "inherited_creds")
 
     @inherited_creds.setter
@@ -2023,6 +3282,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+        """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
@@ -2032,6 +3294,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="insecureIgnoreHostKey")
     def insecure_ignore_host_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        """
         return pulumi.get(self, "insecure_ignore_host_key")
 
     @insecure_ignore_host_key.setter
@@ -2041,6 +3306,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name to be used for this repo. Only used with Helm repos.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2050,6 +3318,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password or PAT used for authenticating at the remote repository.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -2059,6 +3330,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -2068,6 +3342,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def proxy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP/HTTPS proxy used to access the repo.
+        """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
@@ -2077,6 +3354,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM data for authenticating at the repo server. Only used with Git repos.
+        """
         return pulumi.get(self, "ssh_private_key")
 
     @ssh_private_key.setter
@@ -2086,6 +3366,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate in PEM format for authenticating at the repo server.
+        """
         return pulumi.get(self, "tls_client_cert_data")
 
     @tls_client_cert_data.setter
@@ -2095,6 +3378,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Private key in PEM format for authenticating at the repo server.
+        """
         return pulumi.get(self, "tls_client_cert_key")
 
     @tls_client_cert_key.setter
@@ -2104,6 +3390,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def type_(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+        """
         return pulumi.get(self, "type_")
 
     @type_.setter
@@ -2113,6 +3402,9 @@ class GitOpsRepositoryRepoArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username used for authenticating at the remote repository.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -2124,12 +3416,18 @@ class GitOpsRepositoryRepoArgs:
 class GitOpsRepositoryUpdateMaskArgs:
     def __init__(__self__, *,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The set of field mask paths.
+        """
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of field mask paths.
+        """
         return pulumi.get(self, "paths")
 
     @paths.setter
@@ -2144,7 +3442,7 @@ class GithubConnectorApiAuthenticationArgs:
                  token_ref: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgs'] github_app: Configuration for using the github app for interacting with the github api.
-        :param pulumi.Input[str] token_ref: Personal access token for interacting with the github api.
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         if github_app is not None:
             pulumi.set(__self__, "github_app", github_app)
@@ -2167,7 +3465,7 @@ class GithubConnectorApiAuthenticationArgs:
     @pulumi.getter(name="tokenRef")
     def token_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Personal access token for interacting with the github api.
+        Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "token_ref")
 
@@ -2179,30 +3477,20 @@ class GithubConnectorApiAuthenticationArgs:
 @pulumi.input_type
 class GithubConnectorApiAuthenticationGithubAppArgs:
     def __init__(__self__, *,
-                 application_id: pulumi.Input[str],
-                 installation_id: pulumi.Input[str],
-                 private_key_ref: pulumi.Input[str]):
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "installation_id", installation_id)
+                 private_key_ref: pulumi.Input[str],
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 application_id_ref: Optional[pulumi.Input[str]] = None,
+                 installation_id: Optional[pulumi.Input[str]] = None,
+                 installation_id_ref: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "private_key_ref", private_key_ref)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="installationId")
-    def installation_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "installation_id")
-
-    @installation_id.setter
-    def installation_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "installation_id", value)
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if application_id_ref is not None:
+            pulumi.set(__self__, "application_id_ref", application_id_ref)
+        if installation_id is not None:
+            pulumi.set(__self__, "installation_id", installation_id)
+        if installation_id_ref is not None:
+            pulumi.set(__self__, "installation_id_ref", installation_id_ref)
 
     @property
     @pulumi.getter(name="privateKeyRef")
@@ -2212,6 +3500,42 @@ class GithubConnectorApiAuthenticationGithubAppArgs:
     @private_key_ref.setter
     def private_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_key_ref", value)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="applicationIdRef")
+    def application_id_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "application_id_ref")
+
+    @application_id_ref.setter
+    def application_id_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id_ref", value)
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "installation_id")
+
+    @installation_id.setter
+    def installation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "installation_id", value)
+
+    @property
+    @pulumi.getter(name="installationIdRef")
+    def installation_id_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "installation_id_ref")
+
+    @installation_id_ref.setter
+    def installation_id_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "installation_id_ref", value)
 
 
 @pulumi.input_type
@@ -2314,7 +3638,7 @@ class GitlabConnectorApiAuthenticationArgs:
     def __init__(__self__, *,
                  token_ref: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] token_ref: Personal access token for interacting with the gitlab api.
+        :param pulumi.Input[str] token_ref: Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "token_ref", token_ref)
 
@@ -2322,7 +3646,7 @@ class GitlabConnectorApiAuthenticationArgs:
     @pulumi.getter(name="tokenRef")
     def token_ref(self) -> pulumi.Input[str]:
         """
-        Personal access token for interacting with the gitlab api.
+        Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "token_ref")
 
@@ -2440,15 +3764,1726 @@ class GitlabConnectorCredentialsSshArgs:
 
 
 @pulumi.input_type
+class GitopsApplicationsApplicationArgs:
+    def __init__(__self__, *,
+                 metadatas: pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataArgs']]],
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataArgs']]] metadatas: Metadata corresponding to the resources. This includes all the objects a user must create.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecArgs']]] specs: Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+        pulumi.set(__self__, "metadatas", metadatas)
+        if specs is not None:
+            pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataArgs']]]:
+        """
+        Metadata corresponding to the resources. This includes all the objects a user must create.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataArgs']]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecArgs']]]]:
+        """
+        Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+        return pulumi.get(self, "specs")
+
+    @specs.setter
+    def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecArgs']]]]):
+        pulumi.set(self, "specs", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 finalizers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 generate_name: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 owner_references: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataOwnerReferenceArgs']]]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if finalizers is not None:
+            pulumi.set(__self__, "finalizers", finalizers)
+        if generate_name is not None:
+            pulumi.set(__self__, "generate_name", generate_name)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if owner_references is not None:
+            pulumi.set(__self__, "owner_references", owner_references)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def finalizers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "finalizers")
+
+    @finalizers.setter
+    def finalizers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "finalizers", value)
+
+    @property
+    @pulumi.getter(name="generateName")
+    def generate_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "generate_name")
+
+    @generate_name.setter
+    def generate_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generate_name", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="ownerReferences")
+    def owner_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataOwnerReferenceArgs']]]]:
+        return pulumi.get(self, "owner_references")
+
+    @owner_references.setter
+    def owner_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationMetadataOwnerReferenceArgs']]]]):
+        pulumi.set(self, "owner_references", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationMetadataOwnerReferenceArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 block_owner_deletion: Optional[pulumi.Input[bool]] = None,
+                 controller: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kind: Kind of the GitOps application.
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if block_owner_deletion is not None:
+            pulumi.set(__self__, "block_owner_deletion", block_owner_deletion)
+        if controller is not None:
+            pulumi.set(__self__, "controller", controller)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="blockOwnerDeletion")
+    def block_owner_deletion(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "block_owner_deletion")
+
+    @block_owner_deletion.setter
+    def block_owner_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_owner_deletion", value)
+
+    @property
+    @pulumi.getter
+    def controller(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "controller")
+
+    @controller.setter
+    def controller(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "controller", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of the GitOps application.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecDestinationArgs']]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceArgs']]]] = None,
+                 sync_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyArgs']]]] = None):
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+        if sync_policies is not None:
+            pulumi.set(__self__, "sync_policies", sync_policies)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecDestinationArgs']]]]:
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceArgs']]]]:
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter(name="syncPolicies")
+    def sync_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyArgs']]]]:
+        return pulumi.get(self, "sync_policies")
+
+    @sync_policies.setter
+    def sync_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyArgs']]]]):
+        pulumi.set(self, "sync_policies", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecDestinationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 server: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 repo_url: pulumi.Input[str],
+                 target_revision: pulumi.Input[str],
+                 chart: Optional[pulumi.Input[str]] = None,
+                 directories: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryArgs']]]] = None,
+                 helms: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmArgs']]]] = None,
+                 ksonnets: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetArgs']]]] = None,
+                 kustomizes: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKustomizeArgs']]]] = None,
+                 plugins: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginArgs']]]] = None):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repo_url", repo_url)
+        pulumi.set(__self__, "target_revision", target_revision)
+        if chart is not None:
+            pulumi.set(__self__, "chart", chart)
+        if directories is not None:
+            pulumi.set(__self__, "directories", directories)
+        if helms is not None:
+            pulumi.set(__self__, "helms", helms)
+        if ksonnets is not None:
+            pulumi.set(__self__, "ksonnets", ksonnets)
+        if kustomizes is not None:
+            pulumi.set(__self__, "kustomizes", kustomizes)
+        if plugins is not None:
+            pulumi.set(__self__, "plugins", plugins)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="repoUrl")
+    def repo_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "repo_url")
+
+    @repo_url.setter
+    def repo_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo_url", value)
+
+    @property
+    @pulumi.getter(name="targetRevision")
+    def target_revision(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "target_revision")
+
+    @target_revision.setter
+    def target_revision(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_revision", value)
+
+    @property
+    @pulumi.getter
+    def chart(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "chart")
+
+    @chart.setter
+    def chart(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chart", value)
+
+    @property
+    @pulumi.getter
+    def directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryArgs']]]]:
+        return pulumi.get(self, "directories")
+
+    @directories.setter
+    def directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryArgs']]]]):
+        pulumi.set(self, "directories", value)
+
+    @property
+    @pulumi.getter
+    def helms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmArgs']]]]:
+        return pulumi.get(self, "helms")
+
+    @helms.setter
+    def helms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmArgs']]]]):
+        pulumi.set(self, "helms", value)
+
+    @property
+    @pulumi.getter
+    def ksonnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetArgs']]]]:
+        return pulumi.get(self, "ksonnets")
+
+    @ksonnets.setter
+    def ksonnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetArgs']]]]):
+        pulumi.set(self, "ksonnets", value)
+
+    @property
+    @pulumi.getter
+    def kustomizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKustomizeArgs']]]]:
+        return pulumi.get(self, "kustomizes")
+
+    @kustomizes.setter
+    def kustomizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKustomizeArgs']]]]):
+        pulumi.set(self, "kustomizes", value)
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginArgs']]]]:
+        return pulumi.get(self, "plugins")
+
+    @plugins.setter
+    def plugins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginArgs']]]]):
+        pulumi.set(self, "plugins", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceDirectoryArgs:
+    def __init__(__self__, *,
+                 exclude: Optional[pulumi.Input[str]] = None,
+                 include: Optional[pulumi.Input[str]] = None,
+                 jsonnets: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']]]] = None,
+                 recurse: Optional[pulumi.Input[bool]] = None):
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if include is not None:
+            pulumi.set(__self__, "include", include)
+        if jsonnets is not None:
+            pulumi.set(__self__, "jsonnets", jsonnets)
+        if recurse is not None:
+            pulumi.set(__self__, "recurse", recurse)
+
+    @property
+    @pulumi.getter
+    def exclude(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "exclude")
+
+    @exclude.setter
+    def exclude(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exclude", value)
+
+    @property
+    @pulumi.getter
+    def include(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "include", value)
+
+    @property
+    @pulumi.getter
+    def jsonnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']]]]:
+        return pulumi.get(self, "jsonnets")
+
+    @jsonnets.setter
+    def jsonnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']]]]):
+        pulumi.set(self, "jsonnets", value)
+
+    @property
+    @pulumi.getter
+    def recurse(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "recurse")
+
+    @recurse.setter
+    def recurse(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "recurse", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs:
+    def __init__(__self__, *,
+                 ext_vars: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']]]] = None,
+                 libs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tlas: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]]] = None):
+        if ext_vars is not None:
+            pulumi.set(__self__, "ext_vars", ext_vars)
+        if libs is not None:
+            pulumi.set(__self__, "libs", libs)
+        if tlas is not None:
+            pulumi.set(__self__, "tlas", tlas)
+
+    @property
+    @pulumi.getter(name="extVars")
+    def ext_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']]]]:
+        return pulumi.get(self, "ext_vars")
+
+    @ext_vars.setter
+    def ext_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']]]]):
+        pulumi.set(self, "ext_vars", value)
+
+    @property
+    @pulumi.getter
+    def libs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "libs")
+
+    @libs.setter
+    def libs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "libs", value)
+
+    @property
+    @pulumi.getter
+    def tlas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]]]:
+        return pulumi.get(self, "tlas")
+
+    @tlas.setter
+    def tlas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]]]):
+        pulumi.set(self, "tlas", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceHelmArgs:
+    def __init__(__self__, *,
+                 file_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmParameterArgs']]]] = None,
+                 pass_credentials: Optional[pulumi.Input[bool]] = None,
+                 release_name: Optional[pulumi.Input[str]] = None,
+                 value_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 values: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        if file_parameters is not None:
+            pulumi.set(__self__, "file_parameters", file_parameters)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if pass_credentials is not None:
+            pulumi.set(__self__, "pass_credentials", pass_credentials)
+        if release_name is not None:
+            pulumi.set(__self__, "release_name", release_name)
+        if value_files is not None:
+            pulumi.set(__self__, "value_files", value_files)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="fileParameters")
+    def file_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']]]]:
+        return pulumi.get(self, "file_parameters")
+
+    @file_parameters.setter
+    def file_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']]]]):
+        pulumi.set(self, "file_parameters", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmParameterArgs']]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceHelmParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="passCredentials")
+    def pass_credentials(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "pass_credentials")
+
+    @pass_credentials.setter
+    def pass_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pass_credentials", value)
+
+    @property
+    @pulumi.getter(name="releaseName")
+    def release_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "release_name")
+
+    @release_name.setter
+    def release_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release_name", value)
+
+    @property
+    @pulumi.getter(name="valueFiles")
+    def value_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "value_files")
+
+    @value_files.setter
+    def value_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "value_files", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceHelmFileParameterArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceHelmParameterArgs:
+    def __init__(__self__, *,
+                 force_string: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if force_string is not None:
+            pulumi.set(__self__, "force_string", force_string)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="forceString")
+    def force_string(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_string")
+
+    @force_string.setter
+    def force_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_string", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceKsonnetArgs:
+    def __init__(__self__, *,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']]]] = None):
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceKsonnetParameterArgs:
+    def __init__(__self__, *,
+                 component: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "component", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourceKustomizeArgs:
+    def __init__(__self__, *,
+                 common_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 common_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 force_common_annotations: Optional[pulumi.Input[bool]] = None,
+                 force_common_labels: Optional[pulumi.Input[bool]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 name_suffix: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        if common_annotations is not None:
+            pulumi.set(__self__, "common_annotations", common_annotations)
+        if common_labels is not None:
+            pulumi.set(__self__, "common_labels", common_labels)
+        if force_common_annotations is not None:
+            pulumi.set(__self__, "force_common_annotations", force_common_annotations)
+        if force_common_labels is not None:
+            pulumi.set(__self__, "force_common_labels", force_common_labels)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if name_suffix is not None:
+            pulumi.set(__self__, "name_suffix", name_suffix)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="commonAnnotations")
+    def common_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "common_annotations")
+
+    @common_annotations.setter
+    def common_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "common_annotations", value)
+
+    @property
+    @pulumi.getter(name="commonLabels")
+    def common_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "common_labels")
+
+    @common_labels.setter
+    def common_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "common_labels", value)
+
+    @property
+    @pulumi.getter(name="forceCommonAnnotations")
+    def force_common_annotations(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_common_annotations")
+
+    @force_common_annotations.setter
+    def force_common_annotations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_common_annotations", value)
+
+    @property
+    @pulumi.getter(name="forceCommonLabels")
+    def force_common_labels(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_common_labels")
+
+    @force_common_labels.setter
+    def force_common_labels(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_common_labels", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="nameSuffix")
+    def name_suffix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name_suffix")
+
+    @name_suffix.setter
+    def name_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_suffix", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourcePluginArgs:
+    def __init__(__self__, *,
+                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginEnvArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginEnvArgs']]]]:
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSourcePluginEnvArgs']]]]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSourcePluginEnvArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSyncPolicyArgs:
+    def __init__(__self__, *,
+                 automateds: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']]]] = None,
+                 retries: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryArgs']]]] = None,
+                 sync_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if automateds is not None:
+            pulumi.set(__self__, "automateds", automateds)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if sync_options is not None:
+            pulumi.set(__self__, "sync_options", sync_options)
+
+    @property
+    @pulumi.getter
+    def automateds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']]]]:
+        return pulumi.get(self, "automateds")
+
+    @automateds.setter
+    def automateds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']]]]):
+        pulumi.set(self, "automateds", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryArgs']]]]:
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryArgs']]]]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter(name="syncOptions")
+    def sync_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "sync_options")
+
+    @sync_options.setter
+    def sync_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sync_options", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs:
+    def __init__(__self__, *,
+                 allow_empty: Optional[pulumi.Input[bool]] = None,
+                 prune: Optional[pulumi.Input[bool]] = None,
+                 self_heal: Optional[pulumi.Input[bool]] = None):
+        if allow_empty is not None:
+            pulumi.set(__self__, "allow_empty", allow_empty)
+        if prune is not None:
+            pulumi.set(__self__, "prune", prune)
+        if self_heal is not None:
+            pulumi.set(__self__, "self_heal", self_heal)
+
+    @property
+    @pulumi.getter(name="allowEmpty")
+    def allow_empty(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_empty")
+
+    @allow_empty.setter
+    def allow_empty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_empty", value)
+
+    @property
+    @pulumi.getter
+    def prune(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "prune")
+
+    @prune.setter
+    def prune(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prune", value)
+
+    @property
+    @pulumi.getter(name="selfHeal")
+    def self_heal(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "self_heal")
+
+    @self_heal.setter
+    def self_heal(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "self_heal", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSyncPolicyRetryArgs:
+    def __init__(__self__, *,
+                 backoffs: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']]]] = None,
+                 limit: Optional[pulumi.Input[str]] = None):
+        if backoffs is not None:
+            pulumi.set(__self__, "backoffs", backoffs)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter
+    def backoffs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']]]]:
+        return pulumi.get(self, "backoffs")
+
+    @backoffs.setter
+    def backoffs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']]]]):
+        pulumi.set(self, "backoffs", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit", value)
+
+
+@pulumi.input_type
+class GitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs:
+    def __init__(__self__, *,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 factor: Optional[pulumi.Input[str]] = None,
+                 max_duration: Optional[pulumi.Input[str]] = None):
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if factor is not None:
+            pulumi.set(__self__, "factor", factor)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def factor(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "factor")
+
+    @factor.setter
+    def factor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "factor", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_duration", value)
+
+
+@pulumi.input_type
+class GitopsGnupgRequestArgs:
+    def __init__(__self__, *,
+                 upsert: pulumi.Input[bool],
+                 publickeys: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsGnupgRequestPublickeyArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] upsert: Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsGnupgRequestPublickeyArgs']]] publickeys: Public key details.
+        """
+        pulumi.set(__self__, "upsert", upsert)
+        if publickeys is not None:
+            pulumi.set(__self__, "publickeys", publickeys)
+
+    @property
+    @pulumi.getter
+    def upsert(self) -> pulumi.Input[bool]:
+        """
+        Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        """
+        return pulumi.get(self, "upsert")
+
+    @upsert.setter
+    def upsert(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "upsert", value)
+
+    @property
+    @pulumi.getter
+    def publickeys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsGnupgRequestPublickeyArgs']]]]:
+        """
+        Public key details.
+        """
+        return pulumi.get(self, "publickeys")
+
+    @publickeys.setter
+    def publickeys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsGnupgRequestPublickeyArgs']]]]):
+        pulumi.set(self, "publickeys", value)
+
+
+@pulumi.input_type
+class GitopsGnupgRequestPublickeyArgs:
+    def __init__(__self__, *,
+                 key_data: pulumi.Input[str],
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 sub_type: Optional[pulumi.Input[str]] = None,
+                 trust: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key_data", key_data)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if sub_type is not None:
+            pulumi.set(__self__, "sub_type", sub_type)
+        if trust is not None:
+            pulumi.set(__self__, "trust", trust)
+
+    @property
+    @pulumi.getter(name="keyData")
+    def key_data(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_data")
+
+    @key_data.setter
+    def key_data(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_data", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="subType")
+    def sub_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sub_type")
+
+    @sub_type.setter
+    def sub_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_type", value)
+
+    @property
+    @pulumi.getter
+    def trust(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "trust")
+
+    @trust.setter
+    def trust(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trust", value)
+
+
+@pulumi.input_type
+class GitopsRepoCertRequestArgs:
+    def __init__(__self__, *,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateArgs']]]] = None,
+                 upsert: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateArgs']]] certificates: certificates details.
+        :param pulumi.Input[bool] upsert: if the Repository Certificates should be upserted.
+        """
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
+        if upsert is not None:
+            pulumi.set(__self__, "upsert", upsert)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateArgs']]]]:
+        """
+        certificates details.
+        """
+        return pulumi.get(self, "certificates")
+
+    @certificates.setter
+    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateArgs']]]]):
+        pulumi.set(self, "certificates", value)
+
+    @property
+    @pulumi.getter
+    def upsert(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if the Repository Certificates should be upserted.
+        """
+        return pulumi.get(self, "upsert")
+
+    @upsert.setter
+    def upsert(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "upsert", value)
+
+
+@pulumi.input_type
+class GitopsRepoCertRequestCertificateArgs:
+    def __init__(__self__, *,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateItemArgs']]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateMetadataArgs']]]] = None):
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateItemArgs']]]]:
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateMetadataArgs']]]]:
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsRepoCertRequestCertificateMetadataArgs']]]]):
+        pulumi.set(self, "metadatas", value)
+
+
+@pulumi.input_type
+class GitopsRepoCertRequestCertificateItemArgs:
+    def __init__(__self__, *,
+                 cert_data: Optional[pulumi.Input[str]] = None,
+                 cert_info: Optional[pulumi.Input[str]] = None,
+                 cert_sub_type: Optional[pulumi.Input[str]] = None,
+                 cert_type: Optional[pulumi.Input[str]] = None,
+                 server_name: Optional[pulumi.Input[str]] = None):
+        if cert_data is not None:
+            pulumi.set(__self__, "cert_data", cert_data)
+        if cert_info is not None:
+            pulumi.set(__self__, "cert_info", cert_info)
+        if cert_sub_type is not None:
+            pulumi.set(__self__, "cert_sub_type", cert_sub_type)
+        if cert_type is not None:
+            pulumi.set(__self__, "cert_type", cert_type)
+        if server_name is not None:
+            pulumi.set(__self__, "server_name", server_name)
+
+    @property
+    @pulumi.getter(name="certData")
+    def cert_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cert_data")
+
+    @cert_data.setter
+    def cert_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_data", value)
+
+    @property
+    @pulumi.getter(name="certInfo")
+    def cert_info(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cert_info")
+
+    @cert_info.setter
+    def cert_info(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_info", value)
+
+    @property
+    @pulumi.getter(name="certSubType")
+    def cert_sub_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cert_sub_type")
+
+    @cert_sub_type.setter
+    def cert_sub_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_sub_type", value)
+
+    @property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cert_type")
+
+    @cert_type.setter
+    def cert_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_type", value)
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_name")
+
+    @server_name.setter
+    def server_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_name", value)
+
+
+@pulumi.input_type
+class GitopsRepoCertRequestCertificateMetadataArgs:
+    def __init__(__self__, *,
+                 continue_: Optional[pulumi.Input[str]] = None,
+                 remaining_item_count: Optional[pulumi.Input[str]] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        if continue_ is not None:
+            pulumi.set(__self__, "continue_", continue_)
+        if remaining_item_count is not None:
+            pulumi.set(__self__, "remaining_item_count", remaining_item_count)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="continue")
+    def continue_(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "continue_")
+
+    @continue_.setter
+    def continue_(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "continue_", value)
+
+    @property
+    @pulumi.getter(name="remainingItemCount")
+    def remaining_item_count(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "remaining_item_count")
+
+    @remaining_item_count.setter
+    def remaining_item_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remaining_item_count", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+
+@pulumi.input_type
+class GitopsRepoCredCredArgs:
+    def __init__(__self__, *,
+                 enable_oci: Optional[pulumi.Input[bool]] = None,
+                 github_app_enterprise_base_url: Optional[pulumi.Input[str]] = None,
+                 github_app_id: Optional[pulumi.Input[str]] = None,
+                 github_app_installation_id: Optional[pulumi.Input[str]] = None,
+                 github_app_private_key: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 ssh_private_key: Optional[pulumi.Input[str]] = None,
+                 tls_client_cert_data: Optional[pulumi.Input[str]] = None,
+                 tls_client_cert_key: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable_oci: Specifies whether helm-oci support should be enabled for this repo.
+        :param pulumi.Input[str] github_app_enterprise_base_url: Specifies the GitHub API URL for GitHub app authentication.
+        :param pulumi.Input[str] github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        :param pulumi.Input[str] github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
+        :param pulumi.Input[str] github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        :param pulumi.Input[str] password: Password for authenticating at the repo server.
+        :param pulumi.Input[str] ssh_private_key: Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        :param pulumi.Input[str] tls_client_cert_data: Specifies the TLS client cert data for authenticating at the repo server.
+        :param pulumi.Input[str] tls_client_cert_key: Specifies the TLS client cert key for authenticating at the repo server.
+        :param pulumi.Input[str] type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        :param pulumi.Input[str] url: url representing this object.
+        :param pulumi.Input[str] username: Username for authenticating at the repo server.
+        """
+        if enable_oci is not None:
+            pulumi.set(__self__, "enable_oci", enable_oci)
+        if github_app_enterprise_base_url is not None:
+            pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
+        if github_app_id is not None:
+            pulumi.set(__self__, "github_app_id", github_app_id)
+        if github_app_installation_id is not None:
+            pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
+        if github_app_private_key is not None:
+            pulumi.set(__self__, "github_app_private_key", github_app_private_key)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssh_private_key is not None:
+            pulumi.set(__self__, "ssh_private_key", ssh_private_key)
+        if tls_client_cert_data is not None:
+            pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
+        if tls_client_cert_key is not None:
+            pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="enableOci")
+    def enable_oci(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether helm-oci support should be enabled for this repo.
+        """
+        return pulumi.get(self, "enable_oci")
+
+    @enable_oci.setter
+    def enable_oci(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_oci", value)
+
+    @property
+    @pulumi.getter(name="githubAppEnterpriseBaseUrl")
+    def github_app_enterprise_base_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the GitHub API URL for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_enterprise_base_url")
+
+    @github_app_enterprise_base_url.setter
+    def github_app_enterprise_base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_app_enterprise_base_url", value)
+
+    @property
+    @pulumi.getter(name="githubAppId")
+    def github_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_id")
+
+    @github_app_id.setter
+    def github_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_app_id", value)
+
+    @property
+    @pulumi.getter(name="githubAppInstallationId")
+    def github_app_installation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the ID of the installed GitHub App for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_installation_id")
+
+    @github_app_installation_id.setter
+    def github_app_installation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_app_installation_id", value)
+
+    @property
+    @pulumi.getter(name="githubAppPrivateKey")
+    def github_app_private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        """
+        return pulumi.get(self, "github_app_private_key")
+
+    @github_app_private_key.setter
+    def github_app_private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_app_private_key", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for authenticating at the repo server.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="sshPrivateKey")
+    def ssh_private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        """
+        return pulumi.get(self, "ssh_private_key")
+
+    @ssh_private_key.setter
+    def ssh_private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_private_key", value)
+
+    @property
+    @pulumi.getter(name="tlsClientCertData")
+    def tls_client_cert_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the TLS client cert data for authenticating at the repo server.
+        """
+        return pulumi.get(self, "tls_client_cert_data")
+
+    @tls_client_cert_data.setter
+    def tls_client_cert_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_client_cert_data", value)
+
+    @property
+    @pulumi.getter(name="tlsClientCertKey")
+    def tls_client_cert_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the TLS client cert key for authenticating at the repo server.
+        """
+        return pulumi.get(self, "tls_client_cert_key")
+
+    @tls_client_cert_key.setter
+    def tls_client_cert_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_client_cert_key", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        url representing this object.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username for authenticating at the repo server.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
 class HelmConnectorCredentialsArgs:
     def __init__(__self__, *,
                  password_ref: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "password_ref", password_ref)
         if username is not None:
@@ -2460,7 +5495,7 @@ class HelmConnectorCredentialsArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -2484,7 +5519,282 @@ class HelmConnectorCredentialsArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class InputSetGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: Optional[pulumi.Input[str]] = None,
+                 branch_name: Optional[pulumi.Input[str]] = None,
+                 commit_message: Optional[pulumi.Input[str]] = None,
+                 connector_ref: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
+                 last_commit_id: Optional[pulumi.Input[str]] = None,
+                 last_object_id: Optional[pulumi.Input[str]] = None,
+                 parent_entity_connector_ref: Optional[pulumi.Input[str]] = None,
+                 parent_entity_repo_name: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 store_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param pulumi.Input[str] branch_name: Name of the branch.
+        :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
+        :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] parent_entity_connector_ref: Connector reference for Parent Entity (Pipeline). To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] parent_entity_repo_name: Repository name for Parent Entity (Pipeline).
+        :param pulumi.Input[str] repo_name: Name of the repository.
+        :param pulumi.Input[str] store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if parent_entity_connector_ref is not None:
+            pulumi.set(__self__, "parent_entity_connector_ref", parent_entity_connector_ref)
+        if parent_entity_repo_name is not None:
+            pulumi.set(__self__, "parent_entity_repo_name", parent_entity_repo_name)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="parentEntityConnectorRef")
+    def parent_entity_connector_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connector reference for Parent Entity (Pipeline). To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "parent_entity_connector_ref")
+
+    @parent_entity_connector_ref.setter
+    def parent_entity_connector_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_entity_connector_ref", value)
+
+    @property
+    @pulumi.getter(name="parentEntityRepoName")
+    def parent_entity_repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository name for Parent Entity (Pipeline).
+        """
+        return pulumi.get(self, "parent_entity_repo_name")
+
+    @parent_entity_repo_name.setter
+    def parent_entity_repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_entity_repo_name", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class JiraConnectorAuthArgs:
+    def __init__(__self__, *,
+                 auth_type: pulumi.Input[str],
+                 username_password: Optional[pulumi.Input['JiraConnectorAuthUsernamePasswordArgs']] = None):
+        """
+        :param pulumi.Input[str] auth_type: Authentication types for Jira connector
+        :param pulumi.Input['JiraConnectorAuthUsernamePasswordArgs'] username_password: Authenticate using username password.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if username_password is not None:
+            pulumi.set(__self__, "username_password", username_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> pulumi.Input[str]:
+        """
+        Authentication types for Jira connector
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="usernamePassword")
+    def username_password(self) -> Optional[pulumi.Input['JiraConnectorAuthUsernamePasswordArgs']]:
+        """
+        Authenticate using username password.
+        """
+        return pulumi.get(self, "username_password")
+
+    @username_password.setter
+    def username_password(self, value: Optional[pulumi.Input['JiraConnectorAuthUsernamePasswordArgs']]):
+        pulumi.set(self, "username_password", value)
+
+
+@pulumi.input_type
+class JiraConnectorAuthUsernamePasswordArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -2503,12 +5813,12 @@ class KubernetesConnectorClientKeyCertArgs:
                  ca_cert_ref: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_cert_ref: Reference to the secret containing the client certificate for the connector.
+        :param pulumi.Input[str] client_cert_ref: Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] client_key_algorithm: The algorithm used to generate the client key for the connector. Valid values are RSA, EC
-        :param pulumi.Input[str] client_key_ref: Reference to the secret containing the client key for the connector.
+        :param pulumi.Input[str] client_key_ref: Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
-        :param pulumi.Input[str] ca_cert_ref: Reference to the secret containing the CA certificate for the connector.
-        :param pulumi.Input[str] client_key_passphrase_ref: Reference to the secret containing the client key passphrase for the connector.
+        :param pulumi.Input[str] ca_cert_ref: Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] client_key_passphrase_ref: Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "client_cert_ref", client_cert_ref)
         pulumi.set(__self__, "client_key_algorithm", client_key_algorithm)
@@ -2523,7 +5833,7 @@ class KubernetesConnectorClientKeyCertArgs:
     @pulumi.getter(name="clientCertRef")
     def client_cert_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the client certificate for the connector.
+        Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "client_cert_ref")
 
@@ -2547,7 +5857,7 @@ class KubernetesConnectorClientKeyCertArgs:
     @pulumi.getter(name="clientKeyRef")
     def client_key_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the client key for the connector.
+        Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "client_key_ref")
 
@@ -2571,7 +5881,7 @@ class KubernetesConnectorClientKeyCertArgs:
     @pulumi.getter(name="caCertRef")
     def ca_cert_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the secret containing the CA certificate for the connector.
+        Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "ca_cert_ref")
 
@@ -2583,7 +5893,7 @@ class KubernetesConnectorClientKeyCertArgs:
     @pulumi.getter(name="clientKeyPassphraseRef")
     def client_key_passphrase_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the secret containing the client key passphrase for the connector.
+        Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "client_key_passphrase_ref")
 
@@ -2626,14 +5936,14 @@ class KubernetesConnectorOpenidConnectArgs:
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_id_ref: Reference to the secret containing the client ID for the connector.
+        :param pulumi.Input[str] client_id_ref: Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] issuer_url: The URL of the OpenID Connect issuer.
         :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
-        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector.
+        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to request for the connector.
-        :param pulumi.Input[str] secret_ref: Reference to the secret containing the client secret for the connector.
+        :param pulumi.Input[str] secret_ref: Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username for the connector.
-        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector.
+        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "client_id_ref", client_id_ref)
         pulumi.set(__self__, "issuer_url", issuer_url)
@@ -2652,7 +5962,7 @@ class KubernetesConnectorOpenidConnectArgs:
     @pulumi.getter(name="clientIdRef")
     def client_id_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the client ID for the connector.
+        Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "client_id_ref")
 
@@ -2688,7 +5998,7 @@ class KubernetesConnectorOpenidConnectArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the password for the connector.
+        Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -2712,7 +6022,7 @@ class KubernetesConnectorOpenidConnectArgs:
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the secret containing the client secret for the connector.
+        Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_ref")
 
@@ -2736,7 +6046,7 @@ class KubernetesConnectorOpenidConnectArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the secret containing the username for the connector.
+        Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -2752,7 +6062,7 @@ class KubernetesConnectorServiceAccountArgs:
                  service_account_token_ref: pulumi.Input[str]):
         """
         :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
-        :param pulumi.Input[str] service_account_token_ref: Reference to the secret containing the service account token for the connector.
+        :param pulumi.Input[str] service_account_token_ref: Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "master_url", master_url)
         pulumi.set(__self__, "service_account_token_ref", service_account_token_ref)
@@ -2773,7 +6083,7 @@ class KubernetesConnectorServiceAccountArgs:
     @pulumi.getter(name="serviceAccountTokenRef")
     def service_account_token_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the service account token for the connector.
+        Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "service_account_token_ref")
 
@@ -2791,9 +6101,9 @@ class KubernetesConnectorUsernamePasswordArgs:
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] master_url: The URL of the Kubernetes cluster.
-        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector.
+        :param pulumi.Input[str] password_ref: Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username for the connector.
-        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector.
+        :param pulumi.Input[str] username_ref: Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "master_url", master_url)
         pulumi.set(__self__, "password_ref", password_ref)
@@ -2818,7 +6128,7 @@ class KubernetesConnectorUsernamePasswordArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the secret containing the password for the connector.
+        Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -2842,7 +6152,7 @@ class KubernetesConnectorUsernamePasswordArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the secret containing the username for the connector.
+        Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -2852,15 +6162,626 @@ class KubernetesConnectorUsernamePasswordArgs:
 
 
 @pulumi.input_type
+class ManualFreezeCurrentOrUpcomingWindowArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] end_time: End time of the freeze
+        :param pulumi.Input[int] start_time: Start time of the freeze
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        End time of the freeze
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Start time of the freeze
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class ManualFreezeFreezeWindowArgs:
+    def __init__(__self__, *,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 recurrences: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceArgs']]]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration of the freeze
+        :param pulumi.Input[str] end_time: End time of the freeze
+        :param pulumi.Input[str] start_time: Start time of the freeze
+        :param pulumi.Input[str] time_zone: Timezone
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if recurrences is not None:
+            pulumi.set(__self__, "recurrences", recurrences)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration of the freeze
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        End time of the freeze
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def recurrences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceArgs']]]]:
+        return pulumi.get(self, "recurrences")
+
+    @recurrences.setter
+    def recurrences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceArgs']]]]):
+        pulumi.set(self, "recurrences", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start time of the freeze
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timezone
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+@pulumi.input_type
+class ManualFreezeFreezeWindowRecurrenceArgs:
+    def __init__(__self__, *,
+                 recurrence_specs: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of freeze
+        """
+        if recurrence_specs is not None:
+            pulumi.set(__self__, "recurrence_specs", recurrence_specs)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="recurrenceSpecs")
+    def recurrence_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs']]]]:
+        return pulumi.get(self, "recurrence_specs")
+
+    @recurrence_specs.setter
+    def recurrence_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs']]]]):
+        pulumi.set(self, "recurrence_specs", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of freeze
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs:
+    def __init__(__self__, *,
+                 until: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[int]] = None):
+        if until is not None:
+            pulumi.set(__self__, "until", until)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def until(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "until")
+
+    @until.setter
+    def until(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "until", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class MonitoredServiceRequestArgs:
+    def __init__(__self__, *,
+                 change_sources: pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestChangeSourceArgs']]],
+                 environment_ref: pulumi.Input[str],
+                 health_sources: pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestHealthSourceArgs']]],
+                 name: pulumi.Input[str],
+                 service_ref: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestDependencyArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 environment_ref_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notification_rule_refs: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestNotificationRuleRefArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_ref: Optional[pulumi.Input[str]] = None,
+                 version_label: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestChangeSourceArgs']]] change_sources: Set of change sources for the monitored service.
+        :param pulumi.Input[str] environment_ref: Environment in which the service is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestHealthSourceArgs']]] health_sources: Set of health sources for the monitored service.
+        :param pulumi.Input[str] name: Name for the monitored service.
+        :param pulumi.Input[str] service_ref: Service reference for the monitored service.
+        :param pulumi.Input[str] type: Type of the monitored service.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestDependencyArgs']]] dependencies: Dependencies of the monitored service.
+        :param pulumi.Input[str] description: Description for the monitored service.
+        :param pulumi.Input[bool] enabled: Enable or disable the monitored service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_ref_lists: Environment reference list for the monitored service.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestNotificationRuleRefArgs']]] notification_rule_refs: Notification rule references for the monitored service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the monitored service. comma-separated key value string pairs.
+        :param pulumi.Input[str] template_ref: Template reference for the monitored service.
+        :param pulumi.Input[str] version_label: Template version label for the monitored service.
+        """
+        pulumi.set(__self__, "change_sources", change_sources)
+        pulumi.set(__self__, "environment_ref", environment_ref)
+        pulumi.set(__self__, "health_sources", health_sources)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service_ref", service_ref)
+        pulumi.set(__self__, "type", type)
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if environment_ref_lists is not None:
+            pulumi.set(__self__, "environment_ref_lists", environment_ref_lists)
+        if notification_rule_refs is not None:
+            pulumi.set(__self__, "notification_rule_refs", notification_rule_refs)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if template_ref is not None:
+            pulumi.set(__self__, "template_ref", template_ref)
+        if version_label is not None:
+            pulumi.set(__self__, "version_label", version_label)
+
+    @property
+    @pulumi.getter(name="changeSources")
+    def change_sources(self) -> pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestChangeSourceArgs']]]:
+        """
+        Set of change sources for the monitored service.
+        """
+        return pulumi.get(self, "change_sources")
+
+    @change_sources.setter
+    def change_sources(self, value: pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestChangeSourceArgs']]]):
+        pulumi.set(self, "change_sources", value)
+
+    @property
+    @pulumi.getter(name="environmentRef")
+    def environment_ref(self) -> pulumi.Input[str]:
+        """
+        Environment in which the service is deployed.
+        """
+        return pulumi.get(self, "environment_ref")
+
+    @environment_ref.setter
+    def environment_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_ref", value)
+
+    @property
+    @pulumi.getter(name="healthSources")
+    def health_sources(self) -> pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestHealthSourceArgs']]]:
+        """
+        Set of health sources for the monitored service.
+        """
+        return pulumi.get(self, "health_sources")
+
+    @health_sources.setter
+    def health_sources(self, value: pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestHealthSourceArgs']]]):
+        pulumi.set(self, "health_sources", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name for the monitored service.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceRef")
+    def service_ref(self) -> pulumi.Input[str]:
+        """
+        Service reference for the monitored service.
+        """
+        return pulumi.get(self, "service_ref")
+
+    @service_ref.setter
+    def service_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_ref", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the monitored service.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestDependencyArgs']]]]:
+        """
+        Dependencies of the monitored service.
+        """
+        return pulumi.get(self, "dependencies")
+
+    @dependencies.setter
+    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestDependencyArgs']]]]):
+        pulumi.set(self, "dependencies", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the monitored service.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable the monitored service.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="environmentRefLists")
+    def environment_ref_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Environment reference list for the monitored service.
+        """
+        return pulumi.get(self, "environment_ref_lists")
+
+    @environment_ref_lists.setter
+    def environment_ref_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "environment_ref_lists", value)
+
+    @property
+    @pulumi.getter(name="notificationRuleRefs")
+    def notification_rule_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestNotificationRuleRefArgs']]]]:
+        """
+        Notification rule references for the monitored service.
+        """
+        return pulumi.get(self, "notification_rule_refs")
+
+    @notification_rule_refs.setter
+    def notification_rule_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestNotificationRuleRefArgs']]]]):
+        pulumi.set(self, "notification_rule_refs", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags for the monitored service. comma-separated key value string pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateRef")
+    def template_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template reference for the monitored service.
+        """
+        return pulumi.get(self, "template_ref")
+
+    @template_ref.setter
+    def template_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_ref", value)
+
+    @property
+    @pulumi.getter(name="versionLabel")
+    def version_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template version label for the monitored service.
+        """
+        return pulumi.get(self, "version_label")
+
+    @version_label.setter
+    def version_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_label", value)
+
+
+@pulumi.input_type
+class MonitoredServiceRequestChangeSourceArgs:
+    def __init__(__self__, *,
+                 category: pulumi.Input[str],
+                 identifier: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 spec: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identifier: Identifier of the monitored service.
+        """
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input[str]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        Identifier of the monitored service.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
+
+
+@pulumi.input_type
+class MonitoredServiceRequestDependencyArgs:
+    def __init__(__self__, *,
+                 monitored_service_identifier: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 dependency_metadata: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "monitored_service_identifier", monitored_service_identifier)
+        pulumi.set(__self__, "type", type)
+        if dependency_metadata is not None:
+            pulumi.set(__self__, "dependency_metadata", dependency_metadata)
+
+    @property
+    @pulumi.getter(name="monitoredServiceIdentifier")
+    def monitored_service_identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "monitored_service_identifier")
+
+    @monitored_service_identifier.setter
+    def monitored_service_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "monitored_service_identifier", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="dependencyMetadata")
+    def dependency_metadata(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dependency_metadata")
+
+    @dependency_metadata.setter
+    def dependency_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dependency_metadata", value)
+
+
+@pulumi.input_type
+class MonitoredServiceRequestHealthSourceArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 spec: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identifier: Identifier of the monitored service.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        Identifier of the monitored service.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class MonitoredServiceRequestNotificationRuleRefArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 notification_rule_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "notification_rule_ref", notification_rule_ref)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="notificationRuleRef")
+    def notification_rule_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "notification_rule_ref")
+
+    @notification_rule_ref.setter
+    def notification_rule_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notification_rule_ref", value)
+
+
+@pulumi.input_type
 class NexusConnectorCredentialsArgs:
     def __init__(__self__, *,
                  password_ref: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "password_ref", password_ref)
         if username is not None:
@@ -2872,7 +6793,7 @@ class NexusConnectorCredentialsArgs:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Input[str]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -2896,13 +6817,239 @@ class NexusConnectorCredentialsArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
     @username_ref.setter
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class PipelineFiltersFilterPropertiesArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter_type: Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        """
+        Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class PipelineGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: Optional[pulumi.Input[str]] = None,
+                 branch_name: Optional[pulumi.Input[str]] = None,
+                 commit_message: Optional[pulumi.Input[str]] = None,
+                 connector_ref: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
+                 last_commit_id: Optional[pulumi.Input[str]] = None,
+                 last_object_id: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 store_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param pulumi.Input[str] branch_name: Name of the branch.
+        :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
+        :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] repo_name: Name of the repository.
+        :param pulumi.Input[str] store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class PolicysetPolicyArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 severity: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identifier: Account Identifier of the account
+        :param pulumi.Input[str] severity: Organization Identifier
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        Account Identifier of the account
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[str]:
+        """
+        Organization Identifier
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "severity", value)
 
 
 @pulumi.input_type
@@ -2914,7 +7061,7 @@ class PrometheusConnectorHeaderArgs:
                  value_encrypted: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] key: Key.
-        :param pulumi.Input[str] encrypted_value_ref: Encrypted value reference.
+        :param pulumi.Input[str] encrypted_value_ref: Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] value: Value.
         :param pulumi.Input[bool] value_encrypted: Encrypted value.
         """
@@ -2942,7 +7089,7 @@ class PrometheusConnectorHeaderArgs:
     @pulumi.getter(name="encryptedValueRef")
     def encrypted_value_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Encrypted value reference.
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "encrypted_value_ref")
 
@@ -3156,20 +7303,31 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
 @pulumi.input_type
 class RoleAssignmentsPrincipalArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input[str],
                  identifier: Optional[pulumi.Input[str]] = None,
-                 scope_level: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 scope_level: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] type: Type.
         :param pulumi.Input[str] identifier: Identifier.
         :param pulumi.Input[str] scope_level: Scope level.
-        :param pulumi.Input[str] type: Type.
         """
+        pulumi.set(__self__, "type", type)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if scope_level is not None:
             pulumi.set(__self__, "scope_level", scope_level)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -3194,18 +7352,6 @@ class RoleAssignmentsPrincipalArgs:
     @scope_level.setter
     def scope_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scope_level", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -3466,14 +7612,22 @@ class SecretSshkeySshSshkeyPathCredentialArgs:
 @pulumi.input_type
 class SecretSshkeySshSshkeyReferenceCredentialArgs:
     def __init__(__self__, *,
+                 key: pulumi.Input[str],
                  user_name: pulumi.Input[str],
-                 encrypted_passphrase: Optional[pulumi.Input[str]] = None,
-                 key: Optional[pulumi.Input[str]] = None):
+                 encrypted_passphrase: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "user_name", user_name)
         if encrypted_passphrase is not None:
             pulumi.set(__self__, "encrypted_passphrase", encrypted_passphrase)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter(name="userName")
@@ -3493,14 +7647,476 @@ class SecretSshkeySshSshkeyReferenceCredentialArgs:
     def encrypted_passphrase(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encrypted_passphrase", value)
 
+
+@pulumi.input_type
+class SloRequestArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 slo_target: pulumi.Input['SloRequestSloTargetArgs'],
+                 spec: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 user_journey_refs: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 notification_rule_refs: Optional[pulumi.Input[Sequence[pulumi.Input['SloRequestNotificationRuleRefArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: Name for the SLO.
+        :param pulumi.Input['SloRequestSloTargetArgs'] slo_target: SLO Target specification.
+        :param pulumi.Input[str] spec: Specification of the SLO.
+        :param pulumi.Input[str] type: Type of the SLO.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_journey_refs: User journey reference list for the SLO.
+        :param pulumi.Input[str] description: Description for the SLO.
+        :param pulumi.Input[Sequence[pulumi.Input['SloRequestNotificationRuleRefArgs']]] notification_rule_refs: Notification rule references for the SLO.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for the SLO. comma-separated key value string pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "slo_target", slo_target)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user_journey_refs", user_journey_refs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if notification_rule_refs is not None:
+            pulumi.set(__self__, "notification_rule_refs", notification_rule_refs)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "key")
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name for the SLO.
+        """
+        return pulumi.get(self, "name")
 
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sloTarget")
+    def slo_target(self) -> pulumi.Input['SloRequestSloTargetArgs']:
+        """
+        SLO Target specification.
+        """
+        return pulumi.get(self, "slo_target")
+
+    @slo_target.setter
+    def slo_target(self, value: pulumi.Input['SloRequestSloTargetArgs']):
+        pulumi.set(self, "slo_target", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[str]:
+        """
+        Specification of the SLO.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the SLO.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userJourneyRefs")
+    def user_journey_refs(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        User journey reference list for the SLO.
+        """
+        return pulumi.get(self, "user_journey_refs")
+
+    @user_journey_refs.setter
+    def user_journey_refs(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "user_journey_refs", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the SLO.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="notificationRuleRefs")
+    def notification_rule_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SloRequestNotificationRuleRefArgs']]]]:
+        """
+        Notification rule references for the SLO.
+        """
+        return pulumi.get(self, "notification_rule_refs")
+
+    @notification_rule_refs.setter
+    def notification_rule_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SloRequestNotificationRuleRefArgs']]]]):
+        pulumi.set(self, "notification_rule_refs", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags for the SLO. comma-separated key value string pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class SloRequestNotificationRuleRefArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 notification_rule_ref: pulumi.Input[str]):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "notification_rule_ref", notification_rule_ref)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="notificationRuleRef")
+    def notification_rule_ref(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "notification_rule_ref")
+
+    @notification_rule_ref.setter
+    def notification_rule_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notification_rule_ref", value)
+
+
+@pulumi.input_type
+class SloRequestSloTargetArgs:
+    def __init__(__self__, *,
+                 slo_target_percentage: pulumi.Input[float],
+                 spec: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        pulumi.set(__self__, "slo_target_percentage", slo_target_percentage)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="sloTargetPercentage")
+    def slo_target_percentage(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "slo_target_percentage")
+
+    @slo_target_percentage.setter
+    def slo_target_percentage(self, value: pulumi.Input[float]):
+        pulumi.set(self, "slo_target_percentage", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class TemplateFiltersFilterPropertiesArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter_type: Corresponding Entity of the filters. Currently supported types are {TemplateSetup, TemplateExecution, Template}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        """
+        Corresponding Entity of the filters. Currently supported types are {TemplateSetup, TemplateExecution, Template}.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class TemplateGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: Optional[pulumi.Input[str]] = None,
+                 branch_name: Optional[pulumi.Input[str]] = None,
+                 commit_message: Optional[pulumi.Input[str]] = None,
+                 connector_ref: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
+                 last_commit_id: Optional[pulumi.Input[str]] = None,
+                 last_object_id: Optional[pulumi.Input[str]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 store_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param pulumi.Input[str] branch_name: Name of the branch.
+        :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
+        :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param pulumi.Input[str] repo_name: Name of the repository.
+        :param pulumi.Input[str] store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class UserRoleBindingArgs:
+    def __init__(__self__, *,
+                 managed_role: Optional[pulumi.Input[bool]] = None,
+                 resource_group_identifier: Optional[pulumi.Input[str]] = None,
+                 resource_group_name: Optional[pulumi.Input[str]] = None,
+                 role_identifier: Optional[pulumi.Input[str]] = None,
+                 role_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] managed_role: Managed Role of the user.
+        :param pulumi.Input[str] resource_group_identifier: Resource Group Identifier of the user.
+        :param pulumi.Input[str] resource_group_name: Resource Group Name of the user.
+        :param pulumi.Input[str] role_identifier: Role Identifier of the user.
+        :param pulumi.Input[str] role_name: Role Name Identifier of the user.
+        """
+        if managed_role is not None:
+            pulumi.set(__self__, "managed_role", managed_role)
+        if resource_group_identifier is not None:
+            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+        if resource_group_name is not None:
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if role_identifier is not None:
+            pulumi.set(__self__, "role_identifier", role_identifier)
+        if role_name is not None:
+            pulumi.set(__self__, "role_name", role_name)
+
+    @property
+    @pulumi.getter(name="managedRole")
+    def managed_role(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Managed Role of the user.
+        """
+        return pulumi.get(self, "managed_role")
+
+    @managed_role.setter
+    def managed_role(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "managed_role", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Group Identifier of the user.
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+    @resource_group_identifier.setter
+    def resource_group_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_identifier", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Group Name of the user.
+        """
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="roleIdentifier")
+    def role_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role Identifier of the user.
+        """
+        return pulumi.get(self, "role_identifier")
+
+    @role_identifier.setter
+    def role_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_identifier", value)
+
+    @property
+    @pulumi.getter(name="roleName")
+    def role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role Name Identifier of the user.
+        """
+        return pulumi.get(self, "role_name")
+
+    @role_name.setter
+    def role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_name", value)
 
 
 @pulumi.input_type
@@ -3509,14 +8125,16 @@ class UsergroupNotificationConfigArgs:
                  group_email: Optional[pulumi.Input[str]] = None,
                  microsoft_teams_webhook_url: Optional[pulumi.Input[str]] = None,
                  pager_duty_key: Optional[pulumi.Input[str]] = None,
+                 send_email_to_all_users: Optional[pulumi.Input[bool]] = None,
                  slack_webhook_url: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] group_email: Group email
-        :param pulumi.Input[str] microsoft_teams_webhook_url: Url of Microsoft teams webhook
-        :param pulumi.Input[str] pager_duty_key: Pager duty key
-        :param pulumi.Input[str] slack_webhook_url: Url of slack webhook
-        :param pulumi.Input[str] type: Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        :param pulumi.Input[str] group_email: Group email.
+        :param pulumi.Input[str] microsoft_teams_webhook_url: Url of Microsoft teams webhook.
+        :param pulumi.Input[str] pager_duty_key: Pager duty key.
+        :param pulumi.Input[bool] send_email_to_all_users: Send email to all the group members.
+        :param pulumi.Input[str] slack_webhook_url: Url of slack webhook.
+        :param pulumi.Input[str] type: Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         """
         if group_email is not None:
             pulumi.set(__self__, "group_email", group_email)
@@ -3524,6 +8142,8 @@ class UsergroupNotificationConfigArgs:
             pulumi.set(__self__, "microsoft_teams_webhook_url", microsoft_teams_webhook_url)
         if pager_duty_key is not None:
             pulumi.set(__self__, "pager_duty_key", pager_duty_key)
+        if send_email_to_all_users is not None:
+            pulumi.set(__self__, "send_email_to_all_users", send_email_to_all_users)
         if slack_webhook_url is not None:
             pulumi.set(__self__, "slack_webhook_url", slack_webhook_url)
         if type is not None:
@@ -3533,7 +8153,7 @@ class UsergroupNotificationConfigArgs:
     @pulumi.getter(name="groupEmail")
     def group_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Group email
+        Group email.
         """
         return pulumi.get(self, "group_email")
 
@@ -3545,7 +8165,7 @@ class UsergroupNotificationConfigArgs:
     @pulumi.getter(name="microsoftTeamsWebhookUrl")
     def microsoft_teams_webhook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of Microsoft teams webhook
+        Url of Microsoft teams webhook.
         """
         return pulumi.get(self, "microsoft_teams_webhook_url")
 
@@ -3557,7 +8177,7 @@ class UsergroupNotificationConfigArgs:
     @pulumi.getter(name="pagerDutyKey")
     def pager_duty_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Pager duty key
+        Pager duty key.
         """
         return pulumi.get(self, "pager_duty_key")
 
@@ -3566,10 +8186,22 @@ class UsergroupNotificationConfigArgs:
         pulumi.set(self, "pager_duty_key", value)
 
     @property
+    @pulumi.getter(name="sendEmailToAllUsers")
+    def send_email_to_all_users(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Send email to all the group members.
+        """
+        return pulumi.get(self, "send_email_to_all_users")
+
+    @send_email_to_all_users.setter
+    def send_email_to_all_users(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_email_to_all_users", value)
+
+    @property
     @pulumi.getter(name="slackWebhookUrl")
     def slack_webhook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of slack webhook
+        Url of slack webhook.
         """
         return pulumi.get(self, "slack_webhook_url")
 
@@ -3581,7 +8213,7 @@ class UsergroupNotificationConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         """
         return pulumi.get(self, "type")
 
@@ -3628,13 +8260,110 @@ class VariablesSpecArgs:
 
 
 @pulumi.input_type
-class GetGitopsAgentMetadataArgs:
+class GetGitopsApplicationsApplicationArgs:
     def __init__(__self__, *,
+                 metadatas: Optional[Sequence['GetGitopsApplicationsApplicationMetadataArgs']] = None,
+                 specs: Optional[Sequence['GetGitopsApplicationsApplicationSpecArgs']] = None):
+        """
+        :param Sequence['GetGitopsApplicationsApplicationMetadataArgs'] metadatas: Metadata corresponding to the resources. This includes all the objects a user must create.
+        :param Sequence['GetGitopsApplicationsApplicationSpecArgs'] specs: Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if specs is not None:
+            pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[Sequence['GetGitopsApplicationsApplicationMetadataArgs']]:
+        """
+        Metadata corresponding to the resources. This includes all the objects a user must create.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[Sequence['GetGitopsApplicationsApplicationMetadataArgs']]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecArgs']]:
+        """
+        Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+        return pulumi.get(self, "specs")
+
+    @specs.setter
+    def specs(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecArgs']]):
+        pulumi.set(self, "specs", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationMetadataArgs:
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 finalizers: Sequence[str],
+                 generation: str,
+                 labels: Mapping[str, str],
                  namespace: str,
-                 high_availability: Optional[bool] = None):
+                 uid: str,
+                 cluster_name: Optional[str] = None,
+                 generate_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner_references: Optional[Sequence['GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs']] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "finalizers", finalizers)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "namespace", namespace)
-        if high_availability is not None:
-            pulumi.set(__self__, "high_availability", high_availability)
+        pulumi.set(__self__, "uid", uid)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if generate_name is not None:
+            pulumi.set(__self__, "generate_name", generate_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner_references is not None:
+            pulumi.set(__self__, "owner_references", owner_references)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Mapping[str, str]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def finalizers(self) -> Sequence[str]:
+        return pulumi.get(self, "finalizers")
+
+    @finalizers.setter
+    def finalizers(self, value: Sequence[str]):
+        pulumi.set(self, "finalizers", value)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> str:
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: str):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Mapping[str, str]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -3646,13 +8375,1098 @@ class GetGitopsAgentMetadataArgs:
         pulumi.set(self, "namespace", value)
 
     @property
-    @pulumi.getter(name="highAvailability")
-    def high_availability(self) -> Optional[bool]:
-        return pulumi.get(self, "high_availability")
+    @pulumi.getter
+    def uid(self) -> str:
+        return pulumi.get(self, "uid")
 
-    @high_availability.setter
-    def high_availability(self, value: Optional[bool]):
-        pulumi.set(self, "high_availability", value)
+    @uid.setter
+    def uid(self, value: str):
+        pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[str]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="generateName")
+    def generate_name(self) -> Optional[str]:
+        return pulumi.get(self, "generate_name")
+
+    @generate_name.setter
+    def generate_name(self, value: Optional[str]):
+        pulumi.set(self, "generate_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ownerReferences")
+    def owner_references(self) -> Optional[Sequence['GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs']]:
+        return pulumi.get(self, "owner_references")
+
+    @owner_references.setter
+    def owner_references(self, value: Optional[Sequence['GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs']]):
+        pulumi.set(self, "owner_references", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs:
+    def __init__(__self__, *,
+                 api_version: Optional[str] = None,
+                 block_owner_deletion: Optional[bool] = None,
+                 controller: Optional[bool] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 uid: Optional[str] = None):
+        """
+        :param str kind: Kind of the GitOps application.
+        :param str name: Name of the GitOps application.
+        """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if block_owner_deletion is not None:
+            pulumi.set(__self__, "block_owner_deletion", block_owner_deletion)
+        if controller is not None:
+            pulumi.set(__self__, "controller", controller)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[str]:
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[str]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="blockOwnerDeletion")
+    def block_owner_deletion(self) -> Optional[bool]:
+        return pulumi.get(self, "block_owner_deletion")
+
+    @block_owner_deletion.setter
+    def block_owner_deletion(self, value: Optional[bool]):
+        pulumi.set(self, "block_owner_deletion", value)
+
+    @property
+    @pulumi.getter
+    def controller(self) -> Optional[bool]:
+        return pulumi.get(self, "controller")
+
+    @controller.setter
+    def controller(self, value: Optional[bool]):
+        pulumi.set(self, "controller", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Kind of the GitOps application.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[str]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[str]:
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[str]):
+        pulumi.set(self, "uid", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs']] = None,
+                 sources: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceArgs']] = None,
+                 sync_policies: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs']] = None):
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+        if sync_policies is not None:
+            pulumi.set(__self__, "sync_policies", sync_policies)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs']]:
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceArgs']]:
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceArgs']]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter(name="syncPolicies")
+    def sync_policies(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs']]:
+        return pulumi.get(self, "sync_policies")
+
+    @sync_policies.setter
+    def sync_policies(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs']]):
+        pulumi.set(self, "sync_policies", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecDestinationArgs:
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 server: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[str]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[str]:
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: Optional[str]):
+        pulumi.set(self, "server", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceArgs:
+    def __init__(__self__, *,
+                 chart: Optional[str] = None,
+                 directories: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryArgs']] = None,
+                 helms: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs']] = None,
+                 ksonnets: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetArgs']] = None,
+                 kustomizes: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKustomizeArgs']] = None,
+                 path: Optional[str] = None,
+                 plugins: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginArgs']] = None,
+                 repo_url: Optional[str] = None,
+                 target_revision: Optional[str] = None):
+        if chart is not None:
+            pulumi.set(__self__, "chart", chart)
+        if directories is not None:
+            pulumi.set(__self__, "directories", directories)
+        if helms is not None:
+            pulumi.set(__self__, "helms", helms)
+        if ksonnets is not None:
+            pulumi.set(__self__, "ksonnets", ksonnets)
+        if kustomizes is not None:
+            pulumi.set(__self__, "kustomizes", kustomizes)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if plugins is not None:
+            pulumi.set(__self__, "plugins", plugins)
+        if repo_url is not None:
+            pulumi.set(__self__, "repo_url", repo_url)
+        if target_revision is not None:
+            pulumi.set(__self__, "target_revision", target_revision)
+
+    @property
+    @pulumi.getter
+    def chart(self) -> Optional[str]:
+        return pulumi.get(self, "chart")
+
+    @chart.setter
+    def chart(self, value: Optional[str]):
+        pulumi.set(self, "chart", value)
+
+    @property
+    @pulumi.getter
+    def directories(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryArgs']]:
+        return pulumi.get(self, "directories")
+
+    @directories.setter
+    def directories(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryArgs']]):
+        pulumi.set(self, "directories", value)
+
+    @property
+    @pulumi.getter
+    def helms(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs']]:
+        return pulumi.get(self, "helms")
+
+    @helms.setter
+    def helms(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs']]):
+        pulumi.set(self, "helms", value)
+
+    @property
+    @pulumi.getter
+    def ksonnets(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetArgs']]:
+        return pulumi.get(self, "ksonnets")
+
+    @ksonnets.setter
+    def ksonnets(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetArgs']]):
+        pulumi.set(self, "ksonnets", value)
+
+    @property
+    @pulumi.getter
+    def kustomizes(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKustomizeArgs']]:
+        return pulumi.get(self, "kustomizes")
+
+    @kustomizes.setter
+    def kustomizes(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKustomizeArgs']]):
+        pulumi.set(self, "kustomizes", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginArgs']]:
+        return pulumi.get(self, "plugins")
+
+    @plugins.setter
+    def plugins(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginArgs']]):
+        pulumi.set(self, "plugins", value)
+
+    @property
+    @pulumi.getter(name="repoUrl")
+    def repo_url(self) -> Optional[str]:
+        return pulumi.get(self, "repo_url")
+
+    @repo_url.setter
+    def repo_url(self, value: Optional[str]):
+        pulumi.set(self, "repo_url", value)
+
+    @property
+    @pulumi.getter(name="targetRevision")
+    def target_revision(self) -> Optional[str]:
+        return pulumi.get(self, "target_revision")
+
+    @target_revision.setter
+    def target_revision(self, value: Optional[str]):
+        pulumi.set(self, "target_revision", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceDirectoryArgs:
+    def __init__(__self__, *,
+                 exclude: Optional[str] = None,
+                 include: Optional[str] = None,
+                 jsonnets: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']] = None,
+                 recurse: Optional[bool] = None):
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if include is not None:
+            pulumi.set(__self__, "include", include)
+        if jsonnets is not None:
+            pulumi.set(__self__, "jsonnets", jsonnets)
+        if recurse is not None:
+            pulumi.set(__self__, "recurse", recurse)
+
+    @property
+    @pulumi.getter
+    def exclude(self) -> Optional[str]:
+        return pulumi.get(self, "exclude")
+
+    @exclude.setter
+    def exclude(self, value: Optional[str]):
+        pulumi.set(self, "exclude", value)
+
+    @property
+    @pulumi.getter
+    def include(self) -> Optional[str]:
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: Optional[str]):
+        pulumi.set(self, "include", value)
+
+    @property
+    @pulumi.getter
+    def jsonnets(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']]:
+        return pulumi.get(self, "jsonnets")
+
+    @jsonnets.setter
+    def jsonnets(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs']]):
+        pulumi.set(self, "jsonnets", value)
+
+    @property
+    @pulumi.getter
+    def recurse(self) -> Optional[bool]:
+        return pulumi.get(self, "recurse")
+
+    @recurse.setter
+    def recurse(self, value: Optional[bool]):
+        pulumi.set(self, "recurse", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs:
+    def __init__(__self__, *,
+                 ext_vars: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']] = None,
+                 libs: Optional[Sequence[str]] = None,
+                 tlas: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']] = None):
+        if ext_vars is not None:
+            pulumi.set(__self__, "ext_vars", ext_vars)
+        if libs is not None:
+            pulumi.set(__self__, "libs", libs)
+        if tlas is not None:
+            pulumi.set(__self__, "tlas", tlas)
+
+    @property
+    @pulumi.getter(name="extVars")
+    def ext_vars(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']]:
+        return pulumi.get(self, "ext_vars")
+
+    @ext_vars.setter
+    def ext_vars(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs']]):
+        pulumi.set(self, "ext_vars", value)
+
+    @property
+    @pulumi.getter
+    def libs(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "libs")
+
+    @libs.setter
+    def libs(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "libs", value)
+
+    @property
+    @pulumi.getter
+    def tlas(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]:
+        return pulumi.get(self, "tlas")
+
+    @tlas.setter
+    def tlas(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]):
+        pulumi.set(self, "tlas", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs:
+    def __init__(__self__, *,
+                 code: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[bool]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[bool]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs:
+    def __init__(__self__, *,
+                 code: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[bool]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[bool]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceHelmArgs:
+    def __init__(__self__, *,
+                 file_parameters: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']] = None,
+                 parameters: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs']] = None,
+                 pass_credentials: Optional[bool] = None,
+                 release_name: Optional[str] = None,
+                 value_files: Optional[Sequence[str]] = None,
+                 values: Optional[str] = None,
+                 version: Optional[str] = None):
+        if file_parameters is not None:
+            pulumi.set(__self__, "file_parameters", file_parameters)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if pass_credentials is not None:
+            pulumi.set(__self__, "pass_credentials", pass_credentials)
+        if release_name is not None:
+            pulumi.set(__self__, "release_name", release_name)
+        if value_files is not None:
+            pulumi.set(__self__, "value_files", value_files)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="fileParameters")
+    def file_parameters(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']]:
+        return pulumi.get(self, "file_parameters")
+
+    @file_parameters.setter
+    def file_parameters(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs']]):
+        pulumi.set(self, "file_parameters", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs']]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="passCredentials")
+    def pass_credentials(self) -> Optional[bool]:
+        return pulumi.get(self, "pass_credentials")
+
+    @pass_credentials.setter
+    def pass_credentials(self, value: Optional[bool]):
+        pulumi.set(self, "pass_credentials", value)
+
+    @property
+    @pulumi.getter(name="releaseName")
+    def release_name(self) -> Optional[str]:
+        return pulumi.get(self, "release_name")
+
+    @release_name.setter
+    def release_name(self, value: Optional[str]):
+        pulumi.set(self, "release_name", value)
+
+    @property
+    @pulumi.getter(name="valueFiles")
+    def value_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "value_files")
+
+    @value_files.setter
+    def value_files(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "value_files", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs:
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[str]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs:
+    def __init__(__self__, *,
+                 force_string: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if force_string is not None:
+            pulumi.set(__self__, "force_string", force_string)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="forceString")
+    def force_string(self) -> Optional[bool]:
+        return pulumi.get(self, "force_string")
+
+    @force_string.setter
+    def force_string(self, value: Optional[bool]):
+        pulumi.set(self, "force_string", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceKsonnetArgs:
+    def __init__(__self__, *,
+                 environment: Optional[str] = None,
+                 parameters: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']] = None):
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[str]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs']]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs:
+    def __init__(__self__, *,
+                 component: Optional[str] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def component(self) -> Optional[str]:
+        return pulumi.get(self, "component")
+
+    @component.setter
+    def component(self, value: Optional[str]):
+        pulumi.set(self, "component", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourceKustomizeArgs:
+    def __init__(__self__, *,
+                 common_annotations: Optional[Mapping[str, str]] = None,
+                 common_labels: Optional[Mapping[str, str]] = None,
+                 force_common_annotations: Optional[bool] = None,
+                 force_common_labels: Optional[bool] = None,
+                 images: Optional[Sequence[str]] = None,
+                 name_prefix: Optional[str] = None,
+                 name_suffix: Optional[str] = None,
+                 version: Optional[str] = None):
+        if common_annotations is not None:
+            pulumi.set(__self__, "common_annotations", common_annotations)
+        if common_labels is not None:
+            pulumi.set(__self__, "common_labels", common_labels)
+        if force_common_annotations is not None:
+            pulumi.set(__self__, "force_common_annotations", force_common_annotations)
+        if force_common_labels is not None:
+            pulumi.set(__self__, "force_common_labels", force_common_labels)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if name_suffix is not None:
+            pulumi.set(__self__, "name_suffix", name_suffix)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="commonAnnotations")
+    def common_annotations(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "common_annotations")
+
+    @common_annotations.setter
+    def common_annotations(self, value: Optional[Mapping[str, str]]):
+        pulumi.set(self, "common_annotations", value)
+
+    @property
+    @pulumi.getter(name="commonLabels")
+    def common_labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "common_labels")
+
+    @common_labels.setter
+    def common_labels(self, value: Optional[Mapping[str, str]]):
+        pulumi.set(self, "common_labels", value)
+
+    @property
+    @pulumi.getter(name="forceCommonAnnotations")
+    def force_common_annotations(self) -> Optional[bool]:
+        return pulumi.get(self, "force_common_annotations")
+
+    @force_common_annotations.setter
+    def force_common_annotations(self, value: Optional[bool]):
+        pulumi.set(self, "force_common_annotations", value)
+
+    @property
+    @pulumi.getter(name="forceCommonLabels")
+    def force_common_labels(self) -> Optional[bool]:
+        return pulumi.get(self, "force_common_labels")
+
+    @force_common_labels.setter
+    def force_common_labels(self, value: Optional[bool]):
+        pulumi.set(self, "force_common_labels", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[str]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="nameSuffix")
+    def name_suffix(self) -> Optional[str]:
+        return pulumi.get(self, "name_suffix")
+
+    @name_suffix.setter
+    def name_suffix(self, value: Optional[str]):
+        pulumi.set(self, "name_suffix", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourcePluginArgs:
+    def __init__(__self__, *,
+                 envs: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs']] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def envs(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs']]:
+        return pulumi.get(self, "envs")
+
+    @envs.setter
+    def envs(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs']]):
+        pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs:
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the GitOps application.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the GitOps application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSyncPolicyArgs:
+    def __init__(__self__, *,
+                 automateds: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']] = None,
+                 retries: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs']] = None,
+                 sync_options: Optional[Sequence[str]] = None):
+        if automateds is not None:
+            pulumi.set(__self__, "automateds", automateds)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if sync_options is not None:
+            pulumi.set(__self__, "sync_options", sync_options)
+
+    @property
+    @pulumi.getter
+    def automateds(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']]:
+        return pulumi.get(self, "automateds")
+
+    @automateds.setter
+    def automateds(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs']]):
+        pulumi.set(self, "automateds", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs']]:
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs']]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter(name="syncOptions")
+    def sync_options(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sync_options")
+
+    @sync_options.setter
+    def sync_options(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "sync_options", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs:
+    def __init__(__self__, *,
+                 allow_empty: Optional[bool] = None,
+                 prune: Optional[bool] = None,
+                 self_heal: Optional[bool] = None):
+        if allow_empty is not None:
+            pulumi.set(__self__, "allow_empty", allow_empty)
+        if prune is not None:
+            pulumi.set(__self__, "prune", prune)
+        if self_heal is not None:
+            pulumi.set(__self__, "self_heal", self_heal)
+
+    @property
+    @pulumi.getter(name="allowEmpty")
+    def allow_empty(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_empty")
+
+    @allow_empty.setter
+    def allow_empty(self, value: Optional[bool]):
+        pulumi.set(self, "allow_empty", value)
+
+    @property
+    @pulumi.getter
+    def prune(self) -> Optional[bool]:
+        return pulumi.get(self, "prune")
+
+    @prune.setter
+    def prune(self, value: Optional[bool]):
+        pulumi.set(self, "prune", value)
+
+    @property
+    @pulumi.getter(name="selfHeal")
+    def self_heal(self) -> Optional[bool]:
+        return pulumi.get(self, "self_heal")
+
+    @self_heal.setter
+    def self_heal(self, value: Optional[bool]):
+        pulumi.set(self, "self_heal", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs:
+    def __init__(__self__, *,
+                 backoffs: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']] = None,
+                 limit: Optional[str] = None):
+        if backoffs is not None:
+            pulumi.set(__self__, "backoffs", backoffs)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter
+    def backoffs(self) -> Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']]:
+        return pulumi.get(self, "backoffs")
+
+    @backoffs.setter
+    def backoffs(self, value: Optional[Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs']]):
+        pulumi.set(self, "backoffs", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[str]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[str]):
+        pulumi.set(self, "limit", value)
+
+
+@pulumi.input_type
+class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs:
+    def __init__(__self__, *,
+                 duration: Optional[str] = None,
+                 factor: Optional[str] = None,
+                 max_duration: Optional[str] = None):
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if factor is not None:
+            pulumi.set(__self__, "factor", factor)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def factor(self) -> Optional[str]:
+        return pulumi.get(self, "factor")
+
+    @factor.setter
+    def factor(self, value: Optional[str]):
+        pulumi.set(self, "factor", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[str]:
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[str]):
+        pulumi.set(self, "max_duration", value)
 
 
 @pulumi.input_type
@@ -3661,6 +9475,11 @@ class GetGitopsClusterQueryArgs:
                  ids: Optional[Sequence['GetGitopsClusterQueryIdArgs']] = None,
                  name: Optional[str] = None,
                  server: Optional[str] = None):
+        """
+        :param Sequence['GetGitopsClusterQueryIdArgs'] ids: Cluster server URL or the cluster name.
+        :param str name: Name of the GitOps cluster.
+        :param str server: Server of the GitOps cluster.
+        """
         if ids is not None:
             pulumi.set(__self__, "ids", ids)
         if name is not None:
@@ -3671,6 +9490,9 @@ class GetGitopsClusterQueryArgs:
     @property
     @pulumi.getter
     def ids(self) -> Optional[Sequence['GetGitopsClusterQueryIdArgs']]:
+        """
+        Cluster server URL or the cluster name.
+        """
         return pulumi.get(self, "ids")
 
     @ids.setter
@@ -3680,6 +9502,9 @@ class GetGitopsClusterQueryArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the GitOps cluster.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3689,6 +9514,9 @@ class GetGitopsClusterQueryArgs:
     @property
     @pulumi.getter
     def server(self) -> Optional[str]:
+        """
+        Server of the GitOps cluster.
+        """
         return pulumi.get(self, "server")
 
     @server.setter
@@ -3726,63 +9554,37 @@ class GetGitopsClusterQueryIdArgs:
 
 
 @pulumi.input_type
-class GetGitopsClusterRequestArgs:
+class GetGitopsGnupgRequestArgs:
     def __init__(__self__, *,
-                 clusters: Optional[Sequence['GetGitopsClusterRequestClusterArgs']] = None,
-                 ids: Optional[Sequence['GetGitopsClusterRequestIdArgs']] = None,
-                 update_masks: Optional[Sequence['GetGitopsClusterRequestUpdateMaskArgs']] = None,
-                 updated_fields: Optional[Sequence[str]] = None,
+                 publickeys: Optional[Sequence['GetGitopsGnupgRequestPublickeyArgs']] = None,
                  upsert: Optional[bool] = None):
-        if clusters is not None:
-            pulumi.set(__self__, "clusters", clusters)
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if update_masks is not None:
-            pulumi.set(__self__, "update_masks", update_masks)
-        if updated_fields is not None:
-            pulumi.set(__self__, "updated_fields", updated_fields)
+        """
+        :param Sequence['GetGitopsGnupgRequestPublickeyArgs'] publickeys: Public key details.
+        :param bool upsert: Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        """
+        if publickeys is not None:
+            pulumi.set(__self__, "publickeys", publickeys)
         if upsert is not None:
             pulumi.set(__self__, "upsert", upsert)
 
     @property
     @pulumi.getter
-    def clusters(self) -> Optional[Sequence['GetGitopsClusterRequestClusterArgs']]:
-        return pulumi.get(self, "clusters")
+    def publickeys(self) -> Optional[Sequence['GetGitopsGnupgRequestPublickeyArgs']]:
+        """
+        Public key details.
+        """
+        return pulumi.get(self, "publickeys")
 
-    @clusters.setter
-    def clusters(self, value: Optional[Sequence['GetGitopsClusterRequestClusterArgs']]):
-        pulumi.set(self, "clusters", value)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence['GetGitopsClusterRequestIdArgs']]:
-        return pulumi.get(self, "ids")
-
-    @ids.setter
-    def ids(self, value: Optional[Sequence['GetGitopsClusterRequestIdArgs']]):
-        pulumi.set(self, "ids", value)
-
-    @property
-    @pulumi.getter(name="updateMasks")
-    def update_masks(self) -> Optional[Sequence['GetGitopsClusterRequestUpdateMaskArgs']]:
-        return pulumi.get(self, "update_masks")
-
-    @update_masks.setter
-    def update_masks(self, value: Optional[Sequence['GetGitopsClusterRequestUpdateMaskArgs']]):
-        pulumi.set(self, "update_masks", value)
-
-    @property
-    @pulumi.getter(name="updatedFields")
-    def updated_fields(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "updated_fields")
-
-    @updated_fields.setter
-    def updated_fields(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "updated_fields", value)
+    @publickeys.setter
+    def publickeys(self, value: Optional[Sequence['GetGitopsGnupgRequestPublickeyArgs']]):
+        pulumi.set(self, "publickeys", value)
 
     @property
     @pulumi.getter
     def upsert(self) -> Optional[bool]:
+        """
+        Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        """
         return pulumi.get(self, "upsert")
 
     @upsert.setter
@@ -3791,369 +9593,35 @@ class GetGitopsClusterRequestArgs:
 
 
 @pulumi.input_type
-class GetGitopsClusterRequestClusterArgs:
+class GetGitopsGnupgRequestPublickeyArgs:
     def __init__(__self__, *,
-                 server: str,
-                 annotations: Optional[Mapping[str, str]] = None,
-                 cluster_resources: Optional[bool] = None,
-                 configs: Optional[Sequence['GetGitopsClusterRequestClusterConfigArgs']] = None,
-                 infos: Optional[Sequence['GetGitopsClusterRequestClusterInfoArgs']] = None,
-                 labels: Optional[Mapping[str, str]] = None,
-                 name: Optional[str] = None,
-                 namespaces: Optional[Sequence[str]] = None,
-                 project: Optional[str] = None,
-                 refresh_requested_ats: Optional[Sequence['GetGitopsClusterRequestClusterRefreshRequestedAtArgs']] = None,
-                 shard: Optional[str] = None):
-        pulumi.set(__self__, "server", server)
-        if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
-        if cluster_resources is not None:
-            pulumi.set(__self__, "cluster_resources", cluster_resources)
-        if configs is not None:
-            pulumi.set(__self__, "configs", configs)
-        if infos is not None:
-            pulumi.set(__self__, "infos", infos)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if namespaces is not None:
-            pulumi.set(__self__, "namespaces", namespaces)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if refresh_requested_ats is not None:
-            pulumi.set(__self__, "refresh_requested_ats", refresh_requested_ats)
-        if shard is not None:
-            pulumi.set(__self__, "shard", shard)
-
-    @property
-    @pulumi.getter
-    def server(self) -> str:
-        return pulumi.get(self, "server")
-
-    @server.setter
-    def server(self, value: str):
-        pulumi.set(self, "server", value)
-
-    @property
-    @pulumi.getter
-    def annotations(self) -> Optional[Mapping[str, str]]:
-        return pulumi.get(self, "annotations")
-
-    @annotations.setter
-    def annotations(self, value: Optional[Mapping[str, str]]):
-        pulumi.set(self, "annotations", value)
-
-    @property
-    @pulumi.getter(name="clusterResources")
-    def cluster_resources(self) -> Optional[bool]:
-        return pulumi.get(self, "cluster_resources")
-
-    @cluster_resources.setter
-    def cluster_resources(self, value: Optional[bool]):
-        pulumi.set(self, "cluster_resources", value)
-
-    @property
-    @pulumi.getter
-    def configs(self) -> Optional[Sequence['GetGitopsClusterRequestClusterConfigArgs']]:
-        return pulumi.get(self, "configs")
-
-    @configs.setter
-    def configs(self, value: Optional[Sequence['GetGitopsClusterRequestClusterConfigArgs']]):
-        pulumi.set(self, "configs", value)
-
-    @property
-    @pulumi.getter
-    def infos(self) -> Optional[Sequence['GetGitopsClusterRequestClusterInfoArgs']]:
-        return pulumi.get(self, "infos")
-
-    @infos.setter
-    def infos(self, value: Optional[Sequence['GetGitopsClusterRequestClusterInfoArgs']]):
-        pulumi.set(self, "infos", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[Mapping[str, str]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def namespaces(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "namespaces")
-
-    @namespaces.setter
-    def namespaces(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "namespaces", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[str]:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[str]):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="refreshRequestedAts")
-    def refresh_requested_ats(self) -> Optional[Sequence['GetGitopsClusterRequestClusterRefreshRequestedAtArgs']]:
-        return pulumi.get(self, "refresh_requested_ats")
-
-    @refresh_requested_ats.setter
-    def refresh_requested_ats(self, value: Optional[Sequence['GetGitopsClusterRequestClusterRefreshRequestedAtArgs']]):
-        pulumi.set(self, "refresh_requested_ats", value)
-
-    @property
-    @pulumi.getter
-    def shard(self) -> Optional[str]:
-        return pulumi.get(self, "shard")
-
-    @shard.setter
-    def shard(self, value: Optional[str]):
-        pulumi.set(self, "shard", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterConfigArgs:
-    def __init__(__self__, *,
-                 aws_auth_configs: Optional[Sequence['GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs']] = None,
-                 bearer_token: Optional[str] = None,
-                 cluster_connection_type: Optional[str] = None,
-                 exec_provider_configs: Optional[Sequence['GetGitopsClusterRequestClusterConfigExecProviderConfigArgs']] = None,
-                 password: Optional[str] = None,
-                 tls_client_configs: Optional[Sequence['GetGitopsClusterRequestClusterConfigTlsClientConfigArgs']] = None,
-                 username: Optional[str] = None):
-        if aws_auth_configs is not None:
-            pulumi.set(__self__, "aws_auth_configs", aws_auth_configs)
-        if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
-        if cluster_connection_type is not None:
-            pulumi.set(__self__, "cluster_connection_type", cluster_connection_type)
-        if exec_provider_configs is not None:
-            pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if tls_client_configs is not None:
-            pulumi.set(__self__, "tls_client_configs", tls_client_configs)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="awsAuthConfigs")
-    def aws_auth_configs(self) -> Optional[Sequence['GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs']]:
-        return pulumi.get(self, "aws_auth_configs")
-
-    @aws_auth_configs.setter
-    def aws_auth_configs(self, value: Optional[Sequence['GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs']]):
-        pulumi.set(self, "aws_auth_configs", value)
-
-    @property
-    @pulumi.getter(name="bearerToken")
-    def bearer_token(self) -> Optional[str]:
-        return pulumi.get(self, "bearer_token")
-
-    @bearer_token.setter
-    def bearer_token(self, value: Optional[str]):
-        pulumi.set(self, "bearer_token", value)
-
-    @property
-    @pulumi.getter(name="clusterConnectionType")
-    def cluster_connection_type(self) -> Optional[str]:
-        return pulumi.get(self, "cluster_connection_type")
-
-    @cluster_connection_type.setter
-    def cluster_connection_type(self, value: Optional[str]):
-        pulumi.set(self, "cluster_connection_type", value)
-
-    @property
-    @pulumi.getter(name="execProviderConfigs")
-    def exec_provider_configs(self) -> Optional[Sequence['GetGitopsClusterRequestClusterConfigExecProviderConfigArgs']]:
-        return pulumi.get(self, "exec_provider_configs")
-
-    @exec_provider_configs.setter
-    def exec_provider_configs(self, value: Optional[Sequence['GetGitopsClusterRequestClusterConfigExecProviderConfigArgs']]):
-        pulumi.set(self, "exec_provider_configs", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="tlsClientConfigs")
-    def tls_client_configs(self) -> Optional[Sequence['GetGitopsClusterRequestClusterConfigTlsClientConfigArgs']]:
-        return pulumi.get(self, "tls_client_configs")
-
-    @tls_client_configs.setter
-    def tls_client_configs(self, value: Optional[Sequence['GetGitopsClusterRequestClusterConfigTlsClientConfigArgs']]):
-        pulumi.set(self, "tls_client_configs", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[str]):
-        pulumi.set(self, "username", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs:
-    def __init__(__self__, *,
-                 cluster_name: Optional[str] = None,
-                 role_arn: Optional[str] = None):
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[str]:
-        return pulumi.get(self, "cluster_name")
-
-    @cluster_name.setter
-    def cluster_name(self, value: Optional[str]):
-        pulumi.set(self, "cluster_name", value)
-
-    @property
-    @pulumi.getter(name="roleARN")
-    def role_arn(self) -> Optional[str]:
-        return pulumi.get(self, "role_arn")
-
-    @role_arn.setter
-    def role_arn(self, value: Optional[str]):
-        pulumi.set(self, "role_arn", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterConfigExecProviderConfigArgs:
-    def __init__(__self__, *,
-                 api_version: Optional[str] = None,
-                 args: Optional[Sequence[str]] = None,
-                 command: Optional[str] = None,
-                 env: Optional[Mapping[str, str]] = None,
-                 install_hint: Optional[str] = None):
-        if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
-        if args is not None:
-            pulumi.set(__self__, "args", args)
-        if command is not None:
-            pulumi.set(__self__, "command", command)
-        if env is not None:
-            pulumi.set(__self__, "env", env)
-        if install_hint is not None:
-            pulumi.set(__self__, "install_hint", install_hint)
-
-    @property
-    @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[str]:
-        return pulumi.get(self, "api_version")
-
-    @api_version.setter
-    def api_version(self, value: Optional[str]):
-        pulumi.set(self, "api_version", value)
-
-    @property
-    @pulumi.getter
-    def args(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "args")
-
-    @args.setter
-    def args(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "args", value)
-
-    @property
-    @pulumi.getter
-    def command(self) -> Optional[str]:
-        return pulumi.get(self, "command")
-
-    @command.setter
-    def command(self, value: Optional[str]):
-        pulumi.set(self, "command", value)
-
-    @property
-    @pulumi.getter
-    def env(self) -> Optional[Mapping[str, str]]:
-        return pulumi.get(self, "env")
-
-    @env.setter
-    def env(self, value: Optional[Mapping[str, str]]):
-        pulumi.set(self, "env", value)
-
-    @property
-    @pulumi.getter(name="installHint")
-    def install_hint(self) -> Optional[str]:
-        return pulumi.get(self, "install_hint")
-
-    @install_hint.setter
-    def install_hint(self, value: Optional[str]):
-        pulumi.set(self, "install_hint", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterConfigTlsClientConfigArgs:
-    def __init__(__self__, *,
-                 ca_data: Optional[str] = None,
-                 cert_data: Optional[str] = None,
-                 insecure: Optional[bool] = None,
+                 fingerprint: Optional[str] = None,
                  key_data: Optional[str] = None,
-                 server_name: Optional[str] = None):
-        if ca_data is not None:
-            pulumi.set(__self__, "ca_data", ca_data)
-        if cert_data is not None:
-            pulumi.set(__self__, "cert_data", cert_data)
-        if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+                 key_id: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 sub_type: Optional[str] = None,
+                 trust: Optional[str] = None):
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if key_data is not None:
             pulumi.set(__self__, "key_data", key_data)
-        if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
-
-    @property
-    @pulumi.getter(name="caData")
-    def ca_data(self) -> Optional[str]:
-        return pulumi.get(self, "ca_data")
-
-    @ca_data.setter
-    def ca_data(self, value: Optional[str]):
-        pulumi.set(self, "ca_data", value)
-
-    @property
-    @pulumi.getter(name="certData")
-    def cert_data(self) -> Optional[str]:
-        return pulumi.get(self, "cert_data")
-
-    @cert_data.setter
-    def cert_data(self, value: Optional[str]):
-        pulumi.set(self, "cert_data", value)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if sub_type is not None:
+            pulumi.set(__self__, "sub_type", sub_type)
+        if trust is not None:
+            pulumi.set(__self__, "trust", trust)
 
     @property
     @pulumi.getter
-    def insecure(self) -> Optional[bool]:
-        return pulumi.get(self, "insecure")
+    def fingerprint(self) -> Optional[str]:
+        return pulumi.get(self, "fingerprint")
 
-    @insecure.setter
-    def insecure(self, value: Optional[bool]):
-        pulumi.set(self, "insecure", value)
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[str]):
+        pulumi.set(self, "fingerprint", value)
 
     @property
     @pulumi.getter(name="keyData")
@@ -4165,295 +9633,71 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigArgs:
         pulumi.set(self, "key_data", value)
 
     @property
-    @pulumi.getter(name="serverName")
-    def server_name(self) -> Optional[str]:
-        return pulumi.get(self, "server_name")
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        return pulumi.get(self, "key_id")
 
-    @server_name.setter
-    def server_name(self, value: Optional[str]):
-        pulumi.set(self, "server_name", value)
+    @key_id.setter
+    def key_id(self, value: Optional[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="subType")
+    def sub_type(self) -> Optional[str]:
+        return pulumi.get(self, "sub_type")
+
+    @sub_type.setter
+    def sub_type(self, value: Optional[str]):
+        pulumi.set(self, "sub_type", value)
+
+    @property
+    @pulumi.getter
+    def trust(self) -> Optional[str]:
+        return pulumi.get(self, "trust")
+
+    @trust.setter
+    def trust(self, value: Optional[str]):
+        pulumi.set(self, "trust", value)
 
 
 @pulumi.input_type
-class GetGitopsClusterRequestClusterInfoArgs:
+class GetGitopsRepoCredCredArgs:
     def __init__(__self__, *,
-                 api_versions: Optional[Sequence[str]] = None,
-                 applications_count: Optional[str] = None,
-                 cache_infos: Optional[Sequence['GetGitopsClusterRequestClusterInfoCacheInfoArgs']] = None,
-                 connection_states: Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateArgs']] = None,
-                 server_version: Optional[str] = None):
-        if api_versions is not None:
-            pulumi.set(__self__, "api_versions", api_versions)
-        if applications_count is not None:
-            pulumi.set(__self__, "applications_count", applications_count)
-        if cache_infos is not None:
-            pulumi.set(__self__, "cache_infos", cache_infos)
-        if connection_states is not None:
-            pulumi.set(__self__, "connection_states", connection_states)
-        if server_version is not None:
-            pulumi.set(__self__, "server_version", server_version)
-
-    @property
-    @pulumi.getter(name="apiVersions")
-    def api_versions(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "api_versions")
-
-    @api_versions.setter
-    def api_versions(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "api_versions", value)
-
-    @property
-    @pulumi.getter(name="applicationsCount")
-    def applications_count(self) -> Optional[str]:
-        return pulumi.get(self, "applications_count")
-
-    @applications_count.setter
-    def applications_count(self, value: Optional[str]):
-        pulumi.set(self, "applications_count", value)
-
-    @property
-    @pulumi.getter(name="cacheInfos")
-    def cache_infos(self) -> Optional[Sequence['GetGitopsClusterRequestClusterInfoCacheInfoArgs']]:
-        return pulumi.get(self, "cache_infos")
-
-    @cache_infos.setter
-    def cache_infos(self, value: Optional[Sequence['GetGitopsClusterRequestClusterInfoCacheInfoArgs']]):
-        pulumi.set(self, "cache_infos", value)
-
-    @property
-    @pulumi.getter(name="connectionStates")
-    def connection_states(self) -> Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateArgs']]:
-        return pulumi.get(self, "connection_states")
-
-    @connection_states.setter
-    def connection_states(self, value: Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateArgs']]):
-        pulumi.set(self, "connection_states", value)
-
-    @property
-    @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[str]:
-        return pulumi.get(self, "server_version")
-
-    @server_version.setter
-    def server_version(self, value: Optional[str]):
-        pulumi.set(self, "server_version", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterInfoCacheInfoArgs:
-    def __init__(__self__, *,
-                 apis_count: Optional[str] = None,
-                 last_cache_sync_time: Optional[str] = None,
-                 resources_count: Optional[str] = None):
-        if apis_count is not None:
-            pulumi.set(__self__, "apis_count", apis_count)
-        if last_cache_sync_time is not None:
-            pulumi.set(__self__, "last_cache_sync_time", last_cache_sync_time)
-        if resources_count is not None:
-            pulumi.set(__self__, "resources_count", resources_count)
-
-    @property
-    @pulumi.getter(name="apisCount")
-    def apis_count(self) -> Optional[str]:
-        return pulumi.get(self, "apis_count")
-
-    @apis_count.setter
-    def apis_count(self, value: Optional[str]):
-        pulumi.set(self, "apis_count", value)
-
-    @property
-    @pulumi.getter(name="lastCacheSyncTime")
-    def last_cache_sync_time(self) -> Optional[str]:
-        return pulumi.get(self, "last_cache_sync_time")
-
-    @last_cache_sync_time.setter
-    def last_cache_sync_time(self, value: Optional[str]):
-        pulumi.set(self, "last_cache_sync_time", value)
-
-    @property
-    @pulumi.getter(name="resourcesCount")
-    def resources_count(self) -> Optional[str]:
-        return pulumi.get(self, "resources_count")
-
-    @resources_count.setter
-    def resources_count(self, value: Optional[str]):
-        pulumi.set(self, "resources_count", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterInfoConnectionStateArgs:
-    def __init__(__self__, *,
-                 attempted_ats: Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs']] = None,
-                 message: Optional[str] = None,
-                 status: Optional[str] = None):
-        if attempted_ats is not None:
-            pulumi.set(__self__, "attempted_ats", attempted_ats)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @property
-    @pulumi.getter(name="attemptedAts")
-    def attempted_ats(self) -> Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs']]:
-        return pulumi.get(self, "attempted_ats")
-
-    @attempted_ats.setter
-    def attempted_ats(self, value: Optional[Sequence['GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs']]):
-        pulumi.set(self, "attempted_ats", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[str]:
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[str]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[str]):
-        pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs:
-    def __init__(__self__, *,
-                 nanos: Optional[int] = None,
-                 seconds: Optional[str] = None):
-        if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
-        if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
-
-    @property
-    @pulumi.getter
-    def nanos(self) -> Optional[int]:
-        return pulumi.get(self, "nanos")
-
-    @nanos.setter
-    def nanos(self, value: Optional[int]):
-        pulumi.set(self, "nanos", value)
-
-    @property
-    @pulumi.getter
-    def seconds(self) -> Optional[str]:
-        return pulumi.get(self, "seconds")
-
-    @seconds.setter
-    def seconds(self, value: Optional[str]):
-        pulumi.set(self, "seconds", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestClusterRefreshRequestedAtArgs:
-    def __init__(__self__, *,
-                 nanos: Optional[int] = None,
-                 seconds: Optional[str] = None):
-        if nanos is not None:
-            pulumi.set(__self__, "nanos", nanos)
-        if seconds is not None:
-            pulumi.set(__self__, "seconds", seconds)
-
-    @property
-    @pulumi.getter
-    def nanos(self) -> Optional[int]:
-        return pulumi.get(self, "nanos")
-
-    @nanos.setter
-    def nanos(self, value: Optional[int]):
-        pulumi.set(self, "nanos", value)
-
-    @property
-    @pulumi.getter
-    def seconds(self) -> Optional[str]:
-        return pulumi.get(self, "seconds")
-
-    @seconds.setter
-    def seconds(self, value: Optional[str]):
-        pulumi.set(self, "seconds", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestIdArgs:
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 value: Optional[str] = None):
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[str]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[str]):
-        pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class GetGitopsClusterRequestUpdateMaskArgs:
-    def __init__(__self__, *,
-                 paths: Optional[Sequence[Sequence[Any]]] = None):
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[Sequence[Sequence[Any]]]:
-        return pulumi.get(self, "paths")
-
-    @paths.setter
-    def paths(self, value: Optional[Sequence[Sequence[Any]]]):
-        pulumi.set(self, "paths", value)
-
-
-@pulumi.input_type
-class GetGitopsRepositoryRepoArgs:
-    def __init__(__self__, *,
-                 connection_type: str,
-                 project: str,
-                 repo: str,
-                 type_: str,
-                 enable_lfs: Optional[bool] = None,
                  enable_oci: Optional[bool] = None,
                  github_app_enterprise_base_url: Optional[str] = None,
                  github_app_id: Optional[str] = None,
                  github_app_installation_id: Optional[str] = None,
                  github_app_private_key: Optional[str] = None,
-                 inherited_creds: Optional[bool] = None,
-                 insecure: Optional[bool] = None,
-                 insecure_ignore_host_key: Optional[bool] = None,
-                 name: Optional[str] = None,
                  password: Optional[str] = None,
-                 proxy: Optional[str] = None,
                  ssh_private_key: Optional[str] = None,
                  tls_client_cert_data: Optional[str] = None,
                  tls_client_cert_key: Optional[str] = None,
+                 type: Optional[str] = None,
+                 url: Optional[str] = None,
                  username: Optional[str] = None):
-        pulumi.set(__self__, "connection_type", connection_type)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "repo", repo)
-        pulumi.set(__self__, "type_", type_)
-        if enable_lfs is not None:
-            pulumi.set(__self__, "enable_lfs", enable_lfs)
+        """
+        :param bool enable_oci: Specifies whether helm-oci support should be enabled for this repo.
+        :param str github_app_enterprise_base_url: Specifies the GitHub API URL for GitHub app authentication.
+        :param str github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        :param str github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
+        :param str github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        :param str password: Password for authenticating at the repo server.
+        :param str ssh_private_key: Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        :param str tls_client_cert_data: Specifies the TLS client cert data for authenticating at the repo server.
+        :param str tls_client_cert_key: Specifies the TLS client cert key for authenticating at the repo server.
+        :param str type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        :param str url: url representing this object.
+        :param str username: Username for authenticating at the repo server.
+        """
         if enable_oci is not None:
             pulumi.set(__self__, "enable_oci", enable_oci)
         if github_app_enterprise_base_url is not None:
@@ -4464,75 +9708,27 @@ class GetGitopsRepositoryRepoArgs:
             pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
         if github_app_private_key is not None:
             pulumi.set(__self__, "github_app_private_key", github_app_private_key)
-        if inherited_creds is not None:
-            pulumi.set(__self__, "inherited_creds", inherited_creds)
-        if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
-        if insecure_ignore_host_key is not None:
-            pulumi.set(__self__, "insecure_ignore_host_key", insecure_ignore_host_key)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
         if ssh_private_key is not None:
             pulumi.set(__self__, "ssh_private_key", ssh_private_key)
         if tls_client_cert_data is not None:
             pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
         if tls_client_cert_key is not None:
             pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
     @property
-    @pulumi.getter(name="connectionType")
-    def connection_type(self) -> str:
-        return pulumi.get(self, "connection_type")
-
-    @connection_type.setter
-    def connection_type(self, value: str):
-        pulumi.set(self, "connection_type", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> str:
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: str):
-        pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def repo(self) -> str:
-        return pulumi.get(self, "repo")
-
-    @repo.setter
-    def repo(self, value: str):
-        pulumi.set(self, "repo", value)
-
-    @property
-    @pulumi.getter
-    def type_(self) -> str:
-        return pulumi.get(self, "type_")
-
-    @type_.setter
-    def type_(self, value: str):
-        pulumi.set(self, "type_", value)
-
-    @property
-    @pulumi.getter(name="enableLfs")
-    def enable_lfs(self) -> Optional[bool]:
-        return pulumi.get(self, "enable_lfs")
-
-    @enable_lfs.setter
-    def enable_lfs(self, value: Optional[bool]):
-        pulumi.set(self, "enable_lfs", value)
-
-    @property
     @pulumi.getter(name="enableOci")
     def enable_oci(self) -> Optional[bool]:
+        """
+        Specifies whether helm-oci support should be enabled for this repo.
+        """
         return pulumi.get(self, "enable_oci")
 
     @enable_oci.setter
@@ -4542,6 +9738,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppEnterpriseBaseUrl")
     def github_app_enterprise_base_url(self) -> Optional[str]:
+        """
+        Specifies the GitHub API URL for GitHub app authentication.
+        """
         return pulumi.get(self, "github_app_enterprise_base_url")
 
     @github_app_enterprise_base_url.setter
@@ -4551,6 +9750,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppId")
     def github_app_id(self) -> Optional[str]:
+        """
+        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        """
         return pulumi.get(self, "github_app_id")
 
     @github_app_id.setter
@@ -4560,6 +9762,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppInstallationId")
     def github_app_installation_id(self) -> Optional[str]:
+        """
+        Specifies the ID of the installed GitHub App for GitHub app authentication.
+        """
         return pulumi.get(self, "github_app_installation_id")
 
     @github_app_installation_id.setter
@@ -4569,6 +9774,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="githubAppPrivateKey")
     def github_app_private_key(self) -> Optional[str]:
+        """
+        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        """
         return pulumi.get(self, "github_app_private_key")
 
     @github_app_private_key.setter
@@ -4576,44 +9784,11 @@ class GetGitopsRepositoryRepoArgs:
         pulumi.set(self, "github_app_private_key", value)
 
     @property
-    @pulumi.getter(name="inheritedCreds")
-    def inherited_creds(self) -> Optional[bool]:
-        return pulumi.get(self, "inherited_creds")
-
-    @inherited_creds.setter
-    def inherited_creds(self, value: Optional[bool]):
-        pulumi.set(self, "inherited_creds", value)
-
-    @property
-    @pulumi.getter
-    def insecure(self) -> Optional[bool]:
-        return pulumi.get(self, "insecure")
-
-    @insecure.setter
-    def insecure(self, value: Optional[bool]):
-        pulumi.set(self, "insecure", value)
-
-    @property
-    @pulumi.getter(name="insecureIgnoreHostKey")
-    def insecure_ignore_host_key(self) -> Optional[bool]:
-        return pulumi.get(self, "insecure_ignore_host_key")
-
-    @insecure_ignore_host_key.setter
-    def insecure_ignore_host_key(self, value: Optional[bool]):
-        pulumi.set(self, "insecure_ignore_host_key", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[str]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        Password for authenticating at the repo server.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -4621,17 +9796,11 @@ class GetGitopsRepositoryRepoArgs:
         pulumi.set(self, "password", value)
 
     @property
-    @pulumi.getter
-    def proxy(self) -> Optional[str]:
-        return pulumi.get(self, "proxy")
-
-    @proxy.setter
-    def proxy(self, value: Optional[str]):
-        pulumi.set(self, "proxy", value)
-
-    @property
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[str]:
+        """
+        Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        """
         return pulumi.get(self, "ssh_private_key")
 
     @ssh_private_key.setter
@@ -4641,6 +9810,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[str]:
+        """
+        Specifies the TLS client cert data for authenticating at the repo server.
+        """
         return pulumi.get(self, "tls_client_cert_data")
 
     @tls_client_cert_data.setter
@@ -4650,6 +9822,9 @@ class GetGitopsRepositoryRepoArgs:
     @property
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[str]:
+        """
+        Specifies the TLS client cert key for authenticating at the repo server.
+        """
         return pulumi.get(self, "tls_client_cert_key")
 
     @tls_client_cert_key.setter
@@ -4658,7 +9833,34 @@ class GetGitopsRepositoryRepoArgs:
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        url representing this object.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        Username for authenticating at the repo server.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -4670,12 +9872,18 @@ class GetGitopsRepositoryRepoArgs:
 class GetGitopsRepositoryUpdateMaskArgs:
     def __init__(__self__, *,
                  paths: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] paths: The set of field mask paths.
+        """
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
 
     @property
     @pulumi.getter
     def paths(self) -> Optional[Sequence[str]]:
+        """
+        The set of field mask paths.
+        """
         return pulumi.get(self, "paths")
 
     @paths.setter
@@ -4684,25 +9892,336 @@ class GetGitopsRepositoryUpdateMaskArgs:
 
 
 @pulumi.input_type
-class GetRoleAssignmentsPrincipalArgs:
+class GetInputSetGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: str,
+                 branch_name: str,
+                 commit_message: str,
+                 connector_ref: str,
+                 file_path: str,
+                 last_commit_id: str,
+                 last_object_id: str,
+                 parent_entity_connector_ref: str,
+                 parent_entity_repo_name: str,
+                 repo_name: str,
+                 store_type: str):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch_name: Name of the branch.
+        :param str commit_message: Commit message used for the merge commit.
+        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity.
+        :param str file_path: File path of the Entity in the repository.
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param str parent_entity_connector_ref: Connector reference for Parent Entity (Pipeline).
+        :param str parent_entity_repo_name: Repository name for Parent Entity (Pipeline).
+        :param str repo_name: Name of the repository.
+        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        pulumi.set(__self__, "base_branch", base_branch)
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_message", commit_message)
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "file_path", file_path)
+        pulumi.set(__self__, "last_commit_id", last_commit_id)
+        pulumi.set(__self__, "last_object_id", last_object_id)
+        pulumi.set(__self__, "parent_entity_connector_ref", parent_entity_connector_ref)
+        pulumi.set(__self__, "parent_entity_repo_name", parent_entity_repo_name)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> str:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: str):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: str):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> str:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: str):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> str:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: str):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> str:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: str):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> str:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: str):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> str:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: str):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="parentEntityConnectorRef")
+    def parent_entity_connector_ref(self) -> str:
+        """
+        Connector reference for Parent Entity (Pipeline).
+        """
+        return pulumi.get(self, "parent_entity_connector_ref")
+
+    @parent_entity_connector_ref.setter
+    def parent_entity_connector_ref(self, value: str):
+        pulumi.set(self, "parent_entity_connector_ref", value)
+
+    @property
+    @pulumi.getter(name="parentEntityRepoName")
+    def parent_entity_repo_name(self) -> str:
+        """
+        Repository name for Parent Entity (Pipeline).
+        """
+        return pulumi.get(self, "parent_entity_repo_name")
+
+    @parent_entity_repo_name.setter
+    def parent_entity_repo_name(self, value: str):
+        pulumi.set(self, "parent_entity_repo_name", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: str):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> str:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: str):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class GetPipelineGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: str,
+                 branch_name: str,
+                 commit_message: str,
+                 connector_ref: str,
+                 file_path: str,
+                 last_commit_id: str,
+                 last_object_id: str,
+                 repo_name: str,
+                 store_type: str):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch_name: Name of the branch.
+        :param str commit_message: Commit message used for the merge commit.
+        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity.
+        :param str file_path: File path of the Entity in the repository.
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param str repo_name: Name of the repository.
+        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        pulumi.set(__self__, "base_branch", base_branch)
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_message", commit_message)
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "file_path", file_path)
+        pulumi.set(__self__, "last_commit_id", last_commit_id)
+        pulumi.set(__self__, "last_object_id", last_object_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> str:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: str):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: str):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> str:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: str):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> str:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: str):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> str:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: str):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> str:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: str):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> str:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: str):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: str):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> str:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: str):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class GetPolicysetPolicyArgs:
     def __init__(__self__, *,
                  identifier: str,
-                 scope_level: str,
-                 type: str):
+                 severity: str):
         """
-        :param str identifier: Identifier.
-        :param str scope_level: Scope level.
-        :param str type: Type.
+        :param str identifier: Account Identifier of the account
+        :param str severity: Organization Identifier
         """
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "scope_level", scope_level)
-        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "severity", severity)
 
     @property
     @pulumi.getter
     def identifier(self) -> str:
         """
-        Identifier.
+        Account Identifier of the account
         """
         return pulumi.get(self, "identifier")
 
@@ -4711,28 +10230,133 @@ class GetRoleAssignmentsPrincipalArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="scopeLevel")
-    def scope_level(self) -> str:
+    @pulumi.getter
+    def severity(self) -> str:
         """
-        Scope level.
+        Organization Identifier
         """
-        return pulumi.get(self, "scope_level")
+        return pulumi.get(self, "severity")
 
-    @scope_level.setter
-    def scope_level(self, value: str):
-        pulumi.set(self, "scope_level", value)
+    @severity.setter
+    def severity(self, value: str):
+        pulumi.set(self, "severity", value)
+
+
+@pulumi.input_type
+class GetTemplateGitDetailsArgs:
+    def __init__(__self__, *,
+                 last_commit_id: str,
+                 last_object_id: str,
+                 branch_name: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 file_url: Optional[str] = None,
+                 repo_name: Optional[str] = None,
+                 repo_url: Optional[str] = None):
+        """
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param str branch_name: Name of the branch.
+        :param str file_path: File path of the Entity in the repository.
+        :param str file_url: File url of the Entity in the repository.
+        :param str repo_name: Name of the repository.
+        :param str repo_url: Repo url of the Entity in the repository.
+        """
+        pulumi.set(__self__, "last_commit_id", last_commit_id)
+        pulumi.set(__self__, "last_object_id", last_object_id)
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if file_url is not None:
+            pulumi.set(__self__, "file_url", file_url)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if repo_url is not None:
+            pulumi.set(__self__, "repo_url", repo_url)
 
     @property
-    @pulumi.getter
-    def type(self) -> str:
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> str:
         """
-        Type.
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "last_commit_id")
 
-    @type.setter
-    def type(self, value: str):
-        pulumi.set(self, "type", value)
+    @last_commit_id.setter
+    def last_commit_id(self, value: str):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> str:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: str):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @branch_name.setter
+    def branch_name(self, value: Optional[str]):
+        pulumi.set(self, "branch_name", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[str]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="fileUrl")
+    def file_url(self) -> Optional[str]:
+        """
+        File url of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_url")
+
+    @file_url.setter
+    def file_url(self, value: Optional[str]):
+        pulumi.set(self, "file_url", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[str]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="repoUrl")
+    def repo_url(self) -> Optional[str]:
+        """
+        Repo url of the Entity in the repository.
+        """
+        return pulumi.get(self, "repo_url")
+
+    @repo_url.setter
+    def repo_url(self, value: Optional[str]):
+        pulumi.set(self, "repo_url", value)
 
 
 @pulumi.input_type
@@ -4741,18 +10365,21 @@ class GetUsergroupNotificationConfigArgs:
                  group_email: str,
                  microsoft_teams_webhook_url: str,
                  pager_duty_key: str,
+                 send_email_to_all_users: bool,
                  slack_webhook_url: str,
                  type: str):
         """
-        :param str group_email: Group email
-        :param str microsoft_teams_webhook_url: Url of Microsoft teams webhook
-        :param str pager_duty_key: Pager duty key
-        :param str slack_webhook_url: Url of slack webhook
-        :param str type: Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        :param str group_email: Group email.
+        :param str microsoft_teams_webhook_url: Url of Microsoft teams webhook.
+        :param str pager_duty_key: Pager duty key.
+        :param bool send_email_to_all_users: Send email to all the group members.
+        :param str slack_webhook_url: Url of slack webhook.
+        :param str type: Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         """
         pulumi.set(__self__, "group_email", group_email)
         pulumi.set(__self__, "microsoft_teams_webhook_url", microsoft_teams_webhook_url)
         pulumi.set(__self__, "pager_duty_key", pager_duty_key)
+        pulumi.set(__self__, "send_email_to_all_users", send_email_to_all_users)
         pulumi.set(__self__, "slack_webhook_url", slack_webhook_url)
         pulumi.set(__self__, "type", type)
 
@@ -4760,7 +10387,7 @@ class GetUsergroupNotificationConfigArgs:
     @pulumi.getter(name="groupEmail")
     def group_email(self) -> str:
         """
-        Group email
+        Group email.
         """
         return pulumi.get(self, "group_email")
 
@@ -4772,7 +10399,7 @@ class GetUsergroupNotificationConfigArgs:
     @pulumi.getter(name="microsoftTeamsWebhookUrl")
     def microsoft_teams_webhook_url(self) -> str:
         """
-        Url of Microsoft teams webhook
+        Url of Microsoft teams webhook.
         """
         return pulumi.get(self, "microsoft_teams_webhook_url")
 
@@ -4784,7 +10411,7 @@ class GetUsergroupNotificationConfigArgs:
     @pulumi.getter(name="pagerDutyKey")
     def pager_duty_key(self) -> str:
         """
-        Pager duty key
+        Pager duty key.
         """
         return pulumi.get(self, "pager_duty_key")
 
@@ -4793,10 +10420,22 @@ class GetUsergroupNotificationConfigArgs:
         pulumi.set(self, "pager_duty_key", value)
 
     @property
+    @pulumi.getter(name="sendEmailToAllUsers")
+    def send_email_to_all_users(self) -> bool:
+        """
+        Send email to all the group members.
+        """
+        return pulumi.get(self, "send_email_to_all_users")
+
+    @send_email_to_all_users.setter
+    def send_email_to_all_users(self, value: bool):
+        pulumi.set(self, "send_email_to_all_users", value)
+
+    @property
     @pulumi.getter(name="slackWebhookUrl")
     def slack_webhook_url(self) -> str:
         """
-        Url of slack webhook
+        Url of slack webhook.
         """
         return pulumi.get(self, "slack_webhook_url")
 
@@ -4808,7 +10447,7 @@ class GetUsergroupNotificationConfigArgs:
     @pulumi.getter
     def type(self) -> str:
         """
-        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         """
         return pulumi.get(self, "type")
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -90,7 +88,7 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				Description: pulumi.String("description"),
-//				Identifier:  pulumi.String(fmt.Sprintf("%v[1]s", "%")),
+//				Identifier:  pulumi.String("%[1]s"),
 //				OpenidConnect: &platform.KubernetesConnectorOpenidConnectArgs{
 //					ClientIdRef: pulumi.String("account.TEST_k8s_client_test"),
 //					IssuerUrl:   pulumi.String("https://oidc.example.com"),
@@ -133,11 +131,27 @@ import (
 //
 // ## Import
 //
-// # Import using kubernetes connector id
+// # Import account level kubernetes connector
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
+//
+// ```
+//
+//	Import org level kubernetes connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level kubernetes connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
 //
 // ```
 type KubernetesConnector struct {
@@ -157,13 +171,13 @@ type KubernetesConnector struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrOutput `pulumi:"openidConnect"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrOutput `pulumi:"serviceAccount"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Username and password for the connector.
 	UsernamePassword KubernetesConnectorUsernamePasswordPtrOutput `pulumi:"usernamePassword"`
@@ -216,13 +230,13 @@ type kubernetesConnectorState struct {
 	Name *string `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect *KubernetesConnectorOpenidConnect `pulumi:"openidConnect"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount *KubernetesConnectorServiceAccount `pulumi:"serviceAccount"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Username and password for the connector.
 	UsernamePassword *KubernetesConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -243,13 +257,13 @@ type KubernetesConnectorState struct {
 	Name pulumi.StringPtrInput
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Username and password for the connector.
 	UsernamePassword KubernetesConnectorUsernamePasswordPtrInput
@@ -274,13 +288,13 @@ type kubernetesConnectorArgs struct {
 	Name *string `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnect *KubernetesConnectorOpenidConnect `pulumi:"openidConnect"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccount *KubernetesConnectorServiceAccount `pulumi:"serviceAccount"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Username and password for the connector.
 	UsernamePassword *KubernetesConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -302,13 +316,13 @@ type KubernetesConnectorArgs struct {
 	Name pulumi.StringPtrInput
 	// OpenID configuration for the connector.
 	OpenidConnect KubernetesConnectorOpenidConnectPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Service account for the connector.
 	ServiceAccount KubernetesConnectorServiceAccountPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Username and password for the connector.
 	UsernamePassword KubernetesConnectorUsernamePasswordPtrInput
@@ -438,12 +452,12 @@ func (o KubernetesConnectorOutput) OpenidConnect() KubernetesConnectorOpenidConn
 	return o.ApplyT(func(v *KubernetesConnector) KubernetesConnectorOpenidConnectPtrOutput { return v.OpenidConnect }).(KubernetesConnectorOpenidConnectPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o KubernetesConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o KubernetesConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -453,7 +467,7 @@ func (o KubernetesConnectorOutput) ServiceAccount() KubernetesConnectorServiceAc
 	return o.ApplyT(func(v *KubernetesConnector) KubernetesConnectorServiceAccountPtrOutput { return v.ServiceAccount }).(KubernetesConnectorServiceAccountPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o KubernetesConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -18,6 +18,63 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Splunk connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.SplunkConnector;
+ * import com.pulumi.harness.platform.SplunkConnectorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new SplunkConnector(&#34;test&#34;, SplunkConnectorArgs.builder()        
+ *             .accountId(&#34;splunk_account_id&#34;)
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .passwordRef(&#34;account.secret_id&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://splunk.com/&#34;)
+ *             .username(&#34;username&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level splunk connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level splunk connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level splunk connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/splunkConnector:SplunkConnector")
 public class SplunkConnector extends com.pulumi.resources.CustomResource {
@@ -25,7 +82,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * Splunk account id.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -36,14 +93,14 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -53,7 +110,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -67,7 +124,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -81,7 +138,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -92,70 +149,70 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * The reference to the Harness secret containing the Splunk password.
+     * The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Export(name="passwordRef", type=String.class, parameters={})
+    @Export(name="passwordRef", refs={String.class}, tree="[0]")
     private Output<String> passwordRef;
 
     /**
-     * @return The reference to the Harness secret containing the Splunk password.
+     * @return The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
         return this.passwordRef;
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url of the Splunk server.
+     * URL of the Splunk server.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Url of the Splunk server.
+     * @return URL of the Splunk server.
      * 
      */
     public Output<String> url() {
@@ -165,7 +222,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * The username used for connecting to Splunk.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

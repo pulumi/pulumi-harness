@@ -18,7 +18,7 @@ public final class GithubConnectorApiAuthentication {
      */
     private @Nullable GithubConnectorApiAuthenticationGithubApp githubApp;
     /**
-     * @return Personal access token for interacting with the github api.
+     * @return Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String tokenRef;
@@ -32,7 +32,7 @@ public final class GithubConnectorApiAuthentication {
         return Optional.ofNullable(this.githubApp);
     }
     /**
-     * @return Personal access token for interacting with the github api.
+     * @return Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> tokenRef() {

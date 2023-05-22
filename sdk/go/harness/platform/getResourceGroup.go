@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupResourceGroup(ctx, &platform.LookupResourceGroupArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupResourceGroup(ctx, &platform.LookupResourceGroupArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,12 +50,12 @@ func LookupResourceGroup(ctx *pulumi.Context, args *LookupResourceGroupArgs, opt
 // A collection of arguments for invoking getResourceGroup.
 type LookupResourceGroupArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -72,18 +72,18 @@ type LookupResourceGroupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Included scopes
 	IncludedScopes []GetResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []GetResourceGroupResourceFilter `pulumi:"resourceFilters"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -103,12 +103,12 @@ func LookupResourceGroupOutput(ctx *pulumi.Context, args LookupResourceGroupOutp
 // A collection of arguments for invoking getResourceGroup.
 type LookupResourceGroupOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -157,8 +157,8 @@ func (o LookupResourceGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupResourceGroupResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupResourceGroupResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceGroupResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Included scopes
@@ -171,12 +171,12 @@ func (o LookupResourceGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupResourceGroupResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupResourceGroupResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -186,7 +186,7 @@ func (o LookupResourceGroupResultOutput) ResourceFilters() GetResourceGroupResou
 	return o.ApplyT(func(v LookupResourceGroupResult) []GetResourceGroupResourceFilter { return v.ResourceFilters }).(GetResourceGroupResourceFilterArrayOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupResourceGroupResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupResourceGroupResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Nexus connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getNexusConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getNexusConnector(args?: GetNexusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetNexusConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getNexusConnector(args: GetNexusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetNexusConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getNexusConnector:getNexusConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetNexusConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -55,7 +62,7 @@ export interface GetNexusConnectorResult {
      */
     readonly credentials: outputs.platform.GetNexusConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -69,21 +76,21 @@ export interface GetNexusConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -95,9 +102,22 @@ export interface GetNexusConnectorResult {
      */
     readonly version: string;
 }
-
-export function getNexusConnectorOutput(args?: GetNexusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNexusConnectorResult> {
-    return pulumi.output(args).apply(a => getNexusConnector(a, opts))
+/**
+ * Datasource for looking up a Nexus connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getNexusConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getNexusConnectorOutput(args: GetNexusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNexusConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getNexusConnector(a, opts))
 }
 
 /**
@@ -107,17 +127,17 @@ export interface GetNexusConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

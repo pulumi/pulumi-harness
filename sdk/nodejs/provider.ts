@@ -30,7 +30,8 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      */
     public readonly apiKey!: pulumi.Output<string | undefined>;
     /**
@@ -40,7 +41,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly endpoint!: pulumi.Output<string | undefined>;
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable.
+     * variable. For more information to create an API key in NextGen, see
+     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */
     public readonly platformApiKey!: pulumi.Output<string | undefined>;
 
@@ -74,7 +76,8 @@ export interface ProviderArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      */
     apiKey?: pulumi.Input<string>;
     /**
@@ -84,7 +87,8 @@ export interface ProviderArgs {
     endpoint?: pulumi.Input<string>;
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable.
+     * variable. For more information to create an API key in NextGen, see
+     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */
     platformApiKey?: pulumi.Input<string>;
 }

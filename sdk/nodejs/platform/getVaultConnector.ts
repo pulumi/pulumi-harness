@@ -13,18 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getVaultConnector({
+ * const example = harness.platform.getVaultConnector({
  *     identifier: "identifier",
- * }));
+ * });
  * ```
  */
-export function getVaultConnector(args?: GetVaultConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getVaultConnector(args: GetVaultConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getVaultConnector:getVaultConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -40,17 +36,17 @@ export interface GetVaultConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -98,7 +94,7 @@ export interface GetVaultConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Is default or not.
      */
@@ -120,11 +116,11 @@ export interface GetVaultConnectorResult {
      */
     readonly namespace: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -164,7 +160,7 @@ export interface GetVaultConnectorResult {
      */
     readonly sinkPath: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -196,9 +192,22 @@ export interface GetVaultConnectorResult {
      */
     readonly xvaultAwsIamServerId: string;
 }
-
-export function getVaultConnectorOutput(args?: GetVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultConnectorResult> {
-    return pulumi.output(args).apply(a => getVaultConnector(a, opts))
+/**
+ * DataSource for looking up a Vault connector in Harness.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getVaultConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getVaultConnectorOutput(args: GetVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getVaultConnector(a, opts))
 }
 
 /**
@@ -208,17 +217,17 @@ export interface GetVaultConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -44,7 +44,8 @@ namespace Lbrlabs.PulumiPackage.Harness
 
         private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey") ?? Utilities.GetEnv("HARNESS_API_KEY"));
         /// <summary>
-        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+        /// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         /// </summary>
         public static string? ApiKey
         {
@@ -66,7 +67,8 @@ namespace Lbrlabs.PulumiPackage.Harness
         private static readonly __Value<string?> _platformApiKey = new __Value<string?>(() => __config.Get("platformApiKey") ?? Utilities.GetEnv("HARNESS_PLATFORM_API_KEY"));
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        /// variable.
+        /// variable. For more information to create an API key in NextGen, see
+        /// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         /// </summary>
         public static string? PlatformApiKey
         {

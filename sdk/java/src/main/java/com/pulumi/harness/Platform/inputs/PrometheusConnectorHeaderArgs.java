@@ -17,14 +17,14 @@ public final class PrometheusConnectorHeaderArgs extends com.pulumi.resources.Re
     public static final PrometheusConnectorHeaderArgs Empty = new PrometheusConnectorHeaderArgs();
 
     /**
-     * Encrypted value reference.
+     * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="encryptedValueRef")
     private @Nullable Output<String> encryptedValueRef;
 
     /**
-     * @return Encrypted value reference.
+     * @return Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> encryptedValueRef() {
@@ -104,7 +104,7 @@ public final class PrometheusConnectorHeaderArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param encryptedValueRef Encrypted value reference.
+         * @param encryptedValueRef Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class PrometheusConnectorHeaderArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param encryptedValueRef Encrypted value reference.
+         * @param encryptedValueRef Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

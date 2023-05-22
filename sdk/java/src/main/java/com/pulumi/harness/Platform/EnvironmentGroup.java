@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * Import using the environment group id.
  * 
  * ```sh
- *  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;environment_group_id&gt;
+ *  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;environment_group_id&gt;
  * ```
  * 
  */
@@ -75,7 +75,7 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
      * Color of the environment group.
      * 
      */
-    @Export(name="color", type=String.class, parameters={})
+    @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
     /**
@@ -86,10 +86,24 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
         return this.color;
     }
     /**
+     * Enable this flag for force deletion of environment group
+     * 
+     */
+    @Export(name="forceDelete", refs={String.class}, tree="[0]")
+    private Output<String> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of environment group
+     * 
+     */
+    public Output<String> forceDelete() {
+        return this.forceDelete;
+    }
+    /**
      * identifier of the environment group.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -103,7 +117,7 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
      * org_id of the environment group.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
@@ -117,7 +131,7 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
      * project_id of the environment group.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -128,14 +142,14 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Env group YAML
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    @Export(name="yaml", type=String.class, parameters={})
+    @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return Env group YAML
+     * @return Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

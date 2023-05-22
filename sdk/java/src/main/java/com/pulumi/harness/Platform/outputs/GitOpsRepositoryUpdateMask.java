@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GitOpsRepositoryUpdateMask {
+    /**
+     * @return The set of field mask paths.
+     * 
+     */
     private @Nullable List<String> paths;
 
     private GitOpsRepositoryUpdateMask() {}
+    /**
+     * @return The set of field mask paths.
+     * 
+     */
     public List<String> paths() {
         return this.paths == null ? List.of() : this.paths;
     }

@@ -20,7 +20,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string> MasterUrl { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the secret containing the password for the connector.
+        /// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef", required: true)]
         public Input<string> PasswordRef { get; set; } = null!;
@@ -32,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Reference to the secret containing the username for the connector.
+        /// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("usernameRef")]
         public Input<string>? UsernameRef { get; set; }

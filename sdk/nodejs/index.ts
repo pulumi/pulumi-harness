@@ -35,11 +35,6 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
-export { EnvironmentServiceOverridesArgs, EnvironmentServiceOverridesState } from "./environmentServiceOverrides";
-export type EnvironmentServiceOverrides = import("./environmentServiceOverrides").EnvironmentServiceOverrides;
-export const EnvironmentServiceOverrides: typeof import("./environmentServiceOverrides").EnvironmentServiceOverrides = null as any;
-utilities.lazyLoad(exports, ["EnvironmentServiceOverrides"], () => require("./environmentServiceOverrides"));
-
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
@@ -59,6 +54,11 @@ export { GetEncryptedTextArgs, GetEncryptedTextResult, GetEncryptedTextOutputArg
 export const getEncryptedText: typeof import("./getEncryptedText").getEncryptedText = null as any;
 export const getEncryptedTextOutput: typeof import("./getEncryptedText").getEncryptedTextOutput = null as any;
 utilities.lazyLoad(exports, ["getEncryptedText","getEncryptedTextOutput"], () => require("./getEncryptedText"));
+
+export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
+export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
+export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetGitConnectorArgs, GetGitConnectorResult, GetGitConnectorOutputArgs } from "./getGitConnector";
 export const getGitConnector: typeof import("./getGitConnector").getGitConnector = null as any;
@@ -84,6 +84,11 @@ export { GetSsoProviderArgs, GetSsoProviderResult, GetSsoProviderOutputArgs } fr
 export const getSsoProvider: typeof import("./getSsoProvider").getSsoProvider = null as any;
 export const getSsoProviderOutput: typeof import("./getSsoProvider").getSsoProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getSsoProvider","getSsoProviderOutput"], () => require("./getSsoProvider"));
+
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -172,8 +177,6 @@ const _module = {
                 return new EncryptedText(name, <any>undefined, { urn })
             case "harness:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
-            case "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides":
-                return new EnvironmentServiceOverrides(name, <any>undefined, { urn })
             case "harness:index/gitConnector:GitConnector":
                 return new GitConnector(name, <any>undefined, { urn })
             case "harness:index/infrastructureDefinition:InfrastructureDefinition":
@@ -199,7 +202,6 @@ pulumi.runtime.registerResourceModule("harness", "index/applicationGitSync", _mo
 pulumi.runtime.registerResourceModule("harness", "index/delegateApproval", _module)
 pulumi.runtime.registerResourceModule("harness", "index/encryptedText", _module)
 pulumi.runtime.registerResourceModule("harness", "index/environment", _module)
-pulumi.runtime.registerResourceModule("harness", "index/environmentServiceOverrides", _module)
 pulumi.runtime.registerResourceModule("harness", "index/gitConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "index/infrastructureDefinition", _module)
 pulumi.runtime.registerResourceModule("harness", "index/sshCredential", _module)

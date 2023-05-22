@@ -29,7 +29,7 @@ class GitConnectorArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GitConnector resource.
-        :param pulumi.Input[str] url: The url of the git repository or account/organization
+        :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         :param pulumi.Input[str] branch: The branch of the git connector to use
         :param pulumi.Input['GitConnectorCommitDetailsArgs'] commit_details: Custom details to use when making commits using this git connector
@@ -66,7 +66,7 @@ class GitConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        The url of the git repository or account/organization
+        The URL of the git repository or account/organization
         """
         return pulumi.get(self, "url")
 
@@ -221,7 +221,7 @@ class _GitConnectorState:
         :param pulumi.Input[str] name: Name of the git connector.
         :param pulumi.Input[str] password_secret_id: The id of the secret for connecting to the git repository.
         :param pulumi.Input[str] ssh_setting_id: The id of the SSH secret to use
-        :param pulumi.Input[str] url: The url of the git repository or account/organization
+        :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         :param pulumi.Input[Sequence[pulumi.Input['GitConnectorUsageScopeArgs']]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] username: The name of the user used to connect to the git repository
@@ -354,7 +354,7 @@ class _GitConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The url of the git repository or account/organization
+        The URL of the git repository or account/organization
         """
         return pulumi.get(self, "url")
 
@@ -468,7 +468,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the git connector.
         :param pulumi.Input[str] password_secret_id: The id of the secret for connecting to the git repository.
         :param pulumi.Input[str] ssh_setting_id: The id of the SSH secret to use
-        :param pulumi.Input[str] url: The url of the git repository or account/organization
+        :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] username: The name of the user used to connect to the git repository
@@ -600,7 +600,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the git connector.
         :param pulumi.Input[str] password_secret_id: The id of the secret for connecting to the git repository.
         :param pulumi.Input[str] ssh_setting_id: The id of the SSH secret to use
-        :param pulumi.Input[str] url: The url of the git repository or account/organization
+        :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] username: The name of the user used to connect to the git repository
@@ -693,7 +693,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The url of the git repository or account/organization
+        The URL of the git repository or account/organization
         """
         return pulumi.get(self, "url")
 

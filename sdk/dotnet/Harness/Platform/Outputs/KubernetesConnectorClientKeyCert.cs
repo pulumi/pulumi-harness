@@ -15,11 +15,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class KubernetesConnectorClientKeyCert
     {
         /// <summary>
-        /// Reference to the secret containing the CA certificate for the connector.
+        /// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? CaCertRef;
         /// <summary>
-        /// Reference to the secret containing the client certificate for the connector.
+        /// Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string ClientCertRef;
         /// <summary>
@@ -27,11 +27,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string ClientKeyAlgorithm;
         /// <summary>
-        /// Reference to the secret containing the client key passphrase for the connector.
+        /// Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? ClientKeyPassphraseRef;
         /// <summary>
-        /// Reference to the secret containing the client key for the connector.
+        /// Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string ClientKeyRef;
         /// <summary>

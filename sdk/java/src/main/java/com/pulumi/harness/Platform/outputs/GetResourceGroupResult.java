@@ -43,7 +43,7 @@ public final class GetResourceGroupResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Included scopes
      * 
@@ -55,12 +55,12 @@ public final class GetResourceGroupResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
@@ -70,7 +70,7 @@ public final class GetResourceGroupResult {
      */
     private List<GetResourceGroupResourceFilter> resourceFilters;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -115,8 +115,8 @@ public final class GetResourceGroupResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Included scopes
@@ -133,14 +133,14 @@ public final class GetResourceGroupResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -154,7 +154,7 @@ public final class GetResourceGroupResult {
         return this.resourceFilters;
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
@@ -175,7 +175,7 @@ public final class GetResourceGroupResult {
         private String color;
         private String description;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private List<GetResourceGroupIncludedScope> includedScopes;
         private @Nullable String name;
         private @Nullable String orgId;
@@ -228,8 +228,8 @@ public final class GetResourceGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter

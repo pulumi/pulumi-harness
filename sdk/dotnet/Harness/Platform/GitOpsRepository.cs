@@ -10,77 +10,127 @@ using Pulumi;
 
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating Harness Gitops Repositories.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.GitOpsRepository("example", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         AgentId = "agent_id",
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Repos = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GitOpsRepositoryRepoArgs
+    ///             {
+    ///                 ConnectionType = "HTTPS_ANONYMOUS",
+    ///                 Insecure = true,
+    ///                 Name = "repo_name",
+    ///                 Repo = "https://github.com/willycoll/argocd-example-apps.git",
+    ///             },
+    ///         },
+    ///         Upsert = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import a Account level Gitops Repository
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;agent_id&gt;/&lt;respository_id&gt;
+    /// ```
+    /// 
+    ///  Import a Project level Gitops Repository
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;respository_id&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/gitOpsRepository:GitOpsRepository")]
     public partial class GitOpsRepository : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps repository.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps repository.
         /// </summary>
         [Output("agentId")]
-        public Output<string?> AgentId { get; private set; } = null!;
+        public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// Credentials only of the Repo.
+        /// Indicates if to operate on credential set instead of repository.
         /// </summary>
         [Output("credsOnly")]
         public Output<bool?> CredsOnly { get; private set; } = null!;
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps repository.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the GitOps repository.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps repository.
         /// </summary>
         [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Force refresh query for Repo.
+        /// Indicates to force refresh query for repository.
         /// </summary>
         [Output("queryForceRefresh")]
         public Output<bool?> QueryForceRefresh { get; private set; } = null!;
 
         /// <summary>
-        /// Project to Query for Repo.
+        /// Project to query for the GitOps repo.
         /// </summary>
         [Output("queryProject")]
         public Output<string?> QueryProject { get; private set; } = null!;
 
         /// <summary>
-        /// Repo to Query.
+        /// GitOps repository to query.
         /// </summary>
         [Output("queryRepo")]
         public Output<string?> QueryRepo { get; private set; } = null!;
 
         /// <summary>
-        /// Repo Details that need to be stored.
+        /// Repo details holding application configurations.
         /// </summary>
         [Output("repos")]
         public Output<ImmutableArray<Outputs.GitOpsRepositoryRepo>> Repos { get; private set; } = null!;
 
         /// <summary>
-        /// Update mask of the Repository.
+        /// Update mask of the repository.
         /// </summary>
         [Output("updateMasks")]
         public Output<ImmutableArray<Outputs.GitOpsRepositoryUpdateMask>> UpdateMasks { get; private set; } = null!;
 
         /// <summary>
-        /// Upsert the Repo Details.
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
         /// </summary>
         [Output("upsert")]
         public Output<bool?> Upsert { get; private set; } = null!;
@@ -133,55 +183,55 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GitOpsRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps repository.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps repository.
         /// </summary>
-        [Input("agentId")]
-        public Input<string>? AgentId { get; set; }
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Credentials only of the Repo.
+        /// Indicates if to operate on credential set instead of repository.
         /// </summary>
         [Input("credsOnly")]
         public Input<bool>? CredsOnly { get; set; }
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the GitOps repository.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps repository.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Force refresh query for Repo.
+        /// Indicates to force refresh query for repository.
         /// </summary>
         [Input("queryForceRefresh")]
         public Input<bool>? QueryForceRefresh { get; set; }
 
         /// <summary>
-        /// Project to Query for Repo.
+        /// Project to query for the GitOps repo.
         /// </summary>
         [Input("queryProject")]
         public Input<string>? QueryProject { get; set; }
 
         /// <summary>
-        /// Repo to Query.
+        /// GitOps repository to query.
         /// </summary>
         [Input("queryRepo")]
         public Input<string>? QueryRepo { get; set; }
@@ -190,7 +240,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsRepositoryRepoArgs>? _repos;
 
         /// <summary>
-        /// Repo Details that need to be stored.
+        /// Repo details holding application configurations.
         /// </summary>
         public InputList<Inputs.GitOpsRepositoryRepoArgs> Repos
         {
@@ -202,7 +252,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsRepositoryUpdateMaskArgs>? _updateMasks;
 
         /// <summary>
-        /// Update mask of the Repository.
+        /// Update mask of the repository.
         /// </summary>
         public InputList<Inputs.GitOpsRepositoryUpdateMaskArgs> UpdateMasks
         {
@@ -211,7 +261,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Upsert the Repo Details.
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
@@ -225,55 +275,55 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GitOpsRepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps repository.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps repository.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// Credentials only of the Repo.
+        /// Indicates if to operate on credential set instead of repository.
         /// </summary>
         [Input("credsOnly")]
         public Input<bool>? CredsOnly { get; set; }
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the GitOps repository.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps repository.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Force refresh query for Repo.
+        /// Indicates to force refresh query for repository.
         /// </summary>
         [Input("queryForceRefresh")]
         public Input<bool>? QueryForceRefresh { get; set; }
 
         /// <summary>
-        /// Project to Query for Repo.
+        /// Project to query for the GitOps repo.
         /// </summary>
         [Input("queryProject")]
         public Input<string>? QueryProject { get; set; }
 
         /// <summary>
-        /// Repo to Query.
+        /// GitOps repository to query.
         /// </summary>
         [Input("queryRepo")]
         public Input<string>? QueryRepo { get; set; }
@@ -282,7 +332,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsRepositoryRepoGetArgs>? _repos;
 
         /// <summary>
-        /// Repo Details that need to be stored.
+        /// Repo details holding application configurations.
         /// </summary>
         public InputList<Inputs.GitOpsRepositoryRepoGetArgs> Repos
         {
@@ -294,7 +344,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsRepositoryUpdateMaskGetArgs>? _updateMasks;
 
         /// <summary>
-        /// Update mask of the Repository.
+        /// Update mask of the repository.
         /// </summary>
         public InputList<Inputs.GitOpsRepositoryUpdateMaskGetArgs> UpdateMasks
         {
@@ -303,7 +353,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Upsert the Repo Details.
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }

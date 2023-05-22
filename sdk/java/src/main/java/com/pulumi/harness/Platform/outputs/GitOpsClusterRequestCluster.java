@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public final class GitOpsClusterRequestCluster {
     private @Nullable Map<String,String> annotations;
     private @Nullable Boolean clusterResources;
-    private @Nullable List<GitOpsClusterRequestClusterConfig> configs;
+    private List<GitOpsClusterRequestClusterConfig> configs;
     private @Nullable List<GitOpsClusterRequestClusterInfo> infos;
     private @Nullable Map<String,String> labels;
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class GitOpsClusterRequestCluster {
         return Optional.ofNullable(this.clusterResources);
     }
     public List<GitOpsClusterRequestClusterConfig> configs() {
-        return this.configs == null ? List.of() : this.configs;
+        return this.configs;
     }
     public List<GitOpsClusterRequestClusterInfo> infos() {
         return this.infos == null ? List.of() : this.infos;
@@ -75,7 +75,7 @@ public final class GitOpsClusterRequestCluster {
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
         private @Nullable Boolean clusterResources;
-        private @Nullable List<GitOpsClusterRequestClusterConfig> configs;
+        private List<GitOpsClusterRequestClusterConfig> configs;
         private @Nullable List<GitOpsClusterRequestClusterInfo> infos;
         private @Nullable Map<String,String> labels;
         private @Nullable String name;
@@ -111,8 +111,8 @@ public final class GitOpsClusterRequestCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder configs(@Nullable List<GitOpsClusterRequestClusterConfig> configs) {
-            this.configs = configs;
+        public Builder configs(List<GitOpsClusterRequestClusterConfig> configs) {
+            this.configs = Objects.requireNonNull(configs);
             return this;
         }
         public Builder configs(GitOpsClusterRequestClusterConfig... configs) {

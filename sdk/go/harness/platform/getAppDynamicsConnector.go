@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up an App Dynamics connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupAppDynamicsConnector(ctx, &platform.LookupAppDynamicsConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAppDynamicsConnector(ctx *pulumi.Context, args *LookupAppDynamicsConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAppDynamicsConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAppDynamicsConnectorResult
@@ -24,12 +50,12 @@ func LookupAppDynamicsConnector(ctx *pulumi.Context, args *LookupAppDynamicsConn
 // A collection of arguments for invoking getAppDynamicsConnector.
 type LookupAppDynamicsConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -39,23 +65,23 @@ type LookupAppDynamicsConnectorResult struct {
 	AccountName string `pulumi:"accountName"`
 	// Authenticate to App Dynamics using api token.
 	ApiTokens []GetAppDynamicsConnectorApiToken `pulumi:"apiTokens"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url string `pulumi:"url"`
 	// Authenticate to App Dynamics using username and password.
 	UsernamePasswords []GetAppDynamicsConnectorUsernamePassword `pulumi:"usernamePasswords"`
@@ -77,12 +103,12 @@ func LookupAppDynamicsConnectorOutput(ctx *pulumi.Context, args LookupAppDynamic
 // A collection of arguments for invoking getAppDynamicsConnector.
 type LookupAppDynamicsConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -115,7 +141,7 @@ func (o LookupAppDynamicsConnectorResultOutput) ApiTokens() GetAppDynamicsConnec
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) []GetAppDynamicsConnectorApiToken { return v.ApiTokens }).(GetAppDynamicsConnectorApiTokenArrayOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupAppDynamicsConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -131,8 +157,8 @@ func (o LookupAppDynamicsConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupAppDynamicsConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupAppDynamicsConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -140,22 +166,22 @@ func (o LookupAppDynamicsConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupAppDynamicsConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupAppDynamicsConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupAppDynamicsConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the App Dynamics controller.
+// URL of the App Dynamics controller.
 func (o LookupAppDynamicsConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppDynamicsConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

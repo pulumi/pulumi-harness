@@ -30,7 +30,7 @@ public final class GetBitbucketConnectorResult {
      */
     private List<GetBitbucketConnectorCredential> credentials;
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     private List<String> delegateSelectors;
@@ -48,29 +48,29 @@ public final class GetBitbucketConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
     /**
-     * @return Url of the BitBucket repository or account.
+     * @return URL of the BitBucket repository or account.
      * 
      */
     private String url;
@@ -103,7 +103,7 @@ public final class GetBitbucketConnectorResult {
         return this.credentials;
     }
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public List<String> delegateSelectors() {
@@ -127,8 +127,8 @@ public final class GetBitbucketConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Name of the resource.
@@ -138,28 +138,28 @@ public final class GetBitbucketConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
         return this.tags;
     }
     /**
-     * @return Url of the BitBucket repository or account.
+     * @return URL of the BitBucket repository or account.
      * 
      */
     public String url() {
@@ -188,7 +188,7 @@ public final class GetBitbucketConnectorResult {
         private List<String> delegateSelectors;
         private String description;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -253,8 +253,8 @@ public final class GetBitbucketConnectorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter

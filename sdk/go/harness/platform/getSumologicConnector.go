@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Sumologic connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupSumologicConnector(ctx, &platform.LookupSumologicConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSumologicConnector(ctx *pulumi.Context, args *LookupSumologicConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSumologicConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSumologicConnectorResult
@@ -24,38 +50,38 @@ func LookupSumologicConnector(ctx *pulumi.Context, args *LookupSumologicConnecto
 // A collection of arguments for invoking getSumologicConnector.
 type LookupSumologicConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getSumologicConnector.
 type LookupSumologicConnectorResult struct {
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef string `pulumi:"accessIdRef"`
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url string `pulumi:"url"`
 }
 
@@ -75,12 +101,12 @@ func LookupSumologicConnectorOutput(ctx *pulumi.Context, args LookupSumologicCon
 // A collection of arguments for invoking getSumologicConnector.
 type LookupSumologicConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -103,17 +129,17 @@ func (o LookupSumologicConnectorResultOutput) ToLookupSumologicConnectorResultOu
 	return o
 }
 
-// Reference to the Harness secret containing the access id.
+// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupSumologicConnectorResultOutput) AccessIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) string { return v.AccessIdRef }).(pulumi.StringOutput)
 }
 
-// Reference to the Harness secret containing the access key.
+// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupSumologicConnectorResultOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) string { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupSumologicConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -129,8 +155,8 @@ func (o LookupSumologicConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupSumologicConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSumologicConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupSumologicConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSumologicConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -138,22 +164,22 @@ func (o LookupSumologicConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupSumologicConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupSumologicConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupSumologicConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the SumoLogic server.
+// URL of the SumoLogic server.
 func (o LookupSumologicConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSumologicConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -50,6 +51,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 

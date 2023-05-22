@@ -35,7 +35,7 @@ public final class GetAwsConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Inherit credentials from the delegate.
      * 
@@ -57,17 +57,17 @@ public final class GetAwsConnectorResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -98,8 +98,8 @@ public final class GetAwsConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Inherit credentials from the delegate.
@@ -130,21 +130,21 @@ public final class GetAwsConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
@@ -163,7 +163,7 @@ public final class GetAwsConnectorResult {
         private List<GetAwsConnectorCrossAccountAccess> crossAccountAccesses;
         private String description;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private List<GetAwsConnectorInheritFromDelegate> inheritFromDelegates;
         private List<GetAwsConnectorIrsa> irsas;
         private List<GetAwsConnectorManual> manuals;
@@ -206,8 +206,8 @@ public final class GetAwsConnectorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter

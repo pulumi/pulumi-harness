@@ -14,14 +14,58 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     {
         /// <summary>
         /// Datasource for looking up an AWS Secret Manager connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAwsSecretManagerConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Task<GetAwsSecretManagerConnectorResult> InvokeAsync(GetAwsSecretManagerConnectorArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetAwsSecretManagerConnectorResult> InvokeAsync(GetAwsSecretManagerConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up an AWS Secret Manager connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAwsSecretManagerConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Output<GetAwsSecretManagerConnectorResult> Invoke(GetAwsSecretManagerConnectorInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetAwsSecretManagerConnectorResult> Invoke(GetAwsSecretManagerConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorInvokeArgs(), options.WithDefaults());
     }
 
@@ -31,8 +75,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -41,13 +85,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -63,8 +107,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -73,13 +117,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -95,11 +139,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GetAwsSecretManagerConnectorResult
     {
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialResult> Credentials;
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
@@ -113,17 +157,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
@@ -135,7 +179,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string SecretNamePrefix;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 
@@ -149,7 +193,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string id,
 
-            string? identifier,
+            string identifier,
 
             string? name,
 

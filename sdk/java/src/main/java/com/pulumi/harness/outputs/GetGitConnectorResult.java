@@ -60,7 +60,7 @@ public final class GetGitConnectorResult {
      */
     private String sshSettingId;
     /**
-     * @return The url of the git repository or account/organization.
+     * @return The URL of the git repository or account/organization.
      * 
      */
     private String url;
@@ -145,7 +145,7 @@ public final class GetGitConnectorResult {
         return this.sshSettingId;
     }
     /**
-     * @return The url of the git repository or account/organization.
+     * @return The URL of the git repository or account/organization.
      * 
      */
     public String url() {

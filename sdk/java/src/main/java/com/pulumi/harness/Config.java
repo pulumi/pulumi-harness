@@ -18,7 +18,8 @@ public final class Config {
         return Codegen.stringProp("accountId").config(config).env("HARNESS_ACCOUNT_ID").require();
     }
 /**
- * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+ * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+ * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
  * 
  */
     public Optional<String> apiKey() {
@@ -34,7 +35,8 @@ public final class Config {
     }
 /**
  * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
- * variable.
+ * variable. For more information to create an API key in NextGen, see
+ * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
  * 
  */
     public Optional<String> platformApiKey() {

@@ -57,7 +57,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter(name="apiTokenRef")
     def api_token_ref(self) -> str:
         """
-        The reference to the Harness secret containing the api token.
+        The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "api_token_ref")
 
@@ -65,7 +65,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -87,7 +87,7 @@ class GetDynatraceConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -105,7 +105,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -113,7 +113,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -121,7 +121,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -129,7 +129,7 @@ class GetDynatraceConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        Url of the Dynatrace server.
+        URL of the Dynatrace server.
         """
         return pulumi.get(self, "url")
 
@@ -160,11 +160,20 @@ def get_dynatrace_connector(identifier: Optional[str] = None,
     """
     Datasource for looking up a Dynatrace connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_dynatrace_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -188,7 +197,7 @@ def get_dynatrace_connector(identifier: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_dynatrace_connector)
-def get_dynatrace_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_dynatrace_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
                                    org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -196,10 +205,19 @@ def get_dynatrace_connector_output(identifier: Optional[pulumi.Input[Optional[st
     """
     Datasource for looking up a Dynatrace connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_dynatrace_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

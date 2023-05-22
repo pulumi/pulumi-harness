@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupPrometheusConnector(ctx, &platform.LookupPrometheusConnectorArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupPrometheusConnector(ctx, &platform.LookupPrometheusConnectorArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,18 +50,18 @@ func LookupPrometheusConnector(ctx *pulumi.Context, args *LookupPrometheusConnec
 // A collection of arguments for invoking getPrometheusConnector.
 type LookupPrometheusConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getPrometheusConnector.
 type LookupPrometheusConnectorResult struct {
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
@@ -70,18 +70,18 @@ type LookupPrometheusConnectorResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url string `pulumi:"url"`
 	// User name.
 	UserName string `pulumi:"userName"`
@@ -103,12 +103,12 @@ func LookupPrometheusConnectorOutput(ctx *pulumi.Context, args LookupPrometheusC
 // A collection of arguments for invoking getPrometheusConnector.
 type LookupPrometheusConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -131,7 +131,7 @@ func (o LookupPrometheusConnectorResultOutput) ToLookupPrometheusConnectorResult
 	return o
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupPrometheusConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -152,8 +152,8 @@ func (o LookupPrometheusConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupPrometheusConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPrometheusConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupPrometheusConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrometheusConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -161,27 +161,27 @@ func (o LookupPrometheusConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupPrometheusConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Password reference.
+// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupPrometheusConnectorResultOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupPrometheusConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupPrometheusConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Prometheus server.
+// URL of the Prometheus server.
 func (o LookupPrometheusConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrometheusConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

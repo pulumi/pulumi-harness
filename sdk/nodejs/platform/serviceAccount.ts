@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.ServiceAccount("example", {
  *     accountId: "account_id",
@@ -24,10 +24,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using secret sshkey id
+ * Import account level service account
  *
  * ```sh
  *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
+ * ```
+ *
+ *  Import org level service account
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
+ * ```
+ *
+ *  Import project level service account
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
  * ```
  */
 export class ServiceAccount extends pulumi.CustomResource {
@@ -79,15 +91,15 @@ export class ServiceAccount extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -162,15 +174,15 @@ export interface ServiceAccountState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -200,15 +212,15 @@ export interface ServiceAccountArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -16,16 +16,32 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
 
     public static final GitOpsAgentMetadataArgs Empty = new GitOpsAgentMetadataArgs();
 
+    /**
+     * Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * 
+     */
     @Import(name="highAvailability")
     private @Nullable Output<Boolean> highAvailability;
 
+    /**
+     * @return Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * 
+     */
     public Optional<Output<Boolean>> highAvailability() {
         return Optional.ofNullable(this.highAvailability);
     }
 
+    /**
+     * The k8s namespace that this agent resides in.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return The k8s namespace that this agent resides in.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -55,20 +71,44 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
             $ = new GitOpsAgentMetadataArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param highAvailability Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * 
+         * @return builder
+         * 
+         */
         public Builder highAvailability(@Nullable Output<Boolean> highAvailability) {
             $.highAvailability = highAvailability;
             return this;
         }
 
+        /**
+         * @param highAvailability Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * 
+         * @return builder
+         * 
+         */
         public Builder highAvailability(Boolean highAvailability) {
             return highAvailability(Output.of(highAvailability));
         }
 
+        /**
+         * @param namespace The k8s namespace that this agent resides in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace The k8s namespace that this agent resides in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }

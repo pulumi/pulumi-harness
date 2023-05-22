@@ -27,6 +27,7 @@ class InfrastructureDefinitionArgs:
                  aws_winrm: Optional[pulumi.Input['InfrastructureDefinitionAwsWinrmArgs']] = None,
                  azure_vmss: Optional[pulumi.Input['InfrastructureDefinitionAzureVmssArgs']] = None,
                  azure_webapp: Optional[pulumi.Input['InfrastructureDefinitionAzureWebappArgs']] = None,
+                 custom: Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']] = None,
                  datacenter_ssh: Optional[pulumi.Input['InfrastructureDefinitionDatacenterSshArgs']] = None,
                  datacenter_winrm: Optional[pulumi.Input['InfrastructureDefinitionDatacenterWinrmArgs']] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
@@ -40,7 +41,7 @@ class InfrastructureDefinitionArgs:
         The set of arguments for constructing a InfrastructureDefinition resource.
         :param pulumi.Input[str] app_id: The id of the application the infrastructure definition belongs to.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
-        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
         :param pulumi.Input['InfrastructureDefinitionAwsAmiArgs'] aws_ami: The configuration details for Aws AMI deployments.
         :param pulumi.Input['InfrastructureDefinitionAwsEcsArgs'] aws_ecs: The configuration details for Aws AMI deployments.
@@ -49,6 +50,7 @@ class InfrastructureDefinitionArgs:
         :param pulumi.Input['InfrastructureDefinitionAwsWinrmArgs'] aws_winrm: The configuration details for AWS WinRM deployments.
         :param pulumi.Input['InfrastructureDefinitionAzureVmssArgs'] azure_vmss: The configuration details for Azure VMSS deployments.
         :param pulumi.Input['InfrastructureDefinitionAzureWebappArgs'] azure_webapp: The configuration details for Azure WebApp deployments.
+        :param pulumi.Input['InfrastructureDefinitionCustomArgs'] custom: The configuration details for Custom deployments.
         :param pulumi.Input['InfrastructureDefinitionDatacenterSshArgs'] datacenter_ssh: The configuration details for SSH datacenter deployments.
         :param pulumi.Input['InfrastructureDefinitionDatacenterWinrmArgs'] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
@@ -77,6 +79,8 @@ class InfrastructureDefinitionArgs:
             pulumi.set(__self__, "azure_vmss", azure_vmss)
         if azure_webapp is not None:
             pulumi.set(__self__, "azure_webapp", azure_webapp)
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
         if datacenter_ssh is not None:
             pulumi.set(__self__, "datacenter_ssh", datacenter_ssh)
         if datacenter_winrm is not None:
@@ -124,7 +128,7 @@ class InfrastructureDefinitionArgs:
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> pulumi.Input[str]:
         """
-        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         """
         return pulumi.get(self, "deployment_type")
 
@@ -227,6 +231,18 @@ class InfrastructureDefinitionArgs:
     @azure_webapp.setter
     def azure_webapp(self, value: Optional[pulumi.Input['InfrastructureDefinitionAzureWebappArgs']]):
         pulumi.set(self, "azure_webapp", value)
+
+    @property
+    @pulumi.getter
+    def custom(self) -> Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']]:
+        """
+        The configuration details for Custom deployments.
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']]):
+        pulumi.set(self, "custom", value)
 
     @property
     @pulumi.getter(name="datacenterSsh")
@@ -349,6 +365,7 @@ class _InfrastructureDefinitionState:
                  azure_vmss: Optional[pulumi.Input['InfrastructureDefinitionAzureVmssArgs']] = None,
                  azure_webapp: Optional[pulumi.Input['InfrastructureDefinitionAzureWebappArgs']] = None,
                  cloud_provider_type: Optional[pulumi.Input[str]] = None,
+                 custom: Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']] = None,
                  datacenter_ssh: Optional[pulumi.Input['InfrastructureDefinitionDatacenterSshArgs']] = None,
                  datacenter_winrm: Optional[pulumi.Input['InfrastructureDefinitionDatacenterWinrmArgs']] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
@@ -371,10 +388,11 @@ class _InfrastructureDefinitionState:
         :param pulumi.Input['InfrastructureDefinitionAzureVmssArgs'] azure_vmss: The configuration details for Azure VMSS deployments.
         :param pulumi.Input['InfrastructureDefinitionAzureWebappArgs'] azure_webapp: The configuration details for Azure WebApp deployments.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
+        :param pulumi.Input['InfrastructureDefinitionCustomArgs'] custom: The configuration details for Custom deployments.
         :param pulumi.Input['InfrastructureDefinitionDatacenterSshArgs'] datacenter_ssh: The configuration details for SSH datacenter deployments.
         :param pulumi.Input['InfrastructureDefinitionDatacenterWinrmArgs'] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
-        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
         :param pulumi.Input['InfrastructureDefinitionKubernetesArgs'] kubernetes: The configuration details for Kubernetes deployments.
         :param pulumi.Input['InfrastructureDefinitionKubernetesGcpArgs'] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
@@ -401,6 +419,8 @@ class _InfrastructureDefinitionState:
             pulumi.set(__self__, "azure_webapp", azure_webapp)
         if cloud_provider_type is not None:
             pulumi.set(__self__, "cloud_provider_type", cloud_provider_type)
+        if custom is not None:
+            pulumi.set(__self__, "custom", custom)
         if datacenter_ssh is not None:
             pulumi.set(__self__, "datacenter_ssh", datacenter_ssh)
         if datacenter_winrm is not None:
@@ -533,6 +553,18 @@ class _InfrastructureDefinitionState:
         pulumi.set(self, "cloud_provider_type", value)
 
     @property
+    @pulumi.getter
+    def custom(self) -> Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']]:
+        """
+        The configuration details for Custom deployments.
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: Optional[pulumi.Input['InfrastructureDefinitionCustomArgs']]):
+        pulumi.set(self, "custom", value)
+
+    @property
     @pulumi.getter(name="datacenterSsh")
     def datacenter_ssh(self) -> Optional[pulumi.Input['InfrastructureDefinitionDatacenterSshArgs']]:
         """
@@ -572,7 +604,7 @@ class _InfrastructureDefinitionState:
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         """
         return pulumi.get(self, "deployment_type")
 
@@ -679,6 +711,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
                  azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
                  azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
                  cloud_provider_type: Optional[pulumi.Input[str]] = None,
+                 custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
                  datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
                  datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
@@ -708,6 +741,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
         dev_environment = harness.Environment("devEnvironment",
             app_id=example.id,
             type="NON_PROD")
+        # Creating a infrastructure of type KUBERNETES
         k8s = harness.InfrastructureDefinition("k8s",
             app_id=example.id,
             env_id=dev_environment.id,
@@ -716,7 +750,42 @@ class InfrastructureDefinition(pulumi.CustomResource):
             kubernetes=harness.InfrastructureDefinitionKubernetesArgs(
                 cloud_provider_name=dev_kubernetes.name,
                 namespace="dev",
-                release_name=service["name"],
+                release_name="${service.name}",
+            ))
+        # Creating a Deployment Template for CUSTOM infrastructure type
+        example_yaml = harness.YamlConfig("exampleYaml",
+            path="Setup/Template Library/Example Folder/deployment_template.yaml",
+            content=f\"\"\"harnessApiVersion: '1.0'
+        type: CUSTOM_DEPLOYMENT_TYPE
+        fetchInstanceScript: |-
+          set -ex
+          curl http://{url}/{file_name} > {instanc_e__outpu_t__path}
+        hostAttributes:
+          hostname: host
+        hostObjectArrayPath: hosts
+        variables:
+        - name: url
+        - name: file_name
+        \"\"\")
+        # Creating a infrastructure of type CUSTOM
+        custom = harness.InfrastructureDefinition("custom",
+            app_id=example.id,
+            env_id=dev_environment.id,
+            cloud_provider_type="CUSTOM",
+            deployment_type="CUSTOM",
+            deployment_template_uri=example_yaml.name.apply(lambda name: f"Example Folder/{name}"),
+            custom=harness.InfrastructureDefinitionCustomArgs(
+                deployment_type_template_version="1",
+                variables=[
+                    harness.InfrastructureDefinitionCustomVariableArgs(
+                        name="url",
+                        value="localhost:8081",
+                    ),
+                    harness.InfrastructureDefinitionCustomVariableArgs(
+                        name="file_name",
+                        value="instances.json",
+                    ),
+                ],
             ))
         ```
 
@@ -739,10 +808,11 @@ class InfrastructureDefinition(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']] azure_vmss: The configuration details for Azure VMSS deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']] azure_webapp: The configuration details for Azure WebApp deployments.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
+        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']] custom: The configuration details for Custom deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']] datacenter_ssh: The configuration details for SSH datacenter deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
-        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']] kubernetes: The configuration details for Kubernetes deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
@@ -774,6 +844,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
         dev_environment = harness.Environment("devEnvironment",
             app_id=example.id,
             type="NON_PROD")
+        # Creating a infrastructure of type KUBERNETES
         k8s = harness.InfrastructureDefinition("k8s",
             app_id=example.id,
             env_id=dev_environment.id,
@@ -782,7 +853,42 @@ class InfrastructureDefinition(pulumi.CustomResource):
             kubernetes=harness.InfrastructureDefinitionKubernetesArgs(
                 cloud_provider_name=dev_kubernetes.name,
                 namespace="dev",
-                release_name=service["name"],
+                release_name="${service.name}",
+            ))
+        # Creating a Deployment Template for CUSTOM infrastructure type
+        example_yaml = harness.YamlConfig("exampleYaml",
+            path="Setup/Template Library/Example Folder/deployment_template.yaml",
+            content=f\"\"\"harnessApiVersion: '1.0'
+        type: CUSTOM_DEPLOYMENT_TYPE
+        fetchInstanceScript: |-
+          set -ex
+          curl http://{url}/{file_name} > {instanc_e__outpu_t__path}
+        hostAttributes:
+          hostname: host
+        hostObjectArrayPath: hosts
+        variables:
+        - name: url
+        - name: file_name
+        \"\"\")
+        # Creating a infrastructure of type CUSTOM
+        custom = harness.InfrastructureDefinition("custom",
+            app_id=example.id,
+            env_id=dev_environment.id,
+            cloud_provider_type="CUSTOM",
+            deployment_type="CUSTOM",
+            deployment_template_uri=example_yaml.name.apply(lambda name: f"Example Folder/{name}"),
+            custom=harness.InfrastructureDefinitionCustomArgs(
+                deployment_type_template_version="1",
+                variables=[
+                    harness.InfrastructureDefinitionCustomVariableArgs(
+                        name="url",
+                        value="localhost:8081",
+                    ),
+                    harness.InfrastructureDefinitionCustomVariableArgs(
+                        name="file_name",
+                        value="instances.json",
+                    ),
+                ],
             ))
         ```
 
@@ -818,6 +924,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
                  azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
                  azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
                  cloud_provider_type: Optional[pulumi.Input[str]] = None,
+                 custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
                  datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
                  datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
@@ -851,6 +958,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
             if cloud_provider_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_provider_type'")
             __props__.__dict__["cloud_provider_type"] = cloud_provider_type
+            __props__.__dict__["custom"] = custom
             __props__.__dict__["datacenter_ssh"] = datacenter_ssh
             __props__.__dict__["datacenter_winrm"] = datacenter_winrm
             __props__.__dict__["deployment_template_uri"] = deployment_template_uri
@@ -885,6 +993,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
             azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
             azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
             cloud_provider_type: Optional[pulumi.Input[str]] = None,
+            custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
             datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
             datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
             deployment_template_uri: Optional[pulumi.Input[str]] = None,
@@ -912,10 +1021,11 @@ class InfrastructureDefinition(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']] azure_vmss: The configuration details for Azure VMSS deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']] azure_webapp: The configuration details for Azure WebApp deployments.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
+        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']] custom: The configuration details for Custom deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']] datacenter_ssh: The configuration details for SSH datacenter deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
-        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']] kubernetes: The configuration details for Kubernetes deployments.
         :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
@@ -937,6 +1047,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
         __props__.__dict__["azure_vmss"] = azure_vmss
         __props__.__dict__["azure_webapp"] = azure_webapp
         __props__.__dict__["cloud_provider_type"] = cloud_provider_type
+        __props__.__dict__["custom"] = custom
         __props__.__dict__["datacenter_ssh"] = datacenter_ssh
         __props__.__dict__["datacenter_winrm"] = datacenter_winrm
         __props__.__dict__["deployment_template_uri"] = deployment_template_uri
@@ -1023,6 +1134,14 @@ class InfrastructureDefinition(pulumi.CustomResource):
         return pulumi.get(self, "cloud_provider_type")
 
     @property
+    @pulumi.getter
+    def custom(self) -> pulumi.Output[Optional['outputs.InfrastructureDefinitionCustom']]:
+        """
+        The configuration details for Custom deployments.
+        """
+        return pulumi.get(self, "custom")
+
+    @property
     @pulumi.getter(name="datacenterSsh")
     def datacenter_ssh(self) -> pulumi.Output[Optional['outputs.InfrastructureDefinitionDatacenterSsh']]:
         """
@@ -1050,7 +1169,7 @@ class InfrastructureDefinition(pulumi.CustomResource):
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> pulumi.Output[str]:
         """
-        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+        The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         """
         return pulumi.get(self, "deployment_type")
 

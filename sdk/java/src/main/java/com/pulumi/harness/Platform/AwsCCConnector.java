@@ -19,6 +19,70 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an AWS Cloud Cost connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AwsCCConnector;
+ * import com.pulumi.harness.platform.AwsCCConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.AwsCCConnectorCrossAccountAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new AwsCCConnector(&#34;test&#34;, AwsCCConnectorArgs.builder()        
+ *             .accountId(&#34;account_id&#34;)
+ *             .crossAccountAccess(AwsCCConnectorCrossAccountAccessArgs.builder()
+ *                 .externalId(&#34;external_id&#34;)
+ *                 .roleArn(&#34;role_arn&#34;)
+ *                 .build())
+ *             .description(&#34;test&#34;)
+ *             .featuresEnableds(            
+ *                 &#34;OPTIMIZATION&#34;,
+ *                 &#34;VISIBILITY&#34;,
+ *                 &#34;BILLING&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .reportName(&#34;report_name&#34;)
+ *             .s3Bucket(&#34;s3bucket&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level aws cloud cost connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level aws cloud cost connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level aws cloud cost connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/awsCCConnector:AwsCCConnector")
 public class AwsCCConnector extends com.pulumi.resources.CustomResource {
@@ -26,7 +90,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * The AWS account id.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -40,7 +104,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
      * 
      */
-    @Export(name="crossAccountAccess", type=AwsCCConnectorCrossAccountAccess.class, parameters={})
+    @Export(name="crossAccountAccess", refs={AwsCCConnectorCrossAccountAccess.class}, tree="[0]")
     private Output<AwsCCConnectorCrossAccountAccess> crossAccountAccess;
 
     /**
@@ -54,7 +118,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -68,7 +132,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
      * 
      */
-    @Export(name="featuresEnableds", type=List.class, parameters={String.class})
+    @Export(name="featuresEnableds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> featuresEnableds;
 
     /**
@@ -82,7 +146,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -96,7 +160,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -107,28 +171,28 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -138,7 +202,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
-    @Export(name="reportName", type=String.class, parameters={})
+    @Export(name="reportName", refs={String.class}, tree="[0]")
     private Output<String> reportName;
 
     /**
@@ -152,7 +216,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * The name of s3 bucket.
      * 
      */
-    @Export(name="s3Bucket", type=String.class, parameters={})
+    @Export(name="s3Bucket", refs={String.class}, tree="[0]")
     private Output<String> s3Bucket;
 
     /**
@@ -163,14 +227,14 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
         return this.s3Bucket;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

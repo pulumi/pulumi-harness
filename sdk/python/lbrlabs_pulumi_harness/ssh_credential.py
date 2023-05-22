@@ -170,30 +170,6 @@ class SshCredential(pulumi.CustomResource):
         """
         Resource for creating an encrypted text secret
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import lbrlabs_pulumi_harness as harness
-        import pulumi_harness as harness
-        import pulumi_tls as tls
-
-        harness_deploy_key = tls.PrivateKey("harnessDeployKey",
-            algorithm="RSA",
-            rsa_bits=4096)
-        secret_manager = harness.get_secret_manager(default=True)
-        my_secret = harness.EncryptedText("mySecret",
-            value=harness_deploy_key.private_key_pem,
-            secret_manager_id=secret_manager.id)
-        ssh_creds = harness.SshCredential("sshCreds", ssh_authentication=harness.SshCredentialSshAuthenticationArgs(
-            port=22,
-            username="git",
-            inline_ssh=harness.SshCredentialSshAuthenticationInlineSshArgs(
-                ssh_key_file_id=my_secret.id,
-            ),
-        ))
-        ```
-
         ## Import
 
         Import using the Harness ssh credential id
@@ -217,30 +193,6 @@ class SshCredential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an encrypted text secret
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import lbrlabs_pulumi_harness as harness
-        import pulumi_harness as harness
-        import pulumi_tls as tls
-
-        harness_deploy_key = tls.PrivateKey("harnessDeployKey",
-            algorithm="RSA",
-            rsa_bits=4096)
-        secret_manager = harness.get_secret_manager(default=True)
-        my_secret = harness.EncryptedText("mySecret",
-            value=harness_deploy_key.private_key_pem,
-            secret_manager_id=secret_manager.id)
-        ssh_creds = harness.SshCredential("sshCreds", ssh_authentication=harness.SshCredentialSshAuthenticationArgs(
-            port=22,
-            username="git",
-            inline_ssh=harness.SshCredentialSshAuthenticationInlineSshArgs(
-                ssh_key_file_id=my_secret.id,
-            ),
-        ))
-        ```
 
         ## Import
 

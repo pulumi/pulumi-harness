@@ -6,6 +6,42 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating a Harness Gitops Agents.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const example = new harness.platform.GitOpsAgent("example", {
+ *     accountId: "account_id",
+ *     identifier: "identifier",
+ *     metadatas: [{
+ *         highAvailability: true,
+ *         namespace: "namespace",
+ *     }],
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     type: "MANAGED_ARGO_PROVIDER",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import a Account level Gitops Agent
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
+ * ```
+ *
+ *  Import a Project level Gitops Agent
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
+ * ```
+ */
 export class GitOpsAgent extends pulumi.CustomResource {
     /**
      * Get an existing GitOpsAgent resource's state with the given name, ID, and optional extra
@@ -35,39 +71,40 @@ export class GitOpsAgent extends pulumi.CustomResource {
     }
 
     /**
-     * account identifier of the agent.
+     * Account identifier of the GitOps agent.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * description of the agent.
+     * Description of the GitOps agent.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * identifier of the agent.
+     * Identifier of the GitOps agent.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * tags for the agent.
+     * Metadata of the agent.
      */
     public readonly metadatas!: pulumi.Output<outputs.platform.GitOpsAgentMetadata[] | undefined>;
     /**
-     * name of the agent.
+     * Name of the GitOps agent.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * org identifier of the agent.
+     * Organization identifier of the GitOps agent.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * org identifier of the agent.
+     * Project identifier of the GitOps agent.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * tags for the agent.
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * type of the agent.
+     * Default: "AGENT*TYPE*UNSET"
+     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -101,12 +138,6 @@ export class GitOpsAgent extends pulumi.CustomResource {
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'orgId'");
-            }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -130,39 +161,40 @@ export class GitOpsAgent extends pulumi.CustomResource {
  */
 export interface GitOpsAgentState {
     /**
-     * account identifier of the agent.
+     * Account identifier of the GitOps agent.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * description of the agent.
+     * Description of the GitOps agent.
      */
     description?: pulumi.Input<string>;
     /**
-     * identifier of the agent.
+     * Identifier of the GitOps agent.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * tags for the agent.
+     * Metadata of the agent.
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[]>;
     /**
-     * name of the agent.
+     * Name of the GitOps agent.
      */
     name?: pulumi.Input<string>;
     /**
-     * org identifier of the agent.
+     * Organization identifier of the GitOps agent.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * org identifier of the agent.
+     * Project identifier of the GitOps agent.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * tags for the agent.
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * type of the agent.
+     * Default: "AGENT*TYPE*UNSET"
+     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
     type?: pulumi.Input<string>;
 }
@@ -172,39 +204,40 @@ export interface GitOpsAgentState {
  */
 export interface GitOpsAgentArgs {
     /**
-     * account identifier of the agent.
+     * Account identifier of the GitOps agent.
      */
     accountId: pulumi.Input<string>;
     /**
-     * description of the agent.
+     * Description of the GitOps agent.
      */
     description?: pulumi.Input<string>;
     /**
-     * identifier of the agent.
+     * Identifier of the GitOps agent.
      */
     identifier: pulumi.Input<string>;
     /**
-     * tags for the agent.
+     * Metadata of the agent.
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsAgentMetadata>[]>;
     /**
-     * name of the agent.
+     * Name of the GitOps agent.
      */
     name?: pulumi.Input<string>;
     /**
-     * org identifier of the agent.
+     * Organization identifier of the GitOps agent.
      */
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
-     * org identifier of the agent.
+     * Project identifier of the GitOps agent.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
-     * tags for the agent.
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * type of the agent.
+     * Default: "AGENT*TYPE*UNSET"
+     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
     type: pulumi.Input<string>;
 }

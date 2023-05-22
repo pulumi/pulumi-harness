@@ -15,14 +15,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class SecretSshkeySshSshkeyReferenceCredential
     {
         public readonly string? EncryptedPassphrase;
-        public readonly string? Key;
+        public readonly string Key;
         public readonly string UserName;
 
         [OutputConstructor]
         private SecretSshkeySshSshkeyReferenceCredential(
             string? encryptedPassphrase,
 
-            string? key,
+            string key,
 
             string userName)
         {

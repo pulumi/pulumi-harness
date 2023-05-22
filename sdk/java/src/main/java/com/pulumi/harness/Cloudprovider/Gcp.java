@@ -27,7 +27,7 @@ public class Gcp extends com.pulumi.resources.CustomResource {
      * Delegate selectors to use for this provider.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
@@ -41,7 +41,7 @@ public class Gcp extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -55,7 +55,7 @@ public class Gcp extends com.pulumi.resources.CustomResource {
      * The id of the secret containing the GCP credentials
      * 
      */
-    @Export(name="secretFileId", type=String.class, parameters={})
+    @Export(name="secretFileId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretFileId;
 
     /**
@@ -69,7 +69,7 @@ public class Gcp extends com.pulumi.resources.CustomResource {
      * Skip validation of GCP configuration.
      * 
      */
-    @Export(name="skipValidation", type=Boolean.class, parameters={})
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipValidation;
 
     /**
@@ -83,7 +83,7 @@ public class Gcp extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={GcpUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,GcpUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GcpUsageScope>> usageScopes;
 
     /**

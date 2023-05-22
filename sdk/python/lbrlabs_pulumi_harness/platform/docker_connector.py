@@ -30,14 +30,14 @@ class DockerConnectorArgs:
         The set of arguments for constructing a DockerConnector resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] type: The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
-        :param pulumi.Input[str] url: The url of the docker registry.
+        :param pulumi.Input[str] url: The URL of the docker registry.
         :param pulumi.Input['DockerConnectorCredentialsArgs'] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "type", type)
@@ -85,7 +85,7 @@ class DockerConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        The url of the docker registry.
+        The URL of the docker registry.
         """
         return pulumi.get(self, "url")
 
@@ -109,7 +109,7 @@ class DockerConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -145,7 +145,7 @@ class DockerConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -157,7 +157,7 @@ class DockerConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -169,7 +169,7 @@ class DockerConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -194,15 +194,15 @@ class _DockerConnectorState:
         """
         Input properties used for looking up and filtering DockerConnector resources.
         :param pulumi.Input['DockerConnectorCredentialsArgs'] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
-        :param pulumi.Input[str] url: The url of the docker registry.
+        :param pulumi.Input[str] url: The URL of the docker registry.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -241,7 +241,7 @@ class _DockerConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -289,7 +289,7 @@ class _DockerConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -301,7 +301,7 @@ class _DockerConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -313,7 +313,7 @@ class _DockerConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -337,7 +337,7 @@ class _DockerConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The url of the docker registry.
+        The URL of the docker registry.
         """
         return pulumi.get(self, "url")
 
@@ -365,18 +365,58 @@ class DockerConnector(pulumi.CustomResource):
         """
         Resource for creating a Docker connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # credentials username password
+        test = harness.platform.DockerConnector("test",
+            credentials=harness.platform.DockerConnectorCredentialsArgs(
+                password_ref="account.secret_id",
+                username="admin",
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifer",
+            tags=["foo:bar"],
+            type="DockerHub",
+            url="https://hub.docker.com")
+        ```
+
+        ## Import
+
+        Import account level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
+        ```
+
+         Import org level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DockerConnectorCredentialsArgs']] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
-        :param pulumi.Input[str] url: The url of the docker registry.
+        :param pulumi.Input[str] url: The URL of the docker registry.
         """
         ...
     @overload
@@ -386,6 +426,46 @@ class DockerConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Docker connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # credentials username password
+        test = harness.platform.DockerConnector("test",
+            credentials=harness.platform.DockerConnectorCredentialsArgs(
+                password_ref="account.secret_id",
+                username="admin",
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifer",
+            tags=["foo:bar"],
+            type="DockerHub",
+            url="https://hub.docker.com")
+        ```
+
+        ## Import
+
+        Import account level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
+        ```
+
+         Import org level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level docker connector
+
+        ```sh
+         $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param DockerConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -465,15 +545,15 @@ class DockerConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DockerConnectorCredentialsArgs']] credentials: The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
-        :param pulumi.Input[str] url: The url of the docker registry.
+        :param pulumi.Input[str] url: The URL of the docker registry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -503,7 +583,7 @@ class DockerConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -535,7 +615,7 @@ class DockerConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -543,7 +623,7 @@ class DockerConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -551,7 +631,7 @@ class DockerConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -567,7 +647,7 @@ class DockerConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The url of the docker registry.
+        The URL of the docker registry.
         """
         return pulumi.get(self, "url")
 

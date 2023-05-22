@@ -13,85 +13,97 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const keyTabFilePath = new harness.platform.SecretSshkey("key_tab_file_path", {
- *     description: "test",
+ * const keyTabFilePath = new harness.platform.SecretSshkey("keyTabFilePath", {
  *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     port: 22,
  *     kerberos: {
- *         principal: "principal",
- *         realm: "realm",
- *         tgtGenerationMethod: "KeyTabFilePath",
  *         tgtKeyTabFilePathSpec: {
  *             keyPath: "key_path",
  *         },
+ *         principal: "principal",
+ *         realm: "realm",
+ *         tgtGenerationMethod: "KeyTabFilePath",
  *     },
- *     port: 22,
- *     tags: ["foo:bar"],
  * });
- * const _tgt_password = new harness.platform.SecretSshkey(" tgt_password", {
- *     description: "test",
+ * const _tgtPassword = new harness.platform.SecretSshkey(" tgtPassword", {
  *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     port: 22,
  *     kerberos: {
+ *         tgtPasswordSpec: {
+ *             password: `account.${secret.id}`,
+ *         },
  *         principal: "principal",
  *         realm: "realm",
  *         tgtGenerationMethod: "Password",
- *         tgtPasswordSpec: {
- *             password: "password",
- *         },
  *     },
- *     port: 22,
- *     tags: ["foo:bar"],
  * });
- * const sshkeyReference = new harness.platform.SecretSshkey("sshkey_reference", {
- *     description: "test",
+ * const sshkeyReference = new harness.platform.SecretSshkey("sshkeyReference", {
  *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
  *     port: 22,
  *     ssh: {
- *         credentialType: "KeyReference",
  *         sshkeyReferenceCredential: {
- *             encryptedPassphrase: "encrypted_passphrase",
- *             key: "key",
  *             userName: "user_name",
+ *             key: `account.${key.id}`,
+ *             encryptedPassphrase: `account.${secret.id}`,
  *         },
+ *         credentialType: "KeyReference",
  *     },
- *     tags: ["foo:bar"],
  * });
- * const _sshkey_path = new harness.platform.SecretSshkey(" sshkey_path", {
- *     description: "test",
+ * const _sshkeyPath = new harness.platform.SecretSshkey(" sshkeyPath", {
  *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
  *     port: 22,
  *     ssh: {
- *         credentialType: "KeyPath",
  *         sshkeyPathCredential: {
- *             encryptedPassphrase: "encrypted_passphrase",
- *             keyPath: "key_path",
  *             userName: "user_name",
+ *             keyPath: "key_path",
+ *             encryptedPassphrase: "encrypted_passphrase",
  *         },
+ *         credentialType: "KeyPath",
  *     },
- *     tags: ["foo:bar"],
  * });
- * const sshPassword = new harness.platform.SecretSshkey("ssh_password", {
- *     description: "test",
+ * const sshPassword = new harness.platform.SecretSshkey("sshPassword", {
  *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
  *     port: 22,
  *     ssh: {
- *         credentialType: "Password",
  *         sshPasswordCredential: {
- *             password: "password",
  *             userName: "user_name",
+ *             password: `account.${secret.id}`,
  *         },
+ *         credentialType: "Password",
  *     },
- *     tags: ["foo:bar"],
  * });
  * ```
  *
  * ## Import
  *
- * Import using secret sshkey id
+ * Import account level secret sshkey
  *
  * ```sh
  *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+ * ```
+ *
+ *  Import org level secret sshkey
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
+ * ```
+ *
+ *  Import project level secret sshkey
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
  * ```
  */
 export class SecretSshkey extends pulumi.CustomResource {
@@ -139,7 +151,7 @@ export class SecretSshkey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -147,7 +159,7 @@ export class SecretSshkey extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +167,7 @@ export class SecretSshkey extends pulumi.CustomResource {
      */
     public readonly ssh!: pulumi.Output<outputs.platform.SecretSshkeySsh | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -222,7 +234,7 @@ export interface SecretSshkeyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -230,7 +242,7 @@ export interface SecretSshkeyState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -238,7 +250,7 @@ export interface SecretSshkeyState {
      */
     ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -264,7 +276,7 @@ export interface SecretSshkeyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -272,7 +284,7 @@ export interface SecretSshkeyArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -280,7 +292,7 @@ export interface SecretSshkeyArgs {
      */
     ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

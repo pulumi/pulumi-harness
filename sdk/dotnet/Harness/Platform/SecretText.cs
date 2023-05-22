@@ -17,22 +17,36 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.Platform.SecretText("test", new()
+    ///     var inline = new Harness.Platform.SecretText("inline", new()
     ///     {
+    ///         Description = "example",
     ///         Identifier = "identifier",
-    ///         Description = "test",
+    ///         SecretManagerIdentifier = "harnessSecretManager",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         SecretManagerIdentifier = "harnessSecretManager",
-    ///         ValueType = "Inline",
     ///         Value = "secret",
+    ///         ValueType = "Inline",
+    ///     });
+    /// 
+    ///     var reference = new Harness.Platform.SecretText("reference", new()
+    ///     {
+    ///         Description = "example",
+    ///         Identifier = "identifier",
+    ///         SecretManagerIdentifier = "azureSecretManager",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Value = "secret",
+    ///         ValueType = "Reference",
     ///     });
     /// 
     /// });
@@ -40,10 +54,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using secret text id
+    /// Import account level secret text
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/secretText:SecretText example &lt;secret_text_id&gt;
+    /// ```
+    /// 
+    ///  Import org level secret text
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/secretText:SecretText example &lt;ord_id&gt;/&lt;secret_text_id&gt;
+    /// ```
+    /// 
+    ///  Import project level secret text
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/secretText:SecretText example &lt;org_id&gt;/&lt;project_id&gt;/&lt;secret_text_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/secretText:SecretText")]
@@ -68,13 +94,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -86,7 +112,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> SecretManagerIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -95,7 +121,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Value of the Secret
         /// </summary>
         [Output("value")]
-        public Output<string?> Value { get; private set; } = null!;
+        public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
         /// This has details to specify if the secret value is Inline or Reference.
@@ -127,6 +153,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/lbrlabs",
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -169,13 +199,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -190,7 +220,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -198,11 +228,21 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             set => _tags = value;
         }
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value of the Secret
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This has details to specify if the secret value is Inline or Reference.
@@ -237,13 +277,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -258,7 +298,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -266,11 +306,21 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             set => _tags = value;
         }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// Value of the Secret
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This has details to specify if the secret value is Inline or Reference.

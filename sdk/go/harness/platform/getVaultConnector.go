@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupVaultConnector(ctx, &platform.LookupVaultConnectorArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupVaultConnector(ctx, &platform.LookupVaultConnectorArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,12 +50,12 @@ func LookupVaultConnector(ctx *pulumi.Context, args *LookupVaultConnectorArgs, o
 // A collection of arguments for invoking getVaultConnector.
 type LookupVaultConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -80,7 +80,7 @@ type LookupVaultConnectorResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Is default or not.
 	IsDefault bool `pulumi:"isDefault"`
 	// Read only or not.
@@ -91,9 +91,9 @@ type LookupVaultConnectorResult struct {
 	Name *string `pulumi:"name"`
 	// The Vault namespace where Secret will be created.
 	Namespace string `pulumi:"namespace"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Read only.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -113,7 +113,7 @@ type LookupVaultConnectorResult struct {
 	ServiceAccountTokenPath string `pulumi:"serviceAccountTokenPath"`
 	// The location at which auth token is to be read from.
 	SinkPath string `pulumi:"sinkPath"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam bool `pulumi:"useAwsIam"`
@@ -147,12 +147,12 @@ func LookupVaultConnectorOutput(ctx *pulumi.Context, args LookupVaultConnectorOu
 // A collection of arguments for invoking getVaultConnector.
 type LookupVaultConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -221,8 +221,8 @@ func (o LookupVaultConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupVaultConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVaultConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupVaultConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Is default or not.
@@ -250,12 +250,12 @@ func (o LookupVaultConnectorResultOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupVaultConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupVaultConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -305,7 +305,7 @@ func (o LookupVaultConnectorResultOutput) SinkPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.SinkPath }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupVaultConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

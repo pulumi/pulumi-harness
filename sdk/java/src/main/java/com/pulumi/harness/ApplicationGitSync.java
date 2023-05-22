@@ -93,7 +93,7 @@ public class ApplicationGitSync extends com.pulumi.resources.CustomResource {
      * The id of the application.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -107,7 +107,7 @@ public class ApplicationGitSync extends com.pulumi.resources.CustomResource {
      * The branch of the git repository to sync to.
      * 
      */
-    @Export(name="branch", type=String.class, parameters={})
+    @Export(name="branch", refs={String.class}, tree="[0]")
     private Output<String> branch;
 
     /**
@@ -121,7 +121,7 @@ public class ApplicationGitSync extends com.pulumi.resources.CustomResource {
      * The id of the git connector to use.
      * 
      */
-    @Export(name="connectorId", type=String.class, parameters={})
+    @Export(name="connectorId", refs={String.class}, tree="[0]")
     private Output<String> connectorId;
 
     /**
@@ -135,7 +135,7 @@ public class ApplicationGitSync extends com.pulumi.resources.CustomResource {
      * Whether or not to enable git sync.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -149,7 +149,7 @@ public class ApplicationGitSync extends com.pulumi.resources.CustomResource {
      * The name of the git repository to sync to. This is only used if the git connector is for an account and not an individual repository.
      * 
      */
-    @Export(name="repositoryName", type=String.class, parameters={})
+    @Export(name="repositoryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repositoryName;
 
     /**

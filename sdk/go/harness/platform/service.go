@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -34,47 +32,7 @@ import (
 //				Identifier:  pulumi.String("identifier"),
 //				OrgId:       pulumi.String("org_id"),
 //				ProjectId:   pulumi.String("project_id"),
-//				Yaml: pulumi.String(fmt.Sprintf(`  service:
-//	    name: name
-//	    identifier: identifier
-//	    serviceDefinition:
-//	      spec:
-//	        manifests:
-//	          - manifest:
-//	              identifier: manifest1
-//	              type: K8sManifest
-//	              spec:
-//	                store:
-//	                  type: Github
-//	                  spec:
-//	                    connectorRef: <+input>
-//	                    gitFetchType: Branch
-//	                    paths:
-//	                      - files1
-//	                    repoName: <+input>
-//	                    branch: master
-//	                skipResourceVersioning: false
-//	        configFiles:
-//	          - configFile:
-//	              identifier: configFile1
-//	              spec:
-//	                store:
-//	                  type: Harness
-//	                  spec:
-//	                    files:
-//	                      - <+org.description>
-//	        variables:
-//	          - name: var1
-//	            type: String
-//	            value: val1
-//	          - name: var2
-//	            type: String
-//	            value: val2
-//	      type: Kubernetes
-//	    gitOpsEnabled: false
-//
-// `)),
-//
+//				Yaml:        pulumi.String("  service:\n    name: name\n    identifier: identifier\n    serviceDefinition:\n      spec:\n        manifests:\n          - manifest:\n              identifier: manifest1\n              type: K8sManifest\n              spec:\n                store:\n                  type: Github\n                  spec:\n                    connectorRef: <+input>\n                    gitFetchType: Branch\n                    paths:\n                      - files1\n                    repoName: <+input>\n                    branch: master\n                skipResourceVersioning: false\n        configFiles:\n          - configFile:\n              identifier: configFile1\n              spec:\n                store:\n                  type: Harness\n                  spec:\n                    files:\n                      - <+org.description>\n        variables:\n          - name: var1\n            type: String\n            value: val1\n          - name: var2\n            type: String\n            value: val2\n      type: Kubernetes\n    gitOpsEnabled: false\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,11 +45,27 @@ import (
 //
 // ## Import
 //
-// # Import using service id
+// # Import account level service
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/service:Service example <service_id>
+//
+// ```
+//
+//	Import org level service
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/service:Service example <org_id>/<service_id>
+//
+// ```
+//
+//	Import project level service
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
 //
 // ```
 type Service struct {
@@ -99,17 +73,19 @@ type Service struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable this flag for force deletion of service
+	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service YAML
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -122,12 +98,6 @@ func NewService(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.OrgId == nil {
-		return nil, errors.New("invalid value for required argument 'OrgId'")
-	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Service
@@ -154,34 +124,38 @@ func GetService(ctx *pulumi.Context,
 type serviceState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of service
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type ServiceState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of service
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -192,17 +166,19 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of service
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -210,17 +186,19 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of service
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringInput
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -316,6 +294,11 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Enable this flag for force deletion of service
+func (o ServiceOutput) ForceDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+}
+
 // Unique identifier of the resource.
 func (o ServiceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -326,22 +309,22 @@ func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
-func (o ServiceOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+// Unique identifier of the organization.
+func (o ServiceOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
-func (o ServiceOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// Unique identifier of the project.
+func (o ServiceOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service YAML
+// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o ServiceOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

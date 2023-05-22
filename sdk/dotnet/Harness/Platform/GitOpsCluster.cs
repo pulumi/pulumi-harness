@@ -10,47 +10,159 @@ using Pulumi;
 
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating a Harness Gitops Cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Clusters without Optional tags
+    ///     var exampleGitOpsCluster = new Harness.Platform.GitOpsCluster("exampleGitOpsCluster", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         AccountId = "account_id",
+    ///         ProjectId = "project_id",
+    ///         OrgId = "org_id",
+    ///         AgentId = "agent_id",
+    ///         Requests = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GitOpsClusterRequestArgs
+    ///             {
+    ///                 Upsert = false,
+    ///                 Clusters = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitOpsClusterRequestClusterArgs
+    ///                     {
+    ///                         Server = "https://kubernetes.default.svc",
+    ///                         Name = "name",
+    ///                         Configs = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitOpsClusterRequestClusterConfigArgs
+    ///                             {
+    ///                                 TlsClientConfigs = new[]
+    ///                                 {
+    ///                                     new Harness.Platform.Inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs
+    ///                                     {
+    ///                                         Insecure = true,
+    ///                                     },
+    ///                                 },
+    ///                                 ClusterConnectionType = "IN_CLUSTER",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Clusters with Optional tags
+    ///     var examplePlatform_gitOpsClusterGitOpsCluster = new Harness.Platform.GitOpsCluster("examplePlatform/gitOpsClusterGitOpsCluster", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         AccountId = "account_id",
+    ///         ProjectId = "project_id",
+    ///         OrgId = "org_id",
+    ///         AgentId = "agent_id",
+    ///         Requests = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GitOpsClusterRequestArgs
+    ///             {
+    ///                 Upsert = false,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     "foo:bar",
+    ///                 },
+    ///                 Clusters = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitOpsClusterRequestClusterArgs
+    ///                     {
+    ///                         Server = "https://kubernetes.default.svc",
+    ///                         Name = "name",
+    ///                         Configs = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitOpsClusterRequestClusterConfigArgs
+    ///                             {
+    ///                                 TlsClientConfigs = new[]
+    ///                                 {
+    ///                                     new Harness.Platform.Inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs
+    ///                                     {
+    ///                                         Insecure = true,
+    ///                                     },
+    ///                                 },
+    ///                                 ClusterConnectionType = "IN_CLUSTER",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import a Account level Gitops Cluster
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;agent_id&gt;/&lt;cluster_id&gt;
+    /// ```
+    /// 
+    ///  Import a Project level Gitops Cluster
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;cluster_id&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/gitOpsCluster:GitOpsCluster")]
     public partial class GitOpsCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps cluster.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps cluster.
         /// </summary>
         [Output("agentId")]
-        public Output<string?> AgentId { get; private set; } = null!;
+        public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps cluster.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the cluster.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps cluster.
         /// </summary>
         [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// query for cluster resources
+        /// Query for the GitOps cluster resources.
         /// </summary>
         [Output("queries")]
         public Output<ImmutableArray<Outputs.GitOpsClusterQuery>> Queries { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster create/Update request.
+        /// Cluster create or update request.
         /// </summary>
         [Output("requests")]
         public Output<ImmutableArray<Outputs.GitOpsClusterRequest>> Requests { get; private set; } = null!;
@@ -103,40 +215,40 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GitOpsClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps cluster.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps cluster.
         /// </summary>
-        [Input("agentId")]
-        public Input<string>? AgentId { get; set; }
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps cluster.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the cluster.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps cluster.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("queries")]
         private InputList<Inputs.GitOpsClusterQueryArgs>? _queries;
 
         /// <summary>
-        /// query for cluster resources
+        /// Query for the GitOps cluster resources.
         /// </summary>
         public InputList<Inputs.GitOpsClusterQueryArgs> Queries
         {
@@ -148,7 +260,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsClusterRequestArgs>? _requests;
 
         /// <summary>
-        /// Cluster create/Update request.
+        /// Cluster create or update request.
         /// </summary>
         public InputList<Inputs.GitOpsClusterRequestArgs> Requests
         {
@@ -165,31 +277,31 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GitOpsClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the cluster.
+        /// Account identifier of the GitOps cluster.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// agent identifier of the cluster.
+        /// Agent identifier of the GitOps cluster.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// identifier of the cluster.
+        /// Identifier of the GitOps cluster.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// organization identifier of the cluster.
+        /// Organization identifier of the cluster.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the cluster.
+        /// Project identifier of the GitOps cluster.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -198,7 +310,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsClusterQueryGetArgs>? _queries;
 
         /// <summary>
-        /// query for cluster resources
+        /// Query for the GitOps cluster resources.
         /// </summary>
         public InputList<Inputs.GitOpsClusterQueryGetArgs> Queries
         {
@@ -210,7 +322,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<Inputs.GitOpsClusterRequestGetArgs>? _requests;
 
         /// <summary>
-        /// Cluster create/Update request.
+        /// Cluster create or update request.
         /// </summary>
         public InputList<Inputs.GitOpsClusterRequestGetArgs> Requests
         {
