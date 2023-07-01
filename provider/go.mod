@@ -1,6 +1,6 @@
 module github.com/lbrlabs/pulumi-harness/provider
 
-go 1.19
+go 1.20
 
 replace (
 	github.com/harness/terraform-provider-harness/shim => ./shim
