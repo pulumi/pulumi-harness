@@ -31,14 +31,14 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
     }
 
     /**
-     * Reference to the secret containing the password for the connector.
+     * Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return Reference to the secret containing the password for the connector.
+     * @return Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
@@ -61,14 +61,14 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
     }
 
     /**
-     * Reference to the secret containing the username for the connector.
+     * Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return Reference to the secret containing the username for the connector.
+     * @return Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -124,7 +124,7 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
         }
 
         /**
-         * @param passwordRef Reference to the secret containing the password for the connector.
+         * @param passwordRef Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
         }
 
         /**
-         * @param passwordRef Reference to the secret containing the password for the connector.
+         * @param passwordRef Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
         }
 
         /**
-         * @param usernameRef Reference to the secret containing the username for the connector.
+         * @param usernameRef Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class KubernetesConnectorUsernamePasswordArgs extends com.pulumi.re
         }
 
         /**
-         * @param usernameRef Reference to the secret containing the username for the connector.
+         * @param usernameRef Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

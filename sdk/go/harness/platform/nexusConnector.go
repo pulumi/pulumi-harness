@@ -7,17 +7,78 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Nexus connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewNexusConnector(ctx, "test", &platform.NexusConnectorArgs{
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url:     pulumi.String("https://nexus.example.com"),
+//				Version: pulumi.String("version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level nexus connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <connector_id>
+//
+// ```
+//
+//	Import org level nexus connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level nexus connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type NexusConnector struct {
 	pulumi.CustomResourceState
 
 	// Credentials to use for authentication.
 	Credentials NexusConnectorCredentialsPtrOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,11 +86,11 @@ type NexusConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// URL of the Nexus server.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -78,7 +139,7 @@ func GetNexusConnector(ctx *pulumi.Context,
 type nexusConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials *NexusConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -86,11 +147,11 @@ type nexusConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Nexus server.
 	Url *string `pulumi:"url"`
@@ -101,7 +162,7 @@ type nexusConnectorState struct {
 type NexusConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials NexusConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -109,11 +170,11 @@ type NexusConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the Nexus server.
 	Url pulumi.StringPtrInput
@@ -128,7 +189,7 @@ func (NexusConnectorState) ElementType() reflect.Type {
 type nexusConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *NexusConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -136,11 +197,11 @@ type nexusConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the Nexus server.
 	Url string `pulumi:"url"`
@@ -152,7 +213,7 @@ type nexusConnectorArgs struct {
 type NexusConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials NexusConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -160,11 +221,11 @@ type NexusConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the Nexus server.
 	Url pulumi.StringInput
@@ -264,7 +325,7 @@ func (o NexusConnectorOutput) Credentials() NexusConnectorCredentialsPtrOutput {
 	return o.ApplyT(func(v *NexusConnector) NexusConnectorCredentialsPtrOutput { return v.Credentials }).(NexusConnectorCredentialsPtrOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o NexusConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NexusConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -284,17 +345,17 @@ func (o NexusConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NexusConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o NexusConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NexusConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o NexusConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NexusConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o NexusConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NexusConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

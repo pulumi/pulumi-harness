@@ -12,6 +12,83 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating an App Dynamics connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Authentication mechanism as api token
+    ///     var token = new Harness.Platform.AppDynamicsConnector("token", new()
+    ///     {
+    ///         AccountName = "myaccount",
+    ///         ApiToken = new Harness.Platform.Inputs.AppDynamicsConnectorApiTokenArgs
+    ///         {
+    ///             ClientId = "client_id",
+    ///             ClientSecretRef = "account.secret_id",
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://appdynamics.com/",
+    ///     });
+    /// 
+    ///     // Authentication mechanism as username and password
+    ///     var test = new Harness.Platform.AppDynamicsConnector("test", new()
+    ///     {
+    ///         AccountName = "myaccount",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://appdynamics.com/",
+    ///         UsernamePassword = new Harness.Platform.Inputs.AppDynamicsConnectorUsernamePasswordArgs
+    ///         {
+    ///             PasswordRef = "account.secret_id",
+    ///             Username = "username",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level appdynamics connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level appdynamics connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level appdynamics connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/appDynamicsConnector:AppDynamicsConnector")]
     public partial class AppDynamicsConnector : global::Pulumi.CustomResource
@@ -29,7 +106,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<Outputs.AppDynamicsConnectorApiToken?> ApiToken { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -53,25 +130,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Url of the App Dynamics controller.
+        /// URL of the App Dynamics controller.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -145,7 +222,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -172,13 +249,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -187,7 +264,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -196,7 +273,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the App Dynamics controller.
+        /// URL of the App Dynamics controller.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -231,7 +308,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -258,13 +335,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -273,7 +350,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -282,7 +359,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the App Dynamics controller.
+        /// URL of the App Dynamics controller.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

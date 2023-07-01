@@ -24,7 +24,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         [Input("clusterResources")]
         public Input<bool>? ClusterResources { get; set; }
 
-        [Input("configs")]
+        [Input("configs", required: true)]
         private InputList<Inputs.GitOpsClusterRequestClusterConfigArgs>? _configs;
         public InputList<Inputs.GitOpsClusterRequestClusterConfigArgs> Configs
         {

@@ -138,12 +138,12 @@ def get_environment_clusters_mapping(env_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping', __args__, opts=opts, typ=GetEnvironmentClustersMappingResult).value
 
     return AwaitableGetEnvironmentClustersMappingResult(
-        env_id=__ret__.env_id,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        scope=__ret__.scope)
+        env_id=pulumi.get(__ret__, 'env_id'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        scope=pulumi.get(__ret__, 'scope'))
 
 
 @_utilities.lift_output_func(get_environment_clusters_mapping)

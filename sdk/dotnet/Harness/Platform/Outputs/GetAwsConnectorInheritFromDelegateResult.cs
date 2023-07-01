@@ -14,6 +14,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetAwsConnectorInheritFromDelegateResult
     {
+        /// <summary>
+        /// The delegates to inherit the credentials from.
+        /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
 
         [OutputConstructor]

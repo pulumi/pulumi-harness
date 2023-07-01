@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterQuery;
-import com.pulumi.harness.platform.inputs.GetGitopsClusterRequest;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,53 +16,94 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetGitopsClusterPlainArgs Empty = new GetGitopsClusterPlainArgs();
 
+    /**
+     * Account identifier of the GitOps cluster.
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return Account identifier of the GitOps cluster.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
-    @Import(name="agentId")
-    private @Nullable String agentId;
+    /**
+     * Agent identifier of the GitOps cluster.
+     * 
+     */
+    @Import(name="agentId", required=true)
+    private String agentId;
 
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    /**
+     * @return Agent identifier of the GitOps cluster.
+     * 
+     */
+    public String agentId() {
+        return this.agentId;
     }
 
+    /**
+     * Identifier of the GitOps cluster.
+     * 
+     */
     @Import(name="identifier", required=true)
     private String identifier;
 
+    /**
+     * @return Identifier of the GitOps cluster.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
 
+    /**
+     * Organization identifier of the cluster.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Organization identifier of the cluster.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
-    @Import(name="projectId", required=true)
-    private String projectId;
+    /**
+     * Project identifier of the GitOps cluster.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable String projectId;
 
-    public String projectId() {
-        return this.projectId;
+    /**
+     * @return Project identifier of the GitOps cluster.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Query for the GitOps cluster resources.
+     * 
+     */
     @Import(name="queries")
     private @Nullable List<GetGitopsClusterQuery> queries;
 
+    /**
+     * @return Query for the GitOps cluster resources.
+     * 
+     */
     public Optional<List<GetGitopsClusterQuery>> queries() {
         return Optional.ofNullable(this.queries);
-    }
-
-    @Import(name="requests")
-    private @Nullable List<GetGitopsClusterRequest> requests;
-
-    public Optional<List<GetGitopsClusterRequest>> requests() {
-        return Optional.ofNullable(this.requests);
     }
 
     private GetGitopsClusterPlainArgs() {}
@@ -75,7 +115,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.queries = $.queries;
-        this.requests = $.requests;
     }
 
     public static Builder builder() {
@@ -96,53 +135,86 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetGitopsClusterPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        public Builder agentId(@Nullable String agentId) {
+        /**
+         * @param agentId Agent identifier of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentId(String agentId) {
             $.agentId = agentId;
             return this;
         }
 
+        /**
+         * @param identifier Identifier of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param orgId Organization identifier of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
-        public Builder projectId(String projectId) {
+        /**
+         * @param projectId Project identifier of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param queries Query for the GitOps cluster resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queries(@Nullable List<GetGitopsClusterQuery> queries) {
             $.queries = queries;
             return this;
         }
 
+        /**
+         * @param queries Query for the GitOps cluster resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queries(GetGitopsClusterQuery... queries) {
             return queries(List.of(queries));
         }
 
-        public Builder requests(@Nullable List<GetGitopsClusterRequest> requests) {
-            $.requests = requests;
-            return this;
-        }
-
-        public Builder requests(GetGitopsClusterRequest... requests) {
-            return requests(List.of(requests));
-        }
-
         public GetGitopsClusterPlainArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.agentId = Objects.requireNonNull($.agentId, "expected parameter 'agentId' to be non-null");
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             return $;
         }
     }

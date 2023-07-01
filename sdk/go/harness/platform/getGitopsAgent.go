@@ -10,6 +10,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for fetching a Harness Gitops Agents.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetGitopsAgent(ctx, &platform.GetGitopsAgentArgs{
+//				AccountId:  "account_id",
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGitopsAgent(ctx *pulumi.Context, args *GetGitopsAgentArgs, opts ...pulumi.InvokeOption) (*GetGitopsAgentResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetGitopsAgentResult
@@ -22,28 +52,39 @@ func GetGitopsAgent(ctx *pulumi.Context, args *GetGitopsAgentArgs, opts ...pulum
 
 // A collection of arguments for invoking getGitopsAgent.
 type GetGitopsAgentArgs struct {
-	AccountId  string                   `pulumi:"accountId"`
-	Identifier string                   `pulumi:"identifier"`
-	Metadatas  []GetGitopsAgentMetadata `pulumi:"metadatas"`
-	Name       string                   `pulumi:"name"`
-	OrgId      string                   `pulumi:"orgId"`
-	ProjectId  string                   `pulumi:"projectId"`
-	Type       string                   `pulumi:"type"`
+	// Account identifier of the GitOps agent.
+	AccountId string `pulumi:"accountId"`
+	// Identifier of the GitOps agent.
+	Identifier string `pulumi:"identifier"`
+	// Organization identifier of the GitOps agent.
+	OrgId *string `pulumi:"orgId"`
+	// Project identifier of the GitOps agent.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getGitopsAgent.
 type GetGitopsAgentResult struct {
-	AccountId   string `pulumi:"accountId"`
+	// Account identifier of the GitOps agent.
+	AccountId string `pulumi:"accountId"`
+	// Description of the GitOps agent.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Identifier string                   `pulumi:"identifier"`
-	Metadatas  []GetGitopsAgentMetadata `pulumi:"metadatas"`
-	Name       string                   `pulumi:"name"`
-	OrgId      string                   `pulumi:"orgId"`
-	ProjectId  string                   `pulumi:"projectId"`
-	Tags       map[string]string        `pulumi:"tags"`
-	Type       string                   `pulumi:"type"`
+	Id string `pulumi:"id"`
+	// Identifier of the GitOps agent.
+	Identifier string `pulumi:"identifier"`
+	// Metadata of the agent.
+	Metadatas []GetGitopsAgentMetadata `pulumi:"metadatas"`
+	// Name of the GitOps agent.
+	Name string `pulumi:"name"`
+	// Organization identifier of the GitOps agent.
+	OrgId *string `pulumi:"orgId"`
+	// Project identifier of the GitOps agent.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+	Tags map[string]string `pulumi:"tags"`
+	// Default: "AGENT*TYPE*UNSET"
+	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	Type string `pulumi:"type"`
 }
 
 func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentResultOutput {
@@ -61,13 +102,14 @@ func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, op
 
 // A collection of arguments for invoking getGitopsAgent.
 type GetGitopsAgentOutputArgs struct {
-	AccountId  pulumi.StringInput               `pulumi:"accountId"`
-	Identifier pulumi.StringInput               `pulumi:"identifier"`
-	Metadatas  GetGitopsAgentMetadataArrayInput `pulumi:"metadatas"`
-	Name       pulumi.StringInput               `pulumi:"name"`
-	OrgId      pulumi.StringInput               `pulumi:"orgId"`
-	ProjectId  pulumi.StringInput               `pulumi:"projectId"`
-	Type       pulumi.StringInput               `pulumi:"type"`
+	// Account identifier of the GitOps agent.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Identifier of the GitOps agent.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Organization identifier of the GitOps agent.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Project identifier of the GitOps agent.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (GetGitopsAgentOutputArgs) ElementType() reflect.Type {
@@ -89,10 +131,12 @@ func (o GetGitopsAgentResultOutput) ToGetGitopsAgentResultOutputWithContext(ctx 
 	return o
 }
 
+// Account identifier of the GitOps agent.
 func (o GetGitopsAgentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Description of the GitOps agent.
 func (o GetGitopsAgentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -102,30 +146,38 @@ func (o GetGitopsAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Identifier of the GitOps agent.
 func (o GetGitopsAgentResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Metadata of the agent.
 func (o GetGitopsAgentResultOutput) Metadatas() GetGitopsAgentMetadataArrayOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) []GetGitopsAgentMetadata { return v.Metadatas }).(GetGitopsAgentMetadataArrayOutput)
 }
 
+// Name of the GitOps agent.
 func (o GetGitopsAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetGitopsAgentResultOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.OrgId }).(pulumi.StringOutput)
+// Organization identifier of the GitOps agent.
+func (o GetGitopsAgentResultOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetGitopsAgentResultOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.ProjectId }).(pulumi.StringOutput)
+// Project identifier of the GitOps agent.
+func (o GetGitopsAgentResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 func (o GetGitopsAgentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Default: "AGENT*TYPE*UNSET"
+// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
 func (o GetGitopsAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Type }).(pulumi.StringOutput)
 }

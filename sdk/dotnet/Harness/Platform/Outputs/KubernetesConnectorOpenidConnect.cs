@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class KubernetesConnectorOpenidConnect
     {
         /// <summary>
-        /// Reference to the secret containing the client ID for the connector.
+        /// Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string ClientIdRef;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string MasterUrl;
         /// <summary>
-        /// Reference to the secret containing the password for the connector.
+        /// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// Reference to the secret containing the client secret for the connector.
+        /// Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? SecretRef;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Username;
         /// <summary>
-        /// Reference to the secret containing the username for the connector.
+        /// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? UsernameRef;
 

@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 public final class GetGitopsClusterRequestClusterInfo {
     private @Nullable List<String> apiVersions;
     private @Nullable String applicationsCount;
-    private @Nullable List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos;
-    private @Nullable List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates;
-    private @Nullable String serverVersion;
+    private List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos;
+    private List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates;
+    private String serverVersion;
 
     private GetGitopsClusterRequestClusterInfo() {}
     public List<String> apiVersions() {
@@ -28,13 +28,13 @@ public final class GetGitopsClusterRequestClusterInfo {
         return Optional.ofNullable(this.applicationsCount);
     }
     public List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos() {
-        return this.cacheInfos == null ? List.of() : this.cacheInfos;
+        return this.cacheInfos;
     }
     public List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates() {
-        return this.connectionStates == null ? List.of() : this.connectionStates;
+        return this.connectionStates;
     }
-    public Optional<String> serverVersion() {
-        return Optional.ofNullable(this.serverVersion);
+    public String serverVersion() {
+        return this.serverVersion;
     }
 
     public static Builder builder() {
@@ -48,9 +48,9 @@ public final class GetGitopsClusterRequestClusterInfo {
     public static final class Builder {
         private @Nullable List<String> apiVersions;
         private @Nullable String applicationsCount;
-        private @Nullable List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos;
-        private @Nullable List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates;
-        private @Nullable String serverVersion;
+        private List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos;
+        private List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates;
+        private String serverVersion;
         public Builder() {}
         public Builder(GetGitopsClusterRequestClusterInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,24 +75,24 @@ public final class GetGitopsClusterRequestClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder cacheInfos(@Nullable List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos) {
-            this.cacheInfos = cacheInfos;
+        public Builder cacheInfos(List<GetGitopsClusterRequestClusterInfoCacheInfo> cacheInfos) {
+            this.cacheInfos = Objects.requireNonNull(cacheInfos);
             return this;
         }
         public Builder cacheInfos(GetGitopsClusterRequestClusterInfoCacheInfo... cacheInfos) {
             return cacheInfos(List.of(cacheInfos));
         }
         @CustomType.Setter
-        public Builder connectionStates(@Nullable List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates) {
-            this.connectionStates = connectionStates;
+        public Builder connectionStates(List<GetGitopsClusterRequestClusterInfoConnectionState> connectionStates) {
+            this.connectionStates = Objects.requireNonNull(connectionStates);
             return this;
         }
         public Builder connectionStates(GetGitopsClusterRequestClusterInfoConnectionState... connectionStates) {
             return connectionStates(List.of(connectionStates));
         }
         @CustomType.Setter
-        public Builder serverVersion(@Nullable String serverVersion) {
-            this.serverVersion = serverVersion;
+        public Builder serverVersion(String serverVersion) {
+            this.serverVersion = Objects.requireNonNull(serverVersion);
             return this;
         }
         public GetGitopsClusterRequestClusterInfo build() {

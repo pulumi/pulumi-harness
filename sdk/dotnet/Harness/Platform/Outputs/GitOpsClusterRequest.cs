@@ -14,10 +14,29 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GitOpsClusterRequest
     {
+        /// <summary>
+        /// GitOps cluster details.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestCluster> Clusters;
+        /// <summary>
+        /// Cluster server URL or the cluster name.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestId> Ids;
+        /// <summary>
+        /// Tags associated with the clusters
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Update mask of the GitOps cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestUpdateMask> UpdateMasks;
+        /// <summary>
+        /// Fields which are updated.
+        /// </summary>
         public readonly ImmutableArray<string> UpdatedFields;
+        /// <summary>
+        /// Indicates if the GitOps cluster should be updated if existing and inserted if not.
+        /// </summary>
         public readonly bool? Upsert;
 
         [OutputConstructor]
@@ -25,6 +44,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
             ImmutableArray<Outputs.GitOpsClusterRequestCluster> clusters,
 
             ImmutableArray<Outputs.GitOpsClusterRequestId> ids,
+
+            ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.GitOpsClusterRequestUpdateMask> updateMasks,
 
@@ -34,6 +55,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         {
             Clusters = clusters;
             Ids = ids;
+            Tags = tags;
             UpdateMasks = updateMasks;
             UpdatedFields = updatedFields;
             Upsert = upsert;

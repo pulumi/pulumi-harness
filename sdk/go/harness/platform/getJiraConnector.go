@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Jira connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupJiraConnector(ctx, &platform.LookupJiraConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupJiraConnector(ctx *pulumi.Context, args *LookupJiraConnectorArgs, opts ...pulumi.InvokeOption) (*LookupJiraConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupJiraConnectorResult
@@ -24,40 +50,42 @@ func LookupJiraConnector(ctx *pulumi.Context, args *LookupJiraConnectorArgs, opt
 // A collection of arguments for invoking getJiraConnector.
 type LookupJiraConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getJiraConnector.
 type LookupJiraConnectorResult struct {
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auths []GetJiraConnectorAuth `pulumi:"auths"`
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Reference to a secret containing the password to use for authentication.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url string `pulumi:"url"`
 	// Username to use for authentication.
 	Username string `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -77,12 +105,12 @@ func LookupJiraConnectorOutput(ctx *pulumi.Context, args LookupJiraConnectorOutp
 // A collection of arguments for invoking getJiraConnector.
 type LookupJiraConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -105,7 +133,12 @@ func (o LookupJiraConnectorResultOutput) ToLookupJiraConnectorResultOutputWithCo
 	return o
 }
 
-// Connect using only the delegates which have these tags.
+// The credentials to use for the jira authentication.
+func (o LookupJiraConnectorResultOutput) Auths() GetJiraConnectorAuthArrayOutput {
+	return o.ApplyT(func(v LookupJiraConnectorResult) []GetJiraConnectorAuth { return v.Auths }).(GetJiraConnectorAuthArrayOutput)
+}
+
+// Tags to filter delegates for connection.
 func (o LookupJiraConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -121,8 +154,8 @@ func (o LookupJiraConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupJiraConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupJiraConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupJiraConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJiraConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -130,27 +163,27 @@ func (o LookupJiraConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupJiraConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Reference to a secret containing the password to use for authentication.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupJiraConnectorResultOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupJiraConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupJiraConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Jira server.
+// URL of the Jira server.
 func (o LookupJiraConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -160,7 +193,7 @@ func (o LookupJiraConnectorResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
-// Reference to a secret containing the username to use for authentication.
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o LookupJiraConnectorResultOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJiraConnectorResult) string { return v.UsernameRef }).(pulumi.StringOutput)
 }

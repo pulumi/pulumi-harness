@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,62 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class UsergroupNotificationConfig {
     /**
-     * @return Group email
+     * @return Group email.
      * 
      */
     private @Nullable String groupEmail;
     /**
-     * @return Url of Microsoft teams webhook
+     * @return Url of Microsoft teams webhook.
      * 
      */
     private @Nullable String microsoftTeamsWebhookUrl;
     /**
-     * @return Pager duty key
+     * @return Pager duty key.
      * 
      */
     private @Nullable String pagerDutyKey;
     /**
-     * @return Url of slack webhook
+     * @return Send email to all the group members.
+     * 
+     */
+    private @Nullable Boolean sendEmailToAllUsers;
+    /**
+     * @return Url of slack webhook.
      * 
      */
     private @Nullable String slackWebhookUrl;
     /**
-     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
      * 
      */
     private @Nullable String type;
 
     private UsergroupNotificationConfig() {}
     /**
-     * @return Group email
+     * @return Group email.
      * 
      */
     public Optional<String> groupEmail() {
         return Optional.ofNullable(this.groupEmail);
     }
     /**
-     * @return Url of Microsoft teams webhook
+     * @return Url of Microsoft teams webhook.
      * 
      */
     public Optional<String> microsoftTeamsWebhookUrl() {
         return Optional.ofNullable(this.microsoftTeamsWebhookUrl);
     }
     /**
-     * @return Pager duty key
+     * @return Pager duty key.
      * 
      */
     public Optional<String> pagerDutyKey() {
         return Optional.ofNullable(this.pagerDutyKey);
     }
     /**
-     * @return Url of slack webhook
+     * @return Send email to all the group members.
+     * 
+     */
+    public Optional<Boolean> sendEmailToAllUsers() {
+        return Optional.ofNullable(this.sendEmailToAllUsers);
+    }
+    /**
+     * @return Url of slack webhook.
      * 
      */
     public Optional<String> slackWebhookUrl() {
         return Optional.ofNullable(this.slackWebhookUrl);
     }
     /**
-     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+     * @return Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
      * 
      */
     public Optional<String> type() {
@@ -86,6 +99,7 @@ public final class UsergroupNotificationConfig {
         private @Nullable String groupEmail;
         private @Nullable String microsoftTeamsWebhookUrl;
         private @Nullable String pagerDutyKey;
+        private @Nullable Boolean sendEmailToAllUsers;
         private @Nullable String slackWebhookUrl;
         private @Nullable String type;
         public Builder() {}
@@ -94,6 +108,7 @@ public final class UsergroupNotificationConfig {
     	      this.groupEmail = defaults.groupEmail;
     	      this.microsoftTeamsWebhookUrl = defaults.microsoftTeamsWebhookUrl;
     	      this.pagerDutyKey = defaults.pagerDutyKey;
+    	      this.sendEmailToAllUsers = defaults.sendEmailToAllUsers;
     	      this.slackWebhookUrl = defaults.slackWebhookUrl;
     	      this.type = defaults.type;
         }
@@ -114,6 +129,11 @@ public final class UsergroupNotificationConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder sendEmailToAllUsers(@Nullable Boolean sendEmailToAllUsers) {
+            this.sendEmailToAllUsers = sendEmailToAllUsers;
+            return this;
+        }
+        @CustomType.Setter
         public Builder slackWebhookUrl(@Nullable String slackWebhookUrl) {
             this.slackWebhookUrl = slackWebhookUrl;
             return this;
@@ -128,6 +148,7 @@ public final class UsergroupNotificationConfig {
             o.groupEmail = groupEmail;
             o.microsoftTeamsWebhookUrl = microsoftTeamsWebhookUrl;
             o.pagerDutyKey = pagerDutyKey;
+            o.sendEmailToAllUsers = sendEmailToAllUsers;
             o.slackWebhookUrl = slackWebhookUrl;
             o.type = type;
             return o;

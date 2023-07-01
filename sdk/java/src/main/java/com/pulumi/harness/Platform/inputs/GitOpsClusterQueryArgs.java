@@ -17,23 +17,47 @@ public final class GitOpsClusterQueryArgs extends com.pulumi.resources.ResourceA
 
     public static final GitOpsClusterQueryArgs Empty = new GitOpsClusterQueryArgs();
 
+    /**
+     * Cluster server URL or the cluster name.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<GitOpsClusterQueryIdArgs>> ids;
 
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     public Optional<Output<List<GitOpsClusterQueryIdArgs>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Name of the GitOps cluster.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of the GitOps cluster.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Server of the GitOps cluster.
+     * 
+     */
     @Import(name="server")
     private @Nullable Output<String> server;
 
+    /**
+     * @return Server of the GitOps cluster.
+     * 
+     */
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
     }
@@ -64,33 +88,75 @@ public final class GitOpsClusterQueryArgs extends com.pulumi.resources.ResourceA
             $ = new GitOpsClusterQueryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<GitOpsClusterQueryIdArgs>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<GitOpsClusterQueryIdArgs> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(GitOpsClusterQueryIdArgs... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param name Name of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param server Server of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
         }
 
+        /**
+         * @param server Server of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(String server) {
             return server(Output.of(server));
         }

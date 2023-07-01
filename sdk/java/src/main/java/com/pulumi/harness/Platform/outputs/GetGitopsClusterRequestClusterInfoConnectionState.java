@@ -8,24 +8,23 @@ import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestClusterInfoCon
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsClusterRequestClusterInfoConnectionState {
     private @Nullable List<GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt> attemptedAts;
-    private @Nullable String message;
-    private @Nullable String status;
+    private String message;
+    private String status;
 
     private GetGitopsClusterRequestClusterInfoConnectionState() {}
     public List<GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt> attemptedAts() {
         return this.attemptedAts == null ? List.of() : this.attemptedAts;
     }
-    public Optional<String> message() {
-        return Optional.ofNullable(this.message);
+    public String message() {
+        return this.message;
     }
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -38,8 +37,8 @@ public final class GetGitopsClusterRequestClusterInfoConnectionState {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt> attemptedAts;
-        private @Nullable String message;
-        private @Nullable String status;
+        private String message;
+        private String status;
         public Builder() {}
         public Builder(GetGitopsClusterRequestClusterInfoConnectionState defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,13 +56,13 @@ public final class GetGitopsClusterRequestClusterInfoConnectionState {
             return attemptedAts(List.of(attemptedAts));
         }
         @CustomType.Setter
-        public Builder message(@Nullable String message) {
-            this.message = message;
+        public Builder message(String message) {
+            this.message = Objects.requireNonNull(message);
             return this;
         }
         @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
             return this;
         }
         public GetGitopsClusterRequestClusterInfoConnectionState build() {

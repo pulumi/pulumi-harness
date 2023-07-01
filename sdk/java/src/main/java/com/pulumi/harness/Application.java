@@ -67,7 +67,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The application description
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -81,7 +81,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The id of the git sync connector
      * 
      */
-    @Export(name="gitSyncConnectorId", type=String.class, parameters={})
+    @Export(name="gitSyncConnectorId", refs={String.class}, tree="[0]")
     private Output<String> gitSyncConnectorId;
 
     /**
@@ -95,7 +95,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * True if git sync is enabled on this application
      * 
      */
-    @Export(name="gitSyncEnabled", type=Boolean.class, parameters={})
+    @Export(name="gitSyncEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> gitSyncEnabled;
 
     /**
@@ -109,7 +109,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * When this is set to true, all manual triggers will require API Key authorization
      * 
      */
-    @Export(name="isManualTriggerAuthorized", type=Boolean.class, parameters={})
+    @Export(name="isManualTriggerAuthorized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isManualTriggerAuthorized;
 
     /**
@@ -123,7 +123,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The name of the application
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,14 +134,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

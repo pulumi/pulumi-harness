@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class GitlabConnectorApiAuthentication {
     /**
-     * @return Personal access token for interacting with the gitlab api.
+     * @return Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String tokenRef;
 
     private GitlabConnectorApiAuthentication() {}
     /**
-     * @return Personal access token for interacting with the gitlab api.
+     * @return Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String tokenRef() {

@@ -19,15 +19,15 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
      * Unique identifier of the resource.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable Output<String> identifier;
+    @Import(name="identifier", required=true)
+    private Output<String> identifier;
 
     /**
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<Output<String>> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public Output<String> identifier() {
+        return this.identifier;
     }
 
     /**
@@ -46,33 +46,33 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Import(name="orgId", required=true)
-    private Output<String> orgId;
+    @Import(name="orgId")
+    private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public Output<String> orgId() {
-        return this.orgId;
+    public Optional<Output<String>> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     private GetServiceArgs() {}
@@ -108,7 +108,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable Output<String> identifier) {
+        public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -145,18 +145,18 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
          */
-        public Builder orgId(Output<String> orgId) {
+        public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -166,18 +166,18 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -187,8 +187,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetServiceArgs build() {
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
             return $;
         }
     }

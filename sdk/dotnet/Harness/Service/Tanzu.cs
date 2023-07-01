@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Service
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 

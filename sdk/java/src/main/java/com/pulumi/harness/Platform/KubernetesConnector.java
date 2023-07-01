@@ -121,10 +121,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using kubernetes connector id
+ * Import account level kubernetes connector
  * 
  * ```sh
  *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level kubernetes connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level kubernetes connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
  * ```
  * 
  */
@@ -134,7 +146,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Client key and certificate config for the connector.
      * 
      */
-    @Export(name="clientKeyCert", type=KubernetesConnectorClientKeyCert.class, parameters={})
+    @Export(name="clientKeyCert", refs={KubernetesConnectorClientKeyCert.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesConnectorClientKeyCert> clientKeyCert;
 
     /**
@@ -148,7 +160,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Selectors to use for the delegate.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
@@ -162,7 +174,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -176,7 +188,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -190,7 +202,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Credentials are inherited from the delegate.
      * 
      */
-    @Export(name="inheritFromDelegate", type=KubernetesConnectorInheritFromDelegate.class, parameters={})
+    @Export(name="inheritFromDelegate", refs={KubernetesConnectorInheritFromDelegate.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesConnectorInheritFromDelegate> inheritFromDelegate;
 
     /**
@@ -204,7 +216,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -218,7 +230,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * OpenID configuration for the connector.
      * 
      */
-    @Export(name="openidConnect", type=KubernetesConnectorOpenidConnect.class, parameters={})
+    @Export(name="openidConnect", refs={KubernetesConnectorOpenidConnect.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesConnectorOpenidConnect> openidConnect;
 
     /**
@@ -229,28 +241,28 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openidConnect);
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -260,7 +272,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Service account for the connector.
      * 
      */
-    @Export(name="serviceAccount", type=KubernetesConnectorServiceAccount.class, parameters={})
+    @Export(name="serviceAccount", refs={KubernetesConnectorServiceAccount.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesConnectorServiceAccount> serviceAccount;
 
     /**
@@ -271,14 +283,14 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAccount);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -288,7 +300,7 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      * Username and password for the connector.
      * 
      */
-    @Export(name="usernamePassword", type=KubernetesConnectorUsernamePassword.class, parameters={})
+    @Export(name="usernamePassword", refs={KubernetesConnectorUsernamePassword.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesConnectorUsernamePassword> usernamePassword;
 
     /**

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInfrastructureResult {
     /**
-     * @return Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
     private String deploymentType;
@@ -36,29 +36,29 @@ public final class GetInfrastructureResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    private String orgId;
+    private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    private String projectId;
+    private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
     /**
-     * @return Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
     private String type;
@@ -70,7 +70,7 @@ public final class GetInfrastructureResult {
 
     private GetInfrastructureResult() {}
     /**
-     * @return Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
     public String deploymentType() {
@@ -101,8 +101,8 @@ public final class GetInfrastructureResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Name of the resource.
@@ -112,28 +112,28 @@ public final class GetInfrastructureResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public String orgId() {
-        return this.orgId;
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
         return this.tags;
     }
     /**
-     * @return Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
     public String type() {
@@ -160,10 +160,10 @@ public final class GetInfrastructureResult {
         private String description;
         private String envId;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private @Nullable String name;
-        private String orgId;
-        private String projectId;
+        private @Nullable String orgId;
+        private @Nullable String projectId;
         private List<String> tags;
         private String type;
         private String yaml;
@@ -204,8 +204,8 @@ public final class GetInfrastructureResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter
@@ -214,13 +214,13 @@ public final class GetInfrastructureResult {
             return this;
         }
         @CustomType.Setter
-        public Builder orgId(String orgId) {
-            this.orgId = Objects.requireNonNull(orgId);
+        public Builder orgId(@Nullable String orgId) {
+            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter

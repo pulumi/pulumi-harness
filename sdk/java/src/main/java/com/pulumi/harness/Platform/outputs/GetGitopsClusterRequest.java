@@ -17,7 +17,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsClusterRequest {
     private @Nullable List<GetGitopsClusterRequestCluster> clusters;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private @Nullable List<GetGitopsClusterRequestId> ids;
+    private List<String> tags;
     private @Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks;
     private @Nullable List<String> updatedFields;
     private @Nullable Boolean upsert;
@@ -26,8 +31,15 @@ public final class GetGitopsClusterRequest {
     public List<GetGitopsClusterRequestCluster> clusters() {
         return this.clusters == null ? List.of() : this.clusters;
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public List<GetGitopsClusterRequestId> ids() {
         return this.ids == null ? List.of() : this.ids;
+    }
+    public List<String> tags() {
+        return this.tags;
     }
     public List<GetGitopsClusterRequestUpdateMask> updateMasks() {
         return this.updateMasks == null ? List.of() : this.updateMasks;
@@ -50,6 +62,7 @@ public final class GetGitopsClusterRequest {
     public static final class Builder {
         private @Nullable List<GetGitopsClusterRequestCluster> clusters;
         private @Nullable List<GetGitopsClusterRequestId> ids;
+        private List<String> tags;
         private @Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks;
         private @Nullable List<String> updatedFields;
         private @Nullable Boolean upsert;
@@ -58,6 +71,7 @@ public final class GetGitopsClusterRequest {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
     	      this.ids = defaults.ids;
+    	      this.tags = defaults.tags;
     	      this.updateMasks = defaults.updateMasks;
     	      this.updatedFields = defaults.updatedFields;
     	      this.upsert = defaults.upsert;
@@ -78,6 +92,14 @@ public final class GetGitopsClusterRequest {
         }
         public Builder ids(GetGitopsClusterRequestId... ids) {
             return ids(List.of(ids));
+        }
+        @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            this.tags = Objects.requireNonNull(tags);
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder updateMasks(@Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks) {
@@ -104,6 +126,7 @@ public final class GetGitopsClusterRequest {
             final var o = new GetGitopsClusterRequest();
             o.clusters = clusters;
             o.ids = ids;
+            o.tags = tags;
             o.updateMasks = updateMasks;
             o.updatedFields = updatedFields;
             o.upsert = upsert;

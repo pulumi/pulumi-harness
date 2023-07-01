@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class PrometheusConnectorHeader
     {
         /// <summary>
-        /// Encrypted value reference.
+        /// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? EncryptedValueRef;
         /// <summary>

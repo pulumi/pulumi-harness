@@ -18,7 +18,7 @@ public final class AwsConnectorManual {
      */
     private @Nullable String accessKey;
     /**
-     * @return Reference to the Harness secret containing the aws access key.
+     * @return Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String accessKeyRef;
@@ -28,7 +28,7 @@ public final class AwsConnectorManual {
      */
     private @Nullable List<String> delegateSelectors;
     /**
-     * @return Reference to the Harness secret containing the aws secret key.
+     * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String secretKeyRef;
@@ -42,7 +42,7 @@ public final class AwsConnectorManual {
         return Optional.ofNullable(this.accessKey);
     }
     /**
-     * @return Reference to the Harness secret containing the aws access key.
+     * @return Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> accessKeyRef() {
@@ -56,7 +56,7 @@ public final class AwsConnectorManual {
         return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
-     * @return Reference to the Harness secret containing the aws secret key.
+     * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String secretKeyRef() {

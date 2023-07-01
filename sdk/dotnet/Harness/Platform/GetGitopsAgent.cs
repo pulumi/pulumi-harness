@@ -12,9 +12,65 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     public static class GetGitopsAgent
     {
+        /// <summary>
+        /// Datasource for fetching a Harness Gitops Agents.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAgent.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGitopsAgentResult> InvokeAsync(GetGitopsAgentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Datasource for fetching a Harness Gitops Agents.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAgent.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGitopsAgentResult> Invoke(GetGitopsAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentInvokeArgs(), options.WithDefaults());
     }
@@ -22,31 +78,29 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsAgentArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps agent.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the GitOps agent.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
-        [Input("metadatas", required: true)]
-        private List<Inputs.GetGitopsAgentMetadataArgs>? _metadatas;
-        public List<Inputs.GetGitopsAgentMetadataArgs> Metadatas
-        {
-            get => _metadatas ?? (_metadatas = new List<Inputs.GetGitopsAgentMetadataArgs>());
-            set => _metadatas = value;
-        }
+        /// <summary>
+        /// Organization identifier of the GitOps agent.
+        /// </summary>
+        [Input("orgId")]
+        public string? OrgId { get; set; }
 
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        [Input("orgId", required: true)]
-        public string OrgId { get; set; } = null!;
-
-        [Input("projectId", required: true)]
-        public string ProjectId { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public string Type { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps agent.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         public GetGitopsAgentArgs()
         {
@@ -56,31 +110,29 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsAgentInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps agent.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the GitOps agent.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
-        [Input("metadatas", required: true)]
-        private InputList<Inputs.GetGitopsAgentMetadataInputArgs>? _metadatas;
-        public InputList<Inputs.GetGitopsAgentMetadataInputArgs> Metadatas
-        {
-            get => _metadatas ?? (_metadatas = new InputList<Inputs.GetGitopsAgentMetadataInputArgs>());
-            set => _metadatas = value;
-        }
+        /// <summary>
+        /// Organization identifier of the GitOps agent.
+        /// </summary>
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
-
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps agent.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         public GetGitopsAgentInvokeArgs()
         {
@@ -92,18 +144,46 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     [OutputType]
     public sealed class GetGitopsAgentResult
     {
+        /// <summary>
+        /// Account identifier of the GitOps agent.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Description of the GitOps agent.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifier of the GitOps agent.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// Metadata of the agent.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsAgentMetadataResult> Metadatas;
+        /// <summary>
+        /// Name of the GitOps agent.
+        /// </summary>
         public readonly string Name;
-        public readonly string OrgId;
-        public readonly string ProjectId;
+        /// <summary>
+        /// Organization identifier of the GitOps agent.
+        /// </summary>
+        public readonly string? OrgId;
+        /// <summary>
+        /// Project identifier of the GitOps agent.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
+        /// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// Default: "AGENT*TYPE*UNSET"
+        /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -120,9 +200,9 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string name,
 
-            string orgId,
+            string? orgId,
 
-            string projectId,
+            string? projectId,
 
             ImmutableDictionary<string, string> tags,
 

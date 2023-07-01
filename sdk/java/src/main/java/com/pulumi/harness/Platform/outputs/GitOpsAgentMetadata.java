@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GitOpsAgentMetadata {
+    /**
+     * @return Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * 
+     */
     private @Nullable Boolean highAvailability;
+    /**
+     * @return The k8s namespace that this agent resides in.
+     * 
+     */
     private @Nullable String namespace;
 
     private GitOpsAgentMetadata() {}
+    /**
+     * @return Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * 
+     */
     public Optional<Boolean> highAvailability() {
         return Optional.ofNullable(this.highAvailability);
     }
+    /**
+     * @return The k8s namespace that this agent resides in.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }

@@ -58,10 +58,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using user group id
+ * Import account level variables
  * 
  * ```sh
  *  $ pulumi import harness:platform/variables:Variables example &lt;variable_id&gt;
+ * ```
+ * 
+ *  Import org level variables
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/variables:Variables example &lt;ord_id&gt;/&lt;variable_id&gt;
+ * ```
+ * 
+ *  Import project level variables
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/variables:Variables example &lt;org_id&gt;/&lt;project_id&gt;/&lt;variable_id&gt;
  * ```
  * 
  */
@@ -71,7 +83,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Description of the entity
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -85,7 +97,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -99,7 +111,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Name of the Variable
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -113,7 +125,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Organization Identifier for the Entity
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
@@ -127,7 +139,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Project Identifier for the Entity
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -141,7 +153,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * List of Spec Fields.
      * 
      */
-    @Export(name="spec", type=VariablesSpec.class, parameters={})
+    @Export(name="spec", refs={VariablesSpec.class}, tree="[0]")
     private Output<VariablesSpec> spec;
 
     /**
@@ -155,7 +167,7 @@ public class Variables extends com.pulumi.resources.CustomResource {
      * Type of Variable
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

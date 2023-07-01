@@ -36,10 +36,10 @@ class ResourceGroupArgs:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]] resource_filters: Contains resource filter for a resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
@@ -150,7 +150,7 @@ class ResourceGroupArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -162,7 +162,7 @@ class ResourceGroupArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -186,7 +186,7 @@ class ResourceGroupArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -218,10 +218,10 @@ class _ResourceGroupState:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterArgs']]] resource_filters: Contains resource filter for a resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -334,7 +334,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -346,7 +346,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -370,7 +370,7 @@ class _ResourceGroupState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -401,10 +401,22 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Import using resource group id
+        Import account level resource group
 
         ```sh
          $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
+        ```
+
+         Import org level resource group
+
+        ```sh
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
+        ```
+
+         Import project level resource group
+
+        ```sh
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -416,10 +428,10 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]] resource_filters: Contains resource filter for a resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -432,10 +444,22 @@ class ResourceGroup(pulumi.CustomResource):
 
         ## Import
 
-        Import using resource group id
+        Import account level resource group
 
         ```sh
          $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
+        ```
+
+         Import org level resource group
+
+        ```sh
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
+        ```
+
+         Import project level resource group
+
+        ```sh
+         $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -523,10 +547,10 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]] resource_filters: Contains resource filter for a resource group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -605,7 +629,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -613,7 +637,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -629,7 +653,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

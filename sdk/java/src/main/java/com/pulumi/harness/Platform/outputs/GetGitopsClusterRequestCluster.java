@@ -20,13 +20,13 @@ public final class GetGitopsClusterRequestCluster {
     private @Nullable Map<String,String> annotations;
     private @Nullable Boolean clusterResources;
     private @Nullable List<GetGitopsClusterRequestClusterConfig> configs;
-    private @Nullable List<GetGitopsClusterRequestClusterInfo> infos;
+    private List<GetGitopsClusterRequestClusterInfo> infos;
     private @Nullable Map<String,String> labels;
     private @Nullable String name;
     private @Nullable List<String> namespaces;
     private @Nullable String project;
     private @Nullable List<GetGitopsClusterRequestClusterRefreshRequestedAt> refreshRequestedAts;
-    private String server;
+    private @Nullable String server;
     private @Nullable String shard;
 
     private GetGitopsClusterRequestCluster() {}
@@ -40,7 +40,7 @@ public final class GetGitopsClusterRequestCluster {
         return this.configs == null ? List.of() : this.configs;
     }
     public List<GetGitopsClusterRequestClusterInfo> infos() {
-        return this.infos == null ? List.of() : this.infos;
+        return this.infos;
     }
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
@@ -57,8 +57,8 @@ public final class GetGitopsClusterRequestCluster {
     public List<GetGitopsClusterRequestClusterRefreshRequestedAt> refreshRequestedAts() {
         return this.refreshRequestedAts == null ? List.of() : this.refreshRequestedAts;
     }
-    public String server() {
-        return this.server;
+    public Optional<String> server() {
+        return Optional.ofNullable(this.server);
     }
     public Optional<String> shard() {
         return Optional.ofNullable(this.shard);
@@ -76,13 +76,13 @@ public final class GetGitopsClusterRequestCluster {
         private @Nullable Map<String,String> annotations;
         private @Nullable Boolean clusterResources;
         private @Nullable List<GetGitopsClusterRequestClusterConfig> configs;
-        private @Nullable List<GetGitopsClusterRequestClusterInfo> infos;
+        private List<GetGitopsClusterRequestClusterInfo> infos;
         private @Nullable Map<String,String> labels;
         private @Nullable String name;
         private @Nullable List<String> namespaces;
         private @Nullable String project;
         private @Nullable List<GetGitopsClusterRequestClusterRefreshRequestedAt> refreshRequestedAts;
-        private String server;
+        private @Nullable String server;
         private @Nullable String shard;
         public Builder() {}
         public Builder(GetGitopsClusterRequestCluster defaults) {
@@ -119,8 +119,8 @@ public final class GetGitopsClusterRequestCluster {
             return configs(List.of(configs));
         }
         @CustomType.Setter
-        public Builder infos(@Nullable List<GetGitopsClusterRequestClusterInfo> infos) {
-            this.infos = infos;
+        public Builder infos(List<GetGitopsClusterRequestClusterInfo> infos) {
+            this.infos = Objects.requireNonNull(infos);
             return this;
         }
         public Builder infos(GetGitopsClusterRequestClusterInfo... infos) {
@@ -158,8 +158,8 @@ public final class GetGitopsClusterRequestCluster {
             return refreshRequestedAts(List.of(refreshRequestedAts));
         }
         @CustomType.Setter
-        public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+        public Builder server(@Nullable String server) {
+            this.server = server;
             return this;
         }
         @CustomType.Setter

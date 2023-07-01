@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPipelineResult',
@@ -21,10 +23,13 @@ class GetPipelineResult:
     """
     A collection of values returned by getPipeline.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, yaml=None):
+    def __init__(__self__, description=None, git_details=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, template_applied=None, template_applied_pipeline_yaml=None, yaml=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if git_details and not isinstance(git_details, dict):
+            raise TypeError("Expected argument 'git_details' to be a dict")
+        pulumi.set(__self__, "git_details", git_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,6 +48,12 @@ class GetPipelineResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if template_applied and not isinstance(template_applied, bool):
+            raise TypeError("Expected argument 'template_applied' to be a bool")
+        pulumi.set(__self__, "template_applied", template_applied)
+        if template_applied_pipeline_yaml and not isinstance(template_applied_pipeline_yaml, str):
+            raise TypeError("Expected argument 'template_applied_pipeline_yaml' to be a str")
+        pulumi.set(__self__, "template_applied_pipeline_yaml", template_applied_pipeline_yaml)
         if yaml and not isinstance(yaml, str):
             raise TypeError("Expected argument 'yaml' to be a str")
         pulumi.set(__self__, "yaml", yaml)
@@ -54,6 +65,14 @@ class GetPipelineResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional['outputs.GetPipelineGitDetailsResult']:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
@@ -99,9 +118,25 @@ class GetPipelineResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateApplied")
+    def template_applied(self) -> bool:
+        """
+        If true, returns Pipeline YAML with Templates applied on it.
+        """
+        return pulumi.get(self, "template_applied")
+
+    @property
+    @pulumi.getter(name="templateAppliedPipelineYaml")
+    def template_applied_pipeline_yaml(self) -> str:
+        """
+        Pipeline YAML after resolving Templates (returned as a String).
+        """
+        return pulumi.get(self, "template_applied_pipeline_yaml")
 
     @property
     @pulumi.getter
@@ -119,16 +154,20 @@ class AwaitableGetPipelineResult(GetPipelineResult):
             yield self
         return GetPipelineResult(
             description=self.description,
+            git_details=self.git_details,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags,
+            template_applied=self.template_applied,
+            template_applied_pipeline_yaml=self.template_applied_pipeline_yaml,
             yaml=self.yaml)
 
 
-def get_pipeline(identifier: Optional[str] = None,
+def get_pipeline(git_details: Optional[pulumi.InputType['GetPipelineGitDetailsArgs']] = None,
+                 identifier: Optional[str] = None,
                  name: Optional[str] = None,
                  org_id: Optional[str] = None,
                  project_id: Optional[str] = None,
@@ -148,12 +187,14 @@ def get_pipeline(identifier: Optional[str] = None,
     ```
 
 
+    :param pulumi.InputType['GetPipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
+    __args__['gitDetails'] = git_details
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
@@ -162,18 +203,22 @@ def get_pipeline(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getPipeline:getPipeline', __args__, opts=opts, typ=GetPipelineResult).value
 
     return AwaitableGetPipelineResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        yaml=__ret__.yaml)
+        description=pulumi.get(__ret__, 'description'),
+        git_details=pulumi.get(__ret__, 'git_details'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        template_applied=pulumi.get(__ret__, 'template_applied'),
+        template_applied_pipeline_yaml=pulumi.get(__ret__, 'template_applied_pipeline_yaml'),
+        yaml=pulumi.get(__ret__, 'yaml'))
 
 
 @_utilities.lift_output_func(get_pipeline)
-def get_pipeline_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_pipeline_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetPipelineGitDetailsArgs']]]] = None,
+                        identifier: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         org_id: Optional[pulumi.Input[str]] = None,
                         project_id: Optional[pulumi.Input[str]] = None,
@@ -193,6 +238,7 @@ def get_pipeline_output(identifier: Optional[pulumi.Input[Optional[str]]] = None
     ```
 
 
+    :param pulumi.InputType['GetPipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

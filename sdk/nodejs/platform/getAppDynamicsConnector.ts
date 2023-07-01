@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up an App Dynamics connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAppDynamicsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getAppDynamicsConnector(args?: GetAppDynamicsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAppDynamicsConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getAppDynamicsConnector(args: GetAppDynamicsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAppDynamicsConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetAppDynamicsConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -59,7 +66,7 @@ export interface GetAppDynamicsConnectorResult {
      */
     readonly apiTokens: outputs.platform.GetAppDynamicsConnectorApiToken[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -73,25 +80,25 @@ export interface GetAppDynamicsConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      */
     readonly url: string;
     /**
@@ -99,9 +106,22 @@ export interface GetAppDynamicsConnectorResult {
      */
     readonly usernamePasswords: outputs.platform.GetAppDynamicsConnectorUsernamePassword[];
 }
-
-export function getAppDynamicsConnectorOutput(args?: GetAppDynamicsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppDynamicsConnectorResult> {
-    return pulumi.output(args).apply(a => getAppDynamicsConnector(a, opts))
+/**
+ * Datasource for looking up an App Dynamics connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAppDynamicsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getAppDynamicsConnectorOutput(args: GetAppDynamicsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppDynamicsConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getAppDynamicsConnector(a, opts))
 }
 
 /**
@@ -111,17 +131,17 @@ export interface GetAppDynamicsConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

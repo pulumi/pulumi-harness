@@ -14,7 +14,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetGitopsRepositoryRepoResult
     {
-        public readonly string ConnectionType;
+        public readonly string? ConnectionType;
         public readonly bool? EnableLfs;
         public readonly bool? EnableOci;
         public readonly string? GithubAppEnterpriseBaseUrl;
@@ -28,7 +28,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         public readonly string? Password;
         public readonly string Project;
         public readonly string? Proxy;
-        public readonly string Repo;
+        /// <summary>
+        /// Repo details holding application configurations.
+        /// </summary>
+        public readonly string? Repo;
         public readonly string? SshPrivateKey;
         public readonly string? TlsClientCertData;
         public readonly string? TlsClientCertKey;
@@ -37,7 +40,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetGitopsRepositoryRepoResult(
-            string connectionType,
+            string? connectionType,
 
             bool? enableLfs,
 
@@ -65,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             string? proxy,
 
-            string repo,
+            string? repo,
 
             string? sshPrivateKey,
 

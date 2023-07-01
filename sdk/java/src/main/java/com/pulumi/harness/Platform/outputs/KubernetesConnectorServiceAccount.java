@@ -15,7 +15,7 @@ public final class KubernetesConnectorServiceAccount {
      */
     private String masterUrl;
     /**
-     * @return Reference to the secret containing the service account token for the connector.
+     * @return Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String serviceAccountTokenRef;
@@ -29,7 +29,7 @@ public final class KubernetesConnectorServiceAccount {
         return this.masterUrl;
     }
     /**
-     * @return Reference to the secret containing the service account token for the connector.
+     * @return Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String serviceAccountTokenRef() {

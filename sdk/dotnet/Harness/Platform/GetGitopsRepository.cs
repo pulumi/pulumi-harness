@@ -12,9 +12,67 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     public static class GetGitopsRepository
     {
+        /// <summary>
+        /// Data Source for fetching a Harness GitOps Repository.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsRepository.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         AgentId = "agent_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGitopsRepositoryResult> InvokeAsync(GetGitopsRepositoryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsRepositoryResult>("harness:platform/getGitopsRepository:getGitopsRepository", args ?? new GetGitopsRepositoryArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data Source for fetching a Harness GitOps Repository.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsRepository.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         AgentId = "agent_id",
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGitopsRepositoryResult> Invoke(GetGitopsRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsRepositoryResult>("harness:platform/getGitopsRepository:getGitopsRepository", args ?? new GetGitopsRepositoryInvokeArgs(), options.WithDefaults());
     }
@@ -22,49 +80,75 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsRepositoryArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps repository.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        [Input("agentId")]
-        public string? AgentId { get; set; }
+        /// <summary>
+        /// Agent identifier of the GitOps repository.
+        /// </summary>
+        [Input("agentId", required: true)]
+        public string AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates if to operate on credential set instead of repository.
+        /// </summary>
         [Input("credsOnly")]
         public bool? CredsOnly { get; set; }
 
+        /// <summary>
+        /// Identifier of the GitOps repository.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier of the GitOps repository.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
-        [Input("projectId", required: true)]
-        public string ProjectId { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// Indicates to force refresh query for repository.
+        /// </summary>
         [Input("queryForceRefresh")]
         public bool? QueryForceRefresh { get; set; }
 
+        /// <summary>
+        /// Project to query for the GitOps repo.
+        /// </summary>
         [Input("queryProject")]
         public string? QueryProject { get; set; }
 
+        /// <summary>
+        /// GitOps repository to query.
+        /// </summary>
         [Input("queryRepo")]
         public string? QueryRepo { get; set; }
 
-        [Input("repos", required: true)]
-        private List<Inputs.GetGitopsRepositoryRepoArgs>? _repos;
-        public List<Inputs.GetGitopsRepositoryRepoArgs> Repos
-        {
-            get => _repos ?? (_repos = new List<Inputs.GetGitopsRepositoryRepoArgs>());
-            set => _repos = value;
-        }
-
         [Input("updateMasks")]
         private List<Inputs.GetGitopsRepositoryUpdateMaskArgs>? _updateMasks;
+
+        /// <summary>
+        /// Update mask of the repository.
+        /// </summary>
         public List<Inputs.GetGitopsRepositoryUpdateMaskArgs> UpdateMasks
         {
             get => _updateMasks ?? (_updateMasks = new List<Inputs.GetGitopsRepositoryUpdateMaskArgs>());
             set => _updateMasks = value;
         }
 
+        /// <summary>
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// </summary>
         [Input("upsert")]
         public bool? Upsert { get; set; }
 
@@ -76,49 +160,75 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetGitopsRepositoryInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps repository.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("agentId")]
-        public Input<string>? AgentId { get; set; }
+        /// <summary>
+        /// Agent identifier of the GitOps repository.
+        /// </summary>
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates if to operate on credential set instead of repository.
+        /// </summary>
         [Input("credsOnly")]
         public Input<bool>? CredsOnly { get; set; }
 
+        /// <summary>
+        /// Identifier of the GitOps repository.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Organization identifier of the GitOps repository.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Indicates to force refresh query for repository.
+        /// </summary>
         [Input("queryForceRefresh")]
         public Input<bool>? QueryForceRefresh { get; set; }
 
+        /// <summary>
+        /// Project to query for the GitOps repo.
+        /// </summary>
         [Input("queryProject")]
         public Input<string>? QueryProject { get; set; }
 
+        /// <summary>
+        /// GitOps repository to query.
+        /// </summary>
         [Input("queryRepo")]
         public Input<string>? QueryRepo { get; set; }
 
-        [Input("repos", required: true)]
-        private InputList<Inputs.GetGitopsRepositoryRepoInputArgs>? _repos;
-        public InputList<Inputs.GetGitopsRepositoryRepoInputArgs> Repos
-        {
-            get => _repos ?? (_repos = new InputList<Inputs.GetGitopsRepositoryRepoInputArgs>());
-            set => _repos = value;
-        }
-
         [Input("updateMasks")]
         private InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>? _updateMasks;
+
+        /// <summary>
+        /// Update mask of the repository.
+        /// </summary>
         public InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs> UpdateMasks
         {
             get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>());
             set => _updateMasks = value;
         }
 
+        /// <summary>
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
 
@@ -132,28 +242,64 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     [OutputType]
     public sealed class GetGitopsRepositoryResult
     {
+        /// <summary>
+        /// Account identifier of the GitOps repository.
+        /// </summary>
         public readonly string AccountId;
-        public readonly string? AgentId;
+        /// <summary>
+        /// Agent identifier of the GitOps repository.
+        /// </summary>
+        public readonly string AgentId;
+        /// <summary>
+        /// Indicates if to operate on credential set instead of repository.
+        /// </summary>
         public readonly bool? CredsOnly;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Identifier of the GitOps repository.
+        /// </summary>
         public readonly string Identifier;
+        /// <summary>
+        /// Organization identifier of the GitOps repository.
+        /// </summary>
         public readonly string? OrgId;
-        public readonly string ProjectId;
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
+        /// Indicates to force refresh query for repository.
+        /// </summary>
         public readonly bool? QueryForceRefresh;
+        /// <summary>
+        /// Project to query for the GitOps repo.
+        /// </summary>
         public readonly string? QueryProject;
+        /// <summary>
+        /// GitOps repository to query.
+        /// </summary>
         public readonly string? QueryRepo;
+        /// <summary>
+        /// Repo details holding application configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> Repos;
+        /// <summary>
+        /// Update mask of the repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> UpdateMasks;
+        /// <summary>
+        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// </summary>
         public readonly bool? Upsert;
 
         [OutputConstructor]
         private GetGitopsRepositoryResult(
             string accountId,
 
-            string? agentId,
+            string agentId,
 
             bool? credsOnly,
 
@@ -163,7 +309,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string? orgId,
 
-            string projectId,
+            string? projectId,
 
             bool? queryForceRefresh,
 

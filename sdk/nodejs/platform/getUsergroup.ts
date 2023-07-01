@@ -15,25 +15,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const exampleById = pulumi.output(harness.platform.getUsergroup({
+ * const exampleById = harness.platform.getUsergroup({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
- * const exampleByName = pulumi.output(harness.platform.getUsergroup({
+ * });
+ * const exampleByName = harness.platform.getUsergroup({
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getUsergroup(args?: GetUsergroupArgs, opts?: pulumi.InvokeOptions): Promise<GetUsergroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getUsergroup:getUsergroup", {
         "identifier": args.identifier,
         "name": args.name,
@@ -60,11 +57,11 @@ export interface GetUsergroupArgs {
      */
     notificationConfigs?: inputs.platform.GetUsergroupNotificationConfig[];
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -98,7 +95,7 @@ export interface GetUsergroupResult {
      */
     readonly linkedSsoId: string;
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      */
     readonly linkedSsoType: string;
     /**
@@ -110,11 +107,11 @@ export interface GetUsergroupResult {
      */
     readonly notificationConfigs?: outputs.platform.GetUsergroupNotificationConfig[];
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -126,11 +123,11 @@ export interface GetUsergroupResult {
      */
     readonly ssoGroupName: string;
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      */
     readonly ssoLinked: boolean;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -138,9 +135,29 @@ export interface GetUsergroupResult {
      */
     readonly users: string[];
 }
-
+/**
+ * Data source for retrieving a Harness User Group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const exampleById = harness.platform.getUsergroup({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * const exampleByName = harness.platform.getUsergroup({
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getUsergroupOutput(args?: GetUsergroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsergroupResult> {
-    return pulumi.output(args).apply(a => getUsergroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsergroup(a, opts))
 }
 
 /**
@@ -160,11 +177,11 @@ export interface GetUsergroupOutputArgs {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GetUsergroupNotificationConfigArgs>[]>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

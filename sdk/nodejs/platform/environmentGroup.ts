@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.EnvironmentGroup("example", {
  *     color: "#0063F7",
@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     orgIdentifier: "orgIdentifer"
  *     projectIdentifier: "projectIdentifier"
  *     envIdentifiers: []
+ *
  * `,
  * });
  * ```
@@ -34,7 +35,7 @@ import * as utilities from "../utilities";
  * Import using the environment group id.
  *
  * ```sh
- *  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <environment_group_id>
+ *  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
  * ```
  */
 export class EnvironmentGroup extends pulumi.CustomResource {
@@ -70,6 +71,10 @@ export class EnvironmentGroup extends pulumi.CustomResource {
      */
     public readonly color!: pulumi.Output<string>;
     /**
+     * Enable this flag for force deletion of environment group
+     */
+    public readonly forceDelete!: pulumi.Output<string>;
+    /**
      * identifier of the environment group.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -82,7 +87,7 @@ export class EnvironmentGroup extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Env group YAML
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -100,6 +105,7 @@ export class EnvironmentGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EnvironmentGroupState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -113,6 +119,7 @@ export class EnvironmentGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'yaml'");
             }
             resourceInputs["color"] = args ? args.color : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -132,6 +139,10 @@ export interface EnvironmentGroupState {
      */
     color?: pulumi.Input<string>;
     /**
+     * Enable this flag for force deletion of environment group
+     */
+    forceDelete?: pulumi.Input<string>;
+    /**
      * identifier of the environment group.
      */
     identifier?: pulumi.Input<string>;
@@ -144,7 +155,7 @@ export interface EnvironmentGroupState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Env group YAML
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -158,6 +169,10 @@ export interface EnvironmentGroupArgs {
      */
     color?: pulumi.Input<string>;
     /**
+     * Enable this flag for force deletion of environment group
+     */
+    forceDelete?: pulumi.Input<string>;
+    /**
      * identifier of the environment group.
      */
     identifier: pulumi.Input<string>;
@@ -170,7 +185,7 @@ export interface EnvironmentGroupArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Env group YAML
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml: pulumi.Input<string>;
 }

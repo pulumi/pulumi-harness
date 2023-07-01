@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Data source for retrieving a Harness Infrastructure.
+ * Resource for creating a Harness Infrastructure.
  * 
  * ## Example Usage
  * ```java
@@ -48,22 +48,22 @@ import javax.annotation.Nullable;
  *             .projectId(&#34;projectIdentifier&#34;)
  *             .type(&#34;KubernetesDirect&#34;)
  *             .yaml(&#34;&#34;&#34;
- * 			   infrastructureDefinition:
- *          name: name
- *          identifier: identifier
- *          description: &#34;&#34;
- *          tags:
- *            asda: &#34;&#34;
- *          orgIdentifier: orgIdentifer
- *          projectIdentifier: projectIdentifier
- *          environmentRef: environmentIdentifier
- *          deploymentType: Kubernetes
- *          type: KubernetesDirect
- *          spec:
- *           connectorRef: account.gfgf
- *           namespace: asdasdsa
- *           releaseName: release-&lt;+INFRA_KEY&gt;
- *           allowSimultaneousDeployments: false
+ *   infrastructureDefinition:
+ *    name: name
+ *    identifier: identifier
+ *    description: &#34;&#34;
+ *    tags:
+ *      asda: &#34;&#34;
+ *    orgIdentifier: orgIdentifer
+ *    projectIdentifier: projectIdentifier
+ *    environmentRef: environmentIdentifier
+ *    deploymentType: Kubernetes
+ *    type: KubernetesDirect
+ *    spec:
+ *     connectorRef: account.gfgf
+ *     namespace: asdasdsa
+ *     releaseName: release-&lt;+INFRA_KEY&gt;
+ *     allowSimultaneousDeployments: false
  * 
  *             &#34;&#34;&#34;)
  *             .build());
@@ -74,34 +74,46 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using infrastructure id
+ * Import account level infrastructure
  * 
  * ```sh
- *  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;infrastructure_id&gt;
+ *  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;env_id&gt;/&lt;infrastructure_id&gt;
+ * ```
+ * 
+ *  Import org level infrastructure
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;org_id&gt;/&lt;env_id&gt;/&lt;infrastructure_id&gt;
+ * ```
+ * 
+ *  Import project level infrastructure
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;org_id&gt;/&lt;project_id&gt;/&lt;env_id&gt;/&lt;infrastructure_id&gt;
  * ```
  * 
  */
 @ResourceType(type="harness:platform/infrastructure:Infrastructure")
 public class Infrastructure extends com.pulumi.resources.CustomResource {
     /**
-     * Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
-    @Export(name="deploymentType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> deploymentType;
+    @Export(name="deploymentType", refs={String.class}, tree="[0]")
+    private Output<String> deploymentType;
 
     /**
-     * @return Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
-    public Output<Optional<String>> deploymentType() {
-        return Codegen.optional(this.deploymentType);
+    public Output<String> deploymentType() {
+        return this.deploymentType;
     }
     /**
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -112,24 +124,38 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * environment identifier.
+     * Environment Identifier.
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
-     * @return environment identifier.
+     * @return Environment Identifier.
      * 
      */
     public Output<String> envId() {
         return this.envId;
     }
     /**
+     * Enable this flag for force deletion of infrastructure
+     * 
+     */
+    @Export(name="forceDelete", refs={String.class}, tree="[0]")
+    private Output<String> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of infrastructure
+     * 
+     */
+    public Output<String> forceDelete() {
+        return this.forceDelete;
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -143,7 +169,7 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -154,70 +180,70 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
-    private Output<String> orgId;
+    @Export(name="orgId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public Output<String> orgId() {
-        return this.orgId;
+    public Output<Optional<String>> orgId() {
+        return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
-    private Output<String> projectId;
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<Optional<String>> projectId() {
+        return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> tags;
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
-     * Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Infrastructure YAML
+     * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    @Export(name="yaml", type=String.class, parameters={})
+    @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return Infrastructure YAML
+     * @return Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

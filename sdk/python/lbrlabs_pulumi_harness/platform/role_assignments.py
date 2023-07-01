@@ -16,25 +16,28 @@ __all__ = ['RoleAssignmentsArgs', 'RoleAssignments']
 @pulumi.input_type
 class RoleAssignmentsArgs:
     def __init__(__self__, *,
+                 principals: pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]],
+                 resource_group_identifier: pulumi.Input[str],
+                 role_identifier: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 resource_group_identifier: Optional[pulumi.Input[str]] = None,
-                 role_identifier: Optional[pulumi.Input[str]] = None):
+                 project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RoleAssignments resource.
+        :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
+        :param pulumi.Input[str] resource_group_identifier: Resource group identifier.
+        :param pulumi.Input[str] role_identifier: Role identifier.
         :param pulumi.Input[bool] disabled: Disabled or not.
         :param pulumi.Input[str] identifier: Identifier for role assignment.
         :param pulumi.Input[bool] managed: Managed or not.
         :param pulumi.Input[str] org_id: Org identifier.
-        :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
-        :param pulumi.Input[str] resource_group_identifier: Resource group identifier.
-        :param pulumi.Input[str] role_identifier: Role identifier.
         """
+        pulumi.set(__self__, "principals", principals)
+        pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+        pulumi.set(__self__, "role_identifier", role_identifier)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if identifier is not None:
@@ -43,14 +46,44 @@ class RoleAssignmentsArgs:
             pulumi.set(__self__, "managed", managed)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
-        if principals is not None:
-            pulumi.set(__self__, "principals", principals)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if resource_group_identifier is not None:
-            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
-        if role_identifier is not None:
-            pulumi.set(__self__, "role_identifier", role_identifier)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]:
+        """
+        Principal.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]):
+        pulumi.set(self, "principals", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> pulumi.Input[str]:
+        """
+        Resource group identifier.
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+    @resource_group_identifier.setter
+    def resource_group_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_identifier", value)
+
+    @property
+    @pulumi.getter(name="roleIdentifier")
+    def role_identifier(self) -> pulumi.Input[str]:
+        """
+        Role identifier.
+        """
+        return pulumi.get(self, "role_identifier")
+
+    @role_identifier.setter
+    def role_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_identifier", value)
 
     @property
     @pulumi.getter
@@ -101,18 +134,6 @@ class RoleAssignmentsArgs:
         pulumi.set(self, "org_id", value)
 
     @property
-    @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]]:
-        """
-        Principal.
-        """
-        return pulumi.get(self, "principals")
-
-    @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]]):
-        pulumi.set(self, "principals", value)
-
-    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -123,30 +144,6 @@ class RoleAssignmentsArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> Optional[pulumi.Input[str]]:
-        """
-        Resource group identifier.
-        """
-        return pulumi.get(self, "resource_group_identifier")
-
-    @resource_group_identifier.setter
-    def resource_group_identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resource_group_identifier", value)
-
-    @property
-    @pulumi.getter(name="roleIdentifier")
-    def role_identifier(self) -> Optional[pulumi.Input[str]]:
-        """
-        Role identifier.
-        """
-        return pulumi.get(self, "role_identifier")
-
-    @role_identifier.setter
-    def role_identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "role_identifier", value)
 
 
 @pulumi.input_type
@@ -310,7 +307,6 @@ class RoleAssignments(pulumi.CustomResource):
 
         #To create a role binding in service account
         example1_role_assignments = harness.platform.RoleAssignments("example1RoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -323,7 +319,6 @@ class RoleAssignments(pulumi.CustomResource):
             managed=False)
         #To create a role binding in user group 
         example1_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example1Platform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -347,7 +342,6 @@ class RoleAssignments(pulumi.CustomResource):
             disabled=False,
             managed=False)
         example2_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example2Platform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -359,7 +353,6 @@ class RoleAssignments(pulumi.CustomResource):
             disabled=False,
             managed=False)
         example2_harness_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example2HarnessPlatform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -374,10 +367,22 @@ class RoleAssignments(pulumi.CustomResource):
 
         ## Import
 
-        Import using roleassignments id
+        Import account level role assignments
 
         ```sh
          $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
+        ```
+
+         Import org level role assignments
+
+        ```sh
+         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
+        ```
+
+         Import project level role assignments
+
+        ```sh
+         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -395,7 +400,7 @@ class RoleAssignments(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[RoleAssignmentsArgs] = None,
+                 args: RoleAssignmentsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating role assignments in Harness.
@@ -408,7 +413,6 @@ class RoleAssignments(pulumi.CustomResource):
 
         #To create a role binding in service account
         example1_role_assignments = harness.platform.RoleAssignments("example1RoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -421,7 +425,6 @@ class RoleAssignments(pulumi.CustomResource):
             managed=False)
         #To create a role binding in user group 
         example1_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example1Platform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -445,7 +448,6 @@ class RoleAssignments(pulumi.CustomResource):
             disabled=False,
             managed=False)
         example2_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example2Platform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -457,7 +459,6 @@ class RoleAssignments(pulumi.CustomResource):
             disabled=False,
             managed=False)
         example2_harness_platform_role_assignments_role_assignments = harness.platform.RoleAssignments("example2HarnessPlatform/roleAssignmentsRoleAssignments",
-            identifier="identifier",
             org_id="org_id",
             project_id="project_id",
             resource_group_identifier="_all_project_level_resources",
@@ -472,10 +473,22 @@ class RoleAssignments(pulumi.CustomResource):
 
         ## Import
 
-        Import using roleassignments id
+        Import account level role assignments
 
         ```sh
          $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
+        ```
+
+         Import org level role assignments
+
+        ```sh
+         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
+        ```
+
+         Import project level role assignments
+
+        ```sh
+         $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -514,9 +527,15 @@ class RoleAssignments(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["managed"] = managed
             __props__.__dict__["org_id"] = org_id
+            if principals is None and not opts.urn:
+                raise TypeError("Missing required property 'principals'")
             __props__.__dict__["principals"] = principals
             __props__.__dict__["project_id"] = project_id
+            if resource_group_identifier is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_group_identifier'")
             __props__.__dict__["resource_group_identifier"] = resource_group_identifier
+            if role_identifier is None and not opts.urn:
+                raise TypeError("Missing required property 'role_identifier'")
             __props__.__dict__["role_identifier"] = role_identifier
         super(RoleAssignments, __self__).__init__(
             'harness:platform/roleAssignments:RoleAssignments',
@@ -576,7 +595,7 @@ class RoleAssignments(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def identifier(self) -> pulumi.Output[Optional[str]]:
+    def identifier(self) -> pulumi.Output[str]:
         """
         Identifier for role assignment.
         """
@@ -600,7 +619,7 @@ class RoleAssignments(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def principals(self) -> pulumi.Output[Optional[Sequence['outputs.RoleAssignmentsPrincipal']]]:
+    def principals(self) -> pulumi.Output[Sequence['outputs.RoleAssignmentsPrincipal']]:
         """
         Principal.
         """
@@ -616,7 +635,7 @@ class RoleAssignments(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> pulumi.Output[Optional[str]]:
+    def resource_group_identifier(self) -> pulumi.Output[str]:
         """
         Resource group identifier.
         """
@@ -624,7 +643,7 @@ class RoleAssignments(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleIdentifier")
-    def role_identifier(self) -> pulumi.Output[Optional[str]]:
+    def role_identifier(self) -> pulumi.Output[str]:
         """
         Role identifier.
         """

@@ -138,12 +138,12 @@ def get_environment_group(color: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getEnvironmentGroup:getEnvironmentGroup', __args__, opts=opts, typ=GetEnvironmentGroupResult).value
 
     return AwaitableGetEnvironmentGroupResult(
-        color=__ret__.color,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        yaml=__ret__.yaml)
+        color=pulumi.get(__ret__, 'color'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        yaml=pulumi.get(__ret__, 'yaml'))
 
 
 @_utilities.lift_output_func(get_environment_group)

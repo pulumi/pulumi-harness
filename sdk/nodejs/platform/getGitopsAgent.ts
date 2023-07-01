@@ -6,20 +6,31 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Datasource for fetching a Harness Gitops Agents.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAgent({
+ *     accountId: "account_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAgent:getGitopsAgent", {
         "accountId": args.accountId,
         "identifier": args.identifier,
-        "metadatas": args.metadatas,
-        "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "type": args.type,
     }, opts);
 }
 
@@ -27,47 +38,109 @@ export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getGitopsAgent.
  */
 export interface GetGitopsAgentArgs {
+    /**
+     * Account identifier of the GitOps agent.
+     */
     accountId: string;
+    /**
+     * Identifier of the GitOps agent.
+     */
     identifier: string;
-    metadatas: inputs.platform.GetGitopsAgentMetadata[];
-    name: string;
-    orgId: string;
-    projectId: string;
-    type: string;
+    /**
+     * Organization identifier of the GitOps agent.
+     */
+    orgId?: string;
+    /**
+     * Project identifier of the GitOps agent.
+     */
+    projectId?: string;
 }
 
 /**
  * A collection of values returned by getGitopsAgent.
  */
 export interface GetGitopsAgentResult {
+    /**
+     * Account identifier of the GitOps agent.
+     */
     readonly accountId: string;
+    /**
+     * Description of the GitOps agent.
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifier of the GitOps agent.
+     */
     readonly identifier: string;
+    /**
+     * Metadata of the agent.
+     */
     readonly metadatas: outputs.platform.GetGitopsAgentMetadata[];
+    /**
+     * Name of the GitOps agent.
+     */
     readonly name: string;
-    readonly orgId: string;
-    readonly projectId: string;
+    /**
+     * Organization identifier of the GitOps agent.
+     */
+    readonly orgId?: string;
+    /**
+     * Project identifier of the GitOps agent.
+     */
+    readonly projectId?: string;
+    /**
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+     */
     readonly tags: {[key: string]: string};
+    /**
+     * Default: "AGENT*TYPE*UNSET"
+     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+     */
     readonly type: string;
 }
-
+/**
+ * Datasource for fetching a Harness Gitops Agents.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAgent({
+ *     accountId: "account_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentResult> {
-    return pulumi.output(args).apply(a => getGitopsAgent(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitopsAgent(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getGitopsAgent.
  */
 export interface GetGitopsAgentOutputArgs {
+    /**
+     * Account identifier of the GitOps agent.
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * Identifier of the GitOps agent.
+     */
     identifier: pulumi.Input<string>;
-    metadatas: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsAgentMetadataArgs>[]>;
-    name: pulumi.Input<string>;
-    orgId: pulumi.Input<string>;
-    projectId: pulumi.Input<string>;
-    type: pulumi.Input<string>;
+    /**
+     * Organization identifier of the GitOps agent.
+     */
+    orgId?: pulumi.Input<string>;
+    /**
+     * Project identifier of the GitOps agent.
+     */
+    projectId?: pulumi.Input<string>;
 }

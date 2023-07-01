@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetGitopsAgentResult',
@@ -58,11 +57,17 @@ class GetGitopsAgentResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account identifier of the GitOps agent.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the GitOps agent.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -76,36 +81,58 @@ class GetGitopsAgentResult:
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        Identifier of the GitOps agent.
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter
     def metadatas(self) -> Sequence['outputs.GetGitopsAgentMetadataResult']:
+        """
+        Metadata of the agent.
+        """
         return pulumi.get(self, "metadatas")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the GitOps agent.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> Optional[str]:
+        """
+        Organization identifier of the GitOps agent.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> Optional[str]:
+        """
+        Project identifier of the GitOps agent.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
+        """
+        Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Default: "AGENT*TYPE*UNSET"
+        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        """
         return pulumi.get(self, "type")
 
 
@@ -129,49 +156,76 @@ class AwaitableGetGitopsAgentResult(GetGitopsAgentResult):
 
 def get_gitops_agent(account_id: Optional[str] = None,
                      identifier: Optional[str] = None,
-                     metadatas: Optional[Sequence[pulumi.InputType['GetGitopsAgentMetadataArgs']]] = None,
-                     name: Optional[str] = None,
                      org_id: Optional[str] = None,
                      project_id: Optional[str] = None,
-                     type: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentResult:
     """
-    Use this data source to access information about an existing resource.
+    Datasource for fetching a Harness Gitops Agents.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_agent(account_id="account_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps agent.
+    :param str identifier: Identifier of the GitOps agent.
+    :param str org_id: Organization identifier of the GitOps agent.
+    :param str project_id: Project identifier of the GitOps agent.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
-    __args__['metadatas'] = metadatas
-    __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsAgent:getGitopsAgent', __args__, opts=opts, typ=GetGitopsAgentResult).value
 
     return AwaitableGetGitopsAgentResult(
-        account_id=__ret__.account_id,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        metadatas=__ret__.metadatas,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        metadatas=pulumi.get(__ret__, 'metadatas'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_gitops_agent)
 def get_gitops_agent_output(account_id: Optional[pulumi.Input[str]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
-                            metadatas: Optional[pulumi.Input[Sequence[pulumi.InputType['GetGitopsAgentMetadataArgs']]]] = None,
-                            name: Optional[pulumi.Input[str]] = None,
-                            org_id: Optional[pulumi.Input[str]] = None,
-                            project_id: Optional[pulumi.Input[str]] = None,
-                            type: Optional[pulumi.Input[str]] = None,
+                            org_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentResult]:
     """
-    Use this data source to access information about an existing resource.
+    Datasource for fetching a Harness Gitops Agents.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_agent(account_id="account_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps agent.
+    :param str identifier: Identifier of the GitOps agent.
+    :param str org_id: Organization identifier of the GitOps agent.
+    :param str project_id: Project identifier of the GitOps agent.
     """
     ...

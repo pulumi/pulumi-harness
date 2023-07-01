@@ -145,14 +145,14 @@ def get_user(email: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        email=__ret__.email,
-        id=__ret__.id,
-        is_email_verified=__ret__.is_email_verified,
-        is_imported_from_identity_provider=__ret__.is_imported_from_identity_provider,
-        is_password_expired=__ret__.is_password_expired,
-        is_two_factor_auth_enabled=__ret__.is_two_factor_auth_enabled,
-        is_user_locked=__ret__.is_user_locked,
-        name=__ret__.name)
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        is_email_verified=pulumi.get(__ret__, 'is_email_verified'),
+        is_imported_from_identity_provider=pulumi.get(__ret__, 'is_imported_from_identity_provider'),
+        is_password_expired=pulumi.get(__ret__, 'is_password_expired'),
+        is_two_factor_auth_enabled=pulumi.get(__ret__, 'is_two_factor_auth_enabled'),
+        is_user_locked=pulumi.get(__ret__, 'is_user_locked'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_user)

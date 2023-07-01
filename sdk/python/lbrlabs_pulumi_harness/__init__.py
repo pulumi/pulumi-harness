@@ -11,21 +11,24 @@ from .application_git_sync import *
 from .delegate_approval import *
 from .encrypted_text import *
 from .environment import *
-from .environment_service_overrides import *
 from .get_application import *
 from .get_current_account import *
 from .get_delegate import *
 from .get_encrypted_text import *
+from .get_environment import *
 from .get_git_connector import *
 from .get_secret_manager import *
 from .get_service import *
 from .get_ssh_credential import *
 from .get_sso_provider import *
+from .get_trigger import *
 from .get_user import *
 from .get_user_group import *
 from .get_yaml_config import *
 from .git_connector import *
 from .infrastructure_definition import *
+from .platform_api_key import *
+from .platform_ccm_filters import *
 from .provider import *
 from .ssh_credential import *
 from .user import *
@@ -160,14 +163,6 @@ _utilities.register(
  },
  {
   "pkg": "harness",
-  "mod": "index/environmentServiceOverrides",
-  "fqn": "lbrlabs_pulumi_harness",
-  "classes": {
-   "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides": "EnvironmentServiceOverrides"
-  }
- },
- {
-  "pkg": "harness",
   "mod": "index/gitConnector",
   "fqn": "lbrlabs_pulumi_harness",
   "classes": {
@@ -180,6 +175,22 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness",
   "classes": {
    "harness:index/infrastructureDefinition:InfrastructureDefinition": "InfrastructureDefinition"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "index/platformApiKey",
+  "fqn": "lbrlabs_pulumi_harness",
+  "classes": {
+   "harness:index/platformApiKey:PlatformApiKey": "PlatformApiKey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "index/platformCcmFilters",
+  "fqn": "lbrlabs_pulumi_harness",
+  "classes": {
+   "harness:index/platformCcmFilters:PlatformCcmFilters": "PlatformCcmFilters"
   }
  },
  {
@@ -272,6 +283,30 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/azureCloudCostConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/azureCloudCostConnector:AzureCloudCostConnector": "AzureCloudCostConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/azureCloudProviderConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector": "AzureCloudProviderConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/azureKeyVaultConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector": "AzureKeyVaultConnector"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/bitbucketConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
@@ -300,6 +335,14 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/dynatraceConnector:DynatraceConnector": "DynatraceConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/elasticsearchConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/elasticsearchConnector:ElasticsearchConnector": "ElasticsearchConnector"
   }
  },
  {
@@ -336,10 +379,50 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/featureFlag",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/featureFlag:FeatureFlag": "FeatureFlag"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/featureFlagApiKey",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/featureFlagApiKey:FeatureFlagApiKey": "FeatureFlagApiKey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/filters",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/filters:Filters": "Filters"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gcpCloudCostConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gcpCloudCostConnector:GcpCloudCostConnector": "GcpCloudCostConnector"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/gcpConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/gcpConnector:GcpConnector": "GcpConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gcpSecretManagerConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector": "GcpSecretManagerConnector"
   }
  },
  {
@@ -360,10 +443,42 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/gitOpsApplications",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsApplications:GitOpsApplications": "GitOpsApplications"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/gitOpsCluster",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/gitOpsCluster:GitOpsCluster": "GitOpsCluster"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsGnupg",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsGnupg:GitOpsGnupg": "GitOpsGnupg"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsRepoCert",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsRepoCert:GitOpsRepoCert": "GitOpsRepoCert"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitOpsRepoCred",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitOpsRepoCred:GitOpsRepoCred": "GitOpsRepoCred"
   }
  },
  {
@@ -416,6 +531,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/jenkinsConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/jenkinsConnector:JenkinsConnector": "JenkinsConnector"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/jiraConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
@@ -424,10 +547,34 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/kubernetesCloudCostConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector": "KubernetesCloudCostConnector"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/kubernetesConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/kubernetesConnector:KubernetesConnector": "KubernetesConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/manualFreeze",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/manualFreeze:ManualFreeze": "ManualFreeze"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/monitoredService",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/monitoredService:MonitoredService": "MonitoredService"
   }
  },
  {
@@ -444,6 +591,14 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/nexusConnector:NexusConnector": "NexusConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/ociHelmConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/ociHelmConnector:OciHelmConnector": "OciHelmConnector"
   }
  },
  {
@@ -468,6 +623,30 @@ _utilities.register(
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/pipelineFilters",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/pipelineFilters:PipelineFilters": "PipelineFilters"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/policy",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/policySet",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/policySet:PolicySet": "PolicySet"
   }
  },
  {
@@ -552,10 +731,42 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/serviceNowConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/serviceNowConnector:ServiceNowConnector": "ServiceNowConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/serviceOverridesV2",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/serviceOverridesV2:ServiceOverridesV2": "ServiceOverridesV2"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/slo",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/slo:Slo": "Slo"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/splunkConnector",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/splunkConnector:SplunkConnector": "SplunkConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/spotConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/spotConnector:SpotConnector": "SpotConnector"
   }
  },
  {
@@ -568,10 +779,58 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/tasConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/tasConnector:TasConnector": "TasConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/template",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/template:Template": "Template"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/templateFilters",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/templateFilters:TemplateFilters": "TemplateFilters"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/terraformCloudConnector",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/terraformCloudConnector:TerraformCloudConnector": "TerraformCloudConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/token",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/triggers",
   "fqn": "lbrlabs_pulumi_harness.platform",
   "classes": {
    "harness:platform/triggers:Triggers": "Triggers"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/user",
+  "fqn": "lbrlabs_pulumi_harness.platform",
+  "classes": {
+   "harness:platform/user:User": "User"
   }
  },
  {

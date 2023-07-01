@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
+//			_default, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
 //				Default: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -35,12 +35,12 @@ import (
 //			}
 //			_, err = harness.NewEncryptedText(ctx, "example", &harness.EncryptedTextArgs{
 //				Value:           pulumi.String("someval"),
-//				SecretManagerId: pulumi.String(_default.Id),
-//				UsageScopes: EncryptedTextUsageScopeArray{
-//					&EncryptedTextUsageScopeArgs{
+//				SecretManagerId: *pulumi.String(_default.Id),
+//				UsageScopes: harness.EncryptedTextUsageScopeArray{
+//					&harness.EncryptedTextUsageScopeArgs{
 //						EnvironmentFilterType: pulumi.String("PRODUCTION_ENVIRONMENTS"),
 //					},
-//					&EncryptedTextUsageScopeArgs{
+//					&harness.EncryptedTextUsageScopeArgs{
 //						EnvironmentFilterType: pulumi.String("NON_PRODUCTION_ENVIRONMENTS"),
 //					},
 //				},
@@ -93,7 +93,7 @@ func NewEncryptedText(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SecretManagerId'")
 	}
 	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrOutput)
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"value",

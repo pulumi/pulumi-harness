@@ -13,22 +13,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const exampleById = pulumi.output(harness.platform.getProject({
+ * const exampleById = harness.platform.getProject({
  *     identifier: "identifier",
  *     orgId: "org_id",
- * }));
- * const exampleByName = pulumi.output(harness.platform.getProject({
+ * });
+ * const exampleByName = harness.platform.getProject({
  *     name: "name",
  *     orgId: "org_id",
- * }));
+ * });
  * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getProject:getProject", {
         "identifier": args.identifier,
         "name": args.name,
@@ -49,7 +46,7 @@ export interface GetProjectArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: string;
 }
@@ -83,17 +80,35 @@ export interface GetProjectResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
+/**
+ * Data source for retrieving a Harness project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const exampleById = harness.platform.getProject({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ * });
+ * const exampleByName = harness.platform.getProject({
+ *     name: "name",
+ *     orgId: "org_id",
+ * });
+ * ```
+ */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply(a => getProject(a, opts))
+    return pulumi.output(args).apply((a: any) => getProject(a, opts))
 }
 
 /**
@@ -109,7 +124,7 @@ export interface GetProjectOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
 }

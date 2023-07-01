@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,17 +59,33 @@ import (
 //
 // ## Import
 //
-// # Import using prometheus connector id
+// # Import account level prometheus connector
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <connector_id>
 //
 // ```
+//
+//	Import org level prometheus connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level prometheus connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type PrometheusConnector struct {
 	pulumi.CustomResourceState
 
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -79,15 +95,15 @@ type PrometheusConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrOutput `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// User name.
 	UserName pulumi.StringPtrOutput `pulumi:"userName"`
@@ -129,7 +145,7 @@ func GetPrometheusConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrometheusConnector resources.
 type prometheusConnectorState struct {
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -139,22 +155,22 @@ type prometheusConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url *string `pulumi:"url"`
 	// User name.
 	UserName *string `pulumi:"userName"`
 }
 
 type PrometheusConnectorState struct {
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -164,15 +180,15 @@ type PrometheusConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url pulumi.StringPtrInput
 	// User name.
 	UserName pulumi.StringPtrInput
@@ -183,7 +199,7 @@ func (PrometheusConnectorState) ElementType() reflect.Type {
 }
 
 type prometheusConnectorArgs struct {
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -193,15 +209,15 @@ type prometheusConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url string `pulumi:"url"`
 	// User name.
 	UserName *string `pulumi:"userName"`
@@ -209,7 +225,7 @@ type prometheusConnectorArgs struct {
 
 // The set of arguments for constructing a PrometheusConnector resource.
 type PrometheusConnectorArgs struct {
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -219,15 +235,15 @@ type PrometheusConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Password reference.
+	// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Prometheus server.
+	// URL of the Prometheus server.
 	Url pulumi.StringInput
 	// User name.
 	UserName pulumi.StringPtrInput
@@ -320,7 +336,7 @@ func (o PrometheusConnectorOutput) ToPrometheusConnectorOutputWithContext(ctx co
 	return o
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o PrometheusConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -345,27 +361,27 @@ func (o PrometheusConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o PrometheusConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Password reference.
+// Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o PrometheusConnectorOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringPtrOutput { return v.PasswordRef }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o PrometheusConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o PrometheusConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Prometheus server.
+// URL of the Prometheus server.
 func (o PrometheusConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrometheusConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

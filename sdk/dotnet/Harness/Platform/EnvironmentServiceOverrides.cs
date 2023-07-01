@@ -12,12 +12,74 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness environment service overrides.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.EnvironmentServiceOverrides("example", new()
+    ///     {
+    ///         EnvId = "environmentIdentifier",
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         Yaml = @"        serviceOverrides:
+    ///           environmentRef: environmentIdentifier
+    ///           serviceRef: serviceIdentifier
+    ///           variables:
+    ///            - name: asda
+    ///              type: String
+    ///              value: asddad
+    ///           manifests:
+    ///              - manifest:
+    ///                  identifier: manifestEnv
+    ///                  type: Values
+    ///                  spec:
+    ///                    store:
+    ///                      type: Git
+    ///                      spec:
+    ///                        connectorRef: &lt;+input&gt;
+    ///                        gitFetchType: Branch
+    ///                        paths:
+    ///                          - file1
+    ///                        repoName: &lt;+input&gt;
+    ///                        branch: master
+    ///           configFiles:
+    ///              - configFile:
+    ///                  identifier: configFileEnv
+    ///                  spec:
+    ///                    store:
+    ///                      type: Harness
+    ///                      spec:
+    ///                        files:
+    ///                          - account:/Add-ons/svcOverrideTest
+    ///                        secretFiles: []
+    /// 
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import using serviceoverride id
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;serviceoverride_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides")]
     public partial class EnvironmentServiceOverrides : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The env ID to which the overrides associated.
+        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
         /// </summary>
         [Output("envId")]
         public Output<string> EnvId { get; private set; } = null!;
@@ -32,22 +94,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
+        public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The service ID to which the overrides applies.
+        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Environment Service Overrides YAML
+        /// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -100,7 +162,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class EnvironmentServiceOverridesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The env ID to which the overrides associated.
+        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
@@ -108,29 +170,29 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// identifier of the service overrides.
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
         /// <summary>
         /// Unique identifier of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The service ID to which the overrides applies.
+        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
-        /// Environment Service Overrides YAML
+        /// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
         public Input<string> Yaml { get; set; } = null!;
@@ -144,7 +206,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class EnvironmentServiceOverridesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The env ID to which the overrides associated.
+        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
         /// </summary>
         [Input("envId")]
         public Input<string>? EnvId { get; set; }
@@ -168,13 +230,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The service ID to which the overrides applies.
+        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Environment Service Overrides YAML
+        /// Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

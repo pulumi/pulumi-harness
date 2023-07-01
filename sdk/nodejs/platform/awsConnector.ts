@@ -8,6 +8,48 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an AWS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const aws = new harness.platform.AwsConnector("aws", {
+ *     description: "description of aws connector",
+ *     fixedDelayBackoffStrategy: {
+ *         fixedBackoff: 10,
+ *         retryCount: 3,
+ *     },
+ *     identifier: "example_aws_connector",
+ *     manual: {
+ *         accessKeyRef: "account.access_id",
+ *         delegateSelectors: ["harness-delegate"],
+ *         secretKeyRef: "account.secret_id",
+ *     },
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level aws connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
+ * ```
+ *
+ *  Import organization level aws connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
+ * ```
+ *
+ *  Import project level aws connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
+ * ```
  */
 export class AwsConnector extends pulumi.CustomResource {
     /**
@@ -46,6 +88,18 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Equal Jitter BackOff Strategy.
+     */
+    public readonly equalJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
+    /**
+     * Fixed Delay BackOff Strategy.
+     */
+    public readonly fixedDelayBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
+    /**
+     * Full Jitter BackOff Strategy.
+     */
+    public readonly fullJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -66,15 +120,15 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -93,6 +147,9 @@ export class AwsConnector extends pulumi.CustomResource {
             const state = argsOrState as AwsConnectorState | undefined;
             resourceInputs["crossAccountAccess"] = state ? state.crossAccountAccess : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["equalJitterBackoffStrategy"] = state ? state.equalJitterBackoffStrategy : undefined;
+            resourceInputs["fixedDelayBackoffStrategy"] = state ? state.fixedDelayBackoffStrategy : undefined;
+            resourceInputs["fullJitterBackoffStrategy"] = state ? state.fullJitterBackoffStrategy : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = state ? state.inheritFromDelegate : undefined;
             resourceInputs["irsa"] = state ? state.irsa : undefined;
@@ -108,6 +165,9 @@ export class AwsConnector extends pulumi.CustomResource {
             }
             resourceInputs["crossAccountAccess"] = args ? args.crossAccountAccess : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["equalJitterBackoffStrategy"] = args ? args.equalJitterBackoffStrategy : undefined;
+            resourceInputs["fixedDelayBackoffStrategy"] = args ? args.fixedDelayBackoffStrategy : undefined;
+            resourceInputs["fullJitterBackoffStrategy"] = args ? args.fullJitterBackoffStrategy : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = args ? args.inheritFromDelegate : undefined;
             resourceInputs["irsa"] = args ? args.irsa : undefined;
@@ -135,6 +195,18 @@ export interface AwsConnectorState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Equal Jitter BackOff Strategy.
+     */
+    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    /**
+     * Fixed Delay BackOff Strategy.
+     */
+    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
+    /**
+     * Full Jitter BackOff Strategy.
+     */
+    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -155,15 +227,15 @@ export interface AwsConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -180,6 +252,18 @@ export interface AwsConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Equal Jitter BackOff Strategy.
+     */
+    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    /**
+     * Fixed Delay BackOff Strategy.
+     */
+    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
+    /**
+     * Full Jitter BackOff Strategy.
+     */
+    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
     /**
      * Unique identifier of the resource.
      */
@@ -201,15 +285,15 @@ export interface AwsConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

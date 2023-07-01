@@ -13,19 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getEnvironmentClustersMapping({
+ * const example = harness.platform.getEnvironmentClustersMapping({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getEnvironmentClustersMapping(args: GetEnvironmentClustersMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentClustersMappingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", {
         "envId": args.envId,
         "identifier": args.identifier,
@@ -85,9 +82,24 @@ export interface GetEnvironmentClustersMappingResult {
      */
     readonly scope: string;
 }
-
+/**
+ * Data source for retrieving a Harness Cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getEnvironmentClustersMapping({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getEnvironmentClustersMappingOutput(args: GetEnvironmentClustersMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentClustersMappingResult> {
-    return pulumi.output(args).apply(a => getEnvironmentClustersMapping(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironmentClustersMapping(a, opts))
 }
 
 /**

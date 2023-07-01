@@ -13,20 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.getDelegate({
+ * const example = harness.getDelegate({
  *     name: "harness-delegate",
  *     status: "ENABLED",
  *     type: "KUBERNETES",
- * }));
+ * });
  * ```
  */
 export function getDelegate(args?: GetDelegateArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegateResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getDelegate:getDelegate", {
         "hostname": args.hostname,
         "id": args.id,
@@ -115,9 +112,24 @@ export interface GetDelegateResult {
      */
     readonly version: string;
 }
-
+/**
+ * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.getDelegate({
+ *     name: "harness-delegate",
+ *     status: "ENABLED",
+ *     type: "KUBERNETES",
+ * });
+ * ```
+ */
 export function getDelegateOutput(args?: GetDelegateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegateResult> {
-    return pulumi.output(args).apply(a => getDelegate(a, opts))
+    return pulumi.output(args).apply((a: any) => getDelegate(a, opts))
 }
 
 /**

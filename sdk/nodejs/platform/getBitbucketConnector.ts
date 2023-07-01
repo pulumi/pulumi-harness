@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Bitbucket connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getBitbucketConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getBitbucketConnector(args?: GetBitbucketConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetBitbucketConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getBitbucketConnector(args: GetBitbucketConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetBitbucketConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getBitbucketConnector:getBitbucketConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetBitbucketConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -63,7 +70,7 @@ export interface GetBitbucketConnectorResult {
      */
     readonly credentials: outputs.platform.GetBitbucketConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -77,25 +84,25 @@ export interface GetBitbucketConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the BitBucket repository or account.
+     * URL of the BitBucket repository or account.
      */
     readonly url: string;
     /**
@@ -103,9 +110,22 @@ export interface GetBitbucketConnectorResult {
      */
     readonly validationRepo: string;
 }
-
-export function getBitbucketConnectorOutput(args?: GetBitbucketConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBitbucketConnectorResult> {
-    return pulumi.output(args).apply(a => getBitbucketConnector(a, opts))
+/**
+ * Datasource for looking up a Bitbucket connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getBitbucketConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getBitbucketConnectorOutput(args: GetBitbucketConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBitbucketConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getBitbucketConnector(a, opts))
 }
 
 /**
@@ -115,17 +135,17 @@ export interface GetBitbucketConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

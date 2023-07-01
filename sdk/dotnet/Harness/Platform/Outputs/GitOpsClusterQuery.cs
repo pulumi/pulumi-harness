@@ -14,8 +14,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GitOpsClusterQuery
     {
+        /// <summary>
+        /// Cluster server URL or the cluster name.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterQueryId> Ids;
+        /// <summary>
+        /// Name of the GitOps cluster.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Server of the GitOps cluster.
+        /// </summary>
         public readonly string? Server;
 
         [OutputConstructor]

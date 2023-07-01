@@ -5,13 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for craeting triggers in Harness.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.Triggers("example", {
  *     identifier: "identifier",
@@ -19,44 +17,46 @@ import * as utilities from "../utilities";
  *     projectId: "projectIdentifier",
  *     targetId: "pipelineIdentifier",
  *     yaml: `  trigger:
- *     name: "name"
- *     identifier: "identifier"
+ *     name: name
+ *     identifier: identifier
  *     enabled: true
  *     description: ""
  *     tags: {}
- *     projectIdentifier: "projectIdentifier"
- *     orgIdentifier: "orgIdentifer"
- *     pipelineIdentifier: "pipelineIdentifier"
+ *     projectIdentifier: projectIdentifier
+ *     orgIdentifier: orgIdentifer
+ *     pipelineIdentifier: pipelineIdentifier
  *     source:
- *       type: "Webhook"
+ *       type: Webhook
  *       spec:
- *         type: "Github"
+ *         type: Github
  *         spec:
- *           type: "Push"
+ *           type: Push
  *           spec:
- *             connectorRef: "account.TestAccResourceConnectorGithub_Ssh_IZBeG"
+ *             connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
  *             autoAbortPreviousExecutions: false
  *             payloadConditions:
- *             - key: "changedFiles"
- *               operator: "Equals"
- *               value: "value"
- *             - key: "targetBranch"
- *               operator: "Equals"
- *               value: "value"
+ *             - key: changedFiles
+ *               operator: Equals
+ *               value: value
+ *             - key: targetBranch
+ *               operator: Equals
+ *               value: value
  *             headerConditions: []
- *             repoName: "repoName"
+ *             repoName: repoName
  *             actions: []
- *     inputYaml: "pipeline: {}\\n"
+ *     inputYaml: |
+ *       pipeline: {}\\n
+ *
  * `,
  * });
  * ```
  *
  * ## Import
  *
- * Import using trigger id
+ * Import trigger
  *
  * ```sh
- *  $ pulumi import harness:platform/triggers:Triggers example <triggers_id>
+ *  $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
  * ```
  */
 export class Triggers extends pulumi.CustomResource {
@@ -108,15 +108,15 @@ export class Triggers extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -124,7 +124,7 @@ export class Triggers extends pulumi.CustomResource {
      */
     public readonly targetId!: pulumi.Output<string>;
     /**
-     * trigger yaml
+     * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -209,15 +209,15 @@ export interface TriggersState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -225,7 +225,7 @@ export interface TriggersState {
      */
     targetId?: pulumi.Input<string>;
     /**
-     * trigger yaml
+     * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -255,15 +255,15 @@ export interface TriggersArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -271,7 +271,7 @@ export interface TriggersArgs {
      */
     targetId: pulumi.Input<string>;
     /**
-     * trigger yaml
+     * trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml: pulumi.Input<string>;
 }

@@ -2,18 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Jira connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getJiraConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getJiraConnector(args?: GetJiraConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetJiraConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getJiraConnector(args: GetJiraConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetJiraConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getJiraConnector:getJiraConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -29,17 +38,17 @@ export interface GetJiraConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -49,7 +58,11 @@ export interface GetJiraConnectorArgs {
  */
 export interface GetJiraConnectorResult {
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
+     */
+    readonly auths: outputs.platform.GetJiraConnectorAuth[];
+    /**
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -63,29 +76,29 @@ export interface GetJiraConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly passwordRef: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      */
     readonly url: string;
     /**
@@ -93,13 +106,26 @@ export interface GetJiraConnectorResult {
      */
     readonly username: string;
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly usernameRef: string;
 }
-
-export function getJiraConnectorOutput(args?: GetJiraConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJiraConnectorResult> {
-    return pulumi.output(args).apply(a => getJiraConnector(a, opts))
+/**
+ * Datasource for looking up a Jira connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getJiraConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getJiraConnectorOutput(args: GetJiraConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJiraConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getJiraConnector(a, opts))
 }
 
 /**
@@ -109,17 +135,17 @@ export interface GetJiraConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

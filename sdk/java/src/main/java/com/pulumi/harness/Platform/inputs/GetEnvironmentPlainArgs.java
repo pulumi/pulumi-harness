@@ -18,15 +18,15 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
      * Unique identifier of the resource.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable String identifier;
+    @Import(name="identifier", required=true)
+    private String identifier;
 
     /**
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
 
     /**
@@ -45,33 +45,33 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Import(name="orgId", required=true)
-    private String orgId;
+    @Import(name="orgId")
+    private @Nullable String orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public String orgId() {
-        return this.orgId;
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private String projectId;
+    @Import(name="projectId")
+    private @Nullable String projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     private GetEnvironmentPlainArgs() {}
@@ -107,7 +107,7 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable String identifier) {
+        public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -124,30 +124,29 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
          */
-        public Builder orgId(String orgId) {
+        public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
+        public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
 
         public GetEnvironmentPlainArgs build() {
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
             return $;
         }
     }

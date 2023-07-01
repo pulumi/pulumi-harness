@@ -54,10 +54,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using secret sshkey id
+ * Import account level service account
  * 
  * ```sh
  *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example &lt;service_account_id&gt;
+ * ```
+ * 
+ *  Import org level service account
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example &lt;ord_id&gt;/&lt;service_account_id&gt;
+ * ```
+ * 
+ *  Import project level service account
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example &lt;org_id&gt;/&lt;project_id&gt;/&lt;service_account_id&gt;
  * ```
  * 
  */
@@ -67,7 +79,7 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * Account Identifier for the Entity.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -81,7 +93,7 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +107,7 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * Email of the Service Account.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -109,7 +121,7 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -123,7 +135,7 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -134,42 +146,42 @@ public class ServiceAccount extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

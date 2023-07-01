@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class NexusConnectorCredentials
     {
         /// <summary>
-        /// Reference to a secret containing the password to use for authentication.
+        /// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Username;
         /// <summary>
-        /// Reference to a secret containing the username to use for authentication.
+        /// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? UsernameRef;
 

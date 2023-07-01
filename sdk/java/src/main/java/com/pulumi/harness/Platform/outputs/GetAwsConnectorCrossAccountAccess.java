@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAwsConnectorCrossAccountAccess {
+    /**
+     * @return If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+     * 
+     */
     private String externalId;
+    /**
+     * @return The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+     * 
+     */
     private String roleArn;
 
     private GetAwsConnectorCrossAccountAccess() {}
+    /**
+     * @return If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+     * 
+     */
     public String externalId() {
         return this.externalId;
     }
+    /**
+     * @return The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+     * 
+     */
     public String roleArn() {
         return this.roleArn;
     }

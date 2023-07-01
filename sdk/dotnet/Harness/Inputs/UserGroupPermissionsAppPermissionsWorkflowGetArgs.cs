@@ -29,7 +29,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Inputs
             set => _appIds = value;
         }
 
-        [Input("filters", required: true)]
+        [Input("filters")]
         private InputList<string>? _filters;
         public InputList<string> Filters
         {

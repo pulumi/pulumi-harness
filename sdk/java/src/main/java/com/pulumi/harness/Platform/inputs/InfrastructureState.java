@@ -17,14 +17,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     public static final InfrastructureState Empty = new InfrastructureState();
 
     /**
-     * Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
     @Import(name="deploymentType")
     private @Nullable Output<String> deploymentType;
 
     /**
-     * @return Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
      * 
      */
     public Optional<Output<String>> deploymentType() {
@@ -47,18 +47,33 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * environment identifier.
+     * Environment Identifier.
      * 
      */
     @Import(name="envId")
     private @Nullable Output<String> envId;
 
     /**
-     * @return environment identifier.
+     * @return Environment Identifier.
      * 
      */
     public Optional<Output<String>> envId() {
         return Optional.ofNullable(this.envId);
+    }
+
+    /**
+     * Enable this flag for force deletion of infrastructure
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<String> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of infrastructure
+     * 
+     */
+    public Optional<Output<String>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -92,14 +107,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -107,14 +122,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -122,14 +137,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -137,14 +152,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
      * 
      */
     public Optional<Output<String>> type() {
@@ -152,14 +167,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Infrastructure YAML
+     * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Infrastructure YAML
+     * @return Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -172,6 +187,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         this.deploymentType = $.deploymentType;
         this.description = $.description;
         this.envId = $.envId;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -200,7 +216,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deploymentType Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
          * 
          * @return builder
          * 
@@ -211,7 +227,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deploymentType Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+         * @param deploymentType Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
          * 
          * @return builder
          * 
@@ -242,7 +258,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param envId environment identifier.
+         * @param envId Environment Identifier.
          * 
          * @return builder
          * 
@@ -253,13 +269,34 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param envId environment identifier.
+         * @param envId Environment Identifier.
          * 
          * @return builder
          * 
          */
         public Builder envId(String envId) {
             return envId(Output.of(envId));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of infrastructure
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of infrastructure
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(String forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
@@ -305,7 +342,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -316,7 +353,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -326,7 +363,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -337,7 +374,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -347,7 +384,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -358,7 +395,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -368,7 +405,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -378,7 +415,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
          * 
          * @return builder
          * 
@@ -389,7 +426,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
          * 
          * @return builder
          * 
@@ -399,7 +436,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param yaml Infrastructure YAML
+         * @param yaml Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -410,7 +447,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param yaml Infrastructure YAML
+         * @param yaml Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

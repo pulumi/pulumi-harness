@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupPipeline(ctx, &platform.LookupPipelineArgs{
+//			_, err := platform.LookupPipeline(ctx, &platform.LookupPipelineArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      "org_id",
 //				ProjectId:  "project_id",
@@ -51,6 +51,8 @@ func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulum
 
 // A collection of arguments for invoking getPipeline.
 type LookupPipelineArgs struct {
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *GetPipelineGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -65,6 +67,8 @@ type LookupPipelineArgs struct {
 type LookupPipelineResult struct {
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *GetPipelineGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -75,8 +79,12 @@ type LookupPipelineResult struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied bool `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml string `pulumi:"templateAppliedPipelineYaml"`
 	// YAML of the pipeline.
 	Yaml string `pulumi:"yaml"`
 }
@@ -96,6 +104,8 @@ func LookupPipelineOutput(ctx *pulumi.Context, args LookupPipelineOutputArgs, op
 
 // A collection of arguments for invoking getPipeline.
 type LookupPipelineOutputArgs struct {
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails GetPipelineGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -130,6 +140,11 @@ func (o LookupPipelineResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to creating an Entity for Git Experience.
+func (o LookupPipelineResultOutput) GitDetails() GetPipelineGitDetailsPtrOutput {
+	return o.ApplyT(func(v LookupPipelineResult) *GetPipelineGitDetails { return v.GitDetails }).(GetPipelineGitDetailsPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupPipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Id }).(pulumi.StringOutput)
@@ -155,9 +170,19 @@ func (o LookupPipelineResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupPipelineResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPipelineResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// If true, returns Pipeline YAML with Templates applied on it.
+func (o LookupPipelineResultOutput) TemplateApplied() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPipelineResult) bool { return v.TemplateApplied }).(pulumi.BoolOutput)
+}
+
+// Pipeline YAML after resolving Templates (returned as a String).
+func (o LookupPipelineResultOutput) TemplateAppliedPipelineYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineResult) string { return v.TemplateAppliedPipelineYaml }).(pulumi.StringOutput)
 }
 
 // YAML of the pipeline.

@@ -29,14 +29,14 @@ public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.reso
     }
 
     /**
-     * Reference to the secret containing the service account token for the connector.
+     * Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="serviceAccountTokenRef", required=true)
     private Output<String> serviceAccountTokenRef;
 
     /**
-     * @return Reference to the secret containing the service account token for the connector.
+     * @return Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> serviceAccountTokenRef() {
@@ -90,7 +90,7 @@ public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.reso
         }
 
         /**
-         * @param serviceAccountTokenRef Reference to the secret containing the service account token for the connector.
+         * @param serviceAccountTokenRef Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.reso
         }
 
         /**
-         * @param serviceAccountTokenRef Reference to the secret containing the service account token for the connector.
+         * @param serviceAccountTokenRef Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

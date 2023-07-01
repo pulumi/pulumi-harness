@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.GetInputSetGitDetailsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetInputSetArgs Empty = new GetInputSetArgs();
+
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<GetInputSetGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<Output<GetInputSetGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -46,14 +62,14 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
@@ -76,14 +92,14 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<String> projectId() {
@@ -93,6 +109,7 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
     private GetInputSetArgs() {}
 
     private GetInputSetArgs(GetInputSetArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -116,6 +133,27 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetInputSetArgs defaults) {
             $ = new GetInputSetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<GetInputSetGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(GetInputSetGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**
@@ -161,7 +199,7 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -172,7 +210,7 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -203,7 +241,7 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -214,7 +252,7 @@ public final class GetInputSetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 

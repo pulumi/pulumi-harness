@@ -32,14 +32,14 @@ public final class GithubConnectorApiAuthenticationArgs extends com.pulumi.resou
     }
 
     /**
-     * Personal access token for interacting with the github api.
+     * Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="tokenRef")
     private @Nullable Output<String> tokenRef;
 
     /**
-     * @return Personal access token for interacting with the github api.
+     * @return Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> tokenRef() {
@@ -93,7 +93,7 @@ public final class GithubConnectorApiAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the github api.
+         * @param tokenRef Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GithubConnectorApiAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the github api.
+         * @param tokenRef Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

@@ -15,15 +15,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     {
         [Input("ids")]
         private List<Inputs.GetGitopsClusterQueryIdArgs>? _ids;
+
+        /// <summary>
+        /// Cluster server URL or the cluster name.
+        /// </summary>
         public List<Inputs.GetGitopsClusterQueryIdArgs> Ids
         {
             get => _ids ?? (_ids = new List<Inputs.GetGitopsClusterQueryIdArgs>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Name of the GitOps cluster.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Server of the GitOps cluster.
+        /// </summary>
         [Input("server")]
         public string? Server { get; set; }
 

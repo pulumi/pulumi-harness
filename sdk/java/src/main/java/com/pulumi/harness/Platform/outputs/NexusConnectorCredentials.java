@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NexusConnectorCredentials {
     /**
-     * @return Reference to a secret containing the password to use for authentication.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String passwordRef;
@@ -22,14 +22,14 @@ public final class NexusConnectorCredentials {
      */
     private @Nullable String username;
     /**
-     * @return Reference to a secret containing the username to use for authentication.
+     * @return Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String usernameRef;
 
     private NexusConnectorCredentials() {}
     /**
-     * @return Reference to a secret containing the password to use for authentication.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String passwordRef() {
@@ -43,7 +43,7 @@ public final class NexusConnectorCredentials {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return Reference to a secret containing the username to use for authentication.
+     * @return Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> usernameRef() {

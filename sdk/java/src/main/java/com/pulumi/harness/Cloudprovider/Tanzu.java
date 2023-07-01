@@ -79,7 +79,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * The url of the Tanzu platform.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -93,7 +93,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -107,7 +107,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * The name of the Harness secret containing the password to use to authenticate to Tanzu.
      * 
      */
-    @Export(name="passwordSecretName", type=String.class, parameters={})
+    @Export(name="passwordSecretName", refs={String.class}, tree="[0]")
     private Output<String> passwordSecretName;
 
     /**
@@ -121,7 +121,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * Skip validation of Tanzu configuration.
      * 
      */
-    @Export(name="skipValidation", type=Boolean.class, parameters={})
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipValidation;
 
     /**
@@ -135,7 +135,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * The username to use to authenticate to Tanzu.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -149,7 +149,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * The name of the Harness secret containing the username to authenticate to Tanzu with.
      * 
      */
-    @Export(name="usernameSecretName", type=String.class, parameters={})
+    @Export(name="usernameSecretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usernameSecretName;
 
     /**

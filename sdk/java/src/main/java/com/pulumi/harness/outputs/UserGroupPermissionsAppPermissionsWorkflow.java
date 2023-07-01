@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class UserGroupPermissionsAppPermissionsWorkflow {
     private List<String> actions;
     private @Nullable List<String> appIds;
-    private List<String> filters;
+    private @Nullable List<String> filters;
 
     private UserGroupPermissionsAppPermissionsWorkflow() {}
     public List<String> actions() {
@@ -23,7 +23,7 @@ public final class UserGroupPermissionsAppPermissionsWorkflow {
         return this.appIds == null ? List.of() : this.appIds;
     }
     public List<String> filters() {
-        return this.filters;
+        return this.filters == null ? List.of() : this.filters;
     }
 
     public static Builder builder() {
@@ -37,7 +37,7 @@ public final class UserGroupPermissionsAppPermissionsWorkflow {
     public static final class Builder {
         private List<String> actions;
         private @Nullable List<String> appIds;
-        private List<String> filters;
+        private @Nullable List<String> filters;
         public Builder() {}
         public Builder(UserGroupPermissionsAppPermissionsWorkflow defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,8 +63,8 @@ public final class UserGroupPermissionsAppPermissionsWorkflow {
             return appIds(List.of(appIds));
         }
         @CustomType.Setter
-        public Builder filters(List<String> filters) {
-            this.filters = Objects.requireNonNull(filters);
+        public Builder filters(@Nullable List<String> filters) {
+            this.filters = filters;
             return this;
         }
         public Builder filters(String... filters) {

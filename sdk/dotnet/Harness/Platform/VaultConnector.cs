@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -169,10 +170,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using vault connector id
+    /// Import account level vault connector
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level vault connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level vault connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/vaultConnector:VaultConnector")]
@@ -263,13 +276,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -284,7 +297,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Boolean value to indicate if AppRole token renewal is enabled or not.
         /// </summary>
         [Output("renewAppRoleToken")]
-        public Output<bool?> RenewAppRoleToken { get; private set; } = null!;
+        public Output<bool> RenewAppRoleToken { get; private set; } = null!;
 
         /// <summary>
         /// The time interval for the token renewal.
@@ -329,7 +342,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> SinkPath { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -514,13 +527,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -583,7 +596,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -732,13 +745,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -801,7 +814,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

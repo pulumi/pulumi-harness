@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// using Harness = Pulumi.Harness;
@@ -31,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     ///     var exampleEncryptedText = new Harness.EncryptedText("exampleEncryptedText", new()
     ///     {
     ///         Value = "foo",
-    ///         SecretManagerId = @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult).Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     ///     var exampleGitConnector = new Harness.GitConnector("exampleGitConnector", new()
@@ -107,7 +108,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Output<string?> SshSettingId { get; private set; } = null!;
 
         /// <summary>
-        /// The url of the git repository or account/organization
+        /// The URL of the git repository or account/organization
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -232,7 +233,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? SshSettingId { get; set; }
 
         /// <summary>
-        /// The url of the git repository or account/organization
+        /// The URL of the git repository or account/organization
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -324,7 +325,7 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? SshSettingId { get; set; }
 
         /// <summary>
-        /// The url of the git repository or account/organization
+        /// The URL of the git repository or account/organization
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

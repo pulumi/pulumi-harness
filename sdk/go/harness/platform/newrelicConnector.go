@@ -7,19 +7,81 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a New Relic connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewNewrelicConnector(ctx, "test", &platform.NewrelicConnectorArgs{
+//				AccountId: pulumi.String("nr_account_id"),
+//				ApiKeyRef: pulumi.String("account.secret_id"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://newrelic.com/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level newrelic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <connector_id>
+//
+// ```
+//
+//	Import org level newrelic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level newrelic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type NewrelicConnector struct {
 	pulumi.CustomResourceState
 
 	// Account ID of the NewRelic account.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Reference to the Harness secret containing the api key.
+	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef pulumi.StringOutput `pulumi:"apiKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -27,13 +89,13 @@ type NewrelicConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the NewRelic server.
+	// URL of the NewRelic server.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -81,9 +143,9 @@ func GetNewrelicConnector(ctx *pulumi.Context,
 type newrelicConnectorState struct {
 	// Account ID of the NewRelic account.
 	AccountId *string `pulumi:"accountId"`
-	// Reference to the Harness secret containing the api key.
+	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef *string `pulumi:"apiKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -91,22 +153,22 @@ type newrelicConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the NewRelic server.
+	// URL of the NewRelic server.
 	Url *string `pulumi:"url"`
 }
 
 type NewrelicConnectorState struct {
 	// Account ID of the NewRelic account.
 	AccountId pulumi.StringPtrInput
-	// Reference to the Harness secret containing the api key.
+	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef pulumi.StringPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -114,13 +176,13 @@ type NewrelicConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the NewRelic server.
+	// URL of the NewRelic server.
 	Url pulumi.StringPtrInput
 }
 
@@ -131,9 +193,9 @@ func (NewrelicConnectorState) ElementType() reflect.Type {
 type newrelicConnectorArgs struct {
 	// Account ID of the NewRelic account.
 	AccountId string `pulumi:"accountId"`
-	// Reference to the Harness secret containing the api key.
+	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef string `pulumi:"apiKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -141,13 +203,13 @@ type newrelicConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the NewRelic server.
+	// URL of the NewRelic server.
 	Url string `pulumi:"url"`
 }
 
@@ -155,9 +217,9 @@ type newrelicConnectorArgs struct {
 type NewrelicConnectorArgs struct {
 	// Account ID of the NewRelic account.
 	AccountId pulumi.StringInput
-	// Reference to the Harness secret containing the api key.
+	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef pulumi.StringInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -165,13 +227,13 @@ type NewrelicConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the NewRelic server.
+	// URL of the NewRelic server.
 	Url pulumi.StringInput
 }
 
@@ -267,12 +329,12 @@ func (o NewrelicConnectorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Reference to the Harness secret containing the api key.
+// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o NewrelicConnectorOutput) ApiKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringOutput { return v.ApiKeyRef }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o NewrelicConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -292,22 +354,22 @@ func (o NewrelicConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o NewrelicConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o NewrelicConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o NewrelicConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the NewRelic server.
+// URL of the NewRelic server.
 func (o NewrelicConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *NewrelicConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

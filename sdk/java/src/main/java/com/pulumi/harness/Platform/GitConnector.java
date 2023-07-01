@@ -19,6 +19,69 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Git connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.GitConnector;
+ * import com.pulumi.harness.platform.GitConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.GitConnectorCredentialsArgs;
+ * import com.pulumi.harness.platform.inputs.GitConnectorCredentialsSshArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new GitConnector(&#34;test&#34;, GitConnectorArgs.builder()        
+ *             .connectionType(&#34;Account&#34;)
+ *             .credentials(GitConnectorCredentialsArgs.builder()
+ *                 .ssh(GitConnectorCredentialsSshArgs.builder()
+ *                     .sshKeyRef(&#34;account.secret_id&#34;)
+ *                     .build())
+ *                 .build())
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://git.example.com/account&#34;)
+ *             .validationRepo(&#34;some_repo&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level git connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitConnector:GitConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level git connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitConnector:GitConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level git connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitConnector:GitConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/gitConnector:GitConnector")
 public class GitConnector extends com.pulumi.resources.CustomResource {
@@ -26,7 +89,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Whether the connection we&#39;re making is to a git repository or a git account. Valid values are Account, Repo.
      * 
      */
-    @Export(name="connectionType", type=String.class, parameters={})
+    @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
     /**
@@ -40,7 +103,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Credentials to use for the connection.
      * 
      */
-    @Export(name="credentials", type=GitConnectorCredentials.class, parameters={})
+    @Export(name="credentials", refs={GitConnectorCredentials.class}, tree="[0]")
     private Output<GitConnectorCredentials> credentials;
 
     /**
@@ -51,14 +114,14 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
         return this.credentials;
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -68,7 +131,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +145,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -96,7 +159,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -107,56 +170,56 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url of the git repository or account.
+     * URL of the git repository or account.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Url of the git repository or account.
+     * @return URL of the git repository or account.
      * 
      */
     public Output<String> url() {
@@ -166,7 +229,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Repository to test the connection with. This is only used when `connection_type` is `Account`.
      * 
      */
-    @Export(name="validationRepo", type=String.class, parameters={})
+    @Export(name="validationRepo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> validationRepo;
 
     /**

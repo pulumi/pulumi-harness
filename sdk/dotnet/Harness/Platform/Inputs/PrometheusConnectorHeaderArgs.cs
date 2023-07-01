@@ -14,7 +14,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class PrometheusConnectorHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Encrypted value reference.
+        /// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("encryptedValueRef")]
         public Input<string>? EncryptedValueRef { get; set; }

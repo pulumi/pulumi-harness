@@ -46,14 +46,14 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -61,14 +61,14 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -145,7 +145,7 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetServiceAccountArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 

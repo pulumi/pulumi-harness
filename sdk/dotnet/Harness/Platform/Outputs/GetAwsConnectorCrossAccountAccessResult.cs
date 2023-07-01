@@ -14,7 +14,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetAwsConnectorCrossAccountAccessResult
     {
+        /// <summary>
+        /// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        /// </summary>
         public readonly string ExternalId;
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        /// </summary>
         public readonly string RoleArn;
 
         [OutputConstructor]

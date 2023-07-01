@@ -17,13 +17,15 @@ class EnvironmentGroupArgs:
                  identifier: pulumi.Input[str],
                  yaml: pulumi.Input[str],
                  color: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EnvironmentGroup resource.
         :param pulumi.Input[str] identifier: identifier of the environment group.
-        :param pulumi.Input[str] yaml: Env group YAML
+        :param pulumi.Input[str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] color: Color of the environment group.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
         """
@@ -31,6 +33,8 @@ class EnvironmentGroupArgs:
         pulumi.set(__self__, "yaml", yaml)
         if color is not None:
             pulumi.set(__self__, "color", color)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -52,7 +56,7 @@ class EnvironmentGroupArgs:
     @pulumi.getter
     def yaml(self) -> pulumi.Input[str]:
         """
-        Env group YAML
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -71,6 +75,18 @@ class EnvironmentGroupArgs:
     @color.setter
     def color(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable this flag for force deletion of environment group
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -101,6 +117,7 @@ class EnvironmentGroupArgs:
 class _EnvironmentGroupState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -108,13 +125,16 @@ class _EnvironmentGroupState:
         """
         Input properties used for looking up and filtering EnvironmentGroup resources.
         :param pulumi.Input[str] color: Color of the environment group.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
-        :param pulumi.Input[str] yaml: Env group YAML
+        :param pulumi.Input[str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if org_id is not None:
@@ -135,6 +155,18 @@ class _EnvironmentGroupState:
     @color.setter
     def color(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable this flag for force deletion of environment group
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -176,7 +208,7 @@ class _EnvironmentGroupState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Env group YAML
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -191,6 +223,7 @@ class EnvironmentGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -226,16 +259,17 @@ class EnvironmentGroup(pulumi.CustomResource):
         Import using the environment group id.
 
         ```sh
-         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <environment_group_id>
+         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment group.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
-        :param pulumi.Input[str] yaml: Env group YAML
+        :param pulumi.Input[str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -273,7 +307,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         Import using the environment group id.
 
         ```sh
-         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <environment_group_id>
+         $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -292,6 +326,7 @@ class EnvironmentGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -306,6 +341,7 @@ class EnvironmentGroup(pulumi.CustomResource):
             __props__ = EnvironmentGroupArgs.__new__(EnvironmentGroupArgs)
 
             __props__.__dict__["color"] = color
+            __props__.__dict__["force_delete"] = force_delete
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -325,6 +361,7 @@ class EnvironmentGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -337,16 +374,18 @@ class EnvironmentGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment group.
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
-        :param pulumi.Input[str] yaml: Env group YAML
+        :param pulumi.Input[str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _EnvironmentGroupState.__new__(_EnvironmentGroupState)
 
         __props__.__dict__["color"] = color
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -360,6 +399,14 @@ class EnvironmentGroup(pulumi.CustomResource):
         Color of the environment group.
         """
         return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[str]:
+        """
+        Enable this flag for force deletion of environment group
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter
@@ -389,7 +436,7 @@ class EnvironmentGroup(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[str]:
         """
-        Env group YAML
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +16,14 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
     public static final EnvironmentServiceOverridesArgs Empty = new EnvironmentServiceOverridesArgs();
 
     /**
-     * The env ID to which the overrides associated.
+     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
      * 
      */
     @Import(name="envId", required=true)
     private Output<String> envId;
 
     /**
-     * @return The env ID to which the overrides associated.
+     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
      * 
      */
     public Output<String> envId() {
@@ -32,56 +34,56 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
      * identifier of the service overrides.
      * 
      */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
      * @return identifier of the service overrides.
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
      * Unique identifier of the organization.
      * 
      */
-    @Import(name="orgId", required=true)
-    private Output<String> orgId;
+    @Import(name="orgId")
+    private @Nullable Output<String> orgId;
 
     /**
      * @return Unique identifier of the organization.
      * 
      */
-    public Output<String> orgId() {
-        return this.orgId;
+    public Optional<Output<String>> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
     /**
      * Unique identifier of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
      * @return Unique identifier of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
-     * The service ID to which the overrides applies.
+     * The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
      * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
 
     /**
-     * @return The service ID to which the overrides applies.
+     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
      * 
      */
     public Output<String> serviceId() {
@@ -89,14 +91,14 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
     }
 
     /**
-     * Environment Service Overrides YAML
+     * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml", required=true)
     private Output<String> yaml;
 
     /**
-     * @return Environment Service Overrides YAML
+     * @return Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {
@@ -133,7 +135,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param envId The env ID to which the overrides associated.
+         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
          * 
          * @return builder
          * 
@@ -144,7 +146,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param envId The env ID to which the overrides associated.
+         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
          * 
          * @return builder
          * 
@@ -159,7 +161,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
+        public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -180,7 +182,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder orgId(Output<String> orgId) {
+        public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
@@ -201,7 +203,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -217,7 +219,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serviceId The service ID to which the overrides applies.
+         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
          * 
          * @return builder
          * 
@@ -228,7 +230,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serviceId The service ID to which the overrides applies.
+         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
          * 
          * @return builder
          * 
@@ -238,7 +240,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param yaml Environment Service Overrides YAML
+         * @param yaml Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -249,7 +251,7 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param yaml Environment Service Overrides YAML
+         * @param yaml Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -260,9 +262,6 @@ public final class EnvironmentServiceOverridesArgs extends com.pulumi.resources.
 
         public EnvironmentServiceOverridesArgs build() {
             $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
             $.yaml = Objects.requireNonNull($.yaml, "expected parameter 'yaml' to be non-null");
             return $;

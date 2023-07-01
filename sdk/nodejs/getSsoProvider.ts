@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  */
 export function getSsoProvider(args?: GetSsoProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetSsoProviderResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getSsoProvider:getSsoProvider", {
         "id": args.id,
         "name": args.name,
@@ -51,9 +48,11 @@ export interface GetSsoProviderResult {
      */
     readonly type: string;
 }
-
+/**
+ * Data source for retrieving an SSO providers
+ */
 export function getSsoProviderOutput(args?: GetSsoProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSsoProviderResult> {
-    return pulumi.output(args).apply(a => getSsoProvider(a, opts))
+    return pulumi.output(args).apply((a: any) => getSsoProvider(a, opts))
 }
 
 /**

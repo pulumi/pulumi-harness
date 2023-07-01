@@ -14,31 +14,37 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class UsergroupNotificationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Group email
+        /// Group email.
         /// </summary>
         [Input("groupEmail")]
         public Input<string>? GroupEmail { get; set; }
 
         /// <summary>
-        /// Url of Microsoft teams webhook
+        /// Url of Microsoft teams webhook.
         /// </summary>
         [Input("microsoftTeamsWebhookUrl")]
         public Input<string>? MicrosoftTeamsWebhookUrl { get; set; }
 
         /// <summary>
-        /// Pager duty key
+        /// Pager duty key.
         /// </summary>
         [Input("pagerDutyKey")]
         public Input<string>? PagerDutyKey { get; set; }
 
         /// <summary>
-        /// Url of slack webhook
+        /// Send email to all the group members.
+        /// </summary>
+        [Input("sendEmailToAllUsers")]
+        public Input<bool>? SendEmailToAllUsers { get; set; }
+
+        /// <summary>
+        /// Url of slack webhook.
         /// </summary>
         [Input("slackWebhookUrl")]
         public Input<string>? SlackWebhookUrl { get; set; }
 
         /// <summary>
-        /// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS
+        /// Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

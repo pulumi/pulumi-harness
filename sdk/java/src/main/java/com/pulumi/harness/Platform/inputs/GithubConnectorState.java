@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GithubConnectorApiAuthenticationArgs;
 import com.pulumi.harness.platform.inputs.GithubConnectorCredentialsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,14 +65,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -91,6 +92,21 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
     }
 
     /**
@@ -124,14 +140,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -139,14 +155,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -154,14 +170,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -169,14 +185,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Url of the Githubhub repository or account.
+     * URL of the Githubhub repository or account.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Url of the Githubhub repository or account.
+     * @return URL of the Githubhub repository or account.
      * 
      */
     public Optional<Output<String>> url() {
@@ -206,6 +222,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         this.credentials = $.credentials;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -297,7 +314,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -308,7 +325,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -318,7 +335,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -346,6 +363,27 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
         }
 
         /**
@@ -391,7 +429,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -402,7 +440,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -412,7 +450,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -423,7 +461,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -433,7 +471,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -444,7 +482,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -454,7 +492,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -464,7 +502,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url Url of the Githubhub repository or account.
+         * @param url URL of the Githubhub repository or account.
          * 
          * @return builder
          * 
@@ -475,7 +513,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url Url of the Githubhub repository or account.
+         * @param url URL of the Githubhub repository or account.
          * 
          * @return builder
          * 

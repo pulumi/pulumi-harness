@@ -17,7 +17,7 @@ public final class KubernetesConnectorUsernamePassword {
      */
     private String masterUrl;
     /**
-     * @return Reference to the secret containing the password for the connector.
+     * @return Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String passwordRef;
@@ -27,7 +27,7 @@ public final class KubernetesConnectorUsernamePassword {
      */
     private @Nullable String username;
     /**
-     * @return Reference to the secret containing the username for the connector.
+     * @return Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String usernameRef;
@@ -41,7 +41,7 @@ public final class KubernetesConnectorUsernamePassword {
         return this.masterUrl;
     }
     /**
-     * @return Reference to the secret containing the password for the connector.
+     * @return Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String passwordRef() {
@@ -55,7 +55,7 @@ public final class KubernetesConnectorUsernamePassword {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return Reference to the secret containing the username for the connector.
+     * @return Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> usernameRef() {

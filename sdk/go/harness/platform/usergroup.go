@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,8 +67,9 @@ import (
 //						Type:            pulumi.String("SLACK"),
 //					},
 //					&platform.UsergroupNotificationConfigArgs{
-//						GroupEmail: pulumi.String("email@email.com"),
-//						Type:       pulumi.String("EMAIL"),
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//						Type:                pulumi.String("EMAIL"),
 //					},
 //					&platform.UsergroupNotificationConfigArgs{
 //						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
@@ -103,8 +104,9 @@ import (
 //						Type:            pulumi.String("SLACK"),
 //					},
 //					&platform.UsergroupNotificationConfigArgs{
-//						GroupEmail: pulumi.String("email@email.com"),
-//						Type:       pulumi.String("EMAIL"),
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//						Type:                pulumi.String("EMAIL"),
 //					},
 //					&platform.UsergroupNotificationConfigArgs{
 //						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
@@ -127,6 +129,43 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = platform.NewUsergroup(ctx, "example", &platform.UsergroupArgs{
+//				ExternallyManaged:    pulumi.Bool(false),
+//				Identifier:           pulumi.String("identifier"),
+//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
+//				LinkedSsoId:          pulumi.String("linked_sso_id"),
+//				LinkedSsoType:        pulumi.String("SAML"),
+//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
+//					&platform.UsergroupNotificationConfigArgs{
+//						SlackWebhookUrl: pulumi.String("https://google.com"),
+//						Type:            pulumi.String("SLACK"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//						Type:                pulumi.String("EMAIL"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
+//						Type:                     pulumi.String("MSTEAMS"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						PagerDutyKey: pulumi.String("pagerDutyKey"),
+//						Type:         pulumi.String("PAGERDUTY"),
+//					},
+//				},
+//				OrgId:        pulumi.String("org_id"),
+//				ProjectId:    pulumi.String("project_id"),
+//				SsoGroupId:   pulumi.String("sso_group_name"),
+//				SsoGroupName: pulumi.String("sso_group_name"),
+//				SsoLinked:    pulumi.Bool(true),
+//				UserEmails: pulumi.StringArray{
+//					pulumi.String("user@email.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -135,11 +174,27 @@ import (
 //
 // ## Import
 //
-// # Import using user group id
+// # Import account level user group
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
+//
+// ```
+//
+//	Import org level user group
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
+//
+// ```
+//
+//	Import project level user group
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
 //
 // ```
 type Usergroup struct {
@@ -155,25 +210,27 @@ type Usergroup struct {
 	LinkedSsoDisplayName pulumi.StringPtrOutput `pulumi:"linkedSsoDisplayName"`
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId pulumi.StringPtrOutput `pulumi:"linkedSsoId"`
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType pulumi.StringPtrOutput `pulumi:"linkedSsoType"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrOutput `pulumi:"ssoGroupId"`
 	// Name of the SSO userGroup.
 	SsoGroupName pulumi.StringPtrOutput `pulumi:"ssoGroupName"`
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked pulumi.BoolOutput `pulumi:"ssoLinked"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// List of users in the UserGroup.
+	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+	UserEmails pulumi.StringArrayOutput `pulumi:"userEmails"`
+	// List of users in the UserGroup. Either provide list of users or list of user emails.
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
 
@@ -220,25 +277,27 @@ type usergroupState struct {
 	LinkedSsoDisplayName *string `pulumi:"linkedSsoDisplayName"`
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId *string `pulumi:"linkedSsoId"`
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType *string `pulumi:"linkedSsoType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []UsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId *string `pulumi:"ssoGroupId"`
 	// Name of the SSO userGroup.
 	SsoGroupName *string `pulumi:"ssoGroupName"`
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked *bool `pulumi:"ssoLinked"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// List of users in the UserGroup.
+	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+	UserEmails []string `pulumi:"userEmails"`
+	// List of users in the UserGroup. Either provide list of users or list of user emails.
 	Users []string `pulumi:"users"`
 }
 
@@ -253,25 +312,27 @@ type UsergroupState struct {
 	LinkedSsoDisplayName pulumi.StringPtrInput
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId pulumi.StringPtrInput
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrInput
 	// Name of the SSO userGroup.
 	SsoGroupName pulumi.StringPtrInput
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked pulumi.BoolPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// List of users in the UserGroup.
+	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+	UserEmails pulumi.StringArrayInput
+	// List of users in the UserGroup. Either provide list of users or list of user emails.
 	Users pulumi.StringArrayInput
 }
 
@@ -290,25 +351,27 @@ type usergroupArgs struct {
 	LinkedSsoDisplayName *string `pulumi:"linkedSsoDisplayName"`
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId *string `pulumi:"linkedSsoId"`
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType *string `pulumi:"linkedSsoType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []UsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId *string `pulumi:"ssoGroupId"`
 	// Name of the SSO userGroup.
 	SsoGroupName *string `pulumi:"ssoGroupName"`
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked *bool `pulumi:"ssoLinked"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// List of users in the UserGroup.
+	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+	UserEmails []string `pulumi:"userEmails"`
+	// List of users in the UserGroup. Either provide list of users or list of user emails.
 	Users []string `pulumi:"users"`
 }
 
@@ -324,25 +387,27 @@ type UsergroupArgs struct {
 	LinkedSsoDisplayName pulumi.StringPtrInput
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId pulumi.StringPtrInput
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// List of notification settings.
 	NotificationConfigs UsergroupNotificationConfigArrayInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the userGroup in SSO.
 	SsoGroupId pulumi.StringPtrInput
 	// Name of the SSO userGroup.
 	SsoGroupName pulumi.StringPtrInput
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked pulumi.BoolPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// List of users in the UserGroup.
+	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+	UserEmails pulumi.StringArrayInput
+	// List of users in the UserGroup. Either provide list of users or list of user emails.
 	Users pulumi.StringArrayInput
 }
 
@@ -458,7 +523,7 @@ func (o UsergroupOutput) LinkedSsoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.LinkedSsoId }).(pulumi.StringPtrOutput)
 }
 
-// Type of linked SSO
+// Type of linked SSO.
 func (o UsergroupOutput) LinkedSsoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.LinkedSsoType }).(pulumi.StringPtrOutput)
 }
@@ -473,12 +538,12 @@ func (o UsergroupOutput) NotificationConfigs() UsergroupNotificationConfigArrayO
 	return o.ApplyT(func(v *Usergroup) UsergroupNotificationConfigArrayOutput { return v.NotificationConfigs }).(UsergroupNotificationConfigArrayOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o UsergroupOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o UsergroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -493,17 +558,22 @@ func (o UsergroupOutput) SsoGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringPtrOutput { return v.SsoGroupName }).(pulumi.StringPtrOutput)
 }
 
-// Whether sso is linked or not
+// Whether sso is linked or not.
 func (o UsergroupOutput) SsoLinked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.BoolOutput { return v.SsoLinked }).(pulumi.BoolOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o UsergroupOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// List of users in the UserGroup.
+// List of user emails in the UserGroup. Either provide list of users or list of user emails.
+func (o UsergroupOutput) UserEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Usergroup) pulumi.StringArrayOutput { return v.UserEmails }).(pulumi.StringArrayOutput)
+}
+
+// List of users in the UserGroup. Either provide list of users or list of user emails.
 func (o UsergroupOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }

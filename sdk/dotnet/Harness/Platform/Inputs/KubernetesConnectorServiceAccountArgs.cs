@@ -20,7 +20,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string> MasterUrl { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the secret containing the service account token for the connector.
+        /// Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("serviceAccountTokenRef", required: true)]
         public Input<string> ServiceAccountTokenRef { get; set; } = null!;

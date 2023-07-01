@@ -45,14 +45,14 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId", required=true)
     private String orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public String orgId() {
@@ -108,7 +108,7 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 

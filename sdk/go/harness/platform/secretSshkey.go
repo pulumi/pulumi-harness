@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +20,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -28,94 +30,94 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewSecretSshkey(ctx, "keyTabFilePath", &platform.SecretSshkeyArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Port: pulumi.Int(22),
 //				Kerberos: &platform.SecretSshkeyKerberosArgs{
-//					Principal:           pulumi.String("principal"),
-//					Realm:               pulumi.String("realm"),
-//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
 //					TgtKeyTabFilePathSpec: &platform.SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs{
 //						KeyPath: pulumi.String("key_path"),
 //					},
-//				},
-//				Port: pulumi.Int(22),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//					Principal:           pulumi.String("principal"),
+//					Realm:               pulumi.String("realm"),
+//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewSecretSshkey(ctx, " tgtPassword", &platform.SecretSshkeyArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Port: pulumi.Int(22),
 //				Kerberos: &platform.SecretSshkeyKerberosArgs{
+//					TgtPasswordSpec: &platform.SecretSshkeyKerberosTgtPasswordSpecArgs{
+//						Password: pulumi.String(fmt.Sprintf("account.%v", secret.Id)),
+//					},
 //					Principal:           pulumi.String("principal"),
 //					Realm:               pulumi.String("realm"),
 //					TgtGenerationMethod: pulumi.String("Password"),
-//					TgtPasswordSpec: &platform.SecretSshkeyKerberosTgtPasswordSpecArgs{
-//						Password: pulumi.String("password"),
-//					},
-//				},
-//				Port: pulumi.Int(22),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewSecretSshkey(ctx, "sshkeyReference", &platform.SecretSshkeyArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
-//				Port:        pulumi.Int(22),
-//				Ssh: &platform.SecretSshkeySshArgs{
-//					CredentialType: pulumi.String("KeyReference"),
-//					SshkeyReferenceCredential: &platform.SecretSshkeySshSshkeyReferenceCredentialArgs{
-//						EncryptedPassphrase: pulumi.String("encrypted_passphrase"),
-//						Key:                 pulumi.String("key"),
-//						UserName:            pulumi.String("user_name"),
-//					},
-//				},
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
+//				},
+//				Port: pulumi.Int(22),
+//				Ssh: &platform.SecretSshkeySshArgs{
+//					SshkeyReferenceCredential: &platform.SecretSshkeySshSshkeyReferenceCredentialArgs{
+//						UserName:            pulumi.String("user_name"),
+//						Key:                 pulumi.String(fmt.Sprintf("account.%v", key.Id)),
+//						EncryptedPassphrase: pulumi.String(fmt.Sprintf("account.%v", secret.Id)),
+//					},
+//					CredentialType: pulumi.String("KeyReference"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewSecretSshkey(ctx, " sshkeyPath", &platform.SecretSshkeyArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
-//				Port:        pulumi.Int(22),
-//				Ssh: &platform.SecretSshkeySshArgs{
-//					CredentialType: pulumi.String("KeyPath"),
-//					SshkeyPathCredential: &platform.SecretSshkeySshSshkeyPathCredentialArgs{
-//						EncryptedPassphrase: pulumi.String("encrypted_passphrase"),
-//						KeyPath:             pulumi.String("key_path"),
-//						UserName:            pulumi.String("user_name"),
-//					},
-//				},
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
+//				},
+//				Port: pulumi.Int(22),
+//				Ssh: &platform.SecretSshkeySshArgs{
+//					SshkeyPathCredential: &platform.SecretSshkeySshSshkeyPathCredentialArgs{
+//						UserName:            pulumi.String("user_name"),
+//						KeyPath:             pulumi.String("key_path"),
+//						EncryptedPassphrase: pulumi.String("encrypted_passphrase"),
+//					},
+//					CredentialType: pulumi.String("KeyPath"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewSecretSshkey(ctx, "sshPassword", &platform.SecretSshkeyArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
-//				Port:        pulumi.Int(22),
-//				Ssh: &platform.SecretSshkeySshArgs{
-//					CredentialType: pulumi.String("Password"),
-//					SshPasswordCredential: &platform.SecretSshkeySshSshPasswordCredentialArgs{
-//						Password: pulumi.String("password"),
-//						UserName: pulumi.String("user_name"),
-//					},
-//				},
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
+//				},
+//				Port: pulumi.Int(22),
+//				Ssh: &platform.SecretSshkeySshArgs{
+//					SshPasswordCredential: &platform.SecretSshkeySshSshPasswordCredentialArgs{
+//						UserName: pulumi.String("user_name"),
+//						Password: pulumi.String(fmt.Sprintf("account.%v", secret.Id)),
+//					},
+//					CredentialType: pulumi.String("Password"),
 //				},
 //			})
 //			if err != nil {
@@ -129,11 +131,27 @@ import (
 //
 // ## Import
 //
-// # Import using secret sshkey id
+// # Import account level secret sshkey
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+//
+// ```
+//
+//	Import org level secret sshkey
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
+//
+// ```
+//
+//	Import project level secret sshkey
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
 //
 // ```
 type SecretSshkey struct {
@@ -147,15 +165,15 @@ type SecretSshkey struct {
 	Kerberos SecretSshkeyKerberosPtrOutput `pulumi:"kerberos"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// SSH port
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrOutput `pulumi:"ssh"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -200,15 +218,15 @@ type secretSshkeyState struct {
 	Kerberos *SecretSshkeyKerberos `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port *int `pulumi:"port"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh *SecretSshkeySsh `pulumi:"ssh"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -221,15 +239,15 @@ type SecretSshkeyState struct {
 	Kerberos SecretSshkeyKerberosPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// SSH port
 	Port pulumi.IntPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -246,15 +264,15 @@ type secretSshkeyArgs struct {
 	Kerberos *SecretSshkeyKerberos `pulumi:"kerberos"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// SSH port
 	Port *int `pulumi:"port"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Kerberos authentication scheme
 	Ssh *SecretSshkeySsh `pulumi:"ssh"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -268,15 +286,15 @@ type SecretSshkeyArgs struct {
 	Kerberos SecretSshkeyKerberosPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// SSH port
 	Port pulumi.IntPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Kerberos authentication scheme
 	Ssh SecretSshkeySshPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -387,7 +405,7 @@ func (o SecretSshkeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o SecretSshkeyOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -397,7 +415,7 @@ func (o SecretSshkeyOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o SecretSshkeyOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -407,7 +425,7 @@ func (o SecretSshkeyOutput) Ssh() SecretSshkeySshPtrOutput {
 	return o.ApplyT(func(v *SecretSshkey) SecretSshkeySshPtrOutput { return v.Ssh }).(SecretSshkeySshPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o SecretSshkeyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretSshkey) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

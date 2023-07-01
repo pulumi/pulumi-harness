@@ -5,9 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.harness.platform.inputs.GetRoleAssignmentsPrincipalArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,21 +46,6 @@ public final class GetRoleAssignmentsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Principal.
-     * 
-     */
-    @Import(name="principals")
-    private @Nullable Output<List<GetRoleAssignmentsPrincipalArgs>> principals;
-
-    /**
-     * @return Principal.
-     * 
-     */
-    public Optional<Output<List<GetRoleAssignmentsPrincipalArgs>>> principals() {
-        return Optional.ofNullable(this.principals);
-    }
-
-    /**
      * Project Identifier
      * 
      */
@@ -82,7 +65,6 @@ public final class GetRoleAssignmentsArgs extends com.pulumi.resources.InvokeArg
     private GetRoleAssignmentsArgs(GetRoleAssignmentsArgs $) {
         this.identifier = $.identifier;
         this.orgId = $.orgId;
-        this.principals = $.principals;
         this.projectId = $.projectId;
     }
 
@@ -144,37 +126,6 @@ public final class GetRoleAssignmentsArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
-        }
-
-        /**
-         * @param principals Principal.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principals(@Nullable Output<List<GetRoleAssignmentsPrincipalArgs>> principals) {
-            $.principals = principals;
-            return this;
-        }
-
-        /**
-         * @param principals Principal.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principals(List<GetRoleAssignmentsPrincipalArgs> principals) {
-            return principals(Output.of(principals));
-        }
-
-        /**
-         * @param principals Principal.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder principals(GetRoleAssignmentsPrincipalArgs... principals) {
-            return principals(List.of(principals));
         }
 
         /**

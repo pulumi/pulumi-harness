@@ -77,7 +77,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * The id of the application. This is required for all resources except global ones.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appId;
 
     /**
@@ -91,7 +91,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * The raw YAML configuration.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
@@ -105,7 +105,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * The path of the resource.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**

@@ -158,10 +158,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using vault connector id
+ * Import account level vault connector
  * 
  * ```sh
  *  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level vault connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level vault connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/vaultConnector:VaultConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
  * ```
  * 
  */
@@ -171,7 +183,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Access type.
      * 
      */
-    @Export(name="accessType", type=String.class, parameters={})
+    @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
     /**
@@ -185,7 +197,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * ID of App Role.
      * 
      */
-    @Export(name="appRoleId", type=String.class, parameters={})
+    @Export(name="appRoleId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appRoleId;
 
     /**
@@ -199,7 +211,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Authentication token for Vault.
      * 
      */
-    @Export(name="authToken", type=String.class, parameters={})
+    @Export(name="authToken", refs={String.class}, tree="[0]")
     private Output<String> authToken;
 
     /**
@@ -213,7 +225,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * AWS region where the AWS IAM authentication will happen.
      * 
      */
-    @Export(name="awsRegion", type=String.class, parameters={})
+    @Export(name="awsRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRegion;
 
     /**
@@ -227,7 +239,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Location of the Vault directory where the secret will be stored.
      * 
      */
-    @Export(name="basePath", type=String.class, parameters={})
+    @Export(name="basePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basePath;
 
     /**
@@ -241,7 +253,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Is default or not.
      * 
      */
-    @Export(name="default", type=Boolean.class, parameters={})
+    @Export(name="default", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> default_;
 
     /**
@@ -255,7 +267,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
@@ -269,7 +281,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -283,7 +295,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -297,7 +309,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Is default or not.
      * 
      */
-    @Export(name="isDefault", type=Boolean.class, parameters={})
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
@@ -311,7 +323,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Read only or not.
      * 
      */
-    @Export(name="isReadOnly", type=Boolean.class, parameters={})
+    @Export(name="isReadOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isReadOnly;
 
     /**
@@ -325,7 +337,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The path where Kubernetes Auth is enabled in Vault.
      * 
      */
-    @Export(name="k8sAuthEndpoint", type=String.class, parameters={})
+    @Export(name="k8sAuthEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> k8sAuthEndpoint;
 
     /**
@@ -339,7 +351,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -353,7 +365,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Vault namespace where the Secret will be created.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -364,28 +376,28 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -395,7 +407,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Read only.
      * 
      */
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
     /**
@@ -409,21 +421,21 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Boolean value to indicate if AppRole token renewal is enabled or not.
      * 
      */
-    @Export(name="renewAppRoleToken", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> renewAppRoleToken;
+    @Export(name="renewAppRoleToken", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> renewAppRoleToken;
 
     /**
      * @return Boolean value to indicate if AppRole token renewal is enabled or not.
      * 
      */
-    public Output<Optional<Boolean>> renewAppRoleToken() {
-        return Codegen.optional(this.renewAppRoleToken);
+    public Output<Boolean> renewAppRoleToken() {
+        return this.renewAppRoleToken;
     }
     /**
      * The time interval for the token renewal.
      * 
      */
-    @Export(name="renewalIntervalMinutes", type=Integer.class, parameters={})
+    @Export(name="renewalIntervalMinutes", refs={Integer.class}, tree="[0]")
     private Output<Integer> renewalIntervalMinutes;
 
     /**
@@ -437,7 +449,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Manually entered Secret Engine.
      * 
      */
-    @Export(name="secretEngineManuallyConfigured", type=Boolean.class, parameters={})
+    @Export(name="secretEngineManuallyConfigured", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> secretEngineManuallyConfigured;
 
     /**
@@ -451,7 +463,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Name of the Secret Engine.
      * 
      */
-    @Export(name="secretEngineName", type=String.class, parameters={})
+    @Export(name="secretEngineName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretEngineName;
 
     /**
@@ -465,7 +477,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Version of Secret Engine.
      * 
      */
-    @Export(name="secretEngineVersion", type=Integer.class, parameters={})
+    @Export(name="secretEngineVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secretEngineVersion;
 
     /**
@@ -479,7 +491,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * ID of the Secret.
      * 
      */
-    @Export(name="secretId", type=String.class, parameters={})
+    @Export(name="secretId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretId;
 
     /**
@@ -493,7 +505,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The Service Account token path in the K8s pod where the token is mounted.
      * 
      */
-    @Export(name="serviceAccountTokenPath", type=String.class, parameters={})
+    @Export(name="serviceAccountTokenPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountTokenPath;
 
     /**
@@ -507,7 +519,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The location from which the authentication token should be read.
      * 
      */
-    @Export(name="sinkPath", type=String.class, parameters={})
+    @Export(name="sinkPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sinkPath;
 
     /**
@@ -518,14 +530,14 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sinkPath);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -535,7 +547,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Boolean value to indicate if AWS IAM is used for authentication.
      * 
      */
-    @Export(name="useAwsIam", type=Boolean.class, parameters={})
+    @Export(name="useAwsIam", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAwsIam;
 
     /**
@@ -549,7 +561,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Boolean value to indicate if K8s Auth is used for authentication.
      * 
      */
-    @Export(name="useK8sAuth", type=Boolean.class, parameters={})
+    @Export(name="useK8sAuth", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useK8sAuth;
 
     /**
@@ -563,7 +575,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * Boolean value to indicate if Vault Agent is used for authentication.
      * 
      */
-    @Export(name="useVaultAgent", type=Boolean.class, parameters={})
+    @Export(name="useVaultAgent", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useVaultAgent;
 
     /**
@@ -577,7 +589,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The Vault role defined to bind to aws iam account/role being accessed.
      * 
      */
-    @Export(name="vaultAwsIamRole", type=String.class, parameters={})
+    @Export(name="vaultAwsIamRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vaultAwsIamRole;
 
     /**
@@ -591,7 +603,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The role where K8s Auth will happen.
      * 
      */
-    @Export(name="vaultK8sAuthRole", type=String.class, parameters={})
+    @Export(name="vaultK8sAuthRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vaultK8sAuthRole;
 
     /**
@@ -605,7 +617,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * URL of the HashiCorp Vault.
      * 
      */
-    @Export(name="vaultUrl", type=String.class, parameters={})
+    @Export(name="vaultUrl", refs={String.class}, tree="[0]")
     private Output<String> vaultUrl;
 
     /**
@@ -619,7 +631,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
      * 
      */
-    @Export(name="xvaultAwsIamServerId", type=String.class, parameters={})
+    @Export(name="xvaultAwsIamServerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> xvaultAwsIamServerId;
 
     /**

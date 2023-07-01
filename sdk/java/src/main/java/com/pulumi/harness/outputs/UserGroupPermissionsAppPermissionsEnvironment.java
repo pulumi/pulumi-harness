@@ -14,7 +14,7 @@ public final class UserGroupPermissionsAppPermissionsEnvironment {
     private List<String> actions;
     private @Nullable List<String> appIds;
     private @Nullable List<String> envIds;
-    private List<String> filters;
+    private @Nullable List<String> filters;
 
     private UserGroupPermissionsAppPermissionsEnvironment() {}
     public List<String> actions() {
@@ -27,7 +27,7 @@ public final class UserGroupPermissionsAppPermissionsEnvironment {
         return this.envIds == null ? List.of() : this.envIds;
     }
     public List<String> filters() {
-        return this.filters;
+        return this.filters == null ? List.of() : this.filters;
     }
 
     public static Builder builder() {
@@ -42,7 +42,7 @@ public final class UserGroupPermissionsAppPermissionsEnvironment {
         private List<String> actions;
         private @Nullable List<String> appIds;
         private @Nullable List<String> envIds;
-        private List<String> filters;
+        private @Nullable List<String> filters;
         public Builder() {}
         public Builder(UserGroupPermissionsAppPermissionsEnvironment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -77,8 +77,8 @@ public final class UserGroupPermissionsAppPermissionsEnvironment {
             return envIds(List.of(envIds));
         }
         @CustomType.Setter
-        public Builder filters(List<String> filters) {
-            this.filters = Objects.requireNonNull(filters);
+        public Builder filters(@Nullable List<String> filters) {
+            this.filters = filters;
             return this;
         }
         public Builder filters(String... filters) {

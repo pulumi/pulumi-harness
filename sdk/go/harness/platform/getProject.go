@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupProject(ctx, &platform.LookupProjectArgs{
+//			_, err := platform.LookupProject(ctx, &platform.LookupProjectArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      "org_id",
 //			}, nil)
@@ -61,7 +61,7 @@ type LookupProjectArgs struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
 }
 
@@ -79,9 +79,9 @@ type LookupProjectResult struct {
 	Modules []string `pulumi:"modules"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -104,7 +104,7 @@ type LookupProjectOutputArgs struct {
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 }
 
@@ -157,12 +157,12 @@ func (o LookupProjectResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupProjectResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupProjectResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

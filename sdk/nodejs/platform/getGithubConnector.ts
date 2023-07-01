@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Github connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGithubConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getGithubConnector(args?: GetGithubConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGithubConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getGithubConnector(args: GetGithubConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGithubConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGithubConnector:getGithubConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetGithubConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -63,13 +70,14 @@ export interface GetGithubConnectorResult {
      */
     readonly credentials: outputs.platform.GetGithubConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
      * Description of the resource.
      */
     readonly description: string;
+    readonly executeOnDelegate: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -77,25 +85,25 @@ export interface GetGithubConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the github repository or account.
+     * URL of the github repository or account.
      */
     readonly url: string;
     /**
@@ -103,9 +111,22 @@ export interface GetGithubConnectorResult {
      */
     readonly validationRepo: string;
 }
-
-export function getGithubConnectorOutput(args?: GetGithubConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGithubConnectorResult> {
-    return pulumi.output(args).apply(a => getGithubConnector(a, opts))
+/**
+ * Datasource for looking up a Github connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGithubConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getGithubConnectorOutput(args: GetGithubConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGithubConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getGithubConnector(a, opts))
 }
 
 /**
@@ -115,17 +136,17 @@ export interface GetGithubConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

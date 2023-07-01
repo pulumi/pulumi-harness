@@ -80,7 +80,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * Boolean that indicates whether or not to inherit the usage scopes from the secret manager
      * 
      */
-    @Export(name="inheritScopesFromSecretManager", type=Boolean.class, parameters={})
+    @Export(name="inheritScopesFromSecretManager", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> inheritScopesFromSecretManager;
 
     /**
@@ -94,7 +94,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * Name of the encrypted text secret
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -108,7 +108,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * Boolean that indicates whether or not the secret is scoped to the account
      * 
      */
-    @Export(name="scopedToAccount", type=Boolean.class, parameters={})
+    @Export(name="scopedToAccount", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scopedToAccount;
 
     /**
@@ -122,7 +122,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
      * 
      */
-    @Export(name="secretManagerId", type=String.class, parameters={})
+    @Export(name="secretManagerId", refs={String.class}, tree="[0]")
     private Output<String> secretManagerId;
 
     /**
@@ -136,7 +136,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
      * 
      */
-    @Export(name="secretReference", type=String.class, parameters={})
+    @Export(name="secretReference", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretReference;
 
     /**
@@ -150,7 +150,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={EncryptedTextUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,EncryptedTextUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EncryptedTextUsageScope>> usageScopes;
 
     /**
@@ -164,7 +164,7 @@ public class EncryptedText extends com.pulumi.resources.CustomResource {
      * The value of the secret.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;
 
     /**

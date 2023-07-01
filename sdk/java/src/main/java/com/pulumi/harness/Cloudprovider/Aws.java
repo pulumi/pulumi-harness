@@ -85,7 +85,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * The plain text AWS access key id.
      * 
      */
-    @Export(name="accessKeyId", type=String.class, parameters={})
+    @Export(name="accessKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeyId;
 
     /**
@@ -99,7 +99,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * The name of the Harness secret containing the AWS access key id
      * 
      */
-    @Export(name="accessKeyIdSecretName", type=String.class, parameters={})
+    @Export(name="accessKeyIdSecretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeyIdSecretName;
 
     /**
@@ -113,7 +113,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * Configuration for assuming a cross account role.
      * 
      */
-    @Export(name="assumeCrossAccountRole", type=AwsAssumeCrossAccountRole.class, parameters={})
+    @Export(name="assumeCrossAccountRole", refs={AwsAssumeCrossAccountRole.class}, tree="[0]")
     private Output</* @Nullable */ AwsAssumeCrossAccountRole> assumeCrossAccountRole;
 
     /**
@@ -127,7 +127,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * Select the Delegate to use via one of its Selectors.
      * 
      */
-    @Export(name="delegateSelector", type=String.class, parameters={})
+    @Export(name="delegateSelector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delegateSelector;
 
     /**
@@ -141,7 +141,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -155,7 +155,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * The name of the Harness secret containing the AWS secret access key.
      * 
      */
-    @Export(name="secretAccessKeySecretName", type=String.class, parameters={})
+    @Export(name="secretAccessKeySecretName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretAccessKeySecretName;
 
     /**
@@ -169,7 +169,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={AwsUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,AwsUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AwsUsageScope>> usageScopes;
 
     /**
@@ -183,7 +183,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * Use the EC2 Instance Profile for Service Accounts.
      * 
      */
-    @Export(name="useEc2IamCredentials", type=Boolean.class, parameters={})
+    @Export(name="useEc2IamCredentials", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useEc2IamCredentials;
 
     /**
@@ -197,7 +197,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * Use the AWS IAM Role for Service Accounts.
      * 
      */
-    @Export(name="useIrsa", type=Boolean.class, parameters={})
+    @Export(name="useIrsa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useIrsa;
 
     /**

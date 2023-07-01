@@ -15,31 +15,91 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsRepositoryResult {
+    /**
+     * @return Account identifier of the GitOps repository.
+     * 
+     */
     private String accountId;
-    private @Nullable String agentId;
+    /**
+     * @return Agent identifier of the GitOps repository.
+     * 
+     */
+    private String agentId;
+    /**
+     * @return Indicates if to operate on credential set instead of repository.
+     * 
+     */
     private @Nullable Boolean credsOnly;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Identifier of the GitOps repository.
+     * 
+     */
     private String identifier;
+    /**
+     * @return Organization identifier of the GitOps repository.
+     * 
+     */
     private @Nullable String orgId;
-    private String projectId;
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
+    private @Nullable String projectId;
+    /**
+     * @return Indicates to force refresh query for repository.
+     * 
+     */
     private @Nullable Boolean queryForceRefresh;
+    /**
+     * @return Project to query for the GitOps repo.
+     * 
+     */
     private @Nullable String queryProject;
+    /**
+     * @return GitOps repository to query.
+     * 
+     */
     private @Nullable String queryRepo;
+    /**
+     * @return Repo details holding application configurations.
+     * 
+     */
     private List<GetGitopsRepositoryRepo> repos;
+    /**
+     * @return Update mask of the repository.
+     * 
+     */
     private @Nullable List<GetGitopsRepositoryUpdateMask> updateMasks;
+    /**
+     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * 
+     */
     private @Nullable Boolean upsert;
 
     private GetGitopsRepositoryResult() {}
+    /**
+     * @return Account identifier of the GitOps repository.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    /**
+     * @return Agent identifier of the GitOps repository.
+     * 
+     */
+    public String agentId() {
+        return this.agentId;
     }
+    /**
+     * @return Indicates if to operate on credential set instead of repository.
+     * 
+     */
     public Optional<Boolean> credsOnly() {
         return Optional.ofNullable(this.credsOnly);
     }
@@ -50,30 +110,66 @@ public final class GetGitopsRepositoryResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifier of the GitOps repository.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return Organization identifier of the GitOps repository.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
-    public String projectId() {
-        return this.projectId;
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Indicates to force refresh query for repository.
+     * 
+     */
     public Optional<Boolean> queryForceRefresh() {
         return Optional.ofNullable(this.queryForceRefresh);
     }
+    /**
+     * @return Project to query for the GitOps repo.
+     * 
+     */
     public Optional<String> queryProject() {
         return Optional.ofNullable(this.queryProject);
     }
+    /**
+     * @return GitOps repository to query.
+     * 
+     */
     public Optional<String> queryRepo() {
         return Optional.ofNullable(this.queryRepo);
     }
+    /**
+     * @return Repo details holding application configurations.
+     * 
+     */
     public List<GetGitopsRepositoryRepo> repos() {
         return this.repos;
     }
+    /**
+     * @return Update mask of the repository.
+     * 
+     */
     public List<GetGitopsRepositoryUpdateMask> updateMasks() {
         return this.updateMasks == null ? List.of() : this.updateMasks;
     }
+    /**
+     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * 
+     */
     public Optional<Boolean> upsert() {
         return Optional.ofNullable(this.upsert);
     }
@@ -88,12 +184,12 @@ public final class GetGitopsRepositoryResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String agentId;
+        private String agentId;
         private @Nullable Boolean credsOnly;
         private String id;
         private String identifier;
         private @Nullable String orgId;
-        private String projectId;
+        private @Nullable String projectId;
         private @Nullable Boolean queryForceRefresh;
         private @Nullable String queryProject;
         private @Nullable String queryRepo;
@@ -124,8 +220,8 @@ public final class GetGitopsRepositoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder agentId(@Nullable String agentId) {
-            this.agentId = agentId;
+        public Builder agentId(String agentId) {
+            this.agentId = Objects.requireNonNull(agentId);
             return this;
         }
         @CustomType.Setter
@@ -149,8 +245,8 @@ public final class GetGitopsRepositoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter

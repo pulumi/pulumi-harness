@@ -16,7 +16,7 @@ public final class GcpConnectorManual {
      */
     private List<String> delegateSelectors;
     /**
-     * @return Reference to the Harness secret containing the secret key.
+     * @return Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String secretKeyRef;
@@ -30,7 +30,7 @@ public final class GcpConnectorManual {
         return this.delegateSelectors;
     }
     /**
-     * @return Reference to the Harness secret containing the secret key.
+     * @return Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String secretKeyRef() {

@@ -28,10 +28,10 @@ class RolesArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_scope_levels: The scope levels at which this role can be used
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of the permission identifiers
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         if allowed_scope_levels is not None:
@@ -101,7 +101,7 @@ class RolesArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -125,7 +125,7 @@ class RolesArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -137,7 +137,7 @@ class RolesArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -163,10 +163,10 @@ class _RolesState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of the permission identifiers
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if allowed_scope_levels is not None:
             pulumi.set(__self__, "allowed_scope_levels", allowed_scope_levels)
@@ -237,7 +237,7 @@ class _RolesState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -261,7 +261,7 @@ class _RolesState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -273,7 +273,7 @@ class _RolesState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -306,19 +306,31 @@ class Roles(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         example = harness.platform.Roles("example",
-            allowed_scope_levels=["project"],
+            allowed_scope_levels=["account"],
             description="test",
             identifier="identifier",
-            permissions=["core_pipeline_edit"],
+            permissions=["core_resourcegroup_view"],
             tags=["foo:bar"])
         ```
 
         ## Import
 
-        Import using roles id
+        Import account level roles
 
         ```sh
          $ pulumi import harness:platform/roles:Roles example <roles_id>
+        ```
+
+         Import org level roles
+
+        ```sh
+         $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
+        ```
+
+         Import project level roles
+
+        ```sh
+         $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -327,10 +339,10 @@ class Roles(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of the permission identifiers
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -348,19 +360,31 @@ class Roles(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         example = harness.platform.Roles("example",
-            allowed_scope_levels=["project"],
+            allowed_scope_levels=["account"],
             description="test",
             identifier="identifier",
-            permissions=["core_pipeline_edit"],
+            permissions=["core_resourcegroup_view"],
             tags=["foo:bar"])
         ```
 
         ## Import
 
-        Import using roles id
+        Import account level roles
 
         ```sh
          $ pulumi import harness:platform/roles:Roles example <roles_id>
+        ```
+
+         Import org level roles
+
+        ```sh
+         $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
+        ```
+
+         Import project level roles
+
+        ```sh
+         $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -434,10 +458,10 @@ class Roles(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: List of the permission identifiers
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -489,7 +513,7 @@ class Roles(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -505,7 +529,7 @@ class Roles(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -513,7 +537,7 @@ class Roles(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

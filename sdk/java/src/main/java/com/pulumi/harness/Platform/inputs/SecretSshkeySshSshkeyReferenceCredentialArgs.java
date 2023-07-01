@@ -22,11 +22,11 @@ public final class SecretSshkeySshSshkeyReferenceCredentialArgs extends com.pulu
         return Optional.ofNullable(this.encryptedPassphrase);
     }
 
-    @Import(name="key")
-    private @Nullable Output<String> key;
+    @Import(name="key", required=true)
+    private Output<String> key;
 
-    public Optional<Output<String>> key() {
-        return Optional.ofNullable(this.key);
+    public Output<String> key() {
+        return this.key;
     }
 
     @Import(name="userName", required=true)
@@ -71,7 +71,7 @@ public final class SecretSshkeySshSshkeyReferenceCredentialArgs extends com.pulu
             return encryptedPassphrase(Output.of(encryptedPassphrase));
         }
 
-        public Builder key(@Nullable Output<String> key) {
+        public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
@@ -90,6 +90,7 @@ public final class SecretSshkeySshSshkeyReferenceCredentialArgs extends com.pulu
         }
 
         public SecretSshkeySshSshkeyReferenceCredentialArgs build() {
+            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
             $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
             return $;
         }

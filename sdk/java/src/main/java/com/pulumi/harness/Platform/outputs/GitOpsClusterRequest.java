@@ -16,25 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GitOpsClusterRequest {
+    /**
+     * @return GitOps cluster details.
+     * 
+     */
     private @Nullable List<GitOpsClusterRequestCluster> clusters;
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     private @Nullable List<GitOpsClusterRequestId> ids;
+    /**
+     * @return Tags associated with the clusters
+     * 
+     */
+    private @Nullable List<String> tags;
+    /**
+     * @return Update mask of the GitOps cluster.
+     * 
+     */
     private @Nullable List<GitOpsClusterRequestUpdateMask> updateMasks;
+    /**
+     * @return Fields which are updated.
+     * 
+     */
     private @Nullable List<String> updatedFields;
+    /**
+     * @return Indicates if the GitOps cluster should be updated if existing and inserted if not.
+     * 
+     */
     private @Nullable Boolean upsert;
 
     private GitOpsClusterRequest() {}
+    /**
+     * @return GitOps cluster details.
+     * 
+     */
     public List<GitOpsClusterRequestCluster> clusters() {
         return this.clusters == null ? List.of() : this.clusters;
     }
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     public List<GitOpsClusterRequestId> ids() {
         return this.ids == null ? List.of() : this.ids;
     }
+    /**
+     * @return Tags associated with the clusters
+     * 
+     */
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
+    }
+    /**
+     * @return Update mask of the GitOps cluster.
+     * 
+     */
     public List<GitOpsClusterRequestUpdateMask> updateMasks() {
         return this.updateMasks == null ? List.of() : this.updateMasks;
     }
+    /**
+     * @return Fields which are updated.
+     * 
+     */
     public List<String> updatedFields() {
         return this.updatedFields == null ? List.of() : this.updatedFields;
     }
+    /**
+     * @return Indicates if the GitOps cluster should be updated if existing and inserted if not.
+     * 
+     */
     public Optional<Boolean> upsert() {
         return Optional.ofNullable(this.upsert);
     }
@@ -50,6 +102,7 @@ public final class GitOpsClusterRequest {
     public static final class Builder {
         private @Nullable List<GitOpsClusterRequestCluster> clusters;
         private @Nullable List<GitOpsClusterRequestId> ids;
+        private @Nullable List<String> tags;
         private @Nullable List<GitOpsClusterRequestUpdateMask> updateMasks;
         private @Nullable List<String> updatedFields;
         private @Nullable Boolean upsert;
@@ -58,6 +111,7 @@ public final class GitOpsClusterRequest {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
     	      this.ids = defaults.ids;
+    	      this.tags = defaults.tags;
     	      this.updateMasks = defaults.updateMasks;
     	      this.updatedFields = defaults.updatedFields;
     	      this.upsert = defaults.upsert;
@@ -78,6 +132,14 @@ public final class GitOpsClusterRequest {
         }
         public Builder ids(GitOpsClusterRequestId... ids) {
             return ids(List.of(ids));
+        }
+        @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder updateMasks(@Nullable List<GitOpsClusterRequestUpdateMask> updateMasks) {
@@ -104,6 +166,7 @@ public final class GitOpsClusterRequest {
             final var o = new GitOpsClusterRequest();
             o.clusters = clusters;
             o.ids = ids;
+            o.tags = tags;
             o.updateMasks = updateMasks;
             o.updatedFields = updatedFields;
             o.upsert = upsert;

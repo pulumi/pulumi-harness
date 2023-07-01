@@ -29,6 +29,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GetInputSetArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Input("gitDetails")]
+        public Inputs.GetInputSetGitDetailsArgs? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
@@ -41,7 +47,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
@@ -53,7 +59,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string PipelineId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -67,6 +73,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class GetInputSetInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.GetInputSetGitDetailsInputArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
@@ -79,7 +91,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -91,7 +103,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string> PipelineId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -111,6 +123,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        public readonly Outputs.GetInputSetGitDetailsResult? GitDetails;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -123,7 +139,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
@@ -131,11 +147,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string PipelineId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
@@ -146,6 +162,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [OutputConstructor]
         private GetInputSetResult(
             string description,
+
+            Outputs.GetInputSetGitDetailsResult? gitDetails,
 
             string id,
 
@@ -164,6 +182,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             string yaml)
         {
             Description = description;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Name = name;

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,20 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getPipeline({
+ * const example = harness.platform.getPipeline({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPipeline:getPipeline", {
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -38,6 +38,10 @@ export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getPipeline.
  */
 export interface GetPipelineArgs {
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: inputs.platform.GetPipelineGitDetails;
     /**
      * Unique identifier of the resource.
      */
@@ -65,6 +69,10 @@ export interface GetPipelineResult {
      */
     readonly description: string;
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    readonly gitDetails?: outputs.platform.GetPipelineGitDetails;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -85,23 +93,50 @@ export interface GetPipelineResult {
      */
     readonly projectId: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
+    /**
+     * If true, returns Pipeline YAML with Templates applied on it.
+     */
+    readonly templateApplied: boolean;
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     */
+    readonly templateAppliedPipelineYaml: string;
     /**
      * YAML of the pipeline.
      */
     readonly yaml: string;
 }
-
+/**
+ * Data source for retrieving a Harness pipeline.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPipeline({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getPipelineOutput(args: GetPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineResult> {
-    return pulumi.output(args).apply(a => getPipeline(a, opts))
+    return pulumi.output(args).apply((a: any) => getPipeline(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getPipeline.
  */
 export interface GetPipelineOutputArgs {
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: pulumi.Input<inputs.platform.GetPipelineGitDetailsArgs>;
     /**
      * Unique identifier of the resource.
      */

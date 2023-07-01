@@ -11,23 +11,35 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.Roles("example", {
- *     allowedScopeLevels: ["project"],
+ *     allowedScopeLevels: ["account"],
  *     description: "test",
  *     identifier: "identifier",
- *     permissions: ["core_pipeline_edit"],
+ *     permissions: ["core_resourcegroup_view"],
  *     tags: ["foo:bar"],
  * });
  * ```
  *
  * ## Import
  *
- * Import using roles id
+ * Import account level roles
  *
  * ```sh
  *  $ pulumi import harness:platform/roles:Roles example <roles_id>
+ * ```
+ *
+ *  Import org level roles
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
+ * ```
+ *
+ *  Import project level roles
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
  * ```
  */
 export class Roles extends pulumi.CustomResource {
@@ -75,7 +87,7 @@ export class Roles extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -83,11 +95,11 @@ export class Roles extends pulumi.CustomResource {
      */
     public readonly permissions!: pulumi.Output<string[] | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -152,7 +164,7 @@ export interface RolesState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -160,11 +172,11 @@ export interface RolesState {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -190,7 +202,7 @@ export interface RolesArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -198,11 +210,11 @@ export interface RolesArgs {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

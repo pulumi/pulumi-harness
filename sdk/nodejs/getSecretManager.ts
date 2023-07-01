@@ -11,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getSecretManager(args?: GetSecretManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretManagerResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getSecretManager:getSecretManager", {
         "default": args.default,
         "id": args.id,
@@ -67,9 +64,11 @@ export interface GetSecretManagerResult {
      */
     readonly usageScopes?: outputs.GetSecretManagerUsageScope[];
 }
-
+/**
+ * Data source for retrieving a Harness secret manager
+ */
 export function getSecretManagerOutput(args?: GetSecretManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretManagerResult> {
-    return pulumi.output(args).apply(a => getSecretManager(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretManager(a, opts))
 }
 
 /**

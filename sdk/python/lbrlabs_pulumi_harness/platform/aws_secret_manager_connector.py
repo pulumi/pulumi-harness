@@ -28,16 +28,16 @@ class AwsSecretManagerConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AwsSecretManagerConnector resource.
-        :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: The credentials to use for connecting to aws.
+        :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "identifier", identifier)
@@ -61,7 +61,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter
     def credentials(self) -> pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -97,7 +97,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -133,7 +133,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -145,7 +145,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -169,7 +169,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -193,16 +193,16 @@ class _AwsSecretManagerConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AwsSecretManagerConnector resources.
-        :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -229,7 +229,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter
     def credentials(self) -> Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']]:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -241,7 +241,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -289,7 +289,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -301,7 +301,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -337,7 +337,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -365,18 +365,61 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         """
         Resource for creating an AWS Secret Manager connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials assume_role
+        test = harness.platform.AwsSecretManagerConnector("test",
+            credentials=harness.platform.AwsSecretManagerConnectorCredentialsArgs(
+                assume_role=harness.platform.AwsSecretManagerConnectorCredentialsAssumeRoleArgs(
+                    duration=900,
+                    external_id="externalid",
+                    role_arn="somerolearn",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            region="us-east-1",
+            secret_name_prefix="test",
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
+        ```
+
+         Import org level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -386,6 +429,49 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an AWS Secret Manager connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials assume_role
+        test = harness.platform.AwsSecretManagerConnector("test",
+            credentials=harness.platform.AwsSecretManagerConnectorCredentialsArgs(
+                assume_role=harness.platform.AwsSecretManagerConnectorCredentialsAssumeRoleArgs(
+                    duration=900,
+                    external_id="externalid",
+                    role_arn="somerolearn",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            region="us-east-1",
+            secret_name_prefix="test",
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
+        ```
+
+         Import org level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level aws secret manager connector
+
+        ```sh
+         $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AwsSecretManagerConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -464,16 +550,16 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -495,7 +581,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter
     def credentials(self) -> pulumi.Output['outputs.AwsSecretManagerConnectorCredentials']:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -503,7 +589,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -535,7 +621,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -543,7 +629,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -567,7 +653,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

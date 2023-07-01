@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesConnectorClientKeyCert {
     /**
-     * @return Reference to the secret containing the CA certificate for the connector.
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String caCertRef;
     /**
-     * @return Reference to the secret containing the client certificate for the connector.
+     * @return Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String clientCertRef;
@@ -27,12 +27,12 @@ public final class KubernetesConnectorClientKeyCert {
      */
     private String clientKeyAlgorithm;
     /**
-     * @return Reference to the secret containing the client key passphrase for the connector.
+     * @return Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String clientKeyPassphraseRef;
     /**
-     * @return Reference to the secret containing the client key for the connector.
+     * @return Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String clientKeyRef;
@@ -44,14 +44,14 @@ public final class KubernetesConnectorClientKeyCert {
 
     private KubernetesConnectorClientKeyCert() {}
     /**
-     * @return Reference to the secret containing the CA certificate for the connector.
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> caCertRef() {
         return Optional.ofNullable(this.caCertRef);
     }
     /**
-     * @return Reference to the secret containing the client certificate for the connector.
+     * @return Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String clientCertRef() {
@@ -65,14 +65,14 @@ public final class KubernetesConnectorClientKeyCert {
         return this.clientKeyAlgorithm;
     }
     /**
-     * @return Reference to the secret containing the client key passphrase for the connector.
+     * @return Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> clientKeyPassphraseRef() {
         return Optional.ofNullable(this.clientKeyPassphraseRef);
     }
     /**
-     * @return Reference to the secret containing the client key for the connector.
+     * @return Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String clientKeyRef() {

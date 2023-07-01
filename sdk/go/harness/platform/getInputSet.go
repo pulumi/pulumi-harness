@@ -23,15 +23,17 @@ func LookupInputSet(ctx *pulumi.Context, args *LookupInputSetArgs, opts ...pulum
 
 // A collection of arguments for invoking getInputSet.
 type LookupInputSetArgs struct {
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *GetInputSetGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId string `pulumi:"pipelineId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -39,19 +41,21 @@ type LookupInputSetArgs struct {
 type LookupInputSetResult struct {
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *GetInputSetGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId string `pulumi:"pipelineId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Input Set YAML
 	Yaml string `pulumi:"yaml"`
@@ -72,15 +76,17 @@ func LookupInputSetOutput(ctx *pulumi.Context, args LookupInputSetOutputArgs, op
 
 // A collection of arguments for invoking getInputSet.
 type LookupInputSetOutputArgs struct {
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails GetInputSetGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 	// Identifier of the pipeline
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -108,6 +114,11 @@ func (o LookupInputSetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to creating an Entity for Git Experience.
+func (o LookupInputSetResultOutput) GitDetails() GetInputSetGitDetailsPtrOutput {
+	return o.ApplyT(func(v LookupInputSetResult) *GetInputSetGitDetails { return v.GitDetails }).(GetInputSetGitDetailsPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInputSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.Id }).(pulumi.StringOutput)
@@ -123,7 +134,7 @@ func (o LookupInputSetResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInputSetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupInputSetResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -133,12 +144,12 @@ func (o LookupInputSetResultOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.PipelineId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupInputSetResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInputSetResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupInputSetResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInputSetResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

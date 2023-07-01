@@ -93,7 +93,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * Authentication configuration for the Kubernetes cluster
      * 
      */
-    @Export(name="authentication", type=KubernetesAuthentication.class, parameters={})
+    @Export(name="authentication", refs={KubernetesAuthentication.class}, tree="[0]")
     private Output<KubernetesAuthentication> authentication;
 
     /**
@@ -107,7 +107,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -121,7 +121,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * Skip validation of Kubernetes configuration.
      * 
      */
-    @Export(name="skipValidation", type=Boolean.class, parameters={})
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipValidation;
 
     /**
@@ -135,7 +135,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={KubernetesUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,KubernetesUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesUsageScope>> usageScopes;
 
     /**

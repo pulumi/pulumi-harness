@@ -45,7 +45,7 @@ public final class GetUsergroupResult {
      */
     private String linkedSsoId;
     /**
-     * @return Type of linked SSO
+     * @return Type of linked SSO.
      * 
      */
     private String linkedSsoType;
@@ -60,12 +60,12 @@ public final class GetUsergroupResult {
      */
     private @Nullable List<GetUsergroupNotificationConfig> notificationConfigs;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
@@ -80,12 +80,12 @@ public final class GetUsergroupResult {
      */
     private String ssoGroupName;
     /**
-     * @return Whether sso is linked or not
+     * @return Whether sso is linked or not.
      * 
      */
     private Boolean ssoLinked;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -139,7 +139,7 @@ public final class GetUsergroupResult {
         return this.linkedSsoId;
     }
     /**
-     * @return Type of linked SSO
+     * @return Type of linked SSO.
      * 
      */
     public String linkedSsoType() {
@@ -160,14 +160,14 @@ public final class GetUsergroupResult {
         return this.notificationConfigs == null ? List.of() : this.notificationConfigs;
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -188,14 +188,14 @@ public final class GetUsergroupResult {
         return this.ssoGroupName;
     }
     /**
-     * @return Whether sso is linked or not
+     * @return Whether sso is linked or not.
      * 
      */
     public Boolean ssoLinked() {
         return this.ssoLinked;
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {

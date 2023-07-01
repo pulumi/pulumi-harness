@@ -6,6 +6,41 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a PagerDuty connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.PagerdutyConnector("test", {
+ *     apiTokenRef: "account.secret_id",
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level pagerduty connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <connector_id>
+ * ```
+ *
+ *  Import org level pagerduty connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level pagerduty connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class PagerdutyConnector extends pulumi.CustomResource {
     /**
@@ -36,11 +71,11 @@ export class PagerdutyConnector extends pulumi.CustomResource {
     }
 
     /**
-     * Reference to the Harness secret containing the api token.
+     * Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly apiTokenRef!: pulumi.Output<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -56,15 +91,15 @@ export class PagerdutyConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -116,11 +151,11 @@ export class PagerdutyConnector extends pulumi.CustomResource {
  */
 export interface PagerdutyConnectorState {
     /**
-     * Reference to the Harness secret containing the api token.
+     * Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiTokenRef?: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -136,15 +171,15 @@ export interface PagerdutyConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -154,11 +189,11 @@ export interface PagerdutyConnectorState {
  */
 export interface PagerdutyConnectorArgs {
     /**
-     * Reference to the Harness secret containing the api token.
+     * Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiTokenRef: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -174,15 +209,15 @@ export interface PagerdutyConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

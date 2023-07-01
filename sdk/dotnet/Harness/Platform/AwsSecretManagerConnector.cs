@@ -12,18 +12,77 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating an AWS Secret Manager connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Credentials assume_role
+    ///     var test = new Harness.Platform.AwsSecretManagerConnector("test", new()
+    ///     {
+    ///         Credentials = new Harness.Platform.Inputs.AwsSecretManagerConnectorCredentialsArgs
+    ///         {
+    ///             AssumeRole = new Harness.Platform.Inputs.AwsSecretManagerConnectorCredentialsAssumeRoleArgs
+    ///             {
+    ///                 Duration = 900,
+    ///                 ExternalId = "externalid",
+    ///                 RoleArn = "somerolearn",
+    ///             },
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Region = "us-east-1",
+    ///         SecretNamePrefix = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level aws secret manager connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level aws secret manager connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level aws secret manager connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector")]
     public partial class AwsSecretManagerConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Output("credentials")]
         public Output<Outputs.AwsSecretManagerConnectorCredentials> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -47,13 +106,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -71,7 +130,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> SecretNamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -124,7 +183,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class AwsSecretManagerConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Input("credentials", required: true)]
         public Input<Inputs.AwsSecretManagerConnectorCredentialsArgs> Credentials { get; set; } = null!;
@@ -133,7 +192,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -160,13 +219,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -187,7 +246,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -204,7 +263,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class AwsSecretManagerConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The credentials to use for connecting to aws.
+        /// Credentials to connect to AWS.
         /// </summary>
         [Input("credentials")]
         public Input<Inputs.AwsSecretManagerConnectorCredentialsGetArgs>? Credentials { get; set; }
@@ -213,7 +272,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -240,13 +299,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -267,7 +326,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

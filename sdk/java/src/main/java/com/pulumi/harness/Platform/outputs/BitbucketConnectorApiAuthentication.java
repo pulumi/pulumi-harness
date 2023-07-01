@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BitbucketConnectorApiAuthentication {
     /**
-     * @return Personal access token for interacting with the BitBucket api.
+     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String tokenRef;
@@ -22,14 +22,14 @@ public final class BitbucketConnectorApiAuthentication {
      */
     private @Nullable String username;
     /**
-     * @return The name of the Harness secret containing the username.
+     * @return The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String usernameRef;
 
     private BitbucketConnectorApiAuthentication() {}
     /**
-     * @return Personal access token for interacting with the BitBucket api.
+     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String tokenRef() {
@@ -43,7 +43,7 @@ public final class BitbucketConnectorApiAuthentication {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return The name of the Harness secret containing the username.
+     * @return The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> usernameRef() {

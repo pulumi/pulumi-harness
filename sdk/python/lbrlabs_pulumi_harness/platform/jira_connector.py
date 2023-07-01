@@ -8,39 +8,43 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['JiraConnectorArgs', 'JiraConnector']
 
 @pulumi.input_type
 class JiraConnectorArgs:
     def __init__(__self__, *,
+                 auth: pulumi.Input['JiraConnectorAuthArgs'],
                  identifier: pulumi.Input[str],
-                 password_ref: pulumi.Input[str],
                  url: pulumi.Input[str],
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 password_ref: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a JiraConnector resource.
+        :param pulumi.Input['JiraConnectorAuthArgs'] auth: The credentials to use for the jira authentication.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
-        :param pulumi.Input[str] url: Url of the Jira server.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] url: URL of the Jira server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
+        pulumi.set(__self__, "auth", auth)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "password_ref", password_ref)
         pulumi.set(__self__, "url", url)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
@@ -50,6 +54,8 @@ class JiraConnectorArgs:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
@@ -58,6 +64,18 @@ class JiraConnectorArgs:
             pulumi.set(__self__, "username", username)
         if username_ref is not None:
             pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter
+    def auth(self) -> pulumi.Input['JiraConnectorAuthArgs']:
+        """
+        The credentials to use for the jira authentication.
+        """
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: pulumi.Input['JiraConnectorAuthArgs']):
+        pulumi.set(self, "auth", value)
 
     @property
     @pulumi.getter
@@ -72,22 +90,10 @@ class JiraConnectorArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="passwordRef")
-    def password_ref(self) -> pulumi.Input[str]:
-        """
-        Reference to a secret containing the password to use for authentication.
-        """
-        return pulumi.get(self, "password_ref")
-
-    @password_ref.setter
-    def password_ref(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password_ref", value)
-
-    @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        Url of the Jira server.
+        URL of the Jira server.
         """
         return pulumi.get(self, "url")
 
@@ -99,7 +105,7 @@ class JiraConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -135,7 +141,7 @@ class JiraConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -144,10 +150,22 @@ class JiraConnectorArgs:
         pulumi.set(self, "org_id", value)
 
     @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -159,7 +177,7 @@ class JiraConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -183,7 +201,7 @@ class JiraConnectorArgs:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -195,6 +213,7 @@ class JiraConnectorArgs:
 @pulumi.input_type
 class _JiraConnectorState:
     def __init__(__self__, *,
+                 auth: Optional[pulumi.Input['JiraConnectorAuthArgs']] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -208,18 +227,21 @@ class _JiraConnectorState:
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering JiraConnector resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input['JiraConnectorAuthArgs'] auth: The credentials to use for the jira authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the Jira server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the Jira server.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
@@ -244,10 +266,22 @@ class _JiraConnectorState:
             pulumi.set(__self__, "username_ref", username_ref)
 
     @property
+    @pulumi.getter
+    def auth(self) -> Optional[pulumi.Input['JiraConnectorAuthArgs']]:
+        """
+        The credentials to use for the jira authentication.
+        """
+        return pulumi.get(self, "auth")
+
+    @auth.setter
+    def auth(self, value: Optional[pulumi.Input['JiraConnectorAuthArgs']]):
+        pulumi.set(self, "auth", value)
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -295,7 +329,7 @@ class _JiraConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -307,7 +341,7 @@ class _JiraConnectorState:
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -319,7 +353,7 @@ class _JiraConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -331,7 +365,7 @@ class _JiraConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -343,7 +377,7 @@ class _JiraConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of the Jira server.
+        URL of the Jira server.
         """
         return pulumi.get(self, "url")
 
@@ -367,7 +401,7 @@ class _JiraConnectorState:
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -381,6 +415,7 @@ class JiraConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -396,19 +431,61 @@ class JiraConnector(pulumi.CustomResource):
         """
         Resource for creating a Jira connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.JiraConnector("test",
+            auth=harness.platform.JiraConnectorAuthArgs(
+                auth_type="UsernamePassword",
+                username_password=harness.platform.JiraConnectorAuthUsernamePasswordArgs(
+                    password_ref="account.secret_id",
+                    username="admin",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://jira.com")
+        ```
+
+        ## Import
+
+        Import account level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
+        ```
+
+         Import org level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']] auth: The credentials to use for the jira authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the Jira server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the Jira server.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         ...
     @overload
@@ -418,6 +495,47 @@ class JiraConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Jira connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.JiraConnector("test",
+            auth=harness.platform.JiraConnectorAuthArgs(
+                auth_type="UsernamePassword",
+                username_password=harness.platform.JiraConnectorAuthUsernamePasswordArgs(
+                    password_ref="account.secret_id",
+                    username="admin",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://jira.com")
+        ```
+
+        ## Import
+
+        Import account level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
+        ```
+
+         Import org level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level jira connector
+
+        ```sh
+         $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param JiraConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -434,6 +552,7 @@ class JiraConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -454,6 +573,9 @@ class JiraConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JiraConnectorArgs.__new__(JiraConnectorArgs)
 
+            if auth is None and not opts.urn:
+                raise TypeError("Missing required property 'auth'")
+            __props__.__dict__["auth"] = auth
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
@@ -461,8 +583,6 @@ class JiraConnector(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
-            if password_ref is None and not opts.urn:
-                raise TypeError("Missing required property 'password_ref'")
             __props__.__dict__["password_ref"] = password_ref
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
@@ -481,6 +601,7 @@ class JiraConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -499,22 +620,24 @@ class JiraConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']] auth: The credentials to use for the jira authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the Jira server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the Jira server.
         :param pulumi.Input[str] username: Username to use for authentication.
-        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _JiraConnectorState.__new__(_JiraConnectorState)
 
+        __props__.__dict__["auth"] = auth
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
@@ -529,10 +652,18 @@ class JiraConnector(pulumi.CustomResource):
         return JiraConnector(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter
+    def auth(self) -> pulumi.Output['outputs.JiraConnectorAuth']:
+        """
+        The credentials to use for the jira authentication.
+        """
+        return pulumi.get(self, "auth")
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -564,7 +695,7 @@ class JiraConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -572,7 +703,7 @@ class JiraConnector(pulumi.CustomResource):
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> pulumi.Output[str]:
         """
-        Reference to a secret containing the password to use for authentication.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
@@ -580,7 +711,7 @@ class JiraConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -588,7 +719,7 @@ class JiraConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -596,13 +727,13 @@ class JiraConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Url of the Jira server.
+        URL of the Jira server.
         """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
-    def username(self) -> pulumi.Output[Optional[str]]:
+    def username(self) -> pulumi.Output[str]:
         """
         Username to use for authentication.
         """
@@ -610,9 +741,9 @@ class JiraConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="usernameRef")
-    def username_ref(self) -> pulumi.Output[Optional[str]]:
+    def username_ref(self) -> pulumi.Output[str]:
         """
-        Reference to a secret containing the username to use for authentication.
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 

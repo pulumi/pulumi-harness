@@ -8,6 +8,47 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Docker connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // credentials username password
+ * const test = new harness.platform.DockerConnector("test", {
+ *     credentials: {
+ *         passwordRef: "account.secret_id",
+ *         username: "admin",
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifer",
+ *     tags: ["foo:bar"],
+ *     type: "DockerHub",
+ *     url: "https://hub.docker.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level docker connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
+ * ```
+ *
+ *  Import org level docker connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level docker connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class DockerConnector extends pulumi.CustomResource {
     /**
@@ -42,7 +83,7 @@ export class DockerConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.DockerConnectorCredentials | undefined>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -58,15 +99,15 @@ export class DockerConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -74,7 +115,7 @@ export class DockerConnector extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The url of the docker registry.
+     * The URL of the docker registry.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -137,7 +178,7 @@ export interface DockerConnectorState {
      */
     credentials?: pulumi.Input<inputs.platform.DockerConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -153,15 +194,15 @@ export interface DockerConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -169,7 +210,7 @@ export interface DockerConnectorState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The url of the docker registry.
+     * The URL of the docker registry.
      */
     url?: pulumi.Input<string>;
 }
@@ -183,7 +224,7 @@ export interface DockerConnectorArgs {
      */
     credentials?: pulumi.Input<inputs.platform.DockerConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -199,15 +240,15 @@ export interface DockerConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -215,7 +256,7 @@ export interface DockerConnectorArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * The url of the docker registry.
+     * The URL of the docker registry.
      */
     url: pulumi.Input<string>;
 }

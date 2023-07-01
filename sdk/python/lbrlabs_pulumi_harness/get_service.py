@@ -157,15 +157,15 @@ def get_service(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        app_id=__ret__.app_id,
-        artifact_type=__ret__.artifact_type,
-        description=__ret__.description,
-        helm_version=__ret__.helm_version,
-        id=__ret__.id,
-        name=__ret__.name,
-        tags=__ret__.tags,
-        template_uri=__ret__.template_uri,
-        type=__ret__.type)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        artifact_type=pulumi.get(__ret__, 'artifact_type'),
+        description=pulumi.get(__ret__, 'description'),
+        helm_version=pulumi.get(__ret__, 'helm_version'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        tags=pulumi.get(__ret__, 'tags'),
+        template_uri=pulumi.get(__ret__, 'template_uri'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_service)

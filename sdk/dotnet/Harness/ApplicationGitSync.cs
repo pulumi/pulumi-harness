@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// using Harness = Pulumi.Harness;
@@ -31,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Harness
     ///     var githubToken = new Harness.EncryptedText("githubToken", new()
     ///     {
     ///         Value = "&lt;TOKEN&gt;",
-    ///         SecretManagerId = @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult).Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     ///     var myrepo = new Harness.GitConnector("myrepo", new()

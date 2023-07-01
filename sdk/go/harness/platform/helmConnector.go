@@ -7,17 +7,77 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Helm connector.
+// Resource for creating a HTTP Helm connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewHelmConnector(ctx, "test", &platform.HelmConnectorArgs{
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://helm.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level helm connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/helmConnector:HelmConnector example <connector_id>
+//
+// ```
+//
+//	Import org level helm connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/helmConnector:HelmConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level helm connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/helmConnector:HelmConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type HelmConnector struct {
 	pulumi.CustomResourceState
 
 	// Credentials to use for authentication.
 	Credentials HelmConnectorCredentialsPtrOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,11 +85,11 @@ type HelmConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// URL of the helm server.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -73,7 +133,7 @@ func GetHelmConnector(ctx *pulumi.Context,
 type helmConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials *HelmConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -81,11 +141,11 @@ type helmConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the helm server.
 	Url *string `pulumi:"url"`
@@ -94,7 +154,7 @@ type helmConnectorState struct {
 type HelmConnectorState struct {
 	// Credentials to use for authentication.
 	Credentials HelmConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -102,11 +162,11 @@ type HelmConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the helm server.
 	Url pulumi.StringPtrInput
@@ -119,7 +179,7 @@ func (HelmConnectorState) ElementType() reflect.Type {
 type helmConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *HelmConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -127,11 +187,11 @@ type helmConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the helm server.
 	Url string `pulumi:"url"`
@@ -141,7 +201,7 @@ type helmConnectorArgs struct {
 type HelmConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials HelmConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -149,11 +209,11 @@ type HelmConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// URL of the helm server.
 	Url pulumi.StringInput
@@ -251,7 +311,7 @@ func (o HelmConnectorOutput) Credentials() HelmConnectorCredentialsPtrOutput {
 	return o.ApplyT(func(v *HelmConnector) HelmConnectorCredentialsPtrOutput { return v.Credentials }).(HelmConnectorCredentialsPtrOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o HelmConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HelmConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -271,17 +331,17 @@ func (o HelmConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HelmConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o HelmConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HelmConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o HelmConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HelmConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o HelmConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HelmConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

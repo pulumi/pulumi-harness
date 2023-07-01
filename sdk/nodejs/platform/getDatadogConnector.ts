@@ -6,14 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Datadog connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getDatadogConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getDatadogConnector(args?: GetDatadogConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDatadogConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getDatadogConnector(args: GetDatadogConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDatadogConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDatadogConnector:getDatadogConnector", {
         "delegateSelectors": args.delegateSelectors,
         "identifier": args.identifier,
@@ -28,23 +35,23 @@ export function getDatadogConnector(args?: GetDatadogConnectorArgs, opts?: pulum
  */
 export interface GetDatadogConnectorArgs {
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: string[];
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -54,15 +61,15 @@ export interface GetDatadogConnectorArgs {
  */
 export interface GetDatadogConnectorResult {
     /**
-     * Reference to the Harness secret containing the api key.
+     * Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly apiKeyRef: string;
     /**
-     * Reference to the Harness secret containing the application key.
+     * Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly applicationKeyRef: string;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors?: string[];
     /**
@@ -76,31 +83,44 @@ export interface GetDatadogConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the Datadog server.
+     * URL of the Datadog server.
      */
     readonly url: string;
 }
-
-export function getDatadogConnectorOutput(args?: GetDatadogConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatadogConnectorResult> {
-    return pulumi.output(args).apply(a => getDatadogConnector(a, opts))
+/**
+ * Datasource for looking up a Datadog connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getDatadogConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getDatadogConnectorOutput(args: GetDatadogConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatadogConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getDatadogConnector(a, opts))
 }
 
 /**
@@ -108,23 +128,23 @@ export function getDatadogConnectorOutput(args?: GetDatadogConnectorOutputArgs, 
  */
 export interface GetDatadogConnectorOutputArgs {
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

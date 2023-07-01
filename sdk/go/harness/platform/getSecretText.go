@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupSecretText(ctx, &platform.LookupSecretTextArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupSecretText(ctx, &platform.LookupSecretTextArgs{
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,12 +50,12 @@ func LookupSecretText(ctx *pulumi.Context, args *LookupSecretTextArgs, opts ...p
 // A collection of arguments for invoking getSecretText.
 type LookupSecretTextArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -66,16 +66,16 @@ type LookupSecretTextResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
 	Value string `pulumi:"value"`
@@ -99,12 +99,12 @@ func LookupSecretTextOutput(ctx *pulumi.Context, args LookupSecretTextOutputArgs
 // A collection of arguments for invoking getSecretText.
 type LookupSecretTextOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -138,8 +138,8 @@ func (o LookupSecretTextResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupSecretTextResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupSecretTextResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretTextResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -147,12 +147,12 @@ func (o LookupSecretTextResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupSecretTextResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupSecretTextResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -162,7 +162,7 @@ func (o LookupSecretTextResultOutput) SecretManagerIdentifier() pulumi.StringOut
 	return o.ApplyT(func(v LookupSecretTextResult) string { return v.SecretManagerIdentifier }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupSecretTextResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecretTextResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

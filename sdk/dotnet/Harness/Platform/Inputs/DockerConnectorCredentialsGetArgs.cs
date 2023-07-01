@@ -14,7 +14,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class DockerConnectorCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The reference to the password to use for the docker registry.
+        /// The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef", required: true)]
         public Input<string> PasswordRef { get; set; } = null!;
@@ -26,7 +26,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// The reference to the username to use for the docker registry.
+        /// The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("usernameRef")]
         public Input<string>? UsernameRef { get; set; }

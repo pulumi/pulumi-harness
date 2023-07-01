@@ -71,7 +71,7 @@ public class AddUserToGroup extends com.pulumi.resources.CustomResource {
      * The name of the user.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -85,7 +85,7 @@ public class AddUserToGroup extends com.pulumi.resources.CustomResource {
      * Unique identifier of the user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

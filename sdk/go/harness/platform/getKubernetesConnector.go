@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Kubernetes connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupKubernetesConnector(ctx, &platform.LookupKubernetesConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupKubernetesConnector(ctx *pulumi.Context, args *LookupKubernetesConnectorArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesConnectorResult
@@ -24,12 +50,12 @@ func LookupKubernetesConnector(ctx *pulumi.Context, args *LookupKubernetesConnec
 // A collection of arguments for invoking getKubernetesConnector.
 type LookupKubernetesConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -44,20 +70,20 @@ type LookupKubernetesConnectorResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Credentials are inherited from the delegate.
 	InheritFromDelegates []GetKubernetesConnectorInheritFromDelegate `pulumi:"inheritFromDelegates"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// OpenID configuration for the connector.
 	OpenidConnects []GetKubernetesConnectorOpenidConnect `pulumi:"openidConnects"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Service account for the connector.
 	ServiceAccounts []GetKubernetesConnectorServiceAccount `pulumi:"serviceAccounts"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Username and password for the connector.
 	UsernamePasswords []GetKubernetesConnectorUsernamePassword `pulumi:"usernamePasswords"`
@@ -79,12 +105,12 @@ func LookupKubernetesConnectorOutput(ctx *pulumi.Context, args LookupKubernetesC
 // A collection of arguments for invoking getKubernetesConnector.
 type LookupKubernetesConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -128,8 +154,8 @@ func (o LookupKubernetesConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupKubernetesConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupKubernetesConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupKubernetesConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Credentials are inherited from the delegate.
@@ -149,12 +175,12 @@ func (o LookupKubernetesConnectorResultOutput) OpenidConnects() GetKubernetesCon
 	return o.ApplyT(func(v LookupKubernetesConnectorResult) []GetKubernetesConnectorOpenidConnect { return v.OpenidConnects }).(GetKubernetesConnectorOpenidConnectArrayOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupKubernetesConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubernetesConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupKubernetesConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubernetesConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -166,7 +192,7 @@ func (o LookupKubernetesConnectorResultOutput) ServiceAccounts() GetKubernetesCo
 	}).(GetKubernetesConnectorServiceAccountArrayOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupKubernetesConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

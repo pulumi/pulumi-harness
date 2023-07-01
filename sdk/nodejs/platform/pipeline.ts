@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,9 +13,17 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.Pipeline("example", {
+ *     gitDetails: {
+ *         branchName: "branchName",
+ *         commitMessage: "commitMessage",
+ *         connectorRef: "connectorRef",
+ *         filePath: "filePath",
+ *         repoName: "repoName",
+ *         storeType: "REMOTE",
+ *     },
  *     identifier: "identifier",
  *     orgId: "orgIdentifier",
  *     projectId: "projectIdentifier",
@@ -102,16 +112,17 @@ import * as utilities from "../utilities";
  *                                 - AllErrors
  *                             action:
  *                                 type: StageRollback
+ *
  * `,
  * });
  * ```
  *
  * ## Import
  *
- * Import using pipeline id
+ * Import pipeline
  *
  * ```sh
- *  $ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+ *  $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
  * ```
  */
 export class Pipeline extends pulumi.CustomResource {
@@ -147,6 +158,10 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    public readonly gitDetails!: pulumi.Output<outputs.platform.PipelineGitDetails | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -155,19 +170,27 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * YAML of the pipeline.
+     * If true, returns Pipeline YAML with Templates applied on it.
+     */
+    public readonly templateApplied!: pulumi.Output<boolean | undefined>;
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     */
+    public readonly templateAppliedPipelineYaml!: pulumi.Output<string | undefined>;
+    /**
+     * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -185,11 +208,14 @@ export class Pipeline extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateApplied"] = state ? state.templateApplied : undefined;
+            resourceInputs["templateAppliedPipelineYaml"] = state ? state.templateAppliedPipelineYaml : undefined;
             resourceInputs["yaml"] = state ? state.yaml : undefined;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
@@ -206,11 +232,14 @@ export class Pipeline extends pulumi.CustomResource {
                 throw new Error("Missing required property 'yaml'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateApplied"] = args ? args.templateApplied : undefined;
+            resourceInputs["templateAppliedPipelineYaml"] = args ? args.templateAppliedPipelineYaml : undefined;
             resourceInputs["yaml"] = args ? args.yaml : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -227,6 +256,10 @@ export interface PipelineState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: pulumi.Input<inputs.platform.PipelineGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -235,19 +268,27 @@ export interface PipelineState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * YAML of the pipeline.
+     * If true, returns Pipeline YAML with Templates applied on it.
+     */
+    templateApplied?: pulumi.Input<boolean>;
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     */
+    templateAppliedPipelineYaml?: pulumi.Input<string>;
+    /**
+     * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -261,6 +302,10 @@ export interface PipelineArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     */
+    gitDetails?: pulumi.Input<inputs.platform.PipelineGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
@@ -269,19 +314,27 @@ export interface PipelineArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * YAML of the pipeline.
+     * If true, returns Pipeline YAML with Templates applied on it.
+     */
+    templateApplied?: pulumi.Input<boolean>;
+    /**
+     * Pipeline YAML after resolving Templates (returned as a String).
+     */
+    templateAppliedPipelineYaml?: pulumi.Input<string>;
+    /**
+     * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml: pulumi.Input<string>;
 }

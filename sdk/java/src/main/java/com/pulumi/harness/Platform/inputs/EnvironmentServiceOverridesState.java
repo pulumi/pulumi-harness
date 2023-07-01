@@ -16,14 +16,14 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
     public static final EnvironmentServiceOverridesState Empty = new EnvironmentServiceOverridesState();
 
     /**
-     * The env ID to which the overrides associated.
+     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
      * 
      */
     @Import(name="envId")
     private @Nullable Output<String> envId;
 
     /**
-     * @return The env ID to which the overrides associated.
+     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
      * 
      */
     public Optional<Output<String>> envId() {
@@ -76,14 +76,14 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
     }
 
     /**
-     * The service ID to which the overrides applies.
+     * The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return The service ID to which the overrides applies.
+     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -91,14 +91,14 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
     }
 
     /**
-     * Environment Service Overrides YAML
+     * Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Environment Service Overrides YAML
+     * @return Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -135,7 +135,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param envId The env ID to which the overrides associated.
+         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param envId The env ID to which the overrides associated.
+         * @param envId The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param serviceId The service ID to which the overrides applies.
+         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param serviceId The service ID to which the overrides applies.
+         * @param serviceId The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param yaml Environment Service Overrides YAML
+         * @param yaml Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class EnvironmentServiceOverridesState extends com.pulumi.resources
         }
 
         /**
-         * @param yaml Environment Service Overrides YAML
+         * @param yaml Environment Service Overrides YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

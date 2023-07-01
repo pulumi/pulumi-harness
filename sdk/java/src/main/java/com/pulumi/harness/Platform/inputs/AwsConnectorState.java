@@ -6,6 +6,9 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.AwsConnectorCrossAccountAccessArgs;
+import com.pulumi.harness.platform.inputs.AwsConnectorEqualJitterBackoffStrategyArgs;
+import com.pulumi.harness.platform.inputs.AwsConnectorFixedDelayBackoffStrategyArgs;
+import com.pulumi.harness.platform.inputs.AwsConnectorFullJitterBackoffStrategyArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorInheritFromDelegateArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorIrsaArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorManualArgs;
@@ -48,6 +51,51 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Equal Jitter BackOff Strategy.
+     * 
+     */
+    @Import(name="equalJitterBackoffStrategy")
+    private @Nullable Output<AwsConnectorEqualJitterBackoffStrategyArgs> equalJitterBackoffStrategy;
+
+    /**
+     * @return Equal Jitter BackOff Strategy.
+     * 
+     */
+    public Optional<Output<AwsConnectorEqualJitterBackoffStrategyArgs>> equalJitterBackoffStrategy() {
+        return Optional.ofNullable(this.equalJitterBackoffStrategy);
+    }
+
+    /**
+     * Fixed Delay BackOff Strategy.
+     * 
+     */
+    @Import(name="fixedDelayBackoffStrategy")
+    private @Nullable Output<AwsConnectorFixedDelayBackoffStrategyArgs> fixedDelayBackoffStrategy;
+
+    /**
+     * @return Fixed Delay BackOff Strategy.
+     * 
+     */
+    public Optional<Output<AwsConnectorFixedDelayBackoffStrategyArgs>> fixedDelayBackoffStrategy() {
+        return Optional.ofNullable(this.fixedDelayBackoffStrategy);
+    }
+
+    /**
+     * Full Jitter BackOff Strategy.
+     * 
+     */
+    @Import(name="fullJitterBackoffStrategy")
+    private @Nullable Output<AwsConnectorFullJitterBackoffStrategyArgs> fullJitterBackoffStrategy;
+
+    /**
+     * @return Full Jitter BackOff Strategy.
+     * 
+     */
+    public Optional<Output<AwsConnectorFullJitterBackoffStrategyArgs>> fullJitterBackoffStrategy() {
+        return Optional.ofNullable(this.fullJitterBackoffStrategy);
     }
 
     /**
@@ -126,14 +174,14 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -141,14 +189,14 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -156,14 +204,14 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -175,6 +223,9 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
     private AwsConnectorState(AwsConnectorState $) {
         this.crossAccountAccess = $.crossAccountAccess;
         this.description = $.description;
+        this.equalJitterBackoffStrategy = $.equalJitterBackoffStrategy;
+        this.fixedDelayBackoffStrategy = $.fixedDelayBackoffStrategy;
+        this.fullJitterBackoffStrategy = $.fullJitterBackoffStrategy;
         this.identifier = $.identifier;
         this.inheritFromDelegate = $.inheritFromDelegate;
         this.irsa = $.irsa;
@@ -243,6 +294,69 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param equalJitterBackoffStrategy Equal Jitter BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder equalJitterBackoffStrategy(@Nullable Output<AwsConnectorEqualJitterBackoffStrategyArgs> equalJitterBackoffStrategy) {
+            $.equalJitterBackoffStrategy = equalJitterBackoffStrategy;
+            return this;
+        }
+
+        /**
+         * @param equalJitterBackoffStrategy Equal Jitter BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder equalJitterBackoffStrategy(AwsConnectorEqualJitterBackoffStrategyArgs equalJitterBackoffStrategy) {
+            return equalJitterBackoffStrategy(Output.of(equalJitterBackoffStrategy));
+        }
+
+        /**
+         * @param fixedDelayBackoffStrategy Fixed Delay BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fixedDelayBackoffStrategy(@Nullable Output<AwsConnectorFixedDelayBackoffStrategyArgs> fixedDelayBackoffStrategy) {
+            $.fixedDelayBackoffStrategy = fixedDelayBackoffStrategy;
+            return this;
+        }
+
+        /**
+         * @param fixedDelayBackoffStrategy Fixed Delay BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fixedDelayBackoffStrategy(AwsConnectorFixedDelayBackoffStrategyArgs fixedDelayBackoffStrategy) {
+            return fixedDelayBackoffStrategy(Output.of(fixedDelayBackoffStrategy));
+        }
+
+        /**
+         * @param fullJitterBackoffStrategy Full Jitter BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullJitterBackoffStrategy(@Nullable Output<AwsConnectorFullJitterBackoffStrategyArgs> fullJitterBackoffStrategy) {
+            $.fullJitterBackoffStrategy = fullJitterBackoffStrategy;
+            return this;
+        }
+
+        /**
+         * @param fullJitterBackoffStrategy Full Jitter BackOff Strategy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullJitterBackoffStrategy(AwsConnectorFullJitterBackoffStrategyArgs fullJitterBackoffStrategy) {
+            return fullJitterBackoffStrategy(Output.of(fullJitterBackoffStrategy));
         }
 
         /**
@@ -351,7 +465,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -362,7 +476,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -372,7 +486,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -383,7 +497,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -393,7 +507,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -404,7 +518,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -414,7 +528,7 @@ public final class AwsConnectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 

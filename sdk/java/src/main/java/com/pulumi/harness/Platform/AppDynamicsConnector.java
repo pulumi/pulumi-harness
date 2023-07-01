@@ -20,6 +20,80 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an App Dynamics connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AppDynamicsConnector;
+ * import com.pulumi.harness.platform.AppDynamicsConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.AppDynamicsConnectorApiTokenArgs;
+ * import com.pulumi.harness.platform.inputs.AppDynamicsConnectorUsernamePasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var token = new AppDynamicsConnector(&#34;token&#34;, AppDynamicsConnectorArgs.builder()        
+ *             .accountName(&#34;myaccount&#34;)
+ *             .apiToken(AppDynamicsConnectorApiTokenArgs.builder()
+ *                 .clientId(&#34;client_id&#34;)
+ *                 .clientSecretRef(&#34;account.secret_id&#34;)
+ *                 .build())
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://appdynamics.com/&#34;)
+ *             .build());
+ * 
+ *         var test = new AppDynamicsConnector(&#34;test&#34;, AppDynamicsConnectorArgs.builder()        
+ *             .accountName(&#34;myaccount&#34;)
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://appdynamics.com/&#34;)
+ *             .usernamePassword(AppDynamicsConnectorUsernamePasswordArgs.builder()
+ *                 .passwordRef(&#34;account.secret_id&#34;)
+ *                 .username(&#34;username&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level appdynamics connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level appdynamics connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level appdynamics connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/appDynamicsConnector:AppDynamicsConnector")
 public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
@@ -27,7 +101,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * The App Dynamics account name.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -41,7 +115,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * Authenticate to App Dynamics using api token.
      * 
      */
-    @Export(name="apiToken", type=AppDynamicsConnectorApiToken.class, parameters={})
+    @Export(name="apiToken", refs={AppDynamicsConnectorApiToken.class}, tree="[0]")
     private Output</* @Nullable */ AppDynamicsConnectorApiToken> apiToken;
 
     /**
@@ -52,14 +126,14 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiToken);
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -69,7 +143,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -83,7 +157,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -97,7 +171,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -108,56 +182,56 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Url of the App Dynamics controller.
+     * @return URL of the App Dynamics controller.
      * 
      */
     public Output<String> url() {
@@ -167,7 +241,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * Authenticate to App Dynamics using username and password.
      * 
      */
-    @Export(name="usernamePassword", type=AppDynamicsConnectorUsernamePassword.class, parameters={})
+    @Export(name="usernamePassword", refs={AppDynamicsConnectorUsernamePassword.class}, tree="[0]")
     private Output</* @Nullable */ AppDynamicsConnectorUsernamePassword> usernamePassword;
 
     /**

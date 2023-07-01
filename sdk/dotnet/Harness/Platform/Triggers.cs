@@ -11,12 +11,11 @@ using Pulumi;
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
-    /// Resource for craeting triggers in Harness.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -29,34 +28,35 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///         ProjectId = "projectIdentifier",
     ///         TargetId = "pipelineIdentifier",
     ///         Yaml = @"  trigger:
-    ///     name: ""name""
-    ///     identifier: ""identifier""
+    ///     name: name
+    ///     identifier: identifier
     ///     enabled: true
     ///     description: """"
     ///     tags: {}
-    ///     projectIdentifier: ""projectIdentifier""
-    ///     orgIdentifier: ""orgIdentifer""
-    ///     pipelineIdentifier: ""pipelineIdentifier""
+    ///     projectIdentifier: projectIdentifier
+    ///     orgIdentifier: orgIdentifer
+    ///     pipelineIdentifier: pipelineIdentifier
     ///     source:
-    ///       type: ""Webhook""
+    ///       type: Webhook
     ///       spec:
-    ///         type: ""Github""
+    ///         type: Github
     ///         spec:
-    ///           type: ""Push""
+    ///           type: Push
     ///           spec:
-    ///             connectorRef: ""account.TestAccResourceConnectorGithub_Ssh_IZBeG""
+    ///             connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
     ///             autoAbortPreviousExecutions: false
     ///             payloadConditions:
-    ///             - key: ""changedFiles""
-    ///               operator: ""Equals""
-    ///               value: ""value""
-    ///             - key: ""targetBranch""
-    ///               operator: ""Equals""
-    ///               value: ""value""
+    ///             - key: changedFiles
+    ///               operator: Equals
+    ///               value: value
+    ///             - key: targetBranch
+    ///               operator: Equals
+    ///               value: value
     ///             headerConditions: []
-    ///             repoName: ""repoName""
+    ///             repoName: repoName
     ///             actions: []
-    ///     inputYaml: ""pipeline: {}\n""
+    ///     inputYaml: |
+    ///       pipeline: {}\n
     /// 
     /// ",
     ///     });
@@ -66,10 +66,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using trigger id
+    /// Import trigger
     /// 
     /// ```sh
-    ///  $ pulumi import harness:platform/triggers:Triggers example &lt;triggers_id&gt;
+    ///  $ pulumi import harness:platform/triggers:Triggers example &lt;org_id&gt;/&lt;project_id&gt;/&lt;target_id&gt;/&lt;triggers_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/triggers:Triggers")]
@@ -106,19 +106,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> TargetId { get; private set; } = null!;
 
         /// <summary>
-        /// trigger yaml
+        /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -213,13 +213,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -228,7 +228,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -243,7 +243,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string> TargetId { get; set; } = null!;
 
         /// <summary>
-        /// trigger yaml
+        /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
         public Input<string> Yaml { get; set; } = null!;
@@ -287,13 +287,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -302,7 +302,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -317,7 +317,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? TargetId { get; set; }
 
         /// <summary>
-        /// trigger yaml
+        /// trigger yaml. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

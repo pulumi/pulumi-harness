@@ -7,11 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Infrastructure.
+// Resource for creating a Harness Infrastructure.
 //
 // ## Example Usage
 //
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -36,24 +34,24 @@ import (
 //				OrgId:          pulumi.String("orgIdentifer"),
 //				ProjectId:      pulumi.String("projectIdentifier"),
 //				Type:           pulumi.String("KubernetesDirect"),
-//				Yaml: pulumi.String(fmt.Sprintf(`			   infrastructureDefinition:
-//	         name: name
-//	         identifier: identifier
-//	         description: ""
-//	         tags:
-//	           asda: ""
-//	         orgIdentifier: orgIdentifer
-//	         projectIdentifier: projectIdentifier
-//	         environmentRef: environmentIdentifier
-//	         deploymentType: Kubernetes
-//	         type: KubernetesDirect
-//	         spec:
-//	          connectorRef: account.gfgf
-//	          namespace: asdasdsa
-//	          releaseName: release-<+INFRA_KEY>
-//	          allowSimultaneousDeployments: false
+//				Yaml: pulumi.String(`  infrastructureDefinition:
+//	   name: name
+//	   identifier: identifier
+//	   description: ""
+//	   tags:
+//	     asda: ""
+//	   orgIdentifier: orgIdentifer
+//	   projectIdentifier: projectIdentifier
+//	   environmentRef: environmentIdentifier
+//	   deploymentType: Kubernetes
+//	   type: KubernetesDirect
+//	   spec:
+//	    connectorRef: account.gfgf
+//	    namespace: asdasdsa
+//	    releaseName: release-<+INFRA_KEY>
+//	    allowSimultaneousDeployments: false
 //
-// `)),
+// `),
 //
 //			})
 //			if err != nil {
@@ -67,35 +65,53 @@ import (
 //
 // ## Import
 //
-// # Import using infrastructure id
+// # Import account level infrastructure
 //
 // ```sh
 //
-//	$ pulumi import harness:platform/infrastructure:Infrastructure example <infrastructure_id>
+//	$ pulumi import harness:platform/infrastructure:Infrastructure example <env_id>/<infrastructure_id>
+//
+// ```
+//
+//	Import org level infrastructure
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<env_id>/<infrastructure_id>
+//
+// ```
+//
+//	Import project level infrastructure
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
 //
 // ```
 type Infrastructure struct {
 	pulumi.CustomResourceState
 
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
-	DeploymentType pulumi.StringPtrOutput `pulumi:"deploymentType"`
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+	DeploymentType pulumi.StringOutput `pulumi:"deploymentType"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// environment identifier.
+	// Environment Identifier.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
+	// Enable this flag for force deletion of infrastructure
+	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Infrastructure YAML
+	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -111,12 +127,6 @@ func NewInfrastructure(ctx *pulumi.Context,
 	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.OrgId == nil {
-		return nil, errors.New("invalid value for required argument 'OrgId'")
-	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -147,48 +157,52 @@ func GetInfrastructure(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Infrastructure resources.
 type infrastructureState struct {
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 	DeploymentType *string `pulumi:"deploymentType"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// environment identifier.
+	// Environment Identifier.
 	EnvId *string `pulumi:"envId"`
+	// Enable this flag for force deletion of infrastructure
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type *string `pulumi:"type"`
-	// Infrastructure YAML
+	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type InfrastructureState struct {
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 	DeploymentType pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// environment identifier.
+	// Environment Identifier.
 	EnvId pulumi.StringPtrInput
+	// Enable this flag for force deletion of infrastructure
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type pulumi.StringPtrInput
-	// Infrastructure YAML
+	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -197,49 +211,53 @@ func (InfrastructureState) ElementType() reflect.Type {
 }
 
 type infrastructureArgs struct {
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 	DeploymentType *string `pulumi:"deploymentType"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// environment identifier.
+	// Environment Identifier.
 	EnvId string `pulumi:"envId"`
+	// Enable this flag for force deletion of infrastructure
+	ForceDelete *string `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type string `pulumi:"type"`
-	// Infrastructure YAML
+	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Infrastructure resource.
 type InfrastructureArgs struct {
-	// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
 	DeploymentType pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// environment identifier.
+	// Environment Identifier.
 	EnvId pulumi.StringInput
+	// Enable this flag for force deletion of infrastructure
+	ForceDelete pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringInput
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 	Type pulumi.StringInput
-	// Infrastructure YAML
+	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -330,9 +348,9 @@ func (o InfrastructureOutput) ToInfrastructureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
-func (o InfrastructureOutput) DeploymentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.DeploymentType }).(pulumi.StringPtrOutput)
+// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
+func (o InfrastructureOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.DeploymentType }).(pulumi.StringOutput)
 }
 
 // Description of the resource.
@@ -340,9 +358,14 @@ func (o InfrastructureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// environment identifier.
+// Environment Identifier.
 func (o InfrastructureOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
+}
+
+// Enable this flag for force deletion of infrastructure
+func (o InfrastructureOutput) ForceDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the resource.
@@ -355,27 +378,27 @@ func (o InfrastructureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
-func (o InfrastructureOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+// Unique identifier of the organization.
+func (o InfrastructureOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
-func (o InfrastructureOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+// Unique identifier of the project.
+func (o InfrastructureOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o InfrastructureOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
 func (o InfrastructureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Infrastructure YAML
+// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o InfrastructureOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

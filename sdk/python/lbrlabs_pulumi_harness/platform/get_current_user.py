@@ -208,17 +208,17 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('harness:platform/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
     return AwaitableGetCurrentUserResult(
-        admin=__ret__.admin,
-        billing_frequency=__ret__.billing_frequency,
-        default_account_id=__ret__.default_account_id,
-        edition=__ret__.edition,
-        email=__ret__.email,
-        email_verified=__ret__.email_verified,
-        id=__ret__.id,
-        intent=__ret__.intent,
-        is_two_factor_auth_enabled=__ret__.is_two_factor_auth_enabled,
-        locked=__ret__.locked,
-        name=__ret__.name,
-        signup_action=__ret__.signup_action,
-        token=__ret__.token,
-        uuid=__ret__.uuid)
+        admin=pulumi.get(__ret__, 'admin'),
+        billing_frequency=pulumi.get(__ret__, 'billing_frequency'),
+        default_account_id=pulumi.get(__ret__, 'default_account_id'),
+        edition=pulumi.get(__ret__, 'edition'),
+        email=pulumi.get(__ret__, 'email'),
+        email_verified=pulumi.get(__ret__, 'email_verified'),
+        id=pulumi.get(__ret__, 'id'),
+        intent=pulumi.get(__ret__, 'intent'),
+        is_two_factor_auth_enabled=pulumi.get(__ret__, 'is_two_factor_auth_enabled'),
+        locked=pulumi.get(__ret__, 'locked'),
+        name=pulumi.get(__ret__, 'name'),
+        signup_action=pulumi.get(__ret__, 'signup_action'),
+        token=pulumi.get(__ret__, 'token'),
+        uuid=pulumi.get(__ret__, 'uuid'))

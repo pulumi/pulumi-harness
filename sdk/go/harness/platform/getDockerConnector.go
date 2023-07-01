@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Datadog connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupDockerConnector(ctx, &platform.LookupDockerConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDockerConnector(ctx *pulumi.Context, args *LookupDockerConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDockerConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupDockerConnectorResult
@@ -24,12 +50,12 @@ func LookupDockerConnector(ctx *pulumi.Context, args *LookupDockerConnectorArgs,
 // A collection of arguments for invoking getDockerConnector.
 type LookupDockerConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -37,25 +63,25 @@ type LookupDockerConnectorArgs struct {
 type LookupDockerConnectorResult struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials []GetDockerConnectorCredential `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type string `pulumi:"type"`
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url string `pulumi:"url"`
 }
 
@@ -75,12 +101,12 @@ func LookupDockerConnectorOutput(ctx *pulumi.Context, args LookupDockerConnector
 // A collection of arguments for invoking getDockerConnector.
 type LookupDockerConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -108,7 +134,7 @@ func (o LookupDockerConnectorResultOutput) Credentials() GetDockerConnectorCrede
 	return o.ApplyT(func(v LookupDockerConnectorResult) []GetDockerConnectorCredential { return v.Credentials }).(GetDockerConnectorCredentialArrayOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupDockerConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -124,8 +150,8 @@ func (o LookupDockerConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupDockerConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDockerConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupDockerConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDockerConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -133,17 +159,17 @@ func (o LookupDockerConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupDockerConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupDockerConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupDockerConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -153,7 +179,7 @@ func (o LookupDockerConnectorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The url of the docker registry.
+// The URL of the docker registry.
 func (o LookupDockerConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDockerConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

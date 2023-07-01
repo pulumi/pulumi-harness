@@ -25,7 +25,7 @@ public final class RoleAssignmentsPrincipal {
      * @return Type.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private RoleAssignmentsPrincipal() {}
     /**
@@ -46,8 +46,8 @@ public final class RoleAssignmentsPrincipal {
      * @return Type.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -61,7 +61,7 @@ public final class RoleAssignmentsPrincipal {
     public static final class Builder {
         private @Nullable String identifier;
         private @Nullable String scopeLevel;
-        private @Nullable String type;
+        private String type;
         public Builder() {}
         public Builder(RoleAssignmentsPrincipal defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,8 +81,8 @@ public final class RoleAssignmentsPrincipal {
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-            this.type = type;
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
             return this;
         }
         public RoleAssignmentsPrincipal build() {

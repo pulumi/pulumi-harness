@@ -7,11 +7,78 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAwsConnector(ctx, "aws", &platform.AwsConnectorArgs{
+//				Description: pulumi.String("description of aws connector"),
+//				FixedDelayBackoffStrategy: &platform.AwsConnectorFixedDelayBackoffStrategyArgs{
+//					FixedBackoff: pulumi.Int(10),
+//					RetryCount:   pulumi.Int(3),
+//				},
+//				Identifier: pulumi.String("example_aws_connector"),
+//				Manual: &platform.AwsConnectorManualArgs{
+//					AccessKeyRef: pulumi.String("account.access_id"),
+//					DelegateSelectors: pulumi.StringArray{
+//						pulumi.String("harness-delegate"),
+//					},
+//					SecretKeyRef: pulumi.String("account.secret_id"),
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level aws connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
+//
+// ```
+//
+//	Import organization level aws connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
+//
+// ```
+//
+//	Import project level aws connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
+//
+// ```
 type AwsConnector struct {
 	pulumi.CustomResourceState
 
@@ -19,6 +86,12 @@ type AwsConnector struct {
 	CrossAccountAccess AwsConnectorCrossAccountAccessPtrOutput `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Equal Jitter BackOff Strategy.
+	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrOutput `pulumi:"equalJitterBackoffStrategy"`
+	// Fixed Delay BackOff Strategy.
+	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrOutput `pulumi:"fixedDelayBackoffStrategy"`
+	// Full Jitter BackOff Strategy.
+	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrOutput `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Inherit credentials from the delegate.
@@ -29,11 +102,11 @@ type AwsConnector struct {
 	Manual AwsConnectorManualPtrOutput `pulumi:"manual"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -74,6 +147,12 @@ type awsConnectorState struct {
 	CrossAccountAccess *AwsConnectorCrossAccountAccess `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Equal Jitter BackOff Strategy.
+	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
+	// Fixed Delay BackOff Strategy.
+	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
+	// Full Jitter BackOff Strategy.
+	FullJitterBackoffStrategy *AwsConnectorFullJitterBackoffStrategy `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Inherit credentials from the delegate.
@@ -84,11 +163,11 @@ type awsConnectorState struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -97,6 +176,12 @@ type AwsConnectorState struct {
 	CrossAccountAccess AwsConnectorCrossAccountAccessPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Equal Jitter BackOff Strategy.
+	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
+	// Fixed Delay BackOff Strategy.
+	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
+	// Full Jitter BackOff Strategy.
+	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Inherit credentials from the delegate.
@@ -107,11 +192,11 @@ type AwsConnectorState struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -124,6 +209,12 @@ type awsConnectorArgs struct {
 	CrossAccountAccess *AwsConnectorCrossAccountAccess `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Equal Jitter BackOff Strategy.
+	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
+	// Fixed Delay BackOff Strategy.
+	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
+	// Full Jitter BackOff Strategy.
+	FullJitterBackoffStrategy *AwsConnectorFullJitterBackoffStrategy `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Inherit credentials from the delegate.
@@ -134,11 +225,11 @@ type awsConnectorArgs struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -148,6 +239,12 @@ type AwsConnectorArgs struct {
 	CrossAccountAccess AwsConnectorCrossAccountAccessPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Equal Jitter BackOff Strategy.
+	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
+	// Fixed Delay BackOff Strategy.
+	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
+	// Full Jitter BackOff Strategy.
+	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Inherit credentials from the delegate.
@@ -158,11 +255,11 @@ type AwsConnectorArgs struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -263,6 +360,27 @@ func (o AwsConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Equal Jitter BackOff Strategy.
+func (o AwsConnectorOutput) EqualJitterBackoffStrategy() AwsConnectorEqualJitterBackoffStrategyPtrOutput {
+	return o.ApplyT(func(v *AwsConnector) AwsConnectorEqualJitterBackoffStrategyPtrOutput {
+		return v.EqualJitterBackoffStrategy
+	}).(AwsConnectorEqualJitterBackoffStrategyPtrOutput)
+}
+
+// Fixed Delay BackOff Strategy.
+func (o AwsConnectorOutput) FixedDelayBackoffStrategy() AwsConnectorFixedDelayBackoffStrategyPtrOutput {
+	return o.ApplyT(func(v *AwsConnector) AwsConnectorFixedDelayBackoffStrategyPtrOutput {
+		return v.FixedDelayBackoffStrategy
+	}).(AwsConnectorFixedDelayBackoffStrategyPtrOutput)
+}
+
+// Full Jitter BackOff Strategy.
+func (o AwsConnectorOutput) FullJitterBackoffStrategy() AwsConnectorFullJitterBackoffStrategyPtrOutput {
+	return o.ApplyT(func(v *AwsConnector) AwsConnectorFullJitterBackoffStrategyPtrOutput {
+		return v.FullJitterBackoffStrategy
+	}).(AwsConnectorFullJitterBackoffStrategyPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o AwsConnectorOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -288,17 +406,17 @@ func (o AwsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o AwsConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o AwsConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o AwsConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

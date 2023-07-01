@@ -15,16 +15,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class GetRoleAssignmentsPrincipalResult
     {
         /// <summary>
-        /// Identifier.
+        /// Identifier for role assignment.
         /// </summary>
         public readonly string Identifier;
-        /// <summary>
-        /// Scope level.
-        /// </summary>
         public readonly string ScopeLevel;
-        /// <summary>
-        /// Type.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  *     appId: example.id,
  *     type: "NON_PROD",
  * });
+ * // Creating a infrastructure of type KUBERNETES
  * const k8s = new harness.InfrastructureDefinition("k8s", {
  *     appId: example.id,
  *     envId: devEnvironment.id,
@@ -32,7 +33,44 @@ import * as utilities from "./utilities";
  *     kubernetes: {
  *         cloudProviderName: devKubernetes.name,
  *         namespace: "dev",
- *         releaseName: service.name,
+ *         releaseName: "${service.name}",
+ *     },
+ * });
+ * // Creating a Deployment Template for CUSTOM infrastructure type
+ * const exampleYaml = new harness.YamlConfig("exampleYaml", {
+ *     path: "Setup/Template Library/Example Folder/deployment_template.yaml",
+ *     content: `harnessApiVersion: '1.0'
+ * type: CUSTOM_DEPLOYMENT_TYPE
+ * fetchInstanceScript: |-
+ *   set -ex
+ *   curl http://${url}/${file_name} > ${INSTANCE_OUTPUT_PATH}
+ * hostAttributes:
+ *   hostname: host
+ * hostObjectArrayPath: hosts
+ * variables:
+ * - name: url
+ * - name: file_name
+ * `,
+ * });
+ * // Creating a infrastructure of type CUSTOM
+ * const custom = new harness.InfrastructureDefinition("custom", {
+ *     appId: example.id,
+ *     envId: devEnvironment.id,
+ *     cloudProviderType: "CUSTOM",
+ *     deploymentType: "CUSTOM",
+ *     deploymentTemplateUri: pulumi.interpolate`Example Folder/${exampleYaml.name}`,
+ *     custom: {
+ *         deploymentTypeTemplateVersion: "1",
+ *         variables: [
+ *             {
+ *                 name: "url",
+ *                 value: "localhost:8081",
+ *             },
+ *             {
+ *                 name: "file_name",
+ *                 value: "instances.json",
+ *             },
+ *         ],
  *     },
  * });
  * ```
@@ -110,6 +148,10 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
      */
     public readonly cloudProviderType!: pulumi.Output<string>;
     /**
+     * The configuration details for Custom deployments.
+     */
+    public readonly custom!: pulumi.Output<outputs.InfrastructureDefinitionCustom | undefined>;
+    /**
      * The configuration details for SSH datacenter deployments.
      */
     public readonly datacenterSsh!: pulumi.Output<outputs.InfrastructureDefinitionDatacenterSsh | undefined>;
@@ -122,7 +164,7 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
      */
     public readonly deploymentTemplateUri!: pulumi.Output<string | undefined>;
     /**
-     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
     public readonly deploymentType!: pulumi.Output<string>;
     /**
@@ -176,6 +218,7 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
             resourceInputs["azureVmss"] = state ? state.azureVmss : undefined;
             resourceInputs["azureWebapp"] = state ? state.azureWebapp : undefined;
             resourceInputs["cloudProviderType"] = state ? state.cloudProviderType : undefined;
+            resourceInputs["custom"] = state ? state.custom : undefined;
             resourceInputs["datacenterSsh"] = state ? state.datacenterSsh : undefined;
             resourceInputs["datacenterWinrm"] = state ? state.datacenterWinrm : undefined;
             resourceInputs["deploymentTemplateUri"] = state ? state.deploymentTemplateUri : undefined;
@@ -210,6 +253,7 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
             resourceInputs["azureVmss"] = args ? args.azureVmss : undefined;
             resourceInputs["azureWebapp"] = args ? args.azureWebapp : undefined;
             resourceInputs["cloudProviderType"] = args ? args.cloudProviderType : undefined;
+            resourceInputs["custom"] = args ? args.custom : undefined;
             resourceInputs["datacenterSsh"] = args ? args.datacenterSsh : undefined;
             resourceInputs["datacenterWinrm"] = args ? args.datacenterWinrm : undefined;
             resourceInputs["deploymentTemplateUri"] = args ? args.deploymentTemplateUri : undefined;
@@ -268,6 +312,10 @@ export interface InfrastructureDefinitionState {
      */
     cloudProviderType?: pulumi.Input<string>;
     /**
+     * The configuration details for Custom deployments.
+     */
+    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom>;
+    /**
      * The configuration details for SSH datacenter deployments.
      */
     datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh>;
@@ -280,7 +328,7 @@ export interface InfrastructureDefinitionState {
      */
     deploymentTemplateUri?: pulumi.Input<string>;
     /**
-     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
     deploymentType?: pulumi.Input<string>;
     /**
@@ -354,6 +402,10 @@ export interface InfrastructureDefinitionArgs {
      */
     cloudProviderType: pulumi.Input<string>;
     /**
+     * The configuration details for Custom deployments.
+     */
+    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom>;
+    /**
      * The configuration details for SSH datacenter deployments.
      */
     datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh>;
@@ -366,7 +418,7 @@ export interface InfrastructureDefinitionArgs {
      */
     deploymentTemplateUri?: pulumi.Input<string>;
     /**
-     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
     deploymentType: pulumi.Input<string>;
     /**

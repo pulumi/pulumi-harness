@@ -17,14 +17,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     public static final SumologicConnectorState Empty = new SumologicConnectorState();
 
     /**
-     * Reference to the Harness secret containing the access id.
+     * Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="accessIdRef")
     private @Nullable Output<String> accessIdRef;
 
     /**
-     * @return Reference to the Harness secret containing the access id.
+     * @return Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> accessIdRef() {
@@ -32,14 +32,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Reference to the Harness secret containing the access key.
+     * Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="accessKeyRef")
     private @Nullable Output<String> accessKeyRef;
 
     /**
-     * @return Reference to the Harness secret containing the access key.
+     * @return Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> accessKeyRef() {
@@ -47,14 +47,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -107,14 +107,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -122,14 +122,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -137,14 +137,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -152,14 +152,14 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Url of the SumoLogic server.
+     * URL of the SumoLogic server.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Url of the SumoLogic server.
+     * @return URL of the SumoLogic server.
      * 
      */
     public Optional<Output<String>> url() {
@@ -200,7 +200,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessIdRef Reference to the Harness secret containing the access id.
+         * @param accessIdRef Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessIdRef Reference to the Harness secret containing the access id.
+         * @param accessIdRef Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyRef Reference to the Harness secret containing the access key.
+         * @param accessKeyRef Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyRef Reference to the Harness secret containing the access key.
+         * @param accessKeyRef Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Url of the SumoLogic server.
+         * @param url URL of the SumoLogic server.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class SumologicConnectorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param url Url of the SumoLogic server.
+         * @param url URL of the SumoLogic server.
          * 
          * @return builder
          * 

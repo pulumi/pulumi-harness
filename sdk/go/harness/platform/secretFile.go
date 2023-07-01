@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,11 +47,27 @@ import (
 //
 // ## Import
 //
-// # Import using secret file id
+// # Import account level secret file
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
+//
+// ```
+//
+//	Import org level secret file
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretFile:SecretFile example <ord_id>/<secret_file_id>
+//
+// ```
+//
+//	Import project level secret file
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
 //
 // ```
 type SecretFile struct {
@@ -65,13 +81,13 @@ type SecretFile struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringOutput `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -122,13 +138,13 @@ type secretFileState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier *string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -141,13 +157,13 @@ type SecretFileState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -164,13 +180,13 @@ type secretFileArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -184,13 +200,13 @@ type SecretFileArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -301,12 +317,12 @@ func (o SecretFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o SecretFileOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o SecretFileOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -316,7 +332,7 @@ func (o SecretFileOutput) SecretManagerIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringOutput { return v.SecretManagerIdentifier }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o SecretFileOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretFile) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

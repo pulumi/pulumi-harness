@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAwsConnectorManual {
+    /**
+     * @return AWS access key.
+     * 
+     */
     private String accessKey;
+    /**
+     * @return Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     private String accessKeyRef;
+    /**
+     * @return Connect only use delegates with these tags.
+     * 
+     */
     private List<String> delegateSelectors;
+    /**
+     * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     private String secretKeyRef;
 
     private GetAwsConnectorManual() {}
+    /**
+     * @return AWS access key.
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     public String accessKeyRef() {
         return this.accessKeyRef;
     }
+    /**
+     * @return Connect only use delegates with these tags.
+     * 
+     */
     public List<String> delegateSelectors() {
         return this.delegateSelectors;
     }
+    /**
+     * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
     public String secretKeyRef() {
         return this.secretKeyRef;
     }

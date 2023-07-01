@@ -8,6 +8,46 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an AWS KMS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Credentials inherit_from_delegate
+ * const test = new harness.platform.AwsKmsConnector("test", {
+ *     arnRef: "account.secret_id",
+ *     credentials: {
+ *         inheritFromDelegate: true,
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifer",
+ *     region: "us-east-1",
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level awskms connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
+ * ```
+ *
+ *  Import org level awskms connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level awskms connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class AwsKmsConnector extends pulumi.CustomResource {
     /**
@@ -38,15 +78,15 @@ export class AwsKmsConnector extends pulumi.CustomResource {
     }
 
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly arnRef!: pulumi.Output<string>;
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     public readonly credentials!: pulumi.Output<outputs.platform.AwsKmsConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -62,11 +102,11 @@ export class AwsKmsConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -74,7 +114,7 @@ export class AwsKmsConnector extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -136,15 +176,15 @@ export class AwsKmsConnector extends pulumi.CustomResource {
  */
 export interface AwsKmsConnectorState {
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     arnRef?: pulumi.Input<string>;
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     credentials?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -160,11 +200,11 @@ export interface AwsKmsConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -172,7 +212,7 @@ export interface AwsKmsConnectorState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -182,15 +222,15 @@ export interface AwsKmsConnectorState {
  */
 export interface AwsKmsConnectorArgs {
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     arnRef: pulumi.Input<string>;
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     credentials: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -206,11 +246,11 @@ export interface AwsKmsConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -218,7 +258,7 @@ export interface AwsKmsConnectorArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

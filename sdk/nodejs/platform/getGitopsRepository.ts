@@ -6,12 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Data Source for fetching a Harness GitOps Repository.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsRepository({
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsRepositoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsRepository:getGitopsRepository", {
         "accountId": args.accountId,
         "agentId": args.agentId,
@@ -22,7 +37,6 @@ export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi
         "queryForceRefresh": args.queryForceRefresh,
         "queryProject": args.queryProject,
         "queryRepo": args.queryRepo,
-        "repos": args.repos,
         "updateMasks": args.updateMasks,
         "upsert": args.upsert,
     }, opts);
@@ -32,17 +46,49 @@ export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi
  * A collection of arguments for invoking getGitopsRepository.
  */
 export interface GetGitopsRepositoryArgs {
+    /**
+     * Account identifier of the GitOps repository.
+     */
     accountId: string;
-    agentId?: string;
+    /**
+     * Agent identifier of the GitOps repository.
+     */
+    agentId: string;
+    /**
+     * Indicates if to operate on credential set instead of repository.
+     */
     credsOnly?: boolean;
+    /**
+     * Identifier of the GitOps repository.
+     */
     identifier: string;
+    /**
+     * Organization identifier of the GitOps repository.
+     */
     orgId?: string;
-    projectId: string;
+    /**
+     * Project identifier of the GitOps repository.
+     */
+    projectId?: string;
+    /**
+     * Indicates to force refresh query for repository.
+     */
     queryForceRefresh?: boolean;
+    /**
+     * Project to query for the GitOps repo.
+     */
     queryProject?: string;
+    /**
+     * GitOps repository to query.
+     */
     queryRepo?: string;
-    repos: inputs.platform.GetGitopsRepositoryRepo[];
+    /**
+     * Update mask of the repository.
+     */
     updateMasks?: inputs.platform.GetGitopsRepositoryUpdateMask[];
+    /**
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     */
     upsert?: boolean;
 }
 
@@ -50,42 +96,127 @@ export interface GetGitopsRepositoryArgs {
  * A collection of values returned by getGitopsRepository.
  */
 export interface GetGitopsRepositoryResult {
+    /**
+     * Account identifier of the GitOps repository.
+     */
     readonly accountId: string;
-    readonly agentId?: string;
+    /**
+     * Agent identifier of the GitOps repository.
+     */
+    readonly agentId: string;
+    /**
+     * Indicates if to operate on credential set instead of repository.
+     */
     readonly credsOnly?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifier of the GitOps repository.
+     */
     readonly identifier: string;
+    /**
+     * Organization identifier of the GitOps repository.
+     */
     readonly orgId?: string;
-    readonly projectId: string;
+    /**
+     * Project identifier of the GitOps repository.
+     */
+    readonly projectId?: string;
+    /**
+     * Indicates to force refresh query for repository.
+     */
     readonly queryForceRefresh?: boolean;
+    /**
+     * Project to query for the GitOps repo.
+     */
     readonly queryProject?: string;
+    /**
+     * GitOps repository to query.
+     */
     readonly queryRepo?: string;
+    /**
+     * Repo details holding application configurations.
+     */
     readonly repos: outputs.platform.GetGitopsRepositoryRepo[];
+    /**
+     * Update mask of the repository.
+     */
     readonly updateMasks?: outputs.platform.GetGitopsRepositoryUpdateMask[];
+    /**
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     */
     readonly upsert?: boolean;
 }
-
+/**
+ * Data Source for fetching a Harness GitOps Repository.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsRepository({
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsRepositoryOutput(args: GetGitopsRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepositoryResult> {
-    return pulumi.output(args).apply(a => getGitopsRepository(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitopsRepository(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getGitopsRepository.
  */
 export interface GetGitopsRepositoryOutputArgs {
+    /**
+     * Account identifier of the GitOps repository.
+     */
     accountId: pulumi.Input<string>;
-    agentId?: pulumi.Input<string>;
+    /**
+     * Agent identifier of the GitOps repository.
+     */
+    agentId: pulumi.Input<string>;
+    /**
+     * Indicates if to operate on credential set instead of repository.
+     */
     credsOnly?: pulumi.Input<boolean>;
+    /**
+     * Identifier of the GitOps repository.
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * Organization identifier of the GitOps repository.
+     */
     orgId?: pulumi.Input<string>;
-    projectId: pulumi.Input<string>;
+    /**
+     * Project identifier of the GitOps repository.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Indicates to force refresh query for repository.
+     */
     queryForceRefresh?: pulumi.Input<boolean>;
+    /**
+     * Project to query for the GitOps repo.
+     */
     queryProject?: pulumi.Input<string>;
+    /**
+     * GitOps repository to query.
+     */
     queryRepo?: pulumi.Input<string>;
-    repos: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepositoryRepoArgs>[]>;
+    /**
+     * Update mask of the repository.
+     */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepositoryUpdateMaskArgs>[]>;
+    /**
+     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     */
     upsert?: pulumi.Input<boolean>;
 }

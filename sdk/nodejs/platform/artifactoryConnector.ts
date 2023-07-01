@@ -8,6 +8,58 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an Artifactory connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Authentication mechanism as username and password
+ * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     orgId: harness_platform_project.test.org_id,
+ *     projectId: harness_platform_project.test.id,
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
+ * });
+ * // Authentication mechanism as anonymous
+ * const test = new harness.platform.ArtifactoryConnector("test", {
+ *     identifier: "identifier",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     orgId: harness_platform_project.test.org_id,
+ *     projectId: harness_platform_project.test.id,
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level artifactory connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
+ * ```
+ *
+ *  Import org level artifactory connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level artifactory connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class ArtifactoryConnector extends pulumi.CustomResource {
     /**
@@ -42,7 +94,7 @@ export class ArtifactoryConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.ArtifactoryConnectorCredentials | undefined>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -58,15 +110,15 @@ export class ArtifactoryConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -128,7 +180,7 @@ export interface ArtifactoryConnectorState {
      */
     credentials?: pulumi.Input<inputs.platform.ArtifactoryConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -144,15 +196,15 @@ export interface ArtifactoryConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -170,7 +222,7 @@ export interface ArtifactoryConnectorArgs {
      */
     credentials?: pulumi.Input<inputs.platform.ArtifactoryConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -186,15 +238,15 @@ export interface ArtifactoryConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

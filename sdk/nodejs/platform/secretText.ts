@@ -13,22 +13,42 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const test = new harness.platform.SecretText("test", {
+ * const inline = new harness.platform.SecretText("inline", {
+ *     description: "example",
  *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
  *     secretManagerIdentifier: "harnessSecretManager",
- *     valueType: "Inline",
+ *     tags: ["foo:bar"],
  *     value: "secret",
+ *     valueType: "Inline",
+ * });
+ * const reference = new harness.platform.SecretText("reference", {
+ *     description: "example",
+ *     identifier: "identifier",
+ *     secretManagerIdentifier: "azureSecretManager",
+ *     tags: ["foo:bar"],
+ *     value: "secret",
+ *     valueType: "Reference",
  * });
  * ```
  *
  * ## Import
  *
- * Import using secret text id
+ * Import account level secret text
  *
  * ```sh
  *  $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
+ * ```
+ *
+ *  Import org level secret text
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
+ * ```
+ *
+ *  Import project level secret text
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
  * ```
  */
 export class SecretText extends pulumi.CustomResource {
@@ -72,11 +92,11 @@ export class SecretText extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -84,13 +104,13 @@ export class SecretText extends pulumi.CustomResource {
      */
     public readonly secretManagerIdentifier!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Value of the Secret
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    public readonly value!: pulumi.Output<string>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */
@@ -126,6 +146,9 @@ export class SecretText extends pulumi.CustomResource {
             if ((!args || args.secretManagerIdentifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerIdentifier'");
             }
+            if ((!args || args.value === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'value'");
+            }
             if ((!args || args.valueType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'valueType'");
             }
@@ -136,10 +159,12 @@ export class SecretText extends pulumi.CustomResource {
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["secretManagerIdentifier"] = args ? args.secretManagerIdentifier : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["valueType"] = args ? args.valueType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretText.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -161,11 +186,11 @@ export interface SecretTextState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -173,7 +198,7 @@ export interface SecretTextState {
      */
     secretManagerIdentifier?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -203,11 +228,11 @@ export interface SecretTextArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -215,13 +240,13 @@ export interface SecretTextArgs {
      */
     secretManagerIdentifier: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Value of the Secret
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */

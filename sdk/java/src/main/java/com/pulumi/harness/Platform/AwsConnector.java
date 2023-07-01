@@ -11,6 +11,9 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.AwsConnectorArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorState;
 import com.pulumi.harness.platform.outputs.AwsConnectorCrossAccountAccess;
+import com.pulumi.harness.platform.outputs.AwsConnectorEqualJitterBackoffStrategy;
+import com.pulumi.harness.platform.outputs.AwsConnectorFixedDelayBackoffStrategy;
+import com.pulumi.harness.platform.outputs.AwsConnectorFullJitterBackoffStrategy;
 import com.pulumi.harness.platform.outputs.AwsConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.AwsConnectorIrsa;
 import com.pulumi.harness.platform.outputs.AwsConnectorManual;
@@ -22,6 +25,69 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an AWS connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AwsConnector;
+ * import com.pulumi.harness.platform.AwsConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.AwsConnectorFixedDelayBackoffStrategyArgs;
+ * import com.pulumi.harness.platform.inputs.AwsConnectorManualArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var aws = new AwsConnector(&#34;aws&#34;, AwsConnectorArgs.builder()        
+ *             .description(&#34;description of aws connector&#34;)
+ *             .fixedDelayBackoffStrategy(AwsConnectorFixedDelayBackoffStrategyArgs.builder()
+ *                 .fixedBackoff(10)
+ *                 .retryCount(3)
+ *                 .build())
+ *             .identifier(&#34;example_aws_connector&#34;)
+ *             .manual(AwsConnectorManualArgs.builder()
+ *                 .accessKeyRef(&#34;account.access_id&#34;)
+ *                 .delegateSelectors(&#34;harness-delegate&#34;)
+ *                 .secretKeyRef(&#34;account.secret_id&#34;)
+ *                 .build())
+ *             .tags(&#34;foo:bar&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level aws connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import organization level aws connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;organization_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level aws connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/awsConnector:AwsConnector")
 public class AwsConnector extends com.pulumi.resources.CustomResource {
@@ -29,7 +95,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
      * 
      */
-    @Export(name="crossAccountAccess", type=AwsConnectorCrossAccountAccess.class, parameters={})
+    @Export(name="crossAccountAccess", refs={AwsConnectorCrossAccountAccess.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorCrossAccountAccess> crossAccountAccess;
 
     /**
@@ -43,7 +109,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -54,10 +120,52 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Equal Jitter BackOff Strategy.
+     * 
+     */
+    @Export(name="equalJitterBackoffStrategy", refs={AwsConnectorEqualJitterBackoffStrategy.class}, tree="[0]")
+    private Output</* @Nullable */ AwsConnectorEqualJitterBackoffStrategy> equalJitterBackoffStrategy;
+
+    /**
+     * @return Equal Jitter BackOff Strategy.
+     * 
+     */
+    public Output<Optional<AwsConnectorEqualJitterBackoffStrategy>> equalJitterBackoffStrategy() {
+        return Codegen.optional(this.equalJitterBackoffStrategy);
+    }
+    /**
+     * Fixed Delay BackOff Strategy.
+     * 
+     */
+    @Export(name="fixedDelayBackoffStrategy", refs={AwsConnectorFixedDelayBackoffStrategy.class}, tree="[0]")
+    private Output</* @Nullable */ AwsConnectorFixedDelayBackoffStrategy> fixedDelayBackoffStrategy;
+
+    /**
+     * @return Fixed Delay BackOff Strategy.
+     * 
+     */
+    public Output<Optional<AwsConnectorFixedDelayBackoffStrategy>> fixedDelayBackoffStrategy() {
+        return Codegen.optional(this.fixedDelayBackoffStrategy);
+    }
+    /**
+     * Full Jitter BackOff Strategy.
+     * 
+     */
+    @Export(name="fullJitterBackoffStrategy", refs={AwsConnectorFullJitterBackoffStrategy.class}, tree="[0]")
+    private Output</* @Nullable */ AwsConnectorFullJitterBackoffStrategy> fullJitterBackoffStrategy;
+
+    /**
+     * @return Full Jitter BackOff Strategy.
+     * 
+     */
+    public Output<Optional<AwsConnectorFullJitterBackoffStrategy>> fullJitterBackoffStrategy() {
+        return Codegen.optional(this.fullJitterBackoffStrategy);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -71,7 +179,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Inherit credentials from the delegate.
      * 
      */
-    @Export(name="inheritFromDelegate", type=AwsConnectorInheritFromDelegate.class, parameters={})
+    @Export(name="inheritFromDelegate", refs={AwsConnectorInheritFromDelegate.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorInheritFromDelegate> inheritFromDelegate;
 
     /**
@@ -85,7 +193,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Use IAM role for service accounts.
      * 
      */
-    @Export(name="irsa", type=AwsConnectorIrsa.class, parameters={})
+    @Export(name="irsa", refs={AwsConnectorIrsa.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorIrsa> irsa;
 
     /**
@@ -99,7 +207,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Use IAM role for service accounts.
      * 
      */
-    @Export(name="manual", type=AwsConnectorManual.class, parameters={})
+    @Export(name="manual", refs={AwsConnectorManual.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorManual> manual;
 
     /**
@@ -113,7 +221,7 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,42 +232,42 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

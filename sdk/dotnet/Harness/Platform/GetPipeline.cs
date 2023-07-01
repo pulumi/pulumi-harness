@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -50,6 +51,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -74,6 +76,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetPipelineArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Input("gitDetails")]
+        public Inputs.GetPipelineGitDetailsArgs? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -106,6 +114,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
     public sealed class GetPipelineInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.GetPipelineGitDetailsInputArgs>? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -145,6 +159,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        public readonly Outputs.GetPipelineGitDetailsResult? GitDetails;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -165,9 +183,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// If true, returns Pipeline YAML with Templates applied on it.
+        /// </summary>
+        public readonly bool TemplateApplied;
+        /// <summary>
+        /// Pipeline YAML after resolving Templates (returned as a String).
+        /// </summary>
+        public readonly string TemplateAppliedPipelineYaml;
         /// <summary>
         /// YAML of the pipeline.
         /// </summary>
@@ -176,6 +202,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [OutputConstructor]
         private GetPipelineResult(
             string description,
+
+            Outputs.GetPipelineGitDetailsResult? gitDetails,
 
             string id,
 
@@ -189,15 +217,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             ImmutableArray<string> tags,
 
+            bool templateApplied,
+
+            string templateAppliedPipelineYaml,
+
             string yaml)
         {
             Description = description;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
             Tags = tags;
+            TemplateApplied = templateApplied;
+            TemplateAppliedPipelineYaml = templateAppliedPipelineYaml;
             Yaml = yaml;
         }
     }

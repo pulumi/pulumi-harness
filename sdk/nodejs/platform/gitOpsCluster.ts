@@ -6,6 +6,74 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating a Harness Gitops Cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Clusters without Optional tags
+ * const exampleGitOpsCluster = new harness.platform.GitOpsCluster("exampleGitOpsCluster", {
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ *     requests: [{
+ *         upsert: false,
+ *         clusters: [{
+ *             server: "https://kubernetes.default.svc",
+ *             name: "name",
+ *             configs: [{
+ *                 tlsClientConfigs: [{
+ *                     insecure: true,
+ *                 }],
+ *                 clusterConnectionType: "IN_CLUSTER",
+ *             }],
+ *         }],
+ *     }],
+ * });
+ * // Clusters with Optional tags
+ * const examplePlatform_gitOpsClusterGitOpsCluster = new harness.platform.GitOpsCluster("examplePlatform/gitOpsClusterGitOpsCluster", {
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ *     requests: [{
+ *         upsert: false,
+ *         tags: ["foo:bar"],
+ *         clusters: [{
+ *             server: "https://kubernetes.default.svc",
+ *             name: "name",
+ *             configs: [{
+ *                 tlsClientConfigs: [{
+ *                     insecure: true,
+ *                 }],
+ *                 clusterConnectionType: "IN_CLUSTER",
+ *             }],
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import a Account level Gitops Cluster
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+ * ```
+ *
+ *  Import a Project level Gitops Cluster
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
+ * ```
+ */
 export class GitOpsCluster extends pulumi.CustomResource {
     /**
      * Get an existing GitOpsCluster resource's state with the given name, ID, and optional extra
@@ -35,31 +103,31 @@ export class GitOpsCluster extends pulumi.CustomResource {
     }
 
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps cluster.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps cluster.
      */
-    public readonly agentId!: pulumi.Output<string | undefined>;
+    public readonly agentId!: pulumi.Output<string>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps cluster.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the cluster.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps cluster.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * query for cluster resources
+     * Query for the GitOps cluster resources.
      */
     public readonly queries!: pulumi.Output<outputs.platform.GitOpsClusterQuery[] | undefined>;
     /**
-     * Cluster create/Update request.
+     * Cluster create or update request.
      */
     public readonly requests!: pulumi.Output<outputs.platform.GitOpsClusterRequest[] | undefined>;
 
@@ -88,11 +156,11 @@ export class GitOpsCluster extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
+            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
@@ -112,31 +180,31 @@ export class GitOpsCluster extends pulumi.CustomResource {
  */
 export interface GitOpsClusterState {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps cluster.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps cluster.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps cluster.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the cluster.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps cluster.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * query for cluster resources
+     * Query for the GitOps cluster resources.
      */
     queries?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQuery>[]>;
     /**
-     * Cluster create/Update request.
+     * Cluster create or update request.
      */
     requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[]>;
 }
@@ -146,31 +214,31 @@ export interface GitOpsClusterState {
  */
 export interface GitOpsClusterArgs {
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps cluster.
      */
     accountId: pulumi.Input<string>;
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps cluster.
      */
-    agentId?: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps cluster.
      */
     identifier: pulumi.Input<string>;
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the cluster.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps cluster.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
-     * query for cluster resources
+     * Query for the GitOps cluster resources.
      */
     queries?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQuery>[]>;
     /**
-     * Cluster create/Update request.
+     * Cluster create or update request.
      */
     requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[]>;
 }

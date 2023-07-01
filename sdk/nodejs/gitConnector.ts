@@ -102,7 +102,7 @@ export class GitConnector extends pulumi.CustomResource {
      */
     public readonly sshSettingId!: pulumi.Output<string | undefined>;
     /**
-     * The url of the git repository or account/organization
+     * The URL of the git repository or account/organization
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -212,7 +212,7 @@ export interface GitConnectorState {
      */
     sshSettingId?: pulumi.Input<string>;
     /**
-     * The url of the git repository or account/organization
+     * The URL of the git repository or account/organization
      */
     url?: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface GitConnectorArgs {
      */
     sshSettingId?: pulumi.Input<string>;
     /**
-     * The url of the git repository or account/organization
+     * The URL of the git repository or account/organization
      */
     url: pulumi.Input<string>;
     /**

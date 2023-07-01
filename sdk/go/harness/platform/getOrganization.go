@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupOrganization(ctx, &platform.LookupOrganizationArgs{
+//			_, err := platform.LookupOrganization(ctx, &platform.LookupOrganizationArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //			}, nil)
 //			if err != nil {
@@ -65,7 +65,7 @@ type LookupOrganizationResult struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupOrganizationResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

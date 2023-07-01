@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Gitlab connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitlabConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getGitlabConnector(args?: GetGitlabConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGitlabConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getGitlabConnector(args: GetGitlabConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGitlabConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitlabConnector:getGitlabConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetGitlabConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -63,7 +70,7 @@ export interface GetGitlabConnectorResult {
      */
     readonly credentials: outputs.platform.GetGitlabConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -77,25 +84,25 @@ export interface GetGitlabConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the gitlab repository or account.
+     * URL of the gitlab repository or account.
      */
     readonly url: string;
     /**
@@ -103,9 +110,22 @@ export interface GetGitlabConnectorResult {
      */
     readonly validationRepo: string;
 }
-
-export function getGitlabConnectorOutput(args?: GetGitlabConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitlabConnectorResult> {
-    return pulumi.output(args).apply(a => getGitlabConnector(a, opts))
+/**
+ * Datasource for looking up a Gitlab connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitlabConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getGitlabConnectorOutput(args: GetGitlabConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitlabConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getGitlabConnector(a, opts))
 }
 
 /**
@@ -115,17 +135,17 @@ export interface GetGitlabConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up an AWS Secret Manager connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsSecretManagerConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getAwsSecretManagerConnector(args?: GetAwsSecretManagerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsSecretManagerConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getAwsSecretManagerConnector(args: GetAwsSecretManagerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsSecretManagerConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetAwsSecretManagerConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -51,11 +58,11 @@ export interface GetAwsSecretManagerConnectorArgs {
  */
 export interface GetAwsSecretManagerConnectorResult {
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     readonly credentials: outputs.platform.GetAwsSecretManagerConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -69,17 +76,17 @@ export interface GetAwsSecretManagerConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -91,13 +98,26 @@ export interface GetAwsSecretManagerConnectorResult {
      */
     readonly secretNamePrefix: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getAwsSecretManagerConnectorOutput(args?: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
-    return pulumi.output(args).apply(a => getAwsSecretManagerConnector(a, opts))
+/**
+ * Datasource for looking up an AWS Secret Manager connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsSecretManagerConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getAwsSecretManagerConnector(a, opts))
 }
 
 /**
@@ -107,17 +127,17 @@ export interface GetAwsSecretManagerConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

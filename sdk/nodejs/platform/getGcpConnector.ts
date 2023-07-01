@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Gcp connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGcpConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getGcpConnector(args?: GetGcpConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getGcpConnector(args: GetGcpConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGcpConnector:getGcpConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetGcpConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -61,7 +68,7 @@ export interface GetGcpConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Inherit configuration from delegate.
      */
@@ -75,21 +82,34 @@ export interface GetGcpConnectorResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getGcpConnectorOutput(args?: GetGcpConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpConnectorResult> {
-    return pulumi.output(args).apply(a => getGcpConnector(a, opts))
+/**
+ * Datasource for looking up a Gcp connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGcpConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getGcpConnectorOutput(args: GetGcpConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getGcpConnector(a, opts))
 }
 
 /**
@@ -99,17 +119,17 @@ export interface GetGcpConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

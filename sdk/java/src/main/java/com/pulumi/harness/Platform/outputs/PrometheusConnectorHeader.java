@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PrometheusConnectorHeader {
     /**
-     * @return Encrypted value reference.
+     * @return Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String encryptedValueRef;
@@ -35,7 +35,7 @@ public final class PrometheusConnectorHeader {
 
     private PrometheusConnectorHeader() {}
     /**
-     * @return Encrypted value reference.
+     * @return Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> encryptedValueRef() {

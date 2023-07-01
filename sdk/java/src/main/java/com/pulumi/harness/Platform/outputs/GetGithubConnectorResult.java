@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.GetGithubConnectorApiAuthentication;
 import com.pulumi.harness.platform.outputs.GetGithubConnectorCredential;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public final class GetGithubConnectorResult {
      */
     private List<GetGithubConnectorCredential> credentials;
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     private List<String> delegateSelectors;
@@ -39,6 +40,7 @@ public final class GetGithubConnectorResult {
      * 
      */
     private String description;
+    private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -48,29 +50,29 @@ public final class GetGithubConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
     /**
-     * @return Url of the github repository or account.
+     * @return URL of the github repository or account.
      * 
      */
     private String url;
@@ -103,7 +105,7 @@ public final class GetGithubConnectorResult {
         return this.credentials;
     }
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public List<String> delegateSelectors() {
@@ -116,6 +118,9 @@ public final class GetGithubConnectorResult {
     public String description() {
         return this.description;
     }
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -127,8 +132,8 @@ public final class GetGithubConnectorResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Name of the resource.
@@ -138,28 +143,28 @@ public final class GetGithubConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
         return this.tags;
     }
     /**
-     * @return Url of the github repository or account.
+     * @return URL of the github repository or account.
      * 
      */
     public String url() {
@@ -187,8 +192,9 @@ public final class GetGithubConnectorResult {
         private List<GetGithubConnectorCredential> credentials;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -203,6 +209,7 @@ public final class GetGithubConnectorResult {
     	      this.credentials = defaults.credentials;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -248,13 +255,18 @@ public final class GetGithubConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            this.executeOnDelegate = Objects.requireNonNull(executeOnDelegate);
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter
@@ -297,6 +309,7 @@ public final class GetGithubConnectorResult {
             o.credentials = credentials;
             o.delegateSelectors = delegateSelectors;
             o.description = description;
+            o.executeOnDelegate = executeOnDelegate;
             o.id = id;
             o.identifier = identifier;
             o.name = name;

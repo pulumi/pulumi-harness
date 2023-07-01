@@ -105,10 +105,10 @@ def get_secret_manager(default: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getSecretManager:getSecretManager', __args__, opts=opts, typ=GetSecretManagerResult).value
 
     return AwaitableGetSecretManagerResult(
-        default=__ret__.default,
-        id=__ret__.id,
-        name=__ret__.name,
-        usage_scopes=__ret__.usage_scopes)
+        default=pulumi.get(__ret__, 'default'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
 
 
 @_utilities.lift_output_func(get_secret_manager)

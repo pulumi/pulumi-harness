@@ -11,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getGitConnector(args?: GetGitConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGitConnectorResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getGitConnector:getGitConnector", {
         "id": args.id,
         "name": args.name,
@@ -77,7 +74,7 @@ export interface GetGitConnectorResult {
      */
     readonly sshSettingId: string;
     /**
-     * The url of the git repository or account/organization.
+     * The URL of the git repository or account/organization.
      */
     readonly url: string;
     /**
@@ -93,9 +90,11 @@ export interface GetGitConnectorResult {
      */
     readonly webhookUrl: string;
 }
-
+/**
+ * Data source for retrieving a Harness application
+ */
 export function getGitConnectorOutput(args?: GetGitConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitConnectorResult> {
-    return pulumi.output(args).apply(a => getGitConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitConnector(a, opts))
 }
 
 /**

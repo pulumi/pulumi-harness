@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const test = new harness.platform.Variables("test", {
  *     identifier: "identifier",
@@ -29,10 +29,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using user group id
+ * Import account level variables
  *
  * ```sh
  *  $ pulumi import harness:platform/variables:Variables example <variable_id>
+ * ```
+ *
+ *  Import org level variables
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
+ * ```
+ *
+ *  Import project level variables
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
  * ```
  */
 export class Variables extends pulumi.CustomResource {

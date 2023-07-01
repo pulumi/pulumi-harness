@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const example = new harness.platform.Service("example", {
  *     description: "test",
@@ -56,16 +56,29 @@ import * as utilities from "../utilities";
  *             value: val2
  *       type: Kubernetes
  *     gitOpsEnabled: false
+ *
  * `,
  * });
  * ```
  *
  * ## Import
  *
- * Import using service id
+ * Import account level service
  *
  * ```sh
  *  $ pulumi import harness:platform/service:Service example <service_id>
+ * ```
+ *
+ *  Import org level service
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/service:Service example <org_id>/<service_id>
+ * ```
+ *
+ *  Import project level service
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
  * ```
  */
 export class Service extends pulumi.CustomResource {
@@ -101,6 +114,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable this flag for force deletion of service
+     */
+    public readonly forceDelete!: pulumi.Output<string>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -109,19 +126,19 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
-    public readonly orgId!: pulumi.Output<string>;
+    public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Service YAML
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -139,6 +156,7 @@ export class Service extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -150,13 +168,8 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.orgId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'orgId'");
-            }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -178,6 +191,10 @@ export interface ServiceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Enable this flag for force deletion of service
+     */
+    forceDelete?: pulumi.Input<string>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -186,19 +203,19 @@ export interface ServiceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service YAML
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -212,6 +229,10 @@ export interface ServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Enable this flag for force deletion of service
+     */
+    forceDelete?: pulumi.Input<string>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
@@ -220,19 +241,19 @@ export interface ServiceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service YAML
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }

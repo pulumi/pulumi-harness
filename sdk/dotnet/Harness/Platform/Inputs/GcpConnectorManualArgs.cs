@@ -26,7 +26,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Reference to the Harness secret containing the secret key.
+        /// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("secretKeyRef", required: true)]
         public Input<string> SecretKeyRef { get; set; } = null!;

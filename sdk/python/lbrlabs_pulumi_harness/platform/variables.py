@@ -285,10 +285,22 @@ class Variables(pulumi.CustomResource):
 
         ## Import
 
-        Import using user group id
+        Import account level variables
 
         ```sh
          $ pulumi import harness:platform/variables:Variables example <variable_id>
+        ```
+
+         Import org level variables
+
+        ```sh
+         $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
+        ```
+
+         Import project level variables
+
+        ```sh
+         $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -329,10 +341,22 @@ class Variables(pulumi.CustomResource):
 
         ## Import
 
-        Import using user group id
+        Import account level variables
 
         ```sh
          $ pulumi import harness:platform/variables:Variables example <variable_id>
+        ```
+
+         Import org level variables
+
+        ```sh
+         $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
+        ```
+
+         Import project level variables
+
+        ```sh
+         $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
         ```
 
         :param str resource_name: The name of the resource.

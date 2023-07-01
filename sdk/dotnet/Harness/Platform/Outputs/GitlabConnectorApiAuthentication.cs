@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class GitlabConnectorApiAuthentication
     {
         /// <summary>
-        /// Personal access token for interacting with the gitlab api.
+        /// Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string TokenRef;
 

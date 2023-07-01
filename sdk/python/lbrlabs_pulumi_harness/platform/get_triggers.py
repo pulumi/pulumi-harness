@@ -113,7 +113,7 @@ class GetTriggersResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -193,16 +193,16 @@ def get_triggers(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult).value
 
     return AwaitableGetTriggersResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        ignore_error=__ret__.ignore_error,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        target_id=__ret__.target_id,
-        yaml=__ret__.yaml)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        ignore_error=pulumi.get(__ret__, 'ignore_error'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        target_id=pulumi.get(__ret__, 'target_id'),
+        yaml=pulumi.get(__ret__, 'yaml'))
 
 
 @_utilities.lift_output_func(get_triggers)
