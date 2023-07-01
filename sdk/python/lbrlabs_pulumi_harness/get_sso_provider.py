@@ -85,9 +85,9 @@ def get_sso_provider(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getSsoProvider:getSsoProvider', __args__, opts=opts, typ=GetSsoProviderResult).value
 
     return AwaitableGetSsoProviderResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_sso_provider)

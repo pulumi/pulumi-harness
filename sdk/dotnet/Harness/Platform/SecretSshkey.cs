@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -24,105 +25,105 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// {
     ///     var keyTabFilePath = new Harness.Platform.SecretSshkey("keyTabFilePath", new()
     ///     {
-    ///         Description = "test",
     ///         Identifier = "identifier",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Port = 22,
     ///         Kerberos = new Harness.Platform.Inputs.SecretSshkeyKerberosArgs
     ///         {
-    ///             Principal = "principal",
-    ///             Realm = "realm",
-    ///             TgtGenerationMethod = "KeyTabFilePath",
     ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs
     ///             {
     ///                 KeyPath = "key_path",
     ///             },
-    ///         },
-    ///         Port = 22,
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
+    ///             Principal = "principal",
+    ///             Realm = "realm",
+    ///             TgtGenerationMethod = "KeyTabFilePath",
     ///         },
     ///     });
     /// 
     ///     var _tgtPassword = new Harness.Platform.SecretSshkey(" tgtPassword", new()
     ///     {
-    ///         Description = "test",
     ///         Identifier = "identifier",
-    ///         Kerberos = new Harness.Platform.Inputs.SecretSshkeyKerberosArgs
-    ///         {
-    ///             Principal = "principal",
-    ///             Realm = "realm",
-    ///             TgtGenerationMethod = "Password",
-    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretSshkeyKerberosTgtPasswordSpecArgs
-    ///             {
-    ///                 Password = "password",
-    ///             },
-    ///         },
-    ///         Port = 22,
+    ///         Description = "test",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
+    ///         },
+    ///         Port = 22,
+    ///         Kerberos = new Harness.Platform.Inputs.SecretSshkeyKerberosArgs
+    ///         {
+    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretSshkeyKerberosTgtPasswordSpecArgs
+    ///             {
+    ///                 Password = $"account.{secret.Id}",
+    ///             },
+    ///             Principal = "principal",
+    ///             Realm = "realm",
+    ///             TgtGenerationMethod = "Password",
     ///         },
     ///     });
     /// 
     ///     var sshkeyReference = new Harness.Platform.SecretSshkey("sshkeyReference", new()
     ///     {
-    ///         Description = "test",
     ///         Identifier = "identifier",
-    ///         Port = 22,
-    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
-    ///         {
-    ///             CredentialType = "KeyReference",
-    ///             SshkeyReferenceCredential = new Harness.Platform.Inputs.SecretSshkeySshSshkeyReferenceCredentialArgs
-    ///             {
-    ///                 EncryptedPassphrase = "encrypted_passphrase",
-    ///                 Key = "key",
-    ///                 UserName = "user_name",
-    ///             },
-    ///         },
+    ///         Description = "test",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
+    ///         },
+    ///         Port = 22,
+    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
+    ///         {
+    ///             SshkeyReferenceCredential = new Harness.Platform.Inputs.SecretSshkeySshSshkeyReferenceCredentialArgs
+    ///             {
+    ///                 UserName = "user_name",
+    ///                 Key = $"account.{key.Id}",
+    ///                 EncryptedPassphrase = $"account.{secret.Id}",
+    ///             },
+    ///             CredentialType = "KeyReference",
     ///         },
     ///     });
     /// 
     ///     var _sshkeyPath = new Harness.Platform.SecretSshkey(" sshkeyPath", new()
     ///     {
-    ///         Description = "test",
     ///         Identifier = "identifier",
-    ///         Port = 22,
-    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
-    ///         {
-    ///             CredentialType = "KeyPath",
-    ///             SshkeyPathCredential = new Harness.Platform.Inputs.SecretSshkeySshSshkeyPathCredentialArgs
-    ///             {
-    ///                 EncryptedPassphrase = "encrypted_passphrase",
-    ///                 KeyPath = "key_path",
-    ///                 UserName = "user_name",
-    ///             },
-    ///         },
+    ///         Description = "test",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
+    ///         },
+    ///         Port = 22,
+    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
+    ///         {
+    ///             SshkeyPathCredential = new Harness.Platform.Inputs.SecretSshkeySshSshkeyPathCredentialArgs
+    ///             {
+    ///                 UserName = "user_name",
+    ///                 KeyPath = "key_path",
+    ///                 EncryptedPassphrase = "encrypted_passphrase",
+    ///             },
+    ///             CredentialType = "KeyPath",
     ///         },
     ///     });
     /// 
     ///     var sshPassword = new Harness.Platform.SecretSshkey("sshPassword", new()
     ///     {
-    ///         Description = "test",
     ///         Identifier = "identifier",
-    ///         Port = 22,
-    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
-    ///         {
-    ///             CredentialType = "Password",
-    ///             SshPasswordCredential = new Harness.Platform.Inputs.SecretSshkeySshSshPasswordCredentialArgs
-    ///             {
-    ///                 Password = "password",
-    ///                 UserName = "user_name",
-    ///             },
-    ///         },
+    ///         Description = "test",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
+    ///         },
+    ///         Port = 22,
+    ///         Ssh = new Harness.Platform.Inputs.SecretSshkeySshArgs
+    ///         {
+    ///             SshPasswordCredential = new Harness.Platform.Inputs.SecretSshkeySshSshPasswordCredentialArgs
+    ///             {
+    ///                 UserName = "user_name",
+    ///                 Password = $"account.{secret.Id}",
+    ///             },
+    ///             CredentialType = "Password",
     ///         },
     ///     });
     /// 
@@ -131,10 +132,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using secret sshkey id
+    /// Import account level secret sshkey
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;secret_sshkey_id&gt;
+    /// ```
+    /// 
+    ///  Import org level secret sshkey
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;ord_id&gt;/&lt;secret_sshkey_id&gt;
+    /// ```
+    /// 
+    ///  Import project level secret sshkey
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;org_id&gt;/&lt;project_id&gt;/&lt;secret_sshkey_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/secretSshkey:SecretSshkey")]
@@ -165,7 +178,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
@@ -177,7 +190,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -189,7 +202,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<Outputs.SecretSshkeySsh?> Ssh { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -266,7 +279,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -278,7 +291,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -293,7 +306,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -334,7 +347,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -346,7 +359,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -361,7 +374,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

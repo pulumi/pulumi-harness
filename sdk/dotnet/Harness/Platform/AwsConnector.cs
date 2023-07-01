@@ -12,6 +12,63 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating an AWS connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var aws = new Harness.Platform.AwsConnector("aws", new()
+    ///     {
+    ///         Description = "description of aws connector",
+    ///         FixedDelayBackoffStrategy = new Harness.Platform.Inputs.AwsConnectorFixedDelayBackoffStrategyArgs
+    ///         {
+    ///             FixedBackoff = 10,
+    ///             RetryCount = 3,
+    ///         },
+    ///         Identifier = "example_aws_connector",
+    ///         Manual = new Harness.Platform.Inputs.AwsConnectorManualArgs
+    ///         {
+    ///             AccessKeyRef = "account.access_id",
+    ///             DelegateSelectors = new[]
+    ///             {
+    ///                 "harness-delegate",
+    ///             },
+    ///             SecretKeyRef = "account.secret_id",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level aws connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import organization level aws connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;organization_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level aws connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/awsConnector:AwsConnector example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/awsConnector:AwsConnector")]
     public partial class AwsConnector : global::Pulumi.CustomResource
@@ -27,6 +84,24 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Equal Jitter BackOff Strategy.
+        /// </summary>
+        [Output("equalJitterBackoffStrategy")]
+        public Output<Outputs.AwsConnectorEqualJitterBackoffStrategy?> EqualJitterBackoffStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Fixed Delay BackOff Strategy.
+        /// </summary>
+        [Output("fixedDelayBackoffStrategy")]
+        public Output<Outputs.AwsConnectorFixedDelayBackoffStrategy?> FixedDelayBackoffStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Full Jitter BackOff Strategy.
+        /// </summary>
+        [Output("fullJitterBackoffStrategy")]
+        public Output<Outputs.AwsConnectorFullJitterBackoffStrategy?> FullJitterBackoffStrategy { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -59,19 +134,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -136,6 +211,24 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Equal Jitter BackOff Strategy.
+        /// </summary>
+        [Input("equalJitterBackoffStrategy")]
+        public Input<Inputs.AwsConnectorEqualJitterBackoffStrategyArgs>? EqualJitterBackoffStrategy { get; set; }
+
+        /// <summary>
+        /// Fixed Delay BackOff Strategy.
+        /// </summary>
+        [Input("fixedDelayBackoffStrategy")]
+        public Input<Inputs.AwsConnectorFixedDelayBackoffStrategyArgs>? FixedDelayBackoffStrategy { get; set; }
+
+        /// <summary>
+        /// Full Jitter BackOff Strategy.
+        /// </summary>
+        [Input("fullJitterBackoffStrategy")]
+        public Input<Inputs.AwsConnectorFullJitterBackoffStrategyArgs>? FullJitterBackoffStrategy { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -166,13 +259,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -181,7 +274,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -208,6 +301,24 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Equal Jitter BackOff Strategy.
+        /// </summary>
+        [Input("equalJitterBackoffStrategy")]
+        public Input<Inputs.AwsConnectorEqualJitterBackoffStrategyGetArgs>? EqualJitterBackoffStrategy { get; set; }
+
+        /// <summary>
+        /// Fixed Delay BackOff Strategy.
+        /// </summary>
+        [Input("fixedDelayBackoffStrategy")]
+        public Input<Inputs.AwsConnectorFixedDelayBackoffStrategyGetArgs>? FixedDelayBackoffStrategy { get; set; }
+
+        /// <summary>
+        /// Full Jitter BackOff Strategy.
+        /// </summary>
+        [Input("fullJitterBackoffStrategy")]
+        public Input<Inputs.AwsConnectorFullJitterBackoffStrategyGetArgs>? FullJitterBackoffStrategy { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -240,13 +351,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -255,7 +366,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

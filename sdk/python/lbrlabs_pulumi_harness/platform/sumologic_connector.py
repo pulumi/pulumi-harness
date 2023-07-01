@@ -26,16 +26,16 @@ class SumologicConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SumologicConnector resource.
-        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id.
-        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key.
+        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] url: Url of the SumoLogic server.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] url: URL of the SumoLogic server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "access_id_ref", access_id_ref)
         pulumi.set(__self__, "access_key_ref", access_key_ref)
@@ -58,7 +58,7 @@ class SumologicConnectorArgs:
     @pulumi.getter(name="accessIdRef")
     def access_id_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the Harness secret containing the access id.
+        Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_id_ref")
 
@@ -70,7 +70,7 @@ class SumologicConnectorArgs:
     @pulumi.getter(name="accessKeyRef")
     def access_key_ref(self) -> pulumi.Input[str]:
         """
-        Reference to the Harness secret containing the access key.
+        Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_key_ref")
 
@@ -94,7 +94,7 @@ class SumologicConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        Url of the SumoLogic server.
+        URL of the SumoLogic server.
         """
         return pulumi.get(self, "url")
 
@@ -106,7 +106,7 @@ class SumologicConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -142,7 +142,7 @@ class SumologicConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -154,7 +154,7 @@ class SumologicConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -166,7 +166,7 @@ class SumologicConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -190,16 +190,16 @@ class _SumologicConnectorState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SumologicConnector resources.
-        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id.
-        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the SumoLogic server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the SumoLogic server.
         """
         if access_id_ref is not None:
             pulumi.set(__self__, "access_id_ref", access_id_ref)
@@ -226,7 +226,7 @@ class _SumologicConnectorState:
     @pulumi.getter(name="accessIdRef")
     def access_id_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the Harness secret containing the access id.
+        Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_id_ref")
 
@@ -238,7 +238,7 @@ class _SumologicConnectorState:
     @pulumi.getter(name="accessKeyRef")
     def access_key_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the Harness secret containing the access key.
+        Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_key_ref")
 
@@ -250,7 +250,7 @@ class _SumologicConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -298,7 +298,7 @@ class _SumologicConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -310,7 +310,7 @@ class _SumologicConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -322,7 +322,7 @@ class _SumologicConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -334,7 +334,7 @@ class _SumologicConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of the SumoLogic server.
+        URL of the SumoLogic server.
         """
         return pulumi.get(self, "url")
 
@@ -362,18 +362,54 @@ class SumologicConnector(pulumi.CustomResource):
         """
         Resource for creating a Sumologic connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.SumologicConnector("test",
+            access_id_ref="account.secret_id",
+            access_key_ref="account.secret_id",
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://api.us2.sumologic.com/")
+        ```
+
+        ## Import
+
+        Import account level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
+        ```
+
+         Import org level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id.
-        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the SumoLogic server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the SumoLogic server.
         """
         ...
     @overload
@@ -383,6 +419,42 @@ class SumologicConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Sumologic connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        test = harness.platform.SumologicConnector("test",
+            access_id_ref="account.secret_id",
+            access_key_ref="account.secret_id",
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://api.us2.sumologic.com/")
+        ```
+
+        ## Import
+
+        Import account level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
+        ```
+
+         Import org level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level sumologic connector
+
+        ```sh
+         $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param SumologicConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -463,16 +535,16 @@ class SumologicConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id.
-        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] access_id_ref: Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the SumoLogic server.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the SumoLogic server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,7 +566,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter(name="accessIdRef")
     def access_id_ref(self) -> pulumi.Output[str]:
         """
-        Reference to the Harness secret containing the access id.
+        Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_id_ref")
 
@@ -502,7 +574,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter(name="accessKeyRef")
     def access_key_ref(self) -> pulumi.Output[str]:
         """
-        Reference to the Harness secret containing the access key.
+        Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_key_ref")
 
@@ -510,7 +582,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -542,7 +614,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -550,7 +622,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -558,7 +630,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -566,7 +638,7 @@ class SumologicConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Url of the SumoLogic server.
+        URL of the SumoLogic server.
         """
         return pulumi.get(self, "url")
 

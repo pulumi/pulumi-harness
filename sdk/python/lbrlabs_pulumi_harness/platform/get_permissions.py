@@ -108,10 +108,10 @@ def get_permissions(org_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getPermissions:getPermissions', __args__, opts=opts, typ=GetPermissionsResult).value
 
     return AwaitableGetPermissionsResult(
-        id=__ret__.id,
-        org_id=__ret__.org_id,
-        permissions=__ret__.permissions,
-        project_id=__ret__.project_id)
+        id=pulumi.get(__ret__, 'id'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        project_id=pulumi.get(__ret__, 'project_id'))
 
 
 @_utilities.lift_output_func(get_permissions)

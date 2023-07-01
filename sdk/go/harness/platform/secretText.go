@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,15 +27,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewSecretText(ctx, "test", &platform.SecretTextArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Description: pulumi.String("test"),
+//			_, err := platform.NewSecretText(ctx, "inline", &platform.SecretTextArgs{
+//				Description:             pulumi.String("example"),
+//				Identifier:              pulumi.String("identifier"),
+//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
-//				ValueType:               pulumi.String("Inline"),
-//				Value:                   pulumi.String("secret"),
+//				Value:     pulumi.String("secret"),
+//				ValueType: pulumi.String("Inline"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewSecretText(ctx, "reference", &platform.SecretTextArgs{
+//				Description:             pulumi.String("example"),
+//				Identifier:              pulumi.String("identifier"),
+//				SecretManagerIdentifier: pulumi.String("azureSecretManager"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Value:     pulumi.String("secret"),
+//				ValueType: pulumi.String("Reference"),
 //			})
 //			if err != nil {
 //				return err
@@ -48,11 +61,27 @@ import (
 //
 // ## Import
 //
-// # Import using secret text id
+// # Import account level secret text
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
+//
+// ```
+//
+//	Import org level secret text
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
+//
+// ```
+//
+//	Import project level secret text
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
 //
 // ```
 type SecretText struct {
@@ -64,16 +93,16 @@ type SecretText struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringOutput `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Value of the Secret
-	Value pulumi.StringPtrOutput `pulumi:"value"`
+	Value pulumi.StringOutput `pulumi:"value"`
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
@@ -91,9 +120,19 @@ func NewSecretText(ctx *pulumi.Context,
 	if args.SecretManagerIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerIdentifier'")
 	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
+	}
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SecretText
 	err := ctx.RegisterResource("harness:platform/secretText:SecretText", name, args, &resource, opts...)
@@ -123,13 +162,13 @@ type secretTextState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier *string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
 	Value *string `pulumi:"value"`
@@ -144,13 +183,13 @@ type SecretTextState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Value of the Secret
 	Value pulumi.StringPtrInput
@@ -169,16 +208,16 @@ type secretTextArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier string `pulumi:"secretManagerIdentifier"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
-	Value *string `pulumi:"value"`
+	Value string `pulumi:"value"`
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType string `pulumi:"valueType"`
 }
@@ -191,16 +230,16 @@ type SecretTextArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Identifier of the Secret Manager used to manage the secret.
 	SecretManagerIdentifier pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Value of the Secret
-	Value pulumi.StringPtrInput
+	Value pulumi.StringInput
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringInput
 }
@@ -307,12 +346,12 @@ func (o SecretTextOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o SecretTextOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o SecretTextOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -322,14 +361,14 @@ func (o SecretTextOutput) SecretManagerIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.SecretManagerIdentifier }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o SecretTextOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Value of the Secret
-func (o SecretTextOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
+func (o SecretTextOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
 // This has details to specify if the secret value is Inline or Reference.

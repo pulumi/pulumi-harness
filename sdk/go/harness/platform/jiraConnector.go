@@ -7,15 +7,84 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Jira connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewJiraConnector(ctx, "test", &platform.JiraConnectorArgs{
+//				Auth: &platform.JiraConnectorAuthArgs{
+//					AuthType: pulumi.String("UsernamePassword"),
+//					UsernamePassword: &platform.JiraConnectorAuthUsernamePasswordArgs{
+//						PasswordRef: pulumi.String("account.secret_id"),
+//						Username:    pulumi.String("admin"),
+//					},
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://jira.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level jira connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
+//
+// ```
+//
+//	Import org level jira connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level jira connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type JiraConnector struct {
 	pulumi.CustomResourceState
 
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auth JiraConnectorAuthOutput `pulumi:"auth"`
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -23,20 +92,20 @@ type JiraConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Reference to a secret containing the password to use for authentication.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringOutput `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Username to use for authentication.
-	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
-	UsernameRef pulumi.StringPtrOutput `pulumi:"usernameRef"`
+	Username pulumi.StringOutput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringOutput `pulumi:"usernameRef"`
 }
 
 // NewJiraConnector registers a new resource with the given unique name, arguments, and options.
@@ -46,11 +115,11 @@ func NewJiraConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Auth == nil {
+		return nil, errors.New("invalid value for required argument 'Auth'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.PasswordRef == nil {
-		return nil, errors.New("invalid value for required argument 'PasswordRef'")
 	}
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
@@ -78,7 +147,9 @@ func GetJiraConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JiraConnector resources.
 type jiraConnectorState struct {
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auth *JiraConnectorAuth `pulumi:"auth"`
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -86,24 +157,26 @@ type jiraConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Reference to a secret containing the password to use for authentication.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url *string `pulumi:"url"`
 	// Username to use for authentication.
 	Username *string `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
 type JiraConnectorState struct {
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auth JiraConnectorAuthPtrInput
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -111,19 +184,19 @@ type JiraConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Reference to a secret containing the password to use for authentication.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url pulumi.StringPtrInput
 	// Username to use for authentication.
 	Username pulumi.StringPtrInput
-	// Reference to a secret containing the username to use for authentication.
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput
 }
 
@@ -132,7 +205,9 @@ func (JiraConnectorState) ElementType() reflect.Type {
 }
 
 type jiraConnectorArgs struct {
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auth JiraConnectorAuth `pulumi:"auth"`
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -140,25 +215,27 @@ type jiraConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Reference to a secret containing the password to use for authentication.
-	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef *string `pulumi:"passwordRef"`
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url string `pulumi:"url"`
 	// Username to use for authentication.
 	Username *string `pulumi:"username"`
-	// Reference to a secret containing the username to use for authentication.
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
 // The set of arguments for constructing a JiraConnector resource.
 type JiraConnectorArgs struct {
-	// Connect using only the delegates which have these tags.
+	// The credentials to use for the jira authentication.
+	Auth JiraConnectorAuthInput
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -166,19 +243,19 @@ type JiraConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Reference to a secret containing the password to use for authentication.
-	PasswordRef pulumi.StringInput
-	// Unique identifier of the Project.
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringPtrInput
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Jira server.
+	// URL of the Jira server.
 	Url pulumi.StringInput
 	// Username to use for authentication.
 	Username pulumi.StringPtrInput
-	// Reference to a secret containing the username to use for authentication.
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput
 }
 
@@ -269,7 +346,12 @@ func (o JiraConnectorOutput) ToJiraConnectorOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Connect using only the delegates which have these tags.
+// The credentials to use for the jira authentication.
+func (o JiraConnectorOutput) Auth() JiraConnectorAuthOutput {
+	return o.ApplyT(func(v *JiraConnector) JiraConnectorAuthOutput { return v.Auth }).(JiraConnectorAuthOutput)
+}
+
+// Tags to filter delegates for connection.
 func (o JiraConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -289,39 +371,39 @@ func (o JiraConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o JiraConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Reference to a secret containing the password to use for authentication.
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JiraConnectorOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o JiraConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o JiraConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Jira server.
+// URL of the Jira server.
 func (o JiraConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 // Username to use for authentication.
-func (o JiraConnectorOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+func (o JiraConnectorOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// Reference to a secret containing the username to use for authentication.
-func (o JiraConnectorOutput) UsernameRef() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JiraConnector) pulumi.StringPtrOutput { return v.UsernameRef }).(pulumi.StringPtrOutput)
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o JiraConnectorOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *JiraConnector) pulumi.StringOutput { return v.UsernameRef }).(pulumi.StringOutput)
 }
 
 type JiraConnectorArrayOutput struct{ *pulumi.OutputState }

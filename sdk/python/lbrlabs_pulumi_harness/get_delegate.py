@@ -213,18 +213,18 @@ def get_delegate(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getDelegate:getDelegate', __args__, opts=opts, typ=GetDelegateResult).value
 
     return AwaitableGetDelegateResult(
-        account_id=__ret__.account_id,
-        description=__ret__.description,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        ip=__ret__.ip,
-        last_heartbeat=__ret__.last_heartbeat,
-        name=__ret__.name,
-        polling_mode_enabled=__ret__.polling_mode_enabled,
-        profile_id=__ret__.profile_id,
-        status=__ret__.status,
-        type=__ret__.type,
-        version=__ret__.version)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        description=pulumi.get(__ret__, 'description'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        ip=pulumi.get(__ret__, 'ip'),
+        last_heartbeat=pulumi.get(__ret__, 'last_heartbeat'),
+        name=pulumi.get(__ret__, 'name'),
+        polling_mode_enabled=pulumi.get(__ret__, 'polling_mode_enabled'),
+        profile_id=pulumi.get(__ret__, 'profile_id'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_delegate)

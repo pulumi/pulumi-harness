@@ -20,11 +20,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         public readonly string AccountId;
         public readonly string Filter;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string ProjectId;
 

@@ -26,7 +26,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
      * 
      */
-    @Export(name="accountPermissions", type=List.class, parameters={String.class})
+    @Export(name="accountPermissions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> accountPermissions;
 
     /**
@@ -40,7 +40,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * Application specific permissions
      * 
      */
-    @Export(name="appPermissions", type=UserGroupPermissionsAppPermissions.class, parameters={})
+    @Export(name="appPermissions", refs={UserGroupPermissionsAppPermissions.class}, tree="[0]")
     private Output</* @Nullable */ UserGroupPermissionsAppPermissions> appPermissions;
 
     /**
@@ -54,7 +54,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * Unique identifier of the user group.
      * 
      */
-    @Export(name="userGroupId", type=String.class, parameters={})
+    @Export(name="userGroupId", refs={String.class}, tree="[0]")
     private Output<String> userGroupId;
 
     /**

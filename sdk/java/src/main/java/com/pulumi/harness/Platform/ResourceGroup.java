@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
  * Resource for creating a Harness Resource Group
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -69,10 +70,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using resource group id
+ * Import account level resource group
  * 
  * ```sh
  *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example &lt;resource_group_id&gt;
+ * ```
+ * 
+ *  Import org level resource group
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example &lt;ord_id&gt;/&lt;resource_group_id&gt;
+ * ```
+ * 
+ *  Import project level resource group
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;resource_group_id&gt;
  * ```
  * 
  */
@@ -82,7 +95,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Account Identifier of the account
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -96,7 +109,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The scope levels at which this resource group can be used
      * 
      */
-    @Export(name="allowedScopeLevels", type=List.class, parameters={String.class})
+    @Export(name="allowedScopeLevels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedScopeLevels;
 
     /**
@@ -110,7 +123,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Color of the environment.
      * 
      */
-    @Export(name="color", type=String.class, parameters={})
+    @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
     /**
@@ -124,7 +137,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -138,7 +151,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -152,7 +165,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Included scopes
      * 
      */
-    @Export(name="includedScopes", type=List.class, parameters={ResourceGroupIncludedScope.class})
+    @Export(name="includedScopes", refs={List.class,ResourceGroupIncludedScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ResourceGroupIncludedScope>> includedScopes;
 
     /**
@@ -166,7 +179,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -177,28 +190,28 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -208,7 +221,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * Contains resource filter for a resource group
      * 
      */
-    @Export(name="resourceFilters", type=List.class, parameters={ResourceGroupResourceFilter.class})
+    @Export(name="resourceFilters", refs={List.class,ResourceGroupResourceFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ResourceGroupResourceFilter>> resourceFilters;
 
     /**
@@ -219,14 +232,14 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceFilters);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

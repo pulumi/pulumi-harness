@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='lbrlabs_pulumi_harness',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing Harness  resources.",
       long_description=readme(),

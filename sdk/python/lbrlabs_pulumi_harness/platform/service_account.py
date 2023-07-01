@@ -29,9 +29,9 @@ class ServiceAccountArgs:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
@@ -111,7 +111,7 @@ class ServiceAccountArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -123,7 +123,7 @@ class ServiceAccountArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -135,7 +135,7 @@ class ServiceAccountArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -162,9 +162,9 @@ class _ServiceAccountState:
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -247,7 +247,7 @@ class _ServiceAccountState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -259,7 +259,7 @@ class _ServiceAccountState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -271,7 +271,7 @@ class _ServiceAccountState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -313,10 +313,22 @@ class ServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        Import using secret sshkey id
+        Import account level service account
 
         ```sh
          $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
+        ```
+
+         Import org level service account
+
+        ```sh
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
+        ```
+
+         Import project level service account
+
+        ```sh
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -326,9 +338,9 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -355,10 +367,22 @@ class ServiceAccount(pulumi.CustomResource):
 
         ## Import
 
-        Import using secret sshkey id
+        Import account level service account
 
         ```sh
          $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
+        ```
+
+         Import org level service account
+
+        ```sh
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
+        ```
+
+         Import project level service account
+
+        ```sh
+         $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -437,9 +461,9 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] email: Email of the Service Account.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,7 +523,7 @@ class ServiceAccount(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -507,7 +531,7 @@ class ServiceAccount(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -515,7 +539,7 @@ class ServiceAccount(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

@@ -99,7 +99,7 @@ class GetProjectResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -107,7 +107,7 @@ class GetProjectResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -150,7 +150,7 @@ def get_project(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -160,14 +160,14 @@ def get_project(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        color=__ret__.color,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        modules=__ret__.modules,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        tags=__ret__.tags)
+        color=pulumi.get(__ret__, 'color'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        modules=pulumi.get(__ret__, 'modules'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_project)
@@ -193,6 +193,6 @@ def get_project_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     """
     ...

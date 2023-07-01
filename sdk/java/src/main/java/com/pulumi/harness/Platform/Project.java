@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *         var test = new Project(&#34;test&#34;, ProjectArgs.builder()        
  *             .color(&#34;#0063F7&#34;)
  *             .identifier(&#34;testproject&#34;)
+ *             .orgId(&#34;org_id&#34;)
  *             .build());
  * 
  *     }
@@ -64,7 +65,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Color of the project.
      * 
      */
-    @Export(name="color", type=String.class, parameters={})
+    @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
     /**
@@ -78,7 +79,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +93,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -106,7 +107,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Modules in the project.
      * 
      */
-    @Export(name="modules", type=List.class, parameters={String.class})
+    @Export(name="modules", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> modules;
 
     /**
@@ -120,7 +121,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -131,28 +132,28 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

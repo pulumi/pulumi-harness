@@ -16,23 +16,47 @@ public final class GetGitopsClusterQuery extends com.pulumi.resources.InvokeArgs
 
     public static final GetGitopsClusterQuery Empty = new GetGitopsClusterQuery();
 
+    /**
+     * Cluster server URL or the cluster name.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<GetGitopsClusterQueryId> ids;
 
+    /**
+     * @return Cluster server URL or the cluster name.
+     * 
+     */
     public Optional<List<GetGitopsClusterQueryId>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Name of the GitOps cluster.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of the GitOps cluster.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Server of the GitOps cluster.
+     * 
+     */
     @Import(name="server")
     private @Nullable String server;
 
+    /**
+     * @return Server of the GitOps cluster.
+     * 
+     */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
@@ -63,20 +87,44 @@ public final class GetGitopsClusterQuery extends com.pulumi.resources.InvokeArgs
             $ = new GetGitopsClusterQuery(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<GetGitopsClusterQueryId> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids Cluster server URL or the cluster name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(GetGitopsClusterQueryId... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param name Name of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param server Server of the GitOps cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(@Nullable String server) {
             $.server = server;
             return this;

@@ -199,7 +199,7 @@ class GetVaultConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -249,7 +249,7 @@ class GetVaultConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -257,7 +257,7 @@ class GetVaultConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -337,7 +337,7 @@ class GetVaultConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -460,8 +460,8 @@ def get_vault_connector(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -472,44 +472,44 @@ def get_vault_connector(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getVaultConnector:getVaultConnector', __args__, opts=opts, typ=GetVaultConnectorResult).value
 
     return AwaitableGetVaultConnectorResult(
-        access_type=__ret__.access_type,
-        app_role_id=__ret__.app_role_id,
-        auth_token=__ret__.auth_token,
-        aws_region=__ret__.aws_region,
-        base_path=__ret__.base_path,
-        default=__ret__.default,
-        delegate_selectors=__ret__.delegate_selectors,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        is_default=__ret__.is_default,
-        is_read_only=__ret__.is_read_only,
-        k8s_auth_endpoint=__ret__.k8s_auth_endpoint,
-        name=__ret__.name,
-        namespace=__ret__.namespace,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        read_only=__ret__.read_only,
-        renew_app_role_token=__ret__.renew_app_role_token,
-        renewal_interval_minutes=__ret__.renewal_interval_minutes,
-        secret_engine_manually_configured=__ret__.secret_engine_manually_configured,
-        secret_engine_name=__ret__.secret_engine_name,
-        secret_engine_version=__ret__.secret_engine_version,
-        secret_id=__ret__.secret_id,
-        service_account_token_path=__ret__.service_account_token_path,
-        sink_path=__ret__.sink_path,
-        tags=__ret__.tags,
-        use_aws_iam=__ret__.use_aws_iam,
-        use_k8s_auth=__ret__.use_k8s_auth,
-        use_vault_agent=__ret__.use_vault_agent,
-        vault_aws_iam_role=__ret__.vault_aws_iam_role,
-        vault_k8s_auth_role=__ret__.vault_k8s_auth_role,
-        vault_url=__ret__.vault_url,
-        xvault_aws_iam_server_id=__ret__.xvault_aws_iam_server_id)
+        access_type=pulumi.get(__ret__, 'access_type'),
+        app_role_id=pulumi.get(__ret__, 'app_role_id'),
+        auth_token=pulumi.get(__ret__, 'auth_token'),
+        aws_region=pulumi.get(__ret__, 'aws_region'),
+        base_path=pulumi.get(__ret__, 'base_path'),
+        default=pulumi.get(__ret__, 'default'),
+        delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        is_default=pulumi.get(__ret__, 'is_default'),
+        is_read_only=pulumi.get(__ret__, 'is_read_only'),
+        k8s_auth_endpoint=pulumi.get(__ret__, 'k8s_auth_endpoint'),
+        name=pulumi.get(__ret__, 'name'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        read_only=pulumi.get(__ret__, 'read_only'),
+        renew_app_role_token=pulumi.get(__ret__, 'renew_app_role_token'),
+        renewal_interval_minutes=pulumi.get(__ret__, 'renewal_interval_minutes'),
+        secret_engine_manually_configured=pulumi.get(__ret__, 'secret_engine_manually_configured'),
+        secret_engine_name=pulumi.get(__ret__, 'secret_engine_name'),
+        secret_engine_version=pulumi.get(__ret__, 'secret_engine_version'),
+        secret_id=pulumi.get(__ret__, 'secret_id'),
+        service_account_token_path=pulumi.get(__ret__, 'service_account_token_path'),
+        sink_path=pulumi.get(__ret__, 'sink_path'),
+        tags=pulumi.get(__ret__, 'tags'),
+        use_aws_iam=pulumi.get(__ret__, 'use_aws_iam'),
+        use_k8s_auth=pulumi.get(__ret__, 'use_k8s_auth'),
+        use_vault_agent=pulumi.get(__ret__, 'use_vault_agent'),
+        vault_aws_iam_role=pulumi.get(__ret__, 'vault_aws_iam_role'),
+        vault_k8s_auth_role=pulumi.get(__ret__, 'vault_k8s_auth_role'),
+        vault_url=pulumi.get(__ret__, 'vault_url'),
+        xvault_aws_iam_server_id=pulumi.get(__ret__, 'xvault_aws_iam_server_id'))
 
 
 @_utilities.lift_output_func(get_vault_connector)
-def get_vault_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -529,7 +529,7 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[Optional[str]]]
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

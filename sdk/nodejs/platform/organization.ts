@@ -11,12 +11,11 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const thisOrganization = new harness.Organization("this", {
+ * const _this = new harness.platform.Organization("this", {
  *     description: "An example organization",
  *     identifier: "MyOrg",
- *     name: "My Otganization",
  *     tags: [
  *         "foo:bar",
  *         "baz:qux",
@@ -73,7 +72,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -126,7 +125,7 @@ export interface OrganizationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -148,7 +147,7 @@ export interface OrganizationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

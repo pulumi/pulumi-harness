@@ -15,23 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getRoleAssignments({
+ * const example = harness.platform.getRoleAssignments({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getRoleAssignments(args: GetRoleAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRoleAssignments:getRoleAssignments", {
         "identifier": args.identifier,
         "orgId": args.orgId,
-        "principals": args.principals,
         "projectId": args.projectId,
     }, opts);
 }
@@ -48,10 +44,6 @@ export interface GetRoleAssignmentsArgs {
      * Org identifier.
      */
     orgId?: string;
-    /**
-     * Principal.
-     */
-    principals?: inputs.platform.GetRoleAssignmentsPrincipal[];
     /**
      * Project Identifier
      */
@@ -85,7 +77,7 @@ export interface GetRoleAssignmentsResult {
     /**
      * Principal.
      */
-    readonly principals?: outputs.platform.GetRoleAssignmentsPrincipal[];
+    readonly principals: outputs.platform.GetRoleAssignmentsPrincipal[];
     /**
      * Project Identifier
      */
@@ -99,9 +91,24 @@ export interface GetRoleAssignmentsResult {
      */
     readonly roleIdentifier: string;
 }
-
+/**
+ * Data source for retrieving role assignment.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getRoleAssignments({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getRoleAssignmentsOutput(args: GetRoleAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleAssignmentsResult> {
-    return pulumi.output(args).apply(a => getRoleAssignments(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoleAssignments(a, opts))
 }
 
 /**
@@ -116,10 +123,6 @@ export interface GetRoleAssignmentsOutputArgs {
      * Org identifier.
      */
     orgId?: pulumi.Input<string>;
-    /**
-     * Principal.
-     */
-    principals?: pulumi.Input<pulumi.Input<inputs.platform.GetRoleAssignmentsPrincipalArgs>[]>;
     /**
      * Project Identifier
      */

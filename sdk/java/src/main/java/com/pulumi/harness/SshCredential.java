@@ -94,7 +94,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
      * 
      */
-    @Export(name="kerberosAuthentication", type=SshCredentialKerberosAuthentication.class, parameters={})
+    @Export(name="kerberosAuthentication", refs={SshCredentialKerberosAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ SshCredentialKerberosAuthentication> kerberosAuthentication;
 
     /**
@@ -108,7 +108,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Name of the encrypted text secret
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -122,7 +122,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
      * 
      */
-    @Export(name="sshAuthentication", type=SshCredentialSshAuthentication.class, parameters={})
+    @Export(name="sshAuthentication", refs={SshCredentialSshAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ SshCredentialSshAuthentication> sshAuthentication;
 
     /**
@@ -136,7 +136,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={SshCredentialUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,SshCredentialUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SshCredentialUsageScope>> usageScopes;
 
     /**

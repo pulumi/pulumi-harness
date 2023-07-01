@@ -112,11 +112,11 @@ def get_delegate_ids(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:cloudprovider/getDelegateIds:getDelegateIds', __args__, opts=opts, typ=GetDelegateIdsResult).value
 
     return AwaitableGetDelegateIdsResult(
-        delegate_ids=__ret__.delegate_ids,
-        id=__ret__.id,
-        name=__ret__.name,
-        status=__ret__.status,
-        type=__ret__.type)
+        delegate_ids=pulumi.get(__ret__, 'delegate_ids'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_delegate_ids)

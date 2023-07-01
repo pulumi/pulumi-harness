@@ -16,14 +16,14 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
     public static final KubernetesConnectorClientKeyCertArgs Empty = new KubernetesConnectorClientKeyCertArgs();
 
     /**
-     * Reference to the secret containing the CA certificate for the connector.
+     * Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="caCertRef")
     private @Nullable Output<String> caCertRef;
 
     /**
-     * @return Reference to the secret containing the CA certificate for the connector.
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> caCertRef() {
@@ -31,14 +31,14 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the client certificate for the connector.
+     * Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="clientCertRef", required=true)
     private Output<String> clientCertRef;
 
     /**
-     * @return Reference to the secret containing the client certificate for the connector.
+     * @return Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> clientCertRef() {
@@ -61,14 +61,14 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the client key passphrase for the connector.
+     * Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="clientKeyPassphraseRef")
     private @Nullable Output<String> clientKeyPassphraseRef;
 
     /**
-     * @return Reference to the secret containing the client key passphrase for the connector.
+     * @return Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> clientKeyPassphraseRef() {
@@ -76,14 +76,14 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
     }
 
     /**
-     * Reference to the secret containing the client key for the connector.
+     * Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="clientKeyRef", required=true)
     private Output<String> clientKeyRef;
 
     /**
-     * @return Reference to the secret containing the client key for the connector.
+     * @return Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> clientKeyRef() {
@@ -135,7 +135,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param caCertRef Reference to the secret containing the CA certificate for the connector.
+         * @param caCertRef Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param caCertRef Reference to the secret containing the CA certificate for the connector.
+         * @param caCertRef Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientCertRef Reference to the secret containing the client certificate for the connector.
+         * @param clientCertRef Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientCertRef Reference to the secret containing the client certificate for the connector.
+         * @param clientCertRef Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKeyPassphraseRef Reference to the secret containing the client key passphrase for the connector.
+         * @param clientKeyPassphraseRef Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKeyPassphraseRef Reference to the secret containing the client key passphrase for the connector.
+         * @param clientKeyPassphraseRef Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKeyRef Reference to the secret containing the client key for the connector.
+         * @param clientKeyRef Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class KubernetesConnectorClientKeyCertArgs extends com.pulumi.resou
         }
 
         /**
-         * @param clientKeyRef Reference to the secret containing the client key for the connector.
+         * @param clientKeyRef Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

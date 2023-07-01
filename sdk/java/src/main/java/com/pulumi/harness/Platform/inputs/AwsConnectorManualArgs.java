@@ -32,14 +32,14 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Reference to the Harness secret containing the aws access key.
+     * Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="accessKeyRef")
     private @Nullable Output<String> accessKeyRef;
 
     /**
-     * @return Reference to the Harness secret containing the aws access key.
+     * @return Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> accessKeyRef() {
@@ -62,14 +62,14 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Reference to the Harness secret containing the aws secret key.
+     * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="secretKeyRef", required=true)
     private Output<String> secretKeyRef;
 
     /**
-     * @return Reference to the Harness secret containing the aws secret key.
+     * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> secretKeyRef() {
@@ -125,7 +125,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessKeyRef Reference to the Harness secret containing the aws access key.
+         * @param accessKeyRef Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accessKeyRef Reference to the Harness secret containing the aws access key.
+         * @param accessKeyRef Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretKeyRef Reference to the Harness secret containing the aws secret key.
+         * @param secretKeyRef Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param secretKeyRef Reference to the Harness secret containing the aws secret key.
+         * @param secretKeyRef Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

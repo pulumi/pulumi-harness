@@ -17,129 +17,188 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating a Harness Gitops Agents.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.GitOpsAgent;
+ * import com.pulumi.harness.platform.GitOpsAgentArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsAgentMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new GitOpsAgent(&#34;example&#34;, GitOpsAgentArgs.builder()        
+ *             .accountId(&#34;account_id&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .metadatas(GitOpsAgentMetadataArgs.builder()
+ *                 .highAvailability(true)
+ *                 .namespace(&#34;namespace&#34;)
+ *                 .build())
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .type(&#34;MANAGED_ARGO_PROVIDER&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import a Account level Gitops Agent
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;agent_id&gt;
+ * ```
+ * 
+ *  Import a Project level Gitops Agent
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:platform/gitOpsAgent:GitOpsAgent")
 public class GitOpsAgent extends com.pulumi.resources.CustomResource {
     /**
-     * account identifier of the agent.
+     * Account identifier of the GitOps agent.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the agent.
+     * @return Account identifier of the GitOps agent.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * description of the agent.
+     * Description of the GitOps agent.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return description of the agent.
+     * @return Description of the GitOps agent.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * identifier of the agent.
+     * Identifier of the GitOps agent.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return identifier of the agent.
+     * @return Identifier of the GitOps agent.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * tags for the agent.
+     * Metadata of the agent.
      * 
      */
-    @Export(name="metadatas", type=List.class, parameters={GitOpsAgentMetadata.class})
+    @Export(name="metadatas", refs={List.class,GitOpsAgentMetadata.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitOpsAgentMetadata>> metadatas;
 
     /**
-     * @return tags for the agent.
+     * @return Metadata of the agent.
      * 
      */
     public Output<Optional<List<GitOpsAgentMetadata>>> metadatas() {
         return Codegen.optional(this.metadatas);
     }
     /**
-     * name of the agent.
+     * Name of the GitOps agent.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return name of the agent.
+     * @return Name of the GitOps agent.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * org identifier of the agent.
+     * Organization identifier of the GitOps agent.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
-    private Output<String> orgId;
+    @Export(name="orgId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return org identifier of the agent.
+     * @return Organization identifier of the GitOps agent.
      * 
      */
-    public Output<String> orgId() {
-        return this.orgId;
+    public Output<Optional<String>> orgId() {
+        return Codegen.optional(this.orgId);
     }
     /**
-     * org identifier of the agent.
+     * Project identifier of the GitOps agent.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
-    private Output<String> projectId;
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return org identifier of the agent.
+     * @return Project identifier of the GitOps agent.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Output<Optional<String>> projectId() {
+        return Codegen.optional(this.projectId);
     }
     /**
-     * tags for the agent.
+     * Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return tags for the agent.
+     * @return Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * type of the agent.
+     * Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return type of the agent.
+     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
      * 
      */
     public Output<String> type() {

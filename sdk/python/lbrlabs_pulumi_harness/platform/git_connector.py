@@ -32,13 +32,13 @@ class GitConnectorArgs:
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
         :param pulumi.Input['GitConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] url: Url of the git repository or account.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] url: URL of the git repository or account.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         pulumi.set(__self__, "connection_type", connection_type)
@@ -100,7 +100,7 @@ class GitConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        Url of the git repository or account.
+        URL of the git repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -112,7 +112,7 @@ class GitConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -148,7 +148,7 @@ class GitConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -160,7 +160,7 @@ class GitConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -172,7 +172,7 @@ class GitConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -211,14 +211,14 @@ class _GitConnectorState:
         Input properties used for looking up and filtering GitConnector resources.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
         :param pulumi.Input['GitConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the git repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the git repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         if connection_type is not None:
@@ -272,7 +272,7 @@ class _GitConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -320,7 +320,7 @@ class _GitConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -332,7 +332,7 @@ class _GitConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -344,7 +344,7 @@ class _GitConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -356,7 +356,7 @@ class _GitConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of the git repository or account.
+        URL of the git repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -397,18 +397,60 @@ class GitConnector(pulumi.CustomResource):
         """
         Resource for creating a Git connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials ssh
+        test = harness.platform.GitConnector("test",
+            connection_type="Account",
+            credentials=harness.platform.GitConnectorCredentialsArgs(
+                ssh=harness.platform.GitConnectorCredentialsSshArgs(
+                    ssh_key_ref="account.secret_id",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://git.example.com/account",
+            validation_repo="some_repo")
+        ```
+
+        ## Import
+
+        Import account level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <connector_id>
+        ```
+
+         Import org level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
         :param pulumi.Input[pulumi.InputType['GitConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the git repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the git repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         ...
@@ -419,6 +461,48 @@ class GitConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Git connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials ssh
+        test = harness.platform.GitConnector("test",
+            connection_type="Account",
+            credentials=harness.platform.GitConnectorCredentialsArgs(
+                ssh=harness.platform.GitConnectorCredentialsSshArgs(
+                    ssh_key_ref="account.secret_id",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://git.example.com/account",
+            validation_repo="some_repo")
+        ```
+
+        ## Import
+
+        Import account level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <connector_id>
+        ```
+
+         Import org level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level git connector
+
+        ```sh
+         $ pulumi import harness:platform/gitConnector:GitConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param GitConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -504,14 +588,14 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
         :param pulumi.Input[pulumi.InputType['GitConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the git repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the git repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -551,7 +635,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -583,7 +667,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -591,7 +675,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -599,7 +683,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -607,7 +691,7 @@ class GitConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Url of the git repository or account.
+        URL of the git repository or account.
         """
         return pulumi.get(self, "url")
 

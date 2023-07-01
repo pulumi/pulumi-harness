@@ -94,14 +94,14 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      * 
      */
     @Import(name="linkedSsoType")
     private @Nullable Output<String> linkedSsoType;
 
     /**
-     * @return Type of linked SSO
+     * @return Type of linked SSO.
      * 
      */
     public Optional<Output<String>> linkedSsoType() {
@@ -139,14 +139,14 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -154,14 +154,14 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -199,14 +199,14 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      * 
      */
     @Import(name="ssoLinked")
     private @Nullable Output<Boolean> ssoLinked;
 
     /**
-     * @return Whether sso is linked or not
+     * @return Whether sso is linked or not.
      * 
      */
     public Optional<Output<Boolean>> ssoLinked() {
@@ -214,14 +214,14 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -229,14 +229,29 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of users in the UserGroup.
+     * List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     * 
+     */
+    @Import(name="userEmails")
+    private @Nullable Output<List<String>> userEmails;
+
+    /**
+     * @return List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     * 
+     */
+    public Optional<Output<List<String>>> userEmails() {
+        return Optional.ofNullable(this.userEmails);
+    }
+
+    /**
+     * List of users in the UserGroup. Either provide list of users or list of user emails.
      * 
      */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
     /**
-     * @return List of users in the UserGroup.
+     * @return List of users in the UserGroup. Either provide list of users or list of user emails.
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -260,6 +275,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         this.ssoGroupName = $.ssoGroupName;
         this.ssoLinked = $.ssoLinked;
         this.tags = $.tags;
+        this.userEmails = $.userEmails;
         this.users = $.users;
     }
 
@@ -387,7 +403,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedSsoType Type of linked SSO
+         * @param linkedSsoType Type of linked SSO.
          * 
          * @return builder
          * 
@@ -398,7 +414,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedSsoType Type of linked SSO
+         * @param linkedSsoType Type of linked SSO.
          * 
          * @return builder
          * 
@@ -460,7 +476,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -471,7 +487,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -481,7 +497,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -492,7 +508,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -544,7 +560,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoLinked Whether sso is linked or not
+         * @param ssoLinked Whether sso is linked or not.
          * 
          * @return builder
          * 
@@ -555,7 +571,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoLinked Whether sso is linked or not
+         * @param ssoLinked Whether sso is linked or not.
          * 
          * @return builder
          * 
@@ -565,7 +581,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -576,7 +592,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -586,7 +602,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -596,7 +612,38 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup.
+         * @param userEmails List of user emails in the UserGroup. Either provide list of users or list of user emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userEmails(@Nullable Output<List<String>> userEmails) {
+            $.userEmails = userEmails;
+            return this;
+        }
+
+        /**
+         * @param userEmails List of user emails in the UserGroup. Either provide list of users or list of user emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userEmails(List<String> userEmails) {
+            return userEmails(Output.of(userEmails));
+        }
+
+        /**
+         * @param userEmails List of user emails in the UserGroup. Either provide list of users or list of user emails.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userEmails(String... userEmails) {
+            return userEmails(List.of(userEmails));
+        }
+
+        /**
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
          * 
          * @return builder
          * 
@@ -607,7 +654,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup.
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
          * 
          * @return builder
          * 
@@ -617,7 +664,7 @@ public final class UsergroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users List of users in the UserGroup.
+         * @param users List of users in the UserGroup. Either provide list of users or list of user emails.
          * 
          * @return builder
          * 

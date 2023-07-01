@@ -15,18 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getSecretSshkey({
+ * const example = harness.platform.getSecretSshkey({
  *     identifier: "identifier",
- * }));
+ * });
  * ```
  */
-export function getSecretSshkey(args?: GetSecretSshkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretSshkeyResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getSecretSshkey(args: GetSecretSshkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretSshkeyResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretSshkey:getSecretSshkey", {
         "identifier": args.identifier,
         "name": args.name,
@@ -42,17 +38,17 @@ export interface GetSecretSshkeyArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -72,7 +68,7 @@ export interface GetSecretSshkeyResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Kerberos authentication scheme
      */
@@ -82,7 +78,7 @@ export interface GetSecretSshkeyResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
@@ -90,7 +86,7 @@ export interface GetSecretSshkeyResult {
      */
     readonly port: number;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -98,13 +94,26 @@ export interface GetSecretSshkeyResult {
      */
     readonly sshes: outputs.platform.GetSecretSshkeySsh[];
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getSecretSshkeyOutput(args?: GetSecretSshkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretSshkeyResult> {
-    return pulumi.output(args).apply(a => getSecretSshkey(a, opts))
+/**
+ * Resource for looking up an SSH Key type secret.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getSecretSshkey({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getSecretSshkeyOutput(args: GetSecretSshkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretSshkeyResult> {
+    return pulumi.output(args).apply((a: any) => getSecretSshkey(a, opts))
 }
 
 /**
@@ -114,17 +123,17 @@ export interface GetSecretSshkeyOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

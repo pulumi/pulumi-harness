@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up an AWS Cloud Cost connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupAwsCCConnector(ctx, &platform.LookupAwsCCConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAwsCCConnector(ctx *pulumi.Context, args *LookupAwsCCConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsCCConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupAwsCCConnectorResult
@@ -24,12 +50,12 @@ func LookupAwsCCConnector(ctx *pulumi.Context, args *LookupAwsCCConnectorArgs, o
 // A collection of arguments for invoking getAwsCCConnector.
 type LookupAwsCCConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -46,18 +72,18 @@ type LookupAwsCCConnectorResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName string `pulumi:"reportName"`
 	// The name of s3 bucket.
 	S3Bucket string `pulumi:"s3Bucket"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -77,12 +103,12 @@ func LookupAwsCCConnectorOutput(ctx *pulumi.Context, args LookupAwsCCConnectorOu
 // A collection of arguments for invoking getAwsCCConnector.
 type LookupAwsCCConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -133,8 +159,8 @@ func (o LookupAwsCCConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupAwsCCConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupAwsCCConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -142,12 +168,12 @@ func (o LookupAwsCCConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupAwsCCConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupAwsCCConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -162,7 +188,7 @@ func (o LookupAwsCCConnectorResultOutput) S3Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.S3Bucket }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupAwsCCConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

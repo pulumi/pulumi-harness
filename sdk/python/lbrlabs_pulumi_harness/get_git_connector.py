@@ -139,7 +139,7 @@ class GetGitConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        The url of the git repository or account/organization.
+        The URL of the git repository or account/organization.
         """
         return pulumi.get(self, "url")
 
@@ -206,19 +206,19 @@ def get_git_connector(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getGitConnector:getGitConnector', __args__, opts=opts, typ=GetGitConnectorResult).value
 
     return AwaitableGetGitConnectorResult(
-        branch=__ret__.branch,
-        commit_details=__ret__.commit_details,
-        created_at=__ret__.created_at,
-        delegate_selectors=__ret__.delegate_selectors,
-        generate_webhook_url=__ret__.generate_webhook_url,
-        id=__ret__.id,
-        name=__ret__.name,
-        password_secret_id=__ret__.password_secret_id,
-        ssh_setting_id=__ret__.ssh_setting_id,
-        url=__ret__.url,
-        url_type=__ret__.url_type,
-        username=__ret__.username,
-        webhook_url=__ret__.webhook_url)
+        branch=pulumi.get(__ret__, 'branch'),
+        commit_details=pulumi.get(__ret__, 'commit_details'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
+        generate_webhook_url=pulumi.get(__ret__, 'generate_webhook_url'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        password_secret_id=pulumi.get(__ret__, 'password_secret_id'),
+        ssh_setting_id=pulumi.get(__ret__, 'ssh_setting_id'),
+        url=pulumi.get(__ret__, 'url'),
+        url_type=pulumi.get(__ret__, 'url_type'),
+        username=pulumi.get(__ret__, 'username'),
+        webhook_url=pulumi.get(__ret__, 'webhook_url'))
 
 
 @_utilities.lift_output_func(get_git_connector)

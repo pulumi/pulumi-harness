@@ -6,7 +6,7 @@ TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 JAVA_GEN         := pulumi-java-gen
-JAVA_GEN_VERSION := v0.5.4
+JAVA_GEN_VERSION := v0.9.4
 PLUGIN_PATH      := ${HOME}/.pulumi/plugins/
 
 TFGEN           := pulumi-tfgen-${PACK}
@@ -97,6 +97,7 @@ clean::
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource random 4.8.2
+	pulumi plugin install resource tls 4.10.0
 	pulumi plugin install resource aws 5.11.0
 
 install_dotnet_sdk::

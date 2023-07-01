@@ -35,11 +35,11 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.clusterResources);
     }
 
-    @Import(name="configs")
-    private @Nullable Output<List<GitOpsClusterRequestClusterConfigArgs>> configs;
+    @Import(name="configs", required=true)
+    private Output<List<GitOpsClusterRequestClusterConfigArgs>> configs;
 
-    public Optional<Output<List<GitOpsClusterRequestClusterConfigArgs>>> configs() {
-        return Optional.ofNullable(this.configs);
+    public Output<List<GitOpsClusterRequestClusterConfigArgs>> configs() {
+        return this.configs;
     }
 
     @Import(name="infos")
@@ -150,7 +150,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
             return clusterResources(Output.of(clusterResources));
         }
 
-        public Builder configs(@Nullable Output<List<GitOpsClusterRequestClusterConfigArgs>> configs) {
+        public Builder configs(Output<List<GitOpsClusterRequestClusterConfigArgs>> configs) {
             $.configs = configs;
             return this;
         }
@@ -248,6 +248,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         public GitOpsClusterRequestClusterArgs build() {
+            $.configs = Objects.requireNonNull($.configs, "expected parameter 'configs' to be non-null");
             $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
             return $;
         }

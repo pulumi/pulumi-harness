@@ -17,29 +17,29 @@ __all__ = ['GitOpsClusterArgs', 'GitOpsCluster']
 class GitOpsClusterArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 agent_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
-                 agent_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]]] = None,
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         The set of arguments for constructing a GitOpsCluster resource.
-        :param pulumi.Input[str] account_id: account identifier of the cluster.
-        :param pulumi.Input[str] identifier: identifier of the cluster.
-        :param pulumi.Input[str] project_id: project identifier of the cluster.
-        :param pulumi.Input[str] agent_id: agent identifier of the cluster.
-        :param pulumi.Input[str] org_id: organization identifier of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]] queries: query for cluster resources
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
+        :param pulumi.Input[str] org_id: Organization identifier of the cluster.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]] queries: Query for the GitOps cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "project_id", project_id)
-        if agent_id is not None:
-            pulumi.set(__self__, "agent_id", agent_id)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
         if requests is not None:
@@ -49,7 +49,7 @@ class GitOpsClusterArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        account identifier of the cluster.
+        Account identifier of the GitOps cluster.
         """
         return pulumi.get(self, "account_id")
 
@@ -58,10 +58,22 @@ class GitOpsClusterArgs:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[str]:
+        """
+        Agent identifier of the GitOps cluster.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_id", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        identifier of the cluster.
+        Identifier of the GitOps cluster.
         """
         return pulumi.get(self, "identifier")
 
@@ -70,34 +82,10 @@ class GitOpsClusterArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        """
-        project identifier of the cluster.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        agent identifier of the cluster.
-        """
-        return pulumi.get(self, "agent_id")
-
-    @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "agent_id", value)
-
-    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        organization identifier of the cluster.
+        Organization identifier of the cluster.
         """
         return pulumi.get(self, "org_id")
 
@@ -106,10 +94,22 @@ class GitOpsClusterArgs:
         pulumi.set(self, "org_id", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project identifier of the GitOps cluster.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]]]:
         """
-        query for cluster resources
+        Query for the GitOps cluster resources.
         """
         return pulumi.get(self, "queries")
 
@@ -121,7 +121,7 @@ class GitOpsClusterArgs:
     @pulumi.getter
     def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
         """
-        Cluster create/Update request.
+        Cluster create or update request.
         """
         return pulumi.get(self, "requests")
 
@@ -142,13 +142,13 @@ class _GitOpsClusterState:
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsCluster resources.
-        :param pulumi.Input[str] account_id: account identifier of the cluster.
-        :param pulumi.Input[str] agent_id: agent identifier of the cluster.
-        :param pulumi.Input[str] identifier: identifier of the cluster.
-        :param pulumi.Input[str] org_id: organization identifier of the cluster.
-        :param pulumi.Input[str] project_id: project identifier of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]] queries: query for cluster resources
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
+        :param pulumi.Input[str] org_id: Organization identifier of the cluster.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]] queries: Query for the GitOps cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -169,7 +169,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        account identifier of the cluster.
+        Account identifier of the GitOps cluster.
         """
         return pulumi.get(self, "account_id")
 
@@ -181,7 +181,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        agent identifier of the cluster.
+        Agent identifier of the GitOps cluster.
         """
         return pulumi.get(self, "agent_id")
 
@@ -193,7 +193,7 @@ class _GitOpsClusterState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        identifier of the cluster.
+        Identifier of the GitOps cluster.
         """
         return pulumi.get(self, "identifier")
 
@@ -205,7 +205,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        organization identifier of the cluster.
+        Organization identifier of the cluster.
         """
         return pulumi.get(self, "org_id")
 
@@ -217,7 +217,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        project identifier of the cluster.
+        Project identifier of the GitOps cluster.
         """
         return pulumi.get(self, "project_id")
 
@@ -229,7 +229,7 @@ class _GitOpsClusterState:
     @pulumi.getter
     def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterQueryArgs']]]]:
         """
-        query for cluster resources
+        Query for the GitOps cluster resources.
         """
         return pulumi.get(self, "queries")
 
@@ -241,7 +241,7 @@ class _GitOpsClusterState:
     @pulumi.getter
     def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]]:
         """
-        Cluster create/Update request.
+        Cluster create or update request.
         """
         return pulumi.get(self, "requests")
 
@@ -264,16 +264,80 @@ class GitOpsCluster(pulumi.CustomResource):
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterRequestArgs']]]]] = None,
                  __props__=None):
         """
-        Create a GitOpsCluster resource with the given unique name, props, and options.
+        Resource for creating a Harness Gitops Cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Clusters without Optional tags
+        example_git_ops_cluster = harness.platform.GitOpsCluster("exampleGitOpsCluster",
+            identifier="identifier",
+            account_id="account_id",
+            project_id="project_id",
+            org_id="org_id",
+            agent_id="agent_id",
+            requests=[harness.platform.GitOpsClusterRequestArgs(
+                upsert=False,
+                clusters=[harness.platform.GitOpsClusterRequestClusterArgs(
+                    server="https://kubernetes.default.svc",
+                    name="name",
+                    configs=[harness.platform.GitOpsClusterRequestClusterConfigArgs(
+                        tls_client_configs=[harness.platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs(
+                            insecure=True,
+                        )],
+                        cluster_connection_type="IN_CLUSTER",
+                    )],
+                )],
+            )])
+        # Clusters with Optional tags
+        example_platform_git_ops_cluster_git_ops_cluster = harness.platform.GitOpsCluster("examplePlatform/gitOpsClusterGitOpsCluster",
+            identifier="identifier",
+            account_id="account_id",
+            project_id="project_id",
+            org_id="org_id",
+            agent_id="agent_id",
+            requests=[harness.platform.GitOpsClusterRequestArgs(
+                upsert=False,
+                tags=["foo:bar"],
+                clusters=[harness.platform.GitOpsClusterRequestClusterArgs(
+                    server="https://kubernetes.default.svc",
+                    name="name",
+                    configs=[harness.platform.GitOpsClusterRequestClusterConfigArgs(
+                        tls_client_configs=[harness.platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs(
+                            insecure=True,
+                        )],
+                        cluster_connection_type="IN_CLUSTER",
+                    )],
+                )],
+            )])
+        ```
+
+        ## Import
+
+        Import a Account level Gitops Cluster
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+        ```
+
+         Import a Project level Gitops Cluster
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the cluster.
-        :param pulumi.Input[str] agent_id: agent identifier of the cluster.
-        :param pulumi.Input[str] identifier: identifier of the cluster.
-        :param pulumi.Input[str] org_id: organization identifier of the cluster.
-        :param pulumi.Input[str] project_id: project identifier of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterQueryArgs']]]] queries: query for cluster resources
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterRequestArgs']]]] requests: Cluster create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
+        :param pulumi.Input[str] org_id: Organization identifier of the cluster.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterQueryArgs']]]] queries: Query for the GitOps cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterRequestArgs']]]] requests: Cluster create or update request.
         """
         ...
     @overload
@@ -282,7 +346,71 @@ class GitOpsCluster(pulumi.CustomResource):
                  args: GitOpsClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GitOpsCluster resource with the given unique name, props, and options.
+        Resource for creating a Harness Gitops Cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Clusters without Optional tags
+        example_git_ops_cluster = harness.platform.GitOpsCluster("exampleGitOpsCluster",
+            identifier="identifier",
+            account_id="account_id",
+            project_id="project_id",
+            org_id="org_id",
+            agent_id="agent_id",
+            requests=[harness.platform.GitOpsClusterRequestArgs(
+                upsert=False,
+                clusters=[harness.platform.GitOpsClusterRequestClusterArgs(
+                    server="https://kubernetes.default.svc",
+                    name="name",
+                    configs=[harness.platform.GitOpsClusterRequestClusterConfigArgs(
+                        tls_client_configs=[harness.platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs(
+                            insecure=True,
+                        )],
+                        cluster_connection_type="IN_CLUSTER",
+                    )],
+                )],
+            )])
+        # Clusters with Optional tags
+        example_platform_git_ops_cluster_git_ops_cluster = harness.platform.GitOpsCluster("examplePlatform/gitOpsClusterGitOpsCluster",
+            identifier="identifier",
+            account_id="account_id",
+            project_id="project_id",
+            org_id="org_id",
+            agent_id="agent_id",
+            requests=[harness.platform.GitOpsClusterRequestArgs(
+                upsert=False,
+                tags=["foo:bar"],
+                clusters=[harness.platform.GitOpsClusterRequestClusterArgs(
+                    server="https://kubernetes.default.svc",
+                    name="name",
+                    configs=[harness.platform.GitOpsClusterRequestClusterConfigArgs(
+                        tls_client_configs=[harness.platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs(
+                            insecure=True,
+                        )],
+                        cluster_connection_type="IN_CLUSTER",
+                    )],
+                )],
+            )])
+        ```
+
+        ## Import
+
+        Import a Account level Gitops Cluster
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+        ```
+
+         Import a Project level Gitops Cluster
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param GitOpsClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -317,13 +445,13 @@ class GitOpsCluster(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if agent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["org_id"] = org_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["queries"] = queries
             __props__.__dict__["requests"] = requests
@@ -351,13 +479,13 @@ class GitOpsCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the cluster.
-        :param pulumi.Input[str] agent_id: agent identifier of the cluster.
-        :param pulumi.Input[str] identifier: identifier of the cluster.
-        :param pulumi.Input[str] org_id: organization identifier of the cluster.
-        :param pulumi.Input[str] project_id: project identifier of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterQueryArgs']]]] queries: query for cluster resources
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterRequestArgs']]]] requests: Cluster create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
+        :param pulumi.Input[str] org_id: Organization identifier of the cluster.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterQueryArgs']]]] queries: Query for the GitOps cluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsClusterRequestArgs']]]] requests: Cluster create or update request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -376,15 +504,15 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        account identifier of the cluster.
+        Account identifier of the GitOps cluster.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> pulumi.Output[Optional[str]]:
+    def agent_id(self) -> pulumi.Output[str]:
         """
-        agent identifier of the cluster.
+        Agent identifier of the GitOps cluster.
         """
         return pulumi.get(self, "agent_id")
 
@@ -392,7 +520,7 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        identifier of the cluster.
+        Identifier of the GitOps cluster.
         """
         return pulumi.get(self, "identifier")
 
@@ -400,15 +528,15 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        organization identifier of the cluster.
+        Organization identifier of the cluster.
         """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        project identifier of the cluster.
+        Project identifier of the GitOps cluster.
         """
         return pulumi.get(self, "project_id")
 
@@ -416,7 +544,7 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter
     def queries(self) -> pulumi.Output[Optional[Sequence['outputs.GitOpsClusterQuery']]]:
         """
-        query for cluster resources
+        Query for the GitOps cluster resources.
         """
         return pulumi.get(self, "queries")
 
@@ -424,7 +552,7 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter
     def requests(self) -> pulumi.Output[Optional[Sequence['outputs.GitOpsClusterRequest']]]:
         """
-        Cluster create/Update request.
+        Cluster create or update request.
         """
         return pulumi.get(self, "requests")
 

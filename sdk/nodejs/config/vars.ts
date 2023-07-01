@@ -19,7 +19,8 @@ Object.defineProperty(exports, "accountId", {
 });
 
 /**
- * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+ * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+ * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
  */
 export declare const apiKey: string | undefined;
 Object.defineProperty(exports, "apiKey", {
@@ -43,7 +44,8 @@ Object.defineProperty(exports, "endpoint", {
 
 /**
  * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
- * variable.
+ * variable. For more information to create an API key in NextGen, see
+ * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
  */
 export declare const platformApiKey: string | undefined;
 Object.defineProperty(exports, "platformApiKey", {

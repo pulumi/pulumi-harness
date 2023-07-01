@@ -33,14 +33,14 @@ class BitbucketConnectorArgs:
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input['BitbucketConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] url: Url of the BitBucket repository or account.
+        :param pulumi.Input[str] url: URL of the BitBucket repository or account.
         :param pulumi.Input['BitbucketConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         pulumi.set(__self__, "connection_type", connection_type)
@@ -104,7 +104,7 @@ class BitbucketConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        Url of the BitBucket repository or account.
+        URL of the BitBucket repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -128,7 +128,7 @@ class BitbucketConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -164,7 +164,7 @@ class BitbucketConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -176,7 +176,7 @@ class BitbucketConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -188,7 +188,7 @@ class BitbucketConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -229,14 +229,14 @@ class _BitbucketConnectorState:
         :param pulumi.Input['BitbucketConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input['BitbucketConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the BitBucket repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the BitBucket repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         if api_authentication is not None:
@@ -304,7 +304,7 @@ class _BitbucketConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -352,7 +352,7 @@ class _BitbucketConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -364,7 +364,7 @@ class _BitbucketConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -376,7 +376,7 @@ class _BitbucketConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -388,7 +388,7 @@ class _BitbucketConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Url of the BitBucket repository or account.
+        URL of the BitBucket repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -430,19 +430,61 @@ class BitbucketConnector(pulumi.CustomResource):
         """
         Resource for creating a Bitbucket connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials ssh
+        test = harness.platform.BitbucketConnector("test",
+            connection_type="Account",
+            credentials=harness.platform.BitbucketConnectorCredentialsArgs(
+                ssh=harness.platform.BitbucketConnectorCredentialsSshArgs(
+                    ssh_key_ref="account.secret_id",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://bitbucket.com/account",
+            validation_repo="some_repo")
+        ```
+
+        ## Import
+
+        Import account level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <connector_id>
+        ```
+
+         Import org level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BitbucketConnectorApiAuthenticationArgs']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input[pulumi.InputType['BitbucketConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the BitBucket repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the BitBucket repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         ...
@@ -453,6 +495,48 @@ class BitbucketConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Bitbucket connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials ssh
+        test = harness.platform.BitbucketConnector("test",
+            connection_type="Account",
+            credentials=harness.platform.BitbucketConnectorCredentialsArgs(
+                ssh=harness.platform.BitbucketConnectorCredentialsSshArgs(
+                    ssh_key_ref="account.secret_id",
+                ),
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifier",
+            tags=["foo:bar"],
+            url="https://bitbucket.com/account",
+            validation_repo="some_repo")
+        ```
+
+        ## Import
+
+        Import account level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <connector_id>
+        ```
+
+         Import org level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level bitbucket connector
+
+        ```sh
+         $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param BitbucketConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -542,14 +626,14 @@ class BitbucketConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BitbucketConnectorApiAuthenticationArgs']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
         :param pulumi.Input[pulumi.InputType['BitbucketConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] url: Url of the BitBucket repository or account.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] url: URL of the BitBucket repository or account.
         :param pulumi.Input[str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -598,7 +682,7 @@ class BitbucketConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -630,7 +714,7 @@ class BitbucketConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -638,7 +722,7 @@ class BitbucketConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -646,7 +730,7 @@ class BitbucketConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -654,7 +738,7 @@ class BitbucketConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Url of the BitBucket repository or account.
+        URL of the BitBucket repository or account.
         """
         return pulumi.get(self, "url")
 

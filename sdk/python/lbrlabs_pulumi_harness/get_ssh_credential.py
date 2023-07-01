@@ -90,9 +90,9 @@ def get_ssh_credential(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getSshCredential:getSshCredential', __args__, opts=opts, typ=GetSshCredentialResult).value
 
     return AwaitableGetSshCredentialResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        usage_scopes=__ret__.usage_scopes)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
 
 
 @_utilities.lift_output_func(get_ssh_credential)

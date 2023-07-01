@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PipelineArgs', 'Pipeline']
 
@@ -19,17 +21,23 @@ class PipelineArgs:
                  project_id: pulumi.Input[str],
                  yaml: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['PipelineGitDetailsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_applied: Optional[pulumi.Input[bool]] = None,
+                 template_applied_pipeline_yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[str] yaml: YAML of the pipeline.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input['PipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
+        :param pulumi.Input[str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -37,10 +45,16 @@ class PipelineArgs:
         pulumi.set(__self__, "yaml", yaml)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if template_applied is not None:
+            pulumi.set(__self__, "template_applied", template_applied)
+        if template_applied_pipeline_yaml is not None:
+            pulumi.set(__self__, "template_applied_pipeline_yaml", template_applied_pipeline_yaml)
 
     @property
     @pulumi.getter
@@ -58,7 +72,7 @@ class PipelineArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -70,7 +84,7 @@ class PipelineArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -82,7 +96,7 @@ class PipelineArgs:
     @pulumi.getter
     def yaml(self) -> pulumi.Input[str]:
         """
-        YAML of the pipeline.
+        YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -103,6 +117,18 @@ class PipelineArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['PipelineGitDetailsArgs']]:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['PipelineGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -118,7 +144,7 @@ class PipelineArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -126,29 +152,61 @@ class PipelineArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="templateApplied")
+    def template_applied(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, returns Pipeline YAML with Templates applied on it.
+        """
+        return pulumi.get(self, "template_applied")
+
+    @template_applied.setter
+    def template_applied(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "template_applied", value)
+
+    @property
+    @pulumi.getter(name="templateAppliedPipelineYaml")
+    def template_applied_pipeline_yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pipeline YAML after resolving Templates (returned as a String).
+        """
+        return pulumi.get(self, "template_applied_pipeline_yaml")
+
+    @template_applied_pipeline_yaml.setter
+    def template_applied_pipeline_yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_applied_pipeline_yaml", value)
+
 
 @pulumi.input_type
 class _PipelineState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['PipelineGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_applied: Optional[pulumi.Input[bool]] = None,
+                 template_applied_pipeline_yaml: Optional[pulumi.Input[str]] = None,
                  yaml: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input['PipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] yaml: YAML of the pipeline.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
+        :param pulumi.Input[str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
+        :param pulumi.Input[str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -159,6 +217,10 @@ class _PipelineState:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if template_applied is not None:
+            pulumi.set(__self__, "template_applied", template_applied)
+        if template_applied_pipeline_yaml is not None:
+            pulumi.set(__self__, "template_applied_pipeline_yaml", template_applied_pipeline_yaml)
         if yaml is not None:
             pulumi.set(__self__, "yaml", yaml)
 
@@ -173,6 +235,18 @@ class _PipelineState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['PipelineGitDetailsArgs']]:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['PipelineGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
 
     @property
     @pulumi.getter
@@ -202,7 +276,7 @@ class _PipelineState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -214,7 +288,7 @@ class _PipelineState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -226,7 +300,7 @@ class _PipelineState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -235,10 +309,34 @@ class _PipelineState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="templateApplied")
+    def template_applied(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, returns Pipeline YAML with Templates applied on it.
+        """
+        return pulumi.get(self, "template_applied")
+
+    @template_applied.setter
+    def template_applied(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "template_applied", value)
+
+    @property
+    @pulumi.getter(name="templateAppliedPipelineYaml")
+    def template_applied_pipeline_yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pipeline YAML after resolving Templates (returned as a String).
+        """
+        return pulumi.get(self, "template_applied_pipeline_yaml")
+
+    @template_applied_pipeline_yaml.setter
+    def template_applied_pipeline_yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_applied_pipeline_yaml", value)
+
+    @property
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        YAML of the pipeline.
+        YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -253,11 +351,14 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_applied: Optional[pulumi.Input[bool]] = None,
+                 template_applied_pipeline_yaml: Optional[pulumi.Input[str]] = None,
                  yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -270,6 +371,14 @@ class Pipeline(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         example = harness.platform.Pipeline("example",
+            git_details=harness.platform.PipelineGitDetailsArgs(
+                branch_name="branchName",
+                commit_message="commitMessage",
+                connector_ref="connectorRef",
+                file_path="filePath",
+                repo_name="repoName",
+                store_type="REMOTE",
+            ),
             identifier="identifier",
             org_id="orgIdentifier",
             project_id="projectIdentifier",
@@ -364,21 +473,24 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Import using pipeline id
+        Import pipeline
 
         ```sh
-         $ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] yaml: YAML of the pipeline.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
+        :param pulumi.Input[str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
+        :param pulumi.Input[str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -396,6 +508,14 @@ class Pipeline(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         example = harness.platform.Pipeline("example",
+            git_details=harness.platform.PipelineGitDetailsArgs(
+                branch_name="branchName",
+                commit_message="commitMessage",
+                connector_ref="connectorRef",
+                file_path="filePath",
+                repo_name="repoName",
+                store_type="REMOTE",
+            ),
             identifier="identifier",
             org_id="orgIdentifier",
             project_id="projectIdentifier",
@@ -490,10 +610,10 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Import using pipeline id
+        Import pipeline
 
         ```sh
-         $ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+         $ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -512,11 +632,14 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_applied: Optional[pulumi.Input[bool]] = None,
+                 template_applied_pipeline_yaml: Optional[pulumi.Input[str]] = None,
                  yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -528,6 +651,7 @@ class Pipeline(pulumi.CustomResource):
             __props__ = PipelineArgs.__new__(PipelineArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["git_details"] = git_details
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -539,6 +663,8 @@ class Pipeline(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["template_applied"] = template_applied
+            __props__.__dict__["template_applied_pipeline_yaml"] = template_applied_pipeline_yaml
             if yaml is None and not opts.urn:
                 raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
@@ -553,11 +679,14 @@ class Pipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            template_applied: Optional[pulumi.Input[bool]] = None,
+            template_applied_pipeline_yaml: Optional[pulumi.Input[str]] = None,
             yaml: Optional[pulumi.Input[str]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
@@ -567,23 +696,29 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] yaml: YAML of the pipeline.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
+        :param pulumi.Input[str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
+        :param pulumi.Input[str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PipelineState.__new__(_PipelineState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["git_details"] = git_details
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["template_applied"] = template_applied
+        __props__.__dict__["template_applied_pipeline_yaml"] = template_applied_pipeline_yaml
         __props__.__dict__["yaml"] = yaml
         return Pipeline(resource_name, opts=opts, __props__=__props__)
 
@@ -594,6 +729,14 @@ class Pipeline(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> pulumi.Output[Optional['outputs.PipelineGitDetails']]:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
@@ -615,7 +758,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -623,7 +766,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -631,15 +774,31 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateApplied")
+    def template_applied(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, returns Pipeline YAML with Templates applied on it.
+        """
+        return pulumi.get(self, "template_applied")
+
+    @property
+    @pulumi.getter(name="templateAppliedPipelineYaml")
+    def template_applied_pipeline_yaml(self) -> pulumi.Output[Optional[str]]:
+        """
+        Pipeline YAML after resolving Templates (returned as a String).
+        """
+        return pulumi.get(self, "template_applied_pipeline_yaml")
 
     @property
     @pulumi.getter
     def yaml(self) -> pulumi.Output[str]:
         """
-        YAML of the pipeline.
+        YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

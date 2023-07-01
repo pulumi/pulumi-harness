@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getUser:getUser", {
         "email": args.email,
         "id": args.id,
@@ -71,9 +68,11 @@ export interface GetUserResult {
      */
     readonly name: string;
 }
-
+/**
+ * Data source for retrieving a Harness user
+ */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply(a => getUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
 
 /**

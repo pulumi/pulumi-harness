@@ -18,29 +18,28 @@ class GitOpsAgentArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
-                 org_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GitOpsAgent resource.
-        :param pulumi.Input[str] account_id: account identifier of the agent.
-        :param pulumi.Input[str] identifier: identifier of the agent.
-        :param pulumi.Input[str] org_id: org identifier of the agent.
-        :param pulumi.Input[str] project_id: org identifier of the agent.
-        :param pulumi.Input[str] type: type of the agent.
-        :param pulumi.Input[str] description: description of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: tags for the agent.
-        :param pulumi.Input[str] name: name of the agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tags for the agent.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
+        :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
+               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        :param pulumi.Input[str] description: Description of the GitOps agent.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: Metadata of the agent.
+        :param pulumi.Input[str] name: Name of the GitOps agent.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -48,6 +47,10 @@ class GitOpsAgentArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -55,7 +58,7 @@ class GitOpsAgentArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        account identifier of the agent.
+        Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
 
@@ -67,7 +70,7 @@ class GitOpsAgentArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        identifier of the agent.
+        Identifier of the GitOps agent.
         """
         return pulumi.get(self, "identifier")
 
@@ -76,34 +79,11 @@ class GitOpsAgentArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Input[str]:
-        """
-        org identifier of the agent.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "org_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        """
-        org identifier of the agent.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
-
-    @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of the agent.
+        Default: "AGENT*TYPE*UNSET"
+        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 
@@ -115,7 +95,7 @@ class GitOpsAgentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        description of the agent.
+        Description of the GitOps agent.
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +107,7 @@ class GitOpsAgentArgs:
     @pulumi.getter
     def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]]]:
         """
-        tags for the agent.
+        Metadata of the agent.
         """
         return pulumi.get(self, "metadatas")
 
@@ -139,7 +119,7 @@ class GitOpsAgentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the agent.
+        Name of the GitOps agent.
         """
         return pulumi.get(self, "name")
 
@@ -148,10 +128,34 @@ class GitOpsAgentArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Organization identifier of the GitOps agent.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project identifier of the GitOps agent.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        tags for the agent.
+        Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         """
         return pulumi.get(self, "tags")
 
@@ -174,15 +178,16 @@ class _GitOpsAgentState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GitOpsAgent resources.
-        :param pulumi.Input[str] account_id: account identifier of the agent.
-        :param pulumi.Input[str] description: description of the agent.
-        :param pulumi.Input[str] identifier: identifier of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: tags for the agent.
-        :param pulumi.Input[str] name: name of the agent.
-        :param pulumi.Input[str] org_id: org identifier of the agent.
-        :param pulumi.Input[str] project_id: org identifier of the agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tags for the agent.
-        :param pulumi.Input[str] type: type of the agent.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
+        :param pulumi.Input[str] description: Description of the GitOps agent.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: Metadata of the agent.
+        :param pulumi.Input[str] name: Name of the GitOps agent.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+        :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
+               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -207,7 +212,7 @@ class _GitOpsAgentState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        account identifier of the agent.
+        Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
 
@@ -219,7 +224,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        description of the agent.
+        Description of the GitOps agent.
         """
         return pulumi.get(self, "description")
 
@@ -231,7 +236,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        identifier of the agent.
+        Identifier of the GitOps agent.
         """
         return pulumi.get(self, "identifier")
 
@@ -243,7 +248,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]]]:
         """
-        tags for the agent.
+        Metadata of the agent.
         """
         return pulumi.get(self, "metadatas")
 
@@ -255,7 +260,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the agent.
+        Name of the GitOps agent.
         """
         return pulumi.get(self, "name")
 
@@ -267,7 +272,7 @@ class _GitOpsAgentState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        org identifier of the agent.
+        Organization identifier of the GitOps agent.
         """
         return pulumi.get(self, "org_id")
 
@@ -279,7 +284,7 @@ class _GitOpsAgentState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        org identifier of the agent.
+        Project identifier of the GitOps agent.
         """
         return pulumi.get(self, "project_id")
 
@@ -291,7 +296,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        tags for the agent.
+        Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         """
         return pulumi.get(self, "tags")
 
@@ -303,7 +308,8 @@ class _GitOpsAgentState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        type of the agent.
+        Default: "AGENT*TYPE*UNSET"
+        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 
@@ -328,18 +334,52 @@ class GitOpsAgent(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GitOpsAgent resource with the given unique name, props, and options.
+        Resource for creating a Harness Gitops Agents.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.GitOpsAgent("example",
+            account_id="account_id",
+            identifier="identifier",
+            metadatas=[harness.platform.GitOpsAgentMetadataArgs(
+                high_availability=True,
+                namespace="namespace",
+            )],
+            org_id="org_id",
+            project_id="project_id",
+            type="MANAGED_ARGO_PROVIDER")
+        ```
+
+        ## Import
+
+        Import a Account level Gitops Agent
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
+        ```
+
+         Import a Project level Gitops Agent
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the agent.
-        :param pulumi.Input[str] description: description of the agent.
-        :param pulumi.Input[str] identifier: identifier of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: tags for the agent.
-        :param pulumi.Input[str] name: name of the agent.
-        :param pulumi.Input[str] org_id: org identifier of the agent.
-        :param pulumi.Input[str] project_id: org identifier of the agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tags for the agent.
-        :param pulumi.Input[str] type: type of the agent.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
+        :param pulumi.Input[str] description: Description of the GitOps agent.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: Metadata of the agent.
+        :param pulumi.Input[str] name: Name of the GitOps agent.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+        :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
+               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         ...
     @overload
@@ -348,7 +388,40 @@ class GitOpsAgent(pulumi.CustomResource):
                  args: GitOpsAgentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GitOpsAgent resource with the given unique name, props, and options.
+        Resource for creating a Harness Gitops Agents.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        example = harness.platform.GitOpsAgent("example",
+            account_id="account_id",
+            identifier="identifier",
+            metadatas=[harness.platform.GitOpsAgentMetadataArgs(
+                high_availability=True,
+                namespace="namespace",
+            )],
+            org_id="org_id",
+            project_id="project_id",
+            type="MANAGED_ARGO_PROVIDER")
+        ```
+
+        ## Import
+
+        Import a Account level Gitops Agent
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
+        ```
+
+         Import a Project level Gitops Agent
+
+        ```sh
+         $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param GitOpsAgentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -391,11 +464,7 @@ class GitOpsAgent(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["name"] = name
-            if org_id is None and not opts.urn:
-                raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
@@ -427,15 +496,16 @@ class GitOpsAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the agent.
-        :param pulumi.Input[str] description: description of the agent.
-        :param pulumi.Input[str] identifier: identifier of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: tags for the agent.
-        :param pulumi.Input[str] name: name of the agent.
-        :param pulumi.Input[str] org_id: org identifier of the agent.
-        :param pulumi.Input[str] project_id: org identifier of the agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: tags for the agent.
-        :param pulumi.Input[str] type: type of the agent.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
+        :param pulumi.Input[str] description: Description of the GitOps agent.
+        :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: Metadata of the agent.
+        :param pulumi.Input[str] name: Name of the GitOps agent.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+        :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
+               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -456,7 +526,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        account identifier of the agent.
+        Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
 
@@ -464,7 +534,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        description of the agent.
+        Description of the GitOps agent.
         """
         return pulumi.get(self, "description")
 
@@ -472,7 +542,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        identifier of the agent.
+        Identifier of the GitOps agent.
         """
         return pulumi.get(self, "identifier")
 
@@ -480,7 +550,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def metadatas(self) -> pulumi.Output[Optional[Sequence['outputs.GitOpsAgentMetadata']]]:
         """
-        tags for the agent.
+        Metadata of the agent.
         """
         return pulumi.get(self, "metadatas")
 
@@ -488,23 +558,23 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        name of the agent.
+        Name of the GitOps agent.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[str]:
+    def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        org identifier of the agent.
+        Organization identifier of the GitOps agent.
         """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        org identifier of the agent.
+        Project identifier of the GitOps agent.
         """
         return pulumi.get(self, "project_id")
 
@@ -512,7 +582,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        tags for the agent.
+        Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         """
         return pulumi.get(self, "tags")
 
@@ -520,7 +590,8 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        type of the agent.
+        Default: "AGENT*TYPE*UNSET"
+        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 

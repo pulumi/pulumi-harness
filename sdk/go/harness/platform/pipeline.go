@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,10 +28,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipeline(ctx, "example", &platform.PipelineArgs{
+//				GitDetails: &platform.PipelineGitDetailsArgs{
+//					BranchName:    pulumi.String("branchName"),
+//					CommitMessage: pulumi.String("commitMessage"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					FilePath:      pulumi.String("filePath"),
+//					RepoName:      pulumi.String("repoName"),
+//					StoreType:     pulumi.String("REMOTE"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifier"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
-//				Yaml: pulumi.String(fmt.Sprintf(`    pipeline:
+//				Yaml: pulumi.String(`    pipeline:
 //	        name: name
 //	        identifier: identifier
 //	        allowStageExecutions: false
@@ -119,7 +125,7 @@ import (
 //	                            action:
 //	                                type: StageRollback
 //
-// `)),
+// `),
 //
 //			})
 //			if err != nil {
@@ -133,11 +139,11 @@ import (
 //
 // ## Import
 //
-// # Import using pipeline id
+// # Import pipeline
 //
 // ```sh
 //
-//	$ pulumi import harness:platform/pipeline:Pipeline example <pipeline_id>
+//	$ pulumi import harness:platform/pipeline:Pipeline example <org_id>/<project_id>/<pipeline_id>
 //
 // ```
 type Pipeline struct {
@@ -145,17 +151,23 @@ type Pipeline struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrOutput `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrOutput `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -203,34 +215,46 @@ func GetPipeline(ctx *pulumi.Context,
 type pipelineState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied *bool `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml *string `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type PipelineState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrInput
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrInput
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -241,17 +265,23 @@ func (PipelineState) ElementType() reflect.Type {
 type pipelineArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied *bool `pulumi:"templateApplied"`
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml *string `pulumi:"templateAppliedPipelineYaml"`
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -259,17 +289,23 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails PipelineGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// YAML of the pipeline.
+	// If true, returns Pipeline YAML with Templates applied on it.
+	TemplateApplied pulumi.BoolPtrInput
+	// Pipeline YAML after resolving Templates (returned as a String).
+	TemplateAppliedPipelineYaml pulumi.StringPtrInput
+	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -365,6 +401,11 @@ func (o PipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Contains parameters related to creating an Entity for Git Experience.
+func (o PipelineOutput) GitDetails() PipelineGitDetailsPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineGitDetailsPtrOutput { return v.GitDetails }).(PipelineGitDetailsPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o PipelineOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -375,22 +416,32 @@ func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o PipelineOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o PipelineOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o PipelineOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// YAML of the pipeline.
+// If true, returns Pipeline YAML with Templates applied on it.
+func (o PipelineOutput) TemplateApplied() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.TemplateApplied }).(pulumi.BoolPtrOutput)
+}
+
+// Pipeline YAML after resolving Templates (returned as a String).
+func (o PipelineOutput) TemplateAppliedPipelineYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.TemplateAppliedPipelineYaml }).(pulumi.StringPtrOutput)
+}
+
+// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o PipelineOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

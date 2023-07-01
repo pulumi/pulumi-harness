@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsRepositoryRepo {
-    private String connectionType;
+    private @Nullable String connectionType;
     private @Nullable Boolean enableLfs;
     private @Nullable Boolean enableOci;
     private @Nullable String githubAppEnterpriseBaseUrl;
@@ -26,7 +26,11 @@ public final class GetGitopsRepositoryRepo {
     private @Nullable String password;
     private String project;
     private @Nullable String proxy;
-    private String repo;
+    /**
+     * @return Repo details holding application configurations.
+     * 
+     */
+    private @Nullable String repo;
     private @Nullable String sshPrivateKey;
     private @Nullable String tlsClientCertData;
     private @Nullable String tlsClientCertKey;
@@ -34,8 +38,8 @@ public final class GetGitopsRepositoryRepo {
     private @Nullable String username;
 
     private GetGitopsRepositoryRepo() {}
-    public String connectionType() {
-        return this.connectionType;
+    public Optional<String> connectionType() {
+        return Optional.ofNullable(this.connectionType);
     }
     public Optional<Boolean> enableLfs() {
         return Optional.ofNullable(this.enableLfs);
@@ -76,8 +80,12 @@ public final class GetGitopsRepositoryRepo {
     public Optional<String> proxy() {
         return Optional.ofNullable(this.proxy);
     }
-    public String repo() {
-        return this.repo;
+    /**
+     * @return Repo details holding application configurations.
+     * 
+     */
+    public Optional<String> repo() {
+        return Optional.ofNullable(this.repo);
     }
     public Optional<String> sshPrivateKey() {
         return Optional.ofNullable(this.sshPrivateKey);
@@ -104,7 +112,7 @@ public final class GetGitopsRepositoryRepo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String connectionType;
+        private @Nullable String connectionType;
         private @Nullable Boolean enableLfs;
         private @Nullable Boolean enableOci;
         private @Nullable String githubAppEnterpriseBaseUrl;
@@ -118,7 +126,7 @@ public final class GetGitopsRepositoryRepo {
         private @Nullable String password;
         private String project;
         private @Nullable String proxy;
-        private String repo;
+        private @Nullable String repo;
         private @Nullable String sshPrivateKey;
         private @Nullable String tlsClientCertData;
         private @Nullable String tlsClientCertKey;
@@ -150,8 +158,8 @@ public final class GetGitopsRepositoryRepo {
         }
 
         @CustomType.Setter
-        public Builder connectionType(String connectionType) {
-            this.connectionType = Objects.requireNonNull(connectionType);
+        public Builder connectionType(@Nullable String connectionType) {
+            this.connectionType = connectionType;
             return this;
         }
         @CustomType.Setter
@@ -220,8 +228,8 @@ public final class GetGitopsRepositoryRepo {
             return this;
         }
         @CustomType.Setter
-        public Builder repo(String repo) {
-            this.repo = Objects.requireNonNull(repo);
+        public Builder repo(@Nullable String repo) {
+            this.repo = repo;
             return this;
         }
         @CustomType.Setter

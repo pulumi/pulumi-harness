@@ -19,14 +19,14 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final GitOpsClusterArgs Empty = new GitOpsClusterArgs();
 
     /**
-     * account identifier of the cluster.
+     * Account identifier of the GitOps cluster.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the cluster.
+     * @return Account identifier of the GitOps cluster.
      * 
      */
     public Output<String> accountId() {
@@ -34,29 +34,29 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * agent identifier of the cluster.
+     * Agent identifier of the GitOps cluster.
      * 
      */
-    @Import(name="agentId")
-    private @Nullable Output<String> agentId;
+    @Import(name="agentId", required=true)
+    private Output<String> agentId;
 
     /**
-     * @return agent identifier of the cluster.
+     * @return Agent identifier of the GitOps cluster.
      * 
      */
-    public Optional<Output<String>> agentId() {
-        return Optional.ofNullable(this.agentId);
+    public Output<String> agentId() {
+        return this.agentId;
     }
 
     /**
-     * identifier of the cluster.
+     * Identifier of the GitOps cluster.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return Identifier of the GitOps cluster.
      * 
      */
     public Output<String> identifier() {
@@ -64,14 +64,14 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * organization identifier of the cluster.
+     * Organization identifier of the cluster.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return organization identifier of the cluster.
+     * @return Organization identifier of the cluster.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -79,29 +79,29 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * project identifier of the cluster.
+     * Project identifier of the GitOps cluster.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
-     * @return project identifier of the cluster.
+     * @return Project identifier of the GitOps cluster.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
-     * query for cluster resources
+     * Query for the GitOps cluster resources.
      * 
      */
     @Import(name="queries")
     private @Nullable Output<List<GitOpsClusterQueryArgs>> queries;
 
     /**
-     * @return query for cluster resources
+     * @return Query for the GitOps cluster resources.
      * 
      */
     public Optional<Output<List<GitOpsClusterQueryArgs>>> queries() {
@@ -109,14 +109,14 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster create/Update request.
+     * Cluster create or update request.
      * 
      */
     @Import(name="requests")
     private @Nullable Output<List<GitOpsClusterRequestArgs>> requests;
 
     /**
-     * @return Cluster create/Update request.
+     * @return Cluster create or update request.
      * 
      */
     public Optional<Output<List<GitOpsClusterRequestArgs>>> requests() {
@@ -154,7 +154,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId account identifier of the cluster.
+         * @param accountId Account identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId account identifier of the cluster.
+         * @param accountId Account identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -175,18 +175,18 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentId agent identifier of the cluster.
+         * @param agentId Agent identifier of the GitOps cluster.
          * 
          * @return builder
          * 
          */
-        public Builder agentId(@Nullable Output<String> agentId) {
+        public Builder agentId(Output<String> agentId) {
             $.agentId = agentId;
             return this;
         }
 
         /**
-         * @param agentId agent identifier of the cluster.
+         * @param agentId Agent identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier Identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier Identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId organization identifier of the cluster.
+         * @param orgId Organization identifier of the cluster.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId organization identifier of the cluster.
+         * @param orgId Organization identifier of the cluster.
          * 
          * @return builder
          * 
@@ -238,18 +238,18 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId project identifier of the cluster.
+         * @param projectId Project identifier of the GitOps cluster.
          * 
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
         /**
-         * @param projectId project identifier of the cluster.
+         * @param projectId Project identifier of the GitOps cluster.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queries query for cluster resources
+         * @param queries Query for the GitOps cluster resources.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queries query for cluster resources
+         * @param queries Query for the GitOps cluster resources.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queries query for cluster resources
+         * @param queries Query for the GitOps cluster resources.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requests Cluster create/Update request.
+         * @param requests Cluster create or update request.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requests Cluster create/Update request.
+         * @param requests Cluster create or update request.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requests Cluster create/Update request.
+         * @param requests Cluster create or update request.
          * 
          * @return builder
          * 
@@ -322,8 +322,8 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public GitOpsClusterArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            $.agentId = Objects.requireNonNull($.agentId, "expected parameter 'agentId' to be non-null");
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             return $;
         }
     }

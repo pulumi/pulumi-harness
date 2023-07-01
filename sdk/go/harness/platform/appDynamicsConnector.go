@@ -7,11 +7,95 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an App Dynamics connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAppDynamicsConnector(ctx, "token", &platform.AppDynamicsConnectorArgs{
+//				AccountName: pulumi.String("myaccount"),
+//				ApiToken: &platform.AppDynamicsConnectorApiTokenArgs{
+//					ClientId:        pulumi.String("client_id"),
+//					ClientSecretRef: pulumi.String("account.secret_id"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://appdynamics.com/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewAppDynamicsConnector(ctx, "test", &platform.AppDynamicsConnectorArgs{
+//				AccountName: pulumi.String("myaccount"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://appdynamics.com/"),
+//				UsernamePassword: &platform.AppDynamicsConnectorUsernamePasswordArgs{
+//					PasswordRef: pulumi.String("account.secret_id"),
+//					Username:    pulumi.String("username"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level appdynamics connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <connector_id>
+//
+// ```
+//
+//	Import org level appdynamics connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level appdynamics connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type AppDynamicsConnector struct {
 	pulumi.CustomResourceState
 
@@ -19,7 +103,7 @@ type AppDynamicsConnector struct {
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Authenticate to App Dynamics using api token.
 	ApiToken AppDynamicsConnectorApiTokenPtrOutput `pulumi:"apiToken"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -27,13 +111,13 @@ type AppDynamicsConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Authenticate to App Dynamics using username and password.
 	UsernamePassword AppDynamicsConnectorUsernamePasswordPtrOutput `pulumi:"usernamePassword"`
@@ -82,7 +166,7 @@ type appDynamicsConnectorState struct {
 	AccountName *string `pulumi:"accountName"`
 	// Authenticate to App Dynamics using api token.
 	ApiToken *AppDynamicsConnectorApiToken `pulumi:"apiToken"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -90,13 +174,13 @@ type appDynamicsConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url *string `pulumi:"url"`
 	// Authenticate to App Dynamics using username and password.
 	UsernamePassword *AppDynamicsConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -107,7 +191,7 @@ type AppDynamicsConnectorState struct {
 	AccountName pulumi.StringPtrInput
 	// Authenticate to App Dynamics using api token.
 	ApiToken AppDynamicsConnectorApiTokenPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -115,13 +199,13 @@ type AppDynamicsConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url pulumi.StringPtrInput
 	// Authenticate to App Dynamics using username and password.
 	UsernamePassword AppDynamicsConnectorUsernamePasswordPtrInput
@@ -136,7 +220,7 @@ type appDynamicsConnectorArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Authenticate to App Dynamics using api token.
 	ApiToken *AppDynamicsConnectorApiToken `pulumi:"apiToken"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -144,13 +228,13 @@ type appDynamicsConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url string `pulumi:"url"`
 	// Authenticate to App Dynamics using username and password.
 	UsernamePassword *AppDynamicsConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -162,7 +246,7 @@ type AppDynamicsConnectorArgs struct {
 	AccountName pulumi.StringInput
 	// Authenticate to App Dynamics using api token.
 	ApiToken AppDynamicsConnectorApiTokenPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -170,13 +254,13 @@ type AppDynamicsConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the App Dynamics controller.
+	// URL of the App Dynamics controller.
 	Url pulumi.StringInput
 	// Authenticate to App Dynamics using username and password.
 	UsernamePassword AppDynamicsConnectorUsernamePasswordPtrInput
@@ -279,7 +363,7 @@ func (o AppDynamicsConnectorOutput) ApiToken() AppDynamicsConnectorApiTokenPtrOu
 	return o.ApplyT(func(v *AppDynamicsConnector) AppDynamicsConnectorApiTokenPtrOutput { return v.ApiToken }).(AppDynamicsConnectorApiTokenPtrOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o AppDynamicsConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -299,22 +383,22 @@ func (o AppDynamicsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o AppDynamicsConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o AppDynamicsConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o AppDynamicsConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the App Dynamics controller.
+// URL of the App Dynamics controller.
 func (o AppDynamicsConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppDynamicsConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

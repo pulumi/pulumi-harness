@@ -29,14 +29,14 @@ public final class AppDynamicsConnectorApiTokenArgs extends com.pulumi.resources
     }
 
     /**
-     * Reference to the Harness secret containing the App Dynamics client secret.
+     * Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="clientSecretRef", required=true)
     private Output<String> clientSecretRef;
 
     /**
-     * @return Reference to the Harness secret containing the App Dynamics client secret.
+     * @return Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> clientSecretRef() {
@@ -90,7 +90,7 @@ public final class AppDynamicsConnectorApiTokenArgs extends com.pulumi.resources
         }
 
         /**
-         * @param clientSecretRef Reference to the Harness secret containing the App Dynamics client secret.
+         * @param clientSecretRef Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class AppDynamicsConnectorApiTokenArgs extends com.pulumi.resources
         }
 
         /**
-         * @param clientSecretRef Reference to the Harness secret containing the App Dynamics client secret.
+         * @param clientSecretRef Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

@@ -102,10 +102,10 @@ def get_encrypted_text(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getEncryptedText:getEncryptedText', __args__, opts=opts, typ=GetEncryptedTextResult).value
 
     return AwaitableGetEncryptedTextResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        secret_manager_id=__ret__.secret_manager_id,
-        usage_scopes=__ret__.usage_scopes)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        secret_manager_id=pulumi.get(__ret__, 'secret_manager_id'),
+        usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
 
 
 @_utilities.lift_output_func(get_encrypted_text)

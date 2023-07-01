@@ -7,19 +7,81 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Sumologic connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewSumologicConnector(ctx, "test", &platform.SumologicConnectorArgs{
+//				AccessIdRef:  pulumi.String("account.secret_id"),
+//				AccessKeyRef: pulumi.String("account.secret_id"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://api.us2.sumologic.com/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level sumologic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
+//
+// ```
+//
+//	Import org level sumologic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level sumologic connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type SumologicConnector struct {
 	pulumi.CustomResourceState
 
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef pulumi.StringOutput `pulumi:"accessIdRef"`
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringOutput `pulumi:"accessKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -27,13 +89,13 @@ type SumologicConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -79,11 +141,11 @@ func GetSumologicConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SumologicConnector resources.
 type sumologicConnectorState struct {
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef *string `pulumi:"accessIdRef"`
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef *string `pulumi:"accessKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -91,22 +153,22 @@ type sumologicConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url *string `pulumi:"url"`
 }
 
 type SumologicConnectorState struct {
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef pulumi.StringPtrInput
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -114,13 +176,13 @@ type SumologicConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url pulumi.StringPtrInput
 }
 
@@ -129,11 +191,11 @@ func (SumologicConnectorState) ElementType() reflect.Type {
 }
 
 type sumologicConnectorArgs struct {
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef string `pulumi:"accessIdRef"`
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -141,23 +203,23 @@ type sumologicConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a SumologicConnector resource.
 type SumologicConnectorArgs struct {
-	// Reference to the Harness secret containing the access id.
+	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef pulumi.StringInput
-	// Reference to the Harness secret containing the access key.
+	// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -165,13 +227,13 @@ type SumologicConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the SumoLogic server.
+	// URL of the SumoLogic server.
 	Url pulumi.StringInput
 }
 
@@ -262,17 +324,17 @@ func (o SumologicConnectorOutput) ToSumologicConnectorOutputWithContext(ctx cont
 	return o
 }
 
-// Reference to the Harness secret containing the access id.
+// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o SumologicConnectorOutput) AccessIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringOutput { return v.AccessIdRef }).(pulumi.StringOutput)
 }
 
-// Reference to the Harness secret containing the access key.
+// Reference to the Harness secret containing the access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o SumologicConnectorOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringOutput { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o SumologicConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -292,22 +354,22 @@ func (o SumologicConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o SumologicConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o SumologicConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o SumologicConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the SumoLogic server.
+// URL of the SumoLogic server.
 func (o SumologicConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *SumologicConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

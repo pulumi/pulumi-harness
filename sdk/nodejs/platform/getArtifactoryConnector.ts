@@ -8,14 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for looking up an App Dynamics connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getArtifactoryConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getArtifactoryConnector(args?: GetArtifactoryConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetArtifactoryConnectorResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getArtifactoryConnector:getArtifactoryConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -37,11 +45,11 @@ export interface GetArtifactoryConnectorArgs {
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -55,7 +63,7 @@ export interface GetArtifactoryConnectorResult {
      */
     readonly credentials: outputs.platform.GetArtifactoryConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -75,15 +83,15 @@ export interface GetArtifactoryConnectorResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -91,9 +99,22 @@ export interface GetArtifactoryConnectorResult {
      */
     readonly url: string;
 }
-
+/**
+ * Resource for looking up an App Dynamics connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getArtifactoryConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
 export function getArtifactoryConnectorOutput(args?: GetArtifactoryConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArtifactoryConnectorResult> {
-    return pulumi.output(args).apply(a => getArtifactoryConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getArtifactoryConnector(a, opts))
 }
 
 /**
@@ -109,11 +130,11 @@ export interface GetArtifactoryConnectorOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

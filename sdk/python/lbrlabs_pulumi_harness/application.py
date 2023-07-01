@@ -23,7 +23,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] description: The application description
         :param pulumi.Input[bool] is_manual_trigger_authorized: When this is set to true, all manual triggers will require API Key authorization
         :param pulumi.Input[str] name: The name of the application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -74,7 +74,7 @@ class ApplicationArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -99,7 +99,7 @@ class _ApplicationState:
         :param pulumi.Input[bool] git_sync_enabled: True if git sync is enabled on this application
         :param pulumi.Input[bool] is_manual_trigger_authorized: When this is set to true, all manual triggers will require API Key authorization
         :param pulumi.Input[str] name: The name of the application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -178,7 +178,7 @@ class _ApplicationState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -227,7 +227,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] description: The application description
         :param pulumi.Input[bool] is_manual_trigger_authorized: When this is set to true, all manual triggers will require API Key authorization
         :param pulumi.Input[str] name: The name of the application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -322,7 +322,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] git_sync_enabled: True if git sync is enabled on this application
         :param pulumi.Input[bool] is_manual_trigger_authorized: When this is set to true, all manual triggers will require API Key authorization
         :param pulumi.Input[str] name: The name of the application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -380,7 +380,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

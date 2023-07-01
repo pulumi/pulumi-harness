@@ -7,17 +7,82 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Docker connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewDockerConnector(ctx, "test", &platform.DockerConnectorArgs{
+//				Credentials: &platform.DockerConnectorCredentialsArgs{
+//					PasswordRef: pulumi.String("account.secret_id"),
+//					Username:    pulumi.String("admin"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifer"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Type: pulumi.String("DockerHub"),
+//				Url:  pulumi.String("https://hub.docker.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level docker connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
+//
+// ```
+//
+//	Import org level docker connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level docker connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type DockerConnector struct {
 	pulumi.CustomResourceState
 
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials DockerConnectorCredentialsPtrOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,15 +90,15 @@ type DockerConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -78,7 +143,7 @@ func GetDockerConnector(ctx *pulumi.Context,
 type dockerConnectorState struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials *DockerConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -86,22 +151,22 @@ type dockerConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type *string `pulumi:"type"`
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url *string `pulumi:"url"`
 }
 
 type DockerConnectorState struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials DockerConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -109,15 +174,15 @@ type DockerConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type pulumi.StringPtrInput
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url pulumi.StringPtrInput
 }
 
@@ -128,7 +193,7 @@ func (DockerConnectorState) ElementType() reflect.Type {
 type dockerConnectorArgs struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials *DockerConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -136,15 +201,15 @@ type dockerConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type string `pulumi:"type"`
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url string `pulumi:"url"`
 }
 
@@ -152,7 +217,7 @@ type dockerConnectorArgs struct {
 type DockerConnectorArgs struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials DockerConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -160,15 +225,15 @@ type DockerConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// The type of the docker registry. Valid options are DockerHub, Harbor, Other, Quay
 	Type pulumi.StringInput
-	// The url of the docker registry.
+	// The URL of the docker registry.
 	Url pulumi.StringInput
 }
 
@@ -264,7 +329,7 @@ func (o DockerConnectorOutput) Credentials() DockerConnectorCredentialsPtrOutput
 	return o.ApplyT(func(v *DockerConnector) DockerConnectorCredentialsPtrOutput { return v.Credentials }).(DockerConnectorCredentialsPtrOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o DockerConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -284,17 +349,17 @@ func (o DockerConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o DockerConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o DockerConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o DockerConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -304,7 +369,7 @@ func (o DockerConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The url of the docker registry.
+// The URL of the docker registry.
 func (o DockerConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

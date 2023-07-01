@@ -8,6 +8,50 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating an AWS Secret Manager connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Credentials assume_role
+ * const test = new harness.platform.AwsSecretManagerConnector("test", {
+ *     credentials: {
+ *         assumeRole: {
+ *             duration: 900,
+ *             externalId: "externalid",
+ *             roleArn: "somerolearn",
+ *         },
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     region: "us-east-1",
+ *     secretNamePrefix: "test",
+ *     tags: ["foo:bar"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level aws secret manager connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
+ * ```
+ *
+ *  Import org level aws secret manager connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level aws secret manager connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class AwsSecretManagerConnector extends pulumi.CustomResource {
     /**
@@ -38,11 +82,11 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
     }
 
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     public readonly credentials!: pulumi.Output<outputs.platform.AwsSecretManagerConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -58,11 +102,11 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -74,7 +118,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      */
     public readonly secretNamePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -133,11 +177,11 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
  */
 export interface AwsSecretManagerConnectorState {
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     credentials?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -153,11 +197,11 @@ export interface AwsSecretManagerConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -169,7 +213,7 @@ export interface AwsSecretManagerConnectorState {
      */
     secretNamePrefix?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -179,11 +223,11 @@ export interface AwsSecretManagerConnectorState {
  */
 export interface AwsSecretManagerConnectorArgs {
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     credentials: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -199,11 +243,11 @@ export interface AwsSecretManagerConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -215,7 +259,7 @@ export interface AwsSecretManagerConnectorArgs {
      */
     secretNamePrefix?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

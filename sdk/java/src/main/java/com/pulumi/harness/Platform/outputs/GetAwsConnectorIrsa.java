@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAwsConnectorIrsa {
+    /**
+     * @return The delegates to inherit the credentials from.
+     * 
+     */
     private List<String> delegateSelectors;
 
     private GetAwsConnectorIrsa() {}
+    /**
+     * @return The delegates to inherit the credentials from.
+     * 
+     */
     public List<String> delegateSelectors() {
         return this.delegateSelectors;
     }

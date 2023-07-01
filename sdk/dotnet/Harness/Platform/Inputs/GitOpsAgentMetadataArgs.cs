@@ -13,9 +13,15 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
 
     public sealed class GitOpsAgentMetadataArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates if the deployment should be deployed using the deploy-ha.yaml
+        /// </summary>
         [Input("highAvailability")]
         public Input<bool>? HighAvailability { get; set; }
 
+        /// <summary>
+        /// The k8s namespace that this agent resides in.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 

@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up an AWS KMS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsKmsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getAwsKmsConnector(args?: GetAwsKmsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsKmsConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getAwsKmsConnector(args: GetAwsKmsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsKmsConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsKmsConnector:getAwsKmsConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetAwsKmsConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -51,15 +58,15 @@ export interface GetAwsKmsConnectorArgs {
  */
 export interface GetAwsKmsConnectorResult {
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly arnRef: string;
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      */
     readonly credentials: outputs.platform.GetAwsKmsConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -73,17 +80,17 @@ export interface GetAwsKmsConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -91,13 +98,26 @@ export interface GetAwsKmsConnectorResult {
      */
     readonly region: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getAwsKmsConnectorOutput(args?: GetAwsKmsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsKmsConnectorResult> {
-    return pulumi.output(args).apply(a => getAwsKmsConnector(a, opts))
+/**
+ * Datasource for looking up an AWS KMS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsKmsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getAwsKmsConnectorOutput(args: GetAwsKmsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsKmsConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getAwsKmsConnector(a, opts))
 }
 
 /**
@@ -107,17 +127,17 @@ export interface GetAwsKmsConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -9,28 +9,75 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsAgentResult {
+    /**
+     * @return Account identifier of the GitOps agent.
+     * 
+     */
     private String accountId;
+    /**
+     * @return Description of the GitOps agent.
+     * 
+     */
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Identifier of the GitOps agent.
+     * 
+     */
     private String identifier;
+    /**
+     * @return Metadata of the agent.
+     * 
+     */
     private List<GetGitopsAgentMetadata> metadatas;
+    /**
+     * @return Name of the GitOps agent.
+     * 
+     */
     private String name;
-    private String orgId;
-    private String projectId;
+    /**
+     * @return Organization identifier of the GitOps agent.
+     * 
+     */
+    private @Nullable String orgId;
+    /**
+     * @return Project identifier of the GitOps agent.
+     * 
+     */
+    private @Nullable String projectId;
+    /**
+     * @return Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+     * 
+     */
     private Map<String,String> tags;
+    /**
+     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * 
+     */
     private String type;
 
     private GetGitopsAgentResult() {}
+    /**
+     * @return Account identifier of the GitOps agent.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Description of the GitOps agent.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -41,24 +88,53 @@ public final class GetGitopsAgentResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Identifier of the GitOps agent.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return Metadata of the agent.
+     * 
+     */
     public List<GetGitopsAgentMetadata> metadatas() {
         return this.metadatas;
     }
+    /**
+     * @return Name of the GitOps agent.
+     * 
+     */
     public String name() {
         return this.name;
     }
-    public String orgId() {
-        return this.orgId;
+    /**
+     * @return Organization identifier of the GitOps agent.
+     * 
+     */
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
-    public String projectId() {
-        return this.projectId;
+    /**
+     * @return Project identifier of the GitOps agent.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -78,8 +154,8 @@ public final class GetGitopsAgentResult {
         private String identifier;
         private List<GetGitopsAgentMetadata> metadatas;
         private String name;
-        private String orgId;
-        private String projectId;
+        private @Nullable String orgId;
+        private @Nullable String projectId;
         private Map<String,String> tags;
         private String type;
         public Builder() {}
@@ -131,13 +207,13 @@ public final class GetGitopsAgentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder orgId(String orgId) {
-            this.orgId = Objects.requireNonNull(orgId);
+        public Builder orgId(@Nullable String orgId) {
+            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter

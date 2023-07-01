@@ -32,12 +32,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EncryptedText{}
 	case "harness:index/environment:Environment":
 		r = &Environment{}
-	case "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides":
-		r = &EnvironmentServiceOverrides{}
 	case "harness:index/gitConnector:GitConnector":
 		r = &GitConnector{}
 	case "harness:index/infrastructureDefinition:InfrastructureDefinition":
 		r = &InfrastructureDefinition{}
+	case "harness:index/platformApiKey:PlatformApiKey":
+		r = &PlatformApiKey{}
+	case "harness:index/platformCcmFilters:PlatformCcmFilters":
+		r = &PlatformCcmFilters{}
 	case "harness:index/sshCredential:SshCredential":
 		r = &SshCredential{}
 	case "harness:index/user:User":
@@ -108,17 +110,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"index/environmentServiceOverrides",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"harness",
 		"index/gitConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"index/infrastructureDefinition",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"index/platformApiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"index/platformCcmFilters",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

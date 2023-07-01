@@ -16,14 +16,14 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
     public static final BitbucketConnectorApiAuthenticationArgs Empty = new BitbucketConnectorApiAuthenticationArgs();
 
     /**
-     * Personal access token for interacting with the BitBucket api.
+     * Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="tokenRef", required=true)
     private Output<String> tokenRef;
 
     /**
-     * @return Personal access token for interacting with the BitBucket api.
+     * @return Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> tokenRef() {
@@ -46,14 +46,14 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
     }
 
     /**
-     * The name of the Harness secret containing the username.
+     * The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return The name of the Harness secret containing the username.
+     * @return The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -87,7 +87,7 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the BitBucket api.
+         * @param tokenRef Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
         }
 
         /**
-         * @param tokenRef Personal access token for interacting with the BitBucket api.
+         * @param tokenRef Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
         }
 
         /**
-         * @param usernameRef The name of the Harness secret containing the username.
+         * @param usernameRef The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class BitbucketConnectorApiAuthenticationArgs extends com.pulumi.re
         }
 
         /**
-         * @param usernameRef The name of the Harness secret containing the username.
+         * @param usernameRef The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

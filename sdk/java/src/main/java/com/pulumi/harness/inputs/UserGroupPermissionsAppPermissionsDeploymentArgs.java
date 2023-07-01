@@ -37,11 +37,11 @@ public final class UserGroupPermissionsAppPermissionsDeploymentArgs extends com.
         return Optional.ofNullable(this.envIds);
     }
 
-    @Import(name="filters", required=true)
-    private Output<List<String>> filters;
+    @Import(name="filters")
+    private @Nullable Output<List<String>> filters;
 
-    public Output<List<String>> filters() {
-        return this.filters;
+    public Optional<Output<List<String>>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     private UserGroupPermissionsAppPermissionsDeploymentArgs() {}
@@ -110,7 +110,7 @@ public final class UserGroupPermissionsAppPermissionsDeploymentArgs extends com.
             return envIds(List.of(envIds));
         }
 
-        public Builder filters(Output<List<String>> filters) {
+        public Builder filters(@Nullable Output<List<String>> filters) {
             $.filters = filters;
             return this;
         }
@@ -125,7 +125,6 @@ public final class UserGroupPermissionsAppPermissionsDeploymentArgs extends com.
 
         public UserGroupPermissionsAppPermissionsDeploymentArgs build() {
             $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.filters = Objects.requireNonNull($.filters, "expected parameter 'filters' to be non-null");
             return $;
         }
     }

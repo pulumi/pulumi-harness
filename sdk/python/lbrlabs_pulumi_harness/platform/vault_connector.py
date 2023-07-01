@@ -65,8 +65,8 @@ class VaultConnectorArgs:
         :param pulumi.Input[str] k8s_auth_endpoint: The path where Kubernetes Auth is enabled in Vault.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] namespace: Vault namespace where the Secret will be created.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] read_only: Read only.
         :param pulumi.Input[bool] renew_app_role_token: Boolean value to indicate if AppRole token renewal is enabled or not.
         :param pulumi.Input[bool] secret_engine_manually_configured: Manually entered Secret Engine.
@@ -75,7 +75,7 @@ class VaultConnectorArgs:
         :param pulumi.Input[str] secret_id: ID of the Secret.
         :param pulumi.Input[str] service_account_token_path: The Service Account token path in the K8s pod where the token is mounted.
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
@@ -343,7 +343,7 @@ class VaultConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -355,7 +355,7 @@ class VaultConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -463,7 +463,7 @@ class VaultConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -596,8 +596,8 @@ class _VaultConnectorState:
         :param pulumi.Input[str] k8s_auth_endpoint: The path where Kubernetes Auth is enabled in Vault.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] namespace: Vault namespace where the Secret will be created.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] read_only: Read only.
         :param pulumi.Input[bool] renew_app_role_token: Boolean value to indicate if AppRole token renewal is enabled or not.
         :param pulumi.Input[int] renewal_interval_minutes: The time interval for the token renewal.
@@ -607,7 +607,7 @@ class _VaultConnectorState:
         :param pulumi.Input[str] secret_id: ID of the Secret.
         :param pulumi.Input[str] service_account_token_path: The Service Account token path in the K8s pod where the token is mounted.
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
@@ -855,7 +855,7 @@ class _VaultConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -867,7 +867,7 @@ class _VaultConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -987,7 +987,7 @@ class _VaultConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -1232,10 +1232,22 @@ class VaultConnector(pulumi.CustomResource):
 
         ## Import
 
-        Import using vault connector id
+        Import account level vault connector
 
         ```sh
          $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
+        ```
+
+         Import org level vault connector
+
+        ```sh
+         $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level vault connector
+
+        ```sh
+         $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1254,8 +1266,8 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] k8s_auth_endpoint: The path where Kubernetes Auth is enabled in Vault.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] namespace: Vault namespace where the Secret will be created.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] read_only: Read only.
         :param pulumi.Input[bool] renew_app_role_token: Boolean value to indicate if AppRole token renewal is enabled or not.
         :param pulumi.Input[int] renewal_interval_minutes: The time interval for the token renewal.
@@ -1265,7 +1277,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] secret_id: ID of the Secret.
         :param pulumi.Input[str] service_account_token_path: The Service Account token path in the K8s pod where the token is mounted.
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
@@ -1393,10 +1405,22 @@ class VaultConnector(pulumi.CustomResource):
 
         ## Import
 
-        Import using vault connector id
+        Import account level vault connector
 
         ```sh
          $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
+        ```
+
+         Import org level vault connector
+
+        ```sh
+         $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level vault connector
+
+        ```sh
+         $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1559,8 +1583,8 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] k8s_auth_endpoint: The path where Kubernetes Auth is enabled in Vault.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] namespace: Vault namespace where the Secret will be created.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] read_only: Read only.
         :param pulumi.Input[bool] renew_app_role_token: Boolean value to indicate if AppRole token renewal is enabled or not.
         :param pulumi.Input[int] renewal_interval_minutes: The time interval for the token renewal.
@@ -1570,7 +1594,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] secret_id: ID of the Secret.
         :param pulumi.Input[str] service_account_token_path: The Service Account token path in the K8s pod where the token is mounted.
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
@@ -1734,7 +1758,7 @@ class VaultConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -1742,7 +1766,7 @@ class VaultConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -1756,7 +1780,7 @@ class VaultConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewAppRoleToken")
-    def renew_app_role_token(self) -> pulumi.Output[Optional[bool]]:
+    def renew_app_role_token(self) -> pulumi.Output[bool]:
         """
         Boolean value to indicate if AppRole token renewal is enabled or not.
         """
@@ -1822,7 +1846,7 @@ class VaultConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

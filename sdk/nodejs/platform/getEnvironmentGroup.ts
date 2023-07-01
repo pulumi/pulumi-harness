@@ -13,19 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getEnvironmentGroup({
+ * const example = harness.platform.getEnvironmentGroup({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
 export function getEnvironmentGroup(args: GetEnvironmentGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentGroup:getEnvironmentGroup", {
         "color": args.color,
         "identifier": args.identifier,
@@ -85,9 +82,24 @@ export interface GetEnvironmentGroupResult {
      */
     readonly yaml: string;
 }
-
+/**
+ * Data source for retrieving a Harness environment group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getEnvironmentGroup({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getEnvironmentGroupOutput(args: GetEnvironmentGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentGroupResult> {
-    return pulumi.output(args).apply(a => getEnvironmentGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironmentGroup(a, opts))
 }
 
 /**

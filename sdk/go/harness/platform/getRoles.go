@@ -26,8 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupRoles(ctx, &platform.LookupRolesArgs{
-//				Identifier: pulumi.StringRef("identifier"),
+//			_, err := platform.LookupRoles(ctx, &platform.LookupRolesArgs{
+//				Identifier: "identifier",
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //			}, nil)
@@ -54,14 +54,14 @@ type LookupRolesArgs struct {
 	// The scope levels at which this role can be used
 	AllowedScopeLevels []string `pulumi:"allowedScopeLevels"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -74,16 +74,16 @@ type LookupRolesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions []string `pulumi:"permissions"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -105,14 +105,14 @@ type LookupRolesOutputArgs struct {
 	// The scope levels at which this role can be used
 	AllowedScopeLevels pulumi.StringArrayInput `pulumi:"allowedScopeLevels"`
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// List of the permission identifiers
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -151,8 +151,8 @@ func (o LookupRolesResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupRolesResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupRolesResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupRolesResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRolesResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -160,7 +160,7 @@ func (o LookupRolesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupRolesResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -170,12 +170,12 @@ func (o LookupRolesResultOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRolesResult) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupRolesResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRolesResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupRolesResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRolesResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

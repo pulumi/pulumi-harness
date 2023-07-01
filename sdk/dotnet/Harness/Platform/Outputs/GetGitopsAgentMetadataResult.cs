@@ -14,12 +14,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GetGitopsAgentMetadataResult
     {
-        public readonly bool? HighAvailability;
+        public readonly bool HighAvailability;
         public readonly string Namespace;
 
         [OutputConstructor]
         private GetGitopsAgentMetadataResult(
-            bool? highAvailability,
+            bool highAvailability,
 
             string @namespace)
         {

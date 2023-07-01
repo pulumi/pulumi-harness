@@ -69,7 +69,7 @@ class GetGcpConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -103,7 +103,7 @@ class GetGcpConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -111,7 +111,7 @@ class GetGcpConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -119,7 +119,7 @@ class GetGcpConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -149,11 +149,20 @@ def get_gcp_connector(identifier: Optional[str] = None,
     """
     Datasource for looking up a Gcp connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gcp_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -164,19 +173,19 @@ def get_gcp_connector(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getGcpConnector:getGcpConnector', __args__, opts=opts, typ=GetGcpConnectorResult).value
 
     return AwaitableGetGcpConnectorResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        inherit_from_delegates=__ret__.inherit_from_delegates,
-        manuals=__ret__.manuals,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        inherit_from_delegates=pulumi.get(__ret__, 'inherit_from_delegates'),
+        manuals=pulumi.get(__ret__, 'manuals'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_gcp_connector)
-def get_gcp_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_gcp_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -184,10 +193,19 @@ def get_gcp_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] =
     """
     Datasource for looking up a Gcp connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gcp_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

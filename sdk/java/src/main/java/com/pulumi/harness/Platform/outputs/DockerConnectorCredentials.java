@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DockerConnectorCredentials {
     /**
-     * @return The reference to the password to use for the docker registry.
+     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String passwordRef;
@@ -22,14 +22,14 @@ public final class DockerConnectorCredentials {
      */
     private @Nullable String username;
     /**
-     * @return The reference to the username to use for the docker registry.
+     * @return The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String usernameRef;
 
     private DockerConnectorCredentials() {}
     /**
-     * @return The reference to the password to use for the docker registry.
+     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String passwordRef() {
@@ -43,7 +43,7 @@ public final class DockerConnectorCredentials {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return The reference to the username to use for the docker registry.
+     * @return The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> usernameRef() {

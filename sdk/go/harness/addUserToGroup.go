@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = harness.LookupUser(ctx, &GetUserArgs{
+//			_, err := harness.LookupUser(ctx, &harness.LookupUserArgs{
 //				Email: pulumi.StringRef("testuser@example.com"),
 //			}, nil)
 //			if err != nil {

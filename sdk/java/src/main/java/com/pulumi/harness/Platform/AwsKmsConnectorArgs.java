@@ -18,14 +18,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     public static final AwsKmsConnectorArgs Empty = new AwsKmsConnectorArgs();
 
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="arnRef", required=true)
     private Output<String> arnRef;
 
     /**
-     * @return A reference to the Harness secret containing the ARN of the AWS KMS.
+     * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> arnRef() {
@@ -33,14 +33,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      * 
      */
     @Import(name="credentials", required=true)
     private Output<AwsKmsConnectorCredentialsArgs> credentials;
 
     /**
-     * @return The credentials to use for connecting to aws.
+     * @return Credentials to connect to AWS.
      * 
      */
     public Output<AwsKmsConnectorCredentialsArgs> credentials() {
@@ -48,14 +48,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -108,14 +108,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -123,14 +123,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -153,14 +153,14 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -201,7 +201,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param arnRef A reference to the Harness secret containing the ARN of the AWS KMS.
+         * @param arnRef A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param arnRef A reference to the Harness secret containing the ARN of the AWS KMS.
+         * @param arnRef A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param credentials The credentials to use for connecting to aws.
+         * @param credentials Credentials to connect to AWS.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param credentials The credentials to use for connecting to aws.
+         * @param credentials Credentials to connect to AWS.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 

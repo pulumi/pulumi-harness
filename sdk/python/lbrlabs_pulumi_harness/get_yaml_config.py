@@ -109,11 +109,11 @@ def get_yaml_config(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getYamlConfig:getYamlConfig', __args__, opts=opts, typ=GetYamlConfigResult).value
 
     return AwaitableGetYamlConfigResult(
-        app_id=__ret__.app_id,
-        content=__ret__.content,
-        id=__ret__.id,
-        name=__ret__.name,
-        path=__ret__.path)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        content=pulumi.get(__ret__, 'content'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_yaml_config)

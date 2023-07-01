@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up an AWS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getAwsConnector(args?: GetAwsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getAwsConnector(args: GetAwsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsConnector:getAwsConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetAwsConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -59,13 +66,25 @@ export interface GetAwsConnectorResult {
      */
     readonly description: string;
     /**
+     * Equal Jitter BackOff Strategy.
+     */
+    readonly equalJitterBackoffStrategies: outputs.platform.GetAwsConnectorEqualJitterBackoffStrategy[];
+    /**
+     * Fixed Delay BackOff Strategy.
+     */
+    readonly fixedDelayBackoffStrategies: outputs.platform.GetAwsConnectorFixedDelayBackoffStrategy[];
+    /**
+     * Full Jitter BackOff Strategy.
+     */
+    readonly fullJitterBackoffStrategies: outputs.platform.GetAwsConnectorFullJitterBackoffStrategy[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Inherit credentials from the delegate.
      */
@@ -83,21 +102,34 @@ export interface GetAwsConnectorResult {
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getAwsConnectorOutput(args?: GetAwsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsConnectorResult> {
-    return pulumi.output(args).apply(a => getAwsConnector(a, opts))
+/**
+ * Datasource for looking up an AWS connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getAwsConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getAwsConnectorOutput(args: GetAwsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getAwsConnector(a, opts))
 }
 
 /**
@@ -107,17 +139,17 @@ export interface GetAwsConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

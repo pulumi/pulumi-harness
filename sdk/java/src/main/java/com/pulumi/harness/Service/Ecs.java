@@ -68,7 +68,7 @@ public class Ecs extends com.pulumi.resources.CustomResource {
      * The id of the application the service belongs to
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -82,7 +82,7 @@ public class Ecs extends com.pulumi.resources.CustomResource {
      * Description of th service
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class Ecs extends com.pulumi.resources.CustomResource {
      * Name of the service
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class Ecs extends com.pulumi.resources.CustomResource {
      * Variables to be used in the service
      * 
      */
-    @Export(name="variables", type=List.class, parameters={EcsVariable.class})
+    @Export(name="variables", refs={List.class,EcsVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsVariable>> variables;
 
     /**

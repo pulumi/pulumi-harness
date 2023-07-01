@@ -6,19 +6,29 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GithubConnectorApiAuthenticationGithubApp {
-    private String applicationId;
-    private String installationId;
+    private @Nullable String applicationId;
+    private @Nullable String applicationIdRef;
+    private @Nullable String installationId;
+    private @Nullable String installationIdRef;
     private String privateKeyRef;
 
     private GithubConnectorApiAuthenticationGithubApp() {}
-    public String applicationId() {
-        return this.applicationId;
+    public Optional<String> applicationId() {
+        return Optional.ofNullable(this.applicationId);
     }
-    public String installationId() {
-        return this.installationId;
+    public Optional<String> applicationIdRef() {
+        return Optional.ofNullable(this.applicationIdRef);
+    }
+    public Optional<String> installationId() {
+        return Optional.ofNullable(this.installationId);
+    }
+    public Optional<String> installationIdRef() {
+        return Optional.ofNullable(this.installationIdRef);
     }
     public String privateKeyRef() {
         return this.privateKeyRef;
@@ -33,25 +43,39 @@ public final class GithubConnectorApiAuthenticationGithubApp {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String applicationId;
-        private String installationId;
+        private @Nullable String applicationId;
+        private @Nullable String applicationIdRef;
+        private @Nullable String installationId;
+        private @Nullable String installationIdRef;
         private String privateKeyRef;
         public Builder() {}
         public Builder(GithubConnectorApiAuthenticationGithubApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationId = defaults.applicationId;
+    	      this.applicationIdRef = defaults.applicationIdRef;
     	      this.installationId = defaults.installationId;
+    	      this.installationIdRef = defaults.installationIdRef;
     	      this.privateKeyRef = defaults.privateKeyRef;
         }
 
         @CustomType.Setter
-        public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+        public Builder applicationId(@Nullable String applicationId) {
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
-        public Builder installationId(String installationId) {
-            this.installationId = Objects.requireNonNull(installationId);
+        public Builder applicationIdRef(@Nullable String applicationIdRef) {
+            this.applicationIdRef = applicationIdRef;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder installationId(@Nullable String installationId) {
+            this.installationId = installationId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder installationIdRef(@Nullable String installationIdRef) {
+            this.installationIdRef = installationIdRef;
             return this;
         }
         @CustomType.Setter
@@ -62,7 +86,9 @@ public final class GithubConnectorApiAuthenticationGithubApp {
         public GithubConnectorApiAuthenticationGithubApp build() {
             final var o = new GithubConnectorApiAuthenticationGithubApp();
             o.applicationId = applicationId;
+            o.applicationIdRef = applicationIdRef;
             o.installationId = installationId;
+            o.installationIdRef = installationIdRef;
             o.privateKeyRef = privateKeyRef;
             return o;
         }

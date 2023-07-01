@@ -13,11 +13,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
 
     public sealed class GithubConnectorApiAuthenticationGithubAppArgs : global::Pulumi.ResourceArgs
     {
-        [Input("applicationId", required: true)]
-        public Input<string> ApplicationId { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
 
-        [Input("installationId", required: true)]
-        public Input<string> InstallationId { get; set; } = null!;
+        [Input("applicationIdRef")]
+        public Input<string>? ApplicationIdRef { get; set; }
+
+        [Input("installationId")]
+        public Input<string>? InstallationId { get; set; }
+
+        [Input("installationIdRef")]
+        public Input<string>? InstallationIdRef { get; set; }
 
         [Input("privateKeyRef", required: true)]
         public Input<string> PrivateKeyRef { get; set; } = null!;

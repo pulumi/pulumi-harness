@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
@@ -56,15 +54,15 @@ import (
 //			}
 //			_, err = harness.NewEnvironment(ctx, "testEnvironment", &harness.EnvironmentArgs{
 //				AppId: testApplication.ID(),
-//				Type:  pulumi.String(fmt.Sprintf("%v[2]s", "%")),
-//				VariableOverrides: EnvironmentVariableOverrideArray{
-//					&EnvironmentVariableOverrideArgs{
+//				Type:  pulumi.String("%[2]s"),
+//				VariableOverrides: harness.EnvironmentVariableOverrideArray{
+//					&harness.EnvironmentVariableOverrideArgs{
 //						ServiceName: testKubernetes.Name,
 //						Name:        pulumi.String("test"),
 //						Value:       pulumi.String("override"),
 //						Type:        pulumi.String("TEXT"),
 //					},
-//					&EnvironmentVariableOverrideArgs{
+//					&harness.EnvironmentVariableOverrideArgs{
 //						ServiceName: testKubernetes.Name,
 //						Name:        pulumi.String("test2"),
 //						Value:       pulumi.String("override2"),

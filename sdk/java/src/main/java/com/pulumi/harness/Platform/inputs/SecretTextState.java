@@ -62,14 +62,14 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -77,14 +77,14 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -107,14 +107,14 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -247,7 +247,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class SecretTextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 

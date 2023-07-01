@@ -25,7 +25,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// <summary>
         /// Type.
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private RoleAssignmentsPrincipal(
@@ -33,7 +33,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             string? scopeLevel,
 
-            string? type)
+            string type)
         {
             Identifier = identifier;
             ScopeLevel = scopeLevel;

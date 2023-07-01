@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 UsergroupNotificationConfigArgs.builder()
  *                     .groupEmail(&#34;email@email.com&#34;)
+ *                     .sendEmailToAllUsers(true)
  *                     .type(&#34;EMAIL&#34;)
  *                     .build(),
  *                 UsergroupNotificationConfigArgs.builder()
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 UsergroupNotificationConfigArgs.builder()
  *                     .groupEmail(&#34;email@email.com&#34;)
+ *                     .sendEmailToAllUsers(true)
  *                     .type(&#34;EMAIL&#34;)
  *                     .build(),
  *                 UsergroupNotificationConfigArgs.builder()
@@ -133,16 +135,60 @@ import javax.annotation.Nullable;
  *             .users(&#34;user_id&#34;)
  *             .build());
  * 
+ *         var example = new Usergroup(&#34;example&#34;, UsergroupArgs.builder()        
+ *             .externallyManaged(false)
+ *             .identifier(&#34;identifier&#34;)
+ *             .linkedSsoDisplayName(&#34;linked_sso_display_name&#34;)
+ *             .linkedSsoId(&#34;linked_sso_id&#34;)
+ *             .linkedSsoType(&#34;SAML&#34;)
+ *             .notificationConfigs(            
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .slackWebhookUrl(&#34;https://google.com&#34;)
+ *                     .type(&#34;SLACK&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .groupEmail(&#34;email@email.com&#34;)
+ *                     .sendEmailToAllUsers(true)
+ *                     .type(&#34;EMAIL&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .microsoftTeamsWebhookUrl(&#34;https://google.com&#34;)
+ *                     .type(&#34;MSTEAMS&#34;)
+ *                     .build(),
+ *                 UsergroupNotificationConfigArgs.builder()
+ *                     .pagerDutyKey(&#34;pagerDutyKey&#34;)
+ *                     .type(&#34;PAGERDUTY&#34;)
+ *                     .build())
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .ssoGroupId(&#34;sso_group_name&#34;)
+ *             .ssoGroupName(&#34;sso_group_name&#34;)
+ *             .ssoLinked(true)
+ *             .userEmails(&#34;user@email.com&#34;)
+ *             .build());
+ * 
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * Import using user group id
+ * Import account level user group
  * 
  * ```sh
  *  $ pulumi import harness:platform/usergroup:Usergroup example &lt;usergroup_id&gt;
+ * ```
+ * 
+ *  Import org level user group
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/usergroup:Usergroup example &lt;ord_id&gt;/&lt;usergroup_id&gt;
+ * ```
+ * 
+ *  Import project level user group
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/usergroup:Usergroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;usergroup_id&gt;
  * ```
  * 
  */
@@ -152,7 +198,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -166,7 +212,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Whether the user group is externally managed.
      * 
      */
-    @Export(name="externallyManaged", type=Boolean.class, parameters={})
+    @Export(name="externallyManaged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> externallyManaged;
 
     /**
@@ -180,7 +226,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -194,7 +240,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Name of the linked SSO.
      * 
      */
-    @Export(name="linkedSsoDisplayName", type=String.class, parameters={})
+    @Export(name="linkedSsoDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkedSsoDisplayName;
 
     /**
@@ -208,7 +254,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * The SSO account ID that the user group is linked to.
      * 
      */
-    @Export(name="linkedSsoId", type=String.class, parameters={})
+    @Export(name="linkedSsoId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkedSsoId;
 
     /**
@@ -219,14 +265,14 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.linkedSsoId);
     }
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      * 
      */
-    @Export(name="linkedSsoType", type=String.class, parameters={})
+    @Export(name="linkedSsoType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> linkedSsoType;
 
     /**
-     * @return Type of linked SSO
+     * @return Type of linked SSO.
      * 
      */
     public Output<Optional<String>> linkedSsoType() {
@@ -236,7 +282,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -250,7 +296,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * List of notification settings.
      * 
      */
-    @Export(name="notificationConfigs", type=List.class, parameters={UsergroupNotificationConfig.class})
+    @Export(name="notificationConfigs", refs={List.class,UsergroupNotificationConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<UsergroupNotificationConfig>> notificationConfigs;
 
     /**
@@ -261,28 +307,28 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationConfigs);
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -292,7 +338,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Identifier of the userGroup in SSO.
      * 
      */
-    @Export(name="ssoGroupId", type=String.class, parameters={})
+    @Export(name="ssoGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ssoGroupId;
 
     /**
@@ -306,7 +352,7 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
      * Name of the SSO userGroup.
      * 
      */
-    @Export(name="ssoGroupName", type=String.class, parameters={})
+    @Export(name="ssoGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ssoGroupName;
 
     /**
@@ -317,42 +363,56 @@ public class Usergroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ssoGroupName);
     }
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      * 
      */
-    @Export(name="ssoLinked", type=Boolean.class, parameters={})
+    @Export(name="ssoLinked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ssoLinked;
 
     /**
-     * @return Whether sso is linked or not
+     * @return Whether sso is linked or not.
      * 
      */
     public Output<Boolean> ssoLinked() {
         return this.ssoLinked;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * List of users in the UserGroup.
+     * List of user emails in the UserGroup. Either provide list of users or list of user emails.
      * 
      */
-    @Export(name="users", type=List.class, parameters={String.class})
+    @Export(name="userEmails", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> userEmails;
+
+    /**
+     * @return List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     * 
+     */
+    public Output<Optional<List<String>>> userEmails() {
+        return Codegen.optional(this.userEmails);
+    }
+    /**
+     * List of users in the UserGroup. Either provide list of users or list of user emails.
+     * 
+     */
+    @Export(name="users", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> users;
 
     /**
-     * @return List of users in the UserGroup.
+     * @return List of users in the UserGroup. Either provide list of users or list of user emails.
      * 
      */
     public Output<Optional<List<String>>> users() {

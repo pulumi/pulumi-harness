@@ -133,12 +133,12 @@ def get_application(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult).value
 
     return AwaitableGetApplicationResult(
-        description=__ret__.description,
-        git_sync_connector_id=__ret__.git_sync_connector_id,
-        git_sync_enabled=__ret__.git_sync_enabled,
-        id=__ret__.id,
-        is_manual_trigger_authorized=__ret__.is_manual_trigger_authorized,
-        name=__ret__.name)
+        description=pulumi.get(__ret__, 'description'),
+        git_sync_connector_id=pulumi.get(__ret__, 'git_sync_connector_id'),
+        git_sync_enabled=pulumi.get(__ret__, 'git_sync_enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        is_manual_trigger_authorized=pulumi.get(__ret__, 'is_manual_trigger_authorized'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_application)

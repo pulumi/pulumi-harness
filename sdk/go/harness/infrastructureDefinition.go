@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,6 +19,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
 //	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
@@ -54,10 +56,59 @@ import (
 //				EnvId:             devEnvironment.ID(),
 //				CloudProviderType: pulumi.String("KUBERNETES_CLUSTER"),
 //				DeploymentType:    pulumi.String("KUBERNETES"),
-//				Kubernetes: &InfrastructureDefinitionKubernetesArgs{
+//				Kubernetes: &harness.InfrastructureDefinitionKubernetesArgs{
 //					CloudProviderName: devKubernetes.Name,
 //					Namespace:         pulumi.String("dev"),
-//					ReleaseName:       pulumi.Any(service.Name),
+//					ReleaseName:       pulumi.String("${service.name}"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleYaml, err := harness.NewYamlConfig(ctx, "exampleYaml", &harness.YamlConfigArgs{
+//				Path: pulumi.String("Setup/Template Library/Example Folder/deployment_template.yaml"),
+//				Content: pulumi.String(fmt.Sprintf(`harnessApiVersion: '1.0'
+//
+// type: CUSTOM_DEPLOYMENT_TYPE
+// fetchInstanceScript: |-
+//
+//	set -ex
+//	curl http://%v/%v > %v
+//
+// hostAttributes:
+//
+//	hostname: host
+//
+// hostObjectArrayPath: hosts
+// variables:
+// - name: url
+// - name: file_name
+// `, url, file_name, INSTANCE_OUTPUT_PATH)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = harness.NewInfrastructureDefinition(ctx, "custom", &harness.InfrastructureDefinitionArgs{
+//				AppId:             example.ID(),
+//				EnvId:             devEnvironment.ID(),
+//				CloudProviderType: pulumi.String("CUSTOM"),
+//				DeploymentType:    pulumi.String("CUSTOM"),
+//				DeploymentTemplateUri: exampleYaml.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("Example Folder/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Custom: &harness.InfrastructureDefinitionCustomArgs{
+//					DeploymentTypeTemplateVersion: pulumi.String("1"),
+//					Variables: harness.InfrastructureDefinitionCustomVariableArray{
+//						&harness.InfrastructureDefinitionCustomVariableArgs{
+//							Name:  pulumi.String("url"),
+//							Value: pulumi.String("localhost:8081"),
+//						},
+//						&harness.InfrastructureDefinitionCustomVariableArgs{
+//							Name:  pulumi.String("file_name"),
+//							Value: pulumi.String("instances.json"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -99,13 +150,15 @@ type InfrastructureDefinition struct {
 	AzureWebapp InfrastructureDefinitionAzureWebappPtrOutput `pulumi:"azureWebapp"`
 	// The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
 	CloudProviderType pulumi.StringOutput `pulumi:"cloudProviderType"`
+	// The configuration details for Custom deployments.
+	Custom InfrastructureDefinitionCustomPtrOutput `pulumi:"custom"`
 	// The configuration details for SSH datacenter deployments.
 	DatacenterSsh InfrastructureDefinitionDatacenterSshPtrOutput `pulumi:"datacenterSsh"`
 	// The configuration details for WinRM datacenter deployments.
 	DatacenterWinrm InfrastructureDefinitionDatacenterWinrmPtrOutput `pulumi:"datacenterWinrm"`
 	// The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
 	DeploymentTemplateUri pulumi.StringPtrOutput `pulumi:"deploymentTemplateUri"`
-	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 	DeploymentType pulumi.StringOutput `pulumi:"deploymentType"`
 	// The id of the environment the infrastructure definition belongs to.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
@@ -183,13 +236,15 @@ type infrastructureDefinitionState struct {
 	AzureWebapp *InfrastructureDefinitionAzureWebapp `pulumi:"azureWebapp"`
 	// The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
 	CloudProviderType *string `pulumi:"cloudProviderType"`
+	// The configuration details for Custom deployments.
+	Custom *InfrastructureDefinitionCustom `pulumi:"custom"`
 	// The configuration details for SSH datacenter deployments.
 	DatacenterSsh *InfrastructureDefinitionDatacenterSsh `pulumi:"datacenterSsh"`
 	// The configuration details for WinRM datacenter deployments.
 	DatacenterWinrm *InfrastructureDefinitionDatacenterWinrm `pulumi:"datacenterWinrm"`
 	// The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
 	DeploymentTemplateUri *string `pulumi:"deploymentTemplateUri"`
-	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 	DeploymentType *string `pulumi:"deploymentType"`
 	// The id of the environment the infrastructure definition belongs to.
 	EnvId *string `pulumi:"envId"`
@@ -226,13 +281,15 @@ type InfrastructureDefinitionState struct {
 	AzureWebapp InfrastructureDefinitionAzureWebappPtrInput
 	// The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
 	CloudProviderType pulumi.StringPtrInput
+	// The configuration details for Custom deployments.
+	Custom InfrastructureDefinitionCustomPtrInput
 	// The configuration details for SSH datacenter deployments.
 	DatacenterSsh InfrastructureDefinitionDatacenterSshPtrInput
 	// The configuration details for WinRM datacenter deployments.
 	DatacenterWinrm InfrastructureDefinitionDatacenterWinrmPtrInput
 	// The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
 	DeploymentTemplateUri pulumi.StringPtrInput
-	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 	DeploymentType pulumi.StringPtrInput
 	// The id of the environment the infrastructure definition belongs to.
 	EnvId pulumi.StringPtrInput
@@ -273,13 +330,15 @@ type infrastructureDefinitionArgs struct {
 	AzureWebapp *InfrastructureDefinitionAzureWebapp `pulumi:"azureWebapp"`
 	// The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
 	CloudProviderType string `pulumi:"cloudProviderType"`
+	// The configuration details for Custom deployments.
+	Custom *InfrastructureDefinitionCustom `pulumi:"custom"`
 	// The configuration details for SSH datacenter deployments.
 	DatacenterSsh *InfrastructureDefinitionDatacenterSsh `pulumi:"datacenterSsh"`
 	// The configuration details for WinRM datacenter deployments.
 	DatacenterWinrm *InfrastructureDefinitionDatacenterWinrm `pulumi:"datacenterWinrm"`
 	// The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
 	DeploymentTemplateUri *string `pulumi:"deploymentTemplateUri"`
-	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 	DeploymentType string `pulumi:"deploymentType"`
 	// The id of the environment the infrastructure definition belongs to.
 	EnvId string `pulumi:"envId"`
@@ -317,13 +376,15 @@ type InfrastructureDefinitionArgs struct {
 	AzureWebapp InfrastructureDefinitionAzureWebappPtrInput
 	// The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
 	CloudProviderType pulumi.StringInput
+	// The configuration details for Custom deployments.
+	Custom InfrastructureDefinitionCustomPtrInput
 	// The configuration details for SSH datacenter deployments.
 	DatacenterSsh InfrastructureDefinitionDatacenterSshPtrInput
 	// The configuration details for WinRM datacenter deployments.
 	DatacenterWinrm InfrastructureDefinitionDatacenterWinrmPtrInput
 	// The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
 	DeploymentTemplateUri pulumi.StringPtrInput
-	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+	// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 	DeploymentType pulumi.StringInput
 	// The id of the environment the infrastructure definition belongs to.
 	EnvId pulumi.StringInput
@@ -473,6 +534,11 @@ func (o InfrastructureDefinitionOutput) CloudProviderType() pulumi.StringOutput 
 	return o.ApplyT(func(v *InfrastructureDefinition) pulumi.StringOutput { return v.CloudProviderType }).(pulumi.StringOutput)
 }
 
+// The configuration details for Custom deployments.
+func (o InfrastructureDefinitionOutput) Custom() InfrastructureDefinitionCustomPtrOutput {
+	return o.ApplyT(func(v *InfrastructureDefinition) InfrastructureDefinitionCustomPtrOutput { return v.Custom }).(InfrastructureDefinitionCustomPtrOutput)
+}
+
 // The configuration details for SSH datacenter deployments.
 func (o InfrastructureDefinitionOutput) DatacenterSsh() InfrastructureDefinitionDatacenterSshPtrOutput {
 	return o.ApplyT(func(v *InfrastructureDefinition) InfrastructureDefinitionDatacenterSshPtrOutput {
@@ -492,7 +558,7 @@ func (o InfrastructureDefinitionOutput) DeploymentTemplateUri() pulumi.StringPtr
 	return o.ApplyT(func(v *InfrastructureDefinition) pulumi.StringPtrOutput { return v.DeploymentTemplateUri }).(pulumi.StringPtrOutput)
 }
 
-// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+// The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
 func (o InfrastructureDefinitionOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfrastructureDefinition) pulumi.StringOutput { return v.DeploymentType }).(pulumi.StringOutput)
 }

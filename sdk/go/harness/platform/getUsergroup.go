@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
+//			_, err := platform.LookupUsergroup(ctx, &platform.LookupUsergroupArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
@@ -65,9 +65,9 @@ type LookupUsergroupArgs struct {
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []GetUsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -85,23 +85,23 @@ type LookupUsergroupResult struct {
 	LinkedSsoDisplayName string `pulumi:"linkedSsoDisplayName"`
 	// The SSO account ID that the user group is linked to.
 	LinkedSsoId string `pulumi:"linkedSsoId"`
-	// Type of linked SSO
+	// Type of linked SSO.
 	LinkedSsoType string `pulumi:"linkedSsoType"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs []GetUsergroupNotificationConfig `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Identifier of the userGroup in SSO.
 	SsoGroupId string `pulumi:"ssoGroupId"`
 	// Name of the SSO userGroup.
 	SsoGroupName string `pulumi:"ssoGroupName"`
-	// Whether sso is linked or not
+	// Whether sso is linked or not.
 	SsoLinked bool `pulumi:"ssoLinked"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// List of users in the UserGroup.
 	Users []string `pulumi:"users"`
@@ -128,9 +128,9 @@ type LookupUsergroupOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of notification settings.
 	NotificationConfigs GetUsergroupNotificationConfigArrayInput `pulumi:"notificationConfigs"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -183,7 +183,7 @@ func (o LookupUsergroupResultOutput) LinkedSsoId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) string { return v.LinkedSsoId }).(pulumi.StringOutput)
 }
 
-// Type of linked SSO
+// Type of linked SSO.
 func (o LookupUsergroupResultOutput) LinkedSsoType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) string { return v.LinkedSsoType }).(pulumi.StringOutput)
 }
@@ -198,12 +198,12 @@ func (o LookupUsergroupResultOutput) NotificationConfigs() GetUsergroupNotificat
 	return o.ApplyT(func(v LookupUsergroupResult) []GetUsergroupNotificationConfig { return v.NotificationConfigs }).(GetUsergroupNotificationConfigArrayOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupUsergroupResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupUsergroupResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -218,12 +218,12 @@ func (o LookupUsergroupResultOutput) SsoGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) string { return v.SsoGroupName }).(pulumi.StringOutput)
 }
 
-// Whether sso is linked or not
+// Whether sso is linked or not.
 func (o LookupUsergroupResultOutput) SsoLinked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) bool { return v.SsoLinked }).(pulumi.BoolOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupUsergroupResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUsergroupResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

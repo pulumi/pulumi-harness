@@ -31,11 +31,11 @@ class SecretSshkeyArgs:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input['SecretSshkeyKerberosArgs'] kerberos: Kerberos authentication scheme
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[int] port: SSH port
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input['SecretSshkeySshArgs'] ssh: Kerberos authentication scheme
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
@@ -107,7 +107,7 @@ class SecretSshkeyArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -131,7 +131,7 @@ class SecretSshkeyArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -155,7 +155,7 @@ class SecretSshkeyArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -182,11 +182,11 @@ class _SecretSshkeyState:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input['SecretSshkeyKerberosArgs'] kerberos: Kerberos authentication scheme
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[int] port: SSH port
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input['SecretSshkeySshArgs'] ssh: Kerberos authentication scheme
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -259,7 +259,7 @@ class _SecretSshkeyState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -283,7 +283,7 @@ class _SecretSshkeyState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -307,7 +307,7 @@ class _SecretSshkeyState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -341,77 +341,89 @@ class SecretSshkey(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         key_tab_file_path = harness.platform.SecretSshkey("keyTabFilePath",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            port=22,
             kerberos=harness.platform.SecretSshkeyKerberosArgs(
-                principal="principal",
-                realm="realm",
-                tgt_generation_method="KeyTabFilePath",
                 tgt_key_tab_file_path_spec=harness.platform.SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs(
                     key_path="key_path",
                 ),
-            ),
-            port=22,
-            tags=["foo:bar"])
+                principal="principal",
+                realm="realm",
+                tgt_generation_method="KeyTabFilePath",
+            ))
         _tgt_password = harness.platform.SecretSshkey(" tgtPassword",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            port=22,
             kerberos=harness.platform.SecretSshkeyKerberosArgs(
+                tgt_password_spec=harness.platform.SecretSshkeyKerberosTgtPasswordSpecArgs(
+                    password=f"account.{secret['id']}",
+                ),
                 principal="principal",
                 realm="realm",
                 tgt_generation_method="Password",
-                tgt_password_spec=harness.platform.SecretSshkeyKerberosTgtPasswordSpecArgs(
-                    password="password",
-                ),
-            ),
-            port=22,
-            tags=["foo:bar"])
+            ))
         sshkey_reference = harness.platform.SecretSshkey("sshkeyReference",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="KeyReference",
                 sshkey_reference_credential=harness.platform.SecretSshkeySshSshkeyReferenceCredentialArgs(
-                    encrypted_passphrase="encrypted_passphrase",
-                    key="key",
                     user_name="user_name",
+                    key=f"account.{key['id']}",
+                    encrypted_passphrase=f"account.{secret['id']}",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="KeyReference",
+            ))
         _sshkey_path = harness.platform.SecretSshkey(" sshkeyPath",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="KeyPath",
                 sshkey_path_credential=harness.platform.SecretSshkeySshSshkeyPathCredentialArgs(
-                    encrypted_passphrase="encrypted_passphrase",
-                    key_path="key_path",
                     user_name="user_name",
+                    key_path="key_path",
+                    encrypted_passphrase="encrypted_passphrase",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="KeyPath",
+            ))
         ssh_password = harness.platform.SecretSshkey("sshPassword",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="Password",
                 ssh_password_credential=harness.platform.SecretSshkeySshSshPasswordCredentialArgs(
-                    password="password",
                     user_name="user_name",
+                    password=f"account.{secret['id']}",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="Password",
+            ))
         ```
 
         ## Import
 
-        Import using secret sshkey id
+        Import account level secret sshkey
 
         ```sh
          $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+        ```
+
+         Import org level secret sshkey
+
+        ```sh
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
+        ```
+
+         Import project level secret sshkey
+
+        ```sh
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -420,11 +432,11 @@ class SecretSshkey(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['SecretSshkeyKerberosArgs']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[int] port: SSH port
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[pulumi.InputType['SecretSshkeySshArgs']] ssh: Kerberos authentication scheme
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -442,77 +454,89 @@ class SecretSshkey(pulumi.CustomResource):
         import lbrlabs_pulumi_harness as harness
 
         key_tab_file_path = harness.platform.SecretSshkey("keyTabFilePath",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            port=22,
             kerberos=harness.platform.SecretSshkeyKerberosArgs(
-                principal="principal",
-                realm="realm",
-                tgt_generation_method="KeyTabFilePath",
                 tgt_key_tab_file_path_spec=harness.platform.SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs(
                     key_path="key_path",
                 ),
-            ),
-            port=22,
-            tags=["foo:bar"])
+                principal="principal",
+                realm="realm",
+                tgt_generation_method="KeyTabFilePath",
+            ))
         _tgt_password = harness.platform.SecretSshkey(" tgtPassword",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            port=22,
             kerberos=harness.platform.SecretSshkeyKerberosArgs(
+                tgt_password_spec=harness.platform.SecretSshkeyKerberosTgtPasswordSpecArgs(
+                    password=f"account.{secret['id']}",
+                ),
                 principal="principal",
                 realm="realm",
                 tgt_generation_method="Password",
-                tgt_password_spec=harness.platform.SecretSshkeyKerberosTgtPasswordSpecArgs(
-                    password="password",
-                ),
-            ),
-            port=22,
-            tags=["foo:bar"])
+            ))
         sshkey_reference = harness.platform.SecretSshkey("sshkeyReference",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="KeyReference",
                 sshkey_reference_credential=harness.platform.SecretSshkeySshSshkeyReferenceCredentialArgs(
-                    encrypted_passphrase="encrypted_passphrase",
-                    key="key",
                     user_name="user_name",
+                    key=f"account.{key['id']}",
+                    encrypted_passphrase=f"account.{secret['id']}",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="KeyReference",
+            ))
         _sshkey_path = harness.platform.SecretSshkey(" sshkeyPath",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="KeyPath",
                 sshkey_path_credential=harness.platform.SecretSshkeySshSshkeyPathCredentialArgs(
-                    encrypted_passphrase="encrypted_passphrase",
-                    key_path="key_path",
                     user_name="user_name",
+                    key_path="key_path",
+                    encrypted_passphrase="encrypted_passphrase",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="KeyPath",
+            ))
         ssh_password = harness.platform.SecretSshkey("sshPassword",
-            description="test",
             identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
             port=22,
             ssh=harness.platform.SecretSshkeySshArgs(
-                credential_type="Password",
                 ssh_password_credential=harness.platform.SecretSshkeySshSshPasswordCredentialArgs(
-                    password="password",
                     user_name="user_name",
+                    password=f"account.{secret['id']}",
                 ),
-            ),
-            tags=["foo:bar"])
+                credential_type="Password",
+            ))
         ```
 
         ## Import
 
-        Import using secret sshkey id
+        Import account level secret sshkey
 
         ```sh
          $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+        ```
+
+         Import org level secret sshkey
+
+        ```sh
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
+        ```
+
+         Import project level secret sshkey
+
+        ```sh
+         $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,11 +613,11 @@ class SecretSshkey(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['SecretSshkeyKerberosArgs']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[int] port: SSH port
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[pulumi.InputType['SecretSshkeySshArgs']] ssh: Kerberos authentication scheme
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -646,7 +670,7 @@ class SecretSshkey(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -662,7 +686,7 @@ class SecretSshkey(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -678,7 +702,7 @@ class SecretSshkey(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

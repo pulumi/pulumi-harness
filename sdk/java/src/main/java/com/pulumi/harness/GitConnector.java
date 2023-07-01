@@ -84,7 +84,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The branch of the git connector to use
      * 
      */
-    @Export(name="branch", type=String.class, parameters={})
+    @Export(name="branch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> branch;
 
     /**
@@ -98,7 +98,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Custom details to use when making commits using this git connector
      * 
      */
-    @Export(name="commitDetails", type=GitConnectorCommitDetails.class, parameters={})
+    @Export(name="commitDetails", refs={GitConnectorCommitDetails.class}, tree="[0]")
     private Output</* @Nullable */ GitConnectorCommitDetails> commitDetails;
 
     /**
@@ -112,7 +112,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The time the git connector was created
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -126,7 +126,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Delegate selectors to apply to this git connector.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
@@ -140,7 +140,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Boolean indicating whether or not to generate a webhook url.
      * 
      */
-    @Export(name="generateWebhookUrl", type=Boolean.class, parameters={})
+    @Export(name="generateWebhookUrl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> generateWebhookUrl;
 
     /**
@@ -154,7 +154,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * Name of the git connector.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -168,7 +168,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The id of the secret for connecting to the git repository.
      * 
      */
-    @Export(name="passwordSecretId", type=String.class, parameters={})
+    @Export(name="passwordSecretId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordSecretId;
 
     /**
@@ -182,7 +182,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The id of the SSH secret to use
      * 
      */
-    @Export(name="sshSettingId", type=String.class, parameters={})
+    @Export(name="sshSettingId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sshSettingId;
 
     /**
@@ -193,14 +193,14 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sshSettingId);
     }
     /**
-     * The url of the git repository or account/organization
+     * The URL of the git repository or account/organization
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The url of the git repository or account/organization
+     * @return The URL of the git repository or account/organization
      * 
      */
     public Output<String> url() {
@@ -210,7 +210,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The type of git url being used. Options are `ACCOUNT`, and `REPO.`
      * 
      */
-    @Export(name="urlType", type=String.class, parameters={})
+    @Export(name="urlType", refs={String.class}, tree="[0]")
     private Output<String> urlType;
 
     /**
@@ -224,7 +224,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={GitConnectorUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,GitConnectorUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitConnectorUsageScope>> usageScopes;
 
     /**
@@ -238,7 +238,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The name of the user used to connect to the git repository
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
@@ -252,7 +252,7 @@ public class GitConnector extends com.pulumi.resources.CustomResource {
      * The generated webhook url
      * 
      */
-    @Export(name="webhookUrl", type=String.class, parameters={})
+    @Export(name="webhookUrl", refs={String.class}, tree="[0]")
     private Output<String> webhookUrl;
 
     /**

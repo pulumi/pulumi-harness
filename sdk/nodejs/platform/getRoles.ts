@@ -13,20 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getRoles({
+ * const example = harness.platform.getRoles({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
- * }));
+ * });
  * ```
  */
-export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getRoles(args: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRoles:getRoles", {
         "allowedScopeLevels": args.allowedScopeLevels,
         "identifier": args.identifier,
@@ -48,13 +44,13 @@ export interface GetRolesArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
@@ -62,7 +58,7 @@ export interface GetRolesArgs {
      */
     permissions?: string[];
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -86,13 +82,13 @@ export interface GetRolesResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
@@ -100,17 +96,32 @@ export interface GetRolesResult {
      */
     readonly permissions?: string[];
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
-export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(args).apply(a => getRoles(a, opts))
+/**
+ * Data source for retrieving roles
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getRoles({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
+export function getRolesOutput(args: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+    return pulumi.output(args).apply((a: any) => getRoles(a, opts))
 }
 
 /**
@@ -124,13 +135,13 @@ export interface GetRolesOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -138,7 +149,7 @@ export interface GetRolesOutputArgs {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.harness.platform.outputs.GetInputSetGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class GetInputSetResult {
      * 
      */
     private String description;
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    private @Nullable GetInputSetGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -33,7 +39,7 @@ public final class GetInputSetResult {
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     private String orgId;
@@ -43,12 +49,12 @@ public final class GetInputSetResult {
      */
     private String pipelineId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     private String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -65,6 +71,13 @@ public final class GetInputSetResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<GetInputSetGitDetails> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -88,7 +101,7 @@ public final class GetInputSetResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public String orgId() {
@@ -102,14 +115,14 @@ public final class GetInputSetResult {
         return this.pipelineId;
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
@@ -133,6 +146,7 @@ public final class GetInputSetResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private @Nullable GetInputSetGitDetails gitDetails;
         private String id;
         private @Nullable String identifier;
         private @Nullable String name;
@@ -145,6 +159,7 @@ public final class GetInputSetResult {
         public Builder(GetInputSetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -158,6 +173,11 @@ public final class GetInputSetResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(@Nullable GetInputSetGitDetails gitDetails) {
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -206,6 +226,7 @@ public final class GetInputSetResult {
         public GetInputSetResult build() {
             final var o = new GetInputSetResult();
             o.description = description;
+            o.gitDetails = gitDetails;
             o.id = id;
             o.identifier = identifier;
             o.name = name;

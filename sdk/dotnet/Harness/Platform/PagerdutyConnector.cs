@@ -12,18 +12,66 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a PagerDuty connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.PagerdutyConnector("test", new()
+    ///     {
+    ///         ApiTokenRef = "account.secret_id",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level pagerduty connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level pagerduty connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level pagerduty connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/pagerdutyConnector:PagerdutyConnector")]
     public partial class PagerdutyConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api token.
+        /// Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("apiTokenRef")]
         public Output<string> ApiTokenRef { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -47,19 +95,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -112,7 +160,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class PagerdutyConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api token.
+        /// Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("apiTokenRef", required: true)]
         public Input<string> ApiTokenRef { get; set; } = null!;
@@ -121,7 +169,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -148,13 +196,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -163,7 +211,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -180,7 +228,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class PagerdutyConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api token.
+        /// Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("apiTokenRef")]
         public Input<string>? ApiTokenRef { get; set; }
@@ -189,7 +237,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -216,13 +264,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -231,7 +279,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

@@ -11,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getSshCredential(args?: GetSshCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetSshCredentialResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getSshCredential:getSshCredential", {
         "id": args.id,
         "name": args.name,
@@ -58,9 +55,11 @@ export interface GetSshCredentialResult {
      */
     readonly usageScopes?: outputs.GetSshCredentialUsageScope[];
 }
-
+/**
+ * Data source for retrieving an SSH credential.
+ */
 export function getSshCredentialOutput(args?: GetSshCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshCredentialResult> {
-    return pulumi.output(args).apply(a => getSshCredential(a, opts))
+    return pulumi.output(args).apply((a: any) => getSshCredential(a, opts))
 }
 
 /**

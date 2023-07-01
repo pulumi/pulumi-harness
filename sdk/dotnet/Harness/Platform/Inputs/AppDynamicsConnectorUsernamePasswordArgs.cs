@@ -14,7 +14,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class AppDynamicsConnectorUsernamePasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to a secret containing the password to use for authentication.
+        /// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef", required: true)]
         public Input<string> PasswordRef { get; set; } = null!;

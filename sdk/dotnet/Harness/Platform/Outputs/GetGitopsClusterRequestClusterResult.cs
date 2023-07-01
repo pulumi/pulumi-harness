@@ -23,7 +23,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         public readonly ImmutableArray<string> Namespaces;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterRefreshRequestedAtResult> RefreshRequestedAts;
-        public readonly string Server;
+        public readonly string? Server;
         public readonly string? Shard;
 
         [OutputConstructor]
@@ -46,7 +46,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsClusterRequestClusterRefreshRequestedAtResult> refreshRequestedAts,
 
-            string server,
+            string? server,
 
             string? shard)
         {

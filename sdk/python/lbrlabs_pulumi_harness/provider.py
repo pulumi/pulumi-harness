@@ -21,11 +21,13 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account_id: The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+               create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         :param pulumi.Input[str] endpoint: The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
                `HARNESS_ENDPOINT` environment variable.
         :param pulumi.Input[str] platform_api_key: The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-               variable.
+               variable. For more information to create an API key in NextGen, see
+               https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         if account_id is None:
             account_id = _utilities.get_env('HARNESS_ACCOUNT_ID')
@@ -60,7 +62,8 @@ class ProviderArgs:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+        create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         """
         return pulumi.get(self, "api_key")
 
@@ -86,7 +89,8 @@ class ProviderArgs:
     def platform_api_key(self) -> Optional[pulumi.Input[str]]:
         """
         The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        variable.
+        variable. For more information to create an API key in NextGen, see
+        https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         return pulumi.get(self, "platform_api_key")
 
@@ -114,11 +118,13 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
-        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        :param pulumi.Input[str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+               create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         :param pulumi.Input[str] endpoint: The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the
                `HARNESS_ENDPOINT` environment variable.
         :param pulumi.Input[str] platform_api_key: The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-               variable.
+               variable. For more information to create an API key in NextGen, see
+               https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         ...
     @overload
@@ -190,7 +196,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+        create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         """
         return pulumi.get(self, "api_key")
 
@@ -208,7 +215,8 @@ class Provider(pulumi.ProviderResource):
     def platform_api_key(self) -> pulumi.Output[Optional[str]]:
         """
         The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        variable.
+        variable. For more information to create an API key in NextGen, see
+        https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         return pulumi.get(self, "platform_api_key")
 

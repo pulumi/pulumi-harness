@@ -52,11 +52,17 @@ class GetGitopsClusterResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account identifier of the GitOps cluster.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[str]:
+    def agent_id(self) -> str:
+        """
+        Agent identifier of the GitOps cluster.
+        """
         return pulumi.get(self, "agent_id")
 
     @property
@@ -70,26 +76,41 @@ class GetGitopsClusterResult:
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        Identifier of the GitOps cluster.
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
+        """
+        Organization identifier of the cluster.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> Optional[str]:
+        """
+        Project identifier of the GitOps cluster.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def queries(self) -> Optional[Sequence['outputs.GetGitopsClusterQueryResult']]:
+        """
+        Query for the GitOps cluster resources.
+        """
         return pulumi.get(self, "queries")
 
     @property
     @pulumi.getter
-    def requests(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestResult']]:
+    def requests(self) -> Sequence['outputs.GetGitopsClusterRequestResult']:
+        """
+        Cluster create or update request.
+        """
         return pulumi.get(self, "requests")
 
 
@@ -115,10 +136,30 @@ def get_gitops_cluster(account_id: Optional[str] = None,
                        org_id: Optional[str] = None,
                        project_id: Optional[str] = None,
                        queries: Optional[Sequence[pulumi.InputType['GetGitopsClusterQueryArgs']]] = None,
-                       requests: Optional[Sequence[pulumi.InputType['GetGitopsClusterRequestArgs']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsClusterResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for fetching a Harness GitOps Cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_cluster(account_id="account_id",
+        agent_id="agent_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps cluster.
+    :param str agent_id: Agent identifier of the GitOps cluster.
+    :param str identifier: Identifier of the GitOps cluster.
+    :param str org_id: Organization identifier of the cluster.
+    :param str project_id: Project identifier of the GitOps cluster.
+    :param Sequence[pulumi.InputType['GetGitopsClusterQueryArgs']] queries: Query for the GitOps cluster resources.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -127,31 +168,50 @@ def get_gitops_cluster(account_id: Optional[str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['queries'] = queries
-    __args__['requests'] = requests
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsCluster:getGitopsCluster', __args__, opts=opts, typ=GetGitopsClusterResult).value
 
     return AwaitableGetGitopsClusterResult(
-        account_id=__ret__.account_id,
-        agent_id=__ret__.agent_id,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        queries=__ret__.queries,
-        requests=__ret__.requests)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        agent_id=pulumi.get(__ret__, 'agent_id'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        queries=pulumi.get(__ret__, 'queries'),
+        requests=pulumi.get(__ret__, 'requests'))
 
 
 @_utilities.lift_output_func(get_gitops_cluster)
 def get_gitops_cluster_output(account_id: Optional[pulumi.Input[str]] = None,
-                              agent_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              agent_id: Optional[pulumi.Input[str]] = None,
                               identifier: Optional[pulumi.Input[str]] = None,
                               org_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              project_id: Optional[pulumi.Input[str]] = None,
+                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
                               queries: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsClusterQueryArgs']]]]] = None,
-                              requests: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsClusterRequestArgs']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsClusterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for fetching a Harness GitOps Cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_cluster(account_id="account_id",
+        agent_id="agent_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps cluster.
+    :param str agent_id: Agent identifier of the GitOps cluster.
+    :param str identifier: Identifier of the GitOps cluster.
+    :param str org_id: Organization identifier of the cluster.
+    :param str project_id: Project identifier of the GitOps cluster.
+    :param Sequence[pulumi.InputType['GetGitopsClusterQueryArgs']] queries: Query for the GitOps cluster resources.
     """
     ...

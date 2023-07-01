@@ -12,85 +12,245 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GitOpsRepositoryRepo {
+    /**
+     * @return Identifies the authentication method used to connect to the repository.
+     * 
+     */
     private String connectionType;
+    /**
+     * @return Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+     * 
+     */
     private @Nullable Boolean enableLfs;
+    /**
+     * @return Indicates if helm-oci support must be enabled for this repo.
+     * 
+     */
     private @Nullable Boolean enableOci;
+    /**
+     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * 
+     */
     private @Nullable String githubAppEnterpriseBaseUrl;
+    /**
+     * @return Id of the GitHub app used to access the repo.
+     * 
+     */
     private @Nullable String githubAppId;
+    /**
+     * @return Installation id of the GitHub app used to access the repo.
+     * 
+     */
     private @Nullable String githubAppInstallationId;
+    /**
+     * @return GitHub app private key PEM data.
+     * 
+     */
     private @Nullable String githubAppPrivateKey;
+    /**
+     * @return Indicates if the credentials were inherited from a credential set.
+     * 
+     */
     private @Nullable Boolean inheritedCreds;
+    /**
+     * @return Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+     * 
+     */
     private @Nullable Boolean insecure;
+    /**
+     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * 
+     */
     private @Nullable Boolean insecureIgnoreHostKey;
+    /**
+     * @return Name to be used for this repo. Only used with Helm repos.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Password or PAT used for authenticating at the remote repository.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * 
+     */
     private @Nullable String project;
+    /**
+     * @return The HTTP/HTTPS proxy used to access the repo.
+     * 
+     */
     private @Nullable String proxy;
+    /**
+     * @return URL to the remote repository.
+     * 
+     */
     private String repo;
+    /**
+     * @return PEM data for authenticating at the repo server. Only used with Git repos.
+     * 
+     */
     private @Nullable String sshPrivateKey;
+    /**
+     * @return Certificate in PEM format for authenticating at the repo server.
+     * 
+     */
     private @Nullable String tlsClientCertData;
+    /**
+     * @return Private key in PEM format for authenticating at the repo server.
+     * 
+     */
     private @Nullable String tlsClientCertKey;
+    /**
+     * @return Type specifies the type of the repo. Can be either &#34;git&#34; or &#34;helm. &#34;git&#34; is assumed if empty or absent.
+     * 
+     */
     private @Nullable String type_;
+    /**
+     * @return Username used for authenticating at the remote repository.
+     * 
+     */
     private @Nullable String username;
 
     private GitOpsRepositoryRepo() {}
+    /**
+     * @return Identifies the authentication method used to connect to the repository.
+     * 
+     */
     public String connectionType() {
         return this.connectionType;
     }
+    /**
+     * @return Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+     * 
+     */
     public Optional<Boolean> enableLfs() {
         return Optional.ofNullable(this.enableLfs);
     }
+    /**
+     * @return Indicates if helm-oci support must be enabled for this repo.
+     * 
+     */
     public Optional<Boolean> enableOci() {
         return Optional.ofNullable(this.enableOci);
     }
+    /**
+     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * 
+     */
     public Optional<String> githubAppEnterpriseBaseUrl() {
         return Optional.ofNullable(this.githubAppEnterpriseBaseUrl);
     }
+    /**
+     * @return Id of the GitHub app used to access the repo.
+     * 
+     */
     public Optional<String> githubAppId() {
         return Optional.ofNullable(this.githubAppId);
     }
+    /**
+     * @return Installation id of the GitHub app used to access the repo.
+     * 
+     */
     public Optional<String> githubAppInstallationId() {
         return Optional.ofNullable(this.githubAppInstallationId);
     }
+    /**
+     * @return GitHub app private key PEM data.
+     * 
+     */
     public Optional<String> githubAppPrivateKey() {
         return Optional.ofNullable(this.githubAppPrivateKey);
     }
+    /**
+     * @return Indicates if the credentials were inherited from a credential set.
+     * 
+     */
     public Optional<Boolean> inheritedCreds() {
         return Optional.ofNullable(this.inheritedCreds);
     }
+    /**
+     * @return Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+     * 
+     */
     public Optional<Boolean> insecure() {
         return Optional.ofNullable(this.insecure);
     }
+    /**
+     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * 
+     */
     public Optional<Boolean> insecureIgnoreHostKey() {
         return Optional.ofNullable(this.insecureIgnoreHostKey);
     }
+    /**
+     * @return Name to be used for this repo. Only used with Helm repos.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Password or PAT used for authenticating at the remote repository.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    /**
+     * @return The HTTP/HTTPS proxy used to access the repo.
+     * 
+     */
     public Optional<String> proxy() {
         return Optional.ofNullable(this.proxy);
     }
+    /**
+     * @return URL to the remote repository.
+     * 
+     */
     public String repo() {
         return this.repo;
     }
+    /**
+     * @return PEM data for authenticating at the repo server. Only used with Git repos.
+     * 
+     */
     public Optional<String> sshPrivateKey() {
         return Optional.ofNullable(this.sshPrivateKey);
     }
+    /**
+     * @return Certificate in PEM format for authenticating at the repo server.
+     * 
+     */
     public Optional<String> tlsClientCertData() {
         return Optional.ofNullable(this.tlsClientCertData);
     }
+    /**
+     * @return Private key in PEM format for authenticating at the repo server.
+     * 
+     */
     public Optional<String> tlsClientCertKey() {
         return Optional.ofNullable(this.tlsClientCertKey);
     }
+    /**
+     * @return Type specifies the type of the repo. Can be either &#34;git&#34; or &#34;helm. &#34;git&#34; is assumed if empty or absent.
+     * 
+     */
     public Optional<String> type_() {
         return Optional.ofNullable(this.type_);
     }
+    /**
+     * @return Username used for authenticating at the remote repository.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

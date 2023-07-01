@@ -6,12 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for fetching a Harness GitOps Cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsCluster({
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsCluster:getGitopsCluster", {
         "accountId": args.accountId,
         "agentId": args.agentId,
@@ -19,7 +34,6 @@ export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.Invok
         "orgId": args.orgId,
         "projectId": args.projectId,
         "queries": args.queries,
-        "requests": args.requests,
     }, opts);
 }
 
@@ -27,45 +41,117 @@ export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getGitopsCluster.
  */
 export interface GetGitopsClusterArgs {
+    /**
+     * Account identifier of the GitOps cluster.
+     */
     accountId: string;
-    agentId?: string;
+    /**
+     * Agent identifier of the GitOps cluster.
+     */
+    agentId: string;
+    /**
+     * Identifier of the GitOps cluster.
+     */
     identifier: string;
+    /**
+     * Organization identifier of the cluster.
+     */
     orgId?: string;
-    projectId: string;
+    /**
+     * Project identifier of the GitOps cluster.
+     */
+    projectId?: string;
+    /**
+     * Query for the GitOps cluster resources.
+     */
     queries?: inputs.platform.GetGitopsClusterQuery[];
-    requests?: inputs.platform.GetGitopsClusterRequest[];
 }
 
 /**
  * A collection of values returned by getGitopsCluster.
  */
 export interface GetGitopsClusterResult {
+    /**
+     * Account identifier of the GitOps cluster.
+     */
     readonly accountId: string;
-    readonly agentId?: string;
+    /**
+     * Agent identifier of the GitOps cluster.
+     */
+    readonly agentId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Identifier of the GitOps cluster.
+     */
     readonly identifier: string;
+    /**
+     * Organization identifier of the cluster.
+     */
     readonly orgId?: string;
-    readonly projectId: string;
+    /**
+     * Project identifier of the GitOps cluster.
+     */
+    readonly projectId?: string;
+    /**
+     * Query for the GitOps cluster resources.
+     */
     readonly queries?: outputs.platform.GetGitopsClusterQuery[];
-    readonly requests?: outputs.platform.GetGitopsClusterRequest[];
+    /**
+     * Cluster create or update request.
+     */
+    readonly requests: outputs.platform.GetGitopsClusterRequest[];
 }
-
+/**
+ * Data source for fetching a Harness GitOps Cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsCluster({
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsClusterResult> {
-    return pulumi.output(args).apply(a => getGitopsCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitopsCluster(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getGitopsCluster.
  */
 export interface GetGitopsClusterOutputArgs {
+    /**
+     * Account identifier of the GitOps cluster.
+     */
     accountId: pulumi.Input<string>;
-    agentId?: pulumi.Input<string>;
+    /**
+     * Agent identifier of the GitOps cluster.
+     */
+    agentId: pulumi.Input<string>;
+    /**
+     * Identifier of the GitOps cluster.
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * Organization identifier of the cluster.
+     */
     orgId?: pulumi.Input<string>;
-    projectId: pulumi.Input<string>;
+    /**
+     * Project identifier of the GitOps cluster.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Query for the GitOps cluster resources.
+     */
     queries?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterQueryArgs>[]>;
-    requests?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterRequestArgs>[]>;
 }

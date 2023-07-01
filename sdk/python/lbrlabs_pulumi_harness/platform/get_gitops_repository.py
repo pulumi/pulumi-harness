@@ -67,16 +67,25 @@ class GetGitopsRepositoryResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account identifier of the GitOps repository.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[str]:
+    def agent_id(self) -> str:
+        """
+        Agent identifier of the GitOps repository.
+        """
         return pulumi.get(self, "agent_id")
 
     @property
     @pulumi.getter(name="credsOnly")
     def creds_only(self) -> Optional[bool]:
+        """
+        Indicates if to operate on credential set instead of repository.
+        """
         return pulumi.get(self, "creds_only")
 
     @property
@@ -90,46 +99,73 @@ class GetGitopsRepositoryResult:
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        Identifier of the GitOps repository.
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
+        """
+        Organization identifier of the GitOps repository.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> Optional[str]:
+        """
+        Project identifier of the GitOps repository.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="queryForceRefresh")
     def query_force_refresh(self) -> Optional[bool]:
+        """
+        Indicates to force refresh query for repository.
+        """
         return pulumi.get(self, "query_force_refresh")
 
     @property
     @pulumi.getter(name="queryProject")
     def query_project(self) -> Optional[str]:
+        """
+        Project to query for the GitOps repo.
+        """
         return pulumi.get(self, "query_project")
 
     @property
     @pulumi.getter(name="queryRepo")
     def query_repo(self) -> Optional[str]:
+        """
+        GitOps repository to query.
+        """
         return pulumi.get(self, "query_repo")
 
     @property
     @pulumi.getter
     def repos(self) -> Sequence['outputs.GetGitopsRepositoryRepoResult']:
+        """
+        Repo details holding application configurations.
+        """
         return pulumi.get(self, "repos")
 
     @property
     @pulumi.getter(name="updateMasks")
     def update_masks(self) -> Optional[Sequence['outputs.GetGitopsRepositoryUpdateMaskResult']]:
+        """
+        Update mask of the repository.
+        """
         return pulumi.get(self, "update_masks")
 
     @property
     @pulumi.getter
     def upsert(self) -> Optional[bool]:
+        """
+        Indicates if the GitOps repository should be updated if existing and inserted if not.
+        """
         return pulumi.get(self, "upsert")
 
 
@@ -163,12 +199,37 @@ def get_gitops_repository(account_id: Optional[str] = None,
                           query_force_refresh: Optional[bool] = None,
                           query_project: Optional[str] = None,
                           query_repo: Optional[str] = None,
-                          repos: Optional[Sequence[pulumi.InputType['GetGitopsRepositoryRepoArgs']]] = None,
                           update_masks: Optional[Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']]] = None,
                           upsert: Optional[bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsRepositoryResult:
     """
-    Use this data source to access information about an existing resource.
+    Data Source for fetching a Harness GitOps Repository.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_repository(account_id="account_id",
+        agent_id="agent_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps repository.
+    :param str agent_id: Agent identifier of the GitOps repository.
+    :param bool creds_only: Indicates if to operate on credential set instead of repository.
+    :param str identifier: Identifier of the GitOps repository.
+    :param str org_id: Organization identifier of the GitOps repository.
+    :param str project_id: Project identifier of the GitOps repository.
+    :param bool query_force_refresh: Indicates to force refresh query for repository.
+    :param str query_project: Project to query for the GitOps repo.
+    :param str query_repo: GitOps repository to query.
+    :param Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']] update_masks: Update mask of the repository.
+    :param bool upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -180,43 +241,67 @@ def get_gitops_repository(account_id: Optional[str] = None,
     __args__['queryForceRefresh'] = query_force_refresh
     __args__['queryProject'] = query_project
     __args__['queryRepo'] = query_repo
-    __args__['repos'] = repos
     __args__['updateMasks'] = update_masks
     __args__['upsert'] = upsert
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsRepository:getGitopsRepository', __args__, opts=opts, typ=GetGitopsRepositoryResult).value
 
     return AwaitableGetGitopsRepositoryResult(
-        account_id=__ret__.account_id,
-        agent_id=__ret__.agent_id,
-        creds_only=__ret__.creds_only,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        query_force_refresh=__ret__.query_force_refresh,
-        query_project=__ret__.query_project,
-        query_repo=__ret__.query_repo,
-        repos=__ret__.repos,
-        update_masks=__ret__.update_masks,
-        upsert=__ret__.upsert)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        agent_id=pulumi.get(__ret__, 'agent_id'),
+        creds_only=pulumi.get(__ret__, 'creds_only'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        query_force_refresh=pulumi.get(__ret__, 'query_force_refresh'),
+        query_project=pulumi.get(__ret__, 'query_project'),
+        query_repo=pulumi.get(__ret__, 'query_repo'),
+        repos=pulumi.get(__ret__, 'repos'),
+        update_masks=pulumi.get(__ret__, 'update_masks'),
+        upsert=pulumi.get(__ret__, 'upsert'))
 
 
 @_utilities.lift_output_func(get_gitops_repository)
 def get_gitops_repository_output(account_id: Optional[pulumi.Input[str]] = None,
-                                 agent_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 agent_id: Optional[pulumi.Input[str]] = None,
                                  creds_only: Optional[pulumi.Input[Optional[bool]]] = None,
                                  identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 project_id: Optional[pulumi.Input[str]] = None,
+                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  query_force_refresh: Optional[pulumi.Input[Optional[bool]]] = None,
                                  query_project: Optional[pulumi.Input[Optional[str]]] = None,
                                  query_repo: Optional[pulumi.Input[Optional[str]]] = None,
-                                 repos: Optional[pulumi.Input[Sequence[pulumi.InputType['GetGitopsRepositoryRepoArgs']]]] = None,
                                  update_masks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']]]]] = None,
                                  upsert: Optional[pulumi.Input[Optional[bool]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepositoryResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data Source for fetching a Harness GitOps Repository.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_repository(account_id="account_id",
+        agent_id="agent_id",
+        identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps repository.
+    :param str agent_id: Agent identifier of the GitOps repository.
+    :param bool creds_only: Indicates if to operate on credential set instead of repository.
+    :param str identifier: Identifier of the GitOps repository.
+    :param str org_id: Organization identifier of the GitOps repository.
+    :param str project_id: Project identifier of the GitOps repository.
+    :param bool query_force_refresh: Indicates to force refresh query for repository.
+    :param str query_project: Project to query for the GitOps repo.
+    :param str query_repo: GitOps repository to query.
+    :param Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']] update_masks: Update mask of the repository.
+    :param bool upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
     """
     ...

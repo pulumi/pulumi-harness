@@ -64,14 +64,14 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -124,14 +124,14 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -139,14 +139,14 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -154,14 +154,14 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -169,14 +169,14 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Url of the BitBucket repository or account.
+     * URL of the BitBucket repository or account.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Url of the BitBucket repository or account.
+     * @return URL of the BitBucket repository or account.
      * 
      */
     public Output<String> url() {
@@ -297,7 +297,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param url Url of the BitBucket repository or account.
+         * @param url URL of the BitBucket repository or account.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class BitbucketConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param url Url of the BitBucket repository or account.
+         * @param url URL of the BitBucket repository or account.
          * 
          * @return builder
          * 

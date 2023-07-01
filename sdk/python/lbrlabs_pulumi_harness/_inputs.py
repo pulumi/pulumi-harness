@@ -22,11 +22,14 @@ __all__ = [
     'InfrastructureDefinitionAwsWinrmArgs',
     'InfrastructureDefinitionAzureVmssArgs',
     'InfrastructureDefinitionAzureWebappArgs',
+    'InfrastructureDefinitionCustomArgs',
+    'InfrastructureDefinitionCustomVariableArgs',
     'InfrastructureDefinitionDatacenterSshArgs',
     'InfrastructureDefinitionDatacenterWinrmArgs',
     'InfrastructureDefinitionKubernetesArgs',
     'InfrastructureDefinitionKubernetesGcpArgs',
     'InfrastructureDefinitionTanzuArgs',
+    'PlatformCcmFiltersFilterPropertiesArgs',
     'SshCredentialKerberosAuthenticationArgs',
     'SshCredentialKerberosAuthenticationTgtGenerationMethodArgs',
     'SshCredentialSshAuthenticationArgs',
@@ -48,6 +51,7 @@ __all__ = [
     'UserGroupPermissionsAppPermissionsWorkflowArgs',
     'UserGroupSamlSettingsArgs',
     'GetEncryptedTextUsageScopeArgs',
+    'GetEnvironmentVariableOverrideArgs',
     'GetSecretManagerUsageScopeArgs',
     'GetSshCredentialUsageScopeArgs',
 ]
@@ -1247,6 +1251,77 @@ class InfrastructureDefinitionAzureWebappArgs:
 
 
 @pulumi.input_type
+class InfrastructureDefinitionCustomArgs:
+    def __init__(__self__, *,
+                 deployment_type_template_version: pulumi.Input[str],
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] deployment_type_template_version: The template version
+        :param pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]] variables: Variables to be used in the service
+        """
+        pulumi.set(__self__, "deployment_type_template_version", deployment_type_template_version)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter(name="deploymentTypeTemplateVersion")
+    def deployment_type_template_version(self) -> pulumi.Input[str]:
+        """
+        The template version
+        """
+        return pulumi.get(self, "deployment_type_template_version")
+
+    @deployment_type_template_version.setter
+    def deployment_type_template_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment_type_template_version", value)
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]:
+        """
+        Variables to be used in the service
+        """
+        return pulumi.get(self, "variables")
+
+    @variables.setter
+    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]):
+        pulumi.set(self, "variables", value)
+
+
+@pulumi.input_type
+class InfrastructureDefinitionCustomVariableArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The name of the infrastructure definition
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the infrastructure definition
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class InfrastructureDefinitionDatacenterSshArgs:
     def __init__(__self__, *,
                  cloud_provider_name: pulumi.Input[str],
@@ -1519,6 +1594,44 @@ class InfrastructureDefinitionTanzuArgs:
     @space.setter
     def space(self, value: pulumi.Input[str]):
         pulumi.set(self, "space", value)
+
+
+@pulumi.input_type
+class PlatformCcmFiltersFilterPropertiesArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] filter_type: Type of CCM filters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        """
+        Type of CCM filters.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -2194,15 +2307,16 @@ class UserGroupPermissionsAppPermissionsAllArgs:
 class UserGroupPermissionsAppPermissionsDeploymentArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 filters: pulumi.Input[Sequence[pulumi.Input[str]]],
                  app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
@@ -2212,15 +2326,6 @@ class UserGroupPermissionsAppPermissionsDeploymentArgs:
     @actions.setter
     def actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "actions", value)
-
-    @property
-    @pulumi.getter
-    def filters(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="appIds")
@@ -2239,21 +2344,31 @@ class UserGroupPermissionsAppPermissionsDeploymentArgs:
     @env_ids.setter
     def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env_ids", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "filters", value)
 
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsEnvironmentArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 filters: pulumi.Input[Sequence[pulumi.Input[str]]],
                  app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
@@ -2263,15 +2378,6 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgs:
     @actions.setter
     def actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "actions", value)
-
-    @property
-    @pulumi.getter
-    def filters(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="appIds")
@@ -2290,21 +2396,31 @@ class UserGroupPermissionsAppPermissionsEnvironmentArgs:
     @env_ids.setter
     def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env_ids", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "filters", value)
 
 
 @pulumi.input_type
 class UserGroupPermissionsAppPermissionsPipelineArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 filters: pulumi.Input[Sequence[pulumi.Input[str]]],
                  app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 env_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
         if env_ids is not None:
             pulumi.set(__self__, "env_ids", env_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
@@ -2314,15 +2430,6 @@ class UserGroupPermissionsAppPermissionsPipelineArgs:
     @actions.setter
     def actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "actions", value)
-
-    @property
-    @pulumi.getter
-    def filters(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="appIds")
@@ -2341,6 +2448,15 @@ class UserGroupPermissionsAppPermissionsPipelineArgs:
     @env_ids.setter
     def env_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env_ids", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "filters", value)
 
 
 @pulumi.input_type
@@ -2467,12 +2583,13 @@ class UserGroupPermissionsAppPermissionsTemplateArgs:
 class UserGroupPermissionsAppPermissionsWorkflowArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 filters: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "filters", filters)
         if app_ids is not None:
             pulumi.set(__self__, "app_ids", app_ids)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
 
     @property
     @pulumi.getter
@@ -2484,15 +2601,6 @@ class UserGroupPermissionsAppPermissionsWorkflowArgs:
         pulumi.set(self, "actions", value)
 
     @property
-    @pulumi.getter
-    def filters(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "filters", value)
-
-    @property
     @pulumi.getter(name="appIds")
     def app_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "app_ids")
@@ -2500,6 +2608,15 @@ class UserGroupPermissionsAppPermissionsWorkflowArgs:
     @app_ids.setter
     def app_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "app_ids", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "filters", value)
 
 
 @pulumi.input_type
@@ -2594,6 +2711,73 @@ class GetEncryptedTextUsageScopeArgs:
     @environment_id.setter
     def environment_id(self, value: Optional[str]):
         pulumi.set(self, "environment_id", value)
+
+
+@pulumi.input_type
+class GetEnvironmentVariableOverrideArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 service_name: str,
+                 type: str,
+                 value: str):
+        """
+        :param str name: The name of the variable
+        :param str service_name: The name of the service
+        :param str type: The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+        :param str value: The value of the service variable
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the variable
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of the service
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: str):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the service variable. Valid values are `TEXT` and `ENCRYPTED_TEXT`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the service variable
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

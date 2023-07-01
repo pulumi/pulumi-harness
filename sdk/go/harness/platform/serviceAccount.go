@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,11 +47,27 @@ import (
 //
 // ## Import
 //
-// # Import using secret sshkey id
+// # Import account level service account
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
+//
+// ```
+//
+//	Import org level service account
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
+//
+// ```
+//
+//	Import project level service account
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
 //
 // ```
 type ServiceAccount struct {
@@ -67,11 +83,11 @@ type ServiceAccount struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -124,11 +140,11 @@ type serviceAccountState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -143,11 +159,11 @@ type ServiceAccountState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -166,11 +182,11 @@ type serviceAccountArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -186,11 +202,11 @@ type ServiceAccountArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -306,17 +322,17 @@ func (o ServiceAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o ServiceAccountOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o ServiceAccountOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o ServiceAccountOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -8,6 +8,49 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Gitlab connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * // Credentials ssh
+ * const test = new harness.platform.GitlabConnector("test", {
+ *     connectionType: "Account",
+ *     credentials: {
+ *         ssh: {
+ *             sshKeyRef: "account.test",
+ *         },
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://gitlab.com/account",
+ *     validationRepo: "some_repo",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level gitlab connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <connector_id>
+ * ```
+ *
+ *  Import org level gitlab connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level gitlab connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class GitlabConnector extends pulumi.CustomResource {
     /**
@@ -50,7 +93,7 @@ export class GitlabConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.GitlabConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -66,19 +109,19 @@ export class GitlabConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the gitlab repository or account.
+     * URL of the gitlab repository or account.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -160,7 +203,7 @@ export interface GitlabConnectorState {
      */
     credentials?: pulumi.Input<inputs.platform.GitlabConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -176,19 +219,19 @@ export interface GitlabConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the gitlab repository or account.
+     * URL of the gitlab repository or account.
      */
     url?: pulumi.Input<string>;
     /**
@@ -214,7 +257,7 @@ export interface GitlabConnectorArgs {
      */
     credentials: pulumi.Input<inputs.platform.GitlabConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -230,19 +273,19 @@ export interface GitlabConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the gitlab repository or account.
+     * URL of the gitlab repository or account.
      */
     url: pulumi.Input<string>;
     /**

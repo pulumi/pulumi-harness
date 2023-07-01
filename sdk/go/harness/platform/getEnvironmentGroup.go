@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupEnvironmentGroup(ctx, &platform.LookupEnvironmentGroupArgs{
+//			_, err := platform.LookupEnvironmentGroup(ctx, &platform.LookupEnvironmentGroupArgs{
 //				Identifier: "identifier",
 //				OrgId:      "org_id",
 //				ProjectId:  "project_id",

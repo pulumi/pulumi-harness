@@ -10,13 +10,14 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.InputSetArgs;
 import com.pulumi.harness.platform.inputs.InputSetState;
+import com.pulumi.harness.platform.outputs.InputSetGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Resource Group
+ * Resource for creating a Harness InputSet.
  * 
  * ## Example Usage
  * ```java
@@ -27,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.InputSet;
  * import com.pulumi.harness.platform.InputSetArgs;
+ * import com.pulumi.harness.platform.inputs.InputSetGitDetailsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,26 +44,56 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new InputSet(&#34;example&#34;, InputSetArgs.builder()        
  *             .identifier(&#34;identifier&#34;)
- *             .orgId(&#34;org_id&#34;)
- *             .pipelineId(&#34;pipeline_id&#34;)
- *             .projectId(&#34;project_id&#34;)
  *             .tags(&#34;foo:bar&#34;)
+ *             .orgId(&#34;org_id&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .pipelineId(&#34;pipeline_id&#34;)
  *             .yaml(&#34;&#34;&#34;
- *     inputSet:
- *       identifier: &#34;identifier&#34;
- *       name: &#34;name&#34;
- *       tags:
- *         foo: &#34;bar&#34;
- *       orgIdentifier: &#34;org_id&#34;
- *       projectIdentifier: &#34;project_id&#34;
- *       pipeline:
- *         identifier: &#34;pipeline_id&#34;
- *         variables:
- *         - name: &#34;key&#34;
- *           type: &#34;String&#34;
- *           value: &#34;value&#34;
- * 
+ * inputSet:
+ *   identifier: &#34;identifier&#34;
+ *   name: &#34;name&#34;
+ *   tags:
+ *     foo: &#34;bar&#34;
+ *   orgIdentifier: &#34;org_id&#34;
+ *   projectIdentifier: &#34;project_id&#34;
+ *   pipeline:
+ *     identifier: &#34;pipeline_id&#34;
+ *     variables:
+ *     - name: &#34;key&#34;
+ *       type: &#34;String&#34;
+ *       value: &#34;value&#34;
  *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var test = new InputSet(&#34;test&#34;, InputSetArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .orgId(harness_platform_organization.test().id())
+ *             .projectId(harness_platform_project.test().id())
+ *             .pipelineId(harness_platform_pipeline.test().id())
+ *             .gitDetails(InputSetGitDetailsArgs.builder()
+ *                 .branchName(&#34;main&#34;)
+ *                 .commitMessage(&#34;Commit&#34;)
+ *                 .filePath(&#34;.harness/file_path.yaml&#34;)
+ *                 .connectorRef(&#34;account.connector_ref&#34;)
+ *                 .storeType(&#34;REMOTE&#34;)
+ *                 .repoName(&#34;repo_name&#34;)
+ *                 .build())
+ *             .yaml(&#34;&#34;&#34;
+ * inputSet:
+ *   identifier: &#34;identifier&#34;
+ *   name: &#34;name&#34;
+ *   tags:
+ *     foo: &#34;bar&#34;
+ *   orgIdentifier: &#34;%s&#34;
+ *   projectIdentifier: &#34;%s&#34;
+ *   pipeline:
+ *     identifier: &#34;%s&#34;
+ *     variables:
+ *     - name: &#34;key&#34;
+ *       type: &#34;String&#34;
+ *       value: &#34;value&#34;
+ * &#34;, harness_platform_organization.test().id(),harness_platform_project.test().id(),harness_platform_pipeline.test().id()))
  *             .build());
  * 
  *     }
@@ -70,10 +102,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using input set id
+ * Import input set
  * 
  * ```sh
- *  $ pulumi import harness:platform/inputSet:InputSet example &lt;input_set_id&gt;
+ *  $ pulumi import harness:platform/inputSet:InputSet example &lt;org_id&gt;/&lt;project_id&gt;/&lt;pipeline_id&gt;/&lt;input_set_id&gt;
  * ```
  * 
  */
@@ -83,7 +115,7 @@ public class InputSet extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -94,10 +126,24 @@ public class InputSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Export(name="gitDetails", refs={InputSetGitDetails.class}, tree="[0]")
+    private Output</* @Nullable */ InputSetGitDetails> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Output<Optional<InputSetGitDetails>> gitDetails() {
+        return Codegen.optional(this.gitDetails);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -111,7 +157,7 @@ public class InputSet extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -122,24 +168,24 @@ public class InputSet extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> orgId;
+    @Export(name="orgId", refs={String.class}, tree="[0]")
+    private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public Output<Optional<String>> orgId() {
-        return Codegen.optional(this.orgId);
+    public Output<String> orgId() {
+        return this.orgId;
     }
     /**
      * Identifier of the pipeline
      * 
      */
-    @Export(name="pipelineId", type=String.class, parameters={})
+    @Export(name="pipelineId", refs={String.class}, tree="[0]")
     private Output<String> pipelineId;
 
     /**
@@ -150,42 +196,42 @@ public class InputSet extends com.pulumi.resources.CustomResource {
         return this.pipelineId;
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> projectId;
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public Output<Optional<String>> projectId() {
-        return Codegen.optional(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Input Set YAML
+     * Input Set YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    @Export(name="yaml", type=String.class, parameters={})
+    @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return Input Set YAML
+     * @return Input Set YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

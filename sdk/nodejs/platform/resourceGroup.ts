@@ -9,41 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Resource Group
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.platform.ResourceGroup("test", {
- *     accountId: "account_id",
- *     allowedScopeLevels: ["account"],
- *     description: "test",
- *     identifier: "identifier",
- *     includedScopes: [{
- *         accountId: "account_id",
- *         filter: "EXCLUDING_CHILD_SCOPES",
- *     }],
- *     resourceFilters: [{
- *         includeAllResources: false,
- *         resources: [{
- *             attributeFilters: [{
- *                 attributeName: "category",
- *                 attributeValues: ["value"],
- *             }],
- *             resourceType: "CONNECTOR",
- *         }],
- *     }],
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
- * Import using resource group id
+ * Import account level resource group
  *
  * ```sh
  *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
+ * ```
+ *
+ *  Import org level resource group
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
+ * ```
+ *
+ *  Import project level resource group
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {
@@ -103,11 +86,11 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -115,7 +98,7 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly resourceFilters!: pulumi.Output<outputs.platform.ResourceGroupResourceFilter[] | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -201,11 +184,11 @@ export interface ResourceGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -213,7 +196,7 @@ export interface ResourceGroupState {
      */
     resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -251,11 +234,11 @@ export interface ResourceGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -263,7 +246,7 @@ export interface ResourceGroupArgs {
      */
     resourceFilters?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupResourceFilter>[]>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

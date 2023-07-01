@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -37,14 +37,16 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+     * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
-    @Export(name="apiKey", type=String.class, parameters={})
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiKey;
 
     /**
-     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+     * @return The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+     * create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
      * 
      */
     public Output<Optional<String>> apiKey() {
@@ -55,7 +57,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * `HARNESS_ENDPOINT` environment variable.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpoint;
 
     /**
@@ -68,15 +70,17 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     }
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable.
+     * variable. For more information to create an API key in NextGen, see
+     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
-    @Export(name="platformApiKey", type=String.class, parameters={})
+    @Export(name="platformApiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> platformApiKey;
 
     /**
      * @return The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-     * variable.
+     * variable. For more information to create an API key in NextGen, see
+     * https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
     public Output<Optional<String>> platformApiKey() {

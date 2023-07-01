@@ -49,7 +49,7 @@ type LookupGitConnectorResult struct {
 	PasswordSecretId string `pulumi:"passwordSecretId"`
 	// The id of the SSH secret to use.
 	SshSettingId string `pulumi:"sshSettingId"`
-	// The url of the git repository or account/organization.
+	// The URL of the git repository or account/organization.
 	Url string `pulumi:"url"`
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO`.
 	UrlType string `pulumi:"urlType"`
@@ -144,7 +144,7 @@ func (o LookupGitConnectorResultOutput) SshSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) string { return v.SshSettingId }).(pulumi.StringOutput)
 }
 
-// The url of the git repository or account/organization.
+// The URL of the git repository or account/organization.
 func (o LookupGitConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

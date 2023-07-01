@@ -15,7 +15,7 @@ public final class AppDynamicsConnectorApiToken {
      */
     private String clientId;
     /**
-     * @return Reference to the Harness secret containing the App Dynamics client secret.
+     * @return Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String clientSecretRef;
@@ -29,7 +29,7 @@ public final class AppDynamicsConnectorApiToken {
         return this.clientId;
     }
     /**
-     * @return Reference to the Harness secret containing the App Dynamics client secret.
+     * @return Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public String clientSecretRef() {

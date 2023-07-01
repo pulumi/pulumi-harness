@@ -16,14 +16,14 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
     public static final HelmConnectorCredentialsArgs Empty = new HelmConnectorCredentialsArgs();
 
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return Reference to a secret containing the password to use for authentication.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
@@ -46,14 +46,14 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return Reference to a secret containing the username to use for authentication.
+     * @return Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -87,7 +87,7 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param usernameRef Reference to a secret containing the username to use for authentication.
+         * @param usernameRef Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class HelmConnectorCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param usernameRef Reference to a secret containing the username to use for authentication.
+         * @param usernameRef Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

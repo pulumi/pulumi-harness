@@ -79,7 +79,7 @@ class GetEnvironmentResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -95,17 +95,17 @@ class GetEnvironmentResult:
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -113,7 +113,7 @@ class GetEnvironmentResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -174,8 +174,8 @@ def get_environment(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -186,23 +186,23 @@ def get_environment(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        color=__ret__.color,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        type=__ret__.type,
-        yaml=__ret__.yaml)
+        color=pulumi.get(__ret__, 'color'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'),
+        yaml=pulumi.get(__ret__, 'yaml'))
 
 
 @_utilities.lift_output_func(get_environment)
-def get_environment_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_environment_output(identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
-                           org_id: Optional[pulumi.Input[str]] = None,
-                           project_id: Optional[pulumi.Input[str]] = None,
+                           org_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           project_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Data source for retrieving a Harness environment.
@@ -221,7 +221,7 @@ def get_environment_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

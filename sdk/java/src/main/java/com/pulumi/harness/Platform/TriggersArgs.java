@@ -93,14 +93,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<String> orgId() {
@@ -108,14 +108,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<String> projectId() {
@@ -123,14 +123,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -153,14 +153,14 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * trigger yaml
+     * trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml", required=true)
     private Output<String> yaml;
 
     /**
-     * @return trigger yaml
+     * @return trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {
@@ -306,7 +306,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml trigger yaml
+         * @param yaml trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class TriggersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml trigger yaml
+         * @param yaml trigger yaml. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

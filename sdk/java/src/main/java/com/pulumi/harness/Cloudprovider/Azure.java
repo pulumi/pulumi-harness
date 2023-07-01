@@ -77,7 +77,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * The client id for the Azure application
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -91,7 +91,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * The type of environment. Valid options are [AZURE AZURE*US*GOVERNMENT]
      * 
      */
-    @Export(name="environmentType", type=String.class, parameters={})
+    @Export(name="environmentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environmentType;
 
     /**
@@ -105,7 +105,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * The Name of the Harness secret containing the key for the Azure application
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -119,7 +119,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * The tenant id for the Azure application
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

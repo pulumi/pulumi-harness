@@ -49,14 +49,14 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -109,14 +109,14 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -124,14 +124,14 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -139,14 +139,14 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -154,14 +154,14 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Url of the App Dynamics controller.
+     * URL of the App Dynamics controller.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Url of the App Dynamics controller.
+     * @return URL of the App Dynamics controller.
      * 
      */
     public Optional<Output<String>> url() {
@@ -260,7 +260,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Url of the App Dynamics controller.
+         * @param url URL of the App Dynamics controller.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class AppDynamicsConnectorState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param url Url of the App Dynamics controller.
+         * @param url URL of the App Dynamics controller.
          * 
          * @return builder
          * 

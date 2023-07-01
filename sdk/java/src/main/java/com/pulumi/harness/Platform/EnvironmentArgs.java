@@ -47,6 +47,21 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable this flag for force deletion of environment
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<String> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of environment
+     * 
+     */
+    public Optional<Output<String>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -80,41 +95,41 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      * Unique identifier of the organization.
      * 
      */
-    @Import(name="orgId", required=true)
-    private Output<String> orgId;
+    @Import(name="orgId")
+    private @Nullable Output<String> orgId;
 
     /**
      * @return Unique identifier of the organization.
      * 
      */
-    public Output<String> orgId() {
-        return this.orgId;
+    public Optional<Output<String>> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
     /**
      * Unique identifier of the project.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
      * @return Unique identifier of the project.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -137,14 +152,14 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Environment YAML
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Environment YAML
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -156,6 +171,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     private EnvironmentArgs(EnvironmentArgs $) {
         this.color = $.color;
         this.description = $.description;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -226,6 +242,27 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param forceDelete Enable this flag for force deletion of environment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of environment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(String forceDelete) {
+            return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -273,7 +310,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder orgId(Output<String> orgId) {
+        public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
@@ -294,7 +331,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -310,7 +347,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -321,7 +358,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -331,7 +368,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -362,7 +399,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -373,7 +410,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -384,8 +421,6 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
         public EnvironmentArgs build() {
             $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }

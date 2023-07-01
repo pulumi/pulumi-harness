@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
+//			_default, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
 //				Default: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -35,14 +35,14 @@ import (
 //			}
 //			awsAccessKey, err := harness.NewEncryptedText(ctx, "awsAccessKey", &harness.EncryptedTextArgs{
 //				Value:           pulumi.String("<ACCESS_KEY_ID>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			awsSecretKey, err := harness.NewEncryptedText(ctx, "awsSecretKey", &harness.EncryptedTextArgs{
 //				Value:           pulumi.String("<SECRET_KEY_ID>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

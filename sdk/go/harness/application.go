@@ -64,7 +64,7 @@ type Application struct {
 	IsManualTriggerAuthorized pulumi.BoolPtrOutput `pulumi:"isManualTriggerAuthorized"`
 	// The name of the application
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -108,7 +108,7 @@ type applicationState struct {
 	IsManualTriggerAuthorized *bool `pulumi:"isManualTriggerAuthorized"`
 	// The name of the application
 	Name *string `pulumi:"name"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -123,7 +123,7 @@ type ApplicationState struct {
 	IsManualTriggerAuthorized pulumi.BoolPtrInput
 	// The name of the application
 	Name pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -138,7 +138,7 @@ type applicationArgs struct {
 	IsManualTriggerAuthorized *bool `pulumi:"isManualTriggerAuthorized"`
 	// The name of the application
 	Name *string `pulumi:"name"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -150,7 +150,7 @@ type ApplicationArgs struct {
 	IsManualTriggerAuthorized pulumi.BoolPtrInput
 	// The name of the application
 	Name pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -266,7 +266,7 @@ func (o ApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o ApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

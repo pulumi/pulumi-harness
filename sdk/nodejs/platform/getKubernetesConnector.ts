@@ -8,14 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for looking up a Kubernetes connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getKubernetesConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getKubernetesConnector(args?: GetKubernetesConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getKubernetesConnector(args: GetKubernetesConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getKubernetesConnector:getKubernetesConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetKubernetesConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -69,7 +76,7 @@ export interface GetKubernetesConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Credentials are inherited from the delegate.
      */
@@ -83,11 +90,11 @@ export interface GetKubernetesConnectorResult {
      */
     readonly openidConnects: outputs.platform.GetKubernetesConnectorOpenidConnect[];
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -95,7 +102,7 @@ export interface GetKubernetesConnectorResult {
      */
     readonly serviceAccounts: outputs.platform.GetKubernetesConnectorServiceAccount[];
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -103,9 +110,22 @@ export interface GetKubernetesConnectorResult {
      */
     readonly usernamePasswords: outputs.platform.GetKubernetesConnectorUsernamePassword[];
 }
-
-export function getKubernetesConnectorOutput(args?: GetKubernetesConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesConnectorResult> {
-    return pulumi.output(args).apply(a => getKubernetesConnector(a, opts))
+/**
+ * Datasource for looking up a Kubernetes connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getKubernetesConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getKubernetesConnectorOutput(args: GetKubernetesConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getKubernetesConnector(a, opts))
 }
 
 /**
@@ -115,17 +135,17 @@ export interface GetKubernetesConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

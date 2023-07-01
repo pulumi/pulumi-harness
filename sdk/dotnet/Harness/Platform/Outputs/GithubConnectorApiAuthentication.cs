@@ -19,7 +19,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly Outputs.GithubConnectorApiAuthenticationGithubApp? GithubApp;
         /// <summary>
-        /// Personal access token for interacting with the github api.
+        /// Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? TokenRef;
 

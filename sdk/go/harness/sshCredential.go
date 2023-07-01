@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			secretManager, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
+//			secretManager, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
 //				Default: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -42,16 +42,16 @@ import (
 //			}
 //			mySecret, err := harness.NewEncryptedText(ctx, "mySecret", &harness.EncryptedTextArgs{
 //				Value:           harnessDeployKey.PrivateKeyPem,
-//				SecretManagerId: pulumi.String(secretManager.Id),
+//				SecretManagerId: *pulumi.String(secretManager.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = harness.NewSshCredential(ctx, "sshCreds", &harness.SshCredentialArgs{
-//				SshAuthentication: &SshCredentialSshAuthenticationArgs{
+//				SshAuthentication: &harness.SshCredentialSshAuthenticationArgs{
 //					Port:     pulumi.Int(22),
 //					Username: pulumi.String("git"),
-//					InlineSsh: &SshCredentialSshAuthenticationInlineSshArgs{
+//					InlineSsh: &harness.SshCredentialSshAuthenticationInlineSshArgs{
 //						SshKeyFileId: mySecret.ID(),
 //					},
 //				},

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.GetPipelineGitDetails;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetPipelinePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPipelinePlainArgs Empty = new GetPipelinePlainArgs();
+
+    /**
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable GetPipelineGitDetails gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<GetPipelineGitDetails> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -77,6 +93,7 @@ public final class GetPipelinePlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetPipelinePlainArgs() {}
 
     private GetPipelinePlainArgs(GetPipelinePlainArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -99,6 +116,17 @@ public final class GetPipelinePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder(GetPipelinePlainArgs defaults) {
             $ = new GetPipelinePlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable GetPipelineGitDetails gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
         }
 
         /**

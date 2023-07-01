@@ -60,7 +60,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="apiKeyRef")
     def api_key_ref(self) -> str:
         """
-        Reference to the Harness secret containing the api key.
+        Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "api_key_ref")
 
@@ -68,7 +68,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="applicationKeyRef")
     def application_key_ref(self) -> str:
         """
-        Reference to the Harness secret containing the application key.
+        Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "application_key_ref")
 
@@ -76,7 +76,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[Sequence[str]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -98,7 +98,7 @@ class GetDatadogConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -116,7 +116,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -124,7 +124,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -132,7 +132,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -140,7 +140,7 @@ class GetDatadogConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        Url of the Datadog server.
+        URL of the Datadog server.
         """
         return pulumi.get(self, "url")
 
@@ -173,12 +173,21 @@ def get_datadog_connector(delegate_selectors: Optional[Sequence[str]] = None,
     """
     Datasource for looking up a Datadog connector.
 
+    ## Example Usage
 
-    :param Sequence[str] delegate_selectors: Connect using only the delegates which have these tags.
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_datadog_connector(identifier="identifier")
+    ```
+
+
+    :param Sequence[str] delegate_selectors: Tags to filter delegates for connection.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['delegateSelectors'] = delegate_selectors
@@ -190,22 +199,22 @@ def get_datadog_connector(delegate_selectors: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getDatadogConnector:getDatadogConnector', __args__, opts=opts, typ=GetDatadogConnectorResult).value
 
     return AwaitableGetDatadogConnectorResult(
-        api_key_ref=__ret__.api_key_ref,
-        application_key_ref=__ret__.application_key_ref,
-        delegate_selectors=__ret__.delegate_selectors,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        url=__ret__.url)
+        api_key_ref=pulumi.get(__ret__, 'api_key_ref'),
+        application_key_ref=pulumi.get(__ret__, 'application_key_ref'),
+        delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_datadog_connector)
 def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                 identifier: Optional[pulumi.Input[Optional[str]]] = None,
+                                 identifier: Optional[pulumi.Input[str]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -213,11 +222,20 @@ def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optio
     """
     Datasource for looking up a Datadog connector.
 
+    ## Example Usage
 
-    :param Sequence[str] delegate_selectors: Connect using only the delegates which have these tags.
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_datadog_connector(identifier="identifier")
+    ```
+
+
+    :param Sequence[str] delegate_selectors: Tags to filter delegates for connection.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

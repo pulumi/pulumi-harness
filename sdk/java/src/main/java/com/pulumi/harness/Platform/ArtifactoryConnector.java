@@ -19,6 +19,77 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an Artifactory connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ArtifactoryConnector;
+ * import com.pulumi.harness.platform.ArtifactoryConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.ArtifactoryConnectorCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ArtifactoryConnector(&#34;example&#34;, ArtifactoryConnectorArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .orgId(harness_platform_project.test().org_id())
+ *             .projectId(harness_platform_project.test().id())
+ *             .url(&#34;https://artifactory.example.com&#34;)
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username(&#34;admin&#34;)
+ *                 .passwordRef(&#34;account.secret_id&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var test = new ArtifactoryConnector(&#34;test&#34;, ArtifactoryConnectorArgs.builder()        
+ *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .orgId(harness_platform_project.test().org_id())
+ *             .projectId(harness_platform_project.test().id())
+ *             .url(&#34;https://artifactory.example.com&#34;)
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level artifactory connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level artifactory connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level artifactory connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/artifactoryConnector:ArtifactoryConnector")
 public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
@@ -26,7 +97,7 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
      * Credentials to use for authentication.
      * 
      */
-    @Export(name="credentials", type=ArtifactoryConnectorCredentials.class, parameters={})
+    @Export(name="credentials", refs={ArtifactoryConnectorCredentials.class}, tree="[0]")
     private Output</* @Nullable */ ArtifactoryConnectorCredentials> credentials;
 
     /**
@@ -37,14 +108,14 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.credentials);
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -54,7 +125,7 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -68,7 +139,7 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -82,7 +153,7 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -93,42 +164,42 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -138,7 +209,7 @@ public class ArtifactoryConnector extends com.pulumi.resources.CustomResource {
      * URL of the Artifactory server.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

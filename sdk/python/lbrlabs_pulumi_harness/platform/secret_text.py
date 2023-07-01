@@ -16,27 +16,28 @@ class SecretTextArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  secret_manager_identifier: pulumi.Input[str],
+                 value: pulumi.Input[str],
                  value_type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SecretText resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
+        :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
-        :param pulumi.Input[str] value: Value of the Secret
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "secret_manager_identifier", secret_manager_identifier)
+        pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "value_type", value_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -48,8 +49,6 @@ class SecretTextArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -74,6 +73,18 @@ class SecretTextArgs:
     @secret_manager_identifier.setter
     def secret_manager_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_manager_identifier", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of the Secret
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter(name="valueType")
@@ -115,7 +126,7 @@ class SecretTextArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -127,7 +138,7 @@ class SecretTextArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -139,25 +150,13 @@ class SecretTextArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Value of the Secret
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -177,10 +176,10 @@ class _SecretTextState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
@@ -243,7 +242,7 @@ class _SecretTextState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -255,7 +254,7 @@ class _SecretTextState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -279,7 +278,7 @@ class _SecretTextState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -336,21 +335,40 @@ class SecretText(pulumi.CustomResource):
         import pulumi
         import lbrlabs_pulumi_harness as harness
 
-        test = harness.platform.SecretText("test",
+        inline = harness.platform.SecretText("inline",
+            description="example",
             identifier="identifier",
-            description="test",
-            tags=["foo:bar"],
             secret_manager_identifier="harnessSecretManager",
-            value_type="Inline",
-            value="secret")
+            tags=["foo:bar"],
+            value="secret",
+            value_type="Inline")
+        reference = harness.platform.SecretText("reference",
+            description="example",
+            identifier="identifier",
+            secret_manager_identifier="azureSecretManager",
+            tags=["foo:bar"],
+            value="secret",
+            value_type="Reference")
         ```
 
         ## Import
 
-        Import using secret text id
+        Import account level secret text
 
         ```sh
          $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
+        ```
+
+         Import org level secret text
+
+        ```sh
+         $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
+        ```
+
+         Import project level secret text
+
+        ```sh
+         $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -358,10 +376,10 @@ class SecretText(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
@@ -380,21 +398,40 @@ class SecretText(pulumi.CustomResource):
         import pulumi
         import lbrlabs_pulumi_harness as harness
 
-        test = harness.platform.SecretText("test",
+        inline = harness.platform.SecretText("inline",
+            description="example",
             identifier="identifier",
-            description="test",
-            tags=["foo:bar"],
             secret_manager_identifier="harnessSecretManager",
-            value_type="Inline",
-            value="secret")
+            tags=["foo:bar"],
+            value="secret",
+            value_type="Inline")
+        reference = harness.platform.SecretText("reference",
+            description="example",
+            identifier="identifier",
+            secret_manager_identifier="azureSecretManager",
+            tags=["foo:bar"],
+            value="secret",
+            value_type="Reference")
         ```
 
         ## Import
 
-        Import using secret text id
+        Import account level secret text
 
         ```sh
          $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
+        ```
+
+         Import org level secret text
+
+        ```sh
+         $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
+        ```
+
+         Import project level secret text
+
+        ```sh
+         $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -441,10 +478,14 @@ class SecretText(pulumi.CustomResource):
                 raise TypeError("Missing required property 'secret_manager_identifier'")
             __props__.__dict__["secret_manager_identifier"] = secret_manager_identifier
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["value"] = value
+            if value is None and not opts.urn:
+                raise TypeError("Missing required property 'value'")
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
             if value_type is None and not opts.urn:
                 raise TypeError("Missing required property 'value_type'")
             __props__.__dict__["value_type"] = value_type
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretText, __self__).__init__(
             'harness:platform/secretText:SecretText',
             resource_name,
@@ -474,10 +515,10 @@ class SecretText(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
@@ -524,7 +565,7 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -532,7 +573,7 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -548,13 +589,13 @@ class SecretText(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Output[Optional[str]]:
+    def value(self) -> pulumi.Output[str]:
         """
         Value of the Secret
         """

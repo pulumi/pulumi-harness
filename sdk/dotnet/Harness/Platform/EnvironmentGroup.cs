@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -47,7 +48,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// Import using the environment group id.
     /// 
     /// ```sh
-    ///  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;environment_group_id&gt;
+    ///  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;environment_group_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/environmentGroup:EnvironmentGroup")]
@@ -58,6 +59,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable this flag for force deletion of environment group
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// identifier of the environment group.
@@ -78,7 +85,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Env group YAML
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -137,6 +144,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Color { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of environment group
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
         /// identifier of the environment group.
         /// </summary>
         [Input("identifier", required: true)]
@@ -155,7 +168,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Env group YAML
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
         public Input<string> Yaml { get; set; } = null!;
@@ -173,6 +186,12 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
+
+        /// <summary>
+        /// Enable this flag for force deletion of environment group
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
         /// identifier of the environment group.
@@ -193,7 +212,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Env group YAML
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

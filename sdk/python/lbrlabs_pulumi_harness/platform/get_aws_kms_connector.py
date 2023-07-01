@@ -61,7 +61,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter(name="arnRef")
     def arn_ref(self) -> str:
         """
-        A reference to the Harness secret containing the ARN of the AWS KMS.
+        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "arn_ref")
 
@@ -69,7 +69,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter
     def credentials(self) -> Sequence['outputs.GetAwsKmsConnectorCredentialResult']:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -77,7 +77,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -99,7 +99,7 @@ class GetAwsKmsConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -117,7 +117,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -125,7 +125,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -141,7 +141,7 @@ class GetAwsKmsConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -173,11 +173,20 @@ def get_aws_kms_connector(identifier: Optional[str] = None,
     """
     Datasource for looking up an AWS KMS connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_aws_kms_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -188,21 +197,21 @@ def get_aws_kms_connector(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getAwsKmsConnector:getAwsKmsConnector', __args__, opts=opts, typ=GetAwsKmsConnectorResult).value
 
     return AwaitableGetAwsKmsConnectorResult(
-        arn_ref=__ret__.arn_ref,
-        credentials=__ret__.credentials,
-        delegate_selectors=__ret__.delegate_selectors,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        tags=__ret__.tags)
+        arn_ref=pulumi.get(__ret__, 'arn_ref'),
+        credentials=pulumi.get(__ret__, 'credentials'),
+        delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_aws_kms_connector)
-def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -210,10 +219,19 @@ def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[Optional[str]
     """
     Datasource for looking up an AWS KMS connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_aws_kms_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

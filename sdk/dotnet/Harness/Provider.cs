@@ -26,7 +26,8 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+        /// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         /// </summary>
         [Output("apiKey")]
         public Output<string?> ApiKey { get; private set; } = null!;
@@ -40,7 +41,8 @@ namespace Lbrlabs.PulumiPackage.Harness
 
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        /// variable.
+        /// variable. For more information to create an API key in NextGen, see
+        /// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         /// </summary>
         [Output("platformApiKey")]
         public Output<string?> PlatformApiKey { get; private set; } = null!;
@@ -81,7 +83,8 @@ namespace Lbrlabs.PulumiPackage.Harness
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable.
+        /// The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
+        /// create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
@@ -95,7 +98,8 @@ namespace Lbrlabs.PulumiPackage.Harness
 
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment
-        /// variable.
+        /// variable. For more information to create an API key in NextGen, see
+        /// https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         /// </summary>
         [Input("platformApiKey")]
         public Input<string>? PlatformApiKey { get; set; }

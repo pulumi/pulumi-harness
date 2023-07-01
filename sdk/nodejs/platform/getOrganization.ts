@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const thisOrganization = pulumi.output(harness.platform.getOrganization({
+ * const this = harness.platform.getOrganization({
  *     identifier: "identifier",
- * }));
+ * });
  * ```
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getOrganization:getOrganization", {
         "identifier": args.identifier,
         "name": args.name,
@@ -66,13 +63,26 @@ export interface GetOrganizationResult {
      */
     readonly name?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
 }
-
+/**
+ * Data source for retrieving a Harness organization
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const this = harness.platform.getOrganization({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
-    return pulumi.output(args).apply(a => getOrganization(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
 }
 
 /**

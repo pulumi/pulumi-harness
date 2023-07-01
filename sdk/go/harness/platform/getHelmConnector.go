@@ -10,7 +10,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for looking up a Helm connector.
+// Datasource for looking up a HTTP Helm connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupHelmConnector(ctx, &platform.LookupHelmConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupHelmConnector(ctx *pulumi.Context, args *LookupHelmConnectorArgs, opts ...pulumi.InvokeOption) (*LookupHelmConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupHelmConnectorResult
@@ -24,12 +50,12 @@ func LookupHelmConnector(ctx *pulumi.Context, args *LookupHelmConnectorArgs, opt
 // A collection of arguments for invoking getHelmConnector.
 type LookupHelmConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -37,21 +63,21 @@ type LookupHelmConnectorArgs struct {
 type LookupHelmConnectorResult struct {
 	// Credentials to use for authentication.
 	Credentials []GetHelmConnectorCredential `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// URL of the helm server.
 	Url string `pulumi:"url"`
@@ -73,12 +99,12 @@ func LookupHelmConnectorOutput(ctx *pulumi.Context, args LookupHelmConnectorOutp
 // A collection of arguments for invoking getHelmConnector.
 type LookupHelmConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -106,7 +132,7 @@ func (o LookupHelmConnectorResultOutput) Credentials() GetHelmConnectorCredentia
 	return o.ApplyT(func(v LookupHelmConnectorResult) []GetHelmConnectorCredential { return v.Credentials }).(GetHelmConnectorCredentialArrayOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupHelmConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHelmConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -122,8 +148,8 @@ func (o LookupHelmConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupHelmConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHelmConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupHelmConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHelmConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -131,17 +157,17 @@ func (o LookupHelmConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHelmConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupHelmConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHelmConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupHelmConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHelmConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupHelmConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHelmConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

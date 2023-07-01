@@ -15,6 +15,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     {
         [Input("clusters")]
         private InputList<Inputs.GitOpsClusterRequestClusterArgs>? _clusters;
+
+        /// <summary>
+        /// GitOps cluster details.
+        /// </summary>
         public InputList<Inputs.GitOpsClusterRequestClusterArgs> Clusters
         {
             get => _clusters ?? (_clusters = new InputList<Inputs.GitOpsClusterRequestClusterArgs>());
@@ -23,14 +27,34 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
 
         [Input("ids")]
         private InputList<Inputs.GitOpsClusterRequestIdArgs>? _ids;
+
+        /// <summary>
+        /// Cluster server URL or the cluster name.
+        /// </summary>
         public InputList<Inputs.GitOpsClusterRequestIdArgs> Ids
         {
             get => _ids ?? (_ids = new InputList<Inputs.GitOpsClusterRequestIdArgs>());
             set => _ids = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the clusters
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("updateMasks")]
         private InputList<Inputs.GitOpsClusterRequestUpdateMaskArgs>? _updateMasks;
+
+        /// <summary>
+        /// Update mask of the GitOps cluster.
+        /// </summary>
         public InputList<Inputs.GitOpsClusterRequestUpdateMaskArgs> UpdateMasks
         {
             get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GitOpsClusterRequestUpdateMaskArgs>());
@@ -39,12 +63,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
 
         [Input("updatedFields")]
         private InputList<string>? _updatedFields;
+
+        /// <summary>
+        /// Fields which are updated.
+        /// </summary>
         public InputList<string> UpdatedFields
         {
             get => _updatedFields ?? (_updatedFields = new InputList<string>());
             set => _updatedFields = value;
         }
 
+        /// <summary>
+        /// Indicates if the GitOps cluster should be updated if existing and inserted if not.
+        /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
 

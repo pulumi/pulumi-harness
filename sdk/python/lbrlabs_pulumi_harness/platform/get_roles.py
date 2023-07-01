@@ -76,7 +76,7 @@ class GetRolesResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -94,7 +94,7 @@ class GetRolesResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -110,7 +110,7 @@ class GetRolesResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -118,7 +118,7 @@ class GetRolesResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -165,9 +165,9 @@ def get_roles(allowed_scope_levels: Optional[Sequence[str]] = None,
     :param Sequence[str] allowed_scope_levels: The scope levels at which this role can be used
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     :param Sequence[str] permissions: List of the permission identifiers
-    :param str project_id: Unique identifier of the Project.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['allowedScopeLevels'] = allowed_scope_levels
@@ -180,20 +180,20 @@ def get_roles(allowed_scope_levels: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
     return AwaitableGetRolesResult(
-        allowed_scope_levels=__ret__.allowed_scope_levels,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        permissions=__ret__.permissions,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags)
+        allowed_scope_levels=pulumi.get(__ret__, 'allowed_scope_levels'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_roles)
 def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                     identifier: Optional[pulumi.Input[Optional[str]]] = None,
+                     identifier: Optional[pulumi.Input[str]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      org_id: Optional[pulumi.Input[Optional[str]]] = None,
                      permissions: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -217,8 +217,8 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
     :param Sequence[str] allowed_scope_levels: The scope levels at which this role can be used
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
+    :param str org_id: Unique identifier of the organization.
     :param Sequence[str] permissions: List of the permission identifiers
-    :param str project_id: Unique identifier of the Project.
+    :param str project_id: Unique identifier of the project.
     """
     ...

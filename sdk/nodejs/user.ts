@@ -11,11 +11,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const johnDoe = new harness.User("john_doe", {
- *     email: "john.doe@example.com",
- * });
+ * const johnDoe = new harness.User("johnDoe", {email: "john.doe@example.com"});
  * ```
  *
  * ## Import

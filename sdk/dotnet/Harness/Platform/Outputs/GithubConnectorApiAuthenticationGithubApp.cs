@@ -14,20 +14,28 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GithubConnectorApiAuthenticationGithubApp
     {
-        public readonly string ApplicationId;
-        public readonly string InstallationId;
+        public readonly string? ApplicationId;
+        public readonly string? ApplicationIdRef;
+        public readonly string? InstallationId;
+        public readonly string? InstallationIdRef;
         public readonly string PrivateKeyRef;
 
         [OutputConstructor]
         private GithubConnectorApiAuthenticationGithubApp(
-            string applicationId,
+            string? applicationId,
 
-            string installationId,
+            string? applicationIdRef,
+
+            string? installationId,
+
+            string? installationIdRef,
 
             string privateKeyRef)
         {
             ApplicationId = applicationId;
+            ApplicationIdRef = applicationIdRef;
             InstallationId = installationId;
+            InstallationIdRef = installationIdRef;
             PrivateKeyRef = privateKeyRef;
         }
     }

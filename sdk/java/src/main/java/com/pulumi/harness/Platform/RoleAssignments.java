@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example1RoleAssignments = new RoleAssignments(&#34;example1RoleAssignments&#34;, RoleAssignmentsArgs.builder()        
- *             .identifier(&#34;identifier&#34;)
  *             .orgId(&#34;org_id&#34;)
  *             .projectId(&#34;project_id&#34;)
  *             .resourceGroupIdentifier(&#34;_all_project_level_resources&#34;)
@@ -58,7 +57,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example1Platform_roleAssignmentsRoleAssignments = new RoleAssignments(&#34;example1Platform/roleAssignmentsRoleAssignments&#34;, RoleAssignmentsArgs.builder()        
- *             .identifier(&#34;identifier&#34;)
  *             .orgId(&#34;org_id&#34;)
  *             .projectId(&#34;project_id&#34;)
  *             .resourceGroupIdentifier(&#34;_all_project_level_resources&#34;)
@@ -86,7 +84,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example2Platform_roleAssignmentsRoleAssignments = new RoleAssignments(&#34;example2Platform/roleAssignmentsRoleAssignments&#34;, RoleAssignmentsArgs.builder()        
- *             .identifier(&#34;identifier&#34;)
  *             .orgId(&#34;org_id&#34;)
  *             .projectId(&#34;project_id&#34;)
  *             .resourceGroupIdentifier(&#34;_all_project_level_resources&#34;)
@@ -100,7 +97,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example2HarnessPlatform_roleAssignmentsRoleAssignments = new RoleAssignments(&#34;example2HarnessPlatform/roleAssignmentsRoleAssignments&#34;, RoleAssignmentsArgs.builder()        
- *             .identifier(&#34;identifier&#34;)
  *             .orgId(&#34;org_id&#34;)
  *             .projectId(&#34;project_id&#34;)
  *             .resourceGroupIdentifier(&#34;_all_project_level_resources&#34;)
@@ -119,10 +115,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using roleassignments id
+ * Import account level role assignments
  * 
  * ```sh
  *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;role_assignments_id&gt;
+ * ```
+ * 
+ *  Import org level role assignments
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;ord_id&gt;/&lt;role_assignments_id&gt;
+ * ```
+ * 
+ *  Import project level role assignments
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;org_id&gt;/&lt;project_id&gt;/&lt;role_assignments_id&gt;
  * ```
  * 
  */
@@ -132,7 +140,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * Disabled or not.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -146,21 +154,21 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * Identifier for role assignment.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
-    private Output</* @Nullable */ String> identifier;
+    @Export(name="identifier", refs={String.class}, tree="[0]")
+    private Output<String> identifier;
 
     /**
      * @return Identifier for role assignment.
      * 
      */
-    public Output<Optional<String>> identifier() {
-        return Codegen.optional(this.identifier);
+    public Output<String> identifier() {
+        return this.identifier;
     }
     /**
      * Managed or not.
      * 
      */
-    @Export(name="managed", type=Boolean.class, parameters={})
+    @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> managed;
 
     /**
@@ -174,7 +182,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * Org identifier.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
@@ -188,21 +196,21 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * Principal.
      * 
      */
-    @Export(name="principals", type=List.class, parameters={RoleAssignmentsPrincipal.class})
-    private Output</* @Nullable */ List<RoleAssignmentsPrincipal>> principals;
+    @Export(name="principals", refs={List.class,RoleAssignmentsPrincipal.class}, tree="[0,1]")
+    private Output<List<RoleAssignmentsPrincipal>> principals;
 
     /**
      * @return Principal.
      * 
      */
-    public Output<Optional<List<RoleAssignmentsPrincipal>>> principals() {
-        return Codegen.optional(this.principals);
+    public Output<List<RoleAssignmentsPrincipal>> principals() {
+        return this.principals;
     }
     /**
      * Project Identifier
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -216,29 +224,29 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * Resource group identifier.
      * 
      */
-    @Export(name="resourceGroupIdentifier", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceGroupIdentifier;
+    @Export(name="resourceGroupIdentifier", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupIdentifier;
 
     /**
      * @return Resource group identifier.
      * 
      */
-    public Output<Optional<String>> resourceGroupIdentifier() {
-        return Codegen.optional(this.resourceGroupIdentifier);
+    public Output<String> resourceGroupIdentifier() {
+        return this.resourceGroupIdentifier;
     }
     /**
      * Role identifier.
      * 
      */
-    @Export(name="roleIdentifier", type=String.class, parameters={})
-    private Output</* @Nullable */ String> roleIdentifier;
+    @Export(name="roleIdentifier", refs={String.class}, tree="[0]")
+    private Output<String> roleIdentifier;
 
     /**
      * @return Role identifier.
      * 
      */
-    public Output<Optional<String>> roleIdentifier() {
-        return Codegen.optional(this.roleIdentifier);
+    public Output<String> roleIdentifier() {
+        return this.roleIdentifier;
     }
 
     /**
@@ -253,7 +261,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RoleAssignments(String name, @Nullable RoleAssignmentsArgs args) {
+    public RoleAssignments(String name, RoleAssignmentsArgs args) {
         this(name, args, null);
     }
     /**
@@ -262,7 +270,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RoleAssignments(String name, @Nullable RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public RoleAssignments(String name, RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("harness:platform/roleAssignments:RoleAssignments", name, args == null ? RoleAssignmentsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

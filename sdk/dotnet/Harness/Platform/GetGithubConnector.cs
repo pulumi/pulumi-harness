@@ -14,14 +14,58 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     {
         /// <summary>
         /// Datasource for looking up a Github connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGithubConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Task<GetGithubConnectorResult> InvokeAsync(GetGithubConnectorArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetGithubConnectorResult> InvokeAsync(GetGithubConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for looking up a Github connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGithubConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
-        public static Output<GetGithubConnectorResult> Invoke(GetGithubConnectorInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetGithubConnectorResult> Invoke(GetGithubConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGithubConnectorResult>("harness:platform/getGithubConnector:getGithubConnector", args ?? new GetGithubConnectorInvokeArgs(), options.WithDefaults());
     }
 
@@ -31,8 +75,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -41,13 +85,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -63,8 +107,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -73,13 +117,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -107,13 +151,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGithubConnectorCredentialResult> Credentials;
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -121,25 +166,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Url of the github repository or account.
+        /// URL of the github repository or account.
         /// </summary>
         public readonly string Url;
         /// <summary>
@@ -159,9 +204,11 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string description,
 
+            bool executeOnDelegate,
+
             string id,
 
-            string? identifier,
+            string identifier,
 
             string? name,
 
@@ -180,6 +227,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
             Credentials = credentials;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
             Id = id;
             Identifier = identifier;
             Name = name;

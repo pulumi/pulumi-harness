@@ -7,11 +7,78 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Gitlab connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitlabConnector(ctx, "test", &platform.GitlabConnectorArgs{
+//				ConnectionType: pulumi.String("Account"),
+//				Credentials: &platform.GitlabConnectorCredentialsArgs{
+//					Ssh: &platform.GitlabConnectorCredentialsSshArgs{
+//						SshKeyRef: pulumi.String("account.test"),
+//					},
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url:            pulumi.String("https://gitlab.com/account"),
+//				ValidationRepo: pulumi.String("some_repo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level gitlab connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitlabConnector:GitlabConnector example <connector_id>
+//
+// ```
+//
+//	Import org level gitlab connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitlabConnector:GitlabConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level gitlab connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type GitlabConnector struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +88,7 @@ type GitlabConnector struct {
 	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
 	// Credentials to use for the connection.
 	Credentials GitlabConnectorCredentialsOutput `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -29,13 +96,13 @@ type GitlabConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the gitlab repository or account.
+	// URL of the gitlab repository or account.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrOutput `pulumi:"validationRepo"`
@@ -89,7 +156,7 @@ type gitlabConnectorState struct {
 	ConnectionType *string `pulumi:"connectionType"`
 	// Credentials to use for the connection.
 	Credentials *GitlabConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -97,13 +164,13 @@ type gitlabConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the gitlab repository or account.
+	// URL of the gitlab repository or account.
 	Url *string `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo *string `pulumi:"validationRepo"`
@@ -116,7 +183,7 @@ type GitlabConnectorState struct {
 	ConnectionType pulumi.StringPtrInput
 	// Credentials to use for the connection.
 	Credentials GitlabConnectorCredentialsPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -124,13 +191,13 @@ type GitlabConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the gitlab repository or account.
+	// URL of the gitlab repository or account.
 	Url pulumi.StringPtrInput
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrInput
@@ -147,7 +214,7 @@ type gitlabConnectorArgs struct {
 	ConnectionType string `pulumi:"connectionType"`
 	// Credentials to use for the connection.
 	Credentials GitlabConnectorCredentials `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -155,13 +222,13 @@ type gitlabConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the gitlab repository or account.
+	// URL of the gitlab repository or account.
 	Url string `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo *string `pulumi:"validationRepo"`
@@ -175,7 +242,7 @@ type GitlabConnectorArgs struct {
 	ConnectionType pulumi.StringInput
 	// Credentials to use for the connection.
 	Credentials GitlabConnectorCredentialsInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -183,13 +250,13 @@ type GitlabConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the gitlab repository or account.
+	// URL of the gitlab repository or account.
 	Url pulumi.StringInput
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrInput
@@ -297,7 +364,7 @@ func (o GitlabConnectorOutput) Credentials() GitlabConnectorCredentialsOutput {
 	return o.ApplyT(func(v *GitlabConnector) GitlabConnectorCredentialsOutput { return v.Credentials }).(GitlabConnectorCredentialsOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o GitlabConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -317,22 +384,22 @@ func (o GitlabConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o GitlabConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o GitlabConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o GitlabConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the gitlab repository or account.
+// URL of the gitlab repository or account.
 func (o GitlabConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitlabConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

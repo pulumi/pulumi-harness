@@ -6,6 +6,42 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Dynatrace connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.DynatraceConnector("test", {
+ *     apiTokenRef: "account.secret_id",
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://dynatrace.com/",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level dynatrace connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <connector_id>
+ * ```
+ *
+ *  Import org level dynatrace connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level dynatrace connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class DynatraceConnector extends pulumi.CustomResource {
     /**
@@ -36,11 +72,11 @@ export class DynatraceConnector extends pulumi.CustomResource {
     }
 
     /**
-     * The reference to the Harness secret containing the api token.
+     * The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly apiTokenRef!: pulumi.Output<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -56,19 +92,19 @@ export class DynatraceConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the Dynatrace server.
+     * URL of the Dynatrace server.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -125,11 +161,11 @@ export class DynatraceConnector extends pulumi.CustomResource {
  */
 export interface DynatraceConnectorState {
     /**
-     * The reference to the Harness secret containing the api token.
+     * The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiTokenRef?: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -145,19 +181,19 @@ export interface DynatraceConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Dynatrace server.
+     * URL of the Dynatrace server.
      */
     url?: pulumi.Input<string>;
 }
@@ -167,11 +203,11 @@ export interface DynatraceConnectorState {
  */
 export interface DynatraceConnectorArgs {
     /**
-     * The reference to the Harness secret containing the api token.
+     * The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     apiTokenRef: pulumi.Input<string>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -187,19 +223,19 @@ export interface DynatraceConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Dynatrace server.
+     * URL of the Dynatrace server.
      */
     url: pulumi.Input<string>;
 }

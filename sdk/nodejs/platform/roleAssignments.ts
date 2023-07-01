@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * //To create a role binding in service account
  * const example1RoleAssignments = new harness.platform.RoleAssignments("example1RoleAssignments", {
- *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     resourceGroupIdentifier: "_all_project_level_resources",
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * //To create a role binding in user group 
  * const example1Platform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example1Platform/roleAssignmentsRoleAssignments", {
- *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     resourceGroupIdentifier: "_all_project_level_resources",
@@ -57,7 +55,6 @@ import * as utilities from "../utilities";
  *     managed: false,
  * });
  * const example2Platform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example2Platform/roleAssignmentsRoleAssignments", {
- *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     resourceGroupIdentifier: "_all_project_level_resources",
@@ -70,7 +67,6 @@ import * as utilities from "../utilities";
  *     managed: false,
  * });
  * const example2HarnessPlatform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example2HarnessPlatform/roleAssignmentsRoleAssignments", {
- *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     resourceGroupIdentifier: "_all_project_level_resources",
@@ -86,10 +82,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using roleassignments id
+ * Import account level role assignments
  *
  * ```sh
  *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
+ * ```
+ *
+ *  Import org level role assignments
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
+ * ```
+ *
+ *  Import project level role assignments
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
  * ```
  */
 export class RoleAssignments extends pulumi.CustomResource {
@@ -127,7 +135,7 @@ export class RoleAssignments extends pulumi.CustomResource {
     /**
      * Identifier for role assignment.
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    public readonly identifier!: pulumi.Output<string>;
     /**
      * Managed or not.
      */
@@ -139,7 +147,7 @@ export class RoleAssignments extends pulumi.CustomResource {
     /**
      * Principal.
      */
-    public readonly principals!: pulumi.Output<outputs.platform.RoleAssignmentsPrincipal[] | undefined>;
+    public readonly principals!: pulumi.Output<outputs.platform.RoleAssignmentsPrincipal[]>;
     /**
      * Project Identifier
      */
@@ -147,11 +155,11 @@ export class RoleAssignments extends pulumi.CustomResource {
     /**
      * Resource group identifier.
      */
-    public readonly resourceGroupIdentifier!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupIdentifier!: pulumi.Output<string>;
     /**
      * Role identifier.
      */
-    public readonly roleIdentifier!: pulumi.Output<string | undefined>;
+    public readonly roleIdentifier!: pulumi.Output<string>;
 
     /**
      * Create a RoleAssignments resource with the given unique name, arguments, and options.
@@ -160,7 +168,7 @@ export class RoleAssignments extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: RoleAssignmentsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: RoleAssignmentsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleAssignmentsArgs | RoleAssignmentsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -176,6 +184,15 @@ export class RoleAssignments extends pulumi.CustomResource {
             resourceInputs["roleIdentifier"] = state ? state.roleIdentifier : undefined;
         } else {
             const args = argsOrState as RoleAssignmentsArgs | undefined;
+            if ((!args || args.principals === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'principals'");
+            }
+            if ((!args || args.resourceGroupIdentifier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceGroupIdentifier'");
+            }
+            if ((!args || args.roleIdentifier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'roleIdentifier'");
+            }
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["managed"] = args ? args.managed : undefined;
@@ -251,7 +268,7 @@ export interface RoleAssignmentsArgs {
     /**
      * Principal.
      */
-    principals?: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[]>;
+    principals: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[]>;
     /**
      * Project Identifier
      */
@@ -259,9 +276,9 @@ export interface RoleAssignmentsArgs {
     /**
      * Resource group identifier.
      */
-    resourceGroupIdentifier?: pulumi.Input<string>;
+    resourceGroupIdentifier: pulumi.Input<string>;
     /**
      * Role identifier.
      */
-    roleIdentifier?: pulumi.Input<string>;
+    roleIdentifier: pulumi.Input<string>;
 }

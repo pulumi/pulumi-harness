@@ -17,6 +17,7 @@ import com.pulumi.harness.outputs.InfrastructureDefinitionAwsSsh;
 import com.pulumi.harness.outputs.InfrastructureDefinitionAwsWinrm;
 import com.pulumi.harness.outputs.InfrastructureDefinitionAzureVmss;
 import com.pulumi.harness.outputs.InfrastructureDefinitionAzureWebapp;
+import com.pulumi.harness.outputs.InfrastructureDefinitionCustom;
 import com.pulumi.harness.outputs.InfrastructureDefinitionDatacenterSsh;
 import com.pulumi.harness.outputs.InfrastructureDefinitionDatacenterWinrm;
 import com.pulumi.harness.outputs.InfrastructureDefinitionKubernetes;
@@ -46,6 +47,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.InfrastructureDefinition;
  * import com.pulumi.harness.InfrastructureDefinitionArgs;
  * import com.pulumi.harness.inputs.InfrastructureDefinitionKubernetesArgs;
+ * import com.pulumi.harness.YamlConfig;
+ * import com.pulumi.harness.YamlConfigArgs;
+ * import com.pulumi.harness.inputs.InfrastructureDefinitionCustomArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -80,7 +84,44 @@ import javax.annotation.Nullable;
  *             .kubernetes(InfrastructureDefinitionKubernetesArgs.builder()
  *                 .cloudProviderName(devKubernetes.name())
  *                 .namespace(&#34;dev&#34;)
- *                 .releaseName(service.name())
+ *                 .releaseName(&#34;${service.name}&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleYaml = new YamlConfig(&#34;exampleYaml&#34;, YamlConfigArgs.builder()        
+ *             .path(&#34;Setup/Template Library/Example Folder/deployment_template.yaml&#34;)
+ *             .content(&#34;&#34;&#34;
+ * harnessApiVersion: &#39;1.0&#39;
+ * type: CUSTOM_DEPLOYMENT_TYPE
+ * fetchInstanceScript: |-
+ *   set -ex
+ *   curl http://%s/%s &gt; %s
+ * hostAttributes:
+ *   hostname: host
+ * hostObjectArrayPath: hosts
+ * variables:
+ * - name: url
+ * - name: file_name
+ * &#34;, url,file_name,INSTANCE_OUTPUT_PATH))
+ *             .build());
+ * 
+ *         var custom = new InfrastructureDefinition(&#34;custom&#34;, InfrastructureDefinitionArgs.builder()        
+ *             .appId(example.id())
+ *             .envId(devEnvironment.id())
+ *             .cloudProviderType(&#34;CUSTOM&#34;)
+ *             .deploymentType(&#34;CUSTOM&#34;)
+ *             .deploymentTemplateUri(exampleYaml.name().applyValue(name -&gt; String.format(&#34;Example Folder/%s&#34;, name)))
+ *             .custom(InfrastructureDefinitionCustomArgs.builder()
+ *                 .deploymentTypeTemplateVersion(&#34;1&#34;)
+ *                 .variables(                
+ *                     InfrastructureDefinitionCustomVariableArgs.builder()
+ *                         .name(&#34;url&#34;)
+ *                         .value(&#34;localhost:8081&#34;)
+ *                         .build(),
+ *                     InfrastructureDefinitionCustomVariableArgs.builder()
+ *                         .name(&#34;file_name&#34;)
+ *                         .value(&#34;instances.json&#34;)
+ *                         .build())
  *                 .build())
  *             .build());
  * 
@@ -103,7 +144,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The id of the application the infrastructure definition belongs to.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -117,7 +158,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Aws AMI deployments.
      * 
      */
-    @Export(name="awsAmi", type=InfrastructureDefinitionAwsAmi.class, parameters={})
+    @Export(name="awsAmi", refs={InfrastructureDefinitionAwsAmi.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAwsAmi> awsAmi;
 
     /**
@@ -131,7 +172,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Aws AMI deployments.
      * 
      */
-    @Export(name="awsEcs", type=InfrastructureDefinitionAwsEcs.class, parameters={})
+    @Export(name="awsEcs", refs={InfrastructureDefinitionAwsEcs.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAwsEcs> awsEcs;
 
     /**
@@ -145,7 +186,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Aws Lambda deployments.
      * 
      */
-    @Export(name="awsLambda", type=InfrastructureDefinitionAwsLambda.class, parameters={})
+    @Export(name="awsLambda", refs={InfrastructureDefinitionAwsLambda.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAwsLambda> awsLambda;
 
     /**
@@ -159,7 +200,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for AWS SSH deployments.
      * 
      */
-    @Export(name="awsSsh", type=InfrastructureDefinitionAwsSsh.class, parameters={})
+    @Export(name="awsSsh", refs={InfrastructureDefinitionAwsSsh.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAwsSsh> awsSsh;
 
     /**
@@ -173,7 +214,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for AWS WinRM deployments.
      * 
      */
-    @Export(name="awsWinrm", type=InfrastructureDefinitionAwsWinrm.class, parameters={})
+    @Export(name="awsWinrm", refs={InfrastructureDefinitionAwsWinrm.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAwsWinrm> awsWinrm;
 
     /**
@@ -187,7 +228,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Azure VMSS deployments.
      * 
      */
-    @Export(name="azureVmss", type=InfrastructureDefinitionAzureVmss.class, parameters={})
+    @Export(name="azureVmss", refs={InfrastructureDefinitionAzureVmss.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAzureVmss> azureVmss;
 
     /**
@@ -201,7 +242,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Azure WebApp deployments.
      * 
      */
-    @Export(name="azureWebapp", type=InfrastructureDefinitionAzureWebapp.class, parameters={})
+    @Export(name="azureWebapp", refs={InfrastructureDefinitionAzureWebapp.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionAzureWebapp> azureWebapp;
 
     /**
@@ -215,7 +256,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
      * 
      */
-    @Export(name="cloudProviderType", type=String.class, parameters={})
+    @Export(name="cloudProviderType", refs={String.class}, tree="[0]")
     private Output<String> cloudProviderType;
 
     /**
@@ -226,10 +267,24 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
         return this.cloudProviderType;
     }
     /**
+     * The configuration details for Custom deployments.
+     * 
+     */
+    @Export(name="custom", refs={InfrastructureDefinitionCustom.class}, tree="[0]")
+    private Output</* @Nullable */ InfrastructureDefinitionCustom> custom;
+
+    /**
+     * @return The configuration details for Custom deployments.
+     * 
+     */
+    public Output<Optional<InfrastructureDefinitionCustom>> custom() {
+        return Codegen.optional(this.custom);
+    }
+    /**
      * The configuration details for SSH datacenter deployments.
      * 
      */
-    @Export(name="datacenterSsh", type=InfrastructureDefinitionDatacenterSsh.class, parameters={})
+    @Export(name="datacenterSsh", refs={InfrastructureDefinitionDatacenterSsh.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionDatacenterSsh> datacenterSsh;
 
     /**
@@ -243,7 +298,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for WinRM datacenter deployments.
      * 
      */
-    @Export(name="datacenterWinrm", type=InfrastructureDefinitionDatacenterWinrm.class, parameters={})
+    @Export(name="datacenterWinrm", refs={InfrastructureDefinitionDatacenterWinrm.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionDatacenterWinrm> datacenterWinrm;
 
     /**
@@ -257,7 +312,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
      * 
      */
-    @Export(name="deploymentTemplateUri", type=String.class, parameters={})
+    @Export(name="deploymentTemplateUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentTemplateUri;
 
     /**
@@ -268,14 +323,14 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.deploymentTemplateUri);
     }
     /**
-     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      * 
      */
-    @Export(name="deploymentType", type=String.class, parameters={})
+    @Export(name="deploymentType", refs={String.class}, tree="[0]")
     private Output<String> deploymentType;
 
     /**
-     * @return The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * @return The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      * 
      */
     public Output<String> deploymentType() {
@@ -285,7 +340,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The id of the environment the infrastructure definition belongs to.
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
@@ -299,7 +354,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Kubernetes deployments.
      * 
      */
-    @Export(name="kubernetes", type=InfrastructureDefinitionKubernetes.class, parameters={})
+    @Export(name="kubernetes", refs={InfrastructureDefinitionKubernetes.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionKubernetes> kubernetes;
 
     /**
@@ -313,7 +368,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for Kubernetes on GCP deployments.
      * 
      */
-    @Export(name="kubernetesGcp", type=InfrastructureDefinitionKubernetesGcp.class, parameters={})
+    @Export(name="kubernetesGcp", refs={InfrastructureDefinitionKubernetesGcp.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionKubernetesGcp> kubernetesGcp;
 
     /**
@@ -327,7 +382,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The name of the infrastructure definition
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -341,7 +396,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The name of the infrastructure provisioner to use.
      * 
      */
-    @Export(name="provisionerName", type=String.class, parameters={})
+    @Export(name="provisionerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> provisionerName;
 
     /**
@@ -355,7 +410,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The list of service names to scope this infrastructure definition to.
      * 
      */
-    @Export(name="scopedServices", type=List.class, parameters={String.class})
+    @Export(name="scopedServices", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopedServices;
 
     /**
@@ -369,7 +424,7 @@ public class InfrastructureDefinition extends com.pulumi.resources.CustomResourc
      * The configuration details for PCF deployments.
      * 
      */
-    @Export(name="tanzu", type=InfrastructureDefinitionTanzu.class, parameters={})
+    @Export(name="tanzu", refs={InfrastructureDefinitionTanzu.class}, tree="[0]")
     private Output</* @Nullable */ InfrastructureDefinitionTanzu> tanzu;
 
     /**

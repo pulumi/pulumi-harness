@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -26,6 +27,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///     {
     ///         Color = "#0063F7",
     ///         Identifier = "testproject",
+    ///         OrgId = "org_id",
     ///     });
     /// 
     /// });
@@ -73,13 +75,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -156,7 +158,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -165,7 +167,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -218,7 +220,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -227,7 +229,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

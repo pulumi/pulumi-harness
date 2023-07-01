@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -25,7 +26,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///     //To create a role binding in service account
     ///     var example1RoleAssignments = new Harness.Platform.RoleAssignments("example1RoleAssignments", new()
     ///     {
-    ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
     ///         ResourceGroupIdentifier = "_all_project_level_resources",
@@ -45,7 +45,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///     //To create a role binding in user group 
     ///     var example1Platform_roleAssignmentsRoleAssignments = new Harness.Platform.RoleAssignments("example1Platform/roleAssignmentsRoleAssignments", new()
     ///     {
-    ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
     ///         ResourceGroupIdentifier = "_all_project_level_resources",
@@ -83,7 +82,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     ///     var example2Platform_roleAssignmentsRoleAssignments = new Harness.Platform.RoleAssignments("example2Platform/roleAssignmentsRoleAssignments", new()
     ///     {
-    ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
     ///         ResourceGroupIdentifier = "_all_project_level_resources",
@@ -102,7 +100,6 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     ///     var example2HarnessPlatform_roleAssignmentsRoleAssignments = new Harness.Platform.RoleAssignments("example2HarnessPlatform/roleAssignmentsRoleAssignments", new()
     ///     {
-    ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
     ///         ResourceGroupIdentifier = "_all_project_level_resources",
@@ -124,10 +121,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using roleassignments id
+    /// Import account level role assignments
     /// 
     /// ```sh
     ///  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;role_assignments_id&gt;
+    /// ```
+    /// 
+    ///  Import org level role assignments
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;ord_id&gt;/&lt;role_assignments_id&gt;
+    /// ```
+    /// 
+    ///  Import project level role assignments
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/roleAssignments:RoleAssignments example &lt;org_id&gt;/&lt;project_id&gt;/&lt;role_assignments_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/roleAssignments:RoleAssignments")]
@@ -143,7 +152,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Identifier for role assignment.
         /// </summary>
         [Output("identifier")]
-        public Output<string?> Identifier { get; private set; } = null!;
+        public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
         /// Managed or not.
@@ -173,13 +182,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// Resource group identifier.
         /// </summary>
         [Output("resourceGroupIdentifier")]
-        public Output<string?> ResourceGroupIdentifier { get; private set; } = null!;
+        public Output<string> ResourceGroupIdentifier { get; private set; } = null!;
 
         /// <summary>
         /// Role identifier.
         /// </summary>
         [Output("roleIdentifier")]
-        public Output<string?> RoleIdentifier { get; private set; } = null!;
+        public Output<string> RoleIdentifier { get; private set; } = null!;
 
 
         /// <summary>
@@ -189,7 +198,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RoleAssignments(string name, RoleAssignmentsArgs? args = null, CustomResourceOptions? options = null)
+        public RoleAssignments(string name, RoleAssignmentsArgs args, CustomResourceOptions? options = null)
             : base("harness:platform/roleAssignments:RoleAssignments", name, args ?? new RoleAssignmentsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -252,7 +261,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        [Input("principals")]
+        [Input("principals", required: true)]
         private InputList<Inputs.RoleAssignmentsPrincipalArgs>? _principals;
 
         /// <summary>
@@ -273,14 +282,14 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Resource group identifier.
         /// </summary>
-        [Input("resourceGroupIdentifier")]
-        public Input<string>? ResourceGroupIdentifier { get; set; }
+        [Input("resourceGroupIdentifier", required: true)]
+        public Input<string> ResourceGroupIdentifier { get; set; } = null!;
 
         /// <summary>
         /// Role identifier.
         /// </summary>
-        [Input("roleIdentifier")]
-        public Input<string>? RoleIdentifier { get; set; }
+        [Input("roleIdentifier", required: true)]
+        public Input<string> RoleIdentifier { get; set; } = null!;
 
         public RoleAssignmentsArgs()
         {

@@ -11,13 +11,13 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const awsAuth = new harness.platform.VaultConnector("aws_auth", {
+ * const awsAuth = new harness.platform.VaultConnector("awsAuth", {
  *     accessType: "AWS_IAM",
  *     awsRegion: "aws_region",
  *     basePath: "base_path",
- *     default: false,
+ *     "default": false,
  *     delegateSelectors: ["harness-delegate"],
  *     description: "test",
  *     identifier: "identifier",
@@ -32,13 +32,13 @@ import * as utilities from "../utilities";
  *     useVaultAgent: false,
  *     vaultAwsIamRole: "vault_aws_iam_role",
  *     vaultUrl: "https://vault_url.com",
- *     xvaultAwsIamServerId: pulumi.interpolate`account.${harness_platform_secret_text_test.id}`,
+ *     xvaultAwsIamServerId: `account.${harness_platform_secret_text.test.id}`,
  * });
- * const appRole = new harness.platform.VaultConnector("app_role", {
+ * const appRole = new harness.platform.VaultConnector("appRole", {
  *     accessType: "APP_ROLE",
  *     appRoleId: "app_role_id",
  *     basePath: "base_path",
- *     default: false,
+ *     "default": false,
  *     delegateSelectors: ["harness-delegate"],
  *     description: "test",
  *     identifier: "identifier",
@@ -48,18 +48,18 @@ import * as utilities from "../utilities";
  *     secretEngineManuallyConfigured: true,
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
- *     secretId: pulumi.interpolate`account.${harness_platform_secret_text_test.id}`,
+ *     secretId: `account.${harness_platform_secret_text.test.id}`,
  *     tags: ["foo:bar"],
  *     useAwsIam: false,
  *     useK8sAuth: false,
  *     useVaultAgent: false,
  *     vaultUrl: "https://vault_url.com",
  * });
- * const k8sAuth = new harness.platform.VaultConnector("k8s_auth", {
+ * const k8sAuth = new harness.platform.VaultConnector("k8sAuth", {
  *     accessType: "K8s_AUTH",
- *     authToken: pulumi.interpolate`account.${harness_platform_secret_text_test.id}`,
+ *     authToken: `account.${harness_platform_secret_text.test.id}`,
  *     basePath: "base_path",
- *     default: false,
+ *     "default": false,
  *     delegateSelectors: ["harness-delegate"],
  *     description: "test",
  *     identifier: "identifier",
@@ -79,11 +79,11 @@ import * as utilities from "../utilities";
  *     vaultK8sAuthRole: "vault_k8s_auth_role",
  *     vaultUrl: "https://vault_url.com",
  * });
- * const vaultAgent = new harness.platform.VaultConnector("vault_agent", {
+ * const vaultAgent = new harness.platform.VaultConnector("vaultAgent", {
  *     accessType: "VAULT_AGENT",
- *     authToken: pulumi.interpolate`account.${harness_platform_secret_text_test.id}`,
+ *     authToken: `account.${harness_platform_secret_text.test.id}`,
  *     basePath: "base_path",
- *     default: false,
+ *     "default": false,
  *     delegateSelectors: ["harness-delegate"],
  *     description: "test",
  *     identifier: "identifier",
@@ -102,9 +102,9 @@ import * as utilities from "../utilities";
  * });
  * const token = new harness.platform.VaultConnector("token", {
  *     accessType: "TOKEN",
- *     authToken: pulumi.interpolate`account.${harness_platform_secret_text_test.id}`,
+ *     authToken: `account.${harness_platform_secret_text.test.id}`,
  *     basePath: "base_path",
- *     default: false,
+ *     "default": false,
  *     description: "test",
  *     identifier: "identifier",
  *     namespace: "namespace",
@@ -122,10 +122,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using vault connector id
+ * Import account level vault connector
  *
  * ```sh
  *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
+ * ```
+ *
+ *  Import org level vault connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level vault connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class VaultConnector extends pulumi.CustomResource {
@@ -213,11 +225,11 @@ export class VaultConnector extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -227,7 +239,7 @@ export class VaultConnector extends pulumi.CustomResource {
     /**
      * Boolean value to indicate if AppRole token renewal is enabled or not.
      */
-    public readonly renewAppRoleToken!: pulumi.Output<boolean | undefined>;
+    public readonly renewAppRoleToken!: pulumi.Output<boolean>;
     /**
      * The time interval for the token renewal.
      */
@@ -257,7 +269,7 @@ export class VaultConnector extends pulumi.CustomResource {
      */
     public readonly sinkPath!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -446,11 +458,11 @@ export interface VaultConnectorState {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -490,7 +502,7 @@ export interface VaultConnectorState {
      */
     sinkPath?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -584,11 +596,11 @@ export interface VaultConnectorArgs {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -628,7 +640,7 @@ export interface VaultConnectorArgs {
      */
     sinkPath?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -4,6 +4,8 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.harness.platform.outputs.GetPipelineGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +19,11 @@ public final class GetPipelineResult {
      * 
      */
     private String description;
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    private @Nullable GetPipelineGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,10 +50,20 @@ public final class GetPipelineResult {
      */
     private String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
+    /**
+     * @return If true, returns Pipeline YAML with Templates applied on it.
+     * 
+     */
+    private Boolean templateApplied;
+    /**
+     * @return Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    private String templateAppliedPipelineYaml;
     /**
      * @return YAML of the pipeline.
      * 
@@ -60,6 +77,13 @@ public final class GetPipelineResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<GetPipelineGitDetails> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -97,11 +121,25 @@ public final class GetPipelineResult {
         return this.projectId;
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
         return this.tags;
+    }
+    /**
+     * @return If true, returns Pipeline YAML with Templates applied on it.
+     * 
+     */
+    public Boolean templateApplied() {
+        return this.templateApplied;
+    }
+    /**
+     * @return Pipeline YAML after resolving Templates (returned as a String).
+     * 
+     */
+    public String templateAppliedPipelineYaml() {
+        return this.templateAppliedPipelineYaml;
     }
     /**
      * @return YAML of the pipeline.
@@ -121,29 +159,40 @@ public final class GetPipelineResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private @Nullable GetPipelineGitDetails gitDetails;
         private String id;
         private @Nullable String identifier;
         private @Nullable String name;
         private String orgId;
         private String projectId;
         private List<String> tags;
+        private Boolean templateApplied;
+        private String templateAppliedPipelineYaml;
         private String yaml;
         public Builder() {}
         public Builder(GetPipelineResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
+    	      this.templateApplied = defaults.templateApplied;
+    	      this.templateAppliedPipelineYaml = defaults.templateAppliedPipelineYaml;
     	      this.yaml = defaults.yaml;
         }
 
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(@Nullable GetPipelineGitDetails gitDetails) {
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +229,16 @@ public final class GetPipelineResult {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder templateApplied(Boolean templateApplied) {
+            this.templateApplied = Objects.requireNonNull(templateApplied);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder templateAppliedPipelineYaml(String templateAppliedPipelineYaml) {
+            this.templateAppliedPipelineYaml = Objects.requireNonNull(templateAppliedPipelineYaml);
+            return this;
+        }
+        @CustomType.Setter
         public Builder yaml(String yaml) {
             this.yaml = Objects.requireNonNull(yaml);
             return this;
@@ -187,12 +246,15 @@ public final class GetPipelineResult {
         public GetPipelineResult build() {
             final var o = new GetPipelineResult();
             o.description = description;
+            o.gitDetails = gitDetails;
             o.id = id;
             o.identifier = identifier;
             o.name = name;
             o.orgId = orgId;
             o.projectId = projectId;
             o.tags = tags;
+            o.templateApplied = templateApplied;
+            o.templateAppliedPipelineYaml = templateAppliedPipelineYaml;
             o.yaml = yaml;
             return o;
         }

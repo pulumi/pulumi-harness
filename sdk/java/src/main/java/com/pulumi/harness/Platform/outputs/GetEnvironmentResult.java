@@ -31,24 +31,24 @@ public final class GetEnvironmentResult {
      * @return Unique identifier of the resource.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    private String orgId;
+    private @Nullable String orgId;
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    private String projectId;
+    private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     private List<String> tags;
@@ -89,8 +89,8 @@ public final class GetEnvironmentResult {
      * @return Unique identifier of the resource.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Name of the resource.
@@ -100,21 +100,21 @@ public final class GetEnvironmentResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
-    public String orgId() {
-        return this.orgId;
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {
@@ -147,10 +147,10 @@ public final class GetEnvironmentResult {
         private String color;
         private String description;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private @Nullable String name;
-        private String orgId;
-        private String projectId;
+        private @Nullable String orgId;
+        private @Nullable String projectId;
         private List<String> tags;
         private String type;
         private String yaml;
@@ -185,8 +185,8 @@ public final class GetEnvironmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-            this.identifier = identifier;
+        public Builder identifier(String identifier) {
+            this.identifier = Objects.requireNonNull(identifier);
             return this;
         }
         @CustomType.Setter
@@ -195,13 +195,13 @@ public final class GetEnvironmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder orgId(String orgId) {
-            this.orgId = Objects.requireNonNull(orgId);
+        public Builder orgId(@Nullable String orgId) {
+            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
+//			_, err := platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
 //				Identifier: "identifier",
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),

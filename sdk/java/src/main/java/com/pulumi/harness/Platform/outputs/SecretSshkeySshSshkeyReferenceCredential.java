@@ -12,15 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecretSshkeySshSshkeyReferenceCredential {
     private @Nullable String encryptedPassphrase;
-    private @Nullable String key;
+    private String key;
     private String userName;
 
     private SecretSshkeySshSshkeyReferenceCredential() {}
     public Optional<String> encryptedPassphrase() {
         return Optional.ofNullable(this.encryptedPassphrase);
     }
-    public Optional<String> key() {
-        return Optional.ofNullable(this.key);
+    public String key() {
+        return this.key;
     }
     public String userName() {
         return this.userName;
@@ -36,7 +36,7 @@ public final class SecretSshkeySshSshkeyReferenceCredential {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String encryptedPassphrase;
-        private @Nullable String key;
+        private String key;
         private String userName;
         public Builder() {}
         public Builder(SecretSshkeySshSshkeyReferenceCredential defaults) {
@@ -52,8 +52,8 @@ public final class SecretSshkeySshSshkeyReferenceCredential {
             return this;
         }
         @CustomType.Setter
-        public Builder key(@Nullable String key) {
-            this.key = key;
+        public Builder key(String key) {
+            this.key = Objects.requireNonNull(key);
             return this;
         }
         @CustomType.Setter

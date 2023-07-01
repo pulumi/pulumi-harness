@@ -15,18 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getPrometheusConnector({
+ * const example = harness.platform.getPrometheusConnector({
  *     identifier: "identifier",
- * }));
+ * });
  * ```
  */
-export function getPrometheusConnector(args?: GetPrometheusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getPrometheusConnector(args: GetPrometheusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPrometheusConnector:getPrometheusConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -42,17 +38,17 @@ export interface GetPrometheusConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -62,7 +58,7 @@ export interface GetPrometheusConnectorArgs {
  */
 export interface GetPrometheusConnectorResult {
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -80,29 +76,29 @@ export interface GetPrometheusConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Password reference.
+     * Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     readonly passwordRef: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
-     * Url of the Prometheus server.
+     * URL of the Prometheus server.
      */
     readonly url: string;
     /**
@@ -110,9 +106,22 @@ export interface GetPrometheusConnectorResult {
      */
     readonly userName: string;
 }
-
-export function getPrometheusConnectorOutput(args?: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusConnectorResult> {
-    return pulumi.output(args).apply(a => getPrometheusConnector(a, opts))
+/**
+ * Datasource for looking up a Prometheus connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPrometheusConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getPrometheusConnectorOutput(args: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getPrometheusConnector(a, opts))
 }
 
 /**
@@ -122,17 +131,17 @@ export interface GetPrometheusConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

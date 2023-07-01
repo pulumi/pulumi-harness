@@ -66,7 +66,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * list of cluster identifiers and names
      * 
      */
-    @Export(name="clusters", type=List.class, parameters={EnvironmentClustersMappingCluster.class})
+    @Export(name="clusters", refs={List.class,EnvironmentClustersMappingCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EnvironmentClustersMappingCluster>> clusters;
 
     /**
@@ -80,7 +80,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * environment identifier.
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
@@ -94,7 +94,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * identifier of the cluster.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -108,7 +108,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * org_id of the cluster.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
@@ -122,7 +122,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * project_id of the cluster.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -136,7 +136,7 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
      * scope at which the cluster exists in harness gitops
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**

@@ -82,9 +82,9 @@ def get_current_account(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:index/getCurrentAccount:getCurrentAccount', __args__, opts=opts, typ=GetCurrentAccountResult).value
 
     return AwaitableGetCurrentAccountResult(
-        account_id=__ret__.account_id,
-        endpoint=__ret__.endpoint,
-        id=__ret__.id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_current_account)

@@ -19,6 +19,9 @@ class AwsConnectorArgs:
                  identifier: pulumi.Input[str],
                  cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
+                 full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
                  inherit_from_delegate: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']] = None,
                  irsa: Optional[pulumi.Input['AwsConnectorIrsaArgs']] = None,
                  manual: Optional[pulumi.Input['AwsConnectorManualArgs']] = None,
@@ -31,19 +34,28 @@ class AwsConnectorArgs:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs'] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs'] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
+        :param pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs'] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
         :param pulumi.Input['AwsConnectorInheritFromDelegateArgs'] inherit_from_delegate: Inherit credentials from the delegate.
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         if cross_account_access is not None:
             pulumi.set(__self__, "cross_account_access", cross_account_access)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if equal_jitter_backoff_strategy is not None:
+            pulumi.set(__self__, "equal_jitter_backoff_strategy", equal_jitter_backoff_strategy)
+        if fixed_delay_backoff_strategy is not None:
+            pulumi.set(__self__, "fixed_delay_backoff_strategy", fixed_delay_backoff_strategy)
+        if full_jitter_backoff_strategy is not None:
+            pulumi.set(__self__, "full_jitter_backoff_strategy", full_jitter_backoff_strategy)
         if inherit_from_delegate is not None:
             pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if irsa is not None:
@@ -94,6 +106,42 @@ class AwsConnectorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="equalJitterBackoffStrategy")
+    def equal_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]:
+        """
+        Equal Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "equal_jitter_backoff_strategy")
+
+    @equal_jitter_backoff_strategy.setter
+    def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
+        pulumi.set(self, "equal_jitter_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="fixedDelayBackoffStrategy")
+    def fixed_delay_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]:
+        """
+        Fixed Delay BackOff Strategy.
+        """
+        return pulumi.get(self, "fixed_delay_backoff_strategy")
+
+    @fixed_delay_backoff_strategy.setter
+    def fixed_delay_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]):
+        pulumi.set(self, "fixed_delay_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="fullJitterBackoffStrategy")
+    def full_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]:
+        """
+        Full Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "full_jitter_backoff_strategy")
+
+    @full_jitter_backoff_strategy.setter
+    def full_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]):
+        pulumi.set(self, "full_jitter_backoff_strategy", value)
 
     @property
     @pulumi.getter(name="inheritFromDelegate")
@@ -147,7 +195,7 @@ class AwsConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -159,7 +207,7 @@ class AwsConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -171,7 +219,7 @@ class AwsConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -185,6 +233,9 @@ class _AwsConnectorState:
     def __init__(__self__, *,
                  cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
+                 full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input['AwsConnectorInheritFromDelegateArgs']] = None,
                  irsa: Optional[pulumi.Input['AwsConnectorIrsaArgs']] = None,
@@ -197,19 +248,28 @@ class _AwsConnectorState:
         Input properties used for looking up and filtering AwsConnector resources.
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs'] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs'] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
+        :param pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs'] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input['AwsConnectorInheritFromDelegateArgs'] inherit_from_delegate: Inherit credentials from the delegate.
         :param pulumi.Input['AwsConnectorIrsaArgs'] irsa: Use IAM role for service accounts.
         :param pulumi.Input['AwsConnectorManualArgs'] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if cross_account_access is not None:
             pulumi.set(__self__, "cross_account_access", cross_account_access)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if equal_jitter_backoff_strategy is not None:
+            pulumi.set(__self__, "equal_jitter_backoff_strategy", equal_jitter_backoff_strategy)
+        if fixed_delay_backoff_strategy is not None:
+            pulumi.set(__self__, "fixed_delay_backoff_strategy", fixed_delay_backoff_strategy)
+        if full_jitter_backoff_strategy is not None:
+            pulumi.set(__self__, "full_jitter_backoff_strategy", full_jitter_backoff_strategy)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if inherit_from_delegate is not None:
@@ -250,6 +310,42 @@ class _AwsConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="equalJitterBackoffStrategy")
+    def equal_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]:
+        """
+        Equal Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "equal_jitter_backoff_strategy")
+
+    @equal_jitter_backoff_strategy.setter
+    def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
+        pulumi.set(self, "equal_jitter_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="fixedDelayBackoffStrategy")
+    def fixed_delay_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]:
+        """
+        Fixed Delay BackOff Strategy.
+        """
+        return pulumi.get(self, "fixed_delay_backoff_strategy")
+
+    @fixed_delay_backoff_strategy.setter
+    def fixed_delay_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']]):
+        pulumi.set(self, "fixed_delay_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="fullJitterBackoffStrategy")
+    def full_jitter_backoff_strategy(self) -> Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]:
+        """
+        Full Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "full_jitter_backoff_strategy")
+
+    @full_jitter_backoff_strategy.setter
+    def full_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']]):
+        pulumi.set(self, "full_jitter_backoff_strategy", value)
 
     @property
     @pulumi.getter
@@ -315,7 +411,7 @@ class _AwsConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -327,7 +423,7 @@ class _AwsConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -339,7 +435,7 @@ class _AwsConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -355,6 +451,9 @@ class AwsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cross_account_access: Optional[pulumi.Input[pulumi.InputType['AwsConnectorCrossAccountAccessArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 equal_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorEqualJitterBackoffStrategyArgs']]] = None,
+                 fixed_delay_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFixedDelayBackoffStrategyArgs']]] = None,
+                 full_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFullJitterBackoffStrategyArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['AwsConnectorInheritFromDelegateArgs']]] = None,
                  irsa: Optional[pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']]] = None,
@@ -367,18 +466,62 @@ class AwsConnector(pulumi.CustomResource):
         """
         Resource for creating an AWS connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        aws = harness.platform.AwsConnector("aws",
+            description="description of aws connector",
+            fixed_delay_backoff_strategy=harness.platform.AwsConnectorFixedDelayBackoffStrategyArgs(
+                fixed_backoff=10,
+                retry_count=3,
+            ),
+            identifier="example_aws_connector",
+            manual=harness.platform.AwsConnectorManualArgs(
+                access_key_ref="account.access_id",
+                delegate_selectors=["harness-delegate"],
+                secret_key_ref="account.secret_id",
+            ),
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
+        ```
+
+         Import organization level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
+        ```
+
+         Import project level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AwsConnectorCrossAccountAccessArgs']] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorEqualJitterBackoffStrategyArgs']] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorFixedDelayBackoffStrategyArgs']] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorFullJitterBackoffStrategyArgs']] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['AwsConnectorInheritFromDelegateArgs']] inherit_from_delegate: Inherit credentials from the delegate.
         :param pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[pulumi.InputType['AwsConnectorManualArgs']] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -388,6 +531,47 @@ class AwsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an AWS connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        aws = harness.platform.AwsConnector("aws",
+            description="description of aws connector",
+            fixed_delay_backoff_strategy=harness.platform.AwsConnectorFixedDelayBackoffStrategyArgs(
+                fixed_backoff=10,
+                retry_count=3,
+            ),
+            identifier="example_aws_connector",
+            manual=harness.platform.AwsConnectorManualArgs(
+                access_key_ref="account.access_id",
+                delegate_selectors=["harness-delegate"],
+                secret_key_ref="account.secret_id",
+            ),
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
+        ```
+
+         Import organization level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
+        ```
+
+         Import project level aws connector
+
+        ```sh
+         $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AwsConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -406,6 +590,9 @@ class AwsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cross_account_access: Optional[pulumi.Input[pulumi.InputType['AwsConnectorCrossAccountAccessArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 equal_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorEqualJitterBackoffStrategyArgs']]] = None,
+                 fixed_delay_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFixedDelayBackoffStrategyArgs']]] = None,
+                 full_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFullJitterBackoffStrategyArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['AwsConnectorInheritFromDelegateArgs']]] = None,
                  irsa: Optional[pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']]] = None,
@@ -425,6 +612,9 @@ class AwsConnector(pulumi.CustomResource):
 
             __props__.__dict__["cross_account_access"] = cross_account_access
             __props__.__dict__["description"] = description
+            __props__.__dict__["equal_jitter_backoff_strategy"] = equal_jitter_backoff_strategy
+            __props__.__dict__["fixed_delay_backoff_strategy"] = fixed_delay_backoff_strategy
+            __props__.__dict__["full_jitter_backoff_strategy"] = full_jitter_backoff_strategy
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -447,6 +637,9 @@ class AwsConnector(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cross_account_access: Optional[pulumi.Input[pulumi.InputType['AwsConnectorCrossAccountAccessArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            equal_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorEqualJitterBackoffStrategyArgs']]] = None,
+            fixed_delay_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFixedDelayBackoffStrategyArgs']]] = None,
+            full_jitter_backoff_strategy: Optional[pulumi.Input[pulumi.InputType['AwsConnectorFullJitterBackoffStrategyArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['AwsConnectorInheritFromDelegateArgs']]] = None,
             irsa: Optional[pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']]] = None,
@@ -464,14 +657,17 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AwsConnectorCrossAccountAccessArgs']] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorEqualJitterBackoffStrategyArgs']] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorFixedDelayBackoffStrategyArgs']] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
+        :param pulumi.Input[pulumi.InputType['AwsConnectorFullJitterBackoffStrategyArgs']] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['AwsConnectorInheritFromDelegateArgs']] inherit_from_delegate: Inherit credentials from the delegate.
         :param pulumi.Input[pulumi.InputType['AwsConnectorIrsaArgs']] irsa: Use IAM role for service accounts.
         :param pulumi.Input[pulumi.InputType['AwsConnectorManualArgs']] manual: Use IAM role for service accounts.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -479,6 +675,9 @@ class AwsConnector(pulumi.CustomResource):
 
         __props__.__dict__["cross_account_access"] = cross_account_access
         __props__.__dict__["description"] = description
+        __props__.__dict__["equal_jitter_backoff_strategy"] = equal_jitter_backoff_strategy
+        __props__.__dict__["fixed_delay_backoff_strategy"] = fixed_delay_backoff_strategy
+        __props__.__dict__["full_jitter_backoff_strategy"] = full_jitter_backoff_strategy
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["inherit_from_delegate"] = inherit_from_delegate
         __props__.__dict__["irsa"] = irsa
@@ -504,6 +703,30 @@ class AwsConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="equalJitterBackoffStrategy")
+    def equal_jitter_backoff_strategy(self) -> pulumi.Output[Optional['outputs.AwsConnectorEqualJitterBackoffStrategy']]:
+        """
+        Equal Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "equal_jitter_backoff_strategy")
+
+    @property
+    @pulumi.getter(name="fixedDelayBackoffStrategy")
+    def fixed_delay_backoff_strategy(self) -> pulumi.Output[Optional['outputs.AwsConnectorFixedDelayBackoffStrategy']]:
+        """
+        Fixed Delay BackOff Strategy.
+        """
+        return pulumi.get(self, "fixed_delay_backoff_strategy")
+
+    @property
+    @pulumi.getter(name="fullJitterBackoffStrategy")
+    def full_jitter_backoff_strategy(self) -> pulumi.Output[Optional['outputs.AwsConnectorFullJitterBackoffStrategy']]:
+        """
+        Full Jitter BackOff Strategy.
+        """
+        return pulumi.get(self, "full_jitter_backoff_strategy")
 
     @property
     @pulumi.getter
@@ -549,7 +772,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -557,7 +780,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -565,7 +788,7 @@ class AwsConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

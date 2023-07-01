@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRoleAssignmentsResult',
@@ -94,7 +93,7 @@ class GetRoleAssignmentsResult:
 
     @property
     @pulumi.getter
-    def principals(self) -> Optional[Sequence['outputs.GetRoleAssignmentsPrincipalResult']]:
+    def principals(self) -> Sequence['outputs.GetRoleAssignmentsPrincipalResult']:
         """
         Principal.
         """
@@ -144,7 +143,6 @@ class AwaitableGetRoleAssignmentsResult(GetRoleAssignmentsResult):
 
 def get_role_assignments(identifier: Optional[str] = None,
                          org_id: Optional[str] = None,
-                         principals: Optional[Sequence[pulumi.InputType['GetRoleAssignmentsPrincipalArgs']]] = None,
                          project_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleAssignmentsResult:
     """
@@ -164,33 +162,30 @@ def get_role_assignments(identifier: Optional[str] = None,
 
     :param str identifier: Identifier for role assignment.
     :param str org_id: Org identifier.
-    :param Sequence[pulumi.InputType['GetRoleAssignmentsPrincipalArgs']] principals: Principal.
     :param str project_id: Project Identifier
     """
     __args__ = dict()
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
-    __args__['principals'] = principals
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getRoleAssignments:getRoleAssignments', __args__, opts=opts, typ=GetRoleAssignmentsResult).value
 
     return AwaitableGetRoleAssignmentsResult(
-        disabled=__ret__.disabled,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        managed=__ret__.managed,
-        org_id=__ret__.org_id,
-        principals=__ret__.principals,
-        project_id=__ret__.project_id,
-        resource_group_identifier=__ret__.resource_group_identifier,
-        role_identifier=__ret__.role_identifier)
+        disabled=pulumi.get(__ret__, 'disabled'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        managed=pulumi.get(__ret__, 'managed'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        principals=pulumi.get(__ret__, 'principals'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        resource_group_identifier=pulumi.get(__ret__, 'resource_group_identifier'),
+        role_identifier=pulumi.get(__ret__, 'role_identifier'))
 
 
 @_utilities.lift_output_func(get_role_assignments)
 def get_role_assignments_output(identifier: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                principals: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRoleAssignmentsPrincipalArgs']]]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleAssignmentsResult]:
     """
@@ -210,7 +205,6 @@ def get_role_assignments_output(identifier: Optional[pulumi.Input[str]] = None,
 
     :param str identifier: Identifier for role assignment.
     :param str org_id: Org identifier.
-    :param Sequence[pulumi.InputType['GetRoleAssignmentsPrincipalArgs']] principals: Principal.
     :param str project_id: Project Identifier
     """
     ...

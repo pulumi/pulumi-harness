@@ -28,16 +28,16 @@ class AwsKmsConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AwsKmsConnector resource.
-        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS.
-        :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: The credentials to use for connecting to aws.
+        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "arn_ref", arn_ref)
         pulumi.set(__self__, "credentials", credentials)
@@ -60,7 +60,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter(name="arnRef")
     def arn_ref(self) -> pulumi.Input[str]:
         """
-        A reference to the Harness secret containing the ARN of the AWS KMS.
+        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "arn_ref")
 
@@ -72,7 +72,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter
     def credentials(self) -> pulumi.Input['AwsKmsConnectorCredentialsArgs']:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -108,7 +108,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -144,7 +144,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -156,7 +156,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -168,7 +168,7 @@ class AwsKmsConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -192,16 +192,16 @@ class _AwsKmsConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AwsKmsConnector resources.
-        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS.
-        :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if arn_ref is not None:
             pulumi.set(__self__, "arn_ref", arn_ref)
@@ -228,7 +228,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter(name="arnRef")
     def arn_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to the Harness secret containing the ARN of the AWS KMS.
+        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "arn_ref")
 
@@ -240,7 +240,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter
     def credentials(self) -> Optional[pulumi.Input['AwsKmsConnectorCredentialsArgs']]:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -252,7 +252,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -300,7 +300,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -312,7 +312,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -336,7 +336,7 @@ class _AwsKmsConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -364,18 +364,57 @@ class AwsKmsConnector(pulumi.CustomResource):
         """
         Resource for creating an AWS KMS connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials inherit_from_delegate
+        test = harness.platform.AwsKmsConnector("test",
+            arn_ref="account.secret_id",
+            credentials=harness.platform.AwsKmsConnectorCredentialsArgs(
+                inherit_from_delegate=True,
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifer",
+            region="us-east-1",
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
+        ```
+
+         Import org level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS.
-        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -385,6 +424,45 @@ class AwsKmsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an AWS KMS connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Credentials inherit_from_delegate
+        test = harness.platform.AwsKmsConnector("test",
+            arn_ref="account.secret_id",
+            credentials=harness.platform.AwsKmsConnectorCredentialsArgs(
+                inherit_from_delegate=True,
+            ),
+            delegate_selectors=["harness-delegate"],
+            description="test",
+            identifier="identifer",
+            region="us-east-1",
+            tags=["foo:bar"])
+        ```
+
+        ## Import
+
+        Import account level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
+        ```
+
+         Import org level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level awskms connector
+
+        ```sh
+         $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AwsKmsConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -465,16 +543,16 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS.
-        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: The credentials to use for connecting to aws.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,7 +574,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter(name="arnRef")
     def arn_ref(self) -> pulumi.Output[str]:
         """
-        A reference to the Harness secret containing the ARN of the AWS KMS.
+        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "arn_ref")
 
@@ -504,7 +582,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter
     def credentials(self) -> pulumi.Output['outputs.AwsKmsConnectorCredentials']:
         """
-        The credentials to use for connecting to aws.
+        Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
 
@@ -512,7 +590,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -544,7 +622,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -552,7 +630,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -568,7 +646,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

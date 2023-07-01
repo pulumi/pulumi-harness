@@ -15,16 +15,16 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class GetGitopsClusterRequestClusterInfoConnectionStateResult
     {
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtResult> AttemptedAts;
-        public readonly string? Message;
-        public readonly string? Status;
+        public readonly string Message;
+        public readonly string Status;
 
         [OutputConstructor]
         private GetGitopsClusterRequestClusterInfoConnectionStateResult(
             ImmutableArray<Outputs.GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtResult> attemptedAts,
 
-            string? message,
+            string message,
 
-            string? status)
+            string status)
         {
             AttemptedAts = attemptedAts;
             Message = message;

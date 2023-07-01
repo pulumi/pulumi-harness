@@ -35,11 +35,6 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
-export { EnvironmentServiceOverridesArgs, EnvironmentServiceOverridesState } from "./environmentServiceOverrides";
-export type EnvironmentServiceOverrides = import("./environmentServiceOverrides").EnvironmentServiceOverrides;
-export const EnvironmentServiceOverrides: typeof import("./environmentServiceOverrides").EnvironmentServiceOverrides = null as any;
-utilities.lazyLoad(exports, ["EnvironmentServiceOverrides"], () => require("./environmentServiceOverrides"));
-
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
@@ -59,6 +54,11 @@ export { GetEncryptedTextArgs, GetEncryptedTextResult, GetEncryptedTextOutputArg
 export const getEncryptedText: typeof import("./getEncryptedText").getEncryptedText = null as any;
 export const getEncryptedTextOutput: typeof import("./getEncryptedText").getEncryptedTextOutput = null as any;
 utilities.lazyLoad(exports, ["getEncryptedText","getEncryptedTextOutput"], () => require("./getEncryptedText"));
+
+export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
+export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
+export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetGitConnectorArgs, GetGitConnectorResult, GetGitConnectorOutputArgs } from "./getGitConnector";
 export const getGitConnector: typeof import("./getGitConnector").getGitConnector = null as any;
@@ -85,6 +85,11 @@ export const getSsoProvider: typeof import("./getSsoProvider").getSsoProvider = 
 export const getSsoProviderOutput: typeof import("./getSsoProvider").getSsoProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getSsoProvider","getSsoProviderOutput"], () => require("./getSsoProvider"));
 
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
@@ -109,6 +114,16 @@ export { InfrastructureDefinitionArgs, InfrastructureDefinitionState } from "./i
 export type InfrastructureDefinition = import("./infrastructureDefinition").InfrastructureDefinition;
 export const InfrastructureDefinition: typeof import("./infrastructureDefinition").InfrastructureDefinition = null as any;
 utilities.lazyLoad(exports, ["InfrastructureDefinition"], () => require("./infrastructureDefinition"));
+
+export { PlatformApiKeyArgs, PlatformApiKeyState } from "./platformApiKey";
+export type PlatformApiKey = import("./platformApiKey").PlatformApiKey;
+export const PlatformApiKey: typeof import("./platformApiKey").PlatformApiKey = null as any;
+utilities.lazyLoad(exports, ["PlatformApiKey"], () => require("./platformApiKey"));
+
+export { PlatformCcmFiltersArgs, PlatformCcmFiltersState } from "./platformCcmFilters";
+export type PlatformCcmFilters = import("./platformCcmFilters").PlatformCcmFilters;
+export const PlatformCcmFilters: typeof import("./platformCcmFilters").PlatformCcmFilters = null as any;
+utilities.lazyLoad(exports, ["PlatformCcmFilters"], () => require("./platformCcmFilters"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -172,12 +187,14 @@ const _module = {
                 return new EncryptedText(name, <any>undefined, { urn })
             case "harness:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
-            case "harness:index/environmentServiceOverrides:EnvironmentServiceOverrides":
-                return new EnvironmentServiceOverrides(name, <any>undefined, { urn })
             case "harness:index/gitConnector:GitConnector":
                 return new GitConnector(name, <any>undefined, { urn })
             case "harness:index/infrastructureDefinition:InfrastructureDefinition":
                 return new InfrastructureDefinition(name, <any>undefined, { urn })
+            case "harness:index/platformApiKey:PlatformApiKey":
+                return new PlatformApiKey(name, <any>undefined, { urn })
+            case "harness:index/platformCcmFilters:PlatformCcmFilters":
+                return new PlatformCcmFilters(name, <any>undefined, { urn })
             case "harness:index/sshCredential:SshCredential":
                 return new SshCredential(name, <any>undefined, { urn })
             case "harness:index/user:User":
@@ -199,9 +216,10 @@ pulumi.runtime.registerResourceModule("harness", "index/applicationGitSync", _mo
 pulumi.runtime.registerResourceModule("harness", "index/delegateApproval", _module)
 pulumi.runtime.registerResourceModule("harness", "index/encryptedText", _module)
 pulumi.runtime.registerResourceModule("harness", "index/environment", _module)
-pulumi.runtime.registerResourceModule("harness", "index/environmentServiceOverrides", _module)
 pulumi.runtime.registerResourceModule("harness", "index/gitConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "index/infrastructureDefinition", _module)
+pulumi.runtime.registerResourceModule("harness", "index/platformApiKey", _module)
+pulumi.runtime.registerResourceModule("harness", "index/platformCcmFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "index/sshCredential", _module)
 pulumi.runtime.registerResourceModule("harness", "index/user", _module)
 pulumi.runtime.registerResourceModule("harness", "index/userGroup", _module)

@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -51,6 +52,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -195,7 +197,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

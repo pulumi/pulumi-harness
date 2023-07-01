@@ -37,10 +37,10 @@ class KubernetesConnectorArgs:
         :param pulumi.Input['KubernetesConnectorInheritFromDelegateArgs'] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input['KubernetesConnectorOpenidConnectArgs'] openid_connect: OpenID configuration for the connector.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input['KubernetesConnectorServiceAccountArgs'] service_account: Service account for the connector.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input['KubernetesConnectorUsernamePasswordArgs'] username_password: Username and password for the connector.
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -155,7 +155,7 @@ class KubernetesConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -167,7 +167,7 @@ class KubernetesConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -191,7 +191,7 @@ class KubernetesConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -236,10 +236,10 @@ class _KubernetesConnectorState:
         :param pulumi.Input['KubernetesConnectorInheritFromDelegateArgs'] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input['KubernetesConnectorOpenidConnectArgs'] openid_connect: OpenID configuration for the connector.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input['KubernetesConnectorServiceAccountArgs'] service_account: Service account for the connector.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input['KubernetesConnectorUsernamePasswordArgs'] username_password: Username and password for the connector.
         """
         if client_key_cert is not None:
@@ -355,7 +355,7 @@ class _KubernetesConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -367,7 +367,7 @@ class _KubernetesConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -391,7 +391,7 @@ class _KubernetesConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -499,10 +499,22 @@ class KubernetesConnector(pulumi.CustomResource):
 
         ## Import
 
-        Import using kubernetes connector id
+        Import account level kubernetes connector
 
         ```sh
          $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
+        ```
+
+         Import org level kubernetes connector
+
+        ```sh
+         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level kubernetes connector
+
+        ```sh
+         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -514,10 +526,10 @@ class KubernetesConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorOpenidConnectArgs']] openid_connect: OpenID configuration for the connector.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorServiceAccountArgs']] service_account: Service account for the connector.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorUsernamePasswordArgs']] username_password: Username and password for the connector.
         """
         ...
@@ -595,10 +607,22 @@ class KubernetesConnector(pulumi.CustomResource):
 
         ## Import
 
-        Import using kubernetes connector id
+        Import account level kubernetes connector
 
         ```sh
          $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
+        ```
+
+         Import org level kubernetes connector
+
+        ```sh
+         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level kubernetes connector
+
+        ```sh
+         $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -687,10 +711,10 @@ class KubernetesConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorOpenidConnectArgs']] openid_connect: OpenID configuration for the connector.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorServiceAccountArgs']] service_account: Service account for the connector.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorUsernamePasswordArgs']] username_password: Username and password for the connector.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -771,7 +795,7 @@ class KubernetesConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -779,7 +803,7 @@ class KubernetesConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -795,7 +819,7 @@ class KubernetesConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
  * Resource for creating a Harness user group
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -96,7 +97,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The description of the user group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -110,7 +111,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * Indicates whether the user group was imported by SCIM.
      * 
      */
-    @Export(name="importedByScim", type=Boolean.class, parameters={})
+    @Export(name="importedByScim", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> importedByScim;
 
     /**
@@ -124,7 +125,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * Indicates whether the user group is linked to an SSO provider.
      * 
      */
-    @Export(name="isSsoLinked", type=Boolean.class, parameters={})
+    @Export(name="isSsoLinked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSsoLinked;
 
     /**
@@ -138,7 +139,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The LDAP settings for the user group.
      * 
      */
-    @Export(name="ldapSettings", type=UserGroupLdapSettings.class, parameters={})
+    @Export(name="ldapSettings", refs={UserGroupLdapSettings.class}, tree="[0]")
     private Output</* @Nullable */ UserGroupLdapSettings> ldapSettings;
 
     /**
@@ -152,7 +153,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The name of the user group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -166,7 +167,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The notification settings of the user group.
      * 
      */
-    @Export(name="notificationSettings", type=UserGroupNotificationSettings.class, parameters={})
+    @Export(name="notificationSettings", refs={UserGroupNotificationSettings.class}, tree="[0]")
     private Output</* @Nullable */ UserGroupNotificationSettings> notificationSettings;
 
     /**
@@ -180,7 +181,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The permissions of the user group.
      * 
      */
-    @Export(name="permissions", type=UserGroupPermissions.class, parameters={})
+    @Export(name="permissions", refs={UserGroupPermissions.class}, tree="[0]")
     private Output</* @Nullable */ UserGroupPermissions> permissions;
 
     /**
@@ -194,7 +195,7 @@ public class UserGroup extends com.pulumi.resources.CustomResource {
      * The SAML settings for the user group.
      * 
      */
-    @Export(name="samlSettings", type=UserGroupSamlSettings.class, parameters={})
+    @Export(name="samlSettings", refs={UserGroupSamlSettings.class}, tree="[0]")
     private Output</* @Nullable */ UserGroupSamlSettings> samlSettings;
 
     /**

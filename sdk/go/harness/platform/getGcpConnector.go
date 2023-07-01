@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Gcp connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupGcpConnector(ctx, &platform.LookupGcpConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGcpConnector(ctx *pulumi.Context, args *LookupGcpConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGcpConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGcpConnectorResult
@@ -24,12 +50,12 @@ func LookupGcpConnector(ctx *pulumi.Context, args *LookupGcpConnectorArgs, opts 
 // A collection of arguments for invoking getGcpConnector.
 type LookupGcpConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -40,18 +66,18 @@ type LookupGcpConnectorResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Inherit configuration from delegate.
 	InheritFromDelegates []GetGcpConnectorInheritFromDelegate `pulumi:"inheritFromDelegates"`
 	// Manual credential configuration.
 	Manuals []GetGcpConnectorManual `pulumi:"manuals"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -71,12 +97,12 @@ func LookupGcpConnectorOutput(ctx *pulumi.Context, args LookupGcpConnectorOutput
 // A collection of arguments for invoking getGcpConnector.
 type LookupGcpConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -110,8 +136,8 @@ func (o LookupGcpConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupGcpConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGcpConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupGcpConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGcpConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Inherit configuration from delegate.
@@ -129,17 +155,17 @@ func (o LookupGcpConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGcpConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupGcpConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGcpConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupGcpConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGcpConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupGcpConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGcpConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

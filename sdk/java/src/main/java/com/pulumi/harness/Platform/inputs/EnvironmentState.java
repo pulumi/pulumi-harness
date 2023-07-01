@@ -47,6 +47,21 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable this flag for force deletion of environment
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<String> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of environment
+     * 
+     */
+    public Optional<Output<String>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -107,14 +122,14 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -137,14 +152,14 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Environment YAML
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Environment YAML
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -156,6 +171,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     private EnvironmentState(EnvironmentState $) {
         this.color = $.color;
         this.description = $.description;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -223,6 +239,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of environment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of environment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(String forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
@@ -310,7 +347,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -321,7 +358,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -331,7 +368,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -362,7 +399,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -373,7 +410,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

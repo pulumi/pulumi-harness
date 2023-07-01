@@ -14,13 +14,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     public sealed class KubernetesConnectorClientKeyCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the secret containing the CA certificate for the connector.
+        /// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("caCertRef")]
         public Input<string>? CaCertRef { get; set; }
 
         /// <summary>
-        /// Reference to the secret containing the client certificate for the connector.
+        /// Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("clientCertRef", required: true)]
         public Input<string> ClientCertRef { get; set; } = null!;
@@ -32,13 +32,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
         public Input<string> ClientKeyAlgorithm { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the secret containing the client key passphrase for the connector.
+        /// Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("clientKeyPassphraseRef")]
         public Input<string>? ClientKeyPassphraseRef { get; set; }
 
         /// <summary>
-        /// Reference to the secret containing the client key for the connector.
+        /// Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("clientKeyRef", required: true)]
         public Input<string> ClientKeyRef { get; set; } = null!;

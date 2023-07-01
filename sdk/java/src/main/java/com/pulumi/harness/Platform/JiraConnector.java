@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.JiraConnectorArgs;
 import com.pulumi.harness.platform.inputs.JiraConnectorState;
+import com.pulumi.harness.platform.outputs.JiraConnectorAuth;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -18,18 +19,95 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Jira connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.JiraConnector;
+ * import com.pulumi.harness.platform.JiraConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.JiraConnectorAuthArgs;
+ * import com.pulumi.harness.platform.inputs.JiraConnectorAuthUsernamePasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new JiraConnector(&#34;test&#34;, JiraConnectorArgs.builder()        
+ *             .auth(JiraConnectorAuthArgs.builder()
+ *                 .authType(&#34;UsernamePassword&#34;)
+ *                 .usernamePassword(JiraConnectorAuthUsernamePasswordArgs.builder()
+ *                     .passwordRef(&#34;account.secret_id&#34;)
+ *                     .username(&#34;admin&#34;)
+ *                     .build())
+ *                 .build())
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .url(&#34;https://jira.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level jira connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level jira connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level jira connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/jiraConnector:JiraConnector")
 public class JiraConnector extends com.pulumi.resources.CustomResource {
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="auth", refs={JiraConnectorAuth.class}, tree="[0]")
+    private Output<JiraConnectorAuth> auth;
+
+    /**
+     * @return The credentials to use for the jira authentication.
+     * 
+     */
+    public Output<JiraConnectorAuth> auth() {
+        return this.auth;
+    }
+    /**
+     * Tags to filter delegates for connection.
+     * 
+     */
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -39,7 +117,7 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -53,7 +131,7 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -67,7 +145,7 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -78,70 +156,70 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Export(name="passwordRef", type=String.class, parameters={})
+    @Export(name="passwordRef", refs={String.class}, tree="[0]")
     private Output<String> passwordRef;
 
     /**
-     * @return Reference to a secret containing the password to use for authentication.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> passwordRef() {
         return this.passwordRef;
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Url of the Jira server.
+     * @return URL of the Jira server.
      * 
      */
     public Output<String> url() {
@@ -151,29 +229,29 @@ public class JiraConnector extends com.pulumi.resources.CustomResource {
      * Username to use for authentication.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
-    private Output</* @Nullable */ String> username;
+    @Export(name="username", refs={String.class}, tree="[0]")
+    private Output<String> username;
 
     /**
      * @return Username to use for authentication.
      * 
      */
-    public Output<Optional<String>> username() {
-        return Codegen.optional(this.username);
+    public Output<String> username() {
+        return this.username;
     }
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Export(name="usernameRef", type=String.class, parameters={})
-    private Output</* @Nullable */ String> usernameRef;
+    @Export(name="usernameRef", refs={String.class}, tree="[0]")
+    private Output<String> usernameRef;
 
     /**
-     * @return Reference to a secret containing the username to use for authentication.
+     * @return Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<Optional<String>> usernameRef() {
-        return Codegen.optional(this.usernameRef);
+    public Output<String> usernameRef() {
+        return this.usernameRef;
     }
 
     /**

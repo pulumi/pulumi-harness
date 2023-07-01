@@ -14,12 +14,56 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     {
         /// <summary>
         /// Resource for looking up an App Dynamics connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetArtifactoryConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetArtifactoryConnectorResult> InvokeAsync(GetArtifactoryConnectorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Resource for looking up an App Dynamics connector.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetArtifactoryConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetArtifactoryConnectorResult> Invoke(GetArtifactoryConnectorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorInvokeArgs(), options.WithDefaults());
@@ -41,13 +85,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -73,13 +117,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -99,7 +143,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetArtifactoryConnectorCredentialResult> Credentials;
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
@@ -119,15 +163,15 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>

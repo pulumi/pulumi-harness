@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = harness.GetDelegate(ctx, &GetDelegateArgs{
+//			_, err := harness.GetDelegate(ctx, &harness.GetDelegateArgs{
 //				Name:   pulumi.StringRef("harness-delegate"),
 //				Status: pulumi.StringRef("ENABLED"),
 //				Type:   pulumi.StringRef("KUBERNETES"),

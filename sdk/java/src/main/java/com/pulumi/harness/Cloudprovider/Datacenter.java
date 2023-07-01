@@ -61,7 +61,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * The name of the cloud provider.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -75,7 +75,7 @@ public class Datacenter extends com.pulumi.resources.CustomResource {
      * This block is used for scoping the resource to a specific set of applications or environments.
      * 
      */
-    @Export(name="usageScopes", type=List.class, parameters={DatacenterUsageScope.class})
+    @Export(name="usageScopes", refs={List.class,DatacenterUsageScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DatacenterUsageScope>> usageScopes;
 
     /**

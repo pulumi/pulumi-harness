@@ -71,7 +71,7 @@ class GetSecretTextResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -89,7 +89,7 @@ class GetSecretTextResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -97,7 +97,7 @@ class GetSecretTextResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -113,7 +113,7 @@ class GetSecretTextResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -172,8 +172,8 @@ def get_secret_text(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -184,20 +184,20 @@ def get_secret_text(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getSecretText:getSecretText', __args__, opts=opts, typ=GetSecretTextResult).value
 
     return AwaitableGetSecretTextResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        secret_manager_identifier=__ret__.secret_manager_identifier,
-        tags=__ret__.tags,
-        value=__ret__.value,
-        value_type=__ret__.value_type)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        secret_manager_identifier=pulumi.get(__ret__, 'secret_manager_identifier'),
+        tags=pulumi.get(__ret__, 'tags'),
+        value=pulumi.get(__ret__, 'value'),
+        value_type=pulumi.get(__ret__, 'value_type'))
 
 
 @_utilities.lift_output_func(get_secret_text)
-def get_secret_text_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_secret_text_output(identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            org_id: Optional[pulumi.Input[Optional[str]]] = None,
                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,7 +217,7 @@ def get_secret_text_output(identifier: Optional[pulumi.Input[Optional[str]]] = N
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

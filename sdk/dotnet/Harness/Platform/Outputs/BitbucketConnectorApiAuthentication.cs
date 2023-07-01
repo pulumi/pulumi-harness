@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     public sealed class BitbucketConnectorApiAuthentication
     {
         /// <summary>
-        /// Personal access token for interacting with the BitBucket api.
+        /// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string TokenRef;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Username;
         /// <summary>
-        /// The name of the Harness secret containing the username.
+        /// The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? UsernameRef;
 

@@ -12,6 +12,7 @@ import com.pulumi.harness.inputs.InfrastructureDefinitionAwsSshArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAwsWinrmArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAzureVmssArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAzureWebappArgs;
+import com.pulumi.harness.inputs.InfrastructureDefinitionCustomArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionDatacenterSshArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionDatacenterWinrmArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionKubernetesArgs;
@@ -164,6 +165,21 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The configuration details for Custom deployments.
+     * 
+     */
+    @Import(name="custom")
+    private @Nullable Output<InfrastructureDefinitionCustomArgs> custom;
+
+    /**
+     * @return The configuration details for Custom deployments.
+     * 
+     */
+    public Optional<Output<InfrastructureDefinitionCustomArgs>> custom() {
+        return Optional.ofNullable(this.custom);
+    }
+
+    /**
      * The configuration details for SSH datacenter deployments.
      * 
      */
@@ -209,14 +225,14 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      * 
      */
     @Import(name="deploymentType", required=true)
     private Output<String> deploymentType;
 
     /**
-     * @return The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+     * @return The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      * 
      */
     public Output<String> deploymentType() {
@@ -340,6 +356,7 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         this.azureVmss = $.azureVmss;
         this.azureWebapp = $.azureWebapp;
         this.cloudProviderType = $.cloudProviderType;
+        this.custom = $.custom;
         this.datacenterSsh = $.datacenterSsh;
         this.datacenterWinrm = $.datacenterWinrm;
         this.deploymentTemplateUri = $.deploymentTemplateUri;
@@ -561,6 +578,27 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param custom The configuration details for Custom deployments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder custom(@Nullable Output<InfrastructureDefinitionCustomArgs> custom) {
+            $.custom = custom;
+            return this;
+        }
+
+        /**
+         * @param custom The configuration details for Custom deployments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder custom(InfrastructureDefinitionCustomArgs custom) {
+            return custom(Output.of(custom));
+        }
+
+        /**
          * @param datacenterSsh The configuration details for SSH datacenter deployments.
          * 
          * @return builder
@@ -624,7 +662,7 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deploymentType The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+         * @param deploymentType The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
          * 
          * @return builder
          * 
@@ -635,7 +673,7 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deploymentType The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, Custom, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
+         * @param deploymentType The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
          * 
          * @return builder
          * 

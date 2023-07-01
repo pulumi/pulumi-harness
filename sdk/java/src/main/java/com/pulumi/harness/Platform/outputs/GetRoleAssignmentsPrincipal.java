@@ -10,40 +10,24 @@ import java.util.Objects;
 @CustomType
 public final class GetRoleAssignmentsPrincipal {
     /**
-     * @return Identifier.
+     * @return Identifier for role assignment.
      * 
      */
     private String identifier;
-    /**
-     * @return Scope level.
-     * 
-     */
     private String scopeLevel;
-    /**
-     * @return Type.
-     * 
-     */
     private String type;
 
     private GetRoleAssignmentsPrincipal() {}
     /**
-     * @return Identifier.
+     * @return Identifier for role assignment.
      * 
      */
     public String identifier() {
         return this.identifier;
     }
-    /**
-     * @return Scope level.
-     * 
-     */
     public String scopeLevel() {
         return this.scopeLevel;
     }
-    /**
-     * @return Type.
-     * 
-     */
     public String type() {
         return this.type;
     }

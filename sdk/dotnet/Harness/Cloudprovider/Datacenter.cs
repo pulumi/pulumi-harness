@@ -17,6 +17,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Cloudprovider
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 

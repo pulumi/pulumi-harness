@@ -18,7 +18,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
         public readonly string? ApplicationsCount;
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterInfoCacheInfoResult> CacheInfos;
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterInfoConnectionStateResult> ConnectionStates;
-        public readonly string? ServerVersion;
+        public readonly string ServerVersion;
 
         [OutputConstructor]
         private GetGitopsClusterRequestClusterInfoResult(
@@ -30,7 +30,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsClusterRequestClusterInfoConnectionStateResult> connectionStates,
 
-            string? serverVersion)
+            string serverVersion)
         {
             ApiVersions = apiVersions;
             ApplicationsCount = applicationsCount;

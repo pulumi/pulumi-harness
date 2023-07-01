@@ -19,46 +19,105 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an AWS KMS connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AwsKmsConnector;
+ * import com.pulumi.harness.platform.AwsKmsConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.AwsKmsConnectorCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new AwsKmsConnector(&#34;test&#34;, AwsKmsConnectorArgs.builder()        
+ *             .arnRef(&#34;account.secret_id&#34;)
+ *             .credentials(AwsKmsConnectorCredentialsArgs.builder()
+ *                 .inheritFromDelegate(true)
+ *                 .build())
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifer&#34;)
+ *             .region(&#34;us-east-1&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level awskms connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level awskms connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level awskms connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/awsKmsConnector:AwsKmsConnector")
 public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
     /**
-     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Export(name="arnRef", type=String.class, parameters={})
+    @Export(name="arnRef", refs={String.class}, tree="[0]")
     private Output<String> arnRef;
 
     /**
-     * @return A reference to the Harness secret containing the ARN of the AWS KMS.
+     * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<String> arnRef() {
         return this.arnRef;
     }
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      * 
      */
-    @Export(name="credentials", type=AwsKmsConnectorCredentials.class, parameters={})
+    @Export(name="credentials", refs={AwsKmsConnectorCredentials.class}, tree="[0]")
     private Output<AwsKmsConnectorCredentials> credentials;
 
     /**
-     * @return The credentials to use for connecting to aws.
+     * @return Credentials to connect to AWS.
      * 
      */
     public Output<AwsKmsConnectorCredentials> credentials() {
         return this.credentials;
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -68,7 +127,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +141,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -96,7 +155,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -107,28 +166,28 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -138,7 +197,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * The AWS region where the AWS Secret Manager is.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -149,14 +208,14 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

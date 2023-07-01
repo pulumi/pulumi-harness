@@ -11,6 +11,32 @@ import (
 )
 
 // Datasource for looking up a Git connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupGitConnector(ctx, &platform.LookupGitConnectorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGitConnector(ctx *pulumi.Context, args *LookupGitConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGitConnectorResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupGitConnectorResult
@@ -24,12 +50,12 @@ func LookupGitConnector(ctx *pulumi.Context, args *LookupGitConnectorArgs, opts 
 // A collection of arguments for invoking getGitConnector.
 type LookupGitConnectorArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -39,23 +65,23 @@ type LookupGitConnectorResult struct {
 	ConnectionType string `pulumi:"connectionType"`
 	// Credentials to use for the connection.
 	Credentials []GetGitConnectorCredential `pulumi:"credentials"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the git repository or account.
+	// URL of the git repository or account.
 	Url string `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo string `pulumi:"validationRepo"`
@@ -77,12 +103,12 @@ func LookupGitConnectorOutput(ctx *pulumi.Context, args LookupGitConnectorOutput
 // A collection of arguments for invoking getGitConnector.
 type LookupGitConnectorOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -115,7 +141,7 @@ func (o LookupGitConnectorResultOutput) Credentials() GetGitConnectorCredentialA
 	return o.ApplyT(func(v LookupGitConnectorResult) []GetGitConnectorCredential { return v.Credentials }).(GetGitConnectorCredentialArrayOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o LookupGitConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -131,8 +157,8 @@ func (o LookupGitConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupGitConnectorResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupGitConnectorResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupGitConnectorResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGitConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -140,22 +166,22 @@ func (o LookupGitConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o LookupGitConnectorResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o LookupGitConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupGitConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the git repository or account.
+// URL of the git repository or account.
 func (o LookupGitConnectorResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitConnectorResult) string { return v.Url }).(pulumi.StringOutput)
 }

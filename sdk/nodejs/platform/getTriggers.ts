@@ -13,20 +13,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = pulumi.output(harness.platform.getTriggers({
+ * const example = harness.platform.getTriggers({
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     targetId: "pipeline_id",
- * }));
+ * });
  * ```
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTriggers:getTriggers", {
         "identifier": args.identifier,
         "ignoreError": args.ignoreError,
@@ -100,7 +97,7 @@ export interface GetTriggersResult {
      */
     readonly projectId: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -112,9 +109,25 @@ export interface GetTriggersResult {
      */
     readonly yaml: string;
 }
-
+/**
+ * Data source for retrieving a Harness trigger.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getTriggers({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     targetId: "pipeline_id",
+ * });
+ * ```
+ */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
-    return pulumi.output(args).apply(a => getTriggers(a, opts))
+    return pulumi.output(args).apply((a: any) => getTriggers(a, opts))
 }
 
 /**

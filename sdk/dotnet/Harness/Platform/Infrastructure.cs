@@ -11,12 +11,13 @@ using Pulumi;
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
-    /// Data source for retrieving a Harness Infrastructure.
+    /// Resource for creating a Harness Infrastructure.
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harness = Lbrlabs.PulumiPackage.Harness;
     /// 
@@ -30,22 +31,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     ///         OrgId = "orgIdentifer",
     ///         ProjectId = "projectIdentifier",
     ///         Type = "KubernetesDirect",
-    ///         Yaml = @"			   infrastructureDefinition:
-    ///          name: name
-    ///          identifier: identifier
-    ///          description: """"
-    ///          tags:
-    ///            asda: """"
-    ///          orgIdentifier: orgIdentifer
-    ///          projectIdentifier: projectIdentifier
-    ///          environmentRef: environmentIdentifier
-    ///          deploymentType: Kubernetes
-    ///          type: KubernetesDirect
-    ///          spec:
-    ///           connectorRef: account.gfgf
-    ///           namespace: asdasdsa
-    ///           releaseName: release-&lt;+INFRA_KEY&gt;
-    ///           allowSimultaneousDeployments: false
+    ///         Yaml = @"  infrastructureDefinition:
+    ///    name: name
+    ///    identifier: identifier
+    ///    description: """"
+    ///    tags:
+    ///      asda: """"
+    ///    orgIdentifier: orgIdentifer
+    ///    projectIdentifier: projectIdentifier
+    ///    environmentRef: environmentIdentifier
+    ///    deploymentType: Kubernetes
+    ///    type: KubernetesDirect
+    ///    spec:
+    ///     connectorRef: account.gfgf
+    ///     namespace: asdasdsa
+    ///     releaseName: release-&lt;+INFRA_KEY&gt;
+    ///     allowSimultaneousDeployments: false
     /// 
     /// ",
     ///     });
@@ -55,20 +56,32 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using infrastructure id
+    /// Import account level infrastructure
     /// 
     /// ```sh
-    ///  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;infrastructure_id&gt;
+    ///  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;env_id&gt;/&lt;infrastructure_id&gt;
+    /// ```
+    /// 
+    ///  Import org level infrastructure
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;org_id&gt;/&lt;env_id&gt;/&lt;infrastructure_id&gt;
+    /// ```
+    /// 
+    ///  Import project level infrastructure
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/infrastructure:Infrastructure example &lt;org_id&gt;/&lt;project_id&gt;/&lt;env_id&gt;/&lt;infrastructure_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/infrastructure:Infrastructure")]
     public partial class Infrastructure : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         /// </summary>
         [Output("deploymentType")]
-        public Output<string?> DeploymentType { get; private set; } = null!;
+        public Output<string> DeploymentType { get; private set; } = null!;
 
         /// <summary>
         /// Description of the resource.
@@ -77,10 +90,16 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// environment identifier.
+        /// Environment Identifier.
         /// </summary>
         [Output("envId")]
         public Output<string> EnvId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable this flag for force deletion of infrastructure
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -95,31 +114,31 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
+        public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Infrastructure YAML
+        /// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -172,7 +191,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class InfrastructureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
@@ -184,10 +203,16 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// environment identifier.
+        /// Environment Identifier.
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
+
+        /// <summary>
+        /// Enable this flag for force deletion of infrastructure
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -202,22 +227,22 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -226,13 +251,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Infrastructure YAML
+        /// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
         public Input<string> Yaml { get; set; } = null!;
@@ -246,7 +271,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class InfrastructureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Infrastructure deployment type. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
@@ -258,10 +283,16 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// environment identifier.
+        /// Environment Identifier.
         /// </summary>
         [Input("envId")]
         public Input<string>? EnvId { get; set; }
+
+        /// <summary>
+        /// Enable this flag for force deletion of infrastructure
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -276,13 +307,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -291,7 +322,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -300,13 +331,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KUBERNETES*DIRECT, KUBERNETES*GCP, SERVERLESS*AWS*LAMBDA, PDC, KUBERNETES*AZURE, SSH*WINRM*AZURE, SSH*WINRM*AWS, AZURE*WEB*APP, ECS, GITOPS, CUSTOM*DEPLOYMENT.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Infrastructure YAML
+        /// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

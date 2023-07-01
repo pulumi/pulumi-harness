@@ -8,6 +8,56 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Github connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.GithubConnector("test", {
+ *     apiAuthentication: {
+ *         githubApp: {
+ *             applicationId: "application_id",
+ *             installationId: "installation_id",
+ *             privateKeyRef: "account.secret_id",
+ *         },
+ *     },
+ *     connectionType: "Account",
+ *     credentials: {
+ *         http: {
+ *             tokenRef: "account.secret_id",
+ *             username: "username",
+ *         },
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://github.com/account",
+ *     validationRepo: "some_repo",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level github connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/githubConnector:GithubConnector example <connector_id>
+ * ```
+ *
+ *  Import org level github connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/githubConnector:GithubConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level github connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class GithubConnector extends pulumi.CustomResource {
     /**
@@ -50,13 +100,17 @@ export class GithubConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.GithubConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
      * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Execute on delegate or not.
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -66,19 +120,19 @@ export class GithubConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the Githubhub repository or account.
+     * URL of the Githubhub repository or account.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -104,6 +158,7 @@ export class GithubConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = state ? state.credentials : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -130,6 +185,7 @@ export class GithubConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -160,13 +216,17 @@ export interface GithubConnectorState {
      */
     credentials?: pulumi.Input<inputs.platform.GithubConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -176,19 +236,19 @@ export interface GithubConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Githubhub repository or account.
+     * URL of the Githubhub repository or account.
      */
     url?: pulumi.Input<string>;
     /**
@@ -214,13 +274,17 @@ export interface GithubConnectorArgs {
      */
     credentials: pulumi.Input<inputs.platform.GithubConnectorCredentials>;
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -230,19 +294,19 @@ export interface GithubConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Githubhub repository or account.
+     * URL of the Githubhub repository or account.
      */
     url: pulumi.Input<string>;
     /**

@@ -11,7 +11,56 @@ using Pulumi;
 namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Helm connector.
+    /// Resource for creating a HTTP Helm connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Credential anonymous
+    ///     var test = new Harness.Platform.HelmConnector("test", new()
+    ///     {
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://helm.example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level helm connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/helmConnector:HelmConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level helm connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/helmConnector:HelmConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level helm connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/helmConnector:HelmConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/helmConnector:HelmConnector")]
     public partial class HelmConnector : global::Pulumi.CustomResource
@@ -23,7 +72,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<Outputs.HelmConnectorCredentials?> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -47,19 +96,19 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -127,7 +176,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -154,13 +203,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -169,7 +218,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -201,7 +250,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -228,13 +277,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -243,7 +292,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {

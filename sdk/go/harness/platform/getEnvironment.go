@@ -26,10 +26,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = platform.LookupEnvironment(ctx, &platform.LookupEnvironmentArgs{
-//				Identifier: pulumi.StringRef("identifier"),
-//				OrgId:      "org_id",
-//				ProjectId:  "project_id",
+//			_, err := platform.LookupEnvironment(ctx, &platform.LookupEnvironmentArgs{
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,13 +52,13 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentArgs struct {
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getEnvironment.
@@ -70,14 +70,14 @@ type LookupEnvironmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// The type of environment.
 	Type string `pulumi:"type"`
@@ -101,13 +101,13 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the Organization.
-	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Unique identifier of the Project.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (LookupEnvironmentOutputArgs) ElementType() reflect.Type {
@@ -145,8 +145,8 @@ func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 }
 
 // Unique identifier of the resource.
-func (o LookupEnvironmentResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o LookupEnvironmentResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -154,17 +154,17 @@ func (o LookupEnvironmentResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Organization.
-func (o LookupEnvironmentResultOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.OrgId }).(pulumi.StringOutput)
+// Unique identifier of the organization.
+func (o LookupEnvironmentResultOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
-func (o LookupEnvironmentResultOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.ProjectId }).(pulumi.StringOutput)
+// Unique identifier of the project.
+func (o LookupEnvironmentResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o LookupEnvironmentResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

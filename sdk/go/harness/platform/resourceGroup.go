@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,11 +15,27 @@ import (
 //
 // ## Import
 //
-// # Import using resource group id
+// # Import account level resource group
 //
 // ```sh
 //
 //	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
+//
+// ```
+//
+//	Import org level resource group
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
+//
+// ```
+//
+//	Import project level resource group
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
 //
 // ```
 type ResourceGroup struct {
@@ -39,13 +55,13 @@ type ResourceGroup struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayOutput `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayOutput `pulumi:"resourceFilters"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -99,13 +115,13 @@ type resourceGroupState struct {
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []ResourceGroupResourceFilter `pulumi:"resourceFilters"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -124,13 +140,13 @@ type ResourceGroupState struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -153,13 +169,13 @@ type resourceGroupArgs struct {
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Contains resource filter for a resource group
 	ResourceFilters []ResourceGroupResourceFilter `pulumi:"resourceFilters"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -179,13 +195,13 @@ type ResourceGroupArgs struct {
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Contains resource filter for a resource group
 	ResourceFilters ResourceGroupResourceFilterArrayInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -311,12 +327,12 @@ func (o ResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o ResourceGroupOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o ResourceGroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -326,7 +342,7 @@ func (o ResourceGroupOutput) ResourceFilters() ResourceGroupResourceFilterArrayO
 	return o.ApplyT(func(v *ResourceGroup) ResourceGroupResourceFilterArrayOutput { return v.ResourceFilters }).(ResourceGroupResourceFilterArrayOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o ResourceGroupOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

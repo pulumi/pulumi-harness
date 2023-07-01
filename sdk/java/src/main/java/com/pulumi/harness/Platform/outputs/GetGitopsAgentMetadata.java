@@ -7,17 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsAgentMetadata {
-    private @Nullable Boolean highAvailability;
+    private Boolean highAvailability;
     private String namespace;
 
     private GetGitopsAgentMetadata() {}
-    public Optional<Boolean> highAvailability() {
-        return Optional.ofNullable(this.highAvailability);
+    public Boolean highAvailability() {
+        return this.highAvailability;
     }
     public String namespace() {
         return this.namespace;
@@ -32,7 +30,7 @@ public final class GetGitopsAgentMetadata {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean highAvailability;
+        private Boolean highAvailability;
         private String namespace;
         public Builder() {}
         public Builder(GetGitopsAgentMetadata defaults) {
@@ -42,8 +40,8 @@ public final class GetGitopsAgentMetadata {
         }
 
         @CustomType.Setter
-        public Builder highAvailability(@Nullable Boolean highAvailability) {
-            this.highAvailability = highAvailability;
+        public Builder highAvailability(Boolean highAvailability) {
+            this.highAvailability = Objects.requireNonNull(highAvailability);
             return this;
         }
         @CustomType.Setter

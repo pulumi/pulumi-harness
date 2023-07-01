@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * });
  * const testEnvironment = new harness.Environment("testEnvironment", {
  *     appId: testApplication.id,
- *     type: `%[2]s`,
+ *     type: "%[2]s",
  *     variableOverrides: [
  *         {
  *             serviceName: testKubernetes.name,

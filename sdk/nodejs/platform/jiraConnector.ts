@@ -2,10 +2,54 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Jira connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@lbrlabs/pulumi-harness";
+ *
+ * const test = new harness.platform.JiraConnector("test", {
+ *     auth: {
+ *         authType: "UsernamePassword",
+ *         usernamePassword: {
+ *             passwordRef: "account.secret_id",
+ *             username: "admin",
+ *         },
+ *     },
+ *     delegateSelectors: ["harness-delegate"],
+ *     description: "test",
+ *     identifier: "identifier",
+ *     tags: ["foo:bar"],
+ *     url: "https://jira.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Import account level jira connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
+ * ```
+ *
+ *  Import org level jira connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level jira connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
+ * ```
  */
 export class JiraConnector extends pulumi.CustomResource {
     /**
@@ -36,7 +80,11 @@ export class JiraConnector extends pulumi.CustomResource {
     }
 
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
+     */
+    public readonly auth!: pulumi.Output<outputs.platform.JiraConnectorAuth>;
+    /**
+     * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
     /**
@@ -52,33 +100,33 @@ export class JiraConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     public readonly passwordRef!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      */
     public readonly url!: pulumi.Output<string>;
     /**
      * Username to use for authentication.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    public readonly username!: pulumi.Output<string>;
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    public readonly usernameRef!: pulumi.Output<string | undefined>;
+    public readonly usernameRef!: pulumi.Output<string>;
 
     /**
      * Create a JiraConnector resource with the given unique name, arguments, and options.
@@ -93,6 +141,7 @@ export class JiraConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JiraConnectorState | undefined;
+            resourceInputs["auth"] = state ? state.auth : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
@@ -106,15 +155,16 @@ export class JiraConnector extends pulumi.CustomResource {
             resourceInputs["usernameRef"] = state ? state.usernameRef : undefined;
         } else {
             const args = argsOrState as JiraConnectorArgs | undefined;
+            if ((!args || args.auth === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'auth'");
+            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.passwordRef === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'passwordRef'");
             }
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["auth"] = args ? args.auth : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -137,7 +187,11 @@ export class JiraConnector extends pulumi.CustomResource {
  */
 export interface JiraConnectorState {
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
+     */
+    auth?: pulumi.Input<inputs.platform.JiraConnectorAuth>;
+    /**
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -153,23 +207,23 @@ export interface JiraConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     passwordRef?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      */
     url?: pulumi.Input<string>;
     /**
@@ -177,7 +231,7 @@ export interface JiraConnectorState {
      */
     username?: pulumi.Input<string>;
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     usernameRef?: pulumi.Input<string>;
 }
@@ -187,7 +241,11 @@ export interface JiraConnectorState {
  */
 export interface JiraConnectorArgs {
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
+     */
+    auth: pulumi.Input<inputs.platform.JiraConnectorAuth>;
+    /**
+     * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -203,23 +261,23 @@ export interface JiraConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    passwordRef: pulumi.Input<string>;
+    passwordRef?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      */
     url: pulumi.Input<string>;
     /**
@@ -227,7 +285,7 @@ export interface JiraConnectorArgs {
      */
     username?: pulumi.Input<string>;
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
     usernameRef?: pulumi.Input<string>;
 }

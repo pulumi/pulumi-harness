@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
+//			_default, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
 //				Default: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -35,7 +35,7 @@ import (
 //			}
 //			exampleEncryptedText, err := harness.NewEncryptedText(ctx, "exampleEncryptedText", &harness.EncryptedTextArgs{
 //				Value:           pulumi.String("foo"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +85,7 @@ type GitConnector struct {
 	PasswordSecretId pulumi.StringPtrOutput `pulumi:"passwordSecretId"`
 	// The id of the SSH secret to use
 	SshSettingId pulumi.StringPtrOutput `pulumi:"sshSettingId"`
-	// The url of the git repository or account/organization
+	// The URL of the git repository or account/organization
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO.`
 	UrlType pulumi.StringOutput `pulumi:"urlType"`
@@ -149,7 +149,7 @@ type gitConnectorState struct {
 	PasswordSecretId *string `pulumi:"passwordSecretId"`
 	// The id of the SSH secret to use
 	SshSettingId *string `pulumi:"sshSettingId"`
-	// The url of the git repository or account/organization
+	// The URL of the git repository or account/organization
 	Url *string `pulumi:"url"`
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO.`
 	UrlType *string `pulumi:"urlType"`
@@ -178,7 +178,7 @@ type GitConnectorState struct {
 	PasswordSecretId pulumi.StringPtrInput
 	// The id of the SSH secret to use
 	SshSettingId pulumi.StringPtrInput
-	// The url of the git repository or account/organization
+	// The URL of the git repository or account/organization
 	Url pulumi.StringPtrInput
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO.`
 	UrlType pulumi.StringPtrInput
@@ -209,7 +209,7 @@ type gitConnectorArgs struct {
 	PasswordSecretId *string `pulumi:"passwordSecretId"`
 	// The id of the SSH secret to use
 	SshSettingId *string `pulumi:"sshSettingId"`
-	// The url of the git repository or account/organization
+	// The URL of the git repository or account/organization
 	Url string `pulumi:"url"`
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO.`
 	UrlType string `pulumi:"urlType"`
@@ -235,7 +235,7 @@ type GitConnectorArgs struct {
 	PasswordSecretId pulumi.StringPtrInput
 	// The id of the SSH secret to use
 	SshSettingId pulumi.StringPtrInput
-	// The url of the git repository or account/organization
+	// The URL of the git repository or account/organization
 	Url pulumi.StringInput
 	// The type of git url being used. Options are `ACCOUNT`, and `REPO.`
 	UrlType pulumi.StringInput
@@ -372,7 +372,7 @@ func (o GitConnectorOutput) SshSettingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitConnector) pulumi.StringPtrOutput { return v.SshSettingId }).(pulumi.StringPtrOutput)
 }
 
-// The url of the git repository or account/organization
+// The URL of the git repository or account/organization
 func (o GitConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

@@ -30,12 +30,12 @@ class ArtifactoryConnectorArgs:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] url: URL of the Artifactory server.
         :param pulumi.Input['ArtifactoryConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "url", url)
@@ -94,7 +94,7 @@ class ArtifactoryConnectorArgs:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -130,7 +130,7 @@ class ArtifactoryConnectorArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -142,7 +142,7 @@ class ArtifactoryConnectorArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -154,7 +154,7 @@ class ArtifactoryConnectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -178,13 +178,13 @@ class _ArtifactoryConnectorState:
         """
         Input properties used for looking up and filtering ArtifactoryConnector resources.
         :param pulumi.Input['ArtifactoryConnectorCredentialsArgs'] credentials: Credentials to use for authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] url: URL of the Artifactory server.
         """
         if credentials is not None:
@@ -222,7 +222,7 @@ class _ArtifactoryConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -270,7 +270,7 @@ class _ArtifactoryConnectorState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -282,7 +282,7 @@ class _ArtifactoryConnectorState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -294,7 +294,7 @@ class _ArtifactoryConnectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -333,16 +333,66 @@ class ArtifactoryConnector(pulumi.CustomResource):
         """
         Resource for creating an Artifactory connector.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            org_id=harness_platform_project["test"]["org_id"],
+            project_id=harness_platform_project["test"]["id"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            org_id=harness_platform_project["test"]["org_id"],
+            project_id=harness_platform_project["test"]["id"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ## Import
+
+        Import account level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
+        ```
+
+         Import org level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ArtifactoryConnectorCredentialsArgs']] credentials: Credentials to use for authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] url: URL of the Artifactory server.
         """
         ...
@@ -353,6 +403,56 @@ class ArtifactoryConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an Artifactory connector.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import lbrlabs_pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            org_id=harness_platform_project["test"]["org_id"],
+            project_id=harness_platform_project["test"]["id"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            description="test",
+            tags=["foo:bar"],
+            org_id=harness_platform_project["test"]["org_id"],
+            project_id=harness_platform_project["test"]["id"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ## Import
+
+        Import account level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
+        ```
+
+         Import org level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
+        ```
+
+         Import project level artifactory connector
+
+        ```sh
+         $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param ArtifactoryConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -427,13 +527,13 @@ class ArtifactoryConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ArtifactoryConnectorCredentialsArgs']] credentials: Credentials to use for authentication.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect using only the delegates which have these tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] org_id: Unique identifier of the Organization.
-        :param pulumi.Input[str] project_id: Unique identifier of the Project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] url: URL of the Artifactory server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -463,7 +563,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -495,7 +595,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -503,7 +603,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -511,7 +611,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

@@ -14,7 +14,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Outputs
     [OutputType]
     public sealed class GitOpsAgentMetadata
     {
+        /// <summary>
+        /// Indicates if the deployment should be deployed using the deploy-ha.yaml
+        /// </summary>
         public readonly bool? HighAvailability;
+        /// <summary>
+        /// The k8s namespace that this agent resides in.
+        /// </summary>
         public readonly string? Namespace;
 
         [OutputConstructor]

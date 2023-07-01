@@ -7,17 +7,80 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Splunk connector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewSplunkConnector(ctx, "test", &platform.SplunkConnectorArgs{
+//				AccountId: pulumi.String("splunk_account_id"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Description: pulumi.String("test"),
+//				Identifier:  pulumi.String("identifier"),
+//				PasswordRef: pulumi.String("account.secret_id"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url:      pulumi.String("https://splunk.com/"),
+//				Username: pulumi.String("username"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level splunk connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
+//
+// ```
+//
+//	Import org level splunk connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
+//
+// ```
+//
+//	Import project level splunk connector
+//
+// ```sh
+//
+//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
+//
+// ```
 type SplunkConnector struct {
 	pulumi.CustomResourceState
 
 	// Splunk account id.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -25,15 +88,15 @@ type SplunkConnector struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringOutput `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The username used for connecting to Splunk.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -86,7 +149,7 @@ func GetSplunkConnector(ctx *pulumi.Context,
 type splunkConnectorState struct {
 	// Splunk account id.
 	AccountId *string `pulumi:"accountId"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -94,15 +157,15 @@ type splunkConnectorState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url *string `pulumi:"url"`
 	// The username used for connecting to Splunk.
 	Username *string `pulumi:"username"`
@@ -111,7 +174,7 @@ type splunkConnectorState struct {
 type SplunkConnectorState struct {
 	// Splunk account id.
 	AccountId pulumi.StringPtrInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -119,15 +182,15 @@ type SplunkConnectorState struct {
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url pulumi.StringPtrInput
 	// The username used for connecting to Splunk.
 	Username pulumi.StringPtrInput
@@ -140,7 +203,7 @@ func (SplunkConnectorState) ElementType() reflect.Type {
 type splunkConnectorArgs struct {
 	// Splunk account id.
 	AccountId string `pulumi:"accountId"`
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -148,15 +211,15 @@ type splunkConnectorArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url string `pulumi:"url"`
 	// The username used for connecting to Splunk.
 	Username string `pulumi:"username"`
@@ -166,7 +229,7 @@ type splunkConnectorArgs struct {
 type SplunkConnectorArgs struct {
 	// Splunk account id.
 	AccountId pulumi.StringInput
-	// Connect using only the delegates which have these tags.
+	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -174,15 +237,15 @@ type SplunkConnectorArgs struct {
 	Identifier pulumi.StringInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Unique identifier of the Organization.
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// The reference to the Harness secret containing the Splunk password.
+	// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput
-	// Unique identifier of the Project.
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Url of the Splunk server.
+	// URL of the Splunk server.
 	Url pulumi.StringInput
 	// The username used for connecting to Splunk.
 	Username pulumi.StringInput
@@ -280,7 +343,7 @@ func (o SplunkConnectorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Connect using only the delegates which have these tags.
+// Tags to filter delegates for connection.
 func (o SplunkConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -300,27 +363,27 @@ func (o SplunkConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Organization.
+// Unique identifier of the organization.
 func (o SplunkConnectorOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// The reference to the Harness secret containing the Splunk password.
+// The reference to the Harness secret containing the Splunk password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o SplunkConnectorOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the Project.
+// Unique identifier of the project.
 func (o SplunkConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. Tags should be in the form `name:value`.
+// Tags to associate with the resource.
 func (o SplunkConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Url of the Splunk server.
+// URL of the Splunk server.
 func (o SplunkConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *SplunkConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

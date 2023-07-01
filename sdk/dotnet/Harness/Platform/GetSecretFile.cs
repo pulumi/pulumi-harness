@@ -21,6 +21,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -36,7 +37,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetSecretFileResult> InvokeAsync(GetSecretFileArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetSecretFileResult> InvokeAsync(GetSecretFileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileArgs(), options.WithDefaults());
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Harness = Pulumi.Harness;
         /// 
@@ -63,7 +65,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetSecretFileResult> Invoke(GetSecretFileInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetSecretFileResult> Invoke(GetSecretFileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileInvokeArgs(), options.WithDefaults());
     }
 
@@ -73,8 +75,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -83,13 +85,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public string? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -105,8 +107,8 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -115,13 +117,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -151,17 +153,17 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
@@ -169,7 +171,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         /// </summary>
         public readonly string SecretManagerIdentifier;
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 
@@ -181,7 +183,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 
             string id,
 
-            string? identifier,
+            string identifier,
 
             string? name,
 

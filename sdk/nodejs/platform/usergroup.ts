@@ -41,9 +41,9 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
- * const ssoTypeSaml = new harness.platform.Usergroup("sso_type_saml", {
+ * const ssoTypeSaml = new harness.platform.Usergroup("ssoTypeSaml", {
  *     externallyManaged: false,
  *     identifier: "identifier",
  *     linkedSsoDisplayName: "linked_sso_display_name",
@@ -56,6 +56,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
  *             type: "EMAIL",
  *         },
  *         {
@@ -69,12 +70,12 @@ import * as utilities from "../utilities";
  *     ],
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     ssoGroupId: "sso_group_name", // When sso linked type is saml sso_group_id is same as sso_group_name
+ *     ssoGroupId: "sso_group_name",
  *     ssoGroupName: "sso_group_name",
  *     ssoLinked: true,
  *     users: ["user_id"],
  * });
- * const ssoTypeLdap = new harness.platform.Usergroup("sso_type_ldap", {
+ * const ssoTypeLdap = new harness.platform.Usergroup("ssoTypeLdap", {
  *     externallyManaged: false,
  *     identifier: "identifier",
  *     linkedSsoDisplayName: "linked_sso_display_name",
@@ -87,6 +88,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
  *             type: "EMAIL",
  *         },
  *         {
@@ -105,14 +107,59 @@ import * as utilities from "../utilities";
  *     ssoLinked: true,
  *     users: ["user_id"],
  * });
+ * // Create user group by adding user emails
+ * const example = new harness.platform.Usergroup("example", {
+ *     externallyManaged: false,
+ *     identifier: "identifier",
+ *     linkedSsoDisplayName: "linked_sso_display_name",
+ *     linkedSsoId: "linked_sso_id",
+ *     linkedSsoType: "SAML",
+ *     notificationConfigs: [
+ *         {
+ *             slackWebhookUrl: "https://google.com",
+ *             type: "SLACK",
+ *         },
+ *         {
+ *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
+ *             type: "EMAIL",
+ *         },
+ *         {
+ *             microsoftTeamsWebhookUrl: "https://google.com",
+ *             type: "MSTEAMS",
+ *         },
+ *         {
+ *             pagerDutyKey: "pagerDutyKey",
+ *             type: "PAGERDUTY",
+ *         },
+ *     ],
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     ssoGroupId: "sso_group_name",
+ *     ssoGroupName: "sso_group_name",
+ *     ssoLinked: true,
+ *     userEmails: ["user@email.com"],
+ * });
  * ```
  *
  * ## Import
  *
- * Import using user group id
+ * Import account level user group
  *
  * ```sh
  *  $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
+ * ```
+ *
+ *  Import org level user group
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
+ * ```
+ *
+ *  Import project level user group
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
  * ```
  */
 export class Usergroup extends pulumi.CustomResource {
@@ -164,7 +211,7 @@ export class Usergroup extends pulumi.CustomResource {
      */
     public readonly linkedSsoId!: pulumi.Output<string | undefined>;
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      */
     public readonly linkedSsoType!: pulumi.Output<string | undefined>;
     /**
@@ -176,11 +223,11 @@ export class Usergroup extends pulumi.CustomResource {
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.platform.UsergroupNotificationConfig[] | undefined>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -192,15 +239,19 @@ export class Usergroup extends pulumi.CustomResource {
      */
     public readonly ssoGroupName!: pulumi.Output<string | undefined>;
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      */
     public readonly ssoLinked!: pulumi.Output<boolean>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * List of users in the UserGroup.
+     * List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     */
+    public readonly userEmails!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of users in the UserGroup. Either provide list of users or list of user emails.
      */
     public readonly users!: pulumi.Output<string[] | undefined>;
 
@@ -231,6 +282,7 @@ export class Usergroup extends pulumi.CustomResource {
             resourceInputs["ssoGroupName"] = state ? state.ssoGroupName : undefined;
             resourceInputs["ssoLinked"] = state ? state.ssoLinked : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userEmails"] = state ? state.userEmails : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as UsergroupArgs | undefined;
@@ -251,6 +303,7 @@ export class Usergroup extends pulumi.CustomResource {
             resourceInputs["ssoGroupName"] = args ? args.ssoGroupName : undefined;
             resourceInputs["ssoLinked"] = args ? args.ssoLinked : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userEmails"] = args ? args.userEmails : undefined;
             resourceInputs["users"] = args ? args.users : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -283,7 +336,7 @@ export interface UsergroupState {
      */
     linkedSsoId?: pulumi.Input<string>;
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      */
     linkedSsoType?: pulumi.Input<string>;
     /**
@@ -295,11 +348,11 @@ export interface UsergroupState {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -311,15 +364,19 @@ export interface UsergroupState {
      */
     ssoGroupName?: pulumi.Input<string>;
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      */
     ssoLinked?: pulumi.Input<boolean>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users in the UserGroup.
+     * List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     */
+    userEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of users in the UserGroup. Either provide list of users or list of user emails.
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -349,7 +406,7 @@ export interface UsergroupArgs {
      */
     linkedSsoId?: pulumi.Input<string>;
     /**
-     * Type of linked SSO
+     * Type of linked SSO.
      */
     linkedSsoType?: pulumi.Input<string>;
     /**
@@ -361,11 +418,11 @@ export interface UsergroupArgs {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.platform.UsergroupNotificationConfig>[]>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -377,15 +434,19 @@ export interface UsergroupArgs {
      */
     ssoGroupName?: pulumi.Input<string>;
     /**
-     * Whether sso is linked or not
+     * Whether sso is linked or not.
      */
     ssoLinked?: pulumi.Input<boolean>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users in the UserGroup.
+     * List of user emails in the UserGroup. Either provide list of users or list of user emails.
+     */
+    userEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of users in the UserGroup. Either provide list of users or list of user emails.
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }

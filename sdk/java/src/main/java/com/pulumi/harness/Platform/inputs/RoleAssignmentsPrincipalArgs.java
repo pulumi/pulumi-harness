@@ -49,15 +49,15 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
      * Type.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return Type.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private RoleAssignmentsPrincipalArgs() {}
@@ -134,7 +134,7 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -150,6 +150,7 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
         }
 
         public RoleAssignmentsPrincipalArgs build() {
+            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

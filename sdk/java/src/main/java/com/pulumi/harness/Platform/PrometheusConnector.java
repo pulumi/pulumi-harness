@@ -64,24 +64,36 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using prometheus connector id
+ * Import account level prometheus connector
  * 
  * ```sh
  *  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level prometheus connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level prometheus connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
  * ```
  * 
  */
 @ResourceType(type="harness:platform/prometheusConnector:PrometheusConnector")
 public class PrometheusConnector extends com.pulumi.resources.CustomResource {
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -91,7 +103,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -105,7 +117,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * Headers.
      * 
      */
-    @Export(name="headers", type=List.class, parameters={PrometheusConnectorHeader.class})
+    @Export(name="headers", refs={List.class,PrometheusConnectorHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PrometheusConnectorHeader>> headers;
 
     /**
@@ -119,7 +131,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -133,7 +145,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,70 +156,70 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Password reference.
+     * Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Export(name="passwordRef", type=String.class, parameters={})
+    @Export(name="passwordRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordRef;
 
     /**
-     * @return Password reference.
+     * @return Reference to the Harness secret containing the password. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Output<Optional<String>> passwordRef() {
         return Codegen.optional(this.passwordRef);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Url of the Prometheus server.
+     * URL of the Prometheus server.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Url of the Prometheus server.
+     * @return URL of the Prometheus server.
      * 
      */
     public Output<String> url() {
@@ -217,7 +229,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * User name.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userName;
 
     /**

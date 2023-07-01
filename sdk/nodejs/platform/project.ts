@@ -11,11 +11,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const test = new harness.platform.Project("test", {
  *     color: "#0063F7",
  *     identifier: "testproject",
+ *     orgId: "org_id",
  * });
  * ```
  *
@@ -76,11 +77,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -150,11 +151,11 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -180,11 +181,11 @@ export interface ProjectArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

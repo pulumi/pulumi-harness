@@ -82,15 +82,15 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
      * Principal.
      * 
      */
-    @Import(name="principals")
-    private @Nullable Output<List<RoleAssignmentsPrincipalArgs>> principals;
+    @Import(name="principals", required=true)
+    private Output<List<RoleAssignmentsPrincipalArgs>> principals;
 
     /**
      * @return Principal.
      * 
      */
-    public Optional<Output<List<RoleAssignmentsPrincipalArgs>>> principals() {
-        return Optional.ofNullable(this.principals);
+    public Output<List<RoleAssignmentsPrincipalArgs>> principals() {
+        return this.principals;
     }
 
     /**
@@ -112,30 +112,30 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
      * Resource group identifier.
      * 
      */
-    @Import(name="resourceGroupIdentifier")
-    private @Nullable Output<String> resourceGroupIdentifier;
+    @Import(name="resourceGroupIdentifier", required=true)
+    private Output<String> resourceGroupIdentifier;
 
     /**
      * @return Resource group identifier.
      * 
      */
-    public Optional<Output<String>> resourceGroupIdentifier() {
-        return Optional.ofNullable(this.resourceGroupIdentifier);
+    public Output<String> resourceGroupIdentifier() {
+        return this.resourceGroupIdentifier;
     }
 
     /**
      * Role identifier.
      * 
      */
-    @Import(name="roleIdentifier")
-    private @Nullable Output<String> roleIdentifier;
+    @Import(name="roleIdentifier", required=true)
+    private Output<String> roleIdentifier;
 
     /**
      * @return Role identifier.
      * 
      */
-    public Optional<Output<String>> roleIdentifier() {
-        return Optional.ofNullable(this.roleIdentifier);
+    public Output<String> roleIdentifier() {
+        return this.roleIdentifier;
     }
 
     private RoleAssignmentsArgs() {}
@@ -259,7 +259,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder principals(@Nullable Output<List<RoleAssignmentsPrincipalArgs>> principals) {
+        public Builder principals(Output<List<RoleAssignmentsPrincipalArgs>> principals) {
             $.principals = principals;
             return this;
         }
@@ -311,7 +311,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder resourceGroupIdentifier(@Nullable Output<String> resourceGroupIdentifier) {
+        public Builder resourceGroupIdentifier(Output<String> resourceGroupIdentifier) {
             $.resourceGroupIdentifier = resourceGroupIdentifier;
             return this;
         }
@@ -332,7 +332,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder roleIdentifier(@Nullable Output<String> roleIdentifier) {
+        public Builder roleIdentifier(Output<String> roleIdentifier) {
             $.roleIdentifier = roleIdentifier;
             return this;
         }
@@ -348,6 +348,9 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RoleAssignmentsArgs build() {
+            $.principals = Objects.requireNonNull($.principals, "expected parameter 'principals' to be non-null");
+            $.resourceGroupIdentifier = Objects.requireNonNull($.resourceGroupIdentifier, "expected parameter 'resourceGroupIdentifier' to be non-null");
+            $.roleIdentifier = Objects.requireNonNull($.roleIdentifier, "expected parameter 'roleIdentifier' to be non-null");
             return $;
         }
     }

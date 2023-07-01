@@ -40,13 +40,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new SecretText(&#34;test&#34;, SecretTextArgs.builder()        
+ *         var inline = new SecretText(&#34;inline&#34;, SecretTextArgs.builder()        
+ *             .description(&#34;example&#34;)
  *             .identifier(&#34;identifier&#34;)
- *             .description(&#34;test&#34;)
- *             .tags(&#34;foo:bar&#34;)
  *             .secretManagerIdentifier(&#34;harnessSecretManager&#34;)
- *             .valueType(&#34;Inline&#34;)
+ *             .tags(&#34;foo:bar&#34;)
  *             .value(&#34;secret&#34;)
+ *             .valueType(&#34;Inline&#34;)
+ *             .build());
+ * 
+ *         var reference = new SecretText(&#34;reference&#34;, SecretTextArgs.builder()        
+ *             .description(&#34;example&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .secretManagerIdentifier(&#34;azureSecretManager&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .value(&#34;secret&#34;)
+ *             .valueType(&#34;Reference&#34;)
  *             .build());
  * 
  *     }
@@ -55,10 +64,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using secret text id
+ * Import account level secret text
  * 
  * ```sh
  *  $ pulumi import harness:platform/secretText:SecretText example &lt;secret_text_id&gt;
+ * ```
+ * 
+ *  Import org level secret text
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/secretText:SecretText example &lt;ord_id&gt;/&lt;secret_text_id&gt;
+ * ```
+ * 
+ *  Import project level secret text
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/secretText:SecretText example &lt;org_id&gt;/&lt;project_id&gt;/&lt;secret_text_id&gt;
  * ```
  * 
  */
@@ -68,7 +89,7 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +103,7 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -96,7 +117,7 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -107,28 +128,28 @@ public class SecretText extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -138,7 +159,7 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * Identifier of the Secret Manager used to manage the secret.
      * 
      */
-    @Export(name="secretManagerIdentifier", type=String.class, parameters={})
+    @Export(name="secretManagerIdentifier", refs={String.class}, tree="[0]")
     private Output<String> secretManagerIdentifier;
 
     /**
@@ -149,14 +170,14 @@ public class SecretText extends com.pulumi.resources.CustomResource {
         return this.secretManagerIdentifier;
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -166,21 +187,21 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * Value of the Secret
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
-    private Output</* @Nullable */ String> value;
+    @Export(name="value", refs={String.class}, tree="[0]")
+    private Output<String> value;
 
     /**
      * @return Value of the Secret
      * 
      */
-    public Output<Optional<String>> value() {
-        return Codegen.optional(this.value);
+    public Output<String> value() {
+        return this.value;
     }
     /**
      * This has details to specify if the secret value is Inline or Reference.
      * 
      */
-    @Export(name="valueType", type=String.class, parameters={})
+    @Export(name="valueType", refs={String.class}, tree="[0]")
     private Output<String> valueType;
 
     /**
@@ -223,6 +244,9 @@ public class SecretText extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "value"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

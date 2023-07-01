@@ -12,24 +12,74 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Datadog connector.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Lbrlabs.PulumiPackage.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.DatadogConnector("test", new()
+    ///     {
+    ///         ApiKeyRef = "account.secret_id",
+    ///         ApplicationKeyRef = "account.secret_id",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Description = "test",
+    ///         Identifier = "identifier",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://datadog.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level datadog connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/datadogConnector:DatadogConnector example &lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import org level datadog connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/datadogConnector:DatadogConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+    /// ```
+    /// 
+    ///  Import project level datadog connector
+    /// 
+    /// ```sh
+    ///  $ pulumi import harness:platform/datadogConnector:DatadogConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/datadogConnector:DatadogConnector")]
     public partial class DatadogConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api key.
+        /// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("apiKeyRef")]
         public Output<string> ApiKeyRef { get; private set; } = null!;
 
         /// <summary>
-        /// Reference to the Harness secret containing the application key.
+        /// Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("applicationKeyRef")]
         public Output<string> ApplicationKeyRef { get; private set; } = null!;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -53,25 +103,25 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Url of the Datadog server.
+        /// URL of the Datadog server.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -124,13 +174,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class DatadogConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api key.
+        /// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("apiKeyRef", required: true)]
         public Input<string> ApiKeyRef { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the Harness secret containing the application key.
+        /// Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("applicationKeyRef", required: true)]
         public Input<string> ApplicationKeyRef { get; set; } = null!;
@@ -139,7 +189,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -166,13 +216,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -181,7 +231,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -190,7 +240,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the Datadog server.
+        /// URL of the Datadog server.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -204,13 +254,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
     public sealed class DatadogConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the Harness secret containing the api key.
+        /// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("apiKeyRef")]
         public Input<string>? ApiKeyRef { get; set; }
 
         /// <summary>
-        /// Reference to the Harness secret containing the application key.
+        /// Reference to the Harness secret containing the application key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("applicationKeyRef")]
         public Input<string>? ApplicationKeyRef { get; set; }
@@ -219,7 +269,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Connect using only the delegates which have these tags.
+        /// Tags to filter delegates for connection.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -246,13 +296,13 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Organization.
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Project.
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -261,7 +311,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. Tags should be in the form `name:value`.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -270,7 +320,7 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform
         }
 
         /// <summary>
-        /// Url of the Datadog server.
+        /// URL of the Datadog server.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

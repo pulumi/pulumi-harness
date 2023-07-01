@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
+ * import * as harness from "@lbrlabs/pulumi-harness";
  *
  * const clientKeyCert = new harness.platform.KubernetesConnector("clientKeyCert", {
  *     clientKeyCert: {
@@ -80,10 +80,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using kubernetes connector id
+ * Import account level kubernetes connector
  *
  * ```sh
  *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
+ * ```
+ *
+ *  Import org level kubernetes connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
+ * ```
+ *
+ *  Import project level kubernetes connector
+ *
+ * ```sh
+ *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class KubernetesConnector extends pulumi.CustomResource {
@@ -143,11 +155,11 @@ export class KubernetesConnector extends pulumi.CustomResource {
      */
     public readonly openidConnect!: pulumi.Output<outputs.platform.KubernetesConnectorOpenidConnect | undefined>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -155,7 +167,7 @@ export class KubernetesConnector extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<outputs.platform.KubernetesConnectorServiceAccount | undefined>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -244,11 +256,11 @@ export interface KubernetesConnectorState {
      */
     openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -256,7 +268,7 @@ export interface KubernetesConnectorState {
      */
     serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -298,11 +310,11 @@ export interface KubernetesConnectorArgs {
      */
     openidConnect?: pulumi.Input<inputs.platform.KubernetesConnectorOpenidConnect>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -310,7 +322,7 @@ export interface KubernetesConnectorArgs {
      */
     serviceAccount?: pulumi.Input<inputs.platform.KubernetesConnectorServiceAccount>;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -19,32 +19,96 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an AWS Secret Manager connector.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AwsSecretManagerConnector;
+ * import com.pulumi.harness.platform.AwsSecretManagerConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsArgs;
+ * import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsAssumeRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new AwsSecretManagerConnector(&#34;test&#34;, AwsSecretManagerConnectorArgs.builder()        
+ *             .credentials(AwsSecretManagerConnectorCredentialsArgs.builder()
+ *                 .assumeRole(AwsSecretManagerConnectorCredentialsAssumeRoleArgs.builder()
+ *                     .duration(900)
+ *                     .externalId(&#34;externalid&#34;)
+ *                     .roleArn(&#34;somerolearn&#34;)
+ *                     .build())
+ *                 .build())
+ *             .delegateSelectors(&#34;harness-delegate&#34;)
+ *             .description(&#34;test&#34;)
+ *             .identifier(&#34;identifier&#34;)
+ *             .region(&#34;us-east-1&#34;)
+ *             .secretNamePrefix(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * Import account level aws secret manager connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;connector_id&gt;
+ * ```
+ * 
+ *  Import org level aws secret manager connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
+ *  Import project level aws secret manager connector
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector")
 public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResource {
     /**
-     * The credentials to use for connecting to aws.
+     * Credentials to connect to AWS.
      * 
      */
-    @Export(name="credentials", type=AwsSecretManagerConnectorCredentials.class, parameters={})
+    @Export(name="credentials", refs={AwsSecretManagerConnectorCredentials.class}, tree="[0]")
     private Output<AwsSecretManagerConnectorCredentials> credentials;
 
     /**
-     * @return The credentials to use for connecting to aws.
+     * @return Credentials to connect to AWS.
      * 
      */
     public Output<AwsSecretManagerConnectorCredentials> credentials() {
         return this.credentials;
     }
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      * 
      */
-    @Export(name="delegateSelectors", type=List.class, parameters={String.class})
+    @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -54,7 +118,7 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -68,7 +132,7 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -82,7 +146,7 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -93,28 +157,28 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -124,7 +188,7 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      * The AWS region where the AWS Secret Manager is.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -138,7 +202,7 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      * A prefix to be added to all secrets.
      * 
      */
-    @Export(name="secretNamePrefix", type=String.class, parameters={})
+    @Export(name="secretNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretNamePrefix;
 
     /**
@@ -149,14 +213,14 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.secretNamePrefix);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

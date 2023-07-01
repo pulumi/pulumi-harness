@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := harness.GetSecretManager(ctx, &GetSecretManagerArgs{
+//			_default, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
 //				Default: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -35,7 +35,7 @@ import (
 //			}
 //			githubToken, err := harness.NewEncryptedText(ctx, "githubToken", &harness.EncryptedTextArgs{
 //				Value:           pulumi.String("<TOKEN>"),
-//				SecretManagerId: pulumi.String(_default.Id),
+//				SecretManagerId: *pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

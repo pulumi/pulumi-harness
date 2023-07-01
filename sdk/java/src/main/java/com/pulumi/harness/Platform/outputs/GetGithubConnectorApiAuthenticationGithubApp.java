@@ -10,15 +10,23 @@ import java.util.Objects;
 @CustomType
 public final class GetGithubConnectorApiAuthenticationGithubApp {
     private String applicationId;
+    private String applicationIdRef;
     private String installationId;
+    private String installationIdRef;
     private String privateKeyRef;
 
     private GetGithubConnectorApiAuthenticationGithubApp() {}
     public String applicationId() {
         return this.applicationId;
     }
+    public String applicationIdRef() {
+        return this.applicationIdRef;
+    }
     public String installationId() {
         return this.installationId;
+    }
+    public String installationIdRef() {
+        return this.installationIdRef;
     }
     public String privateKeyRef() {
         return this.privateKeyRef;
@@ -34,13 +42,17 @@ public final class GetGithubConnectorApiAuthenticationGithubApp {
     @CustomType.Builder
     public static final class Builder {
         private String applicationId;
+        private String applicationIdRef;
         private String installationId;
+        private String installationIdRef;
         private String privateKeyRef;
         public Builder() {}
         public Builder(GetGithubConnectorApiAuthenticationGithubApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationId = defaults.applicationId;
+    	      this.applicationIdRef = defaults.applicationIdRef;
     	      this.installationId = defaults.installationId;
+    	      this.installationIdRef = defaults.installationIdRef;
     	      this.privateKeyRef = defaults.privateKeyRef;
         }
 
@@ -50,8 +62,18 @@ public final class GetGithubConnectorApiAuthenticationGithubApp {
             return this;
         }
         @CustomType.Setter
+        public Builder applicationIdRef(String applicationIdRef) {
+            this.applicationIdRef = Objects.requireNonNull(applicationIdRef);
+            return this;
+        }
+        @CustomType.Setter
         public Builder installationId(String installationId) {
             this.installationId = Objects.requireNonNull(installationId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder installationIdRef(String installationIdRef) {
+            this.installationIdRef = Objects.requireNonNull(installationIdRef);
             return this;
         }
         @CustomType.Setter
@@ -62,7 +84,9 @@ public final class GetGithubConnectorApiAuthenticationGithubApp {
         public GetGithubConnectorApiAuthenticationGithubApp build() {
             final var o = new GetGithubConnectorApiAuthenticationGithubApp();
             o.applicationId = applicationId;
+            o.applicationIdRef = applicationIdRef;
             o.installationId = installationId;
+            o.installationIdRef = installationIdRef;
             o.privateKeyRef = privateKeyRef;
             return o;
         }

@@ -7,15 +7,22 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for looking up a Helm connector.
+ * Datasource for looking up a HTTP Helm connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getHelmConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
-export function getHelmConnector(args?: GetHelmConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetHelmConnectorResult> {
-    args = args || {};
-    if (!opts) {
-        opts = {}
-    }
+export function getHelmConnector(args: GetHelmConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetHelmConnectorResult> {
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getHelmConnector:getHelmConnector", {
         "identifier": args.identifier,
         "name": args.name,
@@ -31,17 +38,17 @@ export interface GetHelmConnectorArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Name of the resource.
      */
     name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: string;
 }
@@ -55,7 +62,7 @@ export interface GetHelmConnectorResult {
      */
     readonly credentials: outputs.platform.GetHelmConnectorCredential[];
     /**
-     * Connect using only the delegates which have these tags.
+     * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
     /**
@@ -69,21 +76,21 @@ export interface GetHelmConnectorResult {
     /**
      * Unique identifier of the resource.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      */
     readonly tags: string[];
     /**
@@ -91,9 +98,22 @@ export interface GetHelmConnectorResult {
      */
     readonly url: string;
 }
-
-export function getHelmConnectorOutput(args?: GetHelmConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHelmConnectorResult> {
-    return pulumi.output(args).apply(a => getHelmConnector(a, opts))
+/**
+ * Datasource for looking up a HTTP Helm connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getHelmConnector({
+ *     identifier: "identifier",
+ * });
+ * ```
+ */
+export function getHelmConnectorOutput(args: GetHelmConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHelmConnectorResult> {
+    return pulumi.output(args).apply((a: any) => getHelmConnector(a, opts))
 }
 
 /**
@@ -103,17 +123,17 @@ export interface GetHelmConnectorOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
 }

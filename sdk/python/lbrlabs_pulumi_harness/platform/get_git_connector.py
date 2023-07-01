@@ -80,7 +80,7 @@ class GetGitConnectorResult:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
-        Connect using only the delegates which have these tags.
+        Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -102,7 +102,7 @@ class GetGitConnectorResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Unique identifier of the resource.
         """
@@ -120,7 +120,7 @@ class GetGitConnectorResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Unique identifier of the Organization.
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -128,7 +128,7 @@ class GetGitConnectorResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Unique identifier of the Project.
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -136,7 +136,7 @@ class GetGitConnectorResult:
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags to associate with the resource. Tags should be in the form `name:value`.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -144,7 +144,7 @@ class GetGitConnectorResult:
     @pulumi.getter
     def url(self) -> str:
         """
-        Url of the git repository or account.
+        URL of the git repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -185,11 +185,20 @@ def get_git_connector(identifier: Optional[str] = None,
     """
     Datasource for looking up a Git connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_git_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -200,22 +209,22 @@ def get_git_connector(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitConnector:getGitConnector', __args__, opts=opts, typ=GetGitConnectorResult).value
 
     return AwaitableGetGitConnectorResult(
-        connection_type=__ret__.connection_type,
-        credentials=__ret__.credentials,
-        delegate_selectors=__ret__.delegate_selectors,
-        description=__ret__.description,
-        id=__ret__.id,
-        identifier=__ret__.identifier,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        tags=__ret__.tags,
-        url=__ret__.url,
-        validation_repo=__ret__.validation_repo)
+        connection_type=pulumi.get(__ret__, 'connection_type'),
+        credentials=pulumi.get(__ret__, 'credentials'),
+        delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        identifier=pulumi.get(__ret__, 'identifier'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        url=pulumi.get(__ret__, 'url'),
+        validation_repo=pulumi.get(__ret__, 'validation_repo'))
 
 
 @_utilities.lift_output_func(get_git_connector)
-def get_git_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
+def get_git_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -223,10 +232,19 @@ def get_git_connector_output(identifier: Optional[pulumi.Input[Optional[str]]] =
     """
     Datasource for looking up a Git connector.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_git_connector(identifier="identifier")
+    ```
+
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param str org_id: Unique identifier of the Organization.
-    :param str project_id: Unique identifier of the Project.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
     """
     ...

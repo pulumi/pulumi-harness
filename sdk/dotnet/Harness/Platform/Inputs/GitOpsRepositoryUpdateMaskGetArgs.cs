@@ -15,6 +15,10 @@ namespace Lbrlabs.PulumiPackage.Harness.Platform.Inputs
     {
         [Input("paths")]
         private InputList<string>? _paths;
+
+        /// <summary>
+        /// The set of field mask paths.
+        /// </summary>
         public InputList<string> Paths
         {
             get => _paths ?? (_paths = new InputList<string>());

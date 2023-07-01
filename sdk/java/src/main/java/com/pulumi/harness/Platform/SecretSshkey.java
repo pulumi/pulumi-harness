@@ -51,77 +51,77 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var keyTabFilePath = new SecretSshkey(&#34;keyTabFilePath&#34;, SecretSshkeyArgs.builder()        
- *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .port(22)
  *             .kerberos(SecretSshkeyKerberosArgs.builder()
- *                 .principal(&#34;principal&#34;)
- *                 .realm(&#34;realm&#34;)
- *                 .tgtGenerationMethod(&#34;KeyTabFilePath&#34;)
  *                 .tgtKeyTabFilePathSpec(SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs.builder()
  *                     .keyPath(&#34;key_path&#34;)
  *                     .build())
+ *                 .principal(&#34;principal&#34;)
+ *                 .realm(&#34;realm&#34;)
+ *                 .tgtGenerationMethod(&#34;KeyTabFilePath&#34;)
  *                 .build())
- *             .port(22)
- *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
  *         var _tgtPassword = new SecretSshkey(&#34; tgtPassword&#34;, SecretSshkeyArgs.builder()        
- *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
+ *             .port(22)
  *             .kerberos(SecretSshkeyKerberosArgs.builder()
+ *                 .tgtPasswordSpec(SecretSshkeyKerberosTgtPasswordSpecArgs.builder()
+ *                     .password(String.format(&#34;account.%s&#34;, secret.id()))
+ *                     .build())
  *                 .principal(&#34;principal&#34;)
  *                 .realm(&#34;realm&#34;)
  *                 .tgtGenerationMethod(&#34;Password&#34;)
- *                 .tgtPasswordSpec(SecretSshkeyKerberosTgtPasswordSpecArgs.builder()
- *                     .password(&#34;password&#34;)
- *                     .build())
  *                 .build())
- *             .port(22)
- *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
  *         var sshkeyReference = new SecretSshkey(&#34;sshkeyReference&#34;, SecretSshkeyArgs.builder()        
- *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
  *             .port(22)
  *             .ssh(SecretSshkeySshArgs.builder()
- *                 .credentialType(&#34;KeyReference&#34;)
  *                 .sshkeyReferenceCredential(SecretSshkeySshSshkeyReferenceCredentialArgs.builder()
- *                     .encryptedPassphrase(&#34;encrypted_passphrase&#34;)
- *                     .key(&#34;key&#34;)
  *                     .userName(&#34;user_name&#34;)
+ *                     .key(String.format(&#34;account.%s&#34;, key.id()))
+ *                     .encryptedPassphrase(String.format(&#34;account.%s&#34;, secret.id()))
  *                     .build())
+ *                 .credentialType(&#34;KeyReference&#34;)
  *                 .build())
- *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
  *         var _sshkeyPath = new SecretSshkey(&#34; sshkeyPath&#34;, SecretSshkeyArgs.builder()        
- *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
  *             .port(22)
  *             .ssh(SecretSshkeySshArgs.builder()
- *                 .credentialType(&#34;KeyPath&#34;)
  *                 .sshkeyPathCredential(SecretSshkeySshSshkeyPathCredentialArgs.builder()
- *                     .encryptedPassphrase(&#34;encrypted_passphrase&#34;)
- *                     .keyPath(&#34;key_path&#34;)
  *                     .userName(&#34;user_name&#34;)
+ *                     .keyPath(&#34;key_path&#34;)
+ *                     .encryptedPassphrase(&#34;encrypted_passphrase&#34;)
  *                     .build())
+ *                 .credentialType(&#34;KeyPath&#34;)
  *                 .build())
- *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
  *         var sshPassword = new SecretSshkey(&#34;sshPassword&#34;, SecretSshkeyArgs.builder()        
- *             .description(&#34;test&#34;)
  *             .identifier(&#34;identifier&#34;)
+ *             .description(&#34;test&#34;)
+ *             .tags(&#34;foo:bar&#34;)
  *             .port(22)
  *             .ssh(SecretSshkeySshArgs.builder()
- *                 .credentialType(&#34;Password&#34;)
  *                 .sshPasswordCredential(SecretSshkeySshSshPasswordCredentialArgs.builder()
- *                     .password(&#34;password&#34;)
  *                     .userName(&#34;user_name&#34;)
+ *                     .password(String.format(&#34;account.%s&#34;, secret.id()))
  *                     .build())
+ *                 .credentialType(&#34;Password&#34;)
  *                 .build())
- *             .tags(&#34;foo:bar&#34;)
  *             .build());
  * 
  *     }
@@ -130,10 +130,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using secret sshkey id
+ * Import account level secret sshkey
  * 
  * ```sh
  *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;secret_sshkey_id&gt;
+ * ```
+ * 
+ *  Import org level secret sshkey
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;ord_id&gt;/&lt;secret_sshkey_id&gt;
+ * ```
+ * 
+ *  Import project level secret sshkey
+ * 
+ * ```sh
+ *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example &lt;org_id&gt;/&lt;project_id&gt;/&lt;secret_sshkey_id&gt;
  * ```
  * 
  */
@@ -143,7 +155,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -157,7 +169,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * Unique identifier of the resource.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -171,7 +183,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * Kerberos authentication scheme
      * 
      */
-    @Export(name="kerberos", type=SecretSshkeyKerberos.class, parameters={})
+    @Export(name="kerberos", refs={SecretSshkeyKerberos.class}, tree="[0]")
     private Output</* @Nullable */ SecretSshkeyKerberos> kerberos;
 
     /**
@@ -185,7 +197,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -196,14 +208,14 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
@@ -213,7 +225,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * SSH port
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -224,14 +236,14 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.port);
     }
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -241,7 +253,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * Kerberos authentication scheme
      * 
      */
-    @Export(name="ssh", type=SecretSshkeySsh.class, parameters={})
+    @Export(name="ssh", refs={SecretSshkeySsh.class}, tree="[0]")
     private Output</* @Nullable */ SecretSshkeySsh> ssh;
 
     /**
@@ -252,14 +264,14 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ssh);
     }
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {

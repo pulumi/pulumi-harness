@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.JiraConnectorAuthArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,29 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     public static final JiraConnectorState Empty = new JiraConnectorState();
 
     /**
-     * Connect using only the delegates which have these tags.
+     * The credentials to use for the jira authentication.
+     * 
+     */
+    @Import(name="auth")
+    private @Nullable Output<JiraConnectorAuthArgs> auth;
+
+    /**
+     * @return The credentials to use for the jira authentication.
+     * 
+     */
+    public Optional<Output<JiraConnectorAuthArgs>> auth() {
+        return Optional.ofNullable(this.auth);
+    }
+
+    /**
+     * Tags to filter delegates for connection.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Connect using only the delegates which have these tags.
+     * @return Tags to filter delegates for connection.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -77,14 +93,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Unique identifier of the Organization.
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the Organization.
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -92,14 +108,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reference to a secret containing the password to use for authentication.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="passwordRef")
     private @Nullable Output<String> passwordRef;
 
     /**
-     * @return Reference to a secret containing the password to use for authentication.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> passwordRef() {
@@ -107,14 +123,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Unique identifier of the Project.
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the Project.
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -122,14 +138,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Tags to associate with the resource. Tags should be in the form `name:value`.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. Tags should be in the form `name:value`.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -137,14 +153,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Url of the Jira server.
+     * URL of the Jira server.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Url of the Jira server.
+     * @return URL of the Jira server.
      * 
      */
     public Optional<Output<String>> url() {
@@ -167,14 +183,14 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reference to a secret containing the username to use for authentication.
+     * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="usernameRef")
     private @Nullable Output<String> usernameRef;
 
     /**
-     * @return Reference to a secret containing the username to use for authentication.
+     * @return Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> usernameRef() {
@@ -184,6 +200,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
     private JiraConnectorState() {}
 
     private JiraConnectorState(JiraConnectorState $) {
+        this.auth = $.auth;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
         this.identifier = $.identifier;
@@ -216,7 +233,28 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param auth The credentials to use for the jira authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auth(@Nullable Output<JiraConnectorAuthArgs> auth) {
+            $.auth = auth;
+            return this;
+        }
+
+        /**
+         * @param auth The credentials to use for the jira authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auth(JiraConnectorAuthArgs auth) {
+            return auth(Output.of(auth));
+        }
+
+        /**
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -227,7 +265,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -237,7 +275,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param delegateSelectors Connect using only the delegates which have these tags.
+         * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
          * 
@@ -310,7 +348,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -321,7 +359,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the Organization.
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -331,7 +369,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -342,7 +380,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -352,7 +390,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -363,7 +401,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the Project.
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -373,7 +411,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -384,7 +422,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -394,7 +432,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags to associate with the resource. Tags should be in the form `name:value`.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -404,7 +442,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param url Url of the Jira server.
+         * @param url URL of the Jira server.
          * 
          * @return builder
          * 
@@ -415,7 +453,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param url Url of the Jira server.
+         * @param url URL of the Jira server.
          * 
          * @return builder
          * 
@@ -446,7 +484,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param usernameRef Reference to a secret containing the username to use for authentication.
+         * @param usernameRef Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -457,7 +495,7 @@ public final class JiraConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param usernameRef Reference to a secret containing the username to use for authentication.
+         * @param usernameRef Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
