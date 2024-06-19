@@ -58,19 +58,21 @@ public final class UserGroupSamlSettings {
 
         @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
+
             this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder ssoProviderId(@Nullable String ssoProviderId) {
+
             this.ssoProviderId = ssoProviderId;
             return this;
         }
         public UserGroupSamlSettings build() {
-            final var o = new UserGroupSamlSettings();
-            o.groupName = groupName;
-            o.ssoProviderId = ssoProviderId;
-            return o;
+            final var _resultValue = new UserGroupSamlSettings();
+            _resultValue.groupName = groupName;
+            _resultValue.ssoProviderId = ssoProviderId;
+            return _resultValue;
         }
     }
 }

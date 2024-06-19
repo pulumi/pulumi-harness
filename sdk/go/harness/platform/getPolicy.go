@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupPolicy(ctx, &platform.LookupPolicyArgs{
-//				Identifier: pulumi.StringRef(harness_platform_policy.Test.Identifier),
-//				Name:       pulumi.StringRef(harness_platform_policy.Test.Name),
+//				Identifier: pulumi.StringRef(testHarnessPlatformPolicy.Identifier),
+//				Name:       pulumi.StringRef(testHarnessPlatformPolicy.Name),
 //				Rego:       "package test",
 //			}, nil)
 //			if err != nil {
@@ -40,7 +41,7 @@ import (
 //
 // ```
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyResult
 	err := ctx.Invoke("harness:platform/getPolicy:getPolicy", args, &rv, opts...)
 	if err != nil {

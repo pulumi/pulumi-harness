@@ -75,3 +75,9 @@ export interface GetCurrentUserResult {
      */
     readonly uuid: string;
 }
+/**
+ * Data source for retrieving the current user based on the API key.
+ */
+export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
+    return pulumi.output(getCurrentUser(opts))
+}

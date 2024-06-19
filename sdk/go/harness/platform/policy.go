@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,9 +19,7 @@ import (
 // # Import using the organization id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/policy:Policy example <organization_id>
-//
+// $ pulumi import harness:platform/policy:Policy example <organization_id>
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
@@ -54,7 +53,7 @@ func NewPolicy(ctx *pulumi.Context,
 	if args.Rego == nil {
 		return nil, errors.New("invalid value for required argument 'Rego'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Policy
 	err := ctx.RegisterResource("harness:platform/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

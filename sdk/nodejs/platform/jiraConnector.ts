@@ -13,21 +13,22 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.JiraConnector("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://jira.com",
+ *     delegateSelectors: ["harness-delegate"],
  *     auth: {
  *         authType: "UsernamePassword",
  *         usernamePassword: {
- *             passwordRef: "account.secret_id",
  *             username: "admin",
+ *             passwordRef: "account.secret_id",
  *         },
  *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://jira.com",
  * });
  * ```
  *
@@ -36,19 +37,19 @@ import * as utilities from "../utilities";
  * Import account level jira connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
+ * $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
  * ```
  *
- *  Import org level jira connector
+ * Import org level jira connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level jira connector
+ * Import project level jira connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class JiraConnector extends pulumi.CustomResource {

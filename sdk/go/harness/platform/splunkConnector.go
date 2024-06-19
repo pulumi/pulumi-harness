@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,18 +29,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewSplunkConnector(ctx, "test", &platform.SplunkConnectorArgs{
-//				AccountId: pulumi.String("splunk_account_id"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
-//				PasswordRef: pulumi.String("account.secret_id"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Url:      pulumi.String("https://splunk.com/"),
-//				Username: pulumi.String("username"),
+//				Url: pulumi.String("https://splunk.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId:   pulumi.String("splunk_account_id"),
+//				Username:    pulumi.String("username"),
+//				PasswordRef: pulumi.String("account.secret_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,25 +57,19 @@ import (
 // # Import account level splunk connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
-//
+// $ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
 // ```
 //
-//	Import org level splunk connector
+// # Import org level splunk connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level splunk connector
+// # Import project level splunk connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type SplunkConnector struct {
 	pulumi.CustomResourceState
@@ -124,7 +120,7 @@ func NewSplunkConnector(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SplunkConnector
 	err := ctx.RegisterResource("harness:platform/splunkConnector:SplunkConnector", name, args, &resource, opts...)
 	if err != nil {

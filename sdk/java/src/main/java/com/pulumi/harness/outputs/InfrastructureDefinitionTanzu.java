@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class InfrastructureDefinitionTanzu {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzu", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzu", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder space(String space) {
-            this.space = Objects.requireNonNull(space);
+            if (space == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzu", "space");
+            }
+            this.space = space;
             return this;
         }
         public InfrastructureDefinitionTanzu build() {
-            final var o = new InfrastructureDefinitionTanzu();
-            o.cloudProviderName = cloudProviderName;
-            o.organization = organization;
-            o.space = space;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionTanzu();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.organization = organization;
+            _resultValue.space = space;
+            return _resultValue;
         }
     }
 }

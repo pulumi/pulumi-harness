@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class InfrastructureDefinitionAzureWebapp {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebapp", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroup(String resourceGroup) {
-            this.resourceGroup = Objects.requireNonNull(resourceGroup);
+            if (resourceGroup == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebapp", "resourceGroup");
+            }
+            this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
-            this.subscriptionId = Objects.requireNonNull(subscriptionId);
+            if (subscriptionId == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebapp", "subscriptionId");
+            }
+            this.subscriptionId = subscriptionId;
             return this;
         }
         public InfrastructureDefinitionAzureWebapp build() {
-            final var o = new InfrastructureDefinitionAzureWebapp();
-            o.cloudProviderName = cloudProviderName;
-            o.resourceGroup = resourceGroup;
-            o.subscriptionId = subscriptionId;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAzureWebapp();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.resourceGroup = resourceGroup;
+            _resultValue.subscriptionId = subscriptionId;
+            return _resultValue;
         }
     }
 }

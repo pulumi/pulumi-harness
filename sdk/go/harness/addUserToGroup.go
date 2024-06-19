@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,13 +34,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := harness.NewUserGroup(ctx, "admin", nil)
+//			admin, err := harness.NewUserGroup(ctx, "admin", &harness.UserGroupArgs{
+//				Name: pulumi.String("admin"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewAddUserToGroup(ctx, "exampleAddUserToGroups", &harness.AddUserToGroupArgs{
+//			_, err = harness.NewAddUserToGroup(ctx, "example_add_user_to_groups", &harness.AddUserToGroupArgs{
 //				GroupId: admin.ID(),
-//				UserId:  pulumi.Any(data.Harness_user.Test.Id),
+//				UserId:  pulumi.Any(test.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -55,9 +58,7 @@ import (
 // # Import using the Harness user and user group id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
-//
+// $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
 // ```
 type AddUserToGroup struct {
 	pulumi.CustomResourceState
@@ -81,7 +82,7 @@ func NewAddUserToGroup(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddUserToGroup
 	err := ctx.RegisterResource("harness:index/addUserToGroup:AddUserToGroup", name, args, &resource, opts...)
 	if err != nil {

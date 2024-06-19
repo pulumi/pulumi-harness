@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving an SLO.
 func LookupSlo(ctx *pulumi.Context, args *LookupSloArgs, opts ...pulumi.InvokeOption) (*LookupSloResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSloResult
 	err := ctx.Invoke("harness:platform/getSlo:getSlo", args, &rv, opts...)
 	if err != nil {

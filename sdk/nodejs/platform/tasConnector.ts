@@ -9,47 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an Tas in Harness.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * const tas = new harness.platform.TasConnector("tas", {
- *     credentials: {
- *         tasManualDetails: {
- *             endpointUrl: "https://tas.example.com",
- *             passwordRef: "account.secret_id",
- *             usernameRef: "account.username_id",
- *         },
- *         type: "ManualConfig",
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "description of tas connector",
- *     executeOnDelegate: true,
- *     identifier: "example_tas_cloud_provider",
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level tas connector
  *
  * ```sh
- *  $ pulumi import harness:platform/tasConnector:TasConnector example <connector_id>
+ * $ pulumi import harness:platform/tasConnector:TasConnector example <connector_id>
  * ```
  *
- *  Import organization level tas connector
+ * Import organization level tas connector
  *
  * ```sh
- *  $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<connector_id>
+ * $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<connector_id>
  * ```
  *
- *  Import project level tas connector
+ * Import project level tas connector
  *
  * ```sh
- *  $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<project_id>/<connector_id>
  * ```
  */
 export class TasConnector extends pulumi.CustomResource {

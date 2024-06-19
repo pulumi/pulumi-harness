@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,9 +14,17 @@ public final class SshCredentialSshAuthenticationServerPasswordArgs extends com.
 
     public static final SshCredentialSshAuthenticationServerPasswordArgs Empty = new SshCredentialSshAuthenticationServerPasswordArgs();
 
+    /**
+     * The id of the encrypted secret
+     * 
+     */
     @Import(name="passwordSecretId", required=true)
     private Output<String> passwordSecretId;
 
+    /**
+     * @return The id of the encrypted secret
+     * 
+     */
     public Output<String> passwordSecretId() {
         return this.passwordSecretId;
     }
@@ -44,17 +53,31 @@ public final class SshCredentialSshAuthenticationServerPasswordArgs extends com.
             $ = new SshCredentialSshAuthenticationServerPasswordArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param passwordSecretId The id of the encrypted secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordSecretId(Output<String> passwordSecretId) {
             $.passwordSecretId = passwordSecretId;
             return this;
         }
 
+        /**
+         * @param passwordSecretId The id of the encrypted secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordSecretId(String passwordSecretId) {
             return passwordSecretId(Output.of(passwordSecretId));
         }
 
         public SshCredentialSshAuthenticationServerPasswordArgs build() {
-            $.passwordSecretId = Objects.requireNonNull($.passwordSecretId, "expected parameter 'passwordSecretId' to be non-null");
+            if ($.passwordSecretId == null) {
+                throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationServerPasswordArgs", "passwordSecretId");
+            }
             return $;
         }
     }

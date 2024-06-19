@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitOpsAgent(ctx, "example", &platform.GitOpsAgentArgs{
-//				AccountId:  pulumi.String("account_id"),
 //				Identifier: pulumi.String("identifier"),
+//				AccountId:  pulumi.String("account_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				Name:       pulumi.String("name"),
+//				Type:       pulumi.String("MANAGED_ARGO_PROVIDER"),
 //				Metadatas: platform.GitOpsAgentMetadataArray{
 //					&platform.GitOpsAgentMetadataArgs{
-//						HighAvailability: pulumi.Bool(true),
 //						Namespace:        pulumi.String("namespace"),
+//						HighAvailability: pulumi.Bool(true),
 //					},
 //				},
-//				OrgId:     pulumi.String("org_id"),
-//				ProjectId: pulumi.String("project_id"),
-//				Type:      pulumi.String("MANAGED_ARGO_PROVIDER"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,17 +56,13 @@ import (
 // # Import a Account level Gitops Agent
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
-//
+// $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
 // ```
 //
-//	Import a Project level Gitops Agent
+// # Import a Project level Gitops Agent
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
-//
+// $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
 // ```
 type GitOpsAgent struct {
 	pulumi.CustomResourceState
@@ -106,7 +104,7 @@ func NewGitOpsAgent(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsAgent
 	err := ctx.RegisterResource("harness:platform/gitOpsAgent:GitOpsAgent", name, args, &resource, opts...)
 	if err != nil {

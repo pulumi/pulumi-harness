@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type EncryptedTextUsageScope struct {
 	// Id of the application to scope to. If empty then this scope applies to all applications.
@@ -1734,7 +1737,9 @@ func (o InfrastructureDefinitionAwsSshPtrOutput) VpcIds() pulumi.StringArrayOutp
 }
 
 type InfrastructureDefinitionAwsSshTag struct {
-	Key   string `pulumi:"key"`
+	// The key of the tag.
+	Key string `pulumi:"key"`
+	// The value of the tag.
 	Value string `pulumi:"value"`
 }
 
@@ -1750,7 +1755,9 @@ type InfrastructureDefinitionAwsSshTagInput interface {
 }
 
 type InfrastructureDefinitionAwsSshTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The key of the tag.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the tag.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1805,10 +1812,12 @@ func (o InfrastructureDefinitionAwsSshTagOutput) ToInfrastructureDefinitionAwsSs
 	return o
 }
 
+// The key of the tag.
 func (o InfrastructureDefinitionAwsSshTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InfrastructureDefinitionAwsSshTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of the tag.
 func (o InfrastructureDefinitionAwsSshTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InfrastructureDefinitionAwsSshTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2705,8 +2714,9 @@ func (o InfrastructureDefinitionCustomPtrOutput) Variables() InfrastructureDefin
 }
 
 type InfrastructureDefinitionCustomVariable struct {
-	// The name of the infrastructure definition
-	Name  string `pulumi:"name"`
+	// Name of the variable
+	Name string `pulumi:"name"`
+	// Value of the variable
 	Value string `pulumi:"value"`
 }
 
@@ -2722,8 +2732,9 @@ type InfrastructureDefinitionCustomVariableInput interface {
 }
 
 type InfrastructureDefinitionCustomVariableArgs struct {
-	// The name of the infrastructure definition
-	Name  pulumi.StringInput `pulumi:"name"`
+	// Name of the variable
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the variable
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2778,11 +2789,12 @@ func (o InfrastructureDefinitionCustomVariableOutput) ToInfrastructureDefinition
 	return o
 }
 
-// The name of the infrastructure definition
+// Name of the variable
 func (o InfrastructureDefinitionCustomVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InfrastructureDefinitionCustomVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value of the variable
 func (o InfrastructureDefinitionCustomVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InfrastructureDefinitionCustomVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4054,8 +4066,10 @@ func (o SshCredentialKerberosAuthenticationPtrOutput) TgtGenerationMethod() SshC
 }
 
 type SshCredentialKerberosAuthenticationTgtGenerationMethod struct {
+	// The id of the encrypted text secret
 	KerberosPasswordId *string `pulumi:"kerberosPasswordId"`
-	KeyTabFilePath     *string `pulumi:"keyTabFilePath"`
+	// The path to the key tab file
+	KeyTabFilePath *string `pulumi:"keyTabFilePath"`
 }
 
 // SshCredentialKerberosAuthenticationTgtGenerationMethodInput is an input type that accepts SshCredentialKerberosAuthenticationTgtGenerationMethodArgs and SshCredentialKerberosAuthenticationTgtGenerationMethodOutput values.
@@ -4070,8 +4084,10 @@ type SshCredentialKerberosAuthenticationTgtGenerationMethodInput interface {
 }
 
 type SshCredentialKerberosAuthenticationTgtGenerationMethodArgs struct {
+	// The id of the encrypted text secret
 	KerberosPasswordId pulumi.StringPtrInput `pulumi:"kerberosPasswordId"`
-	KeyTabFilePath     pulumi.StringPtrInput `pulumi:"keyTabFilePath"`
+	// The path to the key tab file
+	KeyTabFilePath pulumi.StringPtrInput `pulumi:"keyTabFilePath"`
 }
 
 func (SshCredentialKerberosAuthenticationTgtGenerationMethodArgs) ElementType() reflect.Type {
@@ -4151,10 +4167,12 @@ func (o SshCredentialKerberosAuthenticationTgtGenerationMethodOutput) ToSshCrede
 	}).(SshCredentialKerberosAuthenticationTgtGenerationMethodPtrOutput)
 }
 
+// The id of the encrypted text secret
 func (o SshCredentialKerberosAuthenticationTgtGenerationMethodOutput) KerberosPasswordId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshCredentialKerberosAuthenticationTgtGenerationMethod) *string { return v.KerberosPasswordId }).(pulumi.StringPtrOutput)
 }
 
+// The path to the key tab file
 func (o SshCredentialKerberosAuthenticationTgtGenerationMethodOutput) KeyTabFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshCredentialKerberosAuthenticationTgtGenerationMethod) *string { return v.KeyTabFilePath }).(pulumi.StringPtrOutput)
 }
@@ -4183,6 +4201,7 @@ func (o SshCredentialKerberosAuthenticationTgtGenerationMethodPtrOutput) Elem() 
 	}).(SshCredentialKerberosAuthenticationTgtGenerationMethodOutput)
 }
 
+// The id of the encrypted text secret
 func (o SshCredentialKerberosAuthenticationTgtGenerationMethodPtrOutput) KerberosPasswordId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialKerberosAuthenticationTgtGenerationMethod) *string {
 		if v == nil {
@@ -4192,6 +4211,7 @@ func (o SshCredentialKerberosAuthenticationTgtGenerationMethodPtrOutput) Kerbero
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to the key tab file
 func (o SshCredentialKerberosAuthenticationTgtGenerationMethodPtrOutput) KeyTabFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialKerberosAuthenticationTgtGenerationMethod) *string {
 		if v == nil {
@@ -4417,8 +4437,10 @@ func (o SshCredentialSshAuthenticationPtrOutput) Username() pulumi.StringPtrOutp
 }
 
 type SshCredentialSshAuthenticationInlineSsh struct {
+	// The id of the encrypted secret to use
 	PassphraseSecretId *string `pulumi:"passphraseSecretId"`
-	SshKeyFileId       string  `pulumi:"sshKeyFileId"`
+	// The id of the secret containing the SSH key
+	SshKeyFileId string `pulumi:"sshKeyFileId"`
 }
 
 // SshCredentialSshAuthenticationInlineSshInput is an input type that accepts SshCredentialSshAuthenticationInlineSshArgs and SshCredentialSshAuthenticationInlineSshOutput values.
@@ -4433,8 +4455,10 @@ type SshCredentialSshAuthenticationInlineSshInput interface {
 }
 
 type SshCredentialSshAuthenticationInlineSshArgs struct {
+	// The id of the encrypted secret to use
 	PassphraseSecretId pulumi.StringPtrInput `pulumi:"passphraseSecretId"`
-	SshKeyFileId       pulumi.StringInput    `pulumi:"sshKeyFileId"`
+	// The id of the secret containing the SSH key
+	SshKeyFileId pulumi.StringInput `pulumi:"sshKeyFileId"`
 }
 
 func (SshCredentialSshAuthenticationInlineSshArgs) ElementType() reflect.Type {
@@ -4514,10 +4538,12 @@ func (o SshCredentialSshAuthenticationInlineSshOutput) ToSshCredentialSshAuthent
 	}).(SshCredentialSshAuthenticationInlineSshPtrOutput)
 }
 
+// The id of the encrypted secret to use
 func (o SshCredentialSshAuthenticationInlineSshOutput) PassphraseSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshCredentialSshAuthenticationInlineSsh) *string { return v.PassphraseSecretId }).(pulumi.StringPtrOutput)
 }
 
+// The id of the secret containing the SSH key
 func (o SshCredentialSshAuthenticationInlineSshOutput) SshKeyFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v SshCredentialSshAuthenticationInlineSsh) string { return v.SshKeyFileId }).(pulumi.StringOutput)
 }
@@ -4546,6 +4572,7 @@ func (o SshCredentialSshAuthenticationInlineSshPtrOutput) Elem() SshCredentialSs
 	}).(SshCredentialSshAuthenticationInlineSshOutput)
 }
 
+// The id of the encrypted secret to use
 func (o SshCredentialSshAuthenticationInlineSshPtrOutput) PassphraseSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialSshAuthenticationInlineSsh) *string {
 		if v == nil {
@@ -4555,6 +4582,7 @@ func (o SshCredentialSshAuthenticationInlineSshPtrOutput) PassphraseSecretId() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The id of the secret containing the SSH key
 func (o SshCredentialSshAuthenticationInlineSshPtrOutput) SshKeyFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialSshAuthenticationInlineSsh) *string {
 		if v == nil {
@@ -4565,6 +4593,7 @@ func (o SshCredentialSshAuthenticationInlineSshPtrOutput) SshKeyFileId() pulumi.
 }
 
 type SshCredentialSshAuthenticationServerPassword struct {
+	// The id of the encrypted secret
 	PasswordSecretId string `pulumi:"passwordSecretId"`
 }
 
@@ -4580,6 +4609,7 @@ type SshCredentialSshAuthenticationServerPasswordInput interface {
 }
 
 type SshCredentialSshAuthenticationServerPasswordArgs struct {
+	// The id of the encrypted secret
 	PasswordSecretId pulumi.StringInput `pulumi:"passwordSecretId"`
 }
 
@@ -4660,6 +4690,7 @@ func (o SshCredentialSshAuthenticationServerPasswordOutput) ToSshCredentialSshAu
 	}).(SshCredentialSshAuthenticationServerPasswordPtrOutput)
 }
 
+// The id of the encrypted secret
 func (o SshCredentialSshAuthenticationServerPasswordOutput) PasswordSecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v SshCredentialSshAuthenticationServerPassword) string { return v.PasswordSecretId }).(pulumi.StringOutput)
 }
@@ -4688,6 +4719,7 @@ func (o SshCredentialSshAuthenticationServerPasswordPtrOutput) Elem() SshCredent
 	}).(SshCredentialSshAuthenticationServerPasswordOutput)
 }
 
+// The id of the encrypted secret
 func (o SshCredentialSshAuthenticationServerPasswordPtrOutput) PasswordSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialSshAuthenticationServerPassword) *string {
 		if v == nil {
@@ -4698,8 +4730,10 @@ func (o SshCredentialSshAuthenticationServerPasswordPtrOutput) PasswordSecretId(
 }
 
 type SshCredentialSshAuthenticationSshKeyFile struct {
+	// The id of the secret containing the password to use for the ssh key
 	PassphraseSecretId *string `pulumi:"passphraseSecretId"`
-	Path               string  `pulumi:"path"`
+	// The path to the key file on the delegate
+	Path string `pulumi:"path"`
 }
 
 // SshCredentialSshAuthenticationSshKeyFileInput is an input type that accepts SshCredentialSshAuthenticationSshKeyFileArgs and SshCredentialSshAuthenticationSshKeyFileOutput values.
@@ -4714,8 +4748,10 @@ type SshCredentialSshAuthenticationSshKeyFileInput interface {
 }
 
 type SshCredentialSshAuthenticationSshKeyFileArgs struct {
+	// The id of the secret containing the password to use for the ssh key
 	PassphraseSecretId pulumi.StringPtrInput `pulumi:"passphraseSecretId"`
-	Path               pulumi.StringInput    `pulumi:"path"`
+	// The path to the key file on the delegate
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (SshCredentialSshAuthenticationSshKeyFileArgs) ElementType() reflect.Type {
@@ -4795,10 +4831,12 @@ func (o SshCredentialSshAuthenticationSshKeyFileOutput) ToSshCredentialSshAuthen
 	}).(SshCredentialSshAuthenticationSshKeyFilePtrOutput)
 }
 
+// The id of the secret containing the password to use for the ssh key
 func (o SshCredentialSshAuthenticationSshKeyFileOutput) PassphraseSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshCredentialSshAuthenticationSshKeyFile) *string { return v.PassphraseSecretId }).(pulumi.StringPtrOutput)
 }
 
+// The path to the key file on the delegate
 func (o SshCredentialSshAuthenticationSshKeyFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v SshCredentialSshAuthenticationSshKeyFile) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -4827,6 +4865,7 @@ func (o SshCredentialSshAuthenticationSshKeyFilePtrOutput) Elem() SshCredentialS
 	}).(SshCredentialSshAuthenticationSshKeyFileOutput)
 }
 
+// The id of the secret containing the password to use for the ssh key
 func (o SshCredentialSshAuthenticationSshKeyFilePtrOutput) PassphraseSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialSshAuthenticationSshKeyFile) *string {
 		if v == nil {
@@ -4836,6 +4875,7 @@ func (o SshCredentialSshAuthenticationSshKeyFilePtrOutput) PassphraseSecretId() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to the key file on the delegate
 func (o SshCredentialSshAuthenticationSshKeyFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SshCredentialSshAuthenticationSshKeyFile) *string {
 		if v == nil {
@@ -5808,8 +5848,10 @@ func (o UserGroupPermissionsAppPermissionsPtrOutput) Workflows() UserGroupPermis
 }
 
 type UserGroupPermissionsAppPermissionsAll struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
 	Actions []string `pulumi:"actions"`
-	AppIds  []string `pulumi:"appIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
 }
 
 // UserGroupPermissionsAppPermissionsAllInput is an input type that accepts UserGroupPermissionsAppPermissionsAllArgs and UserGroupPermissionsAppPermissionsAllOutput values.
@@ -5824,8 +5866,10 @@ type UserGroupPermissionsAppPermissionsAllInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsAllArgs struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds  pulumi.StringArrayInput `pulumi:"appIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
 }
 
 func (UserGroupPermissionsAppPermissionsAllArgs) ElementType() reflect.Type {
@@ -5879,10 +5923,12 @@ func (o UserGroupPermissionsAppPermissionsAllOutput) ToUserGroupPermissionsAppPe
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
 func (o UserGroupPermissionsAppPermissionsAllOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsAll) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsAllOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsAll) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
@@ -5908,9 +5954,13 @@ func (o UserGroupPermissionsAppPermissionsAllArrayOutput) Index(i pulumi.IntInpu
 }
 
 type UserGroupPermissionsAppPermissionsDeployment struct {
+	// The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
 	Actions []string `pulumi:"actions"`
-	AppIds  []string `pulumi:"appIds"`
-	EnvIds  []string `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds []string `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 	Filters []string `pulumi:"filters"`
 }
 
@@ -5926,9 +5976,13 @@ type UserGroupPermissionsAppPermissionsDeploymentInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsDeploymentArgs struct {
+	// The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds  pulumi.StringArrayInput `pulumi:"appIds"`
-	EnvIds  pulumi.StringArrayInput `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds pulumi.StringArrayInput `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
 }
 
@@ -5983,18 +6037,22 @@ func (o UserGroupPermissionsAppPermissionsDeploymentOutput) ToUserGroupPermissio
 	return o
 }
 
+// The actions allowed to be performed. Valid options are READ, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK*WORKFLOW, ABORT*WORKFLOW
 func (o UserGroupPermissionsAppPermissionsDeploymentOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsDeployment) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsDeploymentOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsDeployment) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The environment IDs to which the permission applies. Leave empty to apply to all environments.
 func (o UserGroupPermissionsAppPermissionsDeploymentOutput) EnvIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsDeployment) []string { return v.EnvIds }).(pulumi.StringArrayOutput)
 }
 
+// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 func (o UserGroupPermissionsAppPermissionsDeploymentOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsDeployment) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -6020,9 +6078,13 @@ func (o UserGroupPermissionsAppPermissionsDeploymentArrayOutput) Index(i pulumi.
 }
 
 type UserGroupPermissionsAppPermissionsEnvironment struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 	Actions []string `pulumi:"actions"`
-	AppIds  []string `pulumi:"appIds"`
-	EnvIds  []string `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds []string `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 	Filters []string `pulumi:"filters"`
 }
 
@@ -6038,9 +6100,13 @@ type UserGroupPermissionsAppPermissionsEnvironmentInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsEnvironmentArgs struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds  pulumi.StringArrayInput `pulumi:"appIds"`
-	EnvIds  pulumi.StringArrayInput `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds pulumi.StringArrayInput `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
 }
 
@@ -6095,18 +6161,22 @@ func (o UserGroupPermissionsAppPermissionsEnvironmentOutput) ToUserGroupPermissi
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 func (o UserGroupPermissionsAppPermissionsEnvironmentOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsEnvironment) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsEnvironmentOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsEnvironment) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The environment IDs to which the permission applies. Leave empty to apply to all environments.
 func (o UserGroupPermissionsAppPermissionsEnvironmentOutput) EnvIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsEnvironment) []string { return v.EnvIds }).(pulumi.StringArrayOutput)
 }
 
+// The filters to apply to the action. Valid options are: NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
 func (o UserGroupPermissionsAppPermissionsEnvironmentOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsEnvironment) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -6132,9 +6202,13 @@ func (o UserGroupPermissionsAppPermissionsEnvironmentArrayOutput) Index(i pulumi
 }
 
 type UserGroupPermissionsAppPermissionsPipeline struct {
+	// The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
 	Actions []string `pulumi:"actions"`
-	AppIds  []string `pulumi:"appIds"`
-	EnvIds  []string `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds []string `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
 	Filters []string `pulumi:"filters"`
 }
 
@@ -6150,9 +6224,13 @@ type UserGroupPermissionsAppPermissionsPipelineInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsPipelineArgs struct {
+	// The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds  pulumi.StringArrayInput `pulumi:"appIds"`
-	EnvIds  pulumi.StringArrayInput `pulumi:"envIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The environment IDs to which the permission applies. Leave empty to apply to all environments.
+	EnvIds pulumi.StringArrayInput `pulumi:"envIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
 }
 
@@ -6207,18 +6285,22 @@ func (o UserGroupPermissionsAppPermissionsPipelineOutput) ToUserGroupPermissions
 	return o
 }
 
+// The actions allowed to be performed. Valid options are [CREATE READ UPDATE DELETE]
 func (o UserGroupPermissionsAppPermissionsPipelineOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsPipeline) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsPipelineOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsPipeline) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The environment IDs to which the permission applies. Leave empty to apply to all environments.
 func (o UserGroupPermissionsAppPermissionsPipelineOutput) EnvIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsPipeline) []string { return v.EnvIds }).(pulumi.StringArrayOutput)
 }
 
+// The filters to apply to the action. Valid options are: NON*PRODUCTION*PIPELINES, PRODUCTION_PIPELINES.
 func (o UserGroupPermissionsAppPermissionsPipelineOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsPipeline) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -6244,8 +6326,11 @@ func (o UserGroupPermissionsAppPermissionsPipelineArrayOutput) Index(i pulumi.In
 }
 
 type UserGroupPermissionsAppPermissionsProvisioner struct {
-	Actions        []string `pulumi:"actions"`
-	AppIds         []string `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions []string `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
 	ProvisionerIds []string `pulumi:"provisionerIds"`
 }
 
@@ -6261,8 +6346,11 @@ type UserGroupPermissionsAppPermissionsProvisionerInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsProvisionerArgs struct {
-	Actions        pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds         pulumi.StringArrayInput `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
 	ProvisionerIds pulumi.StringArrayInput `pulumi:"provisionerIds"`
 }
 
@@ -6317,14 +6405,17 @@ func (o UserGroupPermissionsAppPermissionsProvisionerOutput) ToUserGroupPermissi
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 func (o UserGroupPermissionsAppPermissionsProvisionerOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsProvisioner) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsProvisionerOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsProvisioner) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The provisioner IDs to which the permission applies. Leave empty to apply to all provisioners.
 func (o UserGroupPermissionsAppPermissionsProvisionerOutput) ProvisionerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsProvisioner) []string { return v.ProvisionerIds }).(pulumi.StringArrayOutput)
 }
@@ -6350,8 +6441,11 @@ func (o UserGroupPermissionsAppPermissionsProvisionerArrayOutput) Index(i pulumi
 }
 
 type UserGroupPermissionsAppPermissionsService struct {
-	Actions    []string `pulumi:"actions"`
-	AppIds     []string `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions []string `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The service IDs to which the permission applies. Leave empty to apply to all services.
 	ServiceIds []string `pulumi:"serviceIds"`
 }
 
@@ -6367,8 +6461,11 @@ type UserGroupPermissionsAppPermissionsServiceInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsServiceArgs struct {
-	Actions    pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds     pulumi.StringArrayInput `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The service IDs to which the permission applies. Leave empty to apply to all services.
 	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
 }
 
@@ -6423,14 +6520,17 @@ func (o UserGroupPermissionsAppPermissionsServiceOutput) ToUserGroupPermissionsA
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 func (o UserGroupPermissionsAppPermissionsServiceOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsService) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsServiceOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsService) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The service IDs to which the permission applies. Leave empty to apply to all services.
 func (o UserGroupPermissionsAppPermissionsServiceOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsService) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
@@ -6456,8 +6556,11 @@ func (o UserGroupPermissionsAppPermissionsServiceArrayOutput) Index(i pulumi.Int
 }
 
 type UserGroupPermissionsAppPermissionsTemplate struct {
-	Actions     []string `pulumi:"actions"`
-	AppIds      []string `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions []string `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The template IDs to which the permission applies. Leave empty to apply to all environments.
 	TemplateIds []string `pulumi:"templateIds"`
 }
 
@@ -6473,8 +6576,11 @@ type UserGroupPermissionsAppPermissionsTemplateInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsTemplateArgs struct {
-	Actions     pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds      pulumi.StringArrayInput `pulumi:"appIds"`
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The template IDs to which the permission applies. Leave empty to apply to all environments.
 	TemplateIds pulumi.StringArrayInput `pulumi:"templateIds"`
 }
 
@@ -6529,14 +6635,17 @@ func (o UserGroupPermissionsAppPermissionsTemplateOutput) ToUserGroupPermissions
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 func (o UserGroupPermissionsAppPermissionsTemplateOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsTemplate) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsTemplateOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsTemplate) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The template IDs to which the permission applies. Leave empty to apply to all environments.
 func (o UserGroupPermissionsAppPermissionsTemplateOutput) TemplateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsTemplate) []string { return v.TemplateIds }).(pulumi.StringArrayOutput)
 }
@@ -6562,8 +6671,11 @@ func (o UserGroupPermissionsAppPermissionsTemplateArrayOutput) Index(i pulumi.In
 }
 
 type UserGroupPermissionsAppPermissionsWorkflow struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 	Actions []string `pulumi:"actions"`
-	AppIds  []string `pulumi:"appIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds []string `pulumi:"appIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
 	Filters []string `pulumi:"filters"`
 }
 
@@ -6579,8 +6691,11 @@ type UserGroupPermissionsAppPermissionsWorkflowInput interface {
 }
 
 type UserGroupPermissionsAppPermissionsWorkflowArgs struct {
+	// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	AppIds  pulumi.StringArrayInput `pulumi:"appIds"`
+	// The application IDs to which the permission applies. Leave empty to apply to all applications.
+	AppIds pulumi.StringArrayInput `pulumi:"appIds"`
+	// The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
 	Filters pulumi.StringArrayInput `pulumi:"filters"`
 }
 
@@ -6635,14 +6750,17 @@ func (o UserGroupPermissionsAppPermissionsWorkflowOutput) ToUserGroupPermissions
 	return o
 }
 
+// The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE
 func (o UserGroupPermissionsAppPermissionsWorkflowOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsWorkflow) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The application IDs to which the permission applies. Leave empty to apply to all applications.
 func (o UserGroupPermissionsAppPermissionsWorkflowOutput) AppIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsWorkflow) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
+// The filters to apply to the action. Valid options are: NON*PRODUCTION*WORKFLOWS, PRODUCTION*WORKFLOWS, WORKFLOW*TEMPLATES.
 func (o UserGroupPermissionsAppPermissionsWorkflowOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UserGroupPermissionsAppPermissionsWorkflow) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -7063,9 +7181,12 @@ func (o GetEnvironmentVariableOverrideArrayOutput) Index(i pulumi.IntInput) GetE
 }
 
 type GetGitConnectorCommitDetail struct {
+	// The email id of the author.
 	AuthorEmailId string `pulumi:"authorEmailId"`
-	AuthorName    string `pulumi:"authorName"`
-	Message       string `pulumi:"message"`
+	// The name of the author.
+	AuthorName string `pulumi:"authorName"`
+	// Commit message.
+	Message string `pulumi:"message"`
 }
 
 // GetGitConnectorCommitDetailInput is an input type that accepts GetGitConnectorCommitDetailArgs and GetGitConnectorCommitDetailOutput values.
@@ -7080,9 +7201,12 @@ type GetGitConnectorCommitDetailInput interface {
 }
 
 type GetGitConnectorCommitDetailArgs struct {
+	// The email id of the author.
 	AuthorEmailId pulumi.StringInput `pulumi:"authorEmailId"`
-	AuthorName    pulumi.StringInput `pulumi:"authorName"`
-	Message       pulumi.StringInput `pulumi:"message"`
+	// The name of the author.
+	AuthorName pulumi.StringInput `pulumi:"authorName"`
+	// Commit message.
+	Message pulumi.StringInput `pulumi:"message"`
 }
 
 func (GetGitConnectorCommitDetailArgs) ElementType() reflect.Type {
@@ -7136,14 +7260,17 @@ func (o GetGitConnectorCommitDetailOutput) ToGetGitConnectorCommitDetailOutputWi
 	return o
 }
 
+// The email id of the author.
 func (o GetGitConnectorCommitDetailOutput) AuthorEmailId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCommitDetail) string { return v.AuthorEmailId }).(pulumi.StringOutput)
 }
 
+// The name of the author.
 func (o GetGitConnectorCommitDetailOutput) AuthorName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCommitDetail) string { return v.AuthorName }).(pulumi.StringOutput)
 }
 
+// Commit message.
 func (o GetGitConnectorCommitDetailOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCommitDetail) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -7399,8 +7526,10 @@ func (o GetSshCredentialUsageScopeArrayOutput) Index(i pulumi.IntInput) GetSshCr
 }
 
 type GetTriggerCondition struct {
-	OnWebhooks           []GetTriggerConditionOnWebhook `pulumi:"onWebhooks"`
-	TriggerConditionType string                         `pulumi:"triggerConditionType"`
+	// On webhook.
+	OnWebhooks []GetTriggerConditionOnWebhook `pulumi:"onWebhooks"`
+	// Trigger condition.
+	TriggerConditionType string `pulumi:"triggerConditionType"`
 }
 
 // GetTriggerConditionInput is an input type that accepts GetTriggerConditionArgs and GetTriggerConditionOutput values.
@@ -7415,8 +7544,10 @@ type GetTriggerConditionInput interface {
 }
 
 type GetTriggerConditionArgs struct {
-	OnWebhooks           GetTriggerConditionOnWebhookArrayInput `pulumi:"onWebhooks"`
-	TriggerConditionType pulumi.StringInput                     `pulumi:"triggerConditionType"`
+	// On webhook.
+	OnWebhooks GetTriggerConditionOnWebhookArrayInput `pulumi:"onWebhooks"`
+	// Trigger condition.
+	TriggerConditionType pulumi.StringInput `pulumi:"triggerConditionType"`
 }
 
 func (GetTriggerConditionArgs) ElementType() reflect.Type {
@@ -7470,10 +7601,12 @@ func (o GetTriggerConditionOutput) ToGetTriggerConditionOutputWithContext(ctx co
 	return o
 }
 
+// On webhook.
 func (o GetTriggerConditionOutput) OnWebhooks() GetTriggerConditionOnWebhookArrayOutput {
 	return o.ApplyT(func(v GetTriggerCondition) []GetTriggerConditionOnWebhook { return v.OnWebhooks }).(GetTriggerConditionOnWebhookArrayOutput)
 }
 
+// Trigger condition.
 func (o GetTriggerConditionOutput) TriggerConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerCondition) string { return v.TriggerConditionType }).(pulumi.StringOutput)
 }
@@ -7499,6 +7632,7 @@ func (o GetTriggerConditionArrayOutput) Index(i pulumi.IntInput) GetTriggerCondi
 }
 
 type GetTriggerConditionOnWebhook struct {
+	// Webhook details.
 	WebhookDetails []GetTriggerConditionOnWebhookWebhookDetail `pulumi:"webhookDetails"`
 }
 
@@ -7514,6 +7648,7 @@ type GetTriggerConditionOnWebhookInput interface {
 }
 
 type GetTriggerConditionOnWebhookArgs struct {
+	// Webhook details.
 	WebhookDetails GetTriggerConditionOnWebhookWebhookDetailArrayInput `pulumi:"webhookDetails"`
 }
 
@@ -7568,6 +7703,7 @@ func (o GetTriggerConditionOnWebhookOutput) ToGetTriggerConditionOnWebhookOutput
 	return o
 }
 
+// Webhook details.
 func (o GetTriggerConditionOnWebhookOutput) WebhookDetails() GetTriggerConditionOnWebhookWebhookDetailArrayOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhook) []GetTriggerConditionOnWebhookWebhookDetail {
 		return v.WebhookDetails
@@ -7595,11 +7731,16 @@ func (o GetTriggerConditionOnWebhookArrayOutput) Index(i pulumi.IntInput) GetTri
 }
 
 type GetTriggerConditionOnWebhookWebhookDetail struct {
-	Header       string `pulumi:"header"`
-	Method       string `pulumi:"method"`
-	Payload      string `pulumi:"payload"`
+	// Header.
+	Header string `pulumi:"header"`
+	// Method.
+	Method string `pulumi:"method"`
+	// Payload.
+	Payload string `pulumi:"payload"`
+	// Webhook token.
 	WebhookToken string `pulumi:"webhookToken"`
-	WebhookUrl   string `pulumi:"webhookUrl"`
+	// Webhook URL.
+	WebhookUrl string `pulumi:"webhookUrl"`
 }
 
 // GetTriggerConditionOnWebhookWebhookDetailInput is an input type that accepts GetTriggerConditionOnWebhookWebhookDetailArgs and GetTriggerConditionOnWebhookWebhookDetailOutput values.
@@ -7614,11 +7755,16 @@ type GetTriggerConditionOnWebhookWebhookDetailInput interface {
 }
 
 type GetTriggerConditionOnWebhookWebhookDetailArgs struct {
-	Header       pulumi.StringInput `pulumi:"header"`
-	Method       pulumi.StringInput `pulumi:"method"`
-	Payload      pulumi.StringInput `pulumi:"payload"`
+	// Header.
+	Header pulumi.StringInput `pulumi:"header"`
+	// Method.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Payload.
+	Payload pulumi.StringInput `pulumi:"payload"`
+	// Webhook token.
 	WebhookToken pulumi.StringInput `pulumi:"webhookToken"`
-	WebhookUrl   pulumi.StringInput `pulumi:"webhookUrl"`
+	// Webhook URL.
+	WebhookUrl pulumi.StringInput `pulumi:"webhookUrl"`
 }
 
 func (GetTriggerConditionOnWebhookWebhookDetailArgs) ElementType() reflect.Type {
@@ -7672,22 +7818,27 @@ func (o GetTriggerConditionOnWebhookWebhookDetailOutput) ToGetTriggerConditionOn
 	return o
 }
 
+// Header.
 func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Header() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Header }).(pulumi.StringOutput)
 }
 
+// Method.
 func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// Payload.
 func (o GetTriggerConditionOnWebhookWebhookDetailOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.Payload }).(pulumi.StringOutput)
 }
 
+// Webhook token.
 func (o GetTriggerConditionOnWebhookWebhookDetailOutput) WebhookToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.WebhookToken }).(pulumi.StringOutput)
 }
 
+// Webhook URL.
 func (o GetTriggerConditionOnWebhookWebhookDetailOutput) WebhookUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerConditionOnWebhookWebhookDetail) string { return v.WebhookUrl }).(pulumi.StringOutput)
 }

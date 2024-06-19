@@ -8,141 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating role assignments in Harness.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewRoleAssignments(ctx, "example1RoleAssignments", &platform.RoleAssignmentsArgs{
-//				OrgId:                   pulumi.String("org_id"),
-//				ProjectId:               pulumi.String("project_id"),
-//				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//				RoleIdentifier:          pulumi.String("_project_viewer"),
-//				Principals: platform.RoleAssignmentsPrincipalArray{
-//					&platform.RoleAssignmentsPrincipalArgs{
-//						Identifier: pulumi.Any(harness_platform_service_account.Test.Id),
-//						Type:       pulumi.String("SERVICE_ACCOUNT"),
-//					},
-//				},
-//				Disabled: pulumi.Bool(false),
-//				Managed:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewRoleAssignments(ctx, "example1Platform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				OrgId:                   pulumi.String("org_id"),
-//				ProjectId:               pulumi.String("project_id"),
-//				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//				RoleIdentifier:          pulumi.String("_project_viewer"),
-//				Principals: platform.RoleAssignmentsPrincipalArray{
-//					&platform.RoleAssignmentsPrincipalArgs{
-//						Identifier: pulumi.Any(harness_platform_usergroup.Test.Id),
-//						Type:       pulumi.String("USER_GROUP"),
-//					},
-//				},
-//				Disabled: pulumi.Bool(false),
-//				Managed:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewRoleAssignments(ctx, "example2RoleAssignments", &platform.RoleAssignmentsArgs{
-//				Identifier:              pulumi.String("identifier"),
-//				OrgId:                   pulumi.String("org_id"),
-//				ProjectId:               pulumi.String("project_id"),
-//				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//				RoleIdentifier:          pulumi.String("_project_viewer"),
-//				Principals: platform.RoleAssignmentsPrincipalArray{
-//					&platform.RoleAssignmentsPrincipalArgs{
-//						Identifier: pulumi.String("user_id"),
-//						Type:       pulumi.String("USER"),
-//					},
-//				},
-//				Disabled: pulumi.Bool(false),
-//				Managed:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewRoleAssignments(ctx, "example2Platform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				OrgId:                   pulumi.String("org_id"),
-//				ProjectId:               pulumi.String("project_id"),
-//				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//				RoleIdentifier:          pulumi.String("_project_viewer"),
-//				Principals: platform.RoleAssignmentsPrincipalArray{
-//					&platform.RoleAssignmentsPrincipalArgs{
-//						Identifier: pulumi.String("service_id"),
-//						Type:       pulumi.String("SERVICE"),
-//					},
-//				},
-//				Disabled: pulumi.Bool(false),
-//				Managed:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewRoleAssignments(ctx, "example2HarnessPlatform/roleAssignmentsRoleAssignments", &platform.RoleAssignmentsArgs{
-//				OrgId:                   pulumi.String("org_id"),
-//				ProjectId:               pulumi.String("project_id"),
-//				ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//				RoleIdentifier:          pulumi.String("_project_viewer"),
-//				Principals: platform.RoleAssignmentsPrincipalArray{
-//					&platform.RoleAssignmentsPrincipalArgs{
-//						Identifier: pulumi.String("api_key_id"),
-//						Type:       pulumi.String("API_KEY"),
-//					},
-//				},
-//				Disabled: pulumi.Bool(false),
-//				Managed:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level role assignments
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
-//
+// $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
 // ```
 //
-//	Import org level role assignments
+// # Import org level role assignments
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
-//
+// $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
 // ```
 //
-//	Import project level role assignments
+// # Import project level role assignments
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
-//
+// $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
 // ```
 type RoleAssignments struct {
 	pulumi.CustomResourceState
@@ -181,7 +70,7 @@ func NewRoleAssignments(ctx *pulumi.Context,
 	if args.RoleIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'RoleIdentifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleAssignments
 	err := ctx.RegisterResource("harness:platform/roleAssignments:RoleAssignments", name, args, &resource, opts...)
 	if err != nil {

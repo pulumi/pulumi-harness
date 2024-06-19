@@ -11,16 +11,17 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.SumologicConnector("test", {
- *     accessIdRef: "account.secret_id",
- *     accessKeyRef: "account.secret_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://api.us2.sumologic.com/",
+ *     delegateSelectors: ["harness-delegate"],
+ *     accessIdRef: "account.secret_id",
+ *     accessKeyRef: "account.secret_id",
  * });
  * ```
  *
@@ -29,19 +30,19 @@ import * as utilities from "../utilities";
  * Import account level sumologic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
+ * $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
  * ```
  *
- *  Import org level sumologic connector
+ * Import org level sumologic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level sumologic connector
+ * Import project level sumologic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class SumologicConnector extends pulumi.CustomResource {

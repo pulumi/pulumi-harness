@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -46,9 +47,7 @@ import (
 // Import using the cluster.
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example <cluster_id>
-//
+// $ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example <cluster_id>
 // ```
 type EnvironmentClustersMapping struct {
 	pulumi.CustomResourceState
@@ -80,7 +79,7 @@ func NewEnvironmentClustersMapping(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvironmentClustersMapping
 	err := ctx.RegisterResource("harness:platform/environmentClustersMapping:EnvironmentClustersMapping", name, args, &resource, opts...)
 	if err != nil {

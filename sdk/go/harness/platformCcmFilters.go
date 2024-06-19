@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewPlatformCcmFilters(ctx, "test", &harness.PlatformCcmFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("CCMRecommendation"),
 //				FilterProperties: &harness.PlatformCcmFiltersFilterPropertiesArgs{
-//					FilterType: pulumi.String("CCMRecommendation"),
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
 //					},
+//					FilterType: pulumi.String("CCMRecommendation"),
 //				},
 //				FilterVisibility: pulumi.String("EveryOne"),
-//				Identifier:       pulumi.String("identifier"),
-//				OrgId:            pulumi.String("org_id"),
-//				ProjectId:        pulumi.String("project_id"),
-//				Type:             pulumi.String("CCMRecommendation"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level ccm filter
 //
 // ```sh
-//
-//	$ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <filter_id>/<type>
-//
+// $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <filter_id>/<type>
 // ```
 //
-//	Import org level ccm filter
+// # Import org level ccm filter
 //
 // ```sh
-//
-//	$ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <ord_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <ord_id>/<filter_id>/<type>
 // ```
 //
-//	Import project level ccm filter
+// # Import project level ccm filter
 //
 // ```sh
-//
-//	$ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
 // ```
 type PlatformCcmFilters struct {
 	pulumi.CustomResourceState
@@ -109,7 +105,7 @@ func NewPlatformCcmFilters(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PlatformCcmFilters
 	err := ctx.RegisterResource("harness:index/platformCcmFilters:PlatformCcmFilters", name, args, &resource, opts...)
 	if err != nil {

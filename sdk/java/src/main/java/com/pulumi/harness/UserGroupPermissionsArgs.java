@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.UserGroupPermissionsAppPermissionsArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class UserGroupPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         public UserGroupPermissionsArgs build() {
-            $.userGroupId = Objects.requireNonNull($.userGroupId, "expected parameter 'userGroupId' to be non-null");
+            if ($.userGroupId == null) {
+                throw new MissingRequiredPropertyException("UserGroupPermissionsArgs", "userGroupId");
+            }
             return $;
         }
     }

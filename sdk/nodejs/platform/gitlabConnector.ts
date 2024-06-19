@@ -9,47 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Gitlab connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials ssh
- * const test = new harness.platform.GitlabConnector("test", {
- *     connectionType: "Account",
- *     credentials: {
- *         ssh: {
- *             sshKeyRef: "account.test",
- *         },
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://gitlab.com/account",
- *     validationRepo: "some_repo",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level gitlab connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <connector_id>
+ * $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <connector_id>
  * ```
  *
- *  Import org level gitlab connector
+ * Import org level gitlab connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level gitlab connector
+ * Import project level gitlab connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/gitlabConnector:GitlabConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class GitlabConnector extends pulumi.CustomResource {

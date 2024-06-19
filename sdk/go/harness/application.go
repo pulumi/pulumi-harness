@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewApplication(ctx, "myapp", &harness.ApplicationArgs{
+//				Name:        pulumi.String("My Application"),
 //				Description: pulumi.String("This is my first Harness application"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("mytag:myvalue"),
@@ -47,9 +49,7 @@ import (
 // # Import using the Harness application id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/application:Application myapp Xyz123
-//
+// $ pulumi import harness:index/application:Application myapp Xyz123
 // ```
 type Application struct {
 	pulumi.CustomResourceState
@@ -75,7 +75,7 @@ func NewApplication(ctx *pulumi.Context,
 		args = &ApplicationArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Application
 	err := ctx.RegisterResource("harness:index/application:Application", name, args, &resource, opts...)
 	if err != nil {

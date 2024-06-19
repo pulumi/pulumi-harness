@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getUser({
- *     email: "john.doe@harness.io",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     email: "john.doe@harness.io",
  * });
  * ```
  */
@@ -99,9 +99,9 @@ export interface GetUserResult {
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getUser({
- *     email: "john.doe@harness.io",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     email: "john.doe@harness.io",
  * });
  * ```
  */

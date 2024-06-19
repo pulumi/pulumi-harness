@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitOpsRepository(ctx, "example", &platform.GitOpsRepositoryArgs{
-//				AccountId:  pulumi.String("account_id"),
-//				AgentId:    pulumi.String("agent_id"),
 //				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.String("org_id"),
+//				AccountId:  pulumi.String("account_id"),
 //				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				AgentId:    pulumi.String("agent_id"),
 //				Repos: platform.GitOpsRepositoryRepoArray{
 //					&platform.GitOpsRepositoryRepoArgs{
-//						ConnectionType: pulumi.String("HTTPS_ANONYMOUS"),
-//						Insecure:       pulumi.Bool(true),
-//						Name:           pulumi.String("repo_name"),
 //						Repo:           pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
+//						Name:           pulumi.String("repo_name"),
+//						Insecure:       pulumi.Bool(true),
+//						ConnectionType: pulumi.String("HTTPS_ANONYMOUS"),
 //					},
 //				},
 //				Upsert: pulumi.Bool(true),
@@ -57,17 +58,13 @@ import (
 // # Import a Account level Gitops Repository
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
-//
+// $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
 // ```
 //
-//	Import a Project level Gitops Repository
+// # Import a Project level Gitops Repository
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
-//
+// $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
 // ```
 type GitOpsRepository struct {
 	pulumi.CustomResourceState
@@ -117,7 +114,7 @@ func NewGitOpsRepository(ctx *pulumi.Context,
 	if args.Repos == nil {
 		return nil, errors.New("invalid value for required argument 'Repos'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsRepository
 	err := ctx.RegisterResource("harness:platform/gitOpsRepository:GitOpsRepository", name, args, &resource, opts...)
 	if err != nil {

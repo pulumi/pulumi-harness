@@ -11,14 +11,15 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Roles("example", {
- *     allowedScopeLevels: ["account"],
- *     description: "test",
  *     identifier: "identifier",
- *     permissions: ["core_resourcegroup_view"],
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
+ *     permissions: ["core_resourcegroup_view"],
+ *     allowedScopeLevels: ["account"],
  * });
  * ```
  *
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  * Import account level roles
  *
  * ```sh
- *  $ pulumi import harness:platform/roles:Roles example <roles_id>
+ * $ pulumi import harness:platform/roles:Roles example <roles_id>
  * ```
  *
- *  Import org level roles
+ * Import org level roles
  *
  * ```sh
- *  $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
+ * $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
  * ```
  *
- *  Import project level roles
+ * Import project level roles
  *
  * ```sh
- *  $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
+ * $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
  * ```
  */
 export class Roles extends pulumi.CustomResource {

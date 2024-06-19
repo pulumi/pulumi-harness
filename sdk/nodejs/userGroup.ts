@@ -9,12 +9,140 @@ import * as utilities from "./utilities";
 /**
  * Resource for creating a Harness user group
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.UserGroup("example", {
+ *     name: "example-group",
+ *     description: "This group demonstrates account level and resource level permissions.",
+ *     permissions: {
+ *         accountPermissions: [
+ *             "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+ *             "MANAGE_API_KEYS",
+ *         ],
+ *         appPermissions: {
+ *             alls: [{
+ *                 actions: [
+ *                     "CREATE",
+ *                     "READ",
+ *                     "UPDATE",
+ *                     "DELETE",
+ *                 ],
+ *             }],
+ *             deployments: [
+ *                 {
+ *                     actions: [
+ *                         "READ",
+ *                         "ROLLBACK_WORKFLOW",
+ *                         "EXECUTE_PIPELINE",
+ *                         "EXECUTE_WORKFLOW",
+ *                     ],
+ *                     filters: ["NON_PRODUCTION_ENVIRONMENTS"],
+ *                 },
+ *                 {
+ *                     actions: ["READ"],
+ *                     filters: ["PRODUCTION_ENVIRONMENTS"],
+ *                 },
+ *             ],
+ *             environments: [
+ *                 {
+ *                     actions: [
+ *                         "CREATE",
+ *                         "READ",
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                     filters: ["NON_PRODUCTION_ENVIRONMENTS"],
+ *                 },
+ *                 {
+ *                     actions: ["READ"],
+ *                     filters: ["PRODUCTION_ENVIRONMENTS"],
+ *                 },
+ *             ],
+ *             pipelines: [
+ *                 {
+ *                     actions: [
+ *                         "CREATE",
+ *                         "READ",
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                     filters: ["NON_PRODUCTION_PIPELINES"],
+ *                 },
+ *                 {
+ *                     actions: ["READ"],
+ *                     filters: ["PRODUCTION_PIPELINES"],
+ *                 },
+ *             ],
+ *             provisioners: [
+ *                 {
+ *                     actions: [
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                 },
+ *                 {
+ *                     actions: [
+ *                         "CREATE",
+ *                         "READ",
+ *                     ],
+ *                 },
+ *             ],
+ *             services: [
+ *                 {
+ *                     actions: [
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                 },
+ *                 {
+ *                     actions: [
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                 },
+ *             ],
+ *             templates: [{
+ *                 actions: [
+ *                     "CREATE",
+ *                     "READ",
+ *                     "UPDATE",
+ *                     "DELETE",
+ *                 ],
+ *             }],
+ *             workflows: [
+ *                 {
+ *                     actions: [
+ *                         "UPDATE",
+ *                         "DELETE",
+ *                     ],
+ *                     filters: ["NON_PRODUCTION_WORKFLOWS"],
+ *                 },
+ *                 {
+ *                     actions: [
+ *                         "CREATE",
+ *                         "READ",
+ *                     ],
+ *                     filters: [
+ *                         "PRODUCTION_WORKFLOWS",
+ *                         "WORKFLOW_TEMPLATES",
+ *                     ],
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Import using the id of the user group
  *
  * ```sh
- *  $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
+ * $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
  * ```
  */
 export class UserGroup extends pulumi.CustomResource {

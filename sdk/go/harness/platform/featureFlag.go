@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,32 +21,34 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Boolean Flag
 //			_, err := platform.NewFeatureFlag(ctx, "mybooleanflag", &platform.FeatureFlagArgs{
-//				DefaultOffVariation: pulumi.String("Disabled"),
-//				DefaultOnVariation:  pulumi.String("Enabled"),
-//				Identifier:          pulumi.String("MY_FEATURE"),
-//				Kind:                pulumi.String("boolean"),
 //				OrgId:               pulumi.String("test"),
-//				Permanent:           pulumi.Bool(false),
 //				ProjectId:           pulumi.String("testff"),
+//				Kind:                pulumi.String("boolean"),
+//				Name:                pulumi.String("MY_FEATURE"),
+//				Identifier:          pulumi.String("MY_FEATURE"),
+//				Permanent:           pulumi.Bool(false),
+//				DefaultOnVariation:  pulumi.String("Enabled"),
+//				DefaultOffVariation: pulumi.String("Disabled"),
 //				Variations: platform.FeatureFlagVariationArray{
 //					&platform.FeatureFlagVariationArgs{
-//						Description: pulumi.String("The feature is enabled"),
 //						Identifier:  pulumi.String("Enabled"),
 //						Name:        pulumi.String("Enabled"),
+//						Description: pulumi.String("The feature is enabled"),
 //						Value:       pulumi.String("true"),
 //					},
 //					&platform.FeatureFlagVariationArgs{
-//						Description: pulumi.String("The feature is disabled"),
 //						Identifier:  pulumi.String("Disabled"),
 //						Name:        pulumi.String("Disabled"),
+//						Description: pulumi.String("The feature is disabled"),
 //						Value:       pulumi.String("false"),
 //					},
 //				},
@@ -53,31 +56,33 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Multivariate flag
 //			_, err = platform.NewFeatureFlag(ctx, "mymultivariateflag", &platform.FeatureFlagArgs{
-//				DefaultOffVariation: pulumi.String("trial20"),
-//				DefaultOnVariation:  pulumi.String("trial7"),
-//				Identifier:          pulumi.String("FREE_TRIAL_DURATION"),
-//				Kind:                pulumi.String("int"),
 //				OrgId:               pulumi.String("test"),
-//				Permanent:           pulumi.Bool(false),
 //				ProjectId:           pulumi.String("testff"),
+//				Kind:                pulumi.String("int"),
+//				Name:                pulumi.String("FREE_TRIAL_DURATION"),
+//				Identifier:          pulumi.String("FREE_TRIAL_DURATION"),
+//				Permanent:           pulumi.Bool(false),
+//				DefaultOnVariation:  pulumi.String("trial7"),
+//				DefaultOffVariation: pulumi.String("trial20"),
 //				Variations: platform.FeatureFlagVariationArray{
 //					&platform.FeatureFlagVariationArgs{
-//						Description: pulumi.String("Free trial period 7 days"),
 //						Identifier:  pulumi.String("trial7"),
 //						Name:        pulumi.String("7 days trial"),
+//						Description: pulumi.String("Free trial period 7 days"),
 //						Value:       pulumi.String("7"),
 //					},
 //					&platform.FeatureFlagVariationArgs{
-//						Description: pulumi.String("Free trial period 14 days"),
 //						Identifier:  pulumi.String("trial14"),
 //						Name:        pulumi.String("14 days trial"),
+//						Description: pulumi.String("Free trial period 14 days"),
 //						Value:       pulumi.String("14"),
 //					},
 //					&platform.FeatureFlagVariationArgs{
-//						Description: pulumi.String("Free trial period 20 days"),
 //						Identifier:  pulumi.String("trial20"),
 //						Name:        pulumi.String("20 days trial"),
+//						Description: pulumi.String("Free trial period 20 days"),
 //						Value:       pulumi.String("20"),
 //					},
 //				},
@@ -149,7 +154,7 @@ func NewFeatureFlag(ctx *pulumi.Context,
 	if args.Variations == nil {
 		return nil, errors.New("invalid value for required argument 'Variations'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FeatureFlag
 	err := ctx.RegisterResource("harness:platform/featureFlag:FeatureFlag", name, args, &resource, opts...)
 	if err != nil {

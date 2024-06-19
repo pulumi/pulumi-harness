@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -394,10 +395,18 @@ public final class InfrastructureDefinitionAwsEcsArgs extends com.pulumi.resourc
         }
 
         public InfrastructureDefinitionAwsEcsArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.launchType = Objects.requireNonNull($.launchType, "expected parameter 'launchType' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcsArgs", "cloudProviderName");
+            }
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcsArgs", "clusterName");
+            }
+            if ($.launchType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcsArgs", "launchType");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcsArgs", "region");
+            }
             return $;
         }
     }

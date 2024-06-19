@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -11,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserGroupPermissionsAppPermissionsAll {
+    /**
+     * @return The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+     * 
+     */
     private List<String> actions;
+    /**
+     * @return The application IDs to which the permission applies. Leave empty to apply to all applications.
+     * 
+     */
     private @Nullable List<String> appIds;
 
     private UserGroupPermissionsAppPermissionsAll() {}
+    /**
+     * @return The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+     * 
+     */
     public List<String> actions() {
         return this.actions;
     }
+    /**
+     * @return The application IDs to which the permission applies. Leave empty to apply to all applications.
+     * 
+     */
     public List<String> appIds() {
         return this.appIds == null ? List.of() : this.appIds;
     }
@@ -42,7 +59,10 @@ public final class UserGroupPermissionsAppPermissionsAll {
 
         @CustomType.Setter
         public Builder actions(List<String> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("UserGroupPermissionsAppPermissionsAll", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(String... actions) {
@@ -50,6 +70,7 @@ public final class UserGroupPermissionsAppPermissionsAll {
         }
         @CustomType.Setter
         public Builder appIds(@Nullable List<String> appIds) {
+
             this.appIds = appIds;
             return this;
         }
@@ -57,10 +78,10 @@ public final class UserGroupPermissionsAppPermissionsAll {
             return appIds(List.of(appIds));
         }
         public UserGroupPermissionsAppPermissionsAll build() {
-            final var o = new UserGroupPermissionsAppPermissionsAll();
-            o.actions = actions;
-            o.appIds = appIds;
-            return o;
+            final var _resultValue = new UserGroupPermissionsAppPermissionsAll();
+            _resultValue.actions = actions;
+            _resultValue.appIds = appIds;
+            return _resultValue;
         }
     }
 }

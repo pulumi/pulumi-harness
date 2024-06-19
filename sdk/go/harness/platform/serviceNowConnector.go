@@ -8,79 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Service Now connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewServiceNowConnector(ctx, "test", &platform.ServiceNowConnectorArgs{
-//				Auth: &platform.ServiceNowConnectorAuthArgs{
-//					Adfs: &platform.ServiceNowConnectorAuthAdfsArgs{
-//						AdfsUrl:        pulumi.String("https://adfs_url.com"),
-//						CertificateRef: pulumi.String("account.certificate_ref"),
-//						ClientIdRef:    pulumi.String("account.client_id_ref"),
-//						PrivateKeyRef:  pulumi.String("account.private_key_ref}"),
-//						ResourceIdRef:  pulumi.String("account.resource_id_ref"),
-//					},
-//					AuthType: pulumi.String("AdfsClientCredentialsWithCertificate"),
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description:   pulumi.String("test"),
-//				Identifier:    pulumi.String("identifier"),
-//				ServiceNowUrl: pulumi.String("https://servicenow.com"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level service now connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <connector_id>
-//
+// $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <connector_id>
 // ```
 //
-//	Import org level service now connector
+// # Import org level service now connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level service now connector
+// # Import project level service now connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type ServiceNowConnector struct {
 	pulumi.CustomResourceState
@@ -127,7 +78,7 @@ func NewServiceNowConnector(ctx *pulumi.Context,
 	if args.ServiceNowUrl == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceNowUrl'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceNowConnector
 	err := ctx.RegisterResource("harness:platform/serviceNowConnector:ServiceNowConnector", name, args, &resource, opts...)
 	if err != nil {

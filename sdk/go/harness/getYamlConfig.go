@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving a yaml config.
 func LookupYamlConfig(ctx *pulumi.Context, args *LookupYamlConfigArgs, opts ...pulumi.InvokeOption) (*LookupYamlConfigResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupYamlConfigResult
 	err := ctx.Invoke("harness:index/getYamlConfig:getYamlConfig", args, &rv, opts...)
 	if err != nil {

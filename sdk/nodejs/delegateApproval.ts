@@ -11,14 +11,13 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
- * const testDelegate = harness.getDelegate({
+ * const test = harness.getDelegate({
  *     name: "my-delegate",
  * });
- * const testDelegateApproval = new harness.DelegateApproval("testDelegateApproval", {
- *     delegateId: testDelegate.then(testDelegate => testDelegate.id),
+ * const testDelegateApproval = new harness.DelegateApproval("test", {
+ *     delegateId: test.then(test => test.id),
  *     approve: true,
  * });
  * ```
@@ -28,7 +27,7 @@ import * as utilities from "./utilities";
  * Import the status of the delegate approval.
  *
  * ```sh
- *  $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
+ * $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
  * ```
  */
 export class DelegateApproval extends pulumi.CustomResource {

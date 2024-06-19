@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SshCredentialSshAuthenticationSshKeyFile {
+    /**
+     * @return The id of the secret containing the password to use for the ssh key
+     * 
+     */
     private @Nullable String passphraseSecretId;
+    /**
+     * @return The path to the key file on the delegate
+     * 
+     */
     private String path;
 
     private SshCredentialSshAuthenticationSshKeyFile() {}
+    /**
+     * @return The id of the secret containing the password to use for the ssh key
+     * 
+     */
     public Optional<String> passphraseSecretId() {
         return Optional.ofNullable(this.passphraseSecretId);
     }
+    /**
+     * @return The path to the key file on the delegate
+     * 
+     */
     public String path() {
         return this.path;
     }
@@ -42,19 +59,23 @@ public final class SshCredentialSshAuthenticationSshKeyFile {
 
         @CustomType.Setter
         public Builder passphraseSecretId(@Nullable String passphraseSecretId) {
+
             this.passphraseSecretId = passphraseSecretId;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationSshKeyFile", "path");
+            }
+            this.path = path;
             return this;
         }
         public SshCredentialSshAuthenticationSshKeyFile build() {
-            final var o = new SshCredentialSshAuthenticationSshKeyFile();
-            o.passphraseSecretId = passphraseSecretId;
-            o.path = path;
-            return o;
+            final var _resultValue = new SshCredentialSshAuthenticationSshKeyFile();
+            _resultValue.passphraseSecretId = passphraseSecretId;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

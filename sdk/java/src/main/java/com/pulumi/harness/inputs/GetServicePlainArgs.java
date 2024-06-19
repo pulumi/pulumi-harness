@@ -4,6 +4,7 @@
 package com.pulumi.harness.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetServicePlainArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetServicePlainArgs", "appId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetServicePlainArgs", "id");
+            }
             return $;
         }
     }

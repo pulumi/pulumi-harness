@@ -9,44 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Create user at account level
- * const example = new harness.platform.User("example", {
- *     email: "john.doe@harness.io",
- *     roleBindings: [{
- *         managedRole: true,
- *         resourceGroupIdentifier: "_all_project_level_resources",
- *         resourceGroupName: "All Project Level Resources",
- *         roleIdentifier: "_project_viewer",
- *         roleName: "Project Viewer",
- *     }],
- *     userGroups: ["_project_all_users"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level
  *
  * ```sh
- *  $ pulumi import harness:platform/user:User john_doe <email_id>
+ * $ pulumi import harness:platform/user:User john_doe <email_id>
  * ```
  *
- *  Import org level
+ * Import org level
  *
  * ```sh
- *  $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>
+ * $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>
  * ```
  *
- *  Import project level
+ * Import project level
  *
  * ```sh
- *  $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
+ * $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
  * ```
  */
 export class User extends pulumi.CustomResource {

@@ -7,42 +7,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating tokens.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Create token for project level apikey
- * const test = new harness.platform.Token("test", {
- *     accountId: "account_id",
- *     apikeyId: "apikey_id",
- *     apikeyType: "USER",
- *     identifier: "test_token",
- *     orgId: "org_id",
- *     parentId: "apikey_parent_id",
- *     projectId: "project_id",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level token
  *
  * ```sh
- *  $ pulumi import harness:platform/token:Token harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
+ * $ pulumi import harness:platform/token:Token harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
  * ```
  *
- *  Import org level token
+ * Import org level token
  *
  * ```sh
- *  $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
+ * $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
  * ```
  *
- *  Import project level token
+ * Import project level token
  *
  * ```sh
- *  $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
+ * $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
  * ```
  */
 export class Token extends pulumi.CustomResource {

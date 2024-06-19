@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,16 +14,32 @@ public final class InfrastructureDefinitionAwsSshTagArgs extends com.pulumi.reso
 
     public static final InfrastructureDefinitionAwsSshTagArgs Empty = new InfrastructureDefinitionAwsSshTagArgs();
 
+    /**
+     * The key of the tag.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * The value of the tag.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -52,27 +69,55 @@ public final class InfrastructureDefinitionAwsSshTagArgs extends com.pulumi.reso
             $ = new InfrastructureDefinitionAwsSshTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
         public InfrastructureDefinitionAwsSshTagArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshTagArgs", "key");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshTagArgs", "value");
+            }
             return $;
         }
     }

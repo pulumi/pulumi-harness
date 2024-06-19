@@ -9,101 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an ssh key type secret.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * const keyTabFilePath = new harness.platform.SecretSshkey("keyTabFilePath", {
- *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     port: 22,
- *     kerberos: {
- *         tgtKeyTabFilePathSpec: {
- *             keyPath: "key_path",
- *         },
- *         principal: "principal",
- *         realm: "realm",
- *         tgtGenerationMethod: "KeyTabFilePath",
- *     },
- * });
- * const _tgtPassword = new harness.platform.SecretSshkey(" tgtPassword", {
- *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     port: 22,
- *     kerberos: {
- *         tgtPasswordSpec: {
- *             password: `account.${secret.id}`,
- *         },
- *         principal: "principal",
- *         realm: "realm",
- *         tgtGenerationMethod: "Password",
- *     },
- * });
- * const sshkeyReference = new harness.platform.SecretSshkey("sshkeyReference", {
- *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     port: 22,
- *     ssh: {
- *         sshkeyReferenceCredential: {
- *             userName: "user_name",
- *             key: `account.${key.id}`,
- *             encryptedPassphrase: `account.${secret.id}`,
- *         },
- *         credentialType: "KeyReference",
- *     },
- * });
- * const _sshkeyPath = new harness.platform.SecretSshkey(" sshkeyPath", {
- *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     port: 22,
- *     ssh: {
- *         sshkeyPathCredential: {
- *             userName: "user_name",
- *             keyPath: "key_path",
- *             encryptedPassphrase: "encrypted_passphrase",
- *         },
- *         credentialType: "KeyPath",
- *     },
- * });
- * const sshPassword = new harness.platform.SecretSshkey("sshPassword", {
- *     identifier: "identifier",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     port: 22,
- *     ssh: {
- *         sshPasswordCredential: {
- *             userName: "user_name",
- *             password: `account.${secret.id}`,
- *         },
- *         credentialType: "Password",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Import account level secret sshkey
  *
  * ```sh
- *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
+ * $ pulumi import harness:platform/secretSshkey:SecretSshkey example <secret_sshkey_id>
  * ```
  *
- *  Import org level secret sshkey
+ * Import org level secret sshkey
  *
  * ```sh
- *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
+ * $ pulumi import harness:platform/secretSshkey:SecretSshkey example <ord_id>/<secret_sshkey_id>
  * ```
  *
- *  Import project level secret sshkey
+ * Import project level secret sshkey
  *
  * ```sh
- *  $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
+ * $ pulumi import harness:platform/secretSshkey:SecretSshkey example <org_id>/<project_id>/<secret_sshkey_id>
  * ```
  */
 export class SecretSshkey extends pulumi.CustomResource {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,13 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// For account level template
 //			_, err := platform.LookupTemplate(ctx, &platform.LookupTemplateArgs{
 //				Identifier: pulumi.StringRef("identifier"),
 //				Version:    pulumi.StringRef("version"),
@@ -33,19 +35,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// For org level template
 //			_, err = platform.LookupTemplate(ctx, &platform.LookupTemplateArgs{
 //				Identifier: pulumi.StringRef("identifier"),
-//				OrgId:      pulumi.StringRef("org_id"),
 //				Version:    pulumi.StringRef("version"),
+//				OrgId:      pulumi.StringRef("org_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// For project level template
 //			_, err = platform.LookupTemplate(ctx, &platform.LookupTemplateArgs{
 //				Identifier: pulumi.StringRef("identifier"),
+//				Version:    pulumi.StringRef("version"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
-//				Version:    pulumi.StringRef("version"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,7 +60,7 @@ import (
 //
 // ```
 func LookupTemplate(ctx *pulumi.Context, args *LookupTemplateArgs, opts ...pulumi.InvokeOption) (*LookupTemplateResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateResult
 	err := ctx.Invoke("harness:platform/getTemplate:getTemplate", args, &rv, opts...)
 	if err != nil {

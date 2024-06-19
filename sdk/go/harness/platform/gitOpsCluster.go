@@ -8,112 +8,24 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness Gitops Cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGitOpsCluster(ctx, "exampleGitOpsCluster", &platform.GitOpsClusterArgs{
-//				Identifier: pulumi.String("identifier"),
-//				AccountId:  pulumi.String("account_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				OrgId:      pulumi.String("org_id"),
-//				AgentId:    pulumi.String("agent_id"),
-//				Requests: platform.GitOpsClusterRequestArray{
-//					&platform.GitOpsClusterRequestArgs{
-//						Upsert: pulumi.Bool(false),
-//						Clusters: platform.GitOpsClusterRequestClusterArray{
-//							&platform.GitOpsClusterRequestClusterArgs{
-//								Server: pulumi.String("https://kubernetes.default.svc"),
-//								Name:   pulumi.String("name"),
-//								Configs: platform.GitOpsClusterRequestClusterConfigArray{
-//									&platform.GitOpsClusterRequestClusterConfigArgs{
-//										TlsClientConfigs: platform.GitOpsClusterRequestClusterConfigTlsClientConfigArray{
-//											&platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs{
-//												Insecure: pulumi.Bool(true),
-//											},
-//										},
-//										ClusterConnectionType: pulumi.String("IN_CLUSTER"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewGitOpsCluster(ctx, "examplePlatform/gitOpsClusterGitOpsCluster", &platform.GitOpsClusterArgs{
-//				Identifier: pulumi.String("identifier"),
-//				AccountId:  pulumi.String("account_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				OrgId:      pulumi.String("org_id"),
-//				AgentId:    pulumi.String("agent_id"),
-//				Requests: platform.GitOpsClusterRequestArray{
-//					&platform.GitOpsClusterRequestArgs{
-//						Upsert: pulumi.Bool(false),
-//						Tags: pulumi.StringArray{
-//							pulumi.String("foo:bar"),
-//						},
-//						Clusters: platform.GitOpsClusterRequestClusterArray{
-//							&platform.GitOpsClusterRequestClusterArgs{
-//								Server: pulumi.String("https://kubernetes.default.svc"),
-//								Name:   pulumi.String("name"),
-//								Configs: platform.GitOpsClusterRequestClusterConfigArray{
-//									&platform.GitOpsClusterRequestClusterConfigArgs{
-//										TlsClientConfigs: platform.GitOpsClusterRequestClusterConfigTlsClientConfigArray{
-//											&platform.GitOpsClusterRequestClusterConfigTlsClientConfigArgs{
-//												Insecure: pulumi.Bool(true),
-//											},
-//										},
-//										ClusterConnectionType: pulumi.String("IN_CLUSTER"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import a Account level Gitops Cluster
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
-//
+// $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
 // ```
 //
-//	Import a Project level Gitops Cluster
+// # Import a Project level Gitops Cluster
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
-//
+// $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
 // ```
 type GitOpsCluster struct {
 	pulumi.CustomResourceState
@@ -150,7 +62,7 @@ func NewGitOpsCluster(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsCluster
 	err := ctx.RegisterResource("harness:platform/gitOpsCluster:GitOpsCluster", name, args, &resource, opts...)
 	if err != nil {

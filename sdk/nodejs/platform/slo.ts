@@ -14,19 +14,19 @@ import * as utilities from "../utilities";
  * Import account level SLO
  *
  * ```sh
- *  $ pulumi import harness:platform/slo:Slo example <slo_id>
+ * $ pulumi import harness:platform/slo:Slo example <slo_id>
  * ```
  *
- *  Import organization level SLO
+ * Import organization level SLO
  *
  * ```sh
- *  $ pulumi import harness:platform/slo:Slo example <org_id>/<slo_id>
+ * $ pulumi import harness:platform/slo:Slo example <org_id>/<slo_id>
  * ```
  *
- *  Import project level SLO
+ * Import project level SLO
  *
  * ```sh
- *  $ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
+ * $ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
  * ```
  */
 export class Slo extends pulumi.CustomResource {

@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.SshCredentialKerberosAuthenticationTgtGenerationMethodArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -189,9 +190,15 @@ public final class SshCredentialKerberosAuthenticationArgs extends com.pulumi.re
         }
 
         public SshCredentialKerberosAuthenticationArgs build() {
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.principal = Objects.requireNonNull($.principal, "expected parameter 'principal' to be non-null");
-            $.realm = Objects.requireNonNull($.realm, "expected parameter 'realm' to be non-null");
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("SshCredentialKerberosAuthenticationArgs", "port");
+            }
+            if ($.principal == null) {
+                throw new MissingRequiredPropertyException("SshCredentialKerberosAuthenticationArgs", "principal");
+            }
+            if ($.realm == null) {
+                throw new MissingRequiredPropertyException("SshCredentialKerberosAuthenticationArgs", "realm");
+            }
             return $;
         }
     }

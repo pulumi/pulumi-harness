@@ -13,18 +13,19 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.PlatformCcmFilters("test", {
- *     filterProperties: {
- *         filterType: "CCMRecommendation",
- *         tags: ["foo:bar"],
- *     },
- *     filterVisibility: "EveryOne",
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "CCMRecommendation",
+ *     filterProperties: {
+ *         tags: ["foo:bar"],
+ *         filterType: "CCMRecommendation",
+ *     },
+ *     filterVisibility: "EveryOne",
  * });
  * ```
  *
@@ -33,19 +34,19 @@ import * as utilities from "./utilities";
  * Import account level ccm filter
  *
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <filter_id>/<type>
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <filter_id>/<type>
  * ```
  *
- *  Import org level ccm filter
+ * Import org level ccm filter
  *
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <ord_id>/<filter_id>/<type>
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <ord_id>/<filter_id>/<type>
  * ```
  *
- *  Import project level ccm filter
+ * Import project level ccm filter
  *
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example <org_id>/<project_id>/<filter_id>/<type>
  * ```
  */
 export class PlatformCcmFilters extends pulumi.CustomResource {

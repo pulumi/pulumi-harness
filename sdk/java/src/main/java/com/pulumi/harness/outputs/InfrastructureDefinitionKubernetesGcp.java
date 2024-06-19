@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,31 +85,43 @@ public final class InfrastructureDefinitionKubernetesGcp {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesGcp", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesGcp", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesGcp", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder releaseName(String releaseName) {
-            this.releaseName = Objects.requireNonNull(releaseName);
+            if (releaseName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesGcp", "releaseName");
+            }
+            this.releaseName = releaseName;
             return this;
         }
         public InfrastructureDefinitionKubernetesGcp build() {
-            final var o = new InfrastructureDefinitionKubernetesGcp();
-            o.cloudProviderName = cloudProviderName;
-            o.clusterName = clusterName;
-            o.namespace = namespace;
-            o.releaseName = releaseName;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionKubernetesGcp();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.clusterName = clusterName;
+            _resultValue.namespace = namespace;
+            _resultValue.releaseName = releaseName;
+            return _resultValue;
         }
     }
 }

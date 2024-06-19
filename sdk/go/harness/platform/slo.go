@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,25 +19,19 @@ import (
 // # Import account level SLO
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/slo:Slo example <slo_id>
-//
+// $ pulumi import harness:platform/slo:Slo example <slo_id>
 // ```
 //
-//	Import organization level SLO
+// # Import organization level SLO
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/slo:Slo example <org_id>/<slo_id>
-//
+// $ pulumi import harness:platform/slo:Slo example <org_id>/<slo_id>
 // ```
 //
-//	Import project level SLO
+// # Import project level SLO
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
-//
+// $ pulumi import harness:platform/slo:Slo example <org_id>/<project_id>/<slo_id>
 // ```
 type Slo struct {
 	pulumi.CustomResourceState
@@ -67,7 +62,7 @@ func NewSlo(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Slo
 	err := ctx.RegisterResource("harness:platform/slo:Slo", name, args, &resource, opts...)
 	if err != nil {

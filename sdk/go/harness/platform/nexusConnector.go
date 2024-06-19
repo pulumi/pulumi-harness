@@ -8,70 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Nexus connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewNexusConnector(ctx, "test", &platform.NexusConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url:     pulumi.String("https://nexus.example.com"),
-//				Version: pulumi.String("version"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level nexus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <connector_id>
-//
+// $ pulumi import harness:platform/nexusConnector:NexusConnector example <connector_id>
 // ```
 //
-//	Import org level nexus connector
+// # Import org level nexus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/nexusConnector:NexusConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level nexus connector
+// # Import project level nexus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type NexusConnector struct {
 	pulumi.CustomResourceState
@@ -114,7 +74,7 @@ func NewNexusConnector(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NexusConnector
 	err := ctx.RegisterResource("harness:platform/nexusConnector:NexusConnector", name, args, &resource, opts...)
 	if err != nil {

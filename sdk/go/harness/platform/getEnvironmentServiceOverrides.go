@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupEnvironmentServiceOverrides(ctx, &platform.LookupEnvironmentServiceOverridesArgs{
-//				EnvId:     "environmentIdentifier",
 //				OrgId:     pulumi.StringRef("orgIdentifier"),
 //				ProjectId: pulumi.StringRef("projectIdentifier"),
+//				EnvId:     "environmentIdentifier",
 //				ServiceId: pulumi.StringRef("serviceIdentifier"),
 //			}, nil)
 //			if err != nil {
@@ -41,7 +42,7 @@ import (
 //
 // ```
 func LookupEnvironmentServiceOverrides(ctx *pulumi.Context, args *LookupEnvironmentServiceOverridesArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentServiceOverridesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentServiceOverridesResult
 	err := ctx.Invoke("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args, &rv, opts...)
 	if err != nil {

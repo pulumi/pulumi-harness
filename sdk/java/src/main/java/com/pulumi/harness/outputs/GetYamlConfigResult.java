@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,37 +101,50 @@ public final class GetYamlConfigResult {
 
         @CustomType.Setter
         public Builder appId(@Nullable String appId) {
+
             this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetYamlConfigResult", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetYamlConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetYamlConfigResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetYamlConfigResult", "path");
+            }
+            this.path = path;
             return this;
         }
         public GetYamlConfigResult build() {
-            final var o = new GetYamlConfigResult();
-            o.appId = appId;
-            o.content = content;
-            o.id = id;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetYamlConfigResult();
+            _resultValue.appId = appId;
+            _resultValue.content = content;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

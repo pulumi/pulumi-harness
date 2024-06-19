@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,28 +72,37 @@ public final class InfrastructureDefinitionDatacenterSsh {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSsh", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionAttributesName(String hostConnectionAttributesName) {
-            this.hostConnectionAttributesName = Objects.requireNonNull(hostConnectionAttributesName);
+            if (hostConnectionAttributesName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSsh", "hostConnectionAttributesName");
+            }
+            this.hostConnectionAttributesName = hostConnectionAttributesName;
             return this;
         }
         @CustomType.Setter
         public Builder hostnames(List<String> hostnames) {
-            this.hostnames = Objects.requireNonNull(hostnames);
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSsh", "hostnames");
+            }
+            this.hostnames = hostnames;
             return this;
         }
         public Builder hostnames(String... hostnames) {
             return hostnames(List.of(hostnames));
         }
         public InfrastructureDefinitionDatacenterSsh build() {
-            final var o = new InfrastructureDefinitionDatacenterSsh();
-            o.cloudProviderName = cloudProviderName;
-            o.hostConnectionAttributesName = hostConnectionAttributesName;
-            o.hostnames = hostnames;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionDatacenterSsh();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.hostConnectionAttributesName = hostConnectionAttributesName;
+            _resultValue.hostnames = hostnames;
+            return _resultValue;
         }
     }
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,14 +20,16 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudprovider.NewDatacenter(ctx, "example", nil)
+//			_, err := cloudprovider.NewDatacenter(ctx, "example", &cloudprovider.DatacenterArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -41,9 +44,7 @@ import (
 // Import using the Harness datacenter cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
 // ```
 type Datacenter struct {
 	pulumi.CustomResourceState
@@ -61,7 +62,7 @@ func NewDatacenter(ctx *pulumi.Context,
 		args = &DatacenterArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Datacenter
 	err := ctx.RegisterResource("harness:cloudprovider/datacenter:Datacenter", name, args, &resource, opts...)
 	if err != nil {

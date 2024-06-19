@@ -89,21 +89,25 @@ public final class GetSecretManagerResult {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable Boolean default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder usageScopes(@Nullable List<GetSecretManagerUsageScope> usageScopes) {
+
             this.usageScopes = usageScopes;
             return this;
         }
@@ -111,12 +115,12 @@ public final class GetSecretManagerResult {
             return usageScopes(List.of(usageScopes));
         }
         public GetSecretManagerResult build() {
-            final var o = new GetSecretManagerResult();
-            o.default_ = default_;
-            o.id = id;
-            o.name = name;
-            o.usageScopes = usageScopes;
-            return o;
+            final var _resultValue = new GetSecretManagerResult();
+            _resultValue.default_ = default_;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.usageScopes = usageScopes;
+            return _resultValue;
         }
     }
 }

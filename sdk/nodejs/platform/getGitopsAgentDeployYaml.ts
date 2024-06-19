@@ -14,11 +14,11 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getGitopsAgentDeployYaml({
- *     accountId: "account_id",
  *     identifier: "identifier",
- *     namespace: "namespace",
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     namespace: "namespace",
  * });
  * ```
  */
@@ -103,11 +103,11 @@ export interface GetGitopsAgentDeployYamlResult {
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getGitopsAgentDeployYaml({
- *     accountId: "account_id",
  *     identifier: "identifier",
- *     namespace: "namespace",
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     namespace: "namespace",
  * });
  * ```
  */

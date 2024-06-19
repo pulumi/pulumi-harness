@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class InfrastructureDefinitionAzureWebappArgs extends com.pulumi.re
         }
 
         public InfrastructureDefinitionAzureWebappArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.resourceGroup = Objects.requireNonNull($.resourceGroup, "expected parameter 'resourceGroup' to be non-null");
-            $.subscriptionId = Objects.requireNonNull($.subscriptionId, "expected parameter 'subscriptionId' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebappArgs", "cloudProviderName");
+            }
+            if ($.resourceGroup == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebappArgs", "resourceGroup");
+            }
+            if ($.subscriptionId == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureWebappArgs", "subscriptionId");
+            }
             return $;
         }
     }

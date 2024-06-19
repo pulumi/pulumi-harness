@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleCodedeploy = new harness.service.Codedeploy("exampleCodedeploy", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleCodedeploy = new harness.service.Codedeploy("example", {
+ *     appId: example.id,
+ *     name: "aws-codedeploy",
  *     description: "Service for AWS codedeploy applications.",
  * });
  * ```
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/codedeploy:Codedeploy example <app_id>/<svc_id>
+ * $ pulumi import harness:service/codedeploy:Codedeploy example <app_id>/<svc_id>
  * ```
  */
 export class Codedeploy extends pulumi.CustomResource {

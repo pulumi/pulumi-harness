@@ -8,73 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewUser(ctx, "example", &platform.UserArgs{
-//				Email: pulumi.String("john.doe@harness.io"),
-//				RoleBindings: platform.UserRoleBindingArray{
-//					&platform.UserRoleBindingArgs{
-//						ManagedRole:             pulumi.Bool(true),
-//						ResourceGroupIdentifier: pulumi.String("_all_project_level_resources"),
-//						ResourceGroupName:       pulumi.String("All Project Level Resources"),
-//						RoleIdentifier:          pulumi.String("_project_viewer"),
-//						RoleName:                pulumi.String("Project Viewer"),
-//					},
-//				},
-//				UserGroups: pulumi.StringArray{
-//					pulumi.String("_project_all_users"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/user:User john_doe <email_id>
-//
+// $ pulumi import harness:platform/user:User john_doe <email_id>
 // ```
 //
-//	Import org level
+// # Import org level
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>
-//
+// $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>
 // ```
 //
-//	Import project level
+// # Import project level
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
-//
+// $ pulumi import harness:platform/user:User john_doe <email_id>/<org_id>/<project_id>
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -114,7 +71,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserGroups == nil {
 		return nil, errors.New("invalid value for required argument 'UserGroups'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("harness:platform/user:User", name, args, &resource, opts...)
 	if err != nil {

@@ -115,43 +115,49 @@ public final class GetApplicationResult {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder gitSyncConnectorId(@Nullable String gitSyncConnectorId) {
+
             this.gitSyncConnectorId = gitSyncConnectorId;
             return this;
         }
         @CustomType.Setter
         public Builder gitSyncEnabled(@Nullable Boolean gitSyncEnabled) {
+
             this.gitSyncEnabled = gitSyncEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isManualTriggerAuthorized(@Nullable Boolean isManualTriggerAuthorized) {
+
             this.isManualTriggerAuthorized = isManualTriggerAuthorized;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         public GetApplicationResult build() {
-            final var o = new GetApplicationResult();
-            o.description = description;
-            o.gitSyncConnectorId = gitSyncConnectorId;
-            o.gitSyncEnabled = gitSyncEnabled;
-            o.id = id;
-            o.isManualTriggerAuthorized = isManualTriggerAuthorized;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetApplicationResult();
+            _resultValue.description = description;
+            _resultValue.gitSyncConnectorId = gitSyncConnectorId;
+            _resultValue.gitSyncEnabled = gitSyncEnabled;
+            _resultValue.id = id;
+            _resultValue.isManualTriggerAuthorized = isManualTriggerAuthorized;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -143,55 +144,73 @@ public final class InfrastructureDefinitionAwsWinrm {
 
         @CustomType.Setter
         public Builder autoscalingGroupName(String autoscalingGroupName) {
-            this.autoscalingGroupName = Objects.requireNonNull(autoscalingGroupName);
+            if (autoscalingGroupName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrm", "autoscalingGroupName");
+            }
+            this.autoscalingGroupName = autoscalingGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrm", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder desiredCapacity(@Nullable Integer desiredCapacity) {
+
             this.desiredCapacity = desiredCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionAttrsName(String hostConnectionAttrsName) {
-            this.hostConnectionAttrsName = Objects.requireNonNull(hostConnectionAttrsName);
+            if (hostConnectionAttrsName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrm", "hostConnectionAttrsName");
+            }
+            this.hostConnectionAttrsName = hostConnectionAttrsName;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionType(String hostConnectionType) {
-            this.hostConnectionType = Objects.requireNonNull(hostConnectionType);
+            if (hostConnectionType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrm", "hostConnectionType");
+            }
+            this.hostConnectionType = hostConnectionType;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameConvention(@Nullable String hostnameConvention) {
+
             this.hostnameConvention = hostnameConvention;
             return this;
         }
         @CustomType.Setter
         public Builder loadbalancerName(@Nullable String loadbalancerName) {
+
             this.loadbalancerName = loadbalancerName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrm", "region");
+            }
+            this.region = region;
             return this;
         }
         public InfrastructureDefinitionAwsWinrm build() {
-            final var o = new InfrastructureDefinitionAwsWinrm();
-            o.autoscalingGroupName = autoscalingGroupName;
-            o.cloudProviderName = cloudProviderName;
-            o.desiredCapacity = desiredCapacity;
-            o.hostConnectionAttrsName = hostConnectionAttrsName;
-            o.hostConnectionType = hostConnectionType;
-            o.hostnameConvention = hostnameConvention;
-            o.loadbalancerName = loadbalancerName;
-            o.region = region;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsWinrm();
+            _resultValue.autoscalingGroupName = autoscalingGroupName;
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.desiredCapacity = desiredCapacity;
+            _resultValue.hostConnectionAttrsName = hostConnectionAttrsName;
+            _resultValue.hostConnectionType = hostConnectionType;
+            _resultValue.hostnameConvention = hostnameConvention;
+            _resultValue.loadbalancerName = loadbalancerName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

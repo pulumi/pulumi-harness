@@ -4,12 +4,16 @@
 package platform
 
 import (
+	"context"
+	"reflect"
+
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving the current user based on the API key.
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
 	err := ctx.Invoke("harness:platform/getCurrentUser:getCurrentUser", nil, &rv, opts...)
 	if err != nil {
@@ -48,4 +52,104 @@ type GetCurrentUserResult struct {
 	Token string `pulumi:"token"`
 	// Unique identifier of the user.
 	Uuid string `pulumi:"uuid"`
+}
+
+func GetCurrentUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResult, error) {
+		r, err := GetCurrentUser(ctx, opts...)
+		var s GetCurrentUserResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetCurrentUserResultOutput)
+}
+
+// A collection of values returned by getCurrentUser.
+type GetCurrentUserResultOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentUserResult)(nil)).Elem()
+}
+
+func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutput() GetCurrentUserResultOutput {
+	return o
+}
+
+func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutputWithContext(ctx context.Context) GetCurrentUserResultOutput {
+	return o
+}
+
+// Whether the user is an administrator.
+func (o GetCurrentUserResultOutput) Admin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) bool { return v.Admin }).(pulumi.BoolOutput)
+}
+
+// Billing frequency of the user.
+func (o GetCurrentUserResultOutput) BillingFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.BillingFrequency }).(pulumi.StringOutput)
+}
+
+// Default account ID of the user.
+func (o GetCurrentUserResultOutput) DefaultAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.DefaultAccountId }).(pulumi.StringOutput)
+}
+
+// Edition of the platform being used.
+func (o GetCurrentUserResultOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Email address of the user.
+func (o GetCurrentUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Whether the user's email address has been verified.
+func (o GetCurrentUserResultOutput) EmailVerified() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) bool { return v.EmailVerified }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCurrentUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Intent of the user.
+func (o GetCurrentUserResultOutput) Intent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Intent }).(pulumi.StringOutput)
+}
+
+// Whether 2FA is enabled for the user.
+func (o GetCurrentUserResultOutput) IsTwoFactorAuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) bool { return v.IsTwoFactorAuthEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether or not the user account is locked.
+func (o GetCurrentUserResultOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// Name of the user.
+func (o GetCurrentUserResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signup action of the user.
+func (o GetCurrentUserResultOutput) SignupAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.SignupAction }).(pulumi.StringOutput)
+}
+
+// Token used to authenticate the user.
+func (o GetCurrentUserResultOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Token }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the user.
+func (o GetCurrentUserResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCurrentUserResultOutput{})
 }

@@ -8,77 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an Tas in Harness.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewTasConnector(ctx, "tas", &platform.TasConnectorArgs{
-//				Credentials: &platform.TasConnectorCredentialsArgs{
-//					TasManualDetails: &platform.TasConnectorCredentialsTasManualDetailsArgs{
-//						EndpointUrl: pulumi.String("https://tas.example.com"),
-//						PasswordRef: pulumi.String("account.secret_id"),
-//						UsernameRef: pulumi.String("account.username_id"),
-//					},
-//					Type: pulumi.String("ManualConfig"),
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description:       pulumi.String("description of tas connector"),
-//				ExecuteOnDelegate: pulumi.Bool(true),
-//				Identifier:        pulumi.String("example_tas_cloud_provider"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level tas connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/tasConnector:TasConnector example <connector_id>
-//
+// $ pulumi import harness:platform/tasConnector:TasConnector example <connector_id>
 // ```
 //
-//	Import organization level tas connector
+// # Import organization level tas connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<connector_id>
-//
+// $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<connector_id>
 // ```
 //
-//	Import project level tas connector
+// # Import project level tas connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/tasConnector:TasConnector example <organization_id>/<project_id>/<connector_id>
 // ```
 type TasConnector struct {
 	pulumi.CustomResourceState
@@ -116,7 +69,7 @@ func NewTasConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TasConnector
 	err := ctx.RegisterResource("harness:platform/tasConnector:TasConnector", name, args, &resource, opts...)
 	if err != nil {

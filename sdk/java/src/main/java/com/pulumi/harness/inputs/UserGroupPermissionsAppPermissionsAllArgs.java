@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,16 +17,32 @@ public final class UserGroupPermissionsAppPermissionsAllArgs extends com.pulumi.
 
     public static final UserGroupPermissionsAppPermissionsAllArgs Empty = new UserGroupPermissionsAppPermissionsAllArgs();
 
+    /**
+     * The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+     * 
+     */
     @Import(name="actions", required=true)
     private Output<List<String>> actions;
 
+    /**
+     * @return The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+     * 
+     */
     public Output<List<String>> actions() {
         return this.actions;
     }
 
+    /**
+     * The application IDs to which the permission applies. Leave empty to apply to all applications.
+     * 
+     */
     @Import(name="appIds")
     private @Nullable Output<List<String>> appIds;
 
+    /**
+     * @return The application IDs to which the permission applies. Leave empty to apply to all applications.
+     * 
+     */
     public Optional<Output<List<String>>> appIds() {
         return Optional.ofNullable(this.appIds);
     }
@@ -55,34 +72,72 @@ public final class UserGroupPermissionsAppPermissionsAllArgs extends com.pulumi.
             $ = new UserGroupPermissionsAppPermissionsAllArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actions The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(Output<List<String>> actions) {
             $.actions = actions;
             return this;
         }
 
+        /**
+         * @param actions The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(List<String> actions) {
             return actions(Output.of(actions));
         }
 
+        /**
+         * @param actions The actions allowed to be performed. Valid options are CREATE, READ, UPDATE, DELETE, EXECUTE*WORKFLOW, EXECUTE*PIPELINE, ROLLBACK_WORKFLOW
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
 
+        /**
+         * @param appIds The application IDs to which the permission applies. Leave empty to apply to all applications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appIds(@Nullable Output<List<String>> appIds) {
             $.appIds = appIds;
             return this;
         }
 
+        /**
+         * @param appIds The application IDs to which the permission applies. Leave empty to apply to all applications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appIds(List<String> appIds) {
             return appIds(Output.of(appIds));
         }
 
+        /**
+         * @param appIds The application IDs to which the permission applies. Leave empty to apply to all applications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appIds(String... appIds) {
             return appIds(List.of(appIds));
         }
 
         public UserGroupPermissionsAppPermissionsAllArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("UserGroupPermissionsAppPermissionsAllArgs", "actions");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipelineFilters(ctx, "test", &platform.PipelineFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("PipelineExecution"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
-//					FilterType: pulumi.String("PipelineExecution"),
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
 //					},
+//					FilterType: pulumi.String("PipelineExecution"),
 //				},
 //				FilterVisibility: pulumi.String("EveryOne"),
-//				Identifier:       pulumi.String("identifier"),
-//				OrgId:            pulumi.String("org_id"),
-//				ProjectId:        pulumi.String("project_id"),
-//				Type:             pulumi.String("PipelineExecution"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level pipeline filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pipelineFilters:PipelineFilters example <filter_id>/<type>
-//
+// $ pulumi import harness:platform/pipelineFilters:PipelineFilters example <filter_id>/<type>
 // ```
 //
-//	Import org level pipeline filter
+// # Import org level pipeline filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pipelineFilters:PipelineFilters example <ord_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:platform/pipelineFilters:PipelineFilters example <ord_id>/<filter_id>/<type>
 // ```
 //
-//	Import project level pipeline filter
+// # Import project level pipeline filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pipelineFilters:PipelineFilters example <org_id>/<project_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:platform/pipelineFilters:PipelineFilters example <org_id>/<project_id>/<filter_id>/<type>
 // ```
 type PipelineFilters struct {
 	pulumi.CustomResourceState
@@ -109,7 +105,7 @@ func NewPipelineFilters(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PipelineFilters
 	err := ctx.RegisterResource("harness:platform/pipelineFilters:PipelineFilters", name, args, &resource, opts...)
 	if err != nil {

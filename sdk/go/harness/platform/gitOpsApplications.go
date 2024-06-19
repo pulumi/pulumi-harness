@@ -8,19 +8,96 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness Gitops Application.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitOpsApplications(ctx, "example", &platform.GitOpsApplicationsArgs{
+//				Applications: platform.GitOpsApplicationsApplicationArray{
+//					&platform.GitOpsApplicationsApplicationArgs{
+//						Metadatas: platform.GitOpsApplicationsApplicationMetadataArray{
+//							&platform.GitOpsApplicationsApplicationMetadataArgs{
+//								Annotations: nil,
+//								Labels: pulumi.StringMap{
+//									"harness.io/serviceRef": pulumi.String("service_id"),
+//									"harness.io/envRef":     pulumi.String("env_id"),
+//								},
+//								Name: pulumi.String("appname123"),
+//							},
+//						},
+//						Specs: platform.GitOpsApplicationsApplicationSpecArray{
+//							&platform.GitOpsApplicationsApplicationSpecArgs{
+//								SyncPolicies: platform.GitOpsApplicationsApplicationSpecSyncPolicyArray{
+//									&platform.GitOpsApplicationsApplicationSpecSyncPolicyArgs{
+//										SyncOptions: pulumi.StringArray{
+//											pulumi.String("PrunePropagationPolicy=undefined"),
+//											pulumi.String("CreateNamespace=false"),
+//											pulumi.String("Validate=false"),
+//											pulumi.String("skipSchemaValidations=false"),
+//											pulumi.String("autoCreateNamespace=false"),
+//											pulumi.String("pruneLast=false"),
+//											pulumi.String("applyOutofSyncOnly=false"),
+//											pulumi.String("Replace=false"),
+//											pulumi.String("retry=false"),
+//										},
+//									},
+//								},
+//								Sources: platform.GitOpsApplicationsApplicationSpecSourceArray{
+//									&platform.GitOpsApplicationsApplicationSpecSourceArgs{
+//										TargetRevision: pulumi.String("master"),
+//										RepoUrl:        pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
+//										Path:           pulumi.String("helm-guestbook"),
+//									},
+//								},
+//								Destinations: platform.GitOpsApplicationsApplicationSpecDestinationArray{
+//									&platform.GitOpsApplicationsApplicationSpecDestinationArgs{
+//										Namespace: pulumi.String("namespace-123"),
+//										Server:    pulumi.String("https://1.3.4.5"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				AccountId:  pulumi.String("account_id"),
+//				Identifier: pulumi.String("identifier"),
+//				ClusterId:  pulumi.String("cluster_id"),
+//				RepoId:     pulumi.String("repo_id"),
+//				AgentId:    pulumi.String("agent_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // # Import a Project level Gitops Application
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
-//
+// $ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
 // ```
 type GitOpsApplications struct {
 	pulumi.CustomResourceState
@@ -99,7 +176,7 @@ func NewGitOpsApplications(ctx *pulumi.Context,
 	if args.RepoId == nil {
 		return nil, errors.New("invalid value for required argument 'RepoId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsApplications
 	err := ctx.RegisterResource("harness:platform/gitOpsApplications:GitOpsApplications", name, args, &resource, opts...)
 	if err != nil {

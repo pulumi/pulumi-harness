@@ -11,52 +11,52 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Service("example", {
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     yaml: `  service:
- *     name: name
- *     identifier: identifier
- *     serviceDefinition:
- *       spec:
- *         manifests:
- *           - manifest:
- *               identifier: manifest1
- *               type: K8sManifest
- *               spec:
- *                 store:
- *                   type: Github
- *                   spec:
- *                     connectorRef: <+input>
- *                     gitFetchType: Branch
- *                     paths:
- *                       - files1
- *                     repoName: <+input>
- *                     branch: master
- *                 skipResourceVersioning: false
- *         configFiles:
- *           - configFile:
- *               identifier: configFile1
- *               spec:
- *                 store:
- *                   type: Harness
- *                   spec:
- *                     files:
- *                       - <+org.description>
- *         variables:
- *           - name: var1
- *             type: String
- *             value: val1
- *           - name: var2
- *             type: String
- *             value: val2
- *       type: Kubernetes
- *     gitOpsEnabled: false
- *
+ *     yaml: `service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
  * `,
  * });
  * ```
@@ -66,19 +66,19 @@ import * as utilities from "../utilities";
  * Import account level service
  *
  * ```sh
- *  $ pulumi import harness:platform/service:Service example <service_id>
+ * $ pulumi import harness:platform/service:Service example <service_id>
  * ```
  *
- *  Import org level service
+ * Import org level service
  *
  * ```sh
- *  $ pulumi import harness:platform/service:Service example <org_id>/<service_id>
+ * $ pulumi import harness:platform/service:Service example <org_id>/<service_id>
  * ```
  *
- *  Import project level service
+ * Import project level service
  *
  * ```sh
- *  $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
+ * $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
  * ```
  */
 export class Service extends pulumi.CustomResource {

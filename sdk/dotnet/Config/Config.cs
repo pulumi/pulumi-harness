@@ -4,11 +4,11 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Lbrlabs.PulumiPackage.Harness
+namespace Pulumi.Harness
 {
     public static class Config
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
         "Double underscore prefix used to avoid conflicts with variable names.")]
         private sealed class __Value<T>
         {

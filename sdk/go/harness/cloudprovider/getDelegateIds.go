@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to get a list of delegate ID's matching the specified search criteria.
 func GetDelegateIds(ctx *pulumi.Context, args *GetDelegateIdsArgs, opts ...pulumi.InvokeOption) (*GetDelegateIdsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDelegateIdsResult
 	err := ctx.Invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", args, &rv, opts...)
 	if err != nil {

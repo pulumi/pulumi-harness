@@ -11,11 +11,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const _this = new harness.platform.Organization("this", {
- *     description: "An example organization",
  *     identifier: "MyOrg",
+ *     name: "My Otganization",
+ *     description: "An example organization",
  *     tags: [
  *         "foo:bar",
  *         "baz:qux",
@@ -28,7 +29,7 @@ import * as utilities from "../utilities";
  * Import using organization id
  *
  * ```sh
- *  $ pulumi import harness:platform/organization:Organization example <organization_id>
+ * $ pulumi import harness:platform/organization:Organization example <organization_id>
  * ```
  */
 export class Organization extends pulumi.CustomResource {

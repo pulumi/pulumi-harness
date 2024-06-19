@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleLambda = new harness.service.Lambda("exampleLambda", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleLambda = new harness.service.Lambda("example", {
+ *     appId: example.id,
+ *     name: "my-lambda-service",
  *     description: "Service for deploying AWS Lambda functions.",
  * });
  * ```
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
+ * $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
  * ```
  */
 export class Lambda extends pulumi.CustomResource {

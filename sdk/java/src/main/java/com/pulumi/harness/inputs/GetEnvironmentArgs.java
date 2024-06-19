@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.GetEnvironmentVariableOverrideArgs;
 import java.lang.String;
 import java.util.List;
@@ -199,7 +200,9 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetEnvironmentArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetEnvironmentArgs", "appId");
+            }
             return $;
         }
     }

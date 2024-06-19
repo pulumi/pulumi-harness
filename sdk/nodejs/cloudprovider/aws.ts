@@ -13,21 +13,23 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const awsAccessKey = new harness.EncryptedText("awsAccessKey", {
+ * const awsAccessKey = new harness.EncryptedText("aws_access_key", {
+ *     name: "aws_access_key",
  *     value: "<ACCESS_KEY_ID>",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
- * const awsSecretKey = new harness.EncryptedText("awsSecretKey", {
+ * const awsSecretKey = new harness.EncryptedText("aws_secret_key", {
+ *     name: "aws_secret_key",
  *     value: "<SECRET_KEY_ID>",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
  * const aws = new harness.cloudprovider.Aws("aws", {
+ *     name: "Example aws cloud provider",
  *     accessKeyIdSecretName: awsAccessKey.name,
  *     secretAccessKeySecretName: awsSecretKey.name,
  * });
@@ -38,7 +40,7 @@ import * as utilities from "../utilities";
  * Import using the Harness aws cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
+ * $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
  * ```
  */
 export class Aws extends pulumi.CustomResource {

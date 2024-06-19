@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,16 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewRoles(ctx, "example", &platform.RolesArgs{
-//				AllowedScopeLevels: pulumi.StringArray{
-//					pulumi.String("account"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("core_resourcegroup_view"),
 //				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
 //				},
 //			})
 //			if err != nil {
@@ -54,25 +56,19 @@ import (
 // # Import account level roles
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roles:Roles example <roles_id>
-//
+// $ pulumi import harness:platform/roles:Roles example <roles_id>
 // ```
 //
-//	Import org level roles
+// # Import org level roles
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
-//
+// $ pulumi import harness:platform/roles:Roles example <ord_id>/<roles_id>
 // ```
 //
-//	Import project level roles
+// # Import project level roles
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
-//
+// $ pulumi import harness:platform/roles:Roles example <org_id>/<project_id>/<roles_id>
 // ```
 type Roles struct {
 	pulumi.CustomResourceState
@@ -105,7 +101,7 @@ func NewRoles(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Roles
 	err := ctx.RegisterResource("harness:platform/roles:Roles", name, args, &resource, opts...)
 	if err != nil {

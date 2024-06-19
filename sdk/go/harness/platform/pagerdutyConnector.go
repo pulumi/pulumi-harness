@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,15 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPagerdutyConnector(ctx, "test", &platform.PagerdutyConnectorArgs{
-//				ApiTokenRef: pulumi.String("account.secret_id"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				ApiTokenRef: pulumi.String("account.secret_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,25 +54,19 @@ import (
 // # Import account level pagerduty connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <connector_id>
-//
+// $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <connector_id>
 // ```
 //
-//	Import org level pagerduty connector
+// # Import org level pagerduty connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level pagerduty connector
+// # Import project level pagerduty connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type PagerdutyConnector struct {
 	pulumi.CustomResourceState
@@ -106,7 +102,7 @@ func NewPagerdutyConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PagerdutyConnector
 	err := ctx.RegisterResource("harness:platform/pagerdutyConnector:PagerdutyConnector", name, args, &resource, opts...)
 	if err != nil {

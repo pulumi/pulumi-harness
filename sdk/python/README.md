@@ -13,13 +13,13 @@ This package is available in many languages in standard packaging formats.
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```
-$ npm install @lbrlabs/pulumi-harness
+$ npm install @pulumi/harness
 ```
 
 or `yarn`:
 
 ```
-$ yarn add @lbrlabs/pulumi-harness
+$ yarn add @pulumi/harness
 ```
 
 ### Python
@@ -27,7 +27,7 @@ $ yarn add @lbrlabs/pulumi-harness
 To use from Python, install using `pip`:
 
 ```
-$ pip install lbrlabs-harness
+$ pip install pulumi-harness
 ```
 
 ### Go
@@ -35,7 +35,7 @@ $ pip install lbrlabs-harness
 To use from Go, use `go get` to grab the latest version of the library
 
 ```
-$ go get github.com/lbrlabs/pulumi-harness/sdk/go/...
+$ go get github.com/pulumi/pulumi-harness/sdk/go/...
 ```
 
 ### .NET
@@ -44,7 +44,7 @@ To use from Dotnet, use `dotnet add package` to install into your project. You m
 
 
 ```
-$ dotnet add package lbrlabs.PulumiPackage.Harness
+$ dotnet add package Pulumi.Harness
 ```
 
 ## Reference

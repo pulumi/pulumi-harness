@@ -11,9 +11,12 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const johnDoe = new harness.User("johnDoe", {email: "john.doe@example.com"});
+ * const johnDoe = new harness.User("john_doe", {
+ *     name: "John Doe",
+ *     email: "john.doe@example.com",
+ * });
  * ```
  *
  * ## Import
@@ -21,7 +24,7 @@ import * as utilities from "./utilities";
  * Import using the email address of the user
  *
  * ```sh
- *  $ pulumi import harness:index/user:User john_doe john.doe@example.com
+ * $ pulumi import harness:index/user:User john_doe john.doe@example.com
  * ```
  */
 export class User extends pulumi.CustomResource {

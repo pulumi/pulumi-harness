@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -214,21 +215,27 @@ public final class InfrastructureDefinitionAwsAmi {
 
         @CustomType.Setter
         public Builder amiDeploymentType(String amiDeploymentType) {
-            this.amiDeploymentType = Objects.requireNonNull(amiDeploymentType);
+            if (amiDeploymentType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmi", "amiDeploymentType");
+            }
+            this.amiDeploymentType = amiDeploymentType;
             return this;
         }
         @CustomType.Setter
         public Builder asgIdentifiesWorkload(@Nullable Boolean asgIdentifiesWorkload) {
+
             this.asgIdentifiesWorkload = asgIdentifiesWorkload;
             return this;
         }
         @CustomType.Setter
         public Builder autoscalingGroupName(@Nullable String autoscalingGroupName) {
+
             this.autoscalingGroupName = autoscalingGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder classicLoadbalancers(@Nullable List<String> classicLoadbalancers) {
+
             this.classicLoadbalancers = classicLoadbalancers;
             return this;
         }
@@ -237,31 +244,41 @@ public final class InfrastructureDefinitionAwsAmi {
         }
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmi", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameConvention(@Nullable String hostnameConvention) {
+
             this.hostnameConvention = hostnameConvention;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmi", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder spotinstCloudProviderName(@Nullable String spotinstCloudProviderName) {
+
             this.spotinstCloudProviderName = spotinstCloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder spotinstConfigJson(@Nullable String spotinstConfigJson) {
+
             this.spotinstConfigJson = spotinstConfigJson;
             return this;
         }
         @CustomType.Setter
         public Builder stageClassicLoadbalancers(@Nullable List<String> stageClassicLoadbalancers) {
+
             this.stageClassicLoadbalancers = stageClassicLoadbalancers;
             return this;
         }
@@ -270,6 +287,7 @@ public final class InfrastructureDefinitionAwsAmi {
         }
         @CustomType.Setter
         public Builder stageTargetGroupArns(@Nullable List<String> stageTargetGroupArns) {
+
             this.stageTargetGroupArns = stageTargetGroupArns;
             return this;
         }
@@ -278,6 +296,7 @@ public final class InfrastructureDefinitionAwsAmi {
         }
         @CustomType.Setter
         public Builder targetGroupArns(@Nullable List<String> targetGroupArns) {
+
             this.targetGroupArns = targetGroupArns;
             return this;
         }
@@ -286,25 +305,26 @@ public final class InfrastructureDefinitionAwsAmi {
         }
         @CustomType.Setter
         public Builder useTrafficShift(@Nullable Boolean useTrafficShift) {
+
             this.useTrafficShift = useTrafficShift;
             return this;
         }
         public InfrastructureDefinitionAwsAmi build() {
-            final var o = new InfrastructureDefinitionAwsAmi();
-            o.amiDeploymentType = amiDeploymentType;
-            o.asgIdentifiesWorkload = asgIdentifiesWorkload;
-            o.autoscalingGroupName = autoscalingGroupName;
-            o.classicLoadbalancers = classicLoadbalancers;
-            o.cloudProviderName = cloudProviderName;
-            o.hostnameConvention = hostnameConvention;
-            o.region = region;
-            o.spotinstCloudProviderName = spotinstCloudProviderName;
-            o.spotinstConfigJson = spotinstConfigJson;
-            o.stageClassicLoadbalancers = stageClassicLoadbalancers;
-            o.stageTargetGroupArns = stageTargetGroupArns;
-            o.targetGroupArns = targetGroupArns;
-            o.useTrafficShift = useTrafficShift;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsAmi();
+            _resultValue.amiDeploymentType = amiDeploymentType;
+            _resultValue.asgIdentifiesWorkload = asgIdentifiesWorkload;
+            _resultValue.autoscalingGroupName = autoscalingGroupName;
+            _resultValue.classicLoadbalancers = classicLoadbalancers;
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.hostnameConvention = hostnameConvention;
+            _resultValue.region = region;
+            _resultValue.spotinstCloudProviderName = spotinstCloudProviderName;
+            _resultValue.spotinstConfigJson = spotinstConfigJson;
+            _resultValue.stageClassicLoadbalancers = stageClassicLoadbalancers;
+            _resultValue.stageTargetGroupArns = stageTargetGroupArns;
+            _resultValue.targetGroupArns = targetGroupArns;
+            _resultValue.useTrafficShift = useTrafficShift;
+            return _resultValue;
         }
     }
 }

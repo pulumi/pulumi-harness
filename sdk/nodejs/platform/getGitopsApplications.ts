@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getGitopsApplications({
- *     accountId: "account_id",
- *     agentId: "agent_id",
  *     identifier: "identifier",
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
  *     repoId: "repo_id",
  * });
  * ```
@@ -255,11 +255,11 @@ export interface GetGitopsApplicationsResult {
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getGitopsApplications({
- *     accountId: "account_id",
- *     agentId: "agent_id",
  *     identifier: "identifier",
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
  *     repoId: "repo_id",
  * });
  * ```

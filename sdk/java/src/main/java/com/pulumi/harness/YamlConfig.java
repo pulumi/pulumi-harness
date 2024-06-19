@@ -18,7 +18,10 @@ import javax.annotation.Nullable;
  * Resource for creating a raw YAML configuration in Harness. Note: This works for all objects EXCEPT application objects. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -39,35 +42,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new YamlConfig(&#34;test&#34;, YamlConfigArgs.builder()        
- *             .content(&#34;&#34;&#34;
- * harnessApiVersion: &#39;1.0&#39;
+ *         var test = new YamlConfig("test", YamlConfigArgs.builder()
+ *             .path("Setup/Cloud Providers/Kubernetes.yaml")
+ *             .content("""
+ * harnessApiVersion: '1.0'
  * type: KUBERNETES_CLUSTER
  * delegateSelectors:
  * - k8s
  * skipValidation: true
  * useKubernetesDelegate: true
- * 
- *             &#34;&#34;&#34;)
- *             .path(&#34;Setup/Cloud Providers/Kubernetes.yaml&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Importing a global config only using the yaml path
  * 
  * ```sh
- *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider &#34;Setup/Cloud Providers/kubernetes.yaml&#34;
+ * $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider &#34;Setup/Cloud Providers/kubernetes.yaml&#34;
  * ```
  * 
- *  Importing a service which requires both the application id and the yaml path.
+ * Importing a service which requires both the application id and the yaml path.
  * 
  * ```sh
- *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider &#34;Setup/Applications/MyApp/Services/MyService/Index.yaml:&lt;APPLICATION_ID&gt;&#34;
+ * $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider &#34;Setup/Applications/MyApp/Services/MyService/Index.yaml:&lt;APPLICATION_ID&gt;&#34;
  * ```
  * 
  */

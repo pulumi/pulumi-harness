@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +39,7 @@ import (
 //
 // ```
 func LookupAzureKeyVaultConnector(ctx *pulumi.Context, args *LookupAzureKeyVaultConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAzureKeyVaultConnectorResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureKeyVaultConnectorResult
 	err := ctx.Invoke("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args, &rv, opts...)
 	if err != nil {

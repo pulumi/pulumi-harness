@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +39,7 @@ import (
 //
 // ```
 func LookupAwsSecretManagerConnector(ctx *pulumi.Context, args *LookupAwsSecretManagerConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsSecretManagerConnectorResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsSecretManagerConnectorResult
 	err := ctx.Invoke("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args, &rv, opts...)
 	if err != nil {

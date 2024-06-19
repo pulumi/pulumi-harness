@@ -13,32 +13,34 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * // Authentication mechanism as api token
  * const token = new harness.platform.AppDynamicsConnector("token", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://appdynamics.com/",
  *     accountName: "myaccount",
+ *     delegateSelectors: ["harness-delegate"],
  *     apiToken: {
  *         clientId: "client_id",
  *         clientSecretRef: "account.secret_id",
  *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://appdynamics.com/",
  * });
  * // Authentication mechanism as username and password
  * const test = new harness.platform.AppDynamicsConnector("test", {
- *     accountName: "myaccount",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://appdynamics.com/",
+ *     accountName: "myaccount",
+ *     delegateSelectors: ["harness-delegate"],
  *     usernamePassword: {
- *         passwordRef: "account.secret_id",
  *         username: "username",
+ *         passwordRef: "account.secret_id",
  *     },
  * });
  * ```
@@ -48,19 +50,19 @@ import * as utilities from "../utilities";
  * Import account level appdynamics connector
  *
  * ```sh
- *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <connector_id>
+ * $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <connector_id>
  * ```
  *
- *  Import org level appdynamics connector
+ * Import org level appdynamics connector
  *
  * ```sh
- *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level appdynamics connector
+ * Import project level appdynamics connector
  *
  * ```sh
- *  $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/appDynamicsConnector:AppDynamicsConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AppDynamicsConnector extends pulumi.CustomResource {

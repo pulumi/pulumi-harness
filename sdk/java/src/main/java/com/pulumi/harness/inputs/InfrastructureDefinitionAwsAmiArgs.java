@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -562,9 +563,15 @@ public final class InfrastructureDefinitionAwsAmiArgs extends com.pulumi.resourc
         }
 
         public InfrastructureDefinitionAwsAmiArgs build() {
-            $.amiDeploymentType = Objects.requireNonNull($.amiDeploymentType, "expected parameter 'amiDeploymentType' to be non-null");
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.amiDeploymentType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmiArgs", "amiDeploymentType");
+            }
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmiArgs", "cloudProviderName");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsAmiArgs", "region");
+            }
             return $;
         }
     }

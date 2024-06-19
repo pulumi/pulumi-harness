@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.GitOpsGnupg("example", {
  *     accountId: "account_id",
@@ -32,13 +32,13 @@ import * as utilities from "../utilities";
  * Import a Account level Gitops Cluster
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
+ * $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
  * ```
  *
- *  Import a Project level Gitops Cluster
+ * Import a Project level Gitops Cluster
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
+ * $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
  * ```
  */
 export class GitOpsGnupg extends pulumi.CustomResource {

@@ -17,7 +17,10 @@ import javax.annotation.Nullable;
  * Resource for adding a user to a group.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -26,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.HarnessFunctions;
  * import com.pulumi.harness.inputs.GetUserArgs;
  * import com.pulumi.harness.UserGroup;
+ * import com.pulumi.harness.UserGroupArgs;
  * import com.pulumi.harness.AddUserToGroup;
  * import com.pulumi.harness.AddUserToGroupArgs;
  * import java.util.List;
@@ -42,26 +46,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var exampleUser = HarnessFunctions.getUser(GetUserArgs.builder()
- *             .email(&#34;testuser@example.com&#34;)
+ *             .email("testuser{@literal @}example.com")
  *             .build());
  * 
- *         var admin = new UserGroup(&#34;admin&#34;);
+ *         var admin = new UserGroup("admin", UserGroupArgs.builder()
+ *             .name("admin")
+ *             .build());
  * 
- *         var exampleAddUserToGroups = new AddUserToGroup(&#34;exampleAddUserToGroups&#34;, AddUserToGroupArgs.builder()        
+ *         var exampleAddUserToGroups = new AddUserToGroup("exampleAddUserToGroups", AddUserToGroupArgs.builder()
  *             .groupId(admin.id())
- *             .userId(data.harness_user().test().id())
+ *             .userId(test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness user and user group id
  * 
  * ```sh
- *  $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin &lt;user_id&gt;/&lt;group_id&gt;
+ * $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin &lt;user_id&gt;/&lt;group_id&gt;
  * ```
  * 
  */

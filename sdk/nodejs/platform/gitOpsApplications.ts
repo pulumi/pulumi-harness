@@ -9,12 +9,63 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Gitops Application.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.GitOpsApplications("example", {
+ *     applications: [{
+ *         metadatas: [{
+ *             annotations: {},
+ *             labels: {
+ *                 "harness.io/serviceRef": "service_id",
+ *                 "harness.io/envRef": "env_id",
+ *             },
+ *             name: "appname123",
+ *         }],
+ *         specs: [{
+ *             syncPolicies: [{
+ *                 syncOptions: [
+ *                     "PrunePropagationPolicy=undefined",
+ *                     "CreateNamespace=false",
+ *                     "Validate=false",
+ *                     "skipSchemaValidations=false",
+ *                     "autoCreateNamespace=false",
+ *                     "pruneLast=false",
+ *                     "applyOutofSyncOnly=false",
+ *                     "Replace=false",
+ *                     "retry=false",
+ *                 ],
+ *             }],
+ *             sources: [{
+ *                 targetRevision: "master",
+ *                 repoUrl: "https://github.com/willycoll/argocd-example-apps.git",
+ *                 path: "helm-guestbook",
+ *             }],
+ *             destinations: [{
+ *                 namespace: "namespace-123",
+ *                 server: "https://1.3.4.5",
+ *             }],
+ *         }],
+ *     }],
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     accountId: "account_id",
+ *     identifier: "identifier",
+ *     clusterId: "cluster_id",
+ *     repoId: "repo_id",
+ *     agentId: "agent_id",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Import a Project level Gitops Application
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
+ * $ pulumi import harness:platform/gitOpsApplications:GitOpsApplications example <organization_id>/<project_id>/<agent_id>/<app_name>
  * ```
  */
 export class GitOpsApplications extends pulumi.CustomResource {

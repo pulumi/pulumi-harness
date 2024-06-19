@@ -8,69 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a HTTP Helm connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewHelmConnector(ctx, "test", &platform.HelmConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url: pulumi.String("https://helm.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/helmConnector:HelmConnector example <connector_id>
-//
+// $ pulumi import harness:platform/helmConnector:HelmConnector example <connector_id>
 // ```
 //
-//	Import org level helm connector
+// # Import org level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/helmConnector:HelmConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/helmConnector:HelmConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level helm connector
+// # Import project level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/helmConnector:HelmConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/helmConnector:HelmConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type HelmConnector struct {
 	pulumi.CustomResourceState
@@ -108,7 +69,7 @@ func NewHelmConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HelmConnector
 	err := ctx.RegisterResource("harness:platform/helmConnector:HelmConnector", name, args, &resource, opts...)
 	if err != nil {

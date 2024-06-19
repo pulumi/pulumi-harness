@@ -13,12 +13,13 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleSsh = new harness.service.Ssh("exampleSsh", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleSsh = new harness.service.Ssh("example", {
+ *     appId: example.id,
  *     artifactType: "TAR",
+ *     name: "ssh-example",
  *     description: "Service for deploying applications with SSH.",
  * });
  * ```
@@ -28,7 +29,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
+ * $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
  * ```
  */
 export class Ssh extends pulumi.CustomResource {

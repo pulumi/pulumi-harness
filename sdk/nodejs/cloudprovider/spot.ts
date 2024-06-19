@@ -11,17 +11,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const spotToken = new harness.EncryptedText("spotToken", {
+ * const spotToken = new harness.EncryptedText("spot_token", {
+ *     name: "spot_token",
  *     secretManagerId: _default.then(_default => _default.id),
  *     value: "<SPOT_TOKEN>",
  * });
  * const example = new harness.cloudprovider.Spot("example", {
+ *     name: "example",
  *     accountId: "<SPOT_ACCOUNT_ID>",
  *     tokenSecretName: spotToken.name,
  * });
@@ -32,7 +33,7 @@ import * as utilities from "../utilities";
  * Import using the Harness Spot cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
+ * $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
  * ```
  */
 export class Spot extends pulumi.CustomResource {

@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -335,13 +336,27 @@ public final class InfrastructureDefinitionAzureVmssArgs extends com.pulumi.reso
         }
 
         public InfrastructureDefinitionAzureVmssArgs build() {
-            $.authType = Objects.requireNonNull($.authType, "expected parameter 'authType' to be non-null");
-            $.baseName = Objects.requireNonNull($.baseName, "expected parameter 'baseName' to be non-null");
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.deploymentType = Objects.requireNonNull($.deploymentType, "expected parameter 'deploymentType' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.subscriptionId = Objects.requireNonNull($.subscriptionId, "expected parameter 'subscriptionId' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.authType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "authType");
+            }
+            if ($.baseName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "baseName");
+            }
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "cloudProviderName");
+            }
+            if ($.deploymentType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "deploymentType");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "resourceGroupName");
+            }
+            if ($.subscriptionId == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "subscriptionId");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmssArgs", "username");
+            }
             return $;
         }
     }

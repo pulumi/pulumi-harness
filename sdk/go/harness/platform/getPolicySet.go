@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,17 +28,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupPolicySet(ctx, &platform.LookupPolicySetArgs{
-//				Action:     "onrun",
-//				Enabled:    pulumi.BoolRef(true),
 //				Identifier: "harness_platform_policyset.test.identifier",
 //				Name:       pulumi.StringRef("harness_platform_policyset.test.name"),
+//				Action:     "onrun",
+//				Type:       "pipeline",
+//				Enabled:    pulumi.BoolRef(true),
 //				Policies: []platform.GetPolicySetPolicy{
 //					{
 //						Identifier: "always_run",
 //						Severity:   "warning",
 //					},
 //				},
-//				Type: "pipeline",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +49,7 @@ import (
 //
 // ```
 func LookupPolicySet(ctx *pulumi.Context, args *LookupPolicySetArgs, opts ...pulumi.InvokeOption) (*LookupPolicySetResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicySetResult
 	err := ctx.Invoke("harness:platform/getPolicySet:getPolicySet", args, &rv, opts...)
 	if err != nil {

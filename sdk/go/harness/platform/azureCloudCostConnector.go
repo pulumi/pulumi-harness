@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,25 +29,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAzureCloudCostConnector(ctx, "example", &platform.AzureCloudCostConnectorArgs{
-//				BillingExportSpec: &platform.AzureCloudCostConnectorBillingExportSpecArgs{
-//					ContainerName:      pulumi.String("container_name"),
-//					DirectoryName:      pulumi.String("directory_name"),
-//					ReportName:         pulumi.String("report_name"),
-//					StorageAccountName: pulumi.String("storage_account_name"),
-//					SubscriptionId:     pulumi.String("subscription_id"),
-//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				FeaturesEnableds: pulumi.StringArray{
 //					pulumi.String("BILLING"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("OPTIMIZATION"),
 //				},
-//				Identifier:     pulumi.String("identifier"),
+//				TenantId:       pulumi.String("tenant_id"),
 //				SubscriptionId: pulumi.String("subscription_id"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				BillingExportSpec: &platform.AzureCloudCostConnectorBillingExportSpecArgs{
+//					StorageAccountName: pulumi.String("storage_account_name"),
+//					ContainerName:      pulumi.String("container_name"),
+//					DirectoryName:      pulumi.String("directory_name"),
+//					ReportName:         pulumi.String("report_name"),
+//					SubscriptionId:     pulumi.String("subscription_id"),
 //				},
-//				TenantId: pulumi.String("tenant_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,25 +64,19 @@ import (
 // # Import account level azure cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <connector_id>
-//
+// $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <connector_id>
 // ```
 //
-//	Import org level azure cloud cost connector
+// # Import org level azure cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level azure cloud cost connector
+// # Import project level azure cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AzureCloudCostConnector struct {
 	pulumi.CustomResourceState
@@ -126,7 +122,7 @@ func NewAzureCloudCostConnector(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureCloudCostConnector
 	err := ctx.RegisterResource("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", name, args, &resource, opts...)
 	if err != nil {

@@ -8,35 +8,89 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness Resource Group
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewResourceGroup(ctx, "test", &platform.ResourceGroupArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				AccountId: pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
+//				},
+//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
+//					&platform.ResourceGroupIncludedScopeArgs{
+//						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
+//						AccountId: pulumi.String("account_id"),
+//					},
+//				},
+//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
+//					&platform.ResourceGroupResourceFilterArgs{
+//						IncludeAllResources: pulumi.Bool(false),
+//						Resources: platform.ResourceGroupResourceFilterResourceArray{
+//							&platform.ResourceGroupResourceFilterResourceArgs{
+//								ResourceType: pulumi.String("CONNECTOR"),
+//								AttributeFilters: platform.ResourceGroupResourceFilterResourceAttributeFilterArray{
+//									&platform.ResourceGroupResourceFilterResourceAttributeFilterArgs{
+//										AttributeName: pulumi.String("category"),
+//										AttributeValues: pulumi.StringArray{
+//											pulumi.String("CLOUD_COST"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // # Import account level resource group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
-//
+// $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
 // ```
 //
-//	Import org level resource group
+// # Import org level resource group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
-//
+// $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
 // ```
 //
-//	Import project level resource group
+// # Import project level resource group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
-//
+// $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
 // ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
@@ -78,7 +132,7 @@ func NewResourceGroup(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResourceGroup
 	err := ctx.RegisterResource("harness:platform/resourceGroup:ResourceGroup", name, args, &resource, opts...)
 	if err != nil {

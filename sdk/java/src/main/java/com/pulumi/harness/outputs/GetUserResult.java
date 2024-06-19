@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -143,55 +144,75 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isEmailVerified(Boolean isEmailVerified) {
-            this.isEmailVerified = Objects.requireNonNull(isEmailVerified);
+            if (isEmailVerified == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isEmailVerified");
+            }
+            this.isEmailVerified = isEmailVerified;
             return this;
         }
         @CustomType.Setter
         public Builder isImportedFromIdentityProvider(Boolean isImportedFromIdentityProvider) {
-            this.isImportedFromIdentityProvider = Objects.requireNonNull(isImportedFromIdentityProvider);
+            if (isImportedFromIdentityProvider == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isImportedFromIdentityProvider");
+            }
+            this.isImportedFromIdentityProvider = isImportedFromIdentityProvider;
             return this;
         }
         @CustomType.Setter
         public Builder isPasswordExpired(Boolean isPasswordExpired) {
-            this.isPasswordExpired = Objects.requireNonNull(isPasswordExpired);
+            if (isPasswordExpired == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isPasswordExpired");
+            }
+            this.isPasswordExpired = isPasswordExpired;
             return this;
         }
         @CustomType.Setter
         public Builder isTwoFactorAuthEnabled(Boolean isTwoFactorAuthEnabled) {
-            this.isTwoFactorAuthEnabled = Objects.requireNonNull(isTwoFactorAuthEnabled);
+            if (isTwoFactorAuthEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isTwoFactorAuthEnabled");
+            }
+            this.isTwoFactorAuthEnabled = isTwoFactorAuthEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder isUserLocked(Boolean isUserLocked) {
-            this.isUserLocked = Objects.requireNonNull(isUserLocked);
+            if (isUserLocked == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isUserLocked");
+            }
+            this.isUserLocked = isUserLocked;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.email = email;
-            o.id = id;
-            o.isEmailVerified = isEmailVerified;
-            o.isImportedFromIdentityProvider = isImportedFromIdentityProvider;
-            o.isPasswordExpired = isPasswordExpired;
-            o.isTwoFactorAuthEnabled = isTwoFactorAuthEnabled;
-            o.isUserLocked = isUserLocked;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.isEmailVerified = isEmailVerified;
+            _resultValue.isImportedFromIdentityProvider = isImportedFromIdentityProvider;
+            _resultValue.isPasswordExpired = isPasswordExpired;
+            _resultValue.isTwoFactorAuthEnabled = isTwoFactorAuthEnabled;
+            _resultValue.isUserLocked = isUserLocked;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

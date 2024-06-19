@@ -13,58 +13,60 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * // Boolean Flag
  * const mybooleanflag = new harness.platform.FeatureFlag("mybooleanflag", {
- *     defaultOffVariation: "Disabled",
- *     defaultOnVariation: "Enabled",
- *     identifier: "MY_FEATURE",
- *     kind: "boolean",
  *     orgId: "test",
- *     permanent: false,
  *     projectId: "testff",
+ *     kind: "boolean",
+ *     name: "MY_FEATURE",
+ *     identifier: "MY_FEATURE",
+ *     permanent: false,
+ *     defaultOnVariation: "Enabled",
+ *     defaultOffVariation: "Disabled",
  *     variations: [
  *         {
- *             description: "The feature is enabled",
  *             identifier: "Enabled",
  *             name: "Enabled",
+ *             description: "The feature is enabled",
  *             value: "true",
  *         },
  *         {
- *             description: "The feature is disabled",
  *             identifier: "Disabled",
  *             name: "Disabled",
+ *             description: "The feature is disabled",
  *             value: "false",
  *         },
  *     ],
  * });
  * // Multivariate flag
  * const mymultivariateflag = new harness.platform.FeatureFlag("mymultivariateflag", {
- *     defaultOffVariation: "trial20",
- *     defaultOnVariation: "trial7",
- *     identifier: "FREE_TRIAL_DURATION",
- *     kind: "int",
  *     orgId: "test",
- *     permanent: false,
  *     projectId: "testff",
+ *     kind: "int",
+ *     name: "FREE_TRIAL_DURATION",
+ *     identifier: "FREE_TRIAL_DURATION",
+ *     permanent: false,
+ *     defaultOnVariation: "trial7",
+ *     defaultOffVariation: "trial20",
  *     variations: [
  *         {
- *             description: "Free trial period 7 days",
  *             identifier: "trial7",
  *             name: "7 days trial",
+ *             description: "Free trial period 7 days",
  *             value: "7",
  *         },
  *         {
- *             description: "Free trial period 14 days",
  *             identifier: "trial14",
  *             name: "14 days trial",
+ *             description: "Free trial period 14 days",
  *             value: "14",
  *         },
  *         {
- *             description: "Free trial period 20 days",
  *             identifier: "trial20",
  *             name: "20 days trial",
+ *             description: "Free trial period 20 days",
  *             value: "20",
  *         },
  *     ],

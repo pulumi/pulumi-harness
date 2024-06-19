@@ -13,24 +13,25 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.AwsCCConnector("test", {
- *     accountId: "account_id",
- *     crossAccountAccess: {
- *         externalId: "external_id",
- *         roleArn: "role_arn",
- *     },
+ *     identifier: "identifier",
+ *     name: "name",
  *     description: "test",
+ *     tags: ["foo:bar"],
+ *     accountId: "account_id",
+ *     reportName: "report_name",
+ *     s3Bucket: "s3bucket",
  *     featuresEnableds: [
  *         "OPTIMIZATION",
  *         "VISIBILITY",
  *         "BILLING",
  *     ],
- *     identifier: "identifier",
- *     reportName: "report_name",
- *     s3Bucket: "s3bucket",
- *     tags: ["foo:bar"],
+ *     crossAccountAccess: {
+ *         roleArn: "role_arn",
+ *         externalId: "external_id",
+ *     },
  * });
  * ```
  *
@@ -39,19 +40,19 @@ import * as utilities from "../utilities";
  * Import account level aws cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <connector_id>
+ * $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <connector_id>
  * ```
  *
- *  Import org level aws cloud cost connector
+ * Import org level aws cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level aws cloud cost connector
+ * Import project level aws cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AwsCCConnector extends pulumi.CustomResource {

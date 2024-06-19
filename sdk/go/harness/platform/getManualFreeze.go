@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupManualFreeze(ctx, &platform.LookupManualFreezeArgs{
-//				AccountId:  "account_id",
 //				Identifier: "identifier",
 //				OrgId:      pulumi.StringRef("org_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
+//				AccountId:  "account_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -41,7 +42,7 @@ import (
 //
 // ```
 func LookupManualFreeze(ctx *pulumi.Context, args *LookupManualFreezeArgs, opts ...pulumi.InvokeOption) (*LookupManualFreezeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupManualFreezeResult
 	err := ctx.Invoke("harness:platform/getManualFreeze:getManualFreeze", args, &rv, opts...)
 	if err != nil {

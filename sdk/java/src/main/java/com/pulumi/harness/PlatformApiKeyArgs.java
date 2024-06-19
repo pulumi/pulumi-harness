@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -411,10 +412,18 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PlatformApiKeyArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.apikeyType = Objects.requireNonNull($.apikeyType, "expected parameter 'apikeyType' to be non-null");
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.parentId = Objects.requireNonNull($.parentId, "expected parameter 'parentId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("PlatformApiKeyArgs", "accountId");
+            }
+            if ($.apikeyType == null) {
+                throw new MissingRequiredPropertyException("PlatformApiKeyArgs", "apikeyType");
+            }
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("PlatformApiKeyArgs", "identifier");
+            }
+            if ($.parentId == null) {
+                throw new MissingRequiredPropertyException("PlatformApiKeyArgs", "parentId");
+            }
             return $;
         }
     }

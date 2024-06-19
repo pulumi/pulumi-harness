@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,25 +71,34 @@ public final class InfrastructureDefinitionKubernetes {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetes", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetes", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder releaseName(String releaseName) {
-            this.releaseName = Objects.requireNonNull(releaseName);
+            if (releaseName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetes", "releaseName");
+            }
+            this.releaseName = releaseName;
             return this;
         }
         public InfrastructureDefinitionKubernetes build() {
-            final var o = new InfrastructureDefinitionKubernetes();
-            o.cloudProviderName = cloudProviderName;
-            o.namespace = namespace;
-            o.releaseName = releaseName;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionKubernetes();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.namespace = namespace;
+            _resultValue.releaseName = releaseName;
+            return _resultValue;
         }
     }
 }

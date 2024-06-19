@@ -11,14 +11,15 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.ServiceAccount("example", {
- *     accountId: "account_id",
- *     description: "test",
- *     email: "email@service.harness.io",
  *     identifier: "identifier",
+ *     name: "name",
+ *     email: "email@service.harness.io",
+ *     description: "test",
  *     tags: ["foo:bar"],
+ *     accountId: "account_id",
  * });
  * ```
  *
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  * Import account level service account
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
+ * $ pulumi import harness:platform/serviceAccount:ServiceAccount example <service_account_id>
  * ```
  *
- *  Import org level service account
+ * Import org level service account
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
+ * $ pulumi import harness:platform/serviceAccount:ServiceAccount example <ord_id>/<service_account_id>
  * ```
  *
- *  Import project level service account
+ * Import project level service account
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
+ * $ pulumi import harness:platform/serviceAccount:ServiceAccount example <org_id>/<project_id>/<service_account_id>
  * ```
  */
 export class ServiceAccount extends pulumi.CustomResource {

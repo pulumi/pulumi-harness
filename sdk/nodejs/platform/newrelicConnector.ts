@@ -11,16 +11,17 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.NewrelicConnector("test", {
- *     accountId: "nr_account_id",
- *     apiKeyRef: "account.secret_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://newrelic.com/",
+ *     delegateSelectors: ["harness-delegate"],
+ *     accountId: "nr_account_id",
+ *     apiKeyRef: "account.secret_id",
  * });
  * ```
  *
@@ -29,19 +30,19 @@ import * as utilities from "../utilities";
  * Import account level newrelic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <connector_id>
+ * $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <connector_id>
  * ```
  *
- *  Import org level newrelic connector
+ * Import org level newrelic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level newrelic connector
+ * Import project level newrelic connector
  *
  * ```sh
- *  $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class NewrelicConnector extends pulumi.CustomResource {

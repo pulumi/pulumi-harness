@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AppDynamicsConnectorApiToken struct {
 	// The client id used for connecting to App Dynamics.
@@ -1959,9 +1962,12 @@ func (o AwsKmsConnectorCredentialsPtrOutput) Manual() AwsKmsConnectorCredentials
 }
 
 type AwsKmsConnectorCredentialsAssumeRole struct {
-	Duration   int     `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration int `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId *string `pulumi:"externalId"`
-	RoleArn    string  `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // AwsKmsConnectorCredentialsAssumeRoleInput is an input type that accepts AwsKmsConnectorCredentialsAssumeRoleArgs and AwsKmsConnectorCredentialsAssumeRoleOutput values.
@@ -1976,9 +1982,12 @@ type AwsKmsConnectorCredentialsAssumeRoleInput interface {
 }
 
 type AwsKmsConnectorCredentialsAssumeRoleArgs struct {
-	Duration   pulumi.IntInput       `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	RoleArn    pulumi.StringInput    `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (AwsKmsConnectorCredentialsAssumeRoleArgs) ElementType() reflect.Type {
@@ -2058,14 +2067,17 @@ func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ToAwsKmsConnectorCredentials
 	}).(AwsKmsConnectorCredentialsAssumeRolePtrOutput)
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o AwsKmsConnectorCredentialsAssumeRoleOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o AwsKmsConnectorCredentialsAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// The ARN of the role to assume.
 func (o AwsKmsConnectorCredentialsAssumeRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -2094,6 +2106,7 @@ func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) Elem() AwsKmsConnectorCre
 	}).(AwsKmsConnectorCredentialsAssumeRoleOutput)
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *int {
 		if v == nil {
@@ -2103,6 +2116,7 @@ func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) Duration() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *string {
 		if v == nil {
@@ -2112,6 +2126,7 @@ func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) ExternalId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ARN of the role to assume.
 func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnectorCredentialsAssumeRole) *string {
 		if v == nil {
@@ -2122,7 +2137,9 @@ func (o AwsKmsConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulumi.StringPt
 }
 
 type AwsKmsConnectorCredentialsManual struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
 }
 
@@ -2138,7 +2155,9 @@ type AwsKmsConnectorCredentialsManualInput interface {
 }
 
 type AwsKmsConnectorCredentialsManualArgs struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
 }
 
@@ -2219,10 +2238,12 @@ func (o AwsKmsConnectorCredentialsManualOutput) ToAwsKmsConnectorCredentialsManu
 	}).(AwsKmsConnectorCredentialsManualPtrOutput)
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsKmsConnectorCredentialsManualOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsKmsConnectorCredentialsManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
@@ -2251,6 +2272,7 @@ func (o AwsKmsConnectorCredentialsManualPtrOutput) Elem() AwsKmsConnectorCredent
 	}).(AwsKmsConnectorCredentialsManualOutput)
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsKmsConnectorCredentialsManualPtrOutput) AccessKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnectorCredentialsManual) *string {
 		if v == nil {
@@ -2260,6 +2282,7 @@ func (o AwsKmsConnectorCredentialsManualPtrOutput) AccessKeyRef() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsKmsConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnectorCredentialsManual) *string {
 		if v == nil {
@@ -2449,9 +2472,12 @@ func (o AwsSecretManagerConnectorCredentialsPtrOutput) Manual() AwsSecretManager
 }
 
 type AwsSecretManagerConnectorCredentialsAssumeRole struct {
-	Duration   int     `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration int `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId *string `pulumi:"externalId"`
-	RoleArn    string  `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // AwsSecretManagerConnectorCredentialsAssumeRoleInput is an input type that accepts AwsSecretManagerConnectorCredentialsAssumeRoleArgs and AwsSecretManagerConnectorCredentialsAssumeRoleOutput values.
@@ -2466,9 +2492,12 @@ type AwsSecretManagerConnectorCredentialsAssumeRoleInput interface {
 }
 
 type AwsSecretManagerConnectorCredentialsAssumeRoleArgs struct {
-	Duration   pulumi.IntInput       `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	RoleArn    pulumi.StringInput    `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (AwsSecretManagerConnectorCredentialsAssumeRoleArgs) ElementType() reflect.Type {
@@ -2548,14 +2577,17 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ToAwsSecretManager
 	}).(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput)
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// The ARN of the role to assume.
 func (o AwsSecretManagerConnectorCredentialsAssumeRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -2584,6 +2616,7 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) Elem() AwsSecre
 	}).(AwsSecretManagerConnectorCredentialsAssumeRoleOutput)
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *int {
 		if v == nil {
@@ -2593,6 +2626,7 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) Duration() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *string {
 		if v == nil {
@@ -2602,6 +2636,7 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) ExternalId() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ARN of the role to assume.
 func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsAssumeRole) *string {
 		if v == nil {
@@ -2612,7 +2647,9 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulum
 }
 
 type AwsSecretManagerConnectorCredentialsManual struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
 }
 
@@ -2628,7 +2665,9 @@ type AwsSecretManagerConnectorCredentialsManualInput interface {
 }
 
 type AwsSecretManagerConnectorCredentialsManualArgs struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
 }
 
@@ -2709,10 +2748,12 @@ func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConn
 	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsSecretManagerConnectorCredentialsManualOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsSecretManagerConnectorCredentialsManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
@@ -2741,6 +2782,7 @@ func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) Elem() AwsSecretMan
 	}).(AwsSecretManagerConnectorCredentialsManualOutput)
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) AccessKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) *string {
 		if v == nil {
@@ -2750,6 +2792,7 @@ func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) AccessKeyRef() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) *string {
 		if v == nil {
@@ -3152,6 +3195,7 @@ func (o AzureCloudProviderConnectorCredentialsPtrOutput) Type() pulumi.StringPtr
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetails struct {
+	// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 	Auth *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth `pulumi:"auth"`
 }
 
@@ -3167,6 +3211,7 @@ type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsInput 
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs struct {
+	// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 	Auth AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrInput `pulumi:"auth"`
 }
 
@@ -3247,6 +3292,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsOut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsPtrOutput)
 }
 
+// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsOutput) Auth() AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetails) *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth {
 		return v.Auth
@@ -3277,6 +3323,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsPtr
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsOutput)
 }
 
+// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsPtrOutput) Auth() AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetails) *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth {
 		if v == nil {
@@ -3287,8 +3334,10 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsPtr
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth struct {
+	// Azure UserAssigned MSI auth details.
 	AzureMsiAuthUa *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa `pulumi:"azureMsiAuthUa"`
-	Type           string                                                                                   `pulumi:"type"`
+	// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+	Type string `pulumi:"type"`
 }
 
 // AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthInput is an input type that accepts AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs and AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthOutput values.
@@ -3303,8 +3352,10 @@ type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthIn
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs struct {
+	// Azure UserAssigned MSI auth details.
 	AzureMsiAuthUa AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrInput `pulumi:"azureMsiAuthUa"`
-	Type           pulumi.StringInput                                                                              `pulumi:"type"`
+	// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs) ElementType() reflect.Type {
@@ -3384,12 +3435,14 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrOutput)
 }
 
+// Azure UserAssigned MSI auth details.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthOutput) AzureMsiAuthUa() AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa {
 		return v.AzureMsiAuthUa
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput)
 }
 
+// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth) string {
 		return v.Type
@@ -3420,6 +3473,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthOutput)
 }
 
+// Azure UserAssigned MSI auth details.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrOutput) AzureMsiAuthUa() AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa {
 		if v == nil {
@@ -3429,6 +3483,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput)
 }
 
+// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuth) *string {
 		if v == nil {
@@ -3439,6 +3494,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa struct {
+	// Client Id of the ManagedIdentity resource.
 	ClientId *string `pulumi:"clientId"`
 }
 
@@ -3454,6 +3510,7 @@ type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAz
 }
 
 type AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs struct {
+	// Client Id of the ManagedIdentity resource.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 }
 
@@ -3534,6 +3591,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput)
 }
 
+// Client Id of the ManagedIdentity resource.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa) *string {
 		return v.ClientId
@@ -3564,6 +3622,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 	}).(AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaOutput)
 }
 
+// Client Id of the ManagedIdentity resource.
 func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUa) *string {
 		if v == nil {
@@ -3574,9 +3633,12 @@ func (o AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAut
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetails struct {
-	ApplicationId *string                                                       `pulumi:"applicationId"`
-	Auth          *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth `pulumi:"auth"`
-	TenantId      *string                                                       `pulumi:"tenantId"`
+	// Application ID of the Azure App.
+	ApplicationId *string `pulumi:"applicationId"`
+	// Contains Azure auth details.
+	Auth *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth `pulumi:"auth"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // AzureCloudProviderConnectorCredentialsAzureManualDetailsInput is an input type that accepts AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs and AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput values.
@@ -3591,9 +3653,12 @@ type AzureCloudProviderConnectorCredentialsAzureManualDetailsInput interface {
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs struct {
-	ApplicationId pulumi.StringPtrInput                                                `pulumi:"applicationId"`
-	Auth          AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrInput `pulumi:"auth"`
-	TenantId      pulumi.StringPtrInput                                                `pulumi:"tenantId"`
+	// Application ID of the Azure App.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// Contains Azure auth details.
+	Auth AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrInput `pulumi:"auth"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
 func (AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs) ElementType() reflect.Type {
@@ -3673,16 +3738,19 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput) ToAzureC
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput)
 }
 
+// Application ID of the Azure App.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetails) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
+// Contains Azure auth details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput) Auth() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetails) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth {
 		return v.Auth
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput)
 }
 
+// The Azure Active Directory (AAD) directory ID where you created your application.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetails) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -3711,6 +3779,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) Elem(
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsOutput)
 }
 
+// Application ID of the Azure App.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetails) *string {
 		if v == nil {
@@ -3720,6 +3789,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) Appli
 	}).(pulumi.StringPtrOutput)
 }
 
+// Contains Azure auth details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) Auth() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetails) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth {
 		if v == nil {
@@ -3729,6 +3799,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) Auth(
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput)
 }
 
+// The Azure Active Directory (AAD) directory ID where you created your application.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetails) *string {
 		if v == nil {
@@ -3739,9 +3810,12 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsPtrOutput) Tenan
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth struct {
-	AzureClientKeyCert   *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert   `pulumi:"azureClientKeyCert"`
+	// Azure client key certificate details.
+	AzureClientKeyCert *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert `pulumi:"azureClientKeyCert"`
+	// Azure Client Secret Key details.
 	AzureClientSecretKey *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey `pulumi:"azureClientSecretKey"`
-	Type                 *string                                                                           `pulumi:"type"`
+	// Type can either be Certificate or Secret.
+	Type *string `pulumi:"type"`
 }
 
 // AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthInput is an input type that accepts AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs and AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput values.
@@ -3756,9 +3830,12 @@ type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthInput interface
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs struct {
-	AzureClientKeyCert   AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrInput   `pulumi:"azureClientKeyCert"`
+	// Azure client key certificate details.
+	AzureClientKeyCert AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrInput `pulumi:"azureClientKeyCert"`
+	// Azure Client Secret Key details.
 	AzureClientSecretKey AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrInput `pulumi:"azureClientSecretKey"`
-	Type                 pulumi.StringPtrInput                                                                    `pulumi:"type"`
+	// Type can either be Certificate or Secret.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs) ElementType() reflect.Type {
@@ -3838,18 +3915,21 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput) ToAz
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput)
 }
 
+// Azure client key certificate details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput) AzureClientKeyCert() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert {
 		return v.AzureClientKeyCert
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput)
 }
 
+// Azure Client Secret Key details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput) AzureClientSecretKey() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey {
 		return v.AzureClientSecretKey
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput)
 }
 
+// Type can either be Certificate or Secret.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3878,6 +3958,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) E
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthOutput)
 }
 
+// Azure client key certificate details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) AzureClientKeyCert() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert {
 		if v == nil {
@@ -3887,6 +3968,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) A
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput)
 }
 
+// Azure Client Secret Key details.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) AzureClientSecretKey() AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey {
 		if v == nil {
@@ -3896,6 +3978,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) A
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput)
 }
 
+// Type can either be Certificate or Secret.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuth) *string {
 		if v == nil {
@@ -3906,6 +3989,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthPtrOutput) T
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert struct {
+	// Reference of the secret for the certificate. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef *string `pulumi:"certificateRef"`
 }
 
@@ -3921,6 +4005,7 @@ type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyC
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs struct {
+	// Reference of the secret for the certificate. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef pulumi.StringPtrInput `pulumi:"certificateRef"`
 }
 
@@ -4001,6 +4086,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientK
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput)
 }
 
+// Reference of the secret for the certificate. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertOutput) CertificateRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert) *string {
 		return v.CertificateRef
@@ -4031,6 +4117,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientK
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertOutput)
 }
 
+// Reference of the secret for the certificate. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertPtrOutput) CertificateRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCert) *string {
 		if v == nil {
@@ -4041,6 +4128,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientK
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey struct {
+	// Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretRef *string `pulumi:"secretRef"`
 }
 
@@ -4056,6 +4144,7 @@ type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecr
 }
 
 type AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs struct {
+	// Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
 }
 
@@ -4136,6 +4225,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientS
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput)
 }
 
+// Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyOutput) SecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey) *string {
 		return v.SecretRef
@@ -4166,6 +4256,7 @@ func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientS
 	}).(AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyOutput)
 }
 
+// Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyPtrOutput) SecretRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKey) *string {
 		if v == nil {
@@ -4507,8 +4598,11 @@ func (o BitbucketConnectorCredentialsPtrOutput) Ssh() BitbucketConnectorCredenti
 }
 
 type BitbucketConnectorCredentialsHttp struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	Username    *string `pulumi:"username"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -4524,8 +4618,11 @@ type BitbucketConnectorCredentialsHttpInput interface {
 }
 
 type BitbucketConnectorCredentialsHttpArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput `pulumi:"passwordRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -4606,14 +4703,17 @@ func (o BitbucketConnectorCredentialsHttpOutput) ToBitbucketConnectorCredentials
 	}).(BitbucketConnectorCredentialsHttpPtrOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.PasswordRef }).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o BitbucketConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BitbucketConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -4642,6 +4742,7 @@ func (o BitbucketConnectorCredentialsHttpPtrOutput) Elem() BitbucketConnectorCre
 	}).(BitbucketConnectorCredentialsHttpOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -4651,6 +4752,7 @@ func (o BitbucketConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o BitbucketConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -4660,6 +4762,7 @@ func (o BitbucketConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -4670,6 +4773,7 @@ func (o BitbucketConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringP
 }
 
 type BitbucketConnectorCredentialsSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -4685,6 +4789,7 @@ type BitbucketConnectorCredentialsSshInput interface {
 }
 
 type BitbucketConnectorCredentialsSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -4765,6 +4870,7 @@ func (o BitbucketConnectorCredentialsSshOutput) ToBitbucketConnectorCredentialsS
 	}).(BitbucketConnectorCredentialsSshPtrOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v BitbucketConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -4793,6 +4899,7 @@ func (o BitbucketConnectorCredentialsSshPtrOutput) Elem() BitbucketConnectorCred
 	}).(BitbucketConnectorCredentialsSshOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o BitbucketConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketConnectorCredentialsSsh) *string {
 		if v == nil {
@@ -6505,8 +6612,11 @@ func (o GitConnectorCredentialsPtrOutput) Ssh() GitConnectorCredentialsSshPtrOut
 }
 
 type GitConnectorCredentialsHttp struct {
-	PasswordRef string  `pulumi:"passwordRef"`
-	Username    *string `pulumi:"username"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -6522,8 +6632,11 @@ type GitConnectorCredentialsHttpInput interface {
 }
 
 type GitConnectorCredentialsHttpArgs struct {
-	PasswordRef pulumi.StringInput    `pulumi:"passwordRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -6604,14 +6717,17 @@ func (o GitConnectorCredentialsHttpOutput) ToGitConnectorCredentialsHttpPtrOutpu
 	}).(GitConnectorCredentialsHttpPtrOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GitConnectorCredentialsHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GitConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -6640,6 +6756,7 @@ func (o GitConnectorCredentialsHttpPtrOutput) Elem() GitConnectorCredentialsHttp
 	}).(GitConnectorCredentialsHttpOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -6649,6 +6766,7 @@ func (o GitConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o GitConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -6658,6 +6776,7 @@ func (o GitConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -6668,6 +6787,7 @@ func (o GitConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutp
 }
 
 type GitConnectorCredentialsSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -6683,6 +6803,7 @@ type GitConnectorCredentialsSshInput interface {
 }
 
 type GitConnectorCredentialsSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -6763,6 +6884,7 @@ func (o GitConnectorCredentialsSshOutput) ToGitConnectorCredentialsSshPtrOutputW
 	}).(GitConnectorCredentialsSshPtrOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GitConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -6791,6 +6913,7 @@ func (o GitConnectorCredentialsSshPtrOutput) Elem() GitConnectorCredentialsSshOu
 	}).(GitConnectorCredentialsSshOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitConnectorCredentialsSsh) *string {
 		if v == nil {
@@ -7013,17 +7136,26 @@ func (o GitOpsApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GitOp
 }
 
 type GitOpsApplicationsApplicationMetadata struct {
-	Annotations  map[string]string `pulumi:"annotations"`
-	ClusterName  *string           `pulumi:"clusterName"`
-	Finalizers   []string          `pulumi:"finalizers"`
-	GenerateName *string           `pulumi:"generateName"`
-	Generation   *string           `pulumi:"generation"`
-	Labels       map[string]string `pulumi:"labels"`
-	// Name of the GitOps application.
-	Name            *string                                               `pulumi:"name"`
-	Namespace       *string                                               `pulumi:"namespace"`
+	// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+	ClusterName *string `pulumi:"clusterName"`
+	// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+	Finalizers []string `pulumi:"finalizers"`
+	// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+	GenerateName *string `pulumi:"generateName"`
+	// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
+	Generation *string `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
+	Labels map[string]string `pulumi:"labels"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+	Name *string `pulumi:"name"`
+	// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+	Namespace *string `pulumi:"namespace"`
+	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 	OwnerReferences []GitOpsApplicationsApplicationMetadataOwnerReference `pulumi:"ownerReferences"`
-	Uid             *string                                               `pulumi:"uid"`
+	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+	Uid *string `pulumi:"uid"`
 }
 
 // GitOpsApplicationsApplicationMetadataInput is an input type that accepts GitOpsApplicationsApplicationMetadataArgs and GitOpsApplicationsApplicationMetadataOutput values.
@@ -7038,17 +7170,26 @@ type GitOpsApplicationsApplicationMetadataInput interface {
 }
 
 type GitOpsApplicationsApplicationMetadataArgs struct {
-	Annotations  pulumi.StringMapInput   `pulumi:"annotations"`
-	ClusterName  pulumi.StringPtrInput   `pulumi:"clusterName"`
-	Finalizers   pulumi.StringArrayInput `pulumi:"finalizers"`
-	GenerateName pulumi.StringPtrInput   `pulumi:"generateName"`
-	Generation   pulumi.StringPtrInput   `pulumi:"generation"`
-	Labels       pulumi.StringMapInput   `pulumi:"labels"`
-	// Name of the GitOps application.
-	Name            pulumi.StringPtrInput                                         `pulumi:"name"`
-	Namespace       pulumi.StringPtrInput                                         `pulumi:"namespace"`
+	// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
+	// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 	OwnerReferences GitOpsApplicationsApplicationMetadataOwnerReferenceArrayInput `pulumi:"ownerReferences"`
-	Uid             pulumi.StringPtrInput                                         `pulumi:"uid"`
+	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (GitOpsApplicationsApplicationMetadataArgs) ElementType() reflect.Type {
@@ -7102,45 +7243,54 @@ func (o GitOpsApplicationsApplicationMetadataOutput) ToGitOpsApplicationsApplica
 	return o
 }
 
+// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
 func (o GitOpsApplicationsApplicationMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
 func (o GitOpsApplicationsApplicationMetadataOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
 func (o GitOpsApplicationsApplicationMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
+// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
 func (o GitOpsApplicationsApplicationMetadataOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
 }
 
+// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
 func (o GitOpsApplicationsApplicationMetadataOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.Generation }).(pulumi.StringPtrOutput)
 }
 
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
 func (o GitOpsApplicationsApplicationMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the GitOps application.
+// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
 func (o GitOpsApplicationsApplicationMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
 func (o GitOpsApplicationsApplicationMetadataOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 func (o GitOpsApplicationsApplicationMetadataOutput) OwnerReferences() GitOpsApplicationsApplicationMetadataOwnerReferenceArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) []GitOpsApplicationsApplicationMetadataOwnerReference {
 		return v.OwnerReferences
 	}).(GitOpsApplicationsApplicationMetadataOwnerReferenceArrayOutput)
 }
 
+// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
 func (o GitOpsApplicationsApplicationMetadataOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
@@ -7166,14 +7316,18 @@ func (o GitOpsApplicationsApplicationMetadataArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GitOpsApplicationsApplicationMetadataOwnerReference struct {
-	ApiVersion         *string `pulumi:"apiVersion"`
-	BlockOwnerDeletion *bool   `pulumi:"blockOwnerDeletion"`
-	Controller         *bool   `pulumi:"controller"`
-	// Kind of the GitOps application.
+	// API version of the referent.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+	BlockOwnerDeletion *bool `pulumi:"blockOwnerDeletion"`
+	// Indicates if the reference points to the managing controller.
+	Controller *bool `pulumi:"controller"`
+	// Kind of the referent.
 	Kind *string `pulumi:"kind"`
-	// Name of the GitOps application.
+	// Name of the referent.
 	Name *string `pulumi:"name"`
-	Uid  *string `pulumi:"uid"`
+	// UID of the referent.
+	Uid *string `pulumi:"uid"`
 }
 
 // GitOpsApplicationsApplicationMetadataOwnerReferenceInput is an input type that accepts GitOpsApplicationsApplicationMetadataOwnerReferenceArgs and GitOpsApplicationsApplicationMetadataOwnerReferenceOutput values.
@@ -7188,14 +7342,18 @@ type GitOpsApplicationsApplicationMetadataOwnerReferenceInput interface {
 }
 
 type GitOpsApplicationsApplicationMetadataOwnerReferenceArgs struct {
-	ApiVersion         pulumi.StringPtrInput `pulumi:"apiVersion"`
-	BlockOwnerDeletion pulumi.BoolPtrInput   `pulumi:"blockOwnerDeletion"`
-	Controller         pulumi.BoolPtrInput   `pulumi:"controller"`
-	// Kind of the GitOps application.
+	// API version of the referent.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+	BlockOwnerDeletion pulumi.BoolPtrInput `pulumi:"blockOwnerDeletion"`
+	// Indicates if the reference points to the managing controller.
+	Controller pulumi.BoolPtrInput `pulumi:"controller"`
+	// Kind of the referent.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Name of the GitOps application.
+	// Name of the referent.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Uid  pulumi.StringPtrInput `pulumi:"uid"`
+	// UID of the referent.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (GitOpsApplicationsApplicationMetadataOwnerReferenceArgs) ElementType() reflect.Type {
@@ -7249,28 +7407,32 @@ func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) ToGitOpsAppli
 	return o
 }
 
+// API version of the referent.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) BlockOwnerDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *bool { return v.BlockOwnerDeletion }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the reference points to the managing controller.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) Controller() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *bool { return v.Controller }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of the GitOps application.
+// Kind of the referent.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the referent.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// UID of the referent.
 func (o GitOpsApplicationsApplicationMetadataOwnerReferenceOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationMetadataOwnerReference) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
@@ -7296,9 +7458,12 @@ func (o GitOpsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index(i 
 }
 
 type GitOpsApplicationsApplicationSpec struct {
+	// Information about the GitOps application's destination.
 	Destinations []GitOpsApplicationsApplicationSpecDestination `pulumi:"destinations"`
-	Sources      []GitOpsApplicationsApplicationSpecSource      `pulumi:"sources"`
-	SyncPolicies []GitOpsApplicationsApplicationSpecSyncPolicy  `pulumi:"syncPolicies"`
+	// Contains all information about the source of a GitOps application.
+	Sources []GitOpsApplicationsApplicationSpecSource `pulumi:"sources"`
+	// Controls when a sync will be performed in response to updates in git.
+	SyncPolicies []GitOpsApplicationsApplicationSpecSyncPolicy `pulumi:"syncPolicies"`
 }
 
 // GitOpsApplicationsApplicationSpecInput is an input type that accepts GitOpsApplicationsApplicationSpecArgs and GitOpsApplicationsApplicationSpecOutput values.
@@ -7313,9 +7478,12 @@ type GitOpsApplicationsApplicationSpecInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecArgs struct {
+	// Information about the GitOps application's destination.
 	Destinations GitOpsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
-	Sources      GitOpsApplicationsApplicationSpecSourceArrayInput      `pulumi:"sources"`
-	SyncPolicies GitOpsApplicationsApplicationSpecSyncPolicyArrayInput  `pulumi:"syncPolicies"`
+	// Contains all information about the source of a GitOps application.
+	Sources GitOpsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
+	// Controls when a sync will be performed in response to updates in git.
+	SyncPolicies GitOpsApplicationsApplicationSpecSyncPolicyArrayInput `pulumi:"syncPolicies"`
 }
 
 func (GitOpsApplicationsApplicationSpecArgs) ElementType() reflect.Type {
@@ -7369,16 +7537,19 @@ func (o GitOpsApplicationsApplicationSpecOutput) ToGitOpsApplicationsApplication
 	return o
 }
 
+// Information about the GitOps application's destination.
 func (o GitOpsApplicationsApplicationSpecOutput) Destinations() GitOpsApplicationsApplicationSpecDestinationArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecDestination {
 		return v.Destinations
 	}).(GitOpsApplicationsApplicationSpecDestinationArrayOutput)
 }
 
+// Contains all information about the source of a GitOps application.
 func (o GitOpsApplicationsApplicationSpecOutput) Sources() GitOpsApplicationsApplicationSpecSourceArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecSource { return v.Sources }).(GitOpsApplicationsApplicationSpecSourceArrayOutput)
 }
 
+// Controls when a sync will be performed in response to updates in git.
 func (o GitOpsApplicationsApplicationSpecOutput) SyncPolicies() GitOpsApplicationsApplicationSpecSyncPolicyArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecSyncPolicy {
 		return v.SyncPolicies
@@ -7406,10 +7577,12 @@ func (o GitOpsApplicationsApplicationSpecArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GitOpsApplicationsApplicationSpecDestination struct {
-	// Name of the GitOps application.
-	Name      *string `pulumi:"name"`
+	// URL of the target cluster and must be set to the kubernetes control plane API.
+	Name *string `pulumi:"name"`
+	// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 	Namespace *string `pulumi:"namespace"`
-	Server    *string `pulumi:"server"`
+	// Server of the destination of the GitOps application.
+	Server *string `pulumi:"server"`
 }
 
 // GitOpsApplicationsApplicationSpecDestinationInput is an input type that accepts GitOpsApplicationsApplicationSpecDestinationArgs and GitOpsApplicationsApplicationSpecDestinationOutput values.
@@ -7424,10 +7597,12 @@ type GitOpsApplicationsApplicationSpecDestinationInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecDestinationArgs struct {
-	// Name of the GitOps application.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the target cluster and must be set to the kubernetes control plane API.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Server    pulumi.StringPtrInput `pulumi:"server"`
+	// Server of the destination of the GitOps application.
+	Server pulumi.StringPtrInput `pulumi:"server"`
 }
 
 func (GitOpsApplicationsApplicationSpecDestinationArgs) ElementType() reflect.Type {
@@ -7481,15 +7656,17 @@ func (o GitOpsApplicationsApplicationSpecDestinationOutput) ToGitOpsApplications
 	return o
 }
 
-// Name of the GitOps application.
+// URL of the target cluster and must be set to the kubernetes control plane API.
 func (o GitOpsApplicationsApplicationSpecDestinationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecDestination) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 func (o GitOpsApplicationsApplicationSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// Server of the destination of the GitOps application.
 func (o GitOpsApplicationsApplicationSpecDestinationOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
@@ -7515,15 +7692,24 @@ func (o GitOpsApplicationsApplicationSpecDestinationArrayOutput) Index(i pulumi.
 }
 
 type GitOpsApplicationsApplicationSpecSource struct {
-	Chart          *string                                            `pulumi:"chart"`
-	Directories    []GitOpsApplicationsApplicationSpecSourceDirectory `pulumi:"directories"`
-	Helms          []GitOpsApplicationsApplicationSpecSourceHelm      `pulumi:"helms"`
-	Ksonnets       []GitOpsApplicationsApplicationSpecSourceKsonnet   `pulumi:"ksonnets"`
-	Kustomizes     []GitOpsApplicationsApplicationSpecSourceKustomize `pulumi:"kustomizes"`
-	Path           string                                             `pulumi:"path"`
-	Plugins        []GitOpsApplicationsApplicationSpecSourcePlugin    `pulumi:"plugins"`
-	RepoUrl        string                                             `pulumi:"repoUrl"`
-	TargetRevision string                                             `pulumi:"targetRevision"`
+	// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
+	Chart *string `pulumi:"chart"`
+	// Options for applications of type plain YAML or Jsonnet.
+	Directories []GitOpsApplicationsApplicationSpecSourceDirectory `pulumi:"directories"`
+	// Holds helm specific options.
+	Helms []GitOpsApplicationsApplicationSpecSourceHelm `pulumi:"helms"`
+	// Ksonnet specific options.
+	Ksonnets []GitOpsApplicationsApplicationSpecSourceKsonnet `pulumi:"ksonnets"`
+	// Options specific to a GitOps application source specific to Kustomize.
+	Kustomizes []GitOpsApplicationsApplicationSpecSourceKustomize `pulumi:"kustomizes"`
+	// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+	Path string `pulumi:"path"`
+	// Options specific to config management plugins.
+	Plugins []GitOpsApplicationsApplicationSpecSourcePlugin `pulumi:"plugins"`
+	// URL to the repository (git or helm) that contains the GitOps application manifests.
+	RepoUrl string `pulumi:"repoUrl"`
+	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+	TargetRevision string `pulumi:"targetRevision"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceArgs and GitOpsApplicationsApplicationSpecSourceOutput values.
@@ -7538,15 +7724,24 @@ type GitOpsApplicationsApplicationSpecSourceInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceArgs struct {
-	Chart          pulumi.StringPtrInput                                      `pulumi:"chart"`
-	Directories    GitOpsApplicationsApplicationSpecSourceDirectoryArrayInput `pulumi:"directories"`
-	Helms          GitOpsApplicationsApplicationSpecSourceHelmArrayInput      `pulumi:"helms"`
-	Ksonnets       GitOpsApplicationsApplicationSpecSourceKsonnetArrayInput   `pulumi:"ksonnets"`
-	Kustomizes     GitOpsApplicationsApplicationSpecSourceKustomizeArrayInput `pulumi:"kustomizes"`
-	Path           pulumi.StringInput                                         `pulumi:"path"`
-	Plugins        GitOpsApplicationsApplicationSpecSourcePluginArrayInput    `pulumi:"plugins"`
-	RepoUrl        pulumi.StringInput                                         `pulumi:"repoUrl"`
-	TargetRevision pulumi.StringInput                                         `pulumi:"targetRevision"`
+	// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
+	Chart pulumi.StringPtrInput `pulumi:"chart"`
+	// Options for applications of type plain YAML or Jsonnet.
+	Directories GitOpsApplicationsApplicationSpecSourceDirectoryArrayInput `pulumi:"directories"`
+	// Holds helm specific options.
+	Helms GitOpsApplicationsApplicationSpecSourceHelmArrayInput `pulumi:"helms"`
+	// Ksonnet specific options.
+	Ksonnets GitOpsApplicationsApplicationSpecSourceKsonnetArrayInput `pulumi:"ksonnets"`
+	// Options specific to a GitOps application source specific to Kustomize.
+	Kustomizes GitOpsApplicationsApplicationSpecSourceKustomizeArrayInput `pulumi:"kustomizes"`
+	// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Options specific to config management plugins.
+	Plugins GitOpsApplicationsApplicationSpecSourcePluginArrayInput `pulumi:"plugins"`
+	// URL to the repository (git or helm) that contains the GitOps application manifests.
+	RepoUrl pulumi.StringInput `pulumi:"repoUrl"`
+	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+	TargetRevision pulumi.StringInput `pulumi:"targetRevision"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceArgs) ElementType() reflect.Type {
@@ -7600,48 +7795,57 @@ func (o GitOpsApplicationsApplicationSpecSourceOutput) ToGitOpsApplicationsAppli
 	return o
 }
 
+// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Chart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) *string { return v.Chart }).(pulumi.StringPtrOutput)
 }
 
+// Options for applications of type plain YAML or Jsonnet.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Directories() GitOpsApplicationsApplicationSpecSourceDirectoryArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourceDirectory {
 		return v.Directories
 	}).(GitOpsApplicationsApplicationSpecSourceDirectoryArrayOutput)
 }
 
+// Holds helm specific options.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Helms() GitOpsApplicationsApplicationSpecSourceHelmArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourceHelm {
 		return v.Helms
 	}).(GitOpsApplicationsApplicationSpecSourceHelmArrayOutput)
 }
 
+// Ksonnet specific options.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Ksonnets() GitOpsApplicationsApplicationSpecSourceKsonnetArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourceKsonnet {
 		return v.Ksonnets
 	}).(GitOpsApplicationsApplicationSpecSourceKsonnetArrayOutput)
 }
 
+// Options specific to a GitOps application source specific to Kustomize.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Kustomizes() GitOpsApplicationsApplicationSpecSourceKustomizeArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourceKustomize {
 		return v.Kustomizes
 	}).(GitOpsApplicationsApplicationSpecSourceKustomizeArrayOutput)
 }
 
+// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Options specific to config management plugins.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) Plugins() GitOpsApplicationsApplicationSpecSourcePluginArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourcePlugin {
 		return v.Plugins
 	}).(GitOpsApplicationsApplicationSpecSourcePluginArrayOutput)
 }
 
+// URL to the repository (git or helm) that contains the GitOps application manifests.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) RepoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) string { return v.RepoUrl }).(pulumi.StringOutput)
 }
 
+// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
 func (o GitOpsApplicationsApplicationSpecSourceOutput) TargetRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) string { return v.TargetRevision }).(pulumi.StringOutput)
 }
@@ -7667,10 +7871,14 @@ func (o GitOpsApplicationsApplicationSpecSourceArrayOutput) Index(i pulumi.IntIn
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectory struct {
-	Exclude  *string                                                   `pulumi:"exclude"`
-	Include  *string                                                   `pulumi:"include"`
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
+	Exclude *string `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation.
+	Include *string `pulumi:"include"`
+	// Options specific to applications of type Jsonnet.
 	Jsonnets []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet `pulumi:"jsonnets"`
-	Recurse  *bool                                                     `pulumi:"recurse"`
+	// Indicates to scan a directory recursively for manifests.
+	Recurse *bool `pulumi:"recurse"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceDirectoryInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceDirectoryArgs and GitOpsApplicationsApplicationSpecSourceDirectoryOutput values.
@@ -7685,10 +7893,14 @@ type GitOpsApplicationsApplicationSpecSourceDirectoryInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryArgs struct {
-	Exclude  pulumi.StringPtrInput                                             `pulumi:"exclude"`
-	Include  pulumi.StringPtrInput                                             `pulumi:"include"`
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
+	Exclude pulumi.StringPtrInput `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation.
+	Include pulumi.StringPtrInput `pulumi:"include"`
+	// Options specific to applications of type Jsonnet.
 	Jsonnets GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArrayInput `pulumi:"jsonnets"`
-	Recurse  pulumi.BoolPtrInput                                               `pulumi:"recurse"`
+	// Indicates to scan a directory recursively for manifests.
+	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceDirectoryArgs) ElementType() reflect.Type {
@@ -7742,20 +7954,24 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryOutput) ToGitOpsApplicat
 	return o
 }
 
+// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryOutput) Exclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectory) *string { return v.Exclude }).(pulumi.StringPtrOutput)
 }
 
+// Glob pattern to match paths against that should be explicitly included during manifest generation.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryOutput) Include() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectory) *string { return v.Include }).(pulumi.StringPtrOutput)
 }
 
+// Options specific to applications of type Jsonnet.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryOutput) Jsonnets() GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectory) []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet {
 		return v.Jsonnets
 	}).(GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput)
 }
 
+// Indicates to scan a directory recursively for manifests.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryOutput) Recurse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectory) *bool { return v.Recurse }).(pulumi.BoolPtrOutput)
 }
@@ -7781,9 +7997,12 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryArrayOutput) Index(i pul
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet struct {
+	// List of jsonnet external variables.
 	ExtVars []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar `pulumi:"extVars"`
-	Libs    []string                                                        `pulumi:"libs"`
-	Tlas    []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla    `pulumi:"tlas"`
+	// Additional library search dirs.
+	Libs []string `pulumi:"libs"`
+	// List of jsonnet top-level arguments(TLAS).
+	Tlas []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla `pulumi:"tlas"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs and GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetOutput values.
@@ -7798,9 +8017,12 @@ type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs struct {
+	// List of jsonnet external variables.
 	ExtVars GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayInput `pulumi:"extVars"`
-	Libs    pulumi.StringArrayInput                                                 `pulumi:"libs"`
-	Tlas    GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayInput    `pulumi:"tlas"`
+	// Additional library search dirs.
+	Libs pulumi.StringArrayInput `pulumi:"libs"`
+	// List of jsonnet top-level arguments(TLAS).
+	Tlas GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayInput `pulumi:"tlas"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs) ElementType() reflect.Type {
@@ -7854,16 +8076,19 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) ToGitOpsA
 	return o
 }
 
+// List of jsonnet external variables.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) ExtVars() GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet) []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar {
 		return v.ExtVars
 	}).(GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput)
 }
 
+// Additional library search dirs.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) Libs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet) []string { return v.Libs }).(pulumi.StringArrayOutput)
 }
 
+// List of jsonnet top-level arguments(TLAS).
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) Tlas() GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnet) []GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
 		return v.Tlas
@@ -7891,9 +8116,11 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput) Inde
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar struct {
+	// Code of the external variables of jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the external variables of jsonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the external variables of jsonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -7909,9 +8136,11 @@ type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput interfac
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs struct {
+	// Code of the external variables of jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the external variables of jsonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the external variables of jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7966,15 +8195,17 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) ToG
 	return o
 }
 
+// Code of the external variables of jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the external variables of jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the external variables of jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -8000,9 +8231,11 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla struct {
+	// Code of the TLAS of the jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the TLAS of the jsonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the TLAS of the jsonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -8018,9 +8251,11 @@ type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs struct {
+	// Code of the TLAS of the jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the TLAS of the jsonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the TLAS of the jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -8075,15 +8310,17 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) ToGitO
 	return o
 }
 
+// Code of the TLAS of the jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the TLAS of the jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the TLAS of the jsonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -8109,13 +8346,20 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput) I
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelm struct {
-	FileParameters  []GitOpsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
-	Parameters      []GitOpsApplicationsApplicationSpecSourceHelmParameter     `pulumi:"parameters"`
-	PassCredentials *bool                                                      `pulumi:"passCredentials"`
-	ReleaseName     *string                                                    `pulumi:"releaseName"`
-	ValueFiles      []string                                                   `pulumi:"valueFiles"`
-	Values          *string                                                    `pulumi:"values"`
-	Version         *string                                                    `pulumi:"version"`
+	// File parameters to the helm template.
+	FileParameters []GitOpsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// List of helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters []GitOpsApplicationsApplicationSpecSourceHelmParameter `pulumi:"parameters"`
+	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Helm release name to use. If omitted it will use the GitOps application name.
+	ReleaseName *string `pulumi:"releaseName"`
+	// List of helm value files to use when generating a template.
+	ValueFiles []string `pulumi:"valueFiles"`
+	// Helm values to be passed to helm template, typically defined as a block.
+	Values *string `pulumi:"values"`
+	// Helm version to use for templating (either "2" or "3")
+	Version *string `pulumi:"version"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceHelmInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceHelmArgs and GitOpsApplicationsApplicationSpecSourceHelmOutput values.
@@ -8130,13 +8374,20 @@ type GitOpsApplicationsApplicationSpecSourceHelmInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelmArgs struct {
-	FileParameters  GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
-	Parameters      GitOpsApplicationsApplicationSpecSourceHelmParameterArrayInput     `pulumi:"parameters"`
-	PassCredentials pulumi.BoolPtrInput                                                `pulumi:"passCredentials"`
-	ReleaseName     pulumi.StringPtrInput                                              `pulumi:"releaseName"`
-	ValueFiles      pulumi.StringArrayInput                                            `pulumi:"valueFiles"`
-	Values          pulumi.StringPtrInput                                              `pulumi:"values"`
-	Version         pulumi.StringPtrInput                                              `pulumi:"version"`
+	// File parameters to the helm template.
+	FileParameters GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// List of helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters GitOpsApplicationsApplicationSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
+	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
+	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
+	// Helm release name to use. If omitted it will use the GitOps application name.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// List of helm value files to use when generating a template.
+	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
+	// Helm values to be passed to helm template, typically defined as a block.
+	Values pulumi.StringPtrInput `pulumi:"values"`
+	// Helm version to use for templating (either "2" or "3")
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceHelmArgs) ElementType() reflect.Type {
@@ -8190,34 +8441,41 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) ToGitOpsApplicationsA
 	return o
 }
 
+// File parameters to the helm template.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) FileParameters() GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) []GitOpsApplicationsApplicationSpecSourceHelmFileParameter {
 		return v.FileParameters
 	}).(GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput)
 }
 
+// List of helm parameters which are passed to the helm template command upon manifest generation.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) Parameters() GitOpsApplicationsApplicationSpecSourceHelmParameterArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) []GitOpsApplicationsApplicationSpecSourceHelmParameter {
 		return v.Parameters
 	}).(GitOpsApplicationsApplicationSpecSourceHelmParameterArrayOutput)
 }
 
+// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *bool { return v.PassCredentials }).(pulumi.BoolPtrOutput)
 }
 
+// Helm release name to use. If omitted it will use the GitOps application name.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
 }
 
+// List of helm value files to use when generating a template.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) []string { return v.ValueFiles }).(pulumi.StringArrayOutput)
 }
 
+// Helm values to be passed to helm template, typically defined as a block.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
+// Helm version to use for templating (either "2" or "3")
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -8243,8 +8501,9 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmArrayOutput) Index(i pulumi.I
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelmFileParameter struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name *string `pulumi:"name"`
+	// Path to the file containing the values of the helm parameter.
 	Path *string `pulumi:"path"`
 }
 
@@ -8260,8 +8519,9 @@ type GitOpsApplicationsApplicationSpecSourceHelmFileParameterInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Path to the file containing the values of the helm parameter.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -8316,11 +8576,12 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmFileParameterOutput) ToGitOps
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GitOpsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Path to the file containing the values of the helm parameter.
 func (o GitOpsApplicationsApplicationSpecSourceHelmFileParameterOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -8346,9 +8607,11 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput) Ind
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelmParameter struct {
+	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString *bool `pulumi:"forceString"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the helm parameter.
+	Name *string `pulumi:"name"`
+	// Value of the Helm parameter.
 	Value *string `pulumi:"value"`
 }
 
@@ -8364,9 +8627,11 @@ type GitOpsApplicationsApplicationSpecSourceHelmParameterInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceHelmParameterArgs struct {
+	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the helm parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the Helm parameter.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -8421,15 +8686,17 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmParameterOutput) ToGitOpsAppl
 	return o
 }
 
+// Indicates if helm should interpret booleans and numbers as strings.
 func (o GitOpsApplicationsApplicationSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelmParameter) *bool { return v.ForceString }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GitOpsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the Helm parameter.
 func (o GitOpsApplicationsApplicationSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -8455,8 +8722,10 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmParameterArrayOutput) Index(i
 }
 
 type GitOpsApplicationsApplicationSpecSourceKsonnet struct {
-	Environment *string                                                   `pulumi:"environment"`
-	Parameters  []GitOpsApplicationsApplicationSpecSourceKsonnetParameter `pulumi:"parameters"`
+	// Ksonnet application environment name.
+	Environment *string `pulumi:"environment"`
+	// List of ksonnet component parameter override values.
+	Parameters []GitOpsApplicationsApplicationSpecSourceKsonnetParameter `pulumi:"parameters"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceKsonnetInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceKsonnetArgs and GitOpsApplicationsApplicationSpecSourceKsonnetOutput values.
@@ -8471,8 +8740,10 @@ type GitOpsApplicationsApplicationSpecSourceKsonnetInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceKsonnetArgs struct {
-	Environment pulumi.StringPtrInput                                             `pulumi:"environment"`
-	Parameters  GitOpsApplicationsApplicationSpecSourceKsonnetParameterArrayInput `pulumi:"parameters"`
+	// Ksonnet application environment name.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// List of ksonnet component parameter override values.
+	Parameters GitOpsApplicationsApplicationSpecSourceKsonnetParameterArrayInput `pulumi:"parameters"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceKsonnetArgs) ElementType() reflect.Type {
@@ -8526,10 +8797,12 @@ func (o GitOpsApplicationsApplicationSpecSourceKsonnetOutput) ToGitOpsApplicatio
 	return o
 }
 
+// Ksonnet application environment name.
 func (o GitOpsApplicationsApplicationSpecSourceKsonnetOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKsonnet) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
+// List of ksonnet component parameter override values.
 func (o GitOpsApplicationsApplicationSpecSourceKsonnetOutput) Parameters() GitOpsApplicationsApplicationSpecSourceKsonnetParameterArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKsonnet) []GitOpsApplicationsApplicationSpecSourceKsonnetParameter {
 		return v.Parameters
@@ -8557,9 +8830,11 @@ func (o GitOpsApplicationsApplicationSpecSourceKsonnetArrayOutput) Index(i pulum
 }
 
 type GitOpsApplicationsApplicationSpecSourceKsonnetParameter struct {
+	// Component of the parameter of the ksonnet application.
 	Component *string `pulumi:"component"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the parameter of the ksonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the parameter of the ksonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -8575,9 +8850,11 @@ type GitOpsApplicationsApplicationSpecSourceKsonnetParameterInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgs struct {
+	// Component of the parameter of the ksonnet application.
 	Component pulumi.StringPtrInput `pulumi:"component"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the parameter of the ksonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the parameter of the ksonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -8632,15 +8909,17 @@ func (o GitOpsApplicationsApplicationSpecSourceKsonnetParameterOutput) ToGitOpsA
 	return o
 }
 
+// Component of the parameter of the ksonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceKsonnetParameterOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the parameter of the ksonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the parameter of the ksonnet application.
 func (o GitOpsApplicationsApplicationSpecSourceKsonnetParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -8666,14 +8945,22 @@ func (o GitOpsApplicationsApplicationSpecSourceKsonnetParameterArrayOutput) Inde
 }
 
 type GitOpsApplicationsApplicationSpecSourceKustomize struct {
-	CommonAnnotations      map[string]string `pulumi:"commonAnnotations"`
-	CommonLabels           map[string]string `pulumi:"commonLabels"`
-	ForceCommonAnnotations *bool             `pulumi:"forceCommonAnnotations"`
-	ForceCommonLabels      *bool             `pulumi:"forceCommonLabels"`
-	Images                 []string          `pulumi:"images"`
-	NamePrefix             *string           `pulumi:"namePrefix"`
-	NameSuffix             *string           `pulumi:"nameSuffix"`
-	Version                *string           `pulumi:"version"`
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels map[string]string `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
+	// List of kustomize image override specifications.
+	Images []string `pulumi:"images"`
+	// Prefix prepended to resources for kustomize apps.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// Suffix appended to resources for kustomize apps.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Version of kustomize to use for rendering manifests.
+	Version *string `pulumi:"version"`
 }
 
 // GitOpsApplicationsApplicationSpecSourceKustomizeInput is an input type that accepts GitOpsApplicationsApplicationSpecSourceKustomizeArgs and GitOpsApplicationsApplicationSpecSourceKustomizeOutput values.
@@ -8688,14 +8975,22 @@ type GitOpsApplicationsApplicationSpecSourceKustomizeInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourceKustomizeArgs struct {
-	CommonAnnotations      pulumi.StringMapInput   `pulumi:"commonAnnotations"`
-	CommonLabels           pulumi.StringMapInput   `pulumi:"commonLabels"`
-	ForceCommonAnnotations pulumi.BoolPtrInput     `pulumi:"forceCommonAnnotations"`
-	ForceCommonLabels      pulumi.BoolPtrInput     `pulumi:"forceCommonLabels"`
-	Images                 pulumi.StringArrayInput `pulumi:"images"`
-	NamePrefix             pulumi.StringPtrInput   `pulumi:"namePrefix"`
-	NameSuffix             pulumi.StringPtrInput   `pulumi:"nameSuffix"`
-	Version                pulumi.StringPtrInput   `pulumi:"version"`
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
+	// List of kustomize image override specifications.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// Prefix prepended to resources for kustomize apps.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// Suffix appended to resources for kustomize apps.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Version of kustomize to use for rendering manifests.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GitOpsApplicationsApplicationSpecSourceKustomizeArgs) ElementType() reflect.Type {
@@ -8749,34 +9044,42 @@ func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) ToGitOpsApplicat
 	return o
 }
 
+// List of additional annotations to add to rendered manifests.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) CommonAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) map[string]string { return v.CommonAnnotations }).(pulumi.StringMapOutput)
 }
 
+// List of additional labels to add to rendered manifests.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) CommonLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) map[string]string { return v.CommonLabels }).(pulumi.StringMapOutput)
 }
 
+// Indicates if to force applying common annotations to resources for kustomize apps.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonAnnotations }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if to force apply common labels to resources for kustomize apps.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonLabels }).(pulumi.BoolPtrOutput)
 }
 
+// List of kustomize image override specifications.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// Prefix prepended to resources for kustomize apps.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// Suffix appended to resources for kustomize apps.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Version of kustomize to use for rendering manifests.
 func (o GitOpsApplicationsApplicationSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceKustomize) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -8802,8 +9105,9 @@ func (o GitOpsApplicationsApplicationSpecSourceKustomizeArrayOutput) Index(i pul
 }
 
 type GitOpsApplicationsApplicationSpecSourcePlugin struct {
+	// Entry in the GitOps application's environment.
 	Envs []GitOpsApplicationsApplicationSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name *string `pulumi:"name"`
 }
 
@@ -8819,8 +9123,9 @@ type GitOpsApplicationsApplicationSpecSourcePluginInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourcePluginArgs struct {
+	// Entry in the GitOps application's environment.
 	Envs GitOpsApplicationsApplicationSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -8875,13 +9180,14 @@ func (o GitOpsApplicationsApplicationSpecSourcePluginOutput) ToGitOpsApplication
 	return o
 }
 
+// Entry in the GitOps application's environment.
 func (o GitOpsApplicationsApplicationSpecSourcePluginOutput) Envs() GitOpsApplicationsApplicationSpecSourcePluginEnvArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourcePlugin) []GitOpsApplicationsApplicationSpecSourcePluginEnv {
 		return v.Envs
 	}).(GitOpsApplicationsApplicationSpecSourcePluginEnvArrayOutput)
 }
 
-// Name of the GitOps application.
+// Name of the plugin.
 func (o GitOpsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourcePlugin) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -8907,8 +9213,9 @@ func (o GitOpsApplicationsApplicationSpecSourcePluginArrayOutput) Index(i pulumi
 }
 
 type GitOpsApplicationsApplicationSpecSourcePluginEnv struct {
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the variable, usually expressed in uppercase.
+	Name *string `pulumi:"name"`
+	// Value of the variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -8924,8 +9231,9 @@ type GitOpsApplicationsApplicationSpecSourcePluginEnvInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSourcePluginEnvArgs struct {
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the variable, usually expressed in uppercase.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -8980,11 +9288,12 @@ func (o GitOpsApplicationsApplicationSpecSourcePluginEnvOutput) ToGitOpsApplicat
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the variable, usually expressed in uppercase.
 func (o GitOpsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the variable.
 func (o GitOpsApplicationsApplicationSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -9010,9 +9319,12 @@ func (o GitOpsApplicationsApplicationSpecSourcePluginEnvArrayOutput) Index(i pul
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicy struct {
-	Automateds  []GitOpsApplicationsApplicationSpecSyncPolicyAutomated `pulumi:"automateds"`
-	Retries     []GitOpsApplicationsApplicationSpecSyncPolicyRetry     `pulumi:"retries"`
-	SyncOptions []string                                               `pulumi:"syncOptions"`
+	// Controls the behavior of an automated sync.
+	Automateds []GitOpsApplicationsApplicationSpecSyncPolicyAutomated `pulumi:"automateds"`
+	// Contains information about the strategy to apply when a sync failed.
+	Retries []GitOpsApplicationsApplicationSpecSyncPolicyRetry `pulumi:"retries"`
+	// Options allow you to specify whole app sync-options.
+	SyncOptions []string `pulumi:"syncOptions"`
 }
 
 // GitOpsApplicationsApplicationSpecSyncPolicyInput is an input type that accepts GitOpsApplicationsApplicationSpecSyncPolicyArgs and GitOpsApplicationsApplicationSpecSyncPolicyOutput values.
@@ -9027,9 +9339,12 @@ type GitOpsApplicationsApplicationSpecSyncPolicyInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyArgs struct {
-	Automateds  GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArrayInput `pulumi:"automateds"`
-	Retries     GitOpsApplicationsApplicationSpecSyncPolicyRetryArrayInput     `pulumi:"retries"`
-	SyncOptions pulumi.StringArrayInput                                        `pulumi:"syncOptions"`
+	// Controls the behavior of an automated sync.
+	Automateds GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArrayInput `pulumi:"automateds"`
+	// Contains information about the strategy to apply when a sync failed.
+	Retries GitOpsApplicationsApplicationSpecSyncPolicyRetryArrayInput `pulumi:"retries"`
+	// Options allow you to specify whole app sync-options.
+	SyncOptions pulumi.StringArrayInput `pulumi:"syncOptions"`
 }
 
 func (GitOpsApplicationsApplicationSpecSyncPolicyArgs) ElementType() reflect.Type {
@@ -9083,18 +9398,21 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyOutput) ToGitOpsApplicationsA
 	return o
 }
 
+// Controls the behavior of an automated sync.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyOutput) Automateds() GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicy) []GitOpsApplicationsApplicationSpecSyncPolicyAutomated {
 		return v.Automateds
 	}).(GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput)
 }
 
+// Contains information about the strategy to apply when a sync failed.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyOutput) Retries() GitOpsApplicationsApplicationSpecSyncPolicyRetryArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicy) []GitOpsApplicationsApplicationSpecSyncPolicyRetry {
 		return v.Retries
 	}).(GitOpsApplicationsApplicationSpecSyncPolicyRetryArrayOutput)
 }
 
+// Options allow you to specify whole app sync-options.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyOutput) SyncOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicy) []string { return v.SyncOptions }).(pulumi.StringArrayOutput)
 }
@@ -9120,9 +9438,12 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyArrayOutput) Index(i pulumi.I
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyAutomated struct {
+	// Indicates to allows apps to have zero live resources (default: false).
 	AllowEmpty *bool `pulumi:"allowEmpty"`
-	Prune      *bool `pulumi:"prune"`
-	SelfHeal   *bool `pulumi:"selfHeal"`
+	// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
+	Prune *bool `pulumi:"prune"`
+	// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
+	SelfHeal *bool `pulumi:"selfHeal"`
 }
 
 // GitOpsApplicationsApplicationSpecSyncPolicyAutomatedInput is an input type that accepts GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs and GitOpsApplicationsApplicationSpecSyncPolicyAutomatedOutput values.
@@ -9137,9 +9458,12 @@ type GitOpsApplicationsApplicationSpecSyncPolicyAutomatedInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs struct {
+	// Indicates to allows apps to have zero live resources (default: false).
 	AllowEmpty pulumi.BoolPtrInput `pulumi:"allowEmpty"`
-	Prune      pulumi.BoolPtrInput `pulumi:"prune"`
-	SelfHeal   pulumi.BoolPtrInput `pulumi:"selfHeal"`
+	// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
+	Prune pulumi.BoolPtrInput `pulumi:"prune"`
+	// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
+	SelfHeal pulumi.BoolPtrInput `pulumi:"selfHeal"`
 }
 
 func (GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs) ElementType() reflect.Type {
@@ -9193,14 +9517,17 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyAutomatedOutput) ToGitOpsAppl
 	return o
 }
 
+// Indicates to allows apps to have zero live resources (default: false).
 func (o GitOpsApplicationsApplicationSpecSyncPolicyAutomatedOutput) AllowEmpty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
 func (o GitOpsApplicationsApplicationSpecSyncPolicyAutomatedOutput) Prune() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.Prune }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
 func (o GitOpsApplicationsApplicationSpecSyncPolicyAutomatedOutput) SelfHeal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.SelfHeal }).(pulumi.BoolPtrOutput)
 }
@@ -9226,8 +9553,10 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput) Index(i
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyRetry struct {
+	// Backoff strategy to use on subsequent retries for failing syncs.
 	Backoffs []GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff `pulumi:"backoffs"`
-	Limit    *string                                                   `pulumi:"limit"`
+	// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
+	Limit *string `pulumi:"limit"`
 }
 
 // GitOpsApplicationsApplicationSpecSyncPolicyRetryInput is an input type that accepts GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs and GitOpsApplicationsApplicationSpecSyncPolicyRetryOutput values.
@@ -9242,8 +9571,10 @@ type GitOpsApplicationsApplicationSpecSyncPolicyRetryInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs struct {
+	// Backoff strategy to use on subsequent retries for failing syncs.
 	Backoffs GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayInput `pulumi:"backoffs"`
-	Limit    pulumi.StringPtrInput                                             `pulumi:"limit"`
+	// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
 }
 
 func (GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs) ElementType() reflect.Type {
@@ -9297,12 +9628,14 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryOutput) ToGitOpsApplicat
 	return o
 }
 
+// Backoff strategy to use on subsequent retries for failing syncs.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryOutput) Backoffs() GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyRetry) []GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff {
 		return v.Backoffs
 	}).(GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayOutput)
 }
 
+// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyRetry) *string { return v.Limit }).(pulumi.StringPtrOutput)
 }
@@ -9328,8 +9661,11 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryArrayOutput) Index(i pul
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff struct {
-	Duration    *string `pulumi:"duration"`
-	Factor      *string `pulumi:"factor"`
+	// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
+	Duration *string `pulumi:"duration"`
+	// Factor to multiply the base duration after each failed retry.
+	Factor *string `pulumi:"factor"`
+	// Maximum amount of time allowed of the backoff strategy.
 	MaxDuration *string `pulumi:"maxDuration"`
 }
 
@@ -9345,8 +9681,11 @@ type GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffInput interface {
 }
 
 type GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs struct {
-	Duration    pulumi.StringPtrInput `pulumi:"duration"`
-	Factor      pulumi.StringPtrInput `pulumi:"factor"`
+	// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Factor to multiply the base duration after each failed retry.
+	Factor pulumi.StringPtrInput `pulumi:"factor"`
+	// Maximum amount of time allowed of the backoff strategy.
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
 }
 
@@ -9401,14 +9740,17 @@ func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) ToGitOpsA
 	return o
 }
 
+// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
 func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// Factor to multiply the base duration after each failed retry.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) Factor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.Factor }).(pulumi.StringPtrOutput)
 }
 
+// Maximum amount of time allowed of the backoff strategy.
 func (o GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) MaxDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
 }
@@ -9549,7 +9891,9 @@ func (o GitOpsClusterQueryArrayOutput) Index(i pulumi.IntInput) GitOpsClusterQue
 }
 
 type GitOpsClusterQueryId struct {
-	Type  *string `pulumi:"type"`
+	// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
+	Type *string `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value *string `pulumi:"value"`
 }
 
@@ -9565,7 +9909,9 @@ type GitOpsClusterQueryIdInput interface {
 }
 
 type GitOpsClusterQueryIdArgs struct {
-	Type  pulumi.StringPtrInput `pulumi:"type"`
+	// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -9620,10 +9966,12 @@ func (o GitOpsClusterQueryIdOutput) ToGitOpsClusterQueryIdOutputWithContext(ctx 
 	return o
 }
 
+// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
 func (o GitOpsClusterQueryIdOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterQueryId) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Cluster server URL or the cluster name.
 func (o GitOpsClusterQueryIdOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterQueryId) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -9791,17 +10139,28 @@ func (o GitOpsClusterRequestArrayOutput) Index(i pulumi.IntInput) GitOpsClusterR
 }
 
 type GitOpsClusterRequestCluster struct {
-	Annotations         map[string]string                               `pulumi:"annotations"`
-	ClusterResources    *bool                                           `pulumi:"clusterResources"`
-	Configs             []GitOpsClusterRequestClusterConfig             `pulumi:"configs"`
-	Infos               []GitOpsClusterRequestClusterInfo               `pulumi:"infos"`
-	Labels              map[string]string                               `pulumi:"labels"`
-	Name                *string                                         `pulumi:"name"`
-	Namespaces          []string                                        `pulumi:"namespaces"`
-	Project             *string                                         `pulumi:"project"`
+	// Annotations for cluster secret metadata.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
+	ClusterResources *bool `pulumi:"clusterResources"`
+	// GitOps cluster config.
+	Configs []GitOpsClusterRequestClusterConfig `pulumi:"configs"`
+	// Information about cluster cache and state.
+	Infos []GitOpsClusterRequestClusterInfo `pulumi:"infos"`
+	// Labels for cluster secret metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the cluster. If omitted, will use the server address.
+	Name *string `pulumi:"name"`
+	// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
+	Namespaces []string `pulumi:"namespaces"`
+	// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+	Project *string `pulumi:"project"`
+	// Time when cluster cache refresh has been requested.
 	RefreshRequestedAts []GitOpsClusterRequestClusterRefreshRequestedAt `pulumi:"refreshRequestedAts"`
-	Server              string                                          `pulumi:"server"`
-	Shard               *string                                         `pulumi:"shard"`
+	// API server URL of the kubernetes cluster.
+	Server string `pulumi:"server"`
+	// Shard number. Calculated on the fly by the application controller if not specified.
+	Shard *string `pulumi:"shard"`
 }
 
 // GitOpsClusterRequestClusterInput is an input type that accepts GitOpsClusterRequestClusterArgs and GitOpsClusterRequestClusterOutput values.
@@ -9816,17 +10175,28 @@ type GitOpsClusterRequestClusterInput interface {
 }
 
 type GitOpsClusterRequestClusterArgs struct {
-	Annotations         pulumi.StringMapInput                                   `pulumi:"annotations"`
-	ClusterResources    pulumi.BoolPtrInput                                     `pulumi:"clusterResources"`
-	Configs             GitOpsClusterRequestClusterConfigArrayInput             `pulumi:"configs"`
-	Infos               GitOpsClusterRequestClusterInfoArrayInput               `pulumi:"infos"`
-	Labels              pulumi.StringMapInput                                   `pulumi:"labels"`
-	Name                pulumi.StringPtrInput                                   `pulumi:"name"`
-	Namespaces          pulumi.StringArrayInput                                 `pulumi:"namespaces"`
-	Project             pulumi.StringPtrInput                                   `pulumi:"project"`
+	// Annotations for cluster secret metadata.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
+	ClusterResources pulumi.BoolPtrInput `pulumi:"clusterResources"`
+	// GitOps cluster config.
+	Configs GitOpsClusterRequestClusterConfigArrayInput `pulumi:"configs"`
+	// Information about cluster cache and state.
+	Infos GitOpsClusterRequestClusterInfoArrayInput `pulumi:"infos"`
+	// Labels for cluster secret metadata.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the cluster. If omitted, will use the server address.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Time when cluster cache refresh has been requested.
 	RefreshRequestedAts GitOpsClusterRequestClusterRefreshRequestedAtArrayInput `pulumi:"refreshRequestedAts"`
-	Server              pulumi.StringInput                                      `pulumi:"server"`
-	Shard               pulumi.StringPtrInput                                   `pulumi:"shard"`
+	// API server URL of the kubernetes cluster.
+	Server pulumi.StringInput `pulumi:"server"`
+	// Shard number. Calculated on the fly by the application controller if not specified.
+	Shard pulumi.StringPtrInput `pulumi:"shard"`
 }
 
 func (GitOpsClusterRequestClusterArgs) ElementType() reflect.Type {
@@ -9880,48 +10250,59 @@ func (o GitOpsClusterRequestClusterOutput) ToGitOpsClusterRequestClusterOutputWi
 	return o
 }
 
+// Annotations for cluster secret metadata.
 func (o GitOpsClusterRequestClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
 func (o GitOpsClusterRequestClusterOutput) ClusterResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) *bool { return v.ClusterResources }).(pulumi.BoolPtrOutput)
 }
 
+// GitOps cluster config.
 func (o GitOpsClusterRequestClusterOutput) Configs() GitOpsClusterRequestClusterConfigArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterConfig { return v.Configs }).(GitOpsClusterRequestClusterConfigArrayOutput)
 }
 
+// Information about cluster cache and state.
 func (o GitOpsClusterRequestClusterOutput) Infos() GitOpsClusterRequestClusterInfoArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterInfo { return v.Infos }).(GitOpsClusterRequestClusterInfoArrayOutput)
 }
 
+// Labels for cluster secret metadata.
 func (o GitOpsClusterRequestClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Name of the cluster. If omitted, will use the server address.
 func (o GitOpsClusterRequestClusterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
 func (o GitOpsClusterRequestClusterOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
 
+// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
 func (o GitOpsClusterRequestClusterOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Time when cluster cache refresh has been requested.
 func (o GitOpsClusterRequestClusterOutput) RefreshRequestedAts() GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) []GitOpsClusterRequestClusterRefreshRequestedAt {
 		return v.RefreshRequestedAts
 	}).(GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput)
 }
 
+// API server URL of the kubernetes cluster.
 func (o GitOpsClusterRequestClusterOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) string { return v.Server }).(pulumi.StringOutput)
 }
 
+// Shard number. Calculated on the fly by the application controller if not specified.
 func (o GitOpsClusterRequestClusterOutput) Shard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestCluster) *string { return v.Shard }).(pulumi.StringPtrOutput)
 }
@@ -9947,13 +10328,20 @@ func (o GitOpsClusterRequestClusterArrayOutput) Index(i pulumi.IntInput) GitOpsC
 }
 
 type GitOpsClusterRequestClusterConfig struct {
-	AwsAuthConfigs        []GitOpsClusterRequestClusterConfigAwsAuthConfig      `pulumi:"awsAuthConfigs"`
-	BearerToken           *string                                               `pulumi:"bearerToken"`
-	ClusterConnectionType *string                                               `pulumi:"clusterConnectionType"`
-	ExecProviderConfigs   []GitOpsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
-	Password              *string                                               `pulumi:"password"`
-	TlsClientConfigs      []GitOpsClusterRequestClusterConfigTlsClientConfig    `pulumi:"tlsClientConfigs"`
-	Username              *string                                               `pulumi:"username"`
+	// IAM authentication configuration for AWS.
+	AwsAuthConfigs []GitOpsClusterRequestClusterConfigAwsAuthConfig `pulumi:"awsAuthConfigs"`
+	// Bearer authentication token the cluster.
+	BearerToken *string `pulumi:"bearerToken"`
+	// Identifies the authentication method used to connect to the cluster.
+	ClusterConnectionType *string `pulumi:"clusterConnectionType"`
+	// Configuration for an exec provider.
+	ExecProviderConfigs []GitOpsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
+	// Password of the server of the cluster.
+	Password *string `pulumi:"password"`
+	// Settings to enable transport layer security.
+	TlsClientConfigs []GitOpsClusterRequestClusterConfigTlsClientConfig `pulumi:"tlsClientConfigs"`
+	// Username of the server of the cluster.
+	Username *string `pulumi:"username"`
 }
 
 // GitOpsClusterRequestClusterConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigArgs and GitOpsClusterRequestClusterConfigOutput values.
@@ -9968,13 +10356,20 @@ type GitOpsClusterRequestClusterConfigInput interface {
 }
 
 type GitOpsClusterRequestClusterConfigArgs struct {
-	AwsAuthConfigs        GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput      `pulumi:"awsAuthConfigs"`
-	BearerToken           pulumi.StringPtrInput                                         `pulumi:"bearerToken"`
-	ClusterConnectionType pulumi.StringPtrInput                                         `pulumi:"clusterConnectionType"`
-	ExecProviderConfigs   GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
-	Password              pulumi.StringPtrInput                                         `pulumi:"password"`
-	TlsClientConfigs      GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput    `pulumi:"tlsClientConfigs"`
-	Username              pulumi.StringPtrInput                                         `pulumi:"username"`
+	// IAM authentication configuration for AWS.
+	AwsAuthConfigs GitOpsClusterRequestClusterConfigAwsAuthConfigArrayInput `pulumi:"awsAuthConfigs"`
+	// Bearer authentication token the cluster.
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Identifies the authentication method used to connect to the cluster.
+	ClusterConnectionType pulumi.StringPtrInput `pulumi:"clusterConnectionType"`
+	// Configuration for an exec provider.
+	ExecProviderConfigs GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
+	// Password of the server of the cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Settings to enable transport layer security.
+	TlsClientConfigs GitOpsClusterRequestClusterConfigTlsClientConfigArrayInput `pulumi:"tlsClientConfigs"`
+	// Username of the server of the cluster.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GitOpsClusterRequestClusterConfigArgs) ElementType() reflect.Type {
@@ -10028,36 +10423,43 @@ func (o GitOpsClusterRequestClusterConfigOutput) ToGitOpsClusterRequestClusterCo
 	return o
 }
 
+// IAM authentication configuration for AWS.
 func (o GitOpsClusterRequestClusterConfigOutput) AwsAuthConfigs() GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigAwsAuthConfig {
 		return v.AwsAuthConfigs
 	}).(GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
 }
 
+// Bearer authentication token the cluster.
 func (o GitOpsClusterRequestClusterConfigOutput) BearerToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
+// Identifies the authentication method used to connect to the cluster.
 func (o GitOpsClusterRequestClusterConfigOutput) ClusterConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for an exec provider.
 func (o GitOpsClusterRequestClusterConfigOutput) ExecProviderConfigs() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigExecProviderConfig {
 		return v.ExecProviderConfigs
 	}).(GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput)
 }
 
+// Password of the server of the cluster.
 func (o GitOpsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Settings to enable transport layer security.
 func (o GitOpsClusterRequestClusterConfigOutput) TlsClientConfigs() GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigTlsClientConfig {
 		return v.TlsClientConfigs
 	}).(GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput)
 }
 
+// Username of the server of the cluster.
 func (o GitOpsClusterRequestClusterConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -10083,8 +10485,10 @@ func (o GitOpsClusterRequestClusterConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GitOpsClusterRequestClusterConfigAwsAuthConfig struct {
+	// AWS cluster name.
 	ClusterName *string `pulumi:"clusterName"`
-	RoleARN     *string `pulumi:"roleARN"`
+	// Optional role ARN. If set then used for AWS IAM Authenticator.
+	RoleARN *string `pulumi:"roleARN"`
 }
 
 // GitOpsClusterRequestClusterConfigAwsAuthConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigAwsAuthConfigArgs and GitOpsClusterRequestClusterConfigAwsAuthConfigOutput values.
@@ -10099,8 +10503,10 @@ type GitOpsClusterRequestClusterConfigAwsAuthConfigInput interface {
 }
 
 type GitOpsClusterRequestClusterConfigAwsAuthConfigArgs struct {
+	// AWS cluster name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	RoleARN     pulumi.StringPtrInput `pulumi:"roleARN"`
+	// Optional role ARN. If set then used for AWS IAM Authenticator.
+	RoleARN pulumi.StringPtrInput `pulumi:"roleARN"`
 }
 
 func (GitOpsClusterRequestClusterConfigAwsAuthConfigArgs) ElementType() reflect.Type {
@@ -10154,10 +10560,12 @@ func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ToGitOpsClusterReq
 	return o
 }
 
+// AWS cluster name.
 func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigAwsAuthConfig) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// Optional role ARN. If set then used for AWS IAM Authenticator.
 func (o GitOpsClusterRequestClusterConfigAwsAuthConfigOutput) RoleARN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigAwsAuthConfig) *string { return v.RoleARN }).(pulumi.StringPtrOutput)
 }
@@ -10183,11 +10591,16 @@ func (o GitOpsClusterRequestClusterConfigAwsAuthConfigArrayOutput) Index(i pulum
 }
 
 type GitOpsClusterRequestClusterConfigExecProviderConfig struct {
-	ApiVersion  *string           `pulumi:"apiVersion"`
-	Args        []string          `pulumi:"args"`
-	Command     *string           `pulumi:"command"`
-	Env         map[string]string `pulumi:"env"`
-	InstallHint *string           `pulumi:"installHint"`
+	// Preferred input version of the ExecInfo.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Arguments to pass to the command when executing it.
+	Args []string `pulumi:"args"`
+	// Command to execute.
+	Command *string `pulumi:"command"`
+	// Additional environment variables to expose to the process.
+	Env map[string]string `pulumi:"env"`
+	// Message displayed when the executable is not found.
+	InstallHint *string `pulumi:"installHint"`
 }
 
 // GitOpsClusterRequestClusterConfigExecProviderConfigInput is an input type that accepts GitOpsClusterRequestClusterConfigExecProviderConfigArgs and GitOpsClusterRequestClusterConfigExecProviderConfigOutput values.
@@ -10202,11 +10615,16 @@ type GitOpsClusterRequestClusterConfigExecProviderConfigInput interface {
 }
 
 type GitOpsClusterRequestClusterConfigExecProviderConfigArgs struct {
-	ApiVersion  pulumi.StringPtrInput   `pulumi:"apiVersion"`
-	Args        pulumi.StringArrayInput `pulumi:"args"`
-	Command     pulumi.StringPtrInput   `pulumi:"command"`
-	Env         pulumi.StringMapInput   `pulumi:"env"`
-	InstallHint pulumi.StringPtrInput   `pulumi:"installHint"`
+	// Preferred input version of the ExecInfo.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Arguments to pass to the command when executing it.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Command to execute.
+	Command pulumi.StringPtrInput `pulumi:"command"`
+	// Additional environment variables to expose to the process.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Message displayed when the executable is not found.
+	InstallHint pulumi.StringPtrInput `pulumi:"installHint"`
 }
 
 func (GitOpsClusterRequestClusterConfigExecProviderConfigArgs) ElementType() reflect.Type {
@@ -10260,22 +10678,27 @@ func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ToGitOpsClust
 	return o
 }
 
+// Preferred input version of the ExecInfo.
 func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// Arguments to pass to the command when executing it.
 func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Command to execute.
 func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Command() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
 }
 
+// Additional environment variables to expose to the process.
 func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
+// Message displayed when the executable is not found.
 func (o GitOpsClusterRequestClusterConfigExecProviderConfigOutput) InstallHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigExecProviderConfig) *string { return v.InstallHint }).(pulumi.StringPtrOutput)
 }
@@ -10301,10 +10724,15 @@ func (o GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput) Index(i 
 }
 
 type GitOpsClusterRequestClusterConfigTlsClientConfig struct {
-	CaData     *string `pulumi:"caData"`
-	CertData   *string `pulumi:"certData"`
-	Insecure   *bool   `pulumi:"insecure"`
-	KeyData    *string `pulumi:"keyData"`
+	// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+	CaData *string `pulumi:"caData"`
+	// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+	CertData *string `pulumi:"certData"`
+	// Indicates if the TLS connection to the cluster should be insecure.
+	Insecure *bool `pulumi:"insecure"`
+	// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+	KeyData *string `pulumi:"keyData"`
+	// Server name for SNI in the client to check server certificates against.
 	ServerName *string `pulumi:"serverName"`
 }
 
@@ -10320,10 +10748,15 @@ type GitOpsClusterRequestClusterConfigTlsClientConfigInput interface {
 }
 
 type GitOpsClusterRequestClusterConfigTlsClientConfigArgs struct {
-	CaData     pulumi.StringPtrInput `pulumi:"caData"`
-	CertData   pulumi.StringPtrInput `pulumi:"certData"`
-	Insecure   pulumi.BoolPtrInput   `pulumi:"insecure"`
-	KeyData    pulumi.StringPtrInput `pulumi:"keyData"`
+	// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+	CaData pulumi.StringPtrInput `pulumi:"caData"`
+	// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+	CertData pulumi.StringPtrInput `pulumi:"certData"`
+	// Indicates if the TLS connection to the cluster should be insecure.
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
+	// Server name for SNI in the client to check server certificates against.
 	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
 }
 
@@ -10378,22 +10811,27 @@ func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ToGitOpsClusterR
 	return o
 }
 
+// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
 func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) CaData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.CaData }).(pulumi.StringPtrOutput)
 }
 
+// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
 func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) CertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.CertData }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the TLS connection to the cluster should be insecure.
 func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
 func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
+// Server name for SNI in the client to check server certificates against.
 func (o GitOpsClusterRequestClusterConfigTlsClientConfigOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfigTlsClientConfig) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
@@ -10419,11 +10857,16 @@ func (o GitOpsClusterRequestClusterConfigTlsClientConfigArrayOutput) Index(i pul
 }
 
 type GitOpsClusterRequestClusterInfo struct {
-	ApiVersions       []string                                         `pulumi:"apiVersions"`
-	ApplicationsCount *string                                          `pulumi:"applicationsCount"`
-	CacheInfos        []GitOpsClusterRequestClusterInfoCacheInfo       `pulumi:"cacheInfos"`
-	ConnectionStates  []GitOpsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
-	ServerVersion     *string                                          `pulumi:"serverVersion"`
+	// List of API versions supported by the cluster.
+	ApiVersions []string `pulumi:"apiVersions"`
+	// Number of applications managed by Argo CD on the cluster.
+	ApplicationsCount *string `pulumi:"applicationsCount"`
+	// Information about the cluster cache.
+	CacheInfos []GitOpsClusterRequestClusterInfoCacheInfo `pulumi:"cacheInfos"`
+	// Information about the connection to the cluster.
+	ConnectionStates []GitOpsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
+	// Kubernetes version of the cluster.
+	ServerVersion *string `pulumi:"serverVersion"`
 }
 
 // GitOpsClusterRequestClusterInfoInput is an input type that accepts GitOpsClusterRequestClusterInfoArgs and GitOpsClusterRequestClusterInfoOutput values.
@@ -10438,11 +10881,16 @@ type GitOpsClusterRequestClusterInfoInput interface {
 }
 
 type GitOpsClusterRequestClusterInfoArgs struct {
-	ApiVersions       pulumi.StringArrayInput                                  `pulumi:"apiVersions"`
-	ApplicationsCount pulumi.StringPtrInput                                    `pulumi:"applicationsCount"`
-	CacheInfos        GitOpsClusterRequestClusterInfoCacheInfoArrayInput       `pulumi:"cacheInfos"`
-	ConnectionStates  GitOpsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
-	ServerVersion     pulumi.StringPtrInput                                    `pulumi:"serverVersion"`
+	// List of API versions supported by the cluster.
+	ApiVersions pulumi.StringArrayInput `pulumi:"apiVersions"`
+	// Number of applications managed by Argo CD on the cluster.
+	ApplicationsCount pulumi.StringPtrInput `pulumi:"applicationsCount"`
+	// Information about the cluster cache.
+	CacheInfos GitOpsClusterRequestClusterInfoCacheInfoArrayInput `pulumi:"cacheInfos"`
+	// Information about the connection to the cluster.
+	ConnectionStates GitOpsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
+	// Kubernetes version of the cluster.
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
 }
 
 func (GitOpsClusterRequestClusterInfoArgs) ElementType() reflect.Type {
@@ -10496,26 +10944,31 @@ func (o GitOpsClusterRequestClusterInfoOutput) ToGitOpsClusterRequestClusterInfo
 	return o
 }
 
+// List of API versions supported by the cluster.
 func (o GitOpsClusterRequestClusterInfoOutput) ApiVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []string { return v.ApiVersions }).(pulumi.StringArrayOutput)
 }
 
+// Number of applications managed by Argo CD on the cluster.
 func (o GitOpsClusterRequestClusterInfoOutput) ApplicationsCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) *string { return v.ApplicationsCount }).(pulumi.StringPtrOutput)
 }
 
+// Information about the cluster cache.
 func (o GitOpsClusterRequestClusterInfoOutput) CacheInfos() GitOpsClusterRequestClusterInfoCacheInfoArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []GitOpsClusterRequestClusterInfoCacheInfo {
 		return v.CacheInfos
 	}).(GitOpsClusterRequestClusterInfoCacheInfoArrayOutput)
 }
 
+// Information about the connection to the cluster.
 func (o GitOpsClusterRequestClusterInfoOutput) ConnectionStates() GitOpsClusterRequestClusterInfoConnectionStateArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) []GitOpsClusterRequestClusterInfoConnectionState {
 		return v.ConnectionStates
 	}).(GitOpsClusterRequestClusterInfoConnectionStateArrayOutput)
 }
 
+// Kubernetes version of the cluster.
 func (o GitOpsClusterRequestClusterInfoOutput) ServerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
@@ -10541,9 +10994,12 @@ func (o GitOpsClusterRequestClusterInfoArrayOutput) Index(i pulumi.IntInput) Git
 }
 
 type GitOpsClusterRequestClusterInfoCacheInfo struct {
-	ApisCount         *string `pulumi:"apisCount"`
+	// Number of observed kubernetes API count.
+	ApisCount *string `pulumi:"apisCount"`
+	// Time of most recent cache synchronization.
 	LastCacheSyncTime *string `pulumi:"lastCacheSyncTime"`
-	ResourcesCount    *string `pulumi:"resourcesCount"`
+	// Number of observed kubernetes resources.
+	ResourcesCount *string `pulumi:"resourcesCount"`
 }
 
 // GitOpsClusterRequestClusterInfoCacheInfoInput is an input type that accepts GitOpsClusterRequestClusterInfoCacheInfoArgs and GitOpsClusterRequestClusterInfoCacheInfoOutput values.
@@ -10558,9 +11014,12 @@ type GitOpsClusterRequestClusterInfoCacheInfoInput interface {
 }
 
 type GitOpsClusterRequestClusterInfoCacheInfoArgs struct {
-	ApisCount         pulumi.StringPtrInput `pulumi:"apisCount"`
+	// Number of observed kubernetes API count.
+	ApisCount pulumi.StringPtrInput `pulumi:"apisCount"`
+	// Time of most recent cache synchronization.
 	LastCacheSyncTime pulumi.StringPtrInput `pulumi:"lastCacheSyncTime"`
-	ResourcesCount    pulumi.StringPtrInput `pulumi:"resourcesCount"`
+	// Number of observed kubernetes resources.
+	ResourcesCount pulumi.StringPtrInput `pulumi:"resourcesCount"`
 }
 
 func (GitOpsClusterRequestClusterInfoCacheInfoArgs) ElementType() reflect.Type {
@@ -10614,14 +11073,17 @@ func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ToGitOpsClusterRequestCl
 	return o
 }
 
+// Number of observed kubernetes API count.
 func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ApisCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.ApisCount }).(pulumi.StringPtrOutput)
 }
 
+// Time of most recent cache synchronization.
 func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) LastCacheSyncTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.LastCacheSyncTime }).(pulumi.StringPtrOutput)
 }
 
+// Number of observed kubernetes resources.
 func (o GitOpsClusterRequestClusterInfoCacheInfoOutput) ResourcesCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoCacheInfo) *string { return v.ResourcesCount }).(pulumi.StringPtrOutput)
 }
@@ -10647,9 +11109,12 @@ func (o GitOpsClusterRequestClusterInfoCacheInfoArrayOutput) Index(i pulumi.IntI
 }
 
 type GitOpsClusterRequestClusterInfoConnectionState struct {
+	// Time when cluster cache refresh has been requested.
 	AttemptedAts []GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt `pulumi:"attemptedAts"`
-	Message      *string                                                     `pulumi:"message"`
-	Status       *string                                                     `pulumi:"status"`
+	// Information about the connection status.
+	Message *string `pulumi:"message"`
+	// Current status indicator of the connection.
+	Status *string `pulumi:"status"`
 }
 
 // GitOpsClusterRequestClusterInfoConnectionStateInput is an input type that accepts GitOpsClusterRequestClusterInfoConnectionStateArgs and GitOpsClusterRequestClusterInfoConnectionStateOutput values.
@@ -10664,9 +11129,12 @@ type GitOpsClusterRequestClusterInfoConnectionStateInput interface {
 }
 
 type GitOpsClusterRequestClusterInfoConnectionStateArgs struct {
+	// Time when cluster cache refresh has been requested.
 	AttemptedAts GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput `pulumi:"attemptedAts"`
-	Message      pulumi.StringPtrInput                                               `pulumi:"message"`
-	Status       pulumi.StringPtrInput                                               `pulumi:"status"`
+	// Information about the connection status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Current status indicator of the connection.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GitOpsClusterRequestClusterInfoConnectionStateArgs) ElementType() reflect.Type {
@@ -10720,16 +11188,19 @@ func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) ToGitOpsClusterReq
 	return o
 }
 
+// Time when cluster cache refresh has been requested.
 func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) AttemptedAts() GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) []GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt {
 		return v.AttemptedAts
 	}).(GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
 }
 
+// Information about the connection status.
 func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Current status indicator of the connection.
 func (o GitOpsClusterRequestClusterInfoConnectionStateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -10755,7 +11226,9 @@ func (o GitOpsClusterRequestClusterInfoConnectionStateArrayOutput) Index(i pulum
 }
 
 type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt struct {
-	Nanos   *int    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos *int `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds *string `pulumi:"seconds"`
 }
 
@@ -10771,7 +11244,9 @@ type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtInput interface {
 }
 
 type GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs struct {
-	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
 }
 
@@ -10826,10 +11301,12 @@ func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGitOp
 	return o
 }
 
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
 func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
 }
@@ -10855,7 +11332,9 @@ func (o GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput) In
 }
 
 type GitOpsClusterRequestClusterRefreshRequestedAt struct {
-	Nanos   *int    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos *int `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds *string `pulumi:"seconds"`
 }
 
@@ -10871,7 +11350,9 @@ type GitOpsClusterRequestClusterRefreshRequestedAtInput interface {
 }
 
 type GitOpsClusterRequestClusterRefreshRequestedAtArgs struct {
-	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
 }
 
@@ -10926,10 +11407,12 @@ func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) ToGitOpsClusterRequ
 	return o
 }
 
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
 func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterRefreshRequestedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 func (o GitOpsClusterRequestClusterRefreshRequestedAtOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterRefreshRequestedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
 }
@@ -10955,7 +11438,9 @@ func (o GitOpsClusterRequestClusterRefreshRequestedAtArrayOutput) Index(i pulumi
 }
 
 type GitOpsClusterRequestId struct {
-	Type  *string `pulumi:"type"`
+	// Type of the specified cluster identifier ( 'server' - default, 'name' ).
+	Type *string `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value *string `pulumi:"value"`
 }
 
@@ -10971,7 +11456,9 @@ type GitOpsClusterRequestIdInput interface {
 }
 
 type GitOpsClusterRequestIdArgs struct {
-	Type  pulumi.StringPtrInput `pulumi:"type"`
+	// Type of the specified cluster identifier ( 'server' - default, 'name' ).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -11026,10 +11513,12 @@ func (o GitOpsClusterRequestIdOutput) ToGitOpsClusterRequestIdOutputWithContext(
 	return o
 }
 
+// Type of the specified cluster identifier ( 'server' - default, 'name' ).
 func (o GitOpsClusterRequestIdOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestId) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Cluster server URL or the cluster name.
 func (o GitOpsClusterRequestIdOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestId) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -11055,6 +11544,7 @@ func (o GitOpsClusterRequestIdArrayOutput) Index(i pulumi.IntInput) GitOpsCluste
 }
 
 type GitOpsClusterRequestUpdateMask struct {
+	// The set of field mask paths.
 	Paths []string `pulumi:"paths"`
 }
 
@@ -11070,6 +11560,7 @@ type GitOpsClusterRequestUpdateMaskInput interface {
 }
 
 type GitOpsClusterRequestUpdateMaskArgs struct {
+	// The set of field mask paths.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 }
 
@@ -11124,6 +11615,7 @@ func (o GitOpsClusterRequestUpdateMaskOutput) ToGitOpsClusterRequestUpdateMaskOu
 	return o
 }
 
+// The set of field mask paths.
 func (o GitOpsClusterRequestUpdateMaskOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestUpdateMask) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
@@ -11255,12 +11747,18 @@ func (o GitOpsGnupgRequestArrayOutput) Index(i pulumi.IntInput) GitOpsGnupgReque
 }
 
 type GitOpsGnupgRequestPublickey struct {
+	// Fingerprint is the fingerprint of the key
 	Fingerprint *string `pulumi:"fingerprint"`
-	KeyData     string  `pulumi:"keyData"`
-	KeyId       *string `pulumi:"keyId"`
-	Owner       *string `pulumi:"owner"`
-	SubType     *string `pulumi:"subType"`
-	Trust       *string `pulumi:"trust"`
+	// KeyData holds the raw key data, in base64 encoded format
+	KeyData string `pulumi:"keyData"`
+	// KeyID specifies the key ID, in hexadecimal string format.
+	KeyId *string `pulumi:"keyId"`
+	// Owner holds the owner identification, e.g. a name and e-mail address
+	Owner *string `pulumi:"owner"`
+	// SubType holds the key's sub type
+	SubType *string `pulumi:"subType"`
+	// Trust holds the level of trust assigned to this key
+	Trust *string `pulumi:"trust"`
 }
 
 // GitOpsGnupgRequestPublickeyInput is an input type that accepts GitOpsGnupgRequestPublickeyArgs and GitOpsGnupgRequestPublickeyOutput values.
@@ -11275,12 +11773,18 @@ type GitOpsGnupgRequestPublickeyInput interface {
 }
 
 type GitOpsGnupgRequestPublickeyArgs struct {
+	// Fingerprint is the fingerprint of the key
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
-	KeyData     pulumi.StringInput    `pulumi:"keyData"`
-	KeyId       pulumi.StringPtrInput `pulumi:"keyId"`
-	Owner       pulumi.StringPtrInput `pulumi:"owner"`
-	SubType     pulumi.StringPtrInput `pulumi:"subType"`
-	Trust       pulumi.StringPtrInput `pulumi:"trust"`
+	// KeyData holds the raw key data, in base64 encoded format
+	KeyData pulumi.StringInput `pulumi:"keyData"`
+	// KeyID specifies the key ID, in hexadecimal string format.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// Owner holds the owner identification, e.g. a name and e-mail address
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// SubType holds the key's sub type
+	SubType pulumi.StringPtrInput `pulumi:"subType"`
+	// Trust holds the level of trust assigned to this key
+	Trust pulumi.StringPtrInput `pulumi:"trust"`
 }
 
 func (GitOpsGnupgRequestPublickeyArgs) ElementType() reflect.Type {
@@ -11334,26 +11838,32 @@ func (o GitOpsGnupgRequestPublickeyOutput) ToGitOpsGnupgRequestPublickeyOutputWi
 	return o
 }
 
+// Fingerprint is the fingerprint of the key
 func (o GitOpsGnupgRequestPublickeyOutput) Fingerprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
 }
 
+// KeyData holds the raw key data, in base64 encoded format
 func (o GitOpsGnupgRequestPublickeyOutput) KeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) string { return v.KeyData }).(pulumi.StringOutput)
 }
 
+// KeyID specifies the key ID, in hexadecimal string format.
 func (o GitOpsGnupgRequestPublickeyOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
 
+// Owner holds the owner identification, e.g. a name and e-mail address
 func (o GitOpsGnupgRequestPublickeyOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// SubType holds the key's sub type
 func (o GitOpsGnupgRequestPublickeyOutput) SubType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) *string { return v.SubType }).(pulumi.StringPtrOutput)
 }
 
+// Trust holds the level of trust assigned to this key
 func (o GitOpsGnupgRequestPublickeyOutput) Trust() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsGnupgRequestPublickey) *string { return v.Trust }).(pulumi.StringPtrOutput)
 }
@@ -11485,7 +11995,9 @@ func (o GitOpsRepoCertRequestArrayOutput) Index(i pulumi.IntInput) GitOpsRepoCer
 }
 
 type GitOpsRepoCertRequestCertificate struct {
-	Items     []GitOpsRepoCertRequestCertificateItem     `pulumi:"items"`
+	// List of certificates to be processed.
+	Items []GitOpsRepoCertRequestCertificateItem `pulumi:"items"`
+	// metadata details
 	Metadatas []GitOpsRepoCertRequestCertificateMetadata `pulumi:"metadatas"`
 }
 
@@ -11501,7 +12013,9 @@ type GitOpsRepoCertRequestCertificateInput interface {
 }
 
 type GitOpsRepoCertRequestCertificateArgs struct {
-	Items     GitOpsRepoCertRequestCertificateItemArrayInput     `pulumi:"items"`
+	// List of certificates to be processed.
+	Items GitOpsRepoCertRequestCertificateItemArrayInput `pulumi:"items"`
+	// metadata details
 	Metadatas GitOpsRepoCertRequestCertificateMetadataArrayInput `pulumi:"metadatas"`
 }
 
@@ -11556,10 +12070,12 @@ func (o GitOpsRepoCertRequestCertificateOutput) ToGitOpsRepoCertRequestCertifica
 	return o
 }
 
+// List of certificates to be processed.
 func (o GitOpsRepoCertRequestCertificateOutput) Items() GitOpsRepoCertRequestCertificateItemArrayOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificate) []GitOpsRepoCertRequestCertificateItem { return v.Items }).(GitOpsRepoCertRequestCertificateItemArrayOutput)
 }
 
+// metadata details
 func (o GitOpsRepoCertRequestCertificateOutput) Metadatas() GitOpsRepoCertRequestCertificateMetadataArrayOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificate) []GitOpsRepoCertRequestCertificateMetadata {
 		return v.Metadatas
@@ -11587,11 +12103,16 @@ func (o GitOpsRepoCertRequestCertificateArrayOutput) Index(i pulumi.IntInput) Gi
 }
 
 type GitOpsRepoCertRequestCertificateItem struct {
-	CertData    *string `pulumi:"certData"`
-	CertInfo    *string `pulumi:"certInfo"`
+	// CertData contains the actual certificate data, dependent on the certificate type.
+	CertData *string `pulumi:"certData"`
+	// CertInfo will hold additional certificate info, depdendent on the certificate type .
+	CertInfo *string `pulumi:"certInfo"`
+	// CertSubType specifies the sub type of the cert, i.e. ssh-rsa.
 	CertSubType *string `pulumi:"certSubType"`
-	CertType    *string `pulumi:"certType"`
-	ServerName  *string `pulumi:"serverName"`
+	// CertType specifies the type of the certificate - currently one of https or ssh.
+	CertType *string `pulumi:"certType"`
+	// ServerName specifies the DNS name of the server this certificate is intended.
+	ServerName *string `pulumi:"serverName"`
 }
 
 // GitOpsRepoCertRequestCertificateItemInput is an input type that accepts GitOpsRepoCertRequestCertificateItemArgs and GitOpsRepoCertRequestCertificateItemOutput values.
@@ -11606,11 +12127,16 @@ type GitOpsRepoCertRequestCertificateItemInput interface {
 }
 
 type GitOpsRepoCertRequestCertificateItemArgs struct {
-	CertData    pulumi.StringPtrInput `pulumi:"certData"`
-	CertInfo    pulumi.StringPtrInput `pulumi:"certInfo"`
+	// CertData contains the actual certificate data, dependent on the certificate type.
+	CertData pulumi.StringPtrInput `pulumi:"certData"`
+	// CertInfo will hold additional certificate info, depdendent on the certificate type .
+	CertInfo pulumi.StringPtrInput `pulumi:"certInfo"`
+	// CertSubType specifies the sub type of the cert, i.e. ssh-rsa.
 	CertSubType pulumi.StringPtrInput `pulumi:"certSubType"`
-	CertType    pulumi.StringPtrInput `pulumi:"certType"`
-	ServerName  pulumi.StringPtrInput `pulumi:"serverName"`
+	// CertType specifies the type of the certificate - currently one of https or ssh.
+	CertType pulumi.StringPtrInput `pulumi:"certType"`
+	// ServerName specifies the DNS name of the server this certificate is intended.
+	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
 }
 
 func (GitOpsRepoCertRequestCertificateItemArgs) ElementType() reflect.Type {
@@ -11664,22 +12190,27 @@ func (o GitOpsRepoCertRequestCertificateItemOutput) ToGitOpsRepoCertRequestCerti
 	return o
 }
 
+// CertData contains the actual certificate data, dependent on the certificate type.
 func (o GitOpsRepoCertRequestCertificateItemOutput) CertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateItem) *string { return v.CertData }).(pulumi.StringPtrOutput)
 }
 
+// CertInfo will hold additional certificate info, depdendent on the certificate type .
 func (o GitOpsRepoCertRequestCertificateItemOutput) CertInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateItem) *string { return v.CertInfo }).(pulumi.StringPtrOutput)
 }
 
+// CertSubType specifies the sub type of the cert, i.e. ssh-rsa.
 func (o GitOpsRepoCertRequestCertificateItemOutput) CertSubType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateItem) *string { return v.CertSubType }).(pulumi.StringPtrOutput)
 }
 
+// CertType specifies the type of the certificate - currently one of https or ssh.
 func (o GitOpsRepoCertRequestCertificateItemOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateItem) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
+// ServerName specifies the DNS name of the server this certificate is intended.
 func (o GitOpsRepoCertRequestCertificateItemOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateItem) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
@@ -11705,10 +12236,14 @@ func (o GitOpsRepoCertRequestCertificateItemArrayOutput) Index(i pulumi.IntInput
 }
 
 type GitOpsRepoCertRequestCertificateMetadata struct {
-	Continue           *string `pulumi:"continue"`
+	// continue may be set if the user set a limit on the number of items returned.
+	Continue *string `pulumi:"continue"`
+	// subsequent items in the list.
 	RemainingItemCount *string `pulumi:"remainingItemCount"`
-	ResourceVersion    *string `pulumi:"resourceVersion"`
-	SelfLink           *string `pulumi:"selfLink"`
+	// dentifies the server's internal version.
+	ResourceVersion *string `pulumi:"resourceVersion"`
+	// selfLink is a URL representing this object.
+	SelfLink *string `pulumi:"selfLink"`
 }
 
 // GitOpsRepoCertRequestCertificateMetadataInput is an input type that accepts GitOpsRepoCertRequestCertificateMetadataArgs and GitOpsRepoCertRequestCertificateMetadataOutput values.
@@ -11723,10 +12258,14 @@ type GitOpsRepoCertRequestCertificateMetadataInput interface {
 }
 
 type GitOpsRepoCertRequestCertificateMetadataArgs struct {
-	Continue           pulumi.StringPtrInput `pulumi:"continue"`
+	// continue may be set if the user set a limit on the number of items returned.
+	Continue pulumi.StringPtrInput `pulumi:"continue"`
+	// subsequent items in the list.
 	RemainingItemCount pulumi.StringPtrInput `pulumi:"remainingItemCount"`
-	ResourceVersion    pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	SelfLink           pulumi.StringPtrInput `pulumi:"selfLink"`
+	// dentifies the server's internal version.
+	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
+	// selfLink is a URL representing this object.
+	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 }
 
 func (GitOpsRepoCertRequestCertificateMetadataArgs) ElementType() reflect.Type {
@@ -11780,18 +12319,22 @@ func (o GitOpsRepoCertRequestCertificateMetadataOutput) ToGitOpsRepoCertRequestC
 	return o
 }
 
+// continue may be set if the user set a limit on the number of items returned.
 func (o GitOpsRepoCertRequestCertificateMetadataOutput) Continue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateMetadata) *string { return v.Continue }).(pulumi.StringPtrOutput)
 }
 
+// subsequent items in the list.
 func (o GitOpsRepoCertRequestCertificateMetadataOutput) RemainingItemCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateMetadata) *string { return v.RemainingItemCount }).(pulumi.StringPtrOutput)
 }
 
+// dentifies the server's internal version.
 func (o GitOpsRepoCertRequestCertificateMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
+// selfLink is a URL representing this object.
 func (o GitOpsRepoCertRequestCertificateMetadataOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepoCertRequestCertificateMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
@@ -12536,11 +13079,16 @@ func (o GithubConnectorApiAuthenticationPtrOutput) TokenRef() pulumi.StringPtrOu
 }
 
 type GithubConnectorApiAuthenticationGithubApp struct {
-	ApplicationId     *string `pulumi:"applicationId"`
-	ApplicationIdRef  *string `pulumi:"applicationIdRef"`
-	InstallationId    *string `pulumi:"installationId"`
+	// Enter the GitHub App ID from the GitHub App General tab.
+	ApplicationId *string `pulumi:"applicationId"`
+	// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApplicationIdRef *string `pulumi:"applicationIdRef"`
+	// Enter the Installation ID located in the URL of the installed GitHub App.
+	InstallationId *string `pulumi:"installationId"`
+	// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	InstallationIdRef *string `pulumi:"installationIdRef"`
-	PrivateKeyRef     string  `pulumi:"privateKeyRef"`
+	// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef string `pulumi:"privateKeyRef"`
 }
 
 // GithubConnectorApiAuthenticationGithubAppInput is an input type that accepts GithubConnectorApiAuthenticationGithubAppArgs and GithubConnectorApiAuthenticationGithubAppOutput values.
@@ -12555,11 +13103,16 @@ type GithubConnectorApiAuthenticationGithubAppInput interface {
 }
 
 type GithubConnectorApiAuthenticationGithubAppArgs struct {
-	ApplicationId     pulumi.StringPtrInput `pulumi:"applicationId"`
-	ApplicationIdRef  pulumi.StringPtrInput `pulumi:"applicationIdRef"`
-	InstallationId    pulumi.StringPtrInput `pulumi:"installationId"`
+	// Enter the GitHub App ID from the GitHub App General tab.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApplicationIdRef pulumi.StringPtrInput `pulumi:"applicationIdRef"`
+	// Enter the Installation ID located in the URL of the installed GitHub App.
+	InstallationId pulumi.StringPtrInput `pulumi:"installationId"`
+	// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	InstallationIdRef pulumi.StringPtrInput `pulumi:"installationIdRef"`
-	PrivateKeyRef     pulumi.StringInput    `pulumi:"privateKeyRef"`
+	// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef pulumi.StringInput `pulumi:"privateKeyRef"`
 }
 
 func (GithubConnectorApiAuthenticationGithubAppArgs) ElementType() reflect.Type {
@@ -12639,22 +13192,27 @@ func (o GithubConnectorApiAuthenticationGithubAppOutput) ToGithubConnectorApiAut
 	}).(GithubConnectorApiAuthenticationGithubAppPtrOutput)
 }
 
+// Enter the GitHub App ID from the GitHub App General tab.
 func (o GithubConnectorApiAuthenticationGithubAppOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppOutput) ApplicationIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) *string { return v.ApplicationIdRef }).(pulumi.StringPtrOutput)
 }
 
+// Enter the Installation ID located in the URL of the installed GitHub App.
 func (o GithubConnectorApiAuthenticationGithubAppOutput) InstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) *string { return v.InstallationId }).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppOutput) InstallationIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) *string { return v.InstallationIdRef }).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppOutput) PrivateKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GithubConnectorApiAuthenticationGithubApp) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
 }
@@ -12683,6 +13241,7 @@ func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) Elem() GithubConnect
 	}).(GithubConnectorApiAuthenticationGithubAppOutput)
 }
 
+// Enter the GitHub App ID from the GitHub App General tab.
 func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
 		if v == nil {
@@ -12692,6 +13251,7 @@ func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ApplicationId() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ApplicationIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
 		if v == nil {
@@ -12701,6 +13261,7 @@ func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) ApplicationIdRef() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enter the Installation ID located in the URL of the installed GitHub App.
 func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) InstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
 		if v == nil {
@@ -12710,6 +13271,7 @@ func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) InstallationId() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) InstallationIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
 		if v == nil {
@@ -12719,6 +13281,7 @@ func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) InstallationIdRef() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorApiAuthenticationGithubAppPtrOutput) PrivateKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorApiAuthenticationGithubApp) *string {
 		if v == nil {
@@ -12885,8 +13448,11 @@ func (o GithubConnectorCredentialsPtrOutput) Ssh() GithubConnectorCredentialsSsh
 }
 
 type GithubConnectorCredentialsHttp struct {
-	TokenRef    string  `pulumi:"tokenRef"`
-	Username    *string `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -12902,8 +13468,11 @@ type GithubConnectorCredentialsHttpInput interface {
 }
 
 type GithubConnectorCredentialsHttpArgs struct {
-	TokenRef    pulumi.StringInput    `pulumi:"tokenRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -12984,14 +13553,17 @@ func (o GithubConnectorCredentialsHttpOutput) ToGithubConnectorCredentialsHttpPt
 	}).(GithubConnectorCredentialsHttpPtrOutput)
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsHttpOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GithubConnectorCredentialsHttp) string { return v.TokenRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GithubConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GithubConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -13020,6 +13592,7 @@ func (o GithubConnectorCredentialsHttpPtrOutput) Elem() GithubConnectorCredentia
 	}).(GithubConnectorCredentialsHttpOutput)
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13029,6 +13602,7 @@ func (o GithubConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o GithubConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13038,6 +13612,7 @@ func (o GithubConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13048,6 +13623,7 @@ func (o GithubConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrO
 }
 
 type GithubConnectorCredentialsSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -13063,6 +13639,7 @@ type GithubConnectorCredentialsSshInput interface {
 }
 
 type GithubConnectorCredentialsSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -13143,6 +13720,7 @@ func (o GithubConnectorCredentialsSshOutput) ToGithubConnectorCredentialsSshPtrO
 	}).(GithubConnectorCredentialsSshPtrOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GithubConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -13171,6 +13749,7 @@ func (o GithubConnectorCredentialsSshPtrOutput) Elem() GithubConnectorCredential
 	}).(GithubConnectorCredentialsSshOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GithubConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GithubConnectorCredentialsSsh) *string {
 		if v == nil {
@@ -13474,9 +14053,13 @@ func (o GitlabConnectorCredentialsPtrOutput) Ssh() GitlabConnectorCredentialsSsh
 }
 
 type GitlabConnectorCredentialsHttp struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef *string `pulumi:"passwordRef"`
-	TokenRef    *string `pulumi:"tokenRef"`
-	Username    *string `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef *string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -13492,9 +14075,13 @@ type GitlabConnectorCredentialsHttpInput interface {
 }
 
 type GitlabConnectorCredentialsHttpArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringPtrInput `pulumi:"passwordRef"`
-	TokenRef    pulumi.StringPtrInput `pulumi:"tokenRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringPtrInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -13575,18 +14162,22 @@ func (o GitlabConnectorCredentialsHttpOutput) ToGitlabConnectorCredentialsHttpPt
 	}).(GitlabConnectorCredentialsHttpPtrOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.PasswordRef }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpOutput) TokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.TokenRef }).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o GitlabConnectorCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitlabConnectorCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -13615,6 +14206,7 @@ func (o GitlabConnectorCredentialsHttpPtrOutput) Elem() GitlabConnectorCredentia
 	}).(GitlabConnectorCredentialsHttpOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13624,6 +14216,7 @@ func (o GitlabConnectorCredentialsHttpPtrOutput) PasswordRef() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13633,6 +14226,7 @@ func (o GitlabConnectorCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o GitlabConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13642,6 +14236,7 @@ func (o GitlabConnectorCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnectorCredentialsHttp) *string {
 		if v == nil {
@@ -13652,6 +14247,7 @@ func (o GitlabConnectorCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrO
 }
 
 type GitlabConnectorCredentialsSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -13667,6 +14263,7 @@ type GitlabConnectorCredentialsSshInput interface {
 }
 
 type GitlabConnectorCredentialsSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -13747,6 +14344,7 @@ func (o GitlabConnectorCredentialsSshOutput) ToGitlabConnectorCredentialsSshPtrO
 	}).(GitlabConnectorCredentialsSshPtrOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GitlabConnectorCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -13775,6 +14373,7 @@ func (o GitlabConnectorCredentialsSshPtrOutput) Elem() GitlabConnectorCredential
 	}).(GitlabConnectorCredentialsSshOutput)
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GitlabConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitlabConnectorCredentialsSsh) *string {
 		if v == nil {
@@ -14464,6 +15063,7 @@ func (o JenkinsConnectorAuthPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type JenkinsConnectorAuthJenkinsBearerToken struct {
+	// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
 }
 
@@ -14479,6 +15079,7 @@ type JenkinsConnectorAuthJenkinsBearerTokenInput interface {
 }
 
 type JenkinsConnectorAuthJenkinsBearerTokenArgs struct {
+	// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
 }
 
@@ -14559,6 +15160,7 @@ func (o JenkinsConnectorAuthJenkinsBearerTokenOutput) ToJenkinsConnectorAuthJenk
 	}).(JenkinsConnectorAuthJenkinsBearerTokenPtrOutput)
 }
 
+// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsBearerTokenOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v JenkinsConnectorAuthJenkinsBearerToken) string { return v.TokenRef }).(pulumi.StringOutput)
 }
@@ -14587,6 +15189,7 @@ func (o JenkinsConnectorAuthJenkinsBearerTokenPtrOutput) Elem() JenkinsConnector
 	}).(JenkinsConnectorAuthJenkinsBearerTokenOutput)
 }
 
+// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsBearerTokenPtrOutput) TokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JenkinsConnectorAuthJenkinsBearerToken) *string {
 		if v == nil {
@@ -14597,8 +15200,11 @@ func (o JenkinsConnectorAuthJenkinsBearerTokenPtrOutput) TokenRef() pulumi.Strin
 }
 
 type JenkinsConnectorAuthJenkinsUserNamePassword struct {
-	PasswordRef string  `pulumi:"passwordRef"`
-	Username    *string `pulumi:"username"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Username reference to use for authentication.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -14614,8 +15220,11 @@ type JenkinsConnectorAuthJenkinsUserNamePasswordInput interface {
 }
 
 type JenkinsConnectorAuthJenkinsUserNamePasswordArgs struct {
-	PasswordRef pulumi.StringInput    `pulumi:"passwordRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Username reference to use for authentication.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -14696,14 +15305,17 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) ToJenkinsConnectorAut
 	}).(JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v JenkinsConnectorAuthJenkinsUserNamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JenkinsConnectorAuthJenkinsUserNamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Username reference to use for authentication.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JenkinsConnectorAuthJenkinsUserNamePassword) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -14732,6 +15344,7 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) Elem() JenkinsConn
 	}).(JenkinsConnectorAuthJenkinsUserNamePasswordOutput)
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JenkinsConnectorAuthJenkinsUserNamePassword) *string {
 		if v == nil {
@@ -14741,6 +15354,7 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) PasswordRef() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JenkinsConnectorAuthJenkinsUserNamePassword) *string {
 		if v == nil {
@@ -14750,6 +15364,7 @@ func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) Username() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username reference to use for authentication.
 func (o JenkinsConnectorAuthJenkinsUserNamePasswordPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JenkinsConnectorAuthJenkinsUserNamePassword) *string {
 		if v == nil {
@@ -16189,7 +16804,8 @@ type ManualFreezeFreezeWindow struct {
 	// Duration of the freeze
 	Duration *string `pulumi:"duration"`
 	// End time of the freeze
-	EndTime     *string                              `pulumi:"endTime"`
+	EndTime *string `pulumi:"endTime"`
+	// Recurrence of the freeze window
 	Recurrences []ManualFreezeFreezeWindowRecurrence `pulumi:"recurrences"`
 	// Start time of the freeze
 	StartTime *string `pulumi:"startTime"`
@@ -16212,7 +16828,8 @@ type ManualFreezeFreezeWindowArgs struct {
 	// Duration of the freeze
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// End time of the freeze
-	EndTime     pulumi.StringPtrInput                        `pulumi:"endTime"`
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Recurrence of the freeze window
 	Recurrences ManualFreezeFreezeWindowRecurrenceArrayInput `pulumi:"recurrences"`
 	// Start time of the freeze
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -16281,6 +16898,7 @@ func (o ManualFreezeFreezeWindowOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Recurrence of the freeze window
 func (o ManualFreezeFreezeWindowOutput) Recurrences() ManualFreezeFreezeWindowRecurrenceArrayOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindow) []ManualFreezeFreezeWindowRecurrence { return v.Recurrences }).(ManualFreezeFreezeWindowRecurrenceArrayOutput)
 }
@@ -16316,8 +16934,9 @@ func (o ManualFreezeFreezeWindowArrayOutput) Index(i pulumi.IntInput) ManualFree
 }
 
 type ManualFreezeFreezeWindowRecurrence struct {
+	// Used to filter resources on their attributes
 	RecurrenceSpecs []ManualFreezeFreezeWindowRecurrenceRecurrenceSpec `pulumi:"recurrenceSpecs"`
-	// Type of freeze
+	// Recurrence type(Daily, Weekly, Monthly, Yearly)
 	Type *string `pulumi:"type"`
 }
 
@@ -16333,8 +16952,9 @@ type ManualFreezeFreezeWindowRecurrenceInput interface {
 }
 
 type ManualFreezeFreezeWindowRecurrenceArgs struct {
+	// Used to filter resources on their attributes
 	RecurrenceSpecs ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayInput `pulumi:"recurrenceSpecs"`
-	// Type of freeze
+	// Recurrence type(Daily, Weekly, Monthly, Yearly)
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -16389,13 +17009,14 @@ func (o ManualFreezeFreezeWindowRecurrenceOutput) ToManualFreezeFreezeWindowRecu
 	return o
 }
 
+// Used to filter resources on their attributes
 func (o ManualFreezeFreezeWindowRecurrenceOutput) RecurrenceSpecs() ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrence) []ManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
 		return v.RecurrenceSpecs
 	}).(ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput)
 }
 
-// Type of freeze
+// Recurrence type(Daily, Weekly, Monthly, Yearly)
 func (o ManualFreezeFreezeWindowRecurrenceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrence) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -16421,8 +17042,10 @@ func (o ManualFreezeFreezeWindowRecurrenceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ManualFreezeFreezeWindowRecurrenceRecurrenceSpec struct {
+	// Recurrence until timestamp
 	Until *string `pulumi:"until"`
-	Value *int    `pulumi:"value"`
+	// Value of n, for n months recurrence
+	Value *int `pulumi:"value"`
 }
 
 // ManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput is an input type that accepts ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs and ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput values.
@@ -16437,8 +17060,10 @@ type ManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput interface {
 }
 
 type ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs struct {
+	// Recurrence until timestamp
 	Until pulumi.StringPtrInput `pulumi:"until"`
-	Value pulumi.IntPtrInput    `pulumi:"value"`
+	// Value of n, for n months recurrence
+	Value pulumi.IntPtrInput `pulumi:"value"`
 }
 
 func (ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs) ElementType() reflect.Type {
@@ -16492,10 +17117,12 @@ func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) ToManualFreezeFr
 	return o
 }
 
+// Recurrence until timestamp
 func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Until() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrenceRecurrenceSpec) *string { return v.Until }).(pulumi.StringPtrOutput)
 }
 
+// Value of n, for n months recurrence
 func (o ManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManualFreezeFreezeWindowRecurrenceRecurrenceSpec) *int { return v.Value }).(pulumi.IntPtrOutput)
 }
@@ -16907,13 +17534,18 @@ func (o MonitoredServiceRequestPtrOutput) VersionLabel() pulumi.StringPtrOutput 
 }
 
 type MonitoredServiceRequestChangeSource struct {
+	// Category of the change source.
 	Category string `pulumi:"category"`
-	Enabled  *bool  `pulumi:"enabled"`
-	// Identifier of the monitored service.
-	Identifier string  `pulumi:"identifier"`
-	Name       string  `pulumi:"name"`
-	Spec       *string `pulumi:"spec"`
-	Type       string  `pulumi:"type"`
+	// Enable or disable the change source.
+	Enabled *bool `pulumi:"enabled"`
+	// Identifier of the change source.
+	Identifier string `pulumi:"identifier"`
+	// Name of the change source.
+	Name string `pulumi:"name"`
+	// Specification of the change source. Depends on the type of the change source.
+	Spec *string `pulumi:"spec"`
+	// Type of the change source.
+	Type string `pulumi:"type"`
 }
 
 // MonitoredServiceRequestChangeSourceInput is an input type that accepts MonitoredServiceRequestChangeSourceArgs and MonitoredServiceRequestChangeSourceOutput values.
@@ -16928,13 +17560,18 @@ type MonitoredServiceRequestChangeSourceInput interface {
 }
 
 type MonitoredServiceRequestChangeSourceArgs struct {
-	Category pulumi.StringInput  `pulumi:"category"`
-	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Identifier of the monitored service.
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	Name       pulumi.StringInput    `pulumi:"name"`
-	Spec       pulumi.StringPtrInput `pulumi:"spec"`
-	Type       pulumi.StringInput    `pulumi:"type"`
+	// Category of the change source.
+	Category pulumi.StringInput `pulumi:"category"`
+	// Enable or disable the change source.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Identifier of the change source.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the change source.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specification of the change source. Depends on the type of the change source.
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// Type of the change source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MonitoredServiceRequestChangeSourceArgs) ElementType() reflect.Type {
@@ -16988,27 +17625,32 @@ func (o MonitoredServiceRequestChangeSourceOutput) ToMonitoredServiceRequestChan
 	return o
 }
 
+// Category of the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// Enable or disable the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Identifier of the monitored service.
+// Identifier of the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Name of the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specification of the change source. Depends on the type of the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
+// Type of the change source.
 func (o MonitoredServiceRequestChangeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestChangeSource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17034,9 +17676,12 @@ func (o MonitoredServiceRequestChangeSourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type MonitoredServiceRequestDependency struct {
-	DependencyMetadata         *string `pulumi:"dependencyMetadata"`
-	MonitoredServiceIdentifier string  `pulumi:"monitoredServiceIdentifier"`
-	Type                       string  `pulumi:"type"`
+	// Dependency metadata for the monitored service.
+	DependencyMetadata *string `pulumi:"dependencyMetadata"`
+	// Monitored service identifier of the dependency.
+	MonitoredServiceIdentifier string `pulumi:"monitoredServiceIdentifier"`
+	// Type of the service dependency.
+	Type string `pulumi:"type"`
 }
 
 // MonitoredServiceRequestDependencyInput is an input type that accepts MonitoredServiceRequestDependencyArgs and MonitoredServiceRequestDependencyOutput values.
@@ -17051,9 +17696,12 @@ type MonitoredServiceRequestDependencyInput interface {
 }
 
 type MonitoredServiceRequestDependencyArgs struct {
-	DependencyMetadata         pulumi.StringPtrInput `pulumi:"dependencyMetadata"`
-	MonitoredServiceIdentifier pulumi.StringInput    `pulumi:"monitoredServiceIdentifier"`
-	Type                       pulumi.StringInput    `pulumi:"type"`
+	// Dependency metadata for the monitored service.
+	DependencyMetadata pulumi.StringPtrInput `pulumi:"dependencyMetadata"`
+	// Monitored service identifier of the dependency.
+	MonitoredServiceIdentifier pulumi.StringInput `pulumi:"monitoredServiceIdentifier"`
+	// Type of the service dependency.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MonitoredServiceRequestDependencyArgs) ElementType() reflect.Type {
@@ -17107,14 +17755,17 @@ func (o MonitoredServiceRequestDependencyOutput) ToMonitoredServiceRequestDepend
 	return o
 }
 
+// Dependency metadata for the monitored service.
 func (o MonitoredServiceRequestDependencyOutput) DependencyMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestDependency) *string { return v.DependencyMetadata }).(pulumi.StringPtrOutput)
 }
 
+// Monitored service identifier of the dependency.
 func (o MonitoredServiceRequestDependencyOutput) MonitoredServiceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestDependency) string { return v.MonitoredServiceIdentifier }).(pulumi.StringOutput)
 }
 
+// Type of the service dependency.
 func (o MonitoredServiceRequestDependencyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestDependency) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17140,11 +17791,14 @@ func (o MonitoredServiceRequestDependencyArrayOutput) Index(i pulumi.IntInput) M
 }
 
 type MonitoredServiceRequestHealthSource struct {
-	// Identifier of the monitored service.
+	// Identifier of the health source.
 	Identifier string `pulumi:"identifier"`
-	Name       string `pulumi:"name"`
-	Spec       string `pulumi:"spec"`
-	Type       string `pulumi:"type"`
+	// Name of the health source.
+	Name string `pulumi:"name"`
+	// Specification of the health source. Depends on the type of the health source.
+	Spec string `pulumi:"spec"`
+	// Type of the health source.
+	Type string `pulumi:"type"`
 }
 
 // MonitoredServiceRequestHealthSourceInput is an input type that accepts MonitoredServiceRequestHealthSourceArgs and MonitoredServiceRequestHealthSourceOutput values.
@@ -17159,11 +17813,14 @@ type MonitoredServiceRequestHealthSourceInput interface {
 }
 
 type MonitoredServiceRequestHealthSourceArgs struct {
-	// Identifier of the monitored service.
+	// Identifier of the health source.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	Name       pulumi.StringInput `pulumi:"name"`
-	Spec       pulumi.StringInput `pulumi:"spec"`
-	Type       pulumi.StringInput `pulumi:"type"`
+	// Name of the health source.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specification of the health source. Depends on the type of the health source.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// Type of the health source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MonitoredServiceRequestHealthSourceArgs) ElementType() reflect.Type {
@@ -17217,19 +17874,22 @@ func (o MonitoredServiceRequestHealthSourceOutput) ToMonitoredServiceRequestHeal
 	return o
 }
 
-// Identifier of the monitored service.
+// Identifier of the health source.
 func (o MonitoredServiceRequestHealthSourceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestHealthSource) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Name of the health source.
 func (o MonitoredServiceRequestHealthSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestHealthSource) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Specification of the health source. Depends on the type of the health source.
 func (o MonitoredServiceRequestHealthSourceOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestHealthSource) string { return v.Spec }).(pulumi.StringOutput)
 }
 
+// Type of the health source.
 func (o MonitoredServiceRequestHealthSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestHealthSource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17255,7 +17915,9 @@ func (o MonitoredServiceRequestHealthSourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type MonitoredServiceRequestNotificationRuleRef struct {
-	Enabled             bool   `pulumi:"enabled"`
+	// Enable or disable notification rule reference for the monitored service.
+	Enabled bool `pulumi:"enabled"`
+	// Notification rule reference for the monitored service.
 	NotificationRuleRef string `pulumi:"notificationRuleRef"`
 }
 
@@ -17271,7 +17933,9 @@ type MonitoredServiceRequestNotificationRuleRefInput interface {
 }
 
 type MonitoredServiceRequestNotificationRuleRefArgs struct {
-	Enabled             pulumi.BoolInput   `pulumi:"enabled"`
+	// Enable or disable notification rule reference for the monitored service.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Notification rule reference for the monitored service.
 	NotificationRuleRef pulumi.StringInput `pulumi:"notificationRuleRef"`
 }
 
@@ -17326,10 +17990,12 @@ func (o MonitoredServiceRequestNotificationRuleRefOutput) ToMonitoredServiceRequ
 	return o
 }
 
+// Enable or disable notification rule reference for the monitored service.
 func (o MonitoredServiceRequestNotificationRuleRefOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestNotificationRuleRef) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Notification rule reference for the monitored service.
 func (o MonitoredServiceRequestNotificationRuleRefOutput) NotificationRuleRef() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredServiceRequestNotificationRuleRef) string { return v.NotificationRuleRef }).(pulumi.StringOutput)
 }
@@ -18610,9 +19276,12 @@ func (o ResourceGroupResourceFilterArrayOutput) Index(i pulumi.IntInput) Resourc
 }
 
 type ResourceGroupResourceFilterResource struct {
+	// Used to filter resources on their attributes
 	AttributeFilters []ResourceGroupResourceFilterResourceAttributeFilter `pulumi:"attributeFilters"`
-	Identifiers      []string                                             `pulumi:"identifiers"`
-	ResourceType     string                                               `pulumi:"resourceType"`
+	// List of the identifiers
+	Identifiers []string `pulumi:"identifiers"`
+	// Type of the resource
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // ResourceGroupResourceFilterResourceInput is an input type that accepts ResourceGroupResourceFilterResourceArgs and ResourceGroupResourceFilterResourceOutput values.
@@ -18627,9 +19296,12 @@ type ResourceGroupResourceFilterResourceInput interface {
 }
 
 type ResourceGroupResourceFilterResourceArgs struct {
+	// Used to filter resources on their attributes
 	AttributeFilters ResourceGroupResourceFilterResourceAttributeFilterArrayInput `pulumi:"attributeFilters"`
-	Identifiers      pulumi.StringArrayInput                                      `pulumi:"identifiers"`
-	ResourceType     pulumi.StringInput                                           `pulumi:"resourceType"`
+	// List of the identifiers
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+	// Type of the resource
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (ResourceGroupResourceFilterResourceArgs) ElementType() reflect.Type {
@@ -18683,16 +19355,19 @@ func (o ResourceGroupResourceFilterResourceOutput) ToResourceGroupResourceFilter
 	return o
 }
 
+// Used to filter resources on their attributes
 func (o ResourceGroupResourceFilterResourceOutput) AttributeFilters() ResourceGroupResourceFilterResourceAttributeFilterArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResource) []ResourceGroupResourceFilterResourceAttributeFilter {
 		return v.AttributeFilters
 	}).(ResourceGroupResourceFilterResourceAttributeFilterArrayOutput)
 }
 
+// List of the identifiers
 func (o ResourceGroupResourceFilterResourceOutput) Identifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResource) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
 }
 
+// Type of the resource
 func (o ResourceGroupResourceFilterResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -18718,7 +19393,9 @@ func (o ResourceGroupResourceFilterResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilter struct {
-	AttributeName   *string  `pulumi:"attributeName"`
+	// Name of the attribute. Valid values are `category` or `type`.
+	AttributeName *string `pulumi:"attributeName"`
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
 	AttributeValues []string `pulumi:"attributeValues"`
 }
 
@@ -18734,7 +19411,9 @@ type ResourceGroupResourceFilterResourceAttributeFilterInput interface {
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilterArgs struct {
-	AttributeName   pulumi.StringPtrInput   `pulumi:"attributeName"`
+	// Name of the attribute. Valid values are `category` or `type`.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
 	AttributeValues pulumi.StringArrayInput `pulumi:"attributeValues"`
 }
 
@@ -18789,10 +19468,12 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) ToResourceGrou
 	return o
 }
 
+// Name of the attribute. Valid values are `category` or `type`.
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
+// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) []string { return v.AttributeValues }).(pulumi.StringArrayOutput)
 }
@@ -19148,6 +19829,7 @@ func (o SecretSshkeyKerberosPtrOutput) TgtPasswordSpec() SecretSshkeyKerberosTgt
 }
 
 type SecretSshkeyKerberosTgtKeyTabFilePathSpec struct {
+	// key path
 	KeyPath *string `pulumi:"keyPath"`
 }
 
@@ -19163,6 +19845,7 @@ type SecretSshkeyKerberosTgtKeyTabFilePathSpecInput interface {
 }
 
 type SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs struct {
+	// key path
 	KeyPath pulumi.StringPtrInput `pulumi:"keyPath"`
 }
 
@@ -19243,6 +19926,7 @@ func (o SecretSshkeyKerberosTgtKeyTabFilePathSpecOutput) ToSecretSshkeyKerberosT
 	}).(SecretSshkeyKerberosTgtKeyTabFilePathSpecPtrOutput)
 }
 
+// key path
 func (o SecretSshkeyKerberosTgtKeyTabFilePathSpecOutput) KeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretSshkeyKerberosTgtKeyTabFilePathSpec) *string { return v.KeyPath }).(pulumi.StringPtrOutput)
 }
@@ -19271,6 +19955,7 @@ func (o SecretSshkeyKerberosTgtKeyTabFilePathSpecPtrOutput) Elem() SecretSshkeyK
 	}).(SecretSshkeyKerberosTgtKeyTabFilePathSpecOutput)
 }
 
+// key path
 func (o SecretSshkeyKerberosTgtKeyTabFilePathSpecPtrOutput) KeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeyKerberosTgtKeyTabFilePathSpec) *string {
 		if v == nil {
@@ -19281,6 +19966,7 @@ func (o SecretSshkeyKerberosTgtKeyTabFilePathSpecPtrOutput) KeyPath() pulumi.Str
 }
 
 type SecretSshkeyKerberosTgtPasswordSpec struct {
+	// password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 	Password *string `pulumi:"password"`
 }
 
@@ -19296,6 +19982,7 @@ type SecretSshkeyKerberosTgtPasswordSpecInput interface {
 }
 
 type SecretSshkeyKerberosTgtPasswordSpecArgs struct {
+	// password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 	Password pulumi.StringPtrInput `pulumi:"password"`
 }
 
@@ -19376,6 +20063,7 @@ func (o SecretSshkeyKerberosTgtPasswordSpecOutput) ToSecretSshkeyKerberosTgtPass
 	}).(SecretSshkeyKerberosTgtPasswordSpecPtrOutput)
 }
 
+// password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeyKerberosTgtPasswordSpecOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretSshkeyKerberosTgtPasswordSpec) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -19404,6 +20092,7 @@ func (o SecretSshkeyKerberosTgtPasswordSpecPtrOutput) Elem() SecretSshkeyKerbero
 	}).(SecretSshkeyKerberosTgtPasswordSpecOutput)
 }
 
+// password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeyKerberosTgtPasswordSpecPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeyKerberosTgtPasswordSpec) *string {
 		if v == nil {
@@ -19608,7 +20297,9 @@ func (o SecretSshkeySshPtrOutput) SshkeyReferenceCredential() SecretSshkeySshSsh
 }
 
 type SecretSshkeySshSshPasswordCredential struct {
+	// SSH Password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 	Password string `pulumi:"password"`
+	// SSH Username.
 	UserName string `pulumi:"userName"`
 }
 
@@ -19624,7 +20315,9 @@ type SecretSshkeySshSshPasswordCredentialInput interface {
 }
 
 type SecretSshkeySshSshPasswordCredentialArgs struct {
+	// SSH Password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 	Password pulumi.StringInput `pulumi:"password"`
+	// SSH Username.
 	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
@@ -19705,10 +20398,12 @@ func (o SecretSshkeySshSshPasswordCredentialOutput) ToSecretSshkeySshSshPassword
 	}).(SecretSshkeySshSshPasswordCredentialPtrOutput)
 }
 
+// SSH Password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshPasswordCredentialOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshPasswordCredential) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshPasswordCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshPasswordCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -19737,6 +20432,7 @@ func (o SecretSshkeySshSshPasswordCredentialPtrOutput) Elem() SecretSshkeySshSsh
 	}).(SecretSshkeySshSshPasswordCredentialOutput)
 }
 
+// SSH Password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshPasswordCredentialPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshPasswordCredential) *string {
 		if v == nil {
@@ -19746,6 +20442,7 @@ func (o SecretSshkeySshSshPasswordCredentialPtrOutput) Password() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshPasswordCredentialPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshPasswordCredential) *string {
 		if v == nil {
@@ -19756,9 +20453,12 @@ func (o SecretSshkeySshSshPasswordCredentialPtrOutput) UserName() pulumi.StringP
 }
 
 type SecretSshkeySshSshkeyPathCredential struct {
+	// Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 	EncryptedPassphrase *string `pulumi:"encryptedPassphrase"`
-	KeyPath             string  `pulumi:"keyPath"`
-	UserName            string  `pulumi:"userName"`
+	// Path of the key file.
+	KeyPath string `pulumi:"keyPath"`
+	// SSH Username.
+	UserName string `pulumi:"userName"`
 }
 
 // SecretSshkeySshSshkeyPathCredentialInput is an input type that accepts SecretSshkeySshSshkeyPathCredentialArgs and SecretSshkeySshSshkeyPathCredentialOutput values.
@@ -19773,9 +20473,12 @@ type SecretSshkeySshSshkeyPathCredentialInput interface {
 }
 
 type SecretSshkeySshSshkeyPathCredentialArgs struct {
+	// Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 	EncryptedPassphrase pulumi.StringPtrInput `pulumi:"encryptedPassphrase"`
-	KeyPath             pulumi.StringInput    `pulumi:"keyPath"`
-	UserName            pulumi.StringInput    `pulumi:"userName"`
+	// Path of the key file.
+	KeyPath pulumi.StringInput `pulumi:"keyPath"`
+	// SSH Username.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (SecretSshkeySshSshkeyPathCredentialArgs) ElementType() reflect.Type {
@@ -19855,14 +20558,17 @@ func (o SecretSshkeySshSshkeyPathCredentialOutput) ToSecretSshkeySshSshkeyPathCr
 	}).(SecretSshkeySshSshkeyPathCredentialPtrOutput)
 }
 
+// Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyPathCredentialOutput) EncryptedPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyPathCredential) *string { return v.EncryptedPassphrase }).(pulumi.StringPtrOutput)
 }
 
+// Path of the key file.
 func (o SecretSshkeySshSshkeyPathCredentialOutput) KeyPath() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyPathCredential) string { return v.KeyPath }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshkeyPathCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyPathCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -19891,6 +20597,7 @@ func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) Elem() SecretSshkeySshSshk
 	}).(SecretSshkeySshSshkeyPathCredentialOutput)
 }
 
+// Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) EncryptedPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyPathCredential) *string {
 		if v == nil {
@@ -19900,6 +20607,7 @@ func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) EncryptedPassphrase() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Path of the key file.
 func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) KeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyPathCredential) *string {
 		if v == nil {
@@ -19909,6 +20617,7 @@ func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) KeyPath() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyPathCredential) *string {
 		if v == nil {
@@ -19919,9 +20628,12 @@ func (o SecretSshkeySshSshkeyPathCredentialPtrOutput) UserName() pulumi.StringPt
 }
 
 type SecretSshkeySshSshkeyReferenceCredential struct {
+	// Encrypted Passphrase. To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 	EncryptedPassphrase *string `pulumi:"encryptedPassphrase"`
-	Key                 string  `pulumi:"key"`
-	UserName            string  `pulumi:"userName"`
+	// SSH key. To reference a key at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a key at the account scope, prefix 'account` to the expression: account.{identifier}
+	Key string `pulumi:"key"`
+	// SSH Username.
+	UserName string `pulumi:"userName"`
 }
 
 // SecretSshkeySshSshkeyReferenceCredentialInput is an input type that accepts SecretSshkeySshSshkeyReferenceCredentialArgs and SecretSshkeySshSshkeyReferenceCredentialOutput values.
@@ -19936,9 +20648,12 @@ type SecretSshkeySshSshkeyReferenceCredentialInput interface {
 }
 
 type SecretSshkeySshSshkeyReferenceCredentialArgs struct {
+	// Encrypted Passphrase. To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 	EncryptedPassphrase pulumi.StringPtrInput `pulumi:"encryptedPassphrase"`
-	Key                 pulumi.StringInput    `pulumi:"key"`
-	UserName            pulumi.StringInput    `pulumi:"userName"`
+	// SSH key. To reference a key at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a key at the account scope, prefix 'account` to the expression: account.{identifier}
+	Key pulumi.StringInput `pulumi:"key"`
+	// SSH Username.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (SecretSshkeySshSshkeyReferenceCredentialArgs) ElementType() reflect.Type {
@@ -20018,14 +20733,17 @@ func (o SecretSshkeySshSshkeyReferenceCredentialOutput) ToSecretSshkeySshSshkeyR
 	}).(SecretSshkeySshSshkeyReferenceCredentialPtrOutput)
 }
 
+// Encrypted Passphrase. To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyReferenceCredentialOutput) EncryptedPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyReferenceCredential) *string { return v.EncryptedPassphrase }).(pulumi.StringPtrOutput)
 }
 
+// SSH key. To reference a key at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a key at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyReferenceCredentialOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyReferenceCredential) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshkeyReferenceCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretSshkeySshSshkeyReferenceCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -20054,6 +20772,7 @@ func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) Elem() SecretSshkeySs
 	}).(SecretSshkeySshSshkeyReferenceCredentialOutput)
 }
 
+// Encrypted Passphrase. To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) EncryptedPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyReferenceCredential) *string {
 		if v == nil {
@@ -20063,6 +20782,7 @@ func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) EncryptedPassphrase()
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH key. To reference a key at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a key at the account scope, prefix 'account` to the expression: account.{identifier}
 func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyReferenceCredential) *string {
 		if v == nil {
@@ -20072,6 +20792,7 @@ func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) Key() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH Username.
 func (o SecretSshkeySshSshkeyReferenceCredentialPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretSshkeySshSshkeyReferenceCredential) *string {
 		if v == nil {
@@ -20257,11 +20978,16 @@ func (o ServiceNowConnectorAuthPtrOutput) UsernamePassword() ServiceNowConnector
 }
 
 type ServiceNowConnectorAuthAdfs struct {
-	AdfsUrl        string `pulumi:"adfsUrl"`
+	// asdf URL.
+	AdfsUrl string `pulumi:"adfsUrl"`
+	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef string `pulumi:"certificateRef"`
-	ClientIdRef    string `pulumi:"clientIdRef"`
-	PrivateKeyRef  string `pulumi:"privateKeyRef"`
-	ResourceIdRef  string `pulumi:"resourceIdRef"`
+	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef string `pulumi:"clientIdRef"`
+	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef string `pulumi:"privateKeyRef"`
+	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ResourceIdRef string `pulumi:"resourceIdRef"`
 }
 
 // ServiceNowConnectorAuthAdfsInput is an input type that accepts ServiceNowConnectorAuthAdfsArgs and ServiceNowConnectorAuthAdfsOutput values.
@@ -20276,11 +21002,16 @@ type ServiceNowConnectorAuthAdfsInput interface {
 }
 
 type ServiceNowConnectorAuthAdfsArgs struct {
-	AdfsUrl        pulumi.StringInput `pulumi:"adfsUrl"`
+	// asdf URL.
+	AdfsUrl pulumi.StringInput `pulumi:"adfsUrl"`
+	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef pulumi.StringInput `pulumi:"certificateRef"`
-	ClientIdRef    pulumi.StringInput `pulumi:"clientIdRef"`
-	PrivateKeyRef  pulumi.StringInput `pulumi:"privateKeyRef"`
-	ResourceIdRef  pulumi.StringInput `pulumi:"resourceIdRef"`
+	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
+	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef pulumi.StringInput `pulumi:"privateKeyRef"`
+	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ResourceIdRef pulumi.StringInput `pulumi:"resourceIdRef"`
 }
 
 func (ServiceNowConnectorAuthAdfsArgs) ElementType() reflect.Type {
@@ -20360,22 +21091,27 @@ func (o ServiceNowConnectorAuthAdfsOutput) ToServiceNowConnectorAuthAdfsPtrOutpu
 	}).(ServiceNowConnectorAuthAdfsPtrOutput)
 }
 
+// asdf URL.
 func (o ServiceNowConnectorAuthAdfsOutput) AdfsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowConnectorAuthAdfs) string { return v.AdfsUrl }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsOutput) CertificateRef() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowConnectorAuthAdfs) string { return v.CertificateRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsOutput) ClientIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowConnectorAuthAdfs) string { return v.ClientIdRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsOutput) PrivateKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowConnectorAuthAdfs) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsOutput) ResourceIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowConnectorAuthAdfs) string { return v.ResourceIdRef }).(pulumi.StringOutput)
 }
@@ -20404,6 +21140,7 @@ func (o ServiceNowConnectorAuthAdfsPtrOutput) Elem() ServiceNowConnectorAuthAdfs
 	}).(ServiceNowConnectorAuthAdfsOutput)
 }
 
+// asdf URL.
 func (o ServiceNowConnectorAuthAdfsPtrOutput) AdfsUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNowConnectorAuthAdfs) *string {
 		if v == nil {
@@ -20413,6 +21150,7 @@ func (o ServiceNowConnectorAuthAdfsPtrOutput) AdfsUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsPtrOutput) CertificateRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNowConnectorAuthAdfs) *string {
 		if v == nil {
@@ -20422,6 +21160,7 @@ func (o ServiceNowConnectorAuthAdfsPtrOutput) CertificateRef() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsPtrOutput) ClientIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNowConnectorAuthAdfs) *string {
 		if v == nil {
@@ -20431,6 +21170,7 @@ func (o ServiceNowConnectorAuthAdfsPtrOutput) ClientIdRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsPtrOutput) PrivateKeyRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNowConnectorAuthAdfs) *string {
 		if v == nil {
@@ -20440,6 +21180,7 @@ func (o ServiceNowConnectorAuthAdfsPtrOutput) PrivateKeyRef() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceNowConnectorAuthAdfsPtrOutput) ResourceIdRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNowConnectorAuthAdfs) *string {
 		if v == nil {
@@ -20895,7 +21636,9 @@ func (o SloRequestPtrOutput) UserJourneyRefs() pulumi.StringArrayOutput {
 }
 
 type SloRequestNotificationRuleRef struct {
-	Enabled             bool   `pulumi:"enabled"`
+	// Enable or disable notification rule reference for the SLO.
+	Enabled bool `pulumi:"enabled"`
+	// Notification rule reference for the SLO.
 	NotificationRuleRef string `pulumi:"notificationRuleRef"`
 }
 
@@ -20911,7 +21654,9 @@ type SloRequestNotificationRuleRefInput interface {
 }
 
 type SloRequestNotificationRuleRefArgs struct {
-	Enabled             pulumi.BoolInput   `pulumi:"enabled"`
+	// Enable or disable notification rule reference for the SLO.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Notification rule reference for the SLO.
 	NotificationRuleRef pulumi.StringInput `pulumi:"notificationRuleRef"`
 }
 
@@ -20966,10 +21711,12 @@ func (o SloRequestNotificationRuleRefOutput) ToSloRequestNotificationRuleRefOutp
 	return o
 }
 
+// Enable or disable notification rule reference for the SLO.
 func (o SloRequestNotificationRuleRefOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v SloRequestNotificationRuleRef) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Notification rule reference for the SLO.
 func (o SloRequestNotificationRuleRefOutput) NotificationRuleRef() pulumi.StringOutput {
 	return o.ApplyT(func(v SloRequestNotificationRuleRef) string { return v.NotificationRuleRef }).(pulumi.StringOutput)
 }
@@ -20995,9 +21742,12 @@ func (o SloRequestNotificationRuleRefArrayOutput) Index(i pulumi.IntInput) SloRe
 }
 
 type SloRequestSloTarget struct {
+	// Target percentage for the SLO.
 	SloTargetPercentage float64 `pulumi:"sloTargetPercentage"`
-	Spec                string  `pulumi:"spec"`
-	Type                string  `pulumi:"type"`
+	// Specification of the SLO Target.
+	Spec string `pulumi:"spec"`
+	// Type of the SLO target.
+	Type string `pulumi:"type"`
 }
 
 // SloRequestSloTargetInput is an input type that accepts SloRequestSloTargetArgs and SloRequestSloTargetOutput values.
@@ -21012,9 +21762,12 @@ type SloRequestSloTargetInput interface {
 }
 
 type SloRequestSloTargetArgs struct {
+	// Target percentage for the SLO.
 	SloTargetPercentage pulumi.Float64Input `pulumi:"sloTargetPercentage"`
-	Spec                pulumi.StringInput  `pulumi:"spec"`
-	Type                pulumi.StringInput  `pulumi:"type"`
+	// Specification of the SLO Target.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// Type of the SLO target.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (SloRequestSloTargetArgs) ElementType() reflect.Type {
@@ -21094,14 +21847,17 @@ func (o SloRequestSloTargetOutput) ToSloRequestSloTargetPtrOutputWithContext(ctx
 	}).(SloRequestSloTargetPtrOutput)
 }
 
+// Target percentage for the SLO.
 func (o SloRequestSloTargetOutput) SloTargetPercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v SloRequestSloTarget) float64 { return v.SloTargetPercentage }).(pulumi.Float64Output)
 }
 
+// Specification of the SLO Target.
 func (o SloRequestSloTargetOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v SloRequestSloTarget) string { return v.Spec }).(pulumi.StringOutput)
 }
 
+// Type of the SLO target.
 func (o SloRequestSloTargetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SloRequestSloTarget) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -21130,6 +21886,7 @@ func (o SloRequestSloTargetPtrOutput) Elem() SloRequestSloTargetOutput {
 	}).(SloRequestSloTargetOutput)
 }
 
+// Target percentage for the SLO.
 func (o SloRequestSloTargetPtrOutput) SloTargetPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SloRequestSloTarget) *float64 {
 		if v == nil {
@@ -21139,6 +21896,7 @@ func (o SloRequestSloTargetPtrOutput) SloTargetPercentage() pulumi.Float64PtrOut
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Specification of the SLO Target.
 func (o SloRequestSloTargetPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloRequestSloTarget) *string {
 		if v == nil {
@@ -21148,6 +21906,7 @@ func (o SloRequestSloTargetPtrOutput) Spec() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type of the SLO target.
 func (o SloRequestSloTargetPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloRequestSloTarget) *string {
 		if v == nil {
@@ -21527,9 +22286,13 @@ func (o TasConnectorCredentialsPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type TasConnectorCredentialsTasManualDetails struct {
-	EndpointUrl string  `pulumi:"endpointUrl"`
-	PasswordRef string  `pulumi:"passwordRef"`
-	Username    *string `pulumi:"username"`
+	// URL of the Tas server.
+	EndpointUrl string `pulumi:"endpointUrl"`
+	// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
 
@@ -21545,9 +22308,13 @@ type TasConnectorCredentialsTasManualDetailsInput interface {
 }
 
 type TasConnectorCredentialsTasManualDetailsArgs struct {
-	EndpointUrl pulumi.StringInput    `pulumi:"endpointUrl"`
-	PasswordRef pulumi.StringInput    `pulumi:"passwordRef"`
-	Username    pulumi.StringPtrInput `pulumi:"username"`
+	// URL of the Tas server.
+	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
+	// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
 
@@ -21628,18 +22395,22 @@ func (o TasConnectorCredentialsTasManualDetailsOutput) ToTasConnectorCredentials
 	}).(TasConnectorCredentialsTasManualDetailsPtrOutput)
 }
 
+// URL of the Tas server.
 func (o TasConnectorCredentialsTasManualDetailsOutput) EndpointUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) string { return v.EndpointUrl }).(pulumi.StringOutput)
 }
 
+// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TasConnectorCredentialsTasManualDetailsOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o TasConnectorCredentialsTasManualDetailsOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TasConnectorCredentialsTasManualDetailsOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TasConnectorCredentialsTasManualDetails) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
 }
@@ -21668,6 +22439,7 @@ func (o TasConnectorCredentialsTasManualDetailsPtrOutput) Elem() TasConnectorCre
 	}).(TasConnectorCredentialsTasManualDetailsOutput)
 }
 
+// URL of the Tas server.
 func (o TasConnectorCredentialsTasManualDetailsPtrOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TasConnectorCredentialsTasManualDetails) *string {
 		if v == nil {
@@ -21677,6 +22449,7 @@ func (o TasConnectorCredentialsTasManualDetailsPtrOutput) EndpointUrl() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TasConnectorCredentialsTasManualDetailsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TasConnectorCredentialsTasManualDetails) *string {
 		if v == nil {
@@ -21686,6 +22459,7 @@ func (o TasConnectorCredentialsTasManualDetailsPtrOutput) PasswordRef() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username to use for authentication.
 func (o TasConnectorCredentialsTasManualDetailsPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TasConnectorCredentialsTasManualDetails) *string {
 		if v == nil {
@@ -21695,6 +22469,7 @@ func (o TasConnectorCredentialsTasManualDetailsPtrOutput) Username() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TasConnectorCredentialsTasManualDetailsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TasConnectorCredentialsTasManualDetails) *string {
 		if v == nil {
@@ -22289,6 +23064,7 @@ func (o TerraformCloudConnectorCredentialsPtrOutput) ApiToken() TerraformCloudCo
 }
 
 type TerraformCloudConnectorCredentialsApiToken struct {
+	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`
 }
 
@@ -22304,6 +23080,7 @@ type TerraformCloudConnectorCredentialsApiTokenInput interface {
 }
 
 type TerraformCloudConnectorCredentialsApiTokenArgs struct {
+	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef pulumi.StringInput `pulumi:"apiTokenRef"`
 }
 
@@ -22384,6 +23161,7 @@ func (o TerraformCloudConnectorCredentialsApiTokenOutput) ToTerraformCloudConnec
 	}).(TerraformCloudConnectorCredentialsApiTokenPtrOutput)
 }
 
+// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TerraformCloudConnectorCredentialsApiTokenOutput) ApiTokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v TerraformCloudConnectorCredentialsApiToken) string { return v.ApiTokenRef }).(pulumi.StringOutput)
 }
@@ -22412,6 +23190,7 @@ func (o TerraformCloudConnectorCredentialsApiTokenPtrOutput) Elem() TerraformClo
 	}).(TerraformCloudConnectorCredentialsApiTokenOutput)
 }
 
+// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o TerraformCloudConnectorCredentialsApiTokenPtrOutput) ApiTokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TerraformCloudConnectorCredentialsApiToken) *string {
 		if v == nil {
@@ -22853,7 +23632,9 @@ func (o VariablesSpecPtrOutput) ValueType() pulumi.StringPtrOutput {
 }
 
 type GetAppDynamicsConnectorApiToken struct {
-	ClientId        string `pulumi:"clientId"`
+	// The client id used for connecting to App Dynamics.
+	ClientId string `pulumi:"clientId"`
+	// Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ClientSecretRef string `pulumi:"clientSecretRef"`
 }
 
@@ -22869,7 +23650,9 @@ type GetAppDynamicsConnectorApiTokenInput interface {
 }
 
 type GetAppDynamicsConnectorApiTokenArgs struct {
-	ClientId        pulumi.StringInput `pulumi:"clientId"`
+	// The client id used for connecting to App Dynamics.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ClientSecretRef pulumi.StringInput `pulumi:"clientSecretRef"`
 }
 
@@ -22924,10 +23707,12 @@ func (o GetAppDynamicsConnectorApiTokenOutput) ToGetAppDynamicsConnectorApiToken
 	return o
 }
 
+// The client id used for connecting to App Dynamics.
 func (o GetAppDynamicsConnectorApiTokenOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppDynamicsConnectorApiToken) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAppDynamicsConnectorApiTokenOutput) ClientSecretRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppDynamicsConnectorApiToken) string { return v.ClientSecretRef }).(pulumi.StringOutput)
 }
@@ -22953,8 +23738,10 @@ func (o GetAppDynamicsConnectorApiTokenArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetAppDynamicsConnectorUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
 }
 
 // GetAppDynamicsConnectorUsernamePasswordInput is an input type that accepts GetAppDynamicsConnectorUsernamePasswordArgs and GetAppDynamicsConnectorUsernamePasswordOutput values.
@@ -22969,8 +23756,10 @@ type GetAppDynamicsConnectorUsernamePasswordInput interface {
 }
 
 type GetAppDynamicsConnectorUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetAppDynamicsConnectorUsernamePasswordArgs) ElementType() reflect.Type {
@@ -23024,10 +23813,12 @@ func (o GetAppDynamicsConnectorUsernamePasswordOutput) ToGetAppDynamicsConnector
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAppDynamicsConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppDynamicsConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetAppDynamicsConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppDynamicsConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -23053,8 +23844,11 @@ func (o GetAppDynamicsConnectorUsernamePasswordArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetArtifactoryConnectorCredential struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -23070,8 +23864,11 @@ type GetArtifactoryConnectorCredentialInput interface {
 }
 
 type GetArtifactoryConnectorCredentialArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -23126,14 +23923,17 @@ func (o GetArtifactoryConnectorCredentialOutput) ToGetArtifactoryConnectorCreden
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetArtifactoryConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetArtifactoryConnectorCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetArtifactoryConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetArtifactoryConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -23159,8 +23959,10 @@ func (o GetArtifactoryConnectorCredentialArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetAwsCCConnectorCrossAccountAccess struct {
+	// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
 	ExternalId string `pulumi:"externalId"`
-	RoleArn    string `pulumi:"roleArn"`
+	// The ARN of the role to use for cross-account access.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // GetAwsCCConnectorCrossAccountAccessInput is an input type that accepts GetAwsCCConnectorCrossAccountAccessArgs and GetAwsCCConnectorCrossAccountAccessOutput values.
@@ -23175,8 +23977,10 @@ type GetAwsCCConnectorCrossAccountAccessInput interface {
 }
 
 type GetAwsCCConnectorCrossAccountAccessArgs struct {
+	// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+	// The ARN of the role to use for cross-account access.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (GetAwsCCConnectorCrossAccountAccessArgs) ElementType() reflect.Type {
@@ -23230,10 +24034,12 @@ func (o GetAwsCCConnectorCrossAccountAccessOutput) ToGetAwsCCConnectorCrossAccou
 	return o
 }
 
+// The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
 func (o GetAwsCCConnectorCrossAccountAccessOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsCCConnectorCrossAccountAccess) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// The ARN of the role to use for cross-account access.
 func (o GetAwsCCConnectorCrossAccountAccessOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsCCConnectorCrossAccountAccess) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -24019,9 +24825,12 @@ func (o GetAwsConnectorManualArrayOutput) Index(i pulumi.IntInput) GetAwsConnect
 }
 
 type GetAwsKmsConnectorCredential struct {
-	AssumeRoles         []GetAwsKmsConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
-	InheritFromDelegate bool                                     `pulumi:"inheritFromDelegate"`
-	Manuals             []GetAwsKmsConnectorCredentialManual     `pulumi:"manuals"`
+	// Connect using STS assume role.
+	AssumeRoles []GetAwsKmsConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate bool `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manuals []GetAwsKmsConnectorCredentialManual `pulumi:"manuals"`
 }
 
 // GetAwsKmsConnectorCredentialInput is an input type that accepts GetAwsKmsConnectorCredentialArgs and GetAwsKmsConnectorCredentialOutput values.
@@ -24036,9 +24845,12 @@ type GetAwsKmsConnectorCredentialInput interface {
 }
 
 type GetAwsKmsConnectorCredentialArgs struct {
-	AssumeRoles         GetAwsKmsConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
-	InheritFromDelegate pulumi.BoolInput                                 `pulumi:"inheritFromDelegate"`
-	Manuals             GetAwsKmsConnectorCredentialManualArrayInput     `pulumi:"manuals"`
+	// Connect using STS assume role.
+	AssumeRoles GetAwsKmsConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate pulumi.BoolInput `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manuals GetAwsKmsConnectorCredentialManualArrayInput `pulumi:"manuals"`
 }
 
 func (GetAwsKmsConnectorCredentialArgs) ElementType() reflect.Type {
@@ -24092,14 +24904,17 @@ func (o GetAwsKmsConnectorCredentialOutput) ToGetAwsKmsConnectorCredentialOutput
 	return o
 }
 
+// Connect using STS assume role.
 func (o GetAwsKmsConnectorCredentialOutput) AssumeRoles() GetAwsKmsConnectorCredentialAssumeRoleArrayOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialAssumeRole { return v.AssumeRoles }).(GetAwsKmsConnectorCredentialAssumeRoleArrayOutput)
 }
 
+// Inherit the credentials from from the delegate.
 func (o GetAwsKmsConnectorCredentialOutput) InheritFromDelegate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredential) bool { return v.InheritFromDelegate }).(pulumi.BoolOutput)
 }
 
+// Specify the AWS key and secret used for authenticating.
 func (o GetAwsKmsConnectorCredentialOutput) Manuals() GetAwsKmsConnectorCredentialManualArrayOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialManual { return v.Manuals }).(GetAwsKmsConnectorCredentialManualArrayOutput)
 }
@@ -24125,9 +24940,12 @@ func (o GetAwsKmsConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetAws
 }
 
 type GetAwsKmsConnectorCredentialAssumeRole struct {
-	Duration   int    `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration int `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId string `pulumi:"externalId"`
-	RoleArn    string `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // GetAwsKmsConnectorCredentialAssumeRoleInput is an input type that accepts GetAwsKmsConnectorCredentialAssumeRoleArgs and GetAwsKmsConnectorCredentialAssumeRoleOutput values.
@@ -24142,9 +24960,12 @@ type GetAwsKmsConnectorCredentialAssumeRoleInput interface {
 }
 
 type GetAwsKmsConnectorCredentialAssumeRoleArgs struct {
-	Duration   pulumi.IntInput    `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (GetAwsKmsConnectorCredentialAssumeRoleArgs) ElementType() reflect.Type {
@@ -24198,14 +25019,17 @@ func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) ToGetAwsKmsConnectorCreden
 	return o
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// The ARN of the role to assume.
 func (o GetAwsKmsConnectorCredentialAssumeRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -24231,7 +25055,9 @@ func (o GetAwsKmsConnectorCredentialAssumeRoleArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetAwsKmsConnectorCredentialManual struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
 }
 
@@ -24247,7 +25073,9 @@ type GetAwsKmsConnectorCredentialManualInput interface {
 }
 
 type GetAwsKmsConnectorCredentialManualArgs struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
 }
 
@@ -24302,10 +25130,12 @@ func (o GetAwsKmsConnectorCredentialManualOutput) ToGetAwsKmsConnectorCredential
 	return o
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsKmsConnectorCredentialManualOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsKmsConnectorCredentialManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
@@ -24331,9 +25161,12 @@ func (o GetAwsKmsConnectorCredentialManualArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetAwsSecretManagerConnectorCredential struct {
-	AssumeRoles         []GetAwsSecretManagerConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
-	InheritFromDelegate bool                                               `pulumi:"inheritFromDelegate"`
-	Manuals             []GetAwsSecretManagerConnectorCredentialManual     `pulumi:"manuals"`
+	// Connect using STS assume role.
+	AssumeRoles []GetAwsSecretManagerConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate bool `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manuals []GetAwsSecretManagerConnectorCredentialManual `pulumi:"manuals"`
 }
 
 // GetAwsSecretManagerConnectorCredentialInput is an input type that accepts GetAwsSecretManagerConnectorCredentialArgs and GetAwsSecretManagerConnectorCredentialOutput values.
@@ -24348,9 +25181,12 @@ type GetAwsSecretManagerConnectorCredentialInput interface {
 }
 
 type GetAwsSecretManagerConnectorCredentialArgs struct {
-	AssumeRoles         GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
-	InheritFromDelegate pulumi.BoolInput                                           `pulumi:"inheritFromDelegate"`
-	Manuals             GetAwsSecretManagerConnectorCredentialManualArrayInput     `pulumi:"manuals"`
+	// Connect using STS assume role.
+	AssumeRoles GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput `pulumi:"assumeRoles"`
+	// Inherit the credentials from from the delegate.
+	InheritFromDelegate pulumi.BoolInput `pulumi:"inheritFromDelegate"`
+	// Specify the AWS key and secret used for authenticating.
+	Manuals GetAwsSecretManagerConnectorCredentialManualArrayInput `pulumi:"manuals"`
 }
 
 func (GetAwsSecretManagerConnectorCredentialArgs) ElementType() reflect.Type {
@@ -24404,16 +25240,19 @@ func (o GetAwsSecretManagerConnectorCredentialOutput) ToGetAwsSecretManagerConne
 	return o
 }
 
+// Connect using STS assume role.
 func (o GetAwsSecretManagerConnectorCredentialOutput) AssumeRoles() GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialAssumeRole {
 		return v.AssumeRoles
 	}).(GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput)
 }
 
+// Inherit the credentials from from the delegate.
 func (o GetAwsSecretManagerConnectorCredentialOutput) InheritFromDelegate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) bool { return v.InheritFromDelegate }).(pulumi.BoolOutput)
 }
 
+// Specify the AWS key and secret used for authenticating.
 func (o GetAwsSecretManagerConnectorCredentialOutput) Manuals() GetAwsSecretManagerConnectorCredentialManualArrayOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialManual {
 		return v.Manuals
@@ -24441,9 +25280,12 @@ func (o GetAwsSecretManagerConnectorCredentialArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetAwsSecretManagerConnectorCredentialAssumeRole struct {
-	Duration   int    `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration int `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId string `pulumi:"externalId"`
-	RoleArn    string `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // GetAwsSecretManagerConnectorCredentialAssumeRoleInput is an input type that accepts GetAwsSecretManagerConnectorCredentialAssumeRoleArgs and GetAwsSecretManagerConnectorCredentialAssumeRoleOutput values.
@@ -24458,9 +25300,12 @@ type GetAwsSecretManagerConnectorCredentialAssumeRoleInput interface {
 }
 
 type GetAwsSecretManagerConnectorCredentialAssumeRoleArgs struct {
-	Duration   pulumi.IntInput    `pulumi:"duration"`
+	// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	RoleArn    pulumi.StringInput `pulumi:"roleArn"`
+	// The ARN of the role to assume.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (GetAwsSecretManagerConnectorCredentialAssumeRoleArgs) ElementType() reflect.Type {
@@ -24514,14 +25359,17 @@ func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ToGetAwsSecretMa
 	return o
 }
 
+// The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
 func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// The ARN of the role to assume.
 func (o GetAwsSecretManagerConnectorCredentialAssumeRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -24547,7 +25395,9 @@ func (o GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput) Index(i pul
 }
 
 type GetAwsSecretManagerConnectorCredentialManual struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef string `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
 }
 
@@ -24563,7 +25413,9 @@ type GetAwsSecretManagerConnectorCredentialManualInput interface {
 }
 
 type GetAwsSecretManagerConnectorCredentialManualArgs struct {
+	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
+	// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
 }
 
@@ -24618,10 +25470,12 @@ func (o GetAwsSecretManagerConnectorCredentialManualOutput) ToGetAwsSecretManage
 	return o
 }
 
+// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsSecretManagerConnectorCredentialManualOutput) AccessKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialManual) string { return v.AccessKeyRef }).(pulumi.StringOutput)
 }
 
+// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsSecretManagerConnectorCredentialManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
@@ -24647,11 +25501,15 @@ func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) Index(i pulumi.
 }
 
 type GetAzureCloudCostConnectorBillingExportSpec struct {
-	ContainerName      string `pulumi:"containerName"`
-	DirectoryName      string `pulumi:"directoryName"`
-	ReportName         string `pulumi:"reportName"`
+	// Name of the container.
+	ContainerName string `pulumi:"containerName"`
+	// Name of the directory.
+	DirectoryName string `pulumi:"directoryName"`
+	// Name of the report.
+	ReportName string `pulumi:"reportName"`
+	// Name of the storage account.
 	StorageAccountName string `pulumi:"storageAccountName"`
-	// Subsription id.
+	// Subsription Id.
 	SubscriptionId string `pulumi:"subscriptionId"`
 }
 
@@ -24667,11 +25525,15 @@ type GetAzureCloudCostConnectorBillingExportSpecInput interface {
 }
 
 type GetAzureCloudCostConnectorBillingExportSpecArgs struct {
-	ContainerName      pulumi.StringInput `pulumi:"containerName"`
-	DirectoryName      pulumi.StringInput `pulumi:"directoryName"`
-	ReportName         pulumi.StringInput `pulumi:"reportName"`
+	// Name of the container.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// Name of the directory.
+	DirectoryName pulumi.StringInput `pulumi:"directoryName"`
+	// Name of the report.
+	ReportName pulumi.StringInput `pulumi:"reportName"`
+	// Name of the storage account.
 	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
-	// Subsription id.
+	// Subsription Id.
 	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
 }
 
@@ -24726,23 +25588,27 @@ func (o GetAzureCloudCostConnectorBillingExportSpecOutput) ToGetAzureCloudCostCo
 	return o
 }
 
+// Name of the container.
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.ContainerName }).(pulumi.StringOutput)
 }
 
+// Name of the directory.
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) DirectoryName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.DirectoryName }).(pulumi.StringOutput)
 }
 
+// Name of the report.
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) ReportName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.ReportName }).(pulumi.StringOutput)
 }
 
+// Name of the storage account.
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) StorageAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.StorageAccountName }).(pulumi.StringOutput)
 }
 
-// Subsription id.
+// Subsription Id.
 func (o GetAzureCloudCostConnectorBillingExportSpecOutput) SubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudCostConnectorBillingExportSpec) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
@@ -24768,9 +25634,12 @@ func (o GetAzureCloudCostConnectorBillingExportSpecArrayOutput) Index(i pulumi.I
 }
 
 type GetAzureCloudProviderConnectorCredential struct {
+	// Authenticate to Azure Cloud Provider using details inheriting from delegate.
 	AzureInheritFromDelegateDetails []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail `pulumi:"azureInheritFromDelegateDetails"`
-	AzureManualDetails              []GetAzureCloudProviderConnectorCredentialAzureManualDetail              `pulumi:"azureManualDetails"`
-	Type                            string                                                                   `pulumi:"type"`
+	// Authenticate to Azure Cloud Provider using manual details.
+	AzureManualDetails []GetAzureCloudProviderConnectorCredentialAzureManualDetail `pulumi:"azureManualDetails"`
+	// Type can either be InheritFromDelegate or ManualConfig.
+	Type string `pulumi:"type"`
 }
 
 // GetAzureCloudProviderConnectorCredentialInput is an input type that accepts GetAzureCloudProviderConnectorCredentialArgs and GetAzureCloudProviderConnectorCredentialOutput values.
@@ -24785,9 +25654,12 @@ type GetAzureCloudProviderConnectorCredentialInput interface {
 }
 
 type GetAzureCloudProviderConnectorCredentialArgs struct {
+	// Authenticate to Azure Cloud Provider using details inheriting from delegate.
 	AzureInheritFromDelegateDetails GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailArrayInput `pulumi:"azureInheritFromDelegateDetails"`
-	AzureManualDetails              GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayInput              `pulumi:"azureManualDetails"`
-	Type                            pulumi.StringInput                                                               `pulumi:"type"`
+	// Authenticate to Azure Cloud Provider using manual details.
+	AzureManualDetails GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayInput `pulumi:"azureManualDetails"`
+	// Type can either be InheritFromDelegate or ManualConfig.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetAzureCloudProviderConnectorCredentialArgs) ElementType() reflect.Type {
@@ -24841,18 +25713,21 @@ func (o GetAzureCloudProviderConnectorCredentialOutput) ToGetAzureCloudProviderC
 	return o
 }
 
+// Authenticate to Azure Cloud Provider using details inheriting from delegate.
 func (o GetAzureCloudProviderConnectorCredentialOutput) AzureInheritFromDelegateDetails() GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredential) []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail {
 		return v.AzureInheritFromDelegateDetails
 	}).(GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailArrayOutput)
 }
 
+// Authenticate to Azure Cloud Provider using manual details.
 func (o GetAzureCloudProviderConnectorCredentialOutput) AzureManualDetails() GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredential) []GetAzureCloudProviderConnectorCredentialAzureManualDetail {
 		return v.AzureManualDetails
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayOutput)
 }
 
+// Type can either be InheritFromDelegate or ManualConfig.
 func (o GetAzureCloudProviderConnectorCredentialOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredential) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -24878,6 +25753,7 @@ func (o GetAzureCloudProviderConnectorCredentialArrayOutput) Index(i pulumi.IntI
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail struct {
+	// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 	Auths []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuth `pulumi:"auths"`
 }
 
@@ -24893,6 +25769,7 @@ type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailInput
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailArgs struct {
+	// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 	Auths GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthArrayInput `pulumi:"auths"`
 }
 
@@ -24947,6 +25824,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailOu
 	return o
 }
 
+// Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
 func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailOutput) Auths() GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetail) []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuth {
 		return v.Auths
@@ -24974,8 +25852,10 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAr
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuth struct {
+	// Azure UserAssigned MSI auth details.
 	AzureMsiAuthUas []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUa `pulumi:"azureMsiAuthUas"`
-	Type            string                                                                                     `pulumi:"type"`
+	// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+	Type string `pulumi:"type"`
 }
 
 // GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthInput is an input type that accepts GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthArgs and GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthOutput values.
@@ -24990,8 +25870,10 @@ type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthI
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthArgs struct {
+	// Azure UserAssigned MSI auth details.
 	AzureMsiAuthUas GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUaArrayInput `pulumi:"azureMsiAuthUas"`
-	Type            pulumi.StringInput                                                                                 `pulumi:"type"`
+	// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthArgs) ElementType() reflect.Type {
@@ -25045,12 +25927,14 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAu
 	return o
 }
 
+// Azure UserAssigned MSI auth details.
 func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthOutput) AzureMsiAuthUas() GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUaArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuth) []GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUa {
 		return v.AzureMsiAuthUas
 	}).(GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUaArrayOutput)
 }
 
+// Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
 func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuth) string {
 		return v.Type
@@ -25078,6 +25962,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAu
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUa struct {
+	// Client Id of the ManagedIdentity resource.
 	ClientId string `pulumi:"clientId"`
 }
 
@@ -25093,6 +25978,7 @@ type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthA
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUaArgs struct {
+	// Client Id of the ManagedIdentity resource.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 }
 
@@ -25147,6 +26033,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAu
 	return o
 }
 
+// Client Id of the ManagedIdentity resource.
 func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUaOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAuthAzureMsiAuthUa) string {
 		return v.ClientId
@@ -25174,9 +26061,12 @@ func (o GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailAu
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetail struct {
-	ApplicationId string                                                          `pulumi:"applicationId"`
-	Auths         []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth `pulumi:"auths"`
-	TenantId      string                                                          `pulumi:"tenantId"`
+	// Application ID of the Azure App.
+	ApplicationId string `pulumi:"applicationId"`
+	// Contains Azure auth details.
+	Auths []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth `pulumi:"auths"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId string `pulumi:"tenantId"`
 }
 
 // GetAzureCloudProviderConnectorCredentialAzureManualDetailInput is an input type that accepts GetAzureCloudProviderConnectorCredentialAzureManualDetailArgs and GetAzureCloudProviderConnectorCredentialAzureManualDetailOutput values.
@@ -25191,9 +26081,12 @@ type GetAzureCloudProviderConnectorCredentialAzureManualDetailInput interface {
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailArgs struct {
-	ApplicationId pulumi.StringInput                                                      `pulumi:"applicationId"`
-	Auths         GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArrayInput `pulumi:"auths"`
-	TenantId      pulumi.StringInput                                                      `pulumi:"tenantId"`
+	// Application ID of the Azure App.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Contains Azure auth details.
+	Auths GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArrayInput `pulumi:"auths"`
+	// The Azure Active Directory (AAD) directory ID where you created your application.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
 }
 
 func (GetAzureCloudProviderConnectorCredentialAzureManualDetailArgs) ElementType() reflect.Type {
@@ -25247,16 +26140,19 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailOutput) ToGetAz
 	return o
 }
 
+// Application ID of the Azure App.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetail) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// Contains Azure auth details.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailOutput) Auths() GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetail) []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth {
 		return v.Auths
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArrayOutput)
 }
 
+// The Azure Active Directory (AAD) directory ID where you created your application.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetail) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -25282,9 +26178,12 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailArrayOutput) In
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth struct {
-	AzureClientKeyCerts   []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCert   `pulumi:"azureClientKeyCerts"`
+	// Azure client key certificate details.
+	AzureClientKeyCerts []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCert `pulumi:"azureClientKeyCerts"`
+	// Azure Client Secret Key details.
 	AzureClientSecretKeys []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey `pulumi:"azureClientSecretKeys"`
-	Type                  string                                                                              `pulumi:"type"`
+	// Type can either be Certificate or Secret.
+	Type string `pulumi:"type"`
 }
 
 // GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthInput is an input type that accepts GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArgs and GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthOutput values.
@@ -25299,9 +26198,12 @@ type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthInput interfac
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArgs struct {
-	AzureClientKeyCerts   GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayInput   `pulumi:"azureClientKeyCerts"`
+	// Azure client key certificate details.
+	AzureClientKeyCerts GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayInput `pulumi:"azureClientKeyCerts"`
+	// Azure Client Secret Key details.
 	AzureClientSecretKeys GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArrayInput `pulumi:"azureClientSecretKeys"`
-	Type                  pulumi.StringInput                                                                          `pulumi:"type"`
+	// Type can either be Certificate or Secret.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArgs) ElementType() reflect.Type {
@@ -25355,18 +26257,21 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthOutput) ToG
 	return o
 }
 
+// Azure client key certificate details.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthOutput) AzureClientKeyCerts() GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth) []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCert {
 		return v.AzureClientKeyCerts
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArrayOutput)
 }
 
+// Azure Client Secret Key details.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthOutput) AzureClientSecretKeys() GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArrayOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth) []GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey {
 		return v.AzureClientSecretKeys
 	}).(GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArrayOutput)
 }
 
+// Type can either be Certificate or Secret.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetailAuth) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -25392,6 +26297,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthArrayOutput
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCert struct {
+	// Reference of the secret for the certificate.
 	CertificateRef string `pulumi:"certificateRef"`
 }
 
@@ -25407,6 +26313,7 @@ type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKey
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertArgs struct {
+	// Reference of the secret for the certificate.
 	CertificateRef pulumi.StringInput `pulumi:"certificateRef"`
 }
 
@@ -25461,6 +26368,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClient
 	return o
 }
 
+// Reference of the secret for the certificate.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCertOutput) CertificateRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientKeyCert) string {
 		return v.CertificateRef
@@ -25488,6 +26396,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClient
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey struct {
+	// Reference of the secret for the secret key.
 	SecretRef string `pulumi:"secretRef"`
 }
 
@@ -25503,6 +26412,7 @@ type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSec
 }
 
 type GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyArgs struct {
+	// Reference of the secret for the secret key.
 	SecretRef pulumi.StringInput `pulumi:"secretRef"`
 }
 
@@ -25557,6 +26467,7 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClient
 	return o
 }
 
+// Reference of the secret for the secret key.
 func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKeyOutput) SecretRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClientSecretKey) string {
 		return v.SecretRef
@@ -25584,8 +26495,11 @@ func (o GetAzureCloudProviderConnectorCredentialAzureManualDetailAuthAzureClient
 }
 
 type GetBitbucketConnectorApiAuthentication struct {
-	TokenRef    string `pulumi:"tokenRef"`
-	Username    string `pulumi:"username"`
+	// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// The username used for connecting to the api.
+	Username string `pulumi:"username"`
+	// The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -25601,8 +26515,11 @@ type GetBitbucketConnectorApiAuthenticationInput interface {
 }
 
 type GetBitbucketConnectorApiAuthenticationArgs struct {
-	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// The username used for connecting to the api.
+	Username pulumi.StringInput `pulumi:"username"`
+	// The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -25657,14 +26574,17 @@ func (o GetBitbucketConnectorApiAuthenticationOutput) ToGetBitbucketConnectorApi
 	return o
 }
 
+// Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
 }
 
+// The username used for connecting to the api.
 func (o GetBitbucketConnectorApiAuthenticationOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorApiAuthenticationOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorApiAuthentication) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -25690,8 +26610,10 @@ func (o GetBitbucketConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetBitbucketConnectorCredential struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https []GetBitbucketConnectorCredentialHttp `pulumi:"https"`
-	Sshes []GetBitbucketConnectorCredentialSsh  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes []GetBitbucketConnectorCredentialSsh `pulumi:"sshes"`
 }
 
 // GetBitbucketConnectorCredentialInput is an input type that accepts GetBitbucketConnectorCredentialArgs and GetBitbucketConnectorCredentialOutput values.
@@ -25706,8 +26628,10 @@ type GetBitbucketConnectorCredentialInput interface {
 }
 
 type GetBitbucketConnectorCredentialArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https GetBitbucketConnectorCredentialHttpArrayInput `pulumi:"https"`
-	Sshes GetBitbucketConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes GetBitbucketConnectorCredentialSshArrayInput `pulumi:"sshes"`
 }
 
 func (GetBitbucketConnectorCredentialArgs) ElementType() reflect.Type {
@@ -25761,10 +26685,12 @@ func (o GetBitbucketConnectorCredentialOutput) ToGetBitbucketConnectorCredential
 	return o
 }
 
+// Authenticate using Username and password over http(s) for the connection.
 func (o GetBitbucketConnectorCredentialOutput) Https() GetBitbucketConnectorCredentialHttpArrayOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredential) []GetBitbucketConnectorCredentialHttp { return v.Https }).(GetBitbucketConnectorCredentialHttpArrayOutput)
 }
 
+// Authenticate using SSH for the connection.
 func (o GetBitbucketConnectorCredentialOutput) Sshes() GetBitbucketConnectorCredentialSshArrayOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredential) []GetBitbucketConnectorCredentialSsh { return v.Sshes }).(GetBitbucketConnectorCredentialSshArrayOutput)
 }
@@ -25790,8 +26716,11 @@ func (o GetBitbucketConnectorCredentialArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetBitbucketConnectorCredentialHttp struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -25807,8 +26736,11 @@ type GetBitbucketConnectorCredentialHttpInput interface {
 }
 
 type GetBitbucketConnectorCredentialHttpArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -25863,14 +26795,17 @@ func (o GetBitbucketConnectorCredentialHttpOutput) ToGetBitbucketConnectorCreden
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetBitbucketConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -25896,6 +26831,7 @@ func (o GetBitbucketConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetBitbucketConnectorCredentialSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -25911,6 +26847,7 @@ type GetBitbucketConnectorCredentialSshInput interface {
 }
 
 type GetBitbucketConnectorCredentialSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -25965,6 +26902,7 @@ func (o GetBitbucketConnectorCredentialSshOutput) ToGetBitbucketConnectorCredent
 	return o
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetBitbucketConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBitbucketConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -25990,8 +26928,10 @@ func (o GetBitbucketConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetCcmFiltersFilterProperty struct {
-	FilterType string   `pulumi:"filterType"`
-	Tags       []string `pulumi:"tags"`
+	// Corresponding Entity of the filters.
+	FilterType string `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetCcmFiltersFilterPropertyInput is an input type that accepts GetCcmFiltersFilterPropertyArgs and GetCcmFiltersFilterPropertyOutput values.
@@ -26006,8 +26946,10 @@ type GetCcmFiltersFilterPropertyInput interface {
 }
 
 type GetCcmFiltersFilterPropertyArgs struct {
-	FilterType pulumi.StringInput      `pulumi:"filterType"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// Corresponding Entity of the filters.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetCcmFiltersFilterPropertyArgs) ElementType() reflect.Type {
@@ -26061,10 +27003,12 @@ func (o GetCcmFiltersFilterPropertyOutput) ToGetCcmFiltersFilterPropertyOutputWi
 	return o
 }
 
+// Corresponding Entity of the filters.
 func (o GetCcmFiltersFilterPropertyOutput) FilterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCcmFiltersFilterProperty) string { return v.FilterType }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o GetCcmFiltersFilterPropertyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCcmFiltersFilterProperty) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -26090,8 +27034,11 @@ func (o GetCcmFiltersFilterPropertyArrayOutput) Index(i pulumi.IntInput) GetCcmF
 }
 
 type GetDockerConnectorCredential struct {
+	// The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// The username to use for the docker registry.
+	Username string `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -26107,8 +27054,11 @@ type GetDockerConnectorCredentialInput interface {
 }
 
 type GetDockerConnectorCredentialArgs struct {
+	// The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// The username to use for the docker registry.
+	Username pulumi.StringInput `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -26163,14 +27113,17 @@ func (o GetDockerConnectorCredentialOutput) ToGetDockerConnectorCredentialOutput
 	return o
 }
 
+// The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetDockerConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// The username to use for the docker registry.
 func (o GetDockerConnectorCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetDockerConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDockerConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -26408,8 +27361,10 @@ func (o GetElasticsearchConnectorUsernamePasswordArrayOutput) Index(i pulumi.Int
 }
 
 type GetFiltersFilterProperty struct {
-	FilterType string   `pulumi:"filterType"`
-	Tags       []string `pulumi:"tags"`
+	// Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
+	FilterType string `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetFiltersFilterPropertyInput is an input type that accepts GetFiltersFilterPropertyArgs and GetFiltersFilterPropertyOutput values.
@@ -26424,8 +27379,10 @@ type GetFiltersFilterPropertyInput interface {
 }
 
 type GetFiltersFilterPropertyArgs struct {
-	FilterType pulumi.StringInput      `pulumi:"filterType"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetFiltersFilterPropertyArgs) ElementType() reflect.Type {
@@ -26479,10 +27436,12 @@ func (o GetFiltersFilterPropertyOutput) ToGetFiltersFilterPropertyOutputWithCont
 	return o
 }
 
+// Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
 func (o GetFiltersFilterPropertyOutput) FilterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFiltersFilterProperty) string { return v.FilterType }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o GetFiltersFilterPropertyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFiltersFilterProperty) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -26508,8 +27467,10 @@ func (o GetFiltersFilterPropertyArrayOutput) Index(i pulumi.IntInput) GetFilters
 }
 
 type GetGcpCloudCostConnectorBillingExportSpec struct {
+	// Data Set Id.
 	DataSetId string `pulumi:"dataSetId"`
-	TableId   string `pulumi:"tableId"`
+	// Table Id.
+	TableId string `pulumi:"tableId"`
 }
 
 // GetGcpCloudCostConnectorBillingExportSpecInput is an input type that accepts GetGcpCloudCostConnectorBillingExportSpecArgs and GetGcpCloudCostConnectorBillingExportSpecOutput values.
@@ -26524,8 +27485,10 @@ type GetGcpCloudCostConnectorBillingExportSpecInput interface {
 }
 
 type GetGcpCloudCostConnectorBillingExportSpecArgs struct {
+	// Data Set Id.
 	DataSetId pulumi.StringInput `pulumi:"dataSetId"`
-	TableId   pulumi.StringInput `pulumi:"tableId"`
+	// Table Id.
+	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
 func (GetGcpCloudCostConnectorBillingExportSpecArgs) ElementType() reflect.Type {
@@ -26579,10 +27542,12 @@ func (o GetGcpCloudCostConnectorBillingExportSpecOutput) ToGetGcpCloudCostConnec
 	return o
 }
 
+// Data Set Id.
 func (o GetGcpCloudCostConnectorBillingExportSpecOutput) DataSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGcpCloudCostConnectorBillingExportSpec) string { return v.DataSetId }).(pulumi.StringOutput)
 }
 
+// Table Id.
 func (o GetGcpCloudCostConnectorBillingExportSpecOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGcpCloudCostConnectorBillingExportSpec) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -26608,6 +27573,7 @@ func (o GetGcpCloudCostConnectorBillingExportSpecArrayOutput) Index(i pulumi.Int
 }
 
 type GetGcpConnectorInheritFromDelegate struct {
+	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 }
 
@@ -26623,6 +27589,7 @@ type GetGcpConnectorInheritFromDelegateInput interface {
 }
 
 type GetGcpConnectorInheritFromDelegateArgs struct {
+	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
 }
 
@@ -26677,6 +27644,7 @@ func (o GetGcpConnectorInheritFromDelegateOutput) ToGetGcpConnectorInheritFromDe
 	return o
 }
 
+// The delegates to inherit the credentials from.
 func (o GetGcpConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGcpConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -26702,8 +27670,10 @@ func (o GetGcpConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetGcpConnectorManual struct {
+	// The delegates to connect with.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	SecretKeyRef      string   `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SecretKeyRef string `pulumi:"secretKeyRef"`
 }
 
 // GetGcpConnectorManualInput is an input type that accepts GetGcpConnectorManualArgs and GetGcpConnectorManualOutput values.
@@ -26718,8 +27688,10 @@ type GetGcpConnectorManualInput interface {
 }
 
 type GetGcpConnectorManualArgs struct {
+	// The delegates to connect with.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	SecretKeyRef      pulumi.StringInput      `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
 }
 
 func (GetGcpConnectorManualArgs) ElementType() reflect.Type {
@@ -26773,10 +27745,12 @@ func (o GetGcpConnectorManualOutput) ToGetGcpConnectorManualOutputWithContext(ct
 	return o
 }
 
+// The delegates to connect with.
 func (o GetGcpConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGcpConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
+// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGcpConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGcpConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
@@ -26802,8 +27776,10 @@ func (o GetGcpConnectorManualArrayOutput) Index(i pulumi.IntInput) GetGcpConnect
 }
 
 type GetGitConnectorCredential struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https []GetGitConnectorCredentialHttp `pulumi:"https"`
-	Sshes []GetGitConnectorCredentialSsh  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes []GetGitConnectorCredentialSsh `pulumi:"sshes"`
 }
 
 // GetGitConnectorCredentialInput is an input type that accepts GetGitConnectorCredentialArgs and GetGitConnectorCredentialOutput values.
@@ -26818,8 +27794,10 @@ type GetGitConnectorCredentialInput interface {
 }
 
 type GetGitConnectorCredentialArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https GetGitConnectorCredentialHttpArrayInput `pulumi:"https"`
-	Sshes GetGitConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes GetGitConnectorCredentialSshArrayInput `pulumi:"sshes"`
 }
 
 func (GetGitConnectorCredentialArgs) ElementType() reflect.Type {
@@ -26873,10 +27851,12 @@ func (o GetGitConnectorCredentialOutput) ToGetGitConnectorCredentialOutputWithCo
 	return o
 }
 
+// Authenticate using Username and password over http(s) for the connection.
 func (o GetGitConnectorCredentialOutput) Https() GetGitConnectorCredentialHttpArrayOutput {
 	return o.ApplyT(func(v GetGitConnectorCredential) []GetGitConnectorCredentialHttp { return v.Https }).(GetGitConnectorCredentialHttpArrayOutput)
 }
 
+// Authenticate using SSH for the connection.
 func (o GetGitConnectorCredentialOutput) Sshes() GetGitConnectorCredentialSshArrayOutput {
 	return o.ApplyT(func(v GetGitConnectorCredential) []GetGitConnectorCredentialSsh { return v.Sshes }).(GetGitConnectorCredentialSshArrayOutput)
 }
@@ -26902,8 +27882,11 @@ func (o GetGitConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGitCon
 }
 
 type GetGitConnectorCredentialHttp struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -26919,8 +27902,11 @@ type GetGitConnectorCredentialHttpInput interface {
 }
 
 type GetGitConnectorCredentialHttpArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -26975,14 +27961,17 @@ func (o GetGitConnectorCredentialHttpOutput) ToGetGitConnectorCredentialHttpOutp
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetGitConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -27008,6 +27997,7 @@ func (o GetGitConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetGi
 }
 
 type GetGitConnectorCredentialSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -27023,6 +28013,7 @@ type GetGitConnectorCredentialSshInput interface {
 }
 
 type GetGitConnectorCredentialSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -27077,6 +28068,7 @@ func (o GetGitConnectorCredentialSshOutput) ToGetGitConnectorCredentialSshOutput
 	return o
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -27102,8 +28094,10 @@ func (o GetGitConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) GetGit
 }
 
 type GetGithubConnectorApiAuthentication struct {
+	// Configuration for using the github app for interacting with the github api.
 	GithubApps []GetGithubConnectorApiAuthenticationGithubApp `pulumi:"githubApps"`
-	TokenRef   string                                         `pulumi:"tokenRef"`
+	// Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
 }
 
 // GetGithubConnectorApiAuthenticationInput is an input type that accepts GetGithubConnectorApiAuthenticationArgs and GetGithubConnectorApiAuthenticationOutput values.
@@ -27118,8 +28112,10 @@ type GetGithubConnectorApiAuthenticationInput interface {
 }
 
 type GetGithubConnectorApiAuthenticationArgs struct {
+	// Configuration for using the github app for interacting with the github api.
 	GithubApps GetGithubConnectorApiAuthenticationGithubAppArrayInput `pulumi:"githubApps"`
-	TokenRef   pulumi.StringInput                                     `pulumi:"tokenRef"`
+	// Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
 }
 
 func (GetGithubConnectorApiAuthenticationArgs) ElementType() reflect.Type {
@@ -27173,12 +28169,14 @@ func (o GetGithubConnectorApiAuthenticationOutput) ToGetGithubConnectorApiAuthen
 	return o
 }
 
+// Configuration for using the github app for interacting with the github api.
 func (o GetGithubConnectorApiAuthenticationOutput) GithubApps() GetGithubConnectorApiAuthenticationGithubAppArrayOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthentication) []GetGithubConnectorApiAuthenticationGithubApp {
 		return v.GithubApps
 	}).(GetGithubConnectorApiAuthenticationGithubAppArrayOutput)
 }
 
+// Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
 }
@@ -27204,11 +28202,16 @@ func (o GetGithubConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetGithubConnectorApiAuthenticationGithubApp struct {
-	ApplicationId     string `pulumi:"applicationId"`
-	ApplicationIdRef  string `pulumi:"applicationIdRef"`
-	InstallationId    string `pulumi:"installationId"`
+	// Enter the GitHub App ID from the GitHub App General tab.
+	ApplicationId string `pulumi:"applicationId"`
+	// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApplicationIdRef string `pulumi:"applicationIdRef"`
+	// Enter the Installation ID located in the URL of the installed GitHub App.
+	InstallationId string `pulumi:"installationId"`
+	// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	InstallationIdRef string `pulumi:"installationIdRef"`
-	PrivateKeyRef     string `pulumi:"privateKeyRef"`
+	// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef string `pulumi:"privateKeyRef"`
 }
 
 // GetGithubConnectorApiAuthenticationGithubAppInput is an input type that accepts GetGithubConnectorApiAuthenticationGithubAppArgs and GetGithubConnectorApiAuthenticationGithubAppOutput values.
@@ -27223,11 +28226,16 @@ type GetGithubConnectorApiAuthenticationGithubAppInput interface {
 }
 
 type GetGithubConnectorApiAuthenticationGithubAppArgs struct {
-	ApplicationId     pulumi.StringInput `pulumi:"applicationId"`
-	ApplicationIdRef  pulumi.StringInput `pulumi:"applicationIdRef"`
-	InstallationId    pulumi.StringInput `pulumi:"installationId"`
+	// Enter the GitHub App ID from the GitHub App General tab.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApplicationIdRef pulumi.StringInput `pulumi:"applicationIdRef"`
+	// Enter the Installation ID located in the URL of the installed GitHub App.
+	InstallationId pulumi.StringInput `pulumi:"installationId"`
+	// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	InstallationIdRef pulumi.StringInput `pulumi:"installationIdRef"`
-	PrivateKeyRef     pulumi.StringInput `pulumi:"privateKeyRef"`
+	// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef pulumi.StringInput `pulumi:"privateKeyRef"`
 }
 
 func (GetGithubConnectorApiAuthenticationGithubAppArgs) ElementType() reflect.Type {
@@ -27281,22 +28289,27 @@ func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ToGetGithubConnector
 	return o
 }
 
+// Enter the GitHub App ID from the GitHub App General tab.
 func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorApiAuthenticationGithubAppOutput) ApplicationIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.ApplicationIdRef }).(pulumi.StringOutput)
 }
 
+// Enter the Installation ID located in the URL of the installed GitHub App.
 func (o GetGithubConnectorApiAuthenticationGithubAppOutput) InstallationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.InstallationId }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorApiAuthenticationGithubAppOutput) InstallationIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.InstallationIdRef }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorApiAuthenticationGithubAppOutput) PrivateKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorApiAuthenticationGithubApp) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
 }
@@ -27322,8 +28335,10 @@ func (o GetGithubConnectorApiAuthenticationGithubAppArrayOutput) Index(i pulumi.
 }
 
 type GetGithubConnectorCredential struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https []GetGithubConnectorCredentialHttp `pulumi:"https"`
-	Sshes []GetGithubConnectorCredentialSsh  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes []GetGithubConnectorCredentialSsh `pulumi:"sshes"`
 }
 
 // GetGithubConnectorCredentialInput is an input type that accepts GetGithubConnectorCredentialArgs and GetGithubConnectorCredentialOutput values.
@@ -27338,8 +28353,10 @@ type GetGithubConnectorCredentialInput interface {
 }
 
 type GetGithubConnectorCredentialArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https GetGithubConnectorCredentialHttpArrayInput `pulumi:"https"`
-	Sshes GetGithubConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes GetGithubConnectorCredentialSshArrayInput `pulumi:"sshes"`
 }
 
 func (GetGithubConnectorCredentialArgs) ElementType() reflect.Type {
@@ -27393,10 +28410,12 @@ func (o GetGithubConnectorCredentialOutput) ToGetGithubConnectorCredentialOutput
 	return o
 }
 
+// Authenticate using Username and password over http(s) for the connection.
 func (o GetGithubConnectorCredentialOutput) Https() GetGithubConnectorCredentialHttpArrayOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredential) []GetGithubConnectorCredentialHttp { return v.Https }).(GetGithubConnectorCredentialHttpArrayOutput)
 }
 
+// Authenticate using SSH for the connection.
 func (o GetGithubConnectorCredentialOutput) Sshes() GetGithubConnectorCredentialSshArrayOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredential) []GetGithubConnectorCredentialSsh { return v.Sshes }).(GetGithubConnectorCredentialSshArrayOutput)
 }
@@ -27422,8 +28441,11 @@ func (o GetGithubConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGit
 }
 
 type GetGithubConnectorCredentialHttp struct {
-	TokenRef    string `pulumi:"tokenRef"`
-	Username    string `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -27439,8 +28461,11 @@ type GetGithubConnectorCredentialHttpInput interface {
 }
 
 type GetGithubConnectorCredentialHttpArgs struct {
-	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -27495,14 +28520,17 @@ func (o GetGithubConnectorCredentialHttpOutput) ToGetGithubConnectorCredentialHt
 	return o
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorCredentialHttpOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.TokenRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetGithubConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -27528,6 +28556,7 @@ func (o GetGithubConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetGithubConnectorCredentialSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -27543,6 +28572,7 @@ type GetGithubConnectorCredentialSshInput interface {
 }
 
 type GetGithubConnectorCredentialSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -27597,6 +28627,7 @@ func (o GetGithubConnectorCredentialSshOutput) ToGetGithubConnectorCredentialSsh
 	return o
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGithubConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGithubConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -27622,6 +28653,7 @@ func (o GetGithubConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetGitlabConnectorApiAuthentication struct {
+	// Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
 }
 
@@ -27637,6 +28669,7 @@ type GetGitlabConnectorApiAuthenticationInput interface {
 }
 
 type GetGitlabConnectorApiAuthenticationArgs struct {
+	// Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
 }
 
@@ -27691,6 +28724,7 @@ func (o GetGitlabConnectorApiAuthenticationOutput) ToGetGitlabConnectorApiAuthen
 	return o
 }
 
+// Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitlabConnectorApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
 }
@@ -27716,8 +28750,10 @@ func (o GetGitlabConnectorApiAuthenticationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetGitlabConnectorCredential struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https []GetGitlabConnectorCredentialHttp `pulumi:"https"`
-	Sshes []GetGitlabConnectorCredentialSsh  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes []GetGitlabConnectorCredentialSsh `pulumi:"sshes"`
 }
 
 // GetGitlabConnectorCredentialInput is an input type that accepts GetGitlabConnectorCredentialArgs and GetGitlabConnectorCredentialOutput values.
@@ -27732,8 +28768,10 @@ type GetGitlabConnectorCredentialInput interface {
 }
 
 type GetGitlabConnectorCredentialArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
 	Https GetGitlabConnectorCredentialHttpArrayInput `pulumi:"https"`
-	Sshes GetGitlabConnectorCredentialSshArrayInput  `pulumi:"sshes"`
+	// Authenticate using SSH for the connection.
+	Sshes GetGitlabConnectorCredentialSshArrayInput `pulumi:"sshes"`
 }
 
 func (GetGitlabConnectorCredentialArgs) ElementType() reflect.Type {
@@ -27787,10 +28825,12 @@ func (o GetGitlabConnectorCredentialOutput) ToGetGitlabConnectorCredentialOutput
 	return o
 }
 
+// Authenticate using Username and password over http(s) for the connection.
 func (o GetGitlabConnectorCredentialOutput) Https() GetGitlabConnectorCredentialHttpArrayOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredential) []GetGitlabConnectorCredentialHttp { return v.Https }).(GetGitlabConnectorCredentialHttpArrayOutput)
 }
 
+// Authenticate using SSH for the connection.
 func (o GetGitlabConnectorCredentialOutput) Sshes() GetGitlabConnectorCredentialSshArrayOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredential) []GetGitlabConnectorCredentialSsh { return v.Sshes }).(GetGitlabConnectorCredentialSshArrayOutput)
 }
@@ -27816,9 +28856,13 @@ func (o GetGitlabConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetGit
 }
 
 type GetGitlabConnectorCredentialHttp struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	TokenRef    string `pulumi:"tokenRef"`
-	Username    string `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -27834,9 +28878,13 @@ type GetGitlabConnectorCredentialHttpInput interface {
 }
 
 type GetGitlabConnectorCredentialHttpArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	TokenRef    pulumi.StringInput `pulumi:"tokenRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -27891,18 +28939,22 @@ func (o GetGitlabConnectorCredentialHttpOutput) ToGetGitlabConnectorCredentialHt
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitlabConnectorCredentialHttpOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitlabConnectorCredentialHttpOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.TokenRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetGitlabConnectorCredentialHttpOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitlabConnectorCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -27928,6 +28980,7 @@ func (o GetGitlabConnectorCredentialHttpArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetGitlabConnectorCredentialSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef string `pulumi:"sshKeyRef"`
 }
 
@@ -27943,6 +28996,7 @@ type GetGitlabConnectorCredentialSshInput interface {
 }
 
 type GetGitlabConnectorCredentialSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
 }
 
@@ -27997,6 +29051,7 @@ func (o GetGitlabConnectorCredentialSshOutput) ToGetGitlabConnectorCredentialSsh
 	return o
 }
 
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetGitlabConnectorCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitlabConnectorCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
 }
@@ -28022,8 +29077,10 @@ func (o GetGitlabConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetGitopsAgentMetadata struct {
-	HighAvailability bool   `pulumi:"highAvailability"`
-	Namespace        string `pulumi:"namespace"`
+	// Indicates if the deployment should be deployed using the deploy-ha.yaml
+	HighAvailability bool `pulumi:"highAvailability"`
+	// The k8s namespace that this agent resides in.
+	Namespace string `pulumi:"namespace"`
 }
 
 // GetGitopsAgentMetadataInput is an input type that accepts GetGitopsAgentMetadataArgs and GetGitopsAgentMetadataOutput values.
@@ -28038,8 +29095,10 @@ type GetGitopsAgentMetadataInput interface {
 }
 
 type GetGitopsAgentMetadataArgs struct {
-	HighAvailability pulumi.BoolInput   `pulumi:"highAvailability"`
-	Namespace        pulumi.StringInput `pulumi:"namespace"`
+	// Indicates if the deployment should be deployed using the deploy-ha.yaml
+	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
+	// The k8s namespace that this agent resides in.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
 func (GetGitopsAgentMetadataArgs) ElementType() reflect.Type {
@@ -28093,10 +29152,12 @@ func (o GetGitopsAgentMetadataOutput) ToGetGitopsAgentMetadataOutputWithContext(
 	return o
 }
 
+// Indicates if the deployment should be deployed using the deploy-ha.yaml
 func (o GetGitopsAgentMetadataOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGitopsAgentMetadata) bool { return v.HighAvailability }).(pulumi.BoolOutput)
 }
 
+// The k8s namespace that this agent resides in.
 func (o GetGitopsAgentMetadataOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentMetadata) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -28230,17 +29291,26 @@ func (o GetGitopsApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetGitopsApplicationsApplicationMetadata struct {
-	Annotations  map[string]string `pulumi:"annotations"`
-	ClusterName  *string           `pulumi:"clusterName"`
-	Finalizers   []string          `pulumi:"finalizers"`
-	GenerateName *string           `pulumi:"generateName"`
-	Generation   string            `pulumi:"generation"`
-	Labels       map[string]string `pulumi:"labels"`
-	// Name of the GitOps application.
-	Name            *string                                                  `pulumi:"name"`
-	Namespace       string                                                   `pulumi:"namespace"`
+	// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+	ClusterName *string `pulumi:"clusterName"`
+	// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+	Finalizers []string `pulumi:"finalizers"`
+	// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+	GenerateName *string `pulumi:"generateName"`
+	// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
+	Generation string `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
+	Labels map[string]string `pulumi:"labels"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+	Name *string `pulumi:"name"`
+	// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+	Namespace string `pulumi:"namespace"`
+	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 	OwnerReferences []GetGitopsApplicationsApplicationMetadataOwnerReference `pulumi:"ownerReferences"`
-	Uid             string                                                   `pulumi:"uid"`
+	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+	Uid string `pulumi:"uid"`
 }
 
 // GetGitopsApplicationsApplicationMetadataInput is an input type that accepts GetGitopsApplicationsApplicationMetadataArgs and GetGitopsApplicationsApplicationMetadataOutput values.
@@ -28255,17 +29325,26 @@ type GetGitopsApplicationsApplicationMetadataInput interface {
 }
 
 type GetGitopsApplicationsApplicationMetadataArgs struct {
-	Annotations  pulumi.StringMapInput   `pulumi:"annotations"`
-	ClusterName  pulumi.StringPtrInput   `pulumi:"clusterName"`
-	Finalizers   pulumi.StringArrayInput `pulumi:"finalizers"`
-	GenerateName pulumi.StringPtrInput   `pulumi:"generateName"`
-	Generation   pulumi.StringInput      `pulumi:"generation"`
-	Labels       pulumi.StringMapInput   `pulumi:"labels"`
-	// Name of the GitOps application.
-	Name            pulumi.StringPtrInput                                            `pulumi:"name"`
-	Namespace       pulumi.StringInput                                               `pulumi:"namespace"`
+	// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
+	// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 	OwnerReferences GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayInput `pulumi:"ownerReferences"`
-	Uid             pulumi.StringInput                                               `pulumi:"uid"`
+	// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+	Uid pulumi.StringInput `pulumi:"uid"`
 }
 
 func (GetGitopsApplicationsApplicationMetadataArgs) ElementType() reflect.Type {
@@ -28319,45 +29398,54 @@ func (o GetGitopsApplicationsApplicationMetadataOutput) ToGetGitopsApplicationsA
 	return o
 }
 
+// Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
 func (o GetGitopsApplicationsApplicationMetadataOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Finalizers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
+// An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
 func (o GetGitopsApplicationsApplicationMetadataOutput) GenerateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) *string { return v.GenerateName }).(pulumi.StringPtrOutput)
 }
 
+// A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) string { return v.Generation }).(pulumi.StringOutput)
 }
 
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the GitOps application.
+// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
 func (o GetGitopsApplicationsApplicationMetadataOutput) OwnerReferences() GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) []GetGitopsApplicationsApplicationMetadataOwnerReference {
 		return v.OwnerReferences
 	}).(GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayOutput)
 }
 
+// UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
 func (o GetGitopsApplicationsApplicationMetadataOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadata) string { return v.Uid }).(pulumi.StringOutput)
 }
@@ -28383,14 +29471,18 @@ func (o GetGitopsApplicationsApplicationMetadataArrayOutput) Index(i pulumi.IntI
 }
 
 type GetGitopsApplicationsApplicationMetadataOwnerReference struct {
-	ApiVersion         *string `pulumi:"apiVersion"`
-	BlockOwnerDeletion *bool   `pulumi:"blockOwnerDeletion"`
-	Controller         *bool   `pulumi:"controller"`
-	// Kind of the GitOps application.
+	// API version of the referent.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+	BlockOwnerDeletion *bool `pulumi:"blockOwnerDeletion"`
+	// Indicates if the reference points to the managing controller.
+	Controller *bool `pulumi:"controller"`
+	// Kind of the referent.
 	Kind *string `pulumi:"kind"`
-	// Name of the GitOps application.
+	// Name of the referent.
 	Name *string `pulumi:"name"`
-	Uid  *string `pulumi:"uid"`
+	// UID of the referent.
+	Uid *string `pulumi:"uid"`
 }
 
 // GetGitopsApplicationsApplicationMetadataOwnerReferenceInput is an input type that accepts GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs and GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput values.
@@ -28405,14 +29497,18 @@ type GetGitopsApplicationsApplicationMetadataOwnerReferenceInput interface {
 }
 
 type GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs struct {
-	ApiVersion         pulumi.StringPtrInput `pulumi:"apiVersion"`
-	BlockOwnerDeletion pulumi.BoolPtrInput   `pulumi:"blockOwnerDeletion"`
-	Controller         pulumi.BoolPtrInput   `pulumi:"controller"`
-	// Kind of the GitOps application.
+	// API version of the referent.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+	BlockOwnerDeletion pulumi.BoolPtrInput `pulumi:"blockOwnerDeletion"`
+	// Indicates if the reference points to the managing controller.
+	Controller pulumi.BoolPtrInput `pulumi:"controller"`
+	// Kind of the referent.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Name of the GitOps application.
+	// Name of the referent.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Uid  pulumi.StringPtrInput `pulumi:"uid"`
+	// UID of the referent.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs) ElementType() reflect.Type {
@@ -28466,28 +29562,32 @@ func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) ToGetGitop
 	return o
 }
 
+// API version of the referent.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) BlockOwnerDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *bool { return v.BlockOwnerDeletion }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the reference points to the managing controller.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) Controller() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *bool { return v.Controller }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of the GitOps application.
+// Kind of the referent.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the referent.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// UID of the referent.
 func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationMetadataOwnerReference) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
@@ -28513,9 +29613,12 @@ func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index
 }
 
 type GetGitopsApplicationsApplicationSpec struct {
+	// Information about the GitOps application's destination.
 	Destinations []GetGitopsApplicationsApplicationSpecDestination `pulumi:"destinations"`
-	Sources      []GetGitopsApplicationsApplicationSpecSource      `pulumi:"sources"`
-	SyncPolicies []GetGitopsApplicationsApplicationSpecSyncPolicy  `pulumi:"syncPolicies"`
+	// Contains all information about the source of a GitOps application.
+	Sources []GetGitopsApplicationsApplicationSpecSource `pulumi:"sources"`
+	// Controls when a sync will be performed in response to updates in git.
+	SyncPolicies []GetGitopsApplicationsApplicationSpecSyncPolicy `pulumi:"syncPolicies"`
 }
 
 // GetGitopsApplicationsApplicationSpecInput is an input type that accepts GetGitopsApplicationsApplicationSpecArgs and GetGitopsApplicationsApplicationSpecOutput values.
@@ -28530,9 +29633,12 @@ type GetGitopsApplicationsApplicationSpecInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecArgs struct {
+	// Information about the GitOps application's destination.
 	Destinations GetGitopsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
-	Sources      GetGitopsApplicationsApplicationSpecSourceArrayInput      `pulumi:"sources"`
-	SyncPolicies GetGitopsApplicationsApplicationSpecSyncPolicyArrayInput  `pulumi:"syncPolicies"`
+	// Contains all information about the source of a GitOps application.
+	Sources GetGitopsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
+	// Controls when a sync will be performed in response to updates in git.
+	SyncPolicies GetGitopsApplicationsApplicationSpecSyncPolicyArrayInput `pulumi:"syncPolicies"`
 }
 
 func (GetGitopsApplicationsApplicationSpecArgs) ElementType() reflect.Type {
@@ -28586,18 +29692,21 @@ func (o GetGitopsApplicationsApplicationSpecOutput) ToGetGitopsApplicationsAppli
 	return o
 }
 
+// Information about the GitOps application's destination.
 func (o GetGitopsApplicationsApplicationSpecOutput) Destinations() GetGitopsApplicationsApplicationSpecDestinationArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecDestination {
 		return v.Destinations
 	}).(GetGitopsApplicationsApplicationSpecDestinationArrayOutput)
 }
 
+// Contains all information about the source of a GitOps application.
 func (o GetGitopsApplicationsApplicationSpecOutput) Sources() GetGitopsApplicationsApplicationSpecSourceArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecSource {
 		return v.Sources
 	}).(GetGitopsApplicationsApplicationSpecSourceArrayOutput)
 }
 
+// Controls when a sync will be performed in response to updates in git.
 func (o GetGitopsApplicationsApplicationSpecOutput) SyncPolicies() GetGitopsApplicationsApplicationSpecSyncPolicyArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecSyncPolicy {
 		return v.SyncPolicies
@@ -28625,10 +29734,12 @@ func (o GetGitopsApplicationsApplicationSpecArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetGitopsApplicationsApplicationSpecDestination struct {
-	// Name of the GitOps application.
-	Name      *string `pulumi:"name"`
+	// URL of the target cluster and must be set to the kubernetes control plane API.
+	Name *string `pulumi:"name"`
+	// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 	Namespace *string `pulumi:"namespace"`
-	Server    *string `pulumi:"server"`
+	// Server of the destination of the GitOps application.
+	Server *string `pulumi:"server"`
 }
 
 // GetGitopsApplicationsApplicationSpecDestinationInput is an input type that accepts GetGitopsApplicationsApplicationSpecDestinationArgs and GetGitopsApplicationsApplicationSpecDestinationOutput values.
@@ -28643,10 +29754,12 @@ type GetGitopsApplicationsApplicationSpecDestinationInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecDestinationArgs struct {
-	// Name of the GitOps application.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the target cluster and must be set to the kubernetes control plane API.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Server    pulumi.StringPtrInput `pulumi:"server"`
+	// Server of the destination of the GitOps application.
+	Server pulumi.StringPtrInput `pulumi:"server"`
 }
 
 func (GetGitopsApplicationsApplicationSpecDestinationArgs) ElementType() reflect.Type {
@@ -28700,15 +29813,17 @@ func (o GetGitopsApplicationsApplicationSpecDestinationOutput) ToGetGitopsApplic
 	return o
 }
 
-// Name of the GitOps application.
+// URL of the target cluster and must be set to the kubernetes control plane API.
 func (o GetGitopsApplicationsApplicationSpecDestinationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecDestination) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
 func (o GetGitopsApplicationsApplicationSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// Server of the destination of the GitOps application.
 func (o GetGitopsApplicationsApplicationSpecDestinationOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
@@ -28734,15 +29849,24 @@ func (o GetGitopsApplicationsApplicationSpecDestinationArrayOutput) Index(i pulu
 }
 
 type GetGitopsApplicationsApplicationSpecSource struct {
-	Chart          *string                                               `pulumi:"chart"`
-	Directories    []GetGitopsApplicationsApplicationSpecSourceDirectory `pulumi:"directories"`
-	Helms          []GetGitopsApplicationsApplicationSpecSourceHelm      `pulumi:"helms"`
-	Ksonnets       []GetGitopsApplicationsApplicationSpecSourceKsonnet   `pulumi:"ksonnets"`
-	Kustomizes     []GetGitopsApplicationsApplicationSpecSourceKustomize `pulumi:"kustomizes"`
-	Path           *string                                               `pulumi:"path"`
-	Plugins        []GetGitopsApplicationsApplicationSpecSourcePlugin    `pulumi:"plugins"`
-	RepoUrl        *string                                               `pulumi:"repoUrl"`
-	TargetRevision *string                                               `pulumi:"targetRevision"`
+	// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
+	Chart *string `pulumi:"chart"`
+	// Options for applications of type plain YAML or Jsonnet.
+	Directories []GetGitopsApplicationsApplicationSpecSourceDirectory `pulumi:"directories"`
+	// Holds helm specific options.
+	Helms []GetGitopsApplicationsApplicationSpecSourceHelm `pulumi:"helms"`
+	// Ksonnet specific options.
+	Ksonnets []GetGitopsApplicationsApplicationSpecSourceKsonnet `pulumi:"ksonnets"`
+	// Options specific to a GitOps application source specific to Kustomize.
+	Kustomizes []GetGitopsApplicationsApplicationSpecSourceKustomize `pulumi:"kustomizes"`
+	// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+	Path *string `pulumi:"path"`
+	// Options specific to config management plugins.
+	Plugins []GetGitopsApplicationsApplicationSpecSourcePlugin `pulumi:"plugins"`
+	// URL to the repository (git or helm) that contains the GitOps application manifests.
+	RepoUrl *string `pulumi:"repoUrl"`
+	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+	TargetRevision *string `pulumi:"targetRevision"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceArgs and GetGitopsApplicationsApplicationSpecSourceOutput values.
@@ -28757,15 +29881,24 @@ type GetGitopsApplicationsApplicationSpecSourceInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceArgs struct {
-	Chart          pulumi.StringPtrInput                                         `pulumi:"chart"`
-	Directories    GetGitopsApplicationsApplicationSpecSourceDirectoryArrayInput `pulumi:"directories"`
-	Helms          GetGitopsApplicationsApplicationSpecSourceHelmArrayInput      `pulumi:"helms"`
-	Ksonnets       GetGitopsApplicationsApplicationSpecSourceKsonnetArrayInput   `pulumi:"ksonnets"`
-	Kustomizes     GetGitopsApplicationsApplicationSpecSourceKustomizeArrayInput `pulumi:"kustomizes"`
-	Path           pulumi.StringPtrInput                                         `pulumi:"path"`
-	Plugins        GetGitopsApplicationsApplicationSpecSourcePluginArrayInput    `pulumi:"plugins"`
-	RepoUrl        pulumi.StringPtrInput                                         `pulumi:"repoUrl"`
-	TargetRevision pulumi.StringPtrInput                                         `pulumi:"targetRevision"`
+	// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
+	Chart pulumi.StringPtrInput `pulumi:"chart"`
+	// Options for applications of type plain YAML or Jsonnet.
+	Directories GetGitopsApplicationsApplicationSpecSourceDirectoryArrayInput `pulumi:"directories"`
+	// Holds helm specific options.
+	Helms GetGitopsApplicationsApplicationSpecSourceHelmArrayInput `pulumi:"helms"`
+	// Ksonnet specific options.
+	Ksonnets GetGitopsApplicationsApplicationSpecSourceKsonnetArrayInput `pulumi:"ksonnets"`
+	// Options specific to a GitOps application source specific to Kustomize.
+	Kustomizes GetGitopsApplicationsApplicationSpecSourceKustomizeArrayInput `pulumi:"kustomizes"`
+	// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Options specific to config management plugins.
+	Plugins GetGitopsApplicationsApplicationSpecSourcePluginArrayInput `pulumi:"plugins"`
+	// URL to the repository (git or helm) that contains the GitOps application manifests.
+	RepoUrl pulumi.StringPtrInput `pulumi:"repoUrl"`
+	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+	TargetRevision pulumi.StringPtrInput `pulumi:"targetRevision"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceArgs) ElementType() reflect.Type {
@@ -28819,48 +29952,57 @@ func (o GetGitopsApplicationsApplicationSpecSourceOutput) ToGetGitopsApplication
 	return o
 }
 
+// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Chart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) *string { return v.Chart }).(pulumi.StringPtrOutput)
 }
 
+// Options for applications of type plain YAML or Jsonnet.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Directories() GetGitopsApplicationsApplicationSpecSourceDirectoryArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) []GetGitopsApplicationsApplicationSpecSourceDirectory {
 		return v.Directories
 	}).(GetGitopsApplicationsApplicationSpecSourceDirectoryArrayOutput)
 }
 
+// Holds helm specific options.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Helms() GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) []GetGitopsApplicationsApplicationSpecSourceHelm {
 		return v.Helms
 	}).(GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput)
 }
 
+// Ksonnet specific options.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Ksonnets() GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) []GetGitopsApplicationsApplicationSpecSourceKsonnet {
 		return v.Ksonnets
 	}).(GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput)
 }
 
+// Options specific to a GitOps application source specific to Kustomize.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Kustomizes() GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) []GetGitopsApplicationsApplicationSpecSourceKustomize {
 		return v.Kustomizes
 	}).(GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput)
 }
 
+// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Options specific to config management plugins.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) Plugins() GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) []GetGitopsApplicationsApplicationSpecSourcePlugin {
 		return v.Plugins
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput)
 }
 
+// URL to the repository (git or helm) that contains the GitOps application manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) RepoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) *string { return v.RepoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) TargetRevision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) *string { return v.TargetRevision }).(pulumi.StringPtrOutput)
 }
@@ -28886,10 +30028,14 @@ func (o GetGitopsApplicationsApplicationSpecSourceArrayOutput) Index(i pulumi.In
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectory struct {
-	Exclude  *string                                                      `pulumi:"exclude"`
-	Include  *string                                                      `pulumi:"include"`
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
+	Exclude *string `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation.
+	Include *string `pulumi:"include"`
+	// Options specific to applications of type Jsonnet.
 	Jsonnets []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet `pulumi:"jsonnets"`
-	Recurse  *bool                                                        `pulumi:"recurse"`
+	// Indicates to scan a directory recursively for manifests.
+	Recurse *bool `pulumi:"recurse"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceDirectoryInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceDirectoryArgs and GetGitopsApplicationsApplicationSpecSourceDirectoryOutput values.
@@ -28904,10 +30050,14 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryArgs struct {
-	Exclude  pulumi.StringPtrInput                                                `pulumi:"exclude"`
-	Include  pulumi.StringPtrInput                                                `pulumi:"include"`
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
+	Exclude pulumi.StringPtrInput `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation.
+	Include pulumi.StringPtrInput `pulumi:"include"`
+	// Options specific to applications of type Jsonnet.
 	Jsonnets GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayInput `pulumi:"jsonnets"`
-	Recurse  pulumi.BoolPtrInput                                                  `pulumi:"recurse"`
+	// Indicates to scan a directory recursively for manifests.
+	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceDirectoryArgs) ElementType() reflect.Type {
@@ -28961,20 +30111,24 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) ToGetGitopsAp
 	return o
 }
 
+// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Exclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *string { return v.Exclude }).(pulumi.StringPtrOutput)
 }
 
+// Glob pattern to match paths against that should be explicitly included during manifest generation.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Include() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *string { return v.Include }).(pulumi.StringPtrOutput)
 }
 
+// Options specific to applications of type Jsonnet.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Jsonnets() GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
 		return v.Jsonnets
 	}).(GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput)
 }
 
+// Indicates to scan a directory recursively for manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Recurse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *bool { return v.Recurse }).(pulumi.BoolPtrOutput)
 }
@@ -29000,9 +30154,12 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryArrayOutput) Index(i 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet struct {
+	// List of jsonnet external variables.
 	ExtVars []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar `pulumi:"extVars"`
-	Libs    []string                                                           `pulumi:"libs"`
-	Tlas    []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla    `pulumi:"tlas"`
+	// Additional library search dirs.
+	Libs []string `pulumi:"libs"`
+	// List of jsonnet top-level arguments(TLAS).
+	Tlas []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla `pulumi:"tlas"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs and GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetOutput values.
@@ -29017,9 +30174,12 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs struct {
+	// List of jsonnet external variables.
 	ExtVars GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayInput `pulumi:"extVars"`
-	Libs    pulumi.StringArrayInput                                                    `pulumi:"libs"`
-	Tlas    GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayInput    `pulumi:"tlas"`
+	// Additional library search dirs.
+	Libs pulumi.StringArrayInput `pulumi:"libs"`
+	// List of jsonnet top-level arguments(TLAS).
+	Tlas GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayInput `pulumi:"tlas"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs) ElementType() reflect.Type {
@@ -29073,16 +30233,19 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) ToGetG
 	return o
 }
 
+// List of jsonnet external variables.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) ExtVars() GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet) []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar {
 		return v.ExtVars
 	}).(GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput)
 }
 
+// Additional library search dirs.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) Libs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet) []string { return v.Libs }).(pulumi.StringArrayOutput)
 }
 
+// List of jsonnet top-level arguments(TLAS).
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetOutput) Tlas() GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet) []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
 		return v.Tlas
@@ -29110,9 +30273,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput) I
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar struct {
+	// Code of the external variables of jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the external variables of jsonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the external variables of jsonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -29128,9 +30293,11 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput inter
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs struct {
+	// Code of the external variables of jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the external variables of jsonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the external variables of jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -29185,15 +30352,17 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) 
 	return o
 }
 
+// Code of the external variables of jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the external variables of jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the external variables of jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -29219,9 +30388,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOut
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla struct {
+	// Code of the TLAS of the jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the TLAS of the jsonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the TLAS of the jsonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -29237,9 +30408,11 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput interfac
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs struct {
+	// Code of the TLAS of the jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the TLAS of the jsonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the TLAS of the jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -29294,15 +30467,17 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) ToG
 	return o
 }
 
+// Code of the TLAS of the jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the TLAS of the jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the TLAS of the jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -29328,13 +30503,20 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelm struct {
-	FileParameters  []GetGitopsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
-	Parameters      []GetGitopsApplicationsApplicationSpecSourceHelmParameter     `pulumi:"parameters"`
-	PassCredentials *bool                                                         `pulumi:"passCredentials"`
-	ReleaseName     *string                                                       `pulumi:"releaseName"`
-	ValueFiles      []string                                                      `pulumi:"valueFiles"`
-	Values          *string                                                       `pulumi:"values"`
-	Version         *string                                                       `pulumi:"version"`
+	// File parameters to the helm template.
+	FileParameters []GetGitopsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// List of helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters []GetGitopsApplicationsApplicationSpecSourceHelmParameter `pulumi:"parameters"`
+	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Helm release name to use. If omitted it will use the GitOps application name.
+	ReleaseName *string `pulumi:"releaseName"`
+	// List of helm value files to use when generating a template.
+	ValueFiles []string `pulumi:"valueFiles"`
+	// Helm values to be passed to helm template, typically defined as a block.
+	Values *string `pulumi:"values"`
+	// Helm version to use for templating (either "2" or "3")
+	Version *string `pulumi:"version"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceHelmInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceHelmArgs and GetGitopsApplicationsApplicationSpecSourceHelmOutput values.
@@ -29349,13 +30531,20 @@ type GetGitopsApplicationsApplicationSpecSourceHelmInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmArgs struct {
-	FileParameters  GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
-	Parameters      GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayInput     `pulumi:"parameters"`
-	PassCredentials pulumi.BoolPtrInput                                                   `pulumi:"passCredentials"`
-	ReleaseName     pulumi.StringPtrInput                                                 `pulumi:"releaseName"`
-	ValueFiles      pulumi.StringArrayInput                                               `pulumi:"valueFiles"`
-	Values          pulumi.StringPtrInput                                                 `pulumi:"values"`
-	Version         pulumi.StringPtrInput                                                 `pulumi:"version"`
+	// File parameters to the helm template.
+	FileParameters GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// List of helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
+	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
+	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
+	// Helm release name to use. If omitted it will use the GitOps application name.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// List of helm value files to use when generating a template.
+	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
+	// Helm values to be passed to helm template, typically defined as a block.
+	Values pulumi.StringPtrInput `pulumi:"values"`
+	// Helm version to use for templating (either "2" or "3")
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceHelmArgs) ElementType() reflect.Type {
@@ -29409,34 +30598,41 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ToGetGitopsApplica
 	return o
 }
 
+// File parameters to the helm template.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) FileParameters() GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) []GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
 		return v.FileParameters
 	}).(GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput)
 }
 
+// List of helm parameters which are passed to the helm template command upon manifest generation.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Parameters() GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) []GetGitopsApplicationsApplicationSpecSourceHelmParameter {
 		return v.Parameters
 	}).(GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput)
 }
 
+// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.PassCredentials }).(pulumi.BoolPtrOutput)
 }
 
+// Helm release name to use. If omitted it will use the GitOps application name.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
 }
 
+// List of helm value files to use when generating a template.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) []string { return v.ValueFiles }).(pulumi.StringArrayOutput)
 }
 
+// Helm values to be passed to helm template, typically defined as a block.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
+// Helm version to use for templating (either "2" or "3")
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -29462,8 +30658,9 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput) Index(i pulum
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameter struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name *string `pulumi:"name"`
+	// Path to the file containing the values of the helm parameter.
 	Path *string `pulumi:"path"`
 }
 
@@ -29479,8 +30676,9 @@ type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterInput interface 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Path to the file containing the values of the helm parameter.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -29535,11 +30733,12 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) ToGet
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Path to the file containing the values of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -29565,9 +30764,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput) 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameter struct {
+	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString *bool `pulumi:"forceString"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the helm parameter.
+	Name *string `pulumi:"name"`
+	// Value of the helm parameter.
 	Value *string `pulumi:"value"`
 }
 
@@ -29583,9 +30784,11 @@ type GetGitopsApplicationsApplicationSpecSourceHelmParameterInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs struct {
+	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the helm parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the helm parameter.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -29640,15 +30843,17 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ToGetGito
 	return o
 }
 
+// Indicates if helm should interpret booleans and numbers as strings.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *bool { return v.ForceString }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -29674,8 +30879,10 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput) Inde
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnet struct {
-	Environment *string                                                      `pulumi:"environment"`
-	Parameters  []GetGitopsApplicationsApplicationSpecSourceKsonnetParameter `pulumi:"parameters"`
+	// Ksonnet application environment name.
+	Environment *string `pulumi:"environment"`
+	// List of ksonnet component parameter override values.
+	Parameters []GetGitopsApplicationsApplicationSpecSourceKsonnetParameter `pulumi:"parameters"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceKsonnetInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceKsonnetArgs and GetGitopsApplicationsApplicationSpecSourceKsonnetOutput values.
@@ -29690,8 +30897,10 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetArgs struct {
-	Environment pulumi.StringPtrInput                                                `pulumi:"environment"`
-	Parameters  GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayInput `pulumi:"parameters"`
+	// Ksonnet application environment name.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// List of ksonnet component parameter override values.
+	Parameters GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayInput `pulumi:"parameters"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceKsonnetArgs) ElementType() reflect.Type {
@@ -29745,10 +30954,12 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) ToGetGitopsAppl
 	return o
 }
 
+// Ksonnet application environment name.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnet) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
+// List of ksonnet component parameter override values.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) Parameters() GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnet) []GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
 		return v.Parameters
@@ -29776,9 +30987,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput) Index(i pu
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameter struct {
+	// Component of the parameter of the ksonnet application.
 	Component *string `pulumi:"component"`
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the parameter of the ksonnet application.
+	Name *string `pulumi:"name"`
+	// Value of the parameter of the ksonnet application.
 	Value *string `pulumi:"value"`
 }
 
@@ -29794,9 +31007,11 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs struct {
+	// Component of the parameter of the ksonnet application.
 	Component pulumi.StringPtrInput `pulumi:"component"`
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the parameter of the ksonnet application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the parameter of the ksonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -29851,15 +31066,17 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) ToGetG
 	return o
 }
 
+// Component of the parameter of the ksonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Component() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the parameter of the ksonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the parameter of the ksonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -29885,14 +31102,22 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayOutput) I
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKustomize struct {
-	CommonAnnotations      map[string]string `pulumi:"commonAnnotations"`
-	CommonLabels           map[string]string `pulumi:"commonLabels"`
-	ForceCommonAnnotations *bool             `pulumi:"forceCommonAnnotations"`
-	ForceCommonLabels      *bool             `pulumi:"forceCommonLabels"`
-	Images                 []string          `pulumi:"images"`
-	NamePrefix             *string           `pulumi:"namePrefix"`
-	NameSuffix             *string           `pulumi:"nameSuffix"`
-	Version                *string           `pulumi:"version"`
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels map[string]string `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
+	// List of kustomize image override specifications.
+	Images []string `pulumi:"images"`
+	// Prefix prepended to resources for kustomize apps.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// Suffix appended to resources for kustomize apps.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Version of kustomize to use for rendering manifests.
+	Version *string `pulumi:"version"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceKustomizeInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceKustomizeArgs and GetGitopsApplicationsApplicationSpecSourceKustomizeOutput values.
@@ -29907,14 +31132,22 @@ type GetGitopsApplicationsApplicationSpecSourceKustomizeInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKustomizeArgs struct {
-	CommonAnnotations      pulumi.StringMapInput   `pulumi:"commonAnnotations"`
-	CommonLabels           pulumi.StringMapInput   `pulumi:"commonLabels"`
-	ForceCommonAnnotations pulumi.BoolPtrInput     `pulumi:"forceCommonAnnotations"`
-	ForceCommonLabels      pulumi.BoolPtrInput     `pulumi:"forceCommonLabels"`
-	Images                 pulumi.StringArrayInput `pulumi:"images"`
-	NamePrefix             pulumi.StringPtrInput   `pulumi:"namePrefix"`
-	NameSuffix             pulumi.StringPtrInput   `pulumi:"nameSuffix"`
-	Version                pulumi.StringPtrInput   `pulumi:"version"`
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
+	// List of kustomize image override specifications.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// Prefix prepended to resources for kustomize apps.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// Suffix appended to resources for kustomize apps.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Version of kustomize to use for rendering manifests.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceKustomizeArgs) ElementType() reflect.Type {
@@ -29968,36 +31201,44 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ToGetGitopsAp
 	return o
 }
 
+// List of additional annotations to add to rendered manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) CommonAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) map[string]string {
 		return v.CommonAnnotations
 	}).(pulumi.StringMapOutput)
 }
 
+// List of additional labels to add to rendered manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) CommonLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) map[string]string { return v.CommonLabels }).(pulumi.StringMapOutput)
 }
 
+// Indicates if to force applying common annotations to resources for kustomize apps.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonAnnotations }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if to force apply common labels to resources for kustomize apps.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonLabels }).(pulumi.BoolPtrOutput)
 }
 
+// List of kustomize image override specifications.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// Prefix prepended to resources for kustomize apps.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// Suffix appended to resources for kustomize apps.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Version of kustomize to use for rendering manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -30023,8 +31264,9 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput) Index(i 
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePlugin struct {
+	// Entry in the GitOps application's environment.
 	Envs []GetGitopsApplicationsApplicationSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name *string `pulumi:"name"`
 }
 
@@ -30040,8 +31282,9 @@ type GetGitopsApplicationsApplicationSpecSourcePluginInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginArgs struct {
+	// Entry in the GitOps application's environment.
 	Envs GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -30096,13 +31339,14 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) ToGetGitopsAppli
 	return o
 }
 
+// Entry in the GitOps application's environment.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Envs() GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) []GetGitopsApplicationsApplicationSpecSourcePluginEnv {
 		return v.Envs
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput)
 }
 
-// Name of the GitOps application.
+// Name of the plugin.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -30128,8 +31372,9 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput) Index(i pul
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnv struct {
-	// Name of the GitOps application.
-	Name  *string `pulumi:"name"`
+	// Name of the variable, usually expressed in uppercase.
+	Name *string `pulumi:"name"`
+	// Value of the variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -30145,8 +31390,9 @@ type GetGitopsApplicationsApplicationSpecSourcePluginEnvInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs struct {
-	// Name of the GitOps application.
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the variable, usually expressed in uppercase.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -30201,11 +31447,12 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) ToGetGitopsAp
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the variable, usually expressed in uppercase.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Value of the variable.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -30231,9 +31478,12 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput) Index(i 
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicy struct {
-	Automateds  []GetGitopsApplicationsApplicationSpecSyncPolicyAutomated `pulumi:"automateds"`
-	Retries     []GetGitopsApplicationsApplicationSpecSyncPolicyRetry     `pulumi:"retries"`
-	SyncOptions []string                                                  `pulumi:"syncOptions"`
+	// Controls the behavior of an automated sync.
+	Automateds []GetGitopsApplicationsApplicationSpecSyncPolicyAutomated `pulumi:"automateds"`
+	// Contains information about the strategy to apply when a sync failed.
+	Retries []GetGitopsApplicationsApplicationSpecSyncPolicyRetry `pulumi:"retries"`
+	// Options allow you to specify whole app sync-options.
+	SyncOptions []string `pulumi:"syncOptions"`
 }
 
 // GetGitopsApplicationsApplicationSpecSyncPolicyInput is an input type that accepts GetGitopsApplicationsApplicationSpecSyncPolicyArgs and GetGitopsApplicationsApplicationSpecSyncPolicyOutput values.
@@ -30248,9 +31498,12 @@ type GetGitopsApplicationsApplicationSpecSyncPolicyInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyArgs struct {
-	Automateds  GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArrayInput `pulumi:"automateds"`
-	Retries     GetGitopsApplicationsApplicationSpecSyncPolicyRetryArrayInput     `pulumi:"retries"`
-	SyncOptions pulumi.StringArrayInput                                           `pulumi:"syncOptions"`
+	// Controls the behavior of an automated sync.
+	Automateds GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArrayInput `pulumi:"automateds"`
+	// Contains information about the strategy to apply when a sync failed.
+	Retries GetGitopsApplicationsApplicationSpecSyncPolicyRetryArrayInput `pulumi:"retries"`
+	// Options allow you to specify whole app sync-options.
+	SyncOptions pulumi.StringArrayInput `pulumi:"syncOptions"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSyncPolicyArgs) ElementType() reflect.Type {
@@ -30304,18 +31557,21 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyOutput) ToGetGitopsApplica
 	return o
 }
 
+// Controls the behavior of an automated sync.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyOutput) Automateds() GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicy) []GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
 		return v.Automateds
 	}).(GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput)
 }
 
+// Contains information about the strategy to apply when a sync failed.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyOutput) Retries() GetGitopsApplicationsApplicationSpecSyncPolicyRetryArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicy) []GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
 		return v.Retries
 	}).(GetGitopsApplicationsApplicationSpecSyncPolicyRetryArrayOutput)
 }
 
+// Options allow you to specify whole app sync-options.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyOutput) SyncOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicy) []string { return v.SyncOptions }).(pulumi.StringArrayOutput)
 }
@@ -30341,9 +31597,12 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyArrayOutput) Index(i pulum
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyAutomated struct {
+	// Indicates to allows apps to have zero live resources (default: false).
 	AllowEmpty *bool `pulumi:"allowEmpty"`
-	Prune      *bool `pulumi:"prune"`
-	SelfHeal   *bool `pulumi:"selfHeal"`
+	// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
+	Prune *bool `pulumi:"prune"`
+	// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
+	SelfHeal *bool `pulumi:"selfHeal"`
 }
 
 // GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedInput is an input type that accepts GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs and GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedOutput values.
@@ -30358,9 +31617,12 @@ type GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs struct {
+	// Indicates to allows apps to have zero live resources (default: false).
 	AllowEmpty pulumi.BoolPtrInput `pulumi:"allowEmpty"`
-	Prune      pulumi.BoolPtrInput `pulumi:"prune"`
-	SelfHeal   pulumi.BoolPtrInput `pulumi:"selfHeal"`
+	// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
+	Prune pulumi.BoolPtrInput `pulumi:"prune"`
+	// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
+	SelfHeal pulumi.BoolPtrInput `pulumi:"selfHeal"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs) ElementType() reflect.Type {
@@ -30414,14 +31676,17 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedOutput) ToGetGito
 	return o
 }
 
+// Indicates to allows apps to have zero live resources (default: false).
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedOutput) AllowEmpty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedOutput) Prune() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.Prune }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedOutput) SelfHeal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyAutomated) *bool { return v.SelfHeal }).(pulumi.BoolPtrOutput)
 }
@@ -30447,8 +31712,10 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArrayOutput) Inde
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyRetry struct {
+	// Backoff strategy to use on subsequent retries for failing syncs.
 	Backoffs []GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff `pulumi:"backoffs"`
-	Limit    *string                                                      `pulumi:"limit"`
+	// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
+	Limit *string `pulumi:"limit"`
 }
 
 // GetGitopsApplicationsApplicationSpecSyncPolicyRetryInput is an input type that accepts GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs and GetGitopsApplicationsApplicationSpecSyncPolicyRetryOutput values.
@@ -30463,8 +31730,10 @@ type GetGitopsApplicationsApplicationSpecSyncPolicyRetryInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs struct {
+	// Backoff strategy to use on subsequent retries for failing syncs.
 	Backoffs GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayInput `pulumi:"backoffs"`
-	Limit    pulumi.StringPtrInput                                                `pulumi:"limit"`
+	// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs) ElementType() reflect.Type {
@@ -30518,12 +31787,14 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryOutput) ToGetGitopsAp
 	return o
 }
 
+// Backoff strategy to use on subsequent retries for failing syncs.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryOutput) Backoffs() GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyRetry) []GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
 		return v.Backoffs
 	}).(GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArrayOutput)
 }
 
+// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyRetry) *string { return v.Limit }).(pulumi.StringPtrOutput)
 }
@@ -30549,8 +31820,11 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryArrayOutput) Index(i 
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff struct {
-	Duration    *string `pulumi:"duration"`
-	Factor      *string `pulumi:"factor"`
+	// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
+	Duration *string `pulumi:"duration"`
+	// Factor to multiply the base duration after each failed retry.
+	Factor *string `pulumi:"factor"`
+	// Maximum amount of time allowed of the backoff strategy.
 	MaxDuration *string `pulumi:"maxDuration"`
 }
 
@@ -30566,8 +31840,11 @@ type GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs struct {
-	Duration    pulumi.StringPtrInput `pulumi:"duration"`
-	Factor      pulumi.StringPtrInput `pulumi:"factor"`
+	// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Factor to multiply the base duration after each failed retry.
+	Factor pulumi.StringPtrInput `pulumi:"factor"`
+	// Maximum amount of time allowed of the backoff strategy.
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
 }
 
@@ -30622,14 +31899,17 @@ func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) ToGetG
 	return o
 }
 
+// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// Factor to multiply the base duration after each failed retry.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) Factor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.Factor }).(pulumi.StringPtrOutput)
 }
 
+// Maximum amount of time allowed of the backoff strategy.
 func (o GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffOutput) MaxDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
 }
@@ -30770,7 +32050,9 @@ func (o GetGitopsClusterQueryArrayOutput) Index(i pulumi.IntInput) GetGitopsClus
 }
 
 type GetGitopsClusterQueryId struct {
-	Type  *string `pulumi:"type"`
+	// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
+	Type *string `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value *string `pulumi:"value"`
 }
 
@@ -30786,7 +32068,9 @@ type GetGitopsClusterQueryIdInput interface {
 }
 
 type GetGitopsClusterQueryIdArgs struct {
-	Type  pulumi.StringPtrInput `pulumi:"type"`
+	// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -30841,10 +32125,12 @@ func (o GetGitopsClusterQueryIdOutput) ToGetGitopsClusterQueryIdOutputWithContex
 	return o
 }
 
+// Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
 func (o GetGitopsClusterQueryIdOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterQueryId) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Cluster server URL or the cluster name.
 func (o GetGitopsClusterQueryIdOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterQueryId) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -30870,13 +32156,18 @@ func (o GetGitopsClusterQueryIdArrayOutput) Index(i pulumi.IntInput) GetGitopsCl
 }
 
 type GetGitopsClusterRequest struct {
+	// GitOps cluster details.
 	Clusters []GetGitopsClusterRequestCluster `pulumi:"clusters"`
-	// The ID of this resource.
-	Ids           []GetGitopsClusterRequestId         `pulumi:"ids"`
-	Tags          []string                            `pulumi:"tags"`
-	UpdateMasks   []GetGitopsClusterRequestUpdateMask `pulumi:"updateMasks"`
-	UpdatedFields []string                            `pulumi:"updatedFields"`
-	Upsert        *bool                               `pulumi:"upsert"`
+	// Cluster server URL or the cluster name.
+	Ids []GetGitopsClusterRequestId `pulumi:"ids"`
+	// Tags associated with the clusters
+	Tags []string `pulumi:"tags"`
+	// Update mask of the GitOps cluster.
+	UpdateMasks []GetGitopsClusterRequestUpdateMask `pulumi:"updateMasks"`
+	// Fields which are updated.
+	UpdatedFields []string `pulumi:"updatedFields"`
+	// Indicates if the GitOps cluster should be updated if existing and inserted if not.
+	Upsert *bool `pulumi:"upsert"`
 }
 
 // GetGitopsClusterRequestInput is an input type that accepts GetGitopsClusterRequestArgs and GetGitopsClusterRequestOutput values.
@@ -30891,13 +32182,18 @@ type GetGitopsClusterRequestInput interface {
 }
 
 type GetGitopsClusterRequestArgs struct {
+	// GitOps cluster details.
 	Clusters GetGitopsClusterRequestClusterArrayInput `pulumi:"clusters"`
-	// The ID of this resource.
-	Ids           GetGitopsClusterRequestIdArrayInput         `pulumi:"ids"`
-	Tags          pulumi.StringArrayInput                     `pulumi:"tags"`
-	UpdateMasks   GetGitopsClusterRequestUpdateMaskArrayInput `pulumi:"updateMasks"`
-	UpdatedFields pulumi.StringArrayInput                     `pulumi:"updatedFields"`
-	Upsert        pulumi.BoolPtrInput                         `pulumi:"upsert"`
+	// Cluster server URL or the cluster name.
+	Ids GetGitopsClusterRequestIdArrayInput `pulumi:"ids"`
+	// Tags associated with the clusters
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Update mask of the GitOps cluster.
+	UpdateMasks GetGitopsClusterRequestUpdateMaskArrayInput `pulumi:"updateMasks"`
+	// Fields which are updated.
+	UpdatedFields pulumi.StringArrayInput `pulumi:"updatedFields"`
+	// Indicates if the GitOps cluster should be updated if existing and inserted if not.
+	Upsert pulumi.BoolPtrInput `pulumi:"upsert"`
 }
 
 func (GetGitopsClusterRequestArgs) ElementType() reflect.Type {
@@ -30951,27 +32247,32 @@ func (o GetGitopsClusterRequestOutput) ToGetGitopsClusterRequestOutputWithContex
 	return o
 }
 
+// GitOps cluster details.
 func (o GetGitopsClusterRequestOutput) Clusters() GetGitopsClusterRequestClusterArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestCluster { return v.Clusters }).(GetGitopsClusterRequestClusterArrayOutput)
 }
 
-// The ID of this resource.
+// Cluster server URL or the cluster name.
 func (o GetGitopsClusterRequestOutput) Ids() GetGitopsClusterRequestIdArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestId { return v.Ids }).(GetGitopsClusterRequestIdArrayOutput)
 }
 
+// Tags associated with the clusters
 func (o GetGitopsClusterRequestOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Update mask of the GitOps cluster.
 func (o GetGitopsClusterRequestOutput) UpdateMasks() GetGitopsClusterRequestUpdateMaskArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) []GetGitopsClusterRequestUpdateMask { return v.UpdateMasks }).(GetGitopsClusterRequestUpdateMaskArrayOutput)
 }
 
+// Fields which are updated.
 func (o GetGitopsClusterRequestOutput) UpdatedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) []string { return v.UpdatedFields }).(pulumi.StringArrayOutput)
 }
 
+// Indicates if the GitOps cluster should be updated if existing and inserted if not.
 func (o GetGitopsClusterRequestOutput) Upsert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequest) *bool { return v.Upsert }).(pulumi.BoolPtrOutput)
 }
@@ -30997,17 +32298,28 @@ func (o GetGitopsClusterRequestArrayOutput) Index(i pulumi.IntInput) GetGitopsCl
 }
 
 type GetGitopsClusterRequestCluster struct {
-	Annotations         map[string]string                                  `pulumi:"annotations"`
-	ClusterResources    *bool                                              `pulumi:"clusterResources"`
-	Configs             []GetGitopsClusterRequestClusterConfig             `pulumi:"configs"`
-	Infos               []GetGitopsClusterRequestClusterInfo               `pulumi:"infos"`
-	Labels              map[string]string                                  `pulumi:"labels"`
-	Name                *string                                            `pulumi:"name"`
-	Namespaces          []string                                           `pulumi:"namespaces"`
-	Project             *string                                            `pulumi:"project"`
+	// Annotations for cluster secret metadata.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
+	ClusterResources *bool `pulumi:"clusterResources"`
+	// GitOps cluster config.
+	Configs []GetGitopsClusterRequestClusterConfig `pulumi:"configs"`
+	// Information about cluster cache and state.
+	Infos []GetGitopsClusterRequestClusterInfo `pulumi:"infos"`
+	// Labels for cluster secret metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the cluster. If omitted, will use the server address.
+	Name *string `pulumi:"name"`
+	// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
+	Namespaces []string `pulumi:"namespaces"`
+	// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+	Project *string `pulumi:"project"`
+	// Time when cluster cache refresh has been requested.
 	RefreshRequestedAts []GetGitopsClusterRequestClusterRefreshRequestedAt `pulumi:"refreshRequestedAts"`
-	Server              *string                                            `pulumi:"server"`
-	Shard               *string                                            `pulumi:"shard"`
+	// API server URL of the kubernetes cluster.
+	Server *string `pulumi:"server"`
+	// Shard number. Calculated on the fly by the application controller if not specified.
+	Shard *string `pulumi:"shard"`
 }
 
 // GetGitopsClusterRequestClusterInput is an input type that accepts GetGitopsClusterRequestClusterArgs and GetGitopsClusterRequestClusterOutput values.
@@ -31022,17 +32334,28 @@ type GetGitopsClusterRequestClusterInput interface {
 }
 
 type GetGitopsClusterRequestClusterArgs struct {
-	Annotations         pulumi.StringMapInput                                      `pulumi:"annotations"`
-	ClusterResources    pulumi.BoolPtrInput                                        `pulumi:"clusterResources"`
-	Configs             GetGitopsClusterRequestClusterConfigArrayInput             `pulumi:"configs"`
-	Infos               GetGitopsClusterRequestClusterInfoArrayInput               `pulumi:"infos"`
-	Labels              pulumi.StringMapInput                                      `pulumi:"labels"`
-	Name                pulumi.StringPtrInput                                      `pulumi:"name"`
-	Namespaces          pulumi.StringArrayInput                                    `pulumi:"namespaces"`
-	Project             pulumi.StringPtrInput                                      `pulumi:"project"`
+	// Annotations for cluster secret metadata.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
+	ClusterResources pulumi.BoolPtrInput `pulumi:"clusterResources"`
+	// GitOps cluster config.
+	Configs GetGitopsClusterRequestClusterConfigArrayInput `pulumi:"configs"`
+	// Information about cluster cache and state.
+	Infos GetGitopsClusterRequestClusterInfoArrayInput `pulumi:"infos"`
+	// Labels for cluster secret metadata.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the cluster. If omitted, will use the server address.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Time when cluster cache refresh has been requested.
 	RefreshRequestedAts GetGitopsClusterRequestClusterRefreshRequestedAtArrayInput `pulumi:"refreshRequestedAts"`
-	Server              pulumi.StringPtrInput                                      `pulumi:"server"`
-	Shard               pulumi.StringPtrInput                                      `pulumi:"shard"`
+	// API server URL of the kubernetes cluster.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+	// Shard number. Calculated on the fly by the application controller if not specified.
+	Shard pulumi.StringPtrInput `pulumi:"shard"`
 }
 
 func (GetGitopsClusterRequestClusterArgs) ElementType() reflect.Type {
@@ -31086,48 +32409,59 @@ func (o GetGitopsClusterRequestClusterOutput) ToGetGitopsClusterRequestClusterOu
 	return o
 }
 
+// Annotations for cluster secret metadata.
 func (o GetGitopsClusterRequestClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
 func (o GetGitopsClusterRequestClusterOutput) ClusterResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *bool { return v.ClusterResources }).(pulumi.BoolPtrOutput)
 }
 
+// GitOps cluster config.
 func (o GetGitopsClusterRequestClusterOutput) Configs() GetGitopsClusterRequestClusterConfigArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterConfig { return v.Configs }).(GetGitopsClusterRequestClusterConfigArrayOutput)
 }
 
+// Information about cluster cache and state.
 func (o GetGitopsClusterRequestClusterOutput) Infos() GetGitopsClusterRequestClusterInfoArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterInfo { return v.Infos }).(GetGitopsClusterRequestClusterInfoArrayOutput)
 }
 
+// Labels for cluster secret metadata.
 func (o GetGitopsClusterRequestClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Name of the cluster. If omitted, will use the server address.
 func (o GetGitopsClusterRequestClusterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
 func (o GetGitopsClusterRequestClusterOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
 
+// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
 func (o GetGitopsClusterRequestClusterOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Time when cluster cache refresh has been requested.
 func (o GetGitopsClusterRequestClusterOutput) RefreshRequestedAts() GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) []GetGitopsClusterRequestClusterRefreshRequestedAt {
 		return v.RefreshRequestedAts
 	}).(GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput)
 }
 
+// API server URL of the kubernetes cluster.
 func (o GetGitopsClusterRequestClusterOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
+// Shard number. Calculated on the fly by the application controller if not specified.
 func (o GetGitopsClusterRequestClusterOutput) Shard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestCluster) *string { return v.Shard }).(pulumi.StringPtrOutput)
 }
@@ -31153,13 +32487,20 @@ func (o GetGitopsClusterRequestClusterArrayOutput) Index(i pulumi.IntInput) GetG
 }
 
 type GetGitopsClusterRequestClusterConfig struct {
-	AwsAuthConfigs        []GetGitopsClusterRequestClusterConfigAwsAuthConfig      `pulumi:"awsAuthConfigs"`
-	BearerToken           *string                                                  `pulumi:"bearerToken"`
-	ClusterConnectionType *string                                                  `pulumi:"clusterConnectionType"`
-	ExecProviderConfigs   []GetGitopsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
-	Password              *string                                                  `pulumi:"password"`
-	TlsClientConfigs      []GetGitopsClusterRequestClusterConfigTlsClientConfig    `pulumi:"tlsClientConfigs"`
-	Username              *string                                                  `pulumi:"username"`
+	// IAM authentication configuration for AWS.
+	AwsAuthConfigs []GetGitopsClusterRequestClusterConfigAwsAuthConfig `pulumi:"awsAuthConfigs"`
+	// Bearer authentication token the cluster.
+	BearerToken *string `pulumi:"bearerToken"`
+	// Identifies the authentication method used to connect to the cluster.
+	ClusterConnectionType *string `pulumi:"clusterConnectionType"`
+	// Configuration for an exec provider.
+	ExecProviderConfigs []GetGitopsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
+	// Password of the server of the cluster.
+	Password *string `pulumi:"password"`
+	// Settings to enable transport layer security.
+	TlsClientConfigs []GetGitopsClusterRequestClusterConfigTlsClientConfig `pulumi:"tlsClientConfigs"`
+	// Username of the server of the cluster.
+	Username *string `pulumi:"username"`
 }
 
 // GetGitopsClusterRequestClusterConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigArgs and GetGitopsClusterRequestClusterConfigOutput values.
@@ -31174,13 +32515,20 @@ type GetGitopsClusterRequestClusterConfigInput interface {
 }
 
 type GetGitopsClusterRequestClusterConfigArgs struct {
-	AwsAuthConfigs        GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput      `pulumi:"awsAuthConfigs"`
-	BearerToken           pulumi.StringPtrInput                                            `pulumi:"bearerToken"`
-	ClusterConnectionType pulumi.StringPtrInput                                            `pulumi:"clusterConnectionType"`
-	ExecProviderConfigs   GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
-	Password              pulumi.StringPtrInput                                            `pulumi:"password"`
-	TlsClientConfigs      GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput    `pulumi:"tlsClientConfigs"`
-	Username              pulumi.StringPtrInput                                            `pulumi:"username"`
+	// IAM authentication configuration for AWS.
+	AwsAuthConfigs GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayInput `pulumi:"awsAuthConfigs"`
+	// Bearer authentication token the cluster.
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Identifies the authentication method used to connect to the cluster.
+	ClusterConnectionType pulumi.StringPtrInput `pulumi:"clusterConnectionType"`
+	// Configuration for an exec provider.
+	ExecProviderConfigs GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
+	// Password of the server of the cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Settings to enable transport layer security.
+	TlsClientConfigs GetGitopsClusterRequestClusterConfigTlsClientConfigArrayInput `pulumi:"tlsClientConfigs"`
+	// Username of the server of the cluster.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetGitopsClusterRequestClusterConfigArgs) ElementType() reflect.Type {
@@ -31234,36 +32582,43 @@ func (o GetGitopsClusterRequestClusterConfigOutput) ToGetGitopsClusterRequestClu
 	return o
 }
 
+// IAM authentication configuration for AWS.
 func (o GetGitopsClusterRequestClusterConfigOutput) AwsAuthConfigs() GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigAwsAuthConfig {
 		return v.AwsAuthConfigs
 	}).(GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput)
 }
 
+// Bearer authentication token the cluster.
 func (o GetGitopsClusterRequestClusterConfigOutput) BearerToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
+// Identifies the authentication method used to connect to the cluster.
 func (o GetGitopsClusterRequestClusterConfigOutput) ClusterConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for an exec provider.
 func (o GetGitopsClusterRequestClusterConfigOutput) ExecProviderConfigs() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigExecProviderConfig {
 		return v.ExecProviderConfigs
 	}).(GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput)
 }
 
+// Password of the server of the cluster.
 func (o GetGitopsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Settings to enable transport layer security.
 func (o GetGitopsClusterRequestClusterConfigOutput) TlsClientConfigs() GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigTlsClientConfig {
 		return v.TlsClientConfigs
 	}).(GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput)
 }
 
+// Username of the server of the cluster.
 func (o GetGitopsClusterRequestClusterConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -31289,8 +32644,10 @@ func (o GetGitopsClusterRequestClusterConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetGitopsClusterRequestClusterConfigAwsAuthConfig struct {
+	// AWS cluster name.
 	ClusterName *string `pulumi:"clusterName"`
-	RoleARN     *string `pulumi:"roleARN"`
+	// Optional role ARN. If set then used for AWS IAM Authenticator.
+	RoleARN *string `pulumi:"roleARN"`
 }
 
 // GetGitopsClusterRequestClusterConfigAwsAuthConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs and GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput values.
@@ -31305,8 +32662,10 @@ type GetGitopsClusterRequestClusterConfigAwsAuthConfigInput interface {
 }
 
 type GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs struct {
+	// AWS cluster name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	RoleARN     pulumi.StringPtrInput `pulumi:"roleARN"`
+	// Optional role ARN. If set then used for AWS IAM Authenticator.
+	RoleARN pulumi.StringPtrInput `pulumi:"roleARN"`
 }
 
 func (GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs) ElementType() reflect.Type {
@@ -31360,10 +32719,12 @@ func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ToGetGitopsClus
 	return o
 }
 
+// AWS cluster name.
 func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigAwsAuthConfig) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// Optional role ARN. If set then used for AWS IAM Authenticator.
 func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigOutput) RoleARN() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigAwsAuthConfig) *string { return v.RoleARN }).(pulumi.StringPtrOutput)
 }
@@ -31389,11 +32750,16 @@ func (o GetGitopsClusterRequestClusterConfigAwsAuthConfigArrayOutput) Index(i pu
 }
 
 type GetGitopsClusterRequestClusterConfigExecProviderConfig struct {
-	ApiVersion  *string           `pulumi:"apiVersion"`
-	Args        []string          `pulumi:"args"`
-	Command     *string           `pulumi:"command"`
-	Env         map[string]string `pulumi:"env"`
-	InstallHint *string           `pulumi:"installHint"`
+	// Preferred input version of the ExecInfo.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Arguments to pass to the command when executing it.
+	Args []string `pulumi:"args"`
+	// Command to execute.
+	Command *string `pulumi:"command"`
+	// Additional environment variables to expose to the process.
+	Env map[string]string `pulumi:"env"`
+	// Message displayed when the executable is not found.
+	InstallHint *string `pulumi:"installHint"`
 }
 
 // GetGitopsClusterRequestClusterConfigExecProviderConfigInput is an input type that accepts GetGitopsClusterRequestClusterConfigExecProviderConfigArgs and GetGitopsClusterRequestClusterConfigExecProviderConfigOutput values.
@@ -31408,11 +32774,16 @@ type GetGitopsClusterRequestClusterConfigExecProviderConfigInput interface {
 }
 
 type GetGitopsClusterRequestClusterConfigExecProviderConfigArgs struct {
-	ApiVersion  pulumi.StringPtrInput   `pulumi:"apiVersion"`
-	Args        pulumi.StringArrayInput `pulumi:"args"`
-	Command     pulumi.StringPtrInput   `pulumi:"command"`
-	Env         pulumi.StringMapInput   `pulumi:"env"`
-	InstallHint pulumi.StringPtrInput   `pulumi:"installHint"`
+	// Preferred input version of the ExecInfo.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Arguments to pass to the command when executing it.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Command to execute.
+	Command pulumi.StringPtrInput `pulumi:"command"`
+	// Additional environment variables to expose to the process.
+	Env pulumi.StringMapInput `pulumi:"env"`
+	// Message displayed when the executable is not found.
+	InstallHint pulumi.StringPtrInput `pulumi:"installHint"`
 }
 
 func (GetGitopsClusterRequestClusterConfigExecProviderConfigArgs) ElementType() reflect.Type {
@@ -31466,22 +32837,27 @@ func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ToGetGitop
 	return o
 }
 
+// Preferred input version of the ExecInfo.
 func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) ApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
+// Arguments to pass to the command when executing it.
 func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Command to execute.
 func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Command() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.Command }).(pulumi.StringPtrOutput)
 }
 
+// Additional environment variables to expose to the process.
 func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
+// Message displayed when the executable is not found.
 func (o GetGitopsClusterRequestClusterConfigExecProviderConfigOutput) InstallHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigExecProviderConfig) *string { return v.InstallHint }).(pulumi.StringPtrOutput)
 }
@@ -31507,10 +32883,15 @@ func (o GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput) Index
 }
 
 type GetGitopsClusterRequestClusterConfigTlsClientConfig struct {
-	CaData     *string `pulumi:"caData"`
-	CertData   *string `pulumi:"certData"`
-	Insecure   *bool   `pulumi:"insecure"`
-	KeyData    *string `pulumi:"keyData"`
+	// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+	CaData *string `pulumi:"caData"`
+	// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+	CertData *string `pulumi:"certData"`
+	// Indicates if the TLS connection to the cluster should be insecure.
+	Insecure *bool `pulumi:"insecure"`
+	// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+	KeyData *string `pulumi:"keyData"`
+	// Server name for SNI in the client to check server certificates against.
 	ServerName *string `pulumi:"serverName"`
 }
 
@@ -31526,10 +32907,15 @@ type GetGitopsClusterRequestClusterConfigTlsClientConfigInput interface {
 }
 
 type GetGitopsClusterRequestClusterConfigTlsClientConfigArgs struct {
-	CaData     pulumi.StringPtrInput `pulumi:"caData"`
-	CertData   pulumi.StringPtrInput `pulumi:"certData"`
-	Insecure   pulumi.BoolPtrInput   `pulumi:"insecure"`
-	KeyData    pulumi.StringPtrInput `pulumi:"keyData"`
+	// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+	CaData pulumi.StringPtrInput `pulumi:"caData"`
+	// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+	CertData pulumi.StringPtrInput `pulumi:"certData"`
+	// Indicates if the TLS connection to the cluster should be insecure.
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
+	// Server name for SNI in the client to check server certificates against.
 	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
 }
 
@@ -31584,22 +32970,27 @@ func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ToGetGitopsCl
 	return o
 }
 
+// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
 func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) CaData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.CaData }).(pulumi.StringPtrOutput)
 }
 
+// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
 func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) CertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.CertData }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the TLS connection to the cluster should be insecure.
 func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
 func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
+// Server name for SNI in the client to check server certificates against.
 func (o GetGitopsClusterRequestClusterConfigTlsClientConfigOutput) ServerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfigTlsClientConfig) *string { return v.ServerName }).(pulumi.StringPtrOutput)
 }
@@ -31625,11 +33016,16 @@ func (o GetGitopsClusterRequestClusterConfigTlsClientConfigArrayOutput) Index(i 
 }
 
 type GetGitopsClusterRequestClusterInfo struct {
-	ApiVersions       []string                                            `pulumi:"apiVersions"`
-	ApplicationsCount *string                                             `pulumi:"applicationsCount"`
-	CacheInfos        []GetGitopsClusterRequestClusterInfoCacheInfo       `pulumi:"cacheInfos"`
-	ConnectionStates  []GetGitopsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
-	ServerVersion     string                                              `pulumi:"serverVersion"`
+	// List of API versions supported by the cluster.
+	ApiVersions []string `pulumi:"apiVersions"`
+	// Number of applications managed by Argo CD on the cluster.
+	ApplicationsCount *string `pulumi:"applicationsCount"`
+	// Information about the cluster cache.
+	CacheInfos []GetGitopsClusterRequestClusterInfoCacheInfo `pulumi:"cacheInfos"`
+	// Information about the connection to the cluster.
+	ConnectionStates []GetGitopsClusterRequestClusterInfoConnectionState `pulumi:"connectionStates"`
+	// Kubernetes version of the cluster.
+	ServerVersion string `pulumi:"serverVersion"`
 }
 
 // GetGitopsClusterRequestClusterInfoInput is an input type that accepts GetGitopsClusterRequestClusterInfoArgs and GetGitopsClusterRequestClusterInfoOutput values.
@@ -31644,11 +33040,16 @@ type GetGitopsClusterRequestClusterInfoInput interface {
 }
 
 type GetGitopsClusterRequestClusterInfoArgs struct {
-	ApiVersions       pulumi.StringArrayInput                                     `pulumi:"apiVersions"`
-	ApplicationsCount pulumi.StringPtrInput                                       `pulumi:"applicationsCount"`
-	CacheInfos        GetGitopsClusterRequestClusterInfoCacheInfoArrayInput       `pulumi:"cacheInfos"`
-	ConnectionStates  GetGitopsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
-	ServerVersion     pulumi.StringInput                                          `pulumi:"serverVersion"`
+	// List of API versions supported by the cluster.
+	ApiVersions pulumi.StringArrayInput `pulumi:"apiVersions"`
+	// Number of applications managed by Argo CD on the cluster.
+	ApplicationsCount pulumi.StringPtrInput `pulumi:"applicationsCount"`
+	// Information about the cluster cache.
+	CacheInfos GetGitopsClusterRequestClusterInfoCacheInfoArrayInput `pulumi:"cacheInfos"`
+	// Information about the connection to the cluster.
+	ConnectionStates GetGitopsClusterRequestClusterInfoConnectionStateArrayInput `pulumi:"connectionStates"`
+	// Kubernetes version of the cluster.
+	ServerVersion pulumi.StringInput `pulumi:"serverVersion"`
 }
 
 func (GetGitopsClusterRequestClusterInfoArgs) ElementType() reflect.Type {
@@ -31702,26 +33103,31 @@ func (o GetGitopsClusterRequestClusterInfoOutput) ToGetGitopsClusterRequestClust
 	return o
 }
 
+// List of API versions supported by the cluster.
 func (o GetGitopsClusterRequestClusterInfoOutput) ApiVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []string { return v.ApiVersions }).(pulumi.StringArrayOutput)
 }
 
+// Number of applications managed by Argo CD on the cluster.
 func (o GetGitopsClusterRequestClusterInfoOutput) ApplicationsCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) *string { return v.ApplicationsCount }).(pulumi.StringPtrOutput)
 }
 
+// Information about the cluster cache.
 func (o GetGitopsClusterRequestClusterInfoOutput) CacheInfos() GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []GetGitopsClusterRequestClusterInfoCacheInfo {
 		return v.CacheInfos
 	}).(GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput)
 }
 
+// Information about the connection to the cluster.
 func (o GetGitopsClusterRequestClusterInfoOutput) ConnectionStates() GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) []GetGitopsClusterRequestClusterInfoConnectionState {
 		return v.ConnectionStates
 	}).(GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput)
 }
 
+// Kubernetes version of the cluster.
 func (o GetGitopsClusterRequestClusterInfoOutput) ServerVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfo) string { return v.ServerVersion }).(pulumi.StringOutput)
 }
@@ -31747,9 +33153,12 @@ func (o GetGitopsClusterRequestClusterInfoArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetGitopsClusterRequestClusterInfoCacheInfo struct {
-	ApisCount         *string `pulumi:"apisCount"`
+	// Number of observed kubernetes API count.
+	ApisCount *string `pulumi:"apisCount"`
+	// Time of most recent cache synchronization.
 	LastCacheSyncTime *string `pulumi:"lastCacheSyncTime"`
-	ResourcesCount    *string `pulumi:"resourcesCount"`
+	// Number of observed kubernetes resources.
+	ResourcesCount *string `pulumi:"resourcesCount"`
 }
 
 // GetGitopsClusterRequestClusterInfoCacheInfoInput is an input type that accepts GetGitopsClusterRequestClusterInfoCacheInfoArgs and GetGitopsClusterRequestClusterInfoCacheInfoOutput values.
@@ -31764,9 +33173,12 @@ type GetGitopsClusterRequestClusterInfoCacheInfoInput interface {
 }
 
 type GetGitopsClusterRequestClusterInfoCacheInfoArgs struct {
-	ApisCount         pulumi.StringPtrInput `pulumi:"apisCount"`
+	// Number of observed kubernetes API count.
+	ApisCount pulumi.StringPtrInput `pulumi:"apisCount"`
+	// Time of most recent cache synchronization.
 	LastCacheSyncTime pulumi.StringPtrInput `pulumi:"lastCacheSyncTime"`
-	ResourcesCount    pulumi.StringPtrInput `pulumi:"resourcesCount"`
+	// Number of observed kubernetes resources.
+	ResourcesCount pulumi.StringPtrInput `pulumi:"resourcesCount"`
 }
 
 func (GetGitopsClusterRequestClusterInfoCacheInfoArgs) ElementType() reflect.Type {
@@ -31820,14 +33232,17 @@ func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ToGetGitopsClusterReq
 	return o
 }
 
+// Number of observed kubernetes API count.
 func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ApisCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.ApisCount }).(pulumi.StringPtrOutput)
 }
 
+// Time of most recent cache synchronization.
 func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) LastCacheSyncTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.LastCacheSyncTime }).(pulumi.StringPtrOutput)
 }
 
+// Number of observed kubernetes resources.
 func (o GetGitopsClusterRequestClusterInfoCacheInfoOutput) ResourcesCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoCacheInfo) *string { return v.ResourcesCount }).(pulumi.StringPtrOutput)
 }
@@ -31853,9 +33268,12 @@ func (o GetGitopsClusterRequestClusterInfoCacheInfoArrayOutput) Index(i pulumi.I
 }
 
 type GetGitopsClusterRequestClusterInfoConnectionState struct {
+	// Time when cluster cache refresh has been requested.
 	AttemptedAts []GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt `pulumi:"attemptedAts"`
-	Message      string                                                         `pulumi:"message"`
-	Status       string                                                         `pulumi:"status"`
+	// Information about the connection status.
+	Message string `pulumi:"message"`
+	// Current status indicator of the connection.
+	Status string `pulumi:"status"`
 }
 
 // GetGitopsClusterRequestClusterInfoConnectionStateInput is an input type that accepts GetGitopsClusterRequestClusterInfoConnectionStateArgs and GetGitopsClusterRequestClusterInfoConnectionStateOutput values.
@@ -31870,9 +33288,12 @@ type GetGitopsClusterRequestClusterInfoConnectionStateInput interface {
 }
 
 type GetGitopsClusterRequestClusterInfoConnectionStateArgs struct {
+	// Time when cluster cache refresh has been requested.
 	AttemptedAts GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayInput `pulumi:"attemptedAts"`
-	Message      pulumi.StringInput                                                     `pulumi:"message"`
-	Status       pulumi.StringInput                                                     `pulumi:"status"`
+	// Information about the connection status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Current status indicator of the connection.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetGitopsClusterRequestClusterInfoConnectionStateArgs) ElementType() reflect.Type {
@@ -31926,16 +33347,19 @@ func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) ToGetGitopsClus
 	return o
 }
 
+// Time when cluster cache refresh has been requested.
 func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) AttemptedAts() GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) []GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt {
 		return v.AttemptedAts
 	}).(GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
 }
 
+// Information about the connection status.
 func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// Current status indicator of the connection.
 func (o GetGitopsClusterRequestClusterInfoConnectionStateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionState) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -31961,7 +33385,9 @@ func (o GetGitopsClusterRequestClusterInfoConnectionStateArrayOutput) Index(i pu
 }
 
 type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt struct {
-	Nanos   *int    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos *int `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds *string `pulumi:"seconds"`
 }
 
@@ -31977,7 +33403,9 @@ type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtInput interface
 }
 
 type GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArgs struct {
-	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
 }
 
@@ -32032,10 +33460,12 @@ func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) ToGe
 	return o
 }
 
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
 func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
 }
@@ -32061,7 +33491,9 @@ func (o GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtArrayOutput)
 }
 
 type GetGitopsClusterRequestClusterRefreshRequestedAt struct {
-	Nanos   *int    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos *int `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds *string `pulumi:"seconds"`
 }
 
@@ -32077,7 +33509,9 @@ type GetGitopsClusterRequestClusterRefreshRequestedAtInput interface {
 }
 
 type GetGitopsClusterRequestClusterRefreshRequestedAtArgs struct {
-	Nanos   pulumi.IntPtrInput    `pulumi:"nanos"`
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
 }
 
@@ -32132,10 +33566,12 @@ func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) ToGetGitopsClust
 	return o
 }
 
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
 func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterRefreshRequestedAt) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
 func (o GetGitopsClusterRequestClusterRefreshRequestedAtOutput) Seconds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterRefreshRequestedAt) *string { return v.Seconds }).(pulumi.StringPtrOutput)
 }
@@ -32161,7 +33597,9 @@ func (o GetGitopsClusterRequestClusterRefreshRequestedAtArrayOutput) Index(i pul
 }
 
 type GetGitopsClusterRequestId struct {
-	Type  *string `pulumi:"type"`
+	// Type of the specified cluster identifier ( 'server' - default, 'name' ).
+	Type *string `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value *string `pulumi:"value"`
 }
 
@@ -32177,7 +33615,9 @@ type GetGitopsClusterRequestIdInput interface {
 }
 
 type GetGitopsClusterRequestIdArgs struct {
-	Type  pulumi.StringPtrInput `pulumi:"type"`
+	// Type of the specified cluster identifier ( 'server' - default, 'name' ).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Cluster server URL or the cluster name.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -32232,10 +33672,12 @@ func (o GetGitopsClusterRequestIdOutput) ToGetGitopsClusterRequestIdOutputWithCo
 	return o
 }
 
+// Type of the specified cluster identifier ( 'server' - default, 'name' ).
 func (o GetGitopsClusterRequestIdOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestId) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Cluster server URL or the cluster name.
 func (o GetGitopsClusterRequestIdOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestId) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -32261,6 +33703,7 @@ func (o GetGitopsClusterRequestIdArrayOutput) Index(i pulumi.IntInput) GetGitops
 }
 
 type GetGitopsClusterRequestUpdateMask struct {
+	// The set of field mask paths.
 	Paths [][]interface{} `pulumi:"paths"`
 }
 
@@ -32276,6 +33719,7 @@ type GetGitopsClusterRequestUpdateMaskInput interface {
 }
 
 type GetGitopsClusterRequestUpdateMaskArgs struct {
+	// The set of field mask paths.
 	Paths pulumi.ArrayArrayInput `pulumi:"paths"`
 }
 
@@ -32330,6 +33774,7 @@ func (o GetGitopsClusterRequestUpdateMaskOutput) ToGetGitopsClusterRequestUpdate
 	return o
 }
 
+// The set of field mask paths.
 func (o GetGitopsClusterRequestUpdateMaskOutput) Paths() pulumi.ArrayArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestUpdateMask) [][]interface{} { return v.Paths }).(pulumi.ArrayArrayOutput)
 }
@@ -32461,12 +33906,18 @@ func (o GetGitopsGnupgRequestArrayOutput) Index(i pulumi.IntInput) GetGitopsGnup
 }
 
 type GetGitopsGnupgRequestPublickey struct {
+	// Fingerprint is the fingerprint of the key
 	Fingerprint *string `pulumi:"fingerprint"`
-	KeyData     *string `pulumi:"keyData"`
-	KeyId       *string `pulumi:"keyId"`
-	Owner       *string `pulumi:"owner"`
-	SubType     *string `pulumi:"subType"`
-	Trust       *string `pulumi:"trust"`
+	// KeyData holds the raw key data, in base64 encoded format
+	KeyData *string `pulumi:"keyData"`
+	// KeyID specifies the key ID, in hexadecimal string format.
+	KeyId *string `pulumi:"keyId"`
+	// Owner holds the owner identification, e.g. a name and e-mail address
+	Owner *string `pulumi:"owner"`
+	// SubType holds the key's sub type
+	SubType *string `pulumi:"subType"`
+	// Trust holds the level of trust assigned to this key
+	Trust *string `pulumi:"trust"`
 }
 
 // GetGitopsGnupgRequestPublickeyInput is an input type that accepts GetGitopsGnupgRequestPublickeyArgs and GetGitopsGnupgRequestPublickeyOutput values.
@@ -32481,12 +33932,18 @@ type GetGitopsGnupgRequestPublickeyInput interface {
 }
 
 type GetGitopsGnupgRequestPublickeyArgs struct {
+	// Fingerprint is the fingerprint of the key
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
-	KeyData     pulumi.StringPtrInput `pulumi:"keyData"`
-	KeyId       pulumi.StringPtrInput `pulumi:"keyId"`
-	Owner       pulumi.StringPtrInput `pulumi:"owner"`
-	SubType     pulumi.StringPtrInput `pulumi:"subType"`
-	Trust       pulumi.StringPtrInput `pulumi:"trust"`
+	// KeyData holds the raw key data, in base64 encoded format
+	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
+	// KeyID specifies the key ID, in hexadecimal string format.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// Owner holds the owner identification, e.g. a name and e-mail address
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// SubType holds the key's sub type
+	SubType pulumi.StringPtrInput `pulumi:"subType"`
+	// Trust holds the level of trust assigned to this key
+	Trust pulumi.StringPtrInput `pulumi:"trust"`
 }
 
 func (GetGitopsGnupgRequestPublickeyArgs) ElementType() reflect.Type {
@@ -32540,26 +33997,32 @@ func (o GetGitopsGnupgRequestPublickeyOutput) ToGetGitopsGnupgRequestPublickeyOu
 	return o
 }
 
+// Fingerprint is the fingerprint of the key
 func (o GetGitopsGnupgRequestPublickeyOutput) Fingerprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
 }
 
+// KeyData holds the raw key data, in base64 encoded format
 func (o GetGitopsGnupgRequestPublickeyOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
+// KeyID specifies the key ID, in hexadecimal string format.
 func (o GetGitopsGnupgRequestPublickeyOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
 
+// Owner holds the owner identification, e.g. a name and e-mail address
 func (o GetGitopsGnupgRequestPublickeyOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// SubType holds the key's sub type
 func (o GetGitopsGnupgRequestPublickeyOutput) SubType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.SubType }).(pulumi.StringPtrOutput)
 }
 
+// Trust holds the level of trust assigned to this key
 func (o GetGitopsGnupgRequestPublickeyOutput) Trust() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsGnupgRequestPublickey) *string { return v.Trust }).(pulumi.StringPtrOutput)
 }
@@ -32781,27 +34244,46 @@ func (o GetGitopsRepoCredCredArrayOutput) Index(i pulumi.IntInput) GetGitopsRepo
 }
 
 type GetGitopsRepositoryRepo struct {
-	ConnectionType             *string `pulumi:"connectionType"`
-	EnableLfs                  *bool   `pulumi:"enableLfs"`
-	EnableOci                  *bool   `pulumi:"enableOci"`
+	// Identifies the authentication method used to connect to the repository.
+	ConnectionType *string `pulumi:"connectionType"`
+	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+	EnableLfs *bool `pulumi:"enableLfs"`
+	// Indicates if helm-oci support must be enabled for this repo.
+	EnableOci *bool `pulumi:"enableOci"`
+	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
 	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
-	GithubAppId                *string `pulumi:"githubAppId"`
-	GithubAppInstallationId    *string `pulumi:"githubAppInstallationId"`
-	GithubAppPrivateKey        *string `pulumi:"githubAppPrivateKey"`
-	InheritedCreds             *bool   `pulumi:"inheritedCreds"`
-	Insecure                   *bool   `pulumi:"insecure"`
-	InsecureIgnoreHostKey      *bool   `pulumi:"insecureIgnoreHostKey"`
-	Name                       *string `pulumi:"name"`
-	Password                   *string `pulumi:"password"`
-	Project                    string  `pulumi:"project"`
-	Proxy                      *string `pulumi:"proxy"`
-	// Repo details holding application configurations.
-	Repo              *string `pulumi:"repo"`
-	SshPrivateKey     *string `pulumi:"sshPrivateKey"`
+	// Id of the GitHub app used to access the repo.
+	GithubAppId *string `pulumi:"githubAppId"`
+	// Installation id of the GitHub app used to access the repo.
+	GithubAppInstallationId *string `pulumi:"githubAppInstallationId"`
+	// GitHub app private key PEM data.
+	GithubAppPrivateKey *string `pulumi:"githubAppPrivateKey"`
+	// Indicates if the credentials were inherited from a credential set.
+	InheritedCreds *bool `pulumi:"inheritedCreds"`
+	// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+	Insecure *bool `pulumi:"insecure"`
+	// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+	InsecureIgnoreHostKey *bool `pulumi:"insecureIgnoreHostKey"`
+	// Name to be used for this repo. Only used with Helm repos.
+	Name *string `pulumi:"name"`
+	// Password or PAT used for authenticating at the remote repository.
+	Password *string `pulumi:"password"`
+	// Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+	Project string `pulumi:"project"`
+	// The HTTP/HTTPS proxy used to access the repo.
+	Proxy *string `pulumi:"proxy"`
+	// URL to the remote repository.
+	Repo *string `pulumi:"repo"`
+	// PEM data for authenticating at the repo server. Only used with Git repos.
+	SshPrivateKey *string `pulumi:"sshPrivateKey"`
+	// Certificate in PEM format for authenticating at the repo server.
 	TlsClientCertData *string `pulumi:"tlsClientCertData"`
-	TlsClientCertKey  *string `pulumi:"tlsClientCertKey"`
-	Type_             string  `pulumi:"type_"`
-	Username          *string `pulumi:"username"`
+	// Private key in PEM format for authenticating at the repo server.
+	TlsClientCertKey *string `pulumi:"tlsClientCertKey"`
+	// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+	Type_ string `pulumi:"type_"`
+	// Username used for authenticating at the remote repository.
+	Username *string `pulumi:"username"`
 }
 
 // GetGitopsRepositoryRepoInput is an input type that accepts GetGitopsRepositoryRepoArgs and GetGitopsRepositoryRepoOutput values.
@@ -32816,27 +34298,46 @@ type GetGitopsRepositoryRepoInput interface {
 }
 
 type GetGitopsRepositoryRepoArgs struct {
-	ConnectionType             pulumi.StringPtrInput `pulumi:"connectionType"`
-	EnableLfs                  pulumi.BoolPtrInput   `pulumi:"enableLfs"`
-	EnableOci                  pulumi.BoolPtrInput   `pulumi:"enableOci"`
+	// Identifies the authentication method used to connect to the repository.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+	EnableLfs pulumi.BoolPtrInput `pulumi:"enableLfs"`
+	// Indicates if helm-oci support must be enabled for this repo.
+	EnableOci pulumi.BoolPtrInput `pulumi:"enableOci"`
+	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
 	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
-	GithubAppId                pulumi.StringPtrInput `pulumi:"githubAppId"`
-	GithubAppInstallationId    pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
-	GithubAppPrivateKey        pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
-	InheritedCreds             pulumi.BoolPtrInput   `pulumi:"inheritedCreds"`
-	Insecure                   pulumi.BoolPtrInput   `pulumi:"insecure"`
-	InsecureIgnoreHostKey      pulumi.BoolPtrInput   `pulumi:"insecureIgnoreHostKey"`
-	Name                       pulumi.StringPtrInput `pulumi:"name"`
-	Password                   pulumi.StringPtrInput `pulumi:"password"`
-	Project                    pulumi.StringInput    `pulumi:"project"`
-	Proxy                      pulumi.StringPtrInput `pulumi:"proxy"`
-	// Repo details holding application configurations.
-	Repo              pulumi.StringPtrInput `pulumi:"repo"`
-	SshPrivateKey     pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	// Id of the GitHub app used to access the repo.
+	GithubAppId pulumi.StringPtrInput `pulumi:"githubAppId"`
+	// Installation id of the GitHub app used to access the repo.
+	GithubAppInstallationId pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
+	// GitHub app private key PEM data.
+	GithubAppPrivateKey pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
+	// Indicates if the credentials were inherited from a credential set.
+	InheritedCreds pulumi.BoolPtrInput `pulumi:"inheritedCreds"`
+	// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+	InsecureIgnoreHostKey pulumi.BoolPtrInput `pulumi:"insecureIgnoreHostKey"`
+	// Name to be used for this repo. Only used with Helm repos.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Password or PAT used for authenticating at the remote repository.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The HTTP/HTTPS proxy used to access the repo.
+	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+	// URL to the remote repository.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+	// PEM data for authenticating at the repo server. Only used with Git repos.
+	SshPrivateKey pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	// Certificate in PEM format for authenticating at the repo server.
 	TlsClientCertData pulumi.StringPtrInput `pulumi:"tlsClientCertData"`
-	TlsClientCertKey  pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
-	Type_             pulumi.StringInput    `pulumi:"type_"`
-	Username          pulumi.StringPtrInput `pulumi:"username"`
+	// Private key in PEM format for authenticating at the repo server.
+	TlsClientCertKey pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
+	// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+	Type_ pulumi.StringInput `pulumi:"type_"`
+	// Username used for authenticating at the remote repository.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetGitopsRepositoryRepoArgs) ElementType() reflect.Type {
@@ -32890,83 +34391,102 @@ func (o GetGitopsRepositoryRepoOutput) ToGetGitopsRepositoryRepoOutputWithContex
 	return o
 }
 
+// Identifies the authentication method used to connect to the repository.
 func (o GetGitopsRepositoryRepoOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
 func (o GetGitopsRepositoryRepoOutput) EnableLfs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableLfs }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if helm-oci support must be enabled for this repo.
 func (o GetGitopsRepositoryRepoOutput) EnableOci() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
 }
 
+// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
 func (o GetGitopsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
 }
 
+// Id of the GitHub app used to access the repo.
 func (o GetGitopsRepositoryRepoOutput) GithubAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppId }).(pulumi.StringPtrOutput)
 }
 
+// Installation id of the GitHub app used to access the repo.
 func (o GetGitopsRepositoryRepoOutput) GithubAppInstallationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppInstallationId }).(pulumi.StringPtrOutput)
 }
 
+// GitHub app private key PEM data.
 func (o GetGitopsRepositoryRepoOutput) GithubAppPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppPrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// Indicates if the credentials were inherited from a credential set.
 func (o GetGitopsRepositoryRepoOutput) InheritedCreds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InheritedCreds }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
 func (o GetGitopsRepositoryRepoOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
 func (o GetGitopsRepositoryRepoOutput) InsecureIgnoreHostKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InsecureIgnoreHostKey }).(pulumi.BoolPtrOutput)
 }
 
+// Name to be used for this repo. Only used with Helm repos.
 func (o GetGitopsRepositoryRepoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Password or PAT used for authenticating at the remote repository.
 func (o GetGitopsRepositoryRepoOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
 func (o GetGitopsRepositoryRepoOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The HTTP/HTTPS proxy used to access the repo.
 func (o GetGitopsRepositoryRepoOutput) Proxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Proxy }).(pulumi.StringPtrOutput)
 }
 
-// Repo details holding application configurations.
+// URL to the remote repository.
 func (o GetGitopsRepositoryRepoOutput) Repo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Repo }).(pulumi.StringPtrOutput)
 }
 
+// PEM data for authenticating at the repo server. Only used with Git repos.
 func (o GetGitopsRepositoryRepoOutput) SshPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.SshPrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// Certificate in PEM format for authenticating at the repo server.
 func (o GetGitopsRepositoryRepoOutput) TlsClientCertData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertData }).(pulumi.StringPtrOutput)
 }
 
+// Private key in PEM format for authenticating at the repo server.
 func (o GetGitopsRepositoryRepoOutput) TlsClientCertKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertKey }).(pulumi.StringPtrOutput)
 }
 
+// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
 func (o GetGitopsRepositoryRepoOutput) Type_() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Type_ }).(pulumi.StringOutput)
 }
 
+// Username used for authenticating at the remote repository.
 func (o GetGitopsRepositoryRepoOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -33089,8 +34609,11 @@ func (o GetGitopsRepositoryUpdateMaskArrayOutput) Index(i pulumi.IntInput) GetGi
 }
 
 type GetHelmConnectorCredential struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -33106,8 +34629,11 @@ type GetHelmConnectorCredentialInput interface {
 }
 
 type GetHelmConnectorCredentialArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -33162,14 +34688,17 @@ func (o GetHelmConnectorCredentialOutput) ToGetHelmConnectorCredentialOutputWith
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetHelmConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetHelmConnectorCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetHelmConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHelmConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -33522,9 +35051,12 @@ func (o GetInputSetGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
 }
 
 type GetJenkinsConnectorAuth struct {
-	JenkinsBearerTokens      []GetJenkinsConnectorAuthJenkinsBearerToken      `pulumi:"jenkinsBearerTokens"`
+	// Authenticate to App Dynamics using bearer token.
+	JenkinsBearerTokens []GetJenkinsConnectorAuthJenkinsBearerToken `pulumi:"jenkinsBearerTokens"`
+	// Authenticate to App Dynamics using user name and password.
 	JenkinsUserNamePasswords []GetJenkinsConnectorAuthJenkinsUserNamePassword `pulumi:"jenkinsUserNamePasswords"`
-	Type                     string                                           `pulumi:"type"`
+	// Can be one of UsernamePassword, Anonymous, BearerToken
+	Type string `pulumi:"type"`
 }
 
 // GetJenkinsConnectorAuthInput is an input type that accepts GetJenkinsConnectorAuthArgs and GetJenkinsConnectorAuthOutput values.
@@ -33539,9 +35071,12 @@ type GetJenkinsConnectorAuthInput interface {
 }
 
 type GetJenkinsConnectorAuthArgs struct {
-	JenkinsBearerTokens      GetJenkinsConnectorAuthJenkinsBearerTokenArrayInput      `pulumi:"jenkinsBearerTokens"`
+	// Authenticate to App Dynamics using bearer token.
+	JenkinsBearerTokens GetJenkinsConnectorAuthJenkinsBearerTokenArrayInput `pulumi:"jenkinsBearerTokens"`
+	// Authenticate to App Dynamics using user name and password.
 	JenkinsUserNamePasswords GetJenkinsConnectorAuthJenkinsUserNamePasswordArrayInput `pulumi:"jenkinsUserNamePasswords"`
-	Type                     pulumi.StringInput                                       `pulumi:"type"`
+	// Can be one of UsernamePassword, Anonymous, BearerToken
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetJenkinsConnectorAuthArgs) ElementType() reflect.Type {
@@ -33595,18 +35130,21 @@ func (o GetJenkinsConnectorAuthOutput) ToGetJenkinsConnectorAuthOutputWithContex
 	return o
 }
 
+// Authenticate to App Dynamics using bearer token.
 func (o GetJenkinsConnectorAuthOutput) JenkinsBearerTokens() GetJenkinsConnectorAuthJenkinsBearerTokenArrayOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuth) []GetJenkinsConnectorAuthJenkinsBearerToken {
 		return v.JenkinsBearerTokens
 	}).(GetJenkinsConnectorAuthJenkinsBearerTokenArrayOutput)
 }
 
+// Authenticate to App Dynamics using user name and password.
 func (o GetJenkinsConnectorAuthOutput) JenkinsUserNamePasswords() GetJenkinsConnectorAuthJenkinsUserNamePasswordArrayOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuth) []GetJenkinsConnectorAuthJenkinsUserNamePassword {
 		return v.JenkinsUserNamePasswords
 	}).(GetJenkinsConnectorAuthJenkinsUserNamePasswordArrayOutput)
 }
 
+// Can be one of UsernamePassword, Anonymous, BearerToken
 func (o GetJenkinsConnectorAuthOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuth) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -33632,6 +35170,7 @@ func (o GetJenkinsConnectorAuthArrayOutput) Index(i pulumi.IntInput) GetJenkinsC
 }
 
 type GetJenkinsConnectorAuthJenkinsBearerToken struct {
+	// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
 }
 
@@ -33647,6 +35186,7 @@ type GetJenkinsConnectorAuthJenkinsBearerTokenInput interface {
 }
 
 type GetJenkinsConnectorAuthJenkinsBearerTokenArgs struct {
+	// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
 }
 
@@ -33701,6 +35241,7 @@ func (o GetJenkinsConnectorAuthJenkinsBearerTokenOutput) ToGetJenkinsConnectorAu
 	return o
 }
 
+// Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetJenkinsConnectorAuthJenkinsBearerTokenOutput) TokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuthJenkinsBearerToken) string { return v.TokenRef }).(pulumi.StringOutput)
 }
@@ -33726,8 +35267,11 @@ func (o GetJenkinsConnectorAuthJenkinsBearerTokenArrayOutput) Index(i pulumi.Int
 }
 
 type GetJenkinsConnectorAuthJenkinsUserNamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Username reference to use for authentication.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -33743,8 +35287,11 @@ type GetJenkinsConnectorAuthJenkinsUserNamePasswordInput interface {
 }
 
 type GetJenkinsConnectorAuthJenkinsUserNamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Username reference to use for authentication.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -33799,14 +35346,17 @@ func (o GetJenkinsConnectorAuthJenkinsUserNamePasswordOutput) ToGetJenkinsConnec
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetJenkinsConnectorAuthJenkinsUserNamePasswordOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuthJenkinsUserNamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetJenkinsConnectorAuthJenkinsUserNamePasswordOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuthJenkinsUserNamePassword) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Username reference to use for authentication.
 func (o GetJenkinsConnectorAuthJenkinsUserNamePasswordOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJenkinsConnectorAuthJenkinsUserNamePassword) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -33832,7 +35382,9 @@ func (o GetJenkinsConnectorAuthJenkinsUserNamePasswordArrayOutput) Index(i pulum
 }
 
 type GetJiraConnectorAuth struct {
-	AuthType          string                                 `pulumi:"authType"`
+	// Authentication types for Jira connector
+	AuthType string `pulumi:"authType"`
+	// Authenticate using username password.
 	UsernamePasswords []GetJiraConnectorAuthUsernamePassword `pulumi:"usernamePasswords"`
 }
 
@@ -33848,7 +35400,9 @@ type GetJiraConnectorAuthInput interface {
 }
 
 type GetJiraConnectorAuthArgs struct {
-	AuthType          pulumi.StringInput                             `pulumi:"authType"`
+	// Authentication types for Jira connector
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using username password.
 	UsernamePasswords GetJiraConnectorAuthUsernamePasswordArrayInput `pulumi:"usernamePasswords"`
 }
 
@@ -33903,10 +35457,12 @@ func (o GetJiraConnectorAuthOutput) ToGetJiraConnectorAuthOutputWithContext(ctx 
 	return o
 }
 
+// Authentication types for Jira connector
 func (o GetJiraConnectorAuthOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJiraConnectorAuth) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
+// Authenticate using username password.
 func (o GetJiraConnectorAuthOutput) UsernamePasswords() GetJiraConnectorAuthUsernamePasswordArrayOutput {
 	return o.ApplyT(func(v GetJiraConnectorAuth) []GetJiraConnectorAuthUsernamePassword { return v.UsernamePasswords }).(GetJiraConnectorAuthUsernamePasswordArrayOutput)
 }
@@ -34047,12 +35603,18 @@ func (o GetJiraConnectorAuthUsernamePasswordArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetKubernetesConnectorClientKeyCert struct {
-	CaCertRef              string `pulumi:"caCertRef"`
-	ClientCertRef          string `pulumi:"clientCertRef"`
-	ClientKeyAlgorithm     string `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	CaCertRef string `pulumi:"caCertRef"`
+	// Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientCertRef string `pulumi:"clientCertRef"`
+	// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+	ClientKeyAlgorithm string `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ClientKeyPassphraseRef string `pulumi:"clientKeyPassphraseRef"`
-	ClientKeyRef           string `pulumi:"clientKeyRef"`
-	MasterUrl              string `pulumi:"masterUrl"`
+	// Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientKeyRef string `pulumi:"clientKeyRef"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
 }
 
 // GetKubernetesConnectorClientKeyCertInput is an input type that accepts GetKubernetesConnectorClientKeyCertArgs and GetKubernetesConnectorClientKeyCertOutput values.
@@ -34067,12 +35629,18 @@ type GetKubernetesConnectorClientKeyCertInput interface {
 }
 
 type GetKubernetesConnectorClientKeyCertArgs struct {
-	CaCertRef              pulumi.StringInput `pulumi:"caCertRef"`
-	ClientCertRef          pulumi.StringInput `pulumi:"clientCertRef"`
-	ClientKeyAlgorithm     pulumi.StringInput `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	CaCertRef pulumi.StringInput `pulumi:"caCertRef"`
+	// Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientCertRef pulumi.StringInput `pulumi:"clientCertRef"`
+	// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+	ClientKeyAlgorithm pulumi.StringInput `pulumi:"clientKeyAlgorithm"`
+	// Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ClientKeyPassphraseRef pulumi.StringInput `pulumi:"clientKeyPassphraseRef"`
-	ClientKeyRef           pulumi.StringInput `pulumi:"clientKeyRef"`
-	MasterUrl              pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientKeyRef pulumi.StringInput `pulumi:"clientKeyRef"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
 }
 
 func (GetKubernetesConnectorClientKeyCertArgs) ElementType() reflect.Type {
@@ -34126,26 +35694,32 @@ func (o GetKubernetesConnectorClientKeyCertOutput) ToGetKubernetesConnectorClien
 	return o
 }
 
+// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorClientKeyCertOutput) CaCertRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.CaCertRef }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorClientKeyCertOutput) ClientCertRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientCertRef }).(pulumi.StringOutput)
 }
 
+// The algorithm used to generate the client key for the connector. Valid values are RSA, EC
 func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyAlgorithm }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyPassphraseRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyPassphraseRef }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorClientKeyCertOutput) ClientKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.ClientKeyRef }).(pulumi.StringOutput)
 }
 
+// The URL of the Kubernetes cluster.
 func (o GetKubernetesConnectorClientKeyCertOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorClientKeyCert) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
@@ -34268,14 +35842,22 @@ func (o GetKubernetesConnectorInheritFromDelegateArrayOutput) Index(i pulumi.Int
 }
 
 type GetKubernetesConnectorOpenidConnect struct {
-	ClientIdRef string   `pulumi:"clientIdRef"`
-	IssuerUrl   string   `pulumi:"issuerUrl"`
-	MasterUrl   string   `pulumi:"masterUrl"`
-	PasswordRef string   `pulumi:"passwordRef"`
-	Scopes      []string `pulumi:"scopes"`
-	SecretRef   string   `pulumi:"secretRef"`
-	Username    string   `pulumi:"username"`
-	UsernameRef string   `pulumi:"usernameRef"`
+	// Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef string `pulumi:"clientIdRef"`
+	// The URL of the OpenID Connect issuer.
+	IssuerUrl string `pulumi:"issuerUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Scopes to request for the connector.
+	Scopes []string `pulumi:"scopes"`
+	// Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SecretRef string `pulumi:"secretRef"`
+	// Username for the connector.
+	Username string `pulumi:"username"`
+	// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
 }
 
 // GetKubernetesConnectorOpenidConnectInput is an input type that accepts GetKubernetesConnectorOpenidConnectArgs and GetKubernetesConnectorOpenidConnectOutput values.
@@ -34290,14 +35872,22 @@ type GetKubernetesConnectorOpenidConnectInput interface {
 }
 
 type GetKubernetesConnectorOpenidConnectArgs struct {
-	ClientIdRef pulumi.StringInput      `pulumi:"clientIdRef"`
-	IssuerUrl   pulumi.StringInput      `pulumi:"issuerUrl"`
-	MasterUrl   pulumi.StringInput      `pulumi:"masterUrl"`
-	PasswordRef pulumi.StringInput      `pulumi:"passwordRef"`
-	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
-	SecretRef   pulumi.StringInput      `pulumi:"secretRef"`
-	Username    pulumi.StringInput      `pulumi:"username"`
-	UsernameRef pulumi.StringInput      `pulumi:"usernameRef"`
+	// Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
+	// The URL of the OpenID Connect issuer.
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Scopes to request for the connector.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SecretRef pulumi.StringInput `pulumi:"secretRef"`
+	// Username for the connector.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
 func (GetKubernetesConnectorOpenidConnectArgs) ElementType() reflect.Type {
@@ -34351,34 +35941,42 @@ func (o GetKubernetesConnectorOpenidConnectOutput) ToGetKubernetesConnectorOpeni
 	return o
 }
 
+// Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorOpenidConnectOutput) ClientIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.ClientIdRef }).(pulumi.StringOutput)
 }
 
+// The URL of the OpenID Connect issuer.
 func (o GetKubernetesConnectorOpenidConnectOutput) IssuerUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
+// The URL of the Kubernetes cluster.
 func (o GetKubernetesConnectorOpenidConnectOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorOpenidConnectOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Scopes to request for the connector.
 func (o GetKubernetesConnectorOpenidConnectOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorOpenidConnectOutput) SecretRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.SecretRef }).(pulumi.StringOutput)
 }
 
+// Username for the connector.
 func (o GetKubernetesConnectorOpenidConnectOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorOpenidConnectOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorOpenidConnect) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -34404,7 +36002,9 @@ func (o GetKubernetesConnectorOpenidConnectArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetKubernetesConnectorServiceAccount struct {
-	MasterUrl              string `pulumi:"masterUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ServiceAccountTokenRef string `pulumi:"serviceAccountTokenRef"`
 }
 
@@ -34420,7 +36020,9 @@ type GetKubernetesConnectorServiceAccountInput interface {
 }
 
 type GetKubernetesConnectorServiceAccountArgs struct {
-	MasterUrl              pulumi.StringInput `pulumi:"masterUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ServiceAccountTokenRef pulumi.StringInput `pulumi:"serviceAccountTokenRef"`
 }
 
@@ -34475,10 +36077,12 @@ func (o GetKubernetesConnectorServiceAccountOutput) ToGetKubernetesConnectorServ
 	return o
 }
 
+// The URL of the Kubernetes cluster.
 func (o GetKubernetesConnectorServiceAccountOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorServiceAccount) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorServiceAccountOutput) ServiceAccountTokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorServiceAccount) string { return v.ServiceAccountTokenRef }).(pulumi.StringOutput)
 }
@@ -34504,9 +36108,13 @@ func (o GetKubernetesConnectorServiceAccountArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetKubernetesConnectorUsernamePassword struct {
-	MasterUrl   string `pulumi:"masterUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username for the connector.
+	Username string `pulumi:"username"`
+	// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -34522,9 +36130,13 @@ type GetKubernetesConnectorUsernamePasswordInput interface {
 }
 
 type GetKubernetesConnectorUsernamePasswordArgs struct {
-	MasterUrl   pulumi.StringInput `pulumi:"masterUrl"`
+	// The URL of the Kubernetes cluster.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username for the connector.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -34579,18 +36191,22 @@ func (o GetKubernetesConnectorUsernamePasswordOutput) ToGetKubernetesConnectorUs
 	return o
 }
 
+// The URL of the Kubernetes cluster.
 func (o GetKubernetesConnectorUsernamePasswordOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username for the connector.
 func (o GetKubernetesConnectorUsernamePasswordOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetKubernetesConnectorUsernamePasswordOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesConnectorUsernamePassword) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -34725,7 +36341,8 @@ type GetManualFreezeFreezeWindow struct {
 	// Duration of the freeze
 	Duration string `pulumi:"duration"`
 	// End time of the freeze
-	EndTime     string                                  `pulumi:"endTime"`
+	EndTime string `pulumi:"endTime"`
+	// Recurrence of the freeze window
 	Recurrences []GetManualFreezeFreezeWindowRecurrence `pulumi:"recurrences"`
 	// Start time of the freeze
 	StartTime string `pulumi:"startTime"`
@@ -34748,7 +36365,8 @@ type GetManualFreezeFreezeWindowArgs struct {
 	// Duration of the freeze
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// End time of the freeze
-	EndTime     pulumi.StringInput                              `pulumi:"endTime"`
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Recurrence of the freeze window
 	Recurrences GetManualFreezeFreezeWindowRecurrenceArrayInput `pulumi:"recurrences"`
 	// Start time of the freeze
 	StartTime pulumi.StringInput `pulumi:"startTime"`
@@ -34817,6 +36435,7 @@ func (o GetManualFreezeFreezeWindowOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// Recurrence of the freeze window
 func (o GetManualFreezeFreezeWindowOutput) Recurrences() GetManualFreezeFreezeWindowRecurrenceArrayOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindow) []GetManualFreezeFreezeWindowRecurrence { return v.Recurrences }).(GetManualFreezeFreezeWindowRecurrenceArrayOutput)
 }
@@ -34852,8 +36471,9 @@ func (o GetManualFreezeFreezeWindowArrayOutput) Index(i pulumi.IntInput) GetManu
 }
 
 type GetManualFreezeFreezeWindowRecurrence struct {
+	// Used to filter resources on their attributes
 	RecurrenceSpecs []GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec `pulumi:"recurrenceSpecs"`
-	// Type of freeze
+	// Recurrence type(Daily, Weekly, Monthly, Yearly)
 	Type string `pulumi:"type"`
 }
 
@@ -34869,8 +36489,9 @@ type GetManualFreezeFreezeWindowRecurrenceInput interface {
 }
 
 type GetManualFreezeFreezeWindowRecurrenceArgs struct {
+	// Used to filter resources on their attributes
 	RecurrenceSpecs GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayInput `pulumi:"recurrenceSpecs"`
-	// Type of freeze
+	// Recurrence type(Daily, Weekly, Monthly, Yearly)
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -34925,13 +36546,14 @@ func (o GetManualFreezeFreezeWindowRecurrenceOutput) ToGetManualFreezeFreezeWind
 	return o
 }
 
+// Used to filter resources on their attributes
 func (o GetManualFreezeFreezeWindowRecurrenceOutput) RecurrenceSpecs() GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrence) []GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
 		return v.RecurrenceSpecs
 	}).(GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput)
 }
 
-// Type of freeze
+// Recurrence type(Daily, Weekly, Monthly, Yearly)
 func (o GetManualFreezeFreezeWindowRecurrenceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrence) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -34957,8 +36579,10 @@ func (o GetManualFreezeFreezeWindowRecurrenceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec struct {
+	// Recurrence until timestamp
 	Until string `pulumi:"until"`
-	Value int    `pulumi:"value"`
+	// Value of n, for n months recurrence
+	Value int `pulumi:"value"`
 }
 
 // GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput is an input type that accepts GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs and GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput values.
@@ -34973,8 +36597,10 @@ type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecInput interface {
 }
 
 type GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs struct {
+	// Recurrence until timestamp
 	Until pulumi.StringInput `pulumi:"until"`
-	Value pulumi.IntInput    `pulumi:"value"`
+	// Value of n, for n months recurrence
+	Value pulumi.IntInput `pulumi:"value"`
 }
 
 func (GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs) ElementType() reflect.Type {
@@ -35028,10 +36654,12 @@ func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) ToGetManualFr
 	return o
 }
 
+// Recurrence until timestamp
 func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Until() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec) string { return v.Until }).(pulumi.StringOutput)
 }
 
+// Value of n, for n months recurrence
 func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec) int { return v.Value }).(pulumi.IntOutput)
 }
@@ -35057,8 +36685,11 @@ func (o GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecArrayOutput) Index(i 
 }
 
 type GetNexusConnectorCredential struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -35074,8 +36705,11 @@ type GetNexusConnectorCredentialInput interface {
 }
 
 type GetNexusConnectorCredentialArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -35130,14 +36764,17 @@ func (o GetNexusConnectorCredentialOutput) ToGetNexusConnectorCredentialOutputWi
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetNexusConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetNexusConnectorCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetNexusConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNexusConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -35163,8 +36800,11 @@ func (o GetNexusConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetNexu
 }
 
 type GetOciHelmConnectorCredential struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -35180,8 +36820,11 @@ type GetOciHelmConnectorCredentialInput interface {
 }
 
 type GetOciHelmConnectorCredentialArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -35236,14 +36879,17 @@ func (o GetOciHelmConnectorCredentialOutput) ToGetOciHelmConnectorCredentialOutp
 	return o
 }
 
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetOciHelmConnectorCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOciHelmConnectorCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetOciHelmConnectorCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOciHelmConnectorCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetOciHelmConnectorCredentialOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOciHelmConnectorCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -35269,13 +36915,20 @@ func (o GetOciHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetOc
 }
 
 type GetPermissionsPermission struct {
-	Action             string   `pulumi:"action"`
+	// Action performed by the permission
+	Action string `pulumi:"action"`
+	// The scope levels at which this resource group can be used
 	AllowedScopeLevels []string `pulumi:"allowedScopeLevels"`
-	Identifier         string   `pulumi:"identifier"`
-	IncludeInAllRoles  bool     `pulumi:"includeInAllRoles"`
-	Name               string   `pulumi:"name"`
-	ResourceType       string   `pulumi:"resourceType"`
-	Status             string   `pulumi:"status"`
+	// Identifier of the permission
+	Identifier string `pulumi:"identifier"`
+	// Is included in all roles
+	IncludeInAllRoles bool `pulumi:"includeInAllRoles"`
+	// Name of the permission
+	Name string `pulumi:"name"`
+	// Resource type for the given permission
+	ResourceType string `pulumi:"resourceType"`
+	// Status of the permission
+	Status string `pulumi:"status"`
 }
 
 // GetPermissionsPermissionInput is an input type that accepts GetPermissionsPermissionArgs and GetPermissionsPermissionOutput values.
@@ -35290,13 +36943,20 @@ type GetPermissionsPermissionInput interface {
 }
 
 type GetPermissionsPermissionArgs struct {
-	Action             pulumi.StringInput      `pulumi:"action"`
+	// Action performed by the permission
+	Action pulumi.StringInput `pulumi:"action"`
+	// The scope levels at which this resource group can be used
 	AllowedScopeLevels pulumi.StringArrayInput `pulumi:"allowedScopeLevels"`
-	Identifier         pulumi.StringInput      `pulumi:"identifier"`
-	IncludeInAllRoles  pulumi.BoolInput        `pulumi:"includeInAllRoles"`
-	Name               pulumi.StringInput      `pulumi:"name"`
-	ResourceType       pulumi.StringInput      `pulumi:"resourceType"`
-	Status             pulumi.StringInput      `pulumi:"status"`
+	// Identifier of the permission
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Is included in all roles
+	IncludeInAllRoles pulumi.BoolInput `pulumi:"includeInAllRoles"`
+	// Name of the permission
+	Name pulumi.StringInput `pulumi:"name"`
+	// Resource type for the given permission
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Status of the permission
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetPermissionsPermissionArgs) ElementType() reflect.Type {
@@ -35350,30 +37010,37 @@ func (o GetPermissionsPermissionOutput) ToGetPermissionsPermissionOutputWithCont
 	return o
 }
 
+// Action performed by the permission
 func (o GetPermissionsPermissionOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// The scope levels at which this resource group can be used
 func (o GetPermissionsPermissionOutput) AllowedScopeLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) []string { return v.AllowedScopeLevels }).(pulumi.StringArrayOutput)
 }
 
+// Identifier of the permission
 func (o GetPermissionsPermissionOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Is included in all roles
 func (o GetPermissionsPermissionOutput) IncludeInAllRoles() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) bool { return v.IncludeInAllRoles }).(pulumi.BoolOutput)
 }
 
+// Name of the permission
 func (o GetPermissionsPermissionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Resource type for the given permission
 func (o GetPermissionsPermissionOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
+// Status of the permission
 func (o GetPermissionsPermissionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsPermission) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -35399,8 +37066,10 @@ func (o GetPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) GetPermiss
 }
 
 type GetPipelineFiltersFilterProperty struct {
-	FilterType string   `pulumi:"filterType"`
-	Tags       []string `pulumi:"tags"`
+	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+	FilterType string `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetPipelineFiltersFilterPropertyInput is an input type that accepts GetPipelineFiltersFilterPropertyArgs and GetPipelineFiltersFilterPropertyOutput values.
@@ -35415,8 +37084,10 @@ type GetPipelineFiltersFilterPropertyInput interface {
 }
 
 type GetPipelineFiltersFilterPropertyArgs struct {
-	FilterType pulumi.StringInput      `pulumi:"filterType"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetPipelineFiltersFilterPropertyArgs) ElementType() reflect.Type {
@@ -35470,10 +37141,12 @@ func (o GetPipelineFiltersFilterPropertyOutput) ToGetPipelineFiltersFilterProper
 	return o
 }
 
+// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
 func (o GetPipelineFiltersFilterPropertyOutput) FilterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineFiltersFilterProperty) string { return v.FilterType }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o GetPipelineFiltersFilterPropertyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPipelineFiltersFilterProperty) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -35894,10 +37567,14 @@ func (o GetPolicySetPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicySetPoli
 }
 
 type GetPrometheusConnectorHeader struct {
+	// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	EncryptedValueRef string `pulumi:"encryptedValueRef"`
-	Key               string `pulumi:"key"`
-	Value             string `pulumi:"value"`
-	ValueEncrypted    bool   `pulumi:"valueEncrypted"`
+	// Key.
+	Key string `pulumi:"key"`
+	// Value.
+	Value string `pulumi:"value"`
+	// Encrypted value.
+	ValueEncrypted bool `pulumi:"valueEncrypted"`
 }
 
 // GetPrometheusConnectorHeaderInput is an input type that accepts GetPrometheusConnectorHeaderArgs and GetPrometheusConnectorHeaderOutput values.
@@ -35912,10 +37589,14 @@ type GetPrometheusConnectorHeaderInput interface {
 }
 
 type GetPrometheusConnectorHeaderArgs struct {
+	// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	EncryptedValueRef pulumi.StringInput `pulumi:"encryptedValueRef"`
-	Key               pulumi.StringInput `pulumi:"key"`
-	Value             pulumi.StringInput `pulumi:"value"`
-	ValueEncrypted    pulumi.BoolInput   `pulumi:"valueEncrypted"`
+	// Key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Encrypted value.
+	ValueEncrypted pulumi.BoolInput `pulumi:"valueEncrypted"`
 }
 
 func (GetPrometheusConnectorHeaderArgs) ElementType() reflect.Type {
@@ -35969,18 +37650,22 @@ func (o GetPrometheusConnectorHeaderOutput) ToGetPrometheusConnectorHeaderOutput
 	return o
 }
 
+// Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetPrometheusConnectorHeaderOutput) EncryptedValueRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.EncryptedValueRef }).(pulumi.StringOutput)
 }
 
+// Key.
 func (o GetPrometheusConnectorHeaderOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Value.
 func (o GetPrometheusConnectorHeaderOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusConnectorHeader) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// Encrypted value.
 func (o GetPrometheusConnectorHeaderOutput) ValueEncrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPrometheusConnectorHeader) bool { return v.ValueEncrypted }).(pulumi.BoolOutput)
 }
@@ -36008,10 +37693,11 @@ func (o GetPrometheusConnectorHeaderArrayOutput) Index(i pulumi.IntInput) GetPro
 type GetResourceGroupIncludedScope struct {
 	// Account Identifier of the account
 	AccountId string `pulumi:"accountId"`
-	Filter    string `pulumi:"filter"`
-	// Unique identifier of the organization.
+	// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
+	Filter string `pulumi:"filter"`
+	// Organization Identifier
 	OrgId string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project Identifier
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -36029,10 +37715,11 @@ type GetResourceGroupIncludedScopeInput interface {
 type GetResourceGroupIncludedScopeArgs struct {
 	// Account Identifier of the account
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	Filter    pulumi.StringInput `pulumi:"filter"`
-	// Unique identifier of the organization.
+	// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Organization Identifier
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project Identifier
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -36092,16 +37779,17 @@ func (o GetResourceGroupIncludedScopeOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Can be one of these 2 EXCLUDING_CHILD_SCOPES or INCLUDING_CHILD_SCOPES
 func (o GetResourceGroupIncludedScopeOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Organization Identifier
 func (o GetResourceGroupIncludedScopeOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the project.
+// Project Identifier
 func (o GetResourceGroupIncludedScopeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupIncludedScope) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -36127,8 +37815,10 @@ func (o GetResourceGroupIncludedScopeArrayOutput) Index(i pulumi.IntInput) GetRe
 }
 
 type GetResourceGroupResourceFilter struct {
-	IncludeAllResources bool                                     `pulumi:"includeAllResources"`
-	Resources           []GetResourceGroupResourceFilterResource `pulumi:"resources"`
+	// Include all resource or not
+	IncludeAllResources bool `pulumi:"includeAllResources"`
+	// Resources for a resource group
+	Resources []GetResourceGroupResourceFilterResource `pulumi:"resources"`
 }
 
 // GetResourceGroupResourceFilterInput is an input type that accepts GetResourceGroupResourceFilterArgs and GetResourceGroupResourceFilterOutput values.
@@ -36143,8 +37833,10 @@ type GetResourceGroupResourceFilterInput interface {
 }
 
 type GetResourceGroupResourceFilterArgs struct {
-	IncludeAllResources pulumi.BoolInput                                 `pulumi:"includeAllResources"`
-	Resources           GetResourceGroupResourceFilterResourceArrayInput `pulumi:"resources"`
+	// Include all resource or not
+	IncludeAllResources pulumi.BoolInput `pulumi:"includeAllResources"`
+	// Resources for a resource group
+	Resources GetResourceGroupResourceFilterResourceArrayInput `pulumi:"resources"`
 }
 
 func (GetResourceGroupResourceFilterArgs) ElementType() reflect.Type {
@@ -36198,10 +37890,12 @@ func (o GetResourceGroupResourceFilterOutput) ToGetResourceGroupResourceFilterOu
 	return o
 }
 
+// Include all resource or not
 func (o GetResourceGroupResourceFilterOutput) IncludeAllResources() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilter) bool { return v.IncludeAllResources }).(pulumi.BoolOutput)
 }
 
+// Resources for a resource group
 func (o GetResourceGroupResourceFilterOutput) Resources() GetResourceGroupResourceFilterResourceArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilter) []GetResourceGroupResourceFilterResource { return v.Resources }).(GetResourceGroupResourceFilterResourceArrayOutput)
 }
@@ -36227,9 +37921,12 @@ func (o GetResourceGroupResourceFilterArrayOutput) Index(i pulumi.IntInput) GetR
 }
 
 type GetResourceGroupResourceFilterResource struct {
+	// Used to filter resources on their attributes
 	AttributeFilters []GetResourceGroupResourceFilterResourceAttributeFilter `pulumi:"attributeFilters"`
-	Identifiers      []string                                                `pulumi:"identifiers"`
-	ResourceType     string                                                  `pulumi:"resourceType"`
+	// List of the identifiers
+	Identifiers []string `pulumi:"identifiers"`
+	// Type of the resource
+	ResourceType string `pulumi:"resourceType"`
 }
 
 // GetResourceGroupResourceFilterResourceInput is an input type that accepts GetResourceGroupResourceFilterResourceArgs and GetResourceGroupResourceFilterResourceOutput values.
@@ -36244,9 +37941,12 @@ type GetResourceGroupResourceFilterResourceInput interface {
 }
 
 type GetResourceGroupResourceFilterResourceArgs struct {
+	// Used to filter resources on their attributes
 	AttributeFilters GetResourceGroupResourceFilterResourceAttributeFilterArrayInput `pulumi:"attributeFilters"`
-	Identifiers      pulumi.StringArrayInput                                         `pulumi:"identifiers"`
-	ResourceType     pulumi.StringInput                                              `pulumi:"resourceType"`
+	// List of the identifiers
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+	// Type of the resource
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
 func (GetResourceGroupResourceFilterResourceArgs) ElementType() reflect.Type {
@@ -36300,16 +38000,19 @@ func (o GetResourceGroupResourceFilterResourceOutput) ToGetResourceGroupResource
 	return o
 }
 
+// Used to filter resources on their attributes
 func (o GetResourceGroupResourceFilterResourceOutput) AttributeFilters() GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilterResource) []GetResourceGroupResourceFilterResourceAttributeFilter {
 		return v.AttributeFilters
 	}).(GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput)
 }
 
+// List of the identifiers
 func (o GetResourceGroupResourceFilterResourceOutput) Identifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilterResource) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
 }
 
+// Type of the resource
 func (o GetResourceGroupResourceFilterResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilterResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -36335,7 +38038,9 @@ func (o GetResourceGroupResourceFilterResourceArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetResourceGroupResourceFilterResourceAttributeFilter struct {
-	AttributeName   string   `pulumi:"attributeName"`
+	// Name of the attribute
+	AttributeName string `pulumi:"attributeName"`
+	// Value of the attributes
 	AttributeValues []string `pulumi:"attributeValues"`
 }
 
@@ -36351,7 +38056,9 @@ type GetResourceGroupResourceFilterResourceAttributeFilterInput interface {
 }
 
 type GetResourceGroupResourceFilterResourceAttributeFilterArgs struct {
-	AttributeName   pulumi.StringInput      `pulumi:"attributeName"`
+	// Name of the attribute
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Value of the attributes
 	AttributeValues pulumi.StringArrayInput `pulumi:"attributeValues"`
 }
 
@@ -36406,10 +38113,12 @@ func (o GetResourceGroupResourceFilterResourceAttributeFilterOutput) ToGetResour
 	return o
 }
 
+// Name of the attribute
 func (o GetResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilterResourceAttributeFilter) string { return v.AttributeName }).(pulumi.StringOutput)
 }
 
+// Value of the attributes
 func (o GetResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourceGroupResourceFilterResourceAttributeFilter) []string { return v.AttributeValues }).(pulumi.StringArrayOutput)
 }
@@ -36435,10 +38144,12 @@ func (o GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput) Index(
 }
 
 type GetRoleAssignmentsPrincipal struct {
-	// Identifier for role assignment.
+	// Identifier.
 	Identifier string `pulumi:"identifier"`
+	// Scope level.
 	ScopeLevel string `pulumi:"scopeLevel"`
-	Type       string `pulumi:"type"`
+	// Type.
+	Type string `pulumi:"type"`
 }
 
 // GetRoleAssignmentsPrincipalInput is an input type that accepts GetRoleAssignmentsPrincipalArgs and GetRoleAssignmentsPrincipalOutput values.
@@ -36453,10 +38164,12 @@ type GetRoleAssignmentsPrincipalInput interface {
 }
 
 type GetRoleAssignmentsPrincipalArgs struct {
-	// Identifier for role assignment.
+	// Identifier.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Scope level.
 	ScopeLevel pulumi.StringInput `pulumi:"scopeLevel"`
-	Type       pulumi.StringInput `pulumi:"type"`
+	// Type.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetRoleAssignmentsPrincipalArgs) ElementType() reflect.Type {
@@ -36510,15 +38223,17 @@ func (o GetRoleAssignmentsPrincipalOutput) ToGetRoleAssignmentsPrincipalOutputWi
 	return o
 }
 
-// Identifier for role assignment.
+// Identifier.
 func (o GetRoleAssignmentsPrincipalOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Scope level.
 func (o GetRoleAssignmentsPrincipalOutput) ScopeLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.ScopeLevel }).(pulumi.StringOutput)
 }
 
+// Type.
 func (o GetRoleAssignmentsPrincipalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoleAssignmentsPrincipal) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -36544,11 +38259,16 @@ func (o GetRoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) GetRole
 }
 
 type GetSecretSshkeyKerbero struct {
-	Principal              string                                        `pulumi:"principal"`
-	Realm                  string                                        `pulumi:"realm"`
-	TgtGenerationMethod    string                                        `pulumi:"tgtGenerationMethod"`
+	// Username to use for authentication.
+	Principal string `pulumi:"principal"`
+	// Reference to a secret containing the password to use for authentication.
+	Realm string `pulumi:"realm"`
+	// Method to generate tgt
+	TgtGenerationMethod string `pulumi:"tgtGenerationMethod"`
+	// Authenticate to App Dynamics using username and password.
 	TgtKeyTabFilePathSpecs []GetSecretSshkeyKerberoTgtKeyTabFilePathSpec `pulumi:"tgtKeyTabFilePathSpecs"`
-	TgtPasswordSpecs       []GetSecretSshkeyKerberoTgtPasswordSpec       `pulumi:"tgtPasswordSpecs"`
+	// Authenticate to App Dynamics using username and password.
+	TgtPasswordSpecs []GetSecretSshkeyKerberoTgtPasswordSpec `pulumi:"tgtPasswordSpecs"`
 }
 
 // GetSecretSshkeyKerberoInput is an input type that accepts GetSecretSshkeyKerberoArgs and GetSecretSshkeyKerberoOutput values.
@@ -36563,11 +38283,16 @@ type GetSecretSshkeyKerberoInput interface {
 }
 
 type GetSecretSshkeyKerberoArgs struct {
-	Principal              pulumi.StringInput                                    `pulumi:"principal"`
-	Realm                  pulumi.StringInput                                    `pulumi:"realm"`
-	TgtGenerationMethod    pulumi.StringInput                                    `pulumi:"tgtGenerationMethod"`
+	// Username to use for authentication.
+	Principal pulumi.StringInput `pulumi:"principal"`
+	// Reference to a secret containing the password to use for authentication.
+	Realm pulumi.StringInput `pulumi:"realm"`
+	// Method to generate tgt
+	TgtGenerationMethod pulumi.StringInput `pulumi:"tgtGenerationMethod"`
+	// Authenticate to App Dynamics using username and password.
 	TgtKeyTabFilePathSpecs GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArrayInput `pulumi:"tgtKeyTabFilePathSpecs"`
-	TgtPasswordSpecs       GetSecretSshkeyKerberoTgtPasswordSpecArrayInput       `pulumi:"tgtPasswordSpecs"`
+	// Authenticate to App Dynamics using username and password.
+	TgtPasswordSpecs GetSecretSshkeyKerberoTgtPasswordSpecArrayInput `pulumi:"tgtPasswordSpecs"`
 }
 
 func (GetSecretSshkeyKerberoArgs) ElementType() reflect.Type {
@@ -36621,24 +38346,29 @@ func (o GetSecretSshkeyKerberoOutput) ToGetSecretSshkeyKerberoOutputWithContext(
 	return o
 }
 
+// Username to use for authentication.
 func (o GetSecretSshkeyKerberoOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerbero) string { return v.Principal }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the password to use for authentication.
 func (o GetSecretSshkeyKerberoOutput) Realm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerbero) string { return v.Realm }).(pulumi.StringOutput)
 }
 
+// Method to generate tgt
 func (o GetSecretSshkeyKerberoOutput) TgtGenerationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerbero) string { return v.TgtGenerationMethod }).(pulumi.StringOutput)
 }
 
+// Authenticate to App Dynamics using username and password.
 func (o GetSecretSshkeyKerberoOutput) TgtKeyTabFilePathSpecs() GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArrayOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerbero) []GetSecretSshkeyKerberoTgtKeyTabFilePathSpec {
 		return v.TgtKeyTabFilePathSpecs
 	}).(GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArrayOutput)
 }
 
+// Authenticate to App Dynamics using username and password.
 func (o GetSecretSshkeyKerberoOutput) TgtPasswordSpecs() GetSecretSshkeyKerberoTgtPasswordSpecArrayOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerbero) []GetSecretSshkeyKerberoTgtPasswordSpec { return v.TgtPasswordSpecs }).(GetSecretSshkeyKerberoTgtPasswordSpecArrayOutput)
 }
@@ -36664,6 +38394,7 @@ func (o GetSecretSshkeyKerberoArrayOutput) Index(i pulumi.IntInput) GetSecretSsh
 }
 
 type GetSecretSshkeyKerberoTgtKeyTabFilePathSpec struct {
+	// key path
 	KeyPath string `pulumi:"keyPath"`
 }
 
@@ -36679,6 +38410,7 @@ type GetSecretSshkeyKerberoTgtKeyTabFilePathSpecInput interface {
 }
 
 type GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArgs struct {
+	// key path
 	KeyPath pulumi.StringInput `pulumi:"keyPath"`
 }
 
@@ -36733,6 +38465,7 @@ func (o GetSecretSshkeyKerberoTgtKeyTabFilePathSpecOutput) ToGetSecretSshkeyKerb
 	return o
 }
 
+// key path
 func (o GetSecretSshkeyKerberoTgtKeyTabFilePathSpecOutput) KeyPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerberoTgtKeyTabFilePathSpec) string { return v.KeyPath }).(pulumi.StringOutput)
 }
@@ -36758,6 +38491,7 @@ func (o GetSecretSshkeyKerberoTgtKeyTabFilePathSpecArrayOutput) Index(i pulumi.I
 }
 
 type GetSecretSshkeyKerberoTgtPasswordSpec struct {
+	// password
 	Password string `pulumi:"password"`
 }
 
@@ -36773,6 +38507,7 @@ type GetSecretSshkeyKerberoTgtPasswordSpecInput interface {
 }
 
 type GetSecretSshkeyKerberoTgtPasswordSpecArgs struct {
+	// password
 	Password pulumi.StringInput `pulumi:"password"`
 }
 
@@ -36827,6 +38562,7 @@ func (o GetSecretSshkeyKerberoTgtPasswordSpecOutput) ToGetSecretSshkeyKerberoTgt
 	return o
 }
 
+// password
 func (o GetSecretSshkeyKerberoTgtPasswordSpecOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeyKerberoTgtPasswordSpec) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -36852,9 +38588,13 @@ func (o GetSecretSshkeyKerberoTgtPasswordSpecArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetSecretSshkeySsh struct {
-	CredentialType             string                                        `pulumi:"credentialType"`
-	SshPasswordCredentials     []GetSecretSshkeySshSshPasswordCredential     `pulumi:"sshPasswordCredentials"`
-	SshkeyPathCredentials      []GetSecretSshkeySshSshkeyPathCredential      `pulumi:"sshkeyPathCredentials"`
+	// This specifies SSH credential type as Password, KeyPath or KeyReference
+	CredentialType string `pulumi:"credentialType"`
+	// SSH credential of type keyReference
+	SshPasswordCredentials []GetSecretSshkeySshSshPasswordCredential `pulumi:"sshPasswordCredentials"`
+	// SSH credential of type keyPath
+	SshkeyPathCredentials []GetSecretSshkeySshSshkeyPathCredential `pulumi:"sshkeyPathCredentials"`
+	// SSH credential of type keyReference
 	SshkeyReferenceCredentials []GetSecretSshkeySshSshkeyReferenceCredential `pulumi:"sshkeyReferenceCredentials"`
 }
 
@@ -36870,9 +38610,13 @@ type GetSecretSshkeySshInput interface {
 }
 
 type GetSecretSshkeySshArgs struct {
-	CredentialType             pulumi.StringInput                                    `pulumi:"credentialType"`
-	SshPasswordCredentials     GetSecretSshkeySshSshPasswordCredentialArrayInput     `pulumi:"sshPasswordCredentials"`
-	SshkeyPathCredentials      GetSecretSshkeySshSshkeyPathCredentialArrayInput      `pulumi:"sshkeyPathCredentials"`
+	// This specifies SSH credential type as Password, KeyPath or KeyReference
+	CredentialType pulumi.StringInput `pulumi:"credentialType"`
+	// SSH credential of type keyReference
+	SshPasswordCredentials GetSecretSshkeySshSshPasswordCredentialArrayInput `pulumi:"sshPasswordCredentials"`
+	// SSH credential of type keyPath
+	SshkeyPathCredentials GetSecretSshkeySshSshkeyPathCredentialArrayInput `pulumi:"sshkeyPathCredentials"`
+	// SSH credential of type keyReference
 	SshkeyReferenceCredentials GetSecretSshkeySshSshkeyReferenceCredentialArrayInput `pulumi:"sshkeyReferenceCredentials"`
 }
 
@@ -36927,18 +38671,22 @@ func (o GetSecretSshkeySshOutput) ToGetSecretSshkeySshOutputWithContext(ctx cont
 	return o
 }
 
+// This specifies SSH credential type as Password, KeyPath or KeyReference
 func (o GetSecretSshkeySshOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySsh) string { return v.CredentialType }).(pulumi.StringOutput)
 }
 
+// SSH credential of type keyReference
 func (o GetSecretSshkeySshOutput) SshPasswordCredentials() GetSecretSshkeySshSshPasswordCredentialArrayOutput {
 	return o.ApplyT(func(v GetSecretSshkeySsh) []GetSecretSshkeySshSshPasswordCredential { return v.SshPasswordCredentials }).(GetSecretSshkeySshSshPasswordCredentialArrayOutput)
 }
 
+// SSH credential of type keyPath
 func (o GetSecretSshkeySshOutput) SshkeyPathCredentials() GetSecretSshkeySshSshkeyPathCredentialArrayOutput {
 	return o.ApplyT(func(v GetSecretSshkeySsh) []GetSecretSshkeySshSshkeyPathCredential { return v.SshkeyPathCredentials }).(GetSecretSshkeySshSshkeyPathCredentialArrayOutput)
 }
 
+// SSH credential of type keyReference
 func (o GetSecretSshkeySshOutput) SshkeyReferenceCredentials() GetSecretSshkeySshSshkeyReferenceCredentialArrayOutput {
 	return o.ApplyT(func(v GetSecretSshkeySsh) []GetSecretSshkeySshSshkeyReferenceCredential {
 		return v.SshkeyReferenceCredentials
@@ -36966,7 +38714,9 @@ func (o GetSecretSshkeySshArrayOutput) Index(i pulumi.IntInput) GetSecretSshkeyS
 }
 
 type GetSecretSshkeySshSshPasswordCredential struct {
+	// SSH Password.
 	Password string `pulumi:"password"`
+	// SSH Username.
 	UserName string `pulumi:"userName"`
 }
 
@@ -36982,7 +38732,9 @@ type GetSecretSshkeySshSshPasswordCredentialInput interface {
 }
 
 type GetSecretSshkeySshSshPasswordCredentialArgs struct {
+	// SSH Password.
 	Password pulumi.StringInput `pulumi:"password"`
+	// SSH Username.
 	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
@@ -37037,10 +38789,12 @@ func (o GetSecretSshkeySshSshPasswordCredentialOutput) ToGetSecretSshkeySshSshPa
 	return o
 }
 
+// SSH Password.
 func (o GetSecretSshkeySshSshPasswordCredentialOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshPasswordCredential) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o GetSecretSshkeySshSshPasswordCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshPasswordCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -37066,9 +38820,12 @@ func (o GetSecretSshkeySshSshPasswordCredentialArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetSecretSshkeySshSshkeyPathCredential struct {
+	// Encrypted Passphrase
 	EncryptedPassphrase string `pulumi:"encryptedPassphrase"`
-	KeyPath             string `pulumi:"keyPath"`
-	UserName            string `pulumi:"userName"`
+	// Path of the key file.
+	KeyPath string `pulumi:"keyPath"`
+	// SSH Username.
+	UserName string `pulumi:"userName"`
 }
 
 // GetSecretSshkeySshSshkeyPathCredentialInput is an input type that accepts GetSecretSshkeySshSshkeyPathCredentialArgs and GetSecretSshkeySshSshkeyPathCredentialOutput values.
@@ -37083,9 +38840,12 @@ type GetSecretSshkeySshSshkeyPathCredentialInput interface {
 }
 
 type GetSecretSshkeySshSshkeyPathCredentialArgs struct {
+	// Encrypted Passphrase
 	EncryptedPassphrase pulumi.StringInput `pulumi:"encryptedPassphrase"`
-	KeyPath             pulumi.StringInput `pulumi:"keyPath"`
-	UserName            pulumi.StringInput `pulumi:"userName"`
+	// Path of the key file.
+	KeyPath pulumi.StringInput `pulumi:"keyPath"`
+	// SSH Username.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetSecretSshkeySshSshkeyPathCredentialArgs) ElementType() reflect.Type {
@@ -37139,14 +38899,17 @@ func (o GetSecretSshkeySshSshkeyPathCredentialOutput) ToGetSecretSshkeySshSshkey
 	return o
 }
 
+// Encrypted Passphrase
 func (o GetSecretSshkeySshSshkeyPathCredentialOutput) EncryptedPassphrase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyPathCredential) string { return v.EncryptedPassphrase }).(pulumi.StringOutput)
 }
 
+// Path of the key file.
 func (o GetSecretSshkeySshSshkeyPathCredentialOutput) KeyPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyPathCredential) string { return v.KeyPath }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o GetSecretSshkeySshSshkeyPathCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyPathCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -37172,9 +38935,12 @@ func (o GetSecretSshkeySshSshkeyPathCredentialArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetSecretSshkeySshSshkeyReferenceCredential struct {
+	// Encrypted Passphrase
 	EncryptedAssphrase string `pulumi:"encryptedAssphrase"`
-	Key                string `pulumi:"key"`
-	UserName           string `pulumi:"userName"`
+	// SSH key.
+	Key string `pulumi:"key"`
+	// SSH Username.
+	UserName string `pulumi:"userName"`
 }
 
 // GetSecretSshkeySshSshkeyReferenceCredentialInput is an input type that accepts GetSecretSshkeySshSshkeyReferenceCredentialArgs and GetSecretSshkeySshSshkeyReferenceCredentialOutput values.
@@ -37189,9 +38955,12 @@ type GetSecretSshkeySshSshkeyReferenceCredentialInput interface {
 }
 
 type GetSecretSshkeySshSshkeyReferenceCredentialArgs struct {
+	// Encrypted Passphrase
 	EncryptedAssphrase pulumi.StringInput `pulumi:"encryptedAssphrase"`
-	Key                pulumi.StringInput `pulumi:"key"`
-	UserName           pulumi.StringInput `pulumi:"userName"`
+	// SSH key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// SSH Username.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (GetSecretSshkeySshSshkeyReferenceCredentialArgs) ElementType() reflect.Type {
@@ -37245,14 +39014,17 @@ func (o GetSecretSshkeySshSshkeyReferenceCredentialOutput) ToGetSecretSshkeySshS
 	return o
 }
 
+// Encrypted Passphrase
 func (o GetSecretSshkeySshSshkeyReferenceCredentialOutput) EncryptedAssphrase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyReferenceCredential) string { return v.EncryptedAssphrase }).(pulumi.StringOutput)
 }
 
+// SSH key.
 func (o GetSecretSshkeySshSshkeyReferenceCredentialOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyReferenceCredential) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// SSH Username.
 func (o GetSecretSshkeySshSshkeyReferenceCredentialOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretSshkeySshSshkeyReferenceCredential) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -37278,8 +39050,11 @@ func (o GetSecretSshkeySshSshkeyReferenceCredentialArrayOutput) Index(i pulumi.I
 }
 
 type GetServiceNowConnectorAuth struct {
-	Adfs              []GetServiceNowConnectorAuthAdf              `pulumi:"adfs"`
-	AuthType          string                                       `pulumi:"authType"`
+	// Authenticate using adfs client credentials with certificate.
+	Adfs []GetServiceNowConnectorAuthAdf `pulumi:"adfs"`
+	// Authentication types for Jira connector
+	AuthType string `pulumi:"authType"`
+	// Authenticate using username password.
 	UsernamePasswords []GetServiceNowConnectorAuthUsernamePassword `pulumi:"usernamePasswords"`
 }
 
@@ -37295,8 +39070,11 @@ type GetServiceNowConnectorAuthInput interface {
 }
 
 type GetServiceNowConnectorAuthArgs struct {
-	Adfs              GetServiceNowConnectorAuthAdfArrayInput              `pulumi:"adfs"`
-	AuthType          pulumi.StringInput                                   `pulumi:"authType"`
+	// Authenticate using adfs client credentials with certificate.
+	Adfs GetServiceNowConnectorAuthAdfArrayInput `pulumi:"adfs"`
+	// Authentication types for Jira connector
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using username password.
 	UsernamePasswords GetServiceNowConnectorAuthUsernamePasswordArrayInput `pulumi:"usernamePasswords"`
 }
 
@@ -37351,14 +39129,17 @@ func (o GetServiceNowConnectorAuthOutput) ToGetServiceNowConnectorAuthOutputWith
 	return o
 }
 
+// Authenticate using adfs client credentials with certificate.
 func (o GetServiceNowConnectorAuthOutput) Adfs() GetServiceNowConnectorAuthAdfArrayOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuth) []GetServiceNowConnectorAuthAdf { return v.Adfs }).(GetServiceNowConnectorAuthAdfArrayOutput)
 }
 
+// Authentication types for Jira connector
 func (o GetServiceNowConnectorAuthOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuth) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
+// Authenticate using username password.
 func (o GetServiceNowConnectorAuthOutput) UsernamePasswords() GetServiceNowConnectorAuthUsernamePasswordArrayOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuth) []GetServiceNowConnectorAuthUsernamePassword {
 		return v.UsernamePasswords
@@ -37386,11 +39167,16 @@ func (o GetServiceNowConnectorAuthArrayOutput) Index(i pulumi.IntInput) GetServi
 }
 
 type GetServiceNowConnectorAuthAdf struct {
-	AdfsUrl        string `pulumi:"adfsUrl"`
+	// asdf URL.
+	AdfsUrl string `pulumi:"adfsUrl"`
+	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef string `pulumi:"certificateRef"`
-	ClientIdRef    string `pulumi:"clientIdRef"`
-	PrivateKeyRef  string `pulumi:"privateKeyRef"`
-	ResourceIdRef  string `pulumi:"resourceIdRef"`
+	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef string `pulumi:"clientIdRef"`
+	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef string `pulumi:"privateKeyRef"`
+	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ResourceIdRef string `pulumi:"resourceIdRef"`
 }
 
 // GetServiceNowConnectorAuthAdfInput is an input type that accepts GetServiceNowConnectorAuthAdfArgs and GetServiceNowConnectorAuthAdfOutput values.
@@ -37405,11 +39191,16 @@ type GetServiceNowConnectorAuthAdfInput interface {
 }
 
 type GetServiceNowConnectorAuthAdfArgs struct {
-	AdfsUrl        pulumi.StringInput `pulumi:"adfsUrl"`
+	// asdf URL.
+	AdfsUrl pulumi.StringInput `pulumi:"adfsUrl"`
+	// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CertificateRef pulumi.StringInput `pulumi:"certificateRef"`
-	ClientIdRef    pulumi.StringInput `pulumi:"clientIdRef"`
-	PrivateKeyRef  pulumi.StringInput `pulumi:"privateKeyRef"`
-	ResourceIdRef  pulumi.StringInput `pulumi:"resourceIdRef"`
+	// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ClientIdRef pulumi.StringInput `pulumi:"clientIdRef"`
+	// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PrivateKeyRef pulumi.StringInput `pulumi:"privateKeyRef"`
+	// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ResourceIdRef pulumi.StringInput `pulumi:"resourceIdRef"`
 }
 
 func (GetServiceNowConnectorAuthAdfArgs) ElementType() reflect.Type {
@@ -37463,22 +39254,27 @@ func (o GetServiceNowConnectorAuthAdfOutput) ToGetServiceNowConnectorAuthAdfOutp
 	return o
 }
 
+// asdf URL.
 func (o GetServiceNowConnectorAuthAdfOutput) AdfsUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.AdfsUrl }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetServiceNowConnectorAuthAdfOutput) CertificateRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.CertificateRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetServiceNowConnectorAuthAdfOutput) ClientIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.ClientIdRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetServiceNowConnectorAuthAdfOutput) PrivateKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.PrivateKeyRef }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetServiceNowConnectorAuthAdfOutput) ResourceIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceNowConnectorAuthAdf) string { return v.ResourceIdRef }).(pulumi.StringOutput)
 }
@@ -37619,11 +39415,16 @@ func (o GetServiceNowConnectorAuthUsernamePasswordArrayOutput) Index(i pulumi.In
 }
 
 type GetSpotConnectorPermanentToken struct {
-	ApiTokenRef       string   `pulumi:"apiTokenRef"`
+	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApiTokenRef string `pulumi:"apiTokenRef"`
+	// Connect only using delegates with these tags.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	ExecuteOnDelegate bool     `pulumi:"executeOnDelegate"`
-	SpotAccountId     string   `pulumi:"spotAccountId"`
-	SpotAccountIdRef  string   `pulumi:"spotAccountIdRef"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
+	// Spot account id.
+	SpotAccountId string `pulumi:"spotAccountId"`
+	// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SpotAccountIdRef string `pulumi:"spotAccountIdRef"`
 }
 
 // GetSpotConnectorPermanentTokenInput is an input type that accepts GetSpotConnectorPermanentTokenArgs and GetSpotConnectorPermanentTokenOutput values.
@@ -37638,11 +39439,16 @@ type GetSpotConnectorPermanentTokenInput interface {
 }
 
 type GetSpotConnectorPermanentTokenArgs struct {
-	ApiTokenRef       pulumi.StringInput      `pulumi:"apiTokenRef"`
+	// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ApiTokenRef pulumi.StringInput `pulumi:"apiTokenRef"`
+	// Connect only using delegates with these tags.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	ExecuteOnDelegate pulumi.BoolInput        `pulumi:"executeOnDelegate"`
-	SpotAccountId     pulumi.StringInput      `pulumi:"spotAccountId"`
-	SpotAccountIdRef  pulumi.StringInput      `pulumi:"spotAccountIdRef"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolInput `pulumi:"executeOnDelegate"`
+	// Spot account id.
+	SpotAccountId pulumi.StringInput `pulumi:"spotAccountId"`
+	// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SpotAccountIdRef pulumi.StringInput `pulumi:"spotAccountIdRef"`
 }
 
 func (GetSpotConnectorPermanentTokenArgs) ElementType() reflect.Type {
@@ -37696,22 +39502,27 @@ func (o GetSpotConnectorPermanentTokenOutput) ToGetSpotConnectorPermanentTokenOu
 	return o
 }
 
+// Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetSpotConnectorPermanentTokenOutput) ApiTokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.ApiTokenRef }).(pulumi.StringOutput)
 }
 
+// Connect only using delegates with these tags.
 func (o GetSpotConnectorPermanentTokenOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSpotConnectorPermanentToken) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
+// Execute on delegate or not.
 func (o GetSpotConnectorPermanentTokenOutput) ExecuteOnDelegate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSpotConnectorPermanentToken) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
+// Spot account id.
 func (o GetSpotConnectorPermanentTokenOutput) SpotAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.SpotAccountId }).(pulumi.StringOutput)
 }
 
+// Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetSpotConnectorPermanentTokenOutput) SpotAccountIdRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpotConnectorPermanentToken) string { return v.SpotAccountIdRef }).(pulumi.StringOutput)
 }
@@ -37737,8 +39548,10 @@ func (o GetSpotConnectorPermanentTokenArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetTasConnectorCredential struct {
+	// Authenticate to Tas using manual details.
 	TasManualDetails []GetTasConnectorCredentialTasManualDetail `pulumi:"tasManualDetails"`
-	Type             string                                     `pulumi:"type"`
+	// Type can be ManualConfig.
+	Type string `pulumi:"type"`
 }
 
 // GetTasConnectorCredentialInput is an input type that accepts GetTasConnectorCredentialArgs and GetTasConnectorCredentialOutput values.
@@ -37753,8 +39566,10 @@ type GetTasConnectorCredentialInput interface {
 }
 
 type GetTasConnectorCredentialArgs struct {
+	// Authenticate to Tas using manual details.
 	TasManualDetails GetTasConnectorCredentialTasManualDetailArrayInput `pulumi:"tasManualDetails"`
-	Type             pulumi.StringInput                                 `pulumi:"type"`
+	// Type can be ManualConfig.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetTasConnectorCredentialArgs) ElementType() reflect.Type {
@@ -37808,12 +39623,14 @@ func (o GetTasConnectorCredentialOutput) ToGetTasConnectorCredentialOutputWithCo
 	return o
 }
 
+// Authenticate to Tas using manual details.
 func (o GetTasConnectorCredentialOutput) TasManualDetails() GetTasConnectorCredentialTasManualDetailArrayOutput {
 	return o.ApplyT(func(v GetTasConnectorCredential) []GetTasConnectorCredentialTasManualDetail {
 		return v.TasManualDetails
 	}).(GetTasConnectorCredentialTasManualDetailArrayOutput)
 }
 
+// Type can be ManualConfig.
 func (o GetTasConnectorCredentialOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTasConnectorCredential) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -37839,9 +39656,13 @@ func (o GetTasConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetTasCon
 }
 
 type GetTasConnectorCredentialTasManualDetail struct {
+	// URL of the Tas server.
 	EndpointUrl string `pulumi:"endpointUrl"`
+	// Reference of the secret for the password.
 	PasswordRef string `pulumi:"passwordRef"`
-	Username    string `pulumi:"username"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
 	UsernameRef string `pulumi:"usernameRef"`
 }
 
@@ -37857,9 +39678,13 @@ type GetTasConnectorCredentialTasManualDetailInput interface {
 }
 
 type GetTasConnectorCredentialTasManualDetailArgs struct {
+	// URL of the Tas server.
 	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
+	// Reference of the secret for the password.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
-	Username    pulumi.StringInput `pulumi:"username"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
 
@@ -37914,18 +39739,22 @@ func (o GetTasConnectorCredentialTasManualDetailOutput) ToGetTasConnectorCredent
 	return o
 }
 
+// URL of the Tas server.
 func (o GetTasConnectorCredentialTasManualDetailOutput) EndpointUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.EndpointUrl }).(pulumi.StringOutput)
 }
 
+// Reference of the secret for the password.
 func (o GetTasConnectorCredentialTasManualDetailOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Username to use for authentication.
 func (o GetTasConnectorCredentialTasManualDetailOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Reference to a secret containing the username to use for authentication.
 func (o GetTasConnectorCredentialTasManualDetailOutput) UsernameRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTasConnectorCredentialTasManualDetail) string { return v.UsernameRef }).(pulumi.StringOutput)
 }
@@ -37951,8 +39780,10 @@ func (o GetTasConnectorCredentialTasManualDetailArrayOutput) Index(i pulumi.IntI
 }
 
 type GetTemplateFiltersFilterProperty struct {
-	FilterType string   `pulumi:"filterType"`
-	Tags       []string `pulumi:"tags"`
+	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+	FilterType string `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetTemplateFiltersFilterPropertyInput is an input type that accepts GetTemplateFiltersFilterPropertyArgs and GetTemplateFiltersFilterPropertyOutput values.
@@ -37967,8 +39798,10 @@ type GetTemplateFiltersFilterPropertyInput interface {
 }
 
 type GetTemplateFiltersFilterPropertyArgs struct {
-	FilterType pulumi.StringInput      `pulumi:"filterType"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// Tags to associate with the resource. Tags should be in the form `name:value`.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetTemplateFiltersFilterPropertyArgs) ElementType() reflect.Type {
@@ -38022,10 +39855,12 @@ func (o GetTemplateFiltersFilterPropertyOutput) ToGetTemplateFiltersFilterProper
 	return o
 }
 
+// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, TemplateSetup, TemplateExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
 func (o GetTemplateFiltersFilterPropertyOutput) FilterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateFiltersFilterProperty) string { return v.FilterType }).(pulumi.StringOutput)
 }
 
+// Tags to associate with the resource. Tags should be in the form `name:value`.
 func (o GetTemplateFiltersFilterPropertyOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTemplateFiltersFilterProperty) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -38302,6 +40137,7 @@ func (o GetTemplateGitDetailsPtrOutput) RepoUrl() pulumi.StringPtrOutput {
 }
 
 type GetTerraformCloudConnectorCredential struct {
+	// API token credentials to use for authentication.
 	ApiTokens []GetTerraformCloudConnectorCredentialApiToken `pulumi:"apiTokens"`
 }
 
@@ -38317,6 +40153,7 @@ type GetTerraformCloudConnectorCredentialInput interface {
 }
 
 type GetTerraformCloudConnectorCredentialArgs struct {
+	// API token credentials to use for authentication.
 	ApiTokens GetTerraformCloudConnectorCredentialApiTokenArrayInput `pulumi:"apiTokens"`
 }
 
@@ -38371,6 +40208,7 @@ func (o GetTerraformCloudConnectorCredentialOutput) ToGetTerraformCloudConnector
 	return o
 }
 
+// API token credentials to use for authentication.
 func (o GetTerraformCloudConnectorCredentialOutput) ApiTokens() GetTerraformCloudConnectorCredentialApiTokenArrayOutput {
 	return o.ApplyT(func(v GetTerraformCloudConnectorCredential) []GetTerraformCloudConnectorCredentialApiToken {
 		return v.ApiTokens
@@ -38398,6 +40236,7 @@ func (o GetTerraformCloudConnectorCredentialArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetTerraformCloudConnectorCredentialApiToken struct {
+	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`
 }
 
@@ -38413,6 +40252,7 @@ type GetTerraformCloudConnectorCredentialApiTokenInput interface {
 }
 
 type GetTerraformCloudConnectorCredentialApiTokenArgs struct {
+	// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef pulumi.StringInput `pulumi:"apiTokenRef"`
 }
 
@@ -38467,6 +40307,7 @@ func (o GetTerraformCloudConnectorCredentialApiTokenOutput) ToGetTerraformCloudC
 	return o
 }
 
+// Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetTerraformCloudConnectorCredentialApiTokenOutput) ApiTokenRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTerraformCloudConnectorCredentialApiToken) string { return v.ApiTokenRef }).(pulumi.StringOutput)
 }
@@ -38634,8 +40475,10 @@ func (o GetUsergroupNotificationConfigArrayOutput) Index(i pulumi.IntInput) GetU
 }
 
 type GetVariablesSpec struct {
+	// FixedValue of the variable
 	FixedValue string `pulumi:"fixedValue"`
-	ValueType  string `pulumi:"valueType"`
+	// Type of Value of the Variable. For now only FIXED is supported
+	ValueType string `pulumi:"valueType"`
 }
 
 // GetVariablesSpecInput is an input type that accepts GetVariablesSpecArgs and GetVariablesSpecOutput values.
@@ -38650,8 +40493,10 @@ type GetVariablesSpecInput interface {
 }
 
 type GetVariablesSpecArgs struct {
+	// FixedValue of the variable
 	FixedValue pulumi.StringInput `pulumi:"fixedValue"`
-	ValueType  pulumi.StringInput `pulumi:"valueType"`
+	// Type of Value of the Variable. For now only FIXED is supported
+	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
 func (GetVariablesSpecArgs) ElementType() reflect.Type {
@@ -38705,10 +40550,12 @@ func (o GetVariablesSpecOutput) ToGetVariablesSpecOutputWithContext(ctx context.
 	return o
 }
 
+// FixedValue of the variable
 func (o GetVariablesSpecOutput) FixedValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVariablesSpec) string { return v.FixedValue }).(pulumi.StringOutput)
 }
 
+// Type of Value of the Variable. For now only FIXED is supported
 func (o GetVariablesSpecOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVariablesSpec) string { return v.ValueType }).(pulumi.StringOutput)
 }

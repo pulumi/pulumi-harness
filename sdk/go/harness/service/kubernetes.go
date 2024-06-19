@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,20 +21,23 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := harness.NewApplication(ctx, "exampleApplication", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = service.NewKubernetes(ctx, "exampleKubernetes", &service.KubernetesArgs{
-//				AppId:       exampleApplication.ID(),
+//			_, err = service.NewKubernetes(ctx, "example", &service.KubernetesArgs{
+//				AppId:       example.ID(),
+//				Name:        pulumi.String("k8s-svc"),
 //				HelmVersion: pulumi.String("V3"),
 //				Description: pulumi.String("Service for deploying Kubernetes manifests"),
 //				Variables: service.KubernetesVariableArray{
@@ -63,9 +67,7 @@ import (
 // # Import using the Harness application id and service id
 //
 // ```sh
-//
-//	$ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
-//
+// $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
 // ```
 type Kubernetes struct {
 	pulumi.CustomResourceState
@@ -92,7 +94,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Kubernetes
 	err := ctx.RegisterResource("harness:service/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {

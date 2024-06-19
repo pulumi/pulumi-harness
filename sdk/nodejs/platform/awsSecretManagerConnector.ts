@@ -9,48 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an AWS Secret Manager connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials assume_role
- * const test = new harness.platform.AwsSecretManagerConnector("test", {
- *     credentials: {
- *         assumeRole: {
- *             duration: 900,
- *             externalId: "externalid",
- *             roleArn: "somerolearn",
- *         },
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     region: "us-east-1",
- *     secretNamePrefix: "test",
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level aws secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
+ * $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
  * ```
  *
- *  Import org level aws secret manager connector
+ * Import org level aws secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level aws secret manager connector
+ * Import project level aws secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AwsSecretManagerConnector extends pulumi.CustomResource {

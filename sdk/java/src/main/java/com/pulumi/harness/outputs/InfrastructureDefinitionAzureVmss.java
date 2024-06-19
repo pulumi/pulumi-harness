@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,55 +143,77 @@ public final class InfrastructureDefinitionAzureVmss {
 
         @CustomType.Setter
         public Builder authType(String authType) {
-            this.authType = Objects.requireNonNull(authType);
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "authType");
+            }
+            this.authType = authType;
             return this;
         }
         @CustomType.Setter
         public Builder baseName(String baseName) {
-            this.baseName = Objects.requireNonNull(baseName);
+            if (baseName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "baseName");
+            }
+            this.baseName = baseName;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentType(String deploymentType) {
-            this.deploymentType = Objects.requireNonNull(deploymentType);
+            if (deploymentType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "deploymentType");
+            }
+            this.deploymentType = deploymentType;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionAttrsName(@Nullable String hostConnectionAttrsName) {
+
             this.hostConnectionAttrsName = hostConnectionAttrsName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptionId(String subscriptionId) {
-            this.subscriptionId = Objects.requireNonNull(subscriptionId);
+            if (subscriptionId == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "subscriptionId");
+            }
+            this.subscriptionId = subscriptionId;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAzureVmss", "username");
+            }
+            this.username = username;
             return this;
         }
         public InfrastructureDefinitionAzureVmss build() {
-            final var o = new InfrastructureDefinitionAzureVmss();
-            o.authType = authType;
-            o.baseName = baseName;
-            o.cloudProviderName = cloudProviderName;
-            o.deploymentType = deploymentType;
-            o.hostConnectionAttrsName = hostConnectionAttrsName;
-            o.resourceGroupName = resourceGroupName;
-            o.subscriptionId = subscriptionId;
-            o.username = username;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAzureVmss();
+            _resultValue.authType = authType;
+            _resultValue.baseName = baseName;
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.deploymentType = deploymentType;
+            _resultValue.hostConnectionAttrsName = hostConnectionAttrsName;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.subscriptionId = subscriptionId;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

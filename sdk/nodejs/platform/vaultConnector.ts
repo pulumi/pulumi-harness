@@ -11,58 +11,61 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const awsAuth = new harness.platform.VaultConnector("awsAuth", {
- *     accessType: "AWS_IAM",
+ * const awsAuth = new harness.platform.VaultConnector("aws_auth", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
  *     awsRegion: "aws_region",
  *     basePath: "base_path",
+ *     accessType: "AWS_IAM",
  *     "default": false,
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
+ *     xvaultAwsIamServerId: `account.${test.id}`,
  *     readOnly: true,
  *     renewalIntervalMinutes: 60,
  *     secretEngineManuallyConfigured: true,
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
- *     tags: ["foo:bar"],
+ *     vaultAwsIamRole: "vault_aws_iam_role",
  *     useAwsIam: true,
  *     useK8sAuth: false,
  *     useVaultAgent: false,
- *     vaultAwsIamRole: "vault_aws_iam_role",
+ *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
- *     xvaultAwsIamServerId: `account.${harness_platform_secret_text.test.id}`,
  * });
- * const appRole = new harness.platform.VaultConnector("appRole", {
- *     accessType: "APP_ROLE",
+ * const appRole = new harness.platform.VaultConnector("app_role", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
  *     appRoleId: "app_role_id",
  *     basePath: "base_path",
+ *     accessType: "APP_ROLE",
  *     "default": false,
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
+ *     secretId: `account.${test.id}`,
  *     readOnly: true,
- *     renewAppRoleToken: true,
  *     renewalIntervalMinutes: 60,
  *     secretEngineManuallyConfigured: true,
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
- *     secretId: `account.${harness_platform_secret_text.test.id}`,
- *     tags: ["foo:bar"],
  *     useAwsIam: false,
  *     useK8sAuth: false,
  *     useVaultAgent: false,
+ *     renewAppRoleToken: true,
+ *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
  * });
- * const k8sAuth = new harness.platform.VaultConnector("k8sAuth", {
- *     accessType: "K8s_AUTH",
- *     authToken: `account.${harness_platform_secret_text.test.id}`,
- *     basePath: "base_path",
- *     "default": false,
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
+ * const k8sAuth = new harness.platform.VaultConnector("k8s_auth", {
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     authToken: `account.${test.id}`,
+ *     basePath: "base_path",
+ *     accessType: "K8s_AUTH",
+ *     "default": false,
  *     k8sAuthEndpoint: "k8s_auth_endpoint",
  *     namespace: "namespace",
  *     readOnly: true,
@@ -71,49 +74,51 @@ import * as utilities from "../utilities";
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
  *     serviceAccountTokenPath: "service_account_token_path",
- *     tags: ["foo:bar"],
  *     useAwsIam: false,
  *     useK8sAuth: true,
  *     useVaultAgent: false,
- *     vaultAwsIamRole: "vault_aws_iam_role",
  *     vaultK8sAuthRole: "vault_k8s_auth_role",
+ *     vaultAwsIamRole: "vault_aws_iam_role",
+ *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
  * });
- * const vaultAgent = new harness.platform.VaultConnector("vaultAgent", {
- *     accessType: "VAULT_AGENT",
- *     authToken: `account.${harness_platform_secret_text.test.id}`,
- *     basePath: "base_path",
- *     "default": false,
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
+ * const vaultAgent = new harness.platform.VaultConnector("vault_agent", {
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     authToken: `account.${test.id}`,
+ *     basePath: "base_path",
+ *     accessType: "VAULT_AGENT",
+ *     "default": false,
  *     namespace: "namespace",
  *     readOnly: true,
  *     renewalIntervalMinutes: 10,
  *     secretEngineManuallyConfigured: true,
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
- *     sinkPath: "sink_path",
- *     tags: ["foo:bar"],
  *     useAwsIam: false,
  *     useK8sAuth: false,
  *     useVaultAgent: true,
+ *     sinkPath: "sink_path",
+ *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
  * });
  * const token = new harness.platform.VaultConnector("token", {
- *     accessType: "TOKEN",
- *     authToken: `account.${harness_platform_secret_text.test.id}`,
- *     basePath: "base_path",
- *     "default": false,
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     authToken: `account.${test.id}`,
+ *     basePath: "base_path",
+ *     accessType: "TOKEN",
+ *     "default": false,
  *     namespace: "namespace",
  *     readOnly: true,
  *     renewalIntervalMinutes: 10,
  *     secretEngineManuallyConfigured: true,
  *     secretEngineName: "secret_engine_name",
  *     secretEngineVersion: 2,
- *     tags: ["foo:bar"],
  *     useAwsIam: false,
  *     useK8sAuth: false,
  *     vaultUrl: "https://vault_url.com",
@@ -125,19 +130,19 @@ import * as utilities from "../utilities";
  * Import account level vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
+ * $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
  * ```
  *
- *  Import org level vault connector
+ * Import org level vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level vault connector
+ * Import project level vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class VaultConnector extends pulumi.CustomResource {

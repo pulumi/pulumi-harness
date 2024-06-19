@@ -13,21 +13,22 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const exampleEncryptedText = new harness.EncryptedText("exampleEncryptedText", {
+ * const example = new harness.EncryptedText("example", {
+ *     name: "example-secret",
  *     value: "foo",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
- * const exampleGitConnector = new harness.GitConnector("exampleGitConnector", {
+ * const exampleGitConnector = new harness.GitConnector("example", {
+ *     name: "example",
  *     url: "https://github.com/harness/terraform-provider-harness",
  *     branch: "master",
  *     generateWebhookUrl: true,
- *     passwordSecretId: exampleEncryptedText.id,
+ *     passwordSecretId: example.id,
  *     urlType: "REPO",
  *     username: "someuser",
  * });
@@ -38,7 +39,7 @@ import * as utilities from "./utilities";
  * Import using the Harness git connector id
  *
  * ```sh
- *  $ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
+ * $ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
  * ```
  */
 export class GitConnector extends pulumi.CustomResource {

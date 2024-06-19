@@ -4,6 +4,7 @@
 package com.pulumi.harness.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetYamlConfigPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetYamlConfigPlainArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetYamlConfigPlainArgs", "path");
+            }
             return $;
         }
     }

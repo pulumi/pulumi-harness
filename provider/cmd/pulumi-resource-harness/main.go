@@ -5,8 +5,8 @@ package main
 import (
 	_ "embed"
 
-	harness "github.com/lbrlabs/pulumi-harness/provider"
-	"github.com/lbrlabs/pulumi-harness/provider/pkg/version"
+	harness "github.com/pulumi/pulumi-harness/provider"
+	"github.com/pulumi/pulumi-harness/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 

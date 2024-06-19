@@ -11,14 +11,15 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.PagerdutyConnector("test", {
- *     apiTokenRef: "account.secret_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ *     apiTokenRef: "account.secret_id",
  * });
  * ```
  *
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  * Import account level pagerduty connector
  *
  * ```sh
- *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <connector_id>
+ * $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <connector_id>
  * ```
  *
- *  Import org level pagerduty connector
+ * Import org level pagerduty connector
  *
  * ```sh
- *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level pagerduty connector
+ * Import project level pagerduty connector
  *
  * ```sh
- *  $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class PagerdutyConnector extends pulumi.CustomResource {

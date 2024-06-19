@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,15 +23,17 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			devKubernetes, err := cloudprovider.NewKubernetes(ctx, "devKubernetes", &cloudprovider.KubernetesArgs{
+//			// Creating a Kubernetes infrastructure definition
+//			dev, err := cloudprovider.NewKubernetes(ctx, "dev", &cloudprovider.KubernetesArgs{
+//				Name: pulumi.String("k8s-dev"),
 //				Authentication: &cloudprovider.KubernetesAuthenticationArgs{
 //					DelegateSelectors: pulumi.StringArray{
 //						pulumi.String("k8s"),
@@ -40,24 +43,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := harness.NewApplication(ctx, "example", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			devEnvironment, err := harness.NewEnvironment(ctx, "devEnvironment", &harness.EnvironmentArgs{
+//			devEnvironment, err := harness.NewEnvironment(ctx, "dev", &harness.EnvironmentArgs{
+//				Name:  pulumi.String("dev"),
 //				AppId: example.ID(),
 //				Type:  pulumi.String("NON_PROD"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Creating a infrastructure of type KUBERNETES
 //			_, err = harness.NewInfrastructureDefinition(ctx, "k8s", &harness.InfrastructureDefinitionArgs{
+//				Name:              pulumi.String("k8s-eks-us-east-1"),
 //				AppId:             example.ID(),
 //				EnvId:             devEnvironment.ID(),
 //				CloudProviderType: pulumi.String("KUBERNETES_CLUSTER"),
 //				DeploymentType:    pulumi.String("KUBERNETES"),
 //				Kubernetes: &harness.InfrastructureDefinitionKubernetesArgs{
-//					CloudProviderName: devKubernetes.Name,
+//					CloudProviderName: dev.Name,
 //					Namespace:         pulumi.String("dev"),
 //					ReleaseName:       pulumi.String("${service.name}"),
 //				},
@@ -65,15 +73,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleYaml, err := harness.NewYamlConfig(ctx, "exampleYaml", &harness.YamlConfigArgs{
+//			// Creating a Deployment Template for CUSTOM infrastructure type
+//			exampleYaml, err := harness.NewYamlConfig(ctx, "example_yaml", &harness.YamlConfigArgs{
 //				Path: pulumi.String("Setup/Template Library/Example Folder/deployment_template.yaml"),
-//				Content: pulumi.String(fmt.Sprintf(`harnessApiVersion: '1.0'
+//				Content: pulumi.String(`harnessApiVersion: '1.0'
 //
 // type: CUSTOM_DEPLOYMENT_TYPE
 // fetchInstanceScript: |-
 //
 //	set -ex
-//	curl http://%v/%v > %v
+//	curl http://${url}/${file_name} > ${INSTANCE_OUTPUT_PATH}
 //
 // hostAttributes:
 //
@@ -83,13 +92,15 @@ import (
 // variables:
 // - name: url
 // - name: file_name
-// `, url, file_name, INSTANCE_OUTPUT_PATH)),
+// `),
 //
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Creating a infrastructure of type CUSTOM
 //			_, err = harness.NewInfrastructureDefinition(ctx, "custom", &harness.InfrastructureDefinitionArgs{
+//				Name:              pulumi.String("custom-infra"),
 //				AppId:             example.ID(),
 //				EnvId:             devEnvironment.ID(),
 //				CloudProviderType: pulumi.String("CUSTOM"),
@@ -125,9 +136,7 @@ import (
 // # Import using the Harness application id, environment id, and infrastructure definition id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
-//
+// $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
 // ```
 type InfrastructureDefinition struct {
 	pulumi.CustomResourceState
@@ -195,7 +204,7 @@ func NewInfrastructureDefinition(ctx *pulumi.Context,
 	if args.EnvId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InfrastructureDefinition
 	err := ctx.RegisterResource("harness:index/infrastructureDefinition:InfrastructureDefinition", name, args, &resource, opts...)
 	if err != nil {

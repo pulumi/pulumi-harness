@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,96 +29,101 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewKubernetesConnector(ctx, "clientKeyCert", &platform.KubernetesConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("description"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				ClientKeyCert: &platform.KubernetesConnectorClientKeyCertArgs{
+//					MasterUrl:              pulumi.String("https://kubernetes.example.com"),
 //					CaCertRef:              pulumi.String("account.TEST_k8ss_client_stuff"),
 //					ClientCertRef:          pulumi.String("account.test_k8s_client_cert"),
-//					ClientKeyAlgorithm:     pulumi.String("RSA"),
-//					ClientKeyPassphraseRef: pulumi.String("account.TEST_k8s_client_test"),
 //					ClientKeyRef:           pulumi.String("account.TEST_k8s_client_key"),
-//					MasterUrl:              pulumi.String("https://kubernetes.example.com"),
+//					ClientKeyPassphraseRef: pulumi.String("account.TEST_k8s_client_test"),
+//					ClientKeyAlgorithm:     pulumi.String("RSA"),
 //				},
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("description"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewKubernetesConnector(ctx, "usernamePassword", &platform.KubernetesConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("description"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("description"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				UsernamePassword: &platform.KubernetesConnectorUsernamePasswordArgs{
 //					MasterUrl:   pulumi.String("https://kubernetes.example.com"),
-//					PasswordRef: pulumi.String("account.TEST_k8s_client_test"),
 //					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.TEST_k8s_client_test"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewKubernetesConnector(ctx, "serviceAccount", &platform.KubernetesConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("description"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("description"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				ServiceAccount: &platform.KubernetesConnectorServiceAccountArgs{
 //					MasterUrl:              pulumi.String("https://kubernetes.example.com"),
 //					ServiceAccountTokenRef: pulumi.String("account.TEST_k8s_client_test"),
 //				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewKubernetesConnector(ctx, "openIDConnect", &platform.KubernetesConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("description"),
 //				Identifier:  pulumi.String("%[1]s"),
+//				Name:        pulumi.String("%[2]s"),
+//				Description: pulumi.String("description"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				OpenidConnect: &platform.KubernetesConnectorOpenidConnectArgs{
-//					ClientIdRef: pulumi.String("account.TEST_k8s_client_test"),
-//					IssuerUrl:   pulumi.String("https://oidc.example.com"),
 //					MasterUrl:   pulumi.String("https://kubernetes.example.com"),
+//					IssuerUrl:   pulumi.String("https://oidc.example.com"),
+//					UsernameRef: pulumi.String("account.TEST_k8s_client_test"),
+//					ClientIdRef: pulumi.String("account.TEST_k8s_client_test"),
 //					PasswordRef: pulumi.String("account.TEST_k8s_client_test"),
+//					SecretRef:   pulumi.String("account.TEST_k8s_client_test"),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("scope1"),
 //						pulumi.String("scope2"),
 //					},
-//					SecretRef:   pulumi.String("account.TEST_k8s_client_test"),
-//					UsernameRef: pulumi.String("account.TEST_k8s_client_test"),
 //				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewKubernetesConnector(ctx, "inheritFromDelegate", &platform.KubernetesConnectorArgs{
-//				Description: pulumi.String("description"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("description"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				InheritFromDelegate: &platform.KubernetesConnectorInheritFromDelegateArgs{
 //					DelegateSelectors: pulumi.StringArray{
 //						pulumi.String("harness-delegate"),
 //					},
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
@@ -134,25 +140,19 @@ import (
 // # Import account level kubernetes connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
-//
+// $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
 // ```
 //
-//	Import org level kubernetes connector
+// # Import org level kubernetes connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level kubernetes connector
+// # Import project level kubernetes connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type KubernetesConnector struct {
 	pulumi.CustomResourceState
@@ -193,7 +193,7 @@ func NewKubernetesConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesConnector
 	err := ctx.RegisterResource("harness:platform/kubernetesConnector:KubernetesConnector", name, args, &resource, opts...)
 	if err != nil {

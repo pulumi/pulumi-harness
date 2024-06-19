@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetGitConnectorCommitDetail;
 import java.lang.Boolean;
 import java.lang.String;
@@ -215,12 +216,18 @@ public final class GetGitConnectorResult {
 
         @CustomType.Setter
         public Builder branch(String branch) {
-            this.branch = Objects.requireNonNull(branch);
+            if (branch == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "branch");
+            }
+            this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder commitDetails(List<GetGitConnectorCommitDetail> commitDetails) {
-            this.commitDetails = Objects.requireNonNull(commitDetails);
+            if (commitDetails == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "commitDetails");
+            }
+            this.commitDetails = commitDetails;
             return this;
         }
         public Builder commitDetails(GetGitConnectorCommitDetail... commitDetails) {
@@ -228,12 +235,18 @@ public final class GetGitConnectorResult {
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder delegateSelectors(List<String> delegateSelectors) {
-            this.delegateSelectors = Objects.requireNonNull(delegateSelectors);
+            if (delegateSelectors == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "delegateSelectors");
+            }
+            this.delegateSelectors = delegateSelectors;
             return this;
         }
         public Builder delegateSelectors(String... delegateSelectors) {
@@ -241,65 +254,88 @@ public final class GetGitConnectorResult {
         }
         @CustomType.Setter
         public Builder generateWebhookUrl(Boolean generateWebhookUrl) {
-            this.generateWebhookUrl = Objects.requireNonNull(generateWebhookUrl);
+            if (generateWebhookUrl == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "generateWebhookUrl");
+            }
+            this.generateWebhookUrl = generateWebhookUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder passwordSecretId(String passwordSecretId) {
-            this.passwordSecretId = Objects.requireNonNull(passwordSecretId);
+            if (passwordSecretId == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "passwordSecretId");
+            }
+            this.passwordSecretId = passwordSecretId;
             return this;
         }
         @CustomType.Setter
         public Builder sshSettingId(String sshSettingId) {
-            this.sshSettingId = Objects.requireNonNull(sshSettingId);
+            if (sshSettingId == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "sshSettingId");
+            }
+            this.sshSettingId = sshSettingId;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder urlType(String urlType) {
-            this.urlType = Objects.requireNonNull(urlType);
+            if (urlType == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "urlType");
+            }
+            this.urlType = urlType;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder webhookUrl(String webhookUrl) {
-            this.webhookUrl = Objects.requireNonNull(webhookUrl);
+            if (webhookUrl == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorResult", "webhookUrl");
+            }
+            this.webhookUrl = webhookUrl;
             return this;
         }
         public GetGitConnectorResult build() {
-            final var o = new GetGitConnectorResult();
-            o.branch = branch;
-            o.commitDetails = commitDetails;
-            o.createdAt = createdAt;
-            o.delegateSelectors = delegateSelectors;
-            o.generateWebhookUrl = generateWebhookUrl;
-            o.id = id;
-            o.name = name;
-            o.passwordSecretId = passwordSecretId;
-            o.sshSettingId = sshSettingId;
-            o.url = url;
-            o.urlType = urlType;
-            o.username = username;
-            o.webhookUrl = webhookUrl;
-            return o;
+            final var _resultValue = new GetGitConnectorResult();
+            _resultValue.branch = branch;
+            _resultValue.commitDetails = commitDetails;
+            _resultValue.createdAt = createdAt;
+            _resultValue.delegateSelectors = delegateSelectors;
+            _resultValue.generateWebhookUrl = generateWebhookUrl;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.passwordSecretId = passwordSecretId;
+            _resultValue.sshSettingId = sshSettingId;
+            _resultValue.url = url;
+            _resultValue.urlType = urlType;
+            _resultValue.username = username;
+            _resultValue.webhookUrl = webhookUrl;
+            return _resultValue;
         }
     }
 }

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -839,30 +840,61 @@ import (
 //	  EOT
 //	}
 //
-// ## Import
+// ## Secrets Manager template
 //
-// # Import account level template
+//	resource "platform.Template" "secretsManagerTemplate" {
+//	  identifier    = "identifier"
+//	  orgId        = harness_platform_project.test.org_id
+//	  projectId    = harness_platform_project.test.id
+//	  name          = "name"
+//	  comments      = "comments"
+//	  version       = "ab"
+//	  isStable     = true
+//	  templateYaml = <<-EOT
+//
+// template:
+//
+//	  name: "name"
+//	  identifier: "identifier"
+//	  versionLabel: "ab"
+//	  type: SecretManager
+//	  projectIdentifier: ${harness_platform_project.test.id}
+//	  orgIdentifier: ${harness_platform_project.test.org_id}
+//	  tags: {}
+//	  spec:
+//	    executionTarget: {}
+//	    shell: Bash
+//	    onDelegate: true
+//	    source:
+//	      spec:
+//	        script: |-
+//	          curl -o secret.json -X GET https://example.com/<+secretManager.environmentVariables.enginename>/<+secretManager.environmentVariables.path> -H 'X-Vault-Token: <+secrets.getValue("vaultTokenOne")>'
+//	          secret=$(jq -r '.data."<+secretManager.environmentVariables.key>"' secret.json)
+//	        type: Inline
+//	    environmentVariables:
+//	      - name: enginename
+//	        type: String
+//	        value: <+input>
+//	      - name: path
+//	        type: String
+//	        value: <+input>
+//	      - name: key
+//	        type: String
+//	        value: <+input>
+//
+//	  EOT
+//	}
+//
+// # Import org level template
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/template:Template example <template_id>
-//
+// $ pulumi import harness:platform/template:Template example <ord_id>/<template_id>
 // ```
 //
-//	Import org level template
+// # Import project level template
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/template:Template example <ord_id>/<template_id>
-//
-// ```
-//
-//	Import project level template
-//
-// ```sh
-//
-//	$ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
-//
+// $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
 // ```
 type Template struct {
 	pulumi.CustomResourceState
@@ -911,7 +943,7 @@ func NewTemplate(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Template
 	err := ctx.RegisterResource("harness:platform/template:Template", name, args, &resource, opts...)
 	if err != nil {

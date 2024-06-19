@@ -8,76 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewAwsConnector(ctx, "aws", &platform.AwsConnectorArgs{
-//				Description: pulumi.String("description of aws connector"),
-//				FixedDelayBackoffStrategy: &platform.AwsConnectorFixedDelayBackoffStrategyArgs{
-//					FixedBackoff: pulumi.Int(10),
-//					RetryCount:   pulumi.Int(3),
-//				},
-//				Identifier: pulumi.String("example_aws_connector"),
-//				Manual: &platform.AwsConnectorManualArgs{
-//					AccessKeyRef: pulumi.String("account.access_id"),
-//					DelegateSelectors: pulumi.StringArray{
-//						pulumi.String("harness-delegate"),
-//					},
-//					SecretKeyRef: pulumi.String("account.secret_id"),
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level aws connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
-//
+// $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
 // ```
 //
-//	Import organization level aws connector
+// # Import organization level aws connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
 // ```
 //
-//	Import project level aws connector
+// # Import project level aws connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
 // ```
 type AwsConnector struct {
 	pulumi.CustomResourceState
@@ -120,7 +74,7 @@ func NewAwsConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsConnector
 	err := ctx.RegisterResource("harness:platform/awsConnector:AwsConnector", name, args, &resource, opts...)
 	if err != nil {

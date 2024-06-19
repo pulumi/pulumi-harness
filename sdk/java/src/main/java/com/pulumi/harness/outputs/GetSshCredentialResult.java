@@ -74,16 +74,19 @@ public final class GetSshCredentialResult {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder usageScopes(@Nullable List<GetSshCredentialUsageScope> usageScopes) {
+
             this.usageScopes = usageScopes;
             return this;
         }
@@ -91,11 +94,11 @@ public final class GetSshCredentialResult {
             return usageScopes(List.of(usageScopes));
         }
         public GetSshCredentialResult build() {
-            final var o = new GetSshCredentialResult();
-            o.id = id;
-            o.name = name;
-            o.usageScopes = usageScopes;
-            return o;
+            final var _resultValue = new GetSshCredentialResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.usageScopes = usageScopes;
+            return _resultValue;
         }
     }
 }

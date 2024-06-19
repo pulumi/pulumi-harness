@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,27 +29,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewSecretText(ctx, "inline", &platform.SecretTextArgs{
-//				Description:             pulumi.String("example"),
-//				Identifier:              pulumi.String("identifier"),
-//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Value:     pulumi.String("secret"),
-//				ValueType: pulumi.String("Inline"),
+//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
+//				ValueType:               pulumi.String("Inline"),
+//				Value:                   pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewSecretText(ctx, "reference", &platform.SecretTextArgs{
-//				Description:             pulumi.String("example"),
-//				Identifier:              pulumi.String("identifier"),
-//				SecretManagerIdentifier: pulumi.String("azureSecretManager"),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Value:     pulumi.String("secret"),
-//				ValueType: pulumi.String("Reference"),
+//				SecretManagerIdentifier: pulumi.String("azureSecretManager"),
+//				ValueType:               pulumi.String("Reference"),
+//				Value:                   pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,25 +67,19 @@ import (
 // # Import account level secret text
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
-//
+// $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
 // ```
 //
-//	Import org level secret text
+// # Import org level secret text
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
-//
+// $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
 // ```
 //
-//	Import project level secret text
+// # Import project level secret text
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
-//
+// $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
 // ```
 type SecretText struct {
 	pulumi.CustomResourceState
@@ -133,7 +130,7 @@ func NewSecretText(ctx *pulumi.Context,
 		"value",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretText
 	err := ctx.RegisterResource("harness:platform/secretText:SecretText", name, args, &resource, opts...)
 	if err != nil {

@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.PlatformCcmFiltersFilterPropertiesArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -299,9 +300,15 @@ public final class PlatformCcmFiltersArgs extends com.pulumi.resources.ResourceA
         }
 
         public PlatformCcmFiltersArgs build() {
-            $.filterProperties = Objects.requireNonNull($.filterProperties, "expected parameter 'filterProperties' to be non-null");
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.filterProperties == null) {
+                throw new MissingRequiredPropertyException("PlatformCcmFiltersArgs", "filterProperties");
+            }
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("PlatformCcmFiltersArgs", "identifier");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("PlatformCcmFiltersArgs", "type");
+            }
             return $;
         }
     }

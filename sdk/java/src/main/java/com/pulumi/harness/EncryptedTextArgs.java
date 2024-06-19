@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.EncryptedTextUsageScopeArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -311,7 +312,9 @@ public final class EncryptedTextArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EncryptedTextArgs build() {
-            $.secretManagerId = Objects.requireNonNull($.secretManagerId, "expected parameter 'secretManagerId' to be non-null");
+            if ($.secretManagerId == null) {
+                throw new MissingRequiredPropertyException("EncryptedTextArgs", "secretManagerId");
+            }
             return $;
         }
     }

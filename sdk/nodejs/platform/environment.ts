@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Environment("example", {
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     tags: [
@@ -22,50 +23,49 @@ import * as utilities from "../utilities";
  *         "baz",
  *     ],
  *     type: "PreProduction",
- *     yaml: `			   environment:
- *          name: name
- *          identifier: identifier
- *          orgIdentifier: org_id
- *          projectIdentifier: project_id
- *          type: PreProduction
- *          tags:
- *            foo: bar
- *            baz: ""
- *          variables:
- *            - name: envVar1
- *              type: String
- *              value: v1
- *              description: ""
- *            - name: envVar2
- *              type: String
- *              value: v2
- *              description: ""
- *          overrides:
- *            manifests:
- *              - manifest:
- *                  identifier: manifestEnv
- *                  type: Values
- *                  spec:
- *                    store:
- *                      type: Git
- *                      spec:
- *                        connectorRef: <+input>
- *                        gitFetchType: Branch
- *                        paths:
- *                          - file1
- *                        repoName: <+input>
- *                        branch: master
- *            configFiles:
- *              - configFile:
- *                  identifier: configFileEnv
- *                  spec:
- *                    store:
- *                      type: Harness
- *                      spec:
- *                        files:
- *                          - account:/Add-ons/svcOverrideTest
- *                        secretFiles: []
- *
+ *     yaml: `environment:
+ *    name: name
+ *    identifier: identifier
+ *    orgIdentifier: org_id
+ *    projectIdentifier: project_id
+ *    type: PreProduction
+ *    tags:
+ *      foo: bar
+ *      baz: ""
+ *    variables:
+ *      - name: envVar1
+ *        type: String
+ *        value: v1
+ *        description: ""
+ *      - name: envVar2
+ *        type: String
+ *        value: v2
+ *        description: ""
+ *    overrides:
+ *      manifests:
+ *        - manifest:
+ *            identifier: manifestEnv
+ *            type: Values
+ *            spec:
+ *              store:
+ *                type: Git
+ *                spec:
+ *                  connectorRef: <+input>
+ *                  gitFetchType: Branch
+ *                  paths:
+ *                    - file1
+ *                  repoName: <+input>
+ *                  branch: master
+ *      configFiles:
+ *        - configFile:
+ *            identifier: configFileEnv
+ *            spec:
+ *              store:
+ *                type: Harness
+ *                spec:
+ *                  files:
+ *                    - account:/Add-ons/svcOverrideTest
+ *                  secretFiles: []
  * `,
  * });
  * ```
@@ -75,19 +75,19 @@ import * as utilities from "../utilities";
  * Import account level environment id
  *
  * ```sh
- *  $ pulumi import harness:platform/environment:Environment example <environment_id>
+ * $ pulumi import harness:platform/environment:Environment example <environment_id>
  * ```
  *
- *  Import org level environment id
+ * Import org level environment id
  *
  * ```sh
- *  $ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
+ * $ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
  * ```
  *
- *  Import project level environment id
+ * Import project level environment id
  *
  * ```sh
- *  $ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
+ * $ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
  * ```
  */
 export class Environment extends pulumi.CustomResource {

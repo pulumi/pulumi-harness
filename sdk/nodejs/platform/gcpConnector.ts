@@ -9,41 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Gcp connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials inherit_from_delegate
- * const test = new harness.platform.GcpConnector("test", {
- *     description: "test",
- *     identifier: "identifier",
- *     inheritFromDelegates: [{
- *         delegateSelectors: ["harness-delegate"],
- *     }],
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level gcp connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
+ * $ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
  * ```
  *
- *  Import org level gcp connector
+ * Import org level gcp connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level gcp connector
+ * Import project level gcp connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class GcpConnector extends pulumi.CustomResource {

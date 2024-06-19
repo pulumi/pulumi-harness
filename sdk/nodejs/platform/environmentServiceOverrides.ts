@@ -11,45 +11,44 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.EnvironmentServiceOverrides("example", {
- *     envId: "environmentIdentifier",
  *     orgId: "orgIdentifier",
  *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
  *     serviceId: "serviceIdentifier",
- *     yaml: `        serviceOverrides:
- *           environmentRef: environmentIdentifier
- *           serviceRef: serviceIdentifier
- *           variables:
- *            - name: asda
- *              type: String
- *              value: asddad
- *           manifests:
- *              - manifest:
- *                  identifier: manifestEnv
- *                  type: Values
- *                  spec:
- *                    store:
- *                      type: Git
- *                      spec:
- *                        connectorRef: <+input>
- *                        gitFetchType: Branch
- *                        paths:
- *                          - file1
- *                        repoName: <+input>
- *                        branch: master
- *           configFiles:
- *              - configFile:
- *                  identifier: configFileEnv
- *                  spec:
- *                    store:
- *                      type: Harness
- *                      spec:
- *                        files:
- *                          - account:/Add-ons/svcOverrideTest
- *                        secretFiles: []
- *
+ *     yaml: `serviceOverrides:
+ *   environmentRef: environmentIdentifier
+ *   serviceRef: serviceIdentifier
+ *   variables:
+ *    - name: asda
+ *      type: String
+ *      value: asddad
+ *   manifests:
+ *      - manifest:
+ *          identifier: manifestEnv
+ *          type: Values
+ *          spec:
+ *            store:
+ *              type: Git
+ *              spec:
+ *                connectorRef: <+input>
+ *                gitFetchType: Branch
+ *                paths:
+ *                  - file1
+ *                repoName: <+input>
+ *                branch: master
+ *   configFiles:
+ *      - configFile:
+ *          identifier: configFileEnv
+ *          spec:
+ *            store:
+ *              type: Harness
+ *              spec:
+ *                files:
+ *                  - account:/Add-ons/svcOverrideTest
+ *                secretFiles: []
  * `,
  * });
  * ```
@@ -59,7 +58,7 @@ import * as utilities from "../utilities";
  * Import using serviceoverride id
  *
  * ```sh
- *  $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
  * ```
  */
 export class EnvironmentServiceOverrides extends pulumi.CustomResource {

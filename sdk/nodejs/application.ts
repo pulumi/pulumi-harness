@@ -11,9 +11,10 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const myapp = new harness.Application("myapp", {
+ *     name: "My Application",
  *     description: "This is my first Harness application",
  *     tags: [
  *         "mytag:myvalue",
@@ -27,7 +28,7 @@ import * as utilities from "./utilities";
  * Import using the Harness application id
  *
  * ```sh
- *  $ pulumi import harness:index/application:Application myapp Xyz123
+ * $ pulumi import harness:index/application:Application myapp Xyz123
  * ```
  */
 export class Application extends pulumi.CustomResource {

@@ -11,17 +11,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const tanzuPassword = new harness.EncryptedText("tanzuPassword", {
+ * const tanzuPassword = new harness.EncryptedText("tanzu_password", {
+ *     name: "tanzu_password",
  *     value: "<PASSWORD>",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
  * const example = new harness.cloudprovider.Tanzu("example", {
+ *     name: "example",
  *     endpoint: "https://endpoint.com",
  *     skipValidation: true,
  *     username: "<USERNAME>",
@@ -34,7 +35,7 @@ import * as utilities from "../utilities";
  * Import using the Harness Tanzu cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
+ * $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
  * ```
  */
 export class Tanzu extends pulumi.CustomResource {

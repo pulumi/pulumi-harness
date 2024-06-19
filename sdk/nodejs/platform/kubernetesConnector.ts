@@ -13,68 +13,73 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const clientKeyCert = new harness.platform.KubernetesConnector("clientKeyCert", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     clientKeyCert: {
+ *         masterUrl: "https://kubernetes.example.com",
  *         caCertRef: "account.TEST_k8ss_client_stuff",
  *         clientCertRef: "account.test_k8s_client_cert",
- *         clientKeyAlgorithm: "RSA",
- *         clientKeyPassphraseRef: "account.TEST_k8s_client_test",
  *         clientKeyRef: "account.TEST_k8s_client_key",
- *         masterUrl: "https://kubernetes.example.com",
+ *         clientKeyPassphraseRef: "account.TEST_k8s_client_test",
+ *         clientKeyAlgorithm: "RSA",
  *     },
  *     delegateSelectors: ["harness-delegate"],
- *     description: "description",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
  * });
  * const usernamePassword = new harness.platform.KubernetesConnector("usernamePassword", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "description",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
  *     tags: ["foo:bar"],
  *     usernamePassword: {
  *         masterUrl: "https://kubernetes.example.com",
- *         passwordRef: "account.TEST_k8s_client_test",
  *         username: "admin",
+ *         passwordRef: "account.TEST_k8s_client_test",
  *     },
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * const serviceAccount = new harness.platform.KubernetesConnector("serviceAccount", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "description",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     serviceAccount: {
  *         masterUrl: "https://kubernetes.example.com",
  *         serviceAccountTokenRef: "account.TEST_k8s_client_test",
  *     },
- *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * const openIDConnect = new harness.platform.KubernetesConnector("openIDConnect", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "description",
  *     identifier: "%[1]s",
+ *     name: "%[2]s",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     openidConnect: {
- *         clientIdRef: "account.TEST_k8s_client_test",
- *         issuerUrl: "https://oidc.example.com",
  *         masterUrl: "https://kubernetes.example.com",
+ *         issuerUrl: "https://oidc.example.com",
+ *         usernameRef: "account.TEST_k8s_client_test",
+ *         clientIdRef: "account.TEST_k8s_client_test",
  *         passwordRef: "account.TEST_k8s_client_test",
+ *         secretRef: "account.TEST_k8s_client_test",
  *         scopes: [
  *             "scope1",
  *             "scope2",
  *         ],
- *         secretRef: "account.TEST_k8s_client_test",
- *         usernameRef: "account.TEST_k8s_client_test",
  *     },
- *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * const inheritFromDelegate = new harness.platform.KubernetesConnector("inheritFromDelegate", {
- *     description: "description",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     inheritFromDelegate: {
  *         delegateSelectors: ["harness-delegate"],
  *     },
- *     tags: ["foo:bar"],
  * });
  * ```
  *
@@ -83,19 +88,19 @@ import * as utilities from "../utilities";
  * Import account level kubernetes connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
+ * $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <connector_id>
  * ```
  *
- *  Import org level kubernetes connector
+ * Import org level kubernetes connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level kubernetes connector
+ * Import project level kubernetes connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/kubernetesConnector:KubernetesConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class KubernetesConnector extends pulumi.CustomResource {

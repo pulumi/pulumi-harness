@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
 //				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
 //				Tags: pulumi.StringArray{
@@ -36,49 +38,49 @@ import (
 //					pulumi.String("baz"),
 //				},
 //				Type: pulumi.String("PreProduction"),
-//				Yaml: pulumi.String(`			   environment:
-//	         name: name
-//	         identifier: identifier
-//	         orgIdentifier: org_id
-//	         projectIdentifier: project_id
-//	         type: PreProduction
-//	         tags:
-//	           foo: bar
-//	           baz: ""
-//	         variables:
-//	           - name: envVar1
-//	             type: String
-//	             value: v1
-//	             description: ""
-//	           - name: envVar2
-//	             type: String
-//	             value: v2
-//	             description: ""
-//	         overrides:
-//	           manifests:
-//	             - manifest:
-//	                 identifier: manifestEnv
-//	                 type: Values
-//	                 spec:
-//	                   store:
-//	                     type: Git
-//	                     spec:
-//	                       connectorRef: <+input>
-//	                       gitFetchType: Branch
-//	                       paths:
-//	                         - file1
-//	                       repoName: <+input>
-//	                       branch: master
-//	           configFiles:
-//	             - configFile:
-//	                 identifier: configFileEnv
-//	                 spec:
-//	                   store:
-//	                     type: Harness
-//	                     spec:
-//	                       files:
-//	                         - account:/Add-ons/svcOverrideTest
-//	                       secretFiles: []
+//				Yaml: pulumi.String(`environment:
+//	   name: name
+//	   identifier: identifier
+//	   orgIdentifier: org_id
+//	   projectIdentifier: project_id
+//	   type: PreProduction
+//	   tags:
+//	     foo: bar
+//	     baz: ""
+//	   variables:
+//	     - name: envVar1
+//	       type: String
+//	       value: v1
+//	       description: ""
+//	     - name: envVar2
+//	       type: String
+//	       value: v2
+//	       description: ""
+//	   overrides:
+//	     manifests:
+//	       - manifest:
+//	           identifier: manifestEnv
+//	           type: Values
+//	           spec:
+//	             store:
+//	               type: Git
+//	               spec:
+//	                 connectorRef: <+input>
+//	                 gitFetchType: Branch
+//	                 paths:
+//	                   - file1
+//	                 repoName: <+input>
+//	                 branch: master
+//	     configFiles:
+//	       - configFile:
+//	           identifier: configFileEnv
+//	           spec:
+//	             store:
+//	               type: Harness
+//	               spec:
+//	                 files:
+//	                   - account:/Add-ons/svcOverrideTest
+//	                 secretFiles: []
 //
 // `),
 //
@@ -97,25 +99,19 @@ import (
 // # Import account level environment id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environment:Environment example <environment_id>
-//
+// $ pulumi import harness:platform/environment:Environment example <environment_id>
 // ```
 //
-//	Import org level environment id
+// # Import org level environment id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
-//
+// $ pulumi import harness:platform/environment:Environment example <org_id>/<environment_id>
 // ```
 //
-//	Import project level environment id
+// # Import project level environment id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
-//
+// $ pulumi import harness:platform/environment:Environment example <org_id>/<project_id>/<environment_id>
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
@@ -155,7 +151,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Environment
 	err := ctx.RegisterResource("harness:platform/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

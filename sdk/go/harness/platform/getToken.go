@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,12 +28,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupToken(ctx, &platform.LookupTokenArgs{
+//				Identifier: "test_token",
+//				ParentId:   "apikey_parent_id",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
 //				ApikeyId:   "apikey_id",
 //				ApikeyType: "USER",
-//				Identifier: "test_token",
-//				OrgId:      pulumi.StringRef("org_id"),
-//				ParentId:   "apikey_parent_id",
-//				ProjectId:  pulumi.StringRef("project_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -43,7 +44,7 @@ import (
 //
 // ```
 func LookupToken(ctx *pulumi.Context, args *LookupTokenArgs, opts ...pulumi.InvokeOption) (*LookupTokenResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTokenResult
 	err := ctx.Invoke("harness:platform/getToken:getToken", args, &rv, opts...)
 	if err != nil {

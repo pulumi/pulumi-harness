@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,20 +21,23 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := harness.NewApplication(ctx, "exampleApplication", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = service.NewLambda(ctx, "exampleLambda", &service.LambdaArgs{
-//				AppId:       exampleApplication.ID(),
+//			_, err = service.NewLambda(ctx, "example", &service.LambdaArgs{
+//				AppId:       example.ID(),
+//				Name:        pulumi.String("my-lambda-service"),
 //				Description: pulumi.String("Service for deploying AWS Lambda functions."),
 //			})
 //			if err != nil {
@@ -50,9 +54,7 @@ import (
 // # Import using the Harness application id and service id
 //
 // ```sh
-//
-//	$ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
-//
+// $ pulumi import harness:service/lambda:Lambda example <app_id>/<svc_id>
 // ```
 type Lambda struct {
 	pulumi.CustomResourceState
@@ -77,7 +79,7 @@ func NewLambda(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Lambda
 	err := ctx.RegisterResource("harness:service/lambda:Lambda", name, args, &resource, opts...)
 	if err != nil {

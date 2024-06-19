@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.SshCredentialSshAuthenticationInlineSsh;
 import com.pulumi.harness.outputs.SshCredentialSshAuthenticationServerPassword;
 import com.pulumi.harness.outputs.SshCredentialSshAuthenticationSshKeyFile;
@@ -104,37 +105,46 @@ public final class SshCredentialSshAuthentication {
 
         @CustomType.Setter
         public Builder inlineSsh(@Nullable SshCredentialSshAuthenticationInlineSsh inlineSsh) {
+
             this.inlineSsh = inlineSsh;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("SshCredentialSshAuthentication", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder serverPassword(@Nullable SshCredentialSshAuthenticationServerPassword serverPassword) {
+
             this.serverPassword = serverPassword;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyFile(@Nullable SshCredentialSshAuthenticationSshKeyFile sshKeyFile) {
+
             this.sshKeyFile = sshKeyFile;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("SshCredentialSshAuthentication", "username");
+            }
+            this.username = username;
             return this;
         }
         public SshCredentialSshAuthentication build() {
-            final var o = new SshCredentialSshAuthentication();
-            o.inlineSsh = inlineSsh;
-            o.port = port;
-            o.serverPassword = serverPassword;
-            o.sshKeyFile = sshKeyFile;
-            o.username = username;
-            return o;
+            final var _resultValue = new SshCredentialSshAuthentication();
+            _resultValue.inlineSsh = inlineSsh;
+            _resultValue.port = port;
+            _resultValue.serverPassword = serverPassword;
+            _resultValue.sshKeyFile = sshKeyFile;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

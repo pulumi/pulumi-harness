@@ -8,69 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a OCI Helm connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewOciHelmConnector(ctx, "test", &platform.OciHelmConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url: pulumi.String("admin.azurecr.io"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <connector_id>
-//
+// $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <connector_id>
 // ```
 //
-//	Import org level helm connector
+// # Import org level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level helm connector
+// # Import project level helm connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type OciHelmConnector struct {
 	pulumi.CustomResourceState
@@ -108,7 +69,7 @@ func NewOciHelmConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OciHelmConnector
 	err := ctx.RegisterResource("harness:platform/ociHelmConnector:OciHelmConnector", name, args, &resource, opts...)
 	if err != nil {

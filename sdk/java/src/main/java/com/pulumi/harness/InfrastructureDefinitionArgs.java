@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAwsAmiArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAwsEcsArgs;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAwsLambdaArgs;
@@ -840,10 +841,18 @@ public final class InfrastructureDefinitionArgs extends com.pulumi.resources.Res
         }
 
         public InfrastructureDefinitionArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.cloudProviderType = Objects.requireNonNull($.cloudProviderType, "expected parameter 'cloudProviderType' to be non-null");
-            $.deploymentType = Objects.requireNonNull($.deploymentType, "expected parameter 'deploymentType' to be non-null");
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionArgs", "appId");
+            }
+            if ($.cloudProviderType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionArgs", "cloudProviderType");
+            }
+            if ($.deploymentType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionArgs", "deploymentType");
+            }
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionArgs", "envId");
+            }
             return $;
         }
     }

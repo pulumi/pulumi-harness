@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
  * Resource for creating a Harness CCM Filters.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,40 +44,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new PlatformCcmFilters(&#34;test&#34;, PlatformCcmFiltersArgs.builder()        
+ *         var test = new PlatformCcmFilters("test", PlatformCcmFiltersArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .type("CCMRecommendation")
  *             .filterProperties(PlatformCcmFiltersFilterPropertiesArgs.builder()
- *                 .filterType(&#34;CCMRecommendation&#34;)
- *                 .tags(&#34;foo:bar&#34;)
+ *                 .tags("foo:bar")
+ *                 .filterType("CCMRecommendation")
  *                 .build())
- *             .filterVisibility(&#34;EveryOne&#34;)
- *             .identifier(&#34;identifier&#34;)
- *             .orgId(&#34;org_id&#34;)
- *             .projectId(&#34;project_id&#34;)
- *             .type(&#34;CCMRecommendation&#34;)
+ *             .filterVisibility("EveryOne")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import account level ccm filter
  * 
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;filter_id&gt;/&lt;type&gt;
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;filter_id&gt;/&lt;type&gt;
  * ```
  * 
- *  Import org level ccm filter
+ * Import org level ccm filter
  * 
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;ord_id&gt;/&lt;filter_id&gt;/&lt;type&gt;
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;ord_id&gt;/&lt;filter_id&gt;/&lt;type&gt;
  * ```
  * 
- *  Import project level ccm filter
+ * Import project level ccm filter
  * 
  * ```sh
- *  $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;org_id&gt;/&lt;project_id&gt;/&lt;filter_id&gt;/&lt;type&gt;
+ * $ pulumi import harness:index/platformCcmFilters:PlatformCcmFilters example &lt;org_id&gt;/&lt;project_id&gt;/&lt;filter_id&gt;/&lt;type&gt;
  * ```
  * 
  */

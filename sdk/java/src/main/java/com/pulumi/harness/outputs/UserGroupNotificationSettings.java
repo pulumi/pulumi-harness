@@ -116,6 +116,7 @@ public final class UserGroupNotificationSettings {
 
         @CustomType.Setter
         public Builder groupEmailAddresses(@Nullable List<String> groupEmailAddresses) {
+
             this.groupEmailAddresses = groupEmailAddresses;
             return this;
         }
@@ -124,38 +125,43 @@ public final class UserGroupNotificationSettings {
         }
         @CustomType.Setter
         public Builder microsoftTeamsWebhookUrl(@Nullable String microsoftTeamsWebhookUrl) {
+
             this.microsoftTeamsWebhookUrl = microsoftTeamsWebhookUrl;
             return this;
         }
         @CustomType.Setter
         public Builder sendMailToNewMembers(@Nullable Boolean sendMailToNewMembers) {
+
             this.sendMailToNewMembers = sendMailToNewMembers;
             return this;
         }
         @CustomType.Setter
         public Builder sendNotificationsToMembers(@Nullable Boolean sendNotificationsToMembers) {
+
             this.sendNotificationsToMembers = sendNotificationsToMembers;
             return this;
         }
         @CustomType.Setter
         public Builder slackChannel(@Nullable String slackChannel) {
+
             this.slackChannel = slackChannel;
             return this;
         }
         @CustomType.Setter
         public Builder slackWebhookUrl(@Nullable String slackWebhookUrl) {
+
             this.slackWebhookUrl = slackWebhookUrl;
             return this;
         }
         public UserGroupNotificationSettings build() {
-            final var o = new UserGroupNotificationSettings();
-            o.groupEmailAddresses = groupEmailAddresses;
-            o.microsoftTeamsWebhookUrl = microsoftTeamsWebhookUrl;
-            o.sendMailToNewMembers = sendMailToNewMembers;
-            o.sendNotificationsToMembers = sendNotificationsToMembers;
-            o.slackChannel = slackChannel;
-            o.slackWebhookUrl = slackWebhookUrl;
-            return o;
+            final var _resultValue = new UserGroupNotificationSettings();
+            _resultValue.groupEmailAddresses = groupEmailAddresses;
+            _resultValue.microsoftTeamsWebhookUrl = microsoftTeamsWebhookUrl;
+            _resultValue.sendMailToNewMembers = sendMailToNewMembers;
+            _resultValue.sendNotificationsToMembers = sendNotificationsToMembers;
+            _resultValue.slackChannel = slackChannel;
+            _resultValue.slackWebhookUrl = slackWebhookUrl;
+            return _resultValue;
         }
     }
 }

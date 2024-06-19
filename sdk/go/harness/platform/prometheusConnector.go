@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,25 +29,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPrometheusConnector(ctx, "example", &platform.PrometheusConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Headers: platform.PrometheusConnectorHeaderArray{
-//					&platform.PrometheusConnectorHeaderArgs{
-//						EncryptedValueRef: pulumi.String("account.secret_identifier"),
-//						Key:               pulumi.String("key"),
-//						Value:             pulumi.String("value"),
-//						ValueEncrypted:    pulumi.Bool(true),
-//					},
-//				},
 //				Identifier:  pulumi.String("idntifier"),
-//				PasswordRef: pulumi.String("account.secret_identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Url:      pulumi.String("https://prometheus.com/"),
-//				UserName: pulumi.String("user_name"),
+//				Url: pulumi.String("https://prometheus.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				UserName:    pulumi.String("user_name"),
+//				PasswordRef: pulumi.String("account.secret_identifier"),
+//				Headers: platform.PrometheusConnectorHeaderArray{
+//					&platform.PrometheusConnectorHeaderArgs{
+//						EncryptedValueRef: pulumi.String("account.secret_identifier"),
+//						ValueEncrypted:    pulumi.Bool(true),
+//						Key:               pulumi.String("key"),
+//						Value:             pulumi.String("value"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -62,25 +64,19 @@ import (
 // # Import account level prometheus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <connector_id>
-//
+// $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <connector_id>
 // ```
 //
-//	Import org level prometheus connector
+// # Import org level prometheus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level prometheus connector
+// # Import project level prometheus connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/prometheusConnector:PrometheusConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type PrometheusConnector struct {
 	pulumi.CustomResourceState
@@ -122,7 +118,7 @@ func NewPrometheusConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrometheusConnector
 	err := ctx.RegisterResource("harness:platform/prometheusConnector:PrometheusConnector", name, args, &resource, opts...)
 	if err != nil {

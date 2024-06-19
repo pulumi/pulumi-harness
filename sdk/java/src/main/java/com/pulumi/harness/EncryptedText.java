@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * Resource for creating an encrypted text secret
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,28 +52,33 @@ import javax.annotation.Nullable;
  *             .default_(true)
  *             .build());
  * 
- *         var example = new EncryptedText(&#34;example&#34;, EncryptedTextArgs.builder()        
- *             .value(&#34;someval&#34;)
+ *         var example = new EncryptedText("example", EncryptedTextArgs.builder()
+ *             .name("example-secret")
+ *             .value("someval")
  *             .secretManagerId(default_.id())
  *             .usageScopes(            
  *                 EncryptedTextUsageScopeArgs.builder()
- *                     .environmentFilterType(&#34;PRODUCTION_ENVIRONMENTS&#34;)
+ *                     .environmentFilterType("PRODUCTION_ENVIRONMENTS")
  *                     .build(),
  *                 EncryptedTextUsageScopeArgs.builder()
- *                     .environmentFilterType(&#34;NON_PRODUCTION_ENVIRONMENTS&#34;)
+ *                     .environmentFilterType("NON_PRODUCTION_ENVIRONMENTS")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
+ * Import using the Harness encrypted text format.
+ * 
+ * NOTE: The secret value cannot be decrypted and imported.
  * 
  * ```sh
- *  $ pulumi import harness:index/encryptedText:EncryptedText example &lt;secret_id&gt;
+ * $ pulumi import harness:index/encryptedText:EncryptedText example &lt;secret_id&gt;
  * ```
  * 
  */

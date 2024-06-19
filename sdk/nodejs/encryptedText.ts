@@ -13,13 +13,13 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
  * const example = new harness.EncryptedText("example", {
+ *     name: "example-secret",
  *     value: "someval",
  *     secretManagerId: _default.then(_default => _default.id),
  *     usageScopes: [
@@ -35,10 +35,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
+ * Import using the Harness encrypted text format.
+ *
+ * NOTE: The secret value cannot be decrypted and imported.
  *
  * ```sh
- *  $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
+ * $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
  * ```
  */
 export class EncryptedText extends pulumi.CustomResource {

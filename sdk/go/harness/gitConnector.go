@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,18 +34,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleEncryptedText, err := harness.NewEncryptedText(ctx, "exampleEncryptedText", &harness.EncryptedTextArgs{
+//			example, err := harness.NewEncryptedText(ctx, "example", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("example-secret"),
 //				Value:           pulumi.String("foo"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewGitConnector(ctx, "exampleGitConnector", &harness.GitConnectorArgs{
+//			_, err = harness.NewGitConnector(ctx, "example", &harness.GitConnectorArgs{
+//				Name:               pulumi.String("example"),
 //				Url:                pulumi.String("https://github.com/harness/terraform-provider-harness"),
 //				Branch:             pulumi.String("master"),
 //				GenerateWebhookUrl: pulumi.Bool(true),
-//				PasswordSecretId:   exampleEncryptedText.ID(),
+//				PasswordSecretId:   example.ID(),
 //				UrlType:            pulumi.String("REPO"),
 //				Username:           pulumi.String("someuser"),
 //			})
@@ -62,9 +65,7 @@ import (
 // # Import using the Harness git connector id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
-//
+// $ pulumi import harness:index/gitConnector:GitConnector example <connector_id>
 // ```
 type GitConnector struct {
 	pulumi.CustomResourceState
@@ -110,7 +111,7 @@ func NewGitConnector(ctx *pulumi.Context,
 	if args.UrlType == nil {
 		return nil, errors.New("invalid value for required argument 'UrlType'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitConnector
 	err := ctx.RegisterResource("harness:index/gitConnector:GitConnector", name, args, &resource, opts...)
 	if err != nil {

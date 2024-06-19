@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SshCredentialKerberosAuthenticationTgtGenerationMethod {
+    /**
+     * @return The id of the encrypted text secret
+     * 
+     */
     private @Nullable String kerberosPasswordId;
+    /**
+     * @return The path to the key tab file
+     * 
+     */
     private @Nullable String keyTabFilePath;
 
     private SshCredentialKerberosAuthenticationTgtGenerationMethod() {}
+    /**
+     * @return The id of the encrypted text secret
+     * 
+     */
     public Optional<String> kerberosPasswordId() {
         return Optional.ofNullable(this.kerberosPasswordId);
     }
+    /**
+     * @return The path to the key tab file
+     * 
+     */
     public Optional<String> keyTabFilePath() {
         return Optional.ofNullable(this.keyTabFilePath);
     }
@@ -42,19 +58,21 @@ public final class SshCredentialKerberosAuthenticationTgtGenerationMethod {
 
         @CustomType.Setter
         public Builder kerberosPasswordId(@Nullable String kerberosPasswordId) {
+
             this.kerberosPasswordId = kerberosPasswordId;
             return this;
         }
         @CustomType.Setter
         public Builder keyTabFilePath(@Nullable String keyTabFilePath) {
+
             this.keyTabFilePath = keyTabFilePath;
             return this;
         }
         public SshCredentialKerberosAuthenticationTgtGenerationMethod build() {
-            final var o = new SshCredentialKerberosAuthenticationTgtGenerationMethod();
-            o.kerberosPasswordId = kerberosPasswordId;
-            o.keyTabFilePath = keyTabFilePath;
-            return o;
+            final var _resultValue = new SshCredentialKerberosAuthenticationTgtGenerationMethod();
+            _resultValue.kerberosPasswordId = kerberosPasswordId;
+            _resultValue.keyTabFilePath = keyTabFilePath;
+            return _resultValue;
         }
     }
 }

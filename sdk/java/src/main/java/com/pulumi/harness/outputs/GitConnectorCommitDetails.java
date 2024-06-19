@@ -72,25 +72,28 @@ public final class GitConnectorCommitDetails {
 
         @CustomType.Setter
         public Builder authorEmailId(@Nullable String authorEmailId) {
+
             this.authorEmailId = authorEmailId;
             return this;
         }
         @CustomType.Setter
         public Builder authorName(@Nullable String authorName) {
+
             this.authorName = authorName;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         public GitConnectorCommitDetails build() {
-            final var o = new GitConnectorCommitDetails();
-            o.authorEmailId = authorEmailId;
-            o.authorName = authorName;
-            o.message = message;
-            return o;
+            final var _resultValue = new GitConnectorCommitDetails();
+            _resultValue.authorEmailId = authorEmailId;
+            _resultValue.authorName = authorName;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

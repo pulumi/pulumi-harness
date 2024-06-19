@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,14 +35,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			azureKey, err := harness.NewEncryptedText(ctx, "azureKey", &harness.EncryptedTextArgs{
+//			azureKey, err := harness.NewEncryptedText(ctx, "azure_key", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("azure_key"),
 //				Value:           pulumi.String("<AZURE_KEY>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudprovider.NewAzure(ctx, "azure", &cloudprovider.AzureArgs{
+//				Name:     pulumi.String("azure"),
 //				ClientId: pulumi.String("<AZURE_CLIENT_ID>"),
 //				TenantId: pulumi.String("<AZURE_TENANT_ID>"),
 //				Key:      azureKey.Name,
@@ -60,9 +63,7 @@ import (
 // Import using the Harness azure cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
 // ```
 type Azure struct {
 	pulumi.CustomResourceState
@@ -95,7 +96,7 @@ func NewAzure(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Azure
 	err := ctx.RegisterResource("harness:cloudprovider/azure:Azure", name, args, &resource, opts...)
 	if err != nil {

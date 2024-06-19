@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupUser(ctx, &platform.LookupUserArgs{
-//				Email:     "john.doe@harness.io",
 //				OrgId:     pulumi.StringRef("org_id"),
 //				ProjectId: pulumi.StringRef("project_id"),
+//				Email:     "john.doe@harness.io",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -40,7 +41,7 @@ import (
 //
 // ```
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
 	err := ctx.Invoke("harness:platform/getUser:getUser", args, &rv, opts...)
 	if err != nil {

@@ -13,28 +13,31 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  * import * as tls from "@pulumi/tls";
  *
- * const harnessDeployKey = new tls.PrivateKey("harnessDeployKey", {
+ * const harnessDeployKey = new tls.index.PrivateKey("harness_deploy_key", {
  *     algorithm: "RSA",
  *     rsaBits: 4096,
  * });
  * const secretManager = harness.getSecretManager({
  *     "default": true,
  * });
- * const mySecret = new harness.EncryptedText("mySecret", {
+ * const mySecret = new harness.EncryptedText("my_secret", {
+ *     name: "my_secret",
  *     value: harnessDeployKey.privateKeyPem,
  *     secretManagerId: secretManager.then(secretManager => secretManager.id),
  * });
- * const sshCreds = new harness.SshCredential("sshCreds", {sshAuthentication: {
- *     port: 22,
- *     username: "git",
- *     inlineSsh: {
- *         sshKeyFileId: mySecret.id,
+ * const sshCreds = new harness.SshCredential("ssh_creds", {
+ *     name: "ssh-test",
+ *     sshAuthentication: {
+ *         port: 22,
+ *         username: "git",
+ *         inlineSsh: {
+ *             sshKeyFileId: mySecret.id,
+ *         },
  *     },
- * }});
+ * });
  * ```
  *
  * ## Import
@@ -42,7 +45,7 @@ import * as utilities from "./utilities";
  * Import using the Harness ssh credential id
  *
  * ```sh
- *  $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
+ * $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
  * ```
  */
 export class SshCredential extends pulumi.CustomResource {

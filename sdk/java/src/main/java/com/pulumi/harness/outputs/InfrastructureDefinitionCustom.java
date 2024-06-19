@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.InfrastructureDefinitionCustomVariable;
 import java.lang.String;
 import java.util.List;
@@ -59,11 +60,15 @@ public final class InfrastructureDefinitionCustom {
 
         @CustomType.Setter
         public Builder deploymentTypeTemplateVersion(String deploymentTypeTemplateVersion) {
-            this.deploymentTypeTemplateVersion = Objects.requireNonNull(deploymentTypeTemplateVersion);
+            if (deploymentTypeTemplateVersion == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionCustom", "deploymentTypeTemplateVersion");
+            }
+            this.deploymentTypeTemplateVersion = deploymentTypeTemplateVersion;
             return this;
         }
         @CustomType.Setter
         public Builder variables(@Nullable List<InfrastructureDefinitionCustomVariable> variables) {
+
             this.variables = variables;
             return this;
         }
@@ -71,10 +76,10 @@ public final class InfrastructureDefinitionCustom {
             return variables(List.of(variables));
         }
         public InfrastructureDefinitionCustom build() {
-            final var o = new InfrastructureDefinitionCustom();
-            o.deploymentTypeTemplateVersion = deploymentTypeTemplateVersion;
-            o.variables = variables;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionCustom();
+            _resultValue.deploymentTypeTemplateVersion = deploymentTypeTemplateVersion;
+            _resultValue.variables = variables;
+            return _resultValue;
         }
     }
 }

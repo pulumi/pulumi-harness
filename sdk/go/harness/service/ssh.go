@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,21 +21,24 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := harness.NewApplication(ctx, "exampleApplication", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = service.NewSsh(ctx, "exampleSsh", &service.SshArgs{
-//				AppId:        exampleApplication.ID(),
+//			_, err = service.NewSsh(ctx, "example", &service.SshArgs{
+//				AppId:        example.ID(),
 //				ArtifactType: pulumi.String("TAR"),
+//				Name:         pulumi.String("ssh-example"),
 //				Description:  pulumi.String("Service for deploying applications with SSH."),
 //			})
 //			if err != nil {
@@ -51,9 +55,7 @@ import (
 // # Import using the Harness application id and service id
 //
 // ```sh
-//
-//	$ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
-//
+// $ pulumi import harness:service/ssh:Ssh example <app_id>/<svc_id>
 // ```
 type Ssh struct {
 	pulumi.CustomResourceState
@@ -83,7 +85,7 @@ func NewSsh(ctx *pulumi.Context,
 	if args.ArtifactType == nil {
 		return nil, errors.New("invalid value for required argument 'ArtifactType'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ssh
 	err := ctx.RegisterResource("harness:service/ssh:Ssh", name, args, &resource, opts...)
 	if err != nil {

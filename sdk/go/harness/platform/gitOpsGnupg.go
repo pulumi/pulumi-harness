@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,17 +56,13 @@ import (
 // # Import a Account level Gitops Cluster
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
-//
+// $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
 // ```
 //
-//	Import a Project level Gitops Cluster
+// # Import a Project level Gitops Cluster
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
-//
+// $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
 // ```
 type GitOpsGnupg struct {
 	pulumi.CustomResourceState
@@ -100,7 +97,7 @@ func NewGitOpsGnupg(ctx *pulumi.Context,
 	if args.Requests == nil {
 		return nil, errors.New("invalid value for required argument 'Requests'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsGnupg
 	err := ctx.RegisterResource("harness:platform/gitOpsGnupg:GitOpsGnupg", name, args, &resource, opts...)
 	if err != nil {

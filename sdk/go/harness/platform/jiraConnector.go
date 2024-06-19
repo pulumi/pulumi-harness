@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,22 +29,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewJiraConnector(ctx, "test", &platform.JiraConnectorArgs{
-//				Auth: &platform.JiraConnectorAuthArgs{
-//					AuthType: pulumi.String("UsernamePassword"),
-//					UsernamePassword: &platform.JiraConnectorAuthUsernamePasswordArgs{
-//						PasswordRef: pulumi.String("account.secret_id"),
-//						Username:    pulumi.String("admin"),
-//					},
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				Url: pulumi.String("https://jira.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Auth: &platform.JiraConnectorAuthArgs{
+//					AuthType: pulumi.String("UsernamePassword"),
+//					UsernamePassword: &platform.JiraConnectorAuthUsernamePasswordArgs{
+//						Username:    pulumi.String("admin"),
+//						PasswordRef: pulumi.String("account.secret_id"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -59,25 +61,19 @@ import (
 // # Import account level jira connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
-//
+// $ pulumi import harness:platform/jiraConnector:JiraConnector example <connector_id>
 // ```
 //
-//	Import org level jira connector
+// # Import org level jira connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/jiraConnector:JiraConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level jira connector
+// # Import project level jira connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/jiraConnector:JiraConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type JiraConnector struct {
 	pulumi.CustomResourceState
@@ -124,7 +120,7 @@ func NewJiraConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource JiraConnector
 	err := ctx.RegisterResource("harness:platform/jiraConnector:JiraConnector", name, args, &resource, opts...)
 	if err != nil {

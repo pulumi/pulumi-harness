@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,14 +35,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			spotToken, err := harness.NewEncryptedText(ctx, "spotToken", &harness.EncryptedTextArgs{
-//				SecretManagerId: *pulumi.String(_default.Id),
+//			spotToken, err := harness.NewEncryptedText(ctx, "spot_token", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("spot_token"),
+//				SecretManagerId: pulumi.String(_default.Id),
 //				Value:           pulumi.String("<SPOT_TOKEN>"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudprovider.NewSpot(ctx, "example", &cloudprovider.SpotArgs{
+//				Name:            pulumi.String("example"),
 //				AccountId:       pulumi.String("<SPOT_ACCOUNT_ID>"),
 //				TokenSecretName: spotToken.Name,
 //			})
@@ -59,9 +62,7 @@ import (
 // Import using the Harness Spot cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/spot:Spot example <provider_id>
 // ```
 type Spot struct {
 	pulumi.CustomResourceState
@@ -87,7 +88,7 @@ func NewSpot(ctx *pulumi.Context,
 	if args.TokenSecretName == nil {
 		return nil, errors.New("invalid value for required argument 'TokenSecretName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Spot
 	err := ctx.RegisterResource("harness:cloudprovider/spot:Spot", name, args, &resource, opts...)
 	if err != nil {

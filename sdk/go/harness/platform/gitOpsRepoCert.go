@@ -8,19 +8,64 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness Gitops Repositories Certificates.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitOpsRepoCert(ctx, "example", &platform.GitOpsRepoCertArgs{
+//				Requests: platform.GitOpsRepoCertRequestArray{
+//					&platform.GitOpsRepoCertRequestArgs{
+//						Certificates: platform.GitOpsRepoCertRequestCertificateArray{
+//							&platform.GitOpsRepoCertRequestCertificateArgs{
+//								Metadatas: platform.GitOpsRepoCertRequestCertificateMetadataArray{
+//									nil,
+//								},
+//								Items: platform.GitOpsRepoCertRequestCertificateItemArray{
+//									&platform.GitOpsRepoCertRequestCertificateItemArgs{
+//										ServerName: pulumi.String("serverName"),
+//										CertType:   pulumi.String("https"),
+//										CertData:   pulumi.String("yourcertdata"),
+//									},
+//								},
+//							},
+//						},
+//						Upsert: pulumi.Bool(true),
+//					},
+//				},
+//				AccountId: pulumi.String("account_id"),
+//				AgentId:   pulumi.String("agent_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // # Import a Account level Gitops Repository Certificate
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
-//
+// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
 // ```
 type GitOpsRepoCert struct {
 	pulumi.CustomResourceState
@@ -53,7 +98,7 @@ func NewGitOpsRepoCert(ctx *pulumi.Context,
 	if args.Requests == nil {
 		return nil, errors.New("invalid value for required argument 'Requests'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsRepoCert
 	err := ctx.RegisterResource("harness:platform/gitOpsRepoCert:GitOpsRepoCert", name, args, &resource, opts...)
 	if err != nil {

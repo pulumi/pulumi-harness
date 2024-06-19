@@ -9,42 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Kubernetes cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `createBeforeDestroy = true` lifecycle setting.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- * import * as harness from "@pulumi/harness";
- *
- * const default = harness.getSecretManager({
- *     "default": true,
- * });
- * const username = new harness.EncryptedText("username", {
- *     value: "<USERNAME>",
- *     secretManagerId: _default.then(_default => _default.id),
- * });
- * const password = new harness.EncryptedText("password", {
- *     value: "<PASSWORD>",
- *     secretManagerId: _default.then(_default => _default.id),
- * });
- * const example = new harness.cloudprovider.Kubernetes("example", {
- *     skipValidation: true,
- *     authentication: {
- *         usernamePassword: {
- *             masterUrl: "https://localhost.com",
- *             usernameSecretName: username.name,
- *             passwordSecretName: password.name,
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Import using the Harness kubernetes cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
+ * $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
  * ```
  */
 export class Kubernetes extends pulumi.CustomResource {

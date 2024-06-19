@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.SshCredentialSshAuthenticationInlineSshArgs;
 import com.pulumi.harness.inputs.SshCredentialSshAuthenticationServerPasswordArgs;
 import com.pulumi.harness.inputs.SshCredentialSshAuthenticationSshKeyFileArgs;
@@ -228,8 +229,12 @@ public final class SshCredentialSshAuthenticationArgs extends com.pulumi.resourc
         }
 
         public SshCredentialSshAuthenticationArgs build() {
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationArgs", "port");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationArgs", "username");
+            }
             return $;
         }
     }

@@ -11,16 +11,17 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.DatadogConnector("test", {
- *     apiKeyRef: "account.secret_id",
- *     applicationKeyRef: "account.secret_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://datadog.com",
+ *     delegateSelectors: ["harness-delegate"],
+ *     applicationKeyRef: "account.secret_id",
+ *     apiKeyRef: "account.secret_id",
  * });
  * ```
  *
@@ -29,19 +30,19 @@ import * as utilities from "../utilities";
  * Import account level datadog connector
  *
  * ```sh
- *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <connector_id>
+ * $ pulumi import harness:platform/datadogConnector:DatadogConnector example <connector_id>
  * ```
  *
- *  Import org level datadog connector
+ * Import org level datadog connector
  *
  * ```sh
- *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/datadogConnector:DatadogConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level datadog connector
+ * Import project level datadog connector
  *
  * ```sh
- *  $ pulumi import harness:platform/datadogConnector:DatadogConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/datadogConnector:DatadogConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class DatadogConnector extends pulumi.CustomResource {

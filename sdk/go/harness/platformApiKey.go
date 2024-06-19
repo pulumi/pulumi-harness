@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,7 +56,7 @@ func NewPlatformApiKey(ctx *pulumi.Context,
 	if args.ParentId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PlatformApiKey
 	err := ctx.RegisterResource("harness:index/platformApiKey:PlatformApiKey", name, args, &resource, opts...)
 	if err != nil {

@@ -11,16 +11,15 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const exampleUser = harness.getUser({
  *     email: "testuser@example.com",
  * });
- * const admin = new harness.UserGroup("admin", {});
- * const exampleAddUserToGroups = new harness.AddUserToGroup("exampleAddUserToGroups", {
+ * const admin = new harness.UserGroup("admin", {name: "admin"});
+ * const exampleAddUserToGroups = new harness.AddUserToGroup("example_add_user_to_groups", {
  *     groupId: admin.id,
- *     userId: data.harness_user.test.id,
+ *     userId: test.id,
  * });
  * ```
  *
@@ -29,7 +28,7 @@ import * as utilities from "./utilities";
  * Import using the Harness user and user group id
  *
  * ```sh
- *  $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
+ * $ pulumi import harness:index/addUserToGroup:AddUserToGroup example_admin <user_id>/<group_id>
  * ```
  */
 export class AddUserToGroup extends pulumi.CustomResource {

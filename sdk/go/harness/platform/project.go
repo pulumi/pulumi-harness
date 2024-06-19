@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,9 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewProject(ctx, "test", &platform.ProjectArgs{
-//				Color:      pulumi.String("#0063F7"),
 //				Identifier: pulumi.String("testproject"),
+//				Name:       pulumi.String("Test Project"),
 //				OrgId:      pulumi.String("org_id"),
+//				Color:      pulumi.String("#0063F7"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,9 +48,7 @@ import (
 // # Import using the organization id and the project id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
-//
+// $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
 // ```
 type Project struct {
 	pulumi.CustomResourceState
@@ -82,7 +82,7 @@ func NewProject(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("harness:platform/project:Project", name, args, &resource, opts...)
 	if err != nil {

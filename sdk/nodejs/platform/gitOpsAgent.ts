@@ -13,18 +13,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.GitOpsAgent("example", {
- *     accountId: "account_id",
  *     identifier: "identifier",
- *     metadatas: [{
- *         highAvailability: true,
- *         namespace: "namespace",
- *     }],
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     name: "name",
  *     type: "MANAGED_ARGO_PROVIDER",
+ *     metadatas: [{
+ *         namespace: "namespace",
+ *         highAvailability: true,
+ *     }],
  * });
  * ```
  *
@@ -33,13 +34,13 @@ import * as utilities from "../utilities";
  * Import a Account level Gitops Agent
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
+ * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
  * ```
  *
- *  Import a Project level Gitops Agent
+ * Import a Project level Gitops Agent
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
+ * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<project_id>/<agent_id>
  * ```
  */
 export class GitOpsAgent extends pulumi.CustomResource {

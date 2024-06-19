@@ -9,46 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an AWS connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * const aws = new harness.platform.AwsConnector("aws", {
- *     description: "description of aws connector",
- *     fixedDelayBackoffStrategy: {
- *         fixedBackoff: 10,
- *         retryCount: 3,
- *     },
- *     identifier: "example_aws_connector",
- *     manual: {
- *         accessKeyRef: "account.access_id",
- *         delegateSelectors: ["harness-delegate"],
- *         secretKeyRef: "account.secret_id",
- *     },
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level aws connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
+ * $ pulumi import harness:platform/awsConnector:AwsConnector example <connector_id>
  * ```
  *
- *  Import organization level aws connector
+ * Import organization level aws connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
+ * $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<connector_id>
  * ```
  *
- *  Import project level aws connector
+ * Import project level aws connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/awsConnector:AwsConnector example <organization_id>/<project_id>/<connector_id>
  * ```
  */
 export class AwsConnector extends pulumi.CustomResource {

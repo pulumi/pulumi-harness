@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -40,7 +41,7 @@ import (
 //
 // ```
 func GetGitopsGnupg(ctx *pulumi.Context, args *GetGitopsGnupgArgs, opts ...pulumi.InvokeOption) (*GetGitopsGnupgResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsGnupgResult
 	err := ctx.Invoke("harness:platform/getGitopsGnupg:getGitopsGnupg", args, &rv, opts...)
 	if err != nil {

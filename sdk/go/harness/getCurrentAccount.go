@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving information about the current Harness account
 func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ...pulumi.InvokeOption) (*GetCurrentAccountResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentAccountResult
 	err := ctx.Invoke("harness:index/getCurrentAccount:getCurrentAccount", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AwsAssumeCrossAccountRole struct {
 	// If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
@@ -706,13 +709,20 @@ func (o KubernetesAuthenticationPtrOutput) UsernamePassword() KubernetesAuthenti
 }
 
 type KubernetesAuthenticationOidc struct {
-	ClientIdSecretName     string   `pulumi:"clientIdSecretName"`
-	ClientSecretSecretName *string  `pulumi:"clientSecretSecretName"`
-	IdentityProviderUrl    string   `pulumi:"identityProviderUrl"`
-	MasterUrl              string   `pulumi:"masterUrl"`
-	PasswordSecretName     string   `pulumi:"passwordSecretName"`
-	Scopes                 []string `pulumi:"scopes"`
-	Username               string   `pulumi:"username"`
+	// Name of the Harness secret containing the client ID for the cluster.
+	ClientIdSecretName string `pulumi:"clientIdSecretName"`
+	// Name of the Harness secret containing the client secret for the cluster.
+	ClientSecretSecretName *string `pulumi:"clientSecretSecretName"`
+	// URL of the identity provider to use.
+	IdentityProviderUrl string `pulumi:"identityProviderUrl"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the password for the cluster.
+	PasswordSecretName string `pulumi:"passwordSecretName"`
+	// Scopes to request from the identity provider.
+	Scopes []string `pulumi:"scopes"`
+	// Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
+	Username string `pulumi:"username"`
 }
 
 // KubernetesAuthenticationOidcInput is an input type that accepts KubernetesAuthenticationOidcArgs and KubernetesAuthenticationOidcOutput values.
@@ -727,13 +737,20 @@ type KubernetesAuthenticationOidcInput interface {
 }
 
 type KubernetesAuthenticationOidcArgs struct {
-	ClientIdSecretName     pulumi.StringInput      `pulumi:"clientIdSecretName"`
-	ClientSecretSecretName pulumi.StringPtrInput   `pulumi:"clientSecretSecretName"`
-	IdentityProviderUrl    pulumi.StringInput      `pulumi:"identityProviderUrl"`
-	MasterUrl              pulumi.StringInput      `pulumi:"masterUrl"`
-	PasswordSecretName     pulumi.StringInput      `pulumi:"passwordSecretName"`
-	Scopes                 pulumi.StringArrayInput `pulumi:"scopes"`
-	Username               pulumi.StringInput      `pulumi:"username"`
+	// Name of the Harness secret containing the client ID for the cluster.
+	ClientIdSecretName pulumi.StringInput `pulumi:"clientIdSecretName"`
+	// Name of the Harness secret containing the client secret for the cluster.
+	ClientSecretSecretName pulumi.StringPtrInput `pulumi:"clientSecretSecretName"`
+	// URL of the identity provider to use.
+	IdentityProviderUrl pulumi.StringInput `pulumi:"identityProviderUrl"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the password for the cluster.
+	PasswordSecretName pulumi.StringInput `pulumi:"passwordSecretName"`
+	// Scopes to request from the identity provider.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (KubernetesAuthenticationOidcArgs) ElementType() reflect.Type {
@@ -813,30 +830,37 @@ func (o KubernetesAuthenticationOidcOutput) ToKubernetesAuthenticationOidcPtrOut
 	}).(KubernetesAuthenticationOidcPtrOutput)
 }
 
+// Name of the Harness secret containing the client ID for the cluster.
 func (o KubernetesAuthenticationOidcOutput) ClientIdSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) string { return v.ClientIdSecretName }).(pulumi.StringOutput)
 }
 
+// Name of the Harness secret containing the client secret for the cluster.
 func (o KubernetesAuthenticationOidcOutput) ClientSecretSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) *string { return v.ClientSecretSecretName }).(pulumi.StringPtrOutput)
 }
 
+// URL of the identity provider to use.
 func (o KubernetesAuthenticationOidcOutput) IdentityProviderUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) string { return v.IdentityProviderUrl }).(pulumi.StringOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationOidcOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Name of the Harness secret containing the password for the cluster.
 func (o KubernetesAuthenticationOidcOutput) PasswordSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) string { return v.PasswordSecretName }).(pulumi.StringOutput)
 }
 
+// Scopes to request from the identity provider.
 func (o KubernetesAuthenticationOidcOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
 func (o KubernetesAuthenticationOidcOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationOidc) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -865,6 +889,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) Elem() KubernetesAuthenticationOi
 	}).(KubernetesAuthenticationOidcOutput)
 }
 
+// Name of the Harness secret containing the client ID for the cluster.
 func (o KubernetesAuthenticationOidcPtrOutput) ClientIdSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -874,6 +899,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) ClientIdSecretName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the client secret for the cluster.
 func (o KubernetesAuthenticationOidcPtrOutput) ClientSecretSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -883,6 +909,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) ClientSecretSecretName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// URL of the identity provider to use.
 func (o KubernetesAuthenticationOidcPtrOutput) IdentityProviderUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -892,6 +919,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) IdentityProviderUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationOidcPtrOutput) MasterUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -901,6 +929,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) MasterUrl() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the password for the cluster.
 func (o KubernetesAuthenticationOidcPtrOutput) PasswordSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -910,6 +939,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) PasswordSecretName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scopes to request from the identity provider.
 func (o KubernetesAuthenticationOidcPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) []string {
 		if v == nil {
@@ -919,6 +949,7 @@ func (o KubernetesAuthenticationOidcPtrOutput) Scopes() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
 func (o KubernetesAuthenticationOidcPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationOidc) *string {
 		if v == nil {
@@ -929,9 +960,12 @@ func (o KubernetesAuthenticationOidcPtrOutput) Username() pulumi.StringPtrOutput
 }
 
 type KubernetesAuthenticationServiceAccount struct {
-	CaCertificateSecretName       *string `pulumi:"caCertificateSecretName"`
-	MasterUrl                     string  `pulumi:"masterUrl"`
-	ServiceAccountTokenSecretName string  `pulumi:"serviceAccountTokenSecretName"`
+	// Name of the Harness secret containing the CA certificate for the cluster.
+	CaCertificateSecretName *string `pulumi:"caCertificateSecretName"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the service account token for the cluster.
+	ServiceAccountTokenSecretName string `pulumi:"serviceAccountTokenSecretName"`
 }
 
 // KubernetesAuthenticationServiceAccountInput is an input type that accepts KubernetesAuthenticationServiceAccountArgs and KubernetesAuthenticationServiceAccountOutput values.
@@ -946,9 +980,12 @@ type KubernetesAuthenticationServiceAccountInput interface {
 }
 
 type KubernetesAuthenticationServiceAccountArgs struct {
-	CaCertificateSecretName       pulumi.StringPtrInput `pulumi:"caCertificateSecretName"`
-	MasterUrl                     pulumi.StringInput    `pulumi:"masterUrl"`
-	ServiceAccountTokenSecretName pulumi.StringInput    `pulumi:"serviceAccountTokenSecretName"`
+	// Name of the Harness secret containing the CA certificate for the cluster.
+	CaCertificateSecretName pulumi.StringPtrInput `pulumi:"caCertificateSecretName"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the service account token for the cluster.
+	ServiceAccountTokenSecretName pulumi.StringInput `pulumi:"serviceAccountTokenSecretName"`
 }
 
 func (KubernetesAuthenticationServiceAccountArgs) ElementType() reflect.Type {
@@ -1028,14 +1065,17 @@ func (o KubernetesAuthenticationServiceAccountOutput) ToKubernetesAuthentication
 	}).(KubernetesAuthenticationServiceAccountPtrOutput)
 }
 
+// Name of the Harness secret containing the CA certificate for the cluster.
 func (o KubernetesAuthenticationServiceAccountOutput) CaCertificateSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationServiceAccount) *string { return v.CaCertificateSecretName }).(pulumi.StringPtrOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationServiceAccountOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationServiceAccount) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Name of the Harness secret containing the service account token for the cluster.
 func (o KubernetesAuthenticationServiceAccountOutput) ServiceAccountTokenSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationServiceAccount) string { return v.ServiceAccountTokenSecretName }).(pulumi.StringOutput)
 }
@@ -1064,6 +1104,7 @@ func (o KubernetesAuthenticationServiceAccountPtrOutput) Elem() KubernetesAuthen
 	}).(KubernetesAuthenticationServiceAccountOutput)
 }
 
+// Name of the Harness secret containing the CA certificate for the cluster.
 func (o KubernetesAuthenticationServiceAccountPtrOutput) CaCertificateSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationServiceAccount) *string {
 		if v == nil {
@@ -1073,6 +1114,7 @@ func (o KubernetesAuthenticationServiceAccountPtrOutput) CaCertificateSecretName
 	}).(pulumi.StringPtrOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationServiceAccountPtrOutput) MasterUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationServiceAccount) *string {
 		if v == nil {
@@ -1082,6 +1124,7 @@ func (o KubernetesAuthenticationServiceAccountPtrOutput) MasterUrl() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the service account token for the cluster.
 func (o KubernetesAuthenticationServiceAccountPtrOutput) ServiceAccountTokenSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationServiceAccount) *string {
 		if v == nil {
@@ -1092,9 +1135,13 @@ func (o KubernetesAuthenticationServiceAccountPtrOutput) ServiceAccountTokenSecr
 }
 
 type KubernetesAuthenticationUsernamePassword struct {
-	MasterUrl          string  `pulumi:"masterUrl"`
-	PasswordSecretName string  `pulumi:"passwordSecretName"`
-	Username           *string `pulumi:"username"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl string `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the password for the cluster.
+	PasswordSecretName string `pulumi:"passwordSecretName"`
+	// Username for authentication to the cluster
+	Username *string `pulumi:"username"`
+	// Name of the Harness secret containing the username for authentication to the cluster
 	UsernameSecretName *string `pulumi:"usernameSecretName"`
 }
 
@@ -1110,9 +1157,13 @@ type KubernetesAuthenticationUsernamePasswordInput interface {
 }
 
 type KubernetesAuthenticationUsernamePasswordArgs struct {
-	MasterUrl          pulumi.StringInput    `pulumi:"masterUrl"`
-	PasswordSecretName pulumi.StringInput    `pulumi:"passwordSecretName"`
-	Username           pulumi.StringPtrInput `pulumi:"username"`
+	// URL of the Kubernetes master to connect to.
+	MasterUrl pulumi.StringInput `pulumi:"masterUrl"`
+	// Name of the Harness secret containing the password for the cluster.
+	PasswordSecretName pulumi.StringInput `pulumi:"passwordSecretName"`
+	// Username for authentication to the cluster
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Name of the Harness secret containing the username for authentication to the cluster
 	UsernameSecretName pulumi.StringPtrInput `pulumi:"usernameSecretName"`
 }
 
@@ -1193,18 +1244,22 @@ func (o KubernetesAuthenticationUsernamePasswordOutput) ToKubernetesAuthenticati
 	}).(KubernetesAuthenticationUsernamePasswordPtrOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationUsernamePasswordOutput) MasterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationUsernamePassword) string { return v.MasterUrl }).(pulumi.StringOutput)
 }
 
+// Name of the Harness secret containing the password for the cluster.
 func (o KubernetesAuthenticationUsernamePasswordOutput) PasswordSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationUsernamePassword) string { return v.PasswordSecretName }).(pulumi.StringOutput)
 }
 
+// Username for authentication to the cluster
 func (o KubernetesAuthenticationUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the username for authentication to the cluster
 func (o KubernetesAuthenticationUsernamePasswordOutput) UsernameSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAuthenticationUsernamePassword) *string { return v.UsernameSecretName }).(pulumi.StringPtrOutput)
 }
@@ -1233,6 +1288,7 @@ func (o KubernetesAuthenticationUsernamePasswordPtrOutput) Elem() KubernetesAuth
 	}).(KubernetesAuthenticationUsernamePasswordOutput)
 }
 
+// URL of the Kubernetes master to connect to.
 func (o KubernetesAuthenticationUsernamePasswordPtrOutput) MasterUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationUsernamePassword) *string {
 		if v == nil {
@@ -1242,6 +1298,7 @@ func (o KubernetesAuthenticationUsernamePasswordPtrOutput) MasterUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the password for the cluster.
 func (o KubernetesAuthenticationUsernamePasswordPtrOutput) PasswordSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationUsernamePassword) *string {
 		if v == nil {
@@ -1251,6 +1308,7 @@ func (o KubernetesAuthenticationUsernamePasswordPtrOutput) PasswordSecretName() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username for authentication to the cluster
 func (o KubernetesAuthenticationUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationUsernamePassword) *string {
 		if v == nil {
@@ -1260,6 +1318,7 @@ func (o KubernetesAuthenticationUsernamePasswordPtrOutput) Username() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the Harness secret containing the username for authentication to the cluster
 func (o KubernetesAuthenticationUsernamePasswordPtrOutput) UsernameSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAuthenticationUsernamePassword) *string {
 		if v == nil {

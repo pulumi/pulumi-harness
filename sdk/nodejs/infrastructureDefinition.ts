@@ -13,37 +13,42 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * // Creating a Kubernetes infrastructure definition
- * const devKubernetes = new harness.cloudprovider.Kubernetes("devKubernetes", {authentication: {
- *     delegateSelectors: ["k8s"],
- * }});
- * const example = new harness.Application("example", {});
- * const devEnvironment = new harness.Environment("devEnvironment", {
+ * const dev = new harness.cloudprovider.Kubernetes("dev", {
+ *     name: "k8s-dev",
+ *     authentication: {
+ *         delegateSelectors: ["k8s"],
+ *     },
+ * });
+ * const example = new harness.Application("example", {name: "example"});
+ * const devEnvironment = new harness.Environment("dev", {
+ *     name: "dev",
  *     appId: example.id,
  *     type: "NON_PROD",
  * });
  * // Creating a infrastructure of type KUBERNETES
  * const k8s = new harness.InfrastructureDefinition("k8s", {
+ *     name: "k8s-eks-us-east-1",
  *     appId: example.id,
  *     envId: devEnvironment.id,
  *     cloudProviderType: "KUBERNETES_CLUSTER",
  *     deploymentType: "KUBERNETES",
  *     kubernetes: {
- *         cloudProviderName: devKubernetes.name,
+ *         cloudProviderName: dev.name,
  *         namespace: "dev",
  *         releaseName: "${service.name}",
  *     },
  * });
  * // Creating a Deployment Template for CUSTOM infrastructure type
- * const exampleYaml = new harness.YamlConfig("exampleYaml", {
+ * const exampleYaml = new harness.YamlConfig("example_yaml", {
  *     path: "Setup/Template Library/Example Folder/deployment_template.yaml",
  *     content: `harnessApiVersion: '1.0'
  * type: CUSTOM_DEPLOYMENT_TYPE
  * fetchInstanceScript: |-
  *   set -ex
- *   curl http://${url}/${file_name} > ${INSTANCE_OUTPUT_PATH}
+ *   curl http://\${url}/\${file_name} > \${INSTANCE_OUTPUT_PATH}
  * hostAttributes:
  *   hostname: host
  * hostObjectArrayPath: hosts
@@ -54,6 +59,7 @@ import * as utilities from "./utilities";
  * });
  * // Creating a infrastructure of type CUSTOM
  * const custom = new harness.InfrastructureDefinition("custom", {
+ *     name: "custom-infra",
  *     appId: example.id,
  *     envId: devEnvironment.id,
  *     cloudProviderType: "CUSTOM",
@@ -80,7 +86,7 @@ import * as utilities from "./utilities";
  * Import using the Harness application id, environment id, and infrastructure definition id
  *
  * ```sh
- *  $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
+ * $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example <app_id>/<env_id>/<infradef_id>
  * ```
  */
 export class InfrastructureDefinition extends pulumi.CustomResource {

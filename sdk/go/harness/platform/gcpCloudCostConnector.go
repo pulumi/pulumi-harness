@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,21 +29,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGcpCloudCostConnector(ctx, "test", &platform.GcpCloudCostConnectorArgs{
-//				BillingExportSpec: &platform.GcpCloudCostConnectorBillingExportSpecArgs{
-//					DataSetId: pulumi.String("data_set_id"),
-//					TableId:   pulumi.String("table_id"),
-//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				FeaturesEnableds: pulumi.StringArray{
 //					pulumi.String("BILLING"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("OPTIMIZATION"),
 //				},
 //				GcpProjectId:        pulumi.String("gcp_project_id"),
-//				Identifier:          pulumi.String("identifier"),
 //				ServiceAccountEmail: pulumi.String("service_account_email"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				BillingExportSpec: &platform.GcpCloudCostConnectorBillingExportSpecArgs{
+//					DataSetId: pulumi.String("data_set_id"),
+//					TableId:   pulumi.String("table_id"),
 //				},
 //			})
 //			if err != nil {
@@ -59,25 +61,19 @@ import (
 // # Import account level gcp cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <connector_id>
-//
+// $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <connector_id>
 // ```
 //
-//	Import org level gcp cloud cost connector
+// # Import org level gcp cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level gcp cloud cost connector
+// # Import project level gcp cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type GcpCloudCostConnector struct {
 	pulumi.CustomResourceState
@@ -123,7 +119,7 @@ func NewGcpCloudCostConnector(ctx *pulumi.Context,
 	if args.ServiceAccountEmail == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountEmail'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GcpCloudCostConnector
 	err := ctx.RegisterResource("harness:platform/gcpCloudCostConnector:GcpCloudCostConnector", name, args, &resource, opts...)
 	if err != nil {

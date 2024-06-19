@@ -8,73 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS KMS connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewAwsKmsConnector(ctx, "test", &platform.AwsKmsConnectorArgs{
-//				ArnRef: pulumi.String("account.secret_id"),
-//				Credentials: &platform.AwsKmsConnectorCredentialsArgs{
-//					InheritFromDelegate: pulumi.Bool(true),
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifer"),
-//				Region:      pulumi.String("us-east-1"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level awskms connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
-//
+// $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
 // ```
 //
-//	Import org level awskms connector
+// # Import org level awskms connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level awskms connector
+// # Import project level awskms connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AwsKmsConnector struct {
 	pulumi.CustomResourceState
@@ -120,7 +77,7 @@ func NewAwsKmsConnector(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsKmsConnector
 	err := ctx.RegisterResource("harness:platform/awsKmsConnector:AwsKmsConnector", name, args, &resource, opts...)
 	if err != nil {

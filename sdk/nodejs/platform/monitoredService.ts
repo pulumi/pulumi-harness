@@ -14,19 +14,19 @@ import * as utilities from "../utilities";
  * Import account level monitored_service
  *
  * ```sh
- *  $ pulumi import harness:platform/monitoredService:MonitoredService example <monitored_service_id>
+ * $ pulumi import harness:platform/monitoredService:MonitoredService example <monitored_service_id>
  * ```
  *
- *  Import organization level monitored_service
+ * Import organization level monitored_service
  *
  * ```sh
- *  $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<monitored_service_id>
+ * $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<monitored_service_id>
  * ```
  *
- *  Import project level monitored_service
+ * Import project level monitored_service
  *
  * ```sh
- *  $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
+ * $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
  * ```
  */
 export class MonitoredService extends pulumi.CustomResource {

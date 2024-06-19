@@ -22,7 +22,10 @@ import javax.annotation.Nullable;
  * Resource for creating a git connector
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,30 +54,34 @@ import javax.annotation.Nullable;
  *             .default_(true)
  *             .build());
  * 
- *         var exampleEncryptedText = new EncryptedText(&#34;exampleEncryptedText&#34;, EncryptedTextArgs.builder()        
- *             .value(&#34;foo&#34;)
+ *         var example = new EncryptedText("example", EncryptedTextArgs.builder()
+ *             .name("example-secret")
+ *             .value("foo")
  *             .secretManagerId(default_.id())
  *             .build());
  * 
- *         var exampleGitConnector = new GitConnector(&#34;exampleGitConnector&#34;, GitConnectorArgs.builder()        
- *             .url(&#34;https://github.com/harness/terraform-provider-harness&#34;)
- *             .branch(&#34;master&#34;)
+ *         var exampleGitConnector = new GitConnector("exampleGitConnector", GitConnectorArgs.builder()
+ *             .name("example")
+ *             .url("https://github.com/harness/terraform-provider-harness")
+ *             .branch("master")
  *             .generateWebhookUrl(true)
- *             .passwordSecretId(exampleEncryptedText.id())
- *             .urlType(&#34;REPO&#34;)
- *             .username(&#34;someuser&#34;)
+ *             .passwordSecretId(example.id())
+ *             .urlType("REPO")
+ *             .username("someuser")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness git connector id
  * 
  * ```sh
- *  $ pulumi import harness:index/gitConnector:GitConnector example &lt;connector_id&gt;
+ * $ pulumi import harness:index/gitConnector:GitConnector example &lt;connector_id&gt;
  * ```
  * 
  */

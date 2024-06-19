@@ -9,41 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Nexus connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials anonymous
- * const test = new harness.platform.NexusConnector("test", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://nexus.example.com",
- *     version: "version",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level nexus connector
  *
  * ```sh
- *  $ pulumi import harness:platform/nexusConnector:NexusConnector example <connector_id>
+ * $ pulumi import harness:platform/nexusConnector:NexusConnector example <connector_id>
  * ```
  *
- *  Import org level nexus connector
+ * Import org level nexus connector
  *
  * ```sh
- *  $ pulumi import harness:platform/nexusConnector:NexusConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/nexusConnector:NexusConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level nexus connector
+ * Import project level nexus connector
  *
  * ```sh
- *  $ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/nexusConnector:NexusConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class NexusConnector extends pulumi.CustomResource {

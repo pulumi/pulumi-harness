@@ -11,21 +11,20 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.EnvironmentGroup("example", {
- *     color: "#0063F7",
  *     identifier: "identifier",
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
- *     yaml: `  environmentGroup:
- *     name: "name"
- *     identifier: "identifier"
- *     description: "temp"
- *     orgIdentifier: "orgIdentifer"
- *     projectIdentifier: "projectIdentifier"
- *     envIdentifiers: []
- *
+ *     color: "#0063F7",
+ *     yaml: `environmentGroup:
+ *   name: "name"
+ *   identifier: "identifier"
+ *   description: "temp"
+ *   orgIdentifier: "orgIdentifer"
+ *   projectIdentifier: "projectIdentifier"
+ *   envIdentifiers: []
  * `,
  * });
  * ```
@@ -35,7 +34,7 @@ import * as utilities from "../utilities";
  * Import using the environment group id.
  *
  * ```sh
- *  $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
+ * $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
  * ```
  */
 export class EnvironmentGroup extends pulumi.CustomResource {
