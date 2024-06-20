@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,28 +29,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
-//				DeploymentType: pulumi.String("Kubernetes"),
-//				EnvId:          pulumi.String("environmentIdentifier"),
 //				Identifier:     pulumi.String("identifier"),
+//				Name:           pulumi.String("name"),
 //				OrgId:          pulumi.String("orgIdentifer"),
 //				ProjectId:      pulumi.String("projectIdentifier"),
+//				EnvId:          pulumi.String("environmentIdentifier"),
 //				Type:           pulumi.String("KubernetesDirect"),
-//				Yaml: pulumi.String(`  infrastructureDefinition:
-//	   name: name
-//	   identifier: identifier
-//	   description: ""
-//	   tags:
-//	     asda: ""
-//	   orgIdentifier: orgIdentifer
-//	   projectIdentifier: projectIdentifier
-//	   environmentRef: environmentIdentifier
-//	   deploymentType: Kubernetes
-//	   type: KubernetesDirect
-//	   spec:
-//	    connectorRef: account.gfgf
-//	    namespace: asdasdsa
-//	    releaseName: release-<+INFRA_KEY>
-//	    allowSimultaneousDeployments: false
+//				DeploymentType: pulumi.String("Kubernetes"),
+//				Yaml: pulumi.String(`infrastructureDefinition:
+//	 name: name
+//	 identifier: identifier
+//	 description: ""
+//	 tags:
+//	   asda: ""
+//	 orgIdentifier: orgIdentifer
+//	 projectIdentifier: projectIdentifier
+//	 environmentRef: environmentIdentifier
+//	 deploymentType: Kubernetes
+//	 type: KubernetesDirect
+//	 spec:
+//	  connectorRef: account.gfgf
+//	  namespace: asdasdsa
+//	  releaseName: release-<+INFRA_KEY>
+//	  allowSimultaneousDeployments: false
 //
 // `),
 //
@@ -68,25 +70,19 @@ import (
 // # Import account level infrastructure
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/infrastructure:Infrastructure example <env_id>/<infrastructure_id>
-//
+// $ pulumi import harness:platform/infrastructure:Infrastructure example <env_id>/<infrastructure_id>
 // ```
 //
-//	Import org level infrastructure
+// # Import org level infrastructure
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<env_id>/<infrastructure_id>
-//
+// $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<env_id>/<infrastructure_id>
 // ```
 //
-//	Import project level infrastructure
+// # Import project level infrastructure
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
-//
+// $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
 // ```
 type Infrastructure struct {
 	pulumi.CustomResourceState
@@ -134,7 +130,7 @@ func NewInfrastructure(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Infrastructure
 	err := ctx.RegisterResource("harness:platform/infrastructure:Infrastructure", name, args, &resource, opts...)
 	if err != nil {

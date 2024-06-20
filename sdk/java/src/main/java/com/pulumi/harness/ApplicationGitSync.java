@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
  * Resource for configuring application git sync.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -32,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.GitConnector;
  * import com.pulumi.harness.GitConnectorArgs;
  * import com.pulumi.harness.Application;
+ * import com.pulumi.harness.ApplicationArgs;
  * import com.pulumi.harness.ApplicationGitSync;
  * import com.pulumi.harness.ApplicationGitSyncArgs;
  * import java.util.List;
@@ -51,39 +55,45 @@ import javax.annotation.Nullable;
  *             .default_(true)
  *             .build());
  * 
- *         var githubToken = new EncryptedText(&#34;githubToken&#34;, EncryptedTextArgs.builder()        
- *             .value(&#34;&lt;TOKEN&gt;&#34;)
+ *         var githubToken = new EncryptedText("githubToken", EncryptedTextArgs.builder()
+ *             .name("github_token")
+ *             .value("<TOKEN>")
  *             .secretManagerId(default_.id())
  *             .build());
  * 
- *         var myrepo = new GitConnector(&#34;myrepo&#34;, GitConnectorArgs.builder()        
- *             .url(&#34;https://github.com/someorg/myrepo&#34;)
- *             .branch(&#34;main&#34;)
+ *         var myrepo = new GitConnector("myrepo", GitConnectorArgs.builder()
+ *             .name("myrepo")
+ *             .url("https://github.com/someorg/myrepo")
+ *             .branch("main")
  *             .generateWebhookUrl(true)
- *             .username(&#34;someuser&#34;)
+ *             .username("someuser")
  *             .passwordSecretId(githubToken.id())
- *             .urlType(&#34;REPO&#34;)
+ *             .urlType("REPO")
  *             .build());
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;);
+ *         var example = new Application("example", ApplicationArgs.builder()
+ *             .name("example-app")
+ *             .build());
  * 
- *         var exampleApplicationGitSync = new ApplicationGitSync(&#34;exampleApplicationGitSync&#34;, ApplicationGitSyncArgs.builder()        
- *             .appId(exampleApplication.id())
+ *         var exampleApplicationGitSync = new ApplicationGitSync("exampleApplicationGitSync", ApplicationGitSyncArgs.builder()
+ *             .appId(example.id())
  *             .connectorId(myrepo.id())
- *             .branch(&#34;main&#34;)
+ *             .branch("main")
  *             .enabled(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness application id
  * 
  * ```sh
- *  $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
+ * $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
  * ```
  * 
  */

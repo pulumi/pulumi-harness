@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetEncryptedTextUsageScope;
 import java.lang.String;
 import java.util.List;
@@ -88,21 +89,27 @@ public final class GetEncryptedTextResult {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secretManagerId(String secretManagerId) {
-            this.secretManagerId = Objects.requireNonNull(secretManagerId);
+            if (secretManagerId == null) {
+              throw new MissingRequiredPropertyException("GetEncryptedTextResult", "secretManagerId");
+            }
+            this.secretManagerId = secretManagerId;
             return this;
         }
         @CustomType.Setter
         public Builder usageScopes(@Nullable List<GetEncryptedTextUsageScope> usageScopes) {
+
             this.usageScopes = usageScopes;
             return this;
         }
@@ -110,12 +117,12 @@ public final class GetEncryptedTextResult {
             return usageScopes(List.of(usageScopes));
         }
         public GetEncryptedTextResult build() {
-            final var o = new GetEncryptedTextResult();
-            o.id = id;
-            o.name = name;
-            o.secretManagerId = secretManagerId;
-            o.usageScopes = usageScopes;
-            return o;
+            final var _resultValue = new GetEncryptedTextResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.secretManagerId = secretManagerId;
+            _resultValue.usageScopes = usageScopes;
+            return _resultValue;
         }
     }
 }

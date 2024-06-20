@@ -11,15 +11,16 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.DynatraceConnector("test", {
- *     apiTokenRef: "account.secret_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://dynatrace.com/",
+ *     delegateSelectors: ["harness-delegate"],
+ *     apiTokenRef: "account.secret_id",
  * });
  * ```
  *
@@ -28,19 +29,19 @@ import * as utilities from "../utilities";
  * Import account level dynatrace connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <connector_id>
+ * $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <connector_id>
  * ```
  *
- *  Import org level dynatrace connector
+ * Import org level dynatrace connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level dynatrace connector
+ * Import project level dynatrace connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/dynatraceConnector:DynatraceConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class DynatraceConnector extends pulumi.CustomResource {

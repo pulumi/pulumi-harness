@@ -9,31 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Spot connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * const spot = new harness.platform.SpotConnector("spot", {
- *     description: "description of spot connector",
- *     identifier: "example_spot_cloud_provider",
- *     permanentToken: {
- *         apiTokenRef: "account.TEST_spot_api_token",
- *         delegateSelectors: ["harness-delegate"],
- *         executeOnDelegate: false,
- *         spotAccountId: "<my-account-id>",
- *     },
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import using spot cloud provider connector id
  *
  * ```sh
- *  $ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
+ * $ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
  * ```
  */
 export class SpotConnector extends pulumi.CustomResource {

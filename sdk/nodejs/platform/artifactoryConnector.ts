@@ -13,15 +13,16 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * // Authentication mechanism as username and password
  * const example = new harness.platform.ArtifactoryConnector("example", {
  *     identifier: "identifier",
+ *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
- *     orgId: harness_platform_project.test.org_id,
- *     projectId: harness_platform_project.test.id,
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     projectId: testHarnessPlatformProject.id,
  *     url: "https://artifactory.example.com",
  *     delegateSelectors: ["harness-delegate"],
  *     credentials: {
@@ -32,10 +33,11 @@ import * as utilities from "../utilities";
  * // Authentication mechanism as anonymous
  * const test = new harness.platform.ArtifactoryConnector("test", {
  *     identifier: "identifier",
+ *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
- *     orgId: harness_platform_project.test.org_id,
- *     projectId: harness_platform_project.test.id,
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     projectId: testHarnessPlatformProject.id,
  *     url: "https://artifactory.example.com",
  *     delegateSelectors: ["harness-delegate"],
  * });
@@ -46,19 +48,19 @@ import * as utilities from "../utilities";
  * Import account level artifactory connector
  *
  * ```sh
- *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
+ * $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
  * ```
  *
- *  Import org level artifactory connector
+ * Import org level artifactory connector
  *
  * ```sh
- *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level artifactory connector
+ * Import project level artifactory connector
  *
  * ```sh
- *  $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class ArtifactoryConnector extends pulumi.CustomResource {

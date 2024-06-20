@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving a Harness input set.
 func LookupInputSet(ctx *pulumi.Context, args *LookupInputSetArgs, opts ...pulumi.InvokeOption) (*LookupInputSetResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInputSetResult
 	err := ctx.Invoke("harness:platform/getInputSet:getInputSet", args, &rv, opts...)
 	if err != nil {

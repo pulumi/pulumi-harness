@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,14 +21,15 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harness.NewUser(ctx, "johnDoe", &harness.UserArgs{
+//			_, err := harness.NewUser(ctx, "john_doe", &harness.UserArgs{
+//				Name:  pulumi.String("John Doe"),
 //				Email: pulumi.String("john.doe@example.com"),
 //			})
 //			if err != nil {
@@ -44,9 +46,7 @@ import (
 // # Import using the email address of the user
 //
 // ```sh
-//
-//	$ pulumi import harness:index/user:User john_doe john.doe@example.com
-//
+// $ pulumi import harness:index/user:User john_doe john.doe@example.com
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -79,7 +79,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("harness:index/user:User", name, args, &resource, opts...)
 	if err != nil {

@@ -13,18 +13,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.TemplateFilters("test", {
- *     filterProperties: {
- *         filterType: "Template",
- *         tags: ["foo:bar"],
- *     },
- *     filterVisibility: "EveryOne",
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "Template",
+ *     filterProperties: {
+ *         tags: ["foo:bar"],
+ *         filterType: "Template",
+ *     },
+ *     filterVisibility: "EveryOne",
  * });
  * ```
  *
@@ -33,19 +34,19 @@ import * as utilities from "../utilities";
  * Import account level template filter
  *
  * ```sh
- *  $ pulumi import harness:platform/templateFilters:TemplateFilters example <filter_id>/<type>
+ * $ pulumi import harness:platform/templateFilters:TemplateFilters example <filter_id>/<type>
  * ```
  *
- *  Import org level template filter
+ * Import org level template filter
  *
  * ```sh
- *  $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<filter_id>/<type>
+ * $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<filter_id>/<type>
  * ```
  *
- *  Import project level template filter
+ * Import project level template filter
  *
  * ```sh
- *  $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
+ * $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
  * ```
  */
 export class TemplateFilters extends pulumi.CustomResource {

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getEnvironmentServiceOverrides({
- *     envId: "environmentIdentifier",
  *     orgId: "orgIdentifier",
  *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
  *     serviceId: "serviceIdentifier",
  * });
  * ```
@@ -102,9 +102,9 @@ export interface GetEnvironmentServiceOverridesResult {
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getEnvironmentServiceOverrides({
- *     envId: "environmentIdentifier",
  *     orgId: "orgIdentifier",
  *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
  *     serviceId: "serviceIdentifier",
  * });
  * ```

@@ -11,17 +11,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const azureKey = new harness.EncryptedText("azureKey", {
+ * const azureKey = new harness.EncryptedText("azure_key", {
+ *     name: "azure_key",
  *     value: "<AZURE_KEY>",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
  * const azure = new harness.cloudprovider.Azure("azure", {
+ *     name: "azure",
  *     clientId: "<AZURE_CLIENT_ID>",
  *     tenantId: "<AZURE_TENANT_ID>",
  *     key: azureKey.name,
@@ -33,7 +34,7 @@ import * as utilities from "../utilities";
  * Import using the Harness azure cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
+ * $ pulumi import harness:cloudprovider/azure:Azure example <provider_id>
  * ```
  */
 export class Azure extends pulumi.CustomResource {

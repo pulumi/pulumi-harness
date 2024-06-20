@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupServiceOverridesV2(ctx *pulumi.Context, args *LookupServiceOverridesV2Args, opts ...pulumi.InvokeOption) (*LookupServiceOverridesV2Result, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceOverridesV2Result
 	err := ctx.Invoke("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args, &rv, opts...)
 	if err != nil {

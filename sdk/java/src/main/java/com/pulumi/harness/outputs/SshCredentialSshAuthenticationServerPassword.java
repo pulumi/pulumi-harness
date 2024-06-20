@@ -4,14 +4,23 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class SshCredentialSshAuthenticationServerPassword {
+    /**
+     * @return The id of the encrypted secret
+     * 
+     */
     private String passwordSecretId;
 
     private SshCredentialSshAuthenticationServerPassword() {}
+    /**
+     * @return The id of the encrypted secret
+     * 
+     */
     public String passwordSecretId() {
         return this.passwordSecretId;
     }
@@ -34,13 +43,16 @@ public final class SshCredentialSshAuthenticationServerPassword {
 
         @CustomType.Setter
         public Builder passwordSecretId(String passwordSecretId) {
-            this.passwordSecretId = Objects.requireNonNull(passwordSecretId);
+            if (passwordSecretId == null) {
+              throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationServerPassword", "passwordSecretId");
+            }
+            this.passwordSecretId = passwordSecretId;
             return this;
         }
         public SshCredentialSshAuthenticationServerPassword build() {
-            final var o = new SshCredentialSshAuthenticationServerPassword();
-            o.passwordSecretId = passwordSecretId;
-            return o;
+            final var _resultValue = new SshCredentialSshAuthenticationServerPassword();
+            _resultValue.passwordSecretId = passwordSecretId;
+            return _resultValue;
         }
     }
 }

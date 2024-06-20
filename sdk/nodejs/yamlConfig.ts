@@ -11,18 +11,17 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.YamlConfig("test", {
+ *     path: "Setup/Cloud Providers/Kubernetes.yaml",
  *     content: `harnessApiVersion: '1.0'
  * type: KUBERNETES_CLUSTER
  * delegateSelectors:
  * - k8s
  * skipValidation: true
  * useKubernetesDelegate: true
- *
  * `,
- *     path: "Setup/Cloud Providers/Kubernetes.yaml",
  * });
  * ```
  *
@@ -31,13 +30,13 @@ import * as utilities from "./utilities";
  * Importing a global config only using the yaml path
  *
  * ```sh
- *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
+ * $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
  * ```
  *
- *  Importing a service which requires both the application id and the yaml path.
+ * Importing a service which requires both the application id and the yaml path.
  *
  * ```sh
- *  $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
+ * $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
  * ```
  */
 export class YamlConfig extends pulumi.CustomResource {

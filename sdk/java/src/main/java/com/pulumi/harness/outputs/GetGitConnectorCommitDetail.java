@@ -4,22 +4,47 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetGitConnectorCommitDetail {
+    /**
+     * @return The email id of the author.
+     * 
+     */
     private String authorEmailId;
+    /**
+     * @return The name of the author.
+     * 
+     */
     private String authorName;
+    /**
+     * @return Commit message.
+     * 
+     */
     private String message;
 
     private GetGitConnectorCommitDetail() {}
+    /**
+     * @return The email id of the author.
+     * 
+     */
     public String authorEmailId() {
         return this.authorEmailId;
     }
+    /**
+     * @return The name of the author.
+     * 
+     */
     public String authorName() {
         return this.authorName;
     }
+    /**
+     * @return Commit message.
+     * 
+     */
     public String message() {
         return this.message;
     }
@@ -46,25 +71,34 @@ public final class GetGitConnectorCommitDetail {
 
         @CustomType.Setter
         public Builder authorEmailId(String authorEmailId) {
-            this.authorEmailId = Objects.requireNonNull(authorEmailId);
+            if (authorEmailId == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorCommitDetail", "authorEmailId");
+            }
+            this.authorEmailId = authorEmailId;
             return this;
         }
         @CustomType.Setter
         public Builder authorName(String authorName) {
-            this.authorName = Objects.requireNonNull(authorName);
+            if (authorName == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorCommitDetail", "authorName");
+            }
+            this.authorName = authorName;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetGitConnectorCommitDetail", "message");
+            }
+            this.message = message;
             return this;
         }
         public GetGitConnectorCommitDetail build() {
-            final var o = new GetGitConnectorCommitDetail();
-            o.authorEmailId = authorEmailId;
-            o.authorName = authorName;
-            o.message = message;
-            return o;
+            final var _resultValue = new GetGitConnectorCommitDetail();
+            _resultValue.authorEmailId = authorEmailId;
+            _resultValue.authorName = authorName;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

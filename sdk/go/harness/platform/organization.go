@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewOrganization(ctx, "this", &platform.OrganizationArgs{
-//				Description: pulumi.String("An example organization"),
 //				Identifier:  pulumi.String("MyOrg"),
+//				Name:        pulumi.String("My Otganization"),
+//				Description: pulumi.String("An example organization"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //					pulumi.String("baz:qux"),
@@ -49,9 +51,7 @@ import (
 // # Import using organization id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/organization:Organization example <organization_id>
-//
+// $ pulumi import harness:platform/organization:Organization example <organization_id>
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -76,7 +76,7 @@ func NewOrganization(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Organization
 	err := ctx.RegisterResource("harness:platform/organization:Organization", name, args, &resource, opts...)
 	if err != nil {

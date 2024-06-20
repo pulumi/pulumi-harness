@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,14 +34,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			githubToken, err := harness.NewEncryptedText(ctx, "githubToken", &harness.EncryptedTextArgs{
+//			githubToken, err := harness.NewEncryptedText(ctx, "github_token", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("github_token"),
 //				Value:           pulumi.String("<TOKEN>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myrepo, err := harness.NewGitConnector(ctx, "myrepo", &harness.GitConnectorArgs{
+//				Name:               pulumi.String("myrepo"),
 //				Url:                pulumi.String("https://github.com/someorg/myrepo"),
 //				Branch:             pulumi.String("main"),
 //				GenerateWebhookUrl: pulumi.Bool(true),
@@ -51,12 +54,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := harness.NewApplication(ctx, "exampleApplication", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example-app"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewApplicationGitSync(ctx, "exampleApplicationGitSync", &harness.ApplicationGitSyncArgs{
-//				AppId:       exampleApplication.ID(),
+//			_, err = harness.NewApplicationGitSync(ctx, "example", &harness.ApplicationGitSyncArgs{
+//				AppId:       example.ID(),
 //				ConnectorId: myrepo.ID(),
 //				Branch:      pulumi.String("main"),
 //				Enabled:     pulumi.Bool(false),
@@ -75,9 +80,7 @@ import (
 // # Import using the Harness application id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
-//
+// $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
 // ```
 type ApplicationGitSync struct {
 	pulumi.CustomResourceState
@@ -110,7 +113,7 @@ func NewApplicationGitSync(ctx *pulumi.Context,
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationGitSync
 	err := ctx.RegisterResource("harness:index/applicationGitSync:ApplicationGitSync", name, args, &resource, opts...)
 	if err != nil {

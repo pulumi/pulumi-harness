@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.InfrastructureDefinitionAwsSshTag;
 import java.lang.Integer;
 import java.lang.String;
@@ -173,46 +174,61 @@ public final class InfrastructureDefinitionAwsSsh {
 
         @CustomType.Setter
         public Builder autoscalingGroupName(@Nullable String autoscalingGroupName) {
+
             this.autoscalingGroupName = autoscalingGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSsh", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder desiredCapacity(@Nullable Integer desiredCapacity) {
+
             this.desiredCapacity = desiredCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionAttrsName(@Nullable String hostConnectionAttrsName) {
+
             this.hostConnectionAttrsName = hostConnectionAttrsName;
             return this;
         }
         @CustomType.Setter
         public Builder hostConnectionType(String hostConnectionType) {
-            this.hostConnectionType = Objects.requireNonNull(hostConnectionType);
+            if (hostConnectionType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSsh", "hostConnectionType");
+            }
+            this.hostConnectionType = hostConnectionType;
             return this;
         }
         @CustomType.Setter
         public Builder hostnameConvention(@Nullable String hostnameConvention) {
+
             this.hostnameConvention = hostnameConvention;
             return this;
         }
         @CustomType.Setter
         public Builder loadbalancerName(@Nullable String loadbalancerName) {
+
             this.loadbalancerName = loadbalancerName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSsh", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<InfrastructureDefinitionAwsSshTag> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -221,6 +237,7 @@ public final class InfrastructureDefinitionAwsSsh {
         }
         @CustomType.Setter
         public Builder vpcIds(@Nullable List<String> vpcIds) {
+
             this.vpcIds = vpcIds;
             return this;
         }
@@ -228,18 +245,18 @@ public final class InfrastructureDefinitionAwsSsh {
             return vpcIds(List.of(vpcIds));
         }
         public InfrastructureDefinitionAwsSsh build() {
-            final var o = new InfrastructureDefinitionAwsSsh();
-            o.autoscalingGroupName = autoscalingGroupName;
-            o.cloudProviderName = cloudProviderName;
-            o.desiredCapacity = desiredCapacity;
-            o.hostConnectionAttrsName = hostConnectionAttrsName;
-            o.hostConnectionType = hostConnectionType;
-            o.hostnameConvention = hostnameConvention;
-            o.loadbalancerName = loadbalancerName;
-            o.region = region;
-            o.tags = tags;
-            o.vpcIds = vpcIds;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsSsh();
+            _resultValue.autoscalingGroupName = autoscalingGroupName;
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.desiredCapacity = desiredCapacity;
+            _resultValue.hostConnectionAttrsName = hostConnectionAttrsName;
+            _resultValue.hostConnectionType = hostConnectionType;
+            _resultValue.hostnameConvention = hostnameConvention;
+            _resultValue.loadbalancerName = loadbalancerName;
+            _resultValue.region = region;
+            _resultValue.tags = tags;
+            _resultValue.vpcIds = vpcIds;
+            return _resultValue;
         }
     }
 }

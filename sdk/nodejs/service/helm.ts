@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleHelm = new harness.service.Helm("exampleHelm", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleHelm = new harness.service.Helm("example", {
+ *     appId: example.id,
+ *     name: "helm-example-service",
  *     description: "Service for deploying native Helm application.s",
  * });
  * ```
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/helm:Helm example <app_id>/<svc_id>
+ * $ pulumi import harness:service/helm:Helm example <app_id>/<svc_id>
  * ```
  */
 export class Helm extends pulumi.CustomResource {

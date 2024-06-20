@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving a Harness secret manager
 func GetSecretManager(ctx *pulumi.Context, args *GetSecretManagerArgs, opts ...pulumi.InvokeOption) (*GetSecretManagerResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretManagerResult
 	err := ctx.Invoke("harness:index/getSecretManager:getSecretManager", args, &rv, opts...)
 	if err != nil {

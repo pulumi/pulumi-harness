@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -199,79 +200,105 @@ public final class GetDelegateResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder lastHeartbeat(String lastHeartbeat) {
-            this.lastHeartbeat = Objects.requireNonNull(lastHeartbeat);
+            if (lastHeartbeat == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "lastHeartbeat");
+            }
+            this.lastHeartbeat = lastHeartbeat;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pollingModeEnabled(Boolean pollingModeEnabled) {
-            this.pollingModeEnabled = Objects.requireNonNull(pollingModeEnabled);
+            if (pollingModeEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "pollingModeEnabled");
+            }
+            this.pollingModeEnabled = pollingModeEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder profileId(String profileId) {
-            this.profileId = Objects.requireNonNull(profileId);
+            if (profileId == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "profileId");
+            }
+            this.profileId = profileId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDelegateResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDelegateResult build() {
-            final var o = new GetDelegateResult();
-            o.accountId = accountId;
-            o.description = description;
-            o.hostname = hostname;
-            o.id = id;
-            o.ip = ip;
-            o.lastHeartbeat = lastHeartbeat;
-            o.name = name;
-            o.pollingModeEnabled = pollingModeEnabled;
-            o.profileId = profileId;
-            o.status = status;
-            o.type = type;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDelegateResult();
+            _resultValue.accountId = accountId;
+            _resultValue.description = description;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.lastHeartbeat = lastHeartbeat;
+            _resultValue.name = name;
+            _resultValue.pollingModeEnabled = pollingModeEnabled;
+            _resultValue.profileId = profileId;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

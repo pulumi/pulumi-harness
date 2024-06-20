@@ -8,72 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Gcp connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGcpConnector(ctx, "test", &platform.GcpConnectorArgs{
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				InheritFromDelegates: platform.GcpConnectorInheritFromDelegateArray{
-//					&platform.GcpConnectorInheritFromDelegateArgs{
-//						DelegateSelectors: pulumi.StringArray{
-//							pulumi.String("harness-delegate"),
-//						},
-//					},
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level gcp connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
-//
+// $ pulumi import harness:platform/gcpConnector:GcpConnector example <connector_id>
 // ```
 //
-//	Import org level gcp connector
+// # Import org level gcp connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpConnector:GcpConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level gcp connector
+// # Import project level gcp connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpConnector:GcpConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type GcpConnector struct {
 	pulumi.CustomResourceState
@@ -106,7 +64,7 @@ func NewGcpConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GcpConnector
 	err := ctx.RegisterResource("harness:platform/gcpConnector:GcpConnector", name, args, &resource, opts...)
 	if err != nil {

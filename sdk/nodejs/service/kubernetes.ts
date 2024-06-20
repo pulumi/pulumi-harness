@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleKubernetes = new harness.service.Kubernetes("exampleKubernetes", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleKubernetes = new harness.service.Kubernetes("example", {
+ *     appId: example.id,
+ *     name: "k8s-svc",
  *     helmVersion: "V3",
  *     description: "Service for deploying Kubernetes manifests",
  *     variables: [
@@ -40,7 +41,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
+ * $ pulumi import harness:service/kubernetes:Kubernetes example <app_id>/<svc_id>
  * ```
  */
 export class Kubernetes extends pulumi.CustomResource {

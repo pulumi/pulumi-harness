@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,21 +21,21 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testDelegate, err := harness.GetDelegate(ctx, &harness.GetDelegateArgs{
+//			test, err := harness.GetDelegate(ctx, &harness.GetDelegateArgs{
 //				Name: pulumi.StringRef("my-delegate"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewDelegateApproval(ctx, "testDelegateApproval", &harness.DelegateApprovalArgs{
-//				DelegateId: *pulumi.String(testDelegate.Id),
+//			_, err = harness.NewDelegateApproval(ctx, "test", &harness.DelegateApprovalArgs{
+//				DelegateId: pulumi.String(test.Id),
 //				Approve:    pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -51,9 +52,7 @@ import (
 // Import the status of the delegate approval.
 //
 // ```sh
-//
-//	$ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
-//
+// $ pulumi import harness:index/delegateApproval:DelegateApproval example <delegate_id>
 // ```
 type DelegateApproval struct {
 	pulumi.CustomResourceState
@@ -79,7 +78,7 @@ func NewDelegateApproval(ctx *pulumi.Context,
 	if args.DelegateId == nil {
 		return nil, errors.New("invalid value for required argument 'DelegateId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DelegateApproval
 	err := ctx.RegisterResource("harness:index/delegateApproval:DelegateApproval", name, args, &resource, opts...)
 	if err != nil {

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.EnvironmentClustersMapping("example", {
  *     identifier: "identifier",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Import using the cluster.
  *
  * ```sh
- *  $ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example <cluster_id>
+ * $ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example <cluster_id>
  * ```
  */
 export class EnvironmentClustersMapping extends pulumi.CustomResource {

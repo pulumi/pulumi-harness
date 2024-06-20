@@ -9,50 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Service Now connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credential type AdfsClientCredentialsWithCertificate
- * const test = new harness.platform.ServiceNowConnector("test", {
- *     auth: {
- *         adfs: {
- *             adfsUrl: "https://adfs_url.com",
- *             certificateRef: "account.certificate_ref",
- *             clientIdRef: "account.client_id_ref",
- *             privateKeyRef: "account.private_key_ref}",
- *             resourceIdRef: "account.resource_id_ref",
- *         },
- *         authType: "AdfsClientCredentialsWithCertificate",
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     serviceNowUrl: "https://servicenow.com",
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level service now connector
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <connector_id>
+ * $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <connector_id>
  * ```
  *
- *  Import org level service now connector
+ * Import org level service now connector
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level service now connector
+ * Import project level service now connector
  *
  * ```sh
- *  $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/serviceNowConnector:ServiceNowConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class ServiceNowConnector extends pulumi.CustomResource {

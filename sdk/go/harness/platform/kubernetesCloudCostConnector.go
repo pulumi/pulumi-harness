@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,16 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewKubernetesCloudCostConnector(ctx, "example", &platform.KubernetesCloudCostConnectorArgs{
-//				ConnectorRef: pulumi.String("connector_ref"),
-//				Description:  pulumi.String("example"),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				FeaturesEnableds: pulumi.StringArray{
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("OPTIMIZATION"),
 //				},
-//				Identifier: pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
+//				ConnectorRef: pulumi.String("connector_ref"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,25 +55,19 @@ import (
 // # Import account level kubernetes cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
-//
+// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
 // ```
 //
-//	Import org level kubernetes cloud cost connector
+// # Import org level kubernetes cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level kubernetes cloud cost connector
+// # Import project level kubernetes cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type KubernetesCloudCostConnector struct {
 	pulumi.CustomResourceState
@@ -110,7 +106,7 @@ func NewKubernetesCloudCostConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesCloudCostConnector
 	err := ctx.RegisterResource("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", name, args, &resource, opts...)
 	if err != nil {

@@ -8,57 +8,18 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Spot connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewSpotConnector(ctx, "spot", &platform.SpotConnectorArgs{
-//				Description: pulumi.String("description of spot connector"),
-//				Identifier:  pulumi.String("example_spot_cloud_provider"),
-//				PermanentToken: &platform.SpotConnectorPermanentTokenArgs{
-//					ApiTokenRef: pulumi.String("account.TEST_spot_api_token"),
-//					DelegateSelectors: pulumi.StringArray{
-//						pulumi.String("harness-delegate"),
-//					},
-//					ExecuteOnDelegate: pulumi.Bool(false),
-//					SpotAccountId:     pulumi.String("<my-account-id>"),
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import using spot cloud provider connector id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
-//
+// $ pulumi import harness:platform/spotConnector:SpotConnector example <connector_id>
 // ```
 type SpotConnector struct {
 	pulumi.CustomResourceState
@@ -92,7 +53,7 @@ func NewSpotConnector(ctx *pulumi.Context,
 	if args.PermanentToken == nil {
 		return nil, errors.New("invalid value for required argument 'PermanentToken'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpotConnector
 	err := ctx.RegisterResource("harness:platform/spotConnector:SpotConnector", name, args, &resource, opts...)
 	if err != nil {

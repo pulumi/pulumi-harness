@@ -13,39 +13,42 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * // Authentication mechanism as api token
  * const token = new harness.platform.ElasticsearchConnector("token", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://elasticsearch.com/",
+ *     delegateSelectors: ["harness-delegate"],
  *     apiToken: {
  *         clientId: "client_id",
  *         clientSecretRef: "account.secret_id",
  *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://elasticsearch.com/",
  * });
  * // Authentication mechanism as username and password
  * const test = new harness.platform.ElasticsearchConnector("test", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://elasticsearch.com/",
+ *     delegateSelectors: ["harness-delegate"],
  *     usernamePassword: {
- *         passwordRef: "account.secret_id",
  *         username: "username",
+ *         passwordRef: "account.secret_id",
  *     },
  * });
  * // Authentication mechanism as username and password
- * const noAuthentication = new harness.platform.ElasticsearchConnector("noAuthentication", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
+ * const noAuthentication = new harness.platform.ElasticsearchConnector("no_authentication", {
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://elasticsearch.com/",
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * ```
  *
@@ -54,19 +57,19 @@ import * as utilities from "../utilities";
  * Import account level elasticsearch connector
  *
  * ```sh
- *  $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <connector_id>
+ * $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <connector_id>
  * ```
  *
- *  Import org level elasticsearch connector
+ * Import org level elasticsearch connector
  *
  * ```sh
- *  $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level elasticsearch connector
+ * Import project level elasticsearch connector
  *
  * ```sh
- *  $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class ElasticsearchConnector extends pulumi.CustomResource {

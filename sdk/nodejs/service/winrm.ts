@@ -13,12 +13,13 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleWinrm = new harness.service.Winrm("exampleWinrm", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleWinrm = new harness.service.Winrm("example", {
+ *     appId: example.id,
  *     artifactType: "IIS_APP",
+ *     name: "iis-app-winrm-svc",
  *     description: "Service for deploying IIS appliactions using winrm.",
  * });
  * ```
@@ -28,7 +29,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
+ * $ pulumi import harness:service/winrm:Winrm example <app_id>/<svc_id>
  * ```
  */
 export class Winrm extends pulumi.CustomResource {

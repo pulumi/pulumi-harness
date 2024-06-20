@@ -18,7 +18,10 @@ import javax.annotation.Nullable;
  * Resource for approving or rejecting delegates.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,25 +44,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var testDelegate = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
- *             .name(&#34;my-delegate&#34;)
+ *         final var test = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
+ *             .name("my-delegate")
  *             .build());
  * 
- *         var testDelegateApproval = new DelegateApproval(&#34;testDelegateApproval&#34;, DelegateApprovalArgs.builder()        
- *             .delegateId(testDelegate.applyValue(getDelegateResult -&gt; getDelegateResult.id()))
+ *         var testDelegateApproval = new DelegateApproval("testDelegateApproval", DelegateApprovalArgs.builder()
+ *             .delegateId(test.applyValue(getDelegateResult -> getDelegateResult.id()))
  *             .approve(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import the status of the delegate approval.
  * 
  * ```sh
- *  $ pulumi import harness:index/delegateApproval:DelegateApproval example &lt;delegate_id&gt;
+ * $ pulumi import harness:index/delegateApproval:DelegateApproval example &lt;delegate_id&gt;
  * ```
  * 
  */

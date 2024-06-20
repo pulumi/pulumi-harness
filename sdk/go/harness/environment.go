@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,20 +21,23 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testApplication, err := harness.NewApplication(ctx, "testApplication", nil)
+//			test, err := harness.NewApplication(ctx, "test", &harness.ApplicationArgs{
+//				Name: pulumi.String("%[1]s"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			testKubernetes, err := service.NewKubernetes(ctx, "testKubernetes", &service.KubernetesArgs{
-//				AppId:       testApplication.ID(),
+//			testKubernetes, err := service.NewKubernetes(ctx, "test", &service.KubernetesArgs{
+//				AppId:       test.ID(),
+//				Name:        pulumi.String("%[1]s"),
 //				HelmVersion: pulumi.String("V2"),
 //				Description: pulumi.String("description"),
 //				Variables: service.KubernetesVariableArray{
@@ -52,8 +56,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewEnvironment(ctx, "testEnvironment", &harness.EnvironmentArgs{
-//				AppId: testApplication.ID(),
+//			_, err = harness.NewEnvironment(ctx, "test", &harness.EnvironmentArgs{
+//				AppId: test.ID(),
+//				Name:  pulumi.String("%[1]s"),
 //				Type:  pulumi.String("%[2]s"),
 //				VariableOverrides: harness.EnvironmentVariableOverrideArray{
 //					&harness.EnvironmentVariableOverrideArgs{
@@ -84,9 +89,7 @@ import (
 // Import using the Harness application id and environment id.
 //
 // ```sh
-//
-//	$ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
-//
+// $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
@@ -116,7 +119,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Environment
 	err := ctx.RegisterResource("harness:index/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

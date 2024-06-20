@@ -72,25 +72,28 @@ public final class UserGroupLdapSettings {
 
         @CustomType.Setter
         public Builder groupDn(@Nullable String groupDn) {
+
             this.groupDn = groupDn;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
+
             this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder ssoProviderId(@Nullable String ssoProviderId) {
+
             this.ssoProviderId = ssoProviderId;
             return this;
         }
         public UserGroupLdapSettings build() {
-            final var o = new UserGroupLdapSettings();
-            o.groupDn = groupDn;
-            o.groupName = groupName;
-            o.ssoProviderId = ssoProviderId;
-            return o;
+            final var _resultValue = new UserGroupLdapSettings();
+            _resultValue.groupDn = groupDn;
+            _resultValue.groupName = groupName;
+            _resultValue.ssoProviderId = ssoProviderId;
+            return _resultValue;
         }
     }
 }

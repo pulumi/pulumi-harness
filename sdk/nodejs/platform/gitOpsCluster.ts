@@ -9,69 +9,18 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Gitops Cluster.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Clusters without Optional tags
- * const exampleGitOpsCluster = new harness.platform.GitOpsCluster("exampleGitOpsCluster", {
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
- *     agentId: "agent_id",
- *     requests: [{
- *         upsert: false,
- *         clusters: [{
- *             server: "https://kubernetes.default.svc",
- *             name: "name",
- *             configs: [{
- *                 tlsClientConfigs: [{
- *                     insecure: true,
- *                 }],
- *                 clusterConnectionType: "IN_CLUSTER",
- *             }],
- *         }],
- *     }],
- * });
- * // Clusters with Optional tags
- * const examplePlatform_gitOpsClusterGitOpsCluster = new harness.platform.GitOpsCluster("examplePlatform/gitOpsClusterGitOpsCluster", {
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
- *     agentId: "agent_id",
- *     requests: [{
- *         upsert: false,
- *         tags: ["foo:bar"],
- *         clusters: [{
- *             server: "https://kubernetes.default.svc",
- *             name: "name",
- *             configs: [{
- *                 tlsClientConfigs: [{
- *                     insecure: true,
- *                 }],
- *                 clusterConnectionType: "IN_CLUSTER",
- *             }],
- *         }],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Import a Account level Gitops Cluster
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+ * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
  * ```
  *
- *  Import a Project level Gitops Cluster
+ * Import a Project level Gitops Cluster
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
+ * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<project_id>/<agent_id>/<cluster_id>
  * ```
  */
 export class GitOpsCluster extends pulumi.CustomResource {

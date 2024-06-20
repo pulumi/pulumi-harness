@@ -4,15 +4,24 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetTriggerConditionOnWebhookWebhookDetail;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetTriggerConditionOnWebhook {
+    /**
+     * @return Webhook details.
+     * 
+     */
     private List<GetTriggerConditionOnWebhookWebhookDetail> webhookDetails;
 
     private GetTriggerConditionOnWebhook() {}
+    /**
+     * @return Webhook details.
+     * 
+     */
     public List<GetTriggerConditionOnWebhookWebhookDetail> webhookDetails() {
         return this.webhookDetails;
     }
@@ -35,16 +44,19 @@ public final class GetTriggerConditionOnWebhook {
 
         @CustomType.Setter
         public Builder webhookDetails(List<GetTriggerConditionOnWebhookWebhookDetail> webhookDetails) {
-            this.webhookDetails = Objects.requireNonNull(webhookDetails);
+            if (webhookDetails == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhook", "webhookDetails");
+            }
+            this.webhookDetails = webhookDetails;
             return this;
         }
         public Builder webhookDetails(GetTriggerConditionOnWebhookWebhookDetail... webhookDetails) {
             return webhookDetails(List.of(webhookDetails));
         }
         public GetTriggerConditionOnWebhook build() {
-            final var o = new GetTriggerConditionOnWebhook();
-            o.webhookDetails = webhookDetails;
-            return o;
+            final var _resultValue = new GetTriggerConditionOnWebhook();
+            _resultValue.webhookDetails = webhookDetails;
+            return _resultValue;
         }
     }
 }

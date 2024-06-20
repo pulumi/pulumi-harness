@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,41 +29,41 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewEnvironmentServiceOverrides(ctx, "example", &platform.EnvironmentServiceOverridesArgs{
-//				EnvId:     pulumi.String("environmentIdentifier"),
 //				OrgId:     pulumi.String("orgIdentifier"),
 //				ProjectId: pulumi.String("projectIdentifier"),
+//				EnvId:     pulumi.String("environmentIdentifier"),
 //				ServiceId: pulumi.String("serviceIdentifier"),
-//				Yaml: pulumi.String(`        serviceOverrides:
-//	          environmentRef: environmentIdentifier
-//	          serviceRef: serviceIdentifier
-//	          variables:
-//	           - name: asda
-//	             type: String
-//	             value: asddad
-//	          manifests:
-//	             - manifest:
-//	                 identifier: manifestEnv
-//	                 type: Values
-//	                 spec:
-//	                   store:
-//	                     type: Git
-//	                     spec:
-//	                       connectorRef: <+input>
-//	                       gitFetchType: Branch
-//	                       paths:
-//	                         - file1
-//	                       repoName: <+input>
-//	                       branch: master
-//	          configFiles:
-//	             - configFile:
-//	                 identifier: configFileEnv
-//	                 spec:
-//	                   store:
-//	                     type: Harness
-//	                     spec:
-//	                       files:
-//	                         - account:/Add-ons/svcOverrideTest
-//	                       secretFiles: []
+//				Yaml: pulumi.String(`serviceOverrides:
+//	  environmentRef: environmentIdentifier
+//	  serviceRef: serviceIdentifier
+//	  variables:
+//	   - name: asda
+//	     type: String
+//	     value: asddad
+//	  manifests:
+//	     - manifest:
+//	         identifier: manifestEnv
+//	         type: Values
+//	         spec:
+//	           store:
+//	             type: Git
+//	             spec:
+//	               connectorRef: <+input>
+//	               gitFetchType: Branch
+//	               paths:
+//	                 - file1
+//	               repoName: <+input>
+//	               branch: master
+//	  configFiles:
+//	     - configFile:
+//	         identifier: configFileEnv
+//	         spec:
+//	           store:
+//	             type: Harness
+//	             spec:
+//	               files:
+//	                 - account:/Add-ons/svcOverrideTest
+//	               secretFiles: []
 //
 // `),
 //
@@ -81,9 +82,7 @@ import (
 // # Import using serviceoverride id
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
-//
+// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
 // ```
 type EnvironmentServiceOverrides struct {
 	pulumi.CustomResourceState
@@ -118,7 +117,7 @@ func NewEnvironmentServiceOverrides(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvironmentServiceOverrides
 	err := ctx.RegisterResource("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", name, args, &resource, opts...)
 	if err != nil {

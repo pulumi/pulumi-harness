@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,23 +23,24 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGcpSecretManagerConnector(ctx, "gcpSm", &platform.GcpSecretManagerConnectorArgs{
-//				CredentialsRef: pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
+//			_, err := platform.NewGcpSecretManagerConnector(ctx, "gcp_sm", &platform.GcpSecretManagerConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				CredentialsRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level gcp secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <connector_id>
-//
+// $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <connector_id>
 // ```
 //
-//	Import org level gcp secret manager connector
+// # Import org level gcp secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level gcp secret manager connector
+// # Import project level gcp secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type GcpSecretManagerConnector struct {
 	pulumi.CustomResourceState
@@ -110,7 +106,7 @@ func NewGcpSecretManagerConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GcpSecretManagerConnector
 	err := ctx.RegisterResource("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", name, args, &resource, opts...)
 	if err != nil {

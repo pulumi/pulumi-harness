@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,25 +19,19 @@ import (
 // Import account level monitored_service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/monitoredService:MonitoredService example <monitored_service_id>
-//
+// $ pulumi import harness:platform/monitoredService:MonitoredService example <monitored_service_id>
 // ```
 //
-//	Import organization level monitored_service
+// Import organization level monitored_service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<monitored_service_id>
-//
+// $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<monitored_service_id>
 // ```
 //
-//	Import project level monitored_service
+// Import project level monitored_service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
-//
+// $ pulumi import harness:platform/monitoredService:MonitoredService example <org_id>/<project_id>/<monitored_service_id>
 // ```
 type MonitoredService struct {
 	pulumi.CustomResourceState
@@ -67,7 +62,7 @@ func NewMonitoredService(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MonitoredService
 	err := ctx.RegisterResource("harness:platform/monitoredService:MonitoredService", name, args, &resource, opts...)
 	if err != nil {

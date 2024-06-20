@@ -9,24 +9,54 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Resource Group
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = new harness.platform.ResourceGroup("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     accountId: "account_id",
+ *     allowedScopeLevels: ["account"],
+ *     includedScopes: [{
+ *         filter: "EXCLUDING_CHILD_SCOPES",
+ *         accountId: "account_id",
+ *     }],
+ *     resourceFilters: [{
+ *         includeAllResources: false,
+ *         resources: [{
+ *             resourceType: "CONNECTOR",
+ *             attributeFilters: [{
+ *                 attributeName: "category",
+ *                 attributeValues: ["CLOUD_COST"],
+ *             }],
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Import account level resource group
  *
  * ```sh
- *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
+ * $ pulumi import harness:platform/resourceGroup:ResourceGroup example <resource_group_id>
  * ```
  *
- *  Import org level resource group
+ * Import org level resource group
  *
  * ```sh
- *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
+ * $ pulumi import harness:platform/resourceGroup:ResourceGroup example <ord_id>/<resource_group_id>
  * ```
  *
- *  Import project level resource group
+ * Import project level resource group
  *
  * ```sh
- *  $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
+ * $ pulumi import harness:platform/resourceGroup:ResourceGroup example <org_id>/<project_id>/<resource_group_id>
  * ```
  */
 export class ResourceGroup extends pulumi.CustomResource {

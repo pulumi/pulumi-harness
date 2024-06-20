@@ -11,14 +11,15 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const gcpSm = new harness.platform.GcpSecretManagerConnector("gcpSm", {
- *     credentialsRef: `account.${harness_platform_secret_text.test.id}`,
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
+ * const gcpSm = new harness.platform.GcpSecretManagerConnector("gcp_sm", {
  *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentialsRef: `account.${test.id}`,
  * });
  * ```
  *
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  * Import account level gcp secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <connector_id>
+ * $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <connector_id>
  * ```
  *
- *  Import org level gcp secret manager connector
+ * Import org level gcp secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level gcp secret manager connector
+ * Import project level gcp secret manager connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class GcpSecretManagerConnector extends pulumi.CustomResource {

@@ -8,67 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating tokens.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewToken(ctx, "test", &platform.TokenArgs{
-//				AccountId:  pulumi.String("account_id"),
-//				ApikeyId:   pulumi.String("apikey_id"),
-//				ApikeyType: pulumi.String("USER"),
-//				Identifier: pulumi.String("test_token"),
-//				OrgId:      pulumi.String("org_id"),
-//				ParentId:   pulumi.String("apikey_parent_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level token
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/token:Token harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
-//
+// $ pulumi import harness:platform/token:Token harness_platform_token <parent_id>/<apikey_id>/<apikey_type>/<token_id>
 // ```
 //
-//	Import org level token
+// # Import org level token
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
-//
+// $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
 // ```
 //
-//	Import project level token
+// # Import project level token
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
-//
+// $ pulumi import harness:platform/token:Token harness_platform_token <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>/<token_id>
 // ```
 type Token struct {
 	pulumi.CustomResourceState
@@ -131,7 +94,7 @@ func NewToken(ctx *pulumi.Context,
 	if args.ParentId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Token
 	err := ctx.RegisterResource("harness:platform/token:Token", name, args, &resource, opts...)
 	if err != nil {

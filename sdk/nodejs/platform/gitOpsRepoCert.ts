@@ -9,12 +9,35 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness Gitops Repositories Certificates.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.GitOpsRepoCert("example", {
+ *     requests: [{
+ *         certificates: [{
+ *             metadatas: [{}],
+ *             items: [{
+ *                 serverName: "serverName",
+ *                 certType: "https",
+ *                 certData: "yourcertdata",
+ *             }],
+ *         }],
+ *         upsert: true,
+ *     }],
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Import a Account level Gitops Repository Certificate
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
+ * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
  * ```
  */
 export class GitOpsRepoCert extends pulumi.CustomResource {

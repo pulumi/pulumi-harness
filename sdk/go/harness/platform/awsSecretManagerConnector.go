@@ -8,77 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating an AWS Secret Manager connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewAwsSecretManagerConnector(ctx, "test", &platform.AwsSecretManagerConnectorArgs{
-//				Credentials: &platform.AwsSecretManagerConnectorCredentialsArgs{
-//					AssumeRole: &platform.AwsSecretManagerConnectorCredentialsAssumeRoleArgs{
-//						Duration:   pulumi.Int(900),
-//						ExternalId: pulumi.String("externalid"),
-//						RoleArn:    pulumi.String("somerolearn"),
-//					},
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description:      pulumi.String("test"),
-//				Identifier:       pulumi.String("identifier"),
-//				Region:           pulumi.String("us-east-1"),
-//				SecretNamePrefix: pulumi.String("test"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level aws secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
-//
+// $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <connector_id>
 // ```
 //
-//	Import org level aws secret manager connector
+// # Import org level aws secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level aws secret manager connector
+// # Import project level aws secret manager connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AwsSecretManagerConnector struct {
 	pulumi.CustomResourceState
@@ -121,7 +74,7 @@ func NewAwsSecretManagerConnector(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsSecretManagerConnector
 	err := ctx.RegisterResource("harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector", name, args, &resource, opts...)
 	if err != nil {

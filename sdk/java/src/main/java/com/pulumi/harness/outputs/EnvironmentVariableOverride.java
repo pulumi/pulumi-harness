@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,31 +87,41 @@ public final class EnvironmentVariableOverride {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("EnvironmentVariableOverride", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("EnvironmentVariableOverride", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("EnvironmentVariableOverride", "value");
+            }
+            this.value = value;
             return this;
         }
         public EnvironmentVariableOverride build() {
-            final var o = new EnvironmentVariableOverride();
-            o.name = name;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new EnvironmentVariableOverride();
+            _resultValue.name = name;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

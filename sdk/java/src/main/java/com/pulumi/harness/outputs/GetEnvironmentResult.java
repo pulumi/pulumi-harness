@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetEnvironmentVariableOverride;
 import java.lang.String;
 import java.util.List;
@@ -130,52 +131,69 @@ public final class GetEnvironmentResult {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder environmentId(@Nullable String environmentId) {
+
             this.environmentId = environmentId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder variableOverrides(List<GetEnvironmentVariableOverride> variableOverrides) {
-            this.variableOverrides = Objects.requireNonNull(variableOverrides);
+            if (variableOverrides == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "variableOverrides");
+            }
+            this.variableOverrides = variableOverrides;
             return this;
         }
         public Builder variableOverrides(GetEnvironmentVariableOverride... variableOverrides) {
             return variableOverrides(List.of(variableOverrides));
         }
         public GetEnvironmentResult build() {
-            final var o = new GetEnvironmentResult();
-            o.appId = appId;
-            o.description = description;
-            o.environmentId = environmentId;
-            o.id = id;
-            o.name = name;
-            o.type = type;
-            o.variableOverrides = variableOverrides;
-            return o;
+            final var _resultValue = new GetEnvironmentResult();
+            _resultValue.appId = appId;
+            _resultValue.description = description;
+            _resultValue.environmentId = environmentId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            _resultValue.variableOverrides = variableOverrides;
+            return _resultValue;
         }
     }
 }

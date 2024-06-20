@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class DelegateApprovalArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DelegateApprovalArgs build() {
-            $.approve = Objects.requireNonNull($.approve, "expected parameter 'approve' to be non-null");
-            $.delegateId = Objects.requireNonNull($.delegateId, "expected parameter 'delegateId' to be non-null");
+            if ($.approve == null) {
+                throw new MissingRequiredPropertyException("DelegateApprovalArgs", "approve");
+            }
+            if ($.delegateId == null) {
+                throw new MissingRequiredPropertyException("DelegateApprovalArgs", "delegateId");
+            }
             return $;
         }
     }

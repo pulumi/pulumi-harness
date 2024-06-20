@@ -141,7 +141,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,14 +166,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegateResult> getDelegate() {
@@ -180,7 +185,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,14 +210,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegateResult> getDelegatePlain() {
@@ -219,7 +229,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -241,14 +254,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegateResult> getDelegate(GetDelegateArgs args) {
@@ -258,7 +273,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -280,14 +298,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegateResult> getDelegatePlain(GetDelegatePlainArgs args) {
@@ -297,7 +317,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,14 +342,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDelegateResult> getDelegate(GetDelegateArgs args, InvokeOptions options) {
@@ -336,7 +361,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -358,14 +386,16 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
-     *             .name(&#34;harness-delegate&#34;)
-     *             .status(&#34;ENABLED&#34;)
-     *             .type(&#34;KUBERNETES&#34;)
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDelegateResult> getDelegatePlain(GetDelegatePlainArgs args, InvokeOptions options) {
@@ -641,7 +671,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -663,17 +696,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggerResult> getTrigger() {
@@ -683,7 +718,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -705,17 +743,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain() {
@@ -725,7 +765,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -747,17 +790,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args) {
@@ -767,7 +812,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -789,17 +837,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args) {
@@ -809,7 +859,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -831,17 +884,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOptions options) {
@@ -851,7 +906,10 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness trigger.
      * 
      * ## Example Usage
-     * ```java
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -873,17 +931,19 @@ public final class HarnessFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .appId(&#34;app_id&#34;)
-     *             .name(&#34;name&#34;)
+     *             .appId("app_id")
+     *             .name("name")
      *             .build());
      * 
      *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
-     *             .id(&#34;trigger_id&#34;)
+     *             .id("trigger_id")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args, InvokeOptions options) {

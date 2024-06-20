@@ -58,19 +58,21 @@ public final class GetUserGroupResult {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         public GetUserGroupResult build() {
-            final var o = new GetUserGroupResult();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetUserGroupResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

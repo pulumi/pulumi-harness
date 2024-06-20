@@ -20,13 +20,17 @@ import javax.annotation.Nullable;
  * Resource for creating an environment
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.Application;
+ * import com.pulumi.harness.ApplicationArgs;
  * import com.pulumi.harness.service.Kubernetes;
  * import com.pulumi.harness.service.KubernetesArgs;
  * import com.pulumi.harness.service.inputs.KubernetesVariableArgs;
@@ -46,53 +50,59 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testApplication = new Application(&#34;testApplication&#34;);
+ *         var test = new Application("test", ApplicationArgs.builder()
+ *             .name("%[1]s")
+ *             .build());
  * 
- *         var testKubernetes = new Kubernetes(&#34;testKubernetes&#34;, KubernetesArgs.builder()        
- *             .appId(testApplication.id())
- *             .helmVersion(&#34;V2&#34;)
- *             .description(&#34;description&#34;)
+ *         var testKubernetes = new Kubernetes("testKubernetes", KubernetesArgs.builder()
+ *             .appId(test.id())
+ *             .name("%[1]s")
+ *             .helmVersion("V2")
+ *             .description("description")
  *             .variables(            
  *                 KubernetesVariableArgs.builder()
- *                     .name(&#34;test&#34;)
- *                     .value(&#34;test_value&#34;)
- *                     .type(&#34;TEXT&#34;)
+ *                     .name("test")
+ *                     .value("test_value")
+ *                     .type("TEXT")
  *                     .build(),
  *                 KubernetesVariableArgs.builder()
- *                     .name(&#34;test2&#34;)
- *                     .value(&#34;test_value2&#34;)
- *                     .type(&#34;TEXT&#34;)
+ *                     .name("test2")
+ *                     .value("test_value2")
+ *                     .type("TEXT")
  *                     .build())
  *             .build());
  * 
- *         var testEnvironment = new Environment(&#34;testEnvironment&#34;, EnvironmentArgs.builder()        
- *             .appId(testApplication.id())
- *             .type(&#34;%[2]s&#34;)
+ *         var testEnvironment = new Environment("testEnvironment", EnvironmentArgs.builder()
+ *             .appId(test.id())
+ *             .name("%[1]s")
+ *             .type("%[2]s")
  *             .variableOverrides(            
  *                 EnvironmentVariableOverrideArgs.builder()
  *                     .serviceName(testKubernetes.name())
- *                     .name(&#34;test&#34;)
- *                     .value(&#34;override&#34;)
- *                     .type(&#34;TEXT&#34;)
+ *                     .name("test")
+ *                     .value("override")
+ *                     .type("TEXT")
  *                     .build(),
  *                 EnvironmentVariableOverrideArgs.builder()
  *                     .serviceName(testKubernetes.name())
- *                     .name(&#34;test2&#34;)
- *                     .value(&#34;override2&#34;)
- *                     .type(&#34;TEXT&#34;)
+ *                     .name("test2")
+ *                     .value("override2")
+ *                     .type("TEXT")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness application id and environment id.
  * 
  * ```sh
- *  $ pulumi import harness:index/environment:Environment dev &lt;application_id&gt;/&lt;environment_id&gt;
+ * $ pulumi import harness:index/environment:Environment dev &lt;application_id&gt;/&lt;environment_id&gt;
  * ```
  * 
  */

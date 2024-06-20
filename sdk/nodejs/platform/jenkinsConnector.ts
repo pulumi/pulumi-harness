@@ -9,46 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Jenkins connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Auth mechanism bearer token
- * const test = new harness.platform.JenkinsConnector("test", {
- *     auth: {
- *         jenkinsBearerToken: {
- *             tokenRef: `account.${harness_platform_secret_text.test.id}`,
- *         },
- *         type: "Bearer Token(HTTP Header)",
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     jenkinsUrl: "https://jenkinss.com/",
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level jenkins connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <connector_id>
+ * $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <connector_id>
  * ```
  *
- *  Import org level jenkins connector
+ * Import org level jenkins connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level jenkins connector
+ * Import project level jenkins connector
  *
  * ```sh
- *  $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class JenkinsConnector extends pulumi.CustomResource {

@@ -8,77 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Jenkins connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewJenkinsConnector(ctx, "test", &platform.JenkinsConnectorArgs{
-//				Auth: &platform.JenkinsConnectorAuthArgs{
-//					JenkinsBearerToken: &platform.JenkinsConnectorAuthJenkinsBearerTokenArgs{
-//						TokenRef: pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//					},
-//					Type: pulumi.String("Bearer Token(HTTP Header)"),
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				JenkinsUrl:  pulumi.String("https://jenkinss.com/"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level jenkins connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <connector_id>
-//
+// $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <connector_id>
 // ```
 //
-//	Import org level jenkins connector
+// # Import org level jenkins connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level jenkins connector
+// # Import project level jenkins connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/jenkinsConnector:JenkinsConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type JenkinsConnector struct {
 	pulumi.CustomResourceState
@@ -116,7 +69,7 @@ func NewJenkinsConnector(ctx *pulumi.Context,
 	if args.JenkinsUrl == nil {
 		return nil, errors.New("invalid value for required argument 'JenkinsUrl'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource JenkinsConnector
 	err := ctx.RegisterResource("harness:platform/jenkinsConnector:JenkinsConnector", name, args, &resource, opts...)
 	if err != nil {

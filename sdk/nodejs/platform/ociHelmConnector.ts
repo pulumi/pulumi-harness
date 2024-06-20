@@ -9,40 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a OCI Helm connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credential type anonymous
- * const test = new harness.platform.OciHelmConnector("test", {
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "admin.azurecr.io",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level helm connector
  *
  * ```sh
- *  $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <connector_id>
+ * $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <connector_id>
  * ```
  *
- *  Import org level helm connector
+ * Import org level helm connector
  *
  * ```sh
- *  $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level helm connector
+ * Import project level helm connector
  *
  * ```sh
- *  $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/ociHelmConnector:OciHelmConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class OciHelmConnector extends pulumi.CustomResource {

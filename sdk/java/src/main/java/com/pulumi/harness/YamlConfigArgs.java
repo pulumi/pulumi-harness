@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class YamlConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public YamlConfigArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("YamlConfigArgs", "content");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("YamlConfigArgs", "path");
+            }
             return $;
         }
     }

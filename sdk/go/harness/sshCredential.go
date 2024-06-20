@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,17 +20,17 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-tls/sdk/v1/go/tls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			harnessDeployKey, err := tls.NewPrivateKey(ctx, "harnessDeployKey", &tls.PrivateKeyArgs{
-//				Algorithm: pulumi.String("RSA"),
-//				RsaBits:   pulumi.Int(4096),
+//			harnessDeployKey, err := index.NewPrivateKey(ctx, "harness_deploy_key", &index.PrivateKeyArgs{
+//				Algorithm: "RSA",
+//				RsaBits:   4096,
 //			})
 //			if err != nil {
 //				return err
@@ -40,14 +41,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			mySecret, err := harness.NewEncryptedText(ctx, "mySecret", &harness.EncryptedTextArgs{
+//			mySecret, err := harness.NewEncryptedText(ctx, "my_secret", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("my_secret"),
 //				Value:           harnessDeployKey.PrivateKeyPem,
-//				SecretManagerId: *pulumi.String(secretManager.Id),
+//				SecretManagerId: pulumi.String(secretManager.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = harness.NewSshCredential(ctx, "sshCreds", &harness.SshCredentialArgs{
+//			_, err = harness.NewSshCredential(ctx, "ssh_creds", &harness.SshCredentialArgs{
+//				Name: pulumi.String("ssh-test"),
 //				SshAuthentication: &harness.SshCredentialSshAuthenticationArgs{
 //					Port:     pulumi.Int(22),
 //					Username: pulumi.String("git"),
@@ -70,9 +73,7 @@ import (
 // # Import using the Harness ssh credential id
 //
 // ```sh
-//
-//	$ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
-//
+// $ pulumi import harness:index/sshCredential:SshCredential example <credential_id>
 // ```
 type SshCredential struct {
 	pulumi.CustomResourceState
@@ -94,7 +95,7 @@ func NewSshCredential(ctx *pulumi.Context,
 		args = &SshCredentialArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SshCredential
 	err := ctx.RegisterResource("harness:index/sshCredential:SshCredential", name, args, &resource, opts...)
 	if err != nil {

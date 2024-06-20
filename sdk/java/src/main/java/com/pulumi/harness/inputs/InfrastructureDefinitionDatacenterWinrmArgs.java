@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class InfrastructureDefinitionDatacenterWinrmArgs extends com.pulum
         }
 
         public InfrastructureDefinitionDatacenterWinrmArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.hostnames = Objects.requireNonNull($.hostnames, "expected parameter 'hostnames' to be non-null");
-            $.winrmConnectionAttributesName = Objects.requireNonNull($.winrmConnectionAttributesName, "expected parameter 'winrmConnectionAttributesName' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrmArgs", "cloudProviderName");
+            }
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrmArgs", "hostnames");
+            }
+            if ($.winrmConnectionAttributesName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrmArgs", "winrmConnectionAttributesName");
+            }
             return $;
         }
     }

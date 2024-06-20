@@ -8,73 +8,18 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Kubernetes cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `createBeforeDestroy = true` lifecycle setting.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := harness.GetSecretManager(ctx, &harness.GetSecretManagerArgs{
-//				Default: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			username, err := harness.NewEncryptedText(ctx, "username", &harness.EncryptedTextArgs{
-//				Value:           pulumi.String("<USERNAME>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			password, err := harness.NewEncryptedText(ctx, "password", &harness.EncryptedTextArgs{
-//				Value:           pulumi.String("<PASSWORD>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudprovider.NewKubernetes(ctx, "example", &cloudprovider.KubernetesArgs{
-//				SkipValidation: pulumi.Bool(true),
-//				Authentication: &cloudprovider.KubernetesAuthenticationArgs{
-//					UsernamePassword: &cloudprovider.KubernetesAuthenticationUsernamePasswordArgs{
-//						MasterUrl:          pulumi.String("https://localhost.com"),
-//						UsernameSecretName: username.Name,
-//						PasswordSecretName: password.Name,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // Import using the Harness kubernetes cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/kubernetes:Kubernetes example <provider_id>
 // ```
 type Kubernetes struct {
 	pulumi.CustomResourceState
@@ -99,7 +44,7 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args.Authentication == nil {
 		return nil, errors.New("invalid value for required argument 'Authentication'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Kubernetes
 	err := ctx.RegisterResource("harness:cloudprovider/kubernetes:Kubernetes", name, args, &resource, opts...)
 	if err != nil {

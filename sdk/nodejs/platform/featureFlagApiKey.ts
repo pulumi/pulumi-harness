@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const testserverapikey = new harness.platform.FeatureFlagApiKey("testserverapikey", {
  *     identifier: "testserver",
+ *     name: "TestServer",
  *     description: "this is a server SDK key",
  *     orgId: "test",
  *     projectId: "testff",

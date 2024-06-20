@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.GitOpsRepoCred("test", {
  *     identifier: "identifier",
@@ -34,13 +34,13 @@ import * as utilities from "../utilities";
  * Import a Account level Gitops Repository Credentials
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
+ * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
  * ```
  *
- *  Import a Project level Gitops Repository Credentials
+ * Import a Project level Gitops Repository Credentials
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
+ * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
  * ```
  */
 export class GitOpsRepoCred extends pulumi.CustomResource {

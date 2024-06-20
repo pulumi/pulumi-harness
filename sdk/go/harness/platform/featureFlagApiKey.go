@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testserverapikey, err := platform.NewFeatureFlagApiKey(ctx, "testserverapikey", &platform.FeatureFlagApiKeyArgs{
 //				Identifier:  pulumi.String("testserver"),
+//				Name:        pulumi.String("TestServer"),
 //				Description: pulumi.String("this is a server SDK key"),
 //				OrgId:       pulumi.String("test"),
 //				ProjectId:   pulumi.String("testff"),
@@ -94,7 +96,7 @@ func NewFeatureFlagApiKey(ctx *pulumi.Context,
 		"apiKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FeatureFlagApiKey
 	err := ctx.RegisterResource("harness:platform/featureFlagApiKey:FeatureFlagApiKey", name, args, &resource, opts...)
 	if err != nil {

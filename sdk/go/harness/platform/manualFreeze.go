@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,10 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewManualFreeze(ctx, "example", &platform.ManualFreezeArgs{
-//				AccountId:  pulumi.String("accountIdentifier"),
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifier"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
+//				AccountId:  pulumi.String("accountIdentifier"),
 //				Yaml: pulumi.String(`freeze:
 //	  name: freezeName
 //	  identifier: identifier
@@ -74,25 +75,19 @@ import (
 // # Import an account level freeze
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/manualFreeze:ManualFreeze example <freeze_id>
-//
+// $ pulumi import harness:platform/manualFreeze:ManualFreeze example <freeze_id>
 // ```
 //
-//	Import an organization level freeze
+// # Import an organization level freeze
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<freeze_id>
-//
+// $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<freeze_id>
 // ```
 //
-//	Import project level freeze
+// # Import project level freeze
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
-//
+// $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
 // ```
 type ManualFreeze struct {
 	pulumi.CustomResourceState
@@ -141,7 +136,7 @@ func NewManualFreeze(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManualFreeze
 	err := ctx.RegisterResource("harness:platform/manualFreeze:ManualFreeze", name, args, &resource, opts...)
 	if err != nil {

@@ -9,45 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Docker connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // credentials username password
- * const test = new harness.platform.DockerConnector("test", {
- *     credentials: {
- *         passwordRef: "account.secret_id",
- *         username: "admin",
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifer",
- *     tags: ["foo:bar"],
- *     type: "DockerHub",
- *     url: "https://hub.docker.com",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level docker connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
+ * $ pulumi import harness:platform/dockerConnector:DockerConnector example <connector_id>
  * ```
  *
- *  Import org level docker connector
+ * Import org level docker connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/dockerConnector:DockerConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level docker connector
+ * Import project level docker connector
  *
  * ```sh
- *  $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/dockerConnector:DockerConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class DockerConnector extends pulumi.CustomResource {

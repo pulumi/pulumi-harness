@@ -11,12 +11,13 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Project("test", {
- *     color: "#0063F7",
  *     identifier: "testproject",
+ *     name: "Test Project",
  *     orgId: "org_id",
+ *     color: "#0063F7",
  * });
  * ```
  *
@@ -25,7 +26,7 @@ import * as utilities from "../utilities";
  * Import using the organization id and the project id
  *
  * ```sh
- *  $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
+ * $ pulumi import harness:platform/project:Project example <organization_id>/<project_id>
  * ```
  */
 export class Project extends pulumi.CustomResource {

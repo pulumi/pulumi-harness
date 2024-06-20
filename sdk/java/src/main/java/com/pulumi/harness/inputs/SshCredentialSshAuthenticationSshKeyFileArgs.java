@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,16 +16,32 @@ public final class SshCredentialSshAuthenticationSshKeyFileArgs extends com.pulu
 
     public static final SshCredentialSshAuthenticationSshKeyFileArgs Empty = new SshCredentialSshAuthenticationSshKeyFileArgs();
 
+    /**
+     * The id of the secret containing the password to use for the ssh key
+     * 
+     */
     @Import(name="passphraseSecretId")
     private @Nullable Output<String> passphraseSecretId;
 
+    /**
+     * @return The id of the secret containing the password to use for the ssh key
+     * 
+     */
     public Optional<Output<String>> passphraseSecretId() {
         return Optional.ofNullable(this.passphraseSecretId);
     }
 
+    /**
+     * The path to the key file on the delegate
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return The path to the key file on the delegate
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -54,26 +71,52 @@ public final class SshCredentialSshAuthenticationSshKeyFileArgs extends com.pulu
             $ = new SshCredentialSshAuthenticationSshKeyFileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param passphraseSecretId The id of the secret containing the password to use for the ssh key
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseSecretId(@Nullable Output<String> passphraseSecretId) {
             $.passphraseSecretId = passphraseSecretId;
             return this;
         }
 
+        /**
+         * @param passphraseSecretId The id of the secret containing the password to use for the ssh key
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseSecretId(String passphraseSecretId) {
             return passphraseSecretId(Output.of(passphraseSecretId));
         }
 
+        /**
+         * @param path The path to the key file on the delegate
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The path to the key file on the delegate
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
         public SshCredentialSshAuthenticationSshKeyFileArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationSshKeyFileArgs", "path");
+            }
             return $;
         }
     }

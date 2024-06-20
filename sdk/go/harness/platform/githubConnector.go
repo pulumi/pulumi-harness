@@ -8,84 +8,30 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Github connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGithubConnector(ctx, "test", &platform.GithubConnectorArgs{
-//				ApiAuthentication: &platform.GithubConnectorApiAuthenticationArgs{
-//					GithubApp: &platform.GithubConnectorApiAuthenticationGithubAppArgs{
-//						ApplicationId:  pulumi.String("application_id"),
-//						InstallationId: pulumi.String("installation_id"),
-//						PrivateKeyRef:  pulumi.String("account.secret_id"),
-//					},
-//				},
-//				ConnectionType: pulumi.String("Account"),
-//				Credentials: &platform.GithubConnectorCredentialsArgs{
-//					Http: &platform.GithubConnectorCredentialsHttpArgs{
-//						TokenRef: pulumi.String("account.secret_id"),
-//						Username: pulumi.String("username"),
-//					},
-//				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url:            pulumi.String("https://github.com/account"),
-//				ValidationRepo: pulumi.String("some_repo"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // # Import account level github connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/githubConnector:GithubConnector example <connector_id>
-//
+// $ pulumi import harness:platform/githubConnector:GithubConnector example <connector_id>
 // ```
 //
-//	Import org level github connector
+// # Import org level github connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/githubConnector:GithubConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/githubConnector:GithubConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level github connector
+// # Import project level github connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type GithubConnector struct {
 	pulumi.CustomResourceState
@@ -137,7 +83,7 @@ func NewGithubConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GithubConnector
 	err := ctx.RegisterResource("harness:platform/githubConnector:GithubConnector", name, args, &resource, opts...)
 	if err != nil {

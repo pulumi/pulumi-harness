@@ -9,95 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating role assignments in Harness.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * //To create a role binding in service account
- * const example1RoleAssignments = new harness.platform.RoleAssignments("example1RoleAssignments", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     resourceGroupIdentifier: "_all_project_level_resources",
- *     roleIdentifier: "_project_viewer",
- *     principals: [{
- *         identifier: harness_platform_service_account.test.id,
- *         type: "SERVICE_ACCOUNT",
- *     }],
- *     disabled: false,
- *     managed: false,
- * });
- * //To create a role binding in user group 
- * const example1Platform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example1Platform/roleAssignmentsRoleAssignments", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     resourceGroupIdentifier: "_all_project_level_resources",
- *     roleIdentifier: "_project_viewer",
- *     principals: [{
- *         identifier: harness_platform_usergroup.test.id,
- *         type: "USER_GROUP",
- *     }],
- *     disabled: false,
- *     managed: false,
- * });
- * const example2RoleAssignments = new harness.platform.RoleAssignments("example2RoleAssignments", {
- *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     resourceGroupIdentifier: "_all_project_level_resources",
- *     roleIdentifier: "_project_viewer",
- *     principals: [{
- *         identifier: "user_id",
- *         type: "USER",
- *     }],
- *     disabled: false,
- *     managed: false,
- * });
- * const example2Platform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example2Platform/roleAssignmentsRoleAssignments", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     resourceGroupIdentifier: "_all_project_level_resources",
- *     roleIdentifier: "_project_viewer",
- *     principals: [{
- *         identifier: "service_id",
- *         type: "SERVICE",
- *     }],
- *     disabled: false,
- *     managed: false,
- * });
- * const example2HarnessPlatform_roleAssignmentsRoleAssignments = new harness.platform.RoleAssignments("example2HarnessPlatform/roleAssignmentsRoleAssignments", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     resourceGroupIdentifier: "_all_project_level_resources",
- *     roleIdentifier: "_project_viewer",
- *     principals: [{
- *         identifier: "api_key_id",
- *         type: "API_KEY",
- *     }],
- *     disabled: false,
- *     managed: false,
- * });
- * ```
- *
  * ## Import
  *
  * Import account level role assignments
  *
  * ```sh
- *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
+ * $ pulumi import harness:platform/roleAssignments:RoleAssignments example <role_assignments_id>
  * ```
  *
- *  Import org level role assignments
+ * Import org level role assignments
  *
  * ```sh
- *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
+ * $ pulumi import harness:platform/roleAssignments:RoleAssignments example <ord_id>/<role_assignments_id>
  * ```
  *
- *  Import project level role assignments
+ * Import project level role assignments
  *
  * ```sh
- *  $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
+ * $ pulumi import harness:platform/roleAssignments:RoleAssignments example <org_id>/<project_id>/<role_assignments_id>
  * ```
  */
 export class RoleAssignments extends pulumi.CustomResource {

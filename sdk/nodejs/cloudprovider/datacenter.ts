@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const example = new harness.cloudprovider.Datacenter("example", {});
+ * const example = new harness.cloudprovider.Datacenter("example", {name: "example"});
  * ```
  *
  * ## Import
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * Import using the Harness datacenter cloud provider id.
  *
  * ```sh
- *  $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
+ * $ pulumi import harness:cloudprovider/datacenter:Datacenter example <provider_id>
  * ```
  */
 export class Datacenter extends pulumi.CustomResource {

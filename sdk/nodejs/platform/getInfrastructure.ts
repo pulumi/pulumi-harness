@@ -14,11 +14,11 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getInfrastructure({
- *     envId: "env_id",
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     envId: "env_id",
  * });
  * ```
  */
@@ -119,11 +119,11 @@ export interface GetInfrastructureResult {
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getInfrastructure({
- *     envId: "env_id",
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     envId: "env_id",
  * });
  * ```
  */

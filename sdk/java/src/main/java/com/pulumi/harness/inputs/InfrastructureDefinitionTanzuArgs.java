@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class InfrastructureDefinitionTanzuArgs extends com.pulumi.resource
         }
 
         public InfrastructureDefinitionTanzuArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
-            $.space = Objects.requireNonNull($.space, "expected parameter 'space' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzuArgs", "cloudProviderName");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzuArgs", "organization");
+            }
+            if ($.space == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionTanzuArgs", "space");
+            }
             return $;
         }
     }

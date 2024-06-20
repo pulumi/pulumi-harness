@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,59 +21,65 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Authentication mechanism as api token
 //			_, err := platform.NewElasticsearchConnector(ctx, "token", &platform.ElasticsearchConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://elasticsearch.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
 //				ApiToken: &platform.ElasticsearchConnectorApiTokenArgs{
 //					ClientId:        pulumi.String("client_id"),
 //					ClientSecretRef: pulumi.String("account.secret_id"),
 //				},
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url: pulumi.String("https://elasticsearch.com/"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Authentication mechanism as username and password
 //			_, err = platform.NewElasticsearchConnector(ctx, "test", &platform.ElasticsearchConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				Url: pulumi.String("https://elasticsearch.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
 //				UsernamePassword: &platform.ElasticsearchConnectorUsernamePasswordArgs{
-//					PasswordRef: pulumi.String("account.secret_id"),
 //					Username:    pulumi.String("username"),
+//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewElasticsearchConnector(ctx, "noAuthentication", &platform.ElasticsearchConnectorArgs{
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
+//			// Authentication mechanism as username and password
+//			_, err = platform.NewElasticsearchConnector(ctx, "no_authentication", &platform.ElasticsearchConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				Url: pulumi.String("https://elasticsearch.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -88,25 +95,19 @@ import (
 // # Import account level elasticsearch connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <connector_id>
-//
+// $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <connector_id>
 // ```
 //
-//	Import org level elasticsearch connector
+// # Import org level elasticsearch connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level elasticsearch connector
+// # Import project level elasticsearch connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/elasticsearchConnector:ElasticsearchConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type ElasticsearchConnector struct {
 	pulumi.CustomResourceState
@@ -148,7 +149,7 @@ func NewElasticsearchConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElasticsearchConnector
 	err := ctx.RegisterResource("harness:platform/elasticsearchConnector:ElasticsearchConnector", name, args, &resource, opts...)
 	if err != nil {

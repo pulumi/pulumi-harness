@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewYamlConfig(ctx, "test", &harness.YamlConfigArgs{
+//				Path: pulumi.String("Setup/Cloud Providers/Kubernetes.yaml"),
 //				Content: pulumi.String(`harnessApiVersion: '1.0'
 //
 // type: KUBERNETES_CLUSTER
@@ -35,10 +37,8 @@ import (
 // - k8s
 // skipValidation: true
 // useKubernetesDelegate: true
-//
 // `),
 //
-//				Path: pulumi.String("Setup/Cloud Providers/Kubernetes.yaml"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,17 +54,13 @@ import (
 // # Importing a global config only using the yaml path
 //
 // ```sh
-//
-//	$ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
-//
+// $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Cloud Providers/kubernetes.yaml"
 // ```
 //
-//	Importing a service which requires both the application id and the yaml path.
+// Importing a service which requires both the application id and the yaml path.
 //
 // ```sh
-//
-//	$ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
-//
+// $ pulumi import harness:index/yamlConfig:YamlConfig k8s_cloudprovider "Setup/Applications/MyApp/Services/MyService/Index.yaml:<APPLICATION_ID>"
 // ```
 type YamlConfig struct {
 	pulumi.CustomResourceState
@@ -92,7 +88,7 @@ func NewYamlConfig(ctx *pulumi.Context,
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource YamlConfig
 	err := ctx.RegisterResource("harness:index/yamlConfig:YamlConfig", name, args, &resource, opts...)
 	if err != nil {

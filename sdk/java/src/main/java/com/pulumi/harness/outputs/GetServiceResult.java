@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -155,61 +156,88 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder artifactType(String artifactType) {
-            this.artifactType = Objects.requireNonNull(artifactType);
+            if (artifactType == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "artifactType");
+            }
+            this.artifactType = artifactType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder helmVersion(String helmVersion) {
-            this.helmVersion = Objects.requireNonNull(helmVersion);
+            if (helmVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "helmVersion");
+            }
+            this.helmVersion = helmVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder templateUri(String templateUri) {
-            this.templateUri = Objects.requireNonNull(templateUri);
+            if (templateUri == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "templateUri");
+            }
+            this.templateUri = templateUri;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.appId = appId;
-            o.artifactType = artifactType;
-            o.description = description;
-            o.helmVersion = helmVersion;
-            o.id = id;
-            o.name = name;
-            o.tags = tags;
-            o.templateUri = templateUri;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.appId = appId;
+            _resultValue.artifactType = artifactType;
+            _resultValue.description = description;
+            _resultValue.helmVersion = helmVersion;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.tags = tags;
+            _resultValue.templateUri = templateUri;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

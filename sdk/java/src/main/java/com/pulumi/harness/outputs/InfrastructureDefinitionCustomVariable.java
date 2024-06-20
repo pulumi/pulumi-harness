@@ -4,26 +4,35 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class InfrastructureDefinitionCustomVariable {
     /**
-     * @return The name of the infrastructure definition
+     * @return Name of the variable
      * 
      */
     private String name;
+    /**
+     * @return Value of the variable
+     * 
+     */
     private String value;
 
     private InfrastructureDefinitionCustomVariable() {}
     /**
-     * @return The name of the infrastructure definition
+     * @return Name of the variable
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Value of the variable
+     * 
+     */
     public String value() {
         return this.value;
     }
@@ -48,19 +57,25 @@ public final class InfrastructureDefinitionCustomVariable {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionCustomVariable", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionCustomVariable", "value");
+            }
+            this.value = value;
             return this;
         }
         public InfrastructureDefinitionCustomVariable build() {
-            final var o = new InfrastructureDefinitionCustomVariable();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionCustomVariable();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

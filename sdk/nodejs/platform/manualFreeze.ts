@@ -13,13 +13,13 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.ManualFreeze("example", {
- *     accountId: "accountIdentifier",
  *     identifier: "identifier",
  *     orgId: "orgIdentifier",
  *     projectId: "projectIdentifier",
+ *     accountId: "accountIdentifier",
  *     yaml: `freeze:
  *   name: freezeName
  *   identifier: identifier
@@ -44,7 +44,6 @@ import * as utilities from "../utilities";
  *       type: Daily
  *   notificationRules: []
  *   tags: {}
- *
  * `,
  * });
  * ```
@@ -54,19 +53,19 @@ import * as utilities from "../utilities";
  * Import an account level freeze
  *
  * ```sh
- *  $ pulumi import harness:platform/manualFreeze:ManualFreeze example <freeze_id>
+ * $ pulumi import harness:platform/manualFreeze:ManualFreeze example <freeze_id>
  * ```
  *
- *  Import an organization level freeze
+ * Import an organization level freeze
  *
  * ```sh
- *  $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<freeze_id>
+ * $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<freeze_id>
  * ```
  *
- *  Import project level freeze
+ * Import project level freeze
  *
  * ```sh
- *  $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
+ * $ pulumi import harness:platform/manualFreeze:ManualFreeze example <org_id>/<project_id>/<freeze_id>
  * ```
  */
 export class ManualFreeze extends pulumi.CustomResource {

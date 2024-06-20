@@ -13,10 +13,11 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.InputSet("example", {
  *     identifier: "identifier",
+ *     name: "name",
  *     tags: ["foo:bar"],
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -39,10 +40,11 @@ import * as utilities from "../utilities";
  * // Remote InputSet
  * const test = new harness.platform.InputSet("test", {
  *     identifier: "identifier",
+ *     name: "name",
  *     tags: ["foo:bar"],
- *     orgId: harness_platform_organization.test.id,
- *     projectId: harness_platform_project.test.id,
- *     pipelineId: harness_platform_pipeline.test.id,
+ *     orgId: testHarnessPlatformOrganization.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     pipelineId: testHarnessPlatformPipeline.id,
  *     gitDetails: {
  *         branchName: "main",
  *         commitMessage: "Commit",
@@ -56,10 +58,10 @@ import * as utilities from "../utilities";
  *   name: "name"
  *   tags:
  *     foo: "bar"
- *   orgIdentifier: "${harness_platform_organization.test.id}"
- *   projectIdentifier: "${harness_platform_project.test.id}"
+ *   orgIdentifier: "${testHarnessPlatformOrganization.id}"
+ *   projectIdentifier: "${testHarnessPlatformProject.id}"
  *   pipeline:
- *     identifier: "${harness_platform_pipeline.test.id}"
+ *     identifier: "${testHarnessPlatformPipeline.id}"
  *     variables:
  *     - name: "key"
  *       type: "String"
@@ -73,7 +75,7 @@ import * as utilities from "../utilities";
  * Import input set
  *
  * ```sh
- *  $ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
+ * $ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
  * ```
  */
 export class InputSet extends pulumi.CustomResource {

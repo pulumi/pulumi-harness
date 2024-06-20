@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewEnvironmentGroup(ctx, "example", &platform.EnvironmentGroupArgs{
-//				Color:      pulumi.String("#0063F7"),
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifer"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
-//				Yaml: pulumi.String(`  environmentGroup:
-//	    name: "name"
-//	    identifier: "identifier"
-//	    description: "temp"
-//	    orgIdentifier: "orgIdentifer"
-//	    projectIdentifier: "projectIdentifier"
-//	    envIdentifiers: []
+//				Color:      pulumi.String("#0063F7"),
+//				Yaml: pulumi.String(`environmentGroup:
+//	  name: "name"
+//	  identifier: "identifier"
+//	  description: "temp"
+//	  orgIdentifier: "orgIdentifer"
+//	  projectIdentifier: "projectIdentifier"
+//	  envIdentifiers: []
 //
 // `),
 //
@@ -57,9 +58,7 @@ import (
 // Import using the environment group id.
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
-//
+// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
 // ```
 type EnvironmentGroup struct {
 	pulumi.CustomResourceState
@@ -91,7 +90,7 @@ func NewEnvironmentGroup(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvironmentGroup
 	err := ctx.RegisterResource("harness:platform/environmentGroup:EnvironmentGroup", name, args, &resource, opts...)
 	if err != nil {

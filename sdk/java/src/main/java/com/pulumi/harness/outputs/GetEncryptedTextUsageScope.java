@@ -72,25 +72,28 @@ public final class GetEncryptedTextUsageScope {
 
         @CustomType.Setter
         public Builder applicationId(@Nullable String applicationId) {
+
             this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder environmentFilterType(@Nullable String environmentFilterType) {
+
             this.environmentFilterType = environmentFilterType;
             return this;
         }
         @CustomType.Setter
         public Builder environmentId(@Nullable String environmentId) {
+
             this.environmentId = environmentId;
             return this;
         }
         public GetEncryptedTextUsageScope build() {
-            final var o = new GetEncryptedTextUsageScope();
-            o.applicationId = applicationId;
-            o.environmentFilterType = environmentFilterType;
-            o.environmentId = environmentId;
-            return o;
+            final var _resultValue = new GetEncryptedTextUsageScope();
+            _resultValue.applicationId = applicationId;
+            _resultValue.environmentFilterType = environmentFilterType;
+            _resultValue.environmentId = environmentId;
+            return _resultValue;
         }
     }
 }

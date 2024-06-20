@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving an SSH credential.
 func LookupSshCredential(ctx *pulumi.Context, args *LookupSshCredentialArgs, opts ...pulumi.InvokeOption) (*LookupSshCredentialResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSshCredentialResult
 	err := ctx.Invoke("harness:index/getSshCredential:getSshCredential", args, &rv, opts...)
 	if err != nil {

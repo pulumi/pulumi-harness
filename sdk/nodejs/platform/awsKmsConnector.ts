@@ -9,44 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an AWS KMS connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials inherit_from_delegate
- * const test = new harness.platform.AwsKmsConnector("test", {
- *     arnRef: "account.secret_id",
- *     credentials: {
- *         inheritFromDelegate: true,
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifer",
- *     region: "us-east-1",
- *     tags: ["foo:bar"],
- * });
- * ```
- *
  * ## Import
  *
  * Import account level awskms connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
+ * $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <connector_id>
  * ```
  *
- *  Import org level awskms connector
+ * Import org level awskms connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level awskms connector
+ * Import project level awskms connector
  *
  * ```sh
- *  $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/awsKmsConnector:AwsKmsConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AwsKmsConnector extends pulumi.CustomResource {

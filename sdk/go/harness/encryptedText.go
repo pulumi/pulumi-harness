@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,8 +35,9 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewEncryptedText(ctx, "example", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("example-secret"),
 //				Value:           pulumi.String("someval"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //				UsageScopes: harness.EncryptedTextUsageScopeArray{
 //					&harness.EncryptedTextUsageScopeArgs{
 //						EnvironmentFilterType: pulumi.String("PRODUCTION_ENVIRONMENTS"),
@@ -56,12 +58,12 @@ import (
 //
 // ## Import
 //
-// Import using the Harness encrypted text format. NOTEThe secret value cannot be decrypted and imported.
+// Import using the Harness encrypted text format.
+//
+// NOTE: The secret value cannot be decrypted and imported.
 //
 // ```sh
-//
-//	$ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
-//
+// $ pulumi import harness:index/encryptedText:EncryptedText example <secret_id>
 // ```
 type EncryptedText struct {
 	pulumi.CustomResourceState
@@ -99,7 +101,7 @@ func NewEncryptedText(ctx *pulumi.Context,
 		"value",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EncryptedText
 	err := ctx.RegisterResource("harness:index/encryptedText:EncryptedText", name, args, &resource, opts...)
 	if err != nil {

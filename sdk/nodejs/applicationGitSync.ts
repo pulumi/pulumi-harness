@@ -11,17 +11,18 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
  * import * as harness from "@pulumi/harness";
  *
  * const default = harness.getSecretManager({
  *     "default": true,
  * });
- * const githubToken = new harness.EncryptedText("githubToken", {
+ * const githubToken = new harness.EncryptedText("github_token", {
+ *     name: "github_token",
  *     value: "<TOKEN>",
  *     secretManagerId: _default.then(_default => _default.id),
  * });
  * const myrepo = new harness.GitConnector("myrepo", {
+ *     name: "myrepo",
  *     url: "https://github.com/someorg/myrepo",
  *     branch: "main",
  *     generateWebhookUrl: true,
@@ -29,9 +30,9 @@ import * as utilities from "./utilities";
  *     passwordSecretId: githubToken.id,
  *     urlType: "REPO",
  * });
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleApplicationGitSync = new harness.ApplicationGitSync("exampleApplicationGitSync", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example-app"});
+ * const exampleApplicationGitSync = new harness.ApplicationGitSync("example", {
+ *     appId: example.id,
  *     connectorId: myrepo.id,
  *     branch: "main",
  *     enabled: false,
@@ -43,7 +44,7 @@ import * as utilities from "./utilities";
  * Import using the Harness application id
  *
  * ```sh
- *  $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
+ * $ pulumi import harness:index/applicationGitSync:ApplicationGitSync myapp Xyz123
  * ```
  */
 export class ApplicationGitSync extends pulumi.CustomResource {

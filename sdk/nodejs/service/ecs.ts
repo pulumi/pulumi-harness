@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleEcs = new harness.service.Ecs("exampleEcs", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleEcs = new harness.service.Ecs("example", {
+ *     appId: example.id,
+ *     name: "ecs-example-service",
  *     description: "Service for deploying AWS ECS tasks.",
  * });
  * ```
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
+ * $ pulumi import harness:service/ecs:Ecs example <app_id>/<svc_id>
  * ```
  */
 export class Ecs extends pulumi.CustomResource {

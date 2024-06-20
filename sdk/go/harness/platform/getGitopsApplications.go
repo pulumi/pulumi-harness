@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,11 +28,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsApplications(ctx, &platform.GetGitopsApplicationsArgs{
-//				AccountId:  "account_id",
-//				AgentId:    "agent_id",
 //				Identifier: pulumi.StringRef("identifier"),
-//				OrgId:      "org_id",
+//				AccountId:  "account_id",
 //				ProjectId:  "project_id",
+//				OrgId:      "org_id",
+//				AgentId:    "agent_id",
 //				RepoId:     "repo_id",
 //			}, nil)
 //			if err != nil {
@@ -43,7 +44,7 @@ import (
 //
 // ```
 func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetGitopsApplicationsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsApplicationsResult
 	err := ctx.Invoke("harness:platform/getGitopsApplications:getGitopsApplications", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetApiKey(ctx *pulumi.Context, args *GetApiKeyArgs, opts ...pulumi.InvokeOption) (*GetApiKeyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApiKeyResult
 	err := ctx.Invoke("harness:platform/getApiKey:getApiKey", args, &rv, opts...)
 	if err != nil {

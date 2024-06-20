@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.GitConnectorCommitDetailsArgs;
 import com.pulumi.harness.inputs.GitConnectorUsageScopeArgs;
 import java.lang.Boolean;
@@ -470,8 +471,12 @@ public final class GitConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GitConnectorArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
-            $.urlType = Objects.requireNonNull($.urlType, "expected parameter 'urlType' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GitConnectorArgs", "url");
+            }
+            if ($.urlType == null) {
+                throw new MissingRequiredPropertyException("GitConnectorArgs", "urlType");
+            }
             return $;
         }
     }

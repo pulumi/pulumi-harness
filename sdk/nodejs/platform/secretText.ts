@@ -11,23 +11,25 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const inline = new harness.platform.SecretText("inline", {
- *     description: "example",
  *     identifier: "identifier",
- *     secretManagerIdentifier: "harnessSecretManager",
+ *     name: "name",
+ *     description: "example",
  *     tags: ["foo:bar"],
- *     value: "secret",
+ *     secretManagerIdentifier: "harnessSecretManager",
  *     valueType: "Inline",
+ *     value: "secret",
  * });
  * const reference = new harness.platform.SecretText("reference", {
- *     description: "example",
  *     identifier: "identifier",
- *     secretManagerIdentifier: "azureSecretManager",
+ *     name: "name",
+ *     description: "example",
  *     tags: ["foo:bar"],
- *     value: "secret",
+ *     secretManagerIdentifier: "azureSecretManager",
  *     valueType: "Reference",
+ *     value: "secret",
  * });
  * ```
  *
@@ -36,19 +38,19 @@ import * as utilities from "../utilities";
  * Import account level secret text
  *
  * ```sh
- *  $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
+ * $ pulumi import harness:platform/secretText:SecretText example <secret_text_id>
  * ```
  *
- *  Import org level secret text
+ * Import org level secret text
  *
  * ```sh
- *  $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
+ * $ pulumi import harness:platform/secretText:SecretText example <ord_id>/<secret_text_id>
  * ```
  *
- *  Import project level secret text
+ * Import project level secret text
  *
  * ```sh
- *  $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
+ * $ pulumi import harness:platform/secretText:SecretText example <org_id>/<project_id>/<secret_text_id>
  * ```
  */
 export class SecretText extends pulumi.CustomResource {

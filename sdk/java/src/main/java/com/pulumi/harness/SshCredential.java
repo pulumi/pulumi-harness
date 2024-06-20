@@ -22,13 +22,16 @@ import javax.annotation.Nullable;
  * Resource for creating an encrypted text secret
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.privateKey;
  * import com.pulumi.tls.PrivateKeyArgs;
  * import com.pulumi.harness.HarnessFunctions;
  * import com.pulumi.harness.inputs.GetSecretManagerArgs;
@@ -51,8 +54,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var harnessDeployKey = new PrivateKey(&#34;harnessDeployKey&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
+ *         var harnessDeployKey = new PrivateKey("harnessDeployKey", PrivateKeyArgs.builder()
+ *             .algorithm("RSA")
  *             .rsaBits(4096)
  *             .build());
  * 
@@ -60,15 +63,17 @@ import javax.annotation.Nullable;
  *             .default_(true)
  *             .build());
  * 
- *         var mySecret = new EncryptedText(&#34;mySecret&#34;, EncryptedTextArgs.builder()        
+ *         var mySecret = new EncryptedText("mySecret", EncryptedTextArgs.builder()
+ *             .name("my_secret")
  *             .value(harnessDeployKey.privateKeyPem())
- *             .secretManagerId(secretManager.applyValue(getSecretManagerResult -&gt; getSecretManagerResult.id()))
+ *             .secretManagerId(secretManager.applyValue(getSecretManagerResult -> getSecretManagerResult.id()))
  *             .build());
  * 
- *         var sshCreds = new SshCredential(&#34;sshCreds&#34;, SshCredentialArgs.builder()        
+ *         var sshCreds = new SshCredential("sshCreds", SshCredentialArgs.builder()
+ *             .name("ssh-test")
  *             .sshAuthentication(SshCredentialSshAuthenticationArgs.builder()
  *                 .port(22)
- *                 .username(&#34;git&#34;)
+ *                 .username("git")
  *                 .inlineSsh(SshCredentialSshAuthenticationInlineSshArgs.builder()
  *                     .sshKeyFileId(mySecret.id())
  *                     .build())
@@ -77,14 +82,16 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness ssh credential id
  * 
  * ```sh
- *  $ pulumi import harness:index/sshCredential:SshCredential example &lt;credential_id&gt;
+ * $ pulumi import harness:index/sshCredential:SshCredential example &lt;credential_id&gt;
  * ```
  * 
  */

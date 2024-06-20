@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,17 +56,13 @@ import (
 // # Import a Account level Gitops Repository Credentials
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
-//
+// $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
 // ```
 //
-//	Import a Project level Gitops Repository Credentials
+// # Import a Project level Gitops Repository Credentials
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
-//
+// $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<project_id>/<agent_id>/<repocred_id>
 // ```
 type GitOpsRepoCred struct {
 	pulumi.CustomResourceState
@@ -102,7 +99,7 @@ func NewGitOpsRepoCred(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsRepoCred
 	err := ctx.RegisterResource("harness:platform/gitOpsRepoCred:GitOpsRepoCred", name, args, &resource, opts...)
 	if err != nil {

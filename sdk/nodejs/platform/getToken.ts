@@ -14,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getToken({
+ *     identifier: "test_token",
+ *     parentId: "apikey_parent_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
  *     apikeyId: "apikey_id",
  *     apikeyType: "USER",
- *     identifier: "test_token",
- *     orgId: "org_id",
- *     parentId: "apikey_parent_id",
- *     projectId: "project_id",
  * });
  * ```
  */
@@ -208,12 +208,12 @@ export interface GetTokenResult {
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getToken({
+ *     identifier: "test_token",
+ *     parentId: "apikey_parent_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
  *     apikeyId: "apikey_id",
  *     apikeyType: "USER",
- *     identifier: "test_token",
- *     orgId: "org_id",
- *     parentId: "apikey_parent_id",
- *     projectId: "project_id",
  * });
  * ```
  */

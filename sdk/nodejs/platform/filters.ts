@@ -13,18 +13,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Filters("test", {
- *     filterProperties: {
- *         filterType: "Connector",
- *         tags: ["foo:bar"],
- *     },
- *     filterVisibility: "EveryOne",
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "Connector",
+ *     filterProperties: {
+ *         tags: ["foo:bar"],
+ *         filterType: "Connector",
+ *     },
+ *     filterVisibility: "EveryOne",
  * });
  * ```
  *
@@ -33,19 +34,19 @@ import * as utilities from "../utilities";
  * Import account level filter
  *
  * ```sh
- *  $ pulumi import harness:platform/filters:Filters example <filter_id>/<type>
+ * $ pulumi import harness:platform/filters:Filters example <filter_id>/<type>
  * ```
  *
- *  Import org level filter
+ * Import org level filter
  *
  * ```sh
- *  $ pulumi import harness:platform/filters:Filters example <ord_id>/<filter_id>/<type>
+ * $ pulumi import harness:platform/filters:Filters example <ord_id>/<filter_id>/<type>
  * ```
  *
- *  Import project level filter
+ * Import project level filter
  *
  * ```sh
- *  $ pulumi import harness:platform/filters:Filters example <org_id>/<project_id>/<filter_id>/<type>
+ * $ pulumi import harness:platform/filters:Filters example <org_id>/<project_id>/<filter_id>/<type>
  * ```
  */
 export class Filters extends pulumi.CustomResource {

@@ -32,7 +32,10 @@ import javax.annotation.Nullable;
  * Resource for creating am infrastructure definition. This resource uses the config-as-code API&#39;s. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.cloudprovider.KubernetesArgs;
  * import com.pulumi.harness.cloudprovider.inputs.KubernetesAuthenticationArgs;
  * import com.pulumi.harness.Application;
+ * import com.pulumi.harness.ApplicationArgs;
  * import com.pulumi.harness.Environment;
  * import com.pulumi.harness.EnvironmentArgs;
  * import com.pulumi.harness.InfrastructureDefinition;
@@ -63,78 +67,90 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var devKubernetes = new Kubernetes(&#34;devKubernetes&#34;, KubernetesArgs.builder()        
+ *         // Creating a Kubernetes infrastructure definition
+ *         var dev = new Kubernetes("dev", KubernetesArgs.builder()
+ *             .name("k8s-dev")
  *             .authentication(KubernetesAuthenticationArgs.builder()
- *                 .delegateSelectors(&#34;k8s&#34;)
+ *                 .delegateSelectors("k8s")
  *                 .build())
  *             .build());
  * 
- *         var example = new Application(&#34;example&#34;);
- * 
- *         var devEnvironment = new Environment(&#34;devEnvironment&#34;, EnvironmentArgs.builder()        
- *             .appId(example.id())
- *             .type(&#34;NON_PROD&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()
+ *             .name("example")
  *             .build());
  * 
- *         var k8s = new InfrastructureDefinition(&#34;k8s&#34;, InfrastructureDefinitionArgs.builder()        
+ *         var devEnvironment = new Environment("devEnvironment", EnvironmentArgs.builder()
+ *             .name("dev")
+ *             .appId(example.id())
+ *             .type("NON_PROD")
+ *             .build());
+ * 
+ *         // Creating a infrastructure of type KUBERNETES
+ *         var k8s = new InfrastructureDefinition("k8s", InfrastructureDefinitionArgs.builder()
+ *             .name("k8s-eks-us-east-1")
  *             .appId(example.id())
  *             .envId(devEnvironment.id())
- *             .cloudProviderType(&#34;KUBERNETES_CLUSTER&#34;)
- *             .deploymentType(&#34;KUBERNETES&#34;)
+ *             .cloudProviderType("KUBERNETES_CLUSTER")
+ *             .deploymentType("KUBERNETES")
  *             .kubernetes(InfrastructureDefinitionKubernetesArgs.builder()
- *                 .cloudProviderName(devKubernetes.name())
- *                 .namespace(&#34;dev&#34;)
- *                 .releaseName(&#34;${service.name}&#34;)
+ *                 .cloudProviderName(dev.name())
+ *                 .namespace("dev")
+ *                 .releaseName("${service.name}")
  *                 .build())
  *             .build());
  * 
- *         var exampleYaml = new YamlConfig(&#34;exampleYaml&#34;, YamlConfigArgs.builder()        
- *             .path(&#34;Setup/Template Library/Example Folder/deployment_template.yaml&#34;)
- *             .content(&#34;&#34;&#34;
- * harnessApiVersion: &#39;1.0&#39;
+ *         // Creating a Deployment Template for CUSTOM infrastructure type
+ *         var exampleYaml = new YamlConfig("exampleYaml", YamlConfigArgs.builder()
+ *             .path("Setup/Template Library/Example Folder/deployment_template.yaml")
+ *             .content("""
+ * harnessApiVersion: '1.0'
  * type: CUSTOM_DEPLOYMENT_TYPE
  * fetchInstanceScript: |-
  *   set -ex
- *   curl http://%s/%s &gt; %s
+ *   curl http://${url}/${file_name} > ${INSTANCE_OUTPUT_PATH}
  * hostAttributes:
  *   hostname: host
  * hostObjectArrayPath: hosts
  * variables:
  * - name: url
  * - name: file_name
- * &#34;, url,file_name,INSTANCE_OUTPUT_PATH))
+ *             """)
  *             .build());
  * 
- *         var custom = new InfrastructureDefinition(&#34;custom&#34;, InfrastructureDefinitionArgs.builder()        
+ *         // Creating a infrastructure of type CUSTOM
+ *         var custom = new InfrastructureDefinition("custom", InfrastructureDefinitionArgs.builder()
+ *             .name("custom-infra")
  *             .appId(example.id())
  *             .envId(devEnvironment.id())
- *             .cloudProviderType(&#34;CUSTOM&#34;)
- *             .deploymentType(&#34;CUSTOM&#34;)
- *             .deploymentTemplateUri(exampleYaml.name().applyValue(name -&gt; String.format(&#34;Example Folder/%s&#34;, name)))
+ *             .cloudProviderType("CUSTOM")
+ *             .deploymentType("CUSTOM")
+ *             .deploymentTemplateUri(exampleYaml.name().applyValue(name -> String.format("Example Folder/%s", name)))
  *             .custom(InfrastructureDefinitionCustomArgs.builder()
- *                 .deploymentTypeTemplateVersion(&#34;1&#34;)
+ *                 .deploymentTypeTemplateVersion("1")
  *                 .variables(                
  *                     InfrastructureDefinitionCustomVariableArgs.builder()
- *                         .name(&#34;url&#34;)
- *                         .value(&#34;localhost:8081&#34;)
+ *                         .name("url")
+ *                         .value("localhost:8081")
  *                         .build(),
  *                     InfrastructureDefinitionCustomVariableArgs.builder()
- *                         .name(&#34;file_name&#34;)
- *                         .value(&#34;instances.json&#34;)
+ *                         .name("file_name")
+ *                         .value("instances.json")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness application id, environment id, and infrastructure definition id
  * 
  * ```sh
- *  $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example &lt;app_id&gt;/&lt;env_id&gt;/&lt;infradef_id&gt;
+ * $ pulumi import harness:index/infrastructureDefinition:InfrastructureDefinition example &lt;app_id&gt;/&lt;env_id&gt;/&lt;infradef_id&gt;
  * ```
  * 
  */

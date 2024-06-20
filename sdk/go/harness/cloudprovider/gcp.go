@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ func NewGcp(ctx *pulumi.Context,
 		args = &GcpArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Gcp
 	err := ctx.RegisterResource("harness:cloudprovider/gcp:Gcp", name, args, &resource, opts...)
 	if err != nil {

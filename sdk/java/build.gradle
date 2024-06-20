@@ -30,6 +30,7 @@ java {
 compileJava {
     options.fork = true
     options.forkOptions.jvmArgs.addAll(["-Xmx16g"])
+    options.encoding = "UTF-8"
 }
 
 repositories {
@@ -43,7 +44,7 @@ repositories {
 dependencies {
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.pulumi:pulumi:0.9.4")
+    implementation("com.pulumi:pulumi:0.12.0")
 }
 
 task sourcesJar(type: Jar) {
@@ -88,17 +89,17 @@ publishing {
             artifact javadocJar
 
             pom {
-                inceptionYear = ""
-                name = ""
+                inceptionYear = "2022"
+                name = "pulumi-harness"
                 packaging = "jar"
                 description = "A Pulumi package for creating and managing Harness  resources."
 
-                url = "https://github.com/lbrlabs/pulumi-harness"
+                url = "https://github.com/pulumi/pulumi-harness"
 
                 scm {
-                    connection = "git@github.com/lbrlabs/pulumi-harness.git"
-                    developerConnection = "git@github.com/lbrlabs/pulumi-harness.git"
-                    url = "https://github.com/lbrlabs/pulumi-harness"
+                    connection = "git@github.com/pulumi/pulumi-harness.git"
+                    developerConnection = "git@github.com/pulumi/pulumi-harness.git"
+                    url = "https://github.com/pulumi/pulumi-harness"
                 }
 
                 licenses {
@@ -110,9 +111,9 @@ publishing {
 
                 developers {
                     developer {
-                        id = ""
-                        name = ""
-                        email = ""
+                        id = "pulumi"
+                        name = "Pulumi"
+                        email = "support@pulumi.com"
                     }
                 }
             }

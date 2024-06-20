@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,26 +40,26 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.AccountId == nil {
-		if d := getEnvOrDefault(nil, nil, "HARNESS_ACCOUNT_ID"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_ACCOUNT_ID"); d != nil {
 			args.AccountId = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.ApiKey == nil {
-		if d := getEnvOrDefault(nil, nil, "HARNESS_API_KEY"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_API_KEY"); d != nil {
 			args.ApiKey = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Endpoint == nil {
-		if d := getEnvOrDefault(nil, nil, "HARNESS_ENDPOINT"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_ENDPOINT"); d != nil {
 			args.Endpoint = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.PlatformApiKey == nil {
-		if d := getEnvOrDefault(nil, nil, "HARNESS_PLATFORM_API_KEY"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_PLATFORM_API_KEY"); d != nil {
 			args.PlatformApiKey = pulumi.StringPtr(d.(string))
 		}
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:harness", name, args, &resource, opts...)
 	if err != nil {

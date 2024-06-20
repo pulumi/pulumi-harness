@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,14 +35,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tanzuPassword, err := harness.NewEncryptedText(ctx, "tanzuPassword", &harness.EncryptedTextArgs{
+//			tanzuPassword, err := harness.NewEncryptedText(ctx, "tanzu_password", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("tanzu_password"),
 //				Value:           pulumi.String("<PASSWORD>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudprovider.NewTanzu(ctx, "example", &cloudprovider.TanzuArgs{
+//				Name:               pulumi.String("example"),
 //				Endpoint:           pulumi.String("https://endpoint.com"),
 //				SkipValidation:     pulumi.Bool(true),
 //				Username:           pulumi.String("<USERNAME>"),
@@ -61,9 +64,7 @@ import (
 // Import using the Harness Tanzu cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/tanzu:Tanzu example <provider_id>
 // ```
 type Tanzu struct {
 	pulumi.CustomResourceState
@@ -95,7 +96,7 @@ func NewTanzu(ctx *pulumi.Context,
 	if args.PasswordSecretName == nil {
 		return nil, errors.New("invalid value for required argument 'PasswordSecretName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tanzu
 	err := ctx.RegisterResource("harness:cloudprovider/tanzu:Tanzu", name, args, &resource, opts...)
 	if err != nil {

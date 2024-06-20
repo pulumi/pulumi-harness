@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,20 +21,23 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := harness.NewApplication(ctx, "exampleApplication", nil)
+//			example, err := harness.NewApplication(ctx, "example", &harness.ApplicationArgs{
+//				Name: pulumi.String("example"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = service.NewHelm(ctx, "exampleHelm", &service.HelmArgs{
-//				AppId:       exampleApplication.ID(),
+//			_, err = service.NewHelm(ctx, "example", &service.HelmArgs{
+//				AppId:       example.ID(),
+//				Name:        pulumi.String("helm-example-service"),
 //				Description: pulumi.String("Service for deploying native Helm application.s"),
 //			})
 //			if err != nil {
@@ -50,9 +54,7 @@ import (
 // # Import using the Harness application id and service id
 //
 // ```sh
-//
-//	$ pulumi import harness:service/helm:Helm example <app_id>/<svc_id>
-//
+// $ pulumi import harness:service/helm:Helm example <app_id>/<svc_id>
 // ```
 type Helm struct {
 	pulumi.CustomResourceState
@@ -77,7 +79,7 @@ func NewHelm(ctx *pulumi.Context,
 	if args.AppId == nil {
 		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Helm
 	err := ctx.RegisterResource("harness:service/helm:Helm", name, args, &resource, opts...)
 	if err != nil {

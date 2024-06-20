@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +39,7 @@ import (
 //
 // ```
 func LookupGitConnector(ctx *pulumi.Context, args *LookupGitConnectorArgs, opts ...pulumi.InvokeOption) (*LookupGitConnectorResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitConnectorResult
 	err := ctx.Invoke("harness:platform/getGitConnector:getGitConnector", args, &rv, opts...)
 	if err != nil {

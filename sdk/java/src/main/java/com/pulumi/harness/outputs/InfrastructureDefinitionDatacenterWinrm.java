@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,12 +72,18 @@ public final class InfrastructureDefinitionDatacenterWinrm {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrm", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder hostnames(List<String> hostnames) {
-            this.hostnames = Objects.requireNonNull(hostnames);
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrm", "hostnames");
+            }
+            this.hostnames = hostnames;
             return this;
         }
         public Builder hostnames(String... hostnames) {
@@ -84,15 +91,18 @@ public final class InfrastructureDefinitionDatacenterWinrm {
         }
         @CustomType.Setter
         public Builder winrmConnectionAttributesName(String winrmConnectionAttributesName) {
-            this.winrmConnectionAttributesName = Objects.requireNonNull(winrmConnectionAttributesName);
+            if (winrmConnectionAttributesName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterWinrm", "winrmConnectionAttributesName");
+            }
+            this.winrmConnectionAttributesName = winrmConnectionAttributesName;
             return this;
         }
         public InfrastructureDefinitionDatacenterWinrm build() {
-            final var o = new InfrastructureDefinitionDatacenterWinrm();
-            o.cloudProviderName = cloudProviderName;
-            o.hostnames = hostnames;
-            o.winrmConnectionAttributesName = winrmConnectionAttributesName;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionDatacenterWinrm();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.hostnames = hostnames;
+            _resultValue.winrmConnectionAttributesName = winrmConnectionAttributesName;
+            return _resultValue;
         }
     }
 }

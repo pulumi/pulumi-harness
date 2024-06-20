@@ -13,11 +13,12 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const exampleApplication = new harness.Application("exampleApplication", {});
- * const exampleTanzu = new harness.service.Tanzu("exampleTanzu", {
- *     appId: exampleApplication.id,
+ * const example = new harness.Application("example", {name: "example"});
+ * const exampleTanzu = new harness.service.Tanzu("example", {
+ *     appId: example.id,
+ *     name: "tanzu-svc",
  *     description: "A service for deploying Tanzu applications.",
  * });
  * ```
@@ -27,7 +28,7 @@ import * as utilities from "../utilities";
  * Import using the Harness application id and service id
  *
  * ```sh
- *  $ pulumi import harness:service/tanzu:Tanzu example <app_id>/<svc_id>
+ * $ pulumi import harness:service/tanzu:Tanzu example <app_id>/<svc_id>
  * ```
  */
 export class Tanzu extends pulumi.CustomResource {

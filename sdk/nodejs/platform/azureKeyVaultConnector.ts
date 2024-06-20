@@ -11,19 +11,20 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.AzureKeyVaultConnector("example", {
- *     azureEnvironmentType: "AZURE",
- *     clientId: "client_id",
- *     description: "example",
  *     identifier: "identifier",
- *     isDefault: false,
- *     secretKey: "account.secret_key",
- *     subscription: "subscription",
+ *     name: "name",
+ *     description: "example",
  *     tags: ["foo:bar"],
+ *     clientId: "client_id",
+ *     secretKey: "account.secret_key",
  *     tenantId: "tenant_id",
  *     vaultName: "vault_name",
+ *     subscription: "subscription",
+ *     isDefault: false,
+ *     azureEnvironmentType: "AZURE",
  * });
  * ```
  *
@@ -32,19 +33,19 @@ import * as utilities from "../utilities";
  * Import account level azure key vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <connector_id>
+ * $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <connector_id>
  * ```
  *
- *  Import org level azure key vault connector
+ * Import org level azure key vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level azure key vault connector
+ * Import project level azure key vault connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AzureKeyVaultConnector extends pulumi.CustomResource {

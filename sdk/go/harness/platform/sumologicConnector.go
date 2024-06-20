@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewSumologicConnector(ctx, "test", &platform.SumologicConnectorArgs{
-//				AccessIdRef:  pulumi.String("account.secret_id"),
-//				AccessKeyRef: pulumi.String("account.secret_id"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				Url: pulumi.String("https://api.us2.sumologic.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccessIdRef:  pulumi.String("account.secret_id"),
+//				AccessKeyRef: pulumi.String("account.secret_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level sumologic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
-//
+// $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <connector_id>
 // ```
 //
-//	Import org level sumologic connector
+// # Import org level sumologic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level sumologic connector
+// # Import project level sumologic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/sumologicConnector:SumologicConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type SumologicConnector struct {
 	pulumi.CustomResourceState
@@ -118,7 +114,7 @@ func NewSumologicConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SumologicConnector
 	err := ctx.RegisterResource("harness:platform/sumologicConnector:SumologicConnector", name, args, &resource, opts...)
 	if err != nil {

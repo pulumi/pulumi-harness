@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewNewrelicConnector(ctx, "test", &platform.NewrelicConnectorArgs{
-//				AccountId: pulumi.String("nr_account_id"),
-//				ApiKeyRef: pulumi.String("account.secret_id"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
 //				Url: pulumi.String("https://newrelic.com/"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AccountId: pulumi.String("nr_account_id"),
+//				ApiKeyRef: pulumi.String("account.secret_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level newrelic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <connector_id>
-//
+// $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <connector_id>
 // ```
 //
-//	Import org level newrelic connector
+// # Import org level newrelic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level newrelic connector
+// # Import project level newrelic connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/newrelicConnector:NewrelicConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type NewrelicConnector struct {
 	pulumi.CustomResourceState
@@ -118,7 +114,7 @@ func NewNewrelicConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NewrelicConnector
 	err := ctx.RegisterResource("harness:platform/newrelicConnector:NewrelicConnector", name, args, &resource, opts...)
 	if err != nil {

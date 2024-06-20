@@ -9,44 +9,44 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Triggers("example", {
  *     identifier: "identifier",
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
+ *     name: "name",
  *     targetId: "pipelineIdentifier",
- *     yaml: `  trigger:
- *     name: name
- *     identifier: identifier
- *     enabled: true
- *     description: ""
- *     tags: {}
- *     projectIdentifier: projectIdentifier
- *     orgIdentifier: orgIdentifer
- *     pipelineIdentifier: pipelineIdentifier
- *     source:
- *       type: Webhook
+ *     yaml: `trigger:
+ *   name: name
+ *   identifier: identifier
+ *   enabled: true
+ *   description: ""
+ *   tags: {}
+ *   projectIdentifier: projectIdentifier
+ *   orgIdentifier: orgIdentifer
+ *   pipelineIdentifier: pipelineIdentifier
+ *   source:
+ *     type: Webhook
+ *     spec:
+ *       type: Github
  *       spec:
- *         type: Github
+ *         type: Push
  *         spec:
- *           type: Push
- *           spec:
- *             connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
- *             autoAbortPreviousExecutions: false
- *             payloadConditions:
- *             - key: changedFiles
- *               operator: Equals
- *               value: value
- *             - key: targetBranch
- *               operator: Equals
- *               value: value
- *             headerConditions: []
- *             repoName: repoName
- *             actions: []
- *     inputYaml: |
- *       pipeline: {}\\n
- *
+ *           connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
+ *           autoAbortPreviousExecutions: false
+ *           payloadConditions:
+ *           - key: changedFiles
+ *             operator: Equals
+ *             value: value
+ *           - key: targetBranch
+ *             operator: Equals
+ *             value: value
+ *           headerConditions: []
+ *           repoName: repoName
+ *           actions: []
+ *   inputYaml: |
+ *     pipeline: {}\\n
  * `,
  * });
  * ```
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * Import trigger
  *
  * ```sh
- *  $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
+ * $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
  * ```
  */
 export class Triggers extends pulumi.CustomResource {

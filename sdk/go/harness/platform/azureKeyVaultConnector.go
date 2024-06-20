@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,18 +29,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAzureKeyVaultConnector(ctx, "example", &platform.AzureKeyVaultConnectorArgs{
-//				AzureEnvironmentType: pulumi.String("AZURE"),
-//				ClientId:             pulumi.String("client_id"),
-//				Description:          pulumi.String("example"),
-//				Identifier:           pulumi.String("identifier"),
-//				IsDefault:            pulumi.Bool(false),
-//				SecretKey:            pulumi.String("account.secret_key"),
-//				Subscription:         pulumi.String("subscription"),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				TenantId:  pulumi.String("tenant_id"),
-//				VaultName: pulumi.String("vault_name"),
+//				ClientId:             pulumi.String("client_id"),
+//				SecretKey:            pulumi.String("account.secret_key"),
+//				TenantId:             pulumi.String("tenant_id"),
+//				VaultName:            pulumi.String("vault_name"),
+//				Subscription:         pulumi.String("subscription"),
+//				IsDefault:            pulumi.Bool(false),
+//				AzureEnvironmentType: pulumi.String("AZURE"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,25 +57,19 @@ import (
 // # Import account level azure key vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <connector_id>
-//
+// $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <connector_id>
 // ```
 //
-//	Import org level azure key vault connector
+// # Import org level azure key vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level azure key vault connector
+// # Import project level azure key vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AzureKeyVaultConnector struct {
 	pulumi.CustomResourceState
@@ -133,7 +129,7 @@ func NewAzureKeyVaultConnector(ctx *pulumi.Context,
 	if args.VaultName == nil {
 		return nil, errors.New("invalid value for required argument 'VaultName'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureKeyVaultConnector
 	err := ctx.RegisterResource("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", name, args, &resource, opts...)
 	if err != nil {

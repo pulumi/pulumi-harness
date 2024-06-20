@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class InfrastructureDefinitionKubernetesArgs extends com.pulumi.res
         }
 
         public InfrastructureDefinitionKubernetesArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.releaseName = Objects.requireNonNull($.releaseName, "expected parameter 'releaseName' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesArgs", "cloudProviderName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesArgs", "namespace");
+            }
+            if ($.releaseName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionKubernetesArgs", "releaseName");
+            }
             return $;
         }
     }

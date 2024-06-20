@@ -60,6 +60,7 @@ public final class UserGroupPermissions {
 
         @CustomType.Setter
         public Builder accountPermissions(@Nullable List<String> accountPermissions) {
+
             this.accountPermissions = accountPermissions;
             return this;
         }
@@ -68,14 +69,15 @@ public final class UserGroupPermissions {
         }
         @CustomType.Setter
         public Builder appPermissions(@Nullable UserGroupPermissionsAppPermissions appPermissions) {
+
             this.appPermissions = appPermissions;
             return this;
         }
         public UserGroupPermissions build() {
-            final var o = new UserGroupPermissions();
-            o.accountPermissions = accountPermissions;
-            o.appPermissions = appPermissions;
-            return o;
+            final var _resultValue = new UserGroupPermissions();
+            _resultValue.accountPermissions = accountPermissions;
+            _resultValue.appPermissions = appPermissions;
+            return _resultValue;
         }
     }
 }

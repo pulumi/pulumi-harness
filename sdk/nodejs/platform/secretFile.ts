@@ -11,14 +11,15 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.SecretFile("example", {
- *     description: "test",
- *     filePath: "file_path",
  *     identifier: "identifier",
- *     secretManagerIdentifier: "harnessSecretManager",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
+ *     filePath: "file_path",
+ *     secretManagerIdentifier: "harnessSecretManager",
  * });
  * ```
  *
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  * Import account level secret file
  *
  * ```sh
- *  $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
+ * $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
  * ```
  *
- *  Import org level secret file
+ * Import org level secret file
  *
  * ```sh
- *  $ pulumi import harness:platform/secretFile:SecretFile example <ord_id>/<secret_file_id>
+ * $ pulumi import harness:platform/secretFile:SecretFile example <ord_id>/<secret_file_id>
  * ```
  *
- *  Import project level secret file
+ * Import project level secret file
  *
  * ```sh
- *  $ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
+ * $ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
  * ```
  */
 export class SecretFile extends pulumi.CustomResource {

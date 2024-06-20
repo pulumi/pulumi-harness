@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,21 +21,23 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Authentication mechanism as username and password
 //			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				OrgId:     pulumi.Any(harness_platform_project.Test.Org_id),
-//				ProjectId: pulumi.Any(harness_platform_project.Test.Id),
+//				OrgId:     pulumi.Any(testHarnessPlatformProject.OrgId),
+//				ProjectId: pulumi.Any(testHarnessPlatformProject.Id),
 //				Url:       pulumi.String("https://artifactory.example.com"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
@@ -47,14 +50,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Authentication mechanism as anonymous
 //			_, err = platform.NewArtifactoryConnector(ctx, "test", &platform.ArtifactoryConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				OrgId:     pulumi.Any(harness_platform_project.Test.Org_id),
-//				ProjectId: pulumi.Any(harness_platform_project.Test.Id),
+//				OrgId:     pulumi.Any(testHarnessPlatformProject.OrgId),
+//				ProjectId: pulumi.Any(testHarnessPlatformProject.Id),
 //				Url:       pulumi.String("https://artifactory.example.com"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
@@ -74,25 +79,19 @@ import (
 // # Import account level artifactory connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
-//
+// $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <connector_id>
 // ```
 //
-//	Import org level artifactory connector
+// # Import org level artifactory connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level artifactory connector
+// # Import project level artifactory connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/artifactoryConnector:ArtifactoryConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type ArtifactoryConnector struct {
 	pulumi.CustomResourceState
@@ -130,7 +129,7 @@ func NewArtifactoryConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ArtifactoryConnector
 	err := ctx.RegisterResource("harness:platform/artifactoryConnector:ArtifactoryConnector", name, args, &resource, opts...)
 	if err != nil {

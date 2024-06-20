@@ -7,19 +7,185 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource for creating a Harness user group
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := harness.NewUserGroup(ctx, "example", &harness.UserGroupArgs{
+//				Name:        pulumi.String("example-group"),
+//				Description: pulumi.String("This group demonstrates account level and resource level permissions."),
+//				Permissions: &harness.UserGroupPermissionsTypeArgs{
+//					AccountPermissions: pulumi.StringArray{
+//						pulumi.String("ADMINISTER_OTHER_ACCOUNT_FUNCTIONS"),
+//						pulumi.String("MANAGE_API_KEYS"),
+//					},
+//					AppPermissions: &harness.UserGroupPermissionsAppPermissionsArgs{
+//						Alls: harness.UserGroupPermissionsAppPermissionsAllArray{
+//							&harness.UserGroupPermissionsAppPermissionsAllArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//							},
+//						},
+//						Deployments: harness.UserGroupPermissionsAppPermissionsDeploymentArray{
+//							&harness.UserGroupPermissionsAppPermissionsDeploymentArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("READ"),
+//									pulumi.String("ROLLBACK_WORKFLOW"),
+//									pulumi.String("EXECUTE_PIPELINE"),
+//									pulumi.String("EXECUTE_WORKFLOW"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("NON_PRODUCTION_ENVIRONMENTS"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsDeploymentArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("READ"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("PRODUCTION_ENVIRONMENTS"),
+//								},
+//							},
+//						},
+//						Environments: harness.UserGroupPermissionsAppPermissionsEnvironmentArray{
+//							&harness.UserGroupPermissionsAppPermissionsEnvironmentArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("NON_PRODUCTION_ENVIRONMENTS"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsEnvironmentArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("READ"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("PRODUCTION_ENVIRONMENTS"),
+//								},
+//							},
+//						},
+//						Pipelines: harness.UserGroupPermissionsAppPermissionsPipelineArray{
+//							&harness.UserGroupPermissionsAppPermissionsPipelineArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("NON_PRODUCTION_PIPELINES"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsPipelineArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("READ"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("PRODUCTION_PIPELINES"),
+//								},
+//							},
+//						},
+//						Provisioners: harness.UserGroupPermissionsAppPermissionsProvisionerArray{
+//							&harness.UserGroupPermissionsAppPermissionsProvisionerArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsProvisionerArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//								},
+//							},
+//						},
+//						Services: harness.UserGroupPermissionsAppPermissionsServiceArray{
+//							&harness.UserGroupPermissionsAppPermissionsServiceArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsServiceArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//							},
+//						},
+//						Templates: harness.UserGroupPermissionsAppPermissionsTemplateArray{
+//							&harness.UserGroupPermissionsAppPermissionsTemplateArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//							},
+//						},
+//						Workflows: harness.UserGroupPermissionsAppPermissionsWorkflowArray{
+//							&harness.UserGroupPermissionsAppPermissionsWorkflowArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("UPDATE"),
+//									pulumi.String("DELETE"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("NON_PRODUCTION_WORKFLOWS"),
+//								},
+//							},
+//							&harness.UserGroupPermissionsAppPermissionsWorkflowArgs{
+//								Actions: pulumi.StringArray{
+//									pulumi.String("CREATE"),
+//									pulumi.String("READ"),
+//								},
+//								Filters: pulumi.StringArray{
+//									pulumi.String("PRODUCTION_WORKFLOWS"),
+//									pulumi.String("WORKFLOW_TEMPLATES"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
 // # Import using the id of the user group
 //
 // ```sh
-//
-//	$ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
-//
+// $ pulumi import harness:index/userGroup:UserGroup example <USER_GROUP_ID>
 // ```
 type UserGroup struct {
 	pulumi.CustomResourceState
@@ -49,7 +215,7 @@ func NewUserGroup(ctx *pulumi.Context,
 		args = &UserGroupArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserGroup
 	err := ctx.RegisterResource("harness:index/userGroup:UserGroup", name, args, &resource, opts...)
 	if err != nil {

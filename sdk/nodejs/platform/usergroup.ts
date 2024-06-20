@@ -41,104 +41,107 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const ssoTypeSaml = new harness.platform.Usergroup("ssoTypeSaml", {
- *     externallyManaged: false,
+ * const ssoTypeSaml = new harness.platform.Usergroup("sso_type_saml", {
  *     identifier: "identifier",
- *     linkedSsoDisplayName: "linked_sso_display_name",
- *     linkedSsoId: "linked_sso_id",
- *     linkedSsoType: "SAML",
- *     notificationConfigs: [
- *         {
- *             slackWebhookUrl: "https://google.com",
- *             type: "SLACK",
- *         },
- *         {
- *             groupEmail: "email@email.com",
- *             sendEmailToAllUsers: true,
- *             type: "EMAIL",
- *         },
- *         {
- *             microsoftTeamsWebhookUrl: "https://google.com",
- *             type: "MSTEAMS",
- *         },
- *         {
- *             pagerDutyKey: "pagerDutyKey",
- *             type: "PAGERDUTY",
- *         },
- *     ],
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     users: ["user_id"],
+ *     notificationConfigs: [
+ *         {
+ *             type: "SLACK",
+ *             slackWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "EMAIL",
+ *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
+ *         },
+ *         {
+ *             type: "MSTEAMS",
+ *             microsoftTeamsWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "PAGERDUTY",
+ *             pagerDutyKey: "pagerDutyKey",
+ *         },
+ *     ],
+ *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_name",
  *     ssoGroupName: "sso_group_name",
+ *     linkedSsoType: "SAML",
  *     ssoLinked: true,
- *     users: ["user_id"],
  * });
- * const ssoTypeLdap = new harness.platform.Usergroup("ssoTypeLdap", {
- *     externallyManaged: false,
+ * const ssoTypeLdap = new harness.platform.Usergroup("sso_type_ldap", {
  *     identifier: "identifier",
- *     linkedSsoDisplayName: "linked_sso_display_name",
- *     linkedSsoId: "linked_sso_id",
- *     linkedSsoType: "LDAP",
- *     notificationConfigs: [
- *         {
- *             slackWebhookUrl: "https://google.com",
- *             type: "SLACK",
- *         },
- *         {
- *             groupEmail: "email@email.com",
- *             sendEmailToAllUsers: true,
- *             type: "EMAIL",
- *         },
- *         {
- *             microsoftTeamsWebhookUrl: "https://google.com",
- *             type: "MSTEAMS",
- *         },
- *         {
- *             pagerDutyKey: "pagerDutyKey",
- *             type: "PAGERDUTY",
- *         },
- *     ],
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     users: ["user_id"],
+ *     notificationConfigs: [
+ *         {
+ *             type: "SLACK",
+ *             slackWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "EMAIL",
+ *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
+ *         },
+ *         {
+ *             type: "MSTEAMS",
+ *             microsoftTeamsWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "PAGERDUTY",
+ *             pagerDutyKey: "pagerDutyKey",
+ *         },
+ *     ],
+ *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_id",
  *     ssoGroupName: "sso_group_name",
+ *     linkedSsoType: "LDAP",
  *     ssoLinked: true,
- *     users: ["user_id"],
  * });
  * // Create user group by adding user emails
  * const example = new harness.platform.Usergroup("example", {
- *     externallyManaged: false,
  *     identifier: "identifier",
- *     linkedSsoDisplayName: "linked_sso_display_name",
- *     linkedSsoId: "linked_sso_id",
- *     linkedSsoType: "SAML",
- *     notificationConfigs: [
- *         {
- *             slackWebhookUrl: "https://google.com",
- *             type: "SLACK",
- *         },
- *         {
- *             groupEmail: "email@email.com",
- *             sendEmailToAllUsers: true,
- *             type: "EMAIL",
- *         },
- *         {
- *             microsoftTeamsWebhookUrl: "https://google.com",
- *             type: "MSTEAMS",
- *         },
- *         {
- *             pagerDutyKey: "pagerDutyKey",
- *             type: "PAGERDUTY",
- *         },
- *     ],
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     userEmails: ["user@email.com"],
+ *     notificationConfigs: [
+ *         {
+ *             type: "SLACK",
+ *             slackWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "EMAIL",
+ *             groupEmail: "email@email.com",
+ *             sendEmailToAllUsers: true,
+ *         },
+ *         {
+ *             type: "MSTEAMS",
+ *             microsoftTeamsWebhookUrl: "https://google.com",
+ *         },
+ *         {
+ *             type: "PAGERDUTY",
+ *             pagerDutyKey: "pagerDutyKey",
+ *         },
+ *     ],
+ *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_name",
  *     ssoGroupName: "sso_group_name",
+ *     linkedSsoType: "SAML",
  *     ssoLinked: true,
- *     userEmails: ["user@email.com"],
  * });
  * ```
  *
@@ -147,19 +150,19 @@ import * as utilities from "../utilities";
  * Import account level user group
  *
  * ```sh
- *  $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
+ * $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
  * ```
  *
- *  Import org level user group
+ * Import org level user group
  *
  * ```sh
- *  $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
+ * $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
  * ```
  *
- *  Import project level user group
+ * Import project level user group
  *
  * ```sh
- *  $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
+ * $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
  * ```
  */
 export class Usergroup extends pulumi.CustomResource {

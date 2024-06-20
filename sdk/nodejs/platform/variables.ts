@@ -13,17 +13,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Variables("test", {
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     spec: {
- *         fixedValue: "fixedValue",
- *         valueType: "FIXED",
- *     },
  *     type: "String",
+ *     spec: {
+ *         valueType: "FIXED",
+ *         fixedValue: "fixedValue",
+ *     },
  * });
  * ```
  *
@@ -32,19 +33,19 @@ import * as utilities from "../utilities";
  * Import account level variables
  *
  * ```sh
- *  $ pulumi import harness:platform/variables:Variables example <variable_id>
+ * $ pulumi import harness:platform/variables:Variables example <variable_id>
  * ```
  *
- *  Import org level variables
+ * Import org level variables
  *
  * ```sh
- *  $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
+ * $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
  * ```
  *
- *  Import project level variables
+ * Import project level variables
  *
  * ```sh
- *  $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
+ * $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
  * ```
  */
 export class Variables extends pulumi.CustomResource {

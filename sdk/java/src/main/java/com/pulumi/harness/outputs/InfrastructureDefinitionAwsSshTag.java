@@ -4,18 +4,35 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class InfrastructureDefinitionAwsSshTag {
+    /**
+     * @return The key of the tag.
+     * 
+     */
     private String key;
+    /**
+     * @return The value of the tag.
+     * 
+     */
     private String value;
 
     private InfrastructureDefinitionAwsSshTag() {}
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public String value() {
         return this.value;
     }
@@ -40,19 +57,25 @@ public final class InfrastructureDefinitionAwsSshTag {
 
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshTag", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshTag", "value");
+            }
+            this.value = value;
             return this;
         }
         public InfrastructureDefinitionAwsSshTag build() {
-            final var o = new InfrastructureDefinitionAwsSshTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsSshTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

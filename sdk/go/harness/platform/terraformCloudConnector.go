@@ -8,38 +8,34 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // # Import account level Terraform Cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <connector_id>
-//
+// $ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <connector_id>
 // ```
 //
-//	Import org level Terraform Cloud provider connector
+// # Import org level Terraform Cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level Terraform Cloud provider connector
+// # Import project level Terraform Cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/terraformCloudConnector:TerraformCloudConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type TerraformCloudConnector struct {
 	pulumi.CustomResourceState
 
-	// Credentials to connect to the Terraform Cloud platform.
 	Credentials TerraformCloudConnectorCredentialsOutput `pulumi:"credentials"`
 	// Connect only using delegates with these tags.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
@@ -55,8 +51,7 @@ type TerraformCloudConnector struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// URL of the Terraform Cloud platform.
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url  pulumi.StringOutput      `pulumi:"url"`
 }
 
 // NewTerraformCloudConnector registers a new resource with the given unique name, arguments, and options.
@@ -75,7 +70,7 @@ func NewTerraformCloudConnector(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TerraformCloudConnector
 	err := ctx.RegisterResource("harness:platform/terraformCloudConnector:TerraformCloudConnector", name, args, &resource, opts...)
 	if err != nil {
@@ -98,7 +93,6 @@ func GetTerraformCloudConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TerraformCloudConnector resources.
 type terraformCloudConnectorState struct {
-	// Credentials to connect to the Terraform Cloud platform.
 	Credentials *TerraformCloudConnectorCredentials `pulumi:"credentials"`
 	// Connect only using delegates with these tags.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
@@ -114,12 +108,10 @@ type terraformCloudConnectorState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the Terraform Cloud platform.
-	Url *string `pulumi:"url"`
+	Url  *string  `pulumi:"url"`
 }
 
 type TerraformCloudConnectorState struct {
-	// Credentials to connect to the Terraform Cloud platform.
 	Credentials TerraformCloudConnectorCredentialsPtrInput
 	// Connect only using delegates with these tags.
 	DelegateSelectors pulumi.StringArrayInput
@@ -135,8 +127,7 @@ type TerraformCloudConnectorState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the Terraform Cloud platform.
-	Url pulumi.StringPtrInput
+	Url  pulumi.StringPtrInput
 }
 
 func (TerraformCloudConnectorState) ElementType() reflect.Type {
@@ -144,7 +135,6 @@ func (TerraformCloudConnectorState) ElementType() reflect.Type {
 }
 
 type terraformCloudConnectorArgs struct {
-	// Credentials to connect to the Terraform Cloud platform.
 	Credentials TerraformCloudConnectorCredentials `pulumi:"credentials"`
 	// Connect only using delegates with these tags.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
@@ -160,13 +150,11 @@ type terraformCloudConnectorArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the Terraform Cloud platform.
-	Url string `pulumi:"url"`
+	Url  string   `pulumi:"url"`
 }
 
 // The set of arguments for constructing a TerraformCloudConnector resource.
 type TerraformCloudConnectorArgs struct {
-	// Credentials to connect to the Terraform Cloud platform.
 	Credentials TerraformCloudConnectorCredentialsInput
 	// Connect only using delegates with these tags.
 	DelegateSelectors pulumi.StringArrayInput
@@ -182,8 +170,7 @@ type TerraformCloudConnectorArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the Terraform Cloud platform.
-	Url pulumi.StringInput
+	Url  pulumi.StringInput
 }
 
 func (TerraformCloudConnectorArgs) ElementType() reflect.Type {
@@ -273,7 +260,6 @@ func (o TerraformCloudConnectorOutput) ToTerraformCloudConnectorOutputWithContex
 	return o
 }
 
-// Credentials to connect to the Terraform Cloud platform.
 func (o TerraformCloudConnectorOutput) Credentials() TerraformCloudConnectorCredentialsOutput {
 	return o.ApplyT(func(v *TerraformCloudConnector) TerraformCloudConnectorCredentialsOutput { return v.Credentials }).(TerraformCloudConnectorCredentialsOutput)
 }
@@ -313,7 +299,6 @@ func (o TerraformCloudConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TerraformCloudConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// URL of the Terraform Cloud platform.
 func (o TerraformCloudConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *TerraformCloudConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *
  * const example = harness.getDelegate({
  *     name: "harness-delegate",
- *     status: "ENABLED",
  *     type: "KUBERNETES",
+ *     status: "ENABLED",
  * });
  * ```
  */
@@ -123,8 +123,8 @@ export interface GetDelegateResult {
  *
  * const example = harness.getDelegate({
  *     name: "harness-delegate",
- *     status: "ENABLED",
  *     type: "KUBERNETES",
+ *     status: "ENABLED",
  * });
  * ```
  */

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving an SSO providers
 func GetSsoProvider(ctx *pulumi.Context, args *GetSsoProviderArgs, opts ...pulumi.InvokeOption) (*GetSsoProviderResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSsoProviderResult
 	err := ctx.Invoke("harness:index/getSsoProvider:getSsoProvider", args, &rv, opts...)
 	if err != nil {

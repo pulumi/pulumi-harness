@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +20,8 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/cloudprovider"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cloudprovider"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,21 +34,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			awsAccessKey, err := harness.NewEncryptedText(ctx, "awsAccessKey", &harness.EncryptedTextArgs{
+//			awsAccessKey, err := harness.NewEncryptedText(ctx, "aws_access_key", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("aws_access_key"),
 //				Value:           pulumi.String("<ACCESS_KEY_ID>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			awsSecretKey, err := harness.NewEncryptedText(ctx, "awsSecretKey", &harness.EncryptedTextArgs{
+//			awsSecretKey, err := harness.NewEncryptedText(ctx, "aws_secret_key", &harness.EncryptedTextArgs{
+//				Name:            pulumi.String("aws_secret_key"),
 //				Value:           pulumi.String("<SECRET_KEY_ID>"),
-//				SecretManagerId: *pulumi.String(_default.Id),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudprovider.NewAws(ctx, "aws", &cloudprovider.AwsArgs{
+//				Name:                      pulumi.String("Example aws cloud provider"),
 //				AccessKeyIdSecretName:     awsAccessKey.Name,
 //				SecretAccessKeySecretName: awsSecretKey.Name,
 //			})
@@ -65,9 +69,7 @@ import (
 // Import using the Harness aws cloud provider id.
 //
 // ```sh
-//
-//	$ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
-//
+// $ pulumi import harness:cloudprovider/aws:Aws example <provider_id>
 // ```
 type Aws struct {
 	pulumi.CustomResourceState
@@ -99,7 +101,7 @@ func NewAws(ctx *pulumi.Context,
 		args = &AwsArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Aws
 	err := ctx.RegisterResource("harness:cloudprovider/aws:Aws", name, args, &resource, opts...)
 	if err != nil {

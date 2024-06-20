@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getPolicy({
- *     identifier: harness_platform_policy.test.identifier,
- *     name: harness_platform_policy.test.name,
+ *     identifier: testHarnessPlatformPolicy.identifier,
+ *     name: testHarnessPlatformPolicy.name,
  *     rego: "package test",
  * });
  * ```
@@ -105,8 +105,8 @@ export interface GetPolicyResult {
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getPolicy({
- *     identifier: harness_platform_policy.test.identifier,
- *     name: harness_platform_policy.test.name,
+ *     identifier: testHarnessPlatformPolicy.identifier,
+ *     name: testHarnessPlatformPolicy.name,
  *     rego: "package test",
  * });
  * ```

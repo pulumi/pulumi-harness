@@ -24,7 +24,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ```java
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,47 +49,120 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new UserGroup(&#34;example&#34;, UserGroupArgs.builder()        
- *             .description(&#34;This group demonstrates account level and resource level permissions.&#34;)
+ *         var example = new UserGroup("example", UserGroupArgs.builder()
+ *             .name("example-group")
+ *             .description("This group demonstrates account level and resource level permissions.")
  *             .permissions(UserGroupPermissionsArgs.builder()
  *                 .accountPermissions(                
- *                     &#34;ADMINISTER_OTHER_ACCOUNT_FUNCTIONS&#34;,
- *                     &#34;MANAGE_API_KEYS&#34;)
+ *                     "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+ *                     "MANAGE_API_KEYS")
  *                 .appPermissions(UserGroupPermissionsAppPermissionsArgs.builder()
- *                     .all(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .deployment(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .environment(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .pipeline(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .provisioner(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .service(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .template(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .workflow(                    
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .alls(UserGroupPermissionsAppPermissionsAllArgs.builder()
+ *                         .actions(                        
+ *                             "CREATE",
+ *                             "READ",
+ *                             "UPDATE",
+ *                             "DELETE")
+ *                         .build())
+ *                     .deployments(                    
+ *                         UserGroupPermissionsAppPermissionsDeploymentArgs.builder()
+ *                             .actions(                            
+ *                                 "READ",
+ *                                 "ROLLBACK_WORKFLOW",
+ *                                 "EXECUTE_PIPELINE",
+ *                                 "EXECUTE_WORKFLOW")
+ *                             .filters("NON_PRODUCTION_ENVIRONMENTS")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsDeploymentArgs.builder()
+ *                             .actions("READ")
+ *                             .filters("PRODUCTION_ENVIRONMENTS")
+ *                             .build())
+ *                     .environments(                    
+ *                         UserGroupPermissionsAppPermissionsEnvironmentArgs.builder()
+ *                             .actions(                            
+ *                                 "CREATE",
+ *                                 "READ",
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .filters("NON_PRODUCTION_ENVIRONMENTS")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsEnvironmentArgs.builder()
+ *                             .actions("READ")
+ *                             .filters("PRODUCTION_ENVIRONMENTS")
+ *                             .build())
+ *                     .pipelines(                    
+ *                         UserGroupPermissionsAppPermissionsPipelineArgs.builder()
+ *                             .actions(                            
+ *                                 "CREATE",
+ *                                 "READ",
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .filters("NON_PRODUCTION_PIPELINES")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsPipelineArgs.builder()
+ *                             .actions("READ")
+ *                             .filters("PRODUCTION_PIPELINES")
+ *                             .build())
+ *                     .provisioners(                    
+ *                         UserGroupPermissionsAppPermissionsProvisionerArgs.builder()
+ *                             .actions(                            
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsProvisionerArgs.builder()
+ *                             .actions(                            
+ *                                 "CREATE",
+ *                                 "READ")
+ *                             .build())
+ *                     .services(                    
+ *                         UserGroupPermissionsAppPermissionsServiceArgs.builder()
+ *                             .actions(                            
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsServiceArgs.builder()
+ *                             .actions(                            
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .build())
+ *                     .templates(UserGroupPermissionsAppPermissionsTemplateArgs.builder()
+ *                         .actions(                        
+ *                             "CREATE",
+ *                             "READ",
+ *                             "UPDATE",
+ *                             "DELETE")
+ *                         .build())
+ *                     .workflows(                    
+ *                         UserGroupPermissionsAppPermissionsWorkflowArgs.builder()
+ *                             .actions(                            
+ *                                 "UPDATE",
+ *                                 "DELETE")
+ *                             .filters("NON_PRODUCTION_WORKFLOWS")
+ *                             .build(),
+ *                         UserGroupPermissionsAppPermissionsWorkflowArgs.builder()
+ *                             .actions(                            
+ *                                 "CREATE",
+ *                                 "READ")
+ *                             .filters(                            
+ *                                 "PRODUCTION_WORKFLOWS",
+ *                                 "WORKFLOW_TEMPLATES")
+ *                             .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the id of the user group
  * 
  * ```sh
- *  $ pulumi import harness:index/userGroup:UserGroup example &lt;USER_GROUP_ID&gt;
+ * $ pulumi import harness:index/userGroup:UserGroup example &lt;USER_GROUP_ID&gt;
  * ```
  * 
  */

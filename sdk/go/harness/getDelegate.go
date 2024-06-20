@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.GetDelegate(ctx, &harness.GetDelegateArgs{
 //				Name:   pulumi.StringRef("harness-delegate"),
-//				Status: pulumi.StringRef("ENABLED"),
 //				Type:   pulumi.StringRef("KUBERNETES"),
+//				Status: pulumi.StringRef("ENABLED"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -40,7 +41,7 @@ import (
 //
 // ```
 func GetDelegate(ctx *pulumi.Context, args *GetDelegateArgs, opts ...pulumi.InvokeOption) (*GetDelegateResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDelegateResult
 	err := ctx.Invoke("harness:index/getDelegate:getDelegate", args, &rv, opts...)
 	if err != nil {

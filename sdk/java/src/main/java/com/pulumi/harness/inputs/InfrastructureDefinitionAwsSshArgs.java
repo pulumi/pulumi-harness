@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.InfrastructureDefinitionAwsSshTagArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -432,9 +433,15 @@ public final class InfrastructureDefinitionAwsSshArgs extends com.pulumi.resourc
         }
 
         public InfrastructureDefinitionAwsSshArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.hostConnectionType = Objects.requireNonNull($.hostConnectionType, "expected parameter 'hostConnectionType' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshArgs", "cloudProviderName");
+            }
+            if ($.hostConnectionType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshArgs", "hostConnectionType");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsSshArgs", "region");
+            }
             return $;
         }
     }

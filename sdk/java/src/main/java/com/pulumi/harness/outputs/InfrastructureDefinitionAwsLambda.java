@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -115,21 +116,29 @@ public final class InfrastructureDefinitionAwsLambda {
 
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsLambda", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder iamRole(@Nullable String iamRole) {
+
             this.iamRole = iamRole;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsLambda", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -138,6 +147,7 @@ public final class InfrastructureDefinitionAwsLambda {
         }
         @CustomType.Setter
         public Builder subnetIds(@Nullable List<String> subnetIds) {
+
             this.subnetIds = subnetIds;
             return this;
         }
@@ -146,18 +156,19 @@ public final class InfrastructureDefinitionAwsLambda {
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         public InfrastructureDefinitionAwsLambda build() {
-            final var o = new InfrastructureDefinitionAwsLambda();
-            o.cloudProviderName = cloudProviderName;
-            o.iamRole = iamRole;
-            o.region = region;
-            o.securityGroupIds = securityGroupIds;
-            o.subnetIds = subnetIds;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsLambda();
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.iamRole = iamRole;
+            _resultValue.region = region;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.subnetIds = subnetIds;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,17 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewTemplateFilters(ctx, "test", &platform.TemplateFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("Template"),
 //				FilterProperties: &platform.TemplateFiltersFilterPropertiesArgs{
-//					FilterType: pulumi.String("Template"),
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
 //					},
+//					FilterType: pulumi.String("Template"),
 //				},
 //				FilterVisibility: pulumi.String("EveryOne"),
-//				Identifier:       pulumi.String("identifier"),
-//				OrgId:            pulumi.String("org_id"),
-//				ProjectId:        pulumi.String("project_id"),
-//				Type:             pulumi.String("Template"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,25 +56,19 @@ import (
 // # Import account level template filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/templateFilters:TemplateFilters example <filter_id>/<type>
-//
+// $ pulumi import harness:platform/templateFilters:TemplateFilters example <filter_id>/<type>
 // ```
 //
-//	Import org level template filter
+// # Import org level template filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<filter_id>/<type>
 // ```
 //
-//	Import project level template filter
+// # Import project level template filter
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
-//
+// $ pulumi import harness:platform/templateFilters:TemplateFilters example <org_id>/<project_id>/<filter_id>/<type>
 // ```
 type TemplateFilters struct {
 	pulumi.CustomResourceState
@@ -109,7 +105,7 @@ func NewTemplateFilters(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TemplateFilters
 	err := ctx.RegisterResource("harness:platform/templateFilters:TemplateFilters", name, args, &resource, opts...)
 	if err != nil {

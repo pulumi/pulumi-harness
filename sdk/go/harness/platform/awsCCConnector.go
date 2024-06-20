@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,22 +29,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAwsCCConnector(ctx, "test", &platform.AwsCCConnectorArgs{
-//				AccountId: pulumi.String("account_id"),
-//				CrossAccountAccess: &platform.AwsCCConnectorCrossAccountAccessArgs{
-//					ExternalId: pulumi.String("external_id"),
-//					RoleArn:    pulumi.String("role_arn"),
-//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				AccountId:  pulumi.String("account_id"),
+//				ReportName: pulumi.String("report_name"),
+//				S3Bucket:   pulumi.String("s3bucket"),
 //				FeaturesEnableds: pulumi.StringArray{
 //					pulumi.String("OPTIMIZATION"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("BILLING"),
 //				},
-//				Identifier: pulumi.String("identifier"),
-//				ReportName: pulumi.String("report_name"),
-//				S3Bucket:   pulumi.String("s3bucket"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				CrossAccountAccess: &platform.AwsCCConnectorCrossAccountAccessArgs{
+//					RoleArn:    pulumi.String("role_arn"),
+//					ExternalId: pulumi.String("external_id"),
 //				},
 //			})
 //			if err != nil {
@@ -60,25 +62,19 @@ import (
 // # Import account level aws cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <connector_id>
-//
+// $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <connector_id>
 // ```
 //
-//	Import org level aws cloud cost connector
+// # Import org level aws cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level aws cloud cost connector
+// # Import project level aws cloud cost connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/awsCCConnector:AwsCCConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AwsCCConnector struct {
 	pulumi.CustomResourceState
@@ -132,7 +128,7 @@ func NewAwsCCConnector(ctx *pulumi.Context,
 	if args.S3Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'S3Bucket'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsCCConnector
 	err := ctx.RegisterResource("harness:platform/awsCCConnector:AwsCCConnector", name, args, &resource, opts...)
 	if err != nil {

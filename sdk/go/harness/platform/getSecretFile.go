@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +39,7 @@ import (
 //
 // ```
 func LookupSecretFile(ctx *pulumi.Context, args *LookupSecretFileArgs, opts ...pulumi.InvokeOption) (*LookupSecretFileResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretFileResult
 	err := ctx.Invoke("harness:platform/getSecretFile:getSecretFile", args, &rv, opts...)
 	if err != nil {

@@ -7,12 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data source for retrieving a monitored service.
 func LookupMonitoredService(ctx *pulumi.Context, args *LookupMonitoredServiceArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredServiceResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredServiceResult
 	err := ctx.Invoke("harness:platform/getMonitoredService:getMonitoredService", args, &rv, opts...)
 	if err != nil {

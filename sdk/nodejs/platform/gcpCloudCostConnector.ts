@@ -13,23 +13,24 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.GcpCloudCostConnector("test", {
- *     billingExportSpec: {
- *         dataSetId: "data_set_id",
- *         tableId: "table_id",
- *     },
+ *     identifier: "identifier",
+ *     name: "name",
  *     description: "test",
+ *     tags: ["foo:bar"],
  *     featuresEnableds: [
  *         "BILLING",
  *         "VISIBILITY",
  *         "OPTIMIZATION",
  *     ],
  *     gcpProjectId: "gcp_project_id",
- *     identifier: "identifier",
  *     serviceAccountEmail: "service_account_email",
- *     tags: ["foo:bar"],
+ *     billingExportSpec: {
+ *         dataSetId: "data_set_id",
+ *         tableId: "table_id",
+ *     },
  * });
  * ```
  *
@@ -38,19 +39,19 @@ import * as utilities from "../utilities";
  * Import account level gcp cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <connector_id>
+ * $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <connector_id>
  * ```
  *
- *  Import org level gcp cloud cost connector
+ * Import org level gcp cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level gcp cloud cost connector
+ * Import project level gcp cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/gcpCloudCostConnector:GcpCloudCostConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class GcpCloudCostConnector extends pulumi.CustomResource {

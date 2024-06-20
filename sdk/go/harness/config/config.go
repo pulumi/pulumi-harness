@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
 func GetAccountId(ctx *pulumi.Context) string {
@@ -15,7 +18,7 @@ func GetAccountId(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "HARNESS_ACCOUNT_ID"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_ACCOUNT_ID"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -29,7 +32,7 @@ func GetApiKey(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "HARNESS_API_KEY"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_API_KEY"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -43,7 +46,7 @@ func GetEndpoint(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "HARNESS_ENDPOINT"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_ENDPOINT"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -58,7 +61,7 @@ func GetPlatformApiKey(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "HARNESS_PLATFORM_API_KEY"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "HARNESS_PLATFORM_API_KEY"); d != nil {
 		value = d.(string)
 	}
 	return value

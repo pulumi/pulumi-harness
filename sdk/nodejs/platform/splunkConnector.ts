@@ -11,17 +11,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.SplunkConnector("test", {
- *     accountId: "splunk_account_id",
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
  *     identifier: "identifier",
- *     passwordRef: "account.secret_id",
+ *     name: "name",
+ *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://splunk.com/",
+ *     delegateSelectors: ["harness-delegate"],
+ *     accountId: "splunk_account_id",
  *     username: "username",
+ *     passwordRef: "account.secret_id",
  * });
  * ```
  *
@@ -30,19 +31,19 @@ import * as utilities from "../utilities";
  * Import account level splunk connector
  *
  * ```sh
- *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
+ * $ pulumi import harness:platform/splunkConnector:SplunkConnector example <connector_id>
  * ```
  *
- *  Import org level splunk connector
+ * Import org level splunk connector
  *
  * ```sh
- *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/splunkConnector:SplunkConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level splunk connector
+ * Import project level splunk connector
  *
  * ```sh
- *  $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/splunkConnector:SplunkConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class SplunkConnector extends pulumi.CustomResource {

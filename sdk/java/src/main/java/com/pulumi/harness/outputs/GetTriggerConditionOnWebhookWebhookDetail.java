@@ -4,30 +4,71 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetTriggerConditionOnWebhookWebhookDetail {
+    /**
+     * @return Header.
+     * 
+     */
     private String header;
+    /**
+     * @return Method.
+     * 
+     */
     private String method;
+    /**
+     * @return Payload.
+     * 
+     */
     private String payload;
+    /**
+     * @return Webhook token.
+     * 
+     */
     private String webhookToken;
+    /**
+     * @return Webhook URL.
+     * 
+     */
     private String webhookUrl;
 
     private GetTriggerConditionOnWebhookWebhookDetail() {}
+    /**
+     * @return Header.
+     * 
+     */
     public String header() {
         return this.header;
     }
+    /**
+     * @return Method.
+     * 
+     */
     public String method() {
         return this.method;
     }
+    /**
+     * @return Payload.
+     * 
+     */
     public String payload() {
         return this.payload;
     }
+    /**
+     * @return Webhook token.
+     * 
+     */
     public String webhookToken() {
         return this.webhookToken;
     }
+    /**
+     * @return Webhook URL.
+     * 
+     */
     public String webhookUrl() {
         return this.webhookUrl;
     }
@@ -58,37 +99,52 @@ public final class GetTriggerConditionOnWebhookWebhookDetail {
 
         @CustomType.Setter
         public Builder header(String header) {
-            this.header = Objects.requireNonNull(header);
+            if (header == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhookWebhookDetail", "header");
+            }
+            this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder method(String method) {
-            this.method = Objects.requireNonNull(method);
+            if (method == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhookWebhookDetail", "method");
+            }
+            this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder payload(String payload) {
-            this.payload = Objects.requireNonNull(payload);
+            if (payload == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhookWebhookDetail", "payload");
+            }
+            this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder webhookToken(String webhookToken) {
-            this.webhookToken = Objects.requireNonNull(webhookToken);
+            if (webhookToken == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhookWebhookDetail", "webhookToken");
+            }
+            this.webhookToken = webhookToken;
             return this;
         }
         @CustomType.Setter
         public Builder webhookUrl(String webhookUrl) {
-            this.webhookUrl = Objects.requireNonNull(webhookUrl);
+            if (webhookUrl == null) {
+              throw new MissingRequiredPropertyException("GetTriggerConditionOnWebhookWebhookDetail", "webhookUrl");
+            }
+            this.webhookUrl = webhookUrl;
             return this;
         }
         public GetTriggerConditionOnWebhookWebhookDetail build() {
-            final var o = new GetTriggerConditionOnWebhookWebhookDetail();
-            o.header = header;
-            o.method = method;
-            o.payload = payload;
-            o.webhookToken = webhookToken;
-            o.webhookUrl = webhookUrl;
-            return o;
+            final var _resultValue = new GetTriggerConditionOnWebhookWebhookDetail();
+            _resultValue.header = header;
+            _resultValue.method = method;
+            _resultValue.payload = payload;
+            _resultValue.webhookToken = webhookToken;
+            _resultValue.webhookUrl = webhookUrl;
+            return _resultValue;
         }
     }
 }

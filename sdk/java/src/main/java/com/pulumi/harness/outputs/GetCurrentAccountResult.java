@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,25 +73,32 @@ public final class GetCurrentAccountResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentAccountResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
-            this.endpoint = Objects.requireNonNull(endpoint);
+            if (endpoint == null) {
+              throw new MissingRequiredPropertyException("GetCurrentAccountResult", "endpoint");
+            }
+            this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         public GetCurrentAccountResult build() {
-            final var o = new GetCurrentAccountResult();
-            o.accountId = accountId;
-            o.endpoint = endpoint;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetCurrentAccountResult();
+            _resultValue.accountId = accountId;
+            _resultValue.endpoint = endpoint;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -72,25 +72,28 @@ public final class SshCredentialUsageScope {
 
         @CustomType.Setter
         public Builder applicationId(@Nullable String applicationId) {
+
             this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder environmentFilterType(@Nullable String environmentFilterType) {
+
             this.environmentFilterType = environmentFilterType;
             return this;
         }
         @CustomType.Setter
         public Builder environmentId(@Nullable String environmentId) {
+
             this.environmentId = environmentId;
             return this;
         }
         public SshCredentialUsageScope build() {
-            final var o = new SshCredentialUsageScope();
-            o.applicationId = applicationId;
-            o.environmentFilterType = environmentFilterType;
-            o.environmentId = environmentId;
-            return o;
+            final var _resultValue = new SshCredentialUsageScope();
+            _resultValue.applicationId = applicationId;
+            _resultValue.environmentFilterType = environmentFilterType;
+            _resultValue.environmentId = environmentId;
+            return _resultValue;
         }
     }
 }

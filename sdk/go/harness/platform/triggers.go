@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,37 +30,38 @@ import (
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("orgIdentifer"),
 //				ProjectId:  pulumi.String("projectIdentifier"),
+//				Name:       pulumi.String("name"),
 //				TargetId:   pulumi.String("pipelineIdentifier"),
-//				Yaml: pulumi.String(`  trigger:
-//	    name: name
-//	    identifier: identifier
-//	    enabled: true
-//	    description: ""
-//	    tags: {}
-//	    projectIdentifier: projectIdentifier
-//	    orgIdentifier: orgIdentifer
-//	    pipelineIdentifier: pipelineIdentifier
-//	    source:
-//	      type: Webhook
+//				Yaml: pulumi.String(`trigger:
+//	  name: name
+//	  identifier: identifier
+//	  enabled: true
+//	  description: ""
+//	  tags: {}
+//	  projectIdentifier: projectIdentifier
+//	  orgIdentifier: orgIdentifer
+//	  pipelineIdentifier: pipelineIdentifier
+//	  source:
+//	    type: Webhook
+//	    spec:
+//	      type: Github
 //	      spec:
-//	        type: Github
+//	        type: Push
 //	        spec:
-//	          type: Push
-//	          spec:
-//	            connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
-//	            autoAbortPreviousExecutions: false
-//	            payloadConditions:
-//	            - key: changedFiles
-//	              operator: Equals
-//	              value: value
-//	            - key: targetBranch
-//	              operator: Equals
-//	              value: value
-//	            headerConditions: []
-//	            repoName: repoName
-//	            actions: []
-//	    inputYaml: |
-//	      pipeline: {}\n
+//	          connectorRef: account.TestAccResourceConnectorGithub_Ssh_IZBeG
+//	          autoAbortPreviousExecutions: false
+//	          payloadConditions:
+//	          - key: changedFiles
+//	            operator: Equals
+//	            value: value
+//	          - key: targetBranch
+//	            operator: Equals
+//	            value: value
+//	          headerConditions: []
+//	          repoName: repoName
+//	          actions: []
+//	  inputYaml: |
+//	    pipeline: {}\n
 //
 // `),
 //
@@ -78,9 +80,7 @@ import (
 // # Import trigger
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
-//
+// $ pulumi import harness:platform/triggers:Triggers example <org_id>/<project_id>/<target_id>/<triggers_id>
 // ```
 type Triggers struct {
 	pulumi.CustomResourceState
@@ -129,7 +129,7 @@ func NewTriggers(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Triggers
 	err := ctx.RegisterResource("harness:platform/triggers:Triggers", name, args, &resource, opts...)
 	if err != nil {

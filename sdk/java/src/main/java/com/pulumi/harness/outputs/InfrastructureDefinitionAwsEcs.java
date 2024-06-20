@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,36 +159,51 @@ public final class InfrastructureDefinitionAwsEcs {
 
         @CustomType.Setter
         public Builder assignPublicIp(@Nullable Boolean assignPublicIp) {
+
             this.assignPublicIp = assignPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder cloudProviderName(String cloudProviderName) {
-            this.cloudProviderName = Objects.requireNonNull(cloudProviderName);
+            if (cloudProviderName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcs", "cloudProviderName");
+            }
+            this.cloudProviderName = cloudProviderName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcs", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder executionRole(@Nullable String executionRole) {
+
             this.executionRole = executionRole;
             return this;
         }
         @CustomType.Setter
         public Builder launchType(String launchType) {
-            this.launchType = Objects.requireNonNull(launchType);
+            if (launchType == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcs", "launchType");
+            }
+            this.launchType = launchType;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsEcs", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -196,6 +212,7 @@ public final class InfrastructureDefinitionAwsEcs {
         }
         @CustomType.Setter
         public Builder subnetIds(@Nullable List<String> subnetIds) {
+
             this.subnetIds = subnetIds;
             return this;
         }
@@ -204,21 +221,22 @@ public final class InfrastructureDefinitionAwsEcs {
         }
         @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
+
             this.vpcId = vpcId;
             return this;
         }
         public InfrastructureDefinitionAwsEcs build() {
-            final var o = new InfrastructureDefinitionAwsEcs();
-            o.assignPublicIp = assignPublicIp;
-            o.cloudProviderName = cloudProviderName;
-            o.clusterName = clusterName;
-            o.executionRole = executionRole;
-            o.launchType = launchType;
-            o.region = region;
-            o.securityGroupIds = securityGroupIds;
-            o.subnetIds = subnetIds;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new InfrastructureDefinitionAwsEcs();
+            _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.cloudProviderName = cloudProviderName;
+            _resultValue.clusterName = clusterName;
+            _resultValue.executionRole = executionRole;
+            _resultValue.launchType = launchType;
+            _resultValue.region = region;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.subnetIds = subnetIds;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

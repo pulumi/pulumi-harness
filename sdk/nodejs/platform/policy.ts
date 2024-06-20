@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * Import using the organization id
  *
  * ```sh
- *  $ pulumi import harness:platform/policy:Policy example <organization_id>
+ * $ pulumi import harness:platform/policy:Policy example <organization_id>
  * ```
  */
 export class Policy extends pulumi.CustomResource {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,13 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewSecretFile(ctx, "example", &platform.SecretFileArgs{
-//				Description:             pulumi.String("test"),
-//				FilePath:                pulumi.String("file_path"),
-//				Identifier:              pulumi.String("identifier"),
-//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
+//				FilePath:                pulumi.String("file_path"),
+//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,25 +52,19 @@ import (
 // # Import account level secret file
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
-//
+// $ pulumi import harness:platform/secretFile:SecretFile example <secret_file_id>
 // ```
 //
-//	Import org level secret file
+// # Import org level secret file
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretFile:SecretFile example <ord_id>/<secret_file_id>
-//
+// $ pulumi import harness:platform/secretFile:SecretFile example <ord_id>/<secret_file_id>
 // ```
 //
-//	Import project level secret file
+// # Import project level secret file
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
-//
+// $ pulumi import harness:platform/secretFile:SecretFile example <org_id>/<project_id>/<secret_file_id>
 // ```
 type SecretFile struct {
 	pulumi.CustomResourceState
@@ -107,7 +103,7 @@ func NewSecretFile(ctx *pulumi.Context,
 	if args.SecretManagerIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerIdentifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretFile
 	err := ctx.RegisterResource("harness:platform/secretFile:SecretFile", name, args, &resource, opts...)
 	if err != nil {

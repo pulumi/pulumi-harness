@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,48 +29,49 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
-//				Description: pulumi.String("test"),
 //				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
 //				OrgId:       pulumi.String("org_id"),
 //				ProjectId:   pulumi.String("project_id"),
-//				Yaml: pulumi.String(`  service:
-//	    name: name
-//	    identifier: identifier
-//	    serviceDefinition:
-//	      spec:
-//	        manifests:
-//	          - manifest:
-//	              identifier: manifest1
-//	              type: K8sManifest
-//	              spec:
-//	                store:
-//	                  type: Github
-//	                  spec:
-//	                    connectorRef: <+input>
-//	                    gitFetchType: Branch
-//	                    paths:
-//	                      - files1
-//	                    repoName: <+input>
-//	                    branch: master
-//	                skipResourceVersioning: false
-//	        configFiles:
-//	          - configFile:
-//	              identifier: configFile1
-//	              spec:
-//	                store:
-//	                  type: Harness
-//	                  spec:
-//	                    files:
-//	                      - <+org.description>
-//	        variables:
-//	          - name: var1
-//	            type: String
-//	            value: val1
-//	          - name: var2
-//	            type: String
-//	            value: val2
-//	      type: Kubernetes
-//	    gitOpsEnabled: false
+//				Yaml: pulumi.String(`service:
+//	  name: name
+//	  identifier: identifier
+//	  serviceDefinition:
+//	    spec:
+//	      manifests:
+//	        - manifest:
+//	            identifier: manifest1
+//	            type: K8sManifest
+//	            spec:
+//	              store:
+//	                type: Github
+//	                spec:
+//	                  connectorRef: <+input>
+//	                  gitFetchType: Branch
+//	                  paths:
+//	                    - files1
+//	                  repoName: <+input>
+//	                  branch: master
+//	              skipResourceVersioning: false
+//	      configFiles:
+//	        - configFile:
+//	            identifier: configFile1
+//	            spec:
+//	              store:
+//	                type: Harness
+//	                spec:
+//	                  files:
+//	                    - <+org.description>
+//	      variables:
+//	        - name: var1
+//	          type: String
+//	          value: val1
+//	        - name: var2
+//	          type: String
+//	          value: val2
+//	    type: Kubernetes
+//	  gitOpsEnabled: false
 //
 // `),
 //
@@ -88,25 +90,19 @@ import (
 // # Import account level service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/service:Service example <service_id>
-//
+// $ pulumi import harness:platform/service:Service example <service_id>
 // ```
 //
-//	Import org level service
+// # Import org level service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/service:Service example <org_id>/<service_id>
-//
+// $ pulumi import harness:platform/service:Service example <org_id>/<service_id>
 // ```
 //
-//	Import project level service
+// # Import project level service
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
-//
+// $ pulumi import harness:platform/service:Service example <org_id>/<project_id>/<service_id>
 // ```
 type Service struct {
 	pulumi.CustomResourceState
@@ -139,7 +135,7 @@ func NewService(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Service
 	err := ctx.RegisterResource("harness:platform/service:Service", name, args, &resource, opts...)
 	if err != nil {

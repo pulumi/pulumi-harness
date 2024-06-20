@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SshCredentialSshAuthenticationInlineSsh {
+    /**
+     * @return The id of the encrypted secret to use
+     * 
+     */
     private @Nullable String passphraseSecretId;
+    /**
+     * @return The id of the secret containing the SSH key
+     * 
+     */
     private String sshKeyFileId;
 
     private SshCredentialSshAuthenticationInlineSsh() {}
+    /**
+     * @return The id of the encrypted secret to use
+     * 
+     */
     public Optional<String> passphraseSecretId() {
         return Optional.ofNullable(this.passphraseSecretId);
     }
+    /**
+     * @return The id of the secret containing the SSH key
+     * 
+     */
     public String sshKeyFileId() {
         return this.sshKeyFileId;
     }
@@ -42,19 +59,23 @@ public final class SshCredentialSshAuthenticationInlineSsh {
 
         @CustomType.Setter
         public Builder passphraseSecretId(@Nullable String passphraseSecretId) {
+
             this.passphraseSecretId = passphraseSecretId;
             return this;
         }
         @CustomType.Setter
         public Builder sshKeyFileId(String sshKeyFileId) {
-            this.sshKeyFileId = Objects.requireNonNull(sshKeyFileId);
+            if (sshKeyFileId == null) {
+              throw new MissingRequiredPropertyException("SshCredentialSshAuthenticationInlineSsh", "sshKeyFileId");
+            }
+            this.sshKeyFileId = sshKeyFileId;
             return this;
         }
         public SshCredentialSshAuthenticationInlineSsh build() {
-            final var o = new SshCredentialSshAuthenticationInlineSsh();
-            o.passphraseSecretId = passphraseSecretId;
-            o.sshKeyFileId = sshKeyFileId;
-            return o;
+            final var _resultValue = new SshCredentialSshAuthenticationInlineSsh();
+            _resultValue.passphraseSecretId = passphraseSecretId;
+            _resultValue.sshKeyFileId = sshKeyFileId;
+            return _resultValue;
         }
     }
 }

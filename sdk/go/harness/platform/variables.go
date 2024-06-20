@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,13 +30,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewVariables(ctx, "test", &platform.VariablesArgs{
 //				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("String"),
 //				Spec: &platform.VariablesSpecArgs{
-//					FixedValue: pulumi.String("fixedValue"),
 //					ValueType:  pulumi.String("FIXED"),
+//					FixedValue: pulumi.String("fixedValue"),
 //				},
-//				Type: pulumi.String("String"),
 //			})
 //			if err != nil {
 //				return err
@@ -51,25 +53,19 @@ import (
 // # Import account level variables
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/variables:Variables example <variable_id>
-//
+// $ pulumi import harness:platform/variables:Variables example <variable_id>
 // ```
 //
-//	Import org level variables
+// # Import org level variables
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
-//
+// $ pulumi import harness:platform/variables:Variables example <ord_id>/<variable_id>
 // ```
 //
-//	Import project level variables
+// # Import project level variables
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
-//
+// $ pulumi import harness:platform/variables:Variables example <org_id>/<project_id>/<variable_id>
 // ```
 type Variables struct {
 	pulumi.CustomResourceState
@@ -106,7 +102,7 @@ func NewVariables(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Variables
 	err := ctx.RegisterResource("harness:platform/variables:Variables", name, args, &resource, opts...)
 	if err != nil {

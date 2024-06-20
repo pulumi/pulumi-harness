@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +23,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewInputSet(ctx, "example", &platform.InputSetArgs{
 //				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
@@ -57,14 +59,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Remote InputSet
 //			_, err = platform.NewInputSet(ctx, "test", &platform.InputSetArgs{
 //				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				OrgId:      pulumi.Any(harness_platform_organization.Test.Id),
-//				ProjectId:  pulumi.Any(harness_platform_project.Test.Id),
-//				PipelineId: pulumi.Any(harness_platform_pipeline.Test.Id),
+//				OrgId:      pulumi.Any(testHarnessPlatformOrganization.Id),
+//				ProjectId:  pulumi.Any(testHarnessPlatformProject.Id),
+//				PipelineId: pulumi.Any(testHarnessPlatformPipeline.Id),
 //				GitDetails: &platform.InputSetGitDetailsArgs{
 //					BranchName:    pulumi.String("main"),
 //					CommitMessage: pulumi.String("Commit"),
@@ -87,7 +91,7 @@ import (
 //	      type: "String"
 //	      value: "value"
 //
-// `, harness_platform_organization.Test.Id, harness_platform_project.Test.Id, harness_platform_pipeline.Test.Id)),
+// `, testHarnessPlatformOrganization.Id, testHarnessPlatformProject.Id, testHarnessPlatformPipeline.Id)),
 //
 //			})
 //			if err != nil {
@@ -104,9 +108,7 @@ import (
 // # Import input set
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
-//
+// $ pulumi import harness:platform/inputSet:InputSet example <org_id>/<project_id>/<pipeline_id>/<input_set_id>
 // ```
 type InputSet struct {
 	pulumi.CustomResourceState
@@ -153,7 +155,7 @@ func NewInputSet(ctx *pulumi.Context,
 	if args.Yaml == nil {
 		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InputSet
 	err := ctx.RegisterResource("harness:platform/inputSet:InputSet", name, args, &resource, opts...)
 	if err != nil {

@@ -13,11 +13,12 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
- * const testApplication = new harness.Application("testApplication", {});
- * const testKubernetes = new harness.service.Kubernetes("testKubernetes", {
- *     appId: testApplication.id,
+ * const test = new harness.Application("test", {name: "%[1]s"});
+ * const testKubernetes = new harness.service.Kubernetes("test", {
+ *     appId: test.id,
+ *     name: "%[1]s",
  *     helmVersion: "V2",
  *     description: "description",
  *     variables: [
@@ -33,8 +34,9 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const testEnvironment = new harness.Environment("testEnvironment", {
- *     appId: testApplication.id,
+ * const testEnvironment = new harness.Environment("test", {
+ *     appId: test.id,
+ *     name: "%[1]s",
  *     type: "%[2]s",
  *     variableOverrides: [
  *         {
@@ -58,7 +60,7 @@ import * as utilities from "./utilities";
  * Import using the Harness application id and environment id.
  *
  * ```sh
- *  $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
+ * $ pulumi import harness:index/environment:Environment dev <application_id>/<environment_id>
  * ```
  */
 export class Environment extends pulumi.CustomResource {

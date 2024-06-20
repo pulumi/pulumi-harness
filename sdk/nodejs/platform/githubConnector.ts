@@ -9,54 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Github connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * const test = new harness.platform.GithubConnector("test", {
- *     apiAuthentication: {
- *         githubApp: {
- *             applicationId: "application_id",
- *             installationId: "installation_id",
- *             privateKeyRef: "account.secret_id",
- *         },
- *     },
- *     connectionType: "Account",
- *     credentials: {
- *         http: {
- *             tokenRef: "account.secret_id",
- *             username: "username",
- *         },
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://github.com/account",
- *     validationRepo: "some_repo",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level github connector
  *
  * ```sh
- *  $ pulumi import harness:platform/githubConnector:GithubConnector example <connector_id>
+ * $ pulumi import harness:platform/githubConnector:GithubConnector example <connector_id>
  * ```
  *
- *  Import org level github connector
+ * Import org level github connector
  *
  * ```sh
- *  $ pulumi import harness:platform/githubConnector:GithubConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/githubConnector:GithubConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level github connector
+ * Import project level github connector
  *
  * ```sh
- *  $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/githubConnector:GithubConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class GithubConnector extends pulumi.CustomResource {

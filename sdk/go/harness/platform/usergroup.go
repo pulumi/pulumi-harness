@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,120 +49,124 @@ import (
 //
 // import (
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewUsergroup(ctx, "ssoTypeSaml", &platform.UsergroupArgs{
-//				ExternallyManaged:    pulumi.Bool(false),
-//				Identifier:           pulumi.String("identifier"),
-//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
-//				LinkedSsoId:          pulumi.String("linked_sso_id"),
-//				LinkedSsoType:        pulumi.String("SAML"),
-//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
-//					&platform.UsergroupNotificationConfigArgs{
-//						SlackWebhookUrl: pulumi.String("https://google.com"),
-//						Type:            pulumi.String("SLACK"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						GroupEmail:          pulumi.String("email@email.com"),
-//						SendEmailToAllUsers: pulumi.Bool(true),
-//						Type:                pulumi.String("EMAIL"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
-//						Type:                     pulumi.String("MSTEAMS"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						PagerDutyKey: pulumi.String("pagerDutyKey"),
-//						Type:         pulumi.String("PAGERDUTY"),
-//					},
-//				},
-//				OrgId:        pulumi.String("org_id"),
-//				ProjectId:    pulumi.String("project_id"),
-//				SsoGroupId:   pulumi.String("sso_group_name"),
-//				SsoGroupName: pulumi.String("sso_group_name"),
-//				SsoLinked:    pulumi.Bool(true),
+//			_, err := platform.NewUsergroup(ctx, "sso_type_saml", &platform.UsergroupArgs{
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
 //				Users: pulumi.StringArray{
 //					pulumi.String("user_id"),
 //				},
+//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:            pulumi.String("SLACK"),
+//						SlackWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                pulumi.String("EMAIL"),
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                     pulumi.String("MSTEAMS"),
+//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:         pulumi.String("PAGERDUTY"),
+//						PagerDutyKey: pulumi.String("pagerDutyKey"),
+//					},
+//				},
+//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
+//				SsoGroupId:           pulumi.String("sso_group_name"),
+//				SsoGroupName:         pulumi.String("sso_group_name"),
+//				LinkedSsoType:        pulumi.String("SAML"),
+//				SsoLinked:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewUsergroup(ctx, "ssoTypeLdap", &platform.UsergroupArgs{
-//				ExternallyManaged:    pulumi.Bool(false),
-//				Identifier:           pulumi.String("identifier"),
+//			_, err = platform.NewUsergroup(ctx, "sso_type_ldap", &platform.UsergroupArgs{
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
+//				Users: pulumi.StringArray{
+//					pulumi.String("user_id"),
+//				},
+//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:            pulumi.String("SLACK"),
+//						SlackWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                pulumi.String("EMAIL"),
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                     pulumi.String("MSTEAMS"),
+//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:         pulumi.String("PAGERDUTY"),
+//						PagerDutyKey: pulumi.String("pagerDutyKey"),
+//					},
+//				},
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
-//				LinkedSsoId:          pulumi.String("linked_sso_id"),
+//				SsoGroupId:           pulumi.String("sso_group_id"),
+//				SsoGroupName:         pulumi.String("sso_group_name"),
 //				LinkedSsoType:        pulumi.String("LDAP"),
-//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
-//					&platform.UsergroupNotificationConfigArgs{
-//						SlackWebhookUrl: pulumi.String("https://google.com"),
-//						Type:            pulumi.String("SLACK"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						GroupEmail:          pulumi.String("email@email.com"),
-//						SendEmailToAllUsers: pulumi.Bool(true),
-//						Type:                pulumi.String("EMAIL"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
-//						Type:                     pulumi.String("MSTEAMS"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						PagerDutyKey: pulumi.String("pagerDutyKey"),
-//						Type:         pulumi.String("PAGERDUTY"),
-//					},
-//				},
-//				OrgId:        pulumi.String("org_id"),
-//				ProjectId:    pulumi.String("project_id"),
-//				SsoGroupId:   pulumi.String("sso_group_id"),
-//				SsoGroupName: pulumi.String("sso_group_name"),
-//				SsoLinked:    pulumi.Bool(true),
-//				Users: pulumi.StringArray{
-//					pulumi.String("user_id"),
-//				},
+//				SsoLinked:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Create user group by adding user emails
 //			_, err = platform.NewUsergroup(ctx, "example", &platform.UsergroupArgs{
-//				ExternallyManaged:    pulumi.Bool(false),
-//				Identifier:           pulumi.String("identifier"),
-//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
-//				LinkedSsoId:          pulumi.String("linked_sso_id"),
-//				LinkedSsoType:        pulumi.String("SAML"),
-//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
-//					&platform.UsergroupNotificationConfigArgs{
-//						SlackWebhookUrl: pulumi.String("https://google.com"),
-//						Type:            pulumi.String("SLACK"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						GroupEmail:          pulumi.String("email@email.com"),
-//						SendEmailToAllUsers: pulumi.Bool(true),
-//						Type:                pulumi.String("EMAIL"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
-//						Type:                     pulumi.String("MSTEAMS"),
-//					},
-//					&platform.UsergroupNotificationConfigArgs{
-//						PagerDutyKey: pulumi.String("pagerDutyKey"),
-//						Type:         pulumi.String("PAGERDUTY"),
-//					},
-//				},
-//				OrgId:        pulumi.String("org_id"),
-//				ProjectId:    pulumi.String("project_id"),
-//				SsoGroupId:   pulumi.String("sso_group_name"),
-//				SsoGroupName: pulumi.String("sso_group_name"),
-//				SsoLinked:    pulumi.Bool(true),
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
 //				UserEmails: pulumi.StringArray{
 //					pulumi.String("user@email.com"),
 //				},
+//				NotificationConfigs: platform.UsergroupNotificationConfigArray{
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:            pulumi.String("SLACK"),
+//						SlackWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                pulumi.String("EMAIL"),
+//						GroupEmail:          pulumi.String("email@email.com"),
+//						SendEmailToAllUsers: pulumi.Bool(true),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:                     pulumi.String("MSTEAMS"),
+//						MicrosoftTeamsWebhookUrl: pulumi.String("https://google.com"),
+//					},
+//					&platform.UsergroupNotificationConfigArgs{
+//						Type:         pulumi.String("PAGERDUTY"),
+//						PagerDutyKey: pulumi.String("pagerDutyKey"),
+//					},
+//				},
+//				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
+//				SsoGroupId:           pulumi.String("sso_group_name"),
+//				SsoGroupName:         pulumi.String("sso_group_name"),
+//				LinkedSsoType:        pulumi.String("SAML"),
+//				SsoLinked:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -177,25 +182,19 @@ import (
 // # Import account level user group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
-//
+// $ pulumi import harness:platform/usergroup:Usergroup example <usergroup_id>
 // ```
 //
-//	Import org level user group
+// # Import org level user group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
-//
+// $ pulumi import harness:platform/usergroup:Usergroup example <ord_id>/<usergroup_id>
 // ```
 //
-//	Import project level user group
+// # Import project level user group
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
-//
+// $ pulumi import harness:platform/usergroup:Usergroup example <org_id>/<project_id>/<usergroup_id>
 // ```
 type Usergroup struct {
 	pulumi.CustomResourceState
@@ -244,7 +243,7 @@ func NewUsergroup(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Usergroup
 	err := ctx.RegisterResource("harness:platform/usergroup:Usergroup", name, args, &resource, opts...)
 	if err != nil {

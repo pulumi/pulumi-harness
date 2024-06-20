@@ -5,6 +5,7 @@ package com.pulumi.harness;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class ApplicationGitSyncArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApplicationGitSyncArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.branch = Objects.requireNonNull($.branch, "expected parameter 'branch' to be non-null");
-            $.connectorId = Objects.requireNonNull($.connectorId, "expected parameter 'connectorId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("ApplicationGitSyncArgs", "appId");
+            }
+            if ($.branch == null) {
+                throw new MissingRequiredPropertyException("ApplicationGitSyncArgs", "branch");
+            }
+            if ($.connectorId == null) {
+                throw new MissingRequiredPropertyException("ApplicationGitSyncArgs", "connectorId");
+            }
             return $;
         }
     }

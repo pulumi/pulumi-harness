@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Resource for creating a Harness user
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var johnDoe = new User(&#34;johnDoe&#34;, UserArgs.builder()        
- *             .email(&#34;john.doe@example.com&#34;)
+ *         var johnDoe = new User("johnDoe", UserArgs.builder()
+ *             .name("John Doe")
+ *             .email("john.doe{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the email address of the user
  * 
  * ```sh
- *  $ pulumi import harness:index/user:User john_doe john.doe@example.com
+ * $ pulumi import harness:index/user:User john_doe john.doe{@literal @}example.com
  * ```
  * 
  */

@@ -13,26 +13,27 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.AzureCloudCostConnector("example", {
- *     billingExportSpec: {
- *         containerName: "container_name",
- *         directoryName: "directory_name",
- *         reportName: "report_name",
- *         storageAccountName: "storage_account_name",
- *         subscriptionId: "subscription_id",
- *     },
+ *     identifier: "identifier",
+ *     name: "name",
  *     description: "example",
+ *     tags: ["foo:bar"],
  *     featuresEnableds: [
  *         "BILLING",
  *         "VISIBILITY",
  *         "OPTIMIZATION",
  *     ],
- *     identifier: "identifier",
- *     subscriptionId: "subscription_id",
- *     tags: ["foo:bar"],
  *     tenantId: "tenant_id",
+ *     subscriptionId: "subscription_id",
+ *     billingExportSpec: {
+ *         storageAccountName: "storage_account_name",
+ *         containerName: "container_name",
+ *         directoryName: "directory_name",
+ *         reportName: "report_name",
+ *         subscriptionId: "subscription_id",
+ *     },
  * });
  * ```
  *
@@ -41,19 +42,19 @@ import * as utilities from "../utilities";
  * Import account level azure cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <connector_id>
+ * $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <connector_id>
  * ```
  *
- *  Import org level azure cloud cost connector
+ * Import org level azure cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level azure cloud cost connector
+ * Import project level azure cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/azureCloudCostConnector:AzureCloudCostConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class AzureCloudCostConnector extends pulumi.CustomResource {

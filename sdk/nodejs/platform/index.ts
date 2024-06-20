@@ -187,7 +187,8 @@ utilities.lazyLoad(exports, ["getCcmFilters","getCcmFiltersOutput"], () => requi
 
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
-utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
+export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
 
 export { GetDatadogConnectorArgs, GetDatadogConnectorResult, GetDatadogConnectorOutputArgs } from "./getDatadogConnector";
 export const getDatadogConnector: typeof import("./getDatadogConnector").getDatadogConnector = null as any;

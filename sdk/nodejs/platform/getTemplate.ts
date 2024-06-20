@@ -15,20 +15,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * //For account level template
  * const example = harness.platform.getTemplate({
  *     identifier: "identifier",
  *     version: "version",
  * });
+ * //For org level template
  * const example1 = harness.platform.getTemplate({
  *     identifier: "identifier",
- *     orgId: "org_id",
  *     version: "version",
+ *     orgId: "org_id",
  * });
+ * //For project level template
  * const example2 = harness.platform.getTemplate({
  *     identifier: "identifier",
+ *     version: "version",
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     version: "version",
  * });
  * ```
  */
@@ -174,20 +177,23 @@ export interface GetTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * //For account level template
  * const example = harness.platform.getTemplate({
  *     identifier: "identifier",
  *     version: "version",
  * });
+ * //For org level template
  * const example1 = harness.platform.getTemplate({
  *     identifier: "identifier",
- *     orgId: "org_id",
  *     version: "version",
+ *     orgId: "org_id",
  * });
+ * //For project level template
  * const example2 = harness.platform.getTemplate({
  *     identifier: "identifier",
+ *     version: "version",
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     version: "version",
  * });
  * ```
  */

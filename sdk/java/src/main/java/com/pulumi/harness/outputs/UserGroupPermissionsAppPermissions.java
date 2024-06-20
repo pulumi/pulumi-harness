@@ -149,6 +149,7 @@ public final class UserGroupPermissionsAppPermissions {
 
         @CustomType.Setter
         public Builder alls(@Nullable List<UserGroupPermissionsAppPermissionsAll> alls) {
+
             this.alls = alls;
             return this;
         }
@@ -157,6 +158,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder deployments(@Nullable List<UserGroupPermissionsAppPermissionsDeployment> deployments) {
+
             this.deployments = deployments;
             return this;
         }
@@ -165,6 +167,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder environments(@Nullable List<UserGroupPermissionsAppPermissionsEnvironment> environments) {
+
             this.environments = environments;
             return this;
         }
@@ -173,6 +176,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder pipelines(@Nullable List<UserGroupPermissionsAppPermissionsPipeline> pipelines) {
+
             this.pipelines = pipelines;
             return this;
         }
@@ -181,6 +185,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder provisioners(@Nullable List<UserGroupPermissionsAppPermissionsProvisioner> provisioners) {
+
             this.provisioners = provisioners;
             return this;
         }
@@ -189,6 +194,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder services(@Nullable List<UserGroupPermissionsAppPermissionsService> services) {
+
             this.services = services;
             return this;
         }
@@ -197,6 +203,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder templates(@Nullable List<UserGroupPermissionsAppPermissionsTemplate> templates) {
+
             this.templates = templates;
             return this;
         }
@@ -205,6 +212,7 @@ public final class UserGroupPermissionsAppPermissions {
         }
         @CustomType.Setter
         public Builder workflows(@Nullable List<UserGroupPermissionsAppPermissionsWorkflow> workflows) {
+
             this.workflows = workflows;
             return this;
         }
@@ -212,16 +220,16 @@ public final class UserGroupPermissionsAppPermissions {
             return workflows(List.of(workflows));
         }
         public UserGroupPermissionsAppPermissions build() {
-            final var o = new UserGroupPermissionsAppPermissions();
-            o.alls = alls;
-            o.deployments = deployments;
-            o.environments = environments;
-            o.pipelines = pipelines;
-            o.provisioners = provisioners;
-            o.services = services;
-            o.templates = templates;
-            o.workflows = workflows;
-            return o;
+            final var _resultValue = new UserGroupPermissionsAppPermissions();
+            _resultValue.alls = alls;
+            _resultValue.deployments = deployments;
+            _resultValue.environments = environments;
+            _resultValue.pipelines = pipelines;
+            _resultValue.provisioners = provisioners;
+            _resultValue.services = services;
+            _resultValue.templates = templates;
+            _resultValue.workflows = workflows;
+            return _resultValue;
         }
     }
 }

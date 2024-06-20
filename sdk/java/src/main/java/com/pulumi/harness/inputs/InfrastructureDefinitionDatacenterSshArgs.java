@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class InfrastructureDefinitionDatacenterSshArgs extends com.pulumi.
         }
 
         public InfrastructureDefinitionDatacenterSshArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.hostConnectionAttributesName = Objects.requireNonNull($.hostConnectionAttributesName, "expected parameter 'hostConnectionAttributesName' to be non-null");
-            $.hostnames = Objects.requireNonNull($.hostnames, "expected parameter 'hostnames' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSshArgs", "cloudProviderName");
+            }
+            if ($.hostConnectionAttributesName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSshArgs", "hostConnectionAttributesName");
+            }
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionDatacenterSshArgs", "hostnames");
+            }
             return $;
         }
     }

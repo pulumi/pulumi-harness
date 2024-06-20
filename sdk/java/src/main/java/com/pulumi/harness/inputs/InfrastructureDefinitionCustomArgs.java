@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.inputs.InfrastructureDefinitionCustomVariableArgs;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class InfrastructureDefinitionCustomArgs extends com.pulumi.resourc
         }
 
         public InfrastructureDefinitionCustomArgs build() {
-            $.deploymentTypeTemplateVersion = Objects.requireNonNull($.deploymentTypeTemplateVersion, "expected parameter 'deploymentTypeTemplateVersion' to be non-null");
+            if ($.deploymentTypeTemplateVersion == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionCustomArgs", "deploymentTypeTemplateVersion");
+            }
             return $;
         }
     }

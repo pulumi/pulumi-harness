@@ -15,16 +15,32 @@ public final class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs ex
 
     public static final SshCredentialKerberosAuthenticationTgtGenerationMethodArgs Empty = new SshCredentialKerberosAuthenticationTgtGenerationMethodArgs();
 
+    /**
+     * The id of the encrypted text secret
+     * 
+     */
     @Import(name="kerberosPasswordId")
     private @Nullable Output<String> kerberosPasswordId;
 
+    /**
+     * @return The id of the encrypted text secret
+     * 
+     */
     public Optional<Output<String>> kerberosPasswordId() {
         return Optional.ofNullable(this.kerberosPasswordId);
     }
 
+    /**
+     * The path to the key tab file
+     * 
+     */
     @Import(name="keyTabFilePath")
     private @Nullable Output<String> keyTabFilePath;
 
+    /**
+     * @return The path to the key tab file
+     * 
+     */
     public Optional<Output<String>> keyTabFilePath() {
         return Optional.ofNullable(this.keyTabFilePath);
     }
@@ -54,20 +70,44 @@ public final class SshCredentialKerberosAuthenticationTgtGenerationMethodArgs ex
             $ = new SshCredentialKerberosAuthenticationTgtGenerationMethodArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kerberosPasswordId The id of the encrypted text secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder kerberosPasswordId(@Nullable Output<String> kerberosPasswordId) {
             $.kerberosPasswordId = kerberosPasswordId;
             return this;
         }
 
+        /**
+         * @param kerberosPasswordId The id of the encrypted text secret
+         * 
+         * @return builder
+         * 
+         */
         public Builder kerberosPasswordId(String kerberosPasswordId) {
             return kerberosPasswordId(Output.of(kerberosPasswordId));
         }
 
+        /**
+         * @param keyTabFilePath The path to the key tab file
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyTabFilePath(@Nullable Output<String> keyTabFilePath) {
             $.keyTabFilePath = keyTabFilePath;
             return this;
         }
 
+        /**
+         * @param keyTabFilePath The path to the key tab file
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyTabFilePath(String keyTabFilePath) {
             return keyTabFilePath(Output.of(keyTabFilePath));
         }

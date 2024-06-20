@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,79 +23,82 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewVaultConnector(ctx, "awsAuth", &platform.VaultConnectorArgs{
-//				AccessType: pulumi.String("AWS_IAM"),
-//				AwsRegion:  pulumi.String("aws_region"),
-//				BasePath:   pulumi.String("base_path"),
-//				Default:    pulumi.Bool(false),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
+//			_, err := platform.NewVaultConnector(ctx, "aws_auth", &platform.VaultConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
-//				Description:                    pulumi.String("test"),
-//				Identifier:                     pulumi.String("identifier"),
+//				AwsRegion:                      pulumi.String("aws_region"),
+//				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("AWS_IAM"),
+//				Default:                        pulumi.Bool(false),
+//				XvaultAwsIamServerId:           pulumi.String(fmt.Sprintf("account.%v", test.Id)),
 //				ReadOnly:                       pulumi.Bool(true),
 //				RenewalIntervalMinutes:         pulumi.Int(60),
 //				SecretEngineManuallyConfigured: pulumi.Bool(true),
 //				SecretEngineName:               pulumi.String("secret_engine_name"),
 //				SecretEngineVersion:            pulumi.Int(2),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				VaultAwsIamRole:                pulumi.String("vault_aws_iam_role"),
+//				UseAwsIam:                      pulumi.Bool(true),
+//				UseK8sAuth:                     pulumi.Bool(false),
+//				UseVaultAgent:                  pulumi.Bool(false),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
-//				UseAwsIam:            pulumi.Bool(true),
-//				UseK8sAuth:           pulumi.Bool(false),
-//				UseVaultAgent:        pulumi.Bool(false),
-//				VaultAwsIamRole:      pulumi.String("vault_aws_iam_role"),
-//				VaultUrl:             pulumi.String("https://vault_url.com"),
-//				XvaultAwsIamServerId: pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
+//				VaultUrl: pulumi.String("https://vault_url.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewVaultConnector(ctx, "appRole", &platform.VaultConnectorArgs{
-//				AccessType: pulumi.String("APP_ROLE"),
-//				AppRoleId:  pulumi.String("app_role_id"),
-//				BasePath:   pulumi.String("base_path"),
-//				Default:    pulumi.Bool(false),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
+//			_, err = platform.NewVaultConnector(ctx, "app_role", &platform.VaultConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
-//				Description:                    pulumi.String("test"),
-//				Identifier:                     pulumi.String("identifier"),
+//				AppRoleId:                      pulumi.String("app_role_id"),
+//				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("APP_ROLE"),
+//				Default:                        pulumi.Bool(false),
+//				SecretId:                       pulumi.String(fmt.Sprintf("account.%v", test.Id)),
 //				ReadOnly:                       pulumi.Bool(true),
+//				RenewalIntervalMinutes:         pulumi.Int(60),
+//				SecretEngineManuallyConfigured: pulumi.Bool(true),
+//				SecretEngineName:               pulumi.String("secret_engine_name"),
+//				SecretEngineVersion:            pulumi.Int(2),
+//				UseAwsIam:                      pulumi.Bool(false),
+//				UseK8sAuth:                     pulumi.Bool(false),
+//				UseVaultAgent:                  pulumi.Bool(false),
 //				RenewAppRoleToken:              pulumi.Bool(true),
-//				RenewalIntervalMinutes:         pulumi.Int(60),
-//				SecretEngineManuallyConfigured: pulumi.Bool(true),
-//				SecretEngineName:               pulumi.String("secret_engine_name"),
-//				SecretEngineVersion:            pulumi.Int(2),
-//				SecretId:                       pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
-//				UseAwsIam:     pulumi.Bool(false),
-//				UseK8sAuth:    pulumi.Bool(false),
-//				UseVaultAgent: pulumi.Bool(false),
-//				VaultUrl:      pulumi.String("https://vault_url.com"),
+//				VaultUrl: pulumi.String("https://vault_url.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewVaultConnector(ctx, "k8sAuth", &platform.VaultConnectorArgs{
-//				AccessType: pulumi.String("K8s_AUTH"),
-//				AuthToken:  pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//				BasePath:   pulumi.String("base_path"),
-//				Default:    pulumi.Bool(false),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
+//			_, err = platform.NewVaultConnector(ctx, "k8s_auth", &platform.VaultConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
-//				Description:                    pulumi.String("test"),
-//				Identifier:                     pulumi.String("identifier"),
+//				AuthToken:                      pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("K8s_AUTH"),
+//				Default:                        pulumi.Bool(false),
 //				K8sAuthEndpoint:                pulumi.String("k8s_auth_endpoint"),
 //				Namespace:                      pulumi.String("namespace"),
 //				ReadOnly:                       pulumi.Bool(true),
@@ -103,66 +107,68 @@ import (
 //				SecretEngineName:               pulumi.String("secret_engine_name"),
 //				SecretEngineVersion:            pulumi.Int(2),
 //				ServiceAccountTokenPath:        pulumi.String("service_account_token_path"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				UseAwsIam:                      pulumi.Bool(false),
+//				UseK8sAuth:                     pulumi.Bool(true),
+//				UseVaultAgent:                  pulumi.Bool(false),
+//				VaultK8sAuthRole:               pulumi.String("vault_k8s_auth_role"),
+//				VaultAwsIamRole:                pulumi.String("vault_aws_iam_role"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
-//				UseAwsIam:        pulumi.Bool(false),
-//				UseK8sAuth:       pulumi.Bool(true),
-//				UseVaultAgent:    pulumi.Bool(false),
-//				VaultAwsIamRole:  pulumi.String("vault_aws_iam_role"),
-//				VaultK8sAuthRole: pulumi.String("vault_k8s_auth_role"),
-//				VaultUrl:         pulumi.String("https://vault_url.com"),
+//				VaultUrl: pulumi.String("https://vault_url.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewVaultConnector(ctx, "vaultAgent", &platform.VaultConnectorArgs{
-//				AccessType: pulumi.String("VAULT_AGENT"),
-//				AuthToken:  pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//				BasePath:   pulumi.String("base_path"),
-//				Default:    pulumi.Bool(false),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
+//			_, err = platform.NewVaultConnector(ctx, "vault_agent", &platform.VaultConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
-//				Description:                    pulumi.String("test"),
-//				Identifier:                     pulumi.String("identifier"),
+//				AuthToken:                      pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("VAULT_AGENT"),
+//				Default:                        pulumi.Bool(false),
 //				Namespace:                      pulumi.String("namespace"),
 //				ReadOnly:                       pulumi.Bool(true),
 //				RenewalIntervalMinutes:         pulumi.Int(10),
 //				SecretEngineManuallyConfigured: pulumi.Bool(true),
 //				SecretEngineName:               pulumi.String("secret_engine_name"),
 //				SecretEngineVersion:            pulumi.Int(2),
+//				UseAwsIam:                      pulumi.Bool(false),
+//				UseK8sAuth:                     pulumi.Bool(false),
+//				UseVaultAgent:                  pulumi.Bool(true),
 //				SinkPath:                       pulumi.String("sink_path"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
 //				},
-//				UseAwsIam:     pulumi.Bool(false),
-//				UseK8sAuth:    pulumi.Bool(false),
-//				UseVaultAgent: pulumi.Bool(true),
-//				VaultUrl:      pulumi.String("https://vault_url.com"),
+//				VaultUrl: pulumi.String("https://vault_url.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewVaultConnector(ctx, "token", &platform.VaultConnectorArgs{
-//				AccessType:                     pulumi.String("TOKEN"),
-//				AuthToken:                      pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				AuthToken:                      pulumi.String(fmt.Sprintf("account.%v", test.Id)),
 //				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("TOKEN"),
 //				Default:                        pulumi.Bool(false),
-//				Description:                    pulumi.String("test"),
-//				Identifier:                     pulumi.String("identifier"),
 //				Namespace:                      pulumi.String("namespace"),
 //				ReadOnly:                       pulumi.Bool(true),
 //				RenewalIntervalMinutes:         pulumi.Int(10),
 //				SecretEngineManuallyConfigured: pulumi.Bool(true),
 //				SecretEngineName:               pulumi.String("secret_engine_name"),
 //				SecretEngineVersion:            pulumi.Int(2),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				UseAwsIam:  pulumi.Bool(false),
-//				UseK8sAuth: pulumi.Bool(false),
-//				VaultUrl:   pulumi.String("https://vault_url.com"),
+//				UseAwsIam:                      pulumi.Bool(false),
+//				UseK8sAuth:                     pulumi.Bool(false),
+//				VaultUrl:                       pulumi.String("https://vault_url.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -178,25 +184,19 @@ import (
 // # Import account level vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
-//
+// $ pulumi import harness:platform/vaultConnector:VaultConnector example <connector_id>
 // ```
 //
-//	Import org level vault connector
+// # Import org level vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/vaultConnector:VaultConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level vault connector
+// # Import project level vault connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/vaultConnector:VaultConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type VaultConnector struct {
 	pulumi.CustomResourceState
@@ -285,7 +285,7 @@ func NewVaultConnector(ctx *pulumi.Context,
 	if args.VaultUrl == nil {
 		return nil, errors.New("invalid value for required argument 'VaultUrl'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VaultConnector
 	err := ctx.RegisterResource("harness:platform/vaultConnector:VaultConnector", name, args, &resource, opts...)
 	if err != nil {

@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetTriggerConditionOnWebhook;
 import java.lang.String;
 import java.util.List;
@@ -11,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerCondition {
+    /**
+     * @return On webhook.
+     * 
+     */
     private List<GetTriggerConditionOnWebhook> onWebhooks;
+    /**
+     * @return Trigger condition.
+     * 
+     */
     private String triggerConditionType;
 
     private GetTriggerCondition() {}
+    /**
+     * @return On webhook.
+     * 
+     */
     public List<GetTriggerConditionOnWebhook> onWebhooks() {
         return this.onWebhooks;
     }
+    /**
+     * @return Trigger condition.
+     * 
+     */
     public String triggerConditionType() {
         return this.triggerConditionType;
     }
@@ -42,7 +59,10 @@ public final class GetTriggerCondition {
 
         @CustomType.Setter
         public Builder onWebhooks(List<GetTriggerConditionOnWebhook> onWebhooks) {
-            this.onWebhooks = Objects.requireNonNull(onWebhooks);
+            if (onWebhooks == null) {
+              throw new MissingRequiredPropertyException("GetTriggerCondition", "onWebhooks");
+            }
+            this.onWebhooks = onWebhooks;
             return this;
         }
         public Builder onWebhooks(GetTriggerConditionOnWebhook... onWebhooks) {
@@ -50,14 +70,17 @@ public final class GetTriggerCondition {
         }
         @CustomType.Setter
         public Builder triggerConditionType(String triggerConditionType) {
-            this.triggerConditionType = Objects.requireNonNull(triggerConditionType);
+            if (triggerConditionType == null) {
+              throw new MissingRequiredPropertyException("GetTriggerCondition", "triggerConditionType");
+            }
+            this.triggerConditionType = triggerConditionType;
             return this;
         }
         public GetTriggerCondition build() {
-            final var o = new GetTriggerCondition();
-            o.onWebhooks = onWebhooks;
-            o.triggerConditionType = triggerConditionType;
-            return o;
+            final var _resultValue = new GetTriggerCondition();
+            _resultValue.onWebhooks = onWebhooks;
+            _resultValue.triggerConditionType = triggerConditionType;
+            return _resultValue;
         }
     }
 }

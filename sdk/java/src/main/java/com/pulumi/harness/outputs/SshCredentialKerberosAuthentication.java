@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.SshCredentialKerberosAuthenticationTgtGenerationMethod;
 import java.lang.Integer;
 import java.lang.String;
@@ -88,31 +89,41 @@ public final class SshCredentialKerberosAuthentication {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("SshCredentialKerberosAuthentication", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder principal(String principal) {
-            this.principal = Objects.requireNonNull(principal);
+            if (principal == null) {
+              throw new MissingRequiredPropertyException("SshCredentialKerberosAuthentication", "principal");
+            }
+            this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder realm(String realm) {
-            this.realm = Objects.requireNonNull(realm);
+            if (realm == null) {
+              throw new MissingRequiredPropertyException("SshCredentialKerberosAuthentication", "realm");
+            }
+            this.realm = realm;
             return this;
         }
         @CustomType.Setter
         public Builder tgtGenerationMethod(@Nullable SshCredentialKerberosAuthenticationTgtGenerationMethod tgtGenerationMethod) {
+
             this.tgtGenerationMethod = tgtGenerationMethod;
             return this;
         }
         public SshCredentialKerberosAuthentication build() {
-            final var o = new SshCredentialKerberosAuthentication();
-            o.port = port;
-            o.principal = principal;
-            o.realm = realm;
-            o.tgtGenerationMethod = tgtGenerationMethod;
-            return o;
+            final var _resultValue = new SshCredentialKerberosAuthentication();
+            _resultValue.port = port;
+            _resultValue.principal = principal;
+            _resultValue.realm = realm;
+            _resultValue.tgtGenerationMethod = tgtGenerationMethod;
+            return _resultValue;
         }
     }
 }

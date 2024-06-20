@@ -11,17 +11,18 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.KubernetesCloudCostConnector("example", {
- *     connectorRef: "connector_ref",
+ *     identifier: "identifier",
+ *     name: "name",
  *     description: "example",
+ *     tags: ["foo:bar"],
  *     featuresEnableds: [
  *         "VISIBILITY",
  *         "OPTIMIZATION",
  *     ],
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
+ *     connectorRef: "connector_ref",
  * });
  * ```
  *
@@ -30,19 +31,19 @@ import * as utilities from "../utilities";
  * Import account level kubernetes cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
+ * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
  * ```
  *
- *  Import org level kubernetes cloud cost connector
+ * Import org level kubernetes cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level kubernetes cloud cost connector
+ * Import project level kubernetes cloud cost connector
  *
  * ```sh
- *  $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class KubernetesCloudCostConnector extends pulumi.CustomResource {

@@ -9,47 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Bitbucket connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
- *
- * // Credentials ssh
- * const test = new harness.platform.BitbucketConnector("test", {
- *     connectionType: "Account",
- *     credentials: {
- *         ssh: {
- *             sshKeyRef: "account.secret_id",
- *         },
- *     },
- *     delegateSelectors: ["harness-delegate"],
- *     description: "test",
- *     identifier: "identifier",
- *     tags: ["foo:bar"],
- *     url: "https://bitbucket.com/account",
- *     validationRepo: "some_repo",
- * });
- * ```
- *
  * ## Import
  *
  * Import account level bitbucket connector
  *
  * ```sh
- *  $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <connector_id>
+ * $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <connector_id>
  * ```
  *
- *  Import org level bitbucket connector
+ * Import org level bitbucket connector
  *
  * ```sh
- *  $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <ord_id>/<connector_id>
+ * $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <ord_id>/<connector_id>
  * ```
  *
- *  Import project level bitbucket connector
+ * Import project level bitbucket connector
  *
  * ```sh
- *  $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
+ * $ pulumi import harness:platform/bitbucketConnector:BitbucketConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class BitbucketConnector extends pulumi.CustomResource {

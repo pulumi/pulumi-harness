@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getManualFreeze({
- *     accountId: "account_id",
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     accountId: "account_id",
  * });
  * ```
  */
@@ -127,10 +127,10 @@ export interface GetManualFreezeResult {
  * import * as harness from "@pulumi/harness";
  *
  * const example = harness.platform.getManualFreeze({
- *     accountId: "account_id",
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
+ *     accountId: "account_id",
  * });
  * ```
  */

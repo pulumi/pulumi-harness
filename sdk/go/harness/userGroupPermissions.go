@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,7 @@ func NewUserGroupPermissions(ctx *pulumi.Context,
 	if args.UserGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'UserGroupId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserGroupPermissions
 	err := ctx.RegisterResource("harness:index/userGroupPermissions:UserGroupPermissions", name, args, &resource, opts...)
 	if err != nil {

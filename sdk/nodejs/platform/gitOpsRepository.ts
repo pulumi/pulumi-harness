@@ -13,19 +13,19 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.GitOpsRepository("example", {
- *     accountId: "account_id",
- *     agentId: "agent_id",
  *     identifier: "identifier",
- *     orgId: "org_id",
+ *     accountId: "account_id",
  *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
  *     repos: [{
- *         connectionType: "HTTPS_ANONYMOUS",
- *         insecure: true,
- *         name: "repo_name",
  *         repo: "https://github.com/willycoll/argocd-example-apps.git",
+ *         name: "repo_name",
+ *         insecure: true,
+ *         connectionType: "HTTPS_ANONYMOUS",
  *     }],
  *     upsert: true,
  * });
@@ -36,13 +36,13 @@ import * as utilities from "../utilities";
  * Import a Account level Gitops Repository
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+ * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
  * ```
  *
- *  Import a Project level Gitops Repository
+ * Import a Project level Gitops Repository
  *
  * ```sh
- *  $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
+ * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<project_id>/<agent_id>/<respository_id>
  * ```
  */
 export class GitOpsRepository extends pulumi.CustomResource {

@@ -11,32 +11,32 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@lbrlabs/pulumi-harness";
+ * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Infrastructure("example", {
- *     deploymentType: "Kubernetes",
- *     envId: "environmentIdentifier",
  *     identifier: "identifier",
+ *     name: "name",
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
  *     type: "KubernetesDirect",
- *     yaml: `  infrastructureDefinition:
- *    name: name
- *    identifier: identifier
- *    description: ""
- *    tags:
- *      asda: ""
- *    orgIdentifier: orgIdentifer
- *    projectIdentifier: projectIdentifier
- *    environmentRef: environmentIdentifier
- *    deploymentType: Kubernetes
- *    type: KubernetesDirect
- *    spec:
- *     connectorRef: account.gfgf
- *     namespace: asdasdsa
- *     releaseName: release-<+INFRA_KEY>
- *     allowSimultaneousDeployments: false
- *
+ *     deploymentType: "Kubernetes",
+ *     yaml: `infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
  * `,
  * });
  * ```
@@ -46,19 +46,19 @@ import * as utilities from "../utilities";
  * Import account level infrastructure
  *
  * ```sh
- *  $ pulumi import harness:platform/infrastructure:Infrastructure example <env_id>/<infrastructure_id>
+ * $ pulumi import harness:platform/infrastructure:Infrastructure example <env_id>/<infrastructure_id>
  * ```
  *
- *  Import org level infrastructure
+ * Import org level infrastructure
  *
  * ```sh
- *  $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<env_id>/<infrastructure_id>
+ * $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<env_id>/<infrastructure_id>
  * ```
  *
- *  Import project level infrastructure
+ * Import project level infrastructure
  *
  * ```sh
- *  $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
+ * $ pulumi import harness:platform/infrastructure:Infrastructure example <org_id>/<project_id>/<env_id>/<infrastructure_id>
  * ```
  */
 export class Infrastructure extends pulumi.CustomResource {

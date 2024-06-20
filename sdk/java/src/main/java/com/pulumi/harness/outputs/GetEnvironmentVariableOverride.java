@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,31 +85,43 @@ public final class GetEnvironmentVariableOverride {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentVariableOverride", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentVariableOverride", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentVariableOverride", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentVariableOverride", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetEnvironmentVariableOverride build() {
-            final var o = new GetEnvironmentVariableOverride();
-            o.name = name;
-            o.serviceName = serviceName;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetEnvironmentVariableOverride();
+            _resultValue.name = name;
+            _resultValue.serviceName = serviceName;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

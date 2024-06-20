@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -336,11 +337,21 @@ public final class InfrastructureDefinitionAwsWinrmArgs extends com.pulumi.resou
         }
 
         public InfrastructureDefinitionAwsWinrmArgs build() {
-            $.autoscalingGroupName = Objects.requireNonNull($.autoscalingGroupName, "expected parameter 'autoscalingGroupName' to be non-null");
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.hostConnectionAttrsName = Objects.requireNonNull($.hostConnectionAttrsName, "expected parameter 'hostConnectionAttrsName' to be non-null");
-            $.hostConnectionType = Objects.requireNonNull($.hostConnectionType, "expected parameter 'hostConnectionType' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.autoscalingGroupName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrmArgs", "autoscalingGroupName");
+            }
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrmArgs", "cloudProviderName");
+            }
+            if ($.hostConnectionAttrsName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrmArgs", "hostConnectionAttrsName");
+            }
+            if ($.hostConnectionType == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrmArgs", "hostConnectionType");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsWinrmArgs", "region");
+            }
             return $;
         }
     }

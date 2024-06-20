@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,70 +23,78 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/lbrlabs/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewAzureCloudProviderConnector(ctx, "manualConfigSecret", &platform.AzureCloudProviderConnectorArgs{
-//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			_, err := platform.NewAzureCloudProviderConnector(ctx, "manual_config_secret", &platform.AzureCloudProviderConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					Type: pulumi.String("ManualConfig"),
 //					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
 //						ApplicationId: pulumi.String("application_id"),
+//						TenantId:      pulumi.String("tenant_id"),
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
-//							AzureClientSecretKey: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs{
-//								SecretRef: pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//							},
 //							Type: pulumi.String("Secret"),
+//							AzureClientSecretKey: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs{
+//								SecretRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//							},
 //						},
-//						TenantId: pulumi.String("tenant_id"),
 //					},
-//					Type: pulumi.String("ManualConfig"),
 //				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("example"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewAzureCloudProviderConnector(ctx, "manualConfigCertificate", &platform.AzureCloudProviderConnectorArgs{
-//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			_, err = platform.NewAzureCloudProviderConnector(ctx, "manual_config_certificate", &platform.AzureCloudProviderConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					Type: pulumi.String("ManualConfig"),
 //					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
 //						ApplicationId: pulumi.String("application_id"),
+//						TenantId:      pulumi.String("tenant_id"),
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
-//							AzureClientKeyCert: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs{
-//								CertificateRef: pulumi.String(fmt.Sprintf("account.%v", harness_platform_secret_text.Test.Id)),
-//							},
 //							Type: pulumi.String("Certificate"),
+//							AzureClientKeyCert: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs{
+//								CertificateRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//							},
 //						},
-//						TenantId: pulumi.String("tenant_id"),
 //					},
-//					Type: pulumi.String("ManualConfig"),
 //				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("example"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewAzureCloudProviderConnector(ctx, "inheritFromDelegateUserAssignedManagedIdentity", &platform.AzureCloudProviderConnectorArgs{
-//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			_, err = platform.NewAzureCloudProviderConnector(ctx, "inherit_from_delegate_user_assigned_managed_identity", &platform.AzureCloudProviderConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					Type: pulumi.String("InheritFromDelegate"),
 //					AzureInheritFromDelegateDetails: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs{
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs{
 //							AzureMsiAuthUa: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs{
@@ -94,37 +103,33 @@ import (
 //							Type: pulumi.String("UserAssignedManagedIdentity"),
 //						},
 //					},
-//					Type: pulumi.String("InheritFromDelegate"),
 //				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("example"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.NewAzureCloudProviderConnector(ctx, "inheritFromDelegateSystemAssignedManagedIdentity", &platform.AzureCloudProviderConnectorArgs{
-//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			_, err = platform.NewAzureCloudProviderConnector(ctx, "inherit_from_delegate_system_assigned_managed_identity", &platform.AzureCloudProviderConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					Type: pulumi.String("InheritFromDelegate"),
 //					AzureInheritFromDelegateDetails: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs{
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs{
 //							Type: pulumi.String("SystemAssignedManagedIdentity"),
 //						},
 //					},
-//					Type: pulumi.String("InheritFromDelegate"),
 //				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Description: pulumi.String("example"),
-//				Identifier:  pulumi.String("identifier"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
 //				},
 //			})
 //			if err != nil {
@@ -141,25 +146,19 @@ import (
 // # Import account level azure cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <connector_id>
-//
+// $ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <connector_id>
 // ```
 //
-//	Import org level azure cloud provider connector
+// # Import org level azure cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <ord_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <ord_id>/<connector_id>
 // ```
 //
-//	Import project level azure cloud provider connector
+// # Import project level azure cloud provider connector
 //
 // ```sh
-//
-//	$ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <org_id>/<project_id>/<connector_id>
-//
+// $ pulumi import harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector example <org_id>/<project_id>/<connector_id>
 // ```
 type AzureCloudProviderConnector struct {
 	pulumi.CustomResourceState
@@ -199,7 +198,7 @@ func NewAzureCloudProviderConnector(ctx *pulumi.Context,
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureCloudProviderConnector
 	err := ctx.RegisterResource("harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector", name, args, &resource, opts...)
 	if err != nil {

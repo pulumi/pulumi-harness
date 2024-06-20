@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Resource for creating a Harness application
  * 
  * ## Example Usage
- * ```java
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,23 +44,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myapp = new Application(&#34;myapp&#34;, ApplicationArgs.builder()        
- *             .description(&#34;This is my first Harness application&#34;)
+ *         var myapp = new Application("myapp", ApplicationArgs.builder()
+ *             .name("My Application")
+ *             .description("This is my first Harness application")
  *             .tags(            
- *                 &#34;mytag:myvalue&#34;,
- *                 &#34;team:development&#34;)
+ *                 "mytag:myvalue",
+ *                 "team:development")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Import using the Harness application id
  * 
  * ```sh
- *  $ pulumi import harness:index/application:Application myapp Xyz123
+ * $ pulumi import harness:index/application:Application myapp Xyz123
  * ```
  * 
  */

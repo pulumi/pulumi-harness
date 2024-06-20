@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class PlatformCcmFiltersFilterProperties {
 
         @CustomType.Setter
         public Builder filterType(String filterType) {
-            this.filterType = Objects.requireNonNull(filterType);
+            if (filterType == null) {
+              throw new MissingRequiredPropertyException("PlatformCcmFiltersFilterProperties", "filterType");
+            }
+            this.filterType = filterType;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -70,10 +75,10 @@ public final class PlatformCcmFiltersFilterProperties {
             return tags(List.of(tags));
         }
         public PlatformCcmFiltersFilterProperties build() {
-            final var o = new PlatformCcmFiltersFilterProperties();
-            o.filterType = filterType;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new PlatformCcmFiltersFilterProperties();
+            _resultValue.filterType = filterType;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -4,6 +4,7 @@
 package com.pulumi.harness.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.outputs.GetTriggerCondition;
 import java.lang.String;
 import java.util.List;
@@ -102,12 +103,16 @@ public final class GetTriggerResult {
 
         @CustomType.Setter
         public Builder appId(@Nullable String appId) {
+
             this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetTriggerCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetTriggerCondition... conditions) {
@@ -115,27 +120,30 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         public GetTriggerResult build() {
-            final var o = new GetTriggerResult();
-            o.appId = appId;
-            o.conditions = conditions;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetTriggerResult();
+            _resultValue.appId = appId;
+            _resultValue.conditions = conditions;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

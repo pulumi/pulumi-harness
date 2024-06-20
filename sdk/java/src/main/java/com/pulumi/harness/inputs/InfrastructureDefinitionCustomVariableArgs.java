@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -14,23 +15,31 @@ public final class InfrastructureDefinitionCustomVariableArgs extends com.pulumi
     public static final InfrastructureDefinitionCustomVariableArgs Empty = new InfrastructureDefinitionCustomVariableArgs();
 
     /**
-     * The name of the infrastructure definition
+     * Name of the variable
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the infrastructure definition
+     * @return Name of the variable
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Value of the variable
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Value of the variable
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -61,7 +70,7 @@ public final class InfrastructureDefinitionCustomVariableArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the infrastructure definition
+         * @param name Name of the variable
          * 
          * @return builder
          * 
@@ -72,7 +81,7 @@ public final class InfrastructureDefinitionCustomVariableArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the infrastructure definition
+         * @param name Name of the variable
          * 
          * @return builder
          * 
@@ -81,18 +90,34 @@ public final class InfrastructureDefinitionCustomVariableArgs extends com.pulumi
             return name(Output.of(name));
         }
 
+        /**
+         * @param value Value of the variable
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Value of the variable
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
         public InfrastructureDefinitionCustomVariableArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionCustomVariableArgs", "name");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionCustomVariableArgs", "value");
+            }
             return $;
         }
     }

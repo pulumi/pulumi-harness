@@ -5,6 +5,7 @@ package com.pulumi.harness.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -282,8 +283,12 @@ public final class InfrastructureDefinitionAwsLambdaArgs extends com.pulumi.reso
         }
 
         public InfrastructureDefinitionAwsLambdaArgs build() {
-            $.cloudProviderName = Objects.requireNonNull($.cloudProviderName, "expected parameter 'cloudProviderName' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.cloudProviderName == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsLambdaArgs", "cloudProviderName");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("InfrastructureDefinitionAwsLambdaArgs", "region");
+            }
             return $;
         }
     }
