@@ -1,7 +1,6 @@
 provider: harness
 major-version: 0
 makeTemplate: bridged
-generate-nightly-test-workflow: true
 providerDefaultBranch: main
 
 plugins:

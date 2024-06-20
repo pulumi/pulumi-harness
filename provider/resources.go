@@ -9,9 +9,7 @@ import (
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-harness/provider/pkg/version"
@@ -26,10 +24,6 @@ const (
 	platformMod      = "platform"
 	serviceMod       = "service"
 )
-
-func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
-	return nil
-}
 
 var namespaceMap = map[string]string{
 	"harness": "Harness",
@@ -110,7 +104,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"harness_add_user_to_group":         {Tok: harnessResource(mainMod, "AddUserToGroup")},
 			"harness_application":               {Tok: harnessResource(mainMod, "Application")},
