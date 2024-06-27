@@ -17,7 +17,6 @@ env:
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
 
 # This should cancel any previous runs of the same workflow on the same branch which are still running.
@@ -159,13 +158,6 @@ jobs:
       if: matrix.testTarget == 'local'
       run: cd examples && go test -v -json -count=1 -cover -timeout 2h -tags=${{
         matrix.language }} -skip TestPulumiExamples -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
-    - if: failure() && github.event_name == 'push' && matrix.testTarget == 'local'
-      name: Notify Slack
-      uses: 8398a7/action-slack@v3
-      with:
-        author_name: Failure in running ${{ matrix.language }} tests
-        fields: repo,commit,author,action
-        status: ${{ job.status }}
     - name: Run pulumi/examples tests
       if: matrix.testTarget == 'pulumiExamples'
       run: cd examples && go test -v -json -count=1 -cover -timeout 2h -tags=${{
