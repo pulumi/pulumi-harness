@@ -118,13 +118,11 @@ class TemplateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""description field is deprecated""")
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the entity. Description field is deprecated
         """
-        warnings.warn("""description field is deprecated""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: description field is deprecated""")
-
         return pulumi.get(self, "description")
 
     @description.setter
@@ -288,13 +286,11 @@ class _TemplateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""description field is deprecated""")
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the entity. Description field is deprecated
         """
-        warnings.warn("""description field is deprecated""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: description field is deprecated""")
-
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2293,13 +2289,11 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""description field is deprecated""")
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the entity. Description field is deprecated
         """
-        warnings.warn("""description field is deprecated""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: description field is deprecated""")
-
         return pulumi.get(self, "description")
 
     @property
