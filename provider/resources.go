@@ -19,7 +19,7 @@ import (
 const (
 	mainPkg = "harness"
 	mainMod = "index"
-	//applicationMod       = "Application"
+	// applicationMod       = "Application"
 	cloudProviderMod = "cloudprovider"
 	platformMod      = "platform"
 	serviceMod       = "service"
@@ -127,28 +127,34 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_ccm_filters":           {Tok: harnessResource(mainMod, "PlatformCcmFilters")},
 			"harness_platform_connector_appdynamics": {Tok: harnessResource(platformMod, "AppDynamicsConnector")},
 			"harness_platform_connector_azure_cloud_cost": {
-				Tok: harnessResource(platformMod, "AzureCloudCostConnector")},
+				Tok: harnessResource(platformMod, "AzureCloudCostConnector"),
+			},
 			"harness_platform_connector_artifactory": {Tok: harnessResource(platformMod, "ArtifactoryConnector")},
 			"harness_platform_connector_azure_cloud_provider": {
-				Tok: harnessResource(platformMod, "AzureCloudProviderConnector")},
+				Tok: harnessResource(platformMod, "AzureCloudProviderConnector"),
+			},
 			"harness_platform_connector_azure_key_vault": {Tok: harnessResource(platformMod, "AzureKeyVaultConnector")},
 			"harness_platform_connector_elasticsearch":   {Tok: harnessResource(platformMod, "ElasticsearchConnector")},
 			"harness_platform_connector_gcp_cloud_cost":  {Tok: harnessResource(platformMod, "GcpCloudCostConnector")},
 			"harness_platform_connector_gcp_secret_manager": {
-				Tok: harnessResource(platformMod, "GcpSecretManagerConnector")},
+				Tok: harnessResource(platformMod, "GcpSecretManagerConnector"),
+			},
 			"harness_platform_connector_jenkins": {Tok: harnessResource(platformMod, "JenkinsConnector")},
 			"harness_platform_connector_kubernetes_cloud_cost": {
-				Tok: harnessResource(platformMod, "KubernetesCloudCostConnector")},
+				Tok: harnessResource(platformMod, "KubernetesCloudCostConnector"),
+			},
 			"harness_platform_connector_oci_helm":    {Tok: harnessResource(platformMod, "OciHelmConnector")},
 			"harness_platform_connector_service_now": {Tok: harnessResource(platformMod, "ServiceNowConnector")},
 			"harness_platform_connector_spot":        {Tok: harnessResource(platformMod, "SpotConnector")},
 			"harness_platform_connector_tas":         {Tok: harnessResource(platformMod, "TasConnector")},
 			"harness_platform_connector_terraform_cloud": {
-				Tok: harnessResource(platformMod, "TerraformCloudConnector")},
+				Tok: harnessResource(platformMod, "TerraformCloudConnector"),
+			},
 
 			"harness_platform_connector_aws": {Tok: harnessResource(platformMod, "AwsConnector")},
 			"harness_platform_connector_aws_secret_manager": {
-				Tok: harnessResource(platformMod, "AwsSecretManagerConnector")},
+				Tok: harnessResource(platformMod, "AwsSecretManagerConnector"),
+			},
 			"harness_platform_connector_awscc":      {Tok: harnessResource(platformMod, "AwsCCConnector")},
 			"harness_platform_connector_awskms":     {Tok: harnessResource(platformMod, "AwsKmsConnector")},
 			"harness_platform_connector_bitbucket":  {Tok: harnessResource(platformMod, "BitbucketConnector")},
@@ -171,9 +177,11 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_vault":      {Tok: harnessResource(platformMod, "VaultConnector")},
 			"harness_platform_environment":          {Tok: harnessResource(platformMod, "Environment")},
 			"harness_platform_environment_clusters_mapping": {
-				Tok: harnessResource(platformMod, "EnvironmentClustersMapping")},
+				Tok: harnessResource(platformMod, "EnvironmentClustersMapping"),
+			},
 			"harness_platform_environment_service_overrides": {
-				Tok: harnessResource(platformMod, "EnvironmentServiceOverrides")},
+				Tok: harnessResource(platformMod, "EnvironmentServiceOverrides"),
+			},
 			"harness_platform_environment_group":   {Tok: harnessResource(platformMod, "EnvironmentGroup")},
 			"harness_platform_feature_flag":        {Tok: harnessResource(platformMod, "FeatureFlag")},
 			"harness_platform_ff_api_key":          {Tok: harnessResource(platformMod, "FeatureFlagApiKey")},
@@ -243,43 +251,57 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"harness_platform_connector_appdynamics": {
-				Tok: harnessDataSource(platformMod, "getAppDynamicsConnector")},
+				Tok: harnessDataSource(platformMod, "getAppDynamicsConnector"),
+			},
 			"harness_platform_ccm_filters": {Tok: harnessDataSource(platformMod, "getCcmFilters")},
 			"harness_platform_connector_azure_cloud_cost": {
-				Tok: harnessDataSource(platformMod, "getAzureCloudCostConnector")},
+				Tok: harnessDataSource(platformMod, "getAzureCloudCostConnector"),
+			},
 			"harness_platform_connector_azure_cloud_provider": {
-				Tok: harnessDataSource(platformMod, "getAzureCloudProviderConnector")},
+				Tok: harnessDataSource(platformMod, "getAzureCloudProviderConnector"),
+			},
 			"harness_platform_connector_azure_key_vault": {
-				Tok: harnessDataSource(platformMod, "getAzureKeyVaultConnector")},
+				Tok: harnessDataSource(platformMod, "getAzureKeyVaultConnector"),
+			},
 			"harness_platform_connector_elasticsearch": {
-				Tok: harnessDataSource(platformMod, "getElasticsearchConnector")},
+				Tok: harnessDataSource(platformMod, "getElasticsearchConnector"),
+			},
 			"harness_platform_connector_gcp_cloud_cost": {
-				Tok: harnessDataSource(platformMod, "getGcpCloudCostConnector")},
+				Tok: harnessDataSource(platformMod, "getGcpCloudCostConnector"),
+			},
 			"harness_platform_connector_gcp_secret_manager": {
-				Tok: harnessDataSource(platformMod, "getGcpSecretManagerConnector")},
+				Tok: harnessDataSource(platformMod, "getGcpSecretManagerConnector"),
+			},
 			"harness_platform_connector_jenkins": {Tok: harnessDataSource(platformMod, "getJenkinsConnector")},
 			"harness_platform_connector_kubernetes_cloud_cost": {
-				Tok: harnessDataSource(platformMod, "getKubernetesCloudCostConnector")},
+				Tok: harnessDataSource(platformMod, "getKubernetesCloudCostConnector"),
+			},
 			"harness_platform_connector_oci_helm": {Tok: harnessDataSource(platformMod, "getOciHelmConnector")},
 			"harness_platform_connector_service_now": {
-				Tok: harnessDataSource(platformMod, "getServiceNowConnector")},
+				Tok: harnessDataSource(platformMod, "getServiceNowConnector"),
+			},
 			"harness_platform_connector_spot": {Tok: harnessDataSource(platformMod, "getSpotConnector")},
 			"harness_platform_connector_tas":  {Tok: harnessDataSource(platformMod, "getTasConnector")},
 			"harness_platform_connector_terraform_cloud": {
-				Tok: harnessDataSource(platformMod, "getTerraformCloudConnector")},
+				Tok: harnessDataSource(platformMod, "getTerraformCloudConnector"),
+			},
 			"harness_platform_connector_artifactory": {
-				Tok: harnessDataSource(platformMod, "getArtifactoryConnector")},
+				Tok: harnessDataSource(platformMod, "getArtifactoryConnector"),
+			},
 			"harness_platform_connector_aws": {Tok: harnessDataSource(platformMod, "getAwsConnector")},
 			"harness_platform_connector_aws_secret_manager": {
-				Tok: harnessDataSource(platformMod, "getAwsSecretManagerConnector")},
+				Tok: harnessDataSource(platformMod, "getAwsSecretManagerConnector"),
+			},
 			"harness_platform_connector_awscc":  {Tok: harnessDataSource(platformMod, "getAwsCCConnector")},
 			"harness_platform_connector_awskms": {Tok: harnessDataSource(platformMod, "getAwsKmsConnector")},
 			"harness_platform_connector_bitbucket": {
-				Tok: harnessDataSource(platformMod, "getBitbucketConnector")},
+				Tok: harnessDataSource(platformMod, "getBitbucketConnector"),
+			},
 			"harness_platform_connector_datadog": {Tok: harnessDataSource(platformMod, "getDatadogConnector")},
 			"harness_platform_connector_docker":  {Tok: harnessDataSource(platformMod, "getDockerConnector")},
 			"harness_platform_connector_dynatrace": {
-				Tok: harnessDataSource(platformMod, "getDynatraceConnector")},
+				Tok: harnessDataSource(platformMod, "getDynatraceConnector"),
+			},
 			"harness_platform_connector_gcp":    {Tok: harnessDataSource(platformMod, "getGcpConnector")},
 			"harness_platform_connector_git":    {Tok: harnessDataSource(platformMod, "getGitConnector")},
 			"harness_platform_connector_github": {Tok: harnessDataSource(platformMod, "getGithubConnector")},
@@ -287,24 +309,31 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_helm":   {Tok: harnessDataSource(platformMod, "getHelmConnector")},
 			"harness_platform_connector_jira":   {Tok: harnessDataSource(platformMod, "getJiraConnector")},
 			"harness_platform_connector_kubernetes": {
-				Tok: harnessDataSource(platformMod, "getKubernetesConnector")},
+				Tok: harnessDataSource(platformMod, "getKubernetesConnector"),
+			},
 			"harness_platform_connector_nexus": {Tok: harnessDataSource(platformMod, "getNexusConnector")},
 			"harness_platform_connector_pagerduty": {
-				Tok: harnessDataSource(platformMod, "getPagerdutyConnector")},
+				Tok: harnessDataSource(platformMod, "getPagerdutyConnector"),
+			},
 			"harness_platform_connector_prometheus": {
-				Tok: harnessDataSource(platformMod, "getPrometheusConnector")},
+				Tok: harnessDataSource(platformMod, "getPrometheusConnector"),
+			},
 			"harness_platform_connector_splunk": {Tok: harnessDataSource(platformMod, "getSplunkConnector")},
 			"harness_platform_connector_sumologic": {
-				Tok: harnessDataSource(platformMod, "getSumologicConnector")},
+				Tok: harnessDataSource(platformMod, "getSumologicConnector"),
+			},
 			"harness_platform_connector_vault": {Tok: harnessDataSource(platformMod, "getVaultConnector")},
 			"harness_platform_current_user":    {Tok: harnessDataSource(platformMod, "getCurrentUser")},
 			"harness_platform_environment_service_overrides": {
-				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides")},
+				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides"),
+			},
 			"harness_platform_filters": {Tok: harnessDataSource(platformMod, "getFilters")},
 			"harness_platform_gitops_agent_deploy_yaml": {
-				Tok: harnessDataSource(platformMod, "getGitopsAgentDeployYaml")},
+				Tok: harnessDataSource(platformMod, "getGitopsAgentDeployYaml"),
+			},
 			"harness_platform_gitops_applications": {
-				Tok: harnessDataSource(platformMod, "getGitopsApplications")},
+				Tok: harnessDataSource(platformMod, "getGitopsApplications"),
+			},
 			"harness_platform_gitops_gnupg":      {Tok: harnessDataSource(platformMod, "getGitopsGnupg")},
 			"harness_platform_gitops_repo_cert":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCert")},
 			"harness_platform_gitops_repo_cred":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCred")},
@@ -323,10 +352,12 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_token":            {Tok: harnessDataSource(platformMod, "getToken")},
 			"harness_platform_user":             {Tok: harnessDataSource(platformMod, "getUser")},
 			"harness_platform_variables": {
-				Tok: harnessDataSource(platformMod, "getVariables")},
+				Tok: harnessDataSource(platformMod, "getVariables"),
+			},
 			"harness_platform_environment": {Tok: harnessDataSource(platformMod, "getEnvironment")},
 			"harness_platform_environment_clusters_mapping": {
-				Tok: harnessDataSource(platformMod, "getEnvironmentClustersMapping")},
+				Tok: harnessDataSource(platformMod, "getEnvironmentClustersMapping"),
+			},
 			"harness_platform_environment_group": {Tok: harnessDataSource(platformMod, "getEnvironmentGroup")},
 			"harness_platform_gitops_agent":      {Tok: harnessDataSource(platformMod, "getGitopsAgent")},
 			"harness_platform_gitops_cluster":    {Tok: harnessDataSource(platformMod, "getGitopsCluster")},
@@ -369,6 +400,7 @@ func Provider() tfbridge.ProviderInfo {
 			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -387,6 +419,7 @@ func Provider() tfbridge.ProviderInfo {
 			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
