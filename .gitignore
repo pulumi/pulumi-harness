@@ -31,3 +31,5 @@ sdk/java/gradlew
 sdk/java/gradlew.bat
 
 sdk/python/venv
+
+sdk/dotnet/logo.png
