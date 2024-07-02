@@ -10,7 +10,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`harness` Terraform Provider](https://github.com/harness/terraform-provider-harness).",
     "repository": "https://github.com/pulumi/pulumi-harness",
-    "logoUrl": "https://raw.githubusercontent.com/pulumi/pulumi-harness/master/assets/logo.svg",
+    "logoUrl": "https://raw.githubusercontent.com/pulumi/pulumi-harness/main/assets/logo.png",
     "pluginDownloadURL": "github://api.github.com/pulumi",
     "publisher": "Pulumi",
     "meta": {

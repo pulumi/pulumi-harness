@@ -74,7 +74,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:              "harness",
 		DisplayName:       "Harness",
 		Publisher:         "Pulumi",
-		LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-harness/master/assets/logo.svg",
+		LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-harness/main/assets/logo.png",
 		PluginDownloadURL: "github://api.github.com/pulumi",
 		Description:       "A Pulumi package for creating and managing Harness  resources.",
 		Keywords:          []string{"pulumi", "harness"},
