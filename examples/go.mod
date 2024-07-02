@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-harness/examples
 
-go 1.20
+go 1.21
+
+toolchain go1.21.11
 
 require github.com/pulumi/pulumi/pkg/v3 v3.118.0
 
