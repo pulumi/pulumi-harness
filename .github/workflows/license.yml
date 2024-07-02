@@ -43,6 +43,13 @@ jobs:
       with:
         module-path: provider
         ignore-modules: >-
+          github.com/harness/harness-openapi-go-client/harness,
+          github.com/harness/harness-openapi-go-client/helpers,
+          github.com/harness/harness-openapi-go-client/logging,
+          github.com/harness/harness-openapi-go-client/nextgen,
+          github.com/harness/harness-openapi-go-client/utils,
+          github.com/harness/harness-openapi-go-client/harness,
+          github.com/harness/terraform-provider-harness/shim,
           github.com/aead/chacha20,
           github.com/apache/arrow/go/v12,
           github.com/apache/thrift/lib/go/thrift,
