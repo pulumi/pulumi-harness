@@ -23,7 +23,6 @@ env:
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
 
 jobs:
@@ -35,17 +34,22 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
-    - name: Install Go
-      uses: actions/setup-go@v5
+    - name: Setup tools
+      uses: ./.github/actions/setup-tools
       with:
-        cache-dependency-path: |
-            sdk/go.sum
-        go-version: "1.21.x"
+        tools: go
     - run: make upstream
     - uses: pulumi/license-check-action@main
       with:
         module-path: provider
         ignore-modules: >-
+          github.com/harness/harness-openapi-go-client/harness,
+          github.com/harness/harness-openapi-go-client/helpers,
+          github.com/harness/harness-openapi-go-client/logging,
+          github.com/harness/harness-openapi-go-client/nextgen,
+          github.com/harness/harness-openapi-go-client/utils,
+          github.com/harness/harness-openapi-go-client/harness,
+          github.com/harness/terraform-provider-harness/shim,
           github.com/aead/chacha20,
           github.com/apache/arrow/go/v12,
           github.com/apache/thrift/lib/go/thrift,
