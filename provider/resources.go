@@ -6,9 +6,13 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -393,9 +397,15 @@ func Provider() tfbridge.ProviderInfo {
 			RootNamespace:        "Pulumi",
 			RespectSchemaVersion: true,
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
+	prov.MustComputeTokens(tks.SingleModule("harness_", mainMod, tks.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-harness/bridge-metadata.json
+var metadata []byte
