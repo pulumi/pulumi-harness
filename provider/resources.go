@@ -6,9 +6,13 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -27,6 +31,12 @@ const (
 
 var namespaceMap = map[string]string{
 	"harness": "Harness",
+}
+
+var moduleMap = map[string]string{
+	"cloudprovider": cloudProviderMod,
+	"platform":      platformMod,
+	"service":       serviceMod,
 }
 
 // harnessMember manufactures a type token for the Harness package and the given module and type.
@@ -393,9 +403,29 @@ func Provider() tfbridge.ProviderInfo {
 			RootNamespace:        "Pulumi",
 			RespectSchemaVersion: true,
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
+	makeToken := func(mod, name string) (string, error) {
+		if name == "" {
+			name = mod
+		}
+		if m, e, ok := strings.Cut(mod, "~"); ok {
+			mod = m
+			if strings.HasPrefix(name, "get") {
+				name = "get" + e + name[3:]
+			} else {
+				name = e + name
+			}
+		}
+		return harnessResource(mod, name).String(), nil
+	}
+	prov.MustComputeTokens(tks.MappedModules("harness_", "", moduleMap, makeToken))
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-harness/bridge-metadata.json
+var metadata []byte
