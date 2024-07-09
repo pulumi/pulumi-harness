@@ -12377,6 +12377,33 @@
                 }
             }
         },
+        "harness:platform/getWorkspaceOutputValueOutput:getWorkspaceOutputValueOutput": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name associated with the output.\n"
+                },
+                "sensitive": {
+                    "type": "boolean",
+                    "description": "Indicates if the output is sensitive.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the output.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "sensitive",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getWorkspaceOutputsOutput:getWorkspaceOutputsOutput": {
             "properties": {
                 "name": {
@@ -44017,10 +44044,10 @@
                 "type": "object"
             }
         },
-        "harness:platform/getWorkspaceOutputs:getWorkspaceOutputs": {
-            "description": "Data source for retrieving workspace outputs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getWorkspaceOutputs({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_workspace_outputs(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetWorkspaceOutputs.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetWorkspaceOutputs(ctx, \u0026platform.GetWorkspaceOutputsArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tOrgId:      \"org_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetWorkspaceOutputsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getWorkspaceOutputs(GetWorkspaceOutputsArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getWorkspaceOutputs\n      Arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+        "harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue": {
+            "description": "Data source for retrieving workspace outputs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getWorkspaceOutputValue({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_workspace_output_value(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetWorkspaceOutputValue.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetWorkspaceOutputValue(ctx, \u0026platform.GetWorkspaceOutputValueArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tOrgId:      \"org_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetWorkspaceOutputValueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getWorkspaceOutputValue(GetWorkspaceOutputValueArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getWorkspaceOutputValue\n      Arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
-                "description": "A collection of arguments for invoking getWorkspaceOutputs.\n",
+                "description": "A collection of arguments for invoking getWorkspaceOutputValue.\n",
                 "properties": {
                     "identifier": {
                         "type": "string",
@@ -44043,7 +44070,7 @@
                 ]
             },
             "outputs": {
-                "description": "A collection of values returned by getWorkspaceOutputs.\n",
+                "description": "A collection of values returned by getWorkspaceOutputValue.\n",
                 "properties": {
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
@@ -44059,12 +44086,67 @@
                     },
                     "outputs": {
                         "items": {
-                            "$ref": "#/types/harness:platform/getWorkspaceOutputsOutput:getWorkspaceOutputsOutput"
+                            "$ref": "#/types/harness:platform/getWorkspaceOutputValueOutput:getWorkspaceOutputValueOutput"
                         },
                         "type": "array"
                     },
                     "projectId": {
                         "description": "Project identifier of the project the workspace resides in.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "identifier",
+                    "orgId",
+                    "outputs",
+                    "projectId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getWorkspaceOutputs:getWorkspaceOutputs": {
+            "deprecationMessage": "harness.platform/getworkspaceoutputs.getWorkspaceOutputs has been deprecated in favor of harness.platform/getworkspaceoutputvalue.getWorkspaceOutputValue",
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkspaceOutputs.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "orgId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkspaceOutputs.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "outputs": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getWorkspaceOutputsOutput:getWorkspaceOutputsOutput"
+                        },
+                        "type": "array"
+                    },
+                    "projectId": {
                         "type": "string"
                     }
                 },
