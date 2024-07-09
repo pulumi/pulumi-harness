@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,6 +24,7 @@ export function getSecretText(args: GetSecretTextArgs, opts?: pulumi.InvokeOptio
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretText:getSecretText", {
+        "additionalMetadatas": args.additionalMetadatas,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -33,6 +36,10 @@ export function getSecretText(args: GetSecretTextArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getSecretText.
  */
 export interface GetSecretTextArgs {
+    /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: inputs.platform.GetSecretTextAdditionalMetadata[];
     /**
      * Unique identifier of the resource.
      */
@@ -55,6 +62,10 @@ export interface GetSecretTextArgs {
  * A collection of values returned by getSecretText.
  */
 export interface GetSecretTextResult {
+    /**
+     * Additional Metadata for the Secret
+     */
+    readonly additionalMetadatas?: outputs.platform.GetSecretTextAdditionalMetadata[];
     /**
      * Description of the resource.
      */
@@ -118,6 +129,10 @@ export function getSecretTextOutput(args: GetSecretTextOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getSecretText.
  */
 export interface GetSecretTextOutputArgs {
+    /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.GetSecretTextAdditionalMetadataArgs>[]>;
     /**
      * Unique identifier of the resource.
      */

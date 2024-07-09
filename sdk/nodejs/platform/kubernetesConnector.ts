@@ -144,6 +144,10 @@ export class KubernetesConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    public readonly forceDelete!: pulumi.Output<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -196,6 +200,7 @@ export class KubernetesConnector extends pulumi.CustomResource {
             resourceInputs["clientKeyCert"] = state ? state.clientKeyCert : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = state ? state.inheritFromDelegate : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -213,6 +218,7 @@ export class KubernetesConnector extends pulumi.CustomResource {
             resourceInputs["clientKeyCert"] = args ? args.clientKeyCert : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = args ? args.inheritFromDelegate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -244,6 +250,10 @@ export interface KubernetesConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -298,6 +308,10 @@ export interface KubernetesConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

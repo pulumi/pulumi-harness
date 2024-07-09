@@ -62,6 +62,14 @@ export class GcpConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable this flag to execute on Delegate
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    public readonly forceDelete!: pulumi.Output<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -104,6 +112,8 @@ export class GcpConnector extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GcpConnectorState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["inheritFromDelegates"] = state ? state.inheritFromDelegates : undefined;
             resourceInputs["manual"] = state ? state.manual : undefined;
@@ -117,6 +127,8 @@ export class GcpConnector extends pulumi.CustomResource {
                 throw new Error("Missing required property 'identifier'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["inheritFromDelegates"] = args ? args.inheritFromDelegates : undefined;
             resourceInputs["manual"] = args ? args.manual : undefined;
@@ -138,6 +150,14 @@ export interface GcpConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag to execute on Delegate
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -176,6 +196,14 @@ export interface GcpConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag to execute on Delegate
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

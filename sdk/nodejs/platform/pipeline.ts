@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *         storeType: "REMOTE",
  *         repoName: "repoName",
  *     },
+ *     tags: {},
  *     yaml: `pipeline:
  *     name: name
  *     identifier: identifier
@@ -115,6 +116,28 @@ import * as utilities from "../utilities";
  *                             type: StageRollback
  * `,
  * });
+ * //## Importing Pipeline from Git
+ * const test = new harness.platform.Organization("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ * });
+ * const testPipeline = new harness.platform.Pipeline("test", {
+ *     identifier: "gitx",
+ *     orgId: "default",
+ *     projectId: "V",
+ *     name: "gitx",
+ *     importFromGit: true,
+ *     gitImportInfo: {
+ *         branchName: "main",
+ *         filePath: ".harness/gitx.yaml",
+ *         connectorRef: "account.DoNotDeleteGithub",
+ *         repoName: "open-repo",
+ *     },
+ *     pipelineImportRequest: {
+ *         pipelineName: "gitx",
+ *         pipelineDescription: "Pipeline Description",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -160,11 +183,19 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.PipelineGitDetails | undefined>;
+    public readonly gitDetails!: pulumi.Output<outputs.platform.PipelineGitDetails>;
+    /**
+     * Contains Git Information for importing entities from Git
+     */
+    public readonly gitImportInfo!: pulumi.Output<outputs.platform.PipelineGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    public readonly importFromGit!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource.
      */
@@ -174,11 +205,15 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
+     * Contains parameters for importing a pipeline
+     */
+    public readonly pipelineImportRequest!: pulumi.Output<outputs.platform.PipelinePipelineImportRequest | undefined>;
+    /**
      * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Tags to associate with the resource.
+     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -209,9 +244,12 @@ export class Pipeline extends pulumi.CustomResource {
             const state = argsOrState as PipelineState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
+            resourceInputs["gitImportInfo"] = state ? state.gitImportInfo : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["pipelineImportRequest"] = state ? state.pipelineImportRequest : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["templateApplied"] = state ? state.templateApplied : undefined;
@@ -228,14 +266,14 @@ export class Pipeline extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'yaml'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
+            resourceInputs["gitImportInfo"] = args ? args.gitImportInfo : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["pipelineImportRequest"] = args ? args.pipelineImportRequest : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["templateApplied"] = args ? args.templateApplied : undefined;
@@ -260,9 +298,17 @@ export interface PipelineState {
      */
     gitDetails?: pulumi.Input<inputs.platform.PipelineGitDetails>;
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitImportInfo?: pulumi.Input<inputs.platform.PipelineGitImportInfo>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
     /**
      * Name of the resource.
      */
@@ -272,11 +318,15 @@ export interface PipelineState {
      */
     orgId?: pulumi.Input<string>;
     /**
+     * Contains parameters for importing a pipeline
+     */
+    pipelineImportRequest?: pulumi.Input<inputs.platform.PipelinePipelineImportRequest>;
+    /**
      * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource.
+     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -306,9 +356,17 @@ export interface PipelineArgs {
      */
     gitDetails?: pulumi.Input<inputs.platform.PipelineGitDetails>;
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitImportInfo?: pulumi.Input<inputs.platform.PipelineGitImportInfo>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
     /**
      * Name of the resource.
      */
@@ -318,11 +376,15 @@ export interface PipelineArgs {
      */
     orgId: pulumi.Input<string>;
     /**
+     * Contains parameters for importing a pipeline
+     */
+    pipelineImportRequest?: pulumi.Input<inputs.platform.PipelinePipelineImportRequest>;
+    /**
      * Unique identifier of the project.
      */
     projectId: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource.
+     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -336,5 +398,5 @@ export interface PipelineArgs {
     /**
      * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml: pulumi.Input<string>;
+    yaml?: pulumi.Input<string>;
 }

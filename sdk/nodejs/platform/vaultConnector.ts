@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a HashiCorp Vault Secret Manager connector.
- *
  * ## Example Usage
  *
  * ```typescript

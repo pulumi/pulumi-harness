@@ -82,7 +82,7 @@ export class TemplateFilters extends pulumi.CustomResource {
      */
     public readonly filterProperties!: pulumi.Output<outputs.platform.TemplateFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter.
+     * Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
      */
     public readonly filterVisibility!: pulumi.Output<string | undefined>;
     /**
@@ -159,7 +159,7 @@ export interface TemplateFiltersState {
      */
     filterProperties?: pulumi.Input<inputs.platform.TemplateFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter.
+     * Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
      */
     filterVisibility?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface TemplateFiltersArgs {
      */
     filterProperties: pulumi.Input<inputs.platform.TemplateFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter.
+     * Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
      */
     filterVisibility?: pulumi.Input<string>;
     /**

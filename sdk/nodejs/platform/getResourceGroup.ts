@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * DataSource for looking up resource group in harness.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -107,8 +105,6 @@ export interface GetResourceGroupResult {
     readonly tags: string[];
 }
 /**
- * DataSource for looking up resource group in harness.
- *
  * ## Example Usage
  *
  * ```typescript

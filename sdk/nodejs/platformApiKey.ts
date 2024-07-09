@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Resource for creating apikeys.
+ *
+ * ## Import
+ *
+ * Import account level apikey
+ *
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <parent_id>/<apikey_id>/<apikey_type>
+ * ```
+ *
+ * Import org level apikey
+ *
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<parent_id>/<apikey_id>/<apikey_type>
+ * ```
+ *
+ * Import project level apikey
+ *
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
+ * ```
+ */
 export class PlatformApiKey extends pulumi.CustomResource {
     /**
      * Get an existing PlatformApiKey resource's state with the given name, ID, and optional extra
@@ -45,19 +68,19 @@ export class PlatformApiKey extends pulumi.CustomResource {
      */
     public readonly defaultTimeToExpireToken!: pulumi.Output<number | undefined>;
     /**
-     * Description of the API Key
+     * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Identifier of the API Key
+     * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Name of the API Key
+     * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -65,13 +88,13 @@ export class PlatformApiKey extends pulumi.CustomResource {
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Tags for the API Key
+     * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a PlatformApiKey resource with the given unique name, arguments, and options.
@@ -143,19 +166,19 @@ export interface PlatformApiKeyState {
      */
     defaultTimeToExpireToken?: pulumi.Input<number>;
     /**
-     * Description of the API Key
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Identifier of the API Key
+     * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Name of the API Key
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -163,13 +186,13 @@ export interface PlatformApiKeyState {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags for the API Key
+     * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -189,19 +212,19 @@ export interface PlatformApiKeyArgs {
      */
     defaultTimeToExpireToken?: pulumi.Input<number>;
     /**
-     * Description of the API Key
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Identifier of the API Key
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Name of the API Key
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -209,11 +232,11 @@ export interface PlatformApiKeyArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags for the API Key
+     * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

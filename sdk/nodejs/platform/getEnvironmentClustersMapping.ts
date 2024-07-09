@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Cluster.
+ * Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
  *
  * ## Example Usage
  *
@@ -13,10 +15,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * // data source for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
+ *     identifier: "mycustomidentifier",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
+ *     clusters: [{
+ *         identifier: "incluster",
+ *         name: "in-cluster",
+ *         agentIdentifier: "account.gitopsagentdev",
+ *         scope: "ACCOUNT",
+ *     }],
+ * });
+ * // data source for two gitops clusters mapped to an account level env
+ * const example2 = harness.platform.getEnvironmentClustersMapping({
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
+ *     clusters: [
+ *         {
+ *             identifier: "clusterA",
+ *             name: "cluster-A",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *         {
+ *             identifier: "clusterB",
+ *             name: "cluster-B",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *     ],
  * });
  * ```
  */
@@ -24,6 +53,7 @@ export function getEnvironmentClustersMapping(args: GetEnvironmentClustersMappin
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", {
+        "clusters": args.clusters,
         "envId": args.envId,
         "identifier": args.identifier,
         "orgId": args.orgId,
@@ -36,19 +66,23 @@ export function getEnvironmentClustersMapping(args: GetEnvironmentClustersMappin
  */
 export interface GetEnvironmentClustersMappingArgs {
     /**
-     * environment identifier of the cluster.
+     * list of cluster identifiers and names
+     */
+    clusters?: inputs.platform.GetEnvironmentClustersMappingCluster[];
+    /**
+     * environment identifier.
      */
     envId: string;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     identifier: string;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     orgId?: string;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     projectId?: string;
 }
@@ -58,7 +92,11 @@ export interface GetEnvironmentClustersMappingArgs {
  */
 export interface GetEnvironmentClustersMappingResult {
     /**
-     * environment identifier of the cluster.
+     * list of cluster identifiers and names
+     */
+    readonly clusters?: outputs.platform.GetEnvironmentClustersMappingCluster[];
+    /**
+     * environment identifier.
      */
     readonly envId: string;
     /**
@@ -66,24 +104,24 @@ export interface GetEnvironmentClustersMappingResult {
      */
     readonly id: string;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     readonly identifier: string;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     readonly orgId?: string;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     readonly projectId?: string;
     /**
-     * scope at which the cluster exists in harness gitops
+     * scope at which the environment exists in harness.
      */
     readonly scope: string;
 }
 /**
- * Data source for retrieving a Harness Cluster.
+ * Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
  *
  * ## Example Usage
  *
@@ -91,10 +129,37 @@ export interface GetEnvironmentClustersMappingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * // data source for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
+ *     identifier: "mycustomidentifier",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
+ *     clusters: [{
+ *         identifier: "incluster",
+ *         name: "in-cluster",
+ *         agentIdentifier: "account.gitopsagentdev",
+ *         scope: "ACCOUNT",
+ *     }],
+ * });
+ * // data source for two gitops clusters mapped to an account level env
+ * const example2 = harness.platform.getEnvironmentClustersMapping({
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
+ *     clusters: [
+ *         {
+ *             identifier: "clusterA",
+ *             name: "cluster-A",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *         {
+ *             identifier: "clusterB",
+ *             name: "cluster-B",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *     ],
  * });
  * ```
  */
@@ -107,19 +172,23 @@ export function getEnvironmentClustersMappingOutput(args: GetEnvironmentClusters
  */
 export interface GetEnvironmentClustersMappingOutputArgs {
     /**
-     * environment identifier of the cluster.
+     * list of cluster identifiers and names
+     */
+    clusters?: pulumi.Input<pulumi.Input<inputs.platform.GetEnvironmentClustersMappingClusterArgs>[]>;
+    /**
+     * environment identifier.
      */
     envId: pulumi.Input<string>;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     identifier: pulumi.Input<string>;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     projectId?: pulumi.Input<string>;
 }

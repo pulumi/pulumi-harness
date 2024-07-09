@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for looking up an Azure key vault connector.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -117,8 +115,6 @@ export interface GetAzureKeyVaultConnectorResult {
     readonly vaultName: string;
 }
 /**
- * Data source for looking up an Azure key vault connector.
- *
  * ## Example Usage
  *
  * ```typescript

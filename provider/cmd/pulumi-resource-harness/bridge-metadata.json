@@ -4580,7 +4580,14 @@
                 }
             },
             "harness_platform_workspace_output": {
-                "current": "harness:platform/getWorkspaceOutput:getWorkspaceOutput",
+                "current": "harness:platform/getWorkspaceOutputs:getWorkspaceOutputs",
+                "past": [
+                    {
+                        "name": "harness:platform/getWorkspaceOutput:getWorkspaceOutput",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "outputs": {
                         "maxItemsOne": false
@@ -4642,5 +4649,13 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {
+        "datasources": {
+            "harness_platform_workspace_output": {
+                "renames": [
+                    "harness:platform/getWorkspaceOutput:getWorkspaceOutput"
+                ]
+            }
+        }
+    }
 }

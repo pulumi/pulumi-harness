@@ -30,7 +30,6 @@ export function getToken(args: GetTokenArgs, opts?: pulumi.InvokeOptions): Promi
         "accountId": args.accountId,
         "apikeyId": args.apikeyId,
         "apikeyType": args.apikeyType,
-        "description": args.description,
         "email": args.email,
         "encodedPassword": args.encodedPassword,
         "identifier": args.identifier,
@@ -39,7 +38,6 @@ export function getToken(args: GetTokenArgs, opts?: pulumi.InvokeOptions): Promi
         "parentId": args.parentId,
         "projectId": args.projectId,
         "scheduledExpireTime": args.scheduledExpireTime,
-        "tags": args.tags,
         "username": args.username,
         "valid": args.valid,
         "validFrom": args.validFrom,
@@ -64,10 +62,6 @@ export interface GetTokenArgs {
      */
     apikeyType: string;
     /**
-     * Description of the Token
-     */
-    description?: string;
-    /**
      * Email Id of the user who created the Token
      */
     email?: string;
@@ -76,15 +70,15 @@ export interface GetTokenArgs {
      */
     encodedPassword?: string;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     identifier: string;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
-    name: string;
+    name?: string;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
@@ -92,17 +86,13 @@ export interface GetTokenArgs {
      */
     parentId: string;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: string;
     /**
      * Scheduled expiry time in milliseconds
      */
     scheduledExpireTime?: number;
-    /**
-     * Tags for the Token
-     */
-    tags?: {[key: string]: string};
     /**
      * Name of the user who created the Token
      */
@@ -138,9 +128,9 @@ export interface GetTokenResult {
      */
     readonly apikeyType: string;
     /**
-     * Description of the Token
+     * Description of the resource.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * Email Id of the user who created the Token
      */
@@ -154,15 +144,15 @@ export interface GetTokenResult {
      */
     readonly id: string;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     readonly identifier: string;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
@@ -170,7 +160,7 @@ export interface GetTokenResult {
      */
     readonly parentId: string;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
     /**
@@ -178,9 +168,9 @@ export interface GetTokenResult {
      */
     readonly scheduledExpireTime?: number;
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      */
-    readonly tags?: {[key: string]: string};
+    readonly tags: string[];
     /**
      * Name of the user who created the Token
      */
@@ -238,10 +228,6 @@ export interface GetTokenOutputArgs {
      */
     apikeyType: pulumi.Input<string>;
     /**
-     * Description of the Token
-     */
-    description?: pulumi.Input<string>;
-    /**
      * Email Id of the user who created the Token
      */
     email?: pulumi.Input<string>;
@@ -250,15 +236,15 @@ export interface GetTokenOutputArgs {
      */
     encodedPassword?: pulumi.Input<string>;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -266,17 +252,13 @@ export interface GetTokenOutputArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
      * Scheduled expiry time in milliseconds
      */
     scheduledExpireTime?: pulumi.Input<number>;
-    /**
-     * Tags for the Token
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the user who created the Token
      */

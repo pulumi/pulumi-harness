@@ -9,8 +9,69 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an Artifactory connector.
  *
- * ## Example Usage
+ * ## Example to create Artifactory Connector at different levels (Org, Project, Account)
  *
+ * ### Account Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Authentication mechanism as username and password
+ * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
+ * });
+ * // Authentication mechanism as anonymous
+ * const test = new harness.platform.ArtifactoryConnector("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * ```
+ *
+ * ### Org Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Authentication mechanism as username and password
+ * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
+ * });
+ * // Authentication mechanism as anonymous
+ * const test = new harness.platform.ArtifactoryConnector("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     url: "https://artifactory.example.com",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * ```
+ *
+ * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";

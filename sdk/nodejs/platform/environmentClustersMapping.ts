@@ -15,20 +15,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * // mapping a cluster to a project level env
  * const example = new harness.platform.EnvironmentClustersMapping("example", {
- *     identifier: "identifier",
+ *     identifier: "mycustomidentifier",
  *     orgId: "orgIdentifer",
  *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
+ *     clusters: [{
+ *         identifier: "incluster",
+ *         name: "in-cluster",
+ *         agentIdentifier: "account.gitopsagentdev",
+ *         scope: "ACCOUNT",
+ *     }],
+ * });
+ * // mapping two clusters to account level env
+ * const example2 = new harness.platform.EnvironmentClustersMapping("example2", {
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
+ *     clusters: [
+ *         {
+ *             identifier: "clusterA",
+ *             name: "cluster-A",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *         {
+ *             identifier: "clusterB",
+ *             name: "cluster-B",
+ *             agentIdentifier: "account.gitopsagentprod",
+ *             scope: "ACCOUNT",
+ *         },
+ *     ],
  * });
  * ```
  *
  * ## Import
  *
- * Import using the cluster.
- *
- * ```sh
- * $ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example <cluster_id>
- * ```
+ * # 
  */
 export class EnvironmentClustersMapping extends pulumi.CustomResource {
     /**
@@ -67,19 +90,19 @@ export class EnvironmentClustersMapping extends pulumi.CustomResource {
      */
     public readonly envId!: pulumi.Output<string>;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * scope at which the cluster exists in harness gitops
+     * scope at which the environment exists in harness.
      */
     public /*out*/ readonly scope!: pulumi.Output<string>;
 
@@ -135,19 +158,19 @@ export interface EnvironmentClustersMappingState {
      */
     envId?: pulumi.Input<string>;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     identifier?: pulumi.Input<string>;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * scope at which the cluster exists in harness gitops
+     * scope at which the environment exists in harness.
      */
     scope?: pulumi.Input<string>;
 }
@@ -165,15 +188,15 @@ export interface EnvironmentClustersMappingArgs {
      */
     envId: pulumi.Input<string>;
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      */
     identifier: pulumi.Input<string>;
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      */
     projectId?: pulumi.Input<string>;
 }

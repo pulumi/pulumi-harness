@@ -163,6 +163,10 @@ export class AzureCloudProviderConnector extends pulumi.CustomResource {
      */
     public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    public readonly forceDelete!: pulumi.Output<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -201,6 +205,7 @@ export class AzureCloudProviderConnector extends pulumi.CustomResource {
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -219,6 +224,7 @@ export class AzureCloudProviderConnector extends pulumi.CustomResource {
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -254,6 +260,10 @@ export interface AzureCloudProviderConnectorState {
      * Execute on delegate or not.
      */
     executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -300,6 +310,10 @@ export interface AzureCloudProviderConnectorArgs {
      * Execute on delegate or not.
      */
     executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

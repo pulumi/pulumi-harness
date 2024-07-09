@@ -55,10 +55,35 @@ export type BitbucketConnector = import("./bitbucketConnector").BitbucketConnect
 export const BitbucketConnector: typeof import("./bitbucketConnector").BitbucketConnector = null as any;
 utilities.lazyLoad(exports, ["BitbucketConnector"], () => require("./bitbucketConnector"));
 
+export { ConnectorCustomSecretManagerArgs, ConnectorCustomSecretManagerState } from "./connectorCustomSecretManager";
+export type ConnectorCustomSecretManager = import("./connectorCustomSecretManager").ConnectorCustomSecretManager;
+export const ConnectorCustomSecretManager: typeof import("./connectorCustomSecretManager").ConnectorCustomSecretManager = null as any;
+utilities.lazyLoad(exports, ["ConnectorCustomSecretManager"], () => require("./connectorCustomSecretManager"));
+
+export { ConnectorCustomhealthsourceArgs, ConnectorCustomhealthsourceState } from "./connectorCustomhealthsource";
+export type ConnectorCustomhealthsource = import("./connectorCustomhealthsource").ConnectorCustomhealthsource;
+export const ConnectorCustomhealthsource: typeof import("./connectorCustomhealthsource").ConnectorCustomhealthsource = null as any;
+utilities.lazyLoad(exports, ["ConnectorCustomhealthsource"], () => require("./connectorCustomhealthsource"));
+
+export { ConnectorPdcArgs, ConnectorPdcState } from "./connectorPdc";
+export type ConnectorPdc = import("./connectorPdc").ConnectorPdc;
+export const ConnectorPdc: typeof import("./connectorPdc").ConnectorPdc = null as any;
+utilities.lazyLoad(exports, ["ConnectorPdc"], () => require("./connectorPdc"));
+
+export { ConnectorRancherArgs, ConnectorRancherState } from "./connectorRancher";
+export type ConnectorRancher = import("./connectorRancher").ConnectorRancher;
+export const ConnectorRancher: typeof import("./connectorRancher").ConnectorRancher = null as any;
+utilities.lazyLoad(exports, ["ConnectorRancher"], () => require("./connectorRancher"));
+
 export { DatadogConnectorArgs, DatadogConnectorState } from "./datadogConnector";
 export type DatadogConnector = import("./datadogConnector").DatadogConnector;
 export const DatadogConnector: typeof import("./datadogConnector").DatadogConnector = null as any;
 utilities.lazyLoad(exports, ["DatadogConnector"], () => require("./datadogConnector"));
+
+export { DelegatetokenArgs, DelegatetokenState } from "./delegatetoken";
+export type Delegatetoken = import("./delegatetoken").Delegatetoken;
+export const Delegatetoken: typeof import("./delegatetoken").Delegatetoken = null as any;
+utilities.lazyLoad(exports, ["Delegatetoken"], () => require("./delegatetoken"));
 
 export { DockerConnectorArgs, DockerConnectorState } from "./dockerConnector";
 export type DockerConnector = import("./dockerConnector").DockerConnector;
@@ -104,6 +129,26 @@ export { FeatureFlagApiKeyArgs, FeatureFlagApiKeyState } from "./featureFlagApiK
 export type FeatureFlagApiKey = import("./featureFlagApiKey").FeatureFlagApiKey;
 export const FeatureFlagApiKey: typeof import("./featureFlagApiKey").FeatureFlagApiKey = null as any;
 utilities.lazyLoad(exports, ["FeatureFlagApiKey"], () => require("./featureFlagApiKey"));
+
+export { FeatureFlagTargetArgs, FeatureFlagTargetState } from "./featureFlagTarget";
+export type FeatureFlagTarget = import("./featureFlagTarget").FeatureFlagTarget;
+export const FeatureFlagTarget: typeof import("./featureFlagTarget").FeatureFlagTarget = null as any;
+utilities.lazyLoad(exports, ["FeatureFlagTarget"], () => require("./featureFlagTarget"));
+
+export { FeatureFlagTargetGroupArgs, FeatureFlagTargetGroupState } from "./featureFlagTargetGroup";
+export type FeatureFlagTargetGroup = import("./featureFlagTargetGroup").FeatureFlagTargetGroup;
+export const FeatureFlagTargetGroup: typeof import("./featureFlagTargetGroup").FeatureFlagTargetGroup = null as any;
+utilities.lazyLoad(exports, ["FeatureFlagTargetGroup"], () => require("./featureFlagTargetGroup"));
+
+export { FileStoreFileArgs, FileStoreFileState } from "./fileStoreFile";
+export type FileStoreFile = import("./fileStoreFile").FileStoreFile;
+export const FileStoreFile: typeof import("./fileStoreFile").FileStoreFile = null as any;
+utilities.lazyLoad(exports, ["FileStoreFile"], () => require("./fileStoreFile"));
+
+export { FileStoreFolderArgs, FileStoreFolderState } from "./fileStoreFolder";
+export type FileStoreFolder = import("./fileStoreFolder").FileStoreFolder;
+export const FileStoreFolder: typeof import("./fileStoreFolder").FileStoreFolder = null as any;
+utilities.lazyLoad(exports, ["FileStoreFolder"], () => require("./fileStoreFolder"));
 
 export { FiltersArgs, FiltersState } from "./filters";
 export type Filters = import("./filters").Filters;
@@ -185,6 +230,31 @@ export const getCcmFilters: typeof import("./getCcmFilters").getCcmFilters = nul
 export const getCcmFiltersOutput: typeof import("./getCcmFilters").getCcmFiltersOutput = null as any;
 utilities.lazyLoad(exports, ["getCcmFilters","getCcmFiltersOutput"], () => require("./getCcmFilters"));
 
+export { GetConnectorCustomSecretManagerArgs, GetConnectorCustomSecretManagerResult, GetConnectorCustomSecretManagerOutputArgs } from "./getConnectorCustomSecretManager";
+export const getConnectorCustomSecretManager: typeof import("./getConnectorCustomSecretManager").getConnectorCustomSecretManager = null as any;
+export const getConnectorCustomSecretManagerOutput: typeof import("./getConnectorCustomSecretManager").getConnectorCustomSecretManagerOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorCustomSecretManager","getConnectorCustomSecretManagerOutput"], () => require("./getConnectorCustomSecretManager"));
+
+export { GetConnectorCustomhealthsourceArgs, GetConnectorCustomhealthsourceResult, GetConnectorCustomhealthsourceOutputArgs } from "./getConnectorCustomhealthsource";
+export const getConnectorCustomhealthsource: typeof import("./getConnectorCustomhealthsource").getConnectorCustomhealthsource = null as any;
+export const getConnectorCustomhealthsourceOutput: typeof import("./getConnectorCustomhealthsource").getConnectorCustomhealthsourceOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorCustomhealthsource","getConnectorCustomhealthsourceOutput"], () => require("./getConnectorCustomhealthsource"));
+
+export { GetConnectorPdcArgs, GetConnectorPdcResult, GetConnectorPdcOutputArgs } from "./getConnectorPdc";
+export const getConnectorPdc: typeof import("./getConnectorPdc").getConnectorPdc = null as any;
+export const getConnectorPdcOutput: typeof import("./getConnectorPdc").getConnectorPdcOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorPdc","getConnectorPdcOutput"], () => require("./getConnectorPdc"));
+
+export { GetConnectorRancherArgs, GetConnectorRancherResult, GetConnectorRancherOutputArgs } from "./getConnectorRancher";
+export const getConnectorRancher: typeof import("./getConnectorRancher").getConnectorRancher = null as any;
+export const getConnectorRancherOutput: typeof import("./getConnectorRancher").getConnectorRancherOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorRancher","getConnectorRancherOutput"], () => require("./getConnectorRancher"));
+
+export { GetCurrentAccountArgs, GetCurrentAccountResult, GetCurrentAccountOutputArgs } from "./getCurrentAccount";
+export const getCurrentAccount: typeof import("./getCurrentAccount").getCurrentAccount = null as any;
+export const getCurrentAccountOutput: typeof import("./getCurrentAccount").getCurrentAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentAccount","getCurrentAccountOutput"], () => require("./getCurrentAccount"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
@@ -194,6 +264,11 @@ export { GetDatadogConnectorArgs, GetDatadogConnectorResult, GetDatadogConnector
 export const getDatadogConnector: typeof import("./getDatadogConnector").getDatadogConnector = null as any;
 export const getDatadogConnectorOutput: typeof import("./getDatadogConnector").getDatadogConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getDatadogConnector","getDatadogConnectorOutput"], () => require("./getDatadogConnector"));
+
+export { GetDelegatetokenArgs, GetDelegatetokenResult, GetDelegatetokenOutputArgs } from "./getDelegatetoken";
+export const getDelegatetoken: typeof import("./getDelegatetoken").getDelegatetoken = null as any;
+export const getDelegatetokenOutput: typeof import("./getDelegatetoken").getDelegatetokenOutput = null as any;
+utilities.lazyLoad(exports, ["getDelegatetoken","getDelegatetokenOutput"], () => require("./getDelegatetoken"));
 
 export { GetDockerConnectorArgs, GetDockerConnectorResult, GetDockerConnectorOutputArgs } from "./getDockerConnector";
 export const getDockerConnector: typeof import("./getDockerConnector").getDockerConnector = null as any;
@@ -225,10 +300,25 @@ export const getEnvironmentGroup: typeof import("./getEnvironmentGroup").getEnvi
 export const getEnvironmentGroupOutput: typeof import("./getEnvironmentGroup").getEnvironmentGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironmentGroup","getEnvironmentGroupOutput"], () => require("./getEnvironmentGroup"));
 
+export { GetEnvironmentListArgs, GetEnvironmentListResult, GetEnvironmentListOutputArgs } from "./getEnvironmentList";
+export const getEnvironmentList: typeof import("./getEnvironmentList").getEnvironmentList = null as any;
+export const getEnvironmentListOutput: typeof import("./getEnvironmentList").getEnvironmentListOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentList","getEnvironmentListOutput"], () => require("./getEnvironmentList"));
+
 export { GetEnvironmentServiceOverridesArgs, GetEnvironmentServiceOverridesResult, GetEnvironmentServiceOverridesOutputArgs } from "./getEnvironmentServiceOverrides";
 export const getEnvironmentServiceOverrides: typeof import("./getEnvironmentServiceOverrides").getEnvironmentServiceOverrides = null as any;
 export const getEnvironmentServiceOverridesOutput: typeof import("./getEnvironmentServiceOverrides").getEnvironmentServiceOverridesOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironmentServiceOverrides","getEnvironmentServiceOverridesOutput"], () => require("./getEnvironmentServiceOverrides"));
+
+export { GetFileStoreFileArgs, GetFileStoreFileResult, GetFileStoreFileOutputArgs } from "./getFileStoreFile";
+export const getFileStoreFile: typeof import("./getFileStoreFile").getFileStoreFile = null as any;
+export const getFileStoreFileOutput: typeof import("./getFileStoreFile").getFileStoreFileOutput = null as any;
+utilities.lazyLoad(exports, ["getFileStoreFile","getFileStoreFileOutput"], () => require("./getFileStoreFile"));
+
+export { GetFileStoreFolderArgs, GetFileStoreFolderResult, GetFileStoreFolderOutputArgs } from "./getFileStoreFolder";
+export const getFileStoreFolder: typeof import("./getFileStoreFolder").getFileStoreFolder = null as any;
+export const getFileStoreFolderOutput: typeof import("./getFileStoreFolder").getFileStoreFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getFileStoreFolder","getFileStoreFolderOutput"], () => require("./getFileStoreFolder"));
 
 export { GetFiltersArgs, GetFiltersResult, GetFiltersOutputArgs } from "./getFilters";
 export const getFilters: typeof import("./getFilters").getFilters = null as any;
@@ -275,6 +365,11 @@ export const getGitopsAgentDeployYaml: typeof import("./getGitopsAgentDeployYaml
 export const getGitopsAgentDeployYamlOutput: typeof import("./getGitopsAgentDeployYaml").getGitopsAgentDeployYamlOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsAgentDeployYaml","getGitopsAgentDeployYamlOutput"], () => require("./getGitopsAgentDeployYaml"));
 
+export { GetGitopsAppProjectMappingArgs, GetGitopsAppProjectMappingResult, GetGitopsAppProjectMappingOutputArgs } from "./getGitopsAppProjectMapping";
+export const getGitopsAppProjectMapping: typeof import("./getGitopsAppProjectMapping").getGitopsAppProjectMapping = null as any;
+export const getGitopsAppProjectMappingOutput: typeof import("./getGitopsAppProjectMapping").getGitopsAppProjectMappingOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsAppProjectMapping","getGitopsAppProjectMappingOutput"], () => require("./getGitopsAppProjectMapping"));
+
 export { GetGitopsApplicationsArgs, GetGitopsApplicationsResult, GetGitopsApplicationsOutputArgs } from "./getGitopsApplications";
 export const getGitopsApplications: typeof import("./getGitopsApplications").getGitopsApplications = null as any;
 export const getGitopsApplicationsOutput: typeof import("./getGitopsApplications").getGitopsApplicationsOutput = null as any;
@@ -309,6 +404,11 @@ export { GetHelmConnectorArgs, GetHelmConnectorResult, GetHelmConnectorOutputArg
 export const getHelmConnector: typeof import("./getHelmConnector").getHelmConnector = null as any;
 export const getHelmConnectorOutput: typeof import("./getHelmConnector").getHelmConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getHelmConnector","getHelmConnectorOutput"], () => require("./getHelmConnector"));
+
+export { GetIacmDefaultPipelineArgs, GetIacmDefaultPipelineResult, GetIacmDefaultPipelineOutputArgs } from "./getIacmDefaultPipeline";
+export const getIacmDefaultPipeline: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipeline = null as any;
+export const getIacmDefaultPipelineOutput: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipelineOutput = null as any;
+utilities.lazyLoad(exports, ["getIacmDefaultPipeline","getIacmDefaultPipelineOutput"], () => require("./getIacmDefaultPipeline"));
 
 export { GetInfrastructureArgs, GetInfrastructureResult, GetInfrastructureOutputArgs } from "./getInfrastructure";
 export const getInfrastructure: typeof import("./getInfrastructure").getInfrastructure = null as any;
@@ -385,6 +485,11 @@ export const getPipelineFilters: typeof import("./getPipelineFilters").getPipeli
 export const getPipelineFiltersOutput: typeof import("./getPipelineFilters").getPipelineFiltersOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelineFilters","getPipelineFiltersOutput"], () => require("./getPipelineFilters"));
 
+export { GetPipelineListArgs, GetPipelineListResult, GetPipelineListOutputArgs } from "./getPipelineList";
+export const getPipelineList: typeof import("./getPipelineList").getPipelineList = null as any;
+export const getPipelineListOutput: typeof import("./getPipelineList").getPipelineListOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineList","getPipelineListOutput"], () => require("./getPipelineList"));
+
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
@@ -400,10 +505,30 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetProjectListArgs, GetProjectListResult, GetProjectListOutputArgs } from "./getProjectList";
+export const getProjectList: typeof import("./getProjectList").getProjectList = null as any;
+export const getProjectListOutput: typeof import("./getProjectList").getProjectListOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectList","getProjectListOutput"], () => require("./getProjectList"));
+
 export { GetPrometheusConnectorArgs, GetPrometheusConnectorResult, GetPrometheusConnectorOutputArgs } from "./getPrometheusConnector";
 export const getPrometheusConnector: typeof import("./getPrometheusConnector").getPrometheusConnector = null as any;
 export const getPrometheusConnectorOutput: typeof import("./getPrometheusConnector").getPrometheusConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheusConnector","getPrometheusConnectorOutput"], () => require("./getPrometheusConnector"));
+
+export { GetRepoArgs, GetRepoResult, GetRepoOutputArgs } from "./getRepo";
+export const getRepo: typeof import("./getRepo").getRepo = null as any;
+export const getRepoOutput: typeof import("./getRepo").getRepoOutput = null as any;
+utilities.lazyLoad(exports, ["getRepo","getRepoOutput"], () => require("./getRepo"));
+
+export { GetRepoRuleBranchArgs, GetRepoRuleBranchResult, GetRepoRuleBranchOutputArgs } from "./getRepoRuleBranch";
+export const getRepoRuleBranch: typeof import("./getRepoRuleBranch").getRepoRuleBranch = null as any;
+export const getRepoRuleBranchOutput: typeof import("./getRepoRuleBranch").getRepoRuleBranchOutput = null as any;
+utilities.lazyLoad(exports, ["getRepoRuleBranch","getRepoRuleBranchOutput"], () => require("./getRepoRuleBranch"));
+
+export { GetRepoWebhookArgs, GetRepoWebhookResult, GetRepoWebhookOutputArgs } from "./getRepoWebhook";
+export const getRepoWebhook: typeof import("./getRepoWebhook").getRepoWebhook = null as any;
+export const getRepoWebhookOutput: typeof import("./getRepoWebhook").getRepoWebhookOutput = null as any;
+utilities.lazyLoad(exports, ["getRepoWebhook","getRepoWebhookOutput"], () => require("./getRepoWebhook"));
 
 export { GetResourceGroupArgs, GetResourceGroupResult, GetResourceGroupOutputArgs } from "./getResourceGroup";
 export const getResourceGroup: typeof import("./getResourceGroup").getResourceGroup = null as any;
@@ -444,6 +569,11 @@ export { GetServiceAccountArgs, GetServiceAccountResult, GetServiceAccountOutput
 export const getServiceAccount: typeof import("./getServiceAccount").getServiceAccount = null as any;
 export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
+
+export { GetServiceListArgs, GetServiceListResult, GetServiceListOutputArgs } from "./getServiceList";
+export const getServiceList: typeof import("./getServiceList").getServiceList = null as any;
+export const getServiceListOutput: typeof import("./getServiceList").getServiceListOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceList","getServiceListOutput"], () => require("./getServiceList"));
 
 export { GetServiceNowConnectorArgs, GetServiceNowConnectorResult, GetServiceNowConnectorOutputArgs } from "./getServiceNowConnector";
 export const getServiceNowConnector: typeof import("./getServiceNowConnector").getServiceNowConnector = null as any;
@@ -525,6 +655,16 @@ export const getVaultConnector: typeof import("./getVaultConnector").getVaultCon
 export const getVaultConnectorOutput: typeof import("./getVaultConnector").getVaultConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getVaultConnector","getVaultConnectorOutput"], () => require("./getVaultConnector"));
 
+export { GetWorkspaceArgs, GetWorkspaceResult, GetWorkspaceOutputArgs } from "./getWorkspace";
+export const getWorkspace: typeof import("./getWorkspace").getWorkspace = null as any;
+export const getWorkspaceOutput: typeof import("./getWorkspace").getWorkspaceOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspace","getWorkspaceOutput"], () => require("./getWorkspace"));
+
+export { GetWorkspaceOutputArgs, GetWorkspaceOutputResult, GetWorkspaceOutputOutputArgs } from "./getWorkspaceOutput";
+export const getWorkspaceOutput: typeof import("./getWorkspaceOutput").getWorkspaceOutput = null as any;
+export const getWorkspaceOutputOutput: typeof import("./getWorkspaceOutput").getWorkspaceOutputOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceOutput","getWorkspaceOutputOutput"], () => require("./getWorkspaceOutput"));
+
 export { GitConnectorArgs, GitConnectorState } from "./gitConnector";
 export type GitConnector = import("./gitConnector").GitConnector;
 export const GitConnector: typeof import("./gitConnector").GitConnector = null as any;
@@ -575,10 +715,20 @@ export type GitlabConnector = import("./gitlabConnector").GitlabConnector;
 export const GitlabConnector: typeof import("./gitlabConnector").GitlabConnector = null as any;
 utilities.lazyLoad(exports, ["GitlabConnector"], () => require("./gitlabConnector"));
 
+export { GitopsAppProjectMappingArgs, GitopsAppProjectMappingState } from "./gitopsAppProjectMapping";
+export type GitopsAppProjectMapping = import("./gitopsAppProjectMapping").GitopsAppProjectMapping;
+export const GitopsAppProjectMapping: typeof import("./gitopsAppProjectMapping").GitopsAppProjectMapping = null as any;
+utilities.lazyLoad(exports, ["GitopsAppProjectMapping"], () => require("./gitopsAppProjectMapping"));
+
 export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
 export const HelmConnector: typeof import("./helmConnector").HelmConnector = null as any;
 utilities.lazyLoad(exports, ["HelmConnector"], () => require("./helmConnector"));
+
+export { IacmDefaultPipelineArgs, IacmDefaultPipelineState } from "./iacmDefaultPipeline";
+export type IacmDefaultPipeline = import("./iacmDefaultPipeline").IacmDefaultPipeline;
+export const IacmDefaultPipeline: typeof import("./iacmDefaultPipeline").IacmDefaultPipeline = null as any;
+utilities.lazyLoad(exports, ["IacmDefaultPipeline"], () => require("./iacmDefaultPipeline"));
 
 export { InfrastructureArgs, InfrastructureState } from "./infrastructure";
 export type Infrastructure = import("./infrastructure").Infrastructure;
@@ -674,6 +824,21 @@ export { PrometheusConnectorArgs, PrometheusConnectorState } from "./prometheusC
 export type PrometheusConnector = import("./prometheusConnector").PrometheusConnector;
 export const PrometheusConnector: typeof import("./prometheusConnector").PrometheusConnector = null as any;
 utilities.lazyLoad(exports, ["PrometheusConnector"], () => require("./prometheusConnector"));
+
+export { RepoArgs, RepoState } from "./repo";
+export type Repo = import("./repo").Repo;
+export const Repo: typeof import("./repo").Repo = null as any;
+utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
+
+export { RepoRuleBranchArgs, RepoRuleBranchState } from "./repoRuleBranch";
+export type RepoRuleBranch = import("./repoRuleBranch").RepoRuleBranch;
+export const RepoRuleBranch: typeof import("./repoRuleBranch").RepoRuleBranch = null as any;
+utilities.lazyLoad(exports, ["RepoRuleBranch"], () => require("./repoRuleBranch"));
+
+export { RepoWebhookArgs, RepoWebhookState } from "./repoWebhook";
+export type RepoWebhook = import("./repoWebhook").RepoWebhook;
+export const RepoWebhook: typeof import("./repoWebhook").RepoWebhook = null as any;
+utilities.lazyLoad(exports, ["RepoWebhook"], () => require("./repoWebhook"));
 
 export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
 export type ResourceGroup = import("./resourceGroup").ResourceGroup;
@@ -795,6 +960,11 @@ export type VaultConnector = import("./vaultConnector").VaultConnector;
 export const VaultConnector: typeof import("./vaultConnector").VaultConnector = null as any;
 utilities.lazyLoad(exports, ["VaultConnector"], () => require("./vaultConnector"));
 
+export { WorkspaceArgs, WorkspaceState } from "./workspace";
+export type Workspace = import("./workspace").Workspace;
+export const Workspace: typeof import("./workspace").Workspace = null as any;
+utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -820,8 +990,18 @@ const _module = {
                 return new AzureKeyVaultConnector(name, <any>undefined, { urn })
             case "harness:platform/bitbucketConnector:BitbucketConnector":
                 return new BitbucketConnector(name, <any>undefined, { urn })
+            case "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager":
+                return new ConnectorCustomSecretManager(name, <any>undefined, { urn })
+            case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
+                return new ConnectorCustomhealthsource(name, <any>undefined, { urn })
+            case "harness:platform/connectorPdc:ConnectorPdc":
+                return new ConnectorPdc(name, <any>undefined, { urn })
+            case "harness:platform/connectorRancher:ConnectorRancher":
+                return new ConnectorRancher(name, <any>undefined, { urn })
             case "harness:platform/datadogConnector:DatadogConnector":
                 return new DatadogConnector(name, <any>undefined, { urn })
+            case "harness:platform/delegatetoken:Delegatetoken":
+                return new Delegatetoken(name, <any>undefined, { urn })
             case "harness:platform/dockerConnector:DockerConnector":
                 return new DockerConnector(name, <any>undefined, { urn })
             case "harness:platform/dynatraceConnector:DynatraceConnector":
@@ -840,6 +1020,14 @@ const _module = {
                 return new FeatureFlag(name, <any>undefined, { urn })
             case "harness:platform/featureFlagApiKey:FeatureFlagApiKey":
                 return new FeatureFlagApiKey(name, <any>undefined, { urn })
+            case "harness:platform/featureFlagTarget:FeatureFlagTarget":
+                return new FeatureFlagTarget(name, <any>undefined, { urn })
+            case "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup":
+                return new FeatureFlagTargetGroup(name, <any>undefined, { urn })
+            case "harness:platform/fileStoreFile:FileStoreFile":
+                return new FileStoreFile(name, <any>undefined, { urn })
+            case "harness:platform/fileStoreFolder:FileStoreFolder":
+                return new FileStoreFolder(name, <any>undefined, { urn })
             case "harness:platform/filters:Filters":
                 return new Filters(name, <any>undefined, { urn })
             case "harness:platform/gcpCloudCostConnector:GcpCloudCostConnector":
@@ -868,8 +1056,12 @@ const _module = {
                 return new GithubConnector(name, <any>undefined, { urn })
             case "harness:platform/gitlabConnector:GitlabConnector":
                 return new GitlabConnector(name, <any>undefined, { urn })
+            case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
+                return new GitopsAppProjectMapping(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
+            case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
+                return new IacmDefaultPipeline(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
                 return new Infrastructure(name, <any>undefined, { urn })
             case "harness:platform/inputSet:InputSet":
@@ -908,6 +1100,12 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "harness:platform/prometheusConnector:PrometheusConnector":
                 return new PrometheusConnector(name, <any>undefined, { urn })
+            case "harness:platform/repo:Repo":
+                return new Repo(name, <any>undefined, { urn })
+            case "harness:platform/repoRuleBranch:RepoRuleBranch":
+                return new RepoRuleBranch(name, <any>undefined, { urn })
+            case "harness:platform/repoWebhook:RepoWebhook":
+                return new RepoWebhook(name, <any>undefined, { urn })
             case "harness:platform/resourceGroup:ResourceGroup":
                 return new ResourceGroup(name, <any>undefined, { urn })
             case "harness:platform/roleAssignments:RoleAssignments":
@@ -956,6 +1154,8 @@ const _module = {
                 return new Variables(name, <any>undefined, { urn })
             case "harness:platform/vaultConnector:VaultConnector":
                 return new VaultConnector(name, <any>undefined, { urn })
+            case "harness:platform/workspace:Workspace":
+                return new Workspace(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -971,7 +1171,12 @@ pulumi.runtime.registerResourceModule("harness", "platform/azureCloudCostConnect
 pulumi.runtime.registerResourceModule("harness", "platform/azureCloudProviderConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/azureKeyVaultConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomhealthsource", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorPdc", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorRancher", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/delegatetoken", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dockerConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dynatraceConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/elasticsearchConnector", _module)
@@ -981,6 +1186,10 @@ pulumi.runtime.registerResourceModule("harness", "platform/environmentGroup", _m
 pulumi.runtime.registerResourceModule("harness", "platform/environmentServiceOverrides", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/featureFlag", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/featureFlagApiKey", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/featureFlagTarget", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/featureFlagTargetGroup", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/fileStoreFile", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/fileStoreFolder", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/filters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gcpCloudCostConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gcpConnector", _module)
@@ -995,7 +1204,9 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitOpsRepoCred", _mod
 pulumi.runtime.registerResourceModule("harness", "platform/gitOpsRepository", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jenkinsConnector", _module)
@@ -1015,6 +1226,9 @@ pulumi.runtime.registerResourceModule("harness", "platform/policy", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/policySet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/project", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/prometheusConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/repo", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/repoRuleBranch", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/repoWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/resourceGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/roleAssignments", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/roles", _module)
@@ -1039,3 +1253,4 @@ pulumi.runtime.registerResourceModule("harness", "platform/user", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/usergroup", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/variables", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/vaultConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/workspace", _module)

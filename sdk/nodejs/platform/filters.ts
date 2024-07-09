@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Filter. This resource support filters of types {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
- *
  * ## Example Usage
  *
  * ```typescript

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Gitops Repositories Credentials.
+ * Resource for managing a Harness Gitops Repository Credentials.
  *
  * ## Example Usage
  *
@@ -23,18 +23,29 @@ import * as utilities from "../utilities";
  *     orgId: "org_id",
  *     creds: [{
  *         type: "git",
- *         url: "github.com",
- *         sshPrivateKey: "yoursshprivatekey",
+ *         url: "git@github.com:yourorg",
+ *         sshPrivateKey: `----- BEGIN OPENSSH PRIVATE KEY-----
+ * XXXXX
+ * XXXXX
+ * XXXXX
+ * -----END OPENSSH PRIVATE KEY -----
+ * `,
  *     }],
  * });
  * ```
  *
  * ## Import
  *
- * Import a Account level Gitops Repository Credentials
+ * Import an Account level Gitops Repository Credentials
  *
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
+ * ```
+ *
+ * Import an Org level Gitops Repository Credentials
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<agent_id>/<repocred_id>
  * ```
  *
  * Import a Project level Gitops Repository Credentials
@@ -72,11 +83,11 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
     }
 
     /**
-     * Account identifier of the Repository Credential.
+     * Account identifier of the Repository Credentials.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Agent identifier of the Repository Credential.
+     * Agent identifier of the Repository Credentials.
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
@@ -84,19 +95,19 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
      */
     public readonly creds!: pulumi.Output<outputs.platform.GitOpsRepoCredCred[]>;
     /**
-     * Identifier of the Repository Credential.
+     * Identifier of the Repository Credentials.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * if the Repository credential should be upserted.
+     * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
     public readonly upsert!: pulumi.Output<boolean | undefined>;
 
@@ -149,11 +160,11 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
  */
 export interface GitOpsRepoCredState {
     /**
-     * Account identifier of the Repository Credential.
+     * Account identifier of the Repository Credentials.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Agent identifier of the Repository Credential.
+     * Agent identifier of the Repository Credentials.
      */
     agentId?: pulumi.Input<string>;
     /**
@@ -161,19 +172,19 @@ export interface GitOpsRepoCredState {
      */
     creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[]>;
     /**
-     * Identifier of the Repository Credential.
+     * Identifier of the Repository Credentials.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * if the Repository credential should be upserted.
+     * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }
@@ -183,11 +194,11 @@ export interface GitOpsRepoCredState {
  */
 export interface GitOpsRepoCredArgs {
     /**
-     * Account identifier of the Repository Credential.
+     * Account identifier of the Repository Credentials.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Agent identifier of the Repository Credential.
+     * Agent identifier of the Repository Credentials.
      */
     agentId: pulumi.Input<string>;
     /**
@@ -195,19 +206,19 @@ export interface GitOpsRepoCredArgs {
      */
     creds?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCredCred>[]>;
     /**
-     * Identifier of the Repository Credential.
+     * Identifier of the Repository Credentials.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * if the Repository credential should be upserted.
+     * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }

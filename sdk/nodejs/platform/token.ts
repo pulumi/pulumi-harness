@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating tokens.
+ * ## Example Usage
  *
  * ## Import
  *
@@ -68,7 +68,7 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly apikeyType!: pulumi.Output<string>;
     /**
-     * Description of the Token
+     * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -80,15 +80,15 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly encodedPassword!: pulumi.Output<string | undefined>;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
@@ -96,7 +96,7 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -104,9 +104,9 @@ export class Token extends pulumi.CustomResource {
      */
     public readonly scheduledExpireTime!: pulumi.Output<number>;
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the user who created the Token
      */
@@ -123,6 +123,10 @@ export class Token extends pulumi.CustomResource {
      * This is the time till which the Token is valid. The time is in milliseconds
      */
     public readonly validTo!: pulumi.Output<number>;
+    /**
+     * Value of the Token
+     */
+    public /*out*/ readonly value!: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -154,6 +158,7 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["valid"] = state ? state.valid : undefined;
             resourceInputs["validFrom"] = state ? state.validFrom : undefined;
             resourceInputs["validTo"] = state ? state.validTo : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -188,8 +193,11 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["valid"] = args ? args.valid : undefined;
             resourceInputs["validFrom"] = args ? args.validFrom : undefined;
             resourceInputs["validTo"] = args ? args.validTo : undefined;
+            resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -211,7 +219,7 @@ export interface TokenState {
      */
     apikeyType?: pulumi.Input<string>;
     /**
-     * Description of the Token
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -223,15 +231,15 @@ export interface TokenState {
      */
     encodedPassword?: pulumi.Input<string>;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -239,7 +247,7 @@ export interface TokenState {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -247,9 +255,9 @@ export interface TokenState {
      */
     scheduledExpireTime?: pulumi.Input<number>;
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the user who created the Token
      */
@@ -266,6 +274,10 @@ export interface TokenState {
      * This is the time till which the Token is valid. The time is in milliseconds
      */
     validTo?: pulumi.Input<number>;
+    /**
+     * Value of the Token
+     */
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -285,7 +297,7 @@ export interface TokenArgs {
      */
     apikeyType: pulumi.Input<string>;
     /**
-     * Description of the Token
+     * Description of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -297,15 +309,15 @@ export interface TokenArgs {
      */
     encodedPassword?: pulumi.Input<string>;
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Name of the Token
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -313,7 +325,7 @@ export interface TokenArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -321,9 +333,9 @@ export interface TokenArgs {
      */
     scheduledExpireTime?: pulumi.Input<number>;
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the user who created the Token
      */

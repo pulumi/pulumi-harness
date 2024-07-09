@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating an AWS Secret Manager connector.
+ * ## Example Usage
  *
  * ## Import
  *
@@ -62,6 +62,10 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.AwsSecretManagerConnectorCredentials>;
     /**
+     * Use as Default Secrets Manager.
+     */
+    public readonly default!: pulumi.Output<boolean | undefined>;
+    /**
      * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
@@ -112,6 +116,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AwsSecretManagerConnectorState | undefined;
             resourceInputs["credentials"] = state ? state.credentials : undefined;
+            resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
@@ -133,6 +138,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -156,6 +162,10 @@ export interface AwsSecretManagerConnectorState {
      * Credentials to connect to AWS.
      */
     credentials?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials>;
+    /**
+     * Use as Default Secrets Manager.
+     */
+    default?: pulumi.Input<boolean>;
     /**
      * Tags to filter delegates for connection.
      */
@@ -202,6 +212,10 @@ export interface AwsSecretManagerConnectorArgs {
      * Credentials to connect to AWS.
      */
     credentials: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentials>;
+    /**
+     * Use as Default Secrets Manager.
+     */
+    default?: pulumi.Input<boolean>;
     /**
      * Tags to filter delegates for connection.
      */

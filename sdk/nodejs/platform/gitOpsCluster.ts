@@ -7,14 +7,20 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Gitops Cluster.
+ * Resource for managing a Harness Gitops Cluster.
  *
  * ## Import
  *
- * Import a Account level Gitops Cluster
+ * Import an Account level Gitops Cluster
  *
  * ```sh
  * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+ * ```
+ *
+ * Import an Org level Gitops Cluster
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<agent_id>/<cluster_id>
  * ```
  *
  * Import a Project level Gitops Cluster
@@ -72,10 +78,6 @@ export class GitOpsCluster extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Query for the GitOps cluster resources.
-     */
-    public readonly queries!: pulumi.Output<outputs.platform.GitOpsClusterQuery[] | undefined>;
-    /**
      * Cluster create or update request.
      */
     public readonly requests!: pulumi.Output<outputs.platform.GitOpsClusterRequest[] | undefined>;
@@ -98,7 +100,6 @@ export class GitOpsCluster extends pulumi.CustomResource {
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["queries"] = state ? state.queries : undefined;
             resourceInputs["requests"] = state ? state.requests : undefined;
         } else {
             const args = argsOrState as GitOpsClusterArgs | undefined;
@@ -116,7 +117,6 @@ export class GitOpsCluster extends pulumi.CustomResource {
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["queries"] = args ? args.queries : undefined;
             resourceInputs["requests"] = args ? args.requests : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,10 +149,6 @@ export interface GitOpsClusterState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Query for the GitOps cluster resources.
-     */
-    queries?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQuery>[]>;
-    /**
      * Cluster create or update request.
      */
     requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequest>[]>;
@@ -182,10 +178,6 @@ export interface GitOpsClusterArgs {
      * Project identifier of the GitOps cluster.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * Query for the GitOps cluster resources.
-     */
-    queries?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQuery>[]>;
     /**
      * Cluster create or update request.
      */

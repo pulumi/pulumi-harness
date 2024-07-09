@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a GitOps RepoCert.
+ * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  */
 export function getGitopsRepoCert(args: GetGitopsRepoCertArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsRepoCertResult> {
 
@@ -23,19 +23,19 @@ export function getGitopsRepoCert(args: GetGitopsRepoCertArgs, opts?: pulumi.Inv
  */
 export interface GetGitopsRepoCertArgs {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     accountId: string;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     agentId?: string;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     orgId?: string;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     projectId?: string;
 }
@@ -45,11 +45,11 @@ export interface GetGitopsRepoCertArgs {
  */
 export interface GetGitopsRepoCertResult {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     readonly accountId: string;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     readonly agentId?: string;
     /**
@@ -57,16 +57,16 @@ export interface GetGitopsRepoCertResult {
      */
     readonly id: string;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     readonly orgId?: string;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     readonly projectId?: string;
 }
 /**
- * Data source for retrieving a GitOps RepoCert.
+ * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  */
 export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepoCertResult> {
     return pulumi.output(args).apply((a: any) => getGitopsRepoCert(a, opts))
@@ -77,19 +77,19 @@ export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?
  */
 export interface GetGitopsRepoCertOutputArgs {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     accountId: pulumi.Input<string>;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     projectId?: pulumi.Input<string>;
 }

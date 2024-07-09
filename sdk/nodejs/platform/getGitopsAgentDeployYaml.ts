@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for fetching a Harness Gitops Agents.
+ * Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
  *
  * ## Example Usage
  *
@@ -27,10 +29,12 @@ export function getGitopsAgentDeployYaml(args: GetGitopsAgentDeployYamlArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
         "accountId": args.accountId,
+        "caData": args.caData,
         "identifier": args.identifier,
         "namespace": args.namespace,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "proxies": args.proxies,
     }, opts);
 }
 
@@ -43,11 +47,15 @@ export interface GetGitopsAgentDeployYamlArgs {
      */
     accountId: string;
     /**
+     * CA data of the GitOps agent, base64 encoded content of ca chain.
+     */
+    caData?: string;
+    /**
      * Identifier of the GitOps agent.
      */
     identifier: string;
     /**
-     * The k8s namespace that the GitOps agent resides in.
+     * The kubernetes namespace where the agent is installed.
      */
     namespace: string;
     /**
@@ -58,6 +66,10 @@ export interface GetGitopsAgentDeployYamlArgs {
      * Project identifier of the GitOps agent.
      */
     projectId?: string;
+    /**
+     * Proxy settings for the GitOps agent.
+     */
+    proxies?: inputs.platform.GetGitopsAgentDeployYamlProxy[];
 }
 
 /**
@@ -69,6 +81,10 @@ export interface GetGitopsAgentDeployYamlResult {
      */
     readonly accountId: string;
     /**
+     * CA data of the GitOps agent, base64 encoded content of ca chain.
+     */
+    readonly caData?: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -77,7 +93,7 @@ export interface GetGitopsAgentDeployYamlResult {
      */
     readonly identifier: string;
     /**
-     * The k8s namespace that the GitOps agent resides in.
+     * The kubernetes namespace where the agent is installed.
      */
     readonly namespace: string;
     /**
@@ -89,12 +105,16 @@ export interface GetGitopsAgentDeployYamlResult {
      */
     readonly projectId?: string;
     /**
-     * Deployment YAML of the GitOps agent.
+     * Proxy settings for the GitOps agent.
+     */
+    readonly proxies?: outputs.platform.GetGitopsAgentDeployYamlProxy[];
+    /**
+     * The deployment manifest YAML of the GitOps agent.
      */
     readonly yaml: string;
 }
 /**
- * Datasource for fetching a Harness Gitops Agents.
+ * Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
  *
  * ## Example Usage
  *
@@ -124,11 +144,15 @@ export interface GetGitopsAgentDeployYamlOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * CA data of the GitOps agent, base64 encoded content of ca chain.
+     */
+    caData?: pulumi.Input<string>;
+    /**
      * Identifier of the GitOps agent.
      */
     identifier: pulumi.Input<string>;
     /**
-     * The k8s namespace that the GitOps agent resides in.
+     * The kubernetes namespace where the agent is installed.
      */
     namespace: pulumi.Input<string>;
     /**
@@ -139,4 +163,8 @@ export interface GetGitopsAgentDeployYamlOutputArgs {
      * Project identifier of the GitOps agent.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * Proxy settings for the GitOps agent.
+     */
+    proxies?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsAgentDeployYamlProxyArgs>[]>;
 }

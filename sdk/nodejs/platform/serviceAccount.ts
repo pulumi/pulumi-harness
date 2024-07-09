@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating service account.
- *
  * ## Example Usage
  *
  * ```typescript

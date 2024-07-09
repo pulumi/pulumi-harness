@@ -9,67 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness InputSet.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.InputSet("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     tags: ["foo:bar"],
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     pipelineId: "pipeline_id",
- *     yaml: `inputSet:
- *   identifier: "identifier"
- *   name: "name"
- *   tags:
- *     foo: "bar"
- *   orgIdentifier: "org_id"
- *   projectIdentifier: "project_id"
- *   pipeline:
- *     identifier: "pipeline_id"
- *     variables:
- *     - name: "key"
- *       type: "String"
- *       value: "value"
- * `,
- * });
- * // Remote InputSet
- * const test = new harness.platform.InputSet("test", {
- *     identifier: "identifier",
- *     name: "name",
- *     tags: ["foo:bar"],
- *     orgId: testHarnessPlatformOrganization.id,
- *     projectId: testHarnessPlatformProject.id,
- *     pipelineId: testHarnessPlatformPipeline.id,
- *     gitDetails: {
- *         branchName: "main",
- *         commitMessage: "Commit",
- *         filePath: ".harness/file_path.yaml",
- *         connectorRef: "account.connector_ref",
- *         storeType: "REMOTE",
- *         repoName: "repo_name",
- *     },
- *     yaml: `inputSet:
- *   identifier: "identifier"
- *   name: "name"
- *   tags:
- *     foo: "bar"
- *   orgIdentifier: "${testHarnessPlatformOrganization.id}"
- *   projectIdentifier: "${testHarnessPlatformProject.id}"
- *   pipeline:
- *     identifier: "${testHarnessPlatformPipeline.id}"
- *     variables:
- *     - name: "key"
- *       type: "String"
- *       value: "value"
- * `,
- * });
- * ```
- *
  * ## Import
  *
  * Import input set
@@ -113,11 +52,23 @@ export class InputSet extends pulumi.CustomResource {
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    public readonly gitDetails!: pulumi.Output<outputs.platform.InputSetGitDetails | undefined>;
+    public readonly gitDetails!: pulumi.Output<outputs.platform.InputSetGitDetails>;
+    /**
+     * Contains Git Information for importing entities from Git
+     */
+    public readonly gitImportInfo!: pulumi.Output<outputs.platform.InputSetGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    public readonly importFromGit!: pulumi.Output<boolean | undefined>;
+    /**
+     * Contains parameters for importing a input set
+     */
+    public readonly inputSetImportRequest!: pulumi.Output<outputs.platform.InputSetInputSetImportRequest | undefined>;
     /**
      * Name of the resource.
      */
@@ -158,7 +109,10 @@ export class InputSet extends pulumi.CustomResource {
             const state = argsOrState as InputSetState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
+            resourceInputs["gitImportInfo"] = state ? state.gitImportInfo : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
+            resourceInputs["inputSetImportRequest"] = state ? state.inputSetImportRequest : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["pipelineId"] = state ? state.pipelineId : undefined;
@@ -179,12 +133,12 @@ export class InputSet extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'yaml'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
+            resourceInputs["gitImportInfo"] = args ? args.gitImportInfo : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
+            resourceInputs["inputSetImportRequest"] = args ? args.inputSetImportRequest : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["pipelineId"] = args ? args.pipelineId : undefined;
@@ -210,9 +164,21 @@ export interface InputSetState {
      */
     gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails>;
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
+    /**
+     * Contains parameters for importing a input set
+     */
+    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest>;
     /**
      * Name of the resource.
      */
@@ -252,9 +218,21 @@ export interface InputSetArgs {
      */
     gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails>;
     /**
+     * Contains Git Information for importing entities from Git
+     */
+    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Flag to set if importing from Git
+     */
+    importFromGit?: pulumi.Input<boolean>;
+    /**
+     * Contains parameters for importing a input set
+     */
+    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest>;
     /**
      * Name of the resource.
      */
@@ -278,5 +256,5 @@ export interface InputSetArgs {
     /**
      * Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml: pulumi.Input<string>;
+    yaml?: pulumi.Input<string>;
 }

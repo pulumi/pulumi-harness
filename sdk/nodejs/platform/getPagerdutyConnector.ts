@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for looking up a PagerDuty connector.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -93,8 +91,6 @@ export interface GetPagerdutyConnectorResult {
     readonly tags: string[];
 }
 /**
- * Datasource for looking up a PagerDuty connector.
- *
  * ## Example Usage
  *
  * ```typescript

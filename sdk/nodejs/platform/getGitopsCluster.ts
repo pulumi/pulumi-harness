@@ -33,7 +33,6 @@ export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.Invok
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "queries": args.queries,
     }, opts);
 }
 
@@ -61,10 +60,6 @@ export interface GetGitopsClusterArgs {
      * Project identifier of the GitOps cluster.
      */
     projectId?: string;
-    /**
-     * Query for the GitOps cluster resources.
-     */
-    queries?: inputs.platform.GetGitopsClusterQuery[];
 }
 
 /**
@@ -95,10 +90,6 @@ export interface GetGitopsClusterResult {
      * Project identifier of the GitOps cluster.
      */
     readonly projectId?: string;
-    /**
-     * Query for the GitOps cluster resources.
-     */
-    readonly queries?: outputs.platform.GetGitopsClusterQuery[];
     /**
      * Cluster create or update request.
      */
@@ -150,8 +141,4 @@ export interface GetGitopsClusterOutputArgs {
      * Project identifier of the GitOps cluster.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * Query for the GitOps cluster resources.
-     */
-    queries?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterQueryArgs>[]>;
 }

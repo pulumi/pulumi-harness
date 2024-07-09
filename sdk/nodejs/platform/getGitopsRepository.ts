@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data Source for fetching a Harness GitOps Repository.
+ * Data source for fetching a Harness GitOps Repository.
  *
  * ## Example Usage
  *
@@ -30,15 +30,11 @@ export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi
     return pulumi.runtime.invoke("harness:platform/getGitopsRepository:getGitopsRepository", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "credsOnly": args.credsOnly,
+        "enableOci": args.enableOci,
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "queryForceRefresh": args.queryForceRefresh,
-        "queryProject": args.queryProject,
-        "queryRepo": args.queryRepo,
         "updateMasks": args.updateMasks,
-        "upsert": args.upsert,
     }, opts);
 }
 
@@ -55,9 +51,9 @@ export interface GetGitopsRepositoryArgs {
      */
     agentId: string;
     /**
-     * Indicates if to operate on credential set instead of repository.
+     * Indicates if helm-oci support must be enabled for this repo.
      */
-    credsOnly?: boolean;
+    enableOci?: boolean;
     /**
      * Identifier of the GitOps repository.
      */
@@ -71,25 +67,9 @@ export interface GetGitopsRepositoryArgs {
      */
     projectId?: string;
     /**
-     * Indicates to force refresh query for repository.
-     */
-    queryForceRefresh?: boolean;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    queryProject?: string;
-    /**
-     * GitOps repository to query.
-     */
-    queryRepo?: string;
-    /**
      * Update mask of the repository.
      */
     updateMasks?: inputs.platform.GetGitopsRepositoryUpdateMask[];
-    /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
-     */
-    upsert?: boolean;
 }
 
 /**
@@ -105,9 +85,9 @@ export interface GetGitopsRepositoryResult {
      */
     readonly agentId: string;
     /**
-     * Indicates if to operate on credential set instead of repository.
+     * Indicates if helm-oci support must be enabled for this repo.
      */
-    readonly credsOnly?: boolean;
+    readonly enableOci: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -125,32 +105,16 @@ export interface GetGitopsRepositoryResult {
      */
     readonly projectId?: string;
     /**
-     * Indicates to force refresh query for repository.
-     */
-    readonly queryForceRefresh?: boolean;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    readonly queryProject?: string;
-    /**
-     * GitOps repository to query.
-     */
-    readonly queryRepo?: string;
-    /**
      * Repo details holding application configurations.
      */
     readonly repos: outputs.platform.GetGitopsRepositoryRepo[];
     /**
      * Update mask of the repository.
      */
-    readonly updateMasks?: outputs.platform.GetGitopsRepositoryUpdateMask[];
-    /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
-     */
-    readonly upsert?: boolean;
+    readonly updateMasks: outputs.platform.GetGitopsRepositoryUpdateMask[];
 }
 /**
- * Data Source for fetching a Harness GitOps Repository.
+ * Data source for fetching a Harness GitOps Repository.
  *
  * ## Example Usage
  *
@@ -184,9 +148,9 @@ export interface GetGitopsRepositoryOutputArgs {
      */
     agentId: pulumi.Input<string>;
     /**
-     * Indicates if to operate on credential set instead of repository.
+     * Indicates if helm-oci support must be enabled for this repo.
      */
-    credsOnly?: pulumi.Input<boolean>;
+    enableOci?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps repository.
      */
@@ -200,23 +164,7 @@ export interface GetGitopsRepositoryOutputArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Indicates to force refresh query for repository.
-     */
-    queryForceRefresh?: pulumi.Input<boolean>;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    queryProject?: pulumi.Input<string>;
-    /**
-     * GitOps repository to query.
-     */
-    queryRepo?: pulumi.Input<string>;
-    /**
      * Update mask of the repository.
      */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepositoryUpdateMaskArgs>[]>;
-    /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
-     */
-    upsert?: pulumi.Input<boolean>;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironment:getEnvironment", {
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -35,6 +38,7 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentArgs {
+    gitDetails?: inputs.platform.GetEnvironmentGitDetails;
     /**
      * Unique identifier of the resource.
      */
@@ -65,6 +69,7 @@ export interface GetEnvironmentResult {
      * Description of the resource.
      */
     readonly description: string;
+    readonly gitDetails: outputs.platform.GetEnvironmentGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -94,7 +99,7 @@ export interface GetEnvironmentResult {
      */
     readonly type: string;
     /**
-     * Input Set YAML
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     readonly yaml: string;
 }
@@ -122,6 +127,7 @@ export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulu
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentOutputArgs {
+    gitDetails?: pulumi.Input<inputs.platform.GetEnvironmentGitDetailsArgs>;
     /**
      * Unique identifier of the resource.
      */

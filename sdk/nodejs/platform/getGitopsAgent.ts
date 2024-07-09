@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for fetching a Harness Gitops Agents.
+ * Datasource for fetching a Harness GitOps Agent.
  *
  * ## Example Usage
  *
@@ -65,6 +65,10 @@ export interface GetGitopsAgentResult {
      */
     readonly accountId: string;
     /**
+     * Agent token to be used for authentication of the agent with Harness.
+     */
+    readonly agentToken: string;
+    /**
      * Description of the GitOps agent.
      */
     readonly description: string;
@@ -85,6 +89,10 @@ export interface GetGitopsAgentResult {
      */
     readonly name: string;
     /**
+     * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+     */
+    readonly operator: string;
+    /**
      * Organization identifier of the GitOps agent.
      */
     readonly orgId?: string;
@@ -103,7 +111,7 @@ export interface GetGitopsAgentResult {
     readonly type: string;
 }
 /**
- * Datasource for fetching a Harness Gitops Agents.
+ * Datasource for fetching a Harness GitOps Agent.
  *
  * ## Example Usage
  *

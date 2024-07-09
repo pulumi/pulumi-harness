@@ -2,13 +2,119 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness project.
+ * Resource for creating a Harness service.
  *
- * ## Example Usage
+ * ## Example to create Service at different levels (Org, Project, Account)
  *
+ * ### Account Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Service("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     yaml: `service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ * `,
+ * });
+ * ```
+ *
+ * ### Org Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Service("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     orgId: "org_id",
+ *     yaml: `service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ * `,
+ * });
+ * ```
+ *
+ * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -58,6 +164,85 @@ import * as utilities from "../utilities";
  *     type: Kubernetes
  *   gitOpsEnabled: false
  * `,
+ * });
+ * ```
+ *
+ * ### Creating Remote Service
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Service("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "connector_ref",
+ *         repoName: "repo_name",
+ *         filePath: "file_path",
+ *         branch: "branch",
+ *     },
+ *     yaml: `service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ * `,
+ * });
+ * ```
+ *
+ * ### Importing Service From Git
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Service("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     importFromGit: true,
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "connector_ref",
+ *         repoName: "repo_name",
+ *         filePath: "file_path",
+ *         branch: "branch",
+ *     },
  * });
  * ```
  *
@@ -114,13 +299,29 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * to fetch resoled service yaml
+     */
+    public readonly fetchResolvedYaml!: pulumi.Output<boolean>;
+    /**
      * Enable this flag for force deletion of service
      */
     public readonly forceDelete!: pulumi.Output<string>;
     /**
+     * Contains parameters related to Git Experience for remote entities
+     */
+    public readonly gitDetails!: pulumi.Output<outputs.platform.ServiceGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
+    /**
+     * import service from git
+     */
+    public readonly importFromGit!: pulumi.Output<boolean>;
+    /**
+     * force import service from remote even if same file path already exist
+     */
+    public readonly isForceImport!: pulumi.Output<boolean>;
     /**
      * Name of the resource.
      */
@@ -138,7 +339,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      */
     public readonly yaml!: pulumi.Output<string>;
 
@@ -156,8 +360,12 @@ export class Service extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fetchResolvedYaml"] = state ? state.fetchResolvedYaml : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["importFromGit"] = state ? state.importFromGit : undefined;
+            resourceInputs["isForceImport"] = state ? state.isForceImport : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -169,8 +377,12 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'identifier'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fetchResolvedYaml"] = args ? args.fetchResolvedYaml : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
+            resourceInputs["isForceImport"] = args ? args.isForceImport : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -191,13 +403,29 @@ export interface ServiceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * to fetch resoled service yaml
+     */
+    fetchResolvedYaml?: pulumi.Input<boolean>;
+    /**
      * Enable this flag for force deletion of service
      */
     forceDelete?: pulumi.Input<string>;
     /**
+     * Contains parameters related to Git Experience for remote entities
+     */
+    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * import service from git
+     */
+    importFromGit?: pulumi.Input<boolean>;
+    /**
+     * force import service from remote even if same file path already exist
+     */
+    isForceImport?: pulumi.Input<boolean>;
     /**
      * Name of the resource.
      */
@@ -215,7 +443,10 @@ export interface ServiceState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -229,13 +460,29 @@ export interface ServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * to fetch resoled service yaml
+     */
+    fetchResolvedYaml?: pulumi.Input<boolean>;
+    /**
      * Enable this flag for force deletion of service
      */
     forceDelete?: pulumi.Input<string>;
     /**
+     * Contains parameters related to Git Experience for remote entities
+     */
+    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * import service from git
+     */
+    importFromGit?: pulumi.Input<boolean>;
+    /**
+     * force import service from remote even if same file path already exist
+     */
+    isForceImport?: pulumi.Input<boolean>;
     /**
      * Name of the resource.
      */
@@ -253,7 +500,10 @@ export interface ServiceArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string>;
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,6 +29,7 @@ export function getInfrastructure(args: GetInfrastructureArgs, opts?: pulumi.Inv
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInfrastructure:getInfrastructure", {
         "envId": args.envId,
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -42,6 +45,7 @@ export interface GetInfrastructureArgs {
      * environment identifier.
      */
     envId: string;
+    gitDetails?: inputs.platform.GetInfrastructureGitDetails;
     /**
      * Unique identifier of the resource.
      */
@@ -76,6 +80,7 @@ export interface GetInfrastructureResult {
      * environment identifier.
      */
     readonly envId: string;
+    readonly gitDetails: outputs.platform.GetInfrastructureGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -101,7 +106,7 @@ export interface GetInfrastructureResult {
      */
     readonly tags: string[];
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      */
     readonly type: string;
     /**
@@ -139,6 +144,7 @@ export interface GetInfrastructureOutputArgs {
      * environment identifier.
      */
     envId: pulumi.Input<string>;
+    gitDetails?: pulumi.Input<inputs.platform.GetInfrastructureGitDetailsArgs>;
     /**
      * Unique identifier of the resource.
      */
