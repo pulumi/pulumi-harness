@@ -33,6 +33,12 @@ var namespaceMap = map[string]string{
 	"harness": "Harness",
 }
 
+var moduleMap = map[string]string{
+	"cloudprovider": cloudProviderMod,
+	"platform":      platformMod,
+	"service":       serviceMod,
+}
+
 // harnessMember manufactures a type token for the Harness package and the given module and type.
 func harnessMember(moduleTitle string, fn string, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
@@ -400,7 +406,21 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	prov.MustComputeTokens(tks.SingleModule("harness_", mainMod, tks.MakeStandard(mainPkg)))
+	makeToken := func(mod, name string) (string, error) {
+		if name == "" {
+			name = mod
+		}
+		if m, e, ok := strings.Cut(mod, "~"); ok {
+			mod = m
+			if strings.HasPrefix(name, "get") {
+				name = "get" + e + name[3:]
+			} else {
+				name = e + name
+			}
+		}
+		return harnessResource(mod, name).String(), nil
+	}
+	prov.MustComputeTokens(tks.MappedModules("harness_", "", moduleMap, makeToken))
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
