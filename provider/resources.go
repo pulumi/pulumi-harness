@@ -367,7 +367,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputValue"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"outputs": {Name: "output_values"},
+					"outputs": {Name: "outputValues"},
 				},
 			},
 			"harness_secret_manager": {Tok: harnessDataSource(mainMod, "getSecretManager")},
