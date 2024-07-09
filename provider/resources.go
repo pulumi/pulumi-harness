@@ -27,6 +27,7 @@ const (
 	cloudProviderMod = "cloudprovider"
 	platformMod      = "platform"
 	serviceMod       = "service"
+	autostoppingMod  = "autostopping"
 )
 
 var namespaceMap = map[string]string{
@@ -37,6 +38,7 @@ var moduleMap = map[string]string{
 	"cloudprovider": cloudProviderMod,
 	"platform":      platformMod,
 	"service":       serviceMod,
+	"autostopping":  autostoppingMod,
 }
 
 // harnessMember manufactures a type token for the Harness package and the given module and type.
