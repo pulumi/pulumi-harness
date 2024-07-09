@@ -3,7 +3,7 @@ module github.com/harness/terraform-provider-harness/shim
 go 1.21
 
 require (
-	github.com/harness/terraform-provider-harness v0.22.1
+	github.com/harness/terraform-provider-harness v0.31.7
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
@@ -15,12 +15,13 @@ require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/antihax/optional v1.0.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
+	github.com/aws/aws-sdk-go v1.50.36 // indirect
 	github.com/cloudflare/circl v1.3.9 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
-	github.com/harness/harness-go-sdk v0.3.29 // indirect
-	github.com/harness/harness-openapi-go-client v0.0.17 // indirect
+	github.com/harness/harness-go-sdk v0.3.91 // indirect
+	github.com/harness/harness-openapi-go-client v0.0.19 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -41,7 +42,7 @@ require (
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
-	github.com/jinzhu/copier v0.3.5 // indirect
+	github.com/jinzhu/copier v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
@@ -51,7 +52,7 @@ require (
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/sirupsen/logrus v1.9.2 // indirect
+	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/t-tomalak/logrus-easy-formatter v0.0.0-20190827215021-c074f06c5816 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
