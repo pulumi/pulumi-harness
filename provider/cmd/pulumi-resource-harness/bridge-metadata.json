@@ -4642,13 +4642,5 @@
             }
         }
     },
-    "auto-settings": {
-        "datasources": {
-            "harness_platform_workspace_output": {
-                "renames": [
-                    "harness:platform/getWorkspaceOutput:getWorkspaceOutput"
-                ]
-            }
-        }
-    }
+    "auto-settings": {}
 }
