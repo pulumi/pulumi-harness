@@ -10,14 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness Gitops Cluster.
+    /// Resource for managing a Harness Gitops Cluster.
     /// 
     /// ## Import
     /// 
-    /// Import a Account level Gitops Cluster
+    /// Import an Account level Gitops Cluster
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;agent_id&gt;/&lt;cluster_id&gt;
+    /// ```
+    /// 
+    /// Import an Org level Gitops Cluster
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;cluster_id&gt;
     /// ```
     /// 
     /// Import a Project level Gitops Cluster
@@ -58,12 +64,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
-
-        /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        [Output("queries")]
-        public Output<ImmutableArray<Outputs.GitOpsClusterQuery>> Queries { get; private set; } = null!;
 
         /// <summary>
         /// Cluster create or update request.
@@ -148,18 +148,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        [Input("queries")]
-        private InputList<Inputs.GitOpsClusterQueryArgs>? _queries;
-
-        /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        public InputList<Inputs.GitOpsClusterQueryArgs> Queries
-        {
-            get => _queries ?? (_queries = new InputList<Inputs.GitOpsClusterQueryArgs>());
-            set => _queries = value;
-        }
-
         [Input("requests")]
         private InputList<Inputs.GitOpsClusterRequestArgs>? _requests;
 
@@ -209,18 +197,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        [Input("queries")]
-        private InputList<Inputs.GitOpsClusterQueryGetArgs>? _queries;
-
-        /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        public InputList<Inputs.GitOpsClusterQueryGetArgs> Queries
-        {
-            get => _queries ?? (_queries = new InputList<Inputs.GitOpsClusterQueryGetArgs>());
-            set => _queries = value;
-        }
 
         [Input("requests")]
         private InputList<Inputs.GitOpsClusterRequestGetArgs>? _requests;

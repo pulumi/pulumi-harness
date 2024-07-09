@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Ksonnet application environment name.
         /// </summary>
-        public readonly string? Environment;
+        public readonly string Environment;
         /// <summary>
         /// List of ksonnet component parameter override values.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceKsonnetResult(
-            string? environment,
+            string environment,
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult> parameters)
         {

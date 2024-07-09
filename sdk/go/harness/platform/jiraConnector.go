@@ -13,48 +13,7 @@ import (
 )
 
 // Resource for creating a Jira connector.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewJiraConnector(ctx, "test", &platform.JiraConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url: pulumi.String("https://jira.com"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Auth: &platform.JiraConnectorAuthArgs{
-//					AuthType: pulumi.String("UsernamePassword"),
-//					UsernamePassword: &platform.JiraConnectorAuthUsernamePasswordArgs{
-//						Username:    pulumi.String("admin"),
-//						PasswordRef: pulumi.String("account.secret_id"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// ## Example to create Jira Connector at different levels (Org, Project, Account)
 //
 // ## Import
 //

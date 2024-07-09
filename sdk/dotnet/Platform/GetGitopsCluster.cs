@@ -101,18 +101,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
-        [Input("queries")]
-        private List<Inputs.GetGitopsClusterQueryArgs>? _queries;
-
-        /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        public List<Inputs.GetGitopsClusterQueryArgs> Queries
-        {
-            get => _queries ?? (_queries = new List<Inputs.GetGitopsClusterQueryArgs>());
-            set => _queries = value;
-        }
-
         public GetGitopsClusterArgs()
         {
         }
@@ -151,18 +139,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        [Input("queries")]
-        private InputList<Inputs.GetGitopsClusterQueryInputArgs>? _queries;
-
-        /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        public InputList<Inputs.GetGitopsClusterQueryInputArgs> Queries
-        {
-            get => _queries ?? (_queries = new InputList<Inputs.GetGitopsClusterQueryInputArgs>());
-            set => _queries = value;
-        }
-
         public GetGitopsClusterInvokeArgs()
         {
         }
@@ -198,10 +174,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Query for the GitOps cluster resources.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGitopsClusterQueryResult> Queries;
-        /// <summary>
         /// Cluster create or update request.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestResult> Requests;
@@ -220,8 +192,6 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
-            ImmutableArray<Outputs.GetGitopsClusterQueryResult> queries,
-
             ImmutableArray<Outputs.GetGitopsClusterRequestResult> requests)
         {
             AccountId = accountId;
@@ -230,7 +200,6 @@ namespace Pulumi.Harness.Platform
             Identifier = identifier;
             OrgId = orgId;
             ProjectId = projectId;
-            Queries = queries;
             Requests = requests;
         }
     }

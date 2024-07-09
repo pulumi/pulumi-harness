@@ -18,8 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a HashiCorp Vault Secret Manager connector.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

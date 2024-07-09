@@ -19,7 +19,7 @@ public final class GitOpsRepoCertRequest {
      */
     private @Nullable List<GitOpsRepoCertRequestCertificate> certificates;
     /**
-     * @return if the Repository Certificates should be upserted.
+     * @return Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
      * 
      */
     private @Nullable Boolean upsert;
@@ -33,7 +33,7 @@ public final class GitOpsRepoCertRequest {
         return this.certificates == null ? List.of() : this.certificates;
     }
     /**
-     * @return if the Repository Certificates should be upserted.
+     * @return Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
      * 
      */
     public Optional<Boolean> upsert() {

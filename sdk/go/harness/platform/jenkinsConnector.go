@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Jenkins connector.
-//
 // ## Import
 //
 // # Import account level jenkins connector

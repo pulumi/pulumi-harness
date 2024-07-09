@@ -17,7 +17,7 @@ public final class GetGitopsGnupgRequestPublickey {
      */
     private @Nullable String fingerprint;
     /**
-     * @return KeyData holds the raw key data, in base64 encoded format
+     * @return KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     private @Nullable String keyData;
@@ -51,7 +51,7 @@ public final class GetGitopsGnupgRequestPublickey {
         return Optional.ofNullable(this.fingerprint);
     }
     /**
-     * @return KeyData holds the raw key data, in base64 encoded format
+     * @return KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     public Optional<String> keyData() {

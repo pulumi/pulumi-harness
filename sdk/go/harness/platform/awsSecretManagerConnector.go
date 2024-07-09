@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating an AWS Secret Manager connector.
+// ## Example Usage
 //
 // ## Import
 //
@@ -38,6 +38,8 @@ type AwsSecretManagerConnector struct {
 
 	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsOutput `pulumi:"credentials"`
+	// Use as Default Secrets Manager.
+	Default pulumi.BoolPtrOutput `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
@@ -99,6 +101,8 @@ func GetAwsSecretManagerConnector(ctx *pulumi.Context,
 type awsSecretManagerConnectorState struct {
 	// Credentials to connect to AWS.
 	Credentials *AwsSecretManagerConnectorCredentials `pulumi:"credentials"`
+	// Use as Default Secrets Manager.
+	Default *bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
@@ -122,6 +126,8 @@ type awsSecretManagerConnectorState struct {
 type AwsSecretManagerConnectorState struct {
 	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsPtrInput
+	// Use as Default Secrets Manager.
+	Default pulumi.BoolPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
@@ -149,6 +155,8 @@ func (AwsSecretManagerConnectorState) ElementType() reflect.Type {
 type awsSecretManagerConnectorArgs struct {
 	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentials `pulumi:"credentials"`
+	// Use as Default Secrets Manager.
+	Default *bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
@@ -173,6 +181,8 @@ type awsSecretManagerConnectorArgs struct {
 type AwsSecretManagerConnectorArgs struct {
 	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentialsInput
+	// Use as Default Secrets Manager.
+	Default pulumi.BoolPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
@@ -283,6 +293,11 @@ func (o AwsSecretManagerConnectorOutput) ToAwsSecretManagerConnectorOutputWithCo
 // Credentials to connect to AWS.
 func (o AwsSecretManagerConnectorOutput) Credentials() AwsSecretManagerConnectorCredentialsOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) AwsSecretManagerConnectorCredentialsOutput { return v.Credentials }).(AwsSecretManagerConnectorCredentialsOutput)
+}
+
+// Use as Default Secrets Manager.
+func (o AwsSecretManagerConnectorOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.BoolPtrOutput { return v.Default }).(pulumi.BoolPtrOutput)
 }
 
 // Tags to filter delegates for connection.

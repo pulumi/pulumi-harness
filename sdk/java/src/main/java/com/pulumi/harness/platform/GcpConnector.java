@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.GcpConnectorArgs;
 import com.pulumi.harness.platform.inputs.GcpConnectorState;
 import com.pulumi.harness.platform.outputs.GcpConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GcpConnectorManual;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,34 @@ public class GcpConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Enable this flag to execute on Delegate
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Enable this flag to execute on Delegate
+     * 
+     */
+    public Output<Boolean> executeOnDelegate() {
+        return this.executeOnDelegate;
+    }
+    /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Output<Boolean> forceDelete() {
+        return this.forceDelete;
     }
     /**
      * Unique identifier of the resource.

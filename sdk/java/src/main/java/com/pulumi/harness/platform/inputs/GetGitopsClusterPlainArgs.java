@@ -5,9 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetGitopsClusterQuery;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -92,21 +90,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * Query for the GitOps cluster resources.
-     * 
-     */
-    @Import(name="queries")
-    private @Nullable List<GetGitopsClusterQuery> queries;
-
-    /**
-     * @return Query for the GitOps cluster resources.
-     * 
-     */
-    public Optional<List<GetGitopsClusterQuery>> queries() {
-        return Optional.ofNullable(this.queries);
-    }
-
     private GetGitopsClusterPlainArgs() {}
 
     private GetGitopsClusterPlainArgs(GetGitopsClusterPlainArgs $) {
@@ -115,7 +98,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.queries = $.queries;
     }
 
     public static Builder builder() {
@@ -189,27 +171,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
-        }
-
-        /**
-         * @param queries Query for the GitOps cluster resources.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queries(@Nullable List<GetGitopsClusterQuery> queries) {
-            $.queries = queries;
-            return this;
-        }
-
-        /**
-         * @param queries Query for the GitOps cluster resources.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queries(GetGitopsClusterQuery... queries) {
-            return queries(List.of(queries));
         }
 
         public GetGitopsClusterPlainArgs build() {

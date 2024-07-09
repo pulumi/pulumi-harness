@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a GPG public key in the server's configuration.
+// Data source for fetching a Harness GitOps GPG public key.
 //
 // ## Example Usage
 //
@@ -30,7 +30,7 @@ import (
 //			_, err := platform.GetGitopsGnupg(ctx, &platform.GetGitopsGnupgArgs{
 //				AccountId:  "account_id",
 //				AgentId:    "agent_id",
-//				Identifier: pulumi.StringRef("identifier"),
+//				Identifier: "identifier",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,7 +57,7 @@ type GetGitopsGnupgArgs struct {
 	// Agent identifier for the GnuPG Key.
 	AgentId string `pulumi:"agentId"`
 	// Identifier for the GnuPG Key.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Organization Identifier for the GnuPG Key.
 	OrgId *string `pulumi:"orgId"`
 	// Project Identifier for the GnuPG Key.
@@ -75,7 +75,7 @@ type GetGitopsGnupgResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier for the GnuPG Key.
-	Identifier *string `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
 	// Organization Identifier for the GnuPG Key.
 	OrgId *string `pulumi:"orgId"`
 	// Project Identifier for the GnuPG Key.
@@ -104,7 +104,7 @@ type GetGitopsGnupgOutputArgs struct {
 	// Agent identifier for the GnuPG Key.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier for the GnuPG Key.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Organization Identifier for the GnuPG Key.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project Identifier for the GnuPG Key.
@@ -148,8 +148,8 @@ func (o GetGitopsGnupgResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier for the GnuPG Key.
-func (o GetGitopsGnupgResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsGnupgResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o GetGitopsGnupgResultOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsGnupgResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Organization Identifier for the GnuPG Key.

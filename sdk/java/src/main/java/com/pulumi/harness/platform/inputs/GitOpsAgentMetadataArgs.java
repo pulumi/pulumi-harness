@@ -17,14 +17,14 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
     public static final GitOpsAgentMetadataArgs Empty = new GitOpsAgentMetadataArgs();
 
     /**
-     * Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * Indicates if the agent is deployed in HA mode.
      * 
      */
     @Import(name="highAvailability")
     private @Nullable Output<Boolean> highAvailability;
 
     /**
-     * @return Indicates if the deployment should be deployed using the deploy-ha.yaml
+     * @return Indicates if the agent is deployed in HA mode.
      * 
      */
     public Optional<Output<Boolean>> highAvailability() {
@@ -32,14 +32,29 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The k8s namespace that this agent resides in.
+     * Indicates if the agent is namespaced.
+     * 
+     */
+    @Import(name="isNamespaced")
+    private @Nullable Output<Boolean> isNamespaced;
+
+    /**
+     * @return Indicates if the agent is namespaced.
+     * 
+     */
+    public Optional<Output<Boolean>> isNamespaced() {
+        return Optional.ofNullable(this.isNamespaced);
+    }
+
+    /**
+     * The kubernetes namespace where the agent should be installed.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The k8s namespace that this agent resides in.
+     * @return The kubernetes namespace where the agent should be installed.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -50,6 +65,7 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
 
     private GitOpsAgentMetadataArgs(GitOpsAgentMetadataArgs $) {
         this.highAvailability = $.highAvailability;
+        this.isNamespaced = $.isNamespaced;
         this.namespace = $.namespace;
     }
 
@@ -72,7 +88,7 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param highAvailability Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * @param highAvailability Indicates if the agent is deployed in HA mode.
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param highAvailability Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * @param highAvailability Indicates if the agent is deployed in HA mode.
          * 
          * @return builder
          * 
@@ -93,7 +109,28 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param namespace The k8s namespace that this agent resides in.
+         * @param isNamespaced Indicates if the agent is namespaced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isNamespaced(@Nullable Output<Boolean> isNamespaced) {
+            $.isNamespaced = isNamespaced;
+            return this;
+        }
+
+        /**
+         * @param isNamespaced Indicates if the agent is namespaced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isNamespaced(Boolean isNamespaced) {
+            return isNamespaced(Output.of(isNamespaced));
+        }
+
+        /**
+         * @param namespace The kubernetes namespace where the agent should be installed.
          * 
          * @return builder
          * 
@@ -104,7 +141,7 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param namespace The k8s namespace that this agent resides in.
+         * @param namespace The kubernetes namespace where the agent should be installed.
          * 
          * @return builder
          * 

@@ -36,7 +36,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         /// </summary>
-        public readonly string Path;
+        public readonly string? Path;
         /// <summary>
         /// Options specific to config management plugins.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes,
 
-            string path,
+            string? path,
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSourcePlugin> plugins,
 

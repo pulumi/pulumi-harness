@@ -14,7 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class EnvironmentClustersMappingCluster
     {
         /// <summary>
-        /// account Identifier of the account
+        /// agent identifier of the cluster (include scope prefix)
+        /// </summary>
+        public readonly string? AgentIdentifier;
+        /// <summary>
+        /// identifier of the cluster
         /// </summary>
         public readonly string? Identifier;
         /// <summary>
@@ -22,18 +26,21 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// scope at which the cluster exists in harness gitops, project vs org vs account
+        /// scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
         /// </summary>
         public readonly string? Scope;
 
         [OutputConstructor]
         private EnvironmentClustersMappingCluster(
+            string? agentIdentifier,
+
             string? identifier,
 
             string? name,
 
             string? scope)
         {
+            AgentIdentifier = agentIdentifier;
             Identifier = identifier;
             Name = name;
             Scope = scope;

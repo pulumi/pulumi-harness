@@ -297,8 +297,6 @@ class Roles(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating roles.
-
         ## Example Usage
 
         ```python
@@ -352,8 +350,6 @@ class Roles(pulumi.CustomResource):
                  args: RolesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating roles.
-
         ## Example Usage
 
         ```python

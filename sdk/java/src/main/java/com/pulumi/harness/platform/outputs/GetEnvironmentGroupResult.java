@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEnvironmentGroupResult {
@@ -29,12 +31,12 @@ public final class GetEnvironmentGroupResult {
      * @return org_id of the environment group.
      * 
      */
-    private String orgId;
+    private @Nullable String orgId;
     /**
      * @return project_id of the environment group.
      * 
      */
-    private String projectId;
+    private @Nullable String projectId;
     /**
      * @return Input Set YAML
      * 
@@ -67,15 +69,15 @@ public final class GetEnvironmentGroupResult {
      * @return org_id of the environment group.
      * 
      */
-    public String orgId() {
-        return this.orgId;
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
     /**
      * @return project_id of the environment group.
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
      * @return Input Set YAML
@@ -97,8 +99,8 @@ public final class GetEnvironmentGroupResult {
         private String color;
         private String id;
         private String identifier;
-        private String orgId;
-        private String projectId;
+        private @Nullable String orgId;
+        private @Nullable String projectId;
         private String yaml;
         public Builder() {}
         public Builder(GetEnvironmentGroupResult defaults) {
@@ -136,18 +138,14 @@ public final class GetEnvironmentGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder orgId(String orgId) {
-            if (orgId == null) {
-              throw new MissingRequiredPropertyException("GetEnvironmentGroupResult", "orgId");
-            }
+        public Builder orgId(@Nullable String orgId) {
+
             this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            if (projectId == null) {
-              throw new MissingRequiredPropertyException("GetEnvironmentGroupResult", "projectId");
-            }
+        public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }

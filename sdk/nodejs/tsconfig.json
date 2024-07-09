@@ -197,7 +197,7 @@
         "platform/getVariables.ts",
         "platform/getVaultConnector.ts",
         "platform/getWorkspace.ts",
-        "platform/getWorkspaceOutput.ts",
+        "platform/getWorkspaceOutputValue.ts",
         "platform/gitConnector.ts",
         "platform/gitOpsAgent.ts",
         "platform/gitOpsApplications.ts",

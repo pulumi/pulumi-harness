@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.ServiceNowConnectorAuthAdfsArgs;
+import com.pulumi.harness.platform.inputs.ServiceNowConnectorAuthRefreshTokenArgs;
 import com.pulumi.harness.platform.inputs.ServiceNowConnectorAuthUsernamePasswordArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -49,6 +50,21 @@ public final class ServiceNowConnectorAuthArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Authenticate using refresh token grant type.
+     * 
+     */
+    @Import(name="refreshToken")
+    private @Nullable Output<ServiceNowConnectorAuthRefreshTokenArgs> refreshToken;
+
+    /**
+     * @return Authenticate using refresh token grant type.
+     * 
+     */
+    public Optional<Output<ServiceNowConnectorAuthRefreshTokenArgs>> refreshToken() {
+        return Optional.ofNullable(this.refreshToken);
+    }
+
+    /**
      * Authenticate using username password.
      * 
      */
@@ -68,6 +84,7 @@ public final class ServiceNowConnectorAuthArgs extends com.pulumi.resources.Reso
     private ServiceNowConnectorAuthArgs(ServiceNowConnectorAuthArgs $) {
         this.adfs = $.adfs;
         this.authType = $.authType;
+        this.refreshToken = $.refreshToken;
         this.usernamePassword = $.usernamePassword;
     }
 
@@ -129,6 +146,27 @@ public final class ServiceNowConnectorAuthArgs extends com.pulumi.resources.Reso
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param refreshToken Authenticate using refresh token grant type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshToken(@Nullable Output<ServiceNowConnectorAuthRefreshTokenArgs> refreshToken) {
+            $.refreshToken = refreshToken;
+            return this;
+        }
+
+        /**
+         * @param refreshToken Authenticate using refresh token grant type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshToken(ServiceNowConnectorAuthRefreshTokenArgs refreshToken) {
+            return refreshToken(Output.of(refreshToken));
         }
 
         /**

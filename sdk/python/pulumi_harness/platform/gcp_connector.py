@@ -18,6 +18,8 @@ class GcpConnectorArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
                  manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,6 +30,8 @@ class GcpConnectorArgs:
         The set of arguments for constructing a GcpConnector resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input['GcpConnectorManualArgs'] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
@@ -38,6 +42,10 @@ class GcpConnectorArgs:
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if inherit_from_delegates is not None:
             pulumi.set(__self__, "inherit_from_delegates", inherit_from_delegates)
         if manual is not None:
@@ -74,6 +82,30 @@ class GcpConnectorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter(name="inheritFromDelegates")
@@ -152,6 +184,8 @@ class GcpConnectorArgs:
 class _GcpConnectorState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
                  manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
@@ -162,6 +196,8 @@ class _GcpConnectorState:
         """
         Input properties used for looking up and filtering GcpConnector resources.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input['GcpConnectorManualArgs'] manual: Manual credential configuration.
@@ -172,6 +208,10 @@ class _GcpConnectorState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if inherit_from_delegates is not None:
@@ -198,6 +238,30 @@ class _GcpConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -290,6 +354,8 @@ class GcpConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
                  manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
@@ -324,6 +390,8 @@ class GcpConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']] manual: Manual credential configuration.
@@ -377,6 +445,8 @@ class GcpConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
                  manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
@@ -394,6 +464,8 @@ class GcpConnector(pulumi.CustomResource):
             __props__ = GcpConnectorArgs.__new__(GcpConnectorArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+            __props__.__dict__["force_delete"] = force_delete
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -414,6 +486,8 @@ class GcpConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
             manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
@@ -429,6 +503,8 @@ class GcpConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']] manual: Manual credential configuration.
@@ -442,6 +518,8 @@ class GcpConnector(pulumi.CustomResource):
         __props__ = _GcpConnectorState.__new__(_GcpConnectorState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["inherit_from_delegates"] = inherit_from_delegates
         __props__.__dict__["manual"] = manual
@@ -458,6 +536,22 @@ class GcpConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[bool]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[bool]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter

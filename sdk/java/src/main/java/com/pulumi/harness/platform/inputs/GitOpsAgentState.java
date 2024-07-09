@@ -34,6 +34,21 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    @Import(name="agentToken")
+    private @Nullable Output<String> agentToken;
+
+    /**
+     * @return Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    public Optional<Output<String>> agentToken() {
+        return Optional.ofNullable(this.agentToken);
+    }
+
+    /**
      * Description of the GitOps agent.
      * 
      */
@@ -91,6 +106,21 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    @Import(name="operator")
+    private @Nullable Output<String> operator;
+
+    /**
+     * @return The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    public Optional<Output<String>> operator() {
+        return Optional.ofNullable(this.operator);
     }
 
     /**
@@ -159,10 +189,12 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
 
     private GitOpsAgentState(GitOpsAgentState $) {
         this.accountId = $.accountId;
+        this.agentToken = $.agentToken;
         this.description = $.description;
         this.identifier = $.identifier;
         this.metadatas = $.metadatas;
         this.name = $.name;
+        this.operator = $.operator;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
@@ -206,6 +238,27 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param agentToken Agent token to be used for authentication of the agent with Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentToken(@Nullable Output<String> agentToken) {
+            $.agentToken = agentToken;
+            return this;
+        }
+
+        /**
+         * @param agentToken Agent token to be used for authentication of the agent with Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentToken(String agentToken) {
+            return agentToken(Output.of(agentToken));
         }
 
         /**
@@ -300,6 +353,27 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param operator The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operator(@Nullable Output<String> operator) {
+            $.operator = operator;
+            return this;
+        }
+
+        /**
+         * @param operator The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operator(String operator) {
+            return operator(Output.of(operator));
         }
 
         /**

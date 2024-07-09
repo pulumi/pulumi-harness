@@ -17,14 +17,14 @@ public final class JenkinsConnectorAuthJenkinsUserNamePasswordArgs extends com.p
     public static final JenkinsConnectorAuthJenkinsUserNamePasswordArgs Empty = new JenkinsConnectorAuthJenkinsUserNamePasswordArgs();
 
     /**
-     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
      * 
      */
     @Import(name="passwordRef", required=true)
     private Output<String> passwordRef;
 
     /**
-     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
      * 
      */
     public Output<String> passwordRef() {
@@ -88,7 +88,7 @@ public final class JenkinsConnectorAuthJenkinsUserNamePasswordArgs extends com.p
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class JenkinsConnectorAuthJenkinsUserNamePasswordArgs extends com.p
         }
 
         /**
-         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param passwordRef Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
          * 
          * @return builder
          * 

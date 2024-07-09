@@ -51,15 +51,15 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
      * Identifier for the GnuPG Key.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable String identifier;
+    @Import(name="identifier", required=true)
+    private String identifier;
 
     /**
      * @return Identifier for the GnuPG Key.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
 
     /**
@@ -164,7 +164,7 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable String identifier) {
+        public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
@@ -218,6 +218,9 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
             }
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsGnupgPlainArgs", "agentId");
+            }
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("GetGitopsGnupgPlainArgs", "identifier");
             }
             return $;
         }

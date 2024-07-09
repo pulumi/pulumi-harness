@@ -7,9 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesConnectorServiceAccount {
+    /**
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    private @Nullable String caCertRef;
     /**
      * @return The URL of the Kubernetes cluster.
      * 
@@ -22,6 +29,13 @@ public final class KubernetesConnectorServiceAccount {
     private String serviceAccountTokenRef;
 
     private KubernetesConnectorServiceAccount() {}
+    /**
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    public Optional<String> caCertRef() {
+        return Optional.ofNullable(this.caCertRef);
+    }
     /**
      * @return The URL of the Kubernetes cluster.
      * 
@@ -46,15 +60,23 @@ public final class KubernetesConnectorServiceAccount {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String caCertRef;
         private String masterUrl;
         private String serviceAccountTokenRef;
         public Builder() {}
         public Builder(KubernetesConnectorServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.caCertRef = defaults.caCertRef;
     	      this.masterUrl = defaults.masterUrl;
     	      this.serviceAccountTokenRef = defaults.serviceAccountTokenRef;
         }
 
+        @CustomType.Setter
+        public Builder caCertRef(@Nullable String caCertRef) {
+
+            this.caCertRef = caCertRef;
+            return this;
+        }
         @CustomType.Setter
         public Builder masterUrl(String masterUrl) {
             if (masterUrl == null) {
@@ -73,6 +95,7 @@ public final class KubernetesConnectorServiceAccount {
         }
         public KubernetesConnectorServiceAccount build() {
             final var _resultValue = new KubernetesConnectorServiceAccount();
+            _resultValue.caCertRef = caCertRef;
             _resultValue.masterUrl = masterUrl;
             _resultValue.serviceAccountTokenRef = serviceAccountTokenRef;
             return _resultValue;

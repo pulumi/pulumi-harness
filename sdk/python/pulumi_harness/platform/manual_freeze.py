@@ -327,8 +327,84 @@ class ManualFreeze(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for Manual Deployment Freeze Window.
+        ## Example to create Manual Freeze at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.ManualFreeze("example",
+            identifier="identifier",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            account_id="accountIdentifier",
+            yaml=\"\"\"freeze:
+          name: freezeName
+          identifier: identifier
+          entityConfigs:
+            - name: r1
+              entities:
+                - filterType: All
+                  type: Org
+                - filterType: All
+                  type: Project
+                - filterType: All
+                  type: Service
+                - filterType: All
+                  type: EnvType
+          status: Disabled
+          description: hi
+          windows:
+          - timeZone: Asia/Calcutta
+            startTime: 2023-05-03 04:16 PM
+            duration: 30m
+            recurrence:
+              type: Daily
+          notificationRules: []
+          tags: {}
+        \"\"\")
+        ```
+
+        ### Org Level
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.ManualFreeze("example",
+            identifier="identifier",
+            org_id="orgIdentifier",
+            account_id="accountIdentifier",
+            yaml=\"\"\"freeze:
+          name: freezeName
+          identifier: identifier
+          entityConfigs:
+            - name: r1
+              entities:
+                - filterType: All
+                  type: Org
+                - filterType: All
+                  type: Project
+                - filterType: All
+                  type: Service
+                - filterType: All
+                  type: EnvType
+          status: Disabled
+          description: hi
+          windows:
+          - timeZone: Asia/Calcutta
+            startTime: 2023-05-03 04:16 PM
+            duration: 30m
+            recurrence:
+              type: Daily
+          notificationRules: []
+          tags: {}
+        \"\"\")
+        ```
+
+        ### Project Level
 
         ```python
         import pulumi
@@ -402,8 +478,84 @@ class ManualFreeze(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for Manual Deployment Freeze Window.
+        ## Example to create Manual Freeze at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.ManualFreeze("example",
+            identifier="identifier",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            account_id="accountIdentifier",
+            yaml=\"\"\"freeze:
+          name: freezeName
+          identifier: identifier
+          entityConfigs:
+            - name: r1
+              entities:
+                - filterType: All
+                  type: Org
+                - filterType: All
+                  type: Project
+                - filterType: All
+                  type: Service
+                - filterType: All
+                  type: EnvType
+          status: Disabled
+          description: hi
+          windows:
+          - timeZone: Asia/Calcutta
+            startTime: 2023-05-03 04:16 PM
+            duration: 30m
+            recurrence:
+              type: Daily
+          notificationRules: []
+          tags: {}
+        \"\"\")
+        ```
+
+        ### Org Level
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.ManualFreeze("example",
+            identifier="identifier",
+            org_id="orgIdentifier",
+            account_id="accountIdentifier",
+            yaml=\"\"\"freeze:
+          name: freezeName
+          identifier: identifier
+          entityConfigs:
+            - name: r1
+              entities:
+                - filterType: All
+                  type: Org
+                - filterType: All
+                  type: Project
+                - filterType: All
+                  type: Service
+                - filterType: All
+                  type: EnvType
+          status: Disabled
+          description: hi
+          windows:
+          - timeZone: Asia/Calcutta
+            startTime: 2023-05-03 04:16 PM
+            duration: 30m
+            recurrence:
+              type: Daily
+          notificationRules: []
+          tags: {}
+        \"\"\")
+        ```
+
+        ### Project Level
 
         ```python
         import pulumi

@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetJiraConnectorAuthPersonalAccessToken;
 import com.pulumi.harness.platform.outputs.GetJiraConnectorAuthUsernamePassword;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,11 @@ public final class GetJiraConnectorAuth {
      */
     private String authType;
     /**
+     * @return Authenticate using personal access token.
+     * 
+     */
+    private List<GetJiraConnectorAuthPersonalAccessToken> personalAccessTokens;
+    /**
      * @return Authenticate using username password.
      * 
      */
@@ -30,6 +36,13 @@ public final class GetJiraConnectorAuth {
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Authenticate using personal access token.
+     * 
+     */
+    public List<GetJiraConnectorAuthPersonalAccessToken> personalAccessTokens() {
+        return this.personalAccessTokens;
     }
     /**
      * @return Authenticate using username password.
@@ -49,11 +62,13 @@ public final class GetJiraConnectorAuth {
     @CustomType.Builder
     public static final class Builder {
         private String authType;
+        private List<GetJiraConnectorAuthPersonalAccessToken> personalAccessTokens;
         private List<GetJiraConnectorAuthUsernamePassword> usernamePasswords;
         public Builder() {}
         public Builder(GetJiraConnectorAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.personalAccessTokens = defaults.personalAccessTokens;
     	      this.usernamePasswords = defaults.usernamePasswords;
         }
 
@@ -64,6 +79,17 @@ public final class GetJiraConnectorAuth {
             }
             this.authType = authType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder personalAccessTokens(List<GetJiraConnectorAuthPersonalAccessToken> personalAccessTokens) {
+            if (personalAccessTokens == null) {
+              throw new MissingRequiredPropertyException("GetJiraConnectorAuth", "personalAccessTokens");
+            }
+            this.personalAccessTokens = personalAccessTokens;
+            return this;
+        }
+        public Builder personalAccessTokens(GetJiraConnectorAuthPersonalAccessToken... personalAccessTokens) {
+            return personalAccessTokens(List.of(personalAccessTokens));
         }
         @CustomType.Setter
         public Builder usernamePasswords(List<GetJiraConnectorAuthUsernamePassword> usernamePasswords) {
@@ -79,6 +105,7 @@ public final class GetJiraConnectorAuth {
         public GetJiraConnectorAuth build() {
             final var _resultValue = new GetJiraConnectorAuth();
             _resultValue.authType = authType;
+            _resultValue.personalAccessTokens = personalAccessTokens;
             _resultValue.usernamePasswords = usernamePasswords;
             return _resultValue;
         }

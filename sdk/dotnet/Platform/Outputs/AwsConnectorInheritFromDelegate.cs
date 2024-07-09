@@ -17,11 +17,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// The delegates to inherit the credentials from.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
+        /// <summary>
+        /// Test Region to perform Connection test of AWS Connector.
+        /// </summary>
+        public readonly string? Region;
 
         [OutputConstructor]
-        private AwsConnectorInheritFromDelegate(ImmutableArray<string> delegateSelectors)
+        private AwsConnectorInheritFromDelegate(
+            ImmutableArray<string> delegateSelectors,
+
+            string? region)
         {
             DelegateSelectors = delegateSelectors;
+            Region = region;
         }
     }
 }

@@ -5,6 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.ServiceGitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +34,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * to fetch resoled service yaml
+     * 
+     */
+    @Import(name="fetchResolvedYaml")
+    private @Nullable Output<Boolean> fetchResolvedYaml;
+
+    /**
+     * @return to fetch resoled service yaml
+     * 
+     */
+    public Optional<Output<Boolean>> fetchResolvedYaml() {
+        return Optional.ofNullable(this.fetchResolvedYaml);
+    }
+
+    /**
      * Enable this flag for force deletion of service
      * 
      */
@@ -47,6 +64,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains parameters related to Git Experience for remote entities
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<ServiceGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
+    public Optional<Output<ServiceGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -59,6 +91,36 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * import service from git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return import service from git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
+    }
+
+    /**
+     * force import service from remote even if same file path already exist
+     * 
+     */
+    @Import(name="isForceImport")
+    private @Nullable Output<Boolean> isForceImport;
+
+    /**
+     * @return force import service from remote even if same file path already exist
+     * 
+     */
+    public Optional<Output<Boolean>> isForceImport() {
+        return Optional.ofNullable(this.isForceImport);
     }
 
     /**
@@ -122,14 +184,20 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * @return Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -140,8 +208,12 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     private ServiceState(ServiceState $) {
         this.description = $.description;
+        this.fetchResolvedYaml = $.fetchResolvedYaml;
         this.forceDelete = $.forceDelete;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
+        this.isForceImport = $.isForceImport;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -189,6 +261,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param fetchResolvedYaml to fetch resoled service yaml
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fetchResolvedYaml(@Nullable Output<Boolean> fetchResolvedYaml) {
+            $.fetchResolvedYaml = fetchResolvedYaml;
+            return this;
+        }
+
+        /**
+         * @param fetchResolvedYaml to fetch resoled service yaml
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fetchResolvedYaml(Boolean fetchResolvedYaml) {
+            return fetchResolvedYaml(Output.of(fetchResolvedYaml));
+        }
+
+        /**
          * @param forceDelete Enable this flag for force deletion of service
          * 
          * @return builder
@@ -210,6 +303,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<ServiceGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(ServiceGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -228,6 +342,48 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param importFromGit import service from git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit import service from git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
+        }
+
+        /**
+         * @param isForceImport force import service from remote even if same file path already exist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(@Nullable Output<Boolean> isForceImport) {
+            $.isForceImport = isForceImport;
+            return this;
+        }
+
+        /**
+         * @param isForceImport force import service from remote even if same file path already exist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(Boolean isForceImport) {
+            return isForceImport(Output.of(isForceImport));
         }
 
         /**
@@ -325,7 +481,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+         * @param yaml Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+         * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+         * connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -336,7 +495,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+         * @param yaml Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+         * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+         * connectorRef: org.connectorId.
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetGitopsRepoCred
     {
         /// <summary>
-        /// Data source for retrieving a GitOps RepoCred.
+        /// Data source for fetching a GitOps Repository Credentials.
         /// 
         /// ## Example Usage
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsRepoCredResult>("harness:platform/getGitopsRepoCred:getGitopsRepoCred", args ?? new GetGitopsRepoCredArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a GitOps RepoCred.
+        /// Data source for fetching a GitOps Repository Credentials.
         /// 
         /// ## Example Usage
         /// 
@@ -72,13 +72,13 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsRepoCredArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// account identifier of the Repository Credentials.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// agent identifier of the Repository Credentials.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
@@ -102,22 +102,16 @@ namespace Pulumi.Harness.Platform
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
-
-        /// <summary>
-        /// if the Repository credential should be upserted.
-        /// </summary>
-        [Input("upsert")]
-        public bool? Upsert { get; set; }
 
         public GetGitopsRepoCredArgs()
         {
@@ -128,13 +122,13 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsRepoCredInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// account identifier of the Repository Credentials.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// agent identifier of the Repository Credentials.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -158,22 +152,16 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        /// <summary>
-        /// if the Repository credential should be upserted.
-        /// </summary>
-        [Input("upsert")]
-        public Input<bool>? Upsert { get; set; }
 
         public GetGitopsRepoCredInvokeArgs()
         {
@@ -186,11 +174,11 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsRepoCredResult
     {
         /// <summary>
-        /// account identifier of the Repository Credentials.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// agent identifier of the Repository Credentials.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         public readonly string AgentId;
         /// <summary>
@@ -206,17 +194,13 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         public readonly string? ProjectId;
-        /// <summary>
-        /// if the Repository credential should be upserted.
-        /// </summary>
-        public readonly bool? Upsert;
 
         [OutputConstructor]
         private GetGitopsRepoCredResult(
@@ -232,9 +216,7 @@ namespace Pulumi.Harness.Platform
 
             string? orgId,
 
-            string? projectId,
-
-            bool? upsert)
+            string? projectId)
         {
             AccountId = accountId;
             AgentId = agentId;
@@ -243,7 +225,6 @@ namespace Pulumi.Harness.Platform
             Identifier = identifier;
             OrgId = orgId;
             ProjectId = projectId;
-            Upsert = upsert;
         }
     }
 }

@@ -14,11 +14,15 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsAgentMetadataResult
     {
         /// <summary>
-        /// Indicates if the deployment should be deployed using the deploy-ha.yaml
+        /// Indicates if the agent is deployed in HA mode.
         /// </summary>
         public readonly bool HighAvailability;
         /// <summary>
-        /// The k8s namespace that this agent resides in.
+        /// Indicates if the agent is namespaced.
+        /// </summary>
+        public readonly bool? IsNamespaced;
+        /// <summary>
+        /// The kubernetes namespace where the agent should be installed.
         /// </summary>
         public readonly string Namespace;
 
@@ -26,9 +30,12 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetGitopsAgentMetadataResult(
             bool highAvailability,
 
+            bool? isNamespaced,
+
             string @namespace)
         {
             HighAvailability = highAvailability;
+            IsNamespaced = isNamespaced;
             Namespace = @namespace;
         }
     }

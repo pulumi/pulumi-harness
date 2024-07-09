@@ -4,38 +4,37 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourcePluginEnv {
     /**
-     * @return Name of the variable, usually expressed in uppercase.
+     * @return Name of the GitOps application.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Value of the variable.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private GetGitopsApplicationsApplicationSpecSourcePluginEnv() {}
     /**
-     * @return Name of the variable, usually expressed in uppercase.
+     * @return Name of the GitOps application.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Value of the variable.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class GetGitopsApplicationsApplicationSpecSourcePluginEnv {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String value;
+        private String name;
+        private String value;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourcePluginEnv defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class GetGitopsApplicationsApplicationSpecSourcePluginEnv {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourcePluginEnv", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourcePluginEnv", "value");
+            }
             this.value = value;
             return this;
         }

@@ -660,10 +660,10 @@ export const getWorkspace: typeof import("./getWorkspace").getWorkspace = null a
 export const getWorkspaceOutput: typeof import("./getWorkspace").getWorkspaceOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkspace","getWorkspaceOutput"], () => require("./getWorkspace"));
 
-export { GetWorkspaceOutputArgs, GetWorkspaceOutputResult, GetWorkspaceOutputOutputArgs } from "./getWorkspaceOutput";
-export const getWorkspaceOutput: typeof import("./getWorkspaceOutput").getWorkspaceOutput = null as any;
-export const getWorkspaceOutputOutput: typeof import("./getWorkspaceOutput").getWorkspaceOutputOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkspaceOutput","getWorkspaceOutputOutput"], () => require("./getWorkspaceOutput"));
+export { GetWorkspaceOutputValueArgs, GetWorkspaceOutputValueResult, GetWorkspaceOutputValueOutputArgs } from "./getWorkspaceOutputValue";
+export const getWorkspaceOutputValue: typeof import("./getWorkspaceOutputValue").getWorkspaceOutputValue = null as any;
+export const getWorkspaceOutputValueOutput: typeof import("./getWorkspaceOutputValue").getWorkspaceOutputValueOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceOutputValue","getWorkspaceOutputValueOutput"], () => require("./getWorkspaceOutputValue"));
 
 export { GitConnectorArgs, GitConnectorState } from "./gitConnector";
 export type GitConnector = import("./gitConnector").GitConnector;

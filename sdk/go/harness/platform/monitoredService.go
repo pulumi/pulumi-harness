@@ -14,6 +14,960 @@ import (
 
 // Resource for creating a monitored service.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":       "error_4xx",
+//						"identifier": "error_4xx_id",
+//						"query":      "Bad Request",
+//						"index":      "index",
+//						"groupName":  "Logs_Group",
+//						"queryParams": map[string]interface{}{
+//							"index":                "index",
+//							"serviceInstanceField": "serviceInstanceIdentifier",
+//							"timeStampIdentifier":  "timeStampIdentifier",
+//							"timeStampFormat":      "timeStampFormat",
+//							"messageIdentifier":    "messageIdentifier",
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":       "error_5xx",
+//						"identifier": "error_5xx_id",
+//						"query":      "Internal Server Error",
+//						"index":      "index2",
+//						"groupName":  "Logs_Group",
+//						"queryParams": map[string]interface{}{
+//							"index":                "index",
+//							"serviceInstanceField": "serviceInstanceIdentifier",
+//							"timeStampIdentifier":  "timeStampIdentifier",
+//							"timeStampFormat":      "timeStampFormat",
+//							"messageIdentifier":    "messageIdentifier",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"connectorRef":       "account.pd",
+//				"pagerDutyServiceId": "P0N21OB",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"name":               "FH",
+//				"webhookUrl":         "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
+//				"webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \"eventIdentifier\": \"<string>\" (optional), \"user\": \"user@harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": { \"description\": \"<String>\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" } }'",
+//				"type":               "Alert",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			// Sample template for Elastic Search Log Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("name"),
+//							Identifier: pulumi.String("identifier"),
+//							Type:       pulumi.String("ElasticSearch"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json0),
+//						},
+//					},
+//					ChangeSources: platform.MonitoredServiceRequestChangeSourceArray{
+//						&platform.MonitoredServiceRequestChangeSourceArgs{
+//							Name:       pulumi.String("BAC"),
+//							Identifier: pulumi.String("BAC"),
+//							Type:       pulumi.String("PagerDuty"),
+//							Enabled:    pulumi.Bool(true),
+//							Spec:       pulumi.String(json1),
+//							Category:   pulumi.String("Alert"),
+//						},
+//						&platform.MonitoredServiceRequestChangeSourceArgs{
+//							Name:       pulumi.String("FH"),
+//							Identifier: pulumi.String("FH"),
+//							Type:       pulumi.String("CustomIncident"),
+//							Enabled:    pulumi.Bool(true),
+//							Spec:       pulumi.String(json2),
+//							Category:   pulumi.String("Alert"),
+//						},
+//					},
+//					NotificationRuleRefs: platform.MonitoredServiceRequestNotificationRuleRefArray{
+//						&platform.MonitoredServiceRequestNotificationRuleRefArgs{
+//							NotificationRuleRef: pulumi.String("notification_rule_ref"),
+//							Enabled:             pulumi.Bool(true),
+//						},
+//						&platform.MonitoredServiceRequestNotificationRuleRefArgs{
+//							NotificationRuleRef: pulumi.String("notification_rule_ref1"),
+//							Enabled:             pulumi.Bool(false),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []interface{}{
+//					map[string]interface{}{
+//						"name":       "metric_cpu",
+//						"identifier": "metric_cpu",
+//						"query":      "metric=cpu",
+//						"groupName":  "g1",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "_sourcehost",
+//						},
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "true",
+//						"continuousVerificationEnabled": "true",
+//						"sliEnabled":                    "false",
+//						"metricThresholds": []map[string]interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "metric_cpu",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "metric_cpu",
+//							},
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":       "name2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"query":      "metric=memory",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "_sourcehost",
+//						},
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "false",
+//						"continuousVerificationEnabled": "false",
+//						"sliEnabled":                    "false",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			// Sample template for Sumologic Metrics Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example1", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("sumologicmetrics"),
+//							Identifier: pulumi.String("sumo_metric_identifier"),
+//							Type:       pulumi.String("SumologicMetrics"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json3),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":       "log1",
+//						"identifier": "log1",
+//						"query":      "*",
+//						"groupName":  "Logs Group",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "_sourcehost",
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":       "log2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"query":      "error",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "_sourcehost",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			// Sample template for Sumologic Log Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example2", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("sumologic"),
+//							Identifier: pulumi.String("sumo_metric_identifier"),
+//							Type:       pulumi.String("SumologicLogs"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json4),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []interface{}{
+//					map[string]interface{}{
+//						"name":       "metric_infra_cpu",
+//						"identifier": "metric_infra_cpu",
+//						"query":      "***",
+//						"groupName":  "g",
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Errors",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//								"ACT_WHEN_LOWER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "true",
+//						"continuousVerificationEnabled": "true",
+//						"sliEnabled":                    "false",
+//					},
+//					map[string]interface{}{
+//						"name":       "name2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"query":      "*",
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "true",
+//						"continuousVerificationEnabled": "false",
+//						"sliEnabled":                    "false",
+//						"metricThresholds": []interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metrictype": "Custom",
+//								"metricName": "identifier2",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "identifier2",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
+//			// Sample template for Splunk Signal FX Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example3", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("signalfxmetrics"),
+//							Identifier: pulumi.String("signalfxmetrics"),
+//							Type:       pulumi.String("SplunkSignalFXMetrics"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json5),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":       "Demo",
+//						"identifier": "Demo",
+//						"query":      "{job=~\".+\"}",
+//						"groupName":  "Log_Group",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "job",
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":       "log2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"query":      "error",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "_sourcehost",
+//						},
+//						"liveMonitoringEnabled":         "false",
+//						"continuousVerificationEnabled": "false",
+//						"sliEnabled":                    "false",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json6 := string(tmpJSON6)
+//			// Sample template for Grafana Loki Log Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example4", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("Test"),
+//							Identifier: pulumi.String("Test"),
+//							Type:       pulumi.String("GrafanaLokiLogs"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json6),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []interface{}{
+//					map[string]interface{}{
+//						"name":       "metric",
+//						"identifier": "metric",
+//						"query":      "default",
+//						"groupName":  "g1",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField":        "host",
+//							"index":                       "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+//							"healthSourceMetricName":      "cpuUsagePercentage",
+//							"healthSourceMetricNamespace": "insights.container/nodes",
+//							"aggregationType":             "average",
+//						},
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "true",
+//						"continuousVerificationEnabled": "true",
+//						"sliEnabled":                    "false",
+//						"metricThresholds": []interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metrictype": "Custom",
+//								"metricName": "metric",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "metric",
+//							},
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":       "name2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField":        "host",
+//							"index":                       "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+//							"healthSourceMetricName":      "cpuUsagePercentage",
+//							"healthSourceMetricNamespace": "insights.container/nodes",
+//							"aggregationType":             "average",
+//						},
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"liveMonitoringEnabled":         "false",
+//						"continuousVerificationEnabled": "false",
+//						"sliEnabled":                    "false",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json7 := string(tmpJSON7)
+//			// Sample template for Azure Metrics Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example5", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("azure metrics verify step"),
+//							Identifier: pulumi.String("azure_metrics_verify_step"),
+//							Type:       pulumi.String("AzureMetrics"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json7),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON8, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"queryDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":       "name2",
+//						"identifier": "identifier2",
+//						"groupName":  "g2",
+//						"query":      "*",
+//						"queryParams": map[string]interface{}{
+//							"serviceInstanceField": "Name",
+//							"timeStampIdentifier":  "StartedTime",
+//							"messageIdentifier":    "Image",
+//							"index":                "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+//						},
+//						"liveMonitoringEnabled":         "false",
+//						"continuousVerificationEnabled": "false",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json8 := string(tmpJSON8)
+//			// Sample template for Azure Log Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example6", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("Demo azure"),
+//							Identifier: pulumi.String("Demo_azure"),
+//							Type:       pulumi.String("AzureLogs"),
+//							Version:    pulumi.String("v2"),
+//							Spec:       pulumi.String(json8),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON9, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"metricDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "Prometheus_Metric",
+//						"metricName": "Prometheus Metric",
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"analysis": map[string]interface{}{
+//							"liveMonitoring": map[string]interface{}{
+//								"enabled": true,
+//							},
+//							"deploymentVerification": map[string]interface{}{
+//								"enabled":                  true,
+//								"serviceInstanceFieldName": "pod_name",
+//							},
+//						},
+//						"query":         "count(up{group=\"cv\",group=\"cv\"})",
+//						"groupName":     "met",
+//						"isManualQuery": true,
+//					},
+//				},
+//				"metricPacks": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "Custom",
+//						"metricThresholds": []interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metrictype": "Custom",
+//								"metricName": "Prometheus Metric",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "Prometheus Metric",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json9 := string(tmpJSON9)
+//			// Sample template for Prometheus Metrics Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example7", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("prometheus metrics verify step"),
+//							Identifier: pulumi.String("prometheus_metrics"),
+//							Type:       pulumi.String("Prometheus"),
+//							Spec:       pulumi.String(json9),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON10, err := json.Marshal(map[string]interface{}{
+//				"connectorRef": "connectorRef",
+//				"feature":      "Datadog Cloud Metrics",
+//				"metricDefinitions": []interface{}{
+//					map[string]interface{}{
+//						"metricName":            "metric",
+//						"metricPath":            "M1",
+//						"identifier":            "metric",
+//						"query":                 "avg:kubernetes.cpu.limits{*}.rollup(avg, 60);\navg:kubernetes.cpu.limits{*}.rollup(avg, 30);\n(a+b)/10",
+//						"isManualQuery":         true,
+//						"isCustomCreatedMetric": true,
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"analysis": map[string]interface{}{
+//							"liveMonitoring": map[string]interface{}{
+//								"enabled": true,
+//							},
+//							"deploymentVerification": map[string]interface{}{
+//								"enabled":                  true,
+//								"serviceInstanceFieldName": "pod",
+//							},
+//						},
+//					},
+//					map[string]interface{}{
+//						"metricName":            "dashboard_metric_cpu",
+//						"identifier":            "metric_cpu",
+//						"query":                 "avg:kubernetes.cpu.limits{*}.rollup(avg, 60);\navg:kubernetes.cpu.limits{*}.rollup(avg, 30);\n(a+b)/10",
+//						"isManualQuery":         false,
+//						"dashboardName":         "dashboard",
+//						"metricPath":            "M1",
+//						"groupingQuery":         "avg:kubernetes.cpu.limits{*} by {host}.rollup(avg, 60)",
+//						"metric":                "kubernetes.cpu.limits",
+//						"aggregation":           "avg",
+//						"isCustomCreatedMetric": true,
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"analysis": map[string]interface{}{
+//							"liveMonitoring": map[string]interface{}{
+//								"enabled": true,
+//							},
+//							"deploymentVerification": map[string]interface{}{
+//								"enabled":                  true,
+//								"serviceInstanceFieldName": "pod",
+//							},
+//						},
+//					},
+//				},
+//				"metricPacks": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "Custom",
+//						"metricThresholds": []interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metrictype": "Custom",
+//								"metricName": "metric",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "metric",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json10 := string(tmpJSON10)
+//			// Sample template for Datadog Metrics Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example8", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("ddm"),
+//							Identifier: pulumi.String("ddm"),
+//							Type:       pulumi.String("DatadogMetrics"),
+//							Spec:       pulumi.String(json10),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//				"connectorRef":    "account.Newrelicautomation_do_not_delete",
+//				"feature":         "apm",
+//				"applicationId":   "107019083",
+//				"applicationName": "My Application",
+//				"metricData": map[string]interface{}{
+//					"Performance": true,
+//				},
+//				"metricPacks": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "Performance",
+//					},
+//				},
+//				"newRelicMetricDefinitions": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "New_Relic_Metric",
+//						"metricName": "New Relic Metric",
+//						"riskProfile": map[string]interface{}{
+//							"riskCategory": "Performance_Other",
+//							"thresholdTypes": []string{
+//								"ACT_WHEN_HIGHER",
+//							},
+//						},
+//						"analysis": map[string]interface{}{
+//							"deploymentVerification": map[string]interface{}{
+//								"enabled": true,
+//							},
+//						},
+//						"groupName": "group1",
+//						"nrql":      "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
+//						"responseMapping": map[string]interface{}{
+//							"metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
+//							"timestampJsonPath":   "$.['timeSeries'].[*].['beginTimeSeconds']",
+//						},
+//					},
+//				},
+//				"metricPacks": []map[string]interface{}{
+//					map[string]interface{}{
+//						"identifier": "Custom",
+//						"metricThresholds": []map[string]interface{}{
+//							map[string]interface{}{
+//								"type": "IgnoreThreshold",
+//								"spec": map[string]interface{}{
+//									"action": "Ignore",
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "New Relic Metric",
+//							},
+//							map[string]interface{}{
+//								"type": "FailImmediately",
+//								"spec": map[string]interface{}{
+//									"action": "FailAfterOccurrence",
+//									"spec": map[string]interface{}{
+//										"count": 2,
+//									},
+//								},
+//								"criteria": map[string]interface{}{
+//									"type": "Absolute",
+//									"spec": map[string]interface{}{
+//										"greaterThan": 100,
+//									},
+//								},
+//								"metricType": "Custom",
+//								"metricName": "New Relic Metric",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json11 := string(tmpJSON11)
+//			// Sample template for New Relic Metrics Health Source
+//			_, err = platform.NewMonitoredService(ctx, "example9", &platform.MonitoredServiceArgs{
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
+//				Request: &platform.MonitoredServiceRequestArgs{
+//					Name:           pulumi.String("name"),
+//					Type:           pulumi.String("Application"),
+//					Description:    pulumi.String("description"),
+//					ServiceRef:     pulumi.String("service_ref"),
+//					EnvironmentRef: pulumi.String("environment_ref"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					HealthSources: platform.MonitoredServiceRequestHealthSourceArray{
+//						&platform.MonitoredServiceRequestHealthSourceArgs{
+//							Name:       pulumi.String("name"),
+//							Identifier: pulumi.String("identifier"),
+//							Type:       pulumi.String("NewRelic"),
+//							Spec:       pulumi.String(json11),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Import account level monitored_service

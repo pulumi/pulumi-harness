@@ -11,9 +11,55 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetServiceOverridesV2
     {
+        /// <summary>
+        /// Data source for Harness service overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetServiceOverridesV2.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetServiceOverridesV2Result> InvokeAsync(GetServiceOverridesV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceOverridesV2Result>("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args ?? new GetServiceOverridesV2Args(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for Harness service overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetServiceOverridesV2.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetServiceOverridesV2Result> Invoke(GetServiceOverridesV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceOverridesV2Result>("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args ?? new GetServiceOverridesV2InvokeArgs(), options.WithDefaults());
     }
@@ -21,32 +67,17 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceOverridesV2Args : global::Pulumi.InvokeArgs
     {
-        [Input("clusterId")]
-        public string? ClusterId { get; set; }
-
-        [Input("envId", required: true)]
-        public string EnvId { get; set; } = null!;
+        [Input("gitDetails")]
+        public Inputs.GetServiceOverridesV2GitDetailsArgs? GitDetails { get; set; }
 
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
-
-        [Input("infraId")]
-        public string? InfraId { get; set; }
 
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         [Input("projectId")]
         public string? ProjectId { get; set; }
-
-        [Input("serviceId")]
-        public string? ServiceId { get; set; }
-
-        [Input("spec", required: true)]
-        public string Spec { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public string Type { get; set; } = null!;
 
         public GetServiceOverridesV2Args()
         {
@@ -56,32 +87,17 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceOverridesV2InvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
-
-        [Input("envId", required: true)]
-        public Input<string> EnvId { get; set; } = null!;
+        [Input("gitDetails")]
+        public Input<Inputs.GetServiceOverridesV2GitDetailsInputArgs>? GitDetails { get; set; }
 
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
-
-        [Input("infraId")]
-        public Input<string>? InfraId { get; set; }
 
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        [Input("serviceId")]
-        public Input<string>? ServiceId { get; set; }
-
-        [Input("spec", required: true)]
-        public Input<string> Spec { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
 
         public GetServiceOverridesV2InvokeArgs()
         {
@@ -95,6 +111,7 @@ namespace Pulumi.Harness.Platform
     {
         public readonly string ClusterId;
         public readonly string EnvId;
+        public readonly Outputs.GetServiceOverridesV2GitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -104,14 +121,16 @@ namespace Pulumi.Harness.Platform
         public readonly string? OrgId;
         public readonly string? ProjectId;
         public readonly string ServiceId;
-        public readonly string Spec;
         public readonly string Type;
+        public readonly string Yaml;
 
         [OutputConstructor]
         private GetServiceOverridesV2Result(
             string clusterId,
 
             string envId,
+
+            Outputs.GetServiceOverridesV2GitDetailsResult gitDetails,
 
             string id,
 
@@ -125,20 +144,21 @@ namespace Pulumi.Harness.Platform
 
             string serviceId,
 
-            string spec,
+            string type,
 
-            string type)
+            string yaml)
         {
             ClusterId = clusterId;
             EnvId = envId;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             InfraId = infraId;
             OrgId = orgId;
             ProjectId = projectId;
             ServiceId = serviceId;
-            Spec = spec;
             Type = type;
+            Yaml = yaml;
         }
     }
 }

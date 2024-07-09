@@ -14,8 +14,79 @@ import (
 
 // Resource for creating a Harness environment group.
 //
-// ## Example Usage
+// ## Example to create Environment Group at different levels (Org, Project, Account)
 //
+// ### Account Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironmentGroup(ctx, "example", &platform.EnvironmentGroupArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Color:      pulumi.String("#0063F7"),
+//				Yaml: pulumi.String(`environmentGroup:
+//	  name: "name"
+//	  identifier: "identifier"
+//	  description: "temp"
+//	  envIdentifiers: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironmentGroup(ctx, "example", &platform.EnvironmentGroupArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("orgIdentifer"),
+//				Color:      pulumi.String("#0063F7"),
+//				Yaml: pulumi.String(`environmentGroup:
+//	  name: "name"
+//	  identifier: "identifier"
+//	  description: "temp"
+//	  orgIdentifier: "orgIdentifer"
+//	  envIdentifiers: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
 // ```go
 // package main
 //
@@ -55,7 +126,19 @@ import (
 //
 // ## Import
 //
-// Import using the environment group id.
+// Import account level environment group.
+//
+// ```sh
+// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <environment_group_id>
+// ```
+//
+// Import org level environment group.
+//
+// ```sh
+// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<environment_group_id>
+// ```
+//
+// Import project level environment group.
 //
 // ```sh
 // $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example <org_id>/<project_id>/<environment_group_id>
@@ -73,7 +156,10 @@ type EnvironmentGroup struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -123,7 +209,10 @@ type environmentGroupState struct {
 	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId *string `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -138,7 +227,10 @@ type EnvironmentGroupState struct {
 	OrgId pulumi.StringPtrInput
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrInput
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -157,7 +249,10 @@ type environmentGroupArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId *string `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -173,7 +268,10 @@ type EnvironmentGroupArgs struct {
 	OrgId pulumi.StringPtrInput
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrInput
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -289,7 +387,10 @@ func (o EnvironmentGroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentGroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+// connectorRef: org.connectorId.
 func (o EnvironmentGroupOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentGroup) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

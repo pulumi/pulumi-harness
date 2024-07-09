@@ -5,6 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.ServiceOverridesV2GitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +18,14 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     public static final ServiceOverridesV2State Empty = new ServiceOverridesV2State();
 
     /**
-     * The cluster ID to which the overrides are associated
+     * The cluster ID to which the overrides are associated.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The cluster ID to which the overrides are associated
+     * @return The cluster ID to which the overrides are associated.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -31,14 +33,14 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * The env ID to which the overrides are associated.
+     * The environment ID to which the overrides are associated.
      * 
      */
     @Import(name="envId")
     private @Nullable Output<String> envId;
 
     /**
-     * @return The env ID to which the overrides are associated.
+     * @return The environment ID to which the overrides are associated.
      * 
      */
     public Optional<Output<String>> envId() {
@@ -46,14 +48,29 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * Unique identifier of the resource.
+     * Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<ServiceOverridesV2GitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains parameters related to creating an Entity for Git Experience.
+     * 
+     */
+    public Optional<Output<ServiceOverridesV2GitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
+
+    /**
+     * The identifier of the override entity.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return The identifier of the override entity.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -61,18 +78,48 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * The infrastructure ID to which the overrides are associated
+     * import override from git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return import override from git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
+    }
+
+    /**
+     * The infrastructure ID to which the overrides are associated.
      * 
      */
     @Import(name="infraId")
     private @Nullable Output<String> infraId;
 
     /**
-     * @return The infrastructure ID to which the overrides are associated
+     * @return The infrastructure ID to which the overrides are associated.
      * 
      */
     public Optional<Output<String>> infraId() {
         return Optional.ofNullable(this.infraId);
+    }
+
+    /**
+     * force import override from remote even if same file path already exist
+     * 
+     */
+    @Import(name="isForceImport")
+    private @Nullable Output<Boolean> isForceImport;
+
+    /**
+     * @return force import override from remote even if same file path already exist
+     * 
+     */
+    public Optional<Output<Boolean>> isForceImport() {
+        return Optional.ofNullable(this.isForceImport);
     }
 
     /**
@@ -121,33 +168,33 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * The overrides specification for the service.
-     * 
-     */
-    @Import(name="spec")
-    private @Nullable Output<String> spec;
-
-    /**
-     * @return The overrides specification for the service.
-     * 
-     */
-    public Optional<Output<String>> spec() {
-        return Optional.ofNullable(this.spec);
-    }
-
-    /**
-     * The type of the overrides
+     * The type of the overrides.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the overrides
+     * @return The type of the overrides.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * The yaml of the overrides spec object.
+     * 
+     */
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
+
+    /**
+     * @return The yaml of the overrides spec object.
+     * 
+     */
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
     }
 
     private ServiceOverridesV2State() {}
@@ -155,13 +202,16 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
     private ServiceOverridesV2State(ServiceOverridesV2State $) {
         this.clusterId = $.clusterId;
         this.envId = $.envId;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
         this.infraId = $.infraId;
+        this.isForceImport = $.isForceImport;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.serviceId = $.serviceId;
-        this.spec = $.spec;
         this.type = $.type;
+        this.yaml = $.yaml;
     }
 
     public static Builder builder() {
@@ -183,7 +233,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clusterId The cluster ID to which the overrides are associated
+         * @param clusterId The cluster ID to which the overrides are associated.
          * 
          * @return builder
          * 
@@ -194,7 +244,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clusterId The cluster ID to which the overrides are associated
+         * @param clusterId The cluster ID to which the overrides are associated.
          * 
          * @return builder
          * 
@@ -204,7 +254,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param envId The env ID to which the overrides are associated.
+         * @param envId The environment ID to which the overrides are associated.
          * 
          * @return builder
          * 
@@ -215,7 +265,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param envId The env ID to which the overrides are associated.
+         * @param envId The environment ID to which the overrides are associated.
          * 
          * @return builder
          * 
@@ -225,7 +275,28 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<ServiceOverridesV2GitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains parameters related to creating an Entity for Git Experience.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(ServiceOverridesV2GitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
+        }
+
+        /**
+         * @param identifier The identifier of the override entity.
          * 
          * @return builder
          * 
@@ -236,7 +307,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier The identifier of the override entity.
          * 
          * @return builder
          * 
@@ -246,7 +317,28 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param infraId The infrastructure ID to which the overrides are associated
+         * @param importFromGit import override from git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit import override from git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
+        }
+
+        /**
+         * @param infraId The infrastructure ID to which the overrides are associated.
          * 
          * @return builder
          * 
@@ -257,13 +349,34 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param infraId The infrastructure ID to which the overrides are associated
+         * @param infraId The infrastructure ID to which the overrides are associated.
          * 
          * @return builder
          * 
          */
         public Builder infraId(String infraId) {
             return infraId(Output.of(infraId));
+        }
+
+        /**
+         * @param isForceImport force import override from remote even if same file path already exist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(@Nullable Output<Boolean> isForceImport) {
+            $.isForceImport = isForceImport;
+            return this;
+        }
+
+        /**
+         * @param isForceImport force import override from remote even if same file path already exist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(Boolean isForceImport) {
+            return isForceImport(Output.of(isForceImport));
         }
 
         /**
@@ -330,28 +443,7 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param spec The overrides specification for the service.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder spec(@Nullable Output<String> spec) {
-            $.spec = spec;
-            return this;
-        }
-
-        /**
-         * @param spec The overrides specification for the service.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder spec(String spec) {
-            return spec(Output.of(spec));
-        }
-
-        /**
-         * @param type The type of the overrides
+         * @param type The type of the overrides.
          * 
          * @return builder
          * 
@@ -362,13 +454,34 @@ public final class ServiceOverridesV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param type The type of the overrides
+         * @param type The type of the overrides.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param yaml The yaml of the overrides spec object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(@Nullable Output<String> yaml) {
+            $.yaml = yaml;
+            return this;
+        }
+
+        /**
+         * @param yaml The yaml of the overrides spec object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yaml(String yaml) {
+            return yaml(Output.of(yaml));
         }
 
         public ServiceOverridesV2State build() {

@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetGitopsAgent
     {
         /// <summary>
-        /// Datasource for fetching a Harness Gitops Agents.
+        /// Datasource for fetching a Harness GitOps Agent.
         /// 
         /// ## Example Usage
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for fetching a Harness Gitops Agents.
+        /// Datasource for fetching a Harness GitOps Agent.
         /// 
         /// ## Example Usage
         /// 
@@ -140,6 +140,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// Agent token to be used for authentication of the agent with Harness.
+        /// </summary>
+        public readonly string AgentToken;
+        /// <summary>
         /// Description of the GitOps agent.
         /// </summary>
         public readonly string Description;
@@ -159,6 +163,10 @@ namespace Pulumi.Harness.Platform
         /// Name of the GitOps agent.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+        /// </summary>
+        public readonly string Operator;
         /// <summary>
         /// Organization identifier of the GitOps agent.
         /// </summary>
@@ -181,6 +189,8 @@ namespace Pulumi.Harness.Platform
         private GetGitopsAgentResult(
             string accountId,
 
+            string agentToken,
+
             string description,
 
             string id,
@@ -191,6 +201,8 @@ namespace Pulumi.Harness.Platform
 
             string name,
 
+            string @operator,
+
             string? orgId,
 
             string? projectId,
@@ -200,11 +212,13 @@ namespace Pulumi.Harness.Platform
             string type)
         {
             AccountId = accountId;
+            AgentToken = agentToken;
             Description = description;
             Id = id;
             Identifier = identifier;
             Metadatas = metadatas;
             Name = name;
+            Operator = @operator;
             OrgId = orgId;
             ProjectId = projectId;
             Tags = tags;

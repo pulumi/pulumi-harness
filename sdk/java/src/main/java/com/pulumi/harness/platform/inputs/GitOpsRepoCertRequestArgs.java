@@ -33,14 +33,14 @@ public final class GitOpsRepoCertRequestArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * if the Repository Certificates should be upserted.
+     * Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
      * 
      */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
     /**
-     * @return if the Repository Certificates should be upserted.
+     * @return Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
      * 
      */
     public Optional<Output<Boolean>> upsert() {
@@ -104,7 +104,7 @@ public final class GitOpsRepoCertRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upsert if the Repository Certificates should be upserted.
+         * @param upsert Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GitOpsRepoCertRequestArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param upsert if the Repository Certificates should be upserted.
+         * @param upsert Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
          * 
          * @return builder
          * 

@@ -10,7 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.FeatureFlagArgs;
 import com.pulumi.harness.platform.inputs.FeatureFlagState;
-import com.pulumi.harness.platform.outputs.FeatureFlagGitDetails;
+import com.pulumi.harness.platform.outputs.FeatureFlagEnvironment;
+import com.pulumi.harness.platform.outputs.FeatureFlagTag;
 import com.pulumi.harness.platform.outputs.FeatureFlagVariation;
 import java.lang.Boolean;
 import java.lang.String;
@@ -21,111 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing Feature Flags.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.FeatureFlag;
- * import com.pulumi.harness.platform.FeatureFlagArgs;
- * import com.pulumi.harness.platform.inputs.FeatureFlagVariationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Boolean Flag
- *         var mybooleanflag = new FeatureFlag("mybooleanflag", FeatureFlagArgs.builder()
- *             .orgId("test")
- *             .projectId("testff")
- *             .kind("boolean")
- *             .name("MY_FEATURE")
- *             .identifier("MY_FEATURE")
- *             .permanent(false)
- *             .defaultOnVariation("Enabled")
- *             .defaultOffVariation("Disabled")
- *             .variations(            
- *                 FeatureFlagVariationArgs.builder()
- *                     .identifier("Enabled")
- *                     .name("Enabled")
- *                     .description("The feature is enabled")
- *                     .value("true")
- *                     .build(),
- *                 FeatureFlagVariationArgs.builder()
- *                     .identifier("Disabled")
- *                     .name("Disabled")
- *                     .description("The feature is disabled")
- *                     .value("false")
- *                     .build())
- *             .build());
- * 
- *         // Multivariate flag
- *         var mymultivariateflag = new FeatureFlag("mymultivariateflag", FeatureFlagArgs.builder()
- *             .orgId("test")
- *             .projectId("testff")
- *             .kind("int")
- *             .name("FREE_TRIAL_DURATION")
- *             .identifier("FREE_TRIAL_DURATION")
- *             .permanent(false)
- *             .defaultOnVariation("trial7")
- *             .defaultOffVariation("trial20")
- *             .variations(            
- *                 FeatureFlagVariationArgs.builder()
- *                     .identifier("trial7")
- *                     .name("7 days trial")
- *                     .description("Free trial period 7 days")
- *                     .value("7")
- *                     .build(),
- *                 FeatureFlagVariationArgs.builder()
- *                     .identifier("trial14")
- *                     .name("14 days trial")
- *                     .description("Free trial period 14 days")
- *                     .value("14")
- *                     .build(),
- *                 FeatureFlagVariationArgs.builder()
- *                     .identifier("trial20")
- *                     .name("20 days trial")
- *                     .description("Free trial period 20 days")
- *                     .value("20")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="harness:platform/featureFlag:FeatureFlag")
 public class FeatureFlag extends com.pulumi.resources.CustomResource {
-    /**
-     * Whether or not the flag is archived
-     * 
-     */
-    @Export(name="archived", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> archived;
-
-    /**
-     * @return Whether or not the flag is archived
-     * 
-     */
-    public Output<Optional<Boolean>> archived() {
-        return Codegen.optional(this.archived);
-    }
     /**
      * Which of the variations to use when the flag is toggled to off state
      * 
@@ -154,11 +53,33 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
     public Output<String> defaultOnVariation() {
         return this.defaultOnVariation;
     }
-    @Export(name="gitDetails", refs={FeatureFlagGitDetails.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureFlagGitDetails> gitDetails;
+    /**
+     * Description of the Feature Flag
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
 
-    public Output<Optional<FeatureFlagGitDetails>> gitDetails() {
-        return Codegen.optional(this.gitDetails);
+    /**
+     * @return Description of the Feature Flag
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * Environment Identifier
+     * 
+     */
+    @Export(name="environments", refs={List.class,FeatureFlagEnvironment.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<FeatureFlagEnvironment>> environments;
+
+    /**
+     * @return Environment Identifier
+     * 
+     */
+    public Output<Optional<List<FeatureFlagEnvironment>>> environments() {
+        return Codegen.optional(this.environments);
     }
     /**
      * Identifier of the Feature Flag
@@ -257,6 +178,20 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
+    }
+    /**
+     * The tags for the flag
+     * 
+     */
+    @Export(name="tags", refs={List.class,FeatureFlagTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<FeatureFlagTag>> tags;
+
+    /**
+     * @return The tags for the flag
+     * 
+     */
+    public Output<Optional<List<FeatureFlagTag>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The options available for your flag

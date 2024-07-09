@@ -18,55 +18,7 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Jira connector.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.JiraConnector;
- * import com.pulumi.harness.platform.JiraConnectorArgs;
- * import com.pulumi.harness.platform.inputs.JiraConnectorAuthArgs;
- * import com.pulumi.harness.platform.inputs.JiraConnectorAuthUsernamePasswordArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var test = new JiraConnector("test", JiraConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .url("https://jira.com")
- *             .delegateSelectors("harness-delegate")
- *             .auth(JiraConnectorAuthArgs.builder()
- *                 .authType("UsernamePassword")
- *                 .usernamePassword(JiraConnectorAuthUsernamePasswordArgs.builder()
- *                     .username("admin")
- *                     .passwordRef("account.secret_id")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * ## Example to create Jira Connector at different levels (Org, Project, Account)
  * 
  * ## Import
  * 

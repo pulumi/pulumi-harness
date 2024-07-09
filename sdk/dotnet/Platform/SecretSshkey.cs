@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating an ssh key type secret.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 

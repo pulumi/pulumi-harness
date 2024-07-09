@@ -12,36 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
-//
-//	The following fields need to be populated for LDAP SSO Providers:
-//
-//	- linkedSsoId
-//
-//	- linkedSsoDisplayName
-//
-//	- ssoGroupId
-//
-//	- ssoGroupName
-//
-//	- linkedSsoType
-//
-//	- ssoLinked
-//
-//	The following fields need to be populated for SAML SSO Providers:
-//
-//	- linkedSsoId
-//
-//	- linkedSsoDisplayName
-//
-//	- ssoGroupName
-//
-//	- ssoGroupId // same as ssoGroupName
-//
-//	- linkedSsoType
-//
-//	- ssoLinked
-//
 // ## Example Usage
 //
 // ```go

@@ -33,14 +33,63 @@ import (
 //				Name:       pulumi.String("name"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("PipelineExecution"),
+//				Type:       pulumi.String("PipelineSetup"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
-//					Tags: pulumi.StringArray{
-//						pulumi.String("foo:bar"),
+//					Name:        pulumi.String("pipeline_name"),
+//					Description: pulumi.String("pipeline_description"),
+//					PipelineIdentifiers: pulumi.StringArray{
+//						pulumi.String("id1"),
+//						pulumi.String("id2"),
 //					},
-//					FilterType: pulumi.String("PipelineExecution"),
+//					FilterType: pulumi.String("PipelineSetup"),
 //				},
 //				FilterVisibility: pulumi.String("EveryOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// pipeline filter with tags
+//			_, err = platform.NewPipelineFilters(ctx, "example_with_tags", &platform.PipelineFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("PipelineSetup"),
+//				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
+//					FilterType: pulumi.String("PipelineSetup"),
+//					PipelineTags: pulumi.StringMapArray{
+//						pulumi.StringMap{
+//							"key":   pulumi.String("tag1"),
+//							"value": pulumi.String("123"),
+//						},
+//						pulumi.StringMap{
+//							"key":   pulumi.String("tag2"),
+//							"value": pulumi.String("456"),
+//						},
+//					},
+//					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
+//						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
+//							DeploymentTypes: pulumi.String("Kubernetes"),
+//							ServiceNames: pulumi.StringArray{
+//								pulumi.String("service1"),
+//								pulumi.String("service2"),
+//							},
+//							EnvironmentNames: pulumi.StringArray{
+//								pulumi.String("env1"),
+//								pulumi.String("env2"),
+//							},
+//							ArtifactDisplayNames: pulumi.StringArray{
+//								pulumi.String("artificatname1"),
+//								pulumi.String("artifact2"),
+//							},
+//						},
+//						Ci: &platform.PipelineFiltersFilterPropertiesModulePropertiesCiArgs{
+//							BuildType: pulumi.String("branch"),
+//							Branch:    pulumi.String("branch123"),
+//							RepoNames: pulumi.String("repo1234"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +125,7 @@ type PipelineFilters struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PipelineFiltersFilterPropertiesOutput `pulumi:"filterProperties"`
 	// This indicates visibility of filters. By default, everyone can view this filter.
-	FilterVisibility pulumi.StringPtrOutput `pulumi:"filterVisibility"`
+	FilterVisibility pulumi.StringOutput `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the pipeline filters.
@@ -293,8 +342,8 @@ func (o PipelineFiltersOutput) FilterProperties() PipelineFiltersFilterPropertie
 }
 
 // This indicates visibility of filters. By default, everyone can view this filter.
-func (o PipelineFiltersOutput) FilterVisibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PipelineFilters) pulumi.StringPtrOutput { return v.FilterVisibility }).(pulumi.StringPtrOutput)
+func (o PipelineFiltersOutput) FilterVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v *PipelineFilters) pulumi.StringOutput { return v.FilterVisibility }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the resource.

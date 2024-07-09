@@ -24,7 +24,7 @@ class UserArgs:
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] email: The email of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]] role_bindings: Role Bindings of the user. Cannot be updated.
@@ -54,7 +54,7 @@ class UserArgs:
     @pulumi.getter(name="userGroups")
     def user_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The user group of the user. Cannot be updated.
+        The user group of the user.
         """
         return pulumi.get(self, "user_groups")
 
@@ -123,7 +123,7 @@ class _UserState:
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]] role_bindings: Role Bindings of the user. Cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -258,7 +258,7 @@ class _UserState:
     @pulumi.getter(name="userGroups")
     def user_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The user group of the user. Cannot be updated.
+        The user group of the user.
         """
         return pulumi.get(self, "user_groups")
 
@@ -279,7 +279,7 @@ class User(pulumi.CustomResource):
                  user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
+        ## Example Usage
 
         ## Import
 
@@ -307,7 +307,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]] role_bindings: Role Bindings of the user. Cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         """
         ...
     @overload
@@ -316,7 +316,7 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
+        ## Example Usage
 
         ## Import
 
@@ -417,7 +417,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]] role_bindings: Role Bindings of the user. Cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -511,7 +511,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userGroups")
     def user_groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        The user group of the user. Cannot be updated.
+        The user group of the user.
         """
         return pulumi.get(self, "user_groups")
 

@@ -46,14 +46,14 @@ public final class GitOpsApplicationsApplicationSpecDestinationArgs extends com.
     }
 
     /**
-     * Server of the destination of the GitOps application.
+     * URL of the target cluster server for the GitOps application.
      * 
      */
     @Import(name="server")
     private @Nullable Output<String> server;
 
     /**
-     * @return Server of the destination of the GitOps application.
+     * @return URL of the target cluster server for the GitOps application.
      * 
      */
     public Optional<Output<String>> server() {
@@ -129,7 +129,7 @@ public final class GitOpsApplicationsApplicationSpecDestinationArgs extends com.
         }
 
         /**
-         * @param server Server of the destination of the GitOps application.
+         * @param server URL of the target cluster server for the GitOps application.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GitOpsApplicationsApplicationSpecDestinationArgs extends com.
         }
 
         /**
-         * @param server Server of the destination of the GitOps application.
+         * @param server URL of the target cluster server for the GitOps application.
          * 
          * @return builder
          * 

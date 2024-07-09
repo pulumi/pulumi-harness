@@ -6,8 +6,6 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestCluster;
-import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestId;
-import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestUpdateMask;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -23,20 +21,10 @@ public final class GetGitopsClusterRequest {
      */
     private @Nullable List<GetGitopsClusterRequestCluster> clusters;
     /**
-     * @return Cluster server URL or the cluster name.
-     * 
-     */
-    private @Nullable List<GetGitopsClusterRequestId> ids;
-    /**
-     * @return Tags associated with the clusters
+     * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     private List<String> tags;
-    /**
-     * @return Update mask of the GitOps cluster.
-     * 
-     */
-    private @Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks;
     /**
      * @return Fields which are updated.
      * 
@@ -57,25 +45,11 @@ public final class GetGitopsClusterRequest {
         return this.clusters == null ? List.of() : this.clusters;
     }
     /**
-     * @return Cluster server URL or the cluster name.
-     * 
-     */
-    public List<GetGitopsClusterRequestId> ids() {
-        return this.ids == null ? List.of() : this.ids;
-    }
-    /**
-     * @return Tags associated with the clusters
+     * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     public List<String> tags() {
         return this.tags;
-    }
-    /**
-     * @return Update mask of the GitOps cluster.
-     * 
-     */
-    public List<GetGitopsClusterRequestUpdateMask> updateMasks() {
-        return this.updateMasks == null ? List.of() : this.updateMasks;
     }
     /**
      * @return Fields which are updated.
@@ -102,18 +76,14 @@ public final class GetGitopsClusterRequest {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetGitopsClusterRequestCluster> clusters;
-        private @Nullable List<GetGitopsClusterRequestId> ids;
         private List<String> tags;
-        private @Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks;
         private @Nullable List<String> updatedFields;
         private @Nullable Boolean upsert;
         public Builder() {}
         public Builder(GetGitopsClusterRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
-    	      this.ids = defaults.ids;
     	      this.tags = defaults.tags;
-    	      this.updateMasks = defaults.updateMasks;
     	      this.updatedFields = defaults.updatedFields;
     	      this.upsert = defaults.upsert;
         }
@@ -128,15 +98,6 @@ public final class GetGitopsClusterRequest {
             return clusters(List.of(clusters));
         }
         @CustomType.Setter
-        public Builder ids(@Nullable List<GetGitopsClusterRequestId> ids) {
-
-            this.ids = ids;
-            return this;
-        }
-        public Builder ids(GetGitopsClusterRequestId... ids) {
-            return ids(List.of(ids));
-        }
-        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetGitopsClusterRequest", "tags");
@@ -146,15 +107,6 @@ public final class GetGitopsClusterRequest {
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }
-        @CustomType.Setter
-        public Builder updateMasks(@Nullable List<GetGitopsClusterRequestUpdateMask> updateMasks) {
-
-            this.updateMasks = updateMasks;
-            return this;
-        }
-        public Builder updateMasks(GetGitopsClusterRequestUpdateMask... updateMasks) {
-            return updateMasks(List.of(updateMasks));
         }
         @CustomType.Setter
         public Builder updatedFields(@Nullable List<String> updatedFields) {
@@ -174,9 +126,7 @@ public final class GetGitopsClusterRequest {
         public GetGitopsClusterRequest build() {
             final var _resultValue = new GetGitopsClusterRequest();
             _resultValue.clusters = clusters;
-            _resultValue.ids = ids;
             _resultValue.tags = tags;
-            _resultValue.updateMasks = updateMasks;
             _resultValue.updatedFields = updatedFields;
             _resultValue.upsert = upsert;
             return _resultValue;

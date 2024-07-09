@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MonitoredServiceRequestHealthSourceArgs extends com.pulumi.resources.ResourceArgs {
@@ -74,6 +76,21 @@ public final class MonitoredServiceRequestHealthSourceArgs extends com.pulumi.re
         return this.type;
     }
 
+    /**
+     * Version of the health source.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Version of the health source.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private MonitoredServiceRequestHealthSourceArgs() {}
 
     private MonitoredServiceRequestHealthSourceArgs(MonitoredServiceRequestHealthSourceArgs $) {
@@ -81,6 +98,7 @@ public final class MonitoredServiceRequestHealthSourceArgs extends com.pulumi.re
         this.name = $.name;
         this.spec = $.spec;
         this.type = $.type;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -183,6 +201,27 @@ public final class MonitoredServiceRequestHealthSourceArgs extends com.pulumi.re
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param version Version of the health source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Version of the health source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public MonitoredServiceRequestHealthSourceArgs build() {

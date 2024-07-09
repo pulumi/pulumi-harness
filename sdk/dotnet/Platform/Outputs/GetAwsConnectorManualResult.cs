@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
+        /// The plain text AWS access key.
+        /// </summary>
+        public readonly string? AccessKeyPlainText;
+        /// <summary>
         /// Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string AccessKeyRef;
@@ -25,6 +29,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Connect only use delegates with these tags.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
+        /// <summary>
+        /// AWS Region to perform Connection test of Connector.
+        /// </summary>
+        public readonly string? Region;
         /// <summary>
         /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
@@ -34,15 +42,21 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetAwsConnectorManualResult(
             string accessKey,
 
+            string? accessKeyPlainText,
+
             string accessKeyRef,
 
             ImmutableArray<string> delegateSelectors,
 
+            string? region,
+
             string secretKeyRef)
         {
             AccessKey = accessKey;
+            AccessKeyPlainText = accessKeyPlainText;
             AccessKeyRef = accessKeyRef;
             DelegateSelectors = delegateSelectors;
+            Region = region;
             SecretKeyRef = secretKeyRef;
         }
     }

@@ -214,7 +214,7 @@ class GitOpsGnupg(pulumi.CustomResource):
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsGnupgRequestArgs']]]]] = None,
                  __props__=None):
         """
-        GPG public key in the server's configuration.
+        Resource for managing Harness GitOps GPG public key.
 
         ## Example Usage
 
@@ -235,13 +235,19 @@ class GitOpsGnupg(pulumi.CustomResource):
 
         ## Import
 
-        Import a Account level Gitops Cluster
+        Import an Account level Gitops GnuPG Key
 
         ```sh
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
         ```
 
-        Import a Project level Gitops Cluster
+        Import an Org level Gitops GnuPG Key
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<agent_id>/<key_id>
+        ```
+
+        Import a Project level Gitops GnuPG Key
 
         ```sh
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>
@@ -262,7 +268,7 @@ class GitOpsGnupg(pulumi.CustomResource):
                  args: GitOpsGnupgArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        GPG public key in the server's configuration.
+        Resource for managing Harness GitOps GPG public key.
 
         ## Example Usage
 
@@ -283,13 +289,19 @@ class GitOpsGnupg(pulumi.CustomResource):
 
         ## Import
 
-        Import a Account level Gitops Cluster
+        Import an Account level Gitops GnuPG Key
 
         ```sh
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
         ```
 
-        Import a Project level Gitops Cluster
+        Import an Org level Gitops GnuPG Key
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<agent_id>/<key_id>
+        ```
+
+        Import a Project level Gitops GnuPG Key
 
         ```sh
         $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>

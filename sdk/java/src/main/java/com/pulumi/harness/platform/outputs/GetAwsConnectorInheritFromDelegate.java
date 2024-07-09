@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsConnectorInheritFromDelegate {
@@ -16,6 +18,11 @@ public final class GetAwsConnectorInheritFromDelegate {
      * 
      */
     private List<String> delegateSelectors;
+    /**
+     * @return AWS Region to perform Connection test of Connector.
+     * 
+     */
+    private @Nullable String region;
 
     private GetAwsConnectorInheritFromDelegate() {}
     /**
@@ -24,6 +31,13 @@ public final class GetAwsConnectorInheritFromDelegate {
      */
     public List<String> delegateSelectors() {
         return this.delegateSelectors;
+    }
+    /**
+     * @return AWS Region to perform Connection test of Connector.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
 
     public static Builder builder() {
@@ -36,10 +50,12 @@ public final class GetAwsConnectorInheritFromDelegate {
     @CustomType.Builder
     public static final class Builder {
         private List<String> delegateSelectors;
+        private @Nullable String region;
         public Builder() {}
         public Builder(GetAwsConnectorInheritFromDelegate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegateSelectors = defaults.delegateSelectors;
+    	      this.region = defaults.region;
         }
 
         @CustomType.Setter
@@ -53,9 +69,16 @@ public final class GetAwsConnectorInheritFromDelegate {
         public Builder delegateSelectors(String... delegateSelectors) {
             return delegateSelectors(List.of(delegateSelectors));
         }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
         public GetAwsConnectorInheritFromDelegate build() {
             final var _resultValue = new GetAwsConnectorInheritFromDelegate();
             _resultValue.delegateSelectors = delegateSelectors;
+            _resultValue.region = region;
             return _resultValue;
         }
     }

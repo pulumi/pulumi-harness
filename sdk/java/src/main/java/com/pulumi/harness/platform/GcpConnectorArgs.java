@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GcpConnectorInheritFromDelegateArgs;
 import com.pulumi.harness.platform.inputs.GcpConnectorManualArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,36 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Enable this flag to execute on Delegate
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Enable this flag to execute on Delegate
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
+    }
+
+    /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -143,6 +174,8 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
 
     private GcpConnectorArgs(GcpConnectorArgs $) {
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.inheritFromDelegates = $.inheritFromDelegates;
         this.manual = $.manual;
@@ -189,6 +222,48 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executeOnDelegate Enable this flag to execute on Delegate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Enable this flag to execute on Delegate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

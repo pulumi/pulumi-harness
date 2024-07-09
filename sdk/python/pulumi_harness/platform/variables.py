@@ -264,8 +264,6 @@ class Variables(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Variables.
-
         ## Example Usage
 
         ```python
@@ -321,8 +319,6 @@ class Variables(pulumi.CustomResource):
                  args: VariablesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Variables.
-
         ## Example Usage
 
         ```python

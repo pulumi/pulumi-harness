@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigAwsAuthConfigArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigExecProviderConfigArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs;
 import java.lang.String;
@@ -20,18 +19,18 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     public static final GitOpsClusterRequestClusterConfigArgs Empty = new GitOpsClusterRequestClusterConfigArgs();
 
     /**
-     * IAM authentication configuration for AWS.
+     * AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
      * 
      */
-    @Import(name="awsAuthConfigs")
-    private @Nullable Output<List<GitOpsClusterRequestClusterConfigAwsAuthConfigArgs>> awsAuthConfigs;
+    @Import(name="awsClusterName")
+    private @Nullable Output<String> awsClusterName;
 
     /**
-     * @return IAM authentication configuration for AWS.
+     * @return AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
      * 
      */
-    public Optional<Output<List<GitOpsClusterRequestClusterConfigAwsAuthConfigArgs>>> awsAuthConfigs() {
-        return Optional.ofNullable(this.awsAuthConfigs);
+    public Optional<Output<String>> awsClusterName() {
+        return Optional.ofNullable(this.awsClusterName);
     }
 
     /**
@@ -95,6 +94,21 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * Optional role ARN. If set then used for AWS IAM Authenticator.
+     * 
+     */
+    @Import(name="roleARN")
+    private @Nullable Output<String> roleARN;
+
+    /**
+     * @return Optional role ARN. If set then used for AWS IAM Authenticator.
+     * 
+     */
+    public Optional<Output<String>> roleARN() {
+        return Optional.ofNullable(this.roleARN);
+    }
+
+    /**
      * Settings to enable transport layer security.
      * 
      */
@@ -127,11 +141,12 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     private GitOpsClusterRequestClusterConfigArgs() {}
 
     private GitOpsClusterRequestClusterConfigArgs(GitOpsClusterRequestClusterConfigArgs $) {
-        this.awsAuthConfigs = $.awsAuthConfigs;
+        this.awsClusterName = $.awsClusterName;
         this.bearerToken = $.bearerToken;
         this.clusterConnectionType = $.clusterConnectionType;
         this.execProviderConfigs = $.execProviderConfigs;
         this.password = $.password;
+        this.roleARN = $.roleARN;
         this.tlsClientConfigs = $.tlsClientConfigs;
         this.username = $.username;
     }
@@ -155,34 +170,24 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param awsAuthConfigs IAM authentication configuration for AWS.
+         * @param awsClusterName AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
          * 
          * @return builder
          * 
          */
-        public Builder awsAuthConfigs(@Nullable Output<List<GitOpsClusterRequestClusterConfigAwsAuthConfigArgs>> awsAuthConfigs) {
-            $.awsAuthConfigs = awsAuthConfigs;
+        public Builder awsClusterName(@Nullable Output<String> awsClusterName) {
+            $.awsClusterName = awsClusterName;
             return this;
         }
 
         /**
-         * @param awsAuthConfigs IAM authentication configuration for AWS.
+         * @param awsClusterName AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
          * 
          * @return builder
          * 
          */
-        public Builder awsAuthConfigs(List<GitOpsClusterRequestClusterConfigAwsAuthConfigArgs> awsAuthConfigs) {
-            return awsAuthConfigs(Output.of(awsAuthConfigs));
-        }
-
-        /**
-         * @param awsAuthConfigs IAM authentication configuration for AWS.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsAuthConfigs(GitOpsClusterRequestClusterConfigAwsAuthConfigArgs... awsAuthConfigs) {
-            return awsAuthConfigs(List.of(awsAuthConfigs));
+        public Builder awsClusterName(String awsClusterName) {
+            return awsClusterName(Output.of(awsClusterName));
         }
 
         /**
@@ -277,6 +282,27 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param roleARN Optional role ARN. If set then used for AWS IAM Authenticator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleARN(@Nullable Output<String> roleARN) {
+            $.roleARN = roleARN;
+            return this;
+        }
+
+        /**
+         * @param roleARN Optional role ARN. If set then used for AWS IAM Authenticator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleARN(String roleARN) {
+            return roleARN(Output.of(roleARN));
         }
 
         /**

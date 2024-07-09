@@ -63,6 +63,21 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -83,6 +98,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         this.accessKey = $.accessKey;
         this.accessKeyRef = $.accessKeyRef;
         this.delegateSelectors = $.delegateSelectors;
+        this.region = $.region;
         this.secretKeyRef = $.secretKeyRef;
     }
 
@@ -175,6 +191,27 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
          */
         public Builder delegateSelectors(String... delegateSelectors) {
             return delegateSelectors(List.of(delegateSelectors));
+        }
+
+        /**
+         * @param region Test Region to perform Connection test of AWS Connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Test Region to perform Connection test of AWS Connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

@@ -24,6 +24,7 @@ class GithubConnectorArgs:
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class GithubConnectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of github connector
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -57,6 +59,8 @@ class GithubConnectorArgs:
             pulumi.set(__self__, "description", description)
         if execute_on_delegate is not None:
             pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -165,6 +169,18 @@ class GithubConnectorArgs:
         pulumi.set(self, "execute_on_delegate", value)
 
     @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of github connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -234,6 +250,7 @@ class _GithubConnectorState:
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -249,6 +266,7 @@ class _GithubConnectorState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of github connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -269,6 +287,8 @@ class _GithubConnectorState:
             pulumi.set(__self__, "description", description)
         if execute_on_delegate is not None:
             pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -355,6 +375,18 @@ class _GithubConnectorState:
     @execute_on_delegate.setter
     def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of github connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -452,6 +484,7 @@ class GithubConnector(pulumi.CustomResource):
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -491,6 +524,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of github connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -549,6 +583,7 @@ class GithubConnector(pulumi.CustomResource):
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -575,6 +610,7 @@ class GithubConnector(pulumi.CustomResource):
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
             __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+            __props__.__dict__["force_delete"] = force_delete
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -602,6 +638,7 @@ class GithubConnector(pulumi.CustomResource):
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -622,6 +659,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of github connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -640,6 +678,7 @@ class GithubConnector(pulumi.CustomResource):
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
         __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -696,6 +735,14 @@ class GithubConnector(pulumi.CustomResource):
         Execute on delegate or not.
         """
         return pulumi.get(self, "execute_on_delegate")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[bool]:
+        """
+        Enable this flag for force deletion of github connector
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter

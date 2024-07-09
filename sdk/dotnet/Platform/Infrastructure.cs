@@ -11,9 +11,86 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness Infrastructure.
+    /// ## Example to create Infrastructure at different levels (Org, Project, Account)
     /// 
-    /// ## Example Usage
+    /// ### Account Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
     /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Infrastructure("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         EnvId = "environmentIdentifier",
+    ///         Type = "KubernetesDirect",
+    ///         DeploymentType = "Kubernetes",
+    ///         Yaml = @"infrastructureDefinition:
+    ///  name: name
+    ///  identifier: identifier
+    ///  description: """"
+    ///  tags:
+    ///    asda: """"
+    ///  orgIdentifier: orgIdentifer
+    ///  projectIdentifier: projectIdentifier
+    ///  environmentRef: environmentIdentifier
+    ///  deploymentType: Kubernetes
+    ///  type: KubernetesDirect
+    ///  spec:
+    ///   connectorRef: account.gfgf
+    ///   namespace: asdasdsa
+    ///   releaseName: release-&lt;+INFRA_KEY&gt;
+    ///   allowSimultaneousDeployments: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Infrastructure("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "orgIdentifer",
+    ///         EnvId = "environmentIdentifier",
+    ///         Type = "KubernetesDirect",
+    ///         DeploymentType = "Kubernetes",
+    ///         Yaml = @"infrastructureDefinition:
+    ///  name: name
+    ///  identifier: identifier
+    ///  description: """"
+    ///  tags:
+    ///    asda: """"
+    ///  orgIdentifier: orgIdentifer
+    ///  projectIdentifier: projectIdentifier
+    ///  environmentRef: environmentIdentifier
+    ///  deploymentType: Kubernetes
+    ///  type: KubernetesDirect
+    ///  spec:
+    ///   connectorRef: account.gfgf
+    ///   namespace: asdasdsa
+    ///   releaseName: release-&lt;+INFRA_KEY&gt;
+    ///   allowSimultaneousDeployments: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,6 +125,34 @@ namespace Pulumi.Harness.Platform
     ///   releaseName: release-&lt;+INFRA_KEY&gt;
     ///   allowSimultaneousDeployments: false
     /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Importing Infrastructure From Git
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.Infrastructure("test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         EnvId = "env_id",
+    ///         GitDetails = new Harness.Platform.Inputs.InfrastructureGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///             ImportFromGit = true,
+    ///         },
     ///     });
     /// 
     /// });
@@ -101,6 +206,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Output("gitDetails")]
+        public Output<Outputs.InfrastructureGitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -131,16 +242,16 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         /// </summary>
         [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
-        public Output<string> Yaml { get; private set; } = null!;
+        public Output<string?> Yaml { get; private set; } = null!;
 
 
         /// <summary>
@@ -214,6 +325,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.InfrastructureGitDetailsArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -250,16 +367,16 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
-        [Input("yaml", required: true)]
-        public Input<string> Yaml { get; set; } = null!;
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public InfrastructureArgs()
         {
@@ -292,6 +409,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("forceDelete")]
         public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.InfrastructureGitDetailsGetArgs>? GitDetails { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -330,7 +453,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

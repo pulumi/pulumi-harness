@@ -41,8 +41,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureKeyVaultConnector{}
 	case "harness:platform/bitbucketConnector:BitbucketConnector":
 		r = &BitbucketConnector{}
+	case "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager":
+		r = &ConnectorCustomSecretManager{}
+	case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
+		r = &ConnectorCustomhealthsource{}
+	case "harness:platform/connectorPdc:ConnectorPdc":
+		r = &ConnectorPdc{}
+	case "harness:platform/connectorRancher:ConnectorRancher":
+		r = &ConnectorRancher{}
 	case "harness:platform/datadogConnector:DatadogConnector":
 		r = &DatadogConnector{}
+	case "harness:platform/delegatetoken:Delegatetoken":
+		r = &Delegatetoken{}
 	case "harness:platform/dockerConnector:DockerConnector":
 		r = &DockerConnector{}
 	case "harness:platform/dynatraceConnector:DynatraceConnector":
@@ -61,6 +71,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureFlag{}
 	case "harness:platform/featureFlagApiKey:FeatureFlagApiKey":
 		r = &FeatureFlagApiKey{}
+	case "harness:platform/featureFlagTarget:FeatureFlagTarget":
+		r = &FeatureFlagTarget{}
+	case "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup":
+		r = &FeatureFlagTargetGroup{}
+	case "harness:platform/fileStoreFile:FileStoreFile":
+		r = &FileStoreFile{}
+	case "harness:platform/fileStoreFolder:FileStoreFolder":
+		r = &FileStoreFolder{}
 	case "harness:platform/filters:Filters":
 		r = &Filters{}
 	case "harness:platform/gcpCloudCostConnector:GcpCloudCostConnector":
@@ -89,8 +107,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GithubConnector{}
 	case "harness:platform/gitlabConnector:GitlabConnector":
 		r = &GitlabConnector{}
+	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
+		r = &GitopsAppProjectMapping{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
+	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
+		r = &IacmDefaultPipeline{}
 	case "harness:platform/infrastructure:Infrastructure":
 		r = &Infrastructure{}
 	case "harness:platform/inputSet:InputSet":
@@ -129,6 +151,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Project{}
 	case "harness:platform/prometheusConnector:PrometheusConnector":
 		r = &PrometheusConnector{}
+	case "harness:platform/repo:Repo":
+		r = &Repo{}
+	case "harness:platform/repoRuleBranch:RepoRuleBranch":
+		r = &RepoRuleBranch{}
+	case "harness:platform/repoWebhook:RepoWebhook":
+		r = &RepoWebhook{}
 	case "harness:platform/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
 	case "harness:platform/roleAssignments:RoleAssignments":
@@ -177,6 +205,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Variables{}
 	case "harness:platform/vaultConnector:VaultConnector":
 		r = &VaultConnector{}
+	case "harness:platform/workspace:Workspace":
+		r = &Workspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -242,7 +272,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/connectorCustomSecretManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorCustomhealthsource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorPdc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorRancher",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/datadogConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/delegatetoken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -288,6 +343,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/featureFlagApiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/featureFlagTarget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/featureFlagTargetGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/fileStoreFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/fileStoreFolder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -362,7 +437,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/gitopsAppProjectMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/helmConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/iacmDefaultPipeline",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -458,6 +543,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/prometheusConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/repo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/repoRuleBranch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/repoWebhook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -578,6 +678,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/vaultConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/workspace",
 		&module{version},
 	)
 }

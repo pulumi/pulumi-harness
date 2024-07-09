@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Gitops Agents.
+ * Resource for managing a Harness GitOps Agent.
  * 
  * ## Example Usage
  * 
@@ -67,10 +67,16 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import a Account level Gitops Agent
+ * Import an Account level Gitops Agent
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;agent_id&gt;
+ * ```
+ * 
+ * Import an Org level Gitops Agent
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;organization_id&gt;/&lt;agent_id&gt;
  * ```
  * 
  * Import a Project level Gitops Agent
@@ -95,6 +101,20 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    @Export(name="agentToken", refs={String.class}, tree="[0]")
+    private Output<String> agentToken;
+
+    /**
+     * @return Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    public Output<String> agentToken() {
+        return this.agentToken;
     }
     /**
      * Description of the GitOps agent.
@@ -151,6 +171,20 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    @Export(name="operator", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> operator;
+
+    /**
+     * @return The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    public Output<Optional<String>> operator() {
+        return Codegen.optional(this.operator);
     }
     /**
      * Organization identifier of the GitOps agent.

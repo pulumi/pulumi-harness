@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetServiceOverridesV2GitDetails;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetServiceOverridesV2Result {
     private String clusterId;
     private String envId;
+    private GetServiceOverridesV2GitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -24,8 +26,8 @@ public final class GetServiceOverridesV2Result {
     private @Nullable String orgId;
     private @Nullable String projectId;
     private String serviceId;
-    private String spec;
     private String type;
+    private String yaml;
 
     private GetServiceOverridesV2Result() {}
     public String clusterId() {
@@ -33,6 +35,9 @@ public final class GetServiceOverridesV2Result {
     }
     public String envId() {
         return this.envId;
+    }
+    public GetServiceOverridesV2GitDetails gitDetails() {
+        return this.gitDetails;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -56,11 +61,11 @@ public final class GetServiceOverridesV2Result {
     public String serviceId() {
         return this.serviceId;
     }
-    public String spec() {
-        return this.spec;
-    }
     public String type() {
         return this.type;
+    }
+    public String yaml() {
+        return this.yaml;
     }
 
     public static Builder builder() {
@@ -74,27 +79,29 @@ public final class GetServiceOverridesV2Result {
     public static final class Builder {
         private String clusterId;
         private String envId;
+        private GetServiceOverridesV2GitDetails gitDetails;
         private String id;
         private String identifier;
         private String infraId;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private String serviceId;
-        private String spec;
         private String type;
+        private String yaml;
         public Builder() {}
         public Builder(GetServiceOverridesV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
     	      this.envId = defaults.envId;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.infraId = defaults.infraId;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.serviceId = defaults.serviceId;
-    	      this.spec = defaults.spec;
     	      this.type = defaults.type;
+    	      this.yaml = defaults.yaml;
         }
 
         @CustomType.Setter
@@ -111,6 +118,14 @@ public final class GetServiceOverridesV2Result {
               throw new MissingRequiredPropertyException("GetServiceOverridesV2Result", "envId");
             }
             this.envId = envId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(GetServiceOverridesV2GitDetails gitDetails) {
+            if (gitDetails == null) {
+              throw new MissingRequiredPropertyException("GetServiceOverridesV2Result", "gitDetails");
+            }
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -158,14 +173,6 @@ public final class GetServiceOverridesV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder spec(String spec) {
-            if (spec == null) {
-              throw new MissingRequiredPropertyException("GetServiceOverridesV2Result", "spec");
-            }
-            this.spec = spec;
-            return this;
-        }
-        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetServiceOverridesV2Result", "type");
@@ -173,18 +180,27 @@ public final class GetServiceOverridesV2Result {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder yaml(String yaml) {
+            if (yaml == null) {
+              throw new MissingRequiredPropertyException("GetServiceOverridesV2Result", "yaml");
+            }
+            this.yaml = yaml;
+            return this;
+        }
         public GetServiceOverridesV2Result build() {
             final var _resultValue = new GetServiceOverridesV2Result();
             _resultValue.clusterId = clusterId;
             _resultValue.envId = envId;
+            _resultValue.gitDetails = gitDetails;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.infraId = infraId;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.serviceId = serviceId;
-            _resultValue.spec = spec;
             _resultValue.type = type;
+            _resultValue.yaml = yaml;
             return _resultValue;
         }
     }

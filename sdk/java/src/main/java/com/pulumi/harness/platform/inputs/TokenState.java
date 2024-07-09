@@ -8,7 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -64,14 +64,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the Token
+     * Description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the Token
+     * @return Description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -109,14 +109,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Identifier of the Token
+     * @return Unique identifier of the resource.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -124,14 +124,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Token
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Token
+     * @return Name of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -139,14 +139,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -169,14 +169,14 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -199,17 +199,17 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,String>> tags;
+    private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for the Token
+     * @return Tags to associate with the resource.
      * 
      */
-    public Optional<Output<Map<String,String>>> tags() {
+    public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -273,6 +273,21 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.validTo);
     }
 
+    /**
+     * Value of the Token
+     * 
+     */
+    @Import(name="value")
+    private @Nullable Output<String> value;
+
+    /**
+     * @return Value of the Token
+     * 
+     */
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
+    }
+
     private TokenState() {}
 
     private TokenState(TokenState $) {
@@ -293,6 +308,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         this.valid = $.valid;
         this.validFrom = $.validFrom;
         this.validTo = $.validTo;
+        this.value = $.value;
     }
 
     public static Builder builder() {
@@ -377,7 +393,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the Token
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -388,7 +404,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the Token
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -440,7 +456,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Identifier of the Token
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -451,7 +467,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Identifier of the Token
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -461,7 +477,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Token
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -472,7 +488,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Token
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -482,7 +498,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Organization Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -493,7 +509,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Organization Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -524,7 +540,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -535,7 +551,7 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -566,24 +582,34 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the Token
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+        public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param tags Tags for the Token
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
          */
-        public Builder tags(Map<String,String> tags) {
+        public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**
@@ -668,6 +694,27 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder validTo(Integer validTo) {
             return validTo(Output.of(validTo));
+        }
+
+        /**
+         * @param value Value of the Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(@Nullable Output<String> value) {
+            $.value = value;
+            return this;
+        }
+
+        /**
+         * @param value Value of the Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder value(String value) {
+            return value(Output.of(value));
         }
 
         public TokenState build() {

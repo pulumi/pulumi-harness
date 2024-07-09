@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.outputs.GetGitopsClusterQuery;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterRequest;
 import java.lang.String;
 import java.util.List;
@@ -45,11 +44,6 @@ public final class GetGitopsClusterResult {
      * 
      */
     private @Nullable String projectId;
-    /**
-     * @return Query for the GitOps cluster resources.
-     * 
-     */
-    private @Nullable List<GetGitopsClusterQuery> queries;
     /**
      * @return Cluster create or update request.
      * 
@@ -100,13 +94,6 @@ public final class GetGitopsClusterResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Query for the GitOps cluster resources.
-     * 
-     */
-    public List<GetGitopsClusterQuery> queries() {
-        return this.queries == null ? List.of() : this.queries;
-    }
-    /**
      * @return Cluster create or update request.
      * 
      */
@@ -129,7 +116,6 @@ public final class GetGitopsClusterResult {
         private String identifier;
         private @Nullable String orgId;
         private @Nullable String projectId;
-        private @Nullable List<GetGitopsClusterQuery> queries;
         private List<GetGitopsClusterRequest> requests;
         public Builder() {}
         public Builder(GetGitopsClusterResult defaults) {
@@ -140,7 +126,6 @@ public final class GetGitopsClusterResult {
     	      this.identifier = defaults.identifier;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
-    	      this.queries = defaults.queries;
     	      this.requests = defaults.requests;
         }
 
@@ -189,15 +174,6 @@ public final class GetGitopsClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder queries(@Nullable List<GetGitopsClusterQuery> queries) {
-
-            this.queries = queries;
-            return this;
-        }
-        public Builder queries(GetGitopsClusterQuery... queries) {
-            return queries(List.of(queries));
-        }
-        @CustomType.Setter
         public Builder requests(List<GetGitopsClusterRequest> requests) {
             if (requests == null) {
               throw new MissingRequiredPropertyException("GetGitopsClusterResult", "requests");
@@ -216,7 +192,6 @@ public final class GetGitopsClusterResult {
             _resultValue.identifier = identifier;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
-            _resultValue.queries = queries;
             _resultValue.requests = requests;
             return _resultValue;
         }

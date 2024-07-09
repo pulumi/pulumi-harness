@@ -12,83 +12,6 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness InputSet.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.InputSet("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         PipelineId = "pipeline_id",
-    ///         Yaml = @"inputSet:
-    ///   identifier: ""identifier""
-    ///   name: ""name""
-    ///   tags:
-    ///     foo: ""bar""
-    ///   orgIdentifier: ""org_id""
-    ///   projectIdentifier: ""project_id""
-    ///   pipeline:
-    ///     identifier: ""pipeline_id""
-    ///     variables:
-    ///     - name: ""key""
-    ///       type: ""String""
-    ///       value: ""value""
-    /// ",
-    ///     });
-    /// 
-    ///     // Remote InputSet
-    ///     var test = new Harness.Platform.InputSet("test", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         OrgId = testHarnessPlatformOrganization.Id,
-    ///         ProjectId = testHarnessPlatformProject.Id,
-    ///         PipelineId = testHarnessPlatformPipeline.Id,
-    ///         GitDetails = new Harness.Platform.Inputs.InputSetGitDetailsArgs
-    ///         {
-    ///             BranchName = "main",
-    ///             CommitMessage = "Commit",
-    ///             FilePath = ".harness/file_path.yaml",
-    ///             ConnectorRef = "account.connector_ref",
-    ///             StoreType = "REMOTE",
-    ///             RepoName = "repo_name",
-    ///         },
-    ///         Yaml = @$"inputSet:
-    ///   identifier: ""identifier""
-    ///   name: ""name""
-    ///   tags:
-    ///     foo: ""bar""
-    ///   orgIdentifier: ""{testHarnessPlatformOrganization.Id}""
-    ///   projectIdentifier: ""{testHarnessPlatformProject.Id}""
-    ///   pipeline:
-    ///     identifier: ""{testHarnessPlatformPipeline.Id}""
-    ///     variables:
-    ///     - name: ""key""
-    ///       type: ""String""
-    ///       value: ""value""
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Import input set
@@ -110,13 +33,31 @@ namespace Pulumi.Harness.Platform
         /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
         [Output("gitDetails")]
-        public Output<Outputs.InputSetGitDetails?> GitDetails { get; private set; } = null!;
+        public Output<Outputs.InputSetGitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Output("gitImportInfo")]
+        public Output<Outputs.InputSetGitImportInfo?> GitImportInfo { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Output("importFromGit")]
+        public Output<bool?> ImportFromGit { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains parameters for importing a input set
+        /// </summary>
+        [Output("inputSetImportRequest")]
+        public Output<Outputs.InputSetInputSetImportRequest?> InputSetImportRequest { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -214,10 +155,28 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.InputSetGitDetailsArgs>? GitDetails { get; set; }
 
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitImportInfo")]
+        public Input<Inputs.InputSetGitImportInfoArgs>? GitImportInfo { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// Contains parameters for importing a input set
+        /// </summary>
+        [Input("inputSetImportRequest")]
+        public Input<Inputs.InputSetInputSetImportRequestArgs>? InputSetImportRequest { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -258,8 +217,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
-        [Input("yaml", required: true)]
-        public Input<string> Yaml { get; set; } = null!;
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public InputSetArgs()
         {
@@ -282,10 +241,28 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.InputSetGitDetailsGetArgs>? GitDetails { get; set; }
 
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitImportInfo")]
+        public Input<Inputs.InputSetGitImportInfoGetArgs>? GitImportInfo { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// Contains parameters for importing a input set
+        /// </summary>
+        [Input("inputSetImportRequest")]
+        public Input<Inputs.InputSetInputSetImportRequestGetArgs>? InputSetImportRequest { get; set; }
 
         /// <summary>
         /// Name of the resource.

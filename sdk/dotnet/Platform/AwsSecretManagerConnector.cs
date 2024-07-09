@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating an AWS Secret Manager connector.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -40,6 +40,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("credentials")]
         public Output<Outputs.AwsSecretManagerConnectorCredentials> Credentials { get; private set; } = null!;
+
+        /// <summary>
+        /// Use as Default Secrets Manager.
+        /// </summary>
+        [Output("default")]
+        public Output<bool?> Default { get; private set; } = null!;
 
         /// <summary>
         /// Tags to filter delegates for connection.
@@ -148,6 +154,12 @@ namespace Pulumi.Harness.Platform
         [Input("credentials", required: true)]
         public Input<Inputs.AwsSecretManagerConnectorCredentialsArgs> Credentials { get; set; } = null!;
 
+        /// <summary>
+        /// Use as Default Secrets Manager.
+        /// </summary>
+        [Input("default")]
+        public Input<bool>? Default { get; set; }
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
@@ -227,6 +239,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("credentials")]
         public Input<Inputs.AwsSecretManagerConnectorCredentialsGetArgs>? Credentials { get; set; }
+
+        /// <summary>
+        /// Use as Default Secrets Manager.
+        /// </summary>
+        [Input("default")]
+        public Input<bool>? Default { get; set; }
 
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;

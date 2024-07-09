@@ -4,10 +4,9 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecDestination {
@@ -15,39 +14,39 @@ public final class GetGitopsApplicationsApplicationSpecDestination {
      * @return URL of the target cluster and must be set to the kubernetes control plane API.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Target namespace of the GitOps application&#39;s resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
      * 
      */
-    private @Nullable String namespace;
+    private String namespace;
     /**
-     * @return Server of the destination of the GitOps application.
+     * @return URL of the target cluster server for the GitOps application.
      * 
      */
-    private @Nullable String server;
+    private String server;
 
     private GetGitopsApplicationsApplicationSpecDestination() {}
     /**
      * @return URL of the target cluster and must be set to the kubernetes control plane API.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Target namespace of the GitOps application&#39;s resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
      * 
      */
-    public Optional<String> namespace() {
-        return Optional.ofNullable(this.namespace);
+    public String namespace() {
+        return this.namespace;
     }
     /**
-     * @return Server of the destination of the GitOps application.
+     * @return URL of the target cluster server for the GitOps application.
      * 
      */
-    public Optional<String> server() {
-        return Optional.ofNullable(this.server);
+    public String server() {
+        return this.server;
     }
 
     public static Builder builder() {
@@ -59,9 +58,9 @@ public final class GetGitopsApplicationsApplicationSpecDestination {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String namespace;
-        private @Nullable String server;
+        private String name;
+        private String namespace;
+        private String server;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecDestination defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,20 +70,26 @@ public final class GetGitopsApplicationsApplicationSpecDestination {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecDestination", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder namespace(@Nullable String namespace) {
-
+        public Builder namespace(String namespace) {
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecDestination", "namespace");
+            }
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
-        public Builder server(@Nullable String server) {
-
+        public Builder server(String server) {
+            if (server == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecDestination", "server");
+            }
             this.server = server;
             return this;
         }

@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsRepoCertRequestCertificateItem {
     /**
-     * @return CertData contains the actual certificate data, dependent on the certificate type.
+     * @return CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
      * 
      */
     private @Nullable String certData;
     /**
-     * @return CertInfo will hold additional certificate info, depdendent on the certificate type .
+     * @return CertInfo will hold additional certificate info, dependent on the certificate type .
      * 
      */
     private @Nullable String certInfo;
@@ -39,14 +39,14 @@ public final class GitOpsRepoCertRequestCertificateItem {
 
     private GitOpsRepoCertRequestCertificateItem() {}
     /**
-     * @return CertData contains the actual certificate data, dependent on the certificate type.
+     * @return CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
      * 
      */
     public Optional<String> certData() {
         return Optional.ofNullable(this.certData);
     }
     /**
-     * @return CertInfo will hold additional certificate info, depdendent on the certificate type .
+     * @return CertInfo will hold additional certificate info, dependent on the certificate type .
      * 
      */
     public Optional<String> certInfo() {

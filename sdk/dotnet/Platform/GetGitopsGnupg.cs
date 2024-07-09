@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetGitopsGnupg
     {
         /// <summary>
-        /// Data source for retrieving a GPG public key in the server's configuration.
+        /// Data source for fetching a Harness GitOps GPG public key.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsGnupgResult>("harness:platform/getGitopsGnupg:getGitopsGnupg", args ?? new GetGitopsGnupgArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a GPG public key in the server's configuration.
+        /// Data source for fetching a Harness GitOps GPG public key.
         /// 
         /// ## Example Usage
         /// 
@@ -82,8 +82,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Identifier for the GnuPG Key.
         /// </summary>
-        [Input("identifier")]
-        public string? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public string Identifier { get; set; } = null!;
 
         /// <summary>
         /// Organization Identifier for the GnuPG Key.
@@ -132,8 +132,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Identifier for the GnuPG Key.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Organization Identifier for the GnuPG Key.
@@ -184,7 +184,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Identifier for the GnuPG Key.
         /// </summary>
-        public readonly string? Identifier;
+        public readonly string Identifier;
         /// <summary>
         /// Organization Identifier for the GnuPG Key.
         /// </summary>
@@ -206,7 +206,7 @@ namespace Pulumi.Harness.Platform
 
             string id,
 
-            string? identifier,
+            string identifier,
 
             string? orgId,
 

@@ -209,28 +209,28 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="reportName", refs={String.class}, tree="[0]")
-    private Output<String> reportName;
+    private Output</* @Nullable */ String> reportName;
 
     /**
      * @return The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
-    public Output<String> reportName() {
-        return this.reportName;
+    public Output<Optional<String>> reportName() {
+        return Codegen.optional(this.reportName);
     }
     /**
      * The name of s3 bucket.
      * 
      */
     @Export(name="s3Bucket", refs={String.class}, tree="[0]")
-    private Output<String> s3Bucket;
+    private Output</* @Nullable */ String> s3Bucket;
 
     /**
      * @return The name of s3 bucket.
      * 
      */
-    public Output<String> s3Bucket() {
-        return this.s3Bucket;
+    public Output<Optional<String>> s3Bucket() {
+        return Codegen.optional(this.s3Bucket);
     }
     /**
      * Tags to associate with the resource.

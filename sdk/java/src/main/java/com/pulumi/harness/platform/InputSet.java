@@ -11,6 +11,9 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.InputSetArgs;
 import com.pulumi.harness.platform.inputs.InputSetState;
 import com.pulumi.harness.platform.outputs.InputSetGitDetails;
+import com.pulumi.harness.platform.outputs.InputSetGitImportInfo;
+import com.pulumi.harness.platform.outputs.InputSetInputSetImportRequest;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -18,95 +21,6 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness InputSet.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.InputSet;
- * import com.pulumi.harness.platform.InputSetArgs;
- * import com.pulumi.harness.platform.inputs.InputSetGitDetailsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new InputSet("example", InputSetArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .tags("foo:bar")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .pipelineId("pipeline_id")
- *             .yaml("""
- * inputSet:
- *   identifier: "identifier"
- *   name: "name"
- *   tags:
- *     foo: "bar"
- *   orgIdentifier: "org_id"
- *   projectIdentifier: "project_id"
- *   pipeline:
- *     identifier: "pipeline_id"
- *     variables:
- *     - name: "key"
- *       type: "String"
- *       value: "value"
- *             """)
- *             .build());
- * 
- *         // Remote InputSet
- *         var test = new InputSet("test", InputSetArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .tags("foo:bar")
- *             .orgId(testHarnessPlatformOrganization.id())
- *             .projectId(testHarnessPlatformProject.id())
- *             .pipelineId(testHarnessPlatformPipeline.id())
- *             .gitDetails(InputSetGitDetailsArgs.builder()
- *                 .branchName("main")
- *                 .commitMessage("Commit")
- *                 .filePath(".harness/file_path.yaml")
- *                 .connectorRef("account.connector_ref")
- *                 .storeType("REMOTE")
- *                 .repoName("repo_name")
- *                 .build())
- *             .yaml("""
- * inputSet:
- *   identifier: "identifier"
- *   name: "name"
- *   tags:
- *     foo: "bar"
- *   orgIdentifier: "%s"
- *   projectIdentifier: "%s"
- *   pipeline:
- *     identifier: "%s"
- *     variables:
- *     - name: "key"
- *       type: "String"
- *       value: "value"
- * ", testHarnessPlatformOrganization.id(),testHarnessPlatformProject.id(),testHarnessPlatformPipeline.id()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -138,14 +52,28 @@ public class InputSet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gitDetails", refs={InputSetGitDetails.class}, tree="[0]")
-    private Output</* @Nullable */ InputSetGitDetails> gitDetails;
+    private Output<InputSetGitDetails> gitDetails;
 
     /**
      * @return Contains parameters related to creating an Entity for Git Experience.
      * 
      */
-    public Output<Optional<InputSetGitDetails>> gitDetails() {
-        return Codegen.optional(this.gitDetails);
+    public Output<InputSetGitDetails> gitDetails() {
+        return this.gitDetails;
+    }
+    /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Export(name="gitImportInfo", refs={InputSetGitImportInfo.class}, tree="[0]")
+    private Output</* @Nullable */ InputSetGitImportInfo> gitImportInfo;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Output<Optional<InputSetGitImportInfo>> gitImportInfo() {
+        return Codegen.optional(this.gitImportInfo);
     }
     /**
      * Unique identifier of the resource.
@@ -160,6 +88,34 @@ public class InputSet extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Export(name="importFromGit", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Output<Optional<Boolean>> importFromGit() {
+        return Codegen.optional(this.importFromGit);
+    }
+    /**
+     * Contains parameters for importing a input set
+     * 
+     */
+    @Export(name="inputSetImportRequest", refs={InputSetInputSetImportRequest.class}, tree="[0]")
+    private Output</* @Nullable */ InputSetInputSetImportRequest> inputSetImportRequest;
+
+    /**
+     * @return Contains parameters for importing a input set
+     * 
+     */
+    public Output<Optional<InputSetInputSetImportRequest>> inputSetImportRequest() {
+        return Codegen.optional(this.inputSetImportRequest);
     }
     /**
      * Name of the resource.

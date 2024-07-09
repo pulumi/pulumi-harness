@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetEnvironmentGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,7 @@ public final class GetEnvironmentResult {
      * 
      */
     private String description;
+    private GetEnvironmentGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,7 +61,7 @@ public final class GetEnvironmentResult {
      */
     private String type;
     /**
-     * @return Input Set YAML
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     private String yaml;
@@ -78,6 +80,9 @@ public final class GetEnvironmentResult {
      */
     public String description() {
         return this.description;
+    }
+    public GetEnvironmentGitDetails gitDetails() {
+        return this.gitDetails;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -129,7 +134,7 @@ public final class GetEnvironmentResult {
         return this.type;
     }
     /**
-     * @return Input Set YAML
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public String yaml() {
@@ -147,6 +152,7 @@ public final class GetEnvironmentResult {
     public static final class Builder {
         private String color;
         private String description;
+        private GetEnvironmentGitDetails gitDetails;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -160,6 +166,7 @@ public final class GetEnvironmentResult {
     	      Objects.requireNonNull(defaults);
     	      this.color = defaults.color;
     	      this.description = defaults.description;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -184,6 +191,14 @@ public final class GetEnvironmentResult {
               throw new MissingRequiredPropertyException("GetEnvironmentResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(GetEnvironmentGitDetails gitDetails) {
+            if (gitDetails == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "gitDetails");
+            }
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -251,6 +266,7 @@ public final class GetEnvironmentResult {
             final var _resultValue = new GetEnvironmentResult();
             _resultValue.color = color;
             _resultValue.description = description;
+            _resultValue.gitDetails = gitDetails;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

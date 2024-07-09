@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecDestination;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSource;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSyncPolicy;
@@ -17,7 +18,7 @@ public final class GetGitopsApplicationsApplicationSpec {
      * @return Information about the GitOps application&#39;s destination.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecDestination> destinations;
+    private List<GetGitopsApplicationsApplicationSpecDestination> destinations;
     /**
      * @return Contains all information about the source of a GitOps application.
      * 
@@ -27,7 +28,7 @@ public final class GetGitopsApplicationsApplicationSpec {
      * @return Controls when a sync will be performed in response to updates in git.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
+    private List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
 
     private GetGitopsApplicationsApplicationSpec() {}
     /**
@@ -35,7 +36,7 @@ public final class GetGitopsApplicationsApplicationSpec {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecDestination> destinations() {
-        return this.destinations == null ? List.of() : this.destinations;
+        return this.destinations;
     }
     /**
      * @return Contains all information about the source of a GitOps application.
@@ -49,7 +50,7 @@ public final class GetGitopsApplicationsApplicationSpec {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies() {
-        return this.syncPolicies == null ? List.of() : this.syncPolicies;
+        return this.syncPolicies;
     }
 
     public static Builder builder() {
@@ -61,9 +62,9 @@ public final class GetGitopsApplicationsApplicationSpec {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetGitopsApplicationsApplicationSpecDestination> destinations;
+        private List<GetGitopsApplicationsApplicationSpecDestination> destinations;
         private @Nullable List<GetGitopsApplicationsApplicationSpecSource> sources;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
+        private List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,8 +74,10 @@ public final class GetGitopsApplicationsApplicationSpec {
         }
 
         @CustomType.Setter
-        public Builder destinations(@Nullable List<GetGitopsApplicationsApplicationSpecDestination> destinations) {
-
+        public Builder destinations(List<GetGitopsApplicationsApplicationSpecDestination> destinations) {
+            if (destinations == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpec", "destinations");
+            }
             this.destinations = destinations;
             return this;
         }
@@ -91,8 +94,10 @@ public final class GetGitopsApplicationsApplicationSpec {
             return sources(List.of(sources));
         }
         @CustomType.Setter
-        public Builder syncPolicies(@Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies) {
-
+        public Builder syncPolicies(List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies) {
+            if (syncPolicies == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpec", "syncPolicies");
+            }
             this.syncPolicies = syncPolicies;
             return this;
         }

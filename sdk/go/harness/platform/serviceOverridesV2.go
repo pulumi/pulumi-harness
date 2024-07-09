@@ -12,27 +12,211 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness service override V2.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewServiceOverridesV2(ctx, "test", &platform.ServiceOverridesV2Args{
+//				OrgId:     pulumi.String("orgIdentifier"),
+//				ProjectId: pulumi.String("projectIdentifier"),
+//				EnvId:     pulumi.String("environmentIdentifier"),
+//				ServiceId: pulumi.String("serviceIdentifier"),
+//				InfraId:   pulumi.String("infraIdentifier"),
+//				Type:      pulumi.String("INFRA_SERVICE_OVERRIDE"),
+//				Yaml: pulumi.String(`variables:
+//	  - name: var1
+//	    type: String
+//	    value: val1
+//
+// configFiles:
+//   - configFile:
+//     identifier: sampleConfigFile
+//     spec:
+//     store:
+//     type: Harness
+//     spec:
+//     files:
+//   - account:/configFile1
+//
+// manifests:
+//   - manifest:
+//     identifier: sampleManifestFile
+//     type: Values
+//     spec:
+//     store:
+//     type: Harness
+//     spec:
+//     files:
+//   - account:/manifestFile1
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating Remote Service Override
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewServiceOverridesV2(ctx, "test", &platform.ServiceOverridesV2Args{
+//				OrgId:     pulumi.String("orgIdentifier"),
+//				ProjectId: pulumi.String("projectIdentifier"),
+//				EnvId:     pulumi.String("environmentIdentifier"),
+//				ServiceId: pulumi.String("serviceIdentifier"),
+//				InfraId:   pulumi.String("infraIdentifier"),
+//				Type:      pulumi.String("INFRA_SERVICE_OVERRIDE"),
+//				GitDetails: &platform.ServiceOverridesV2GitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("connector_ref"),
+//					RepoName:     pulumi.String("repo_name"),
+//					FilePath:     pulumi.String("file_path"),
+//					Branch:       pulumi.String("branch"),
+//				},
+//				Yaml: pulumi.String(`variables:
+//	  - name: v1
+//	    type: String
+//	    value: val1
+//
+// manifests:
+//   - manifest:
+//     identifier: manifest1
+//     type: Values
+//     spec:
+//     store:
+//     type: Github
+//     spec:
+//     connectorRef: "<+input>"
+//     gitFetchType: Branch
+//     paths:
+//   - path-updated
+//     repoName: "<+input>"
+//     branch: master
+//     skipResourceVersioning: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Importing Service Override From Git
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewServiceOverridesV2(ctx, "test", &platform.ServiceOverridesV2Args{
+//				OrgId:         pulumi.String("orgIdentifier"),
+//				ProjectId:     pulumi.String("projectIdentifier"),
+//				EnvId:         pulumi.String("environmentIdentifier"),
+//				ServiceId:     pulumi.String("serviceIdentifier"),
+//				InfraId:       pulumi.String("infraIdentifier"),
+//				Type:          pulumi.String("INFRA_SERVICE_OVERRIDE"),
+//				ImportFromGit: pulumi.Bool(true),
+//				GitDetails: &platform.ServiceOverridesV2GitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("connector_ref"),
+//					RepoName:     pulumi.String("repo_name"),
+//					FilePath:     pulumi.String("file_path"),
+//					Branch:       pulumi.String("branch"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// # Import account level service override
+//
+// ```sh
+// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <override_id>
+// ```
+//
+// # Import org level service override
+//
+// ```sh
+// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<override_id>
+// ```
+//
+// # Import project level service override
+//
+// ```sh
+// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<project_id>/<override_id>
+// ```
 type ServiceOverridesV2 struct {
 	pulumi.CustomResourceState
 
-	// The cluster ID to which the overrides are associated
+	// The cluster ID to which the overrides are associated.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The env ID to which the overrides are associated.
+	// The environment ID to which the overrides are associated.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
-	// Unique identifier of the resource.
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails ServiceOverridesV2GitDetailsOutput `pulumi:"gitDetails"`
+	// The identifier of the override entity.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// The infrastructure ID to which the overrides are associated
+	// import override from git
+	ImportFromGit pulumi.BoolOutput `pulumi:"importFromGit"`
+	// The infrastructure ID to which the overrides are associated.
 	InfraId pulumi.StringOutput `pulumi:"infraId"`
+	// force import override from remote even if same file path already exist
+	IsForceImport pulumi.BoolOutput `pulumi:"isForceImport"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
-	// The overrides specification for the service.
-	Spec pulumi.StringOutput `pulumi:"spec"`
-	// The type of the overrides
+	// The type of the overrides.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The yaml of the overrides spec object.
+	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
 // NewServiceOverridesV2 registers a new resource with the given unique name, arguments, and options.
@@ -44,12 +228,6 @@ func NewServiceOverridesV2(ctx *pulumi.Context,
 
 	if args.EnvId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvId'")
-	}
-	if args.Identifier == nil {
-		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.Spec == nil {
-		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -77,45 +255,57 @@ func GetServiceOverridesV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceOverridesV2 resources.
 type serviceOverridesV2State struct {
-	// The cluster ID to which the overrides are associated
+	// The cluster ID to which the overrides are associated.
 	ClusterId *string `pulumi:"clusterId"`
-	// The env ID to which the overrides are associated.
+	// The environment ID to which the overrides are associated.
 	EnvId *string `pulumi:"envId"`
-	// Unique identifier of the resource.
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *ServiceOverridesV2GitDetails `pulumi:"gitDetails"`
+	// The identifier of the override entity.
 	Identifier *string `pulumi:"identifier"`
-	// The infrastructure ID to which the overrides are associated
+	// import override from git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// The infrastructure ID to which the overrides are associated.
 	InfraId *string `pulumi:"infraId"`
+	// force import override from remote even if same file path already exist
+	IsForceImport *bool `pulumi:"isForceImport"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The service ID to which the overrides applies.
 	ServiceId *string `pulumi:"serviceId"`
-	// The overrides specification for the service.
-	Spec *string `pulumi:"spec"`
-	// The type of the overrides
+	// The type of the overrides.
 	Type *string `pulumi:"type"`
+	// The yaml of the overrides spec object.
+	Yaml *string `pulumi:"yaml"`
 }
 
 type ServiceOverridesV2State struct {
-	// The cluster ID to which the overrides are associated
+	// The cluster ID to which the overrides are associated.
 	ClusterId pulumi.StringPtrInput
-	// The env ID to which the overrides are associated.
+	// The environment ID to which the overrides are associated.
 	EnvId pulumi.StringPtrInput
-	// Unique identifier of the resource.
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails ServiceOverridesV2GitDetailsPtrInput
+	// The identifier of the override entity.
 	Identifier pulumi.StringPtrInput
-	// The infrastructure ID to which the overrides are associated
+	// import override from git
+	ImportFromGit pulumi.BoolPtrInput
+	// The infrastructure ID to which the overrides are associated.
 	InfraId pulumi.StringPtrInput
+	// force import override from remote even if same file path already exist
+	IsForceImport pulumi.BoolPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringPtrInput
-	// The overrides specification for the service.
-	Spec pulumi.StringPtrInput
-	// The type of the overrides
+	// The type of the overrides.
 	Type pulumi.StringPtrInput
+	// The yaml of the overrides spec object.
+	Yaml pulumi.StringPtrInput
 }
 
 func (ServiceOverridesV2State) ElementType() reflect.Type {
@@ -123,46 +313,54 @@ func (ServiceOverridesV2State) ElementType() reflect.Type {
 }
 
 type serviceOverridesV2Args struct {
-	// The cluster ID to which the overrides are associated
+	// The cluster ID to which the overrides are associated.
 	ClusterId *string `pulumi:"clusterId"`
-	// The env ID to which the overrides are associated.
+	// The environment ID to which the overrides are associated.
 	EnvId string `pulumi:"envId"`
-	// Unique identifier of the resource.
-	Identifier string `pulumi:"identifier"`
-	// The infrastructure ID to which the overrides are associated
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails *ServiceOverridesV2GitDetails `pulumi:"gitDetails"`
+	// import override from git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// The infrastructure ID to which the overrides are associated.
 	InfraId *string `pulumi:"infraId"`
+	// force import override from remote even if same file path already exist
+	IsForceImport *bool `pulumi:"isForceImport"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The service ID to which the overrides applies.
 	ServiceId *string `pulumi:"serviceId"`
-	// The overrides specification for the service.
-	Spec string `pulumi:"spec"`
-	// The type of the overrides
+	// The type of the overrides.
 	Type string `pulumi:"type"`
+	// The yaml of the overrides spec object.
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a ServiceOverridesV2 resource.
 type ServiceOverridesV2Args struct {
-	// The cluster ID to which the overrides are associated
+	// The cluster ID to which the overrides are associated.
 	ClusterId pulumi.StringPtrInput
-	// The env ID to which the overrides are associated.
+	// The environment ID to which the overrides are associated.
 	EnvId pulumi.StringInput
-	// Unique identifier of the resource.
-	Identifier pulumi.StringInput
-	// The infrastructure ID to which the overrides are associated
+	// Contains parameters related to creating an Entity for Git Experience.
+	GitDetails ServiceOverridesV2GitDetailsPtrInput
+	// import override from git
+	ImportFromGit pulumi.BoolPtrInput
+	// The infrastructure ID to which the overrides are associated.
 	InfraId pulumi.StringPtrInput
+	// force import override from remote even if same file path already exist
+	IsForceImport pulumi.BoolPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringPtrInput
-	// The overrides specification for the service.
-	Spec pulumi.StringInput
-	// The type of the overrides
+	// The type of the overrides.
 	Type pulumi.StringInput
+	// The yaml of the overrides spec object.
+	Yaml pulumi.StringPtrInput
 }
 
 func (ServiceOverridesV2Args) ElementType() reflect.Type {
@@ -252,24 +450,39 @@ func (o ServiceOverridesV2Output) ToServiceOverridesV2OutputWithContext(ctx cont
 	return o
 }
 
-// The cluster ID to which the overrides are associated
+// The cluster ID to which the overrides are associated.
 func (o ServiceOverridesV2Output) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The env ID to which the overrides are associated.
+// The environment ID to which the overrides are associated.
 func (o ServiceOverridesV2Output) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource.
+// Contains parameters related to creating an Entity for Git Experience.
+func (o ServiceOverridesV2Output) GitDetails() ServiceOverridesV2GitDetailsOutput {
+	return o.ApplyT(func(v *ServiceOverridesV2) ServiceOverridesV2GitDetailsOutput { return v.GitDetails }).(ServiceOverridesV2GitDetailsOutput)
+}
+
+// The identifier of the override entity.
 func (o ServiceOverridesV2Output) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The infrastructure ID to which the overrides are associated
+// import override from git
+func (o ServiceOverridesV2Output) ImportFromGit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.BoolOutput { return v.ImportFromGit }).(pulumi.BoolOutput)
+}
+
+// The infrastructure ID to which the overrides are associated.
 func (o ServiceOverridesV2Output) InfraId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.InfraId }).(pulumi.StringOutput)
+}
+
+// force import override from remote even if same file path already exist
+func (o ServiceOverridesV2Output) IsForceImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.BoolOutput { return v.IsForceImport }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the organization.
@@ -287,14 +500,14 @@ func (o ServiceOverridesV2Output) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// The overrides specification for the service.
-func (o ServiceOverridesV2Output) Spec() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
-}
-
-// The type of the overrides
+// The type of the overrides.
 func (o ServiceOverridesV2Output) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The yaml of the overrides spec object.
+func (o ServiceOverridesV2Output) Yaml() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceOverridesV2) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }
 
 type ServiceOverridesV2ArrayOutput struct{ *pulumi.OutputState }

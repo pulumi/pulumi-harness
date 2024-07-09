@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -90,7 +90,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.UserRoleBinding>> RoleBindings { get; private set; } = null!;
 
         /// <summary>
-        /// The user group of the user. Cannot be updated.
+        /// The user group of the user.
         /// </summary>
         [Output("userGroups")]
         public Output<ImmutableArray<string>> UserGroups { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _userGroups;
 
         /// <summary>
-        /// The user group of the user. Cannot be updated.
+        /// The user group of the user.
         /// </summary>
         public InputList<string> UserGroups
         {
@@ -256,7 +256,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _userGroups;
 
         /// <summary>
-        /// The user group of the user. Cannot be updated.
+        /// The user group of the user.
         /// </summary>
         public InputList<string> UserGroups
         {

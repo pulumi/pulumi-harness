@@ -26,7 +26,7 @@ class TokenArgs:
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  scheduled_expire_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  valid: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[int]] = None,
@@ -36,16 +36,16 @@ class TokenArgs:
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_id: Identifier of the API Key
         :param pulumi.Input[str] apikey_type: Type of the API Key
-        :param pulumi.Input[str] identifier: Identifier of the Token
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] description: Description of the Token
+        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] email: Email Id of the user who created the Token
         :param pulumi.Input[str] encoded_password: Encoded password of the Token
-        :param pulumi.Input[str] name: Name of the Token
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[int] scheduled_expire_time: Scheduled expiry time in milliseconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the Token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] username: Name of the user who created the Token
         :param pulumi.Input[bool] valid: Boolean value to indicate if Token is valid or not.
         :param pulumi.Input[int] valid_from: This is the time from which the Token is valid. The time is in milliseconds
@@ -121,7 +121,7 @@ class TokenArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        Identifier of the Token
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -145,7 +145,7 @@ class TokenArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the Token
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -181,7 +181,7 @@ class TokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -193,7 +193,7 @@ class TokenArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -205,7 +205,7 @@ class TokenArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -227,14 +227,14 @@ class TokenArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the Token
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -301,30 +301,32 @@ class _TokenState:
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  scheduled_expire_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  valid: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[int]] = None,
-                 valid_to: Optional[pulumi.Input[int]] = None):
+                 valid_to: Optional[pulumi.Input[int]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_id: Identifier of the API Key
         :param pulumi.Input[str] apikey_type: Type of the API Key
-        :param pulumi.Input[str] description: Description of the Token
+        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] email: Email Id of the user who created the Token
         :param pulumi.Input[str] encoded_password: Encoded password of the Token
-        :param pulumi.Input[str] identifier: Identifier of the Token
-        :param pulumi.Input[str] name: Name of the Token
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[int] scheduled_expire_time: Scheduled expiry time in milliseconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the Token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] username: Name of the user who created the Token
         :param pulumi.Input[bool] valid: Boolean value to indicate if Token is valid or not.
         :param pulumi.Input[int] valid_from: This is the time from which the Token is valid. The time is in milliseconds
         :param pulumi.Input[int] valid_to: This is the time till which the Token is valid. The time is in milliseconds
+        :param pulumi.Input[str] value: Value of the Token
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -360,6 +362,8 @@ class _TokenState:
             pulumi.set(__self__, "valid_from", valid_from)
         if valid_to is not None:
             pulumi.set(__self__, "valid_to", valid_to)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -401,7 +405,7 @@ class _TokenState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the Token
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -437,7 +441,7 @@ class _TokenState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the Token
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -449,7 +453,7 @@ class _TokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -461,7 +465,7 @@ class _TokenState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -485,7 +489,7 @@ class _TokenState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -507,14 +511,14 @@ class _TokenState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the Token
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -565,6 +569,18 @@ class _TokenState:
     def valid_to(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "valid_to", value)
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the Token
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
 
 class Token(pulumi.CustomResource):
     @overload
@@ -583,14 +599,14 @@ class Token(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  scheduled_expire_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  valid: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[int]] = None,
                  valid_to: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Resource for creating tokens.
+        ## Example Usage
 
         ## Import
 
@@ -617,16 +633,16 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_id: Identifier of the API Key
         :param pulumi.Input[str] apikey_type: Type of the API Key
-        :param pulumi.Input[str] description: Description of the Token
+        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] email: Email Id of the user who created the Token
         :param pulumi.Input[str] encoded_password: Encoded password of the Token
-        :param pulumi.Input[str] identifier: Identifier of the Token
-        :param pulumi.Input[str] name: Name of the Token
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[int] scheduled_expire_time: Scheduled expiry time in milliseconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the Token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] username: Name of the user who created the Token
         :param pulumi.Input[bool] valid: Boolean value to indicate if Token is valid or not.
         :param pulumi.Input[int] valid_from: This is the time from which the Token is valid. The time is in milliseconds
@@ -639,7 +655,7 @@ class Token(pulumi.CustomResource):
                  args: TokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating tokens.
+        ## Example Usage
 
         ## Import
 
@@ -688,7 +704,7 @@ class Token(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  scheduled_expire_time: Optional[pulumi.Input[int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  valid: Optional[pulumi.Input[bool]] = None,
                  valid_from: Optional[pulumi.Input[int]] = None,
@@ -729,6 +745,9 @@ class Token(pulumi.CustomResource):
             __props__.__dict__["valid"] = valid
             __props__.__dict__["valid_from"] = valid_from
             __props__.__dict__["valid_to"] = valid_to
+            __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Token, __self__).__init__(
             'harness:platform/token:Token',
             resource_name,
@@ -751,11 +770,12 @@ class Token(pulumi.CustomResource):
             parent_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             scheduled_expire_time: Optional[pulumi.Input[int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             username: Optional[pulumi.Input[str]] = None,
             valid: Optional[pulumi.Input[bool]] = None,
             valid_from: Optional[pulumi.Input[int]] = None,
-            valid_to: Optional[pulumi.Input[int]] = None) -> 'Token':
+            valid_to: Optional[pulumi.Input[int]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'Token':
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -766,20 +786,21 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_id: Identifier of the API Key
         :param pulumi.Input[str] apikey_type: Type of the API Key
-        :param pulumi.Input[str] description: Description of the Token
+        :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] email: Email Id of the user who created the Token
         :param pulumi.Input[str] encoded_password: Encoded password of the Token
-        :param pulumi.Input[str] identifier: Identifier of the Token
-        :param pulumi.Input[str] name: Name of the Token
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[int] scheduled_expire_time: Scheduled expiry time in milliseconds
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the Token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] username: Name of the user who created the Token
         :param pulumi.Input[bool] valid: Boolean value to indicate if Token is valid or not.
         :param pulumi.Input[int] valid_from: This is the time from which the Token is valid. The time is in milliseconds
         :param pulumi.Input[int] valid_to: This is the time till which the Token is valid. The time is in milliseconds
+        :param pulumi.Input[str] value: Value of the Token
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -802,6 +823,7 @@ class Token(pulumi.CustomResource):
         __props__.__dict__["valid"] = valid
         __props__.__dict__["valid_from"] = valid_from
         __props__.__dict__["valid_to"] = valid_to
+        __props__.__dict__["value"] = value
         return Token(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -832,7 +854,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the Token
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -856,7 +878,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        Identifier of the Token
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -864,7 +886,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -872,7 +894,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -888,7 +910,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -902,9 +924,9 @@ class Token(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags for the Token
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -939,4 +961,12 @@ class Token(pulumi.CustomResource):
         This is the time till which the Token is valid. The time is in milliseconds
         """
         return pulumi.get(self, "valid_to")
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Output[str]:
+        """
+        Value of the Token
+        """
+        return pulumi.get(self, "value")
 

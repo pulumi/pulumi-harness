@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.JiraConnectorAuthPersonalAccessTokenArgs;
 import com.pulumi.harness.platform.inputs.JiraConnectorAuthUsernamePasswordArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -33,6 +34,21 @@ public final class JiraConnectorAuthArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Authenticate using personal access token.
+     * 
+     */
+    @Import(name="personalAccessToken")
+    private @Nullable Output<JiraConnectorAuthPersonalAccessTokenArgs> personalAccessToken;
+
+    /**
+     * @return Authenticate using personal access token.
+     * 
+     */
+    public Optional<Output<JiraConnectorAuthPersonalAccessTokenArgs>> personalAccessToken() {
+        return Optional.ofNullable(this.personalAccessToken);
+    }
+
+    /**
      * Authenticate using username password.
      * 
      */
@@ -51,6 +67,7 @@ public final class JiraConnectorAuthArgs extends com.pulumi.resources.ResourceAr
 
     private JiraConnectorAuthArgs(JiraConnectorAuthArgs $) {
         this.authType = $.authType;
+        this.personalAccessToken = $.personalAccessToken;
         this.usernamePassword = $.usernamePassword;
     }
 
@@ -91,6 +108,27 @@ public final class JiraConnectorAuthArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param personalAccessToken Authenticate using personal access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessToken(@Nullable Output<JiraConnectorAuthPersonalAccessTokenArgs> personalAccessToken) {
+            $.personalAccessToken = personalAccessToken;
+            return this;
+        }
+
+        /**
+         * @param personalAccessToken Authenticate using personal access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder personalAccessToken(JiraConnectorAuthPersonalAccessTokenArgs personalAccessToken) {
+            return personalAccessToken(Output.of(personalAccessToken));
         }
 
         /**

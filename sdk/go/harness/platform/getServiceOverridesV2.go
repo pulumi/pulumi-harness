@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for Harness service overrides V2.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupServiceOverridesV2(ctx, &platform.LookupServiceOverridesV2Args{
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("orgIdentifier"),
+//				ProjectId:  pulumi.StringRef("projectIdentifier"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceOverridesV2(ctx *pulumi.Context, args *LookupServiceOverridesV2Args, opts ...pulumi.InvokeOption) (*LookupServiceOverridesV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceOverridesV2Result
@@ -23,21 +52,17 @@ func LookupServiceOverridesV2(ctx *pulumi.Context, args *LookupServiceOverridesV
 
 // A collection of arguments for invoking getServiceOverridesV2.
 type LookupServiceOverridesV2Args struct {
-	ClusterId  *string `pulumi:"clusterId"`
-	EnvId      string  `pulumi:"envId"`
-	Identifier string  `pulumi:"identifier"`
-	InfraId    *string `pulumi:"infraId"`
-	OrgId      *string `pulumi:"orgId"`
-	ProjectId  *string `pulumi:"projectId"`
-	ServiceId  *string `pulumi:"serviceId"`
-	Spec       string  `pulumi:"spec"`
-	Type       string  `pulumi:"type"`
+	GitDetails *GetServiceOverridesV2GitDetails `pulumi:"gitDetails"`
+	Identifier string                           `pulumi:"identifier"`
+	OrgId      *string                          `pulumi:"orgId"`
+	ProjectId  *string                          `pulumi:"projectId"`
 }
 
 // A collection of values returned by getServiceOverridesV2.
 type LookupServiceOverridesV2Result struct {
-	ClusterId string `pulumi:"clusterId"`
-	EnvId     string `pulumi:"envId"`
+	ClusterId  string                          `pulumi:"clusterId"`
+	EnvId      string                          `pulumi:"envId"`
+	GitDetails GetServiceOverridesV2GitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	Identifier string  `pulumi:"identifier"`
@@ -45,8 +70,8 @@ type LookupServiceOverridesV2Result struct {
 	OrgId      *string `pulumi:"orgId"`
 	ProjectId  *string `pulumi:"projectId"`
 	ServiceId  string  `pulumi:"serviceId"`
-	Spec       string  `pulumi:"spec"`
 	Type       string  `pulumi:"type"`
+	Yaml       string  `pulumi:"yaml"`
 }
 
 func LookupServiceOverridesV2Output(ctx *pulumi.Context, args LookupServiceOverridesV2OutputArgs, opts ...pulumi.InvokeOption) LookupServiceOverridesV2ResultOutput {
@@ -64,15 +89,10 @@ func LookupServiceOverridesV2Output(ctx *pulumi.Context, args LookupServiceOverr
 
 // A collection of arguments for invoking getServiceOverridesV2.
 type LookupServiceOverridesV2OutputArgs struct {
-	ClusterId  pulumi.StringPtrInput `pulumi:"clusterId"`
-	EnvId      pulumi.StringInput    `pulumi:"envId"`
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	InfraId    pulumi.StringPtrInput `pulumi:"infraId"`
-	OrgId      pulumi.StringPtrInput `pulumi:"orgId"`
-	ProjectId  pulumi.StringPtrInput `pulumi:"projectId"`
-	ServiceId  pulumi.StringPtrInput `pulumi:"serviceId"`
-	Spec       pulumi.StringInput    `pulumi:"spec"`
-	Type       pulumi.StringInput    `pulumi:"type"`
+	GitDetails GetServiceOverridesV2GitDetailsPtrInput `pulumi:"gitDetails"`
+	Identifier pulumi.StringInput                      `pulumi:"identifier"`
+	OrgId      pulumi.StringPtrInput                   `pulumi:"orgId"`
+	ProjectId  pulumi.StringPtrInput                   `pulumi:"projectId"`
 }
 
 func (LookupServiceOverridesV2OutputArgs) ElementType() reflect.Type {
@@ -102,6 +122,10 @@ func (o LookupServiceOverridesV2ResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.EnvId }).(pulumi.StringOutput)
 }
 
+func (o LookupServiceOverridesV2ResultOutput) GitDetails() GetServiceOverridesV2GitDetailsOutput {
+	return o.ApplyT(func(v LookupServiceOverridesV2Result) GetServiceOverridesV2GitDetails { return v.GitDetails }).(GetServiceOverridesV2GitDetailsOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupServiceOverridesV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.Id }).(pulumi.StringOutput)
@@ -127,12 +151,12 @@ func (o LookupServiceOverridesV2ResultOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-func (o LookupServiceOverridesV2ResultOutput) Spec() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.Spec }).(pulumi.StringOutput)
-}
-
 func (o LookupServiceOverridesV2ResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceOverridesV2ResultOutput) Yaml() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceOverridesV2Result) string { return v.Yaml }).(pulumi.StringOutput)
 }
 
 func init() {

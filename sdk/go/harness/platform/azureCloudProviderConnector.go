@@ -173,6 +173,8 @@ type AzureCloudProviderConnector struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -231,6 +233,8 @@ type azureCloudProviderConnectorState struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -254,6 +258,8 @@ type AzureCloudProviderConnectorState struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -281,6 +287,8 @@ type azureCloudProviderConnectorArgs struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -305,6 +313,8 @@ type AzureCloudProviderConnectorArgs struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -429,6 +439,11 @@ func (o AzureCloudProviderConnectorOutput) Description() pulumi.StringPtrOutput 
 // Execute on delegate or not.
 func (o AzureCloudProviderConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureCloudProviderConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Enable this flag for force deletion of connector
+func (o AzureCloudProviderConnectorOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AzureCloudProviderConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the resource.

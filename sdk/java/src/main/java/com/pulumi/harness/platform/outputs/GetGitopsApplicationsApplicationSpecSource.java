@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceDirectory;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceHelm;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceKsonnet;
@@ -12,7 +13,6 @@ import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecS
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -21,12 +21,12 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * @return Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
      * 
      */
-    private @Nullable String chart;
+    private String chart;
     /**
      * @return Options for applications of type plain YAML or Jsonnet.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories;
+    private List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories;
     /**
      * @return Holds helm specific options.
      * 
@@ -36,47 +36,47 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * @return Ksonnet specific options.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets;
+    private List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets;
     /**
      * @return Options specific to a GitOps application source specific to Kustomize.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes;
+    private List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes;
     /**
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    private @Nullable String path;
+    private String path;
     /**
      * @return Options specific to config management plugins.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
+    private List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
     /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
-    private @Nullable String repoUrl;
+    private String repoUrl;
     /**
      * @return Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart&#39;s version.
      * 
      */
-    private @Nullable String targetRevision;
+    private String targetRevision;
 
     private GetGitopsApplicationsApplicationSpecSource() {}
     /**
      * @return Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
      * 
      */
-    public Optional<String> chart() {
-        return Optional.ofNullable(this.chart);
+    public String chart() {
+        return this.chart;
     }
     /**
      * @return Options for applications of type plain YAML or Jsonnet.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories() {
-        return this.directories == null ? List.of() : this.directories;
+        return this.directories;
     }
     /**
      * @return Holds helm specific options.
@@ -90,42 +90,42 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets() {
-        return this.ksonnets == null ? List.of() : this.ksonnets;
+        return this.ksonnets;
     }
     /**
      * @return Options specific to a GitOps application source specific to Kustomize.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes() {
-        return this.kustomizes == null ? List.of() : this.kustomizes;
+        return this.kustomizes;
     }
     /**
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    public Optional<String> path() {
-        return Optional.ofNullable(this.path);
+    public String path() {
+        return this.path;
     }
     /**
      * @return Options specific to config management plugins.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins() {
-        return this.plugins == null ? List.of() : this.plugins;
+        return this.plugins;
     }
     /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
-    public Optional<String> repoUrl() {
-        return Optional.ofNullable(this.repoUrl);
+    public String repoUrl() {
+        return this.repoUrl;
     }
     /**
      * @return Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart&#39;s version.
      * 
      */
-    public Optional<String> targetRevision() {
-        return Optional.ofNullable(this.targetRevision);
+    public String targetRevision() {
+        return this.targetRevision;
     }
 
     public static Builder builder() {
@@ -137,15 +137,15 @@ public final class GetGitopsApplicationsApplicationSpecSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String chart;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories;
+        private String chart;
+        private List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories;
         private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelm> helms;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes;
-        private @Nullable String path;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
-        private @Nullable String repoUrl;
-        private @Nullable String targetRevision;
+        private List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets;
+        private List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes;
+        private String path;
+        private List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
+        private String repoUrl;
+        private String targetRevision;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -161,14 +161,18 @@ public final class GetGitopsApplicationsApplicationSpecSource {
         }
 
         @CustomType.Setter
-        public Builder chart(@Nullable String chart) {
-
+        public Builder chart(String chart) {
+            if (chart == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "chart");
+            }
             this.chart = chart;
             return this;
         }
         @CustomType.Setter
-        public Builder directories(@Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories) {
-
+        public Builder directories(List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories) {
+            if (directories == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "directories");
+            }
             this.directories = directories;
             return this;
         }
@@ -185,8 +189,10 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return helms(List.of(helms));
         }
         @CustomType.Setter
-        public Builder ksonnets(@Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets) {
-
+        public Builder ksonnets(List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets) {
+            if (ksonnets == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "ksonnets");
+            }
             this.ksonnets = ksonnets;
             return this;
         }
@@ -194,8 +200,10 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return ksonnets(List.of(ksonnets));
         }
         @CustomType.Setter
-        public Builder kustomizes(@Nullable List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes) {
-
+        public Builder kustomizes(List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes) {
+            if (kustomizes == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "kustomizes");
+            }
             this.kustomizes = kustomizes;
             return this;
         }
@@ -203,14 +211,18 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return kustomizes(List.of(kustomizes));
         }
         @CustomType.Setter
-        public Builder path(@Nullable String path) {
-
+        public Builder path(String path) {
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "path");
+            }
             this.path = path;
             return this;
         }
         @CustomType.Setter
-        public Builder plugins(@Nullable List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins) {
-
+        public Builder plugins(List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins) {
+            if (plugins == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "plugins");
+            }
             this.plugins = plugins;
             return this;
         }
@@ -218,14 +230,18 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return plugins(List.of(plugins));
         }
         @CustomType.Setter
-        public Builder repoUrl(@Nullable String repoUrl) {
-
+        public Builder repoUrl(String repoUrl) {
+            if (repoUrl == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "repoUrl");
+            }
             this.repoUrl = repoUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder targetRevision(@Nullable String targetRevision) {
-
+        public Builder targetRevision(String targetRevision) {
+            if (targetRevision == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "targetRevision");
+            }
             this.targetRevision = targetRevision;
             return this;
         }

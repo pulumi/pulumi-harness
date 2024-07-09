@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetServiceNowConnectorAuthAdf;
+import com.pulumi.harness.platform.outputs.GetServiceNowConnectorAuthRefreshToken;
 import com.pulumi.harness.platform.outputs.GetServiceNowConnectorAuthUsernamePassword;
 import java.lang.String;
 import java.util.List;
@@ -23,6 +24,11 @@ public final class GetServiceNowConnectorAuth {
      * 
      */
     private String authType;
+    /**
+     * @return Authenticate using refresh token grant type.
+     * 
+     */
+    private List<GetServiceNowConnectorAuthRefreshToken> refreshTokens;
     /**
      * @return Authenticate using username password.
      * 
@@ -45,6 +51,13 @@ public final class GetServiceNowConnectorAuth {
         return this.authType;
     }
     /**
+     * @return Authenticate using refresh token grant type.
+     * 
+     */
+    public List<GetServiceNowConnectorAuthRefreshToken> refreshTokens() {
+        return this.refreshTokens;
+    }
+    /**
      * @return Authenticate using username password.
      * 
      */
@@ -63,12 +76,14 @@ public final class GetServiceNowConnectorAuth {
     public static final class Builder {
         private List<GetServiceNowConnectorAuthAdf> adfs;
         private String authType;
+        private List<GetServiceNowConnectorAuthRefreshToken> refreshTokens;
         private List<GetServiceNowConnectorAuthUsernamePassword> usernamePasswords;
         public Builder() {}
         public Builder(GetServiceNowConnectorAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adfs = defaults.adfs;
     	      this.authType = defaults.authType;
+    	      this.refreshTokens = defaults.refreshTokens;
     	      this.usernamePasswords = defaults.usernamePasswords;
         }
 
@@ -92,6 +107,17 @@ public final class GetServiceNowConnectorAuth {
             return this;
         }
         @CustomType.Setter
+        public Builder refreshTokens(List<GetServiceNowConnectorAuthRefreshToken> refreshTokens) {
+            if (refreshTokens == null) {
+              throw new MissingRequiredPropertyException("GetServiceNowConnectorAuth", "refreshTokens");
+            }
+            this.refreshTokens = refreshTokens;
+            return this;
+        }
+        public Builder refreshTokens(GetServiceNowConnectorAuthRefreshToken... refreshTokens) {
+            return refreshTokens(List.of(refreshTokens));
+        }
+        @CustomType.Setter
         public Builder usernamePasswords(List<GetServiceNowConnectorAuthUsernamePassword> usernamePasswords) {
             if (usernamePasswords == null) {
               throw new MissingRequiredPropertyException("GetServiceNowConnectorAuth", "usernamePasswords");
@@ -106,6 +132,7 @@ public final class GetServiceNowConnectorAuth {
             final var _resultValue = new GetServiceNowConnectorAuth();
             _resultValue.adfs = adfs;
             _resultValue.authType = authType;
+            _resultValue.refreshTokens = refreshTokens;
             _resultValue.usernamePasswords = usernamePasswords;
             return _resultValue;
         }

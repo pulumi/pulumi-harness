@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Cluster.
+// Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
 //
 // ## Example Usage
 //
@@ -27,10 +27,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// data source for gitops clusters mapped to a project level env
 //			_, err := platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
-//				Identifier: "identifier",
-//				OrgId:      pulumi.StringRef("org_id"),
-//				ProjectId:  pulumi.StringRef("project_id"),
+//				Identifier: "mycustomidentifier",
+//				OrgId:      pulumi.StringRef("orgIdentifer"),
+//				ProjectId:  pulumi.StringRef("projectIdentifier"),
+//				EnvId:      "exampleEnvId",
+//				Clusters: []platform.GetEnvironmentClustersMappingCluster{
+//					{
+//						Identifier:      pulumi.StringRef("incluster"),
+//						Name:            pulumi.StringRef("in-cluster"),
+//						AgentIdentifier: pulumi.StringRef("account.gitopsagentdev"),
+//						Scope:           pulumi.StringRef("ACCOUNT"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// data source for two gitops clusters mapped to an account level env
+//			_, err = platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
+//				Identifier: "mycustomidentifier",
+//				EnvId:      "env1",
+//				Clusters: []platform.GetEnvironmentClustersMappingCluster{
+//					{
+//						Identifier:      pulumi.StringRef("clusterA"),
+//						Name:            pulumi.StringRef("cluster-A"),
+//						AgentIdentifier: pulumi.StringRef("account.gitopsagentprod"),
+//						Scope:           pulumi.StringRef("ACCOUNT"),
+//					},
+//					{
+//						Identifier:      pulumi.StringRef("clusterB"),
+//						Name:            pulumi.StringRef("cluster-B"),
+//						AgentIdentifier: pulumi.StringRef("account.gitopsagentprod"),
+//						Scope:           pulumi.StringRef("ACCOUNT"),
+//					},
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,29 +84,33 @@ func LookupEnvironmentClustersMapping(ctx *pulumi.Context, args *LookupEnvironme
 
 // A collection of arguments for invoking getEnvironmentClustersMapping.
 type LookupEnvironmentClustersMappingArgs struct {
-	// environment identifier of the cluster.
+	// list of cluster identifiers and names
+	Clusters []GetEnvironmentClustersMappingCluster `pulumi:"clusters"`
+	// environment identifier.
 	EnvId string `pulumi:"envId"`
-	// identifier of the cluster.
+	// identifier for the cluster mapping(can be given any value).
 	Identifier string `pulumi:"identifier"`
-	// org_id of the cluster.
+	// org_id of the environment.
 	OrgId *string `pulumi:"orgId"`
-	// project_id of the cluster.
+	// project_id of the environment.
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getEnvironmentClustersMapping.
 type LookupEnvironmentClustersMappingResult struct {
-	// environment identifier of the cluster.
+	// list of cluster identifiers and names
+	Clusters []GetEnvironmentClustersMappingCluster `pulumi:"clusters"`
+	// environment identifier.
 	EnvId string `pulumi:"envId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// identifier of the cluster.
+	// identifier for the cluster mapping(can be given any value).
 	Identifier string `pulumi:"identifier"`
-	// org_id of the cluster.
+	// org_id of the environment.
 	OrgId *string `pulumi:"orgId"`
-	// project_id of the cluster.
+	// project_id of the environment.
 	ProjectId *string `pulumi:"projectId"`
-	// scope at which the cluster exists in harness gitops
+	// scope at which the environment exists in harness.
 	Scope string `pulumi:"scope"`
 }
 
@@ -93,13 +129,15 @@ func LookupEnvironmentClustersMappingOutput(ctx *pulumi.Context, args LookupEnvi
 
 // A collection of arguments for invoking getEnvironmentClustersMapping.
 type LookupEnvironmentClustersMappingOutputArgs struct {
-	// environment identifier of the cluster.
+	// list of cluster identifiers and names
+	Clusters GetEnvironmentClustersMappingClusterArrayInput `pulumi:"clusters"`
+	// environment identifier.
 	EnvId pulumi.StringInput `pulumi:"envId"`
-	// identifier of the cluster.
+	// identifier for the cluster mapping(can be given any value).
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// org_id of the cluster.
+	// org_id of the environment.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// project_id of the cluster.
+	// project_id of the environment.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -122,7 +160,14 @@ func (o LookupEnvironmentClustersMappingResultOutput) ToLookupEnvironmentCluster
 	return o
 }
 
-// environment identifier of the cluster.
+// list of cluster identifiers and names
+func (o LookupEnvironmentClustersMappingResultOutput) Clusters() GetEnvironmentClustersMappingClusterArrayOutput {
+	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) []GetEnvironmentClustersMappingCluster {
+		return v.Clusters
+	}).(GetEnvironmentClustersMappingClusterArrayOutput)
+}
+
+// environment identifier.
 func (o LookupEnvironmentClustersMappingResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) string { return v.EnvId }).(pulumi.StringOutput)
 }
@@ -132,22 +177,22 @@ func (o LookupEnvironmentClustersMappingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// identifier of the cluster.
+// identifier for the cluster mapping(can be given any value).
 func (o LookupEnvironmentClustersMappingResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// org_id of the cluster.
+// org_id of the environment.
 func (o LookupEnvironmentClustersMappingResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// project_id of the cluster.
+// project_id of the environment.
 func (o LookupEnvironmentClustersMappingResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// scope at which the cluster exists in harness gitops
+// scope at which the environment exists in harness.
 func (o LookupEnvironmentClustersMappingResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentClustersMappingResult) string { return v.Scope }).(pulumi.StringOutput)
 }

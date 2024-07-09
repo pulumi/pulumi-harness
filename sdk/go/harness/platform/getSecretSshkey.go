@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for looking up an SSH Key type secret.
-//
 // ## Example Usage
 //
 // ```go

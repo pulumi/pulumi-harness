@@ -1120,8 +1120,6 @@ class VaultConnector(pulumi.CustomResource):
                  xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for creating a HashiCorp Vault Secret Manager connector.
-
         ## Example Usage
 
         ```python
@@ -1298,8 +1296,6 @@ class VaultConnector(pulumi.CustomResource):
                  args: VaultConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a HashiCorp Vault Secret Manager connector.
-
         ## Example Usage
 
         ```python

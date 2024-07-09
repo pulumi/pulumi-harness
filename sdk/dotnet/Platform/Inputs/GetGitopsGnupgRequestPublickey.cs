@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public string? Fingerprint { get; set; }
 
         /// <summary>
-        /// KeyData holds the raw key data, in base64 encoded format
+        /// KeyData holds the raw key data, in base64 encoded format.
         /// </summary>
         [Input("keyData")]
         public string? KeyData { get; set; }

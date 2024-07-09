@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetEnvironmentGitDetailsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetEnvironmentArgs Empty = new GetEnvironmentArgs();
+
+    @Import(name="gitDetails")
+    private @Nullable Output<GetEnvironmentGitDetailsArgs> gitDetails;
+
+    public Optional<Output<GetEnvironmentGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -79,6 +87,7 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
     private GetEnvironmentArgs() {}
 
     private GetEnvironmentArgs(GetEnvironmentArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -101,6 +110,15 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetEnvironmentArgs defaults) {
             $ = new GetEnvironmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder gitDetails(@Nullable Output<GetEnvironmentGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        public Builder gitDetails(GetEnvironmentGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**

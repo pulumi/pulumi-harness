@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,33 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
     public static final AwsSecretManagerConnectorCredentialsManualArgs Empty = new AwsSecretManagerConnectorCredentialsManualArgs();
 
     /**
+     * The plain text AWS access key.
+     * 
+     */
+    @Import(name="accessKeyPlainText")
+    private @Nullable Output<String> accessKeyPlainText;
+
+    /**
+     * @return The plain text AWS access key.
+     * 
+     */
+    public Optional<Output<String>> accessKeyPlainText() {
+        return Optional.ofNullable(this.accessKeyPlainText);
+    }
+
+    /**
      * The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Import(name="accessKeyRef", required=true)
-    private Output<String> accessKeyRef;
+    @Import(name="accessKeyRef")
+    private @Nullable Output<String> accessKeyRef;
 
     /**
      * @return The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> accessKeyRef() {
-        return this.accessKeyRef;
+    public Optional<Output<String>> accessKeyRef() {
+        return Optional.ofNullable(this.accessKeyRef);
     }
 
     /**
@@ -47,6 +64,7 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
     private AwsSecretManagerConnectorCredentialsManualArgs() {}
 
     private AwsSecretManagerConnectorCredentialsManualArgs(AwsSecretManagerConnectorCredentialsManualArgs $) {
+        this.accessKeyPlainText = $.accessKeyPlainText;
         this.accessKeyRef = $.accessKeyRef;
         this.secretKeyRef = $.secretKeyRef;
     }
@@ -70,12 +88,33 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
         }
 
         /**
+         * @param accessKeyPlainText The plain text AWS access key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessKeyPlainText(@Nullable Output<String> accessKeyPlainText) {
+            $.accessKeyPlainText = accessKeyPlainText;
+            return this;
+        }
+
+        /**
+         * @param accessKeyPlainText The plain text AWS access key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessKeyPlainText(String accessKeyPlainText) {
+            return accessKeyPlainText(Output.of(accessKeyPlainText));
+        }
+
+        /**
          * @param accessKeyRef The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
          */
-        public Builder accessKeyRef(Output<String> accessKeyRef) {
+        public Builder accessKeyRef(@Nullable Output<String> accessKeyRef) {
             $.accessKeyRef = accessKeyRef;
             return this;
         }
@@ -112,9 +151,6 @@ public final class AwsSecretManagerConnectorCredentialsManualArgs extends com.pu
         }
 
         public AwsSecretManagerConnectorCredentialsManualArgs build() {
-            if ($.accessKeyRef == null) {
-                throw new MissingRequiredPropertyException("AwsSecretManagerConnectorCredentialsManualArgs", "accessKeyRef");
-            }
             if ($.secretKeyRef == null) {
                 throw new MissingRequiredPropertyException("AwsSecretManagerConnectorCredentialsManualArgs", "secretKeyRef");
             }

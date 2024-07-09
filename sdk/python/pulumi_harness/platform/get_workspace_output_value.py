@@ -22,7 +22,7 @@ class GetWorkspaceOutputValueResult:
     """
     A collection of values returned by getWorkspaceOutputValue.
     """
-    def __init__(__self__, id=None, identifier=None, org_id=None, outputs=None, project_id=None):
+    def __init__(__self__, id=None, identifier=None, org_id=None, output_values=None, project_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -32,9 +32,9 @@ class GetWorkspaceOutputValueResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
-        if outputs and not isinstance(outputs, list):
-            raise TypeError("Expected argument 'outputs' to be a list")
-        pulumi.set(__self__, "outputs", outputs)
+        if output_values and not isinstance(output_values, list):
+            raise TypeError("Expected argument 'output_values' to be a list")
+        pulumi.set(__self__, "output_values", output_values)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -65,8 +65,8 @@ class GetWorkspaceOutputValueResult:
 
     @property
     @pulumi.getter
-    def outputs(self) -> Sequence['outputs.GetWorkspaceOutputValueOutputResult']:
-        return pulumi.get(self, "outputs")
+    def output_values(self) -> Sequence['outputs.GetWorkspaceOutputValueOutput_valueResult']:
+        return pulumi.get(self, "output_values")
 
     @property
     @pulumi.getter(name="projectId")
@@ -86,7 +86,7 @@ class AwaitableGetWorkspaceOutputValueResult(GetWorkspaceOutputValueResult):
             id=self.id,
             identifier=self.identifier,
             org_id=self.org_id,
-            outputs=self.outputs,
+            output_values=self.output_values,
             project_id=self.project_id)
 
 
@@ -124,7 +124,7 @@ def get_workspace_output_value(identifier: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        outputs=pulumi.get(__ret__, 'outputs'),
+        output_values=pulumi.get(__ret__, 'output_values'),
         project_id=pulumi.get(__ret__, 'project_id'))
 
 

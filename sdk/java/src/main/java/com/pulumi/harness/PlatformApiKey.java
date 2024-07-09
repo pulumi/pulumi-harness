@@ -12,10 +12,34 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.inputs.PlatformApiKeyState;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating apikeys.
+ * 
+ * ## Import
+ * 
+ * Import account level apikey
+ * 
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+ * ```
+ * 
+ * Import org level apikey
+ * 
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+ * ```
+ * 
+ * Import project level apikey
+ * 
+ * ```sh
+ * $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:index/platformApiKey:PlatformApiKey")
 public class PlatformApiKey extends com.pulumi.resources.CustomResource {
     /**
@@ -61,56 +85,56 @@ public class PlatformApiKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultTimeToExpireToken);
     }
     /**
-     * Description of the API Key
+     * Description of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the API Key
+     * @return Description of the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Identifier of the API Key
+     * Unique identifier of the resource.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Identifier of the API Key
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * Name of the API Key
+     * Name of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the API Key
+     * @return Name of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
@@ -131,31 +155,31 @@ public class PlatformApiKey extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Tags for the API Key
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags for the API Key
+     * @return Tags to associate with the resource.
      * 
      */
-    public Output<Optional<Map<String,String>>> tags() {
+    public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
 

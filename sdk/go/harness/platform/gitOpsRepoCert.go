@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness Gitops Repositories Certificates.
+// Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
 //
 // ## Example Usage
 //
@@ -38,9 +38,10 @@ import (
 //								},
 //								Items: platform.GitOpsRepoCertRequestCertificateItemArray{
 //									&platform.GitOpsRepoCertRequestCertificateItemArgs{
-//										ServerName: pulumi.String("serverName"),
-//										CertType:   pulumi.String("https"),
-//										CertData:   pulumi.String("yourcertdata"),
+//										ServerName:  pulumi.String("github.com"),
+//										CertType:    pulumi.String("ssh"),
+//										CertSubType: pulumi.String("ecdsa-sha2-nistp256"),
+//										CertData:    pulumi.String("QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0="),
 //									},
 //								},
 //							},
@@ -62,23 +63,35 @@ import (
 //
 // ## Import
 //
-// # Import a Account level Gitops Repository Certificate
+// # Import an Account level Gitops Repository Certificate
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
 // ```
+//
+// # Import an Org level Gitops Repository Certificate
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<repocert_id>
+// ```
+//
+// # Import a Project level Gitops Repository Certificate
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<project_id>/<repocert_id>
+// ```
 type GitOpsRepoCert struct {
 	pulumi.CustomResourceState
 
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Repository Certificates create/Update request.
+	// Repository Certificate create/update request.
 	Requests GitOpsRepoCertRequestArrayOutput `pulumi:"requests"`
 }
 
@@ -121,28 +134,28 @@ func GetGitOpsRepoCert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitOpsRepoCert resources.
 type gitOpsRepoCertState struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId *string `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId *string `pulumi:"agentId"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId *string `pulumi:"projectId"`
-	// Repository Certificates create/Update request.
+	// Repository Certificate create/update request.
 	Requests []GitOpsRepoCertRequest `pulumi:"requests"`
 }
 
 type GitOpsRepoCertState struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId pulumi.StringPtrInput
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringPtrInput
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId pulumi.StringPtrInput
-	// Repository Certificates create/Update request.
+	// Repository Certificate create/update request.
 	Requests GitOpsRepoCertRequestArrayInput
 }
 
@@ -151,29 +164,29 @@ func (GitOpsRepoCertState) ElementType() reflect.Type {
 }
 
 type gitOpsRepoCertArgs struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId string `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId string `pulumi:"agentId"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId *string `pulumi:"projectId"`
-	// Repository Certificates create/Update request.
+	// Repository Certificate create/update request.
 	Requests []GitOpsRepoCertRequest `pulumi:"requests"`
 }
 
 // The set of arguments for constructing a GitOpsRepoCert resource.
 type GitOpsRepoCertArgs struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId pulumi.StringInput
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringInput
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId pulumi.StringPtrInput
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId pulumi.StringPtrInput
-	// Repository Certificates create/Update request.
+	// Repository Certificate create/update request.
 	Requests GitOpsRepoCertRequestArrayInput
 }
 
@@ -264,27 +277,27 @@ func (o GitOpsRepoCertOutput) ToGitOpsRepoCertOutputWithContext(ctx context.Cont
 	return o
 }
 
-// account identifier of the Repository Certificates.
+// Account identifier of the GitOps repository certificate.
 func (o GitOpsRepoCertOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// agent identifier of the Repository Certificates.
+// Agent identifier of the GitOps repository certificate.
 func (o GitOpsRepoCertOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// organization identifier of the Repository Certificates.
+// Organization identifier of the GitOps repository certificate.
 func (o GitOpsRepoCertOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// project identifier of the Repository Certificates.
+// Project identifier of the GitOps repository certificate.
 func (o GitOpsRepoCertOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Repository Certificates create/Update request.
+// Repository Certificate create/update request.
 func (o GitOpsRepoCertOutput) Requests() GitOpsRepoCertRequestArrayOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) GitOpsRepoCertRequestArrayOutput { return v.Requests }).(GitOpsRepoCertRequestArrayOutput)
 }

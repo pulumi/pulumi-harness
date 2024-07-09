@@ -557,7 +557,7 @@ class PolicySet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[Optional[Sequence['outputs.PolicySetPolicy']]]:
+    def policies(self) -> pulumi.Output[Sequence['outputs.PolicySetPolicy']]:
         """
         List of policy identifiers / severity for the policyset.
         """

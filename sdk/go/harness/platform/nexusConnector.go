@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a Nexus connector.
 //
+// ## Example to create Nexus Connector at different levels (Org, Project, Account)
+//
 // ## Import
 //
 // # Import account level nexus connector

@@ -101,15 +101,15 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
      * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    @Import(name="path", required=true)
-    private Output<String> path;
+    @Import(name="path")
+    private @Nullable Output<String> path;
 
     /**
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    public Output<String> path() {
-        return this.path;
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
     }
 
     /**
@@ -340,7 +340,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
          * @return builder
          * 
          */
-        public Builder path(Output<String> path) {
+        public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
@@ -429,9 +429,6 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         }
 
         public GitOpsApplicationsApplicationSpecSourceArgs build() {
-            if ($.path == null) {
-                throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceArgs", "path");
-            }
             if ($.repoUrl == null) {
                 throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSourceArgs", "repoUrl");
             }

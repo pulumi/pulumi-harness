@@ -12,7 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentClustersMappingCluster {
     /**
-     * @return account Identifier of the account
+     * @return agent identifier of the cluster (include scope prefix)
+     * 
+     */
+    private @Nullable String agentIdentifier;
+    /**
+     * @return identifier of the cluster
      * 
      */
     private @Nullable String identifier;
@@ -22,14 +27,21 @@ public final class EnvironmentClustersMappingCluster {
      */
     private @Nullable String name;
     /**
-     * @return scope at which the cluster exists in harness gitops, project vs org vs account
+     * @return scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
      * 
      */
     private @Nullable String scope;
 
     private EnvironmentClustersMappingCluster() {}
     /**
-     * @return account Identifier of the account
+     * @return agent identifier of the cluster (include scope prefix)
+     * 
+     */
+    public Optional<String> agentIdentifier() {
+        return Optional.ofNullable(this.agentIdentifier);
+    }
+    /**
+     * @return identifier of the cluster
      * 
      */
     public Optional<String> identifier() {
@@ -43,7 +55,7 @@ public final class EnvironmentClustersMappingCluster {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return scope at which the cluster exists in harness gitops, project vs org vs account
+     * @return scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
      * 
      */
     public Optional<String> scope() {
@@ -59,17 +71,25 @@ public final class EnvironmentClustersMappingCluster {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String agentIdentifier;
         private @Nullable String identifier;
         private @Nullable String name;
         private @Nullable String scope;
         public Builder() {}
         public Builder(EnvironmentClustersMappingCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentIdentifier = defaults.agentIdentifier;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
     	      this.scope = defaults.scope;
         }
 
+        @CustomType.Setter
+        public Builder agentIdentifier(@Nullable String agentIdentifier) {
+
+            this.agentIdentifier = agentIdentifier;
+            return this;
+        }
         @CustomType.Setter
         public Builder identifier(@Nullable String identifier) {
 
@@ -90,6 +110,7 @@ public final class EnvironmentClustersMappingCluster {
         }
         public EnvironmentClustersMappingCluster build() {
             final var _resultValue = new EnvironmentClustersMappingCluster();
+            _resultValue.agentIdentifier = agentIdentifier;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
             _resultValue.scope = scope;

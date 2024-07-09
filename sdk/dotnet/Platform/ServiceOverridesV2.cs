@@ -9,32 +9,201 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating a Harness service override V2.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.ServiceOverridesV2("test", new()
+    ///     {
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         InfraId = "infraIdentifier",
+    ///         Type = "INFRA_SERVICE_OVERRIDE",
+    ///         Yaml = @"variables:
+    ///   - name: var1
+    ///     type: String
+    ///     value: val1
+    /// configFiles:
+    ///   - configFile:
+    ///       identifier: sampleConfigFile
+    ///       spec:
+    ///         store:
+    ///           type: Harness
+    ///           spec:
+    ///             files:
+    ///               - account:/configFile1
+    /// manifests:
+    ///   - manifest:
+    ///       identifier: sampleManifestFile
+    ///       type: Values
+    ///       spec:
+    ///         store:
+    ///           type: Harness
+    ///           spec:
+    ///             files:
+    ///               - account:/manifestFile1
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating Remote Service Override
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.ServiceOverridesV2("test", new()
+    ///     {
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         InfraId = "infraIdentifier",
+    ///         Type = "INFRA_SERVICE_OVERRIDE",
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceOverridesV2GitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///         },
+    ///         Yaml = @"variables:
+    ///   - name: v1
+    ///     type: String
+    ///     value: val1
+    /// manifests:
+    ///   - manifest:
+    ///       identifier: manifest1
+    ///       type: Values
+    ///       spec:
+    ///         store:
+    ///           type: Github
+    ///           spec:
+    ///             connectorRef: ""&lt;+input&gt;""
+    ///             gitFetchType: Branch
+    ///             paths:
+    ///               - path-updated
+    ///             repoName: ""&lt;+input&gt;""
+    ///             branch: master
+    ///         skipResourceVersioning: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Importing Service Override From Git
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.ServiceOverridesV2("test", new()
+    ///     {
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         InfraId = "infraIdentifier",
+    ///         Type = "INFRA_SERVICE_OVERRIDE",
+    ///         ImportFromGit = true,
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceOverridesV2GitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level service override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example &lt;override_id&gt;
+    /// ```
+    /// 
+    /// Import org level service override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example &lt;org_id&gt;/&lt;override_id&gt;
+    /// ```
+    /// 
+    /// Import project level service override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example &lt;org_id&gt;/&lt;project_id&gt;/&lt;override_id&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/serviceOverridesV2:ServiceOverridesV2")]
     public partial class ServiceOverridesV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cluster ID to which the overrides are associated
+        /// The cluster ID to which the overrides are associated.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The env ID to which the overrides are associated.
+        /// The environment ID to which the overrides are associated.
         /// </summary>
         [Output("envId")]
         public Output<string> EnvId { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Output("gitDetails")]
+        public Output<Outputs.ServiceOverridesV2GitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// The identifier of the override entity.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// The infrastructure ID to which the overrides are associated
+        /// import override from git
+        /// </summary>
+        [Output("importFromGit")]
+        public Output<bool> ImportFromGit { get; private set; } = null!;
+
+        /// <summary>
+        /// The infrastructure ID to which the overrides are associated.
         /// </summary>
         [Output("infraId")]
         public Output<string> InfraId { get; private set; } = null!;
+
+        /// <summary>
+        /// force import override from remote even if same file path already exist
+        /// </summary>
+        [Output("isForceImport")]
+        public Output<bool> IsForceImport { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -55,16 +224,16 @@ namespace Pulumi.Harness.Platform
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// The overrides specification for the service.
-        /// </summary>
-        [Output("spec")]
-        public Output<string> Spec { get; private set; } = null!;
-
-        /// <summary>
-        /// The type of the overrides
+        /// The type of the overrides.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The yaml of the overrides spec object.
+        /// </summary>
+        [Output("yaml")]
+        public Output<string> Yaml { get; private set; } = null!;
 
 
         /// <summary>
@@ -114,28 +283,40 @@ namespace Pulumi.Harness.Platform
     public sealed class ServiceOverridesV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID to which the overrides are associated
+        /// The cluster ID to which the overrides are associated.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The env ID to which the overrides are associated.
+        /// The environment ID to which the overrides are associated.
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("gitDetails")]
+        public Input<Inputs.ServiceOverridesV2GitDetailsArgs>? GitDetails { get; set; }
 
         /// <summary>
-        /// The infrastructure ID to which the overrides are associated
+        /// import override from git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// The infrastructure ID to which the overrides are associated.
         /// </summary>
         [Input("infraId")]
         public Input<string>? InfraId { get; set; }
+
+        /// <summary>
+        /// force import override from remote even if same file path already exist
+        /// </summary>
+        [Input("isForceImport")]
+        public Input<bool>? IsForceImport { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -156,16 +337,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The overrides specification for the service.
-        /// </summary>
-        [Input("spec", required: true)]
-        public Input<string> Spec { get; set; } = null!;
-
-        /// <summary>
-        /// The type of the overrides
+        /// The type of the overrides.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// The yaml of the overrides spec object.
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public ServiceOverridesV2Args()
         {
@@ -176,28 +357,46 @@ namespace Pulumi.Harness.Platform
     public sealed class ServiceOverridesV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cluster ID to which the overrides are associated
+        /// The cluster ID to which the overrides are associated.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The env ID to which the overrides are associated.
+        /// The environment ID to which the overrides are associated.
         /// </summary>
         [Input("envId")]
         public Input<string>? EnvId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Contains parameters related to creating an Entity for Git Experience.
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.ServiceOverridesV2GitDetailsGetArgs>? GitDetails { get; set; }
+
+        /// <summary>
+        /// The identifier of the override entity.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// The infrastructure ID to which the overrides are associated
+        /// import override from git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// The infrastructure ID to which the overrides are associated.
         /// </summary>
         [Input("infraId")]
         public Input<string>? InfraId { get; set; }
+
+        /// <summary>
+        /// force import override from remote even if same file path already exist
+        /// </summary>
+        [Input("isForceImport")]
+        public Input<bool>? IsForceImport { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -218,16 +417,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The overrides specification for the service.
-        /// </summary>
-        [Input("spec")]
-        public Input<string>? Spec { get; set; }
-
-        /// <summary>
-        /// The type of the overrides
+        /// The type of the overrides.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The yaml of the overrides spec object.
+        /// </summary>
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public ServiceOverridesV2State()
         {

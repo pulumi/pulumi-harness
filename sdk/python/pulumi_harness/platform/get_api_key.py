@@ -52,28 +52,40 @@ class GetApiKeyResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
-        if tags and not isinstance(tags, dict):
-            raise TypeError("Expected argument 'tags' to be a dict")
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account Identifier for the Entity
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="apikeyType")
     def apikey_type(self) -> str:
+        """
+        Type of the API Key
+        """
         return pulumi.get(self, "apikey_type")
 
     @property
     @pulumi.getter(name="defaultTimeToExpireToken")
     def default_time_to_expire_token(self) -> Optional[int]:
+        """
+        Default expiration time of the Token within API Key
+        """
         return pulumi.get(self, "default_time_to_expire_token")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
+        """
+        Description of the resource.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -87,31 +99,49 @@ class GetApiKeyResult:
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        Unique identifier of the resource.
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
+        """
+        Parent Entity Identifier of the API Key
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> Sequence[str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -137,28 +167,49 @@ class AwaitableGetApiKeyResult(GetApiKeyResult):
 def get_api_key(account_id: Optional[str] = None,
                 apikey_type: Optional[str] = None,
                 default_time_to_expire_token: Optional[int] = None,
-                description: Optional[str] = None,
                 identifier: Optional[str] = None,
                 name: Optional[str] = None,
                 org_id: Optional[str] = None,
                 parent_id: Optional[str] = None,
                 project_id: Optional[str] = None,
-                tags: Optional[Mapping[str, str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiKeyResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving a Harness ApiKey.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_api_key(identifier="test_apikey",
+        name="test_apikey",
+        parent_id="parent_id",
+        apikey_type="USER",
+        account_id="account_id",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account Identifier for the Entity
+    :param str apikey_type: Type of the API Key
+    :param int default_time_to_expire_token: Default expiration time of the Token within API Key
+    :param str identifier: Unique identifier of the resource.
+    :param str name: Name of the resource.
+    :param str org_id: Unique identifier of the organization.
+    :param str parent_id: Parent Entity Identifier of the API Key
+    :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['apikeyType'] = apikey_type
     __args__['defaultTimeToExpireToken'] = default_time_to_expire_token
-    __args__['description'] = description
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['parentId'] = parent_id
     __args__['projectId'] = project_id
-    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getApiKey:getApiKey', __args__, opts=opts, typ=GetApiKeyResult).value
 
@@ -180,15 +231,38 @@ def get_api_key(account_id: Optional[str] = None,
 def get_api_key_output(account_id: Optional[pulumi.Input[str]] = None,
                        apikey_type: Optional[pulumi.Input[str]] = None,
                        default_time_to_expire_token: Optional[pulumi.Input[Optional[int]]] = None,
-                       description: Optional[pulumi.Input[Optional[str]]] = None,
                        identifier: Optional[pulumi.Input[str]] = None,
-                       name: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
                        org_id: Optional[pulumi.Input[Optional[str]]] = None,
                        parent_id: Optional[pulumi.Input[str]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiKeyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving a Harness ApiKey.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_api_key(identifier="test_apikey",
+        name="test_apikey",
+        parent_id="parent_id",
+        apikey_type="USER",
+        account_id="account_id",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
+
+    :param str account_id: Account Identifier for the Entity
+    :param str apikey_type: Type of the API Key
+    :param int default_time_to_expire_token: Default expiration time of the Token within API Key
+    :param str identifier: Unique identifier of the resource.
+    :param str name: Name of the resource.
+    :param str org_id: Unique identifier of the organization.
+    :param str parent_id: Parent Entity Identifier of the API Key
+    :param str project_id: Unique identifier of the project.
     """
     ...

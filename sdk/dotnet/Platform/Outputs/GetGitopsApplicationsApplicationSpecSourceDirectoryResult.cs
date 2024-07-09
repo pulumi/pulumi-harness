@@ -16,11 +16,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
         /// </summary>
-        public readonly string? Exclude;
+        public readonly string Exclude;
         /// <summary>
         /// Glob pattern to match paths against that should be explicitly included during manifest generation.
         /// </summary>
-        public readonly string? Include;
+        public readonly string Include;
         /// <summary>
         /// Options specific to applications of type Jsonnet.
         /// </summary>
@@ -28,17 +28,17 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Indicates to scan a directory recursively for manifests.
         /// </summary>
-        public readonly bool? Recurse;
+        public readonly bool Recurse;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceDirectoryResult(
-            string? exclude,
+            string exclude,
 
-            string? include,
+            string include,
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult> jsonnets,
 
-            bool? recurse)
+            bool recurse)
         {
             Exclude = exclude;
             Include = include;

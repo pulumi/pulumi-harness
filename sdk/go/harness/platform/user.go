@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
+// ## Example Usage
 //
 // ## Import
 //
@@ -54,7 +54,7 @@ type User struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Role Bindings of the user. Cannot be updated.
 	RoleBindings UserRoleBindingArrayOutput `pulumi:"roleBindings"`
-	// The user group of the user. Cannot be updated.
+	// The user group of the user.
 	UserGroups pulumi.StringArrayOutput `pulumi:"userGroups"`
 }
 
@@ -112,7 +112,7 @@ type userState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Role Bindings of the user. Cannot be updated.
 	RoleBindings []UserRoleBinding `pulumi:"roleBindings"`
-	// The user group of the user. Cannot be updated.
+	// The user group of the user.
 	UserGroups []string `pulumi:"userGroups"`
 }
 
@@ -135,7 +135,7 @@ type UserState struct {
 	ProjectId pulumi.StringPtrInput
 	// Role Bindings of the user. Cannot be updated.
 	RoleBindings UserRoleBindingArrayInput
-	// The user group of the user. Cannot be updated.
+	// The user group of the user.
 	UserGroups pulumi.StringArrayInput
 }
 
@@ -152,7 +152,7 @@ type userArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Role Bindings of the user. Cannot be updated.
 	RoleBindings []UserRoleBinding `pulumi:"roleBindings"`
-	// The user group of the user. Cannot be updated.
+	// The user group of the user.
 	UserGroups []string `pulumi:"userGroups"`
 }
 
@@ -166,7 +166,7 @@ type UserArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Role Bindings of the user. Cannot be updated.
 	RoleBindings UserRoleBindingArrayInput
-	// The user group of the user. Cannot be updated.
+	// The user group of the user.
 	UserGroups pulumi.StringArrayInput
 }
 
@@ -302,7 +302,7 @@ func (o UserOutput) RoleBindings() UserRoleBindingArrayOutput {
 	return o.ApplyT(func(v *User) UserRoleBindingArrayOutput { return v.RoleBindings }).(UserRoleBindingArrayOutput)
 }
 
-// The user group of the user. Cannot be updated.
+// The user group of the user.
 func (o UserOutput) UserGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.UserGroups }).(pulumi.StringArrayOutput)
 }

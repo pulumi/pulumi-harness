@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating an ssh key type secret.
+ * ## Example Usage
  * 
  * ## Import
  * 

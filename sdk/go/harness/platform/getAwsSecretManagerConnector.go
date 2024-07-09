@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for looking up an AWS Secret Manager connector.
-//
 // ## Example Usage
 //
 // ```go

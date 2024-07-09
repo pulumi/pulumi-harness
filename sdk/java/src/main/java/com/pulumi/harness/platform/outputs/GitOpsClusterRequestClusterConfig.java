@@ -4,7 +4,6 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.harness.platform.outputs.GitOpsClusterRequestClusterConfigAwsAuthConfig;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequestClusterConfigExecProviderConfig;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequestClusterConfigTlsClientConfig;
 import java.lang.String;
@@ -16,10 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsClusterRequestClusterConfig {
     /**
-     * @return IAM authentication configuration for AWS.
+     * @return AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
      * 
      */
-    private @Nullable List<GitOpsClusterRequestClusterConfigAwsAuthConfig> awsAuthConfigs;
+    private @Nullable String awsClusterName;
     /**
      * @return Bearer authentication token the cluster.
      * 
@@ -41,6 +40,11 @@ public final class GitOpsClusterRequestClusterConfig {
      */
     private @Nullable String password;
     /**
+     * @return Optional role ARN. If set then used for AWS IAM Authenticator.
+     * 
+     */
+    private @Nullable String roleARN;
+    /**
      * @return Settings to enable transport layer security.
      * 
      */
@@ -53,11 +57,11 @@ public final class GitOpsClusterRequestClusterConfig {
 
     private GitOpsClusterRequestClusterConfig() {}
     /**
-     * @return IAM authentication configuration for AWS.
+     * @return AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
      * 
      */
-    public List<GitOpsClusterRequestClusterConfigAwsAuthConfig> awsAuthConfigs() {
-        return this.awsAuthConfigs == null ? List.of() : this.awsAuthConfigs;
+    public Optional<String> awsClusterName() {
+        return Optional.ofNullable(this.awsClusterName);
     }
     /**
      * @return Bearer authentication token the cluster.
@@ -88,6 +92,13 @@ public final class GitOpsClusterRequestClusterConfig {
         return Optional.ofNullable(this.password);
     }
     /**
+     * @return Optional role ARN. If set then used for AWS IAM Authenticator.
+     * 
+     */
+    public Optional<String> roleARN() {
+        return Optional.ofNullable(this.roleARN);
+    }
+    /**
      * @return Settings to enable transport layer security.
      * 
      */
@@ -111,33 +122,32 @@ public final class GitOpsClusterRequestClusterConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GitOpsClusterRequestClusterConfigAwsAuthConfig> awsAuthConfigs;
+        private @Nullable String awsClusterName;
         private @Nullable String bearerToken;
         private @Nullable String clusterConnectionType;
         private @Nullable List<GitOpsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs;
         private @Nullable String password;
+        private @Nullable String roleARN;
         private @Nullable List<GitOpsClusterRequestClusterConfigTlsClientConfig> tlsClientConfigs;
         private @Nullable String username;
         public Builder() {}
         public Builder(GitOpsClusterRequestClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.awsAuthConfigs = defaults.awsAuthConfigs;
+    	      this.awsClusterName = defaults.awsClusterName;
     	      this.bearerToken = defaults.bearerToken;
     	      this.clusterConnectionType = defaults.clusterConnectionType;
     	      this.execProviderConfigs = defaults.execProviderConfigs;
     	      this.password = defaults.password;
+    	      this.roleARN = defaults.roleARN;
     	      this.tlsClientConfigs = defaults.tlsClientConfigs;
     	      this.username = defaults.username;
         }
 
         @CustomType.Setter
-        public Builder awsAuthConfigs(@Nullable List<GitOpsClusterRequestClusterConfigAwsAuthConfig> awsAuthConfigs) {
+        public Builder awsClusterName(@Nullable String awsClusterName) {
 
-            this.awsAuthConfigs = awsAuthConfigs;
+            this.awsClusterName = awsClusterName;
             return this;
-        }
-        public Builder awsAuthConfigs(GitOpsClusterRequestClusterConfigAwsAuthConfig... awsAuthConfigs) {
-            return awsAuthConfigs(List.of(awsAuthConfigs));
         }
         @CustomType.Setter
         public Builder bearerToken(@Nullable String bearerToken) {
@@ -167,6 +177,12 @@ public final class GitOpsClusterRequestClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder roleARN(@Nullable String roleARN) {
+
+            this.roleARN = roleARN;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tlsClientConfigs(@Nullable List<GitOpsClusterRequestClusterConfigTlsClientConfig> tlsClientConfigs) {
 
             this.tlsClientConfigs = tlsClientConfigs;
@@ -183,11 +199,12 @@ public final class GitOpsClusterRequestClusterConfig {
         }
         public GitOpsClusterRequestClusterConfig build() {
             final var _resultValue = new GitOpsClusterRequestClusterConfig();
-            _resultValue.awsAuthConfigs = awsAuthConfigs;
+            _resultValue.awsClusterName = awsClusterName;
             _resultValue.bearerToken = bearerToken;
             _resultValue.clusterConnectionType = clusterConnectionType;
             _resultValue.execProviderConfigs = execProviderConfigs;
             _resultValue.password = password;
+            _resultValue.roleARN = roleARN;
             _resultValue.tlsClientConfigs = tlsClientConfigs;
             _resultValue.username = username;
             return _resultValue;

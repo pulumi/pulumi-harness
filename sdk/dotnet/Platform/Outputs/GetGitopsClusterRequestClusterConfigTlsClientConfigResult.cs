@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsClusterRequestClusterConfigTlsClientConfigResult
     {
         /// <summary>
-        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
         /// </summary>
         public readonly string? CaData;
         /// <summary>
-        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
         public readonly string? CertData;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
-        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
         public readonly string? KeyData;
         /// <summary>
-        /// Server name for SNI in the client to check server certificates against.
+        /// Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         /// </summary>
         public readonly string? ServerName;
 

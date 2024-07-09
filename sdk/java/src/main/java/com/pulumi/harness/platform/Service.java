@@ -10,16 +10,172 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.ServiceArgs;
 import com.pulumi.harness.platform.inputs.ServiceState;
+import com.pulumi.harness.platform.outputs.ServiceGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness project.
+ * Resource for creating a Harness service.
  * 
- * ## Example Usage
+ * ## Example to create Service at different levels (Org, Project, Account)
  * 
+ * ### Account Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service("example", ServiceArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .yaml("""
+ * service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Org Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service("example", ServiceArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .orgId("org_id")
+ *             .yaml("""
+ * service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -97,6 +253,136 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Creating Remote Service
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import com.pulumi.harness.platform.inputs.ServiceGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service("example", ServiceArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .gitDetails(ServiceGitDetailsArgs.builder()
+ *                 .storeType("REMOTE")
+ *                 .connectorRef("connector_ref")
+ *                 .repoName("repo_name")
+ *                 .filePath("file_path")
+ *                 .branch("branch")
+ *                 .build())
+ *             .yaml("""
+ * service:
+ *   name: name
+ *   identifier: identifier
+ *   serviceDefinition:
+ *     spec:
+ *       manifests:
+ *         - manifest:
+ *             identifier: manifest1
+ *             type: K8sManifest
+ *             spec:
+ *               store:
+ *                 type: Github
+ *                 spec:
+ *                   connectorRef: <+input>
+ *                   gitFetchType: Branch
+ *                   paths:
+ *                     - files1
+ *                   repoName: <+input>
+ *                   branch: master
+ *               skipResourceVersioning: false
+ *       configFiles:
+ *         - configFile:
+ *             identifier: configFile1
+ *             spec:
+ *               store:
+ *                 type: Harness
+ *                 spec:
+ *                   files:
+ *                     - <+org.description>
+ *       variables:
+ *         - name: var1
+ *           type: String
+ *           value: val1
+ *         - name: var2
+ *           type: String
+ *           value: val2
+ *     type: Kubernetes
+ *   gitOpsEnabled: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Importing Service From Git
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Service;
+ * import com.pulumi.harness.platform.ServiceArgs;
+ * import com.pulumi.harness.platform.inputs.ServiceGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Service("example", ServiceArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .importFromGit("true")
+ *             .gitDetails(ServiceGitDetailsArgs.builder()
+ *                 .storeType("REMOTE")
+ *                 .connectorRef("connector_ref")
+ *                 .repoName("repo_name")
+ *                 .filePath("file_path")
+ *                 .branch("branch")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Import account level service
@@ -135,6 +421,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * to fetch resoled service yaml
+     * 
+     */
+    @Export(name="fetchResolvedYaml", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> fetchResolvedYaml;
+
+    /**
+     * @return to fetch resoled service yaml
+     * 
+     */
+    public Output<Boolean> fetchResolvedYaml() {
+        return this.fetchResolvedYaml;
+    }
+    /**
      * Enable this flag for force deletion of service
      * 
      */
@@ -149,6 +449,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.forceDelete;
     }
     /**
+     * Contains parameters related to Git Experience for remote entities
+     * 
+     */
+    @Export(name="gitDetails", refs={ServiceGitDetails.class}, tree="[0]")
+    private Output<ServiceGitDetails> gitDetails;
+
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
+    public Output<ServiceGitDetails> gitDetails() {
+        return this.gitDetails;
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -161,6 +475,34 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * import service from git
+     * 
+     */
+    @Export(name="importFromGit", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> importFromGit;
+
+    /**
+     * @return import service from git
+     * 
+     */
+    public Output<Boolean> importFromGit() {
+        return this.importFromGit;
+    }
+    /**
+     * force import service from remote even if same file path already exist
+     * 
+     */
+    @Export(name="isForceImport", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isForceImport;
+
+    /**
+     * @return force import service from remote even if same file path already exist
+     * 
+     */
+    public Output<Boolean> isForceImport() {
+        return this.isForceImport;
     }
     /**
      * Name of the resource.
@@ -219,14 +561,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      * 
      */
     @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output<String> yaml;
 
     /**
-     * @return Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * @return Service YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
+     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
+     * connectorRef: org.connectorId.
      * 
      */
     public Output<String> yaml() {

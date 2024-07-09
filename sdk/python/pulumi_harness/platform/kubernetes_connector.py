@@ -20,6 +20,7 @@ class KubernetesConnectorArgs:
                  client_key_cert: Optional[pulumi.Input['KubernetesConnectorClientKeyCertArgs']] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  inherit_from_delegate: Optional[pulumi.Input['KubernetesConnectorInheritFromDelegateArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  openid_connect: Optional[pulumi.Input['KubernetesConnectorOpenidConnectArgs']] = None,
@@ -34,6 +35,7 @@ class KubernetesConnectorArgs:
         :param pulumi.Input['KubernetesConnectorClientKeyCertArgs'] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input['KubernetesConnectorInheritFromDelegateArgs'] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input['KubernetesConnectorOpenidConnectArgs'] openid_connect: OpenID configuration for the connector.
@@ -50,6 +52,8 @@ class KubernetesConnectorArgs:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if inherit_from_delegate is not None:
             pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if name is not None:
@@ -114,6 +118,18 @@ class KubernetesConnectorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter(name="inheritFromDelegate")
@@ -218,6 +234,7 @@ class _KubernetesConnectorState:
                  client_key_cert: Optional[pulumi.Input['KubernetesConnectorClientKeyCertArgs']] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input['KubernetesConnectorInheritFromDelegateArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -232,6 +249,7 @@ class _KubernetesConnectorState:
         :param pulumi.Input['KubernetesConnectorClientKeyCertArgs'] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input['KubernetesConnectorInheritFromDelegateArgs'] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
@@ -248,6 +266,8 @@ class _KubernetesConnectorState:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if inherit_from_delegate is not None:
@@ -302,6 +322,18 @@ class _KubernetesConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -420,6 +452,7 @@ class KubernetesConnector(pulumi.CustomResource):
                  client_key_cert: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorClientKeyCertArgs']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -527,6 +560,7 @@ class KubernetesConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorClientKeyCertArgs']] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
@@ -653,6 +687,7 @@ class KubernetesConnector(pulumi.CustomResource):
                  client_key_cert: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorClientKeyCertArgs']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -674,6 +709,7 @@ class KubernetesConnector(pulumi.CustomResource):
             __props__.__dict__["client_key_cert"] = client_key_cert
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["force_delete"] = force_delete
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -698,6 +734,7 @@ class KubernetesConnector(pulumi.CustomResource):
             client_key_cert: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorClientKeyCertArgs']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             inherit_from_delegate: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -717,6 +754,7 @@ class KubernetesConnector(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorClientKeyCertArgs']] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectorInheritFromDelegateArgs']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[str] name: Name of the resource.
@@ -734,6 +772,7 @@ class KubernetesConnector(pulumi.CustomResource):
         __props__.__dict__["client_key_cert"] = client_key_cert
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["inherit_from_delegate"] = inherit_from_delegate
         __props__.__dict__["name"] = name
@@ -768,6 +807,14 @@ class KubernetesConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[bool]:
+        """
+        Enable this flag for force deletion of connector
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter

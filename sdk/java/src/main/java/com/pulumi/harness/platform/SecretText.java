@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.SecretTextArgs;
 import com.pulumi.harness.platform.inputs.SecretTextState;
+import com.pulumi.harness.platform.outputs.SecretTextAdditionalMetadata;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -17,57 +18,6 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating secret of type secret text
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.SecretText;
- * import com.pulumi.harness.platform.SecretTextArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var inline = new SecretText("inline", SecretTextArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("example")
- *             .tags("foo:bar")
- *             .secretManagerIdentifier("harnessSecretManager")
- *             .valueType("Inline")
- *             .value("secret")
- *             .build());
- * 
- *         var reference = new SecretText("reference", SecretTextArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("example")
- *             .tags("foo:bar")
- *             .secretManagerIdentifier("azureSecretManager")
- *             .valueType("Reference")
- *             .value("secret")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -92,6 +42,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/secretText:SecretText")
 public class SecretText extends com.pulumi.resources.CustomResource {
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Export(name="additionalMetadatas", refs={List.class,SecretTextAdditionalMetadata.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<SecretTextAdditionalMetadata>> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Output<Optional<List<SecretTextAdditionalMetadata>>> additionalMetadatas() {
+        return Codegen.optional(this.additionalMetadatas);
+    }
     /**
      * Description of the resource.
      * 
@@ -195,14 +159,14 @@ public class SecretText extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
-    private Output<String> value;
+    private Output</* @Nullable */ String> value;
 
     /**
      * @return Value of the Secret
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Output<Optional<String>> value() {
+        return Codegen.optional(this.value);
     }
     /**
      * This has details to specify if the secret value is Inline or Reference.

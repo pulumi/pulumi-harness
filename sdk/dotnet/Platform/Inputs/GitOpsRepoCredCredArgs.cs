@@ -43,25 +43,25 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? GithubAppPrivateKey { get; set; }
 
         /// <summary>
-        /// Password for authenticating at the repo server.
+        /// Password or PAT to be used for authenticating the remote repository.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         /// </summary>
         [Input("sshPrivateKey")]
         public Input<string>? SshPrivateKey { get; set; }
 
         /// <summary>
-        /// Specifies the TLS client cert data for authenticating at the repo server.
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
         [Input("tlsClientCertData")]
         public Input<string>? TlsClientCertData { get; set; }
 
         /// <summary>
-        /// Specifies the TLS client cert key for authenticating at the repo server.
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
         [Input("tlsClientCertKey")]
         public Input<string>? TlsClientCertKey { get; set; }
@@ -73,13 +73,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// url representing this object.
+        /// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// Username for authenticating at the repo server.
+        /// Username to be used for authenticating the remote repository.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

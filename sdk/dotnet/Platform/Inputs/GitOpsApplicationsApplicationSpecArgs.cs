@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceArgs>? _sources;
 
         /// <summary>
-        /// Contains all information about the source of a GitOps application.
+        /// Contains all information about the source of the GitOps application.
         /// </summary>
         public InputList<Inputs.GitOpsApplicationsApplicationSpecSourceArgs> Sources
         {

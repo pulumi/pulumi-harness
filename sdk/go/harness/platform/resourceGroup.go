@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness Resource Group
-//
 // ## Example Usage
 //
 // ```go
@@ -105,7 +103,7 @@ type ResourceGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Included scopes
+	// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 	IncludedScopes ResourceGroupIncludedScopeArrayOutput `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -165,7 +163,7 @@ type resourceGroupState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Included scopes
+	// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -190,7 +188,7 @@ type ResourceGroupState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// Included scopes
+	// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -219,7 +217,7 @@ type resourceGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Included scopes
+	// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 	IncludedScopes []ResourceGroupIncludedScope `pulumi:"includedScopes"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -245,7 +243,7 @@ type ResourceGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// Included scopes
+	// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 	IncludedScopes ResourceGroupIncludedScopeArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -371,7 +369,7 @@ func (o ResourceGroupOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Included scopes
+// Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
 func (o ResourceGroupOutput) IncludedScopes() ResourceGroupIncludedScopeArrayOutput {
 	return o.ApplyT(func(v *ResourceGroup) ResourceGroupIncludedScopeArrayOutput { return v.IncludedScopes }).(ResourceGroupIncludedScopeArrayOutput)
 }

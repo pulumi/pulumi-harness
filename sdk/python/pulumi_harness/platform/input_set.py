@@ -20,36 +20,49 @@ class InputSetArgs:
                  org_id: pulumi.Input[str],
                  pipeline_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 yaml: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input['InputSetGitDetailsArgs']] = None,
+                 git_import_info: Optional[pulumi.Input['InputSetGitImportInfoArgs']] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 input_set_import_request: Optional[pulumi.Input['InputSetInputSetImportRequestArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InputSet resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] pipeline_id: Identifier of the pipeline
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[str] yaml: Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input['InputSetGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input['InputSetGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input['InputSetInputSetImportRequestArgs'] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] yaml: Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "pipeline_id", pipeline_id)
         pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "yaml", yaml)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if git_details is not None:
             pulumi.set(__self__, "git_details", git_details)
+        if git_import_info is not None:
+            pulumi.set(__self__, "git_import_info", git_import_info)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if input_set_import_request is not None:
+            pulumi.set(__self__, "input_set_import_request", input_set_import_request)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter
@@ -101,18 +114,6 @@ class InputSetArgs:
 
     @property
     @pulumi.getter
-    def yaml(self) -> pulumi.Input[str]:
-        """
-        Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        """
-        return pulumi.get(self, "yaml")
-
-    @yaml.setter
-    def yaml(self, value: pulumi.Input[str]):
-        pulumi.set(self, "yaml", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the resource.
@@ -134,6 +135,42 @@ class InputSetArgs:
     @git_details.setter
     def git_details(self, value: Optional[pulumi.Input['InputSetGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
+
+    @property
+    @pulumi.getter(name="gitImportInfo")
+    def git_import_info(self) -> Optional[pulumi.Input['InputSetGitImportInfoArgs']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_info")
+
+    @git_import_info.setter
+    def git_import_info(self, value: Optional[pulumi.Input['InputSetGitImportInfoArgs']]):
+        pulumi.set(self, "git_import_info", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
+    @pulumi.getter(name="inputSetImportRequest")
+    def input_set_import_request(self) -> Optional[pulumi.Input['InputSetInputSetImportRequestArgs']]:
+        """
+        Contains parameters for importing a input set
+        """
+        return pulumi.get(self, "input_set_import_request")
+
+    @input_set_import_request.setter
+    def input_set_import_request(self, value: Optional[pulumi.Input['InputSetInputSetImportRequestArgs']]):
+        pulumi.set(self, "input_set_import_request", value)
 
     @property
     @pulumi.getter
@@ -159,13 +196,28 @@ class InputSetArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 @pulumi.input_type
 class _InputSetState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input['InputSetGitDetailsArgs']] = None,
+                 git_import_info: Optional[pulumi.Input['InputSetGitImportInfoArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 input_set_import_request: Optional[pulumi.Input['InputSetInputSetImportRequestArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  pipeline_id: Optional[pulumi.Input[str]] = None,
@@ -176,7 +228,10 @@ class _InputSetState:
         Input properties used for looking up and filtering InputSet resources.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input['InputSetGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input['InputSetGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input['InputSetInputSetImportRequestArgs'] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] pipeline_id: Identifier of the pipeline
@@ -188,8 +243,14 @@ class _InputSetState:
             pulumi.set(__self__, "description", description)
         if git_details is not None:
             pulumi.set(__self__, "git_details", git_details)
+        if git_import_info is not None:
+            pulumi.set(__self__, "git_import_info", git_import_info)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if input_set_import_request is not None:
+            pulumi.set(__self__, "input_set_import_request", input_set_import_request)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -228,6 +289,18 @@ class _InputSetState:
         pulumi.set(self, "git_details", value)
 
     @property
+    @pulumi.getter(name="gitImportInfo")
+    def git_import_info(self) -> Optional[pulumi.Input['InputSetGitImportInfoArgs']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_info")
+
+    @git_import_info.setter
+    def git_import_info(self, value: Optional[pulumi.Input['InputSetGitImportInfoArgs']]):
+        pulumi.set(self, "git_import_info", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -238,6 +311,30 @@ class _InputSetState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
+    @pulumi.getter(name="inputSetImportRequest")
+    def input_set_import_request(self) -> Optional[pulumi.Input['InputSetInputSetImportRequestArgs']]:
+        """
+        Contains parameters for importing a input set
+        """
+        return pulumi.get(self, "input_set_import_request")
+
+    @input_set_import_request.setter
+    def input_set_import_request(self, value: Optional[pulumi.Input['InputSetInputSetImportRequestArgs']]):
+        pulumi.set(self, "input_set_import_request", value)
 
     @property
     @pulumi.getter
@@ -319,7 +416,10 @@ class InputSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input[pulumi.InputType['InputSetGitDetailsArgs']]] = None,
+                 git_import_info: Optional[pulumi.Input[pulumi.InputType['InputSetGitImportInfoArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 input_set_import_request: Optional[pulumi.Input[pulumi.InputType['InputSetInputSetImportRequestArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  pipeline_id: Optional[pulumi.Input[str]] = None,
@@ -329,65 +429,6 @@ class InputSet(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness InputSet.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.InputSet("example",
-            identifier="identifier",
-            name="name",
-            tags=["foo:bar"],
-            org_id="org_id",
-            project_id="project_id",
-            pipeline_id="pipeline_id",
-            yaml=\"\"\"inputSet:
-          identifier: "identifier"
-          name: "name"
-          tags:
-            foo: "bar"
-          orgIdentifier: "org_id"
-          projectIdentifier: "project_id"
-          pipeline:
-            identifier: "pipeline_id"
-            variables:
-            - name: "key"
-              type: "String"
-              value: "value"
-        \"\"\")
-        # Remote InputSet
-        test = harness.platform.InputSet("test",
-            identifier="identifier",
-            name="name",
-            tags=["foo:bar"],
-            org_id=test_harness_platform_organization["id"],
-            project_id=test_harness_platform_project["id"],
-            pipeline_id=test_harness_platform_pipeline["id"],
-            git_details=harness.platform.InputSetGitDetailsArgs(
-                branch_name="main",
-                commit_message="Commit",
-                file_path=".harness/file_path.yaml",
-                connector_ref="account.connector_ref",
-                store_type="REMOTE",
-                repo_name="repo_name",
-            ),
-            yaml=f\"\"\"inputSet:
-          identifier: "identifier"
-          name: "name"
-          tags:
-            foo: "bar"
-          orgIdentifier: "{test_harness_platform_organization["id"]}"
-          projectIdentifier: "{test_harness_platform_project["id"]}"
-          pipeline:
-            identifier: "{test_harness_platform_pipeline["id"]}"
-            variables:
-            - name: "key"
-              type: "String"
-              value: "value"
-        \"\"\")
-        ```
 
         ## Import
 
@@ -401,7 +442,10 @@ class InputSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[pulumi.InputType['InputSetGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[pulumi.InputType['InputSetGitImportInfoArgs']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[pulumi.InputType['InputSetInputSetImportRequestArgs']] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] pipeline_id: Identifier of the pipeline
@@ -417,65 +461,6 @@ class InputSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness InputSet.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.InputSet("example",
-            identifier="identifier",
-            name="name",
-            tags=["foo:bar"],
-            org_id="org_id",
-            project_id="project_id",
-            pipeline_id="pipeline_id",
-            yaml=\"\"\"inputSet:
-          identifier: "identifier"
-          name: "name"
-          tags:
-            foo: "bar"
-          orgIdentifier: "org_id"
-          projectIdentifier: "project_id"
-          pipeline:
-            identifier: "pipeline_id"
-            variables:
-            - name: "key"
-              type: "String"
-              value: "value"
-        \"\"\")
-        # Remote InputSet
-        test = harness.platform.InputSet("test",
-            identifier="identifier",
-            name="name",
-            tags=["foo:bar"],
-            org_id=test_harness_platform_organization["id"],
-            project_id=test_harness_platform_project["id"],
-            pipeline_id=test_harness_platform_pipeline["id"],
-            git_details=harness.platform.InputSetGitDetailsArgs(
-                branch_name="main",
-                commit_message="Commit",
-                file_path=".harness/file_path.yaml",
-                connector_ref="account.connector_ref",
-                store_type="REMOTE",
-                repo_name="repo_name",
-            ),
-            yaml=f\"\"\"inputSet:
-          identifier: "identifier"
-          name: "name"
-          tags:
-            foo: "bar"
-          orgIdentifier: "{test_harness_platform_organization["id"]}"
-          projectIdentifier: "{test_harness_platform_project["id"]}"
-          pipeline:
-            identifier: "{test_harness_platform_pipeline["id"]}"
-            variables:
-            - name: "key"
-              type: "String"
-              value: "value"
-        \"\"\")
-        ```
 
         ## Import
 
@@ -502,7 +487,10 @@ class InputSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input[pulumi.InputType['InputSetGitDetailsArgs']]] = None,
+                 git_import_info: Optional[pulumi.Input[pulumi.InputType['InputSetGitImportInfoArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 input_set_import_request: Optional[pulumi.Input[pulumi.InputType['InputSetInputSetImportRequestArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  pipeline_id: Optional[pulumi.Input[str]] = None,
@@ -520,9 +508,12 @@ class InputSet(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["git_details"] = git_details
+            __props__.__dict__["git_import_info"] = git_import_info
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["import_from_git"] = import_from_git
+            __props__.__dict__["input_set_import_request"] = input_set_import_request
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -534,8 +525,6 @@ class InputSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
-            if yaml is None and not opts.urn:
-                raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
         super(InputSet, __self__).__init__(
             'harness:platform/inputSet:InputSet',
@@ -549,7 +538,10 @@ class InputSet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             git_details: Optional[pulumi.Input[pulumi.InputType['InputSetGitDetailsArgs']]] = None,
+            git_import_info: Optional[pulumi.Input[pulumi.InputType['InputSetGitImportInfoArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            import_from_git: Optional[pulumi.Input[bool]] = None,
+            input_set_import_request: Optional[pulumi.Input[pulumi.InputType['InputSetInputSetImportRequestArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             pipeline_id: Optional[pulumi.Input[str]] = None,
@@ -565,7 +557,10 @@ class InputSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[pulumi.InputType['InputSetGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[pulumi.InputType['InputSetGitImportInfoArgs']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[pulumi.InputType['InputSetInputSetImportRequestArgs']] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] pipeline_id: Identifier of the pipeline
@@ -579,7 +574,10 @@ class InputSet(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["git_details"] = git_details
+        __props__.__dict__["git_import_info"] = git_import_info
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["import_from_git"] = import_from_git
+        __props__.__dict__["input_set_import_request"] = input_set_import_request
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["pipeline_id"] = pipeline_id
@@ -598,11 +596,19 @@ class InputSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> pulumi.Output[Optional['outputs.InputSetGitDetails']]:
+    def git_details(self) -> pulumi.Output['outputs.InputSetGitDetails']:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
+
+    @property
+    @pulumi.getter(name="gitImportInfo")
+    def git_import_info(self) -> pulumi.Output[Optional['outputs.InputSetGitImportInfo']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_info")
 
     @property
     @pulumi.getter
@@ -611,6 +617,22 @@ class InputSet(pulumi.CustomResource):
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @property
+    @pulumi.getter(name="inputSetImportRequest")
+    def input_set_import_request(self) -> pulumi.Output[Optional['outputs.InputSetInputSetImportRequest']]:
+        """
+        Contains parameters for importing a input set
+        """
+        return pulumi.get(self, "input_set_import_request")
 
     @property
     @pulumi.getter

@@ -37,6 +37,7 @@ namespace Pulumi.Harness.Platform
     ///             StoreType = "REMOTE",
     ///             RepoName = "repoName",
     ///         },
+    ///         Tags = null,
     ///         Yaml = @"pipeline:
     ///     name: name
     ///     identifier: identifier
@@ -125,6 +126,34 @@ namespace Pulumi.Harness.Platform
     /// ",
     ///     });
     /// 
+    ///     //## Importing Pipeline from Git
+    ///     var test = new Harness.Platform.Organization("test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///     });
+    /// 
+    ///     var testPipeline = new Harness.Platform.Pipeline("test", new()
+    ///     {
+    ///         Identifier = "gitx",
+    ///         OrgId = "default",
+    ///         ProjectId = "V",
+    ///         Name = "gitx",
+    ///         ImportFromGit = true,
+    ///         GitImportInfo = new Harness.Platform.Inputs.PipelineGitImportInfoArgs
+    ///         {
+    ///             BranchName = "main",
+    ///             FilePath = ".harness/gitx.yaml",
+    ///             ConnectorRef = "account.DoNotDeleteGithub",
+    ///             RepoName = "open-repo",
+    ///         },
+    ///         PipelineImportRequest = new Harness.Platform.Inputs.PipelinePipelineImportRequestArgs
+    ///         {
+    ///             PipelineName = "gitx",
+    ///             PipelineDescription = "Pipeline Description",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -149,13 +178,25 @@ namespace Pulumi.Harness.Platform
         /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
         [Output("gitDetails")]
-        public Output<Outputs.PipelineGitDetails?> GitDetails { get; private set; } = null!;
+        public Output<Outputs.PipelineGitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Output("gitImportInfo")]
+        public Output<Outputs.PipelineGitImportInfo?> GitImportInfo { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Output("importFromGit")]
+        public Output<bool?> ImportFromGit { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -170,13 +211,19 @@ namespace Pulumi.Harness.Platform
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
+        /// Contains parameters for importing a pipeline
+        /// </summary>
+        [Output("pipelineImportRequest")]
+        public Output<Outputs.PipelinePipelineImportRequest?> PipelineImportRequest { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to associate with the resource.
+        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -259,10 +306,22 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.PipelineGitDetailsArgs>? GitDetails { get; set; }
 
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitImportInfo")]
+        public Input<Inputs.PipelineGitImportInfoArgs>? GitImportInfo { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -277,6 +336,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
+        /// Contains parameters for importing a pipeline
+        /// </summary>
+        [Input("pipelineImportRequest")]
+        public Input<Inputs.PipelinePipelineImportRequestArgs>? PipelineImportRequest { get; set; }
+
+        /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Input("projectId", required: true)]
@@ -286,7 +351,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource.
+        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         /// </summary>
         public InputList<string> Tags
         {
@@ -309,8 +374,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
-        [Input("yaml", required: true)]
-        public Input<string> Yaml { get; set; } = null!;
+        [Input("yaml")]
+        public Input<string>? Yaml { get; set; }
 
         public PipelineArgs()
         {
@@ -333,10 +398,22 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.PipelineGitDetailsGetArgs>? GitDetails { get; set; }
 
         /// <summary>
+        /// Contains Git Information for importing entities from Git
+        /// </summary>
+        [Input("gitImportInfo")]
+        public Input<Inputs.PipelineGitImportInfoGetArgs>? GitImportInfo { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Flag to set if importing from Git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -351,6 +428,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
+        /// Contains parameters for importing a pipeline
+        /// </summary>
+        [Input("pipelineImportRequest")]
+        public Input<Inputs.PipelinePipelineImportRequestGetArgs>? PipelineImportRequest { get; set; }
+
+        /// <summary>
         /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
@@ -360,7 +443,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource.
+        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         /// </summary>
         public InputList<string> Tags
         {

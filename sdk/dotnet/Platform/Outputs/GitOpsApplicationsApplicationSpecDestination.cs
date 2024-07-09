@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// Server of the destination of the GitOps application.
+        /// URL of the target cluster server for the GitOps application.
         /// </summary>
         public readonly string? Server;
 

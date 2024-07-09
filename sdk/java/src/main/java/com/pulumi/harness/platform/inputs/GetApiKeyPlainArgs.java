@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,74 +16,124 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApiKeyPlainArgs Empty = new GetApiKeyPlainArgs();
 
+    /**
+     * Account Identifier for the Entity
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return Account Identifier for the Entity
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * Type of the API Key
+     * 
+     */
     @Import(name="apikeyType", required=true)
     private String apikeyType;
 
+    /**
+     * @return Type of the API Key
+     * 
+     */
     public String apikeyType() {
         return this.apikeyType;
     }
 
+    /**
+     * Default expiration time of the Token within API Key
+     * 
+     */
     @Import(name="defaultTimeToExpireToken")
     private @Nullable Integer defaultTimeToExpireToken;
 
+    /**
+     * @return Default expiration time of the Token within API Key
+     * 
+     */
     public Optional<Integer> defaultTimeToExpireToken() {
         return Optional.ofNullable(this.defaultTimeToExpireToken);
     }
 
-    @Import(name="description")
-    private @Nullable String description;
-
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
-
+    /**
+     * Unique identifier of the resource.
+     * 
+     */
     @Import(name="identifier", required=true)
     private String identifier;
 
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
 
-    @Import(name="name", required=true)
-    private String name;
+    /**
+     * Name of the resource.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
 
-    public String name() {
-        return this.name;
+    /**
+     * @return Name of the resource.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Parent Entity Identifier of the API Key
+     * 
+     */
     @Import(name="parentId", required=true)
     private String parentId;
 
+    /**
+     * @return Parent Entity Identifier of the API Key
+     * 
+     */
     public String parentId() {
         return this.parentId;
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
-    }
-
-    @Import(name="tags")
-    private @Nullable Map<String,String> tags;
-
-    public Optional<Map<String,String>> tags() {
-        return Optional.ofNullable(this.tags);
     }
 
     private GetApiKeyPlainArgs() {}
@@ -93,13 +142,11 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.accountId = $.accountId;
         this.apikeyType = $.apikeyType;
         this.defaultTimeToExpireToken = $.defaultTimeToExpireToken;
-        this.description = $.description;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.parentId = $.parentId;
         this.projectId = $.projectId;
-        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -120,53 +167,91 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetApiKeyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Identifier for the Entity
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param apikeyType Type of the API Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder apikeyType(String apikeyType) {
             $.apikeyType = apikeyType;
             return this;
         }
 
+        /**
+         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultTimeToExpireToken(@Nullable Integer defaultTimeToExpireToken) {
             $.defaultTimeToExpireToken = defaultTimeToExpireToken;
             return this;
         }
 
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
+        /**
+         * @param identifier Unique identifier of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
 
-        public Builder name(String name) {
+        /**
+         * @param name Name of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param parentId Parent Entity Identifier of the API Key
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentId(String parentId) {
             $.parentId = parentId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
-            return this;
-        }
-
-        public Builder tags(@Nullable Map<String,String> tags) {
-            $.tags = tags;
             return this;
         }
 
@@ -179,9 +264,6 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
             }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetApiKeyPlainArgs", "identifier");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetApiKeyPlainArgs", "name");
             }
             if ($.parentId == null) {
                 throw new MissingRequiredPropertyException("GetApiKeyPlainArgs", "parentId");

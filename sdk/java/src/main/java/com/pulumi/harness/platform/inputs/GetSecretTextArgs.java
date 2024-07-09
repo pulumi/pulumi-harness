@@ -6,7 +6,9 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetSecretTextAdditionalMetadataArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetSecretTextArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSecretTextArgs Empty = new GetSecretTextArgs();
+
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Import(name="additionalMetadatas")
+    private @Nullable Output<List<GetSecretTextAdditionalMetadataArgs>> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Optional<Output<List<GetSecretTextAdditionalMetadataArgs>>> additionalMetadatas() {
+        return Optional.ofNullable(this.additionalMetadatas);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -79,6 +96,7 @@ public final class GetSecretTextArgs extends com.pulumi.resources.InvokeArgs {
     private GetSecretTextArgs() {}
 
     private GetSecretTextArgs(GetSecretTextArgs $) {
+        this.additionalMetadatas = $.additionalMetadatas;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -101,6 +119,37 @@ public final class GetSecretTextArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetSecretTextArgs defaults) {
             $ = new GetSecretTextArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(@Nullable Output<List<GetSecretTextAdditionalMetadataArgs>> additionalMetadatas) {
+            $.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(List<GetSecretTextAdditionalMetadataArgs> additionalMetadatas) {
+            return additionalMetadatas(Output.of(additionalMetadatas));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(GetSecretTextAdditionalMetadataArgs... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
         }
 
         /**

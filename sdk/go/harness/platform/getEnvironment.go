@@ -52,6 +52,7 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentArgs struct {
+	GitDetails *GetEnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -67,7 +68,8 @@ type LookupEnvironmentResult struct {
 	// Color of the environment.
 	Color string `pulumi:"color"`
 	// Description of the resource.
-	Description string `pulumi:"description"`
+	Description string                   `pulumi:"description"`
+	GitDetails  GetEnvironmentGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -82,7 +84,7 @@ type LookupEnvironmentResult struct {
 	Tags []string `pulumi:"tags"`
 	// The type of environment.
 	Type string `pulumi:"type"`
-	// Input Set YAML
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -101,6 +103,7 @@ func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputAr
 
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentOutputArgs struct {
+	GitDetails GetEnvironmentGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -140,6 +143,10 @@ func (o LookupEnvironmentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupEnvironmentResultOutput) GitDetails() GetEnvironmentGitDetailsOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GetEnvironmentGitDetails { return v.GitDetails }).(GetEnvironmentGitDetailsOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -175,7 +182,7 @@ func (o LookupEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Input Set YAML
+// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o LookupEnvironmentResultOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Yaml }).(pulumi.StringOutput)
 }

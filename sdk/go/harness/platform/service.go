@@ -12,10 +12,148 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness project.
+// Resource for creating a Harness service.
 //
-// ## Example Usage
+// ## Example to create Service at different levels (Org, Project, Account)
 //
+// ### Account Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Yaml: pulumi.String(`service:
+//	  name: name
+//	  identifier: identifier
+//	  serviceDefinition:
+//	    spec:
+//	      manifests:
+//	        - manifest:
+//	            identifier: manifest1
+//	            type: K8sManifest
+//	            spec:
+//	              store:
+//	                type: Github
+//	                spec:
+//	                  connectorRef: <+input>
+//	                  gitFetchType: Branch
+//	                  paths:
+//	                    - files1
+//	                  repoName: <+input>
+//	                  branch: master
+//	              skipResourceVersioning: false
+//	      configFiles:
+//	        - configFile:
+//	            identifier: configFile1
+//	            spec:
+//	              store:
+//	                type: Harness
+//	                spec:
+//	                  files:
+//	                    - <+org.description>
+//	      variables:
+//	        - name: var1
+//	          type: String
+//	          value: val1
+//	        - name: var2
+//	          type: String
+//	          value: val2
+//	    type: Kubernetes
+//	  gitOpsEnabled: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				OrgId:       pulumi.String("org_id"),
+//				Yaml: pulumi.String(`service:
+//	  name: name
+//	  identifier: identifier
+//	  serviceDefinition:
+//	    spec:
+//	      manifests:
+//	        - manifest:
+//	            identifier: manifest1
+//	            type: K8sManifest
+//	            spec:
+//	              store:
+//	                type: Github
+//	                spec:
+//	                  connectorRef: <+input>
+//	                  gitFetchType: Branch
+//	                  paths:
+//	                    - files1
+//	                  repoName: <+input>
+//	                  branch: master
+//	              skipResourceVersioning: false
+//	      configFiles:
+//	        - configFile:
+//	            identifier: configFile1
+//	            spec:
+//	              store:
+//	                type: Harness
+//	                spec:
+//	                  files:
+//	                    - <+org.description>
+//	      variables:
+//	        - name: var1
+//	          type: String
+//	          value: val1
+//	        - name: var2
+//	          type: String
+//	          value: val2
+//	    type: Kubernetes
+//	  gitOpsEnabled: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
 // ```go
 // package main
 //
@@ -85,6 +223,117 @@ import (
 //
 // ```
 //
+// ### Creating Remote Service
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				OrgId:       pulumi.String("org_id"),
+//				ProjectId:   pulumi.String("project_id"),
+//				GitDetails: &platform.ServiceGitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("connector_ref"),
+//					RepoName:     pulumi.String("repo_name"),
+//					FilePath:     pulumi.String("file_path"),
+//					Branch:       pulumi.String("branch"),
+//				},
+//				Yaml: pulumi.String(`service:
+//	  name: name
+//	  identifier: identifier
+//	  serviceDefinition:
+//	    spec:
+//	      manifests:
+//	        - manifest:
+//	            identifier: manifest1
+//	            type: K8sManifest
+//	            spec:
+//	              store:
+//	                type: Github
+//	                spec:
+//	                  connectorRef: <+input>
+//	                  gitFetchType: Branch
+//	                  paths:
+//	                    - files1
+//	                  repoName: <+input>
+//	                  branch: master
+//	              skipResourceVersioning: false
+//	      configFiles:
+//	        - configFile:
+//	            identifier: configFile1
+//	            spec:
+//	              store:
+//	                type: Harness
+//	                spec:
+//	                  files:
+//	                    - <+org.description>
+//	      variables:
+//	        - name: var1
+//	          type: String
+//	          value: val1
+//	        - name: var2
+//	          type: String
+//	          value: val2
+//	    type: Kubernetes
+//	  gitOpsEnabled: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Importing Service From Git
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
+//				Identifier:    pulumi.String("identifier"),
+//				Name:          pulumi.String("name"),
+//				ImportFromGit: pulumi.Bool(true),
+//				GitDetails: &platform.ServiceGitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("connector_ref"),
+//					RepoName:     pulumi.String("repo_name"),
+//					FilePath:     pulumi.String("file_path"),
+//					Branch:       pulumi.String("branch"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Import account level service
@@ -109,10 +358,18 @@ type Service struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// to fetch resoled service yaml
+	FetchResolvedYaml pulumi.BoolOutput `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails ServiceGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// import service from git
+	ImportFromGit pulumi.BoolOutput `pulumi:"importFromGit"`
+	// force import service from remote even if same file path already exist
+	IsForceImport pulumi.BoolOutput `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -121,7 +378,10 @@ type Service struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -160,10 +420,18 @@ func GetService(ctx *pulumi.Context,
 type serviceState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// to fetch resoled service yaml
+	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// import service from git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// force import service from remote even if same file path already exist
+	IsForceImport *bool `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -172,17 +440,28 @@ type serviceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
 type ServiceState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// to fetch resoled service yaml
+	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringPtrInput
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// import service from git
+	ImportFromGit pulumi.BoolPtrInput
+	// force import service from remote even if same file path already exist
+	IsForceImport pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -191,7 +470,10 @@ type ServiceState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -202,10 +484,18 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// to fetch resoled service yaml
+	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// import service from git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// force import service from remote even if same file path already exist
+	IsForceImport *bool `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -214,7 +504,10 @@ type serviceArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -222,10 +515,18 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// to fetch resoled service yaml
+	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringPtrInput
+	// Contains parameters related to Git Experience for remote entities
+	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// import service from git
+	ImportFromGit pulumi.BoolPtrInput
+	// force import service from remote even if same file path already exist
+	IsForceImport pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -234,7 +535,10 @@ type ServiceArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+	// connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -330,14 +634,34 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// to fetch resoled service yaml
+func (o ServiceOutput) FetchResolvedYaml() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.FetchResolvedYaml }).(pulumi.BoolOutput)
+}
+
 // Enable this flag for force deletion of service
 func (o ServiceOutput) ForceDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to Git Experience for remote entities
+func (o ServiceOutput) GitDetails() ServiceGitDetailsOutput {
+	return o.ApplyT(func(v *Service) ServiceGitDetailsOutput { return v.GitDetails }).(ServiceGitDetailsOutput)
+}
+
 // Unique identifier of the resource.
 func (o ServiceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// import service from git
+func (o ServiceOutput) ImportFromGit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.ImportFromGit }).(pulumi.BoolOutput)
+}
+
+// force import service from remote even if same file path already exist
+func (o ServiceOutput) IsForceImport() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.IsForceImport }).(pulumi.BoolOutput)
 }
 
 // Name of the resource.
@@ -360,7 +684,10 @@ func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+// connectorRef: org.connectorId.
 func (o ServiceOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

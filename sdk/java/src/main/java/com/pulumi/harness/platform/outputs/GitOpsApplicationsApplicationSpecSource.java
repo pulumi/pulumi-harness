@@ -47,7 +47,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    private String path;
+    private @Nullable String path;
     /**
      * @return Options specific to config management plugins.
      * 
@@ -104,8 +104,8 @@ public final class GitOpsApplicationsApplicationSpecSource {
      * @return Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
      * 
      */
-    public String path() {
-        return this.path;
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
     /**
      * @return Options specific to config management plugins.
@@ -143,7 +143,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelm> helms;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceKsonnet> ksonnets;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes;
-        private String path;
+        private @Nullable String path;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourcePlugin> plugins;
         private String repoUrl;
         private String targetRevision;
@@ -204,10 +204,8 @@ public final class GitOpsApplicationsApplicationSpecSource {
             return kustomizes(List.of(kustomizes));
         }
         @CustomType.Setter
-        public Builder path(String path) {
-            if (path == null) {
-              throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSource", "path");
-            }
+        public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

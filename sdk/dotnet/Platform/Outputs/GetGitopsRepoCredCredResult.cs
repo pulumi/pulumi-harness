@@ -34,19 +34,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? GithubAppPrivateKey;
         /// <summary>
-        /// Password for authenticating at the repo server.
+        /// Password or PAT to be used for authenticating the remote repository.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         /// </summary>
         public readonly string? SshPrivateKey;
         /// <summary>
-        /// Specifies the TLS client cert data for authenticating at the repo server.
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
         public readonly string? TlsClientCertData;
         /// <summary>
-        /// Specifies the TLS client cert key for authenticating at the repo server.
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
         public readonly string? TlsClientCertKey;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// url representing this object.
+        /// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         /// </summary>
         public readonly string? Url;
         /// <summary>
-        /// Username for authenticating at the repo server.
+        /// Username to be used for authenticating the remote repository.
         /// </summary>
         public readonly string? Username;
 

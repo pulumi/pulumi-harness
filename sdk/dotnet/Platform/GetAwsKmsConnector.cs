@@ -12,8 +12,6 @@ namespace Pulumi.Harness.Platform
     public static class GetAwsKmsConnector
     {
         /// <summary>
-        /// Datasource for looking up an AWS KMS connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for looking up an AWS KMS connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -12,6 +12,94 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating an SLO.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Slo("example", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "default_project",
+    ///         Identifier = "TerraformSLO",
+    ///         Request = new Harness.Platform.Inputs.SloRequestArgs
+    ///         {
+    ///             Name = "TSLO",
+    ///             Description = "description",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             UserJourneyRefs = new[]
+    ///             {
+    ///                 "one",
+    ///                 "two",
+    ///             },
+    ///             SloTarget = new Harness.Platform.Inputs.SloRequestSloTargetArgs
+    ///             {
+    ///                 Type = "Calender",
+    ///                 SloTargetPercentage = 10,
+    ///                 Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "Monthly",
+    ///                     ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["dayOfMonth"] = 5,
+    ///                     },
+    ///                 }),
+    ///             },
+    ///             Type = "Simple",
+    ///             Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["monitoredServiceRef"] = "monitoredServiceRef",
+    ///                 ["serviceLevelIndicatorType"] = "Availability",
+    ///                 ["serviceLevelIndicators"] = new[]
+    ///                 {
+    ///                     new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["name"] = "name",
+    ///                         ["identifier"] = "identifier",
+    ///                         ["type"] = "Window",
+    ///                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["type"] = "Threshold",
+    ///                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["metric1"] = "metric1",
+    ///                                 ["thresholdValue"] = 10,
+    ///                                 ["thresholdType"] = "&gt;",
+    ///                             },
+    ///                             ["sliMissingDataType"] = "Good",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             }),
+    ///             NotificationRuleRefs = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.SloRequestNotificationRuleRefArgs
+    ///                 {
+    ///                     NotificationRuleRef = "notification_rule_ref",
+    ///                     Enabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Note the above example is for "Threshold" SLI type, if you want to use
+    /// "Ratio", the SLI should be changed appropriately.
+    /// Here's an example of SLO target and Spec for "Ratio" based SLI and
+    /// "Rolling" SLO target.
+    /// 
     /// ## Import
     /// 
     /// Import account level SLO

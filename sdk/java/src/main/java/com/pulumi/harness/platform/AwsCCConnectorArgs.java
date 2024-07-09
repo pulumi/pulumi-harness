@@ -142,30 +142,30 @@ public final class AwsCCConnectorArgs extends com.pulumi.resources.ResourceArgs 
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
-    @Import(name="reportName", required=true)
-    private Output<String> reportName;
+    @Import(name="reportName")
+    private @Nullable Output<String> reportName;
 
     /**
      * @return The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
-    public Output<String> reportName() {
-        return this.reportName;
+    public Optional<Output<String>> reportName() {
+        return Optional.ofNullable(this.reportName);
     }
 
     /**
      * The name of s3 bucket.
      * 
      */
-    @Import(name="s3Bucket", required=true)
-    private Output<String> s3Bucket;
+    @Import(name="s3Bucket")
+    private @Nullable Output<String> s3Bucket;
 
     /**
      * @return The name of s3 bucket.
      * 
      */
-    public Output<String> s3Bucket() {
-        return this.s3Bucket;
+    public Optional<Output<String>> s3Bucket() {
+        return Optional.ofNullable(this.s3Bucket);
     }
 
     /**
@@ -401,7 +401,7 @@ public final class AwsCCConnectorArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder reportName(Output<String> reportName) {
+        public Builder reportName(@Nullable Output<String> reportName) {
             $.reportName = reportName;
             return this;
         }
@@ -422,7 +422,7 @@ public final class AwsCCConnectorArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder s3Bucket(Output<String> s3Bucket) {
+        public Builder s3Bucket(@Nullable Output<String> s3Bucket) {
             $.s3Bucket = s3Bucket;
             return this;
         }
@@ -480,12 +480,6 @@ public final class AwsCCConnectorArgs extends com.pulumi.resources.ResourceArgs 
             }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("AwsCCConnectorArgs", "identifier");
-            }
-            if ($.reportName == null) {
-                throw new MissingRequiredPropertyException("AwsCCConnectorArgs", "reportName");
-            }
-            if ($.s3Bucket == null) {
-                throw new MissingRequiredPropertyException("AwsCCConnectorArgs", "s3Bucket");
             }
             return $;
         }

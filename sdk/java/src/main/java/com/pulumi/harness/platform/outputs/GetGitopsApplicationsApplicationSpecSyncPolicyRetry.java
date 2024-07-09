@@ -4,12 +4,11 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
@@ -17,12 +16,12 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
      * @return Backoff strategy to use on subsequent retries for failing syncs.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs;
+    private List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs;
     /**
      * @return Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
      * 
      */
-    private @Nullable String limit;
+    private String limit;
 
     private GetGitopsApplicationsApplicationSpecSyncPolicyRetry() {}
     /**
@@ -30,14 +29,14 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs() {
-        return this.backoffs == null ? List.of() : this.backoffs;
+        return this.backoffs;
     }
     /**
      * @return Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
      * 
      */
-    public Optional<String> limit() {
-        return Optional.ofNullable(this.limit);
+    public String limit() {
+        return this.limit;
     }
 
     public static Builder builder() {
@@ -49,8 +48,8 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs;
-        private @Nullable String limit;
+        private List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs;
+        private String limit;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSyncPolicyRetry defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,8 +58,10 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
         }
 
         @CustomType.Setter
-        public Builder backoffs(@Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs) {
-
+        public Builder backoffs(List<GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff> backoffs) {
+            if (backoffs == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyRetry", "backoffs");
+            }
             this.backoffs = backoffs;
             return this;
         }
@@ -68,8 +69,10 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
             return backoffs(List.of(backoffs));
         }
         @CustomType.Setter
-        public Builder limit(@Nullable String limit) {
-
+        public Builder limit(String limit) {
+            if (limit == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyRetry", "limit");
+            }
             this.limit = limit;
             return this;
         }

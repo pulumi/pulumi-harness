@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetGitopsAgentDeployYaml
     {
         /// <summary>
-        /// Datasource for fetching a Harness Gitops Agents.
+        /// Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
         /// 
         /// ## Example Usage
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAgentDeployYamlResult>("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args ?? new GetGitopsAgentDeployYamlArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for fetching a Harness Gitops Agents.
+        /// Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
         /// 
         /// ## Example Usage
         /// 
@@ -78,13 +78,19 @@ namespace Pulumi.Harness.Platform
         public string AccountId { get; set; } = null!;
 
         /// <summary>
+        /// CA data of the GitOps agent, base64 encoded content of ca chain.
+        /// </summary>
+        [Input("caData")]
+        public string? CaData { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps agent.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// The k8s namespace that the GitOps agent resides in.
+        /// The kubernetes namespace where the agent is installed.
         /// </summary>
         [Input("namespace", required: true)]
         public string Namespace { get; set; } = null!;
@@ -101,6 +107,18 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        [Input("proxies")]
+        private List<Inputs.GetGitopsAgentDeployYamlProxyArgs>? _proxies;
+
+        /// <summary>
+        /// Proxy settings for the GitOps agent.
+        /// </summary>
+        public List<Inputs.GetGitopsAgentDeployYamlProxyArgs> Proxies
+        {
+            get => _proxies ?? (_proxies = new List<Inputs.GetGitopsAgentDeployYamlProxyArgs>());
+            set => _proxies = value;
+        }
+
         public GetGitopsAgentDeployYamlArgs()
         {
         }
@@ -116,13 +134,19 @@ namespace Pulumi.Harness.Platform
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// CA data of the GitOps agent, base64 encoded content of ca chain.
+        /// </summary>
+        [Input("caData")]
+        public Input<string>? CaData { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps agent.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// The k8s namespace that the GitOps agent resides in.
+        /// The kubernetes namespace where the agent is installed.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
@@ -139,6 +163,18 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        [Input("proxies")]
+        private InputList<Inputs.GetGitopsAgentDeployYamlProxyInputArgs>? _proxies;
+
+        /// <summary>
+        /// Proxy settings for the GitOps agent.
+        /// </summary>
+        public InputList<Inputs.GetGitopsAgentDeployYamlProxyInputArgs> Proxies
+        {
+            get => _proxies ?? (_proxies = new InputList<Inputs.GetGitopsAgentDeployYamlProxyInputArgs>());
+            set => _proxies = value;
+        }
+
         public GetGitopsAgentDeployYamlInvokeArgs()
         {
         }
@@ -154,6 +190,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// CA data of the GitOps agent, base64 encoded content of ca chain.
+        /// </summary>
+        public readonly string? CaData;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -162,7 +202,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// The k8s namespace that the GitOps agent resides in.
+        /// The kubernetes namespace where the agent is installed.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
@@ -174,13 +214,19 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Deployment YAML of the GitOps agent.
+        /// Proxy settings for the GitOps agent.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGitopsAgentDeployYamlProxyResult> Proxies;
+        /// <summary>
+        /// The deployment manifest YAML of the GitOps agent.
         /// </summary>
         public readonly string Yaml;
 
         [OutputConstructor]
         private GetGitopsAgentDeployYamlResult(
             string accountId,
+
+            string? caData,
 
             string id,
 
@@ -192,14 +238,18 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
+            ImmutableArray<Outputs.GetGitopsAgentDeployYamlProxyResult> proxies,
+
             string yaml)
         {
             AccountId = accountId;
+            CaData = caData;
             Id = id;
             Identifier = identifier;
             Namespace = @namespace;
             OrgId = orgId;
             ProjectId = projectId;
+            Proxies = proxies;
             Yaml = yaml;
         }
     }

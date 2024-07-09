@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating an AWS KMS connector.
+ * ## Example Usage
  * 
  * ## Import
  * 

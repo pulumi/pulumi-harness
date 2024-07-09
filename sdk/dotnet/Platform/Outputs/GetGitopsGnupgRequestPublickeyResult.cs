@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Fingerprint;
         /// <summary>
-        /// KeyData holds the raw key data, in base64 encoded format
+        /// KeyData holds the raw key data, in base64 encoded format.
         /// </summary>
         public readonly string? KeyData;
         /// <summary>

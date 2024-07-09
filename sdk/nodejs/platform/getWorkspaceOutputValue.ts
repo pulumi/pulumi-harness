@@ -66,7 +66,7 @@ export interface GetWorkspaceOutputValueResult {
      * Organization identifier of the organization the workspace resides in.
      */
     readonly orgId: string;
-    readonly outputs: outputs.platform.GetWorkspaceOutputValueOutput[];
+    readonly output_values: outputs.platform.GetWorkspaceOutputValueOutput_value[];
     /**
      * Project identifier of the project the workspace resides in.
      */

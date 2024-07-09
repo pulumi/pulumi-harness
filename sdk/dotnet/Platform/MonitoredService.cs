@@ -12,6 +12,1083 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a monitored service.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     //Sample template for Elastic Search Log Health Source
+    ///     var example = new Harness.Platform.MonitoredService("example", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "name",
+    ///                     Identifier = "identifier",
+    ///                     Type = "ElasticSearch",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "error_4xx",
+    ///                                 ["identifier"] = "error_4xx_id",
+    ///                                 ["query"] = "Bad Request",
+    ///                                 ["index"] = "index",
+    ///                                 ["groupName"] = "Logs_Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["index"] = "index",
+    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
+    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
+    ///                                     ["timeStampFormat"] = "timeStampFormat",
+    ///                                     ["messageIdentifier"] = "messageIdentifier",
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "error_5xx",
+    ///                                 ["identifier"] = "error_5xx_id",
+    ///                                 ["query"] = "Internal Server Error",
+    ///                                 ["index"] = "index2",
+    ///                                 ["groupName"] = "Logs_Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["index"] = "index",
+    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
+    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
+    ///                                     ["timeStampFormat"] = "timeStampFormat",
+    ///                                     ["messageIdentifier"] = "messageIdentifier",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             ChangeSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
+    ///                 {
+    ///                     Name = "BAC",
+    ///                     Identifier = "BAC",
+    ///                     Type = "PagerDuty",
+    ///                     Enabled = true,
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "account.pd",
+    ///                         ["pagerDutyServiceId"] = "P0N21OB",
+    ///                     }),
+    ///                     Category = "Alert",
+    ///                 },
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
+    ///                 {
+    ///                     Name = "FH",
+    ///                     Identifier = "FH",
+    ///                     Type = "CustomIncident",
+    ///                     Enabled = true,
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["name"] = "FH",
+    ///                         ["webhookUrl"] = "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&amp;changeSourceIdentifier=FH",
+    ///                         ["webhookCurlCommand"] = "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&amp;changeSourceIdentifier=FH' -d '{ \"eventIdentifier\": \"&lt;string&gt;\" (optional), \"user\": \"user@harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": { \"description\": \"&lt;String&gt;\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" } }'",
+    ///                         ["type"] = "Alert",
+    ///                     }),
+    ///                     Category = "Alert",
+    ///                 },
+    ///             },
+    ///             NotificationRuleRefs = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestNotificationRuleRefArgs
+    ///                 {
+    ///                     NotificationRuleRef = "notification_rule_ref",
+    ///                     Enabled = true,
+    ///                 },
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestNotificationRuleRefArgs
+    ///                 {
+    ///                     NotificationRuleRef = "notification_rule_ref1",
+    ///                     Enabled = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Sumologic Metrics Health Source
+    ///     var example1 = new Harness.Platform.MonitoredService("example1", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "sumologicmetrics",
+    ///                     Identifier = "sumo_metric_identifier",
+    ///                     Type = "SumologicMetrics",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "metric_cpu",
+    ///                                 ["identifier"] = "metric_cpu",
+    ///                                 ["query"] = "metric=cpu",
+    ///                                 ["groupName"] = "g1",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "_sourcehost",
+    ///                                 },
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "true",
+    ///                                 ["continuousVerificationEnabled"] = "true",
+    ///                                 ["sliEnabled"] = "false",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "metric_cpu",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "metric_cpu",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["query"] = "metric=memory",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "_sourcehost",
+    ///                                 },
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "false",
+    ///                                 ["continuousVerificationEnabled"] = "false",
+    ///                                 ["sliEnabled"] = "false",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Sumologic Log Health Source
+    ///     var example2 = new Harness.Platform.MonitoredService("example2", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "sumologic",
+    ///                     Identifier = "sumo_metric_identifier",
+    ///                     Type = "SumologicLogs",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "log1",
+    ///                                 ["identifier"] = "log1",
+    ///                                 ["query"] = "*",
+    ///                                 ["groupName"] = "Logs Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "_sourcehost",
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "log2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["query"] = "error",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "_sourcehost",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Splunk Signal FX Health Source
+    ///     var example3 = new Harness.Platform.MonitoredService("example3", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "signalfxmetrics",
+    ///                     Identifier = "signalfxmetrics",
+    ///                     Type = "SplunkSignalFXMetrics",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "metric_infra_cpu",
+    ///                                 ["identifier"] = "metric_infra_cpu",
+    ///                                 ["query"] = "***",
+    ///                                 ["groupName"] = "g",
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Errors",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                         "ACT_WHEN_LOWER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "true",
+    ///                                 ["continuousVerificationEnabled"] = "true",
+    ///                                 ["sliEnabled"] = "false",
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["query"] = "*",
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "true",
+    ///                                 ["continuousVerificationEnabled"] = "false",
+    ///                                 ["sliEnabled"] = "false",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metrictype"] = "Custom",
+    ///                                         ["metricName"] = "identifier2",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "identifier2",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Grafana Loki Log Health Source
+    ///     var example4 = new Harness.Platform.MonitoredService("example4", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "Test",
+    ///                     Identifier = "Test",
+    ///                     Type = "GrafanaLokiLogs",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "Demo",
+    ///                                 ["identifier"] = "Demo",
+    ///                                 ["query"] = "{job=~\".+\"}",
+    ///                                 ["groupName"] = "Log_Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "job",
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "log2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["query"] = "error",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "_sourcehost",
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "false",
+    ///                                 ["continuousVerificationEnabled"] = "false",
+    ///                                 ["sliEnabled"] = "false",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Azure Metrics Health Source
+    ///     var example5 = new Harness.Platform.MonitoredService("example5", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "azure metrics verify step",
+    ///                     Identifier = "azure_metrics_verify_step",
+    ///                     Type = "AzureMetrics",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "metric",
+    ///                                 ["identifier"] = "metric",
+    ///                                 ["query"] = "default",
+    ///                                 ["groupName"] = "g1",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "host",
+    ///                                     ["index"] = "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+    ///                                     ["healthSourceMetricName"] = "cpuUsagePercentage",
+    ///                                     ["healthSourceMetricNamespace"] = "insights.container/nodes",
+    ///                                     ["aggregationType"] = "average",
+    ///                                 },
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "true",
+    ///                                 ["continuousVerificationEnabled"] = "true",
+    ///                                 ["sliEnabled"] = "false",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metrictype"] = "Custom",
+    ///                                         ["metricName"] = "metric",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "metric",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "host",
+    ///                                     ["index"] = "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+    ///                                     ["healthSourceMetricName"] = "cpuUsagePercentage",
+    ///                                     ["healthSourceMetricNamespace"] = "insights.container/nodes",
+    ///                                     ["aggregationType"] = "average",
+    ///                                 },
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "false",
+    ///                                 ["continuousVerificationEnabled"] = "false",
+    ///                                 ["sliEnabled"] = "false",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Azure Log Health Source
+    ///     var example6 = new Harness.Platform.MonitoredService("example6", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "Demo azure",
+    ///                     Identifier = "Demo_azure",
+    ///                     Type = "AzureLogs",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "identifier2",
+    ///                                 ["groupName"] = "g2",
+    ///                                 ["query"] = "*",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["serviceInstanceField"] = "Name",
+    ///                                     ["timeStampIdentifier"] = "StartedTime",
+    ///                                     ["messageIdentifier"] = "Image",
+    ///                                     ["index"] = "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
+    ///                                 },
+    ///                                 ["liveMonitoringEnabled"] = "false",
+    ///                                 ["continuousVerificationEnabled"] = "false",
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Prometheus Metrics Health Source
+    ///     var example7 = new Harness.Platform.MonitoredService("example7", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "prometheus metrics verify step",
+    ///                     Identifier = "prometheus_metrics",
+    ///                     Type = "Prometheus",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["metricDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "Prometheus_Metric",
+    ///                                 ["metricName"] = "Prometheus Metric",
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["analysis"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["liveMonitoring"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                     },
+    ///                                     ["deploymentVerification"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                         ["serviceInstanceFieldName"] = "pod_name",
+    ///                                     },
+    ///                                 },
+    ///                                 ["query"] = "count(up{group=\"cv\",group=\"cv\"})",
+    ///                                 ["groupName"] = "met",
+    ///                                 ["isManualQuery"] = true,
+    ///                             },
+    ///                         },
+    ///                         ["metricPacks"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "Custom",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metrictype"] = "Custom",
+    ///                                         ["metricName"] = "Prometheus Metric",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "Prometheus Metric",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for Datadog Metrics Health Source
+    ///     var example8 = new Harness.Platform.MonitoredService("example8", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "ddm",
+    ///                     Identifier = "ddm",
+    ///                     Type = "DatadogMetrics",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["feature"] = "Datadog Cloud Metrics",
+    ///                         ["metricDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["metricName"] = "metric",
+    ///                                 ["metricPath"] = "M1",
+    ///                                 ["identifier"] = "metric",
+    ///                                 ["query"] = @"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
+    /// avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
+    /// (a+b)/10",
+    ///                                 ["isManualQuery"] = true,
+    ///                                 ["isCustomCreatedMetric"] = true,
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["analysis"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["liveMonitoring"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                     },
+    ///                                     ["deploymentVerification"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                         ["serviceInstanceFieldName"] = "pod",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["metricName"] = "dashboard_metric_cpu",
+    ///                                 ["identifier"] = "metric_cpu",
+    ///                                 ["query"] = @"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
+    /// avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
+    /// (a+b)/10",
+    ///                                 ["isManualQuery"] = false,
+    ///                                 ["dashboardName"] = "dashboard",
+    ///                                 ["metricPath"] = "M1",
+    ///                                 ["groupingQuery"] = "avg:kubernetes.cpu.limits{*} by {host}.rollup(avg, 60)",
+    ///                                 ["metric"] = "kubernetes.cpu.limits",
+    ///                                 ["aggregation"] = "avg",
+    ///                                 ["isCustomCreatedMetric"] = true,
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["analysis"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["liveMonitoring"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                     },
+    ///                                     ["deploymentVerification"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                         ["serviceInstanceFieldName"] = "pod",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         ["metricPacks"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "Custom",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metrictype"] = "Custom",
+    ///                                         ["metricName"] = "metric",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "metric",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     //Sample template for New Relic Metrics Health Source
+    ///     var example9 = new Harness.Platform.MonitoredService("example9", new()
+    ///     {
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "name",
+    ///                     Identifier = "identifier",
+    ///                     Type = "NewRelic",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "account.Newrelicautomation_do_not_delete",
+    ///                         ["feature"] = "apm",
+    ///                         ["applicationId"] = "107019083",
+    ///                         ["applicationName"] = "My Application",
+    ///                         ["metricData"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Performance"] = true,
+    ///                         },
+    ///                         ["metricPacks"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "Performance",
+    ///                             },
+    ///                         },
+    ///                         ["newRelicMetricDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "New_Relic_Metric",
+    ///                                 ["metricName"] = "New Relic Metric",
+    ///                                 ["riskProfile"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["riskCategory"] = "Performance_Other",
+    ///                                     ["thresholdTypes"] = new[]
+    ///                                     {
+    ///                                         "ACT_WHEN_HIGHER",
+    ///                                     },
+    ///                                 },
+    ///                                 ["analysis"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["deploymentVerification"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["enabled"] = true,
+    ///                                     },
+    ///                                 },
+    ///                                 ["groupName"] = "group1",
+    ///                                 ["nrql"] = "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
+    ///                                 ["responseMapping"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["metricValueJsonPath"] = "$.['timeSeries'].[*].['results'].[*].['count']",
+    ///                                     ["timestampJsonPath"] = "$.['timeSeries'].[*].['beginTimeSeconds']",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         ["metricPacks"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["identifier"] = "Custom",
+    ///                                 ["metricThresholds"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "IgnoreThreshold",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "Ignore",
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "New Relic Metric",
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["type"] = "FailImmediately",
+    ///                                         ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["action"] = "FailAfterOccurrence",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["count"] = 2,
+    ///                                             },
+    ///                                         },
+    ///                                         ["criteria"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "Absolute",
+    ///                                             ["spec"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["greaterThan"] = 100,
+    ///                                             },
+    ///                                         },
+    ///                                         ["metricType"] = "Custom",
+    ///                                         ["metricName"] = "New Relic Metric",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Import account level monitored_service

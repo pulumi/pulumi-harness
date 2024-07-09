@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating an AWS KMS connector.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 

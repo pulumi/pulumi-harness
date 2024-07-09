@@ -17,6 +17,8 @@ import com.pulumi.harness.platform.outputs.AwsConnectorFullJitterBackoffStrategy
 import com.pulumi.harness.platform.outputs.AwsConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.AwsConnectorIrsa;
 import com.pulumi.harness.platform.outputs.AwsConnectorManual;
+import com.pulumi.harness.platform.outputs.AwsConnectorOidcAuthentication;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -105,6 +107,20 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fixedDelayBackoffStrategy);
     }
     /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Output<Boolean> forceDelete() {
+        return this.forceDelete;
+    }
+    /**
      * Full Jitter BackOff Strategy.
      * 
      */
@@ -187,6 +203,20 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Export(name="oidcAuthentication", refs={AwsConnectorOidcAuthentication.class}, tree="[0]")
+    private Output</* @Nullable */ AwsConnectorOidcAuthentication> oidcAuthentication;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Output<Optional<AwsConnectorOidcAuthentication>> oidcAuthentication() {
+        return Codegen.optional(this.oidcAuthentication);
     }
     /**
      * Unique identifier of the organization.

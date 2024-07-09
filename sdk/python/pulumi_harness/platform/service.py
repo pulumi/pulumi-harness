@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServiceArgs', 'Service']
 
@@ -16,7 +18,11 @@ class ServiceArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['ServiceGitDetailsArgs']] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -26,18 +32,33 @@ class ServiceArgs:
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input[bool] import_from_git: import service from git
+        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+               connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if fetch_resolved_yaml is not None:
+            pulumi.set(__self__, "fetch_resolved_yaml", fetch_resolved_yaml)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -74,6 +95,18 @@ class ServiceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="fetchResolvedYaml")
+    def fetch_resolved_yaml(self) -> Optional[pulumi.Input[bool]]:
+        """
+        to fetch resoled service yaml
+        """
+        return pulumi.get(self, "fetch_resolved_yaml")
+
+    @fetch_resolved_yaml.setter
+    def fetch_resolved_yaml(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fetch_resolved_yaml", value)
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[str]]:
         """
@@ -84,6 +117,42 @@ class ServiceArgs:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['ServiceGitDetailsArgs']]:
+        """
+        Contains parameters related to Git Experience for remote entities
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['ServiceGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        import service from git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        force import service from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @is_force_import.setter
+    def is_force_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_force_import", value)
 
     @property
     @pulumi.getter
@@ -137,7 +206,10 @@ class ServiceArgs:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -150,8 +222,12 @@ class ServiceArgs:
 class _ServiceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['ServiceGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -160,20 +236,35 @@ class _ServiceState:
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: import service from git
+        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+               connectorRef: org.connectorId.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if fetch_resolved_yaml is not None:
+            pulumi.set(__self__, "fetch_resolved_yaml", fetch_resolved_yaml)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -198,6 +289,18 @@ class _ServiceState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="fetchResolvedYaml")
+    def fetch_resolved_yaml(self) -> Optional[pulumi.Input[bool]]:
+        """
+        to fetch resoled service yaml
+        """
+        return pulumi.get(self, "fetch_resolved_yaml")
+
+    @fetch_resolved_yaml.setter
+    def fetch_resolved_yaml(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fetch_resolved_yaml", value)
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[str]]:
         """
@@ -210,6 +313,18 @@ class _ServiceState:
         pulumi.set(self, "force_delete", value)
 
     @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['ServiceGitDetailsArgs']]:
+        """
+        Contains parameters related to Git Experience for remote entities
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['ServiceGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -220,6 +335,30 @@ class _ServiceState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        import service from git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        force import service from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @is_force_import.setter
+    def is_force_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_force_import", value)
 
     @property
     @pulumi.getter
@@ -273,7 +412,10 @@ class _ServiceState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -288,8 +430,12 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -297,10 +443,112 @@ class Service(pulumi.CustomResource):
                  yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness project.
+        Resource for creating a Harness service.
 
-        ## Example Usage
+        ## Example to create Service at different levels (Org, Project, Account)
 
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -350,6 +598,83 @@ class Service(pulumi.CustomResource):
             type: Kubernetes
           gitOpsEnabled: false
         \"\"\")
+        ```
+
+        ### Creating Remote Service
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            project_id="project_id",
+            git_details=harness.platform.ServiceGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ),
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Importing Service From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            import_from_git=True,
+            git_details=harness.platform.ServiceGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ))
         ```
 
         ## Import
@@ -375,13 +700,20 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: import service from git
+        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+               connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -390,10 +722,112 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness project.
+        Resource for creating a Harness service.
 
-        ## Example Usage
+        ## Example to create Service at different levels (Org, Project, Account)
 
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -443,6 +877,83 @@ class Service(pulumi.CustomResource):
             type: Kubernetes
           gitOpsEnabled: false
         \"\"\")
+        ```
+
+        ### Creating Remote Service
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            org_id="org_id",
+            project_id="project_id",
+            git_details=harness.platform.ServiceGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ),
+            yaml=\"\"\"service:
+          name: name
+          identifier: identifier
+          serviceDefinition:
+            spec:
+              manifests:
+                - manifest:
+                    identifier: manifest1
+                    type: K8sManifest
+                    spec:
+                      store:
+                        type: Github
+                        spec:
+                          connectorRef: <+input>
+                          gitFetchType: Branch
+                          paths:
+                            - files1
+                          repoName: <+input>
+                          branch: master
+                      skipResourceVersioning: false
+              configFiles:
+                - configFile:
+                    identifier: configFile1
+                    spec:
+                      store:
+                        type: Harness
+                        spec:
+                          files:
+                            - <+org.description>
+              variables:
+                - name: var1
+                  type: String
+                  value: val1
+                - name: var2
+                  type: String
+                  value: val2
+            type: Kubernetes
+          gitOpsEnabled: false
+        \"\"\")
+        ```
+
+        ### Importing Service From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Service("example",
+            identifier="identifier",
+            name="name",
+            import_from_git=True,
+            git_details=harness.platform.ServiceGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ))
         ```
 
         ## Import
@@ -481,8 +992,12 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -498,10 +1013,14 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["fetch_resolved_yaml"] = fetch_resolved_yaml
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["git_details"] = git_details
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["import_from_git"] = import_from_git
+            __props__.__dict__["is_force_import"] = is_force_import
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
@@ -518,8 +1037,12 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
+            git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            import_from_git: Optional[pulumi.Input[bool]] = None,
+            is_force_import: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -533,21 +1056,32 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[bool] import_from_git: import service from git
+        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+               connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ServiceState.__new__(_ServiceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["fetch_resolved_yaml"] = fetch_resolved_yaml
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["git_details"] = git_details
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["import_from_git"] = import_from_git
+        __props__.__dict__["is_force_import"] = is_force_import
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -564,6 +1098,14 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="fetchResolvedYaml")
+    def fetch_resolved_yaml(self) -> pulumi.Output[bool]:
+        """
+        to fetch resoled service yaml
+        """
+        return pulumi.get(self, "fetch_resolved_yaml")
+
+    @property
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[str]:
         """
@@ -572,12 +1114,36 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "force_delete")
 
     @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> pulumi.Output['outputs.ServiceGitDetails']:
+        """
+        Contains parameters related to Git Experience for remote entities
+        """
+        return pulumi.get(self, "git_details")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> pulumi.Output[bool]:
+        """
+        import service from git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> pulumi.Output[bool]:
+        """
+        force import service from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
 
     @property
     @pulumi.getter
@@ -615,7 +1181,10 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[str]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

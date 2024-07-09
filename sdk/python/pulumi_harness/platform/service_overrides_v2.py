@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServiceOverridesV2Args', 'ServiceOverridesV2']
 
@@ -15,46 +17,56 @@ __all__ = ['ServiceOverridesV2Args', 'ServiceOverridesV2']
 class ServiceOverridesV2Args:
     def __init__(__self__, *,
                  env_id: pulumi.Input[str],
-                 identifier: pulumi.Input[str],
-                 spec: pulumi.Input[str],
                  type: pulumi.Input[str],
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None):
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceOverridesV2 resource.
-        :param pulumi.Input[str] env_id: The env ID to which the overrides are associated.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] spec: The overrides specification for the service.
-        :param pulumi.Input[str] type: The type of the overrides
-        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated
-        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated
+        :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
+        :param pulumi.Input[str] type: The type of the overrides.
+        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
+        :param pulumi.Input['ServiceOverridesV2GitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[bool] import_from_git: import override from git
+        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.
+        :param pulumi.Input[bool] is_force_import: force import override from remote even if same file path already exist
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] service_id: The service ID to which the overrides applies.
+        :param pulumi.Input[str] yaml: The yaml of the overrides spec object.
         """
         pulumi.set(__self__, "env_id", env_id)
-        pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "spec", spec)
         pulumi.set(__self__, "type", type)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
         if infra_id is not None:
             pulumi.set(__self__, "infra_id", infra_id)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Input[str]:
         """
-        The env ID to which the overrides are associated.
+        The environment ID to which the overrides are associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -64,33 +76,9 @@ class ServiceOverridesV2Args:
 
     @property
     @pulumi.getter
-    def identifier(self) -> pulumi.Input[str]:
-        """
-        Unique identifier of the resource.
-        """
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[str]):
-        pulumi.set(self, "identifier", value)
-
-    @property
-    @pulumi.getter
-    def spec(self) -> pulumi.Input[str]:
-        """
-        The overrides specification for the service.
-        """
-        return pulumi.get(self, "spec")
-
-    @spec.setter
-    def spec(self, value: pulumi.Input[str]):
-        pulumi.set(self, "spec", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the overrides
+        The type of the overrides.
         """
         return pulumi.get(self, "type")
 
@@ -102,7 +90,7 @@ class ServiceOverridesV2Args:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster ID to which the overrides are associated
+        The cluster ID to which the overrides are associated.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -111,16 +99,52 @@ class ServiceOverridesV2Args:
         pulumi.set(self, "cluster_id", value)
 
     @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']]:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        import override from git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
     @pulumi.getter(name="infraId")
     def infra_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The infrastructure ID to which the overrides are associated
+        The infrastructure ID to which the overrides are associated.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
     def infra_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "infra_id", value)
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        force import override from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @is_force_import.setter
+    def is_force_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_force_import", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -158,55 +182,79 @@ class ServiceOverridesV2Args:
     def service_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_id", value)
 
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The yaml of the overrides spec object.
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 @pulumi.input_type
 class _ServiceOverridesV2State:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceOverridesV2 resources.
-        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated
-        :param pulumi.Input[str] env_id: The env ID to which the overrides are associated.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated
+        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
+        :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
+        :param pulumi.Input['ServiceOverridesV2GitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[str] identifier: The identifier of the override entity.
+        :param pulumi.Input[bool] import_from_git: import override from git
+        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.
+        :param pulumi.Input[bool] is_force_import: force import override from remote even if same file path already exist
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] service_id: The service ID to which the overrides applies.
-        :param pulumi.Input[str] spec: The overrides specification for the service.
-        :param pulumi.Input[str] type: The type of the overrides
+        :param pulumi.Input[str] type: The type of the overrides.
+        :param pulumi.Input[str] yaml: The yaml of the overrides spec object.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if env_id is not None:
             pulumi.set(__self__, "env_id", env_id)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
         if infra_id is not None:
             pulumi.set(__self__, "infra_id", infra_id)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
-        if spec is not None:
-            pulumi.set(__self__, "spec", spec)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster ID to which the overrides are associated
+        The cluster ID to which the overrides are associated.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -218,7 +266,7 @@ class _ServiceOverridesV2State:
     @pulumi.getter(name="envId")
     def env_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The env ID to which the overrides are associated.
+        The environment ID to which the overrides are associated.
         """
         return pulumi.get(self, "env_id")
 
@@ -227,10 +275,22 @@ class _ServiceOverridesV2State:
         pulumi.set(self, "env_id", value)
 
     @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']]:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['ServiceOverridesV2GitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the resource.
+        The identifier of the override entity.
         """
         return pulumi.get(self, "identifier")
 
@@ -239,16 +299,40 @@ class _ServiceOverridesV2State:
         pulumi.set(self, "identifier", value)
 
     @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        import override from git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
+
+    @property
     @pulumi.getter(name="infraId")
     def infra_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The infrastructure ID to which the overrides are associated
+        The infrastructure ID to which the overrides are associated.
         """
         return pulumi.get(self, "infra_id")
 
     @infra_id.setter
     def infra_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "infra_id", value)
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[pulumi.Input[bool]]:
+        """
+        force import override from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @is_force_import.setter
+    def is_force_import(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_force_import", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -288,27 +372,27 @@ class _ServiceOverridesV2State:
 
     @property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[str]]:
-        """
-        The overrides specification for the service.
-        """
-        return pulumi.get(self, "spec")
-
-    @spec.setter
-    def spec(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "spec", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the overrides
+        The type of the overrides.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The yaml of the overrides spec object.
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
 
 
 class ServiceOverridesV2(pulumi.CustomResource):
@@ -318,27 +402,154 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 identifier: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServiceOverridesV2 resource with the given unique name, props, and options.
+        Resource for creating a Harness service override V2.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            yaml=\"\"\"variables:
+          - name: var1
+            type: String
+            value: val1
+        configFiles:
+          - configFile:
+              identifier: sampleConfigFile
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/configFile1
+        manifests:
+          - manifest:
+              identifier: sampleManifestFile
+              type: Values
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/manifestFile1
+        \"\"\")
+        ```
+
+        ### Creating Remote Service Override
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ),
+            yaml=\"\"\"variables:
+          - name: v1
+            type: String
+            value: val1
+        manifests:
+          - manifest:
+              identifier: manifest1
+              type: Values
+              spec:
+                store:
+                  type: Github
+                  spec:
+                    connectorRef: "<+input>"
+                    gitFetchType: Branch
+                    paths:
+                      - path-updated
+                    repoName: "<+input>"
+                    branch: master
+                skipResourceVersioning: false
+        \"\"\")
+        ```
+
+        ### Importing Service Override From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            import_from_git=True,
+            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ))
+        ```
+
+        ## Import
+
+        Import account level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <override_id>
+        ```
+
+        Import org level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<override_id>
+        ```
+
+        Import project level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<project_id>/<override_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated
-        :param pulumi.Input[str] env_id: The env ID to which the overrides are associated.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated
+        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
+        :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
+        :param pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[bool] import_from_git: import override from git
+        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.
+        :param pulumi.Input[bool] is_force_import: force import override from remote even if same file path already exist
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] service_id: The service ID to which the overrides applies.
-        :param pulumi.Input[str] spec: The overrides specification for the service.
-        :param pulumi.Input[str] type: The type of the overrides
+        :param pulumi.Input[str] type: The type of the overrides.
+        :param pulumi.Input[str] yaml: The yaml of the overrides spec object.
         """
         ...
     @overload
@@ -347,7 +558,130 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  args: ServiceOverridesV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceOverridesV2 resource with the given unique name, props, and options.
+        Resource for creating a Harness service override V2.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            yaml=\"\"\"variables:
+          - name: var1
+            type: String
+            value: val1
+        configFiles:
+          - configFile:
+              identifier: sampleConfigFile
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/configFile1
+        manifests:
+          - manifest:
+              identifier: sampleManifestFile
+              type: Values
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/manifestFile1
+        \"\"\")
+        ```
+
+        ### Creating Remote Service Override
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ),
+            yaml=\"\"\"variables:
+          - name: v1
+            type: String
+            value: val1
+        manifests:
+          - manifest:
+              identifier: manifest1
+              type: Values
+              spec:
+                store:
+                  type: Github
+                  spec:
+                    connectorRef: "<+input>"
+                    gitFetchType: Branch
+                    paths:
+                      - path-updated
+                    repoName: "<+input>"
+                    branch: master
+                skipResourceVersioning: false
+        \"\"\")
+        ```
+
+        ### Importing Service Override From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.ServiceOverridesV2("test",
+            org_id="orgIdentifier",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            infra_id="infraIdentifier",
+            type="INFRA_SERVICE_OVERRIDE",
+            import_from_git=True,
+            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+            ))
+        ```
+
+        ## Import
+
+        Import account level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <override_id>
+        ```
+
+        Import org level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<override_id>
+        ```
+
+        Import project level service override
+
+        ```sh
+        $ pulumi import harness:platform/serviceOverridesV2:ServiceOverridesV2 example <org_id>/<project_id>/<override_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceOverridesV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -365,13 +699,15 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 identifier: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
+                 is_force_import: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,19 +721,18 @@ class ServiceOverridesV2(pulumi.CustomResource):
             if env_id is None and not opts.urn:
                 raise TypeError("Missing required property 'env_id'")
             __props__.__dict__["env_id"] = env_id
-            if identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'identifier'")
-            __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["git_details"] = git_details
+            __props__.__dict__["import_from_git"] = import_from_git
             __props__.__dict__["infra_id"] = infra_id
+            __props__.__dict__["is_force_import"] = is_force_import
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["service_id"] = service_id
-            if spec is None and not opts.urn:
-                raise TypeError("Missing required property 'spec'")
-            __props__.__dict__["spec"] = spec
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["yaml"] = yaml
+            __props__.__dict__["identifier"] = None
         super(ServiceOverridesV2, __self__).__init__(
             'harness:platform/serviceOverridesV2:ServiceOverridesV2',
             resource_name,
@@ -410,13 +745,16 @@ class ServiceOverridesV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
+            git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            import_from_git: Optional[pulumi.Input[bool]] = None,
             infra_id: Optional[pulumi.Input[str]] = None,
+            is_force_import: Optional[pulumi.Input[bool]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'ServiceOverridesV2':
+            type: Optional[pulumi.Input[str]] = None,
+            yaml: Optional[pulumi.Input[str]] = None) -> 'ServiceOverridesV2':
         """
         Get an existing ServiceOverridesV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -424,15 +762,18 @@ class ServiceOverridesV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated
-        :param pulumi.Input[str] env_id: The env ID to which the overrides are associated.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated
+        :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
+        :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
+        :param pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[str] identifier: The identifier of the override entity.
+        :param pulumi.Input[bool] import_from_git: import override from git
+        :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.
+        :param pulumi.Input[bool] is_force_import: force import override from remote even if same file path already exist
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] service_id: The service ID to which the overrides applies.
-        :param pulumi.Input[str] spec: The overrides specification for the service.
-        :param pulumi.Input[str] type: The type of the overrides
+        :param pulumi.Input[str] type: The type of the overrides.
+        :param pulumi.Input[str] yaml: The yaml of the overrides spec object.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -440,20 +781,23 @@ class ServiceOverridesV2(pulumi.CustomResource):
 
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["env_id"] = env_id
+        __props__.__dict__["git_details"] = git_details
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["import_from_git"] = import_from_git
         __props__.__dict__["infra_id"] = infra_id
+        __props__.__dict__["is_force_import"] = is_force_import
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["service_id"] = service_id
-        __props__.__dict__["spec"] = spec
         __props__.__dict__["type"] = type
+        __props__.__dict__["yaml"] = yaml
         return ServiceOverridesV2(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        The cluster ID to which the overrides are associated
+        The cluster ID to which the overrides are associated.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -461,25 +805,49 @@ class ServiceOverridesV2(pulumi.CustomResource):
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Output[str]:
         """
-        The env ID to which the overrides are associated.
+        The environment ID to which the overrides are associated.
         """
         return pulumi.get(self, "env_id")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> pulumi.Output['outputs.ServiceOverridesV2GitDetails']:
+        """
+        Contains parameters related to creating an Entity for Git Experience.
+        """
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the resource.
+        The identifier of the override entity.
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> pulumi.Output[bool]:
+        """
+        import override from git
+        """
+        return pulumi.get(self, "import_from_git")
 
     @property
     @pulumi.getter(name="infraId")
     def infra_id(self) -> pulumi.Output[str]:
         """
-        The infrastructure ID to which the overrides are associated
+        The infrastructure ID to which the overrides are associated.
         """
         return pulumi.get(self, "infra_id")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> pulumi.Output[bool]:
+        """
+        force import override from remote even if same file path already exist
+        """
+        return pulumi.get(self, "is_force_import")
 
     @property
     @pulumi.getter(name="orgId")
@@ -507,17 +875,17 @@ class ServiceOverridesV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[str]:
+    def type(self) -> pulumi.Output[str]:
         """
-        The overrides specification for the service.
+        The type of the overrides.
         """
-        return pulumi.get(self, "spec")
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
+    def yaml(self) -> pulumi.Output[str]:
         """
-        The type of the overrides
+        The yaml of the overrides spec object.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "yaml")
 

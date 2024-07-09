@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GPG public key in the server's configuration.
+// Resource for managing Harness GitOps GPG public key.
 //
 // ## Example Usage
 //
@@ -53,13 +53,19 @@ import (
 //
 // ## Import
 //
-// # Import a Account level Gitops Cluster
+// # Import an Account level Gitops GnuPG Key
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <agent_id>/<key_id>
 // ```
 //
-// # Import a Project level Gitops Cluster
+// # Import an Org level Gitops GnuPG Key
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<agent_id>/<key_id>
+// ```
+//
+// # Import a Project level Gitops GnuPG Key
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example <organization_id>/<project_id>/<agent_id>/<key_id>

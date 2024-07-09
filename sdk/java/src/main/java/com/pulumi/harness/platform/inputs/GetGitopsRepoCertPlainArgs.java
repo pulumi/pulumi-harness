@@ -16,14 +16,14 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
     public static final GetGitopsRepoCertPlainArgs Empty = new GetGitopsRepoCertPlainArgs();
 
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     public String accountId() {
@@ -31,14 +31,14 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="agentId")
     private @Nullable String agentId;
 
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> agentId() {
@@ -46,14 +46,14 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> orgId() {
@@ -61,14 +61,14 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> projectId() {
@@ -103,7 +103,7 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId account identifier of the Repository Certificates.
+         * @param accountId Account identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param agentId agent identifier of the Repository Certificates.
+         * @param agentId Agent identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param orgId organization identifier of the Repository Certificates.
+         * @param orgId Organization identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param projectId project identifier of the Repository Certificates.
+         * @param projectId Project identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 

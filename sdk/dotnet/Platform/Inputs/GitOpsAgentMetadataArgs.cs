@@ -13,13 +13,19 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsAgentMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if the deployment should be deployed using the deploy-ha.yaml
+        /// Indicates if the agent is deployed in HA mode.
         /// </summary>
         [Input("highAvailability")]
         public Input<bool>? HighAvailability { get; set; }
 
         /// <summary>
-        /// The k8s namespace that this agent resides in.
+        /// Indicates if the agent is namespaced.
+        /// </summary>
+        [Input("isNamespaced")]
+        public Input<bool>? IsNamespaced { get; set; }
+
+        /// <summary>
+        /// The kubernetes namespace where the agent should be installed.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

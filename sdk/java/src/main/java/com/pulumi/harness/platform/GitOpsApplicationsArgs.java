@@ -155,14 +155,14 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
     public Optional<Output<String>> project() {
@@ -182,81 +182,6 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
      */
     public Output<String> projectId() {
         return this.projectId;
-    }
-
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    @Import(name="queryProject")
-    private @Nullable Output<String> queryProject;
-
-    /**
-     * @return Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    public Optional<Output<String>> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    @Import(name="queryRefresh")
-    private @Nullable Output<String> queryRefresh;
-
-    /**
-     * @return Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    public Optional<Output<String>> queryRefresh() {
-        return Optional.ofNullable(this.queryRefresh);
-    }
-
-    /**
-     * Repo URL to restrict returned list applications.
-     * 
-     */
-    @Import(name="queryRepo")
-    private @Nullable Output<String> queryRepo;
-
-    /**
-     * @return Repo URL to restrict returned list applications.
-     * 
-     */
-    public Optional<Output<String>> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
-    }
-
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    @Import(name="queryResourceVersion")
-    private @Nullable Output<String> queryResourceVersion;
-
-    /**
-     * @return Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    public Optional<Output<String>> queryResourceVersion() {
-        return Optional.ofNullable(this.queryResourceVersion);
-    }
-
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    @Import(name="querySelector")
-    private @Nullable Output<String> querySelector;
-
-    /**
-     * @return Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    public Optional<Output<String>> querySelector() {
-        return Optional.ofNullable(this.querySelector);
     }
 
     /**
@@ -290,21 +215,6 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Request name to delete the GitOps application.
-     * 
-     */
-    @Import(name="requestName")
-    private @Nullable Output<String> requestName;
-
-    /**
-     * @return Request name to delete the GitOps application.
-     * 
-     */
-    public Optional<Output<String>> requestName() {
-        return Optional.ofNullable(this.requestName);
-    }
-
-    /**
      * Request propagation policy to delete the GitOps application.
      * 
      */
@@ -335,14 +245,14 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Indicates if the GitOps application has to be validated.
+     * Indicates if the GitOps application yaml has to be validated.
      * 
      */
     @Import(name="validate")
     private @Nullable Output<Boolean> validate;
 
     /**
-     * @return Indicates if the GitOps application has to be validated.
+     * @return Indicates if the GitOps application yaml has to be validated.
      * 
      */
     public Optional<Output<Boolean>> validate() {
@@ -363,14 +273,8 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         this.orgId = $.orgId;
         this.project = $.project;
         this.projectId = $.projectId;
-        this.queryProject = $.queryProject;
-        this.queryRefresh = $.queryRefresh;
-        this.queryRepo = $.queryRepo;
-        this.queryResourceVersion = $.queryResourceVersion;
-        this.querySelector = $.querySelector;
         this.repoId = $.repoId;
         this.requestCascade = $.requestCascade;
-        this.requestName = $.requestName;
         this.requestPropagationPolicy = $.requestPropagationPolicy;
         this.upsert = $.upsert;
         this.validate = $.validate;
@@ -594,7 +498,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -605,7 +509,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -633,111 +537,6 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        /**
-         * @param queryProject Project names to filter the corresponding GitOps applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(@Nullable Output<String> queryProject) {
-            $.queryProject = queryProject;
-            return this;
-        }
-
-        /**
-         * @param queryProject Project names to filter the corresponding GitOps applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(String queryProject) {
-            return queryProject(Output.of(queryProject));
-        }
-
-        /**
-         * @param queryRefresh Forces the GitOps application to reconcile when set to true.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRefresh(@Nullable Output<String> queryRefresh) {
-            $.queryRefresh = queryRefresh;
-            return this;
-        }
-
-        /**
-         * @param queryRefresh Forces the GitOps application to reconcile when set to true.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRefresh(String queryRefresh) {
-            return queryRefresh(Output.of(queryRefresh));
-        }
-
-        /**
-         * @param queryRepo Repo URL to restrict returned list applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(@Nullable Output<String> queryRepo) {
-            $.queryRepo = queryRepo;
-            return this;
-        }
-
-        /**
-         * @param queryRepo Repo URL to restrict returned list applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(String queryRepo) {
-            return queryRepo(Output.of(queryRepo));
-        }
-
-        /**
-         * @param queryResourceVersion Shows modifications after a version that is specified with a watch call.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryResourceVersion(@Nullable Output<String> queryResourceVersion) {
-            $.queryResourceVersion = queryResourceVersion;
-            return this;
-        }
-
-        /**
-         * @param queryResourceVersion Shows modifications after a version that is specified with a watch call.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryResourceVersion(String queryResourceVersion) {
-            return queryResourceVersion(Output.of(queryResourceVersion));
-        }
-
-        /**
-         * @param querySelector Filters GitOps applications corresponding to the labels.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder querySelector(@Nullable Output<String> querySelector) {
-            $.querySelector = querySelector;
-            return this;
-        }
-
-        /**
-         * @param querySelector Filters GitOps applications corresponding to the labels.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder querySelector(String querySelector) {
-            return querySelector(Output.of(querySelector));
         }
 
         /**
@@ -783,27 +582,6 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param requestName Request name to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestName(@Nullable Output<String> requestName) {
-            $.requestName = requestName;
-            return this;
-        }
-
-        /**
-         * @param requestName Request name to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestName(String requestName) {
-            return requestName(Output.of(requestName));
-        }
-
-        /**
          * @param requestPropagationPolicy Request propagation policy to delete the GitOps application.
          * 
          * @return builder
@@ -846,7 +624,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param validate Indicates if the GitOps application has to be validated.
+         * @param validate Indicates if the GitOps application yaml has to be validated.
          * 
          * @return builder
          * 
@@ -857,7 +635,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param validate Indicates if the GitOps application has to be validated.
+         * @param validate Indicates if the GitOps application yaml has to be validated.
          * 
          * @return builder
          * 

@@ -13,6 +13,8 @@ import com.pulumi.harness.platform.inputs.AwsConnectorFullJitterBackoffStrategyA
 import com.pulumi.harness.platform.inputs.AwsConnectorInheritFromDelegateArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorIrsaArgs;
 import com.pulumi.harness.platform.inputs.AwsConnectorManualArgs;
+import com.pulumi.harness.platform.inputs.AwsConnectorOidcAuthenticationArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,6 +84,21 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AwsConnectorFixedDelayBackoffStrategyArgs>> fixedDelayBackoffStrategy() {
         return Optional.ofNullable(this.fixedDelayBackoffStrategy);
+    }
+
+    /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -175,6 +192,21 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Import(name="oidcAuthentication")
+    private @Nullable Output<AwsConnectorOidcAuthenticationArgs> oidcAuthentication;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Optional<Output<AwsConnectorOidcAuthenticationArgs>> oidcAuthentication() {
+        return Optional.ofNullable(this.oidcAuthentication);
+    }
+
+    /**
      * Unique identifier of the organization.
      * 
      */
@@ -226,12 +258,14 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.equalJitterBackoffStrategy = $.equalJitterBackoffStrategy;
         this.fixedDelayBackoffStrategy = $.fixedDelayBackoffStrategy;
+        this.forceDelete = $.forceDelete;
         this.fullJitterBackoffStrategy = $.fullJitterBackoffStrategy;
         this.identifier = $.identifier;
         this.inheritFromDelegate = $.inheritFromDelegate;
         this.irsa = $.irsa;
         this.manual = $.manual;
         this.name = $.name;
+        this.oidcAuthentication = $.oidcAuthentication;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
@@ -337,6 +371,27 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fixedDelayBackoffStrategy(AwsConnectorFixedDelayBackoffStrategyArgs fixedDelayBackoffStrategy) {
             return fixedDelayBackoffStrategy(Output.of(fixedDelayBackoffStrategy));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
@@ -463,6 +518,27 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oidcAuthentication Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(@Nullable Output<AwsConnectorOidcAuthenticationArgs> oidcAuthentication) {
+            $.oidcAuthentication = oidcAuthentication;
+            return this;
+        }
+
+        /**
+         * @param oidcAuthentication Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(AwsConnectorOidcAuthenticationArgs oidcAuthentication) {
+            return oidcAuthentication(Output.of(oidcAuthentication));
         }
 
         /**

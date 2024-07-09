@@ -23,11 +23,11 @@ class GitOpsRepoCertArgs:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCert resource.
-        :param pulumi.Input[str] account_id: account identifier of the Repository Certificates.
-        :param pulumi.Input[str] agent_id: agent identifier of the Repository Certificates.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificates create/Update request.
-        :param pulumi.Input[str] org_id: organization identifier of the Repository Certificates.
-        :param pulumi.Input[str] project_id: project identifier of the Repository Certificates.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificate create/update request.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps repository certificate.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
@@ -41,7 +41,7 @@ class GitOpsRepoCertArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        account identifier of the Repository Certificates.
+        Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
@@ -53,7 +53,7 @@ class GitOpsRepoCertArgs:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[str]:
         """
-        agent identifier of the Repository Certificates.
+        Agent identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "agent_id")
 
@@ -65,7 +65,7 @@ class GitOpsRepoCertArgs:
     @pulumi.getter
     def requests(self) -> pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]:
         """
-        Repository Certificates create/Update request.
+        Repository Certificate create/update request.
         """
         return pulumi.get(self, "requests")
 
@@ -77,7 +77,7 @@ class GitOpsRepoCertArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        organization identifier of the Repository Certificates.
+        Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
@@ -89,7 +89,7 @@ class GitOpsRepoCertArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        project identifier of the Repository Certificates.
+        Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
@@ -108,11 +108,11 @@ class _GitOpsRepoCertState:
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepoCert resources.
-        :param pulumi.Input[str] account_id: account identifier of the Repository Certificates.
-        :param pulumi.Input[str] agent_id: agent identifier of the Repository Certificates.
-        :param pulumi.Input[str] org_id: organization identifier of the Repository Certificates.
-        :param pulumi.Input[str] project_id: project identifier of the Repository Certificates.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificates create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps repository certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificate create/update request.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -129,7 +129,7 @@ class _GitOpsRepoCertState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        account identifier of the Repository Certificates.
+        Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
@@ -141,7 +141,7 @@ class _GitOpsRepoCertState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        agent identifier of the Repository Certificates.
+        Agent identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "agent_id")
 
@@ -153,7 +153,7 @@ class _GitOpsRepoCertState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        organization identifier of the Repository Certificates.
+        Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
@@ -165,7 +165,7 @@ class _GitOpsRepoCertState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        project identifier of the Repository Certificates.
+        Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
@@ -177,7 +177,7 @@ class _GitOpsRepoCertState:
     @pulumi.getter
     def requests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]]:
         """
-        Repository Certificates create/Update request.
+        Repository Certificate create/update request.
         """
         return pulumi.get(self, "requests")
 
@@ -198,7 +198,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCertRequestArgs']]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Gitops Repositories Certificates.
+        Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
 
         ## Example Usage
 
@@ -211,9 +211,10 @@ class GitOpsRepoCert(pulumi.CustomResource):
                 certificates=[harness.platform.GitOpsRepoCertRequestCertificateArgs(
                     metadatas=[harness.platform.GitOpsRepoCertRequestCertificateMetadataArgs()],
                     items=[harness.platform.GitOpsRepoCertRequestCertificateItemArgs(
-                        server_name="serverName",
-                        cert_type="https",
-                        cert_data="yourcertdata",
+                        server_name="github.com",
+                        cert_type="ssh",
+                        cert_sub_type="ecdsa-sha2-nistp256",
+                        cert_data="QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
                     )],
                 )],
                 upsert=True,
@@ -224,19 +225,31 @@ class GitOpsRepoCert(pulumi.CustomResource):
 
         ## Import
 
-        Import a Account level Gitops Repository Certificate
+        Import an Account level Gitops Repository Certificate
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
         ```
 
+        Import an Org level Gitops Repository Certificate
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<repocert_id>
+        ```
+
+        Import a Project level Gitops Repository Certificate
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<project_id>/<repocert_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the Repository Certificates.
-        :param pulumi.Input[str] agent_id: agent identifier of the Repository Certificates.
-        :param pulumi.Input[str] org_id: organization identifier of the Repository Certificates.
-        :param pulumi.Input[str] project_id: project identifier of the Repository Certificates.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCertRequestArgs']]]] requests: Repository Certificates create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps repository certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCertRequestArgs']]]] requests: Repository Certificate create/update request.
         """
         ...
     @overload
@@ -245,7 +258,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
                  args: GitOpsRepoCertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Gitops Repositories Certificates.
+        Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
 
         ## Example Usage
 
@@ -258,9 +271,10 @@ class GitOpsRepoCert(pulumi.CustomResource):
                 certificates=[harness.platform.GitOpsRepoCertRequestCertificateArgs(
                     metadatas=[harness.platform.GitOpsRepoCertRequestCertificateMetadataArgs()],
                     items=[harness.platform.GitOpsRepoCertRequestCertificateItemArgs(
-                        server_name="serverName",
-                        cert_type="https",
-                        cert_data="yourcertdata",
+                        server_name="github.com",
+                        cert_type="ssh",
+                        cert_sub_type="ecdsa-sha2-nistp256",
+                        cert_data="QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
                     )],
                 )],
                 upsert=True,
@@ -271,10 +285,22 @@ class GitOpsRepoCert(pulumi.CustomResource):
 
         ## Import
 
-        Import a Account level Gitops Repository Certificate
+        Import an Account level Gitops Repository Certificate
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
+        ```
+
+        Import an Org level Gitops Repository Certificate
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<repocert_id>
+        ```
+
+        Import a Project level Gitops Repository Certificate
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<project_id>/<repocert_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -339,11 +365,11 @@ class GitOpsRepoCert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: account identifier of the Repository Certificates.
-        :param pulumi.Input[str] agent_id: agent identifier of the Repository Certificates.
-        :param pulumi.Input[str] org_id: organization identifier of the Repository Certificates.
-        :param pulumi.Input[str] project_id: project identifier of the Repository Certificates.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCertRequestArgs']]]] requests: Repository Certificates create/Update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository certificate.
+        :param pulumi.Input[str] project_id: Project identifier of the GitOps repository certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCertRequestArgs']]]] requests: Repository Certificate create/update request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,7 +386,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        account identifier of the Repository Certificates.
+        Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
@@ -368,7 +394,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[str]:
         """
-        agent identifier of the Repository Certificates.
+        Agent identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "agent_id")
 
@@ -376,7 +402,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        organization identifier of the Repository Certificates.
+        Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
@@ -384,7 +410,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        project identifier of the Repository Certificates.
+        Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
@@ -392,7 +418,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
     @pulumi.getter
     def requests(self) -> pulumi.Output[Sequence['outputs.GitOpsRepoCertRequest']]:
         """
-        Repository Certificates create/Update request.
+        Repository Certificate create/update request.
         """
         return pulumi.get(self, "requests")
 

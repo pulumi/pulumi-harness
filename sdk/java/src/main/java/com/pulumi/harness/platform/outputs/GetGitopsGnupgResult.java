@@ -33,7 +33,7 @@ public final class GetGitopsGnupgResult {
      * @return Identifier for the GnuPG Key.
      * 
      */
-    private @Nullable String identifier;
+    private String identifier;
     /**
      * @return Organization Identifier for the GnuPG Key.
      * 
@@ -48,7 +48,7 @@ public final class GetGitopsGnupgResult {
      * @return GnuPGPublicKey is a representation of a GnuPG public key
      * 
      */
-    private @Nullable List<GetGitopsGnupgRequest> requests;
+    private List<GetGitopsGnupgRequest> requests;
 
     private GetGitopsGnupgResult() {}
     /**
@@ -76,8 +76,8 @@ public final class GetGitopsGnupgResult {
      * @return Identifier for the GnuPG Key.
      * 
      */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public String identifier() {
+        return this.identifier;
     }
     /**
      * @return Organization Identifier for the GnuPG Key.
@@ -98,7 +98,7 @@ public final class GetGitopsGnupgResult {
      * 
      */
     public List<GetGitopsGnupgRequest> requests() {
-        return this.requests == null ? List.of() : this.requests;
+        return this.requests;
     }
 
     public static Builder builder() {
@@ -113,10 +113,10 @@ public final class GetGitopsGnupgResult {
         private String accountId;
         private String agentId;
         private String id;
-        private @Nullable String identifier;
+        private String identifier;
         private @Nullable String orgId;
         private @Nullable String projectId;
-        private @Nullable List<GetGitopsGnupgRequest> requests;
+        private List<GetGitopsGnupgRequest> requests;
         public Builder() {}
         public Builder(GetGitopsGnupgResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -154,8 +154,10 @@ public final class GetGitopsGnupgResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-
+        public Builder identifier(String identifier) {
+            if (identifier == null) {
+              throw new MissingRequiredPropertyException("GetGitopsGnupgResult", "identifier");
+            }
             this.identifier = identifier;
             return this;
         }
@@ -172,8 +174,10 @@ public final class GetGitopsGnupgResult {
             return this;
         }
         @CustomType.Setter
-        public Builder requests(@Nullable List<GetGitopsGnupgRequest> requests) {
-
+        public Builder requests(List<GetGitopsGnupgRequest> requests) {
+            if (requests == null) {
+              throw new MissingRequiredPropertyException("GetGitopsGnupgResult", "requests");
+            }
             this.requests = requests;
             return this;
         }

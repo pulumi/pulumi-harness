@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class KubernetesConnectorServiceAccount
     {
         /// <summary>
+        /// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// </summary>
+        public readonly string? CaCertRef;
+        /// <summary>
         /// The URL of the Kubernetes cluster.
         /// </summary>
         public readonly string MasterUrl;
@@ -24,10 +28,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private KubernetesConnectorServiceAccount(
+            string? caCertRef,
+
             string masterUrl,
 
             string serviceAccountTokenRef)
         {
+            CaCertRef = caCertRef;
             MasterUrl = masterUrl;
             ServiceAccountTokenRef = serviceAccountTokenRef;
         }

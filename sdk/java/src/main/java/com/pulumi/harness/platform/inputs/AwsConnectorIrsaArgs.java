@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,10 +32,26 @@ public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArg
         return this.delegateSelectors;
     }
 
+    /**
+     * Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private AwsConnectorIrsaArgs() {}
 
     private AwsConnectorIrsaArgs(AwsConnectorIrsaArgs $) {
         this.delegateSelectors = $.delegateSelectors;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -83,6 +101,27 @@ public final class AwsConnectorIrsaArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder delegateSelectors(String... delegateSelectors) {
             return delegateSelectors(List.of(delegateSelectors));
+        }
+
+        /**
+         * @param region Test Region to perform Connection test of AWS Connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Test Region to perform Connection test of AWS Connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public AwsConnectorIrsaArgs build() {

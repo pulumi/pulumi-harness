@@ -19,6 +19,7 @@ class AwsSecretManagerConnectorArgs:
                  credentials: pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'],
                  identifier: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class AwsSecretManagerConnectorArgs:
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
+        :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -42,6 +44,8 @@ class AwsSecretManagerConnectorArgs:
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "region", region)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
@@ -92,6 +96,18 @@ class AwsSecretManagerConnectorArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use as Default Secrets Manager.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -182,6 +198,7 @@ class AwsSecretManagerConnectorArgs:
 class _AwsSecretManagerConnectorState:
     def __init__(__self__, *,
                  credentials: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -194,6 +211,7 @@ class _AwsSecretManagerConnectorState:
         """
         Input properties used for looking up and filtering AwsSecretManagerConnector resources.
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -206,6 +224,8 @@ class _AwsSecretManagerConnectorState:
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
@@ -236,6 +256,18 @@ class _AwsSecretManagerConnectorState:
     @credentials.setter
     def credentials(self, value: Optional[pulumi.Input['AwsSecretManagerConnectorCredentialsArgs']]):
         pulumi.set(self, "credentials", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use as Default Secrets Manager.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -352,6 +384,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -363,7 +396,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating an AWS Secret Manager connector.
+        ## Example Usage
 
         ## Import
 
@@ -388,6 +421,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -405,7 +439,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  args: AwsSecretManagerConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating an AWS Secret Manager connector.
+        ## Example Usage
 
         ## Import
 
@@ -443,6 +477,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -464,6 +499,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
             __props__.__dict__["credentials"] = credentials
+            __props__.__dict__["default"] = default
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
@@ -488,6 +524,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+            default: Optional[pulumi.Input[bool]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -505,6 +542,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -520,6 +558,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         __props__ = _AwsSecretManagerConnectorState.__new__(_AwsSecretManagerConnectorState)
 
         __props__.__dict__["credentials"] = credentials
+        __props__.__dict__["default"] = default
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
@@ -538,6 +577,14 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         Credentials to connect to AWS.
         """
         return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter
+    def default(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Use as Default Secrets Manager.
+        """
+        return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="delegateSelectors")

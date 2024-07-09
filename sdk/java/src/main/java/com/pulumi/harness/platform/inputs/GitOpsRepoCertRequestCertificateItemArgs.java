@@ -16,14 +16,14 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
     public static final GitOpsRepoCertRequestCertificateItemArgs Empty = new GitOpsRepoCertRequestCertificateItemArgs();
 
     /**
-     * CertData contains the actual certificate data, dependent on the certificate type.
+     * CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
      * 
      */
     @Import(name="certData")
     private @Nullable Output<String> certData;
 
     /**
-     * @return CertData contains the actual certificate data, dependent on the certificate type.
+     * @return CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
      * 
      */
     public Optional<Output<String>> certData() {
@@ -31,14 +31,14 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
     }
 
     /**
-     * CertInfo will hold additional certificate info, depdendent on the certificate type .
+     * CertInfo will hold additional certificate info, dependent on the certificate type .
      * 
      */
     @Import(name="certInfo")
     private @Nullable Output<String> certInfo;
 
     /**
-     * @return CertInfo will hold additional certificate info, depdendent on the certificate type .
+     * @return CertInfo will hold additional certificate info, dependent on the certificate type .
      * 
      */
     public Optional<Output<String>> certInfo() {
@@ -119,7 +119,7 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
         }
 
         /**
-         * @param certData CertData contains the actual certificate data, dependent on the certificate type.
+         * @param certData CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
         }
 
         /**
-         * @param certData CertData contains the actual certificate data, dependent on the certificate type.
+         * @param certData CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
         }
 
         /**
-         * @param certInfo CertInfo will hold additional certificate info, depdendent on the certificate type .
+         * @param certInfo CertInfo will hold additional certificate info, dependent on the certificate type .
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GitOpsRepoCertRequestCertificateItemArgs extends com.pulumi.r
         }
 
         /**
-         * @param certInfo CertInfo will hold additional certificate info, depdendent on the certificate type .
+         * @param certInfo CertInfo will hold additional certificate info, dependent on the certificate type .
          * 
          * @return builder
          * 

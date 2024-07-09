@@ -5,7 +5,9 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingCluster;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,29 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
     public static final GetEnvironmentClustersMappingPlainArgs Empty = new GetEnvironmentClustersMappingPlainArgs();
 
     /**
-     * environment identifier of the cluster.
+     * list of cluster identifiers and names
+     * 
+     */
+    @Import(name="clusters")
+    private @Nullable List<GetEnvironmentClustersMappingCluster> clusters;
+
+    /**
+     * @return list of cluster identifiers and names
+     * 
+     */
+    public Optional<List<GetEnvironmentClustersMappingCluster>> clusters() {
+        return Optional.ofNullable(this.clusters);
+    }
+
+    /**
+     * environment identifier.
      * 
      */
     @Import(name="envId", required=true)
     private String envId;
 
     /**
-     * @return environment identifier of the cluster.
+     * @return environment identifier.
      * 
      */
     public String envId() {
@@ -31,14 +48,14 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
     }
 
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     public String identifier() {
@@ -46,14 +63,14 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
     }
 
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     public Optional<String> orgId() {
@@ -61,14 +78,14 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
     }
 
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     public Optional<String> projectId() {
@@ -78,6 +95,7 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
     private GetEnvironmentClustersMappingPlainArgs() {}
 
     private GetEnvironmentClustersMappingPlainArgs(GetEnvironmentClustersMappingPlainArgs $) {
+        this.clusters = $.clusters;
         this.envId = $.envId;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
@@ -103,7 +121,28 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param envId environment identifier of the cluster.
+         * @param clusters list of cluster identifiers and names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusters(@Nullable List<GetEnvironmentClustersMappingCluster> clusters) {
+            $.clusters = clusters;
+            return this;
+        }
+
+        /**
+         * @param clusters list of cluster identifiers and names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusters(GetEnvironmentClustersMappingCluster... clusters) {
+            return clusters(List.of(clusters));
+        }
+
+        /**
+         * @param envId environment identifier.
          * 
          * @return builder
          * 
@@ -114,7 +153,7 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier identifier for the cluster mapping(can be given any value).
          * 
          * @return builder
          * 
@@ -125,7 +164,7 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param orgId org_id of the cluster.
+         * @param orgId org_id of the environment.
          * 
          * @return builder
          * 
@@ -136,7 +175,7 @@ public final class GetEnvironmentClustersMappingPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param projectId project_id of the cluster.
+         * @param projectId project_id of the environment.
          * 
          * @return builder
          * 

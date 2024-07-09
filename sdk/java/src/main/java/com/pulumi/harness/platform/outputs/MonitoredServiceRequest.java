@@ -36,7 +36,11 @@ public final class MonitoredServiceRequest {
     /**
      * @return Enable or disable the monitored service.
      * 
+     * @deprecated
+     * enabled field is deprecated
+     * 
      */
+    @Deprecated /* enabled field is deprecated */
     private @Nullable Boolean enabled;
     /**
      * @return Environment in which the service is deployed.
@@ -114,7 +118,11 @@ public final class MonitoredServiceRequest {
     /**
      * @return Enable or disable the monitored service.
      * 
+     * @deprecated
+     * enabled field is deprecated
+     * 
      */
+    @Deprecated /* enabled field is deprecated */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

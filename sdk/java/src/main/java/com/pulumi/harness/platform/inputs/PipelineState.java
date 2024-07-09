@@ -6,6 +6,8 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.PipelineGitDetailsArgs;
+import com.pulumi.harness.platform.inputs.PipelineGitImportInfoArgs;
+import com.pulumi.harness.platform.inputs.PipelinePipelineImportRequestArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -49,6 +51,21 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Import(name="gitImportInfo")
+    private @Nullable Output<PipelineGitImportInfoArgs> gitImportInfo;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Optional<Output<PipelineGitImportInfoArgs>> gitImportInfo() {
+        return Optional.ofNullable(this.gitImportInfo);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -61,6 +78,21 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
     }
 
     /**
@@ -94,6 +126,21 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains parameters for importing a pipeline
+     * 
+     */
+    @Import(name="pipelineImportRequest")
+    private @Nullable Output<PipelinePipelineImportRequestArgs> pipelineImportRequest;
+
+    /**
+     * @return Contains parameters for importing a pipeline
+     * 
+     */
+    public Optional<Output<PipelinePipelineImportRequestArgs>> pipelineImportRequest() {
+        return Optional.ofNullable(this.pipelineImportRequest);
+    }
+
+    /**
      * Unique identifier of the project.
      * 
      */
@@ -109,14 +156,14 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags to associate with the resource.
+     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource.
+     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -173,9 +220,12 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     private PipelineState(PipelineState $) {
         this.description = $.description;
         this.gitDetails = $.gitDetails;
+        this.gitImportInfo = $.gitImportInfo;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
         this.name = $.name;
         this.orgId = $.orgId;
+        this.pipelineImportRequest = $.pipelineImportRequest;
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.templateApplied = $.templateApplied;
@@ -244,6 +294,27 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitImportInfo Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportInfo(@Nullable Output<PipelineGitImportInfoArgs> gitImportInfo) {
+            $.gitImportInfo = gitImportInfo;
+            return this;
+        }
+
+        /**
+         * @param gitImportInfo Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportInfo(PipelineGitImportInfoArgs gitImportInfo) {
+            return gitImportInfo(Output.of(gitImportInfo));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -262,6 +333,27 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
         }
 
         /**
@@ -307,6 +399,27 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param pipelineImportRequest Contains parameters for importing a pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineImportRequest(@Nullable Output<PipelinePipelineImportRequestArgs> pipelineImportRequest) {
+            $.pipelineImportRequest = pipelineImportRequest;
+            return this;
+        }
+
+        /**
+         * @param pipelineImportRequest Contains parameters for importing a pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineImportRequest(PipelinePipelineImportRequestArgs pipelineImportRequest) {
+            return pipelineImportRequest(Output.of(pipelineImportRequest));
+        }
+
+        /**
          * @param projectId Unique identifier of the project.
          * 
          * @return builder
@@ -328,7 +441,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource.
+         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
          * 
          * @return builder
          * 
@@ -339,7 +452,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource.
+         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
          * 
          * @return builder
          * 
@@ -349,7 +462,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource.
+         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
          * 
          * @return builder
          * 

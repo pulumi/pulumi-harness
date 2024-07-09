@@ -179,6 +179,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -304,6 +310,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -394,6 +406,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.

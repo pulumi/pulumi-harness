@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving the user based on the API key.
-//
 // ## Example Usage
 //
 // ```go

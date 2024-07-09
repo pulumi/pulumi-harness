@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.InfrastructureArgs;
 import com.pulumi.harness.platform.inputs.InfrastructureState;
+import com.pulumi.harness.platform.outputs.InfrastructureGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +18,122 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness Infrastructure.
+ * ## Example to create Infrastructure at different levels (Org, Project, Account)
  * 
- * ## Example Usage
+ * ### Account Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Infrastructure;
+ * import com.pulumi.harness.platform.InfrastructureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Infrastructure("example", InfrastructureArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .envId("environmentIdentifier")
+ *             .type("KubernetesDirect")
+ *             .deploymentType("Kubernetes")
+ *             .yaml("""
+ * infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Org Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Infrastructure;
+ * import com.pulumi.harness.platform.InfrastructureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Infrastructure("example", InfrastructureArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("orgIdentifer")
+ *             .envId("environmentIdentifier")
+ *             .type("KubernetesDirect")
+ *             .deploymentType("Kubernetes")
+ *             .yaml("""
+ * infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -69,6 +183,51 @@ import javax.annotation.Nullable;
  *   releaseName: release-<+INFRA_KEY>
  *   allowSimultaneousDeployments: false
  *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Importing Infrastructure From Git
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Infrastructure;
+ * import com.pulumi.harness.platform.InfrastructureArgs;
+ * import com.pulumi.harness.platform.inputs.InfrastructureGitDetailsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Infrastructure("test", InfrastructureArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .envId("env_id")
+ *             .gitDetails(InfrastructureGitDetailsArgs.builder()
+ *                 .storeType("REMOTE")
+ *                 .connectorRef("connector_ref")
+ *                 .repoName("repo_name")
+ *                 .filePath("file_path")
+ *                 .branch("branch")
+ *                 .importFromGit("true")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -157,6 +316,20 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return this.forceDelete;
     }
     /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    @Export(name="gitDetails", refs={InfrastructureGitDetails.class}, tree="[0]")
+    private Output<InfrastructureGitDetails> gitDetails;
+
+    /**
+     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    public Output<InfrastructureGitDetails> gitDetails() {
+        return this.gitDetails;
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -227,32 +400,32 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
+    private Output</* @Nullable */ String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Export(name="yaml", refs={String.class}, tree="[0]")
-    private Output<String> yaml;
+    private Output</* @Nullable */ String> yaml;
 
     /**
      * @return Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    public Output<String> yaml() {
-        return this.yaml;
+    public Output<Optional<String>> yaml() {
+        return Codegen.optional(this.yaml);
     }
 
     /**

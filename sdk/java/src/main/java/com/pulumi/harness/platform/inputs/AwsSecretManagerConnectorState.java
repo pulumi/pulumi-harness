@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,21 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
      */
     public Optional<Output<AwsSecretManagerConnectorCredentialsArgs>> credentials() {
         return Optional.ofNullable(this.credentials);
+    }
+
+    /**
+     * Use as Default Secrets Manager.
+     * 
+     */
+    @Import(name="default")
+    private @Nullable Output<Boolean> default_;
+
+    /**
+     * @return Use as Default Secrets Manager.
+     * 
+     */
+    public Optional<Output<Boolean>> default_() {
+        return Optional.ofNullable(this.default_);
     }
 
     /**
@@ -171,6 +187,7 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
 
     private AwsSecretManagerConnectorState(AwsSecretManagerConnectorState $) {
         this.credentials = $.credentials;
+        this.default_ = $.default_;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
         this.identifier = $.identifier;
@@ -219,6 +236,27 @@ public final class AwsSecretManagerConnectorState extends com.pulumi.resources.R
          */
         public Builder credentials(AwsSecretManagerConnectorCredentialsArgs credentials) {
             return credentials(Output.of(credentials));
+        }
+
+        /**
+         * @param default_ Use as Default Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(@Nullable Output<Boolean> default_) {
+            $.default_ = default_;
+            return this;
+        }
+
+        /**
+         * @param default_ Use as Default Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(Boolean default_) {
+            return default_(Output.of(default_));
         }
 
         /**

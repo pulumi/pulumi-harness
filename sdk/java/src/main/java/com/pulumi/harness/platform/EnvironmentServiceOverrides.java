@@ -16,9 +16,146 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness environment service overrides.
+ * ## Example to create Environment Service Override at different levels (Org, Project, Account)
  * 
- * ## Example Usage
+ * ### Account Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.EnvironmentServiceOverrides;
+ * import com.pulumi.harness.platform.EnvironmentServiceOverridesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EnvironmentServiceOverrides("example", EnvironmentServiceOverridesArgs.builder()
+ *             .envId("environmentIdentifier")
+ *             .serviceId("serviceIdentifier")
+ *             .yaml("""
+ * serviceOverrides:
+ *   environmentRef: environmentIdentifier
+ *   serviceRef: serviceIdentifier
+ *   variables:
+ *    - name: asda
+ *      type: String
+ *      value: asddad
+ *   manifests:
+ *      - manifest:
+ *          identifier: manifestEnv
+ *          type: Values
+ *          spec:
+ *            store:
+ *              type: Git
+ *              spec:
+ *                connectorRef: <+input>
+ *                gitFetchType: Branch
+ *                paths:
+ *                  - file1
+ *                repoName: <+input>
+ *                branch: master
+ *   configFiles:
+ *      - configFile:
+ *          identifier: configFileEnv
+ *          spec:
+ *            store:
+ *              type: Harness
+ *              spec:
+ *                files:
+ *                  - account:/Add-ons/svcOverrideTest
+ *                secretFiles: []
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Org Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.EnvironmentServiceOverrides;
+ * import com.pulumi.harness.platform.EnvironmentServiceOverridesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new EnvironmentServiceOverrides("example", EnvironmentServiceOverridesArgs.builder()
+ *             .orgId("orgIdentifier")
+ *             .envId("environmentIdentifier")
+ *             .serviceId("serviceIdentifier")
+ *             .yaml("""
+ * serviceOverrides:
+ *   environmentRef: environmentIdentifier
+ *   serviceRef: serviceIdentifier
+ *   variables:
+ *    - name: asda
+ *      type: String
+ *      value: asddad
+ *   manifests:
+ *      - manifest:
+ *          identifier: manifestEnv
+ *          type: Values
+ *          spec:
+ *            store:
+ *              type: Git
+ *              spec:
+ *                connectorRef: <+input>
+ *                gitFetchType: Branch
+ *                paths:
+ *                  - file1
+ *                repoName: <+input>
+ *                branch: master
+ *   configFiles:
+ *      - configFile:
+ *          identifier: configFileEnv
+ *          spec:
+ *            store:
+ *              type: Harness
+ *              spec:
+ *                files:
+ *                  - account:/Add-ons/svcOverrideTest
+ *                secretFiles: []
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -90,10 +227,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using serviceoverride id
+ * Import list of account level service overrides using the env id associated with them
  * 
  * ```sh
- * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;serviceoverride_id&gt;
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;env_id&gt;
+ * ```
+ * 
+ * Import list of org level service overrides using the env id associated with them
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;org_id&gt;/&lt;env_id&gt;
+ * ```
+ * 
+ * Import list of project level service overrides using the env id associated with them
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;org_id&gt;/&lt;project_id&gt;/&lt;env_id&gt;
  * ```
  * 
  */

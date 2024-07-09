@@ -16,14 +16,29 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
     public static final EnvironmentClustersMappingClusterArgs Empty = new EnvironmentClustersMappingClusterArgs();
 
     /**
-     * account Identifier of the account
+     * agent identifier of the cluster (include scope prefix)
+     * 
+     */
+    @Import(name="agentIdentifier")
+    private @Nullable Output<String> agentIdentifier;
+
+    /**
+     * @return agent identifier of the cluster (include scope prefix)
+     * 
+     */
+    public Optional<Output<String>> agentIdentifier() {
+        return Optional.ofNullable(this.agentIdentifier);
+    }
+
+    /**
+     * identifier of the cluster
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return account Identifier of the account
+     * @return identifier of the cluster
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -46,14 +61,14 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
     }
 
     /**
-     * scope at which the cluster exists in harness gitops, project vs org vs account
+     * scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return scope at which the cluster exists in harness gitops, project vs org vs account
+     * @return scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
      * 
      */
     public Optional<Output<String>> scope() {
@@ -63,6 +78,7 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
     private EnvironmentClustersMappingClusterArgs() {}
 
     private EnvironmentClustersMappingClusterArgs(EnvironmentClustersMappingClusterArgs $) {
+        this.agentIdentifier = $.agentIdentifier;
         this.identifier = $.identifier;
         this.name = $.name;
         this.scope = $.scope;
@@ -87,7 +103,28 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param identifier account Identifier of the account
+         * @param agentIdentifier agent identifier of the cluster (include scope prefix)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentIdentifier(@Nullable Output<String> agentIdentifier) {
+            $.agentIdentifier = agentIdentifier;
+            return this;
+        }
+
+        /**
+         * @param agentIdentifier agent identifier of the cluster (include scope prefix)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentIdentifier(String agentIdentifier) {
+            return agentIdentifier(Output.of(agentIdentifier));
+        }
+
+        /**
+         * @param identifier identifier of the cluster
          * 
          * @return builder
          * 
@@ -98,7 +135,7 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param identifier account Identifier of the account
+         * @param identifier identifier of the cluster
          * 
          * @return builder
          * 
@@ -129,7 +166,7 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scope scope at which the cluster exists in harness gitops, project vs org vs account
+         * @param scope scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          * 
          * @return builder
          * 
@@ -140,7 +177,7 @@ public final class EnvironmentClustersMappingClusterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scope scope at which the cluster exists in harness gitops, project vs org vs account
+         * @param scope scope at which the cluster exists in harness gitops, one of &#34;ACCOUNT&#34;, &#34;ORGANIZATION&#34;, &#34;PROJECT&#34;. Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          * 
          * @return builder
          * 

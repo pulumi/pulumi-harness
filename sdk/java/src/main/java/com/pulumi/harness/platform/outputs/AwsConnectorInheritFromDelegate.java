@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsConnectorInheritFromDelegate {
@@ -16,6 +18,11 @@ public final class AwsConnectorInheritFromDelegate {
      * 
      */
     private List<String> delegateSelectors;
+    /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    private @Nullable String region;
 
     private AwsConnectorInheritFromDelegate() {}
     /**
@@ -24,6 +31,13 @@ public final class AwsConnectorInheritFromDelegate {
      */
     public List<String> delegateSelectors() {
         return this.delegateSelectors;
+    }
+    /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
 
     public static Builder builder() {
@@ -36,10 +50,12 @@ public final class AwsConnectorInheritFromDelegate {
     @CustomType.Builder
     public static final class Builder {
         private List<String> delegateSelectors;
+        private @Nullable String region;
         public Builder() {}
         public Builder(AwsConnectorInheritFromDelegate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegateSelectors = defaults.delegateSelectors;
+    	      this.region = defaults.region;
         }
 
         @CustomType.Setter
@@ -53,9 +69,16 @@ public final class AwsConnectorInheritFromDelegate {
         public Builder delegateSelectors(String... delegateSelectors) {
             return delegateSelectors(List.of(delegateSelectors));
         }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
         public AwsConnectorInheritFromDelegate build() {
             final var _resultValue = new AwsConnectorInheritFromDelegate();
             _resultValue.delegateSelectors = delegateSelectors;
+            _resultValue.region = region;
             return _resultValue;
         }
     }

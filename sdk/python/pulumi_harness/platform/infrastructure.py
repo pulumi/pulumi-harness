@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InfrastructureArgs', 'Infrastructure']
 
@@ -16,39 +18,41 @@ class InfrastructureArgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
-                 type: pulumi.Input[str],
-                 yaml: pulumi.Input[str],
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['InfrastructureGitDetailsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Infrastructure resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-        :param pulumi.Input[str] yaml: Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+        :param pulumi.Input[str] yaml: Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "env_id", env_id)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "yaml", yaml)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -57,6 +61,10 @@ class InfrastructureArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if yaml is not None:
+            pulumi.set(__self__, "yaml", yaml)
 
     @property
     @pulumi.getter(name="envId")
@@ -81,30 +89,6 @@ class InfrastructureArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def yaml(self) -> pulumi.Input[str]:
-        """
-        Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        """
-        return pulumi.get(self, "yaml")
-
-    @yaml.setter
-    def yaml(self, value: pulumi.Input[str]):
-        pulumi.set(self, "yaml", value)
 
     @property
     @pulumi.getter(name="deploymentType")
@@ -141,6 +125,18 @@ class InfrastructureArgs:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['InfrastructureGitDetailsArgs']]:
+        """
+        Contains Git Information for remote entities from Git for Create/Update/Import
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['InfrastructureGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
 
     @property
     @pulumi.getter
@@ -190,6 +186,30 @@ class InfrastructureArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        """
+        return pulumi.get(self, "yaml")
+
+    @yaml.setter
+    def yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "yaml", value)
+
 
 @pulumi.input_type
 class _InfrastructureState:
@@ -198,6 +218,7 @@ class _InfrastructureState:
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input['InfrastructureGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -211,12 +232,13 @@ class _InfrastructureState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         :param pulumi.Input[str] yaml: Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if deployment_type is not None:
@@ -227,6 +249,8 @@ class _InfrastructureState:
             pulumi.set(__self__, "env_id", env_id)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if git_details is not None:
+            pulumi.set(__self__, "git_details", git_details)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -289,6 +313,18 @@ class _InfrastructureState:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> Optional[pulumi.Input['InfrastructureGitDetailsArgs']]:
+        """
+        Contains Git Information for remote entities from Git for Create/Update/Import
+        """
+        return pulumi.get(self, "git_details")
+
+    @git_details.setter
+    def git_details(self, value: Optional[pulumi.Input['InfrastructureGitDetailsArgs']]):
+        pulumi.set(self, "git_details", value)
 
     @property
     @pulumi.getter
@@ -354,7 +390,7 @@ class _InfrastructureState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         """
         return pulumi.get(self, "type")
 
@@ -384,6 +420,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -394,9 +431,70 @@ class Infrastructure(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness Infrastructure.
+        ## Example to create Infrastructure at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
+        example = harness.platform.Infrastructure("example",
+            identifier="identifier",
+            name="name",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
+            yaml=\"\"\"infrastructureDefinition:
+         name: name
+         identifier: identifier
+         description: ""
+         tags:
+           asda: ""
+         orgIdentifier: orgIdentifer
+         projectIdentifier: projectIdentifier
+         environmentRef: environmentIdentifier
+         deploymentType: Kubernetes
+         type: KubernetesDirect
+         spec:
+          connectorRef: account.gfgf
+          namespace: asdasdsa
+          releaseName: release-<+INFRA_KEY>
+          allowSimultaneousDeployments: false
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Infrastructure("example",
+            identifier="identifier",
+            name="name",
+            org_id="orgIdentifer",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
+            yaml=\"\"\"infrastructureDefinition:
+         name: name
+         identifier: identifier
+         description: ""
+         tags:
+           asda: ""
+         orgIdentifier: orgIdentifer
+         projectIdentifier: projectIdentifier
+         environmentRef: environmentIdentifier
+         deploymentType: Kubernetes
+         type: KubernetesDirect
+         spec:
+          connectorRef: account.gfgf
+          namespace: asdasdsa
+          releaseName: release-<+INFRA_KEY>
+          allowSimultaneousDeployments: false
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -426,6 +524,25 @@ class Infrastructure(pulumi.CustomResource):
           releaseName: release-<+INFRA_KEY>
           allowSimultaneousDeployments: false
         \"\"\")
+        ```
+
+        ### Importing Infrastructure From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.Infrastructure("test",
+            identifier="identifier",
+            name="name",
+            env_id="env_id",
+            git_details=harness.platform.InfrastructureGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+                import_from_git=True,
+            ))
         ```
 
         ## Import
@@ -454,12 +571,13 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         :param pulumi.Input[str] yaml: Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
@@ -470,9 +588,70 @@ class Infrastructure(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Infrastructure.
+        ## Example to create Infrastructure at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
+        example = harness.platform.Infrastructure("example",
+            identifier="identifier",
+            name="name",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
+            yaml=\"\"\"infrastructureDefinition:
+         name: name
+         identifier: identifier
+         description: ""
+         tags:
+           asda: ""
+         orgIdentifier: orgIdentifer
+         projectIdentifier: projectIdentifier
+         environmentRef: environmentIdentifier
+         deploymentType: Kubernetes
+         type: KubernetesDirect
+         spec:
+          connectorRef: account.gfgf
+          namespace: asdasdsa
+          releaseName: release-<+INFRA_KEY>
+          allowSimultaneousDeployments: false
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.Infrastructure("example",
+            identifier="identifier",
+            name="name",
+            org_id="orgIdentifer",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
+            yaml=\"\"\"infrastructureDefinition:
+         name: name
+         identifier: identifier
+         description: ""
+         tags:
+           asda: ""
+         orgIdentifier: orgIdentifer
+         projectIdentifier: projectIdentifier
+         environmentRef: environmentIdentifier
+         deploymentType: Kubernetes
+         type: KubernetesDirect
+         spec:
+          connectorRef: account.gfgf
+          namespace: asdasdsa
+          releaseName: release-<+INFRA_KEY>
+          allowSimultaneousDeployments: false
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -502,6 +681,25 @@ class Infrastructure(pulumi.CustomResource):
           releaseName: release-<+INFRA_KEY>
           allowSimultaneousDeployments: false
         \"\"\")
+        ```
+
+        ### Importing Infrastructure From Git
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.Infrastructure("test",
+            identifier="identifier",
+            name="name",
+            env_id="env_id",
+            git_details=harness.platform.InfrastructureGitDetailsArgs(
+                store_type="REMOTE",
+                connector_ref="connector_ref",
+                repo_name="repo_name",
+                file_path="file_path",
+                branch="branch",
+                import_from_git=True,
+            ))
         ```
 
         ## Import
@@ -543,6 +741,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
+                 git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -565,6 +764,7 @@ class Infrastructure(pulumi.CustomResource):
                 raise TypeError("Missing required property 'env_id'")
             __props__.__dict__["env_id"] = env_id
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["git_details"] = git_details
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -572,11 +772,7 @@ class Infrastructure(pulumi.CustomResource):
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if yaml is None and not opts.urn:
-                raise TypeError("Missing required property 'yaml'")
             __props__.__dict__["yaml"] = yaml
         super(Infrastructure, __self__).__init__(
             'harness:platform/infrastructure:Infrastructure',
@@ -592,6 +788,7 @@ class Infrastructure(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
+            git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -610,12 +807,13 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        :param pulumi.Input[str] type: Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         :param pulumi.Input[str] yaml: Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -626,6 +824,7 @@ class Infrastructure(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["env_id"] = env_id
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["git_details"] = git_details
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -666,6 +865,14 @@ class Infrastructure(pulumi.CustomResource):
         Enable this flag for force deletion of infrastructure
         """
         return pulumi.get(self, "force_delete")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> pulumi.Output['outputs.InfrastructureGitDetails']:
+        """
+        Contains Git Information for remote entities from Git for Create/Update/Import
+        """
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
@@ -709,15 +916,15 @@ class Infrastructure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def yaml(self) -> pulumi.Output[str]:
+    def yaml(self) -> pulumi.Output[Optional[str]]:
         """
         Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """

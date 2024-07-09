@@ -233,8 +233,6 @@ def get_usergroup(identifier: Optional[str] = None,
                   project_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsergroupResult:
     """
-    Data source for retrieving a Harness User Group.
-
     ## Example Usage
 
     ```python
@@ -292,8 +290,6 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsergroupResult]:
     """
-    Data source for retrieving a Harness User Group.
-
     ## Example Usage
 
     ```python

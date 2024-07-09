@@ -64,8 +64,6 @@ type GetGitopsClusterArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId *string `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries []GetGitopsClusterQuery `pulumi:"queries"`
 }
 
 // A collection of values returned by getGitopsCluster.
@@ -82,8 +80,6 @@ type GetGitopsClusterResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId *string `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries []GetGitopsClusterQuery `pulumi:"queries"`
 	// Cluster create or update request.
 	Requests []GetGitopsClusterRequest `pulumi:"requests"`
 }
@@ -113,8 +109,6 @@ type GetGitopsClusterOutputArgs struct {
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries GetGitopsClusterQueryArrayInput `pulumi:"queries"`
 }
 
 func (GetGitopsClusterOutputArgs) ElementType() reflect.Type {
@@ -164,11 +158,6 @@ func (o GetGitopsClusterResultOutput) OrgId() pulumi.StringPtrOutput {
 // Project identifier of the GitOps cluster.
 func (o GetGitopsClusterResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
-// Query for the GitOps cluster resources.
-func (o GetGitopsClusterResultOutput) Queries() GetGitopsClusterQueryArrayOutput {
-	return o.ApplyT(func(v GetGitopsClusterResult) []GetGitopsClusterQuery { return v.Queries }).(GetGitopsClusterQueryArrayOutput)
 }
 
 // Cluster create or update request.

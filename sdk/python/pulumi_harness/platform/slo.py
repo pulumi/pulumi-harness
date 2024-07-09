@@ -167,6 +167,69 @@ class Slo(pulumi.CustomResource):
         """
         Resource for creating an SLO.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_harness as harness
+
+        example = harness.platform.Slo("example",
+            org_id="default",
+            project_id="default_project",
+            identifier="TerraformSLO",
+            request=harness.platform.SloRequestArgs(
+                name="TSLO",
+                description="description",
+                tags=[
+                    "foo:bar",
+                    "bar:foo",
+                ],
+                user_journey_refs=[
+                    "one",
+                    "two",
+                ],
+                slo_target=harness.platform.SloRequestSloTargetArgs(
+                    type="Calender",
+                    slo_target_percentage=10,
+                    spec=json.dumps({
+                        "type": "Monthly",
+                        "spec": {
+                            "dayOfMonth": 5,
+                        },
+                    }),
+                ),
+                type="Simple",
+                spec=json.dumps({
+                    "monitoredServiceRef": "monitoredServiceRef",
+                    "serviceLevelIndicatorType": "Availability",
+                    "serviceLevelIndicators": [{
+                        "name": "name",
+                        "identifier": "identifier",
+                        "type": "Window",
+                        "spec": {
+                            "type": "Threshold",
+                            "spec": {
+                                "metric1": "metric1",
+                                "thresholdValue": 10,
+                                "thresholdType": ">",
+                            },
+                            "sliMissingDataType": "Good",
+                        },
+                    }],
+                }),
+                notification_rule_refs=[harness.platform.SloRequestNotificationRuleRefArgs(
+                    notification_rule_ref="notification_rule_ref",
+                    enabled=True,
+                )],
+            ))
+        ```
+
+        Note the above example is for "Threshold" SLI type, if you want to use
+        "Ratio", the SLI should be changed appropriately.
+        Here's an example of SLO target and Spec for "Ratio" based SLI and
+        "Rolling" SLO target.
+
         ## Import
 
         Import account level SLO
@@ -202,6 +265,69 @@ class Slo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating an SLO.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_harness as harness
+
+        example = harness.platform.Slo("example",
+            org_id="default",
+            project_id="default_project",
+            identifier="TerraformSLO",
+            request=harness.platform.SloRequestArgs(
+                name="TSLO",
+                description="description",
+                tags=[
+                    "foo:bar",
+                    "bar:foo",
+                ],
+                user_journey_refs=[
+                    "one",
+                    "two",
+                ],
+                slo_target=harness.platform.SloRequestSloTargetArgs(
+                    type="Calender",
+                    slo_target_percentage=10,
+                    spec=json.dumps({
+                        "type": "Monthly",
+                        "spec": {
+                            "dayOfMonth": 5,
+                        },
+                    }),
+                ),
+                type="Simple",
+                spec=json.dumps({
+                    "monitoredServiceRef": "monitoredServiceRef",
+                    "serviceLevelIndicatorType": "Availability",
+                    "serviceLevelIndicators": [{
+                        "name": "name",
+                        "identifier": "identifier",
+                        "type": "Window",
+                        "spec": {
+                            "type": "Threshold",
+                            "spec": {
+                                "metric1": "metric1",
+                                "thresholdValue": 10,
+                                "thresholdType": ">",
+                            },
+                            "sliMissingDataType": "Good",
+                        },
+                    }],
+                }),
+                notification_rule_refs=[harness.platform.SloRequestNotificationRuleRefArgs(
+                    notification_rule_ref="notification_rule_ref",
+                    enabled=True,
+                )],
+            ))
+        ```
+
+        Note the above example is for "Threshold" SLI type, if you want to use
+        "Ratio", the SLI should be changed appropriately.
+        Here's an example of SLO target and Spec for "Ratio" based SLI and
+        "Rolling" SLO target.
 
         ## Import
 

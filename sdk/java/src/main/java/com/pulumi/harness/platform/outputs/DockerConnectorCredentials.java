@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DockerConnectorCredentials {
     /**
-     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
      * 
      */
     private String passwordRef;
@@ -30,7 +30,7 @@ public final class DockerConnectorCredentials {
 
     private DockerConnectorCredentials() {}
     /**
-     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
      * 
      */
     public String passwordRef() {

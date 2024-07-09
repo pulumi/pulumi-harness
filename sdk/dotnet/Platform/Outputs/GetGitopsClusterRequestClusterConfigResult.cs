@@ -14,9 +14,9 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsClusterRequestClusterConfigResult
     {
         /// <summary>
-        /// IAM authentication configuration for AWS.
+        /// AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterConfigAwsAuthConfigResult> AwsAuthConfigs;
+        public readonly string? AwsClusterName;
         /// <summary>
         /// Bearer authentication token the cluster.
         /// </summary>
@@ -34,6 +34,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
+        /// Optional role ARN. If set then used for AWS IAM Authenticator.
+        /// </summary>
+        public readonly string? RoleARN;
+        /// <summary>
         /// Settings to enable transport layer security.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterConfigTlsClientConfigResult> TlsClientConfigs;
@@ -44,7 +48,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetGitopsClusterRequestClusterConfigResult(
-            ImmutableArray<Outputs.GetGitopsClusterRequestClusterConfigAwsAuthConfigResult> awsAuthConfigs,
+            string? awsClusterName,
 
             string? bearerToken,
 
@@ -54,15 +58,18 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? password,
 
+            string? roleARN,
+
             ImmutableArray<Outputs.GetGitopsClusterRequestClusterConfigTlsClientConfigResult> tlsClientConfigs,
 
             string? username)
         {
-            AwsAuthConfigs = awsAuthConfigs;
+            AwsClusterName = awsClusterName;
             BearerToken = bearerToken;
             ClusterConnectionType = clusterConnectionType;
             ExecProviderConfigs = execProviderConfigs;
             Password = password;
+            RoleARN = roleARN;
             TlsClientConfigs = tlsClientConfigs;
             Username = username;
         }

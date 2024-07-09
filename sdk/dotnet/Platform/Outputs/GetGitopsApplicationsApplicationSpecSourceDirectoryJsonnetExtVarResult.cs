@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Code of the external variables of jsonnet application.
         /// </summary>
-        public readonly bool? Code;
+        public readonly bool Code;
         /// <summary>
-        /// Name of the external variables of jsonnet application.
+        /// Name of the GitOps application.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Value of the external variables of jsonnet application.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(
-            bool? code,
+            bool code,
 
-            string? name,
+            string name,
 
-            string? value)
+            string value)
         {
             Code = code;
             Name = name;

@@ -4,12 +4,11 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceKsonnet {
@@ -17,27 +16,27 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnet {
      * @return Ksonnet application environment name.
      * 
      */
-    private @Nullable String environment;
+    private String environment;
     /**
      * @return List of ksonnet component parameter override values.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters;
+    private List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters;
 
     private GetGitopsApplicationsApplicationSpecSourceKsonnet() {}
     /**
      * @return Ksonnet application environment name.
      * 
      */
-    public Optional<String> environment() {
-        return Optional.ofNullable(this.environment);
+    public String environment() {
+        return this.environment;
     }
     /**
      * @return List of ksonnet component parameter override values.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters() {
-        return this.parameters == null ? List.of() : this.parameters;
+        return this.parameters;
     }
 
     public static Builder builder() {
@@ -49,8 +48,8 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnet {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String environment;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters;
+        private String environment;
+        private List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceKsonnet defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,14 +58,18 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnet {
         }
 
         @CustomType.Setter
-        public Builder environment(@Nullable String environment) {
-
+        public Builder environment(String environment) {
+            if (environment == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKsonnet", "environment");
+            }
             this.environment = environment;
             return this;
         }
         @CustomType.Setter
-        public Builder parameters(@Nullable List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters) {
-
+        public Builder parameters(List<GetGitopsApplicationsApplicationSpecSourceKsonnetParameter> parameters) {
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKsonnet", "parameters");
+            }
             this.parameters = parameters;
             return this;
         }

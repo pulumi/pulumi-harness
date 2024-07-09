@@ -4,11 +4,10 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationMetadataOwnerReference {
@@ -16,75 +15,75 @@ public final class GetGitopsApplicationsApplicationMetadataOwnerReference {
      * @return API version of the referent.
      * 
      */
-    private @Nullable String apiVersion;
+    private String apiVersion;
     /**
      * @return If true, AND if the owner has the &#34;foregroundDeletion&#34; finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs &#34;delete&#34; permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
      * 
      */
-    private @Nullable Boolean blockOwnerDeletion;
+    private Boolean blockOwnerDeletion;
     /**
      * @return Indicates if the reference points to the managing controller.
      * 
      */
-    private @Nullable Boolean controller;
+    private Boolean controller;
     /**
      * @return Kind of the referent.
      * 
      */
-    private @Nullable String kind;
+    private String kind;
     /**
      * @return Name of the referent.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return UID of the referent.
      * 
      */
-    private @Nullable String uid;
+    private String uid;
 
     private GetGitopsApplicationsApplicationMetadataOwnerReference() {}
     /**
      * @return API version of the referent.
      * 
      */
-    public Optional<String> apiVersion() {
-        return Optional.ofNullable(this.apiVersion);
+    public String apiVersion() {
+        return this.apiVersion;
     }
     /**
      * @return If true, AND if the owner has the &#34;foregroundDeletion&#34; finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs &#34;delete&#34; permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
      * 
      */
-    public Optional<Boolean> blockOwnerDeletion() {
-        return Optional.ofNullable(this.blockOwnerDeletion);
+    public Boolean blockOwnerDeletion() {
+        return this.blockOwnerDeletion;
     }
     /**
      * @return Indicates if the reference points to the managing controller.
      * 
      */
-    public Optional<Boolean> controller() {
-        return Optional.ofNullable(this.controller);
+    public Boolean controller() {
+        return this.controller;
     }
     /**
      * @return Kind of the referent.
      * 
      */
-    public Optional<String> kind() {
-        return Optional.ofNullable(this.kind);
+    public String kind() {
+        return this.kind;
     }
     /**
      * @return Name of the referent.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return UID of the referent.
      * 
      */
-    public Optional<String> uid() {
-        return Optional.ofNullable(this.uid);
+    public String uid() {
+        return this.uid;
     }
 
     public static Builder builder() {
@@ -96,12 +95,12 @@ public final class GetGitopsApplicationsApplicationMetadataOwnerReference {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String apiVersion;
-        private @Nullable Boolean blockOwnerDeletion;
-        private @Nullable Boolean controller;
-        private @Nullable String kind;
-        private @Nullable String name;
-        private @Nullable String uid;
+        private String apiVersion;
+        private Boolean blockOwnerDeletion;
+        private Boolean controller;
+        private String kind;
+        private String name;
+        private String uid;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationMetadataOwnerReference defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,38 +113,50 @@ public final class GetGitopsApplicationsApplicationMetadataOwnerReference {
         }
 
         @CustomType.Setter
-        public Builder apiVersion(@Nullable String apiVersion) {
-
+        public Builder apiVersion(String apiVersion) {
+            if (apiVersion == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "apiVersion");
+            }
             this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
-        public Builder blockOwnerDeletion(@Nullable Boolean blockOwnerDeletion) {
-
+        public Builder blockOwnerDeletion(Boolean blockOwnerDeletion) {
+            if (blockOwnerDeletion == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "blockOwnerDeletion");
+            }
             this.blockOwnerDeletion = blockOwnerDeletion;
             return this;
         }
         @CustomType.Setter
-        public Builder controller(@Nullable Boolean controller) {
-
+        public Builder controller(Boolean controller) {
+            if (controller == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "controller");
+            }
             this.controller = controller;
             return this;
         }
         @CustomType.Setter
-        public Builder kind(@Nullable String kind) {
-
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "kind");
+            }
             this.kind = kind;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder uid(@Nullable String uid) {
-
+        public Builder uid(String uid) {
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationMetadataOwnerReference", "uid");
+            }
             this.uid = uid;
             return this;
         }

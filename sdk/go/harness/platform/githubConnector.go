@@ -48,6 +48,8 @@ type GithubConnector struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of github connector
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -118,6 +120,8 @@ type githubConnectorState struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of github connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -147,6 +151,8 @@ type GithubConnectorState struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of github connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -180,6 +186,8 @@ type githubConnectorArgs struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of github connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -210,6 +218,8 @@ type GithubConnectorArgs struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of github connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -341,6 +351,11 @@ func (o GithubConnectorOutput) Description() pulumi.StringPtrOutput {
 // Execute on delegate or not.
 func (o GithubConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GithubConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Enable this flag for force deletion of github connector
+func (o GithubConnectorOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GithubConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the resource.

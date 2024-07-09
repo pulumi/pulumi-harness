@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.GitOpsClusterArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterState;
-import com.pulumi.harness.platform.outputs.GitOpsClusterQuery;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequest;
 import java.lang.String;
 import java.util.List;
@@ -18,14 +17,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Gitops Cluster.
+ * Resource for managing a Harness Gitops Cluster.
  * 
  * ## Import
  * 
- * Import a Account level Gitops Cluster
+ * Import an Account level Gitops Cluster
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;agent_id&gt;/&lt;cluster_id&gt;
+ * ```
+ * 
+ * Import an Org level Gitops Cluster
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;cluster_id&gt;
  * ```
  * 
  * Import a Project level Gitops Cluster
@@ -106,20 +111,6 @@ public class GitOpsCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
-    }
-    /**
-     * Query for the GitOps cluster resources.
-     * 
-     */
-    @Export(name="queries", refs={List.class,GitOpsClusterQuery.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<GitOpsClusterQuery>> queries;
-
-    /**
-     * @return Query for the GitOps cluster resources.
-     * 
-     */
-    public Output<Optional<List<GitOpsClusterQuery>>> queries() {
-        return Codegen.optional(this.queries);
     }
     /**
      * Cluster create or update request.

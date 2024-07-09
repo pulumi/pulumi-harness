@@ -332,7 +332,7 @@ class SecretSshkey(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating an ssh key type secret.
+        ## Example Usage
 
         ## Import
 
@@ -373,7 +373,7 @@ class SecretSshkey(pulumi.CustomResource):
                  args: SecretSshkeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating an ssh key type secret.
+        ## Example Usage
 
         ## Import
 

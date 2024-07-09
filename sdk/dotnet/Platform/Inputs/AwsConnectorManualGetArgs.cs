@@ -37,6 +37,12 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
+        /// Test Region to perform Connection test of AWS Connector.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("secretKeyRef", required: true)]

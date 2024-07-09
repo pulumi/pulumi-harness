@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSecretTextResult',
@@ -21,7 +23,10 @@ class GetSecretTextResult:
     """
     A collection of values returned by getSecretText.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, secret_manager_identifier=None, tags=None, value=None, value_type=None):
+    def __init__(__self__, additional_metadatas=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, secret_manager_identifier=None, tags=None, value=None, value_type=None):
+        if additional_metadatas and not isinstance(additional_metadatas, list):
+            raise TypeError("Expected argument 'additional_metadatas' to be a list")
+        pulumi.set(__self__, "additional_metadatas", additional_metadatas)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -52,6 +57,14 @@ class GetSecretTextResult:
         if value_type and not isinstance(value_type, str):
             raise TypeError("Expected argument 'value_type' to be a str")
         pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> Optional[Sequence['outputs.GetSecretTextAdditionalMetadataResult']]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
 
     @property
     @pulumi.getter
@@ -140,6 +153,7 @@ class AwaitableGetSecretTextResult(GetSecretTextResult):
         if False:
             yield self
         return GetSecretTextResult(
+            additional_metadatas=self.additional_metadatas,
             description=self.description,
             id=self.id,
             identifier=self.identifier,
@@ -152,7 +166,8 @@ class AwaitableGetSecretTextResult(GetSecretTextResult):
             value_type=self.value_type)
 
 
-def get_secret_text(identifier: Optional[str] = None,
+def get_secret_text(additional_metadatas: Optional[Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']]] = None,
+                    identifier: Optional[str] = None,
                     name: Optional[str] = None,
                     org_id: Optional[str] = None,
                     project_id: Optional[str] = None,
@@ -170,12 +185,14 @@ def get_secret_text(identifier: Optional[str] = None,
     ```
 
 
+    :param Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']] additional_metadatas: Additional Metadata for the Secret
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
+    __args__['additionalMetadatas'] = additional_metadatas
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
@@ -184,6 +201,7 @@ def get_secret_text(identifier: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getSecretText:getSecretText', __args__, opts=opts, typ=GetSecretTextResult).value
 
     return AwaitableGetSecretTextResult(
+        additional_metadatas=pulumi.get(__ret__, 'additional_metadatas'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
@@ -197,7 +215,8 @@ def get_secret_text(identifier: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_secret_text)
-def get_secret_text_output(identifier: Optional[pulumi.Input[str]] = None,
+def get_secret_text_output(additional_metadatas: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']]]]] = None,
+                           identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            org_id: Optional[pulumi.Input[Optional[str]]] = None,
                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -215,6 +234,7 @@ def get_secret_text_output(identifier: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']] additional_metadatas: Additional Metadata for the Secret
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

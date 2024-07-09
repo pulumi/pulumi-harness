@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetGitopsAgentDeployYamlResult',
@@ -21,10 +23,13 @@ class GetGitopsAgentDeployYamlResult:
     """
     A collection of values returned by getGitopsAgentDeployYaml.
     """
-    def __init__(__self__, account_id=None, id=None, identifier=None, namespace=None, org_id=None, project_id=None, yaml=None):
+    def __init__(__self__, account_id=None, ca_data=None, id=None, identifier=None, namespace=None, org_id=None, project_id=None, proxies=None, yaml=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if ca_data and not isinstance(ca_data, str):
+            raise TypeError("Expected argument 'ca_data' to be a str")
+        pulumi.set(__self__, "ca_data", ca_data)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,6 +45,9 @@ class GetGitopsAgentDeployYamlResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if proxies and not isinstance(proxies, list):
+            raise TypeError("Expected argument 'proxies' to be a list")
+        pulumi.set(__self__, "proxies", proxies)
         if yaml and not isinstance(yaml, str):
             raise TypeError("Expected argument 'yaml' to be a str")
         pulumi.set(__self__, "yaml", yaml)
@@ -51,6 +59,14 @@ class GetGitopsAgentDeployYamlResult:
         Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="caData")
+    def ca_data(self) -> Optional[str]:
+        """
+        CA data of the GitOps agent, base64 encoded content of ca chain.
+        """
+        return pulumi.get(self, "ca_data")
 
     @property
     @pulumi.getter
@@ -72,7 +88,7 @@ class GetGitopsAgentDeployYamlResult:
     @pulumi.getter
     def namespace(self) -> str:
         """
-        The k8s namespace that the GitOps agent resides in.
+        The kubernetes namespace where the agent is installed.
         """
         return pulumi.get(self, "namespace")
 
@@ -94,9 +110,17 @@ class GetGitopsAgentDeployYamlResult:
 
     @property
     @pulumi.getter
+    def proxies(self) -> Optional[Sequence['outputs.GetGitopsAgentDeployYamlProxyResult']]:
+        """
+        Proxy settings for the GitOps agent.
+        """
+        return pulumi.get(self, "proxies")
+
+    @property
+    @pulumi.getter
     def yaml(self) -> str:
         """
-        Deployment YAML of the GitOps agent.
+        The deployment manifest YAML of the GitOps agent.
         """
         return pulumi.get(self, "yaml")
 
@@ -108,22 +132,26 @@ class AwaitableGetGitopsAgentDeployYamlResult(GetGitopsAgentDeployYamlResult):
             yield self
         return GetGitopsAgentDeployYamlResult(
             account_id=self.account_id,
+            ca_data=self.ca_data,
             id=self.id,
             identifier=self.identifier,
             namespace=self.namespace,
             org_id=self.org_id,
             project_id=self.project_id,
+            proxies=self.proxies,
             yaml=self.yaml)
 
 
 def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
+                                 ca_data: Optional[str] = None,
                                  identifier: Optional[str] = None,
                                  namespace: Optional[str] = None,
                                  org_id: Optional[str] = None,
                                  project_id: Optional[str] = None,
+                                 proxies: Optional[Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentDeployYamlResult:
     """
-    Datasource for fetching a Harness Gitops Agents.
+    Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
 
     ## Example Usage
 
@@ -140,39 +168,47 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
 
 
     :param str account_id: Account identifier of the GitOps agent.
+    :param str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param str identifier: Identifier of the GitOps agent.
-    :param str namespace: The k8s namespace that the GitOps agent resides in.
+    :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
+    :param Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']] proxies: Proxy settings for the GitOps agent.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['caData'] = ca_data
     __args__['identifier'] = identifier
     __args__['namespace'] = namespace
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['proxies'] = proxies
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult).value
 
     return AwaitableGetGitopsAgentDeployYamlResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        ca_data=pulumi.get(__ret__, 'ca_data'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         namespace=pulumi.get(__ret__, 'namespace'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        proxies=pulumi.get(__ret__, 'proxies'),
         yaml=pulumi.get(__ret__, 'yaml'))
 
 
 @_utilities.lift_output_func(get_gitops_agent_deploy_yaml)
 def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] = None,
+                                        ca_data: Optional[pulumi.Input[Optional[str]]] = None,
                                         identifier: Optional[pulumi.Input[str]] = None,
                                         namespace: Optional[pulumi.Input[str]] = None,
                                         org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        proxies: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
     """
-    Datasource for fetching a Harness Gitops Agents.
+    Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
 
     ## Example Usage
 
@@ -189,9 +225,11 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
 
 
     :param str account_id: Account identifier of the GitOps agent.
+    :param str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param str identifier: Identifier of the GitOps agent.
-    :param str namespace: The k8s namespace that the GitOps agent resides in.
+    :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
+    :param Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']] proxies: Proxy settings for the GitOps agent.
     """
     ...

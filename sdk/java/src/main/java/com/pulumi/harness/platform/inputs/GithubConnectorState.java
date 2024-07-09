@@ -110,6 +110,21 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Enable this flag for force deletion of github connector
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of github connector
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -223,6 +238,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
         this.executeOnDelegate = $.executeOnDelegate;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -384,6 +400,27 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
          */
         public Builder executeOnDelegate(Boolean executeOnDelegate) {
             return executeOnDelegate(Output.of(executeOnDelegate));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of github connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of github connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

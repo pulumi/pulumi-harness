@@ -28,13 +28,7 @@ class GitOpsApplicationsArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  options_remove_existing_finalizers: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_refresh: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
-                 query_resource_version: Optional[pulumi.Input[str]] = None,
-                 query_selector: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
-                 request_name: Optional[pulumi.Input[str]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None):
@@ -51,17 +45,11 @@ class GitOpsApplicationsArgs:
         :param pulumi.Input[str] kind: Kind of the GitOps application.
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
-        :param pulumi.Input[str] project: Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-        :param pulumi.Input[str] query_project: Project names to filter the corresponding GitOps applications.
-        :param pulumi.Input[str] query_refresh: Forces the GitOps application to reconcile when set to true.
-        :param pulumi.Input[str] query_repo: Repo URL to restrict returned list applications.
-        :param pulumi.Input[str] query_resource_version: Shows modifications after a version that is specified with a watch call.
-        :param pulumi.Input[str] query_selector: Filters GitOps applications corresponding to the labels.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
-        :param pulumi.Input[str] request_name: Request name to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
-        :param pulumi.Input[bool] validate: Indicates if the GitOps application has to be validated.
+        :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
@@ -80,20 +68,8 @@ class GitOpsApplicationsArgs:
             pulumi.set(__self__, "options_remove_existing_finalizers", options_remove_existing_finalizers)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if query_project is not None:
-            pulumi.set(__self__, "query_project", query_project)
-        if query_refresh is not None:
-            pulumi.set(__self__, "query_refresh", query_refresh)
-        if query_repo is not None:
-            pulumi.set(__self__, "query_repo", query_repo)
-        if query_resource_version is not None:
-            pulumi.set(__self__, "query_resource_version", query_resource_version)
-        if query_selector is not None:
-            pulumi.set(__self__, "query_selector", query_selector)
         if request_cascade is not None:
             pulumi.set(__self__, "request_cascade", request_cascade)
-        if request_name is not None:
-            pulumi.set(__self__, "request_name", request_name)
         if request_propagation_policy is not None:
             pulumi.set(__self__, "request_propagation_policy", request_propagation_policy)
         if upsert is not None:
@@ -237,73 +213,13 @@ class GitOpsApplicationsArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project names to filter the corresponding GitOps applications.
-        """
-        return pulumi.get(self, "query_project")
-
-    @query_project.setter
-    def query_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_project", value)
-
-    @property
-    @pulumi.getter(name="queryRefresh")
-    def query_refresh(self) -> Optional[pulumi.Input[str]]:
-        """
-        Forces the GitOps application to reconcile when set to true.
-        """
-        return pulumi.get(self, "query_refresh")
-
-    @query_refresh.setter
-    def query_refresh(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_refresh", value)
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> Optional[pulumi.Input[str]]:
-        """
-        Repo URL to restrict returned list applications.
-        """
-        return pulumi.get(self, "query_repo")
-
-    @query_repo.setter
-    def query_repo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_repo", value)
-
-    @property
-    @pulumi.getter(name="queryResourceVersion")
-    def query_resource_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Shows modifications after a version that is specified with a watch call.
-        """
-        return pulumi.get(self, "query_resource_version")
-
-    @query_resource_version.setter
-    def query_resource_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_resource_version", value)
-
-    @property
-    @pulumi.getter(name="querySelector")
-    def query_selector(self) -> Optional[pulumi.Input[str]]:
-        """
-        Filters GitOps applications corresponding to the labels.
-        """
-        return pulumi.get(self, "query_selector")
-
-    @query_selector.setter
-    def query_selector(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_selector", value)
 
     @property
     @pulumi.getter(name="requestCascade")
@@ -316,18 +232,6 @@ class GitOpsApplicationsArgs:
     @request_cascade.setter
     def request_cascade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "request_cascade", value)
-
-    @property
-    @pulumi.getter(name="requestName")
-    def request_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Request name to delete the GitOps application.
-        """
-        return pulumi.get(self, "request_name")
-
-    @request_name.setter
-    def request_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "request_name", value)
 
     @property
     @pulumi.getter(name="requestPropagationPolicy")
@@ -357,7 +261,7 @@ class GitOpsApplicationsArgs:
     @pulumi.getter
     def validate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the GitOps application has to be validated.
+        Indicates if the GitOps application yaml has to be validated.
         """
         return pulumi.get(self, "validate")
 
@@ -380,14 +284,8 @@ class _GitOpsApplicationsState:
                  org_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_refresh: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
-                 query_resource_version: Optional[pulumi.Input[str]] = None,
-                 query_selector: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
-                 request_name: Optional[pulumi.Input[str]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None):
@@ -402,19 +300,13 @@ class _GitOpsApplicationsState:
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
-        :param pulumi.Input[str] project: Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] query_project: Project names to filter the corresponding GitOps applications.
-        :param pulumi.Input[str] query_refresh: Forces the GitOps application to reconcile when set to true.
-        :param pulumi.Input[str] query_repo: Repo URL to restrict returned list applications.
-        :param pulumi.Input[str] query_resource_version: Shows modifications after a version that is specified with a watch call.
-        :param pulumi.Input[str] query_selector: Filters GitOps applications corresponding to the labels.
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
-        :param pulumi.Input[str] request_name: Request name to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
-        :param pulumi.Input[bool] validate: Indicates if the GitOps application has to be validated.
+        :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -438,22 +330,10 @@ class _GitOpsApplicationsState:
             pulumi.set(__self__, "project", project)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if query_project is not None:
-            pulumi.set(__self__, "query_project", query_project)
-        if query_refresh is not None:
-            pulumi.set(__self__, "query_refresh", query_refresh)
-        if query_repo is not None:
-            pulumi.set(__self__, "query_repo", query_repo)
-        if query_resource_version is not None:
-            pulumi.set(__self__, "query_resource_version", query_resource_version)
-        if query_selector is not None:
-            pulumi.set(__self__, "query_selector", query_selector)
         if repo_id is not None:
             pulumi.set(__self__, "repo_id", repo_id)
         if request_cascade is not None:
             pulumi.set(__self__, "request_cascade", request_cascade)
-        if request_name is not None:
-            pulumi.set(__self__, "request_name", request_name)
         if request_propagation_policy is not None:
             pulumi.set(__self__, "request_propagation_policy", request_propagation_policy)
         if upsert is not None:
@@ -573,7 +453,7 @@ class _GitOpsApplicationsState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -592,66 +472,6 @@ class _GitOpsApplicationsState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project names to filter the corresponding GitOps applications.
-        """
-        return pulumi.get(self, "query_project")
-
-    @query_project.setter
-    def query_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_project", value)
-
-    @property
-    @pulumi.getter(name="queryRefresh")
-    def query_refresh(self) -> Optional[pulumi.Input[str]]:
-        """
-        Forces the GitOps application to reconcile when set to true.
-        """
-        return pulumi.get(self, "query_refresh")
-
-    @query_refresh.setter
-    def query_refresh(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_refresh", value)
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> Optional[pulumi.Input[str]]:
-        """
-        Repo URL to restrict returned list applications.
-        """
-        return pulumi.get(self, "query_repo")
-
-    @query_repo.setter
-    def query_repo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_repo", value)
-
-    @property
-    @pulumi.getter(name="queryResourceVersion")
-    def query_resource_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Shows modifications after a version that is specified with a watch call.
-        """
-        return pulumi.get(self, "query_resource_version")
-
-    @query_resource_version.setter
-    def query_resource_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_resource_version", value)
-
-    @property
-    @pulumi.getter(name="querySelector")
-    def query_selector(self) -> Optional[pulumi.Input[str]]:
-        """
-        Filters GitOps applications corresponding to the labels.
-        """
-        return pulumi.get(self, "query_selector")
-
-    @query_selector.setter
-    def query_selector(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_selector", value)
 
     @property
     @pulumi.getter(name="repoId")
@@ -676,18 +496,6 @@ class _GitOpsApplicationsState:
     @request_cascade.setter
     def request_cascade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "request_cascade", value)
-
-    @property
-    @pulumi.getter(name="requestName")
-    def request_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Request name to delete the GitOps application.
-        """
-        return pulumi.get(self, "request_name")
-
-    @request_name.setter
-    def request_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "request_name", value)
 
     @property
     @pulumi.getter(name="requestPropagationPolicy")
@@ -717,7 +525,7 @@ class _GitOpsApplicationsState:
     @pulumi.getter
     def validate(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the GitOps application has to be validated.
+        Indicates if the GitOps application yaml has to be validated.
         """
         return pulumi.get(self, "validate")
 
@@ -742,20 +550,14 @@ class GitOpsApplications(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_refresh: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
-                 query_resource_version: Optional[pulumi.Input[str]] = None,
-                 query_selector: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
-                 request_name: Optional[pulumi.Input[str]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Gitops Application.
+        Resource for managing a Harness Gitops Application.
 
         ## Example Usage
 
@@ -826,19 +628,13 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
-        :param pulumi.Input[str] project: Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] query_project: Project names to filter the corresponding GitOps applications.
-        :param pulumi.Input[str] query_refresh: Forces the GitOps application to reconcile when set to true.
-        :param pulumi.Input[str] query_repo: Repo URL to restrict returned list applications.
-        :param pulumi.Input[str] query_resource_version: Shows modifications after a version that is specified with a watch call.
-        :param pulumi.Input[str] query_selector: Filters GitOps applications corresponding to the labels.
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
-        :param pulumi.Input[str] request_name: Request name to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
-        :param pulumi.Input[bool] validate: Indicates if the GitOps application has to be validated.
+        :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
         ...
     @overload
@@ -847,7 +643,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  args: GitOpsApplicationsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Gitops Application.
+        Resource for managing a Harness Gitops Application.
 
         ## Example Usage
 
@@ -933,14 +729,8 @@ class GitOpsApplications(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_refresh: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
-                 query_resource_version: Optional[pulumi.Input[str]] = None,
-                 query_selector: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
-                 request_name: Optional[pulumi.Input[str]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None,
@@ -976,16 +766,10 @@ class GitOpsApplications(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
-            __props__.__dict__["query_project"] = query_project
-            __props__.__dict__["query_refresh"] = query_refresh
-            __props__.__dict__["query_repo"] = query_repo
-            __props__.__dict__["query_resource_version"] = query_resource_version
-            __props__.__dict__["query_selector"] = query_selector
             if repo_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_id'")
             __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["request_cascade"] = request_cascade
-            __props__.__dict__["request_name"] = request_name
             __props__.__dict__["request_propagation_policy"] = request_propagation_policy
             __props__.__dict__["upsert"] = upsert
             __props__.__dict__["validate"] = validate
@@ -1010,14 +794,8 @@ class GitOpsApplications(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            query_project: Optional[pulumi.Input[str]] = None,
-            query_refresh: Optional[pulumi.Input[str]] = None,
-            query_repo: Optional[pulumi.Input[str]] = None,
-            query_resource_version: Optional[pulumi.Input[str]] = None,
-            query_selector: Optional[pulumi.Input[str]] = None,
             repo_id: Optional[pulumi.Input[str]] = None,
             request_cascade: Optional[pulumi.Input[bool]] = None,
-            request_name: Optional[pulumi.Input[str]] = None,
             request_propagation_policy: Optional[pulumi.Input[str]] = None,
             upsert: Optional[pulumi.Input[bool]] = None,
             validate: Optional[pulumi.Input[bool]] = None) -> 'GitOpsApplications':
@@ -1037,19 +815,13 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
-        :param pulumi.Input[str] project: Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] query_project: Project names to filter the corresponding GitOps applications.
-        :param pulumi.Input[str] query_refresh: Forces the GitOps application to reconcile when set to true.
-        :param pulumi.Input[str] query_repo: Repo URL to restrict returned list applications.
-        :param pulumi.Input[str] query_resource_version: Shows modifications after a version that is specified with a watch call.
-        :param pulumi.Input[str] query_selector: Filters GitOps applications corresponding to the labels.
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
-        :param pulumi.Input[str] request_name: Request name to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
-        :param pulumi.Input[bool] validate: Indicates if the GitOps application has to be validated.
+        :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1066,14 +838,8 @@ class GitOpsApplications(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project"] = project
         __props__.__dict__["project_id"] = project_id
-        __props__.__dict__["query_project"] = query_project
-        __props__.__dict__["query_refresh"] = query_refresh
-        __props__.__dict__["query_repo"] = query_repo
-        __props__.__dict__["query_resource_version"] = query_resource_version
-        __props__.__dict__["query_selector"] = query_selector
         __props__.__dict__["repo_id"] = repo_id
         __props__.__dict__["request_cascade"] = request_cascade
-        __props__.__dict__["request_name"] = request_name
         __props__.__dict__["request_propagation_policy"] = request_propagation_policy
         __props__.__dict__["upsert"] = upsert
         __props__.__dict__["validate"] = validate
@@ -1155,7 +921,7 @@ class GitOpsApplications(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[Optional[str]]:
         """
-        Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -1166,46 +932,6 @@ class GitOpsApplications(pulumi.CustomResource):
         Project identifier of the GitOps application.
         """
         return pulumi.get(self, "project_id")
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> pulumi.Output[Optional[str]]:
-        """
-        Project names to filter the corresponding GitOps applications.
-        """
-        return pulumi.get(self, "query_project")
-
-    @property
-    @pulumi.getter(name="queryRefresh")
-    def query_refresh(self) -> pulumi.Output[Optional[str]]:
-        """
-        Forces the GitOps application to reconcile when set to true.
-        """
-        return pulumi.get(self, "query_refresh")
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> pulumi.Output[Optional[str]]:
-        """
-        Repo URL to restrict returned list applications.
-        """
-        return pulumi.get(self, "query_repo")
-
-    @property
-    @pulumi.getter(name="queryResourceVersion")
-    def query_resource_version(self) -> pulumi.Output[Optional[str]]:
-        """
-        Shows modifications after a version that is specified with a watch call.
-        """
-        return pulumi.get(self, "query_resource_version")
-
-    @property
-    @pulumi.getter(name="querySelector")
-    def query_selector(self) -> pulumi.Output[Optional[str]]:
-        """
-        Filters GitOps applications corresponding to the labels.
-        """
-        return pulumi.get(self, "query_selector")
 
     @property
     @pulumi.getter(name="repoId")
@@ -1222,14 +948,6 @@ class GitOpsApplications(pulumi.CustomResource):
         Request cascade to delete the GitOps application.
         """
         return pulumi.get(self, "request_cascade")
-
-    @property
-    @pulumi.getter(name="requestName")
-    def request_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Request name to delete the GitOps application.
-        """
-        return pulumi.get(self, "request_name")
 
     @property
     @pulumi.getter(name="requestPropagationPolicy")
@@ -1251,7 +969,7 @@ class GitOpsApplications(pulumi.CustomResource):
     @pulumi.getter
     def validate(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates if the GitOps application has to be validated.
+        Indicates if the GitOps application yaml has to be validated.
         """
         return pulumi.get(self, "validate")
 

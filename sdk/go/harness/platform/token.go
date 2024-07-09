@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating tokens.
+// ## Example Usage
 //
 // ## Import
 //
@@ -42,26 +42,26 @@ type Token struct {
 	ApikeyId pulumi.StringOutput `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType pulumi.StringOutput `pulumi:"apikeyType"`
-	// Description of the Token
+	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword pulumi.StringPtrOutput `pulumi:"encodedPassword"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Name of the Token
+	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime pulumi.IntOutput `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -70,6 +70,8 @@ type Token struct {
 	ValidFrom pulumi.IntOutput `pulumi:"validFrom"`
 	// This is the time till which the Token is valid. The time is in milliseconds
 	ValidTo pulumi.IntOutput `pulumi:"validTo"`
+	// Value of the Token
+	Value pulumi.StringOutput `pulumi:"value"`
 }
 
 // NewToken registers a new resource with the given unique name, arguments, and options.
@@ -94,6 +96,10 @@ func NewToken(ctx *pulumi.Context,
 	if args.ParentId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Token
 	err := ctx.RegisterResource("harness:platform/token:Token", name, args, &resource, opts...)
@@ -123,26 +129,26 @@ type tokenState struct {
 	ApikeyId *string `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType *string `pulumi:"apikeyType"`
-	// Description of the Token
+	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email *string `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword *string `pulumi:"encodedPassword"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Name of the Token
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId *string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime *int `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags map[string]string `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username *string `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -151,6 +157,8 @@ type tokenState struct {
 	ValidFrom *int `pulumi:"validFrom"`
 	// This is the time till which the Token is valid. The time is in milliseconds
 	ValidTo *int `pulumi:"validTo"`
+	// Value of the Token
+	Value *string `pulumi:"value"`
 }
 
 type TokenState struct {
@@ -160,26 +168,26 @@ type TokenState struct {
 	ApikeyId pulumi.StringPtrInput
 	// Type of the API Key
 	ApikeyType pulumi.StringPtrInput
-	// Description of the Token
+	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Email Id of the user who created the Token
 	Email pulumi.StringPtrInput
 	// Encoded password of the Token
 	EncodedPassword pulumi.StringPtrInput
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// Name of the Token
+	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringPtrInput
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime pulumi.IntPtrInput
-	// Tags for the Token
-	Tags pulumi.StringMapInput
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayInput
 	// Name of the user who created the Token
 	Username pulumi.StringPtrInput
 	// Boolean value to indicate if Token is valid or not.
@@ -188,6 +196,8 @@ type TokenState struct {
 	ValidFrom pulumi.IntPtrInput
 	// This is the time till which the Token is valid. The time is in milliseconds
 	ValidTo pulumi.IntPtrInput
+	// Value of the Token
+	Value pulumi.StringPtrInput
 }
 
 func (TokenState) ElementType() reflect.Type {
@@ -201,26 +211,26 @@ type tokenArgs struct {
 	ApikeyId string `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType string `pulumi:"apikeyType"`
-	// Description of the Token
+	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email *string `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword *string `pulumi:"encodedPassword"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the Token
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime *int `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags map[string]string `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username *string `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -239,26 +249,26 @@ type TokenArgs struct {
 	ApikeyId pulumi.StringInput
 	// Type of the API Key
 	ApikeyType pulumi.StringInput
-	// Description of the Token
+	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Email Id of the user who created the Token
 	Email pulumi.StringPtrInput
 	// Encoded password of the Token
 	EncodedPassword pulumi.StringPtrInput
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// Name of the Token
+	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringInput
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime pulumi.IntPtrInput
-	// Tags for the Token
-	Tags pulumi.StringMapInput
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayInput
 	// Name of the user who created the Token
 	Username pulumi.StringPtrInput
 	// Boolean value to indicate if Token is valid or not.
@@ -371,7 +381,7 @@ func (o TokenOutput) ApikeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.ApikeyType }).(pulumi.StringOutput)
 }
 
-// Description of the Token
+// Description of the resource.
 func (o TokenOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -386,17 +396,17 @@ func (o TokenOutput) EncodedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.EncodedPassword }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Token
+// Unique identifier of the resource.
 func (o TokenOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the Token
+// Name of the resource.
 func (o TokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Organization Identifier for the Entity
+// Unique identifier of the organization.
 func (o TokenOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -406,7 +416,7 @@ func (o TokenOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Project Identifier for the Entity
+// Unique identifier of the project.
 func (o TokenOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -416,9 +426,9 @@ func (o TokenOutput) ScheduledExpireTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntOutput { return v.ScheduledExpireTime }).(pulumi.IntOutput)
 }
 
-// Tags for the Token
-func (o TokenOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Token) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+// Tags to associate with the resource.
+func (o TokenOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Name of the user who created the Token
@@ -439,6 +449,11 @@ func (o TokenOutput) ValidFrom() pulumi.IntOutput {
 // This is the time till which the Token is valid. The time is in milliseconds
 func (o TokenOutput) ValidTo() pulumi.IntOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntOutput { return v.ValidTo }).(pulumi.IntOutput)
+}
+
+// Value of the Token
+func (o TokenOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
 type TokenArrayOutput struct{ *pulumi.OutputState }

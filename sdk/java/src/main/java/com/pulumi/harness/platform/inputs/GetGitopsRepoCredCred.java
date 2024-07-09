@@ -91,14 +91,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Password for authenticating at the repo server.
+     * Password or PAT to be used for authenticating the remote repository.
      * 
      */
     @Import(name="password")
     private @Nullable String password;
 
     /**
-     * @return Password for authenticating at the repo server.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> password() {
@@ -106,14 +106,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+     * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     @Import(name="sshPrivateKey")
     private @Nullable String sshPrivateKey;
 
     /**
-     * @return Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     public Optional<String> sshPrivateKey() {
@@ -121,14 +121,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Specifies the TLS client cert data for authenticating at the repo server.
+     * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     @Import(name="tlsClientCertData")
     private @Nullable String tlsClientCertData;
 
     /**
-     * @return Specifies the TLS client cert data for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     public Optional<String> tlsClientCertData() {
@@ -136,14 +136,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Specifies the TLS client cert key for authenticating at the repo server.
+     * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     @Import(name="tlsClientCertKey")
     private @Nullable String tlsClientCertKey;
 
     /**
-     * @return Specifies the TLS client cert key for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     public Optional<String> tlsClientCertKey() {
@@ -166,14 +166,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * url representing this object.
+     * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
     @Import(name="url")
     private @Nullable String url;
 
     /**
-     * @return url representing this object.
+     * @return URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
     public Optional<String> url() {
@@ -181,14 +181,14 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Username for authenticating at the repo server.
+     * Username to be used for authenticating the remote repository.
      * 
      */
     @Import(name="username")
     private @Nullable String username;
 
     /**
-     * @return Username for authenticating at the repo server.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> username() {
@@ -286,7 +286,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param password Password for authenticating at the repo server.
+         * @param password Password or PAT to be used for authenticating the remote repository.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param sshPrivateKey Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param tlsClientCertData Specifies the TLS client cert data for authenticating at the repo server.
+         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param tlsClientCertKey Specifies the TLS client cert key for authenticating at the repo server.
+         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param url url representing this object.
+         * @param url URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class GetGitopsRepoCredCred extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param username Username for authenticating at the repo server.
+         * @param username Username to be used for authenticating the remote repository.
          * 
          * @return builder
          * 

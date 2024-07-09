@@ -29,9 +29,9 @@ class RoleAssignmentsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
         :param pulumi.Input[str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[str] role_identifier: Role identifier.
-        :param pulumi.Input[bool] disabled: Disabled or not.
+        :param pulumi.Input[bool] disabled: The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         :param pulumi.Input[str] identifier: Identifier for role assignment.
-        :param pulumi.Input[bool] managed: Managed or not.
+        :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
         :param pulumi.Input[str] project_id: Project Identifier
         """
@@ -89,7 +89,7 @@ class RoleAssignmentsArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disabled or not.
+        The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -113,7 +113,7 @@ class RoleAssignmentsArgs:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Managed or not.
+        Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         """
         return pulumi.get(self, "managed")
 
@@ -159,9 +159,9 @@ class _RoleAssignmentsState:
                  role_identifier: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RoleAssignments resources.
-        :param pulumi.Input[bool] disabled: Disabled or not.
+        :param pulumi.Input[bool] disabled: The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         :param pulumi.Input[str] identifier: Identifier for role assignment.
-        :param pulumi.Input[bool] managed: Managed or not.
+        :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
         :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
@@ -189,7 +189,7 @@ class _RoleAssignmentsState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disabled or not.
+        The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -213,7 +213,7 @@ class _RoleAssignmentsState:
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Managed or not.
+        Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         """
         return pulumi.get(self, "managed")
 
@@ -297,7 +297,7 @@ class RoleAssignments(pulumi.CustomResource):
                  role_identifier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for creating role assignments in Harness.
+        ## Example Usage
 
         ## Import
 
@@ -321,9 +321,9 @@ class RoleAssignments(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disabled: Disabled or not.
+        :param pulumi.Input[bool] disabled: The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         :param pulumi.Input[str] identifier: Identifier for role assignment.
-        :param pulumi.Input[bool] managed: Managed or not.
+        :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
@@ -337,7 +337,7 @@ class RoleAssignments(pulumi.CustomResource):
                  args: RoleAssignmentsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating role assignments in Harness.
+        ## Example Usage
 
         ## Import
 
@@ -430,9 +430,9 @@ class RoleAssignments(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disabled: Disabled or not.
+        :param pulumi.Input[bool] disabled: The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         :param pulumi.Input[str] identifier: Identifier for role assignment.
-        :param pulumi.Input[bool] managed: Managed or not.
+        :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
@@ -457,7 +457,7 @@ class RoleAssignments(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disabled or not.
+        The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -473,7 +473,7 @@ class RoleAssignments(pulumi.CustomResource):
     @pulumi.getter
     def managed(self) -> pulumi.Output[Optional[bool]]:
         """
-        Managed or not.
+        Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         """
         return pulumi.get(self, "managed")
 

@@ -11,44 +11,7 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Jira connector.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Harness.Platform.JiraConnector("test", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         Url = "https://jira.com",
-    ///         DelegateSelectors = new[]
-    ///         {
-    ///             "harness-delegate",
-    ///         },
-    ///         Auth = new Harness.Platform.Inputs.JiraConnectorAuthArgs
-    ///         {
-    ///             AuthType = "UsernamePassword",
-    ///             UsernamePassword = new Harness.Platform.Inputs.JiraConnectorAuthUsernamePasswordArgs
-    ///             {
-    ///                 Username = "admin",
-    ///                 PasswordRef = "account.secret_id",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// ## Example to create Jira Connector at different levels (Org, Project, Account)
     /// 
     /// ## Import
     /// 

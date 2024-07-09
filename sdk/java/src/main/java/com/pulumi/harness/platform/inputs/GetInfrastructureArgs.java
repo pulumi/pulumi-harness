@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetInfrastructureGitDetailsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,13 @@ public final class GetInfrastructureArgs extends com.pulumi.resources.InvokeArgs
      */
     public Output<String> envId() {
         return this.envId;
+    }
+
+    @Import(name="gitDetails")
+    private @Nullable Output<GetInfrastructureGitDetailsArgs> gitDetails;
+
+    public Optional<Output<GetInfrastructureGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     /**
@@ -95,6 +103,7 @@ public final class GetInfrastructureArgs extends com.pulumi.resources.InvokeArgs
 
     private GetInfrastructureArgs(GetInfrastructureArgs $) {
         this.envId = $.envId;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -138,6 +147,15 @@ public final class GetInfrastructureArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder envId(String envId) {
             return envId(Output.of(envId));
+        }
+
+        public Builder gitDetails(@Nullable Output<GetInfrastructureGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        public Builder gitDetails(GetInfrastructureGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**

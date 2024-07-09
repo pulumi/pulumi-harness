@@ -6,6 +6,9 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.InputSetGitDetailsArgs;
+import com.pulumi.harness.platform.inputs.InputSetGitImportInfoArgs;
+import com.pulumi.harness.platform.inputs.InputSetInputSetImportRequestArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +51,21 @@ public final class InputSetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Import(name="gitImportInfo")
+    private @Nullable Output<InputSetGitImportInfoArgs> gitImportInfo;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Optional<Output<InputSetGitImportInfoArgs>> gitImportInfo() {
+        return Optional.ofNullable(this.gitImportInfo);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -60,6 +78,36 @@ public final class InputSetState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
+    }
+
+    /**
+     * Contains parameters for importing a input set
+     * 
+     */
+    @Import(name="inputSetImportRequest")
+    private @Nullable Output<InputSetInputSetImportRequestArgs> inputSetImportRequest;
+
+    /**
+     * @return Contains parameters for importing a input set
+     * 
+     */
+    public Optional<Output<InputSetInputSetImportRequestArgs>> inputSetImportRequest() {
+        return Optional.ofNullable(this.inputSetImportRequest);
     }
 
     /**
@@ -157,7 +205,10 @@ public final class InputSetState extends com.pulumi.resources.ResourceArgs {
     private InputSetState(InputSetState $) {
         this.description = $.description;
         this.gitDetails = $.gitDetails;
+        this.gitImportInfo = $.gitImportInfo;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
+        this.inputSetImportRequest = $.inputSetImportRequest;
         this.name = $.name;
         this.orgId = $.orgId;
         this.pipelineId = $.pipelineId;
@@ -227,6 +278,27 @@ public final class InputSetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitImportInfo Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportInfo(@Nullable Output<InputSetGitImportInfoArgs> gitImportInfo) {
+            $.gitImportInfo = gitImportInfo;
+            return this;
+        }
+
+        /**
+         * @param gitImportInfo Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportInfo(InputSetGitImportInfoArgs gitImportInfo) {
+            return gitImportInfo(Output.of(gitImportInfo));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -245,6 +317,48 @@ public final class InputSetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
+        }
+
+        /**
+         * @param inputSetImportRequest Contains parameters for importing a input set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputSetImportRequest(@Nullable Output<InputSetInputSetImportRequestArgs> inputSetImportRequest) {
+            $.inputSetImportRequest = inputSetImportRequest;
+            return this;
+        }
+
+        /**
+         * @param inputSetImportRequest Contains parameters for importing a input set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputSetImportRequest(InputSetInputSetImportRequestArgs inputSetImportRequest) {
+            return inputSetImportRequest(Output.of(inputSetImportRequest));
         }
 
         /**

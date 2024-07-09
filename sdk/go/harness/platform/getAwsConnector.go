@@ -84,6 +84,8 @@ type LookupAwsConnectorResult struct {
 	Manuals []GetAwsConnectorManual `pulumi:"manuals"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GetAwsConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -195,6 +197,11 @@ func (o LookupAwsConnectorResultOutput) Manuals() GetAwsConnectorManualArrayOutp
 // Name of the resource.
 func (o LookupAwsConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Authentication using harness oidc.
+func (o LookupAwsConnectorResultOutput) OidcAuthentications() GetAwsConnectorOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v LookupAwsConnectorResult) []GetAwsConnectorOidcAuthentication { return v.OidcAuthentications }).(GetAwsConnectorOidcAuthenticationArrayOutput)
 }
 
 // Unique identifier of the organization.

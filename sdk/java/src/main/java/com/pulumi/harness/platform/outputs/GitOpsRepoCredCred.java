@@ -38,22 +38,22 @@ public final class GitOpsRepoCredCred {
      */
     private @Nullable String githubAppPrivateKey;
     /**
-     * @return Password for authenticating at the repo server.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     private @Nullable String password;
     /**
-     * @return Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     private @Nullable String sshPrivateKey;
     /**
-     * @return Specifies the TLS client cert data for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     private @Nullable String tlsClientCertData;
     /**
-     * @return Specifies the TLS client cert key for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     private @Nullable String tlsClientCertKey;
@@ -63,12 +63,12 @@ public final class GitOpsRepoCredCred {
      */
     private @Nullable String type;
     /**
-     * @return url representing this object.
+     * @return URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
     private @Nullable String url;
     /**
-     * @return Username for authenticating at the repo server.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     private @Nullable String username;
@@ -110,28 +110,28 @@ public final class GitOpsRepoCredCred {
         return Optional.ofNullable(this.githubAppPrivateKey);
     }
     /**
-     * @return Password for authenticating at the repo server.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     public Optional<String> sshPrivateKey() {
         return Optional.ofNullable(this.sshPrivateKey);
     }
     /**
-     * @return Specifies the TLS client cert data for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     public Optional<String> tlsClientCertData() {
         return Optional.ofNullable(this.tlsClientCertData);
     }
     /**
-     * @return Specifies the TLS client cert key for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
     public Optional<String> tlsClientCertKey() {
@@ -145,14 +145,14 @@ public final class GitOpsRepoCredCred {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return url representing this object.
+     * @return URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
     /**
-     * @return Username for authenticating at the repo server.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> username() {

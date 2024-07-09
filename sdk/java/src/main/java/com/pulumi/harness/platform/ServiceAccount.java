@@ -16,8 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating service account.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

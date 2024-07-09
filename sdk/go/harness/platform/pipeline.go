@@ -41,6 +41,7 @@ import (
 //					StoreType:     pulumi.String("REMOTE"),
 //					RepoName:      pulumi.String("repoName"),
 //				},
+//				Tags: nil,
 //				Yaml: pulumi.String(`pipeline:
 //	    name: name
 //	    identifier: identifier
@@ -133,6 +134,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// ## Importing Pipeline from Git
+//			_, err = platform.NewOrganization(ctx, "test", &platform.OrganizationArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewPipeline(ctx, "test", &platform.PipelineArgs{
+//				Identifier:    pulumi.String("gitx"),
+//				OrgId:         pulumi.String("default"),
+//				ProjectId:     pulumi.String("V"),
+//				Name:          pulumi.String("gitx"),
+//				ImportFromGit: pulumi.Bool(true),
+//				GitImportInfo: &platform.PipelineGitImportInfoArgs{
+//					BranchName:   pulumi.String("main"),
+//					FilePath:     pulumi.String(".harness/gitx.yaml"),
+//					ConnectorRef: pulumi.String("account.DoNotDeleteGithub"),
+//					RepoName:     pulumi.String("open-repo"),
+//				},
+//				PipelineImportRequest: &platform.PipelinePipelineImportRequestArgs{
+//					PipelineName:        pulumi.String("gitx"),
+//					PipelineDescription: pulumi.String("Pipeline Description"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -152,16 +181,22 @@ type Pipeline struct {
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
-	GitDetails PipelineGitDetailsPtrOutput `pulumi:"gitDetails"`
+	GitDetails PipelineGitDetailsOutput `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo PipelineGitImportInfoPtrOutput `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrOutput `pulumi:"importFromGit"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Contains parameters for importing a pipeline
+	PipelineImportRequest PipelinePipelineImportRequestPtrOutput `pulumi:"pipelineImportRequest"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Tags to associate with the resource.
+	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// If true, returns Pipeline YAML with Templates applied on it.
 	TemplateApplied pulumi.BoolPtrOutput `pulumi:"templateApplied"`
@@ -186,9 +221,6 @@ func NewPipeline(ctx *pulumi.Context,
 	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.Yaml == nil {
-		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Pipeline
@@ -217,15 +249,21 @@ type pipelineState struct {
 	Description *string `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo *PipelineGitImportInfo `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
+	// Contains parameters for importing a pipeline
+	PipelineImportRequest *PipelinePipelineImportRequest `pulumi:"pipelineImportRequest"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource.
+	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 	Tags []string `pulumi:"tags"`
 	// If true, returns Pipeline YAML with Templates applied on it.
 	TemplateApplied *bool `pulumi:"templateApplied"`
@@ -240,15 +278,21 @@ type PipelineState struct {
 	Description pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails PipelineGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportInfo PipelineGitImportInfoPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
+	// Contains parameters for importing a pipeline
+	PipelineImportRequest PipelinePipelineImportRequestPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags to associate with the resource.
+	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 	Tags pulumi.StringArrayInput
 	// If true, returns Pipeline YAML with Templates applied on it.
 	TemplateApplied pulumi.BoolPtrInput
@@ -267,22 +311,28 @@ type pipelineArgs struct {
 	Description *string `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *PipelineGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo *PipelineGitImportInfo `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId string `pulumi:"orgId"`
+	// Contains parameters for importing a pipeline
+	PipelineImportRequest *PipelinePipelineImportRequest `pulumi:"pipelineImportRequest"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Tags to associate with the resource.
+	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 	Tags []string `pulumi:"tags"`
 	// If true, returns Pipeline YAML with Templates applied on it.
 	TemplateApplied *bool `pulumi:"templateApplied"`
 	// Pipeline YAML after resolving Templates (returned as a String).
 	TemplateAppliedPipelineYaml *string `pulumi:"templateAppliedPipelineYaml"`
 	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml string `pulumi:"yaml"`
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
@@ -291,22 +341,28 @@ type PipelineArgs struct {
 	Description pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails PipelineGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportInfo PipelineGitImportInfoPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringInput
+	// Contains parameters for importing a pipeline
+	PipelineImportRequest PipelinePipelineImportRequestPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Tags to associate with the resource.
+	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 	Tags pulumi.StringArrayInput
 	// If true, returns Pipeline YAML with Templates applied on it.
 	TemplateApplied pulumi.BoolPtrInput
 	// Pipeline YAML after resolving Templates (returned as a String).
 	TemplateAppliedPipelineYaml pulumi.StringPtrInput
 	// YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml pulumi.StringInput
+	Yaml pulumi.StringPtrInput
 }
 
 func (PipelineArgs) ElementType() reflect.Type {
@@ -402,13 +458,23 @@ func (o PipelineOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Contains parameters related to creating an Entity for Git Experience.
-func (o PipelineOutput) GitDetails() PipelineGitDetailsPtrOutput {
-	return o.ApplyT(func(v *Pipeline) PipelineGitDetailsPtrOutput { return v.GitDetails }).(PipelineGitDetailsPtrOutput)
+func (o PipelineOutput) GitDetails() PipelineGitDetailsOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineGitDetailsOutput { return v.GitDetails }).(PipelineGitDetailsOutput)
+}
+
+// Contains Git Information for importing entities from Git
+func (o PipelineOutput) GitImportInfo() PipelineGitImportInfoPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineGitImportInfoPtrOutput { return v.GitImportInfo }).(PipelineGitImportInfoPtrOutput)
 }
 
 // Unique identifier of the resource.
 func (o PipelineOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Flag to set if importing from Git
+func (o PipelineOutput) ImportFromGit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.ImportFromGit }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the resource.
@@ -421,12 +487,17 @@ func (o PipelineOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// Contains parameters for importing a pipeline
+func (o PipelineOutput) PipelineImportRequest() PipelinePipelineImportRequestPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelinePipelineImportRequestPtrOutput { return v.PipelineImportRequest }).(PipelinePipelineImportRequestPtrOutput)
+}
+
 // Unique identifier of the project.
 func (o PipelineOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Tags to associate with the resource.
+// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
 func (o PipelineOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

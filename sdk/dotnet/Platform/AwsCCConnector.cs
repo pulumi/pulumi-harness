@@ -125,13 +125,13 @@ namespace Pulumi.Harness.Platform
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
         [Output("reportName")]
-        public Output<string> ReportName { get; private set; } = null!;
+        public Output<string?> ReportName { get; private set; } = null!;
 
         /// <summary>
         /// The name of s3 bucket.
         /// </summary>
         [Output("s3Bucket")]
-        public Output<string> S3Bucket { get; private set; } = null!;
+        public Output<string?> S3Bucket { get; private set; } = null!;
 
         /// <summary>
         /// Tags to associate with the resource.
@@ -243,14 +243,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
-        [Input("reportName", required: true)]
-        public Input<string> ReportName { get; set; } = null!;
+        [Input("reportName")]
+        public Input<string>? ReportName { get; set; }
 
         /// <summary>
         /// The name of s3 bucket.
         /// </summary>
-        [Input("s3Bucket", required: true)]
-        public Input<string> S3Bucket { get; set; } = null!;
+        [Input("s3Bucket")]
+        public Input<string>? S3Bucket { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

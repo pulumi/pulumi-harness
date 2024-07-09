@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
+        /// Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+        /// </summary>
+        public readonly string? ReferenceToken;
+        /// <summary>
         /// Username to use for authentication.
         /// </summary>
         public readonly string? Username;
@@ -36,12 +40,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string passwordRef,
 
+            string? referenceToken,
+
             string? username,
 
             string? usernameRef)
         {
             EndpointUrl = endpointUrl;
             PasswordRef = passwordRef;
+            ReferenceToken = referenceToken;
             Username = username;
             UsernameRef = usernameRef;
         }

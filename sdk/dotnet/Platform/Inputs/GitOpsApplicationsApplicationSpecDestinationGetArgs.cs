@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Server of the destination of the GitOps application.
+        /// URL of the target cluster server for the GitOps application.
         /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }

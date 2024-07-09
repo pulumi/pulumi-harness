@@ -11,6 +11,8 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.TemplateArgs;
 import com.pulumi.harness.platform.inputs.TemplateState;
 import com.pulumi.harness.platform.outputs.TemplateGitDetails;
+import com.pulumi.harness.platform.outputs.TemplateGitImportDetails;
+import com.pulumi.harness.platform.outputs.TemplateTemplateImportRequest;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -859,6 +861,330 @@ import javax.annotation.Nullable;
  *   EOT
  * }
  * 
+ * ### Creating Multiple Versions of a Template
+ * ##Stable version of the Template
+ * resource &#34;harness.platform.Template&#34; &#34;template_v1&#34; {
+ *   identifier    = &#34;temp&#34;
+ *   org_id        = harness_platform_project.test.org_id
+ *   name          = &#34;temp&#34;
+ *   comments      = &#34;comments&#34;
+ *   version       = &#34;v1&#34;
+ *   is_stable     = true
+ *   force_delete  = true
+ *   template_yaml = &lt;&lt;-EOT
+ * 			template:
+ *       name: &#34;temp&#34;
+ *       identifier: &#34;temp&#34;
+ *       versionLabel: v1
+ *       type: Pipeline
+ *       orgIdentifier: ${harness_platform_organization.test.id}
+ *       tags: {}
+ *       spec:
+ *         stages:
+ *           - stage:
+ *               name: dvvdvd
+ *               identifier: dvvdvd
+ *               description: &#34;&#34;
+ *               type: Deployment
+ *               spec:
+ *                 deploymentType: Kubernetes
+ *                 service:
+ *                   serviceRef: &lt;+input&gt;
+ *                   serviceInputs: &lt;+input&gt;
+ *                 environment:
+ *                   environmentRef: &lt;+input&gt;
+ *                   deployToAll: false
+ *                   environmentInputs: &lt;+input&gt;
+ *                   serviceOverrideInputs: &lt;+input&gt;
+ *                   infrastructureDefinitions: &lt;+input&gt;
+ *                 execution:
+ *                   steps:
+ *                     - step:
+ *                         name: Rollout Deployment
+ *                         identifier: rolloutDeployment
+ *                         type: K8sRollingDeploy
+ *                         timeout: 10m
+ *                         spec:
+ *                           skipDryRun: false
+ *                           pruningEnabled: false
+ *                   rollbackSteps:
+ *                     - step:
+ *                         name: Rollback Rollout Deployment
+ *                         identifier: rollbackRolloutDeployment
+ *                         type: K8sRollingRollback
+ *                         timeout: 10m
+ *                         spec:
+ *                           pruningEnabled: false
+ *               tags: {}
+ *               failureStrategies:
+ *                 - onFailure:
+ *                     errors:
+ *                       - AllErrors
+ *                     action:
+ *                       type: StageRollback
+ * 
+ *       EOT
+ * }
+ * 
+ * ##Unstable version of the Template
+ * resource &#34;harness.platform.Template&#34; &#34;template_v2&#34; {
+ *   identifier    = &#34;temp&#34;
+ *   org_id        = harness_platform_organization.test.id
+ *   name          = &#34;temp&#34;
+ *   comments      = &#34;comments&#34;
+ *   version       = &#34;v2&#34;
+ *   is_stable     = false
+ *   force_delete  = true
+ *   template_yaml = &lt;&lt;-EOT
+ * 			template:
+ *       name: &#34;temp&#34;
+ *       identifier: &#34;temp&#34;
+ *       versionLabel: v2
+ *       type: Pipeline
+ *       orgIdentifier: ${harness_platform_organization.test.id}
+ *       tags: {}
+ *       spec:
+ *         stages:
+ *           - stage:
+ *               name: dvvdvd
+ *               identifier: dvvdvd
+ *               description: &#34;&#34;
+ *               type: Deployment
+ *               spec:
+ *                 deploymentType: Kubernetes
+ *                 service:
+ *                   serviceRef: &lt;+input&gt;
+ *                   serviceInputs: &lt;+input&gt;
+ *                 environment:
+ *                   environmentRef: &lt;+input&gt;
+ *                   deployToAll: false
+ *                   environmentInputs: &lt;+input&gt;
+ *                   serviceOverrideInputs: &lt;+input&gt;
+ *                   infrastructureDefinitions: &lt;+input&gt;
+ *                 execution:
+ *                   steps:
+ *                     - step:
+ *                         name: Rollout Deployment
+ *                         identifier: rolloutDeployment
+ *                         type: K8sRollingDeploy
+ *                         timeout: 10m
+ *                         spec:
+ *                           skipDryRun: false
+ *                           pruningEnabled: false
+ *                   rollbackSteps:
+ *                     - step:
+ *                         name: Rollback Rollout Deployment
+ *                         identifier: rollbackRolloutDeployment
+ *                         type: K8sRollingRollback
+ *                         timeout: 10m
+ *                         spec:
+ *                           pruningEnabled: false
+ *               tags: {}
+ *               failureStrategies:
+ *                 - onFailure:
+ *                     errors:
+ *                       - AllErrors
+ *                     action:
+ *                       type: StageRollback
+ *       EOT
+ * }
+ * 
+ * ##Updating the Stable Version of the Template from v1 to v2.
+ * resource &#34;harness.platform.Template&#34; &#34;template_v2&#34; {
+ *   identifier    = &#34;temp&#34;
+ *   org_id        = harness_platform_organization.test.id
+ *   name          = &#34;temp&#34;
+ *   comments      = &#34;comments&#34;
+ *   version       = &#34;v2&#34;
+ *   is_stable     = true
+ *   force_delete  = true
+ *   template_yaml = &lt;&lt;-EOT
+ * 			template:
+ *       name: &#34;temp&#34;
+ *       identifier: &#34;temp&#34;
+ *       versionLabel: v2
+ *       type: Pipeline
+ *       orgIdentifier: ${harness_platform_organization.test.id}
+ *       tags: {}
+ *       spec:
+ *         stages:
+ *           - stage:
+ *               name: dvvdvd
+ *               identifier: dvvdvd
+ *               description: &#34;&#34;
+ *               type: Deployment
+ *               spec:
+ *                 deploymentType: Kubernetes
+ *                 service:
+ *                   serviceRef: &lt;+input&gt;
+ *                   serviceInputs: &lt;+input&gt;
+ *                 environment:
+ *                   environmentRef: &lt;+input&gt;
+ *                   deployToAll: false
+ *                   environmentInputs: &lt;+input&gt;
+ *                   serviceOverrideInputs: &lt;+input&gt;
+ *                   infrastructureDefinitions: &lt;+input&gt;
+ *                 execution:
+ *                   steps:
+ *                     - step:
+ *                         name: Rollout Deployment
+ *                         identifier: rolloutDeployment
+ *                         type: K8sRollingDeploy
+ *                         timeout: 10m
+ *                         spec:
+ *                           skipDryRun: false
+ *                           pruningEnabled: false
+ *                   rollbackSteps:
+ *                     - step:
+ *                         name: Rollback Rollout Deployment
+ *                         identifier: rollbackRolloutDeployment
+ *                         type: K8sRollingRollback
+ *                         timeout: 10m
+ *                         spec:
+ *                           pruningEnabled: false
+ *               tags: {}
+ *               failureStrategies:
+ *                 - onFailure:
+ *                     errors:
+ *                       - AllErrors
+ *                     action:
+ *                       type: StageRollback
+ *       EOT
+ * }
+ * 
+ * resource &#34;harness.platform.Template&#34; &#34;template_v1&#34; {
+ *   identifier    = &#34;temp&#34;
+ *   org_id        = harness_platform_organization.test.id
+ *   name          = &#34;temp&#34;
+ *   comments      = &#34;comments&#34;
+ *   version       = &#34;v1&#34;
+ *   is_stable     = false
+ *   force_delete  = true
+ *   template_yaml = &lt;&lt;-EOT
+ * 			template:
+ *       name: &#34;temp&#34;
+ *       identifier: &#34;temp&#34;
+ *       versionLabel: v1
+ *       type: Pipeline
+ *       orgIdentifier: ${harness_platform_organization.test.id}
+ *       tags: {}
+ *       spec:
+ *         stages:
+ *           - stage:
+ *               name: dvvdvd
+ *               identifier: dvvdvd
+ *               description: &#34;&#34;
+ *               type: Deployment
+ *               spec:
+ *                 deploymentType: Kubernetes
+ *                 service:
+ *                   serviceRef: &lt;+input&gt;
+ *                   serviceInputs: &lt;+input&gt;
+ *                 environment:
+ *                   environmentRef: &lt;+input&gt;
+ *                   deployToAll: false
+ *                   environmentInputs: &lt;+input&gt;
+ *                   serviceOverrideInputs: &lt;+input&gt;
+ *                   infrastructureDefinitions: &lt;+input&gt;
+ *                 execution:
+ *                   steps:
+ *                     - step:
+ *                         name: Rollout Deployment
+ *                         identifier: rolloutDeployment
+ *                         type: K8sRollingDeploy
+ *                         timeout: 10m
+ *                         spec:
+ *                           skipDryRun: false
+ *                           pruningEnabled: false
+ *                   rollbackSteps:
+ *                     - step:
+ *                         name: Rollback Rollout Deployment
+ *                         identifier: rollbackRolloutDeployment
+ *                         type: K8sRollingRollback
+ *                         timeout: 10m
+ *                         spec:
+ *                           pruningEnabled: false
+ *               tags: {}
+ *               failureStrategies:
+ *                 - onFailure:
+ *                     errors:
+ *                       - AllErrors
+ *                     action:
+ *                       type: StageRollback
+ * 
+ *       EOT
+ * 
+ *   depends_on = [time_sleep.wait_10_seconds]
+ * }
+ * 
+ * resource &#34;time_sleep&#34; &#34;wait_10_seconds&#34; {
+ *   depends_on       = [harness_platform_template.test2]
+ *   destroy_duration = &#34;10s&#34;
+ * }
+ * 
+ * ##Importing Account Level Templates
+ * resource &#34;harness.platform.Template&#34; &#34;test&#34; {
+ *   identifier      = &#34;accounttemplate&#34;
+ *   name            = &#34;accounttemplate&#34;
+ *   version         = &#34;v2&#34;
+ *   is_stable       = false
+ *   import_from_git = true
+ *   git_import_details {
+ *     branch_name   = &#34;main&#34;
+ *     file_path     = &#34;.harness/accounttemplate.yaml&#34;
+ *     connector_ref = &#34;account.DoNotDeleteGithub&#34;
+ *     repo_name     = &#34;open-repo&#34;
+ *   }
+ *   template_import_request {
+ *     template_name        = &#34;accounttemplate&#34;
+ *     template_version     = &#34;v2&#34;
+ *     template_description = &#34;&#34;
+ *   }
+ * }
+ * 
+ * ##Importing Org Level Templates
+ * resource &#34;harness.platform.Template&#34; &#34;test&#34; {
+ *   identifier      = &#34;orgtemplate&#34;
+ *   name            = &#34;orgtemplate&#34;
+ *   org_id          = &#34;org&#34;
+ *   version         = &#34;v2&#34;
+ *   is_stable       = false
+ *   import_from_git = true
+ *   git_import_details {
+ *     branch_name   = &#34;main&#34;
+ *     file_path     = &#34;.harness/orgtemplate.yaml&#34;
+ *     connector_ref = &#34;account.DoNotDeleteGithub&#34;
+ *     repo_name     = &#34;open-repo&#34;
+ *   }
+ *   template_import_request {
+ *     template_name        = &#34;orgtemplate&#34;
+ *     template_version     = &#34;v2&#34;
+ *     template_description = &#34;&#34;
+ *   }
+ * }
+ * 
+ * ##Importing Project Level Templates
+ * resource &#34;harness.platform.Template&#34; &#34;test&#34; {
+ *   identifier      = &#34;projecttemplate&#34;
+ *   name            = &#34;projecttemplate&#34;
+ *   org_id          = &#34;org&#34;
+ *   project_id      = &#34;project&#34;
+ *   version         = &#34;v2&#34;
+ *   is_stable       = false
+ *   import_from_git = true
+ *   git_import_details {
+ *     branch_name   = &#34;main&#34;
+ *     file_path     = &#34;.harness/projecttemplate.yaml&#34;
+ *     connector_ref = &#34;account.DoNotDeleteGithub&#34;
+ *     repo_name     = &#34;open-repo&#34;
+ *   }
+ *   template_import_request {
+ *     template_name        = &#34;projecttemplate&#34;
+ *     template_version     = &#34;v2&#34;
+ *     template_description = &#34;&#34;
+ *   }
+ * }
+ * 
  * Import org level template
  * 
  * ```sh
@@ -907,14 +1233,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Enable this flag for force deletion of template
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     @Export(name="forceDelete", refs={String.class}, tree="[0]")
     private Output<String> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of template
+     * @return Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     public Output<String> forceDelete() {
@@ -935,6 +1261,20 @@ public class Template extends com.pulumi.resources.CustomResource {
         return this.gitDetails;
     }
     /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Export(name="gitImportDetails", refs={TemplateGitImportDetails.class}, tree="[0]")
+    private Output</* @Nullable */ TemplateGitImportDetails> gitImportDetails;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Output<Optional<TemplateGitImportDetails>> gitImportDetails() {
+        return Codegen.optional(this.gitImportDetails);
+    }
+    /**
      * Unique identifier of the resource
      * 
      */
@@ -949,18 +1289,32 @@ public class Template extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Export(name="importFromGit", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Output<Optional<Boolean>> importFromGit() {
+        return Codegen.optional(this.importFromGit);
+    }
+    /**
      * True if given version for template to be set as stable.
      * 
      */
     @Export(name="isStable", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isStable;
+    private Output<Boolean> isStable;
 
     /**
      * @return True if given version for template to be set as stable.
      * 
      */
-    public Output<Optional<Boolean>> isStable() {
-        return Codegen.optional(this.isStable);
+    public Output<Boolean> isStable() {
+        return this.isStable;
     }
     /**
      * Name of the Variable
@@ -1017,6 +1371,20 @@ public class Template extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Contains parameters for importing template.
+     * 
+     */
+    @Export(name="templateImportRequest", refs={TemplateTemplateImportRequest.class}, tree="[0]")
+    private Output</* @Nullable */ TemplateTemplateImportRequest> templateImportRequest;
+
+    /**
+     * @return Contains parameters for importing template.
+     * 
+     */
+    public Output<Optional<TemplateTemplateImportRequest>> templateImportRequest() {
+        return Codegen.optional(this.templateImportRequest);
     }
     /**
      * Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.

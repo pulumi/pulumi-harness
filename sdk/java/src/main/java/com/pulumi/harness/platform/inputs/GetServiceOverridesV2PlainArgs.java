@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetServiceOverridesV2GitDetails;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,18 +16,11 @@ public final class GetServiceOverridesV2PlainArgs extends com.pulumi.resources.I
 
     public static final GetServiceOverridesV2PlainArgs Empty = new GetServiceOverridesV2PlainArgs();
 
-    @Import(name="clusterId")
-    private @Nullable String clusterId;
+    @Import(name="gitDetails")
+    private @Nullable GetServiceOverridesV2GitDetails gitDetails;
 
-    public Optional<String> clusterId() {
-        return Optional.ofNullable(this.clusterId);
-    }
-
-    @Import(name="envId", required=true)
-    private String envId;
-
-    public String envId() {
-        return this.envId;
+    public Optional<GetServiceOverridesV2GitDetails> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     @Import(name="identifier", required=true)
@@ -34,13 +28,6 @@ public final class GetServiceOverridesV2PlainArgs extends com.pulumi.resources.I
 
     public String identifier() {
         return this.identifier;
-    }
-
-    @Import(name="infraId")
-    private @Nullable String infraId;
-
-    public Optional<String> infraId() {
-        return Optional.ofNullable(this.infraId);
     }
 
     @Import(name="orgId")
@@ -57,39 +44,13 @@ public final class GetServiceOverridesV2PlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.projectId);
     }
 
-    @Import(name="serviceId")
-    private @Nullable String serviceId;
-
-    public Optional<String> serviceId() {
-        return Optional.ofNullable(this.serviceId);
-    }
-
-    @Import(name="spec", required=true)
-    private String spec;
-
-    public String spec() {
-        return this.spec;
-    }
-
-    @Import(name="type", required=true)
-    private String type;
-
-    public String type() {
-        return this.type;
-    }
-
     private GetServiceOverridesV2PlainArgs() {}
 
     private GetServiceOverridesV2PlainArgs(GetServiceOverridesV2PlainArgs $) {
-        this.clusterId = $.clusterId;
-        this.envId = $.envId;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
-        this.infraId = $.infraId;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.serviceId = $.serviceId;
-        this.spec = $.spec;
-        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -110,23 +71,13 @@ public final class GetServiceOverridesV2PlainArgs extends com.pulumi.resources.I
             $ = new GetServiceOverridesV2PlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder clusterId(@Nullable String clusterId) {
-            $.clusterId = clusterId;
-            return this;
-        }
-
-        public Builder envId(String envId) {
-            $.envId = envId;
+        public Builder gitDetails(@Nullable GetServiceOverridesV2GitDetails gitDetails) {
+            $.gitDetails = gitDetails;
             return this;
         }
 
         public Builder identifier(String identifier) {
             $.identifier = identifier;
-            return this;
-        }
-
-        public Builder infraId(@Nullable String infraId) {
-            $.infraId = infraId;
             return this;
         }
 
@@ -140,33 +91,9 @@ public final class GetServiceOverridesV2PlainArgs extends com.pulumi.resources.I
             return this;
         }
 
-        public Builder serviceId(@Nullable String serviceId) {
-            $.serviceId = serviceId;
-            return this;
-        }
-
-        public Builder spec(String spec) {
-            $.spec = spec;
-            return this;
-        }
-
-        public Builder type(String type) {
-            $.type = type;
-            return this;
-        }
-
         public GetServiceOverridesV2PlainArgs build() {
-            if ($.envId == null) {
-                throw new MissingRequiredPropertyException("GetServiceOverridesV2PlainArgs", "envId");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetServiceOverridesV2PlainArgs", "identifier");
-            }
-            if ($.spec == null) {
-                throw new MissingRequiredPropertyException("GetServiceOverridesV2PlainArgs", "spec");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("GetServiceOverridesV2PlainArgs", "type");
             }
             return $;
         }

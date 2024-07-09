@@ -5,8 +5,6 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequestCluster;
-import com.pulumi.harness.platform.outputs.GitOpsClusterRequestId;
-import com.pulumi.harness.platform.outputs.GitOpsClusterRequestUpdateMask;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -22,20 +20,10 @@ public final class GitOpsClusterRequest {
      */
     private @Nullable List<GitOpsClusterRequestCluster> clusters;
     /**
-     * @return Cluster server URL or the cluster name.
-     * 
-     */
-    private @Nullable List<GitOpsClusterRequestId> ids;
-    /**
-     * @return Tags associated with the clusters
+     * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     private @Nullable List<String> tags;
-    /**
-     * @return Update mask of the GitOps cluster.
-     * 
-     */
-    private @Nullable List<GitOpsClusterRequestUpdateMask> updateMasks;
     /**
      * @return Fields which are updated.
      * 
@@ -56,25 +44,11 @@ public final class GitOpsClusterRequest {
         return this.clusters == null ? List.of() : this.clusters;
     }
     /**
-     * @return Cluster server URL or the cluster name.
-     * 
-     */
-    public List<GitOpsClusterRequestId> ids() {
-        return this.ids == null ? List.of() : this.ids;
-    }
-    /**
-     * @return Tags associated with the clusters
+     * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
-    }
-    /**
-     * @return Update mask of the GitOps cluster.
-     * 
-     */
-    public List<GitOpsClusterRequestUpdateMask> updateMasks() {
-        return this.updateMasks == null ? List.of() : this.updateMasks;
     }
     /**
      * @return Fields which are updated.
@@ -101,18 +75,14 @@ public final class GitOpsClusterRequest {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GitOpsClusterRequestCluster> clusters;
-        private @Nullable List<GitOpsClusterRequestId> ids;
         private @Nullable List<String> tags;
-        private @Nullable List<GitOpsClusterRequestUpdateMask> updateMasks;
         private @Nullable List<String> updatedFields;
         private @Nullable Boolean upsert;
         public Builder() {}
         public Builder(GitOpsClusterRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
-    	      this.ids = defaults.ids;
     	      this.tags = defaults.tags;
-    	      this.updateMasks = defaults.updateMasks;
     	      this.updatedFields = defaults.updatedFields;
     	      this.upsert = defaults.upsert;
         }
@@ -127,15 +97,6 @@ public final class GitOpsClusterRequest {
             return clusters(List.of(clusters));
         }
         @CustomType.Setter
-        public Builder ids(@Nullable List<GitOpsClusterRequestId> ids) {
-
-            this.ids = ids;
-            return this;
-        }
-        public Builder ids(GitOpsClusterRequestId... ids) {
-            return ids(List.of(ids));
-        }
-        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -143,15 +104,6 @@ public final class GitOpsClusterRequest {
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }
-        @CustomType.Setter
-        public Builder updateMasks(@Nullable List<GitOpsClusterRequestUpdateMask> updateMasks) {
-
-            this.updateMasks = updateMasks;
-            return this;
-        }
-        public Builder updateMasks(GitOpsClusterRequestUpdateMask... updateMasks) {
-            return updateMasks(List.of(updateMasks));
         }
         @CustomType.Setter
         public Builder updatedFields(@Nullable List<String> updatedFields) {
@@ -171,9 +123,7 @@ public final class GitOpsClusterRequest {
         public GitOpsClusterRequest build() {
             final var _resultValue = new GitOpsClusterRequest();
             _resultValue.clusters = clusters;
-            _resultValue.ids = ids;
             _resultValue.tags = tags;
-            _resultValue.updateMasks = updateMasks;
             _resultValue.updatedFields = updatedFields;
             _resultValue.upsert = upsert;
             return _resultValue;

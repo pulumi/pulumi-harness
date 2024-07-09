@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KubernetesConnectorServiceAccountArgs Empty = new KubernetesConnectorServiceAccountArgs();
+
+    /**
+     * Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    @Import(name="caCertRef")
+    private @Nullable Output<String> caCertRef;
+
+    /**
+     * @return Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * 
+     */
+    public Optional<Output<String>> caCertRef() {
+        return Optional.ofNullable(this.caCertRef);
+    }
 
     /**
      * The URL of the Kubernetes cluster.
@@ -47,6 +64,7 @@ public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.reso
     private KubernetesConnectorServiceAccountArgs() {}
 
     private KubernetesConnectorServiceAccountArgs(KubernetesConnectorServiceAccountArgs $) {
+        this.caCertRef = $.caCertRef;
         this.masterUrl = $.masterUrl;
         this.serviceAccountTokenRef = $.serviceAccountTokenRef;
     }
@@ -67,6 +85,27 @@ public final class KubernetesConnectorServiceAccountArgs extends com.pulumi.reso
 
         public Builder(KubernetesConnectorServiceAccountArgs defaults) {
             $ = new KubernetesConnectorServiceAccountArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param caCertRef Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertRef(@Nullable Output<String> caCertRef) {
+            $.caCertRef = caCertRef;
+            return this;
+        }
+
+        /**
+         * @param caCertRef Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caCertRef(String caCertRef) {
+            return caCertRef(Output.of(caCertRef));
         }
 
         /**

@@ -5,7 +5,9 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlProxy;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +20,11 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     private String accountId;
     /**
+     * @return CA data of the GitOps agent, base64 encoded content of ca chain.
+     * 
+     */
+    private @Nullable String caData;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -28,7 +35,7 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     private String identifier;
     /**
-     * @return The k8s namespace that the GitOps agent resides in.
+     * @return The kubernetes namespace where the agent is installed.
      * 
      */
     private String namespace;
@@ -43,7 +50,12 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     private @Nullable String projectId;
     /**
-     * @return Deployment YAML of the GitOps agent.
+     * @return Proxy settings for the GitOps agent.
+     * 
+     */
+    private @Nullable List<GetGitopsAgentDeployYamlProxy> proxies;
+    /**
+     * @return The deployment manifest YAML of the GitOps agent.
      * 
      */
     private String yaml;
@@ -55,6 +67,13 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return CA data of the GitOps agent, base64 encoded content of ca chain.
+     * 
+     */
+    public Optional<String> caData() {
+        return Optional.ofNullable(this.caData);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -71,7 +90,7 @@ public final class GetGitopsAgentDeployYamlResult {
         return this.identifier;
     }
     /**
-     * @return The k8s namespace that the GitOps agent resides in.
+     * @return The kubernetes namespace where the agent is installed.
      * 
      */
     public String namespace() {
@@ -92,7 +111,14 @@ public final class GetGitopsAgentDeployYamlResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Deployment YAML of the GitOps agent.
+     * @return Proxy settings for the GitOps agent.
+     * 
+     */
+    public List<GetGitopsAgentDeployYamlProxy> proxies() {
+        return this.proxies == null ? List.of() : this.proxies;
+    }
+    /**
+     * @return The deployment manifest YAML of the GitOps agent.
      * 
      */
     public String yaml() {
@@ -109,21 +135,25 @@ public final class GetGitopsAgentDeployYamlResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable String caData;
         private String id;
         private String identifier;
         private String namespace;
         private @Nullable String orgId;
         private @Nullable String projectId;
+        private @Nullable List<GetGitopsAgentDeployYamlProxy> proxies;
         private String yaml;
         public Builder() {}
         public Builder(GetGitopsAgentDeployYamlResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.caData = defaults.caData;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.namespace = defaults.namespace;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.proxies = defaults.proxies;
     	      this.yaml = defaults.yaml;
         }
 
@@ -133,6 +163,12 @@ public final class GetGitopsAgentDeployYamlResult {
               throw new MissingRequiredPropertyException("GetGitopsAgentDeployYamlResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder caData(@Nullable String caData) {
+
+            this.caData = caData;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +208,15 @@ public final class GetGitopsAgentDeployYamlResult {
             return this;
         }
         @CustomType.Setter
+        public Builder proxies(@Nullable List<GetGitopsAgentDeployYamlProxy> proxies) {
+
+            this.proxies = proxies;
+            return this;
+        }
+        public Builder proxies(GetGitopsAgentDeployYamlProxy... proxies) {
+            return proxies(List.of(proxies));
+        }
+        @CustomType.Setter
         public Builder yaml(String yaml) {
             if (yaml == null) {
               throw new MissingRequiredPropertyException("GetGitopsAgentDeployYamlResult", "yaml");
@@ -182,11 +227,13 @@ public final class GetGitopsAgentDeployYamlResult {
         public GetGitopsAgentDeployYamlResult build() {
             final var _resultValue = new GetGitopsAgentDeployYamlResult();
             _resultValue.accountId = accountId;
+            _resultValue.caData = caData;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.namespace = namespace;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
+            _resultValue.proxies = proxies;
             _resultValue.yaml = yaml;
             return _resultValue;
         }

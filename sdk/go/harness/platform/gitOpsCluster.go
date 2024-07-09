@@ -12,14 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness Gitops Cluster.
+// Resource for managing a Harness Gitops Cluster.
 //
 // ## Import
 //
-// # Import a Account level Gitops Cluster
+// # Import an Account level Gitops Cluster
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <agent_id>/<cluster_id>
+// ```
+//
+// # Import an Org level Gitops Cluster
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsCluster:GitOpsCluster example <organization_id>/<agent_id>/<cluster_id>
 // ```
 //
 // # Import a Project level Gitops Cluster
@@ -40,8 +46,6 @@ type GitOpsCluster struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries GitOpsClusterQueryArrayOutput `pulumi:"queries"`
 	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayOutput `pulumi:"requests"`
 }
@@ -95,8 +99,6 @@ type gitOpsClusterState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId *string `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries []GitOpsClusterQuery `pulumi:"queries"`
 	// Cluster create or update request.
 	Requests []GitOpsClusterRequest `pulumi:"requests"`
 }
@@ -112,8 +114,6 @@ type GitOpsClusterState struct {
 	OrgId pulumi.StringPtrInput
 	// Project identifier of the GitOps cluster.
 	ProjectId pulumi.StringPtrInput
-	// Query for the GitOps cluster resources.
-	Queries GitOpsClusterQueryArrayInput
 	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayInput
 }
@@ -133,8 +133,6 @@ type gitOpsClusterArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps cluster.
 	ProjectId *string `pulumi:"projectId"`
-	// Query for the GitOps cluster resources.
-	Queries []GitOpsClusterQuery `pulumi:"queries"`
 	// Cluster create or update request.
 	Requests []GitOpsClusterRequest `pulumi:"requests"`
 }
@@ -151,8 +149,6 @@ type GitOpsClusterArgs struct {
 	OrgId pulumi.StringPtrInput
 	// Project identifier of the GitOps cluster.
 	ProjectId pulumi.StringPtrInput
-	// Query for the GitOps cluster resources.
-	Queries GitOpsClusterQueryArrayInput
 	// Cluster create or update request.
 	Requests GitOpsClusterRequestArrayInput
 }
@@ -267,11 +263,6 @@ func (o GitOpsClusterOutput) OrgId() pulumi.StringPtrOutput {
 // Project identifier of the GitOps cluster.
 func (o GitOpsClusterOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
-// Query for the GitOps cluster resources.
-func (o GitOpsClusterOutput) Queries() GitOpsClusterQueryArrayOutput {
-	return o.ApplyT(func(v *GitOpsCluster) GitOpsClusterQueryArrayOutput { return v.Queries }).(GitOpsClusterQueryArrayOutput)
 }
 
 // Cluster create or update request.

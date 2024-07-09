@@ -29,6 +29,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Type of the health source.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Version of the health source.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private MonitoredServiceRequestHealthSource(
@@ -38,12 +42,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string spec,
 
-            string type)
+            string type,
+
+            string? version)
         {
             Identifier = identifier;
             Name = name;
             Spec = spec;
             Type = type;
+            Version = version;
         }
     }
 }

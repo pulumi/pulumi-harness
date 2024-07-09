@@ -430,28 +430,7 @@ class JiraConnector(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Jira connector.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.JiraConnector("test",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://jira.com",
-            delegate_selectors=["harness-delegate"],
-            auth=harness.platform.JiraConnectorAuthArgs(
-                auth_type="UsernamePassword",
-                username_password=harness.platform.JiraConnectorAuthUsernamePasswordArgs(
-                    username="admin",
-                    password_ref="account.secret_id",
-                ),
-            ))
-        ```
+        ## Example to create Jira Connector at different levels (Org, Project, Account)
 
         ## Import
 
@@ -496,28 +475,7 @@ class JiraConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Jira connector.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.JiraConnector("test",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://jira.com",
-            delegate_selectors=["harness-delegate"],
-            auth=harness.platform.JiraConnectorAuthArgs(
-                auth_type="UsernamePassword",
-                username_password=harness.platform.JiraConnectorAuthUsernamePasswordArgs(
-                    username="admin",
-                    password_ref="account.secret_id",
-                ),
-            ))
-        ```
+        ## Example to create Jira Connector at different levels (Org, Project, Account)
 
         ## Import
 

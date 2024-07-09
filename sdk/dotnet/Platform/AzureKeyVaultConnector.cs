@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating an Azure key vault in Harness.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

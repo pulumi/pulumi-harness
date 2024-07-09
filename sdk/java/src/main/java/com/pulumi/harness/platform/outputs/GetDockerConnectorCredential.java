@@ -5,11 +5,17 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetDockerConnectorCredential {
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    private Boolean executeOnDelegate;
     /**
      * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -27,6 +33,13 @@ public final class GetDockerConnectorCredential {
     private String usernameRef;
 
     private GetDockerConnectorCredential() {}
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
+    }
     /**
      * @return The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -58,17 +71,27 @@ public final class GetDockerConnectorCredential {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean executeOnDelegate;
         private String passwordRef;
         private String username;
         private String usernameRef;
         public Builder() {}
         public Builder(GetDockerConnectorCredential defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.passwordRef = defaults.passwordRef;
     	      this.username = defaults.username;
     	      this.usernameRef = defaults.usernameRef;
         }
 
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetDockerConnectorCredential", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
         @CustomType.Setter
         public Builder passwordRef(String passwordRef) {
             if (passwordRef == null) {
@@ -95,6 +118,7 @@ public final class GetDockerConnectorCredential {
         }
         public GetDockerConnectorCredential build() {
             final var _resultValue = new GetDockerConnectorCredential();
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.passwordRef = passwordRef;
             _resultValue.username = username;
             _resultValue.usernameRef = usernameRef;

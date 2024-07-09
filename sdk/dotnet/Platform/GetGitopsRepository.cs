@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetGitopsRepository
     {
         /// <summary>
-        /// Data Source for fetching a Harness GitOps Repository.
+        /// Data source for fetching a Harness GitOps Repository.
         /// 
         /// ## Example Usage
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsRepositoryResult>("harness:platform/getGitopsRepository:getGitopsRepository", args ?? new GetGitopsRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data Source for fetching a Harness GitOps Repository.
+        /// Data source for fetching a Harness GitOps Repository.
         /// 
         /// ## Example Usage
         /// 
@@ -84,10 +84,10 @@ namespace Pulumi.Harness.Platform
         public string AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if to operate on credential set instead of repository.
+        /// Indicates if helm-oci support must be enabled for this repo.
         /// </summary>
-        [Input("credsOnly")]
-        public bool? CredsOnly { get; set; }
+        [Input("enableOci")]
+        public bool? EnableOci { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps repository.
@@ -107,24 +107,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
-        /// <summary>
-        /// Indicates to force refresh query for repository.
-        /// </summary>
-        [Input("queryForceRefresh")]
-        public bool? QueryForceRefresh { get; set; }
-
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        [Input("queryProject")]
-        public string? QueryProject { get; set; }
-
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        [Input("queryRepo")]
-        public string? QueryRepo { get; set; }
-
         [Input("updateMasks")]
         private List<Inputs.GetGitopsRepositoryUpdateMaskArgs>? _updateMasks;
 
@@ -136,12 +118,6 @@ namespace Pulumi.Harness.Platform
             get => _updateMasks ?? (_updateMasks = new List<Inputs.GetGitopsRepositoryUpdateMaskArgs>());
             set => _updateMasks = value;
         }
-
-        /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
-        /// </summary>
-        [Input("upsert")]
-        public bool? Upsert { get; set; }
 
         public GetGitopsRepositoryArgs()
         {
@@ -164,10 +140,10 @@ namespace Pulumi.Harness.Platform
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if to operate on credential set instead of repository.
+        /// Indicates if helm-oci support must be enabled for this repo.
         /// </summary>
-        [Input("credsOnly")]
-        public Input<bool>? CredsOnly { get; set; }
+        [Input("enableOci")]
+        public Input<bool>? EnableOci { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps repository.
@@ -187,24 +163,6 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// Indicates to force refresh query for repository.
-        /// </summary>
-        [Input("queryForceRefresh")]
-        public Input<bool>? QueryForceRefresh { get; set; }
-
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        [Input("queryProject")]
-        public Input<string>? QueryProject { get; set; }
-
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        [Input("queryRepo")]
-        public Input<string>? QueryRepo { get; set; }
-
         [Input("updateMasks")]
         private InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>? _updateMasks;
 
@@ -216,12 +174,6 @@ namespace Pulumi.Harness.Platform
             get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>());
             set => _updateMasks = value;
         }
-
-        /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
-        /// </summary>
-        [Input("upsert")]
-        public Input<bool>? Upsert { get; set; }
 
         public GetGitopsRepositoryInvokeArgs()
         {
@@ -242,9 +194,9 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AgentId;
         /// <summary>
-        /// Indicates if to operate on credential set instead of repository.
+        /// Indicates if helm-oci support must be enabled for this repo.
         /// </summary>
-        public readonly bool? CredsOnly;
+        public readonly bool EnableOci;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -262,18 +214,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Indicates to force refresh query for repository.
-        /// </summary>
-        public readonly bool? QueryForceRefresh;
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        public readonly string? QueryProject;
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        public readonly string? QueryRepo;
-        /// <summary>
         /// Repo details holding application configurations.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> Repos;
@@ -281,10 +221,6 @@ namespace Pulumi.Harness.Platform
         /// Update mask of the repository.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> UpdateMasks;
-        /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
-        /// </summary>
-        public readonly bool? Upsert;
 
         [OutputConstructor]
         private GetGitopsRepositoryResult(
@@ -292,7 +228,7 @@ namespace Pulumi.Harness.Platform
 
             string agentId,
 
-            bool? credsOnly,
+            bool enableOci,
 
             string id,
 
@@ -302,31 +238,19 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
-            bool? queryForceRefresh,
-
-            string? queryProject,
-
-            string? queryRepo,
-
             ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> repos,
 
-            ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> updateMasks,
-
-            bool? upsert)
+            ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> updateMasks)
         {
             AccountId = accountId;
             AgentId = agentId;
-            CredsOnly = credsOnly;
+            EnableOci = enableOci;
             Id = id;
             Identifier = identifier;
             OrgId = orgId;
             ProjectId = projectId;
-            QueryForceRefresh = queryForceRefresh;
-            QueryProject = queryProject;
-            QueryRepo = queryRepo;
             Repos = repos;
             UpdateMasks = updateMasks;
-            Upsert = upsert;
         }
     }
 }

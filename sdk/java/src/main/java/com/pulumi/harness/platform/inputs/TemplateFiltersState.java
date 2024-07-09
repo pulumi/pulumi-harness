@@ -32,14 +32,14 @@ public final class TemplateFiltersState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter.
+     * Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
      * 
      */
     @Import(name="filterVisibility")
     private @Nullable Output<String> filterVisibility;
 
     /**
-     * @return This indicates visibility of filters. By default, everyone can view this filter.
+     * @return Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
      * 
      */
     public Optional<Output<String>> filterVisibility() {
@@ -173,7 +173,7 @@ public final class TemplateFiltersState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filterVisibility This indicates visibility of filters. By default, everyone can view this filter.
+         * @param filterVisibility Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class TemplateFiltersState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filterVisibility This indicates visibility of filters. By default, everyone can view this filter.
+         * @param filterVisibility Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
          * 
          * @return builder
          * 

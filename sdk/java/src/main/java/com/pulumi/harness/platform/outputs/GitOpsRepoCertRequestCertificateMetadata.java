@@ -22,7 +22,7 @@ public final class GitOpsRepoCertRequestCertificateMetadata {
      */
     private @Nullable String remainingItemCount;
     /**
-     * @return dentifies the server&#39;s internal version.
+     * @return Identifies the server&#39;s internal version.
      * 
      */
     private @Nullable String resourceVersion;
@@ -48,7 +48,7 @@ public final class GitOpsRepoCertRequestCertificateMetadata {
         return Optional.ofNullable(this.remainingItemCount);
     }
     /**
-     * @return dentifies the server&#39;s internal version.
+     * @return Identifies the server&#39;s internal version.
      * 
      */
     public Optional<String> resourceVersion() {

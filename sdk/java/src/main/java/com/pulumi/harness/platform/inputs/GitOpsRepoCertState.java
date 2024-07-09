@@ -18,14 +18,14 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
     public static final GitOpsRepoCertState Empty = new GitOpsRepoCertState();
 
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -48,14 +48,14 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -63,14 +63,14 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -78,14 +78,14 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Repository Certificates create/Update request.
+     * Repository Certificate create/update request.
      * 
      */
     @Import(name="requests")
     private @Nullable Output<List<GitOpsRepoCertRequestArgs>> requests;
 
     /**
-     * @return Repository Certificates create/Update request.
+     * @return Repository Certificate create/update request.
      * 
      */
     public Optional<Output<List<GitOpsRepoCertRequestArgs>>> requests() {
@@ -121,7 +121,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId account identifier of the Repository Certificates.
+         * @param accountId Account identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId account identifier of the Repository Certificates.
+         * @param accountId Account identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param agentId agent identifier of the Repository Certificates.
+         * @param agentId Agent identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param agentId agent identifier of the Repository Certificates.
+         * @param agentId Agent identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId organization identifier of the Repository Certificates.
+         * @param orgId Organization identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId organization identifier of the Repository Certificates.
+         * @param orgId Organization identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId project identifier of the Repository Certificates.
+         * @param projectId Project identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId project identifier of the Repository Certificates.
+         * @param projectId Project identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param requests Repository Certificates create/Update request.
+         * @param requests Repository Certificate create/update request.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param requests Repository Certificates create/Update request.
+         * @param requests Repository Certificate create/update request.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GitOpsRepoCertState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param requests Repository Certificates create/Update request.
+         * @param requests Repository Certificate create/update request.
          * 
          * @return builder
          * 

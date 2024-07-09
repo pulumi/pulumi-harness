@@ -19,7 +19,7 @@ public final class GitOpsApplicationsApplicationSpec {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecDestination> destinations;
     /**
-     * @return Contains all information about the source of a GitOps application.
+     * @return Contains all information about the source of the GitOps application.
      * 
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSource> sources;
@@ -38,7 +38,7 @@ public final class GitOpsApplicationsApplicationSpec {
         return this.destinations == null ? List.of() : this.destinations;
     }
     /**
-     * @return Contains all information about the source of a GitOps application.
+     * @return Contains all information about the source of the GitOps application.
      * 
      */
     public List<GitOpsApplicationsApplicationSpecSource> sources() {

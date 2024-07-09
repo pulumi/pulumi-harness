@@ -75,7 +75,7 @@ type TemplateFilters struct {
 
 	// Properties of the filters entity defined in Harness.
 	FilterProperties TemplateFiltersFilterPropertiesOutput `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter.
+	// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 	FilterVisibility pulumi.StringPtrOutput `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -130,7 +130,7 @@ func GetTemplateFilters(ctx *pulumi.Context,
 type templateFiltersState struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties *TemplateFiltersFilterProperties `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter.
+	// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 	FilterVisibility *string `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -147,7 +147,7 @@ type templateFiltersState struct {
 type TemplateFiltersState struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties TemplateFiltersFilterPropertiesPtrInput
-	// This indicates visibility of filters. By default, everyone can view this filter.
+	// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 	FilterVisibility pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -168,7 +168,7 @@ func (TemplateFiltersState) ElementType() reflect.Type {
 type templateFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties TemplateFiltersFilterProperties `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter.
+	// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 	FilterVisibility *string `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -186,7 +186,7 @@ type templateFiltersArgs struct {
 type TemplateFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties TemplateFiltersFilterPropertiesInput
-	// This indicates visibility of filters. By default, everyone can view this filter.
+	// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 	FilterVisibility pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -292,7 +292,7 @@ func (o TemplateFiltersOutput) FilterProperties() TemplateFiltersFilterPropertie
 	return o.ApplyT(func(v *TemplateFilters) TemplateFiltersFilterPropertiesOutput { return v.FilterProperties }).(TemplateFiltersFilterPropertiesOutput)
 }
 
-// This indicates visibility of filters. By default, everyone can view this filter.
+// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
 func (o TemplateFiltersOutput) FilterVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateFilters) pulumi.StringPtrOutput { return v.FilterVisibility }).(pulumi.StringPtrOutput)
 }

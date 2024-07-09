@@ -11,6 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for retrieving a Harness ApiKey.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetApiKey(ctx, &platform.GetApiKeyArgs{
+//				Identifier: "test_apikey",
+//				Name:       pulumi.StringRef("test_apikey"),
+//				ParentId:   "parent_id",
+//				ApikeyType: "USER",
+//				AccountId:  "account_id",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetApiKey(ctx *pulumi.Context, args *GetApiKeyArgs, opts ...pulumi.InvokeOption) (*GetApiKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApiKeyResult
@@ -23,32 +56,48 @@ func GetApiKey(ctx *pulumi.Context, args *GetApiKeyArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getApiKey.
 type GetApiKeyArgs struct {
-	AccountId                string            `pulumi:"accountId"`
-	ApikeyType               string            `pulumi:"apikeyType"`
-	DefaultTimeToExpireToken *int              `pulumi:"defaultTimeToExpireToken"`
-	Description              *string           `pulumi:"description"`
-	Identifier               string            `pulumi:"identifier"`
-	Name                     string            `pulumi:"name"`
-	OrgId                    *string           `pulumi:"orgId"`
-	ParentId                 string            `pulumi:"parentId"`
-	ProjectId                *string           `pulumi:"projectId"`
-	Tags                     map[string]string `pulumi:"tags"`
+	// Account Identifier for the Entity
+	AccountId string `pulumi:"accountId"`
+	// Type of the API Key
+	ApikeyType string `pulumi:"apikeyType"`
+	// Default expiration time of the Token within API Key
+	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Parent Entity Identifier of the API Key
+	ParentId string `pulumi:"parentId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getApiKey.
 type GetApiKeyResult struct {
-	AccountId                string  `pulumi:"accountId"`
-	ApikeyType               string  `pulumi:"apikeyType"`
-	DefaultTimeToExpireToken *int    `pulumi:"defaultTimeToExpireToken"`
-	Description              *string `pulumi:"description"`
+	// Account Identifier for the Entity
+	AccountId string `pulumi:"accountId"`
+	// Type of the API Key
+	ApikeyType string `pulumi:"apikeyType"`
+	// Default expiration time of the Token within API Key
+	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
+	// Description of the resource.
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Identifier string            `pulumi:"identifier"`
-	Name       string            `pulumi:"name"`
-	OrgId      *string           `pulumi:"orgId"`
-	ParentId   string            `pulumi:"parentId"`
-	ProjectId  *string           `pulumi:"projectId"`
-	Tags       map[string]string `pulumi:"tags"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Parent Entity Identifier of the API Key
+	ParentId string `pulumi:"parentId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 }
 
 func GetApiKeyOutput(ctx *pulumi.Context, args GetApiKeyOutputArgs, opts ...pulumi.InvokeOption) GetApiKeyResultOutput {
@@ -66,16 +115,22 @@ func GetApiKeyOutput(ctx *pulumi.Context, args GetApiKeyOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getApiKey.
 type GetApiKeyOutputArgs struct {
-	AccountId                pulumi.StringInput    `pulumi:"accountId"`
-	ApikeyType               pulumi.StringInput    `pulumi:"apikeyType"`
-	DefaultTimeToExpireToken pulumi.IntPtrInput    `pulumi:"defaultTimeToExpireToken"`
-	Description              pulumi.StringPtrInput `pulumi:"description"`
-	Identifier               pulumi.StringInput    `pulumi:"identifier"`
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	OrgId                    pulumi.StringPtrInput `pulumi:"orgId"`
-	ParentId                 pulumi.StringInput    `pulumi:"parentId"`
-	ProjectId                pulumi.StringPtrInput `pulumi:"projectId"`
-	Tags                     pulumi.StringMapInput `pulumi:"tags"`
+	// Account Identifier for the Entity
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Type of the API Key
+	ApikeyType pulumi.StringInput `pulumi:"apikeyType"`
+	// Default expiration time of the Token within API Key
+	DefaultTimeToExpireToken pulumi.IntPtrInput `pulumi:"defaultTimeToExpireToken"`
+	// Unique identifier of the resource.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Parent Entity Identifier of the API Key
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (GetApiKeyOutputArgs) ElementType() reflect.Type {
@@ -97,20 +152,24 @@ func (o GetApiKeyResultOutput) ToGetApiKeyResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Account Identifier for the Entity
 func (o GetApiKeyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiKeyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Type of the API Key
 func (o GetApiKeyResultOutput) ApikeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiKeyResult) string { return v.ApikeyType }).(pulumi.StringOutput)
 }
 
+// Default expiration time of the Token within API Key
 func (o GetApiKeyResultOutput) DefaultTimeToExpireToken() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetApiKeyResult) *int { return v.DefaultTimeToExpireToken }).(pulumi.IntPtrOutput)
 }
 
-func (o GetApiKeyResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApiKeyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+// Description of the resource.
+func (o GetApiKeyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiKeyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -118,28 +177,34 @@ func (o GetApiKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o GetApiKeyResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiKeyResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-func (o GetApiKeyResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApiKeyResult) string { return v.Name }).(pulumi.StringOutput)
+// Name of the resource.
+func (o GetApiKeyResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApiKeyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the organization.
 func (o GetApiKeyResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApiKeyResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Parent Entity Identifier of the API Key
 func (o GetApiKeyResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApiKeyResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the project.
 func (o GetApiKeyResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApiKeyResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetApiKeyResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetApiKeyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+// Tags to associate with the resource.
+func (o GetApiKeyResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApiKeyResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func init() {

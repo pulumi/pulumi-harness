@@ -11,9 +11,110 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness environment service overrides.
+    /// ## Example to create Environment Service Override at different levels (Org, Project, Account)
     /// 
-    /// ## Example Usage
+    /// ### Account Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
     /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.EnvironmentServiceOverrides("example", new()
+    ///     {
+    ///         EnvId = "environmentIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         Yaml = @"serviceOverrides:
+    ///   environmentRef: environmentIdentifier
+    ///   serviceRef: serviceIdentifier
+    ///   variables:
+    ///    - name: asda
+    ///      type: String
+    ///      value: asddad
+    ///   manifests:
+    ///      - manifest:
+    ///          identifier: manifestEnv
+    ///          type: Values
+    ///          spec:
+    ///            store:
+    ///              type: Git
+    ///              spec:
+    ///                connectorRef: &lt;+input&gt;
+    ///                gitFetchType: Branch
+    ///                paths:
+    ///                  - file1
+    ///                repoName: &lt;+input&gt;
+    ///                branch: master
+    ///   configFiles:
+    ///      - configFile:
+    ///          identifier: configFileEnv
+    ///          spec:
+    ///            store:
+    ///              type: Harness
+    ///              spec:
+    ///                files:
+    ///                  - account:/Add-ons/svcOverrideTest
+    ///                secretFiles: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.EnvironmentServiceOverrides("example", new()
+    ///     {
+    ///         OrgId = "orgIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         ServiceId = "serviceIdentifier",
+    ///         Yaml = @"serviceOverrides:
+    ///   environmentRef: environmentIdentifier
+    ///   serviceRef: serviceIdentifier
+    ///   variables:
+    ///    - name: asda
+    ///      type: String
+    ///      value: asddad
+    ///   manifests:
+    ///      - manifest:
+    ///          identifier: manifestEnv
+    ///          type: Values
+    ///          spec:
+    ///            store:
+    ///              type: Git
+    ///              spec:
+    ///                connectorRef: &lt;+input&gt;
+    ///                gitFetchType: Branch
+    ///                paths:
+    ///                  - file1
+    ///                repoName: &lt;+input&gt;
+    ///                branch: master
+    ///   configFiles:
+    ///      - configFile:
+    ///          identifier: configFileEnv
+    ///          spec:
+    ///            store:
+    ///              type: Harness
+    ///              spec:
+    ///                files:
+    ///                  - account:/Add-ons/svcOverrideTest
+    ///                secretFiles: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,10 +168,22 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using serviceoverride id
+    /// Import list of account level service overrides using the env id associated with them
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;serviceoverride_id&gt;
+    /// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;env_id&gt;
+    /// ```
+    /// 
+    /// Import list of org level service overrides using the env id associated with them
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;org_id&gt;/&lt;env_id&gt;
+    /// ```
+    /// 
+    /// Import list of project level service overrides using the env id associated with them
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example &lt;org_id&gt;/&lt;project_id&gt;/&lt;env_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides")]

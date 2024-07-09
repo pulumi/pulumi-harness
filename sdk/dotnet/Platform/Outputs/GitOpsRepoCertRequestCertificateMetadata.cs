@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? RemainingItemCount;
         /// <summary>
-        /// dentifies the server's internal version.
+        /// Identifies the server's internal version.
         /// </summary>
         public readonly string? ResourceVersion;
         /// <summary>

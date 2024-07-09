@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsRepoCertRequestCertificateItem
     {
         /// <summary>
-        /// CertData contains the actual certificate data, dependent on the certificate type.
+        /// CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
         /// </summary>
         public readonly string? CertData;
         /// <summary>
-        /// CertInfo will hold additional certificate info, depdendent on the certificate type .
+        /// CertInfo will hold additional certificate info, dependent on the certificate type .
         /// </summary>
         public readonly string? CertInfo;
         /// <summary>

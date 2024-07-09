@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetEnvironmentClustersMapping
     {
         /// <summary>
-        /// Data source for retrieving a Harness Cluster.
+        /// Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,47 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // data source for gitops clusters mapped to a project level env
         ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "identifier",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "incluster",
+        ///                 Name = "in-cluster",
+        ///                 AgentIdentifier = "account.gitopsagentdev",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // data source for two gitops clusters mapped to an account level env
+        ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
+        ///     {
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterA",
+        ///                 Name = "cluster-A",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterB",
+        ///                 Name = "cluster-B",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
         ///     });
         /// 
         /// });
@@ -38,7 +74,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentClustersMappingResult>("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args ?? new GetEnvironmentClustersMappingArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness Cluster.
+        /// Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +86,47 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // data source for gitops clusters mapped to a project level env
         ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "identifier",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "incluster",
+        ///                 Name = "in-cluster",
+        ///                 AgentIdentifier = "account.gitopsagentdev",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // data source for two gitops clusters mapped to an account level env
+        ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
+        ///     {
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterA",
+        ///                 Name = "cluster-A",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterB",
+        ///                 Name = "cluster-B",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
         ///     });
         /// 
         /// });
@@ -67,26 +139,38 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentClustersMappingArgs : global::Pulumi.InvokeArgs
     {
+        [Input("clusters")]
+        private List<Inputs.GetEnvironmentClustersMappingClusterArgs>? _clusters;
+
         /// <summary>
-        /// environment identifier of the cluster.
+        /// list of cluster identifiers and names
+        /// </summary>
+        public List<Inputs.GetEnvironmentClustersMappingClusterArgs> Clusters
+        {
+            get => _clusters ?? (_clusters = new List<Inputs.GetEnvironmentClustersMappingClusterArgs>());
+            set => _clusters = value;
+        }
+
+        /// <summary>
+        /// environment identifier.
         /// </summary>
         [Input("envId", required: true)]
         public string EnvId { get; set; } = null!;
 
         /// <summary>
-        /// identifier of the cluster.
+        /// identifier for the cluster mapping(can be given any value).
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// org_id of the cluster.
+        /// org_id of the environment.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// project_id of the cluster.
+        /// project_id of the environment.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -99,26 +183,38 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentClustersMappingInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("clusters")]
+        private InputList<Inputs.GetEnvironmentClustersMappingClusterInputArgs>? _clusters;
+
         /// <summary>
-        /// environment identifier of the cluster.
+        /// list of cluster identifiers and names
+        /// </summary>
+        public InputList<Inputs.GetEnvironmentClustersMappingClusterInputArgs> Clusters
+        {
+            get => _clusters ?? (_clusters = new InputList<Inputs.GetEnvironmentClustersMappingClusterInputArgs>());
+            set => _clusters = value;
+        }
+
+        /// <summary>
+        /// environment identifier.
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
 
         /// <summary>
-        /// identifier of the cluster.
+        /// identifier for the cluster mapping(can be given any value).
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// org_id of the cluster.
+        /// org_id of the environment.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project_id of the cluster.
+        /// project_id of the environment.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -134,7 +230,11 @@ namespace Pulumi.Harness.Platform
     public sealed class GetEnvironmentClustersMappingResult
     {
         /// <summary>
-        /// environment identifier of the cluster.
+        /// list of cluster identifiers and names
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEnvironmentClustersMappingClusterResult> Clusters;
+        /// <summary>
+        /// environment identifier.
         /// </summary>
         public readonly string EnvId;
         /// <summary>
@@ -142,24 +242,26 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// identifier of the cluster.
+        /// identifier for the cluster mapping(can be given any value).
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// org_id of the cluster.
+        /// org_id of the environment.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// project_id of the cluster.
+        /// project_id of the environment.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// scope at which the cluster exists in harness gitops
+        /// scope at which the environment exists in harness.
         /// </summary>
         public readonly string Scope;
 
         [OutputConstructor]
         private GetEnvironmentClustersMappingResult(
+            ImmutableArray<Outputs.GetEnvironmentClustersMappingClusterResult> clusters,
+
             string envId,
 
             string id,
@@ -172,6 +274,7 @@ namespace Pulumi.Harness.Platform
 
             string scope)
         {
+            Clusters = clusters;
             EnvId = envId;
             Id = id;
             Identifier = identifier;

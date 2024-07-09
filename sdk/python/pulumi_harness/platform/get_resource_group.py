@@ -183,8 +183,6 @@ def get_resource_group(identifier: Optional[str] = None,
                        project_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceGroupResult:
     """
-    DataSource for looking up resource group in harness.
-
     ## Example Usage
 
     ```python
@@ -230,8 +228,6 @@ def get_resource_group_output(identifier: Optional[pulumi.Input[str]] = None,
                               project_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupResult]:
     """
-    DataSource for looking up resource group in harness.
-
     ## Example Usage
 
     ```python

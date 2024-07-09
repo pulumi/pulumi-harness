@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.GitOpsRepositoryArgs;
 import com.pulumi.harness.platform.inputs.GitOpsRepositoryState;
+import com.pulumi.harness.platform.outputs.GitOpsRepositoryEcrGen;
+import com.pulumi.harness.platform.outputs.GitOpsRepositoryGcrGen;
 import com.pulumi.harness.platform.outputs.GitOpsRepositoryRepo;
 import com.pulumi.harness.platform.outputs.GitOpsRepositoryUpdateMask;
 import java.lang.Boolean;
@@ -19,61 +21,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating Harness Gitops Repositories.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.GitOpsRepository;
- * import com.pulumi.harness.platform.GitOpsRepositoryArgs;
- * import com.pulumi.harness.platform.inputs.GitOpsRepositoryRepoArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new GitOpsRepository("example", GitOpsRepositoryArgs.builder()
- *             .identifier("identifier")
- *             .accountId("account_id")
- *             .projectId("project_id")
- *             .orgId("org_id")
- *             .agentId("agent_id")
- *             .repos(GitOpsRepositoryRepoArgs.builder()
- *                 .repo("https://github.com/willycoll/argocd-example-apps.git")
- *                 .name("repo_name")
- *                 .insecure(true)
- *                 .connectionType("HTTPS_ANONYMOUS")
- *                 .build())
- *             .upsert(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * Resource for managing Harness Gitops Repository.
  * 
  * ## Import
  * 
- * Import a Account level Gitops Repository
+ * Import an Account level Gitops Repository
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;agent_id&gt;/&lt;respository_id&gt;
+ * ```
+ * 
+ * Import an Org level Gitops Repository
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;respository_id&gt;
  * ```
  * 
  * Import a Project level Gitops Repository
@@ -128,6 +89,50 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.credsOnly);
     }
     /**
+     * ECR access token generator specific configuration.
+     * 
+     */
+    @Export(name="ecrGen", refs={GitOpsRepositoryEcrGen.class}, tree="[0]")
+    private Output</* @Nullable */ GitOpsRepositoryEcrGen> ecrGen;
+
+    /**
+     * @return ECR access token generator specific configuration.
+     * 
+     */
+    public Output<Optional<GitOpsRepositoryEcrGen>> ecrGen() {
+        return Codegen.optional(this.ecrGen);
+    }
+    /**
+     * GCR access token generator specific configuration.
+     * 
+     */
+    @Export(name="gcrGen", refs={GitOpsRepositoryGcrGen.class}, tree="[0]")
+    private Output</* @Nullable */ GitOpsRepositoryGcrGen> gcrGen;
+
+    /**
+     * @return GCR access token generator specific configuration.
+     * 
+     */
+    public Output<Optional<GitOpsRepositoryGcrGen>> gcrGen() {
+        return Codegen.optional(this.gcrGen);
+    }
+    /**
+     * Default: &#34;UNSET&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * 
+     */
+    @Export(name="genType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> genType;
+
+    /**
+     * @return Default: &#34;UNSET&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * 
+     */
+    public Output<Optional<String>> genType() {
+        return Codegen.optional(this.genType);
+    }
+    /**
      * Identifier of the GitOps repository.
      * 
      */
@@ -170,46 +175,18 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Indicates to force refresh query for repository.
+     * For OCI repos, this is the interval to refresh the token to access the registry.
      * 
      */
-    @Export(name="queryForceRefresh", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> queryForceRefresh;
+    @Export(name="refreshInterval", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> refreshInterval;
 
     /**
-     * @return Indicates to force refresh query for repository.
+     * @return For OCI repos, this is the interval to refresh the token to access the registry.
      * 
      */
-    public Output<Optional<Boolean>> queryForceRefresh() {
-        return Codegen.optional(this.queryForceRefresh);
-    }
-    /**
-     * Project to query for the GitOps repo.
-     * 
-     */
-    @Export(name="queryProject", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryProject;
-
-    /**
-     * @return Project to query for the GitOps repo.
-     * 
-     */
-    public Output<Optional<String>> queryProject() {
-        return Codegen.optional(this.queryProject);
-    }
-    /**
-     * GitOps repository to query.
-     * 
-     */
-    @Export(name="queryRepo", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryRepo;
-
-    /**
-     * @return GitOps repository to query.
-     * 
-     */
-    public Output<Optional<String>> queryRepo() {
-        return Codegen.optional(this.queryRepo);
+    public Output<Optional<String>> refreshInterval() {
+        return Codegen.optional(this.refreshInterval);
     }
     /**
      * Repo details holding application configurations.

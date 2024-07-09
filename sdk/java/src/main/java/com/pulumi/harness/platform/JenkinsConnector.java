@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Jenkins connector.
- * 
  * ## Import
  * 
  * Import account level jenkins connector

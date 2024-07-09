@@ -12,8 +12,6 @@ namespace Pulumi.Harness.Platform
     public static class GetVaultConnector
     {
         /// <summary>
-        /// DataSource for looking up a Vault connector in Harness.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVaultConnectorResult>("harness:platform/getVaultConnector:getVaultConnector", args ?? new GetVaultConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// DataSource for looking up a Vault connector in Harness.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

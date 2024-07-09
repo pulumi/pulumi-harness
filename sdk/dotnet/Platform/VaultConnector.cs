@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a HashiCorp Vault Secret Manager connector.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

@@ -12,8 +12,59 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness environment group.
     /// 
-    /// ## Example Usage
+    /// ## Example to create Environment Group at different levels (Org, Project, Account)
     /// 
+    /// ### Account Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.EnvironmentGroup("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Color = "#0063F7",
+    ///         Yaml = @"environmentGroup:
+    ///   name: ""name""
+    ///   identifier: ""identifier""
+    ///   description: ""temp""
+    ///   envIdentifiers: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.EnvironmentGroup("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "orgIdentifer",
+    ///         Color = "#0063F7",
+    ///         Yaml = @"environmentGroup:
+    ///   name: ""name""
+    ///   identifier: ""identifier""
+    ///   description: ""temp""
+    ///   orgIdentifier: ""orgIdentifer""
+    ///   envIdentifiers: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +94,19 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using the environment group id.
+    /// Import account level environment group.
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;environment_group_id&gt;
+    /// ```
+    /// 
+    /// Import org level environment group.
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;org_id&gt;/&lt;environment_group_id&gt;
+    /// ```
+    /// 
+    /// Import project level environment group.
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/environmentGroup:EnvironmentGroup example &lt;org_id&gt;/&lt;project_id&gt;/&lt;environment_group_id&gt;
@@ -83,7 +146,10 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -166,7 +232,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml", required: true)]
         public Input<string> Yaml { get; set; } = null!;
@@ -210,7 +279,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

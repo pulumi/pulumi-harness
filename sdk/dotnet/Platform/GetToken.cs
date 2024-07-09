@@ -92,12 +92,6 @@ namespace Pulumi.Harness.Platform
         public string ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Description of the Token
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
         /// Email Id of the user who created the Token
         /// </summary>
         [Input("email")]
@@ -110,19 +104,19 @@ namespace Pulumi.Harness.Platform
         public string? EncodedPassword { get; set; }
 
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
@@ -134,7 +128,7 @@ namespace Pulumi.Harness.Platform
         public string ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -144,18 +138,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("scheduledExpireTime")]
         public int? ScheduledExpireTime { get; set; }
-
-        [Input("tags")]
-        private Dictionary<string, string>? _tags;
-
-        /// <summary>
-        /// Tags for the Token
-        /// </summary>
-        public Dictionary<string, string> Tags
-        {
-            get => _tags ?? (_tags = new Dictionary<string, string>());
-            set => _tags = value;
-        }
 
         /// <summary>
         /// Name of the user who created the Token
@@ -208,12 +190,6 @@ namespace Pulumi.Harness.Platform
         public Input<string> ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Description of the Token
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// Email Id of the user who created the Token
         /// </summary>
         [Input("email")]
@@ -226,19 +202,19 @@ namespace Pulumi.Harness.Platform
         public Input<string>? EncodedPassword { get; set; }
 
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -250,7 +226,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -260,18 +236,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("scheduledExpireTime")]
         public Input<int>? ScheduledExpireTime { get; set; }
-
-        [Input("tags")]
-        private InputMap<string>? _tags;
-
-        /// <summary>
-        /// Tags for the Token
-        /// </summary>
-        public InputMap<string> Tags
-        {
-            get => _tags ?? (_tags = new InputMap<string>());
-            set => _tags = value;
-        }
 
         /// <summary>
         /// Name of the user who created the Token
@@ -320,9 +284,9 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string ApikeyType;
         /// <summary>
-        /// Description of the Token
+        /// Description of the resource.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// Email Id of the user who created the Token
         /// </summary>
@@ -336,15 +300,15 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
@@ -352,7 +316,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
@@ -360,9 +324,9 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly int? ScheduledExpireTime;
         /// <summary>
-        /// Tags for the Token
+        /// Tags to associate with the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// Name of the user who created the Token
         /// </summary>
@@ -388,7 +352,7 @@ namespace Pulumi.Harness.Platform
 
             string apikeyType,
 
-            string? description,
+            string description,
 
             string? email,
 
@@ -398,7 +362,7 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
-            string name,
+            string? name,
 
             string? orgId,
 
@@ -408,7 +372,7 @@ namespace Pulumi.Harness.Platform
 
             int? scheduledExpireTime,
 
-            ImmutableDictionary<string, string>? tags,
+            ImmutableArray<string> tags,
 
             string? username,
 

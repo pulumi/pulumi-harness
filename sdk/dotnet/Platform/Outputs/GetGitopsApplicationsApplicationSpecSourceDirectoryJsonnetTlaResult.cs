@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Code of the TLAS of the jsonnet application.
         /// </summary>
-        public readonly bool? Code;
+        public readonly bool Code;
         /// <summary>
-        /// Name of the TLAS of the jsonnet application.
+        /// Name of the GitOps application.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Value of the TLAS of the jsonnet application.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(
-            bool? code,
+            bool code,
 
-            string? name,
+            string name,
 
-            string? value)
+            string value)
         {
             Code = code;
             Name = name;

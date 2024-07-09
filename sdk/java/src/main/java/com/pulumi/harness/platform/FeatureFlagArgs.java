@@ -6,7 +6,8 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.FeatureFlagGitDetailsArgs;
+import com.pulumi.harness.platform.inputs.FeatureFlagEnvironmentArgs;
+import com.pulumi.harness.platform.inputs.FeatureFlagTagArgs;
 import com.pulumi.harness.platform.inputs.FeatureFlagVariationArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -19,21 +20,6 @@ import javax.annotation.Nullable;
 public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureFlagArgs Empty = new FeatureFlagArgs();
-
-    /**
-     * Whether or not the flag is archived
-     * 
-     */
-    @Import(name="archived")
-    private @Nullable Output<Boolean> archived;
-
-    /**
-     * @return Whether or not the flag is archived
-     * 
-     */
-    public Optional<Output<Boolean>> archived() {
-        return Optional.ofNullable(this.archived);
-    }
 
     /**
      * Which of the variations to use when the flag is toggled to off state
@@ -65,11 +51,34 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
         return this.defaultOnVariation;
     }
 
-    @Import(name="gitDetails")
-    private @Nullable Output<FeatureFlagGitDetailsArgs> gitDetails;
+    /**
+     * Description of the Feature Flag
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
-    public Optional<Output<FeatureFlagGitDetailsArgs>> gitDetails() {
-        return Optional.ofNullable(this.gitDetails);
+    /**
+     * @return Description of the Feature Flag
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Environment Identifier
+     * 
+     */
+    @Import(name="environments")
+    private @Nullable Output<List<FeatureFlagEnvironmentArgs>> environments;
+
+    /**
+     * @return Environment Identifier
+     * 
+     */
+    public Optional<Output<List<FeatureFlagEnvironmentArgs>>> environments() {
+        return Optional.ofNullable(this.environments);
     }
 
     /**
@@ -178,6 +187,21 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tags for the flag
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<FeatureFlagTagArgs>> tags;
+
+    /**
+     * @return The tags for the flag
+     * 
+     */
+    public Optional<Output<List<FeatureFlagTagArgs>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The options available for your flag
      * 
      */
@@ -195,10 +219,10 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
     private FeatureFlagArgs() {}
 
     private FeatureFlagArgs(FeatureFlagArgs $) {
-        this.archived = $.archived;
         this.defaultOffVariation = $.defaultOffVariation;
         this.defaultOnVariation = $.defaultOnVariation;
-        this.gitDetails = $.gitDetails;
+        this.description = $.description;
+        this.environments = $.environments;
         this.identifier = $.identifier;
         this.kind = $.kind;
         this.name = $.name;
@@ -206,6 +230,7 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.permanent = $.permanent;
         this.projectId = $.projectId;
+        this.tags = $.tags;
         this.variations = $.variations;
     }
 
@@ -225,27 +250,6 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FeatureFlagArgs defaults) {
             $ = new FeatureFlagArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param archived Whether or not the flag is archived
-         * 
-         * @return builder
-         * 
-         */
-        public Builder archived(@Nullable Output<Boolean> archived) {
-            $.archived = archived;
-            return this;
-        }
-
-        /**
-         * @param archived Whether or not the flag is archived
-         * 
-         * @return builder
-         * 
-         */
-        public Builder archived(Boolean archived) {
-            return archived(Output.of(archived));
         }
 
         /**
@@ -290,13 +294,56 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
             return defaultOnVariation(Output.of(defaultOnVariation));
         }
 
-        public Builder gitDetails(@Nullable Output<FeatureFlagGitDetailsArgs> gitDetails) {
-            $.gitDetails = gitDetails;
+        /**
+         * @param description Description of the Feature Flag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
             return this;
         }
 
-        public Builder gitDetails(FeatureFlagGitDetailsArgs gitDetails) {
-            return gitDetails(Output.of(gitDetails));
+        /**
+         * @param description Description of the Feature Flag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param environments Environment Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(@Nullable Output<List<FeatureFlagEnvironmentArgs>> environments) {
+            $.environments = environments;
+            return this;
+        }
+
+        /**
+         * @param environments Environment Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(List<FeatureFlagEnvironmentArgs> environments) {
+            return environments(Output.of(environments));
+        }
+
+        /**
+         * @param environments Environment Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(FeatureFlagEnvironmentArgs... environments) {
+            return environments(List.of(environments));
         }
 
         /**
@@ -444,6 +491,37 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param tags The tags for the flag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<FeatureFlagTagArgs>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags for the flag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<FeatureFlagTagArgs> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags The tags for the flag
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(FeatureFlagTagArgs... tags) {
+            return tags(List.of(tags));
         }
 
         /**

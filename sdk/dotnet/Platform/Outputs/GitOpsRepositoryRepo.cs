@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsRepositoryRepo
     {
         /// <summary>
-        /// Identifies the authentication method used to connect to the repository.
+        /// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
         /// </summary>
         public readonly string ConnectionType;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? GithubAppPrivateKey;
         /// <summary>
-        /// Indicates if the credentials were inherited from a credential set.
+        /// Indicates if the credentials were inherited from a repository credential.
         /// </summary>
         public readonly bool? InheritedCreds;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
-        /// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        /// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         /// </summary>
         public readonly bool? InsecureIgnoreHostKey;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Password or PAT used for authenticating at the remote repository.
+        /// Password or PAT to be used for authenticating the remote repository.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        /// The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         /// </summary>
         public readonly string? Project;
         /// <summary>
@@ -74,15 +74,15 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Repo;
         /// <summary>
-        /// PEM data for authenticating at the repo server. Only used with Git repos.
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         /// </summary>
         public readonly string? SshPrivateKey;
         /// <summary>
-        /// Certificate in PEM format for authenticating at the repo server.
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         /// </summary>
         public readonly string? TlsClientCertData;
         /// <summary>
-        /// Private key in PEM format for authenticating at the repo server.
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         /// </summary>
         public readonly string? TlsClientCertKey;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Type_;
         /// <summary>
-        /// Username used for authenticating at the remote repository.
+        /// Username to be used for authenticating the remote repository.
         /// </summary>
         public readonly string? Username;
 

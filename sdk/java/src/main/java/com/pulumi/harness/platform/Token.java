@@ -13,12 +13,12 @@ import com.pulumi.harness.platform.inputs.TokenState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating tokens.
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -86,14 +86,14 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.apikeyType;
     }
     /**
-     * Description of the Token
+     * Description of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the Token
+     * @return Description of the resource.
      * 
      */
     public Output<Optional<String>> description() {
@@ -128,42 +128,42 @@ public class Token extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encodedPassword);
     }
     /**
-     * Identifier of the Token
+     * Unique identifier of the resource.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Identifier of the Token
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * Name of the Token
+     * Name of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Token
+     * @return Name of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
@@ -184,14 +184,14 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -212,17 +212,17 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.scheduledExpireTime;
     }
     /**
-     * Tags for the Token
+     * Tags to associate with the resource.
      * 
      */
-    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags for the Token
+     * @return Tags to associate with the resource.
      * 
      */
-    public Output<Optional<Map<String,String>>> tags() {
+    public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
@@ -281,6 +281,20 @@ public class Token extends com.pulumi.resources.CustomResource {
     public Output<Integer> validTo() {
         return this.validTo;
     }
+    /**
+     * Value of the Token
+     * 
+     */
+    @Export(name="value", refs={String.class}, tree="[0]")
+    private Output<String> value;
+
+    /**
+     * @return Value of the Token
+     * 
+     */
+    public Output<String> value() {
+        return this.value;
+    }
 
     /**
      *
@@ -314,6 +328,9 @@ public class Token extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "value"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

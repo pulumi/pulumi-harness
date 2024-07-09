@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating roles.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

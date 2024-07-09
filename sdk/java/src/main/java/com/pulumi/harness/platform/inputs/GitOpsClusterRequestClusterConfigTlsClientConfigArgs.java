@@ -17,14 +17,14 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
     public static final GitOpsClusterRequestClusterConfigTlsClientConfigArgs Empty = new GitOpsClusterRequestClusterConfigTlsClientConfigArgs();
 
     /**
-     * CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+     * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
      * 
      */
     @Import(name="caData")
     private @Nullable Output<String> caData;
 
     /**
-     * @return CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+     * @return CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
      * 
      */
     public Optional<Output<String>> caData() {
@@ -32,14 +32,14 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
     }
 
     /**
-     * Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+     * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
      * 
      */
     @Import(name="certData")
     private @Nullable Output<String> certData;
 
     /**
-     * @return Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+     * @return Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<Output<String>> certData() {
@@ -62,14 +62,14 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
     }
 
     /**
-     * Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+     * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
      * 
      */
     @Import(name="keyData")
     private @Nullable Output<String> keyData;
 
     /**
-     * @return Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+     * @return Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<Output<String>> keyData() {
@@ -77,14 +77,14 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
     }
 
     /**
-     * Server name for SNI in the client to check server certificates against.
+     * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
      * 
      */
     @Import(name="serverName")
     private @Nullable Output<String> serverName;
 
     /**
-     * @return Server name for SNI in the client to check server certificates against.
+     * @return Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
      * 
      */
     public Optional<Output<String>> serverName() {
@@ -120,7 +120,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param caData CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+         * @param caData CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param caData CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+         * @param caData CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param certData Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+         * @param certData Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param certData Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+         * @param certData Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param keyData Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+         * @param keyData Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param keyData Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+         * @param keyData Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param serverName Server name for SNI in the client to check server certificates against.
+         * @param serverName Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GitOpsClusterRequestClusterConfigTlsClientConfigArgs extends 
         }
 
         /**
-         * @param serverName Server name for SNI in the client to check server certificates against.
+         * @param serverName Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          * 
          * @return builder
          * 

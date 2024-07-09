@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// URL of the target cluster and must be set to the kubernetes control plane API.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
         /// </summary>
-        public readonly string? Namespace;
+        public readonly string Namespace;
         /// <summary>
-        /// Server of the destination of the GitOps application.
+        /// URL of the target cluster server for the GitOps application.
         /// </summary>
-        public readonly string? Server;
+        public readonly string Server;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecDestinationResult(
-            string? name,
+            string name,
 
-            string? @namespace,
+            string @namespace,
 
-            string? server)
+            string server)
         {
             Name = name;
             Namespace = @namespace;

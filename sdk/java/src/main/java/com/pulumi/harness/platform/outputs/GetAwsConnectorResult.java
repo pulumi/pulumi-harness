@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.outputs.GetAwsConnectorFullJitterBackoffStrat
 import com.pulumi.harness.platform.outputs.GetAwsConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GetAwsConnectorIrsa;
 import com.pulumi.harness.platform.outputs.GetAwsConnectorManual;
+import com.pulumi.harness.platform.outputs.GetAwsConnectorOidcAuthentication;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,11 @@ public final class GetAwsConnectorResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    private List<GetAwsConnectorOidcAuthentication> oidcAuthentications;
     /**
      * @return Unique identifier of the organization.
      * 
@@ -170,6 +176,13 @@ public final class GetAwsConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public List<GetAwsConnectorOidcAuthentication> oidcAuthentications() {
+        return this.oidcAuthentications;
+    }
+    /**
      * @return Unique identifier of the organization.
      * 
      */
@@ -211,6 +224,7 @@ public final class GetAwsConnectorResult {
         private List<GetAwsConnectorIrsa> irsas;
         private List<GetAwsConnectorManual> manuals;
         private @Nullable String name;
+        private List<GetAwsConnectorOidcAuthentication> oidcAuthentications;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private List<String> tags;
@@ -228,6 +242,7 @@ public final class GetAwsConnectorResult {
     	      this.irsas = defaults.irsas;
     	      this.manuals = defaults.manuals;
     	      this.name = defaults.name;
+    	      this.oidcAuthentications = defaults.oidcAuthentications;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
@@ -341,6 +356,17 @@ public final class GetAwsConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcAuthentications(List<GetAwsConnectorOidcAuthentication> oidcAuthentications) {
+            if (oidcAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetAwsConnectorResult", "oidcAuthentications");
+            }
+            this.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+        public Builder oidcAuthentications(GetAwsConnectorOidcAuthentication... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
+        }
+        @CustomType.Setter
         public Builder orgId(@Nullable String orgId) {
 
             this.orgId = orgId;
@@ -376,6 +402,7 @@ public final class GetAwsConnectorResult {
             _resultValue.irsas = irsas;
             _resultValue.manuals = manuals;
             _resultValue.name = name;
+            _resultValue.oidcAuthentications = oidcAuthentications;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;

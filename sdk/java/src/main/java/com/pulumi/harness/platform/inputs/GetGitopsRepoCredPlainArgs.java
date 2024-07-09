@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCredCred;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,14 +18,14 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     public static final GetGitopsRepoCredPlainArgs Empty = new GetGitopsRepoCredPlainArgs();
 
     /**
-     * account identifier of the Repository Credentials.
+     * Account identifier of the Repository Credentials.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return account identifier of the Repository Credentials.
+     * @return Account identifier of the Repository Credentials.
      * 
      */
     public String accountId() {
@@ -34,14 +33,14 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * agent identifier of the Repository Credentials.
+     * Agent identifier of the Repository Credentials.
      * 
      */
     @Import(name="agentId", required=true)
     private String agentId;
 
     /**
-     * @return agent identifier of the Repository Credentials.
+     * @return Agent identifier of the Repository Credentials.
      * 
      */
     public String agentId() {
@@ -79,14 +78,14 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Organization identifier of the Repository Credential.
+     * @return Organization identifier of the Repository Credentials.
      * 
      */
     public Optional<String> orgId() {
@@ -94,33 +93,18 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Project identifier of the Repository Credential.
+     * @return Project identifier of the Repository Credentials.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
-    }
-
-    /**
-     * if the Repository credential should be upserted.
-     * 
-     */
-    @Import(name="upsert")
-    private @Nullable Boolean upsert;
-
-    /**
-     * @return if the Repository credential should be upserted.
-     * 
-     */
-    public Optional<Boolean> upsert() {
-        return Optional.ofNullable(this.upsert);
     }
 
     private GetGitopsRepoCredPlainArgs() {}
@@ -132,7 +116,6 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.upsert = $.upsert;
     }
 
     public static Builder builder() {
@@ -154,7 +137,7 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId account identifier of the Repository Credentials.
+         * @param accountId Account identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -165,7 +148,7 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param agentId agent identifier of the Repository Credentials.
+         * @param agentId Agent identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -208,7 +191,7 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param orgId Organization identifier of the Repository Credential.
+         * @param orgId Organization identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -219,24 +202,13 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param projectId Project identifier of the Repository Credential.
+         * @param projectId Project identifier of the Repository Credentials.
          * 
          * @return builder
          * 
          */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
-            return this;
-        }
-
-        /**
-         * @param upsert if the Repository credential should be upserted.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder upsert(@Nullable Boolean upsert) {
-            $.upsert = upsert;
             return this;
         }
 

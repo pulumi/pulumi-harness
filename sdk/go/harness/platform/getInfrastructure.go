@@ -55,7 +55,8 @@ func LookupInfrastructure(ctx *pulumi.Context, args *LookupInfrastructureArgs, o
 // A collection of arguments for invoking getInfrastructure.
 type LookupInfrastructureArgs struct {
 	// environment identifier.
-	EnvId string `pulumi:"envId"`
+	EnvId      string                       `pulumi:"envId"`
+	GitDetails *GetInfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -73,7 +74,8 @@ type LookupInfrastructureResult struct {
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// environment identifier.
-	EnvId string `pulumi:"envId"`
+	EnvId      string                      `pulumi:"envId"`
+	GitDetails GetInfrastructureGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -86,7 +88,7 @@ type LookupInfrastructureResult struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
 	Type string `pulumi:"type"`
 	// Infrastructure YAML
 	Yaml string `pulumi:"yaml"`
@@ -108,7 +110,8 @@ func LookupInfrastructureOutput(ctx *pulumi.Context, args LookupInfrastructureOu
 // A collection of arguments for invoking getInfrastructure.
 type LookupInfrastructureOutputArgs struct {
 	// environment identifier.
-	EnvId pulumi.StringInput `pulumi:"envId"`
+	EnvId      pulumi.StringInput                  `pulumi:"envId"`
+	GitDetails GetInfrastructureGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -153,6 +156,10 @@ func (o LookupInfrastructureResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.EnvId }).(pulumi.StringOutput)
 }
 
+func (o LookupInfrastructureResultOutput) GitDetails() GetInfrastructureGitDetailsOutput {
+	return o.ApplyT(func(v LookupInfrastructureResult) GetInfrastructureGitDetails { return v.GitDetails }).(GetInfrastructureGitDetailsOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInfrastructureResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.Id }).(pulumi.StringOutput)
@@ -183,7 +190,7 @@ func (o LookupInfrastructureResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
 func (o LookupInfrastructureResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.Type }).(pulumi.StringOutput)
 }
