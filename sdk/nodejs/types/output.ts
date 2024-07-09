@@ -5161,7 +5161,7 @@ export namespace platform {
         valueType: string;
     }
 
-    export interface GetWorkspaceOutputValueOutput_value {
+    export interface GetWorkspaceOutputValueOutputValue {
         /**
          * Name associated with the output.
          */

@@ -52308,7 +52308,7 @@ func (o GetWorkspaceEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetWorkspaceEnvironmentVariableOutput)
 }
 
-type GetWorkspaceOutputValueOutput_value struct {
+type GetWorkspaceOutputValueOutputValue struct {
 	// Name associated with the output.
 	Name string `pulumi:"name"`
 	// Indicates if the output is sensitive.
@@ -52317,18 +52317,18 @@ type GetWorkspaceOutputValueOutput_value struct {
 	Value string `pulumi:"value"`
 }
 
-// GetWorkspaceOutputValueOutput_valueInput is an input type that accepts GetWorkspaceOutputValueOutput_valueArgs and GetWorkspaceOutputValueOutput_valueOutput values.
-// You can construct a concrete instance of `GetWorkspaceOutputValueOutput_valueInput` via:
+// GetWorkspaceOutputValueOutputValueInput is an input type that accepts GetWorkspaceOutputValueOutputValueArgs and GetWorkspaceOutputValueOutputValueOutput values.
+// You can construct a concrete instance of `GetWorkspaceOutputValueOutputValueInput` via:
 //
-//	GetWorkspaceOutputValueOutput_valueArgs{...}
-type GetWorkspaceOutputValueOutput_valueInput interface {
+//	GetWorkspaceOutputValueOutputValueArgs{...}
+type GetWorkspaceOutputValueOutputValueInput interface {
 	pulumi.Input
 
-	ToGetWorkspaceOutputValueOutput_valueOutput() GetWorkspaceOutputValueOutput_valueOutput
-	ToGetWorkspaceOutputValueOutput_valueOutputWithContext(context.Context) GetWorkspaceOutputValueOutput_valueOutput
+	ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput
+	ToGetWorkspaceOutputValueOutputValueOutputWithContext(context.Context) GetWorkspaceOutputValueOutputValueOutput
 }
 
-type GetWorkspaceOutputValueOutput_valueArgs struct {
+type GetWorkspaceOutputValueOutputValueArgs struct {
 	// Name associated with the output.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Indicates if the output is sensitive.
@@ -52337,90 +52337,90 @@ type GetWorkspaceOutputValueOutput_valueArgs struct {
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetWorkspaceOutputValueOutput_valueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceOutputValueOutput_value)(nil)).Elem()
+func (GetWorkspaceOutputValueOutputValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceOutputValueOutputValue)(nil)).Elem()
 }
 
-func (i GetWorkspaceOutputValueOutput_valueArgs) ToGetWorkspaceOutputValueOutput_valueOutput() GetWorkspaceOutputValueOutput_valueOutput {
-	return i.ToGetWorkspaceOutputValueOutput_valueOutputWithContext(context.Background())
+func (i GetWorkspaceOutputValueOutputValueArgs) ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput {
+	return i.ToGetWorkspaceOutputValueOutputValueOutputWithContext(context.Background())
 }
 
-func (i GetWorkspaceOutputValueOutput_valueArgs) ToGetWorkspaceOutputValueOutput_valueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutput_valueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutput_valueOutput)
+func (i GetWorkspaceOutputValueOutputValueArgs) ToGetWorkspaceOutputValueOutputValueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutputValueOutput)
 }
 
-// GetWorkspaceOutputValueOutput_valueArrayInput is an input type that accepts GetWorkspaceOutputValueOutput_valueArray and GetWorkspaceOutputValueOutput_valueArrayOutput values.
-// You can construct a concrete instance of `GetWorkspaceOutputValueOutput_valueArrayInput` via:
+// GetWorkspaceOutputValueOutputValueArrayInput is an input type that accepts GetWorkspaceOutputValueOutputValueArray and GetWorkspaceOutputValueOutputValueArrayOutput values.
+// You can construct a concrete instance of `GetWorkspaceOutputValueOutputValueArrayInput` via:
 //
-//	GetWorkspaceOutputValueOutput_valueArray{ GetWorkspaceOutputValueOutput_valueArgs{...} }
-type GetWorkspaceOutputValueOutput_valueArrayInput interface {
+//	GetWorkspaceOutputValueOutputValueArray{ GetWorkspaceOutputValueOutputValueArgs{...} }
+type GetWorkspaceOutputValueOutputValueArrayInput interface {
 	pulumi.Input
 
-	ToGetWorkspaceOutputValueOutput_valueArrayOutput() GetWorkspaceOutputValueOutput_valueArrayOutput
-	ToGetWorkspaceOutputValueOutput_valueArrayOutputWithContext(context.Context) GetWorkspaceOutputValueOutput_valueArrayOutput
+	ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput
+	ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(context.Context) GetWorkspaceOutputValueOutputValueArrayOutput
 }
 
-type GetWorkspaceOutputValueOutput_valueArray []GetWorkspaceOutputValueOutput_valueInput
+type GetWorkspaceOutputValueOutputValueArray []GetWorkspaceOutputValueOutputValueInput
 
-func (GetWorkspaceOutputValueOutput_valueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutput_value)(nil)).Elem()
+func (GetWorkspaceOutputValueOutputValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutputValue)(nil)).Elem()
 }
 
-func (i GetWorkspaceOutputValueOutput_valueArray) ToGetWorkspaceOutputValueOutput_valueArrayOutput() GetWorkspaceOutputValueOutput_valueArrayOutput {
-	return i.ToGetWorkspaceOutputValueOutput_valueArrayOutputWithContext(context.Background())
+func (i GetWorkspaceOutputValueOutputValueArray) ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput {
+	return i.ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(context.Background())
 }
 
-func (i GetWorkspaceOutputValueOutput_valueArray) ToGetWorkspaceOutputValueOutput_valueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutput_valueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutput_valueArrayOutput)
+func (i GetWorkspaceOutputValueOutputValueArray) ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceOutputValueOutputValueArrayOutput)
 }
 
-type GetWorkspaceOutputValueOutput_valueOutput struct{ *pulumi.OutputState }
+type GetWorkspaceOutputValueOutputValueOutput struct{ *pulumi.OutputState }
 
-func (GetWorkspaceOutputValueOutput_valueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkspaceOutputValueOutput_value)(nil)).Elem()
+func (GetWorkspaceOutputValueOutputValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceOutputValueOutputValue)(nil)).Elem()
 }
 
-func (o GetWorkspaceOutputValueOutput_valueOutput) ToGetWorkspaceOutputValueOutput_valueOutput() GetWorkspaceOutputValueOutput_valueOutput {
+func (o GetWorkspaceOutputValueOutputValueOutput) ToGetWorkspaceOutputValueOutputValueOutput() GetWorkspaceOutputValueOutputValueOutput {
 	return o
 }
 
-func (o GetWorkspaceOutputValueOutput_valueOutput) ToGetWorkspaceOutputValueOutput_valueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutput_valueOutput {
+func (o GetWorkspaceOutputValueOutputValueOutput) ToGetWorkspaceOutputValueOutputValueOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueOutput {
 	return o
 }
 
 // Name associated with the output.
-func (o GetWorkspaceOutputValueOutput_valueOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutput_value) string { return v.Name }).(pulumi.StringOutput)
+func (o GetWorkspaceOutputValueOutputValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Indicates if the output is sensitive.
-func (o GetWorkspaceOutputValueOutput_valueOutput) Sensitive() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutput_value) bool { return v.Sensitive }).(pulumi.BoolOutput)
+func (o GetWorkspaceOutputValueOutputValueOutput) Sensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) bool { return v.Sensitive }).(pulumi.BoolOutput)
 }
 
 // Value of the output.
-func (o GetWorkspaceOutputValueOutput_valueOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueOutput_value) string { return v.Value }).(pulumi.StringOutput)
+func (o GetWorkspaceOutputValueOutputValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceOutputValueOutputValue) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetWorkspaceOutputValueOutput_valueArrayOutput struct{ *pulumi.OutputState }
+type GetWorkspaceOutputValueOutputValueArrayOutput struct{ *pulumi.OutputState }
 
-func (GetWorkspaceOutputValueOutput_valueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutput_value)(nil)).Elem()
+func (GetWorkspaceOutputValueOutputValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkspaceOutputValueOutputValue)(nil)).Elem()
 }
 
-func (o GetWorkspaceOutputValueOutput_valueArrayOutput) ToGetWorkspaceOutputValueOutput_valueArrayOutput() GetWorkspaceOutputValueOutput_valueArrayOutput {
+func (o GetWorkspaceOutputValueOutputValueArrayOutput) ToGetWorkspaceOutputValueOutputValueArrayOutput() GetWorkspaceOutputValueOutputValueArrayOutput {
 	return o
 }
 
-func (o GetWorkspaceOutputValueOutput_valueArrayOutput) ToGetWorkspaceOutputValueOutput_valueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutput_valueArrayOutput {
+func (o GetWorkspaceOutputValueOutputValueArrayOutput) ToGetWorkspaceOutputValueOutputValueArrayOutputWithContext(ctx context.Context) GetWorkspaceOutputValueOutputValueArrayOutput {
 	return o
 }
 
-func (o GetWorkspaceOutputValueOutput_valueArrayOutput) Index(i pulumi.IntInput) GetWorkspaceOutputValueOutput_valueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceOutputValueOutput_value {
-		return vs[0].([]GetWorkspaceOutputValueOutput_value)[vs[1].(int)]
-	}).(GetWorkspaceOutputValueOutput_valueOutput)
+func (o GetWorkspaceOutputValueOutputValueArrayOutput) Index(i pulumi.IntInput) GetWorkspaceOutputValueOutputValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkspaceOutputValueOutputValue {
+		return vs[0].([]GetWorkspaceOutputValueOutputValue)[vs[1].(int)]
+	}).(GetWorkspaceOutputValueOutputValueOutput)
 }
 
 type GetWorkspaceTerraformVariable struct {
@@ -53407,8 +53407,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVariablesSpecArrayInput)(nil)).Elem(), GetVariablesSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEnvironmentVariableInput)(nil)).Elem(), GetWorkspaceEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceEnvironmentVariableArrayInput)(nil)).Elem(), GetWorkspaceEnvironmentVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutput_valueInput)(nil)).Elem(), GetWorkspaceOutputValueOutput_valueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutput_valueArrayInput)(nil)).Elem(), GetWorkspaceOutputValueOutput_valueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutputValueInput)(nil)).Elem(), GetWorkspaceOutputValueOutputValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceOutputValueOutputValueArrayInput)(nil)).Elem(), GetWorkspaceOutputValueOutputValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableInput)(nil)).Elem(), GetWorkspaceTerraformVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
@@ -54148,8 +54148,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVariablesSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceEnvironmentVariableArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutput_valueOutput{})
-	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutput_valueArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutputValueOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceOutputValueOutputValueArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceTerraformVariableFileOutput{})

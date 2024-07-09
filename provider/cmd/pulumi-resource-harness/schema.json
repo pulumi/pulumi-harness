@@ -12377,7 +12377,7 @@
                 }
             }
         },
-        "harness:platform/getWorkspaceOutputValueOutput_value:getWorkspaceOutputValueOutput_value": {
+        "harness:platform/getWorkspaceOutputValueOutputValue:getWorkspaceOutputValueOutputValue": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -44057,9 +44057,9 @@
                         "description": "Organization identifier of the organization the workspace resides in.\n",
                         "type": "string"
                     },
-                    "output_values": {
+                    "outputValues": {
                         "items": {
-                            "$ref": "#/types/harness:platform/getWorkspaceOutputValueOutput_value:getWorkspaceOutputValueOutput_value"
+                            "$ref": "#/types/harness:platform/getWorkspaceOutputValueOutputValue:getWorkspaceOutputValueOutputValue"
                         },
                         "type": "array"
                     },
@@ -44071,7 +44071,7 @@
                 "required": [
                     "identifier",
                     "orgId",
-                    "output_values",
+                    "outputValues",
                     "projectId",
                     "id"
                 ],

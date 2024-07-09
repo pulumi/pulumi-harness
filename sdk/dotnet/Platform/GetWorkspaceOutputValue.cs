@@ -133,7 +133,7 @@ namespace Pulumi.Harness.Platform
         /// Organization identifier of the organization the workspace resides in.
         /// </summary>
         public readonly string OrgId;
-        public readonly ImmutableArray<Outputs.GetWorkspaceOutputValueOutput_valueResult> Output_values;
+        public readonly ImmutableArray<Outputs.GetWorkspaceOutputValueOutputValueResult> OutputValues;
         /// <summary>
         /// Project identifier of the project the workspace resides in.
         /// </summary>
@@ -147,14 +147,14 @@ namespace Pulumi.Harness.Platform
 
             string orgId,
 
-            ImmutableArray<Outputs.GetWorkspaceOutputValueOutput_valueResult> output_values,
+            ImmutableArray<Outputs.GetWorkspaceOutputValueOutputValueResult> outputValues,
 
             string projectId)
         {
             Id = id;
             Identifier = identifier;
             OrgId = orgId;
-            Output_values = output_values;
+            OutputValues = outputValues;
             ProjectId = projectId;
         }
     }

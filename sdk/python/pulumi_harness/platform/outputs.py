@@ -381,7 +381,7 @@ __all__ = [
     'GetUsergroupNotificationConfigResult',
     'GetVariablesSpecResult',
     'GetWorkspaceEnvironmentVariableResult',
-    'GetWorkspaceOutputValueOutput_valueResult',
+    'GetWorkspaceOutputValueOutputValueResult',
     'GetWorkspaceTerraformVariableResult',
     'GetWorkspaceTerraformVariableFileResult',
 ]
@@ -21148,7 +21148,7 @@ class GetWorkspaceEnvironmentVariableResult(dict):
 
 
 @pulumi.output_type
-class GetWorkspaceOutputValueOutput_valueResult(dict):
+class GetWorkspaceOutputValueOutputValueResult(dict):
     def __init__(__self__, *,
                  name: str,
                  sensitive: bool,

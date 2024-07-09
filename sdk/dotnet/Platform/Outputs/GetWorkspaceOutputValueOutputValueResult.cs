@@ -11,7 +11,7 @@ namespace Pulumi.Harness.Platform.Outputs
 {
 
     [OutputType]
-    public sealed class GetWorkspaceOutputValueOutput_valueResult
+    public sealed class GetWorkspaceOutputValueOutputValueResult
     {
         /// <summary>
         /// Name associated with the output.
@@ -27,7 +27,7 @@ namespace Pulumi.Harness.Platform.Outputs
         public readonly string Value;
 
         [OutputConstructor]
-        private GetWorkspaceOutputValueOutput_valueResult(
+        private GetWorkspaceOutputValueOutputValueResult(
             string name,
 
             bool sensitive,

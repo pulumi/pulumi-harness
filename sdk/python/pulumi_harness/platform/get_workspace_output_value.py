@@ -64,8 +64,8 @@ class GetWorkspaceOutputValueResult:
         return pulumi.get(self, "org_id")
 
     @property
-    @pulumi.getter
-    def output_values(self) -> Sequence['outputs.GetWorkspaceOutputValueOutput_valueResult']:
+    @pulumi.getter(name="outputValues")
+    def output_values(self) -> Sequence['outputs.GetWorkspaceOutputValueOutputValueResult']:
         return pulumi.get(self, "output_values")
 
     @property

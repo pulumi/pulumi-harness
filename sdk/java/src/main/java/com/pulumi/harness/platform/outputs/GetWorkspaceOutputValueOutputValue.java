@@ -10,7 +10,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetWorkspaceOutputValueOutput_value {
+public final class GetWorkspaceOutputValueOutputValue {
     /**
      * @return Name associated with the output.
      * 
@@ -27,7 +27,7 @@ public final class GetWorkspaceOutputValueOutput_value {
      */
     private String value;
 
-    private GetWorkspaceOutputValueOutput_value() {}
+    private GetWorkspaceOutputValueOutputValue() {}
     /**
      * @return Name associated with the output.
      * 
@@ -54,7 +54,7 @@ public final class GetWorkspaceOutputValueOutput_value {
         return new Builder();
     }
 
-    public static Builder builder(GetWorkspaceOutputValueOutput_value defaults) {
+    public static Builder builder(GetWorkspaceOutputValueOutputValue defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -63,7 +63,7 @@ public final class GetWorkspaceOutputValueOutput_value {
         private Boolean sensitive;
         private String value;
         public Builder() {}
-        public Builder(GetWorkspaceOutputValueOutput_value defaults) {
+        public Builder(GetWorkspaceOutputValueOutputValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.sensitive = defaults.sensitive;
@@ -73,7 +73,7 @@ public final class GetWorkspaceOutputValueOutput_value {
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutput_value", "name");
+              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutputValue", "name");
             }
             this.name = name;
             return this;
@@ -81,7 +81,7 @@ public final class GetWorkspaceOutputValueOutput_value {
         @CustomType.Setter
         public Builder sensitive(Boolean sensitive) {
             if (sensitive == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutput_value", "sensitive");
+              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutputValue", "sensitive");
             }
             this.sensitive = sensitive;
             return this;
@@ -89,13 +89,13 @@ public final class GetWorkspaceOutputValueOutput_value {
         @CustomType.Setter
         public Builder value(String value) {
             if (value == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutput_value", "value");
+              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueOutputValue", "value");
             }
             this.value = value;
             return this;
         }
-        public GetWorkspaceOutputValueOutput_value build() {
-            final var _resultValue = new GetWorkspaceOutputValueOutput_value();
+        public GetWorkspaceOutputValueOutputValue build() {
+            final var _resultValue = new GetWorkspaceOutputValueOutputValue();
             _resultValue.name = name;
             _resultValue.sensitive = sensitive;
             _resultValue.value = value;

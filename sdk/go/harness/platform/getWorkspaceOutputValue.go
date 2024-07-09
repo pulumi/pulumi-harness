@@ -67,8 +67,8 @@ type GetWorkspaceOutputValueResult struct {
 	// Identifier of the Workspace.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the organization the workspace resides in.
-	OrgId         string                                `pulumi:"orgId"`
-	Output_values []GetWorkspaceOutputValueOutput_value `pulumi:"output_values"`
+	OrgId        string                               `pulumi:"orgId"`
+	OutputValues []GetWorkspaceOutputValueOutputValue `pulumi:"outputValues"`
 	// Project identifier of the project the workspace resides in.
 	ProjectId string `pulumi:"projectId"`
 }
@@ -130,8 +130,8 @@ func (o GetWorkspaceOutputValueResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceOutputValueResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-func (o GetWorkspaceOutputValueResultOutput) Output_values() GetWorkspaceOutputValueOutput_valueArrayOutput {
-	return o.ApplyT(func(v GetWorkspaceOutputValueResult) []GetWorkspaceOutputValueOutput_value { return v.Output_values }).(GetWorkspaceOutputValueOutput_valueArrayOutput)
+func (o GetWorkspaceOutputValueResultOutput) OutputValues() GetWorkspaceOutputValueOutputValueArrayOutput {
+	return o.ApplyT(func(v GetWorkspaceOutputValueResult) []GetWorkspaceOutputValueOutputValue { return v.OutputValues }).(GetWorkspaceOutputValueOutputValueArrayOutput)
 }
 
 // Project identifier of the project the workspace resides in.

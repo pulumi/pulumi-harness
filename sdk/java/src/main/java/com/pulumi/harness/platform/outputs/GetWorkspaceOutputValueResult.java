@@ -5,7 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.outputs.GetWorkspaceOutputValueOutput_value;
+import com.pulumi.harness.platform.outputs.GetWorkspaceOutputValueOutputValue;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +27,7 @@ public final class GetWorkspaceOutputValueResult {
      * 
      */
     private String orgId;
-    private List<GetWorkspaceOutputValueOutput_value> output_values;
+    private List<GetWorkspaceOutputValueOutputValue> outputValues;
     /**
      * @return Project identifier of the project the workspace resides in.
      * 
@@ -56,8 +56,8 @@ public final class GetWorkspaceOutputValueResult {
     public String orgId() {
         return this.orgId;
     }
-    public List<GetWorkspaceOutputValueOutput_value> output_values() {
-        return this.output_values;
+    public List<GetWorkspaceOutputValueOutputValue> outputValues() {
+        return this.outputValues;
     }
     /**
      * @return Project identifier of the project the workspace resides in.
@@ -79,7 +79,7 @@ public final class GetWorkspaceOutputValueResult {
         private String id;
         private String identifier;
         private String orgId;
-        private List<GetWorkspaceOutputValueOutput_value> output_values;
+        private List<GetWorkspaceOutputValueOutputValue> outputValues;
         private String projectId;
         public Builder() {}
         public Builder(GetWorkspaceOutputValueResult defaults) {
@@ -87,7 +87,7 @@ public final class GetWorkspaceOutputValueResult {
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.orgId = defaults.orgId;
-    	      this.output_values = defaults.output_values;
+    	      this.outputValues = defaults.outputValues;
     	      this.projectId = defaults.projectId;
         }
 
@@ -116,15 +116,15 @@ public final class GetWorkspaceOutputValueResult {
             return this;
         }
         @CustomType.Setter
-        public Builder output_values(List<GetWorkspaceOutputValueOutput_value> output_values) {
-            if (output_values == null) {
-              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueResult", "output_values");
+        public Builder outputValues(List<GetWorkspaceOutputValueOutputValue> outputValues) {
+            if (outputValues == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceOutputValueResult", "outputValues");
             }
-            this.output_values = output_values;
+            this.outputValues = outputValues;
             return this;
         }
-        public Builder output_values(GetWorkspaceOutputValueOutput_value... output_values) {
-            return output_values(List.of(output_values));
+        public Builder outputValues(GetWorkspaceOutputValueOutputValue... outputValues) {
+            return outputValues(List.of(outputValues));
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
@@ -139,7 +139,7 @@ public final class GetWorkspaceOutputValueResult {
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.orgId = orgId;
-            _resultValue.output_values = output_values;
+            _resultValue.outputValues = outputValues;
             _resultValue.projectId = projectId;
             return _resultValue;
         }
