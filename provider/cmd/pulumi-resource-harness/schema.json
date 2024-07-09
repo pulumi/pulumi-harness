@@ -12404,33 +12404,6 @@
                 }
             }
         },
-        "harness:platform/getWorkspaceOutputsOutput:getWorkspaceOutputsOutput": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "Name associated with the output.\n"
-                },
-                "sensitive": {
-                    "type": "boolean",
-                    "description": "Indicates if the output is sensitive.\n"
-                },
-                "value": {
-                    "type": "string",
-                    "description": "Value of the output.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "sensitive",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
         "harness:platform/getWorkspaceTerraformVariable:getWorkspaceTerraformVariable": {
             "properties": {
                 "key": {
@@ -44092,61 +44065,6 @@
                     },
                     "projectId": {
                         "description": "Project identifier of the project the workspace resides in.\n",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "identifier",
-                    "orgId",
-                    "outputs",
-                    "projectId",
-                    "id"
-                ],
-                "type": "object"
-            }
-        },
-        "harness:platform/getWorkspaceOutputs:getWorkspaceOutputs": {
-            "deprecationMessage": "harness.platform/getworkspaceoutputs.getWorkspaceOutputs has been deprecated in favor of harness.platform/getworkspaceoutputvalue.getWorkspaceOutputValue",
-            "inputs": {
-                "description": "A collection of arguments for invoking getWorkspaceOutputs.\n",
-                "properties": {
-                    "identifier": {
-                        "type": "string"
-                    },
-                    "orgId": {
-                        "type": "string"
-                    },
-                    "projectId": {
-                        "type": "string"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "identifier",
-                    "orgId",
-                    "projectId"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getWorkspaceOutputs.\n",
-                "properties": {
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
-                        "type": "string"
-                    },
-                    "identifier": {
-                        "type": "string"
-                    },
-                    "orgId": {
-                        "type": "string"
-                    },
-                    "outputs": {
-                        "items": {
-                            "$ref": "#/types/harness:platform/getWorkspaceOutputsOutput:getWorkspaceOutputsOutput"
-                        },
-                        "type": "array"
-                    },
-                    "projectId": {
                         "type": "string"
                     }
                 },
