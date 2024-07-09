@@ -4581,13 +4581,6 @@
             },
             "harness_platform_workspace_output": {
                 "current": "harness:platform/getWorkspaceOutputs:getWorkspaceOutputs",
-                "past": [
-                    {
-                        "name": "harness:platform/getWorkspaceOutput:getWorkspaceOutput",
-                        "inCodegen": true,
-                        "majorVersion": 0
-                    }
-                ],
                 "fields": {
                     "outputs": {
                         "maxItemsOne": false
