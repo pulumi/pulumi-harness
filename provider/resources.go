@@ -364,7 +364,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_usergroup":         {Tok: harnessDataSource(platformMod, "getUsergroup")},
 			// note this is renamed as it produces a conflict with the other datasource.
 			"harness_platform_workspace_output": {
-				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputs"),
+				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputValue"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"harness_secret_manager": {Tok: harnessDataSource(mainMod, "getSecretManager")},
