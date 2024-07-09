@@ -187,6 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessResource(platformMod, "EnvironmentServiceOverrides")},
 			"harness_platform_environment_group":   {Tok: harnessResource(platformMod, "EnvironmentGroup")},
+			"harness_platform_delegatetoken":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_feature_flag":        {Tok: harnessResource(platformMod, "FeatureFlag")},
 			"harness_platform_ff_api_key":          {Tok: harnessResource(platformMod, "FeatureFlagApiKey")},
 			"harness_platform_filters":             {Tok: harnessResource(platformMod, "Filters")},
@@ -310,7 +311,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: harnessDataSource(platformMod, "getSumologicConnector")},
 			"harness_platform_connector_vault": {Tok: harnessDataSource(platformMod, "getVaultConnector")},
 			"harness_platform_current_user":    {Tok: harnessDataSource(platformMod, "getCurrentUser")},
-			"harness_platform_delegatetoken":   {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides")},
 			"harness_platform_filters": {Tok: harnessDataSource(platformMod, "getFilters")},
