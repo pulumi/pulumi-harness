@@ -310,7 +310,9 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_sumologic": {
 				Tok: harnessDataSource(platformMod, "getSumologicConnector")},
 			"harness_platform_connector_vault": {Tok: harnessDataSource(platformMod, "getVaultConnector")},
+			"harness_platform_current_account":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_current_user":    {Tok: harnessDataSource(platformMod, "getCurrentUser")},
+			"harness_platform_delegatetoken":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides")},
 			"harness_platform_filters": {Tok: harnessDataSource(platformMod, "getFilters")},
