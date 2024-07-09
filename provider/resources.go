@@ -362,15 +362,19 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_service_account":   {Tok: harnessDataSource(platformMod, "getServiceAccount")},
 			"harness_platform_triggers":          {Tok: harnessDataSource(platformMod, "getTriggers")},
 			"harness_platform_usergroup":         {Tok: harnessDataSource(platformMod, "getUsergroup")},
-			"harness_platform_workspace_output":  {Tok: harnessDataSource(platformMod, "getWorkspaceOutputs")},
-			"harness_secret_manager":             {Tok: harnessDataSource(mainMod, "getSecretManager")},
-			"harness_service":                    {Tok: harnessDataSource(mainMod, "getService")},
-			"harness_ssh_credential":             {Tok: harnessDataSource(mainMod, "getSshCredential")},
-			"harness_sso_provider":               {Tok: harnessDataSource(mainMod, "getSsoProvider")},
-			"harness_user":                       {Tok: harnessDataSource(mainMod, "getUser")},
-			"harness_user_group":                 {Tok: harnessDataSource(mainMod, "getUserGroup")},
-			"harness_trigger":                    {Tok: harnessDataSource(mainMod, "getTrigger")},
-			"harness_yaml_config":                {Tok: harnessDataSource(mainMod, "getYamlConfig")},
+			// note this is renamed as it produces a conflict with the other datasource.
+			"harness_platform_workspace_output": {
+				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputs"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"harness_secret_manager": {Tok: harnessDataSource(mainMod, "getSecretManager")},
+			"harness_service":        {Tok: harnessDataSource(mainMod, "getService")},
+			"harness_ssh_credential": {Tok: harnessDataSource(mainMod, "getSshCredential")},
+			"harness_sso_provider":   {Tok: harnessDataSource(mainMod, "getSsoProvider")},
+			"harness_user":           {Tok: harnessDataSource(mainMod, "getUser")},
+			"harness_user_group":     {Tok: harnessDataSource(mainMod, "getUserGroup")},
+			"harness_trigger":        {Tok: harnessDataSource(mainMod, "getTrigger")},
+			"harness_yaml_config":    {Tok: harnessDataSource(mainMod, "getYamlConfig")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
