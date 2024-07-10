@@ -11,13 +11,14 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.AwsSecretManagerConnectorArgs;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorState;
 import com.pulumi.harness.platform.outputs.AwsSecretManagerConnectorCredentials;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating an AWS Secret Manager connector.
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -55,6 +56,20 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      */
     public Output<AwsSecretManagerConnectorCredentials> credentials() {
         return this.credentials;
+    }
+    /**
+     * Use as Default Secrets Manager.
+     * 
+     */
+    @Export(name="default", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> default_;
+
+    /**
+     * @return Use as Default Secrets Manager.
+     * 
+     */
+    public Output<Optional<Boolean>> default_() {
+        return Codegen.optional(this.default_);
     }
     /**
      * Tags to filter delegates for connection.

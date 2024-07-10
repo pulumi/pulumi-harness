@@ -2,13 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment.
  *
- * ## Example Usage
+ * ## Example to create Environment at different levels (Org, Project, Account)
  *
+ * ### Account Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -16,22 +19,19 @@ import * as utilities from "../utilities";
  * const example = new harness.platform.Environment("example", {
  *     identifier: "identifier",
  *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
  *     tags: [
  *         "foo:bar",
- *         "baz",
+ *         "bar:foo",
  *     ],
  *     type: "PreProduction",
+ *     description: "env description",
  *     yaml: `environment:
  *    name: name
  *    identifier: identifier
- *    orgIdentifier: org_id
- *    projectIdentifier: project_id
  *    type: PreProduction
  *    tags:
  *      foo: bar
- *      baz: ""
+ *      bar: foo
  *    variables:
  *      - name: envVar1
  *        type: String
@@ -67,6 +67,201 @@ import * as utilities from "../utilities";
  *                    - account:/Add-ons/svcOverrideTest
  *                  secretFiles: []
  * `,
+ * });
+ * ```
+ *
+ * ### Org Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     type: "PreProduction",
+ *     description: "env description",
+ *     yaml: `environment:
+ *    name: name
+ *    identifier: identifier
+ *    orgIdentifier: org_id
+ *    type: PreProduction
+ *    tags:
+ *      foo: bar
+ *      bar: foo
+ *    variables:
+ *      - name: envVar1
+ *        type: String
+ *        value: v1
+ *        description: ""
+ *      - name: envVar2
+ *        type: String
+ *        value: v2
+ *        description: ""
+ *    overrides:
+ *      manifests:
+ *        - manifest:
+ *            identifier: manifestEnv
+ *            type: Values
+ *            spec:
+ *              store:
+ *                type: Git
+ *                spec:
+ *                  connectorRef: <+input>
+ *                  gitFetchType: Branch
+ *                  paths:
+ *                    - file1
+ *                  repoName: <+input>
+ *                  branch: master
+ *      configFiles:
+ *        - configFile:
+ *            identifier: configFileEnv
+ *            spec:
+ *              store:
+ *                type: Harness
+ *                spec:
+ *                  files:
+ *                    - account:/Add-ons/svcOverrideTest
+ *                  secretFiles: []
+ * `,
+ * });
+ * ```
+ *
+ * ### Project Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     type: "PreProduction",
+ *     description: "env description",
+ *     yaml: `environment:
+ *    name: name
+ *    identifier: identifier
+ *    orgIdentifier: org_id
+ *    projectIdentifier: project_id
+ *    type: PreProduction
+ *    tags:
+ *      foo: bar
+ *      bar: foo
+ *    variables:
+ *      - name: envVar1
+ *        type: String
+ *        value: v1
+ *        description: ""
+ *      - name: envVar2
+ *        type: String
+ *        value: v2
+ *        description: ""
+ *    overrides:
+ *      manifests:
+ *        - manifest:
+ *            identifier: manifestEnv
+ *            type: Values
+ *            spec:
+ *              store:
+ *                type: Git
+ *                spec:
+ *                  connectorRef: <+input>
+ *                  gitFetchType: Branch
+ *                  paths:
+ *                    - file1
+ *                  repoName: <+input>
+ *                  branch: master
+ *      configFiles:
+ *        - configFile:
+ *            identifier: configFileEnv
+ *            spec:
+ *              store:
+ *                type: Harness
+ *                spec:
+ *                  files:
+ *                    - account:/Add-ons/svcOverrideTest
+ *                  secretFiles: []
+ * `,
+ * });
+ * ```
+ *
+ * ### Creating Remote Environment
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "connector_ref",
+ *         repoName: "repo_name",
+ *         filePath: "file_path",
+ *         branch: "branch",
+ *     },
+ *     yaml: `environment:
+ *   name: env
+ *   identifier: env
+ *   tags:
+ *     test: ""
+ *   type: PreProduction
+ *   orgIdentifier: default
+ *   projectIdentifier: proj1
+ *   variables:
+ *     - name: var1
+ *       type: String
+ *       value: abc
+ *       description: ""
+ *       required: false
+ *   overrides:
+ *     manifests:
+ *       - manifest:
+ *           identifier: Manifest1
+ *           type: Values
+ *           spec:
+ *             store:
+ *               type: Github
+ *               spec:
+ *                 connectorRef: <+input>
+ *                 gitFetchType: Branch
+ *                 paths:
+ *                   - .harness/
+ *                 repoName: <+input>
+ *                 branch: <+input>
+ * `,
+ * });
+ * ```
+ *
+ * ### Importing Environment From Git
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Environment("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     type: "PreProduction",
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "connector_ref",
+ *         repoName: "repo_name",
+ *         filePath: "file_path",
+ *         branch: "branch",
+ *         importFromGit: true,
+ *     },
  * });
  * ```
  *
@@ -127,9 +322,13 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Enable this flag for force deletion of environment
+     * Enable this flag for force deletion of environments
      */
     public readonly forceDelete!: pulumi.Output<string>;
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    public readonly gitDetails!: pulumi.Output<outputs.platform.EnvironmentGitDetails>;
     /**
      * Unique identifier of the resource.
      */
@@ -155,7 +354,8 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+     * connectorId.
      */
     public readonly yaml!: pulumi.Output<string | undefined>;
 
@@ -175,6 +375,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -193,6 +394,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -219,9 +421,13 @@ export interface EnvironmentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of environment
+     * Enable this flag for force deletion of environments
      */
     forceDelete?: pulumi.Input<string>;
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails>;
     /**
      * Unique identifier of the resource.
      */
@@ -247,7 +453,8 @@ export interface EnvironmentState {
      */
     type?: pulumi.Input<string>;
     /**
-     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+     * connectorId.
      */
     yaml?: pulumi.Input<string>;
 }
@@ -265,9 +472,13 @@ export interface EnvironmentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of environment
+     * Enable this flag for force deletion of environments
      */
     forceDelete?: pulumi.Input<string>;
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    gitDetails?: pulumi.Input<inputs.platform.EnvironmentGitDetails>;
     /**
      * Unique identifier of the resource.
      */
@@ -293,7 +504,8 @@ export interface EnvironmentArgs {
      */
     type: pulumi.Input<string>;
     /**
-     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+     * connectorId.
      */
     yaml?: pulumi.Input<string>;
 }

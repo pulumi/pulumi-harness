@@ -49,14 +49,14 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
     }
 
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     public Output<String> identifier() {
@@ -64,14 +64,14 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
     }
 
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -79,14 +79,14 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
     }
 
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -174,7 +174,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier identifier for the cluster mapping(can be given any value).
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier identifier for the cluster mapping(can be given any value).
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param orgId org_id of the cluster.
+         * @param orgId org_id of the environment.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param orgId org_id of the cluster.
+         * @param orgId org_id of the environment.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param projectId project_id of the cluster.
+         * @param projectId project_id of the environment.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class EnvironmentClustersMappingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param projectId project_id of the cluster.
+         * @param projectId project_id of the environment.
          * 
          * @return builder
          * 

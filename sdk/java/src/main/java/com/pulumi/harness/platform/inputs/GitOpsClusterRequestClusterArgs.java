@@ -98,14 +98,14 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
     }
 
     /**
-     * Name of the cluster. If omitted, will use the server address.
+     * Name of the cluster. If omitted, the server address will be used.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the cluster. If omitted, will use the server address.
+     * @return Name of the cluster. If omitted, the server address will be used.
      * 
      */
     public Optional<Output<String>> name() {
@@ -128,14 +128,14 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
     }
 
     /**
-     * Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+     * The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+     * @return The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
      * 
      */
     public Optional<Output<String>> project() {
@@ -173,14 +173,14 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
     }
 
     /**
-     * Shard number. Calculated on the fly by the application controller if not specified.
+     * Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
      * 
      */
     @Import(name="shard")
     private @Nullable Output<String> shard;
 
     /**
-     * @return Shard number. Calculated on the fly by the application controller if not specified.
+     * @return Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
      * 
      */
     public Optional<Output<String>> shard() {
@@ -347,7 +347,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the cluster. If omitted, will use the server address.
+         * @param name Name of the cluster. If omitted, the server address will be used.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the cluster. If omitted, will use the server address.
+         * @param name Name of the cluster. If omitted, the server address will be used.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param project Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+         * @param project The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param project Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+         * @param project The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param shard Shard number. Calculated on the fly by the application controller if not specified.
+         * @param shard Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class GitOpsClusterRequestClusterArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param shard Shard number. Calculated on the fly by the application controller if not specified.
+         * @param shard Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
          * 
          * @return builder
          * 

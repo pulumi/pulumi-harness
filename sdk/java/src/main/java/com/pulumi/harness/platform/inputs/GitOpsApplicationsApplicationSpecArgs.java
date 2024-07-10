@@ -34,14 +34,14 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
     }
 
     /**
-     * Contains all information about the source of a GitOps application.
+     * Contains all information about the source of the GitOps application.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceArgs>> sources;
 
     /**
-     * @return Contains all information about the source of a GitOps application.
+     * @return Contains all information about the source of the GitOps application.
      * 
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceArgs>>> sources() {
@@ -121,7 +121,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of a GitOps application.
+         * @param sources Contains all information about the source of the GitOps application.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of a GitOps application.
+         * @param sources Contains all information about the source of the GitOps application.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of a GitOps application.
+         * @param sources Contains all information about the source of the GitOps application.
          * 
          * @return builder
          * 

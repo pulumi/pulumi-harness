@@ -234,6 +234,20 @@ public class AzureCloudProviderConnector extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.executeOnDelegate);
     }
     /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Output<Boolean> forceDelete() {
+        return this.forceDelete;
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */

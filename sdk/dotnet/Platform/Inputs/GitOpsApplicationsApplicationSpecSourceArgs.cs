@@ -69,8 +69,8 @@ namespace Pulumi.Harness.Platform.Inputs
         /// <summary>
         /// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
+        [Input("path")]
+        public Input<string>? Path { get; set; }
 
         [Input("plugins")]
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourcePluginArgs>? _plugins;

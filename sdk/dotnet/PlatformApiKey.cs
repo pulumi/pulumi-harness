@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness
 {
+    /// <summary>
+    /// Resource for creating apikeys.
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level apikey
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+    /// ```
+    /// 
+    /// Import org level apikey
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+    /// ```
+    /// 
+    /// Import project level apikey
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey &lt;org_id&gt;/&lt;project_id&gt;/&lt;parent_id&gt;/&lt;apikey_id&gt;/&lt;apikey_type&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:index/platformApiKey:PlatformApiKey")]
     public partial class PlatformApiKey : global::Pulumi.CustomResource
     {
@@ -31,25 +54,25 @@ namespace Pulumi.Harness
         public Output<int?> DefaultTimeToExpireToken { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the API Key
+        /// Description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the API Key
+        /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the API Key
+        /// Name of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
@@ -61,16 +84,16 @@ namespace Pulumi.Harness
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for the API Key
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -138,25 +161,25 @@ namespace Pulumi.Harness
         public Input<int>? DefaultTimeToExpireToken { get; set; }
 
         /// <summary>
-        /// Description of the API Key
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Identifier of the API Key
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the API Key
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -168,20 +191,20 @@ namespace Pulumi.Harness
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
-        private InputMap<string>? _tags;
+        private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the API Key
+        /// Tags to associate with the resource.
         /// </summary>
-        public InputMap<string> Tags
+        public InputList<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<string>());
+            get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
@@ -212,25 +235,25 @@ namespace Pulumi.Harness
         public Input<int>? DefaultTimeToExpireToken { get; set; }
 
         /// <summary>
-        /// Description of the API Key
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Identifier of the API Key
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the API Key
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -242,20 +265,20 @@ namespace Pulumi.Harness
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         [Input("tags")]
-        private InputMap<string>? _tags;
+        private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the API Key
+        /// Tags to associate with the resource.
         /// </summary>
-        public InputMap<string> Tags
+        public InputList<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<string>());
+            get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 

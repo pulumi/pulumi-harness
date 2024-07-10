@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for fetching a Harness Gitops Agents.
+// Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
 //
 // ## Example Usage
 //
@@ -56,31 +56,39 @@ func GetGitopsAgentDeployYaml(ctx *pulumi.Context, args *GetGitopsAgentDeployYam
 type GetGitopsAgentDeployYamlArgs struct {
 	// Account identifier of the GitOps agent.
 	AccountId string `pulumi:"accountId"`
+	// CA data of the GitOps agent, base64 encoded content of ca chain.
+	CaData *string `pulumi:"caData"`
 	// Identifier of the GitOps agent.
 	Identifier string `pulumi:"identifier"`
-	// The k8s namespace that the GitOps agent resides in.
+	// The kubernetes namespace where the agent is installed.
 	Namespace string `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
+	// Proxy settings for the GitOps agent.
+	Proxies []GetGitopsAgentDeployYamlProxy `pulumi:"proxies"`
 }
 
 // A collection of values returned by getGitopsAgentDeployYaml.
 type GetGitopsAgentDeployYamlResult struct {
 	// Account identifier of the GitOps agent.
 	AccountId string `pulumi:"accountId"`
+	// CA data of the GitOps agent, base64 encoded content of ca chain.
+	CaData *string `pulumi:"caData"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier of the GitOps agent.
 	Identifier string `pulumi:"identifier"`
-	// The k8s namespace that the GitOps agent resides in.
+	// The kubernetes namespace where the agent is installed.
 	Namespace string `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
-	// Deployment YAML of the GitOps agent.
+	// Proxy settings for the GitOps agent.
+	Proxies []GetGitopsAgentDeployYamlProxy `pulumi:"proxies"`
+	// The deployment manifest YAML of the GitOps agent.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -101,14 +109,18 @@ func GetGitopsAgentDeployYamlOutput(ctx *pulumi.Context, args GetGitopsAgentDepl
 type GetGitopsAgentDeployYamlOutputArgs struct {
 	// Account identifier of the GitOps agent.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// CA data of the GitOps agent, base64 encoded content of ca chain.
+	CaData pulumi.StringPtrInput `pulumi:"caData"`
 	// Identifier of the GitOps agent.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// The k8s namespace that the GitOps agent resides in.
+	// The kubernetes namespace where the agent is installed.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Proxy settings for the GitOps agent.
+	Proxies GetGitopsAgentDeployYamlProxyArrayInput `pulumi:"proxies"`
 }
 
 func (GetGitopsAgentDeployYamlOutputArgs) ElementType() reflect.Type {
@@ -135,6 +147,11 @@ func (o GetGitopsAgentDeployYamlResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// CA data of the GitOps agent, base64 encoded content of ca chain.
+func (o GetGitopsAgentDeployYamlResultOutput) CaData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *string { return v.CaData }).(pulumi.StringPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetGitopsAgentDeployYamlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.Id }).(pulumi.StringOutput)
@@ -145,7 +162,7 @@ func (o GetGitopsAgentDeployYamlResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The k8s namespace that the GitOps agent resides in.
+// The kubernetes namespace where the agent is installed.
 func (o GetGitopsAgentDeployYamlResultOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -160,7 +177,12 @@ func (o GetGitopsAgentDeployYamlResultOutput) ProjectId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Deployment YAML of the GitOps agent.
+// Proxy settings for the GitOps agent.
+func (o GetGitopsAgentDeployYamlResultOutput) Proxies() GetGitopsAgentDeployYamlProxyArrayOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) []GetGitopsAgentDeployYamlProxy { return v.Proxies }).(GetGitopsAgentDeployYamlProxyArrayOutput)
+}
+
+// The deployment manifest YAML of the GitOps agent.
 func (o GetGitopsAgentDeployYamlResultOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.Yaml }).(pulumi.StringOutput)
 }

@@ -14,95 +14,6 @@ import (
 
 // Resource for creating a Harness InputSet.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewInputSet(ctx, "example", &platform.InputSetArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				PipelineId: pulumi.String("pipeline_id"),
-//				Yaml: pulumi.String(`inputSet:
-//	  identifier: "identifier"
-//	  name: "name"
-//	  tags:
-//	    foo: "bar"
-//	  orgIdentifier: "org_id"
-//	  projectIdentifier: "project_id"
-//	  pipeline:
-//	    identifier: "pipeline_id"
-//	    variables:
-//	    - name: "key"
-//	      type: "String"
-//	      value: "value"
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Remote InputSet
-//			_, err = platform.NewInputSet(ctx, "test", &platform.InputSetArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				OrgId:      pulumi.Any(testHarnessPlatformOrganization.Id),
-//				ProjectId:  pulumi.Any(testHarnessPlatformProject.Id),
-//				PipelineId: pulumi.Any(testHarnessPlatformPipeline.Id),
-//				GitDetails: &platform.InputSetGitDetailsArgs{
-//					BranchName:    pulumi.String("main"),
-//					CommitMessage: pulumi.String("Commit"),
-//					FilePath:      pulumi.String(".harness/file_path.yaml"),
-//					ConnectorRef:  pulumi.String("account.connector_ref"),
-//					StoreType:     pulumi.String("REMOTE"),
-//					RepoName:      pulumi.String("repo_name"),
-//				},
-//				Yaml: pulumi.String(fmt.Sprintf(`inputSet:
-//	  identifier: "identifier"
-//	  name: "name"
-//	  tags:
-//	    foo: "bar"
-//	  orgIdentifier: "%v"
-//	  projectIdentifier: "%v"
-//	  pipeline:
-//	    identifier: "%v"
-//	    variables:
-//	    - name: "key"
-//	      type: "String"
-//	      value: "value"
-//
-// `, testHarnessPlatformOrganization.Id, testHarnessPlatformProject.Id, testHarnessPlatformPipeline.Id)),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Import input set
@@ -116,9 +27,15 @@ type InputSet struct {
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
-	GitDetails InputSetGitDetailsPtrOutput `pulumi:"gitDetails"`
+	GitDetails InputSetGitDetailsOutput `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo InputSetGitImportInfoPtrOutput `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrOutput `pulumi:"importFromGit"`
+	// Contains parameters for importing a input set
+	InputSetImportRequest InputSetInputSetImportRequestPtrOutput `pulumi:"inputSetImportRequest"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -152,9 +69,6 @@ func NewInputSet(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	if args.Yaml == nil {
-		return nil, errors.New("invalid value for required argument 'Yaml'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InputSet
 	err := ctx.RegisterResource("harness:platform/inputSet:InputSet", name, args, &resource, opts...)
@@ -182,8 +96,14 @@ type inputSetState struct {
 	Description *string `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *InputSetGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo *InputSetGitImportInfo `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// Contains parameters for importing a input set
+	InputSetImportRequest *InputSetInputSetImportRequest `pulumi:"inputSetImportRequest"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -203,8 +123,14 @@ type InputSetState struct {
 	Description pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails InputSetGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportInfo InputSetGitImportInfoPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
+	// Contains parameters for importing a input set
+	InputSetImportRequest InputSetInputSetImportRequestPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -228,8 +154,14 @@ type inputSetArgs struct {
 	Description *string `pulumi:"description"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *InputSetGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportInfo *InputSetGitImportInfo `pulumi:"gitImportInfo"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
+	// Contains parameters for importing a input set
+	InputSetImportRequest *InputSetInputSetImportRequest `pulumi:"inputSetImportRequest"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -241,7 +173,7 @@ type inputSetArgs struct {
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml string `pulumi:"yaml"`
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a InputSet resource.
@@ -250,8 +182,14 @@ type InputSetArgs struct {
 	Description pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails InputSetGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportInfo InputSetGitImportInfoPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
+	// Contains parameters for importing a input set
+	InputSetImportRequest InputSetInputSetImportRequestPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -263,7 +201,7 @@ type InputSetArgs struct {
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml pulumi.StringInput
+	Yaml pulumi.StringPtrInput
 }
 
 func (InputSetArgs) ElementType() reflect.Type {
@@ -359,13 +297,28 @@ func (o InputSetOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Contains parameters related to creating an Entity for Git Experience.
-func (o InputSetOutput) GitDetails() InputSetGitDetailsPtrOutput {
-	return o.ApplyT(func(v *InputSet) InputSetGitDetailsPtrOutput { return v.GitDetails }).(InputSetGitDetailsPtrOutput)
+func (o InputSetOutput) GitDetails() InputSetGitDetailsOutput {
+	return o.ApplyT(func(v *InputSet) InputSetGitDetailsOutput { return v.GitDetails }).(InputSetGitDetailsOutput)
+}
+
+// Contains Git Information for importing entities from Git
+func (o InputSetOutput) GitImportInfo() InputSetGitImportInfoPtrOutput {
+	return o.ApplyT(func(v *InputSet) InputSetGitImportInfoPtrOutput { return v.GitImportInfo }).(InputSetGitImportInfoPtrOutput)
 }
 
 // Unique identifier of the resource.
 func (o InputSetOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *InputSet) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Flag to set if importing from Git
+func (o InputSetOutput) ImportFromGit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InputSet) pulumi.BoolPtrOutput { return v.ImportFromGit }).(pulumi.BoolPtrOutput)
+}
+
+// Contains parameters for importing a input set
+func (o InputSetOutput) InputSetImportRequest() InputSetInputSetImportRequestPtrOutput {
+	return o.ApplyT(func(v *InputSet) InputSetInputSetImportRequestPtrOutput { return v.InputSetImportRequest }).(InputSetInputSetImportRequestPtrOutput)
 }
 
 // Name of the resource.

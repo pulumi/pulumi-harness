@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetServiceGitDetailsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServiceArgs Empty = new GetServiceArgs();
+
+    @Import(name="gitDetails")
+    private @Nullable Output<GetServiceGitDetailsArgs> gitDetails;
+
+    public Optional<Output<GetServiceGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -79,6 +87,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     private GetServiceArgs() {}
 
     private GetServiceArgs(GetServiceArgs $) {
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -101,6 +110,15 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetServiceArgs defaults) {
             $ = new GetServiceArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder gitDetails(@Nullable Output<GetServiceGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        public Builder gitDetails(GetServiceGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**

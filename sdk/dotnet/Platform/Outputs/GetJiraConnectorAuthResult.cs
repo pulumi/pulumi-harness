@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Authenticate using personal access token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetJiraConnectorAuthPersonalAccessTokenResult> PersonalAccessTokens;
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetJiraConnectorAuthUsernamePasswordResult> UsernamePasswords;
@@ -26,9 +30,12 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetJiraConnectorAuthResult(
             string authType,
 
+            ImmutableArray<Outputs.GetJiraConnectorAuthPersonalAccessTokenResult> personalAccessTokens,
+
             ImmutableArray<Outputs.GetJiraConnectorAuthUsernamePasswordResult> usernamePasswords)
         {
             AuthType = authType;
+            PersonalAccessTokens = personalAccessTokens;
             UsernamePasswords = usernamePasswords;
         }
     }

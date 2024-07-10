@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.EnvironmentGitDetailsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,18 +48,33 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable this flag for force deletion of environment
+     * Enable this flag for force deletion of environments
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<String> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of environment
+     * @return Enable this flag for force deletion of environments
      * 
      */
     public Optional<Output<String>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<EnvironmentGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    public Optional<Output<EnvironmentGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     /**
@@ -152,14 +168,16 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
+     * connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
+     * connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -172,6 +190,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.color = $.color;
         this.description = $.description;
         this.forceDelete = $.forceDelete;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -242,7 +261,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of environment
+         * @param forceDelete Enable this flag for force deletion of environments
          * 
          * @return builder
          * 
@@ -253,13 +272,34 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of environment
+         * @param forceDelete Enable this flag for force deletion of environments
          * 
          * @return builder
          * 
          */
         public Builder forceDelete(String forceDelete) {
             return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<EnvironmentGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(EnvironmentGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**
@@ -399,7 +439,8 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
+         * connectorId.
          * 
          * @return builder
          * 
@@ -410,7 +451,8 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
+         * @param yaml Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
+         * connectorId.
          * 
          * @return builder
          * 

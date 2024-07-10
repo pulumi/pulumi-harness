@@ -20,12 +20,60 @@ import * as utilities from "../utilities";
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
- *     type: "PipelineExecution",
+ *     type: "PipelineSetup",
  *     filterProperties: {
- *         tags: ["foo:bar"],
- *         filterType: "PipelineExecution",
+ *         name: "pipeline_name",
+ *         description: "pipeline_description",
+ *         pipelineIdentifiers: [
+ *             "id1",
+ *             "id2",
+ *         ],
+ *         filterType: "PipelineSetup",
  *     },
  *     filterVisibility: "EveryOne",
+ * });
+ * // pipeline filter with tags
+ * const exampleWithTags = new harness.platform.PipelineFilters("example_with_tags", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     type: "PipelineSetup",
+ *     filterProperties: {
+ *         filterType: "PipelineSetup",
+ *         pipelineTags: [
+ *             {
+ *                 key: "tag1",
+ *                 value: "123",
+ *             },
+ *             {
+ *                 key: "tag2",
+ *                 value: "456",
+ *             },
+ *         ],
+ *         moduleProperties: {
+ *             cd: {
+ *                 deploymentTypes: "Kubernetes",
+ *                 serviceNames: [
+ *                     "service1",
+ *                     "service2",
+ *                 ],
+ *                 environmentNames: [
+ *                     "env1",
+ *                     "env2",
+ *                 ],
+ *                 artifactDisplayNames: [
+ *                     "artificatname1",
+ *                     "artifact2",
+ *                 ],
+ *             },
+ *             ci: {
+ *                 buildType: "branch",
+ *                 branch: "branch123",
+ *                 repoNames: "repo1234",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  *
@@ -84,7 +132,7 @@ export class PipelineFilters extends pulumi.CustomResource {
     /**
      * This indicates visibility of filters. By default, everyone can view this filter.
      */
-    public readonly filterVisibility!: pulumi.Output<string | undefined>;
+    public readonly filterVisibility!: pulumi.Output<string>;
     /**
      * Unique identifier of the resource.
      */

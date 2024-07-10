@@ -12,8 +12,113 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating an Artifactory connector.
     /// 
-    /// ## Example Usage
+    /// ## Example to create Artifactory Connector at different levels (Org, Project, Account)
     /// 
+    /// ### Account Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Authentication mechanism as username and password
+    ///     var example = new Harness.Platform.ArtifactoryConnector("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://artifactory.example.com",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
+    ///         {
+    ///             Username = "admin",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
+    ///     });
+    /// 
+    ///     // Authentication mechanism as anonymous
+    ///     var test = new Harness.Platform.ArtifactoryConnector("test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://artifactory.example.com",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Authentication mechanism as username and password
+    ///     var example = new Harness.Platform.ArtifactoryConnector("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         OrgId = testHarnessPlatformProject.OrgId,
+    ///         Url = "https://artifactory.example.com",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
+    ///         {
+    ///             Username = "admin",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
+    ///     });
+    /// 
+    ///     // Authentication mechanism as anonymous
+    ///     var test = new Harness.Platform.ArtifactoryConnector("test", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         OrgId = testHarnessPlatformProject.OrgId,
+    ///         Url = "https://artifactory.example.com",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

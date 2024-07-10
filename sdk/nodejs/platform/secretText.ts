@@ -2,36 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Resource for creating secret of type secret text
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const inline = new harness.platform.SecretText("inline", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "example",
- *     tags: ["foo:bar"],
- *     secretManagerIdentifier: "harnessSecretManager",
- *     valueType: "Inline",
- *     value: "secret",
- * });
- * const reference = new harness.platform.SecretText("reference", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "example",
- *     tags: ["foo:bar"],
- *     secretManagerIdentifier: "azureSecretManager",
- *     valueType: "Reference",
- *     value: "secret",
- * });
- * ```
  *
  * ## Import
  *
@@ -82,6 +58,10 @@ export class SecretText extends pulumi.CustomResource {
     }
 
     /**
+     * Additional Metadata for the Secret
+     */
+    public readonly additionalMetadatas!: pulumi.Output<outputs.platform.SecretTextAdditionalMetadata[] | undefined>;
+    /**
      * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -112,7 +92,7 @@ export class SecretText extends pulumi.CustomResource {
     /**
      * Value of the Secret
      */
-    public readonly value!: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string | undefined>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */
@@ -131,6 +111,7 @@ export class SecretText extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretTextState | undefined;
+            resourceInputs["additionalMetadatas"] = state ? state.additionalMetadatas : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -148,12 +129,10 @@ export class SecretText extends pulumi.CustomResource {
             if ((!args || args.secretManagerIdentifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretManagerIdentifier'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'value'");
-            }
             if ((!args || args.valueType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'valueType'");
             }
+            resourceInputs["additionalMetadatas"] = args ? args.additionalMetadatas : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -175,6 +154,10 @@ export class SecretText extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretText resources.
  */
 export interface SecretTextState {
+    /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[]>;
     /**
      * Description of the resource.
      */
@@ -218,6 +201,10 @@ export interface SecretTextState {
  */
 export interface SecretTextArgs {
     /**
+     * Additional Metadata for the Secret
+     */
+    additionalMetadatas?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadata>[]>;
+    /**
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -248,7 +235,7 @@ export interface SecretTextArgs {
     /**
      * Value of the Secret
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * This has details to specify if the secret value is Inline or Reference.
      */

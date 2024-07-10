@@ -12,53 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating Harness Gitops Repositories.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGitOpsRepository(ctx, "example", &platform.GitOpsRepositoryArgs{
-//				Identifier: pulumi.String("identifier"),
-//				AccountId:  pulumi.String("account_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				OrgId:      pulumi.String("org_id"),
-//				AgentId:    pulumi.String("agent_id"),
-//				Repos: platform.GitOpsRepositoryRepoArray{
-//					&platform.GitOpsRepositoryRepoArgs{
-//						Repo:           pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
-//						Name:           pulumi.String("repo_name"),
-//						Insecure:       pulumi.Bool(true),
-//						ConnectionType: pulumi.String("HTTPS_ANONYMOUS"),
-//					},
-//				},
-//				Upsert: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Resource for managing Harness Gitops Repository.
 //
 // ## Import
 //
-// # Import a Account level Gitops Repository
+// # Import an Account level Gitops Repository
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+// ```
+//
+// # Import an Org level Gitops Repository
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<agent_id>/<respository_id>
 // ```
 //
 // # Import a Project level Gitops Repository
@@ -75,18 +42,21 @@ type GitOpsRepository struct {
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrOutput `pulumi:"credsOnly"`
+	// ECR access token generator specific configuration.
+	EcrGen GitOpsRepositoryEcrGenPtrOutput `pulumi:"ecrGen"`
+	// GCR access token generator specific configuration.
+	GcrGen GitOpsRepositoryGcrGenPtrOutput `pulumi:"gcrGen"`
+	// Default: "UNSET"
+	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	GenType pulumi.StringPtrOutput `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Project identifier of the GitOps repository.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Indicates to force refresh query for repository.
-	QueryForceRefresh pulumi.BoolPtrOutput `pulumi:"queryForceRefresh"`
-	// Project to query for the GitOps repo.
-	QueryProject pulumi.StringPtrOutput `pulumi:"queryProject"`
-	// GitOps repository to query.
-	QueryRepo pulumi.StringPtrOutput `pulumi:"queryRepo"`
+	// For OCI repos, this is the interval to refresh the token to access the registry.
+	RefreshInterval pulumi.StringPtrOutput `pulumi:"refreshInterval"`
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayOutput `pulumi:"repos"`
 	// Update mask of the repository.
@@ -143,18 +113,21 @@ type gitOpsRepositoryState struct {
 	AgentId *string `pulumi:"agentId"`
 	// Indicates if to operate on credential set instead of repository.
 	CredsOnly *bool `pulumi:"credsOnly"`
+	// ECR access token generator specific configuration.
+	EcrGen *GitOpsRepositoryEcrGen `pulumi:"ecrGen"`
+	// GCR access token generator specific configuration.
+	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
+	// Default: "UNSET"
+	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	GenType *string `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier *string `pulumi:"identifier"`
 	// Organization identifier of the GitOps repository.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps repository.
 	ProjectId *string `pulumi:"projectId"`
-	// Indicates to force refresh query for repository.
-	QueryForceRefresh *bool `pulumi:"queryForceRefresh"`
-	// Project to query for the GitOps repo.
-	QueryProject *string `pulumi:"queryProject"`
-	// GitOps repository to query.
-	QueryRepo *string `pulumi:"queryRepo"`
+	// For OCI repos, this is the interval to refresh the token to access the registry.
+	RefreshInterval *string `pulumi:"refreshInterval"`
 	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
 	// Update mask of the repository.
@@ -170,18 +143,21 @@ type GitOpsRepositoryState struct {
 	AgentId pulumi.StringPtrInput
 	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrInput
+	// ECR access token generator specific configuration.
+	EcrGen GitOpsRepositoryEcrGenPtrInput
+	// GCR access token generator specific configuration.
+	GcrGen GitOpsRepositoryGcrGenPtrInput
+	// Default: "UNSET"
+	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	GenType pulumi.StringPtrInput
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringPtrInput
 	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrInput
 	// Project identifier of the GitOps repository.
 	ProjectId pulumi.StringPtrInput
-	// Indicates to force refresh query for repository.
-	QueryForceRefresh pulumi.BoolPtrInput
-	// Project to query for the GitOps repo.
-	QueryProject pulumi.StringPtrInput
-	// GitOps repository to query.
-	QueryRepo pulumi.StringPtrInput
+	// For OCI repos, this is the interval to refresh the token to access the registry.
+	RefreshInterval pulumi.StringPtrInput
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
 	// Update mask of the repository.
@@ -201,18 +177,21 @@ type gitOpsRepositoryArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// Indicates if to operate on credential set instead of repository.
 	CredsOnly *bool `pulumi:"credsOnly"`
+	// ECR access token generator specific configuration.
+	EcrGen *GitOpsRepositoryEcrGen `pulumi:"ecrGen"`
+	// GCR access token generator specific configuration.
+	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
+	// Default: "UNSET"
+	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	GenType *string `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the GitOps repository.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps repository.
 	ProjectId *string `pulumi:"projectId"`
-	// Indicates to force refresh query for repository.
-	QueryForceRefresh *bool `pulumi:"queryForceRefresh"`
-	// Project to query for the GitOps repo.
-	QueryProject *string `pulumi:"queryProject"`
-	// GitOps repository to query.
-	QueryRepo *string `pulumi:"queryRepo"`
+	// For OCI repos, this is the interval to refresh the token to access the registry.
+	RefreshInterval *string `pulumi:"refreshInterval"`
 	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
 	// Update mask of the repository.
@@ -229,18 +208,21 @@ type GitOpsRepositoryArgs struct {
 	AgentId pulumi.StringInput
 	// Indicates if to operate on credential set instead of repository.
 	CredsOnly pulumi.BoolPtrInput
+	// ECR access token generator specific configuration.
+	EcrGen GitOpsRepositoryEcrGenPtrInput
+	// GCR access token generator specific configuration.
+	GcrGen GitOpsRepositoryGcrGenPtrInput
+	// Default: "UNSET"
+	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	GenType pulumi.StringPtrInput
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringInput
 	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrInput
 	// Project identifier of the GitOps repository.
 	ProjectId pulumi.StringPtrInput
-	// Indicates to force refresh query for repository.
-	QueryForceRefresh pulumi.BoolPtrInput
-	// Project to query for the GitOps repo.
-	QueryProject pulumi.StringPtrInput
-	// GitOps repository to query.
-	QueryRepo pulumi.StringPtrInput
+	// For OCI repos, this is the interval to refresh the token to access the registry.
+	RefreshInterval pulumi.StringPtrInput
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
 	// Update mask of the repository.
@@ -351,6 +333,22 @@ func (o GitOpsRepositoryOutput) CredsOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.CredsOnly }).(pulumi.BoolPtrOutput)
 }
 
+// ECR access token generator specific configuration.
+func (o GitOpsRepositoryOutput) EcrGen() GitOpsRepositoryEcrGenPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryEcrGenPtrOutput { return v.EcrGen }).(GitOpsRepositoryEcrGenPtrOutput)
+}
+
+// GCR access token generator specific configuration.
+func (o GitOpsRepositoryOutput) GcrGen() GitOpsRepositoryGcrGenPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryGcrGenPtrOutput { return v.GcrGen }).(GitOpsRepositoryGcrGenPtrOutput)
+}
+
+// Default: "UNSET"
+// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+func (o GitOpsRepositoryOutput) GenType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.GenType }).(pulumi.StringPtrOutput)
+}
+
 // Identifier of the GitOps repository.
 func (o GitOpsRepositoryOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -366,19 +364,9 @@ func (o GitOpsRepositoryOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates to force refresh query for repository.
-func (o GitOpsRepositoryOutput) QueryForceRefresh() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.QueryForceRefresh }).(pulumi.BoolPtrOutput)
-}
-
-// Project to query for the GitOps repo.
-func (o GitOpsRepositoryOutput) QueryProject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.QueryProject }).(pulumi.StringPtrOutput)
-}
-
-// GitOps repository to query.
-func (o GitOpsRepositoryOutput) QueryRepo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.QueryRepo }).(pulumi.StringPtrOutput)
+// For OCI repos, this is the interval to refresh the token to access the registry.
+func (o GitOpsRepositoryOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.RefreshInterval }).(pulumi.StringPtrOutput)
 }
 
 // Repo details holding application configurations.

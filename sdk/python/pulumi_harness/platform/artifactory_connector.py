@@ -333,8 +333,65 @@ class ArtifactoryConnector(pulumi.CustomResource):
         """
         Resource for creating an Artifactory connector.
 
-        ## Example Usage
+        ## Example to create Artifactory Connector at different levels (Org, Project, Account)
 
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            org_id=test_harness_platform_project["orgId"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            org_id=test_harness_platform_project["orgId"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -406,8 +463,65 @@ class ArtifactoryConnector(pulumi.CustomResource):
         """
         Resource for creating an Artifactory connector.
 
-        ## Example Usage
+        ## Example to create Artifactory Connector at different levels (Org, Project, Account)
 
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        # Authentication mechanism as username and password
+        example = harness.platform.ArtifactoryConnector("example",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            org_id=test_harness_platform_project["orgId"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"],
+            credentials=harness.platform.ArtifactoryConnectorCredentialsArgs(
+                username="admin",
+                password_ref="account.secret_id",
+            ))
+        # Authentication mechanism as anonymous
+        test = harness.platform.ArtifactoryConnector("test",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            org_id=test_harness_platform_project["orgId"],
+            url="https://artifactory.example.com",
+            delegate_selectors=["harness-delegate"])
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness

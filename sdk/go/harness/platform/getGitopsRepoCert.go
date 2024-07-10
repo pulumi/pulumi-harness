@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a GitOps RepoCert.
+// Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 func GetGitopsRepoCert(ctx *pulumi.Context, args *GetGitopsRepoCertArgs, opts ...pulumi.InvokeOption) (*GetGitopsRepoCertResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsRepoCertResult
@@ -24,27 +24,27 @@ func GetGitopsRepoCert(ctx *pulumi.Context, args *GetGitopsRepoCertArgs, opts ..
 
 // A collection of arguments for invoking getGitopsRepoCert.
 type GetGitopsRepoCertArgs struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId string `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId *string `pulumi:"agentId"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getGitopsRepoCert.
 type GetGitopsRepoCertResult struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId string `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId *string `pulumi:"agentId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId *string `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -63,13 +63,13 @@ func GetGitopsRepoCertOutput(ctx *pulumi.Context, args GetGitopsRepoCertOutputAr
 
 // A collection of arguments for invoking getGitopsRepoCert.
 type GetGitopsRepoCertOutputArgs struct {
-	// account identifier of the Repository Certificates.
+	// Account identifier of the GitOps repository certificate.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// agent identifier of the Repository Certificates.
+	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
-	// organization identifier of the Repository Certificates.
+	// Organization identifier of the GitOps repository certificate.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// project identifier of the Repository Certificates.
+	// Project identifier of the GitOps repository certificate.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -92,12 +92,12 @@ func (o GetGitopsRepoCertResultOutput) ToGetGitopsRepoCertResultOutputWithContex
 	return o
 }
 
-// account identifier of the Repository Certificates.
+// Account identifier of the GitOps repository certificate.
 func (o GetGitopsRepoCertResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// agent identifier of the Repository Certificates.
+// Agent identifier of the GitOps repository certificate.
 func (o GetGitopsRepoCertResultOutput) AgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) *string { return v.AgentId }).(pulumi.StringPtrOutput)
 }
@@ -107,12 +107,12 @@ func (o GetGitopsRepoCertResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// organization identifier of the Repository Certificates.
+// Organization identifier of the GitOps repository certificate.
 func (o GetGitopsRepoCertResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// project identifier of the Repository Certificates.
+// Project identifier of the GitOps repository certificate.
 func (o GetGitopsRepoCertResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

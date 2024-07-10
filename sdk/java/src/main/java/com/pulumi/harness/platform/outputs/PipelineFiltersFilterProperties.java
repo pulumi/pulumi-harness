@@ -5,18 +5,46 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.PipelineFiltersFilterPropertiesModuleProperties;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineFiltersFilterProperties {
     /**
+     * @return description of the pipline filter.
+     * 
+     */
+    private @Nullable String description;
+    /**
      * @return Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
      * 
      */
     private String filterType;
+    /**
+     * @return module properties of the pipline filter.
+     * 
+     */
+    private @Nullable PipelineFiltersFilterPropertiesModuleProperties moduleProperties;
+    /**
+     * @return Name of the pipeline filter.
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return Pipeline identifiers to filter on.
+     * 
+     */
+    private @Nullable List<String> pipelineIdentifiers;
+    /**
+     * @return Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+     * 
+     */
+    private @Nullable List<Map<String,String>> pipelineTags;
     /**
      * @return Tags to associate with the resource. Tags should be in the form `name:value`.
      * 
@@ -25,11 +53,46 @@ public final class PipelineFiltersFilterProperties {
 
     private PipelineFiltersFilterProperties() {}
     /**
+     * @return description of the pipline filter.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+    /**
      * @return Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
      * 
      */
     public String filterType() {
         return this.filterType;
+    }
+    /**
+     * @return module properties of the pipline filter.
+     * 
+     */
+    public Optional<PipelineFiltersFilterPropertiesModuleProperties> moduleProperties() {
+        return Optional.ofNullable(this.moduleProperties);
+    }
+    /**
+     * @return Name of the pipeline filter.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Pipeline identifiers to filter on.
+     * 
+     */
+    public List<String> pipelineIdentifiers() {
+        return this.pipelineIdentifiers == null ? List.of() : this.pipelineIdentifiers;
+    }
+    /**
+     * @return Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+     * 
+     */
+    public List<Map<String,String>> pipelineTags() {
+        return this.pipelineTags == null ? List.of() : this.pipelineTags;
     }
     /**
      * @return Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -48,21 +111,64 @@ public final class PipelineFiltersFilterProperties {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private String filterType;
+        private @Nullable PipelineFiltersFilterPropertiesModuleProperties moduleProperties;
+        private @Nullable String name;
+        private @Nullable List<String> pipelineIdentifiers;
+        private @Nullable List<Map<String,String>> pipelineTags;
         private @Nullable List<String> tags;
         public Builder() {}
         public Builder(PipelineFiltersFilterProperties defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.filterType = defaults.filterType;
+    	      this.moduleProperties = defaults.moduleProperties;
+    	      this.name = defaults.name;
+    	      this.pipelineIdentifiers = defaults.pipelineIdentifiers;
+    	      this.pipelineTags = defaults.pipelineTags;
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder filterType(String filterType) {
             if (filterType == null) {
               throw new MissingRequiredPropertyException("PipelineFiltersFilterProperties", "filterType");
             }
             this.filterType = filterType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder moduleProperties(@Nullable PipelineFiltersFilterPropertiesModuleProperties moduleProperties) {
+
+            this.moduleProperties = moduleProperties;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pipelineIdentifiers(@Nullable List<String> pipelineIdentifiers) {
+
+            this.pipelineIdentifiers = pipelineIdentifiers;
+            return this;
+        }
+        public Builder pipelineIdentifiers(String... pipelineIdentifiers) {
+            return pipelineIdentifiers(List.of(pipelineIdentifiers));
+        }
+        @CustomType.Setter
+        public Builder pipelineTags(@Nullable List<Map<String,String>> pipelineTags) {
+
+            this.pipelineTags = pipelineTags;
             return this;
         }
         @CustomType.Setter
@@ -76,7 +182,12 @@ public final class PipelineFiltersFilterProperties {
         }
         public PipelineFiltersFilterProperties build() {
             final var _resultValue = new PipelineFiltersFilterProperties();
+            _resultValue.description = description;
             _resultValue.filterType = filterType;
+            _resultValue.moduleProperties = moduleProperties;
+            _resultValue.name = name;
+            _resultValue.pipelineIdentifiers = pipelineIdentifiers;
+            _resultValue.pipelineTags = pipelineTags;
             _resultValue.tags = tags;
             return _resultValue;
         }

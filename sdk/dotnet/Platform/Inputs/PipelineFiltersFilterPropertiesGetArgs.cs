@@ -13,10 +13,52 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class PipelineFiltersFilterPropertiesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// description of the pipline filter.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
         /// </summary>
         [Input("filterType", required: true)]
         public Input<string> FilterType { get; set; } = null!;
+
+        /// <summary>
+        /// module properties of the pipline filter.
+        /// </summary>
+        [Input("moduleProperties")]
+        public Input<Inputs.PipelineFiltersFilterPropertiesModulePropertiesGetArgs>? ModuleProperties { get; set; }
+
+        /// <summary>
+        /// Name of the pipeline filter.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("pipelineIdentifiers")]
+        private InputList<string>? _pipelineIdentifiers;
+
+        /// <summary>
+        /// Pipeline identifiers to filter on.
+        /// </summary>
+        public InputList<string> PipelineIdentifiers
+        {
+            get => _pipelineIdentifiers ?? (_pipelineIdentifiers = new InputList<string>());
+            set => _pipelineIdentifiers = value;
+        }
+
+        [Input("pipelineTags")]
+        private InputList<ImmutableDictionary<string, string>>? _pipelineTags;
+
+        /// <summary>
+        /// Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+        /// </summary>
+        public InputList<ImmutableDictionary<string, string>> PipelineTags
+        {
+            get => _pipelineTags ?? (_pipelineTags = new InputList<ImmutableDictionary<string, string>>());
+            set => _pipelineTags = value;
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;

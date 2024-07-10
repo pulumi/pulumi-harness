@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for looking up secert file type secret.
-//
 // ## Example Usage
 //
 // ```go

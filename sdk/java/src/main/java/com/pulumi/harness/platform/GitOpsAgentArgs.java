@@ -95,6 +95,21 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    @Import(name="operator")
+    private @Nullable Output<String> operator;
+
+    /**
+     * @return The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    public Optional<Output<String>> operator() {
+        return Optional.ofNullable(this.operator);
+    }
+
+    /**
      * Organization identifier of the GitOps agent.
      * 
      */
@@ -164,6 +179,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
         this.identifier = $.identifier;
         this.metadatas = $.metadatas;
         this.name = $.name;
+        this.operator = $.operator;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
@@ -301,6 +317,27 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param operator The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operator(@Nullable Output<String> operator) {
+            $.operator = operator;
+            return this;
+        }
+
+        /**
+         * @param operator The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operator(String operator) {
+            return operator(Output.of(operator));
         }
 
         /**

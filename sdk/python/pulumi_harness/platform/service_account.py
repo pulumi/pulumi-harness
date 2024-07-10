@@ -295,8 +295,6 @@ class ServiceAccount(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating service account.
-
         ## Example Usage
 
         ```python
@@ -350,8 +348,6 @@ class ServiceAccount(pulumi.CustomResource):
                  args: ServiceAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating service account.
-
         ## Example Usage
 
         ```python

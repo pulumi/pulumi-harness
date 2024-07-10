@@ -96,9 +96,9 @@ type AwsCCConnector struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-	ReportName pulumi.StringOutput `pulumi:"reportName"`
+	ReportName pulumi.StringPtrOutput `pulumi:"reportName"`
 	// The name of s3 bucket.
-	S3Bucket pulumi.StringOutput `pulumi:"s3Bucket"`
+	S3Bucket pulumi.StringPtrOutput `pulumi:"s3Bucket"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
@@ -121,12 +121,6 @@ func NewAwsCCConnector(ctx *pulumi.Context,
 	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.ReportName == nil {
-		return nil, errors.New("invalid value for required argument 'ReportName'")
-	}
-	if args.S3Bucket == nil {
-		return nil, errors.New("invalid value for required argument 'S3Bucket'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsCCConnector
@@ -222,9 +216,9 @@ type awsCCConnectorArgs struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-	ReportName string `pulumi:"reportName"`
+	ReportName *string `pulumi:"reportName"`
 	// The name of s3 bucket.
-	S3Bucket string `pulumi:"s3Bucket"`
+	S3Bucket *string `pulumi:"s3Bucket"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -248,9 +242,9 @@ type AwsCCConnectorArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-	ReportName pulumi.StringInput
+	ReportName pulumi.StringPtrInput
 	// The name of s3 bucket.
-	S3Bucket pulumi.StringInput
+	S3Bucket pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 }
@@ -383,13 +377,13 @@ func (o AwsCCConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 // The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-func (o AwsCCConnectorOutput) ReportName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringOutput { return v.ReportName }).(pulumi.StringOutput)
+func (o AwsCCConnectorOutput) ReportName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringPtrOutput { return v.ReportName }).(pulumi.StringPtrOutput)
 }
 
 // The name of s3 bucket.
-func (o AwsCCConnectorOutput) S3Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringOutput { return v.S3Bucket }).(pulumi.StringOutput)
+func (o AwsCCConnectorOutput) S3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringPtrOutput { return v.S3Bucket }).(pulumi.StringPtrOutput)
 }
 
 // Tags to associate with the resource.

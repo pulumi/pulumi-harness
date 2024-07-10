@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness Gitops Agents.
+    /// Resource for managing a Harness GitOps Agent.
     /// 
     /// ## Example Usage
     /// 
@@ -45,10 +45,16 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import a Account level Gitops Agent
+    /// Import an Account level Gitops Agent
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;agent_id&gt;
+    /// ```
+    /// 
+    /// Import an Org level Gitops Agent
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example &lt;organization_id&gt;/&lt;agent_id&gt;
     /// ```
     /// 
     /// Import a Project level Gitops Agent
@@ -65,6 +71,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Agent token to be used for authentication of the agent with Harness.
+        /// </summary>
+        [Output("agentToken")]
+        public Output<string> AgentToken { get; private set; } = null!;
 
         /// <summary>
         /// Description of the GitOps agent.
@@ -89,6 +101,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+        /// </summary>
+        [Output("operator")]
+        public Output<string?> Operator { get; private set; } = null!;
 
         /// <summary>
         /// Organization identifier of the GitOps agent.
@@ -199,6 +217,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+        /// </summary>
+        [Input("operator")]
+        public Input<string>? Operator { get; set; }
+
+        /// <summary>
         /// Organization identifier of the GitOps agent.
         /// </summary>
         [Input("orgId")]
@@ -244,6 +268,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Agent token to be used for authentication of the agent with Harness.
+        /// </summary>
+        [Input("agentToken")]
+        public Input<string>? AgentToken { get; set; }
+
+        /// <summary>
         /// Description of the GitOps agent.
         /// </summary>
         [Input("description")]
@@ -272,6 +302,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+        /// </summary>
+        [Input("operator")]
+        public Input<string>? Operator { get; set; }
 
         /// <summary>
         /// Organization identifier of the GitOps agent.

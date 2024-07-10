@@ -171,8 +171,6 @@ def get_aws_kms_connector(identifier: Optional[str] = None,
                           project_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsKmsConnectorResult:
     """
-    Datasource for looking up an AWS KMS connector.
-
     ## Example Usage
 
     ```python
@@ -217,8 +215,6 @@ def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsKmsConnectorResult]:
     """
-    Datasource for looking up an AWS KMS connector.
-
     ## Example Usage
 
     ```python

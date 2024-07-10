@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for looking up an AWS KMS connector.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -103,8 +101,6 @@ export interface GetAwsKmsConnectorResult {
     readonly tags: string[];
 }
 /**
- * Datasource for looking up an AWS KMS connector.
- *
  * ## Example Usage
  *
  * ```typescript

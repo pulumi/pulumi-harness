@@ -34,7 +34,7 @@ class ResourceGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_scope_levels: The scope levels at which this resource group can be used
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -126,7 +126,7 @@ class ResourceGroupArgs:
     @pulumi.getter(name="includedScopes")
     def included_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
         """
-        Included scopes
+        Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         """
         return pulumi.get(self, "included_scopes")
 
@@ -216,7 +216,7 @@ class _ResourceGroupState:
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -310,7 +310,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="includedScopes")
     def included_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupIncludedScopeArgs']]]]:
         """
-        Included scopes
+        Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         """
         return pulumi.get(self, "included_scopes")
 
@@ -397,8 +397,6 @@ class ResourceGroup(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Resource Group
-
         ## Example Usage
 
         ```python
@@ -455,7 +453,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -469,8 +467,6 @@ class ResourceGroup(pulumi.CustomResource):
                  args: ResourceGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Resource Group
-
         ## Example Usage
 
         ```python
@@ -603,7 +599,7 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -671,7 +667,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="includedScopes")
     def included_scopes(self) -> pulumi.Output[Optional[Sequence['outputs.ResourceGroupIncludedScope']]]:
         """
-        Included scopes
+        Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         """
         return pulumi.get(self, "included_scopes")
 

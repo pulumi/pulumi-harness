@@ -21,7 +21,92 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Slo;
+ * import com.pulumi.harness.platform.SloArgs;
+ * import com.pulumi.harness.platform.inputs.SloRequestArgs;
+ * import com.pulumi.harness.platform.inputs.SloRequestSloTargetArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Slo("example", SloArgs.builder()
+ *             .orgId("default")
+ *             .projectId("default_project")
+ *             .identifier("TerraformSLO")
+ *             .request(SloRequestArgs.builder()
+ *                 .name("TSLO")
+ *                 .description("description")
+ *                 .tags(                
+ *                     "foo:bar",
+ *                     "bar:foo")
+ *                 .userJourneyRefs(                
+ *                     "one",
+ *                     "two")
+ *                 .sloTarget(SloRequestSloTargetArgs.builder()
+ *                     .type("Calender")
+ *                     .sloTargetPercentage(10)
+ *                     .spec(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("type", "Monthly"),
+ *                             jsonProperty("spec", jsonObject(
+ *                                 jsonProperty("dayOfMonth", 5)
+ *                             ))
+ *                         )))
+ *                     .build())
+ *                 .type("Simple")
+ *                 .spec(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("monitoredServiceRef", "monitoredServiceRef"),
+ *                         jsonProperty("serviceLevelIndicatorType", "Availability"),
+ *                         jsonProperty("serviceLevelIndicators", jsonArray(jsonObject(
+ *                             jsonProperty("name", "name"),
+ *                             jsonProperty("identifier", "identifier"),
+ *                             jsonProperty("type", "Window"),
+ *                             jsonProperty("spec", jsonObject(
+ *                                 jsonProperty("type", "Threshold"),
+ *                                 jsonProperty("spec", jsonObject(
+ *                                     jsonProperty("metric1", "metric1"),
+ *                                     jsonProperty("thresholdValue", 10),
+ *                                     jsonProperty("thresholdType", ">")
+ *                                 )),
+ *                                 jsonProperty("sliMissingDataType", "Good")
+ *                             ))
+ *                         )))
+ *                     )))
+ *                 .notificationRuleRefs(SloRequestNotificationRuleRefArgs.builder()
+ *                     .notificationRuleRef("notification_rule_ref")
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Note the above example is for &#34;Threshold&#34; SLI type, if you want to use
+ * &#34;Ratio&#34;, the SLI should be changed appropriately.
+ * Here&#39;s an example of SLO target and Spec for &#34;Ratio&#34; based SLI and
+ * &#34;Rolling&#34; SLO target.
  * 
  * ## Import
  * 

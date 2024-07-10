@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsRepositoryRepo {
     /**
-     * @return Identifies the authentication method used to connect to the repository.
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS_ANONYMOUS_CONNECTION_TYPE&#34;
      * 
      */
     private @Nullable String connectionType;
@@ -49,7 +49,7 @@ public final class GetGitopsRepositoryRepo {
      */
     private @Nullable String githubAppPrivateKey;
     /**
-     * @return Indicates if the credentials were inherited from a credential set.
+     * @return Indicates if the credentials were inherited from a repository credential.
      * 
      */
     private @Nullable Boolean inheritedCreds;
@@ -59,7 +59,7 @@ public final class GetGitopsRepositoryRepo {
      */
     private @Nullable Boolean insecure;
     /**
-     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
      * 
      */
     private @Nullable Boolean insecureIgnoreHostKey;
@@ -69,12 +69,12 @@ public final class GetGitopsRepositoryRepo {
      */
     private @Nullable String name;
     /**
-     * @return Password or PAT used for authenticating at the remote repository.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     private @Nullable String password;
     /**
-     * @return Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * @return The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
      * 
      */
     private String project;
@@ -89,17 +89,17 @@ public final class GetGitopsRepositoryRepo {
      */
     private @Nullable String repo;
     /**
-     * @return PEM data for authenticating at the repo server. Only used with Git repos.
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     private @Nullable String sshPrivateKey;
     /**
-     * @return Certificate in PEM format for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     private @Nullable String tlsClientCertData;
     /**
-     * @return Private key in PEM format for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     private @Nullable String tlsClientCertKey;
@@ -109,14 +109,14 @@ public final class GetGitopsRepositoryRepo {
      */
     private String type_;
     /**
-     * @return Username used for authenticating at the remote repository.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     private @Nullable String username;
 
     private GetGitopsRepositoryRepo() {}
     /**
-     * @return Identifies the authentication method used to connect to the repository.
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS_ANONYMOUS_CONNECTION_TYPE&#34;
      * 
      */
     public Optional<String> connectionType() {
@@ -165,7 +165,7 @@ public final class GetGitopsRepositoryRepo {
         return Optional.ofNullable(this.githubAppPrivateKey);
     }
     /**
-     * @return Indicates if the credentials were inherited from a credential set.
+     * @return Indicates if the credentials were inherited from a repository credential.
      * 
      */
     public Optional<Boolean> inheritedCreds() {
@@ -179,7 +179,7 @@ public final class GetGitopsRepositoryRepo {
         return Optional.ofNullable(this.insecure);
     }
     /**
-     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
      * 
      */
     public Optional<Boolean> insecureIgnoreHostKey() {
@@ -193,14 +193,14 @@ public final class GetGitopsRepositoryRepo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Password or PAT used for authenticating at the remote repository.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * @return The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
      * 
      */
     public String project() {
@@ -221,21 +221,21 @@ public final class GetGitopsRepositoryRepo {
         return Optional.ofNullable(this.repo);
     }
     /**
-     * @return PEM data for authenticating at the repo server. Only used with Git repos.
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     public Optional<String> sshPrivateKey() {
         return Optional.ofNullable(this.sshPrivateKey);
     }
     /**
-     * @return Certificate in PEM format for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<String> tlsClientCertData() {
         return Optional.ofNullable(this.tlsClientCertData);
     }
     /**
-     * @return Private key in PEM format for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<String> tlsClientCertKey() {
@@ -249,7 +249,7 @@ public final class GetGitopsRepositoryRepo {
         return this.type_;
     }
     /**
-     * @return Username used for authenticating at the remote repository.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     public Optional<String> username() {

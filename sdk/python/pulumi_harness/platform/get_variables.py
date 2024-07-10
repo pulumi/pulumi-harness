@@ -134,8 +134,6 @@ def get_variables(identifier: Optional[str] = None,
                   project_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVariablesResult:
     """
-    Data source for retrieving a Harness Variable.
-
     ## Example Usage
 
     ```python
@@ -176,8 +174,6 @@ def get_variables_output(identifier: Optional[pulumi.Input[str]] = None,
                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVariablesResult]:
     """
-    Data source for retrieving a Harness Variable.
-
     ## Example Usage
 
     ```python

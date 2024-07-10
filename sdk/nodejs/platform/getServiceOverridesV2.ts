@@ -2,21 +2,34 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for Harness service overrides V2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getServiceOverridesV2({
+ *     identifier: "identifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ * });
+ * ```
+ */
 export function getServiceOverridesV2(args: GetServiceOverridesV2Args, opts?: pulumi.InvokeOptions): Promise<GetServiceOverridesV2Result> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getServiceOverridesV2:getServiceOverridesV2", {
-        "clusterId": args.clusterId,
-        "envId": args.envId,
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
-        "infraId": args.infraId,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "serviceId": args.serviceId,
-        "spec": args.spec,
-        "type": args.type,
     }, opts);
 }
 
@@ -24,15 +37,10 @@ export function getServiceOverridesV2(args: GetServiceOverridesV2Args, opts?: pu
  * A collection of arguments for invoking getServiceOverridesV2.
  */
 export interface GetServiceOverridesV2Args {
-    clusterId?: string;
-    envId: string;
+    gitDetails?: inputs.platform.GetServiceOverridesV2GitDetails;
     identifier: string;
-    infraId?: string;
     orgId?: string;
     projectId?: string;
-    serviceId?: string;
-    spec: string;
-    type: string;
 }
 
 /**
@@ -41,6 +49,7 @@ export interface GetServiceOverridesV2Args {
 export interface GetServiceOverridesV2Result {
     readonly clusterId: string;
     readonly envId: string;
+    readonly gitDetails: outputs.platform.GetServiceOverridesV2GitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -50,9 +59,25 @@ export interface GetServiceOverridesV2Result {
     readonly orgId?: string;
     readonly projectId?: string;
     readonly serviceId: string;
-    readonly spec: string;
     readonly type: string;
+    readonly yaml: string;
 }
+/**
+ * Data source for Harness service overrides V2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getServiceOverridesV2({
+ *     identifier: "identifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ * });
+ * ```
+ */
 export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceOverridesV2Result> {
     return pulumi.output(args).apply((a: any) => getServiceOverridesV2(a, opts))
 }
@@ -61,13 +86,8 @@ export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArg
  * A collection of arguments for invoking getServiceOverridesV2.
  */
 export interface GetServiceOverridesV2OutputArgs {
-    clusterId?: pulumi.Input<string>;
-    envId: pulumi.Input<string>;
+    gitDetails?: pulumi.Input<inputs.platform.GetServiceOverridesV2GitDetailsArgs>;
     identifier: pulumi.Input<string>;
-    infraId?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     projectId?: pulumi.Input<string>;
-    serviceId?: pulumi.Input<string>;
-    spec: pulumi.Input<string>;
-    type: pulumi.Input<string>;
 }

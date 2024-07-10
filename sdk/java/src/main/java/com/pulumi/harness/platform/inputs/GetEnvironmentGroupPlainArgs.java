@@ -49,30 +49,30 @@ public final class GetEnvironmentGroupPlainArgs extends com.pulumi.resources.Inv
      * org_id of the environment group.
      * 
      */
-    @Import(name="orgId", required=true)
-    private String orgId;
+    @Import(name="orgId")
+    private @Nullable String orgId;
 
     /**
      * @return org_id of the environment group.
      * 
      */
-    public String orgId() {
-        return this.orgId;
+    public Optional<String> orgId() {
+        return Optional.ofNullable(this.orgId);
     }
 
     /**
      * project_id of the environment group.
      * 
      */
-    @Import(name="projectId", required=true)
-    private String projectId;
+    @Import(name="projectId")
+    private @Nullable String projectId;
 
     /**
      * @return project_id of the environment group.
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     private GetEnvironmentGroupPlainArgs() {}
@@ -130,7 +130,7 @@ public final class GetEnvironmentGroupPlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder orgId(String orgId) {
+        public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
@@ -141,7 +141,7 @@ public final class GetEnvironmentGroupPlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder projectId(String projectId) {
+        public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -149,12 +149,6 @@ public final class GetEnvironmentGroupPlainArgs extends com.pulumi.resources.Inv
         public GetEnvironmentGroupPlainArgs build() {
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetEnvironmentGroupPlainArgs", "identifier");
-            }
-            if ($.orgId == null) {
-                throw new MissingRequiredPropertyException("GetEnvironmentGroupPlainArgs", "orgId");
-            }
-            if ($.projectId == null) {
-                throw new MissingRequiredPropertyException("GetEnvironmentGroupPlainArgs", "projectId");
             }
             return $;
         }

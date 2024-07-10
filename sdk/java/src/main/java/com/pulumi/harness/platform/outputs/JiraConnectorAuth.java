@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.JiraConnectorAuthPersonalAccessToken;
 import com.pulumi.harness.platform.outputs.JiraConnectorAuthUsernamePassword;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,11 @@ public final class JiraConnectorAuth {
      */
     private String authType;
     /**
+     * @return Authenticate using personal access token.
+     * 
+     */
+    private @Nullable JiraConnectorAuthPersonalAccessToken personalAccessToken;
+    /**
      * @return Authenticate using username password.
      * 
      */
@@ -31,6 +37,13 @@ public final class JiraConnectorAuth {
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Authenticate using personal access token.
+     * 
+     */
+    public Optional<JiraConnectorAuthPersonalAccessToken> personalAccessToken() {
+        return Optional.ofNullable(this.personalAccessToken);
     }
     /**
      * @return Authenticate using username password.
@@ -50,11 +63,13 @@ public final class JiraConnectorAuth {
     @CustomType.Builder
     public static final class Builder {
         private String authType;
+        private @Nullable JiraConnectorAuthPersonalAccessToken personalAccessToken;
         private @Nullable JiraConnectorAuthUsernamePassword usernamePassword;
         public Builder() {}
         public Builder(JiraConnectorAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.personalAccessToken = defaults.personalAccessToken;
     	      this.usernamePassword = defaults.usernamePassword;
         }
 
@@ -67,6 +82,12 @@ public final class JiraConnectorAuth {
             return this;
         }
         @CustomType.Setter
+        public Builder personalAccessToken(@Nullable JiraConnectorAuthPersonalAccessToken personalAccessToken) {
+
+            this.personalAccessToken = personalAccessToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usernamePassword(@Nullable JiraConnectorAuthUsernamePassword usernamePassword) {
 
             this.usernamePassword = usernamePassword;
@@ -75,6 +96,7 @@ public final class JiraConnectorAuth {
         public JiraConnectorAuth build() {
             final var _resultValue = new JiraConnectorAuth();
             _resultValue.authType = authType;
+            _resultValue.personalAccessToken = personalAccessToken;
             _resultValue.usernamePassword = usernamePassword;
             return _resultValue;
         }

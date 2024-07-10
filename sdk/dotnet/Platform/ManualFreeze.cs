@@ -11,8 +11,100 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for Manual Deployment Freeze Window.
+    /// ## Example to create Manual Freeze at different levels (Org, Project, Account)
     /// 
-    /// ## Example Usage
+    /// ### Account Level
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.ManualFreeze("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         AccountId = "accountIdentifier",
+    ///         Yaml = @"freeze:
+    ///   name: freezeName
+    ///   identifier: identifier
+    ///   entityConfigs:
+    ///     - name: r1
+    ///       entities:
+    ///         - filterType: All
+    ///           type: Org
+    ///         - filterType: All
+    ///           type: Project
+    ///         - filterType: All
+    ///           type: Service
+    ///         - filterType: All
+    ///           type: EnvType
+    ///   status: Disabled
+    ///   description: hi
+    ///   windows:
+    ///   - timeZone: Asia/Calcutta
+    ///     startTime: 2023-05-03 04:16 PM
+    ///     duration: 30m
+    ///     recurrence:
+    ///       type: Daily
+    ///   notificationRules: []
+    ///   tags: {}
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.ManualFreeze("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "orgIdentifier",
+    ///         AccountId = "accountIdentifier",
+    ///         Yaml = @"freeze:
+    ///   name: freezeName
+    ///   identifier: identifier
+    ///   entityConfigs:
+    ///     - name: r1
+    ///       entities:
+    ///         - filterType: All
+    ///           type: Org
+    ///         - filterType: All
+    ///           type: Project
+    ///         - filterType: All
+    ///           type: Service
+    ///         - filterType: All
+    ///           type: EnvType
+    ///   status: Disabled
+    ///   description: hi
+    ///   windows:
+    ///   - timeZone: Asia/Calcutta
+    ///     startTime: 2023-05-03 04:16 PM
+    ///     duration: 30m
+    ///     recurrence:
+    ///       type: Daily
+    ///   notificationRules: []
+    ///   tags: {}
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -10,36 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
-    /// 
-    ///         The following fields need to be populated for LDAP SSO Providers:
-    ///     	
-    ///         - linked_sso_id
-    ///     	
-    ///         - linked_sso_display_name
-    ///     	
-    ///         - sso_group_id
-    ///     	
-    ///         - sso_group_name
-    ///     	
-    ///         - linked_sso_type
-    ///     	
-    ///         - sso_linked
-    ///     	
-    ///         The following fields need to be populated for SAML SSO Providers:
-    ///     	
-    ///         - linked_sso_id
-    ///     	
-    ///         - linked_sso_display_name
-    ///     	
-    ///         - sso_group_name
-    ///     	
-    ///         - sso_group_id // same as sso_group_name
-    ///     	
-    ///         - linked_sso_type
-    ///     	
-    ///         - sso_linked
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

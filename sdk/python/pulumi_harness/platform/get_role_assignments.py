@@ -55,7 +55,7 @@ class GetRoleAssignmentsResult:
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        Disabled or not.
+        The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -79,7 +79,7 @@ class GetRoleAssignmentsResult:
     @pulumi.getter
     def managed(self) -> bool:
         """
-        Managed or not.
+        Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         """
         return pulumi.get(self, "managed")
 
@@ -146,8 +146,6 @@ def get_role_assignments(identifier: Optional[str] = None,
                          project_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleAssignmentsResult:
     """
-    Data source for retrieving role assignment.
-
     ## Example Usage
 
     ```python
@@ -189,8 +187,6 @@ def get_role_assignments_output(identifier: Optional[pulumi.Input[str]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleAssignmentsResult]:
     """
-    Data source for retrieving role assignment.
-
     ## Example Usage
 
     ```python

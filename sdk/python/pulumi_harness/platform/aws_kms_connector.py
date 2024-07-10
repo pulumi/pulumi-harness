@@ -362,7 +362,7 @@ class AwsKmsConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating an AWS KMS connector.
+        ## Example Usage
 
         ## Import
 
@@ -404,7 +404,7 @@ class AwsKmsConnector(pulumi.CustomResource):
                  args: AwsKmsConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating an AWS KMS connector.
+        ## Example Usage
 
         ## Import
 

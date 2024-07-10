@@ -6,8 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterArgs;
-import com.pulumi.harness.platform.inputs.GitOpsClusterRequestIdArgs;
-import com.pulumi.harness.platform.inputs.GitOpsClusterRequestUpdateMaskArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -36,48 +34,18 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Cluster server URL or the cluster name.
-     * 
-     */
-    @Import(name="ids")
-    private @Nullable Output<List<GitOpsClusterRequestIdArgs>> ids;
-
-    /**
-     * @return Cluster server URL or the cluster name.
-     * 
-     */
-    public Optional<Output<List<GitOpsClusterRequestIdArgs>>> ids() {
-        return Optional.ofNullable(this.ids);
-    }
-
-    /**
-     * Tags associated with the clusters
+     * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags associated with the clusters
+     * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
      */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
-    }
-
-    /**
-     * Update mask of the GitOps cluster.
-     * 
-     */
-    @Import(name="updateMasks")
-    private @Nullable Output<List<GitOpsClusterRequestUpdateMaskArgs>> updateMasks;
-
-    /**
-     * @return Update mask of the GitOps cluster.
-     * 
-     */
-    public Optional<Output<List<GitOpsClusterRequestUpdateMaskArgs>>> updateMasks() {
-        return Optional.ofNullable(this.updateMasks);
     }
 
     /**
@@ -114,9 +82,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
 
     private GitOpsClusterRequestArgs(GitOpsClusterRequestArgs $) {
         this.clusters = $.clusters;
-        this.ids = $.ids;
         this.tags = $.tags;
-        this.updateMasks = $.updateMasks;
         this.updatedFields = $.updatedFields;
         this.upsert = $.upsert;
     }
@@ -171,38 +137,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ids Cluster server URL or the cluster name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ids(@Nullable Output<List<GitOpsClusterRequestIdArgs>> ids) {
-            $.ids = ids;
-            return this;
-        }
-
-        /**
-         * @param ids Cluster server URL or the cluster name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ids(List<GitOpsClusterRequestIdArgs> ids) {
-            return ids(Output.of(ids));
-        }
-
-        /**
-         * @param ids Cluster server URL or the cluster name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ids(GitOpsClusterRequestIdArgs... ids) {
-            return ids(List.of(ids));
-        }
-
-        /**
-         * @param tags Tags associated with the clusters
+         * @param tags Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          * 
          * @return builder
          * 
@@ -213,7 +148,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tags Tags associated with the clusters
+         * @param tags Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          * 
          * @return builder
          * 
@@ -223,44 +158,13 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tags Tags associated with the clusters
+         * @param tags Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          * 
          * @return builder
          * 
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }
-
-        /**
-         * @param updateMasks Update mask of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(@Nullable Output<List<GitOpsClusterRequestUpdateMaskArgs>> updateMasks) {
-            $.updateMasks = updateMasks;
-            return this;
-        }
-
-        /**
-         * @param updateMasks Update mask of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(List<GitOpsClusterRequestUpdateMaskArgs> updateMasks) {
-            return updateMasks(Output.of(updateMasks));
-        }
-
-        /**
-         * @param updateMasks Update mask of the GitOps cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(GitOpsClusterRequestUpdateMaskArgs... updateMasks) {
-            return updateMasks(List.of(updateMasks));
         }
 
         /**

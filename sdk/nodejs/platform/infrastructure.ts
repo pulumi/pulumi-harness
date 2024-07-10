@@ -2,13 +2,78 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Infrastructure.
+ * ## Example to create Infrastructure at different levels (Org, Project, Account)
  *
- * ## Example Usage
+ * ### Account Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
  *
+ * const example = new harness.platform.Infrastructure("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     envId: "environmentIdentifier",
+ *     type: "KubernetesDirect",
+ *     deploymentType: "Kubernetes",
+ *     yaml: `infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ * `,
+ * });
+ * ```
+ *
+ * ### Org Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Infrastructure("example", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "orgIdentifer",
+ *     envId: "environmentIdentifier",
+ *     type: "KubernetesDirect",
+ *     deploymentType: "Kubernetes",
+ *     yaml: `infrastructureDefinition:
+ *  name: name
+ *  identifier: identifier
+ *  description: ""
+ *  tags:
+ *    asda: ""
+ *  orgIdentifier: orgIdentifer
+ *  projectIdentifier: projectIdentifier
+ *  environmentRef: environmentIdentifier
+ *  deploymentType: Kubernetes
+ *  type: KubernetesDirect
+ *  spec:
+ *   connectorRef: account.gfgf
+ *   namespace: asdasdsa
+ *   releaseName: release-<+INFRA_KEY>
+ *   allowSimultaneousDeployments: false
+ * `,
+ * });
+ * ```
+ *
+ * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -38,6 +103,26 @@ import * as utilities from "../utilities";
  *   releaseName: release-<+INFRA_KEY>
  *   allowSimultaneousDeployments: false
  * `,
+ * });
+ * ```
+ *
+ * ### Importing Infrastructure From Git
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = new harness.platform.Infrastructure("test", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     envId: "env_id",
+ *     gitDetails: {
+ *         storeType: "REMOTE",
+ *         connectorRef: "connector_ref",
+ *         repoName: "repo_name",
+ *         filePath: "file_path",
+ *         branch: "branch",
+ *         importFromGit: true,
+ *     },
  * });
  * ```
  *
@@ -106,6 +191,10 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<string>;
     /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    public readonly gitDetails!: pulumi.Output<outputs.platform.InfrastructureGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -126,13 +215,13 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      */
-    public readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    public readonly yaml!: pulumi.Output<string>;
+    public readonly yaml!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Infrastructure resource with the given unique name, arguments, and options.
@@ -151,6 +240,7 @@ export class Infrastructure extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["envId"] = state ? state.envId : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -166,16 +256,11 @@ export class Infrastructure extends pulumi.CustomResource {
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'type'");
-            }
-            if ((!args || args.yaml === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'yaml'");
-            }
             resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["envId"] = args ? args.envId : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -210,6 +295,10 @@ export interface InfrastructureState {
      */
     forceDelete?: pulumi.Input<string>;
     /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    gitDetails?: pulumi.Input<inputs.platform.InfrastructureGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -230,7 +319,7 @@ export interface InfrastructureState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      */
     type?: pulumi.Input<string>;
     /**
@@ -260,6 +349,10 @@ export interface InfrastructureArgs {
      */
     forceDelete?: pulumi.Input<string>;
     /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     */
+    gitDetails?: pulumi.Input<inputs.platform.InfrastructureGitDetails>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
@@ -280,11 +373,11 @@ export interface InfrastructureArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml: pulumi.Input<string>;
+    yaml?: pulumi.Input<string>;
 }

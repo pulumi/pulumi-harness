@@ -7,36 +7,20 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating Harness Gitops Repositories.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = new harness.platform.GitOpsRepository("example", {
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
- *     agentId: "agent_id",
- *     repos: [{
- *         repo: "https://github.com/willycoll/argocd-example-apps.git",
- *         name: "repo_name",
- *         insecure: true,
- *         connectionType: "HTTPS_ANONYMOUS",
- *     }],
- *     upsert: true,
- * });
- * ```
+ * Resource for managing Harness Gitops Repository.
  *
  * ## Import
  *
- * Import a Account level Gitops Repository
+ * Import an Account level Gitops Repository
  *
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+ * ```
+ *
+ * Import an Org level Gitops Repository
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<agent_id>/<respository_id>
  * ```
  *
  * Import a Project level Gitops Repository
@@ -86,6 +70,19 @@ export class GitOpsRepository extends pulumi.CustomResource {
      */
     public readonly credsOnly!: pulumi.Output<boolean | undefined>;
     /**
+     * ECR access token generator specific configuration.
+     */
+    public readonly ecrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryEcrGen | undefined>;
+    /**
+     * GCR access token generator specific configuration.
+     */
+    public readonly gcrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryGcrGen | undefined>;
+    /**
+     * Default: "UNSET"
+     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     */
+    public readonly genType!: pulumi.Output<string | undefined>;
+    /**
      * Identifier of the GitOps repository.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -98,17 +95,9 @@ export class GitOpsRepository extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Indicates to force refresh query for repository.
+     * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    public readonly queryForceRefresh!: pulumi.Output<boolean | undefined>;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    public readonly queryProject!: pulumi.Output<string | undefined>;
-    /**
-     * GitOps repository to query.
-     */
-    public readonly queryRepo!: pulumi.Output<string | undefined>;
+    public readonly refreshInterval!: pulumi.Output<string | undefined>;
     /**
      * Repo details holding application configurations.
      */
@@ -138,12 +127,13 @@ export class GitOpsRepository extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["agentId"] = state ? state.agentId : undefined;
             resourceInputs["credsOnly"] = state ? state.credsOnly : undefined;
+            resourceInputs["ecrGen"] = state ? state.ecrGen : undefined;
+            resourceInputs["gcrGen"] = state ? state.gcrGen : undefined;
+            resourceInputs["genType"] = state ? state.genType : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["queryForceRefresh"] = state ? state.queryForceRefresh : undefined;
-            resourceInputs["queryProject"] = state ? state.queryProject : undefined;
-            resourceInputs["queryRepo"] = state ? state.queryRepo : undefined;
+            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
             resourceInputs["repos"] = state ? state.repos : undefined;
             resourceInputs["updateMasks"] = state ? state.updateMasks : undefined;
             resourceInputs["upsert"] = state ? state.upsert : undefined;
@@ -164,12 +154,13 @@ export class GitOpsRepository extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["credsOnly"] = args ? args.credsOnly : undefined;
+            resourceInputs["ecrGen"] = args ? args.ecrGen : undefined;
+            resourceInputs["gcrGen"] = args ? args.gcrGen : undefined;
+            resourceInputs["genType"] = args ? args.genType : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["queryForceRefresh"] = args ? args.queryForceRefresh : undefined;
-            resourceInputs["queryProject"] = args ? args.queryProject : undefined;
-            resourceInputs["queryRepo"] = args ? args.queryRepo : undefined;
+            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
             resourceInputs["repos"] = args ? args.repos : undefined;
             resourceInputs["updateMasks"] = args ? args.updateMasks : undefined;
             resourceInputs["upsert"] = args ? args.upsert : undefined;
@@ -196,6 +187,19 @@ export interface GitOpsRepositoryState {
      */
     credsOnly?: pulumi.Input<boolean>;
     /**
+     * ECR access token generator specific configuration.
+     */
+    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    /**
+     * GCR access token generator specific configuration.
+     */
+    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen>;
+    /**
+     * Default: "UNSET"
+     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     */
+    genType?: pulumi.Input<string>;
+    /**
      * Identifier of the GitOps repository.
      */
     identifier?: pulumi.Input<string>;
@@ -208,17 +212,9 @@ export interface GitOpsRepositoryState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Indicates to force refresh query for repository.
+     * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    queryForceRefresh?: pulumi.Input<boolean>;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    queryProject?: pulumi.Input<string>;
-    /**
-     * GitOps repository to query.
-     */
-    queryRepo?: pulumi.Input<string>;
+    refreshInterval?: pulumi.Input<string>;
     /**
      * Repo details holding application configurations.
      */
@@ -250,6 +246,19 @@ export interface GitOpsRepositoryArgs {
      */
     credsOnly?: pulumi.Input<boolean>;
     /**
+     * ECR access token generator specific configuration.
+     */
+    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    /**
+     * GCR access token generator specific configuration.
+     */
+    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen>;
+    /**
+     * Default: "UNSET"
+     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     */
+    genType?: pulumi.Input<string>;
+    /**
      * Identifier of the GitOps repository.
      */
     identifier: pulumi.Input<string>;
@@ -262,17 +271,9 @@ export interface GitOpsRepositoryArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Indicates to force refresh query for repository.
+     * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    queryForceRefresh?: pulumi.Input<boolean>;
-    /**
-     * Project to query for the GitOps repo.
-     */
-    queryProject?: pulumi.Input<string>;
-    /**
-     * GitOps repository to query.
-     */
-    queryRepo?: pulumi.Input<string>;
+    refreshInterval?: pulumi.Input<string>;
     /**
      * Repo details holding application configurations.
      */

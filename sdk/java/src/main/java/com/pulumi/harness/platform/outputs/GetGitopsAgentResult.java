@@ -21,6 +21,11 @@ public final class GetGitopsAgentResult {
      */
     private String accountId;
     /**
+     * @return Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    private String agentToken;
+    /**
      * @return Description of the GitOps agent.
      * 
      */
@@ -45,6 +50,11 @@ public final class GetGitopsAgentResult {
      * 
      */
     private String name;
+    /**
+     * @return The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    private String operator;
     /**
      * @return Organization identifier of the GitOps agent.
      * 
@@ -74,6 +84,13 @@ public final class GetGitopsAgentResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Agent token to be used for authentication of the agent with Harness.
+     * 
+     */
+    public String agentToken() {
+        return this.agentToken;
     }
     /**
      * @return Description of the GitOps agent.
@@ -109,6 +126,13 @@ public final class GetGitopsAgentResult {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return The Operator to use for the Harness GitOps agent. Enum: &#34;ARGO&#34; &#34;FLAMINGO&#34;
+     * 
+     */
+    public String operator() {
+        return this.operator;
     }
     /**
      * @return Organization identifier of the GitOps agent.
@@ -150,11 +174,13 @@ public final class GetGitopsAgentResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String agentToken;
         private String description;
         private String id;
         private String identifier;
         private List<GetGitopsAgentMetadata> metadatas;
         private String name;
+        private String operator;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private Map<String,String> tags;
@@ -163,11 +189,13 @@ public final class GetGitopsAgentResult {
         public Builder(GetGitopsAgentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.agentToken = defaults.agentToken;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.metadatas = defaults.metadatas;
     	      this.name = defaults.name;
+    	      this.operator = defaults.operator;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
@@ -180,6 +208,14 @@ public final class GetGitopsAgentResult {
               throw new MissingRequiredPropertyException("GetGitopsAgentResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder agentToken(String agentToken) {
+            if (agentToken == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAgentResult", "agentToken");
+            }
+            this.agentToken = agentToken;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +262,14 @@ public final class GetGitopsAgentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder operator(String operator) {
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAgentResult", "operator");
+            }
+            this.operator = operator;
+            return this;
+        }
+        @CustomType.Setter
         public Builder orgId(@Nullable String orgId) {
 
             this.orgId = orgId;
@@ -256,11 +300,13 @@ public final class GetGitopsAgentResult {
         public GetGitopsAgentResult build() {
             final var _resultValue = new GetGitopsAgentResult();
             _resultValue.accountId = accountId;
+            _resultValue.agentToken = agentToken;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.metadatas = metadatas;
             _resultValue.name = name;
+            _resultValue.operator = operator;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;

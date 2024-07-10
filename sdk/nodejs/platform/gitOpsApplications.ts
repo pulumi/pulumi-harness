@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Gitops Application.
+ * Resource for managing a Harness Gitops Application.
  *
  * ## Example Usage
  *
@@ -133,33 +133,13 @@ export class GitOpsApplications extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
      * Project identifier of the GitOps application.
      */
     public readonly projectId!: pulumi.Output<string>;
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     */
-    public readonly queryProject!: pulumi.Output<string | undefined>;
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     */
-    public readonly queryRefresh!: pulumi.Output<string | undefined>;
-    /**
-     * Repo URL to restrict returned list applications.
-     */
-    public readonly queryRepo!: pulumi.Output<string | undefined>;
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     */
-    public readonly queryResourceVersion!: pulumi.Output<string | undefined>;
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     */
-    public readonly querySelector!: pulumi.Output<string | undefined>;
     /**
      * Repository identifier of the GitOps application.
      */
@@ -169,10 +149,6 @@ export class GitOpsApplications extends pulumi.CustomResource {
      */
     public readonly requestCascade!: pulumi.Output<boolean | undefined>;
     /**
-     * Request name to delete the GitOps application.
-     */
-    public readonly requestName!: pulumi.Output<string | undefined>;
-    /**
      * Request propagation policy to delete the GitOps application.
      */
     public readonly requestPropagationPolicy!: pulumi.Output<string | undefined>;
@@ -181,7 +157,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
      */
     public readonly upsert!: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates if the GitOps application has to be validated.
+     * Indicates if the GitOps application yaml has to be validated.
      */
     public readonly validate!: pulumi.Output<boolean | undefined>;
 
@@ -209,14 +185,8 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["queryProject"] = state ? state.queryProject : undefined;
-            resourceInputs["queryRefresh"] = state ? state.queryRefresh : undefined;
-            resourceInputs["queryRepo"] = state ? state.queryRepo : undefined;
-            resourceInputs["queryResourceVersion"] = state ? state.queryResourceVersion : undefined;
-            resourceInputs["querySelector"] = state ? state.querySelector : undefined;
             resourceInputs["repoId"] = state ? state.repoId : undefined;
             resourceInputs["requestCascade"] = state ? state.requestCascade : undefined;
-            resourceInputs["requestName"] = state ? state.requestName : undefined;
             resourceInputs["requestPropagationPolicy"] = state ? state.requestPropagationPolicy : undefined;
             resourceInputs["upsert"] = state ? state.upsert : undefined;
             resourceInputs["validate"] = state ? state.validate : undefined;
@@ -254,14 +224,8 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["queryProject"] = args ? args.queryProject : undefined;
-            resourceInputs["queryRefresh"] = args ? args.queryRefresh : undefined;
-            resourceInputs["queryRepo"] = args ? args.queryRepo : undefined;
-            resourceInputs["queryResourceVersion"] = args ? args.queryResourceVersion : undefined;
-            resourceInputs["querySelector"] = args ? args.querySelector : undefined;
             resourceInputs["repoId"] = args ? args.repoId : undefined;
             resourceInputs["requestCascade"] = args ? args.requestCascade : undefined;
-            resourceInputs["requestName"] = args ? args.requestName : undefined;
             resourceInputs["requestPropagationPolicy"] = args ? args.requestPropagationPolicy : undefined;
             resourceInputs["upsert"] = args ? args.upsert : undefined;
             resourceInputs["validate"] = args ? args.validate : undefined;
@@ -312,33 +276,13 @@ export interface GitOpsApplicationsState {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
     project?: pulumi.Input<string>;
     /**
      * Project identifier of the GitOps application.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     */
-    queryProject?: pulumi.Input<string>;
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     */
-    queryRefresh?: pulumi.Input<string>;
-    /**
-     * Repo URL to restrict returned list applications.
-     */
-    queryRepo?: pulumi.Input<string>;
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     */
-    queryResourceVersion?: pulumi.Input<string>;
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     */
-    querySelector?: pulumi.Input<string>;
     /**
      * Repository identifier of the GitOps application.
      */
@@ -348,10 +292,6 @@ export interface GitOpsApplicationsState {
      */
     requestCascade?: pulumi.Input<boolean>;
     /**
-     * Request name to delete the GitOps application.
-     */
-    requestName?: pulumi.Input<string>;
-    /**
      * Request propagation policy to delete the GitOps application.
      */
     requestPropagationPolicy?: pulumi.Input<string>;
@@ -360,7 +300,7 @@ export interface GitOpsApplicationsState {
      */
     upsert?: pulumi.Input<boolean>;
     /**
-     * Indicates if the GitOps application has to be validated.
+     * Indicates if the GitOps application yaml has to be validated.
      */
     validate?: pulumi.Input<boolean>;
 }
@@ -406,33 +346,13 @@ export interface GitOpsApplicationsArgs {
      */
     orgId: pulumi.Input<string>;
     /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
     project?: pulumi.Input<string>;
     /**
      * Project identifier of the GitOps application.
      */
     projectId: pulumi.Input<string>;
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     */
-    queryProject?: pulumi.Input<string>;
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     */
-    queryRefresh?: pulumi.Input<string>;
-    /**
-     * Repo URL to restrict returned list applications.
-     */
-    queryRepo?: pulumi.Input<string>;
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     */
-    queryResourceVersion?: pulumi.Input<string>;
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     */
-    querySelector?: pulumi.Input<string>;
     /**
      * Repository identifier of the GitOps application.
      */
@@ -442,10 +362,6 @@ export interface GitOpsApplicationsArgs {
      */
     requestCascade?: pulumi.Input<boolean>;
     /**
-     * Request name to delete the GitOps application.
-     */
-    requestName?: pulumi.Input<string>;
-    /**
      * Request propagation policy to delete the GitOps application.
      */
     requestPropagationPolicy?: pulumi.Input<string>;
@@ -454,7 +370,7 @@ export interface GitOpsApplicationsArgs {
      */
     upsert?: pulumi.Input<boolean>;
     /**
-     * Indicates if the GitOps application has to be validated.
+     * Indicates if the GitOps application yaml has to be validated.
      */
     validate?: pulumi.Input<boolean>;
 }

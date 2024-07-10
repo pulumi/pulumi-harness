@@ -14,9 +14,17 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GithubConnectorCredentialsHttp
     {
         /// <summary>
+        /// Configuration for using the http anonymous github for interacting with the github api.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GithubConnectorCredentialsHttpAnonymouse> Anonymouses;
+        /// <summary>
+        /// Configuration for using the github app for interacting with the github api.
+        /// </summary>
+        public readonly Outputs.GithubConnectorCredentialsHttpGithubApp? GithubApp;
+        /// <summary>
         /// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        public readonly string TokenRef;
+        public readonly string? TokenRef;
         /// <summary>
         /// Username to use for authentication.
         /// </summary>
@@ -28,12 +36,18 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GithubConnectorCredentialsHttp(
-            string tokenRef,
+            ImmutableArray<Outputs.GithubConnectorCredentialsHttpAnonymouse> anonymouses,
+
+            Outputs.GithubConnectorCredentialsHttpGithubApp? githubApp,
+
+            string? tokenRef,
 
             string? username,
 
             string? usernameRef)
         {
+            Anonymouses = anonymouses;
+            GithubApp = githubApp;
             TokenRef = tokenRef;
             Username = username;
             UsernameRef = usernameRef;

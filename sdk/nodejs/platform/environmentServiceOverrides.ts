@@ -6,9 +6,96 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment service overrides.
+ * ## Example to create Environment Service Override at different levels (Org, Project, Account)
  *
- * ## Example Usage
+ * ### Account Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
  *
+ * const example = new harness.platform.EnvironmentServiceOverrides("example", {
+ *     envId: "environmentIdentifier",
+ *     serviceId: "serviceIdentifier",
+ *     yaml: `serviceOverrides:
+ *   environmentRef: environmentIdentifier
+ *   serviceRef: serviceIdentifier
+ *   variables:
+ *    - name: asda
+ *      type: String
+ *      value: asddad
+ *   manifests:
+ *      - manifest:
+ *          identifier: manifestEnv
+ *          type: Values
+ *          spec:
+ *            store:
+ *              type: Git
+ *              spec:
+ *                connectorRef: <+input>
+ *                gitFetchType: Branch
+ *                paths:
+ *                  - file1
+ *                repoName: <+input>
+ *                branch: master
+ *   configFiles:
+ *      - configFile:
+ *          identifier: configFileEnv
+ *          spec:
+ *            store:
+ *              type: Harness
+ *              spec:
+ *                files:
+ *                  - account:/Add-ons/svcOverrideTest
+ *                secretFiles: []
+ * `,
+ * });
+ * ```
+ *
+ * ### Org Level
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.EnvironmentServiceOverrides("example", {
+ *     orgId: "orgIdentifier",
+ *     envId: "environmentIdentifier",
+ *     serviceId: "serviceIdentifier",
+ *     yaml: `serviceOverrides:
+ *   environmentRef: environmentIdentifier
+ *   serviceRef: serviceIdentifier
+ *   variables:
+ *    - name: asda
+ *      type: String
+ *      value: asddad
+ *   manifests:
+ *      - manifest:
+ *          identifier: manifestEnv
+ *          type: Values
+ *          spec:
+ *            store:
+ *              type: Git
+ *              spec:
+ *                connectorRef: <+input>
+ *                gitFetchType: Branch
+ *                paths:
+ *                  - file1
+ *                repoName: <+input>
+ *                branch: master
+ *   configFiles:
+ *      - configFile:
+ *          identifier: configFileEnv
+ *          spec:
+ *            store:
+ *              type: Harness
+ *              spec:
+ *                files:
+ *                  - account:/Add-ons/svcOverrideTest
+ *                secretFiles: []
+ * `,
+ * });
+ * ```
+ *
+ * ### Project Level
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
@@ -55,10 +142,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using serviceoverride id
+ * Import list of account level service overrides using the env id associated with them
  *
  * ```sh
- * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <env_id>
+ * ```
+ *
+ * Import list of org level service overrides using the env id associated with them
+ *
+ * ```sh
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<env_id>
+ * ```
+ *
+ * Import list of project level service overrides using the env id associated with them
+ *
+ * ```sh
+ * $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
  * ```
  */
 export class EnvironmentServiceOverrides extends pulumi.CustomResource {

@@ -885,6 +885,571 @@ export interface UserGroupSamlSettings {
     ssoProviderId?: string;
 }
 
+export namespace autostopping {
+    export interface AwsProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface AzureProxyCertificates {
+        /**
+         * ID of certificate secret uploaded to vault
+         */
+        certSecretId: string;
+        /**
+         * ID of certificate key uploaded to vault
+         */
+        keySecretId: string;
+    }
+
+    export interface GcpProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface GetAwsProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface GetAzureProxyCertificates {
+        /**
+         * ID of certificate secret uploaded to vault
+         */
+        certSecretId: string;
+        /**
+         * ID of certificate key uploaded to vault
+         */
+        keySecretId: string;
+    }
+
+    export interface GetGcpProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface GetRuleEcsContainer {
+        /**
+         * Name of cluster in which service belong to
+         */
+        cluster: string;
+        /**
+         * Region of cluster
+         */
+        region: string;
+        /**
+         * Name of service to be onboarded
+         */
+        service: string;
+        /**
+         * Desired number of tasks on warming up a rule
+         */
+        taskCount?: number;
+    }
+
+    export interface GetRuleEcsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleEcsHttp {
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+    }
+
+    export interface GetRuleRdsDatabase {
+        /**
+         * ID of the database
+         */
+        id: string;
+        /**
+         * Region to which database belong to
+         */
+        region: string;
+    }
+
+    export interface GetRuleRdsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleRdsTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: outputs.autostopping.GetRuleRdsTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+    }
+
+    export interface GetRuleRdsTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface GetRuleVmDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleVmFilter {
+        /**
+         * Regions of instances that needs to be managed using the AutoStopping rules
+         */
+        regions?: string[];
+        /**
+         * Tags of instances that needs to be managed using the AutoStopping rules
+         */
+        tags?: outputs.autostopping.GetRuleVmFilterTag[];
+        /**
+         * Ids of instances that needs to be managed using the AutoStopping rules
+         */
+        vmIds: string[];
+        /**
+         * Zones of instances that needs to be managed using the AutoStopping rules
+         */
+        zones?: string[];
+    }
+
+    export interface GetRuleVmFilterTag {
+        key: string;
+        value: string;
+    }
+
+    export interface GetRuleVmHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: outputs.autostopping.GetRuleVmHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the instances
+         */
+        routings?: outputs.autostopping.GetRuleVmHttpRouting[];
+    }
+
+    export interface GetRuleVmHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface GetRuleVmHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface GetRuleVmTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: outputs.autostopping.GetRuleVmTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+        /**
+         * RDP configuration
+         */
+        rdps?: outputs.autostopping.GetRuleVmTcpRdp[];
+        /**
+         * SSH configuration
+         */
+        sshes?: outputs.autostopping.GetRuleVmTcpSsh[];
+    }
+
+    export interface GetRuleVmTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface GetRuleVmTcpRdp {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface GetRuleVmTcpSsh {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface GetScheduleRepeat {
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: string[];
+        /**
+         * Ending time of schedule action on the day. Accepted format is HH:MM. Eg : 20:00 for 8pm
+         */
+        endTime: string;
+        /**
+         * Starting time of schedule action on the day. Accepted format is HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime: string;
+    }
+
+    export interface RuleEcsContainer {
+        /**
+         * Name of cluster in which service belong to
+         */
+        cluster: string;
+        /**
+         * Region of cluster
+         */
+        region: string;
+        /**
+         * Name of service to be onboarded
+         */
+        service: string;
+        /**
+         * Desired number of tasks on warming up a rule
+         */
+        taskCount?: number;
+    }
+
+    export interface RuleEcsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface RuleEcsHttp {
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+    }
+
+    export interface RuleRdsDatabase {
+        /**
+         * ID of the database
+         */
+        id: string;
+        /**
+         * Region to which database belong to
+         */
+        region: string;
+    }
+
+    export interface RuleRdsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface RuleRdsTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: outputs.autostopping.RuleRdsTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+    }
+
+    export interface RuleRdsTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface RuleVmDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface RuleVmFilter {
+        /**
+         * Regions of instances that needs to be managed using the AutoStopping rules
+         */
+        regions?: string[];
+        /**
+         * Tags of instances that needs to be managed using the AutoStopping rules
+         */
+        tags?: outputs.autostopping.RuleVmFilterTag[];
+        /**
+         * Ids of instances that needs to be managed using the AutoStopping rules
+         */
+        vmIds: string[];
+        /**
+         * Zones of instances that needs to be managed using the AutoStopping rules
+         */
+        zones?: string[];
+    }
+
+    export interface RuleVmFilterTag {
+        key: string;
+        value: string;
+    }
+
+    export interface RuleVmHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: outputs.autostopping.RuleVmHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the instances
+         */
+        routings?: outputs.autostopping.RuleVmHttpRouting[];
+    }
+
+    export interface RuleVmHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface RuleVmHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface RuleVmTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: outputs.autostopping.RuleVmTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+        /**
+         * RDP configuration
+         */
+        rdps?: outputs.autostopping.RuleVmTcpRdp[];
+        /**
+         * SSH configuration
+         */
+        sshes?: outputs.autostopping.RuleVmTcpSsh[];
+    }
+
+    export interface RuleVmTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface RuleVmTcpRdp {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface RuleVmTcpSsh {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface ScheduleRepeat {
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: string[];
+        /**
+         * Ending time of schedule action on the day. Defaults to 24:00Hrs unless specified. Accepted format is HH:MM. Eg : 20:00 for 8pm
+         */
+        endTime?: string;
+        /**
+         * Starting time of schedule action on the day. Defaults to 00:00Hrs unless specified. Accepted format is HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: string;
+    }
+
+}
+
 export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
@@ -1149,6 +1714,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: string[];
+        /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: string;
     }
 
     export interface AwsConnectorIrsa {
@@ -1156,6 +1725,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: string[];
+        /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: string;
     }
 
     export interface AwsConnectorManual {
@@ -1172,9 +1745,28 @@ export namespace platform {
          */
         delegateSelectors?: string[];
         /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: string;
+        /**
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+    }
+
+    export interface AwsConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+        /**
+         * The IAM Role to assume the credentials from.
+         */
+        iamRoleArn: string;
+        /**
+         * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        region?: string;
     }
 
     export interface AwsKmsConnectorCredentials {
@@ -1250,9 +1842,13 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
+         * The plain text AWS access key.
+         */
+        accessKeyPlainText?: string;
+        /**
          * The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        accessKeyRef: string;
+        accessKeyRef?: string;
         /**
          * The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
@@ -1414,9 +2010,82 @@ export namespace platform {
         sshKeyRef: string;
     }
 
+    export interface ConnectorCustomSecretManagerTemplateInput {
+        environmentVariables?: outputs.platform.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable[];
+    }
+
+    export interface ConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
+        default?: boolean;
+        /**
+         * : Name of the resource.
+         */
+        name: string;
+        /**
+         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+         */
+        type: string;
+        value: string;
+    }
+
+    export interface ConnectorCustomhealthsourceHeader {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef?: string;
+        /**
+         * Key.
+         */
+        key: string;
+        /**
+         * Value.
+         */
+        value?: string;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: boolean;
+    }
+
+    export interface ConnectorCustomhealthsourceParam {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef?: string;
+        /**
+         * Key.
+         */
+        key: string;
+        /**
+         * Value.
+         */
+        value?: string;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: boolean;
+    }
+
+    export interface ConnectorPdcHost {
+        /**
+         * Host attributes with values. e.g. type, region, name, ip, etc.
+         */
+        attributes?: {[key: string]: any};
+        /**
+         * Hostname e.g. 87.23.66.11:80
+         */
+        hostname: string;
+    }
+
+    export interface ConnectorRancherBearerToken {
+        /**
+         * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        bearerTokenRef: string;
+    }
+
     export interface DockerConnectorCredentials {
         /**
-         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: string;
         /**
@@ -1456,7 +2125,11 @@ export namespace platform {
 
     export interface EnvironmentClustersMappingCluster {
         /**
-         * account Identifier of the account
+         * agent identifier of the cluster (include scope prefix)
+         */
+        agentIdentifier?: string;
+        /**
+         * identifier of the cluster
          */
         identifier?: string;
         /**
@@ -1464,16 +2137,140 @@ export namespace platform {
          */
         name?: string;
         /**
-         * scope at which the cluster exists in harness gitops, project vs org vs account
+         * scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          */
         scope?: string;
     }
 
-    export interface FeatureFlagGitDetails {
+    export interface EnvironmentGitDetails {
         /**
-         * The commit message to use as part of a gitsync operation
+         * Name of the default branch (this checks out a new branch titled by branch_name).
          */
-        commitMsg: string;
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * message for the commit in Git Repo.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * Flag to set if importing from Git
+         */
+        importFromGit: boolean;
+        /**
+         * Flag to set if force importing from Git
+         */
+        isForceImport: boolean;
+        /**
+         * If the gitProvider is HarnessCode
+         */
+        isHarnesscodeRepo: boolean;
+        /**
+         * If a new branch creation is requested.
+         */
+        isNewBranch: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Environment.
+         */
+        lastObjectId: string;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache: string;
+        /**
+         * Whether the file has to be get from fallback_branch.
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        parentEntityConnectorRef: string;
+        /**
+         * Name of the repository where parent entity lies.
+         */
+        parentEntityRepoName: string;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * store type of the entity.
+         */
+        storeType: string;
+    }
+
+    export interface FeatureFlagEnvironment {
+        /**
+         * The targeting rules for the flag
+         */
+        addTargetRules: outputs.platform.FeatureFlagEnvironmentAddTargetRule[];
+        /**
+         * Default variation to be served when flag is 'off'
+         */
+        defaultOffVariation: string;
+        /**
+         * Default variation to be served when flag is 'on'
+         */
+        defaultOnVariation: string;
+        /**
+         * Identifier of the Environment
+         */
+        identifier: string;
+        /**
+         * State of the flag in this environment. Possible values are 'on' and 'off'
+         */
+        state: string;
+    }
+
+    export interface FeatureFlagEnvironmentAddTargetRule {
+        /**
+         * The targets of the rule
+         */
+        targets?: string[];
+        /**
+         * The identifier of the variation. Valid values are `enabled`, `disabled`
+         */
+        variation?: string;
+    }
+
+    export interface FeatureFlagTag {
+        /**
+         * The identifier of the tag
+         */
+        identifier: string;
+    }
+
+    export interface FeatureFlagTargetGroupRule {
+        /**
+         * The attribute to use in the clause.  This can be any target attribute
+         */
+        attribute: string;
+        /**
+         * Is the operation negated?
+         */
+        negate: boolean;
+        /**
+         * The type of operation such as equals, starts_with, contains
+         */
+        op: string;
+        /**
+         * The values that are compared against the operator
+         */
+        values: string[];
     }
 
     export interface FeatureFlagVariation {
@@ -1493,6 +2290,50 @@ export namespace platform {
          * The value of the variation
          */
         value: string;
+    }
+
+    export interface FileStoreFileCreatedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface FileStoreFileLastModifiedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface FileStoreFolderCreatedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface FileStoreFolderLastModifiedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
     }
 
     export interface FiltersFilterProperties {
@@ -1640,6 +2481,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: string[];
+        /**
+         * AWS Region to perform Connection test of Connector.
+         */
+        region?: string;
     }
 
     export interface GetAwsConnectorIrsa {
@@ -1647,6 +2492,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: string[];
+        /**
+         * AWS Region to perform Connection test of Connector.
+         */
+        region?: string;
     }
 
     export interface GetAwsConnectorManual {
@@ -1654,6 +2503,10 @@ export namespace platform {
          * AWS access key.
          */
         accessKey: string;
+        /**
+         * The plain text AWS access key.
+         */
+        accessKeyPlainText?: string;
         /**
          * Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
@@ -1663,9 +2516,28 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
+         * AWS Region to perform Connection test of Connector.
+         */
+        region?: string;
+        /**
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+    }
+
+    export interface GetAwsConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+        /**
+         * The IAM Role to assume the credentials from.
+         */
+        iamRoleArn: string;
+        /**
+         * AWS Region to perform Connection test of Connector.
+         */
+        region?: string;
     }
 
     export interface GetAwsKmsConnectorCredential {
@@ -1916,7 +2788,88 @@ export namespace platform {
         tags: string[];
     }
 
+    export interface GetConnectorCustomSecretManagerTemplateInput {
+        environmentVariables: outputs.platform.GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable[];
+    }
+
+    export interface GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
+        default: boolean;
+        /**
+         * : Name of the resource.
+         */
+        name: string;
+        /**
+         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+         */
+        type: string;
+        value: string;
+    }
+
+    export interface GetConnectorCustomhealthsourceHeader {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef: string;
+        /**
+         * Key.
+         */
+        key: string;
+        /**
+         * Value.
+         */
+        value: string;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted: boolean;
+    }
+
+    export interface GetConnectorCustomhealthsourceParam {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef: string;
+        /**
+         * Key.
+         */
+        key: string;
+        /**
+         * Value.
+         */
+        value: string;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted: boolean;
+    }
+
+    export interface GetConnectorPdcHost {
+        /**
+         * Host attributes with values. e.g. type, region, name, ip, etc.
+         */
+        attributes?: {[key: string]: any};
+        /**
+         * Hostname e.g. 87.23.66.11:80
+         */
+        hostname: string;
+    }
+
+    export interface GetConnectorRancherBearerToken {
+        /**
+         * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * The URL of the Rancher cluster.
+         */
+        rancherUrl: string;
+    }
+
     export interface GetDockerConnectorCredential {
+        /**
+         * Execute on delegate or not.
+         */
+        executeOnDelegate: boolean;
         /**
          * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
@@ -1951,6 +2904,89 @@ export namespace platform {
          * Username to use for authentication.
          */
         username: string;
+    }
+
+    export interface GetEnvironmentClustersMappingCluster {
+        /**
+         * agent identifier of the cluster (include scope prefix)
+         */
+        agentIdentifier?: string;
+        /**
+         * identifier of the cluster
+         */
+        identifier?: string;
+        /**
+         * name of the cluster
+         */
+        name?: string;
+        /**
+         * scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
+         */
+        scope?: string;
+    }
+
+    export interface GetEnvironmentGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Load environment yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Repo name of remote environment
+         */
+        repoName: string;
+    }
+
+    export interface GetEnvironmentListEnvironment {
+        identifier: string;
+        name: string;
+    }
+
+    export interface GetFileStoreFileCreatedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface GetFileStoreFileLastModifiedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface GetFileStoreFolderCreatedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
+    }
+
+    export interface GetFileStoreFolderLastModifiedBy {
+        /**
+         * User email
+         */
+        email: string;
+        /**
+         * User name
+         */
+        name: string;
     }
 
     export interface GetFiltersFilterProperty {
@@ -2073,6 +3109,14 @@ export namespace platform {
 
     export interface GetGithubConnectorCredentialHttp {
         /**
+         * Configuration for using the github http anonymous for interacting with the github api.
+         */
+        anonymouses: outputs.platform.GetGithubConnectorCredentialHttpAnonymouse[];
+        /**
+         * Configuration for using the github app for interacting with the github api.
+         */
+        githubApps: outputs.platform.GetGithubConnectorCredentialHttpGithubApp[];
+        /**
          * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: string;
@@ -2084,6 +3128,32 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetGithubConnectorCredentialHttpAnonymouse {
+    }
+
+    export interface GetGithubConnectorCredentialHttpGithubApp {
+        /**
+         * Enter the GitHub App ID from the GitHub App General tab.
+         */
+        applicationId: string;
+        /**
+         * Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        applicationIdRef: string;
+        /**
+         * Enter the Installation ID located in the URL of the installed GitHub App.
+         */
+        installationId: string;
+        /**
+         * Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        installationIdRef: string;
+        /**
+         * Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyRef: string;
     }
 
     export interface GetGithubConnectorCredentialSsh {
@@ -2137,13 +3207,36 @@ export namespace platform {
         sshKeyRef: string;
     }
 
+    export interface GetGitopsAgentDeployYamlProxy {
+        /**
+         * HTTP proxy settings for the GitOps agent.
+         */
+        http?: string;
+        /**
+         * HTTPS proxy settings for the GitOps agent.
+         */
+        https?: string;
+        /**
+         * Password for the proxy.
+         */
+        password?: string;
+        /**
+         * Username for the proxy.
+         */
+        username?: string;
+    }
+
     export interface GetGitopsAgentMetadata {
         /**
-         * Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * Indicates if the agent is deployed in HA mode.
          */
         highAvailability: boolean;
         /**
-         * The k8s namespace that this agent resides in.
+         * Indicates if the agent is namespaced.
+         */
+        isNamespaced?: boolean;
+        /**
+         * The kubernetes namespace where the agent should be installed.
          */
         namespace: string;
     }
@@ -2156,7 +3249,7 @@ export namespace platform {
         /**
          * Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
          */
-        specs?: outputs.platform.GetGitopsApplicationsApplicationSpec[];
+        specs: outputs.platform.GetGitopsApplicationsApplicationSpec[];
     }
 
     export interface GetGitopsApplicationsApplicationMetadata {
@@ -2167,7 +3260,7 @@ export namespace platform {
         /**
          * Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
          */
-        clusterName?: string;
+        clusterName: string;
         /**
          * Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
          */
@@ -2175,7 +3268,7 @@ export namespace platform {
         /**
          * An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
          */
-        generateName?: string;
+        generateName: string;
         /**
          * A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
          */
@@ -2185,19 +3278,19 @@ export namespace platform {
          */
         labels: {[key: string]: string};
         /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+         * Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
          */
-        name?: string;
+        name: string;
         /**
-         * Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+         * Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
          */
         namespace: string;
         /**
          * List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
          */
-        ownerReferences?: outputs.platform.GetGitopsApplicationsApplicationMetadataOwnerReference[];
+        ownerReferences: outputs.platform.GetGitopsApplicationsApplicationMetadataOwnerReference[];
         /**
-         * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+         * UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
          */
         uid: string;
     }
@@ -2206,34 +3299,34 @@ export namespace platform {
         /**
          * API version of the referent.
          */
-        apiVersion?: string;
+        apiVersion: string;
         /**
          * If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
          */
-        blockOwnerDeletion?: boolean;
+        blockOwnerDeletion: boolean;
         /**
          * Indicates if the reference points to the managing controller.
          */
-        controller?: boolean;
+        controller: boolean;
         /**
          * Kind of the referent.
          */
-        kind?: string;
+        kind: string;
         /**
          * Name of the referent.
          */
-        name?: string;
+        name: string;
         /**
          * UID of the referent.
          */
-        uid?: string;
+        uid: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpec {
         /**
          * Information about the GitOps application's destination.
          */
-        destinations?: outputs.platform.GetGitopsApplicationsApplicationSpecDestination[];
+        destinations: outputs.platform.GetGitopsApplicationsApplicationSpecDestination[];
         /**
          * Contains all information about the source of a GitOps application.
          */
@@ -2241,33 +3334,33 @@ export namespace platform {
         /**
          * Controls when a sync will be performed in response to updates in git.
          */
-        syncPolicies?: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicy[];
+        syncPolicies: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicy[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecDestination {
         /**
          * URL of the target cluster and must be set to the kubernetes control plane API.
          */
-        name?: string;
+        name: string;
         /**
          * Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
          */
-        namespace?: string;
+        namespace: string;
         /**
-         * Server of the destination of the GitOps application.
+         * URL of the target cluster server for the GitOps application.
          */
-        server?: string;
+        server: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSource {
         /**
          * Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
          */
-        chart?: string;
+        chart: string;
         /**
          * Options for applications of type plain YAML or Jsonnet.
          */
-        directories?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectory[];
+        directories: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectory[];
         /**
          * Holds helm specific options.
          */
@@ -2275,313 +3368,287 @@ export namespace platform {
         /**
          * Ksonnet specific options.
          */
-        ksonnets?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnet[];
+        ksonnets: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnet[];
         /**
          * Options specific to a GitOps application source specific to Kustomize.
          */
-        kustomizes?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKustomize[];
+        kustomizes: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKustomize[];
         /**
          * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
          */
-        path?: string;
+        path: string;
         /**
          * Options specific to config management plugins.
          */
-        plugins?: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePlugin[];
+        plugins: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePlugin[];
         /**
          * URL to the repository (git or helm) that contains the GitOps application manifests.
          */
-        repoUrl?: string;
+        repoUrl: string;
         /**
          * Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
          */
-        targetRevision?: string;
+        targetRevision: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectory {
         /**
          * Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
          */
-        exclude?: string;
+        exclude: string;
         /**
          * Glob pattern to match paths against that should be explicitly included during manifest generation.
          */
-        include?: string;
+        include: string;
         /**
          * Options specific to applications of type Jsonnet.
          */
-        jsonnets?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet[];
+        jsonnets: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet[];
         /**
          * Indicates to scan a directory recursively for manifests.
          */
-        recurse?: boolean;
+        recurse: boolean;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
         /**
          * List of jsonnet external variables.
          */
-        extVars?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar[];
+        extVars: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar[];
         /**
          * Additional library search dirs.
          */
-        libs?: string[];
+        libs: string[];
         /**
          * List of jsonnet top-level arguments(TLAS).
          */
-        tlas?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla[];
+        tlas: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar {
         /**
          * Code of the external variables of jsonnet application.
          */
-        code?: boolean;
+        code: boolean;
         /**
-         * Name of the external variables of jsonnet application.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Value of the external variables of jsonnet application.
          */
-        value?: string;
+        value: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
         /**
          * Code of the TLAS of the jsonnet application.
          */
-        code?: boolean;
+        code: boolean;
         /**
-         * Name of the TLAS of the jsonnet application.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Value of the TLAS of the jsonnet application.
          */
-        value?: string;
+        value: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelm {
         /**
          * File parameters to the helm template.
          */
-        fileParameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
+        fileParameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
         /**
          * List of helm parameters which are passed to the helm template command upon manifest generation.
          */
-        parameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
+        parameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
         /**
          * Indicates if to pass credentials to all domains (helm's --pass-credentials)
          */
-        passCredentials?: boolean;
+        passCredentials: boolean;
         /**
          * Helm release name to use. If omitted it will use the GitOps application name.
          */
-        releaseName?: string;
+        releaseName: string;
         /**
          * List of helm value files to use when generating a template.
          */
-        valueFiles?: string[];
+        valueFiles: string[];
         /**
          * Helm values to be passed to helm template, typically defined as a block.
          */
-        values?: string;
+        values: string;
         /**
          * Helm version to use for templating (either "2" or "3")
          */
-        version?: string;
+        version: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the helm parameter.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Path to the file containing the values of the helm parameter.
          */
-        path?: string;
+        path: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmParameter {
         /**
          * Indicates if helm should interpret booleans and numbers as strings.
          */
-        forceString?: boolean;
+        forceString: boolean;
         /**
-         * Name of the helm parameter.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Value of the helm parameter.
          */
-        value?: string;
+        value: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKsonnet {
         /**
          * Ksonnet application environment name.
          */
-        environment?: string;
+        environment: string;
         /**
          * List of ksonnet component parameter override values.
          */
-        parameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter[];
+        parameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
         /**
          * Component of the parameter of the ksonnet application.
          */
-        component?: string;
+        component: string;
         /**
-         * Name of the parameter of the ksonnet application.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Value of the parameter of the ksonnet application.
          */
-        value?: string;
+        value: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKustomize {
         /**
          * List of additional annotations to add to rendered manifests.
          */
-        commonAnnotations?: {[key: string]: string};
+        commonAnnotations: {[key: string]: string};
         /**
          * List of additional labels to add to rendered manifests.
          */
-        commonLabels?: {[key: string]: string};
+        commonLabels: {[key: string]: string};
         /**
          * Indicates if to force applying common annotations to resources for kustomize apps.
          */
-        forceCommonAnnotations?: boolean;
+        forceCommonAnnotations: boolean;
         /**
          * Indicates if to force apply common labels to resources for kustomize apps.
          */
-        forceCommonLabels?: boolean;
+        forceCommonLabels: boolean;
         /**
          * List of kustomize image override specifications.
          */
-        images?: string[];
+        images: string[];
         /**
          * Prefix prepended to resources for kustomize apps.
          */
-        namePrefix?: string;
+        namePrefix: string;
         /**
          * Suffix appended to resources for kustomize apps.
          */
-        nameSuffix?: string;
+        nameSuffix: string;
         /**
          * Version of kustomize to use for rendering manifests.
          */
-        version?: string;
+        version: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePlugin {
         /**
          * Entry in the GitOps application's environment.
          */
-        envs?: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
+        envs: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
         /**
-         * Name of the plugin.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePluginEnv {
         /**
-         * Name of the variable, usually expressed in uppercase.
+         * Name of the GitOps application.
          */
-        name?: string;
+        name: string;
         /**
          * Value of the variable.
          */
-        value?: string;
+        value: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSyncPolicy {
         /**
          * Controls the behavior of an automated sync.
          */
-        automateds?: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyAutomated[];
+        automateds: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyAutomated[];
         /**
          * Contains information about the strategy to apply when a sync failed.
          */
-        retries?: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetry[];
+        retries: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetry[];
         /**
          * Options allow you to specify whole app sync-options.
          */
-        syncOptions?: string[];
+        syncOptions: string[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
         /**
          * Indicates to allows apps to have zero live resources (default: false).
          */
-        allowEmpty?: boolean;
+        allowEmpty: boolean;
         /**
          * Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
          */
-        prune?: boolean;
+        prune: boolean;
         /**
          * Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
          */
-        selfHeal?: boolean;
+        selfHeal: boolean;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
         /**
          * Backoff strategy to use on subsequent retries for failing syncs.
          */
-        backoffs?: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff[];
+        backoffs: outputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff[];
         /**
          * Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
          */
-        limit?: string;
+        limit: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
         /**
          * Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
          */
-        duration?: string;
+        duration: string;
         /**
          * Factor to multiply the base duration after each failed retry.
          */
-        factor?: string;
+        factor: string;
         /**
          * Maximum amount of time allowed of the backoff strategy.
          */
-        maxDuration?: string;
-    }
-
-    export interface GetGitopsClusterQuery {
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: outputs.platform.GetGitopsClusterQueryId[];
-        /**
-         * Name of the GitOps cluster.
-         */
-        name?: string;
-        /**
-         * Server of the GitOps cluster.
-         */
-        server?: string;
-    }
-
-    export interface GetGitopsClusterQueryId {
-        /**
-         * Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: string;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: string;
+        maxDuration: string;
     }
 
     export interface GetGitopsClusterRequest {
@@ -2590,17 +3657,9 @@ export namespace platform {
          */
         clusters?: outputs.platform.GetGitopsClusterRequestCluster[];
         /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: outputs.platform.GetGitopsClusterRequestId[];
-        /**
-         * Tags associated with the clusters
+         * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          */
         tags: string[];
-        /**
-         * Update mask of the GitOps cluster.
-         */
-        updateMasks?: outputs.platform.GetGitopsClusterRequestUpdateMask[];
         /**
          * Fields which are updated.
          */
@@ -2633,7 +3692,7 @@ export namespace platform {
          */
         labels?: {[key: string]: string};
         /**
-         * Name of the cluster. If omitted, will use the server address.
+         * Name of the cluster. If omitted, the server address will be used.
          */
         name?: string;
         /**
@@ -2641,7 +3700,7 @@ export namespace platform {
          */
         namespaces?: string[];
         /**
-         * Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+         * The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
          */
         project?: string;
         /**
@@ -2653,16 +3712,16 @@ export namespace platform {
          */
         server?: string;
         /**
-         * Shard number. Calculated on the fly by the application controller if not specified.
+         * Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
          */
         shard?: string;
     }
 
     export interface GetGitopsClusterRequestClusterConfig {
         /**
-         * IAM authentication configuration for AWS.
+         * AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
          */
-        awsAuthConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigAwsAuthConfig[];
+        awsClusterName?: string;
         /**
          * Bearer authentication token the cluster.
          */
@@ -2680,6 +3739,10 @@ export namespace platform {
          */
         password?: string;
         /**
+         * Optional role ARN. If set then used for AWS IAM Authenticator.
+         */
+        roleARN?: string;
+        /**
          * Settings to enable transport layer security.
          */
         tlsClientConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigTlsClientConfig[];
@@ -2687,17 +3750,6 @@ export namespace platform {
          * Username of the server of the cluster.
          */
         username?: string;
-    }
-
-    export interface GetGitopsClusterRequestClusterConfigAwsAuthConfig {
-        /**
-         * AWS cluster name.
-         */
-        clusterName?: string;
-        /**
-         * Optional role ARN. If set then used for AWS IAM Authenticator.
-         */
-        roleARN?: string;
     }
 
     export interface GetGitopsClusterRequestClusterConfigExecProviderConfig {
@@ -2725,11 +3777,11 @@ export namespace platform {
 
     export interface GetGitopsClusterRequestClusterConfigTlsClientConfig {
         /**
-         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
          */
         caData?: string;
         /**
-         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         certData?: string;
         /**
@@ -2737,11 +3789,11 @@ export namespace platform {
          */
         insecure?: boolean;
         /**
-         * Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         keyData?: string;
         /**
-         * Server name for SNI in the client to check server certificates against.
+         * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          */
         serverName?: string;
     }
@@ -2821,24 +3873,6 @@ export namespace platform {
         seconds?: string;
     }
 
-    export interface GetGitopsClusterRequestId {
-        /**
-         * Type of the specified cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: string;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsClusterRequestUpdateMask {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: any[][];
-    }
-
     export interface GetGitopsGnupgRequest {
         /**
          * Public key details.
@@ -2856,7 +3890,7 @@ export namespace platform {
          */
         fingerprint?: string;
         /**
-         * KeyData holds the raw key data, in base64 encoded format
+         * KeyData holds the raw key data, in base64 encoded format.
          */
         keyData?: string;
         /**
@@ -2899,19 +3933,19 @@ export namespace platform {
          */
         githubAppPrivateKey?: string;
         /**
-         * Password for authenticating at the repo server.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: string;
         /**
-         * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: string;
         /**
-         * Specifies the TLS client cert data for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertData?: string;
         /**
-         * Specifies the TLS client cert key for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertKey?: string;
         /**
@@ -2919,18 +3953,18 @@ export namespace platform {
          */
         type?: string;
         /**
-         * url representing this object.
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
         url?: string;
         /**
-         * Username for authenticating at the repo server.
+         * Username to be used for authenticating the remote repository.
          */
         username?: string;
     }
 
     export interface GetGitopsRepositoryRepo {
         /**
-         * Identifies the authentication method used to connect to the repository.
+         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
          */
         connectionType?: string;
         /**
@@ -2958,7 +3992,7 @@ export namespace platform {
          */
         githubAppPrivateKey?: string;
         /**
-         * Indicates if the credentials were inherited from a credential set.
+         * Indicates if the credentials were inherited from a repository credential.
          */
         inheritedCreds?: boolean;
         /**
@@ -2966,7 +4000,7 @@ export namespace platform {
          */
         insecure?: boolean;
         /**
-         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          */
         insecureIgnoreHostKey?: boolean;
         /**
@@ -2974,11 +4008,11 @@ export namespace platform {
          */
         name?: string;
         /**
-         * Password or PAT used for authenticating at the remote repository.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: string;
         /**
-         * Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+         * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
         project: string;
         /**
@@ -2990,15 +4024,15 @@ export namespace platform {
          */
         repo?: string;
         /**
-         * PEM data for authenticating at the repo server. Only used with Git repos.
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: string;
         /**
-         * Certificate in PEM format for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertData?: string;
         /**
-         * Private key in PEM format for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertKey?: string;
         /**
@@ -3006,7 +4040,7 @@ export namespace platform {
          */
         type_: string;
         /**
-         * Username used for authenticating at the remote repository.
+         * Username to be used for authenticating the remote repository.
          */
         username?: string;
     }
@@ -3031,6 +4065,25 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetInfrastructureGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache: string;
+        /**
+         * Load Infrastructure yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Repo name of remote Infrastructure
+         */
+        repoName: string;
     }
 
     export interface GetInputSetGitDetails {
@@ -3123,9 +4176,20 @@ export namespace platform {
          */
         authType: string;
         /**
+         * Authenticate using personal access token.
+         */
+        personalAccessTokens: outputs.platform.GetJiraConnectorAuthPersonalAccessToken[];
+        /**
          * Authenticate using username password.
          */
         usernamePasswords: outputs.platform.GetJiraConnectorAuthUsernamePassword[];
+    }
+
+    export interface GetJiraConnectorAuthPersonalAccessToken {
+        /**
+         * Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        patRef: string;
     }
 
     export interface GetJiraConnectorAuthUsernamePassword {
@@ -3361,13 +4425,108 @@ export namespace platform {
 
     export interface GetPipelineFiltersFilterProperty {
         /**
+         * description of the pipline filter.
+         */
+        description: string;
+        /**
          * Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
          */
         filterType: string;
         /**
+         * module properties of the pipline filter.
+         */
+        moduleProperties: outputs.platform.GetPipelineFiltersFilterPropertyModuleProperties;
+        /**
+         * Name of the pipeline filter.
+         */
+        name: string;
+        /**
+         * Pipeline identifiers to filter on.
+         */
+        pipelineIdentifiers: string[];
+        /**
+         * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+         */
+        pipelineTags: {[key: string]: string}[];
+        /**
          * Tags to associate with the resource. Tags should be in the form `name:value`.
          */
         tags: string[];
+    }
+
+    export interface GetPipelineFiltersFilterPropertyModuleProperties {
+        /**
+         * CD related properties to be filtered on.
+         */
+        cd: outputs.platform.GetPipelineFiltersFilterPropertyModulePropertiesCd;
+        /**
+         * CI related properties to be filtered on.
+         */
+        ci: outputs.platform.GetPipelineFiltersFilterPropertyModulePropertiesCi;
+    }
+
+    export interface GetPipelineFiltersFilterPropertyModulePropertiesCd {
+        /**
+         * Artifact display names of the CD pipeline.
+         */
+        artifactDisplayNames: string[];
+        /**
+         * Deployment type of the CD pipeline, eg. Kubernetes
+         */
+        deploymentTypes: string;
+        /**
+         * Environment names of the CD pipeline.
+         */
+        environmentNames: string[];
+        /**
+         * Service names of the CD pipeline.
+         */
+        serviceNames: string[];
+    }
+
+    export interface GetPipelineFiltersFilterPropertyModulePropertiesCi {
+        /**
+         * Branch which was used while building.
+         */
+        branch: string;
+        /**
+         * Build type of the pipeline. Possible values: branch.
+         */
+        buildType: string;
+        /**
+         * CI execution info for the pipeline.
+         */
+        ciExecutionInfo: outputs.platform.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfo;
+        /**
+         * name of the repository used in the pipeline.
+         */
+        repoNames: string;
+        /**
+         * Tags to associate with the CI pipeline resource.
+         */
+        tag: string;
+    }
+
+    export interface GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfo {
+        /**
+         * Event for the ci execution, Possible values: pullRequest.
+         */
+        event: string;
+        /**
+         * The pull request details of the CI pipeline.
+         */
+        pullRequest: outputs.platform.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequest;
+    }
+
+    export interface GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequest {
+        /**
+         * Source branch of the pull request.
+         */
+        sourceBranch: string;
+        /**
+         * Target branch of the pull request.
+         */
+        targetBranch: string;
     }
 
     export interface GetPipelineGitDetails {
@@ -3409,6 +4568,11 @@ export namespace platform {
         storeType: string;
     }
 
+    export interface GetPipelineListPipeline {
+        identifier: string;
+        name: string;
+    }
+
     export interface GetPolicySetPolicy {
         /**
          * Account Identifier of the account
@@ -3418,6 +4582,11 @@ export namespace platform {
          * Policy failure response - 'warning' for continuation, 'error' for exit
          */
         severity: string;
+    }
+
+    export interface GetProjectListProject {
+        identifier: string;
+        name: string;
     }
 
     export interface GetPrometheusConnectorHeader {
@@ -3437,6 +4606,102 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted: boolean;
+    }
+
+    export interface GetRepoRuleBranchBypass {
+        /**
+         * Allow users with repository edit permission to bypass.
+         */
+        repoOwners?: boolean;
+        /**
+         * List of user ids with who can bypass.
+         */
+        userIds?: string[];
+    }
+
+    export interface GetRepoRuleBranchPattern {
+        /**
+         * Should rule apply to default branch of the repository.
+         */
+        defaultBranch?: boolean;
+        /**
+         * Globstar branch patterns on which rules will NOT be applied.
+         */
+        excludes?: string[];
+        /**
+         * Globstar branch patterns on which rules will be applied.
+         */
+        includes?: string[];
+    }
+
+    export interface GetRepoRuleBranchPolicy {
+        /**
+         * Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+         */
+        allowMergeStrategies?: string[];
+        /**
+         * Only allow users with bypass permission to create matching branches.
+         */
+        blockBranchCreation?: boolean;
+        /**
+         * Only allow users with bypass permission to delete matching branches.
+         */
+        blockBranchDeletion?: boolean;
+        /**
+         * Automatically delete the source branch of a pull request after it is merged.
+         */
+        deleteBranchOnMerge?: boolean;
+        /**
+         * Require approval on pull requests from one reviewer for each codeowner rule.
+         */
+        requireCodeOwners?: boolean;
+        /**
+         * Require re-approval when there are new changes in the pull request.
+         */
+        requireLatestCommitApproval?: boolean;
+        /**
+         * Require approval on pull requests from a minimum number of reviewers.
+         */
+        requireMinimumApprovalCount?: number;
+        /**
+         * Require all request for changes have been resolved.
+         */
+        requireNoChangeRequest?: boolean;
+        /**
+         * Do not allow any changes to matching branches without a pull request.
+         */
+        requirePullRequest?: boolean;
+        /**
+         * All comments on a pull request must be resolved before it can be merged.
+         */
+        requireResolveAllComments?: boolean;
+        /**
+         * Selected status checks must pass before a pull request can be merged.
+         */
+        requireStatusChecks?: string[];
+    }
+
+    export interface GetRepoSource {
+        /**
+         * The host URL for the import source.
+         */
+        host?: string;
+        /**
+         * The password for authentication when importing.
+         */
+        password?: string;
+        /**
+         * The full identifier of the repository on the SCM provider's platform.
+         */
+        repo?: string;
+        /**
+         * The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+         */
+        type?: string;
+        /**
+         * The username for authentication when importing.
+         */
+        username?: string;
     }
 
     export interface GetResourceGroupIncludedScope {
@@ -3607,6 +4872,34 @@ export namespace platform {
         userName: string;
     }
 
+    export interface GetSecretTextAdditionalMetadata {
+        values?: outputs.platform.GetSecretTextAdditionalMetadataValue[];
+    }
+
+    export interface GetSecretTextAdditionalMetadataValue {
+        version?: string;
+    }
+
+    export interface GetServiceGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Repo name of remote service
+         */
+        repoName: string;
+    }
+
+    export interface GetServiceListService {
+        identifier: string;
+        name: string;
+    }
+
     export interface GetServiceNowConnectorAuth {
         /**
          * Authenticate using adfs client credentials with certificate.
@@ -3616,6 +4909,10 @@ export namespace platform {
          * Authentication types for Jira connector
          */
         authType: string;
+        /**
+         * Authenticate using refresh token grant type.
+         */
+        refreshTokens: outputs.platform.GetServiceNowConnectorAuthRefreshToken[];
         /**
          * Authenticate using username password.
          */
@@ -3645,6 +4942,29 @@ export namespace platform {
         resourceIdRef: string;
     }
 
+    export interface GetServiceNowConnectorAuthRefreshToken {
+        /**
+         * Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientIdRef: string;
+        /**
+         * Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientSecretRef: string;
+        /**
+         * Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        refreshTokenRef: string;
+        /**
+         * Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        scope: string;
+        /**
+         * Token url to use for authentication.
+         */
+        tokenUrl: string;
+    }
+
     export interface GetServiceNowConnectorAuthUsernamePassword {
         /**
          * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3658,6 +4978,25 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetServiceOverridesV2GitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Repo name of remote service override
+         */
+        repoName: string;
     }
 
     export interface GetSpotConnectorPermanentToken {
@@ -3807,6 +5146,74 @@ export namespace platform {
         valueType: string;
     }
 
+    export interface GetWorkspaceEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key: string;
+        /**
+         * value is the value of the variable
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType: string;
+    }
+
+    export interface GetWorkspaceOutputValueOutputValue {
+        /**
+         * Name associated with the output.
+         */
+        name: string;
+        /**
+         * Indicates if the output is sensitive.
+         */
+        sensitive: boolean;
+        /**
+         * Value of the output.
+         */
+        value: string;
+    }
+
+    export interface GetWorkspaceTerraformVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key: string;
+        /**
+         * value is the value of the variable
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType: string;
+    }
+
+    export interface GetWorkspaceTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository: string;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         */
+        repositoryBranch: string;
+        /**
+         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         */
+        repositoryCommit: string;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector: string;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath: string;
+    }
+
     export interface GitConnectorCredentials {
         /**
          * Authenticate using Username and password over http(s) for the connection.
@@ -3842,11 +5249,15 @@ export namespace platform {
 
     export interface GitOpsAgentMetadata {
         /**
-         * Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * Indicates if the agent is deployed in HA mode.
          */
         highAvailability?: boolean;
         /**
-         * The k8s namespace that this agent resides in.
+         * Indicates if the agent is namespaced.
+         */
+        isNamespaced?: boolean;
+        /**
+         * The kubernetes namespace where the agent should be installed.
          */
         namespace?: string;
     }
@@ -3870,7 +5281,7 @@ export namespace platform {
         /**
          * Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
          */
-        clusterName?: string;
+        clusterName: string;
         /**
          * Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
          */
@@ -3888,19 +5299,19 @@ export namespace platform {
          */
         labels: {[key: string]: string};
         /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+         * Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
          */
         name?: string;
         /**
-         * Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+         * Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
          */
         namespace: string;
         /**
          * List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
          */
-        ownerReferences?: outputs.platform.GitOpsApplicationsApplicationMetadataOwnerReference[];
+        ownerReferences: outputs.platform.GitOpsApplicationsApplicationMetadataOwnerReference[];
         /**
-         * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+         * UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
          */
         uid: string;
     }
@@ -3909,27 +5320,27 @@ export namespace platform {
         /**
          * API version of the referent.
          */
-        apiVersion?: string;
+        apiVersion: string;
         /**
          * If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
          */
-        blockOwnerDeletion?: boolean;
+        blockOwnerDeletion: boolean;
         /**
          * Indicates if the reference points to the managing controller.
          */
-        controller?: boolean;
+        controller: boolean;
         /**
          * Kind of the referent.
          */
-        kind?: string;
+        kind: string;
         /**
          * Name of the referent.
          */
-        name?: string;
+        name: string;
         /**
          * UID of the referent.
          */
-        uid?: string;
+        uid: string;
     }
 
     export interface GitOpsApplicationsApplicationSpec {
@@ -3938,7 +5349,7 @@ export namespace platform {
          */
         destinations?: outputs.platform.GitOpsApplicationsApplicationSpecDestination[];
         /**
-         * Contains all information about the source of a GitOps application.
+         * Contains all information about the source of the GitOps application.
          */
         sources?: outputs.platform.GitOpsApplicationsApplicationSpecSource[];
         /**
@@ -3957,7 +5368,7 @@ export namespace platform {
          */
         namespace?: string;
         /**
-         * Server of the destination of the GitOps application.
+         * URL of the target cluster server for the GitOps application.
          */
         server?: string;
     }
@@ -3986,7 +5397,7 @@ export namespace platform {
         /**
          * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
          */
-        path: string;
+        path?: string;
         /**
          * Options specific to config management plugins.
          */
@@ -4261,49 +5672,15 @@ export namespace platform {
         maxDuration?: string;
     }
 
-    export interface GitOpsClusterQuery {
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: outputs.platform.GitOpsClusterQueryId[];
-        /**
-         * Name of the GitOps cluster.
-         */
-        name?: string;
-        /**
-         * Server of the GitOps cluster.
-         */
-        server?: string;
-    }
-
-    export interface GitOpsClusterQueryId {
-        /**
-         * Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: string;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: string;
-    }
-
     export interface GitOpsClusterRequest {
         /**
          * GitOps cluster details.
          */
         clusters?: outputs.platform.GitOpsClusterRequestCluster[];
         /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: outputs.platform.GitOpsClusterRequestId[];
-        /**
-         * Tags associated with the clusters
+         * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          */
         tags?: string[];
-        /**
-         * Update mask of the GitOps cluster.
-         */
-        updateMasks?: outputs.platform.GitOpsClusterRequestUpdateMask[];
         /**
          * Fields which are updated.
          */
@@ -4336,7 +5713,7 @@ export namespace platform {
          */
         labels?: {[key: string]: string};
         /**
-         * Name of the cluster. If omitted, will use the server address.
+         * Name of the cluster. If omitted, the server address will be used.
          */
         name?: string;
         /**
@@ -4344,28 +5721,28 @@ export namespace platform {
          */
         namespaces: string[];
         /**
-         * Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+         * The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
          */
         project: string;
         /**
          * Time when cluster cache refresh has been requested.
          */
-        refreshRequestedAts?: outputs.platform.GitOpsClusterRequestClusterRefreshRequestedAt[];
+        refreshRequestedAts: outputs.platform.GitOpsClusterRequestClusterRefreshRequestedAt[];
         /**
          * API server URL of the kubernetes cluster.
          */
         server: string;
         /**
-         * Shard number. Calculated on the fly by the application controller if not specified.
+         * Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
          */
         shard?: string;
     }
 
     export interface GitOpsClusterRequestClusterConfig {
         /**
-         * IAM authentication configuration for AWS.
+         * AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
          */
-        awsAuthConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigAwsAuthConfig[];
+        awsClusterName?: string;
         /**
          * Bearer authentication token the cluster.
          */
@@ -4383,6 +5760,10 @@ export namespace platform {
          */
         password?: string;
         /**
+         * Optional role ARN. If set then used for AWS IAM Authenticator.
+         */
+        roleARN?: string;
+        /**
          * Settings to enable transport layer security.
          */
         tlsClientConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigTlsClientConfig[];
@@ -4390,17 +5771,6 @@ export namespace platform {
          * Username of the server of the cluster.
          */
         username?: string;
-    }
-
-    export interface GitOpsClusterRequestClusterConfigAwsAuthConfig {
-        /**
-         * AWS cluster name.
-         */
-        clusterName?: string;
-        /**
-         * Optional role ARN. If set then used for AWS IAM Authenticator.
-         */
-        roleARN?: string;
     }
 
     export interface GitOpsClusterRequestClusterConfigExecProviderConfig {
@@ -4428,11 +5798,11 @@ export namespace platform {
 
     export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
         /**
-         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
          */
         caData?: string;
         /**
-         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         certData?: string;
         /**
@@ -4440,11 +5810,11 @@ export namespace platform {
          */
         insecure?: boolean;
         /**
-         * Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         keyData?: string;
         /**
-         * Server name for SNI in the client to check server certificates against.
+         * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          */
         serverName?: string;
     }
@@ -4524,24 +5894,6 @@ export namespace platform {
         seconds?: string;
     }
 
-    export interface GitOpsClusterRequestId {
-        /**
-         * Type of the specified cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: string;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: string;
-    }
-
-    export interface GitOpsClusterRequestUpdateMask {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: string[];
-    }
-
     export interface GitOpsGnupgRequest {
         /**
          * Public key details.
@@ -4559,7 +5911,7 @@ export namespace platform {
          */
         fingerprint: string;
         /**
-         * KeyData holds the raw key data, in base64 encoded format
+         * KeyData holds the raw key data, in base64 encoded format.
          */
         keyData: string;
         /**
@@ -4586,7 +5938,7 @@ export namespace platform {
          */
         certificates: outputs.platform.GitOpsRepoCertRequestCertificate[];
         /**
-         * if the Repository Certificates should be upserted.
+         * Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
          */
         upsert?: boolean;
     }
@@ -4604,11 +5956,11 @@ export namespace platform {
 
     export interface GitOpsRepoCertRequestCertificateItem {
         /**
-         * CertData contains the actual certificate data, dependent on the certificate type.
+         * CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
          */
         certData?: string;
         /**
-         * CertInfo will hold additional certificate info, depdendent on the certificate type .
+         * CertInfo will hold additional certificate info, dependent on the certificate type .
          */
         certInfo?: string;
         /**
@@ -4635,7 +5987,7 @@ export namespace platform {
          */
         remainingItemCount?: string;
         /**
-         * dentifies the server's internal version.
+         * Identifies the server's internal version.
          */
         resourceVersion?: string;
         /**
@@ -4666,19 +6018,19 @@ export namespace platform {
          */
         githubAppPrivateKey?: string;
         /**
-         * Password for authenticating at the repo server.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: string;
         /**
-         * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: string;
         /**
-         * Specifies the TLS client cert data for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertData?: string;
         /**
-         * Specifies the TLS client cert key for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertKey?: string;
         /**
@@ -4686,18 +6038,112 @@ export namespace platform {
          */
         type?: string;
         /**
-         * url representing this object.
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
         url?: string;
         /**
-         * Username for authenticating at the repo server.
+         * Username to be used for authenticating the remote repository.
          */
         username?: string;
     }
 
+    export interface GitOpsRepositoryEcrGen {
+        /**
+         * JWT authentication specific configuration.
+         */
+        jwtAuth?: outputs.platform.GitOpsRepositoryEcrGenJwtAuth;
+        /**
+         * AWS region.
+         */
+        region?: string;
+        /**
+         * Secret reference to the AWS credentials.
+         */
+        secretRef?: outputs.platform.GitOpsRepositoryEcrGenSecretRef;
+    }
+
+    export interface GitOpsRepositoryEcrGenJwtAuth {
+        /**
+         * Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+         */
+        audiences?: string[];
+        /**
+         * The name of the ServiceAccount resource being referred to.
+         */
+        name?: string;
+        /**
+         * Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+         */
+        namespace?: string;
+    }
+
+    export interface GitOpsRepositoryEcrGenSecretRef {
+        /**
+         * AWS access key id.
+         */
+        awsAccessKeyId?: string;
+        /**
+         * AWS secret access key.
+         */
+        awsSecretAccessKey?: string;
+        /**
+         * AWS session token.
+         */
+        awsSessionToken?: string;
+    }
+
+    export interface GitOpsRepositoryGcrGen {
+        /**
+         * GCP access key.
+         */
+        accessKey?: string;
+        /**
+         * GCP project id.
+         */
+        projectId?: string;
+        /**
+         * GCP workload identity.
+         */
+        workloadIdentity?: outputs.platform.GitOpsRepositoryGcrGenWorkloadIdentity;
+    }
+
+    export interface GitOpsRepositoryGcrGenWorkloadIdentity {
+        /**
+         * Cluster location.
+         */
+        clusterLocation?: string;
+        /**
+         * Cluster name.
+         */
+        clusterName?: string;
+        /**
+         * Cluster project id.
+         */
+        clusterProjectId?: string;
+        /**
+         * Service account reference.
+         */
+        serviceAccountRef?: outputs.platform.GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef;
+    }
+
+    export interface GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef {
+        /**
+         * Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+         */
+        audiences?: string[];
+        /**
+         * The name of the ServiceAccount resource being referred to.
+         */
+        name?: string;
+        /**
+         * Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+         */
+        namespace?: string;
+    }
+
     export interface GitOpsRepositoryRepo {
         /**
-         * Identifies the authentication method used to connect to the repository.
+         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
          */
         connectionType: string;
         /**
@@ -4725,7 +6171,7 @@ export namespace platform {
          */
         githubAppPrivateKey?: string;
         /**
-         * Indicates if the credentials were inherited from a credential set.
+         * Indicates if the credentials were inherited from a repository credential.
          */
         inheritedCreds?: boolean;
         /**
@@ -4733,7 +6179,7 @@ export namespace platform {
          */
         insecure?: boolean;
         /**
-         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          */
         insecureIgnoreHostKey?: boolean;
         /**
@@ -4741,11 +6187,11 @@ export namespace platform {
          */
         name?: string;
         /**
-         * Password or PAT used for authenticating at the remote repository.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: string;
         /**
-         * Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+         * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
         project: string;
         /**
@@ -4757,15 +6203,15 @@ export namespace platform {
          */
         repo: string;
         /**
-         * PEM data for authenticating at the repo server. Only used with Git repos.
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: string;
         /**
-         * Certificate in PEM format for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertData?: string;
         /**
-         * Private key in PEM format for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertKey?: string;
         /**
@@ -4773,7 +6219,7 @@ export namespace platform {
          */
         type_: string;
         /**
-         * Username used for authenticating at the remote repository.
+         * Username to be used for authenticating the remote repository.
          */
         username?: string;
     }
@@ -4832,9 +6278,17 @@ export namespace platform {
 
     export interface GithubConnectorCredentialsHttp {
         /**
+         * Configuration for using the http anonymous github for interacting with the github api.
+         */
+        anonymouses?: outputs.platform.GithubConnectorCredentialsHttpAnonymouse[];
+        /**
+         * Configuration for using the github app for interacting with the github api.
+         */
+        githubApp?: outputs.platform.GithubConnectorCredentialsHttpGithubApp;
+        /**
          * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        tokenRef: string;
+        tokenRef?: string;
         /**
          * Username to use for authentication.
          */
@@ -4843,6 +6297,32 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface GithubConnectorCredentialsHttpAnonymouse {
+    }
+
+    export interface GithubConnectorCredentialsHttpGithubApp {
+        /**
+         * Enter the GitHub App ID from the GitHub App General tab.
+         */
+        applicationId?: string;
+        /**
+         * Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        applicationIdRef?: string;
+        /**
+         * Enter the Installation ID located in the URL of the installed GitHub App.
+         */
+        installationId?: string;
+        /**
+         * Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        installationIdRef?: string;
+        /**
+         * Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyRef: string;
     }
 
     export interface GithubConnectorCredentialsSsh {
@@ -4911,6 +6391,77 @@ export namespace platform {
         usernameRef?: string;
     }
 
+    export interface InfrastructureGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * message for the commit in Git Repo.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * Flag to set if importing from Git
+         */
+        importFromGit: boolean;
+        /**
+         * Flag to set if force importing from Git
+         */
+        isForceImport: boolean;
+        /**
+         * If the gitProvider is HarnessCode
+         */
+        isHarnesscodeRepo: boolean;
+        /**
+         * If a new branch creation is requested.
+         */
+        isNewBranch: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Infrastructures.
+         */
+        lastObjectId: string;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache: string;
+        /**
+         * Whether the file has to be get from fallback_branch.
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        parentEntityConnectorRef: string;
+        /**
+         * Name of the repository where parent entity lies.
+         */
+        parentEntityRepoName: string;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * store type of the entity.
+         */
+        storeType: string;
+    }
+
     export interface InputSetGitDetails {
         /**
          * Name of the default branch (this checks out a new branch titled by branch_name).
@@ -4919,19 +6470,19 @@ export namespace platform {
         /**
          * Name of the branch.
          */
-        branchName?: string;
+        branchName: string;
         /**
          * Commit message used for the merge commit.
          */
-        commitMessage?: string;
+        commitMessage: string;
         /**
          * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        connectorRef?: string;
+        connectorRef: string;
         /**
          * File path of the Entity in the repository.
          */
-        filePath?: string;
+        filePath: string;
         /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
@@ -4951,11 +6502,42 @@ export namespace platform {
         /**
          * Name of the repository.
          */
-        repoName?: string;
+        repoName: string;
         /**
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
-        storeType?: string;
+        storeType: string;
+    }
+
+    export interface InputSetGitImportInfo {
+        /**
+         * Name of the branch.
+         */
+        branchName?: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: string;
+        isForceImport?: boolean;
+        /**
+         * Name of the repository.
+         */
+        repoName?: string;
+    }
+
+    export interface InputSetInputSetImportRequest {
+        /**
+         * Description of the input set.
+         */
+        inputSetDescription?: string;
+        /**
+         * Name of the input set.
+         */
+        inputSetName?: string;
     }
 
     export interface JenkinsConnectorAuth {
@@ -4982,7 +6564,7 @@ export namespace platform {
 
     export interface JenkinsConnectorAuthJenkinsUserNamePassword {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: string;
         /**
@@ -5001,9 +6583,20 @@ export namespace platform {
          */
         authType: string;
         /**
+         * Authenticate using personal access token.
+         */
+        personalAccessToken?: outputs.platform.JiraConnectorAuthPersonalAccessToken;
+        /**
          * Authenticate using username password.
          */
         usernamePassword?: outputs.platform.JiraConnectorAuthUsernamePassword;
+    }
+
+    export interface JiraConnectorAuthPersonalAccessToken {
+        /**
+         * Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        patRef: string;
     }
 
     export interface JiraConnectorAuthUsernamePassword {
@@ -5091,6 +6684,10 @@ export namespace platform {
     }
 
     export interface KubernetesConnectorServiceAccount {
+        /**
+         * Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        caCertRef?: string;
         /**
          * The URL of the Kubernetes cluster.
          */
@@ -5191,6 +6788,8 @@ export namespace platform {
         description?: string;
         /**
          * Enable or disable the monitored service.
+         *
+         * @deprecated enabled field is deprecated
          */
         enabled?: boolean;
         /**
@@ -5294,6 +6893,10 @@ export namespace platform {
          * Type of the health source.
          */
         type: string;
+        /**
+         * Version of the health source.
+         */
+        version?: string;
     }
 
     export interface MonitoredServiceRequestNotificationRuleRef {
@@ -5309,7 +6912,7 @@ export namespace platform {
 
     export interface NexusConnectorCredentials {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: string;
         /**
@@ -5339,13 +6942,108 @@ export namespace platform {
 
     export interface PipelineFiltersFilterProperties {
         /**
+         * description of the pipline filter.
+         */
+        description?: string;
+        /**
          * Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
          */
         filterType: string;
         /**
+         * module properties of the pipline filter.
+         */
+        moduleProperties?: outputs.platform.PipelineFiltersFilterPropertiesModuleProperties;
+        /**
+         * Name of the pipeline filter.
+         */
+        name?: string;
+        /**
+         * Pipeline identifiers to filter on.
+         */
+        pipelineIdentifiers?: string[];
+        /**
+         * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+         */
+        pipelineTags?: {[key: string]: string}[];
+        /**
          * Tags to associate with the resource. Tags should be in the form `name:value`.
          */
         tags?: string[];
+    }
+
+    export interface PipelineFiltersFilterPropertiesModuleProperties {
+        /**
+         * CD related properties to be filtered on.
+         */
+        cd?: outputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCd;
+        /**
+         * CI related properties to be filtered on.
+         */
+        ci?: outputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCi;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCd {
+        /**
+         * Artifact display names of the CD pipeline.
+         */
+        artifactDisplayNames?: string[];
+        /**
+         * Deployment type of the CD pipeline, eg. Kubernetes
+         */
+        deploymentTypes?: string;
+        /**
+         * Environment names of the CD pipeline.
+         */
+        environmentNames?: string[];
+        /**
+         * Service names of the CD pipeline.
+         */
+        serviceNames?: string[];
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCi {
+        /**
+         * Branch which was used while building.
+         */
+        branch?: string;
+        /**
+         * Build type of the pipeline. Possible values: branch.
+         */
+        buildType?: string;
+        /**
+         * CI execution info for the pipeline.
+         */
+        ciExecutionInfo?: outputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo;
+        /**
+         * name of the repository used in the pipeline.
+         */
+        repoNames?: string;
+        /**
+         * Tags to associate with the CI pipeline resource.
+         */
+        tag?: string;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo {
+        /**
+         * Event for the ci execution, Possible values: pullRequest.
+         */
+        event?: string;
+        /**
+         * The pull request details of the CI pipeline.
+         */
+        pullRequest?: outputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest {
+        /**
+         * Source branch of the pull request.
+         */
+        sourceBranch?: string;
+        /**
+         * Target branch of the pull request.
+         */
+        targetBranch?: string;
     }
 
     export interface PipelineGitDetails {
@@ -5356,19 +7054,19 @@ export namespace platform {
         /**
          * Name of the branch.
          */
-        branchName?: string;
+        branchName: string;
         /**
          * Commit message used for the merge commit.
          */
-        commitMessage?: string;
+        commitMessage: string;
         /**
          * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        connectorRef?: string;
+        connectorRef: string;
         /**
          * File path of the Entity in the repository.
          */
-        filePath?: string;
+        filePath: string;
         /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
@@ -5380,11 +7078,41 @@ export namespace platform {
         /**
          * Name of the repository.
          */
-        repoName?: string;
+        repoName: string;
         /**
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
-        storeType?: string;
+        storeType: string;
+    }
+
+    export interface PipelineGitImportInfo {
+        /**
+         * Name of the branch.
+         */
+        branchName?: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: string;
+        /**
+         * Name of the repository.
+         */
+        repoName?: string;
+    }
+
+    export interface PipelinePipelineImportRequest {
+        /**
+         * Description of the pipeline.
+         */
+        pipelineDescription?: string;
+        /**
+         * Name of the pipeline.
+         */
+        pipelineName?: string;
     }
 
     export interface PolicySetPolicy {
@@ -5415,6 +7143,102 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: boolean;
+    }
+
+    export interface RepoRuleBranchBypass {
+        /**
+         * Allow users with repository edit permission to bypass.
+         */
+        repoOwners?: boolean;
+        /**
+         * List of user ids with who can bypass.
+         */
+        userIds?: string[];
+    }
+
+    export interface RepoRuleBranchPattern {
+        /**
+         * Should rule apply to default branch of the repository.
+         */
+        defaultBranch?: boolean;
+        /**
+         * Globstar branch patterns on which rules will NOT be applied.
+         */
+        excludes?: string[];
+        /**
+         * Globstar branch patterns on which rules will be applied.
+         */
+        includes?: string[];
+    }
+
+    export interface RepoRuleBranchPolicy {
+        /**
+         * Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+         */
+        allowMergeStrategies?: string[];
+        /**
+         * Only allow users with bypass permission to create matching branches.
+         */
+        blockBranchCreation?: boolean;
+        /**
+         * Only allow users with bypass permission to delete matching branches.
+         */
+        blockBranchDeletion?: boolean;
+        /**
+         * Automatically delete the source branch of a pull request after it is merged.
+         */
+        deleteBranchOnMerge?: boolean;
+        /**
+         * Require approval on pull requests from one reviewer for each codeowner rule.
+         */
+        requireCodeOwners?: boolean;
+        /**
+         * Require re-approval when there are new changes in the pull request.
+         */
+        requireLatestCommitApproval?: boolean;
+        /**
+         * Require approval on pull requests from a minimum number of reviewers.
+         */
+        requireMinimumApprovalCount?: number;
+        /**
+         * Require all request for changes have been resolved.
+         */
+        requireNoChangeRequest?: boolean;
+        /**
+         * Do not allow any changes to matching branches without a pull request.
+         */
+        requirePullRequest?: boolean;
+        /**
+         * All comments on a pull request must be resolved before it can be merged.
+         */
+        requireResolveAllComments?: boolean;
+        /**
+         * Selected status checks must pass before a pull request can be merged.
+         */
+        requireStatusChecks?: string[];
+    }
+
+    export interface RepoSource {
+        /**
+         * The host URL for the import source.
+         */
+        host?: string;
+        /**
+         * The password for authentication when importing.
+         */
+        password?: string;
+        /**
+         * The full identifier of the repository on the SCM provider's platform.
+         */
+        repo?: string;
+        /**
+         * The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+         */
+        type?: string;
+        /**
+         * The username for authentication when importing.
+         */
+        username?: string;
     }
 
     export interface ResourceGroupIncludedScope {
@@ -5585,6 +7409,69 @@ export namespace platform {
         userName: string;
     }
 
+    export interface SecretTextAdditionalMetadata {
+        values?: outputs.platform.SecretTextAdditionalMetadataValue[];
+    }
+
+    export interface SecretTextAdditionalMetadataValue {
+        version?: string;
+    }
+
+    export interface ServiceGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo: boolean;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         */
+        lastObjectId: string;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType: string;
+    }
+
     export interface ServiceNowConnectorAuth {
         /**
          * Authenticate using adfs client credentials with certificate.
@@ -5594,6 +7481,10 @@ export namespace platform {
          * Authentication types for Jira connector
          */
         authType: string;
+        /**
+         * Authenticate using refresh token grant type.
+         */
+        refreshToken?: outputs.platform.ServiceNowConnectorAuthRefreshToken;
         /**
          * Authenticate using username password.
          */
@@ -5623,6 +7514,29 @@ export namespace platform {
         resourceIdRef: string;
     }
 
+    export interface ServiceNowConnectorAuthRefreshToken {
+        /**
+         * Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientIdRef: string;
+        /**
+         * Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientSecretRef?: string;
+        /**
+         * Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        refreshTokenRef: string;
+        /**
+         * Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        scope?: string;
+        /**
+         * Token url to use for authentication.
+         */
+        tokenUrl: string;
+    }
+
     export interface ServiceNowConnectorAuthUsernamePassword {
         /**
          * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -5636,6 +7550,61 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface ServiceOverridesV2GitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo: boolean;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating override.
+         */
+        lastObjectId: string;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType: string;
     }
 
     export interface SloRequest {
@@ -5743,6 +7712,10 @@ export namespace platform {
          */
         passwordRef: string;
         /**
+         * Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+         */
+        referenceToken?: string;
+        /**
          * Username to use for authentication.
          */
         username?: string;
@@ -5800,6 +7773,41 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
+    }
+
+    export interface TemplateGitImportDetails {
+        /**
+         * Name of the branch.
+         */
+        branchName?: string;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: string;
+        isForceImport?: boolean;
+        /**
+         * Name of the repository.
+         */
+        repoName?: string;
+    }
+
+    export interface TemplateTemplateImportRequest {
+        /**
+         * Description of the template.
+         */
+        templateDescription?: string;
+        /**
+         * Name of the template.
+         */
+        templateName?: string;
+        /**
+         * Version of the template.
+         */
+        templateVersion?: string;
     }
 
     export interface TerraformCloudConnectorCredentials {
@@ -5875,6 +7883,59 @@ export namespace platform {
          * Type of Value of the Variable. For now only FIXED is supported
          */
         valueType: string;
+    }
+
+    export interface WorkspaceEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the workspace.
+         */
+        key: string;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: string;
+    }
+
+    export interface WorkspaceTerraformVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the workspace.
+         */
+        key: string;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: string;
+    }
+
+    export interface WorkspaceTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository: string;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         */
+        repositoryBranch?: string;
+        /**
+         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         */
+        repositoryCommit?: string;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector: string;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: string;
     }
 
 }

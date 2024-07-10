@@ -21,11 +21,12 @@ class GitOpsRepositoryArgs:
                  identifier: pulumi.Input[str],
                  repos: pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]],
                  creds_only: Optional[pulumi.Input[bool]] = None,
+                 ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
+                 gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
+                 gen_type: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_force_refresh: Optional[pulumi.Input[bool]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[str]] = None,
                  update_masks: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
@@ -35,11 +36,13 @@ class GitOpsRepositoryArgs:
         :param pulumi.Input[str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]] repos: Repo details holding application configurations.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
+        :param pulumi.Input['GitOpsRepositoryEcrGenArgs'] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[str] gen_type: Default: "UNSET"
+               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[bool] query_force_refresh: Indicates to force refresh query for repository.
-        :param pulumi.Input[str] query_project: Project to query for the GitOps repo.
-        :param pulumi.Input[str] query_repo: GitOps repository to query.
+        :param pulumi.Input[str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]] update_masks: Update mask of the repository.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
@@ -49,16 +52,18 @@ class GitOpsRepositoryArgs:
         pulumi.set(__self__, "repos", repos)
         if creds_only is not None:
             pulumi.set(__self__, "creds_only", creds_only)
+        if ecr_gen is not None:
+            pulumi.set(__self__, "ecr_gen", ecr_gen)
+        if gcr_gen is not None:
+            pulumi.set(__self__, "gcr_gen", gcr_gen)
+        if gen_type is not None:
+            pulumi.set(__self__, "gen_type", gen_type)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if query_force_refresh is not None:
-            pulumi.set(__self__, "query_force_refresh", query_force_refresh)
-        if query_project is not None:
-            pulumi.set(__self__, "query_project", query_project)
-        if query_repo is not None:
-            pulumi.set(__self__, "query_repo", query_repo)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if update_masks is not None:
             pulumi.set(__self__, "update_masks", update_masks)
         if upsert is not None:
@@ -125,6 +130,43 @@ class GitOpsRepositoryArgs:
         pulumi.set(self, "creds_only", value)
 
     @property
+    @pulumi.getter(name="ecrGen")
+    def ecr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]:
+        """
+        ECR access token generator specific configuration.
+        """
+        return pulumi.get(self, "ecr_gen")
+
+    @ecr_gen.setter
+    def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
+        pulumi.set(self, "ecr_gen", value)
+
+    @property
+    @pulumi.getter(name="gcrGen")
+    def gcr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]:
+        """
+        GCR access token generator specific configuration.
+        """
+        return pulumi.get(self, "gcr_gen")
+
+    @gcr_gen.setter
+    def gcr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]):
+        pulumi.set(self, "gcr_gen", value)
+
+    @property
+    @pulumi.getter(name="genType")
+    def gen_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default: "UNSET"
+        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        """
+        return pulumi.get(self, "gen_type")
+
+    @gen_type.setter
+    def gen_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gen_type", value)
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -149,40 +191,16 @@ class GitOpsRepositoryArgs:
         pulumi.set(self, "project_id", value)
 
     @property
-    @pulumi.getter(name="queryForceRefresh")
-    def query_force_refresh(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates to force refresh query for repository.
+        For OCI repos, this is the interval to refresh the token to access the registry.
         """
-        return pulumi.get(self, "query_force_refresh")
+        return pulumi.get(self, "refresh_interval")
 
-    @query_force_refresh.setter
-    def query_force_refresh(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "query_force_refresh", value)
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project to query for the GitOps repo.
-        """
-        return pulumi.get(self, "query_project")
-
-    @query_project.setter
-    def query_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_project", value)
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> Optional[pulumi.Input[str]]:
-        """
-        GitOps repository to query.
-        """
-        return pulumi.get(self, "query_repo")
-
-    @query_repo.setter
-    def query_repo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_repo", value)
+    @refresh_interval.setter
+    def refresh_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "refresh_interval", value)
 
     @property
     @pulumi.getter(name="updateMasks")
@@ -215,12 +233,13 @@ class _GitOpsRepositoryState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
+                 ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
+                 gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
+                 gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_force_refresh: Optional[pulumi.Input[bool]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]]] = None,
                  update_masks: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None):
@@ -229,12 +248,14 @@ class _GitOpsRepositoryState:
         :param pulumi.Input[str] account_id: Account identifier of the GitOps repository.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
+        :param pulumi.Input['GitOpsRepositoryEcrGenArgs'] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[str] gen_type: Default: "UNSET"
+               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
         :param pulumi.Input[str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[bool] query_force_refresh: Indicates to force refresh query for repository.
-        :param pulumi.Input[str] query_project: Project to query for the GitOps repo.
-        :param pulumi.Input[str] query_repo: GitOps repository to query.
+        :param pulumi.Input[str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]] repos: Repo details holding application configurations.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]] update_masks: Update mask of the repository.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
@@ -245,18 +266,20 @@ class _GitOpsRepositoryState:
             pulumi.set(__self__, "agent_id", agent_id)
         if creds_only is not None:
             pulumi.set(__self__, "creds_only", creds_only)
+        if ecr_gen is not None:
+            pulumi.set(__self__, "ecr_gen", ecr_gen)
+        if gcr_gen is not None:
+            pulumi.set(__self__, "gcr_gen", gcr_gen)
+        if gen_type is not None:
+            pulumi.set(__self__, "gen_type", gen_type)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if query_force_refresh is not None:
-            pulumi.set(__self__, "query_force_refresh", query_force_refresh)
-        if query_project is not None:
-            pulumi.set(__self__, "query_project", query_project)
-        if query_repo is not None:
-            pulumi.set(__self__, "query_repo", query_repo)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if repos is not None:
             pulumi.set(__self__, "repos", repos)
         if update_masks is not None:
@@ -301,6 +324,43 @@ class _GitOpsRepositoryState:
         pulumi.set(self, "creds_only", value)
 
     @property
+    @pulumi.getter(name="ecrGen")
+    def ecr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]:
+        """
+        ECR access token generator specific configuration.
+        """
+        return pulumi.get(self, "ecr_gen")
+
+    @ecr_gen.setter
+    def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
+        pulumi.set(self, "ecr_gen", value)
+
+    @property
+    @pulumi.getter(name="gcrGen")
+    def gcr_gen(self) -> Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]:
+        """
+        GCR access token generator specific configuration.
+        """
+        return pulumi.get(self, "gcr_gen")
+
+    @gcr_gen.setter
+    def gcr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']]):
+        pulumi.set(self, "gcr_gen", value)
+
+    @property
+    @pulumi.getter(name="genType")
+    def gen_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default: "UNSET"
+        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        """
+        return pulumi.get(self, "gen_type")
+
+    @gen_type.setter
+    def gen_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gen_type", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -337,40 +397,16 @@ class _GitOpsRepositoryState:
         pulumi.set(self, "project_id", value)
 
     @property
-    @pulumi.getter(name="queryForceRefresh")
-    def query_force_refresh(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates to force refresh query for repository.
+        For OCI repos, this is the interval to refresh the token to access the registry.
         """
-        return pulumi.get(self, "query_force_refresh")
+        return pulumi.get(self, "refresh_interval")
 
-    @query_force_refresh.setter
-    def query_force_refresh(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "query_force_refresh", value)
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Project to query for the GitOps repo.
-        """
-        return pulumi.get(self, "query_project")
-
-    @query_project.setter
-    def query_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_project", value)
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> Optional[pulumi.Input[str]]:
-        """
-        GitOps repository to query.
-        """
-        return pulumi.get(self, "query_repo")
-
-    @query_repo.setter
-    def query_repo(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query_repo", value)
+    @refresh_interval.setter
+    def refresh_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "refresh_interval", value)
 
     @property
     @pulumi.getter
@@ -417,46 +453,32 @@ class GitOpsRepository(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
+                 ecr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryEcrGenArgs']]] = None,
+                 gcr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryGcrGenArgs']]] = None,
+                 gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_force_refresh: Optional[pulumi.Input[bool]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryRepoArgs']]]]] = None,
                  update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryUpdateMaskArgs']]]]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Resource for creating Harness Gitops Repositories.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.GitOpsRepository("example",
-            identifier="identifier",
-            account_id="account_id",
-            project_id="project_id",
-            org_id="org_id",
-            agent_id="agent_id",
-            repos=[harness.platform.GitOpsRepositoryRepoArgs(
-                repo="https://github.com/willycoll/argocd-example-apps.git",
-                name="repo_name",
-                insecure=True,
-                connection_type="HTTPS_ANONYMOUS",
-            )],
-            upsert=True)
-        ```
+        Resource for managing Harness Gitops Repository.
 
         ## Import
 
-        Import a Account level Gitops Repository
+        Import an Account level Gitops Repository
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+        ```
+
+        Import an Org level Gitops Repository
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<agent_id>/<respository_id>
         ```
 
         Import a Project level Gitops Repository
@@ -470,12 +492,14 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account identifier of the GitOps repository.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
+        :param pulumi.Input[pulumi.InputType['GitOpsRepositoryEcrGenArgs']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[pulumi.InputType['GitOpsRepositoryGcrGenArgs']] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[str] gen_type: Default: "UNSET"
+               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
         :param pulumi.Input[str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[bool] query_force_refresh: Indicates to force refresh query for repository.
-        :param pulumi.Input[str] query_project: Project to query for the GitOps repo.
-        :param pulumi.Input[str] query_repo: GitOps repository to query.
+        :param pulumi.Input[str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryRepoArgs']]]] repos: Repo details holding application configurations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryUpdateMaskArgs']]]] update_masks: Update mask of the repository.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
@@ -487,35 +511,20 @@ class GitOpsRepository(pulumi.CustomResource):
                  args: GitOpsRepositoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating Harness Gitops Repositories.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.GitOpsRepository("example",
-            identifier="identifier",
-            account_id="account_id",
-            project_id="project_id",
-            org_id="org_id",
-            agent_id="agent_id",
-            repos=[harness.platform.GitOpsRepositoryRepoArgs(
-                repo="https://github.com/willycoll/argocd-example-apps.git",
-                name="repo_name",
-                insecure=True,
-                connection_type="HTTPS_ANONYMOUS",
-            )],
-            upsert=True)
-        ```
+        Resource for managing Harness Gitops Repository.
 
         ## Import
 
-        Import a Account level Gitops Repository
+        Import an Account level Gitops Repository
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <agent_id>/<respository_id>
+        ```
+
+        Import an Org level Gitops Repository
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example <organization_id>/<agent_id>/<respository_id>
         ```
 
         Import a Project level Gitops Repository
@@ -542,12 +551,13 @@ class GitOpsRepository(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
+                 ecr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryEcrGenArgs']]] = None,
+                 gcr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryGcrGenArgs']]] = None,
+                 gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 query_force_refresh: Optional[pulumi.Input[bool]] = None,
-                 query_project: Optional[pulumi.Input[str]] = None,
-                 query_repo: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryRepoArgs']]]]] = None,
                  update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryUpdateMaskArgs']]]]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
@@ -567,14 +577,15 @@ class GitOpsRepository(pulumi.CustomResource):
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["creds_only"] = creds_only
+            __props__.__dict__["ecr_gen"] = ecr_gen
+            __props__.__dict__["gcr_gen"] = gcr_gen
+            __props__.__dict__["gen_type"] = gen_type
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
-            __props__.__dict__["query_force_refresh"] = query_force_refresh
-            __props__.__dict__["query_project"] = query_project
-            __props__.__dict__["query_repo"] = query_repo
+            __props__.__dict__["refresh_interval"] = refresh_interval
             if repos is None and not opts.urn:
                 raise TypeError("Missing required property 'repos'")
             __props__.__dict__["repos"] = repos
@@ -593,12 +604,13 @@ class GitOpsRepository(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             agent_id: Optional[pulumi.Input[str]] = None,
             creds_only: Optional[pulumi.Input[bool]] = None,
+            ecr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryEcrGenArgs']]] = None,
+            gcr_gen: Optional[pulumi.Input[pulumi.InputType['GitOpsRepositoryGcrGenArgs']]] = None,
+            gen_type: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            query_force_refresh: Optional[pulumi.Input[bool]] = None,
-            query_project: Optional[pulumi.Input[str]] = None,
-            query_repo: Optional[pulumi.Input[str]] = None,
+            refresh_interval: Optional[pulumi.Input[str]] = None,
             repos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryRepoArgs']]]]] = None,
             update_masks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryUpdateMaskArgs']]]]] = None,
             upsert: Optional[pulumi.Input[bool]] = None) -> 'GitOpsRepository':
@@ -612,12 +624,14 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account identifier of the GitOps repository.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
+        :param pulumi.Input[pulumi.InputType['GitOpsRepositoryEcrGenArgs']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[pulumi.InputType['GitOpsRepositoryGcrGenArgs']] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[str] gen_type: Default: "UNSET"
+               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
         :param pulumi.Input[str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[bool] query_force_refresh: Indicates to force refresh query for repository.
-        :param pulumi.Input[str] query_project: Project to query for the GitOps repo.
-        :param pulumi.Input[str] query_repo: GitOps repository to query.
+        :param pulumi.Input[str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryRepoArgs']]]] repos: Repo details holding application configurations.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepositoryUpdateMaskArgs']]]] update_masks: Update mask of the repository.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
@@ -629,12 +643,13 @@ class GitOpsRepository(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["creds_only"] = creds_only
+        __props__.__dict__["ecr_gen"] = ecr_gen
+        __props__.__dict__["gcr_gen"] = gcr_gen
+        __props__.__dict__["gen_type"] = gen_type
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
-        __props__.__dict__["query_force_refresh"] = query_force_refresh
-        __props__.__dict__["query_project"] = query_project
-        __props__.__dict__["query_repo"] = query_repo
+        __props__.__dict__["refresh_interval"] = refresh_interval
         __props__.__dict__["repos"] = repos
         __props__.__dict__["update_masks"] = update_masks
         __props__.__dict__["upsert"] = upsert
@@ -665,6 +680,31 @@ class GitOpsRepository(pulumi.CustomResource):
         return pulumi.get(self, "creds_only")
 
     @property
+    @pulumi.getter(name="ecrGen")
+    def ecr_gen(self) -> pulumi.Output[Optional['outputs.GitOpsRepositoryEcrGen']]:
+        """
+        ECR access token generator specific configuration.
+        """
+        return pulumi.get(self, "ecr_gen")
+
+    @property
+    @pulumi.getter(name="gcrGen")
+    def gcr_gen(self) -> pulumi.Output[Optional['outputs.GitOpsRepositoryGcrGen']]:
+        """
+        GCR access token generator specific configuration.
+        """
+        return pulumi.get(self, "gcr_gen")
+
+    @property
+    @pulumi.getter(name="genType")
+    def gen_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Default: "UNSET"
+        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        """
+        return pulumi.get(self, "gen_type")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -689,28 +729,12 @@ class GitOpsRepository(pulumi.CustomResource):
         return pulumi.get(self, "project_id")
 
     @property
-    @pulumi.getter(name="queryForceRefresh")
-    def query_force_refresh(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates to force refresh query for repository.
+        For OCI repos, this is the interval to refresh the token to access the registry.
         """
-        return pulumi.get(self, "query_force_refresh")
-
-    @property
-    @pulumi.getter(name="queryProject")
-    def query_project(self) -> pulumi.Output[Optional[str]]:
-        """
-        Project to query for the GitOps repo.
-        """
-        return pulumi.get(self, "query_project")
-
-    @property
-    @pulumi.getter(name="queryRepo")
-    def query_repo(self) -> pulumi.Output[Optional[str]]:
-        """
-        GitOps repository to query.
-        """
-        return pulumi.get(self, "query_repo")
+        return pulumi.get(self, "refresh_interval")
 
     @property
     @pulumi.getter

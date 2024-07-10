@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getService:getService", {
+        "gitDetails": args.gitDetails,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
@@ -35,6 +38,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
+    gitDetails?: inputs.platform.GetServiceGitDetails;
     /**
      * Unique identifier of the resource.
      */
@@ -61,6 +65,7 @@ export interface GetServiceResult {
      * Description of the resource.
      */
     readonly description: string;
+    readonly gitDetails: outputs.platform.GetServiceGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -114,6 +119,7 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
+    gitDetails?: pulumi.Input<inputs.platform.GetServiceGitDetailsArgs>;
     /**
      * Unique identifier of the resource.
      */

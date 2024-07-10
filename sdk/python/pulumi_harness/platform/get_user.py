@@ -145,8 +145,6 @@ def get_user(email: Optional[str] = None,
              project_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Data source for retrieving the user based on the API key.
-
     ## Example Usage
 
     ```python
@@ -188,8 +186,6 @@ def get_user_output(email: Optional[pulumi.Input[str]] = None,
                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Data source for retrieving the user based on the API key.
-
     ## Example Usage
 
     ```python

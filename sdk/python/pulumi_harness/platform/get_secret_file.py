@@ -146,8 +146,6 @@ def get_secret_file(identifier: Optional[str] = None,
                     project_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretFileResult:
     """
-    Datasource for looking up secert file type secret.
-
     ## Example Usage
 
     ```python
@@ -190,8 +188,6 @@ def get_secret_file_output(identifier: Optional[pulumi.Input[str]] = None,
                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretFileResult]:
     """
-    Datasource for looking up secert file type secret.
-
     ## Example Usage
 
     ```python

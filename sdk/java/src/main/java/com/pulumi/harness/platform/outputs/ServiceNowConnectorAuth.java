@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.ServiceNowConnectorAuthAdfs;
+import com.pulumi.harness.platform.outputs.ServiceNowConnectorAuthRefreshToken;
 import com.pulumi.harness.platform.outputs.ServiceNowConnectorAuthUsernamePassword;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class ServiceNowConnectorAuth {
      * 
      */
     private String authType;
+    /**
+     * @return Authenticate using refresh token grant type.
+     * 
+     */
+    private @Nullable ServiceNowConnectorAuthRefreshToken refreshToken;
     /**
      * @return Authenticate using username password.
      * 
@@ -46,6 +52,13 @@ public final class ServiceNowConnectorAuth {
         return this.authType;
     }
     /**
+     * @return Authenticate using refresh token grant type.
+     * 
+     */
+    public Optional<ServiceNowConnectorAuthRefreshToken> refreshToken() {
+        return Optional.ofNullable(this.refreshToken);
+    }
+    /**
      * @return Authenticate using username password.
      * 
      */
@@ -64,12 +77,14 @@ public final class ServiceNowConnectorAuth {
     public static final class Builder {
         private @Nullable ServiceNowConnectorAuthAdfs adfs;
         private String authType;
+        private @Nullable ServiceNowConnectorAuthRefreshToken refreshToken;
         private @Nullable ServiceNowConnectorAuthUsernamePassword usernamePassword;
         public Builder() {}
         public Builder(ServiceNowConnectorAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adfs = defaults.adfs;
     	      this.authType = defaults.authType;
+    	      this.refreshToken = defaults.refreshToken;
     	      this.usernamePassword = defaults.usernamePassword;
         }
 
@@ -88,6 +103,12 @@ public final class ServiceNowConnectorAuth {
             return this;
         }
         @CustomType.Setter
+        public Builder refreshToken(@Nullable ServiceNowConnectorAuthRefreshToken refreshToken) {
+
+            this.refreshToken = refreshToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usernamePassword(@Nullable ServiceNowConnectorAuthUsernamePassword usernamePassword) {
 
             this.usernamePassword = usernamePassword;
@@ -97,6 +118,7 @@ public final class ServiceNowConnectorAuth {
             final var _resultValue = new ServiceNowConnectorAuth();
             _resultValue.adfs = adfs;
             _resultValue.authType = authType;
+            _resultValue.refreshToken = refreshToken;
             _resultValue.usernamePassword = usernamePassword;
             return _resultValue;
         }

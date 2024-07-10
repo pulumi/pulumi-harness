@@ -77,6 +77,9 @@ namespace Pulumi.Harness.Platform
         [Input("envId", required: true)]
         public string EnvId { get; set; } = null!;
 
+        [Input("gitDetails")]
+        public Inputs.GetInfrastructureGitDetailsArgs? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -114,6 +117,9 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
+
+        [Input("gitDetails")]
+        public Input<Inputs.GetInfrastructureGitDetailsInputArgs>? GitDetails { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -161,6 +167,7 @@ namespace Pulumi.Harness.Platform
         /// environment identifier.
         /// </summary>
         public readonly string EnvId;
+        public readonly Outputs.GetInfrastructureGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -186,7 +193,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        /// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -201,6 +208,8 @@ namespace Pulumi.Harness.Platform
             string description,
 
             string envId,
+
+            Outputs.GetInfrastructureGitDetailsResult gitDetails,
 
             string id,
 
@@ -221,6 +230,7 @@ namespace Pulumi.Harness.Platform
             DeploymentType = deploymentType;
             Description = description;
             EnvId = envId;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Name = name;

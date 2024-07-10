@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetEnvironmentClustersMappingResult',
@@ -21,7 +23,10 @@ class GetEnvironmentClustersMappingResult:
     """
     A collection of values returned by getEnvironmentClustersMapping.
     """
-    def __init__(__self__, env_id=None, id=None, identifier=None, org_id=None, project_id=None, scope=None):
+    def __init__(__self__, clusters=None, env_id=None, id=None, identifier=None, org_id=None, project_id=None, scope=None):
+        if clusters and not isinstance(clusters, list):
+            raise TypeError("Expected argument 'clusters' to be a list")
+        pulumi.set(__self__, "clusters", clusters)
         if env_id and not isinstance(env_id, str):
             raise TypeError("Expected argument 'env_id' to be a str")
         pulumi.set(__self__, "env_id", env_id)
@@ -42,10 +47,18 @@ class GetEnvironmentClustersMappingResult:
         pulumi.set(__self__, "scope", scope)
 
     @property
+    @pulumi.getter
+    def clusters(self) -> Optional[Sequence['outputs.GetEnvironmentClustersMappingClusterResult']]:
+        """
+        list of cluster identifiers and names
+        """
+        return pulumi.get(self, "clusters")
+
+    @property
     @pulumi.getter(name="envId")
     def env_id(self) -> str:
         """
-        environment identifier of the cluster.
+        environment identifier.
         """
         return pulumi.get(self, "env_id")
 
@@ -61,7 +74,7 @@ class GetEnvironmentClustersMappingResult:
     @pulumi.getter
     def identifier(self) -> str:
         """
-        identifier of the cluster.
+        identifier for the cluster mapping(can be given any value).
         """
         return pulumi.get(self, "identifier")
 
@@ -69,7 +82,7 @@ class GetEnvironmentClustersMappingResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        org_id of the cluster.
+        org_id of the environment.
         """
         return pulumi.get(self, "org_id")
 
@@ -77,7 +90,7 @@ class GetEnvironmentClustersMappingResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        project_id of the cluster.
+        project_id of the environment.
         """
         return pulumi.get(self, "project_id")
 
@@ -85,7 +98,7 @@ class GetEnvironmentClustersMappingResult:
     @pulumi.getter
     def scope(self) -> str:
         """
-        scope at which the cluster exists in harness gitops
+        scope at which the environment exists in harness.
         """
         return pulumi.get(self, "scope")
 
@@ -96,6 +109,7 @@ class AwaitableGetEnvironmentClustersMappingResult(GetEnvironmentClustersMapping
         if False:
             yield self
         return GetEnvironmentClustersMappingResult(
+            clusters=self.clusters,
             env_id=self.env_id,
             id=self.id,
             identifier=self.identifier,
@@ -104,13 +118,14 @@ class AwaitableGetEnvironmentClustersMappingResult(GetEnvironmentClustersMapping
             scope=self.scope)
 
 
-def get_environment_clusters_mapping(env_id: Optional[str] = None,
+def get_environment_clusters_mapping(clusters: Optional[Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']]] = None,
+                                     env_id: Optional[str] = None,
                                      identifier: Optional[str] = None,
                                      org_id: Optional[str] = None,
                                      project_id: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentClustersMappingResult:
     """
-    Data source for retrieving a Harness Cluster.
+    Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
 
     ## Example Usage
 
@@ -118,18 +133,45 @@ def get_environment_clusters_mapping(env_id: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_environment_clusters_mapping(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id")
+    # data source for gitops clusters mapped to a project level env
+    example = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
+        org_id="orgIdentifer",
+        project_id="projectIdentifier",
+        env_id="exampleEnvId",
+        clusters=[harness.platform.GetEnvironmentClustersMappingClusterArgs(
+            identifier="incluster",
+            name="in-cluster",
+            agent_identifier="account.gitopsagentdev",
+            scope="ACCOUNT",
+        )])
+    # data source for two gitops clusters mapped to an account level env
+    example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
+        env_id="env1",
+        clusters=[
+            harness.platform.GetEnvironmentClustersMappingClusterArgs(
+                identifier="clusterA",
+                name="cluster-A",
+                agent_identifier="account.gitopsagentprod",
+                scope="ACCOUNT",
+            ),
+            harness.platform.GetEnvironmentClustersMappingClusterArgs(
+                identifier="clusterB",
+                name="cluster-B",
+                agent_identifier="account.gitopsagentprod",
+                scope="ACCOUNT",
+            ),
+        ])
     ```
 
 
-    :param str env_id: environment identifier of the cluster.
-    :param str identifier: identifier of the cluster.
-    :param str org_id: org_id of the cluster.
-    :param str project_id: project_id of the cluster.
+    :param Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']] clusters: list of cluster identifiers and names
+    :param str env_id: environment identifier.
+    :param str identifier: identifier for the cluster mapping(can be given any value).
+    :param str org_id: org_id of the environment.
+    :param str project_id: project_id of the environment.
     """
     __args__ = dict()
+    __args__['clusters'] = clusters
     __args__['envId'] = env_id
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
@@ -138,6 +180,7 @@ def get_environment_clusters_mapping(env_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping', __args__, opts=opts, typ=GetEnvironmentClustersMappingResult).value
 
     return AwaitableGetEnvironmentClustersMappingResult(
+        clusters=pulumi.get(__ret__, 'clusters'),
         env_id=pulumi.get(__ret__, 'env_id'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
@@ -147,13 +190,14 @@ def get_environment_clusters_mapping(env_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_environment_clusters_mapping)
-def get_environment_clusters_mapping_output(env_id: Optional[pulumi.Input[str]] = None,
+def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']]]]] = None,
+                                            env_id: Optional[pulumi.Input[str]] = None,
                                             identifier: Optional[pulumi.Input[str]] = None,
                                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentClustersMappingResult]:
     """
-    Data source for retrieving a Harness Cluster.
+    Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
 
     ## Example Usage
 
@@ -161,15 +205,41 @@ def get_environment_clusters_mapping_output(env_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_harness as harness
 
-    example = harness.platform.get_environment_clusters_mapping(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id")
+    # data source for gitops clusters mapped to a project level env
+    example = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
+        org_id="orgIdentifer",
+        project_id="projectIdentifier",
+        env_id="exampleEnvId",
+        clusters=[harness.platform.GetEnvironmentClustersMappingClusterArgs(
+            identifier="incluster",
+            name="in-cluster",
+            agent_identifier="account.gitopsagentdev",
+            scope="ACCOUNT",
+        )])
+    # data source for two gitops clusters mapped to an account level env
+    example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
+        env_id="env1",
+        clusters=[
+            harness.platform.GetEnvironmentClustersMappingClusterArgs(
+                identifier="clusterA",
+                name="cluster-A",
+                agent_identifier="account.gitopsagentprod",
+                scope="ACCOUNT",
+            ),
+            harness.platform.GetEnvironmentClustersMappingClusterArgs(
+                identifier="clusterB",
+                name="cluster-B",
+                agent_identifier="account.gitopsagentprod",
+                scope="ACCOUNT",
+            ),
+        ])
     ```
 
 
-    :param str env_id: environment identifier of the cluster.
-    :param str identifier: identifier of the cluster.
-    :param str org_id: org_id of the cluster.
-    :param str project_id: project_id of the cluster.
+    :param Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']] clusters: list of cluster identifiers and names
+    :param str env_id: environment identifier.
+    :param str identifier: identifier for the cluster mapping(can be given any value).
+    :param str org_id: org_id of the environment.
+    :param str project_id: project_id of the environment.
     """
     ...

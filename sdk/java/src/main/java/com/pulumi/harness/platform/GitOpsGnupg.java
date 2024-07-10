@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * GPG public key in the server&#39;s configuration.
+ * Resource for managing Harness GitOps GPG public key.
  * 
  * ## Example Usage
  * 
@@ -64,13 +64,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import a Account level Gitops Cluster
+ * Import an Account level Gitops GnuPG Key
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example &lt;agent_id&gt;/&lt;key_id&gt;
  * ```
  * 
- * Import a Project level Gitops Cluster
+ * Import an Org level Gitops GnuPG Key
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;key_id&gt;
+ * ```
+ * 
+ * Import a Project level Gitops GnuPG Key
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsGnupg:GitOpsGnupg example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;key_id&gt;

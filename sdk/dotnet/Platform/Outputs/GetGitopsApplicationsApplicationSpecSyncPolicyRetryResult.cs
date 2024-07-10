@@ -20,13 +20,13 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
         /// </summary>
-        public readonly string? Limit;
+        public readonly string Limit;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult(
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult> backoffs,
 
-            string? limit)
+            string limit)
         {
             Backoffs = backoffs;
             Limit = limit;

@@ -50,6 +50,8 @@ func LookupSecretText(ctx *pulumi.Context, args *LookupSecretTextArgs, opts ...p
 
 // A collection of arguments for invoking getSecretText.
 type LookupSecretTextArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []GetSecretTextAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -62,6 +64,8 @@ type LookupSecretTextArgs struct {
 
 // A collection of values returned by getSecretText.
 type LookupSecretTextResult struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []GetSecretTextAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -99,6 +103,8 @@ func LookupSecretTextOutput(ctx *pulumi.Context, args LookupSecretTextOutputArgs
 
 // A collection of arguments for invoking getSecretText.
 type LookupSecretTextOutputArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas GetSecretTextAdditionalMetadataArrayInput `pulumi:"additionalMetadatas"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -126,6 +132,11 @@ func (o LookupSecretTextResultOutput) ToLookupSecretTextResultOutput() LookupSec
 
 func (o LookupSecretTextResultOutput) ToLookupSecretTextResultOutputWithContext(ctx context.Context) LookupSecretTextResultOutput {
 	return o
+}
+
+// Additional Metadata for the Secret
+func (o LookupSecretTextResultOutput) AdditionalMetadatas() GetSecretTextAdditionalMetadataArrayOutput {
+	return o.ApplyT(func(v LookupSecretTextResult) []GetSecretTextAdditionalMetadata { return v.AdditionalMetadatas }).(GetSecretTextAdditionalMetadataArrayOutput)
 }
 
 // Description of the resource.

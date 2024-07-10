@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetServiceResult',
@@ -21,10 +23,13 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, yaml=None):
+    def __init__(__self__, description=None, git_details=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, yaml=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if git_details and not isinstance(git_details, dict):
+            raise TypeError("Expected argument 'git_details' to be a dict")
+        pulumi.set(__self__, "git_details", git_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,6 +59,11 @@ class GetServiceResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> 'outputs.GetServiceGitDetailsResult':
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
@@ -119,6 +129,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             yield self
         return GetServiceResult(
             description=self.description,
+            git_details=self.git_details,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -128,7 +139,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             yaml=self.yaml)
 
 
-def get_service(identifier: Optional[str] = None,
+def get_service(git_details: Optional[pulumi.InputType['GetServiceGitDetailsArgs']] = None,
+                identifier: Optional[str] = None,
                 name: Optional[str] = None,
                 org_id: Optional[str] = None,
                 project_id: Optional[str] = None,
@@ -154,6 +166,7 @@ def get_service(identifier: Optional[str] = None,
     :param str project_id: Unique identifier of the project.
     """
     __args__ = dict()
+    __args__['gitDetails'] = git_details
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
@@ -163,6 +176,7 @@ def get_service(identifier: Optional[str] = None,
 
     return AwaitableGetServiceResult(
         description=pulumi.get(__ret__, 'description'),
+        git_details=pulumi.get(__ret__, 'git_details'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -173,7 +187,8 @@ def get_service(identifier: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_service)
-def get_service_output(identifier: Optional[pulumi.Input[str]] = None,
+def get_service_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceGitDetailsArgs']]]] = None,
+                       identifier: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        org_id: Optional[pulumi.Input[Optional[str]]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,

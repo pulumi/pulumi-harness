@@ -18,7 +18,7 @@ public final class GitOpsGnupgRequestPublickey {
      */
     private @Nullable String fingerprint;
     /**
-     * @return KeyData holds the raw key data, in base64 encoded format
+     * @return KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     private String keyData;
@@ -52,7 +52,7 @@ public final class GitOpsGnupgRequestPublickey {
         return Optional.ofNullable(this.fingerprint);
     }
     /**
-     * @return KeyData holds the raw key data, in base64 encoded format
+     * @return KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     public String keyData() {

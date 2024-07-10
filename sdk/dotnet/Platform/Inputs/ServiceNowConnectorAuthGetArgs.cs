@@ -25,6 +25,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> AuthType { get; set; } = null!;
 
         /// <summary>
+        /// Authenticate using refresh token grant type.
+        /// </summary>
+        [Input("refreshToken")]
+        public Input<Inputs.ServiceNowConnectorAuthRefreshTokenGetArgs>? RefreshToken { get; set; }
+
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         [Input("usernamePassword")]

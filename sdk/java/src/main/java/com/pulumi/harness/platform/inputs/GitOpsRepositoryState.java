@@ -5,6 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.GitOpsRepositoryEcrGenArgs;
+import com.pulumi.harness.platform.inputs.GitOpsRepositoryGcrGenArgs;
 import com.pulumi.harness.platform.inputs.GitOpsRepositoryRepoArgs;
 import com.pulumi.harness.platform.inputs.GitOpsRepositoryUpdateMaskArgs;
 import java.lang.Boolean;
@@ -65,6 +67,53 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * ECR access token generator specific configuration.
+     * 
+     */
+    @Import(name="ecrGen")
+    private @Nullable Output<GitOpsRepositoryEcrGenArgs> ecrGen;
+
+    /**
+     * @return ECR access token generator specific configuration.
+     * 
+     */
+    public Optional<Output<GitOpsRepositoryEcrGenArgs>> ecrGen() {
+        return Optional.ofNullable(this.ecrGen);
+    }
+
+    /**
+     * GCR access token generator specific configuration.
+     * 
+     */
+    @Import(name="gcrGen")
+    private @Nullable Output<GitOpsRepositoryGcrGenArgs> gcrGen;
+
+    /**
+     * @return GCR access token generator specific configuration.
+     * 
+     */
+    public Optional<Output<GitOpsRepositoryGcrGenArgs>> gcrGen() {
+        return Optional.ofNullable(this.gcrGen);
+    }
+
+    /**
+     * Default: &#34;UNSET&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * 
+     */
+    @Import(name="genType")
+    private @Nullable Output<String> genType;
+
+    /**
+     * @return Default: &#34;UNSET&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * 
+     */
+    public Optional<Output<String>> genType() {
+        return Optional.ofNullable(this.genType);
+    }
+
+    /**
      * Identifier of the GitOps repository.
      * 
      */
@@ -110,48 +159,18 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates to force refresh query for repository.
+     * For OCI repos, this is the interval to refresh the token to access the registry.
      * 
      */
-    @Import(name="queryForceRefresh")
-    private @Nullable Output<Boolean> queryForceRefresh;
+    @Import(name="refreshInterval")
+    private @Nullable Output<String> refreshInterval;
 
     /**
-     * @return Indicates to force refresh query for repository.
+     * @return For OCI repos, this is the interval to refresh the token to access the registry.
      * 
      */
-    public Optional<Output<Boolean>> queryForceRefresh() {
-        return Optional.ofNullable(this.queryForceRefresh);
-    }
-
-    /**
-     * Project to query for the GitOps repo.
-     * 
-     */
-    @Import(name="queryProject")
-    private @Nullable Output<String> queryProject;
-
-    /**
-     * @return Project to query for the GitOps repo.
-     * 
-     */
-    public Optional<Output<String>> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-
-    /**
-     * GitOps repository to query.
-     * 
-     */
-    @Import(name="queryRepo")
-    private @Nullable Output<String> queryRepo;
-
-    /**
-     * @return GitOps repository to query.
-     * 
-     */
-    public Optional<Output<String>> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
+    public Optional<Output<String>> refreshInterval() {
+        return Optional.ofNullable(this.refreshInterval);
     }
 
     /**
@@ -205,12 +224,13 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         this.accountId = $.accountId;
         this.agentId = $.agentId;
         this.credsOnly = $.credsOnly;
+        this.ecrGen = $.ecrGen;
+        this.gcrGen = $.gcrGen;
+        this.genType = $.genType;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.queryForceRefresh = $.queryForceRefresh;
-        this.queryProject = $.queryProject;
-        this.queryRepo = $.queryRepo;
+        this.refreshInterval = $.refreshInterval;
         this.repos = $.repos;
         this.updateMasks = $.updateMasks;
         this.upsert = $.upsert;
@@ -298,6 +318,71 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param ecrGen ECR access token generator specific configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecrGen(@Nullable Output<GitOpsRepositoryEcrGenArgs> ecrGen) {
+            $.ecrGen = ecrGen;
+            return this;
+        }
+
+        /**
+         * @param ecrGen ECR access token generator specific configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecrGen(GitOpsRepositoryEcrGenArgs ecrGen) {
+            return ecrGen(Output.of(ecrGen));
+        }
+
+        /**
+         * @param gcrGen GCR access token generator specific configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcrGen(@Nullable Output<GitOpsRepositoryGcrGenArgs> gcrGen) {
+            $.gcrGen = gcrGen;
+            return this;
+        }
+
+        /**
+         * @param gcrGen GCR access token generator specific configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcrGen(GitOpsRepositoryGcrGenArgs gcrGen) {
+            return gcrGen(Output.of(gcrGen));
+        }
+
+        /**
+         * @param genType Default: &#34;UNSET&#34;
+         * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genType(@Nullable Output<String> genType) {
+            $.genType = genType;
+            return this;
+        }
+
+        /**
+         * @param genType Default: &#34;UNSET&#34;
+         * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genType(String genType) {
+            return genType(Output.of(genType));
+        }
+
+        /**
          * @param identifier Identifier of the GitOps repository.
          * 
          * @return builder
@@ -361,66 +446,24 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryForceRefresh Indicates to force refresh query for repository.
+         * @param refreshInterval For OCI repos, this is the interval to refresh the token to access the registry.
          * 
          * @return builder
          * 
          */
-        public Builder queryForceRefresh(@Nullable Output<Boolean> queryForceRefresh) {
-            $.queryForceRefresh = queryForceRefresh;
+        public Builder refreshInterval(@Nullable Output<String> refreshInterval) {
+            $.refreshInterval = refreshInterval;
             return this;
         }
 
         /**
-         * @param queryForceRefresh Indicates to force refresh query for repository.
+         * @param refreshInterval For OCI repos, this is the interval to refresh the token to access the registry.
          * 
          * @return builder
          * 
          */
-        public Builder queryForceRefresh(Boolean queryForceRefresh) {
-            return queryForceRefresh(Output.of(queryForceRefresh));
-        }
-
-        /**
-         * @param queryProject Project to query for the GitOps repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(@Nullable Output<String> queryProject) {
-            $.queryProject = queryProject;
-            return this;
-        }
-
-        /**
-         * @param queryProject Project to query for the GitOps repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(String queryProject) {
-            return queryProject(Output.of(queryProject));
-        }
-
-        /**
-         * @param queryRepo GitOps repository to query.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(@Nullable Output<String> queryRepo) {
-            $.queryRepo = queryRepo;
-            return this;
-        }
-
-        /**
-         * @param queryRepo GitOps repository to query.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(String queryRepo) {
-            return queryRepo(Output.of(queryRepo));
+        public Builder refreshInterval(String refreshInterval) {
+            return refreshInterval(Output.of(refreshInterval));
         }
 
         /**

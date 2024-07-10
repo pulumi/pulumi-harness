@@ -28,16 +28,74 @@ namespace Pulumi.Harness.Platform
     ///         Name = "name",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
-    ///         Type = "PipelineExecution",
+    ///         Type = "PipelineSetup",
     ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
     ///         {
-    ///             Tags = new[]
+    ///             Name = "pipeline_name",
+    ///             Description = "pipeline_description",
+    ///             PipelineIdentifiers = new[]
     ///             {
-    ///                 "foo:bar",
+    ///                 "id1",
+    ///                 "id2",
     ///             },
-    ///             FilterType = "PipelineExecution",
+    ///             FilterType = "PipelineSetup",
     ///         },
     ///         FilterVisibility = "EveryOne",
+    ///     });
+    /// 
+    ///     // pipeline filter with tags
+    ///     var exampleWithTags = new Harness.Platform.PipelineFilters("example_with_tags", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "PipelineSetup",
+    ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
+    ///         {
+    ///             FilterType = "PipelineSetup",
+    ///             PipelineTags = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "key", "tag1" },
+    ///                     { "value", "123" },
+    ///                 },
+    ///                 
+    ///                 {
+    ///                     { "key", "tag2" },
+    ///                     { "value", "456" },
+    ///                 },
+    ///             },
+    ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
+    ///             {
+    ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
+    ///                 {
+    ///                     DeploymentTypes = "Kubernetes",
+    ///                     ServiceNames = new[]
+    ///                     {
+    ///                         "service1",
+    ///                         "service2",
+    ///                     },
+    ///                     EnvironmentNames = new[]
+    ///                     {
+    ///                         "env1",
+    ///                         "env2",
+    ///                     },
+    ///                     ArtifactDisplayNames = new[]
+    ///                     {
+    ///                         "artificatname1",
+    ///                         "artifact2",
+    ///                     },
+    ///                 },
+    ///                 Ci = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCiArgs
+    ///                 {
+    ///                     BuildType = "branch",
+    ///                     Branch = "branch123",
+    ///                     RepoNames = "repo1234",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -76,7 +134,7 @@ namespace Pulumi.Harness.Platform
         /// This indicates visibility of filters. By default, everyone can view this filter.
         /// </summary>
         [Output("filterVisibility")]
-        public Output<string?> FilterVisibility { get; private set; } = null!;
+        public Output<string> FilterVisibility { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.

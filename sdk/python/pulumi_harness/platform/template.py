@@ -17,34 +17,39 @@ __all__ = ['TemplateArgs', 'Template']
 class TemplateArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
-                 template_yaml: pulumi.Input[str],
                  version: pulumi.Input[str],
                  comments: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
+                 git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_import_request: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']] = None,
+                 template_yaml: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Template resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource
-        :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] version: Version Label for Template.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input['TemplateTemplateImportRequestArgs'] template_import_request: Contains parameters for importing template.
+        :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "template_yaml", template_yaml)
         pulumi.set(__self__, "version", version)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -57,6 +62,10 @@ class TemplateArgs:
             pulumi.set(__self__, "force_delete", force_delete)
         if git_details is not None:
             pulumi.set(__self__, "git_details", git_details)
+        if git_import_details is not None:
+            pulumi.set(__self__, "git_import_details", git_import_details)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
         if is_stable is not None:
             pulumi.set(__self__, "is_stable", is_stable)
         if name is not None:
@@ -67,6 +76,10 @@ class TemplateArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if template_import_request is not None:
+            pulumi.set(__self__, "template_import_request", template_import_request)
+        if template_yaml is not None:
+            pulumi.set(__self__, "template_yaml", template_yaml)
 
     @property
     @pulumi.getter
@@ -79,18 +92,6 @@ class TemplateArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
-
-    @property
-    @pulumi.getter(name="templateYaml")
-    def template_yaml(self) -> pulumi.Input[str]:
-        """
-        Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        """
-        return pulumi.get(self, "template_yaml")
-
-    @template_yaml.setter
-    def template_yaml(self, value: pulumi.Input[str]):
-        pulumi.set(self, "template_yaml", value)
 
     @property
     @pulumi.getter
@@ -133,7 +134,7 @@ class TemplateArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable this flag for force deletion of template
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -152,6 +153,30 @@ class TemplateArgs:
     @git_details.setter
     def git_details(self, value: Optional[pulumi.Input['TemplateGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
+
+    @property
+    @pulumi.getter(name="gitImportDetails")
+    def git_import_details(self) -> Optional[pulumi.Input['TemplateGitImportDetailsArgs']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_details")
+
+    @git_import_details.setter
+    def git_import_details(self, value: Optional[pulumi.Input['TemplateGitImportDetailsArgs']]):
+        pulumi.set(self, "git_import_details", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
 
     @property
     @pulumi.getter(name="isStable")
@@ -213,6 +238,30 @@ class TemplateArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="templateImportRequest")
+    def template_import_request(self) -> Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]:
+        """
+        Contains parameters for importing template.
+        """
+        return pulumi.get(self, "template_import_request")
+
+    @template_import_request.setter
+    def template_import_request(self, value: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]):
+        pulumi.set(self, "template_import_request", value)
+
+    @property
+    @pulumi.getter(name="templateYaml")
+    def template_yaml(self) -> Optional[pulumi.Input[str]]:
+        """
+        Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        """
+        return pulumi.get(self, "template_yaml")
+
+    @template_yaml.setter
+    def template_yaml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_yaml", value)
+
 
 @pulumi.input_type
 class _TemplateState:
@@ -221,26 +270,32 @@ class _TemplateState:
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
+                 git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_import_request: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']] = None,
                  template_yaml: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Template resources.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input['TemplateTemplateImportRequestArgs'] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] version: Version Label for Template.
         """
@@ -255,8 +310,12 @@ class _TemplateState:
             pulumi.set(__self__, "force_delete", force_delete)
         if git_details is not None:
             pulumi.set(__self__, "git_details", git_details)
+        if git_import_details is not None:
+            pulumi.set(__self__, "git_import_details", git_import_details)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
         if is_stable is not None:
             pulumi.set(__self__, "is_stable", is_stable)
         if name is not None:
@@ -267,6 +326,8 @@ class _TemplateState:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if template_import_request is not None:
+            pulumi.set(__self__, "template_import_request", template_import_request)
         if template_yaml is not None:
             pulumi.set(__self__, "template_yaml", template_yaml)
         if version is not None:
@@ -301,7 +362,7 @@ class _TemplateState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable this flag for force deletion of template
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -322,6 +383,18 @@ class _TemplateState:
         pulumi.set(self, "git_details", value)
 
     @property
+    @pulumi.getter(name="gitImportDetails")
+    def git_import_details(self) -> Optional[pulumi.Input['TemplateGitImportDetailsArgs']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_details")
+
+    @git_import_details.setter
+    def git_import_details(self, value: Optional[pulumi.Input['TemplateGitImportDetailsArgs']]):
+        pulumi.set(self, "git_import_details", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -332,6 +405,18 @@ class _TemplateState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @import_from_git.setter
+    def import_from_git(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_from_git", value)
 
     @property
     @pulumi.getter(name="isStable")
@@ -392,6 +477,18 @@ class _TemplateState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="templateImportRequest")
+    def template_import_request(self) -> Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]:
+        """
+        Contains parameters for importing template.
+        """
+        return pulumi.get(self, "template_import_request")
+
+    @template_import_request.setter
+    def template_import_request(self, value: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]):
+        pulumi.set(self, "template_import_request", value)
 
     @property
     @pulumi.getter(name="templateYaml")
@@ -427,12 +524,15 @@ class Template(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitDetailsArgs']]] = None,
+                 git_import_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitImportDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_import_request: Optional[pulumi.Input[pulumi.InputType['TemplateTemplateImportRequestArgs']]] = None,
                  template_yaml: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1278,6 +1378,330 @@ class Template(pulumi.CustomResource):
           EOT
         }
 
+        ### Creating Multiple Versions of a Template
+        ##Stable version of the Template
+        resource "platform.Template" "template_v1" {
+          identifier    = "temp"
+          org_id        = harness_platform_project.test.org_id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v1"
+          is_stable     = true
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v1
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+
+              EOT
+        }
+
+        ##Unstable version of the Template
+        resource "platform.Template" "template_v2" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v2"
+          is_stable     = false
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v2
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+              EOT
+        }
+
+        ##Updating the Stable Version of the Template from v1 to v2.
+        resource "platform.Template" "template_v2" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v2"
+          is_stable     = true
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v2
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+              EOT
+        }
+
+        resource "platform.Template" "template_v1" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v1"
+          is_stable     = false
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v1
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+
+              EOT
+
+          depends_on = [time_sleep.wait_10_seconds]
+        }
+
+        resource "time_sleep" "wait_10_seconds" {
+          depends_on       = [harness_platform_template.test2]
+          destroy_duration = "10s"
+        }
+
+        ##Importing Account Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "accounttemplate"
+          name            = "accounttemplate"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/accounttemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "accounttemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
+        ##Importing Org Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "orgtemplate"
+          name            = "orgtemplate"
+          org_id          = "org"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/orgtemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "orgtemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
+        ##Importing Project Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "projecttemplate"
+          name            = "projecttemplate"
+          org_id          = "org"
+          project_id      = "project"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/projecttemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "projecttemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
         Import org level template
 
         ```sh
@@ -1294,14 +1718,17 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[pulumi.InputType['TemplateGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[pulumi.InputType['TemplateGitImportDetailsArgs']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[pulumi.InputType['TemplateTemplateImportRequestArgs']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] version: Version Label for Template.
         """
@@ -2153,6 +2580,330 @@ class Template(pulumi.CustomResource):
           EOT
         }
 
+        ### Creating Multiple Versions of a Template
+        ##Stable version of the Template
+        resource "platform.Template" "template_v1" {
+          identifier    = "temp"
+          org_id        = harness_platform_project.test.org_id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v1"
+          is_stable     = true
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v1
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+
+              EOT
+        }
+
+        ##Unstable version of the Template
+        resource "platform.Template" "template_v2" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v2"
+          is_stable     = false
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v2
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+              EOT
+        }
+
+        ##Updating the Stable Version of the Template from v1 to v2.
+        resource "platform.Template" "template_v2" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v2"
+          is_stable     = true
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v2
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+              EOT
+        }
+
+        resource "platform.Template" "template_v1" {
+          identifier    = "temp"
+          org_id        = harness_platform_organization.test.id
+          name          = "temp"
+          comments      = "comments"
+          version       = "v1"
+          is_stable     = false
+          force_delete  = true
+          template_yaml = <<-EOT
+        			template:
+              name: "temp"
+              identifier: "temp"
+              versionLabel: v1
+              type: Pipeline
+              orgIdentifier: ${harness_platform_organization.test.id}
+              tags: {}
+              spec:
+                stages:
+                  - stage:
+                      name: dvvdvd
+                      identifier: dvvdvd
+                      description: ""
+                      type: Deployment
+                      spec:
+                        deploymentType: Kubernetes
+                        service:
+                          serviceRef: <+input>
+                          serviceInputs: <+input>
+                        environment:
+                          environmentRef: <+input>
+                          deployToAll: false
+                          environmentInputs: <+input>
+                          serviceOverrideInputs: <+input>
+                          infrastructureDefinitions: <+input>
+                        execution:
+                          steps:
+                            - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                  skipDryRun: false
+                                  pruningEnabled: false
+                          rollbackSteps:
+                            - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec:
+                                  pruningEnabled: false
+                      tags: {}
+                      failureStrategies:
+                        - onFailure:
+                            errors:
+                              - AllErrors
+                            action:
+                              type: StageRollback
+
+              EOT
+
+          depends_on = [time_sleep.wait_10_seconds]
+        }
+
+        resource "time_sleep" "wait_10_seconds" {
+          depends_on       = [harness_platform_template.test2]
+          destroy_duration = "10s"
+        }
+
+        ##Importing Account Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "accounttemplate"
+          name            = "accounttemplate"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/accounttemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "accounttemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
+        ##Importing Org Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "orgtemplate"
+          name            = "orgtemplate"
+          org_id          = "org"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/orgtemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "orgtemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
+        ##Importing Project Level Templates
+        resource "platform.Template" "test" {
+          identifier      = "projecttemplate"
+          name            = "projecttemplate"
+          org_id          = "org"
+          project_id      = "project"
+          version         = "v2"
+          is_stable       = false
+          import_from_git = true
+          git_import_details {
+            branch_name   = "main"
+            file_path     = ".harness/projecttemplate.yaml"
+            connector_ref = "account.DoNotDeleteGithub"
+            repo_name     = "open-repo"
+          }
+          template_import_request {
+            template_name        = "projecttemplate"
+            template_version     = "v2"
+            template_description = ""
+          }
+        }
+
         Import org level template
 
         ```sh
@@ -2184,12 +2935,15 @@ class Template(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
                  git_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitDetailsArgs']]] = None,
+                 git_import_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitImportDetailsArgs']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_stable: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 template_import_request: Optional[pulumi.Input[pulumi.InputType['TemplateTemplateImportRequestArgs']]] = None,
                  template_yaml: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -2205,16 +2959,17 @@ class Template(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["git_details"] = git_details
+            __props__.__dict__["git_import_details"] = git_import_details
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["import_from_git"] = import_from_git
             __props__.__dict__["is_stable"] = is_stable
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
-            if template_yaml is None and not opts.urn:
-                raise TypeError("Missing required property 'template_yaml'")
+            __props__.__dict__["template_import_request"] = template_import_request
             __props__.__dict__["template_yaml"] = template_yaml
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
@@ -2233,12 +2988,15 @@ class Template(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
             git_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitDetailsArgs']]] = None,
+            git_import_details: Optional[pulumi.Input[pulumi.InputType['TemplateGitImportDetailsArgs']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            import_from_git: Optional[pulumi.Input[bool]] = None,
             is_stable: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            template_import_request: Optional[pulumi.Input[pulumi.InputType['TemplateTemplateImportRequestArgs']]] = None,
             template_yaml: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Template':
         """
@@ -2250,14 +3008,17 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template
+        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         :param pulumi.Input[pulumi.InputType['TemplateGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[pulumi.InputType['TemplateGitImportDetailsArgs']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[bool] is_stable: True if given version for template to be set as stable.
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[pulumi.InputType['TemplateTemplateImportRequestArgs']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[str] version: Version Label for Template.
         """
@@ -2269,12 +3030,15 @@ class Template(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["git_details"] = git_details
+        __props__.__dict__["git_import_details"] = git_import_details
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["import_from_git"] = import_from_git
         __props__.__dict__["is_stable"] = is_stable
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["template_import_request"] = template_import_request
         __props__.__dict__["template_yaml"] = template_yaml
         __props__.__dict__["version"] = version
         return Template(resource_name, opts=opts, __props__=__props__)
@@ -2300,7 +3064,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[str]:
         """
-        Enable this flag for force deletion of template
+        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
@@ -2313,6 +3077,14 @@ class Template(pulumi.CustomResource):
         return pulumi.get(self, "git_details")
 
     @property
+    @pulumi.getter(name="gitImportDetails")
+    def git_import_details(self) -> pulumi.Output[Optional['outputs.TemplateGitImportDetails']]:
+        """
+        Contains Git Information for importing entities from Git
+        """
+        return pulumi.get(self, "git_import_details")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -2321,8 +3093,16 @@ class Template(pulumi.CustomResource):
         return pulumi.get(self, "identifier")
 
     @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @property
     @pulumi.getter(name="isStable")
-    def is_stable(self) -> pulumi.Output[Optional[bool]]:
+    def is_stable(self) -> pulumi.Output[bool]:
         """
         True if given version for template to be set as stable.
         """
@@ -2359,6 +3139,14 @@ class Template(pulumi.CustomResource):
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="templateImportRequest")
+    def template_import_request(self) -> pulumi.Output[Optional['outputs.TemplateTemplateImportRequest']]:
+        """
+        Contains parameters for importing template.
+        """
+        return pulumi.get(self, "template_import_request")
 
     @property
     @pulumi.getter(name="templateYaml")

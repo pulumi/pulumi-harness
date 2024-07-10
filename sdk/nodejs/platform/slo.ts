@@ -9,6 +9,69 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating an SLO.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = new harness.platform.Slo("example", {
+ *     orgId: "default",
+ *     projectId: "default_project",
+ *     identifier: "TerraformSLO",
+ *     request: {
+ *         name: "TSLO",
+ *         description: "description",
+ *         tags: [
+ *             "foo:bar",
+ *             "bar:foo",
+ *         ],
+ *         userJourneyRefs: [
+ *             "one",
+ *             "two",
+ *         ],
+ *         sloTarget: {
+ *             type: "Calender",
+ *             sloTargetPercentage: 10,
+ *             spec: JSON.stringify({
+ *                 type: "Monthly",
+ *                 spec: {
+ *                     dayOfMonth: 5,
+ *                 },
+ *             }),
+ *         },
+ *         type: "Simple",
+ *         spec: JSON.stringify({
+ *             monitoredServiceRef: "monitoredServiceRef",
+ *             serviceLevelIndicatorType: "Availability",
+ *             serviceLevelIndicators: [{
+ *                 name: "name",
+ *                 identifier: "identifier",
+ *                 type: "Window",
+ *                 spec: {
+ *                     type: "Threshold",
+ *                     spec: {
+ *                         metric1: "metric1",
+ *                         thresholdValue: 10,
+ *                         thresholdType: ">",
+ *                     },
+ *                     sliMissingDataType: "Good",
+ *                 },
+ *             }],
+ *         }),
+ *         notificationRuleRefs: [{
+ *             notificationRuleRef: "notification_rule_ref",
+ *             enabled: true,
+ *         }],
+ *     },
+ * });
+ * ```
+ *
+ * Note the above example is for "Threshold" SLI type, if you want to use
+ * "Ratio", the SLI should be changed appropriately.
+ * Here's an example of SLO target and Spec for "Ratio" based SLI and
+ * "Rolling" SLO target.
+ *
  * ## Import
  *
  * Import account level SLO

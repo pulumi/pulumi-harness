@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
         /// </summary>
-        public readonly string? Duration;
+        public readonly string Duration;
         /// <summary>
         /// Factor to multiply the base duration after each failed retry.
         /// </summary>
-        public readonly string? Factor;
+        public readonly string Factor;
         /// <summary>
         /// Maximum amount of time allowed of the backoff strategy.
         /// </summary>
-        public readonly string? MaxDuration;
+        public readonly string MaxDuration;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult(
-            string? duration,
+            string duration,
 
-            string? factor,
+            string factor,
 
-            string? maxDuration)
+            string maxDuration)
         {
             Duration = duration;
             Factor = factor;

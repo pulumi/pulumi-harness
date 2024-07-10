@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness Gitops Repositories Credentials.
+    /// Resource for managing a Harness Gitops Repository Credentials.
     /// 
     /// ## Example Usage
     /// 
@@ -34,8 +34,13 @@ namespace Pulumi.Harness.Platform
     ///             new Harness.Platform.Inputs.GitOpsRepoCredCredArgs
     ///             {
     ///                 Type = "git",
-    ///                 Url = "github.com",
-    ///                 SshPrivateKey = "yoursshprivatekey",
+    ///                 Url = "git@github.com:yourorg",
+    ///                 SshPrivateKey = @"----- BEGIN OPENSSH PRIVATE KEY-----
+    /// XXXXX
+    /// XXXXX
+    /// XXXXX
+    /// -----END OPENSSH PRIVATE KEY -----
+    /// ",
     ///             },
     ///         },
     ///     });
@@ -45,10 +50,16 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import a Account level Gitops Repository Credentials
+    /// Import an Account level Gitops Repository Credentials
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example &lt;agent_id&gt;/&lt;repocred_id&gt;
+    /// ```
+    /// 
+    /// Import an Org level Gitops Repository Credentials
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;repocred_id&gt;
     /// ```
     /// 
     /// Import a Project level Gitops Repository Credentials
@@ -61,13 +72,13 @@ namespace Pulumi.Harness.Platform
     public partial class GitOpsRepoCred : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account identifier of the Repository Credential.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the Repository Credential.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -79,25 +90,25 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.GitOpsRepoCredCred>> Creds { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the Repository Credential.
+        /// Identifier of the Repository Credentials.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// if the Repository credential should be upserted.
+        /// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         /// </summary>
         [Output("upsert")]
         public Output<bool?> Upsert { get; private set; } = null!;
@@ -150,13 +161,13 @@ namespace Pulumi.Harness.Platform
     public sealed class GitOpsRepoCredArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the Repository Credential.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the Repository Credential.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -174,25 +185,25 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier of the Repository Credential.
+        /// Identifier of the Repository Credentials.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// if the Repository credential should be upserted.
+        /// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
@@ -206,13 +217,13 @@ namespace Pulumi.Harness.Platform
     public sealed class GitOpsRepoCredState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the Repository Credential.
+        /// Account identifier of the Repository Credentials.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Agent identifier of the Repository Credential.
+        /// Agent identifier of the Repository Credentials.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
@@ -230,25 +241,25 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier of the Repository Credential.
+        /// Identifier of the Repository Credentials.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Organization identifier of the Repository Credential.
+        /// Organization identifier of the Repository Credentials.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the Repository Credential.
+        /// Project identifier of the Repository Credentials.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// if the Repository credential should be upserted.
+        /// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }

@@ -6,10 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetGitopsApplicationsApplicationArgs;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,36 +47,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Definition of the GitOps application resource.
-     * 
-     */
-    @Import(name="applications")
-    private @Nullable Output<List<GetGitopsApplicationsApplicationArgs>> applications;
-
-    /**
-     * @return Definition of the GitOps application resource.
-     * 
-     */
-    public Optional<Output<List<GetGitopsApplicationsApplicationArgs>>> applications() {
-        return Optional.ofNullable(this.applications);
-    }
-
-    /**
-     * Cluster identifier of the GitOps application.
-     * 
-     */
-    @Import(name="clusterId")
-    private @Nullable Output<String> clusterId;
-
-    /**
-     * @return Cluster identifier of the GitOps application.
-     * 
-     */
-    public Optional<Output<String>> clusterId() {
-        return Optional.ofNullable(this.clusterId);
-    }
-
-    /**
      * Identifier of the GitOps application.
      * 
      */
@@ -92,21 +59,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
-    }
-
-    /**
-     * Kind of the GitOps application.
-     * 
-     */
-    @Import(name="kind")
-    private @Nullable Output<String> kind;
-
-    /**
-     * @return Kind of the GitOps application.
-     * 
-     */
-    public Optional<Output<String>> kind() {
-        return Optional.ofNullable(this.kind);
     }
 
     /**
@@ -125,21 +77,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Options to remove existing finalizers to delete the GitOps application.
-     * 
-     */
-    @Import(name="optionsRemoveExistingFinalizers")
-    private @Nullable Output<Boolean> optionsRemoveExistingFinalizers;
-
-    /**
-     * @return Options to remove existing finalizers to delete the GitOps application.
-     * 
-     */
-    public Optional<Output<Boolean>> optionsRemoveExistingFinalizers() {
-        return Optional.ofNullable(this.optionsRemoveExistingFinalizers);
-    }
-
-    /**
      * Organization identifier of the GitOps application.
      * 
      */
@@ -152,21 +89,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
      */
     public Output<String> orgId() {
         return this.orgId;
-    }
-
-    /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
-     * 
-     */
-    @Import(name="project")
-    private @Nullable Output<String> project;
-
-    /**
-     * @return Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
-     * 
-     */
-    public Optional<Output<String>> project() {
-        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -184,196 +106,15 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
         return this.projectId;
     }
 
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    @Import(name="queryProject")
-    private @Nullable Output<String> queryProject;
-
-    /**
-     * @return Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    public Optional<Output<String>> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    @Import(name="queryRefresh")
-    private @Nullable Output<String> queryRefresh;
-
-    /**
-     * @return Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    public Optional<Output<String>> queryRefresh() {
-        return Optional.ofNullable(this.queryRefresh);
-    }
-
-    /**
-     * Repo URL to restrict returned list applications.
-     * 
-     */
-    @Import(name="queryRepo")
-    private @Nullable Output<String> queryRepo;
-
-    /**
-     * @return Repo URL to restrict returned list applications.
-     * 
-     */
-    public Optional<Output<String>> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
-    }
-
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    @Import(name="queryResourceVersion")
-    private @Nullable Output<String> queryResourceVersion;
-
-    /**
-     * @return Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    public Optional<Output<String>> queryResourceVersion() {
-        return Optional.ofNullable(this.queryResourceVersion);
-    }
-
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    @Import(name="querySelector")
-    private @Nullable Output<String> querySelector;
-
-    /**
-     * @return Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    public Optional<Output<String>> querySelector() {
-        return Optional.ofNullable(this.querySelector);
-    }
-
-    /**
-     * Repository identifier of the GitOps application.
-     * 
-     */
-    @Import(name="repoId", required=true)
-    private Output<String> repoId;
-
-    /**
-     * @return Repository identifier of the GitOps application.
-     * 
-     */
-    public Output<String> repoId() {
-        return this.repoId;
-    }
-
-    /**
-     * Request cascade to delete the GitOps application.
-     * 
-     */
-    @Import(name="requestCascade")
-    private @Nullable Output<Boolean> requestCascade;
-
-    /**
-     * @return Request cascade to delete the GitOps application.
-     * 
-     */
-    public Optional<Output<Boolean>> requestCascade() {
-        return Optional.ofNullable(this.requestCascade);
-    }
-
-    /**
-     * Request name to delete the GitOps application.
-     * 
-     */
-    @Import(name="requestName")
-    private @Nullable Output<String> requestName;
-
-    /**
-     * @return Request name to delete the GitOps application.
-     * 
-     */
-    public Optional<Output<String>> requestName() {
-        return Optional.ofNullable(this.requestName);
-    }
-
-    /**
-     * Request propagation policy to delete the GitOps application.
-     * 
-     */
-    @Import(name="requestPropagationPolicy")
-    private @Nullable Output<String> requestPropagationPolicy;
-
-    /**
-     * @return Request propagation policy to delete the GitOps application.
-     * 
-     */
-    public Optional<Output<String>> requestPropagationPolicy() {
-        return Optional.ofNullable(this.requestPropagationPolicy);
-    }
-
-    /**
-     * Indicates if the GitOps application should be updated if existing and inserted if not.
-     * 
-     */
-    @Import(name="upsert")
-    private @Nullable Output<Boolean> upsert;
-
-    /**
-     * @return Indicates if the GitOps application should be updated if existing and inserted if not.
-     * 
-     */
-    public Optional<Output<Boolean>> upsert() {
-        return Optional.ofNullable(this.upsert);
-    }
-
-    /**
-     * Indicates if the GitOps application has to be validated.
-     * 
-     */
-    @Import(name="validate")
-    private @Nullable Output<Boolean> validate;
-
-    /**
-     * @return Indicates if the GitOps application has to be validated.
-     * 
-     */
-    public Optional<Output<Boolean>> validate() {
-        return Optional.ofNullable(this.validate);
-    }
-
     private GetGitopsApplicationsArgs() {}
 
     private GetGitopsApplicationsArgs(GetGitopsApplicationsArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.applications = $.applications;
-        this.clusterId = $.clusterId;
         this.identifier = $.identifier;
-        this.kind = $.kind;
         this.name = $.name;
-        this.optionsRemoveExistingFinalizers = $.optionsRemoveExistingFinalizers;
         this.orgId = $.orgId;
-        this.project = $.project;
         this.projectId = $.projectId;
-        this.queryProject = $.queryProject;
-        this.queryRefresh = $.queryRefresh;
-        this.queryRepo = $.queryRepo;
-        this.queryResourceVersion = $.queryResourceVersion;
-        this.querySelector = $.querySelector;
-        this.repoId = $.repoId;
-        this.requestCascade = $.requestCascade;
-        this.requestName = $.requestName;
-        this.requestPropagationPolicy = $.requestPropagationPolicy;
-        this.upsert = $.upsert;
-        this.validate = $.validate;
     }
 
     public static Builder builder() {
@@ -437,58 +178,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param applications Definition of the GitOps application resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder applications(@Nullable Output<List<GetGitopsApplicationsApplicationArgs>> applications) {
-            $.applications = applications;
-            return this;
-        }
-
-        /**
-         * @param applications Definition of the GitOps application resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder applications(List<GetGitopsApplicationsApplicationArgs> applications) {
-            return applications(Output.of(applications));
-        }
-
-        /**
-         * @param applications Definition of the GitOps application resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder applications(GetGitopsApplicationsApplicationArgs... applications) {
-            return applications(List.of(applications));
-        }
-
-        /**
-         * @param clusterId Cluster identifier of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterId(@Nullable Output<String> clusterId) {
-            $.clusterId = clusterId;
-            return this;
-        }
-
-        /**
-         * @param clusterId Cluster identifier of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterId(String clusterId) {
-            return clusterId(Output.of(clusterId));
-        }
-
-        /**
          * @param identifier Identifier of the GitOps application.
          * 
          * @return builder
@@ -507,27 +196,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
-        }
-
-        /**
-         * @param kind Kind of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kind(@Nullable Output<String> kind) {
-            $.kind = kind;
-            return this;
-        }
-
-        /**
-         * @param kind Kind of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kind(String kind) {
-            return kind(Output.of(kind));
         }
 
         /**
@@ -552,27 +220,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param optionsRemoveExistingFinalizers Options to remove existing finalizers to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder optionsRemoveExistingFinalizers(@Nullable Output<Boolean> optionsRemoveExistingFinalizers) {
-            $.optionsRemoveExistingFinalizers = optionsRemoveExistingFinalizers;
-            return this;
-        }
-
-        /**
-         * @param optionsRemoveExistingFinalizers Options to remove existing finalizers to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder optionsRemoveExistingFinalizers(Boolean optionsRemoveExistingFinalizers) {
-            return optionsRemoveExistingFinalizers(Output.of(optionsRemoveExistingFinalizers));
-        }
-
-        /**
          * @param orgId Organization identifier of the GitOps application.
          * 
          * @return builder
@@ -591,27 +238,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
-        }
-
-        /**
-         * @param project Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(@Nullable Output<String> project) {
-            $.project = project;
-            return this;
-        }
-
-        /**
-         * @param project Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(String project) {
-            return project(Output.of(project));
         }
 
         /**
@@ -635,237 +261,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
             return projectId(Output.of(projectId));
         }
 
-        /**
-         * @param queryProject Project names to filter the corresponding GitOps applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(@Nullable Output<String> queryProject) {
-            $.queryProject = queryProject;
-            return this;
-        }
-
-        /**
-         * @param queryProject Project names to filter the corresponding GitOps applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(String queryProject) {
-            return queryProject(Output.of(queryProject));
-        }
-
-        /**
-         * @param queryRefresh Forces the GitOps application to reconcile when set to true.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRefresh(@Nullable Output<String> queryRefresh) {
-            $.queryRefresh = queryRefresh;
-            return this;
-        }
-
-        /**
-         * @param queryRefresh Forces the GitOps application to reconcile when set to true.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRefresh(String queryRefresh) {
-            return queryRefresh(Output.of(queryRefresh));
-        }
-
-        /**
-         * @param queryRepo Repo URL to restrict returned list applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(@Nullable Output<String> queryRepo) {
-            $.queryRepo = queryRepo;
-            return this;
-        }
-
-        /**
-         * @param queryRepo Repo URL to restrict returned list applications.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(String queryRepo) {
-            return queryRepo(Output.of(queryRepo));
-        }
-
-        /**
-         * @param queryResourceVersion Shows modifications after a version that is specified with a watch call.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryResourceVersion(@Nullable Output<String> queryResourceVersion) {
-            $.queryResourceVersion = queryResourceVersion;
-            return this;
-        }
-
-        /**
-         * @param queryResourceVersion Shows modifications after a version that is specified with a watch call.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryResourceVersion(String queryResourceVersion) {
-            return queryResourceVersion(Output.of(queryResourceVersion));
-        }
-
-        /**
-         * @param querySelector Filters GitOps applications corresponding to the labels.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder querySelector(@Nullable Output<String> querySelector) {
-            $.querySelector = querySelector;
-            return this;
-        }
-
-        /**
-         * @param querySelector Filters GitOps applications corresponding to the labels.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder querySelector(String querySelector) {
-            return querySelector(Output.of(querySelector));
-        }
-
-        /**
-         * @param repoId Repository identifier of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder repoId(Output<String> repoId) {
-            $.repoId = repoId;
-            return this;
-        }
-
-        /**
-         * @param repoId Repository identifier of the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder repoId(String repoId) {
-            return repoId(Output.of(repoId));
-        }
-
-        /**
-         * @param requestCascade Request cascade to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestCascade(@Nullable Output<Boolean> requestCascade) {
-            $.requestCascade = requestCascade;
-            return this;
-        }
-
-        /**
-         * @param requestCascade Request cascade to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestCascade(Boolean requestCascade) {
-            return requestCascade(Output.of(requestCascade));
-        }
-
-        /**
-         * @param requestName Request name to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestName(@Nullable Output<String> requestName) {
-            $.requestName = requestName;
-            return this;
-        }
-
-        /**
-         * @param requestName Request name to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestName(String requestName) {
-            return requestName(Output.of(requestName));
-        }
-
-        /**
-         * @param requestPropagationPolicy Request propagation policy to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestPropagationPolicy(@Nullable Output<String> requestPropagationPolicy) {
-            $.requestPropagationPolicy = requestPropagationPolicy;
-            return this;
-        }
-
-        /**
-         * @param requestPropagationPolicy Request propagation policy to delete the GitOps application.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder requestPropagationPolicy(String requestPropagationPolicy) {
-            return requestPropagationPolicy(Output.of(requestPropagationPolicy));
-        }
-
-        /**
-         * @param upsert Indicates if the GitOps application should be updated if existing and inserted if not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder upsert(@Nullable Output<Boolean> upsert) {
-            $.upsert = upsert;
-            return this;
-        }
-
-        /**
-         * @param upsert Indicates if the GitOps application should be updated if existing and inserted if not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder upsert(Boolean upsert) {
-            return upsert(Output.of(upsert));
-        }
-
-        /**
-         * @param validate Indicates if the GitOps application has to be validated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder validate(@Nullable Output<Boolean> validate) {
-            $.validate = validate;
-            return this;
-        }
-
-        /**
-         * @param validate Indicates if the GitOps application has to be validated.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder validate(Boolean validate) {
-            return validate(Output.of(validate));
-        }
-
         public GetGitopsApplicationsArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsApplicationsArgs", "accountId");
@@ -881,9 +276,6 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
             }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsApplicationsArgs", "projectId");
-            }
-            if ($.repoId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsApplicationsArgs", "repoId");
             }
             return $;
         }

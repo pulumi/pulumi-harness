@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Authenticate using personal access token.
+        /// </summary>
+        public readonly Outputs.JiraConnectorAuthPersonalAccessToken? PersonalAccessToken;
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         public readonly Outputs.JiraConnectorAuthUsernamePassword? UsernamePassword;
@@ -26,9 +30,12 @@ namespace Pulumi.Harness.Platform.Outputs
         private JiraConnectorAuth(
             string authType,
 
+            Outputs.JiraConnectorAuthPersonalAccessToken? personalAccessToken,
+
             Outputs.JiraConnectorAuthUsernamePassword? usernamePassword)
         {
             AuthType = authType;
+            PersonalAccessToken = personalAccessToken;
             UsernamePassword = usernamePassword;
         }
     }

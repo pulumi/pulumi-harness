@@ -101,14 +101,14 @@ public class TemplateFilters extends com.pulumi.resources.CustomResource {
         return this.filterProperties;
     }
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter.
+     * Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
      * 
      */
     @Export(name="filterVisibility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterVisibility;
 
     /**
-     * @return This indicates visibility of filters. By default, everyone can view this filter.
+     * @return Only accept values &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. This indicates visibility of filters. By default, everyone can view this filter.
      * 
      */
     public Output<Optional<String>> filterVisibility() {

@@ -4,10 +4,9 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
@@ -15,39 +14,39 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
      * @return Amount to back off. Default unit is seconds, but could also be a duration (e.g. &#34;2m&#34;, &#34;1h&#34;).
      * 
      */
-    private @Nullable String duration;
+    private String duration;
     /**
      * @return Factor to multiply the base duration after each failed retry.
      * 
      */
-    private @Nullable String factor;
+    private String factor;
     /**
      * @return Maximum amount of time allowed of the backoff strategy.
      * 
      */
-    private @Nullable String maxDuration;
+    private String maxDuration;
 
     private GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff() {}
     /**
      * @return Amount to back off. Default unit is seconds, but could also be a duration (e.g. &#34;2m&#34;, &#34;1h&#34;).
      * 
      */
-    public Optional<String> duration() {
-        return Optional.ofNullable(this.duration);
+    public String duration() {
+        return this.duration;
     }
     /**
      * @return Factor to multiply the base duration after each failed retry.
      * 
      */
-    public Optional<String> factor() {
-        return Optional.ofNullable(this.factor);
+    public String factor() {
+        return this.factor;
     }
     /**
      * @return Maximum amount of time allowed of the backoff strategy.
      * 
      */
-    public Optional<String> maxDuration() {
-        return Optional.ofNullable(this.maxDuration);
+    public String maxDuration() {
+        return this.maxDuration;
     }
 
     public static Builder builder() {
@@ -59,9 +58,9 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String duration;
-        private @Nullable String factor;
-        private @Nullable String maxDuration;
+        private String duration;
+        private String factor;
+        private String maxDuration;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,20 +70,26 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
         }
 
         @CustomType.Setter
-        public Builder duration(@Nullable String duration) {
-
+        public Builder duration(String duration) {
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff", "duration");
+            }
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
-        public Builder factor(@Nullable String factor) {
-
+        public Builder factor(String factor) {
+            if (factor == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff", "factor");
+            }
             this.factor = factor;
             return this;
         }
         @CustomType.Setter
-        public Builder maxDuration(@Nullable String maxDuration) {
-
+        public Builder maxDuration(String maxDuration) {
+            if (maxDuration == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff", "maxDuration");
+            }
             this.maxDuration = maxDuration;
             return this;
         }

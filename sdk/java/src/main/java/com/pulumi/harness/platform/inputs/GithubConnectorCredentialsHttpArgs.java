@@ -5,8 +5,10 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GithubConnectorCredentialsHttpAnonymouseArgs;
+import com.pulumi.harness.platform.inputs.GithubConnectorCredentialsHttpGithubAppArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,18 +19,48 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
     public static final GithubConnectorCredentialsHttpArgs Empty = new GithubConnectorCredentialsHttpArgs();
 
     /**
+     * Configuration for using the http anonymous github for interacting with the github api.
+     * 
+     */
+    @Import(name="anonymouses")
+    private @Nullable Output<List<GithubConnectorCredentialsHttpAnonymouseArgs>> anonymouses;
+
+    /**
+     * @return Configuration for using the http anonymous github for interacting with the github api.
+     * 
+     */
+    public Optional<Output<List<GithubConnectorCredentialsHttpAnonymouseArgs>>> anonymouses() {
+        return Optional.ofNullable(this.anonymouses);
+    }
+
+    /**
+     * Configuration for using the github app for interacting with the github api.
+     * 
+     */
+    @Import(name="githubApp")
+    private @Nullable Output<GithubConnectorCredentialsHttpGithubAppArgs> githubApp;
+
+    /**
+     * @return Configuration for using the github app for interacting with the github api.
+     * 
+     */
+    public Optional<Output<GithubConnectorCredentialsHttpGithubAppArgs>> githubApp() {
+        return Optional.ofNullable(this.githubApp);
+    }
+
+    /**
      * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Import(name="tokenRef", required=true)
-    private Output<String> tokenRef;
+    @Import(name="tokenRef")
+    private @Nullable Output<String> tokenRef;
 
     /**
      * @return Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> tokenRef() {
-        return this.tokenRef;
+    public Optional<Output<String>> tokenRef() {
+        return Optional.ofNullable(this.tokenRef);
     }
 
     /**
@@ -64,6 +96,8 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
     private GithubConnectorCredentialsHttpArgs() {}
 
     private GithubConnectorCredentialsHttpArgs(GithubConnectorCredentialsHttpArgs $) {
+        this.anonymouses = $.anonymouses;
+        this.githubApp = $.githubApp;
         this.tokenRef = $.tokenRef;
         this.username = $.username;
         this.usernameRef = $.usernameRef;
@@ -88,12 +122,64 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymouses(@Nullable Output<List<GithubConnectorCredentialsHttpAnonymouseArgs>> anonymouses) {
+            $.anonymouses = anonymouses;
+            return this;
+        }
+
+        /**
+         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymouses(List<GithubConnectorCredentialsHttpAnonymouseArgs> anonymouses) {
+            return anonymouses(Output.of(anonymouses));
+        }
+
+        /**
+         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymouses(GithubConnectorCredentialsHttpAnonymouseArgs... anonymouses) {
+            return anonymouses(List.of(anonymouses));
+        }
+
+        /**
+         * @param githubApp Configuration for using the github app for interacting with the github api.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubApp(@Nullable Output<GithubConnectorCredentialsHttpGithubAppArgs> githubApp) {
+            $.githubApp = githubApp;
+            return this;
+        }
+
+        /**
+         * @param githubApp Configuration for using the github app for interacting with the github api.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubApp(GithubConnectorCredentialsHttpGithubAppArgs githubApp) {
+            return githubApp(Output.of(githubApp));
+        }
+
+        /**
          * @param tokenRef Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
          */
-        public Builder tokenRef(Output<String> tokenRef) {
+        public Builder tokenRef(@Nullable Output<String> tokenRef) {
             $.tokenRef = tokenRef;
             return this;
         }
@@ -151,9 +237,6 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
         }
 
         public GithubConnectorCredentialsHttpArgs build() {
-            if ($.tokenRef == null) {
-                throw new MissingRequiredPropertyException("GithubConnectorCredentialsHttpArgs", "tokenRef");
-            }
             return $;
         }
     }

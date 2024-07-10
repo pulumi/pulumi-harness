@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetServiceGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,7 @@ public final class GetServiceResult {
      * 
      */
     private String description;
+    private GetServiceGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -61,6 +63,9 @@ public final class GetServiceResult {
      */
     public String description() {
         return this.description;
+    }
+    public GetServiceGitDetails gitDetails() {
+        return this.gitDetails;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -122,6 +127,7 @@ public final class GetServiceResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private GetServiceGitDetails gitDetails;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -133,6 +139,7 @@ public final class GetServiceResult {
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -148,6 +155,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(GetServiceGitDetails gitDetails) {
+            if (gitDetails == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "gitDetails");
+            }
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -206,6 +221,7 @@ public final class GetServiceResult {
         public GetServiceResult build() {
             final var _resultValue = new GetServiceResult();
             _resultValue.description = description;
+            _resultValue.gitDetails = gitDetails;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

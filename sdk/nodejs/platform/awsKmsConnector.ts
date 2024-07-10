@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating an AWS KMS connector.
+ * ## Example Usage
  *
  * ## Import
  *

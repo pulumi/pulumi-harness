@@ -12,11 +12,29 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GithubConnectorCredentialsHttpArgs : global::Pulumi.ResourceArgs
     {
+        [Input("anonymouses")]
+        private InputList<Inputs.GithubConnectorCredentialsHttpAnonymouseArgs>? _anonymouses;
+
+        /// <summary>
+        /// Configuration for using the http anonymous github for interacting with the github api.
+        /// </summary>
+        public InputList<Inputs.GithubConnectorCredentialsHttpAnonymouseArgs> Anonymouses
+        {
+            get => _anonymouses ?? (_anonymouses = new InputList<Inputs.GithubConnectorCredentialsHttpAnonymouseArgs>());
+            set => _anonymouses = value;
+        }
+
+        /// <summary>
+        /// Configuration for using the github app for interacting with the github api.
+        /// </summary>
+        [Input("githubApp")]
+        public Input<Inputs.GithubConnectorCredentialsHttpGithubAppArgs>? GithubApp { get; set; }
+
         /// <summary>
         /// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("tokenRef", required: true)]
-        public Input<string> TokenRef { get; set; } = null!;
+        [Input("tokenRef")]
+        public Input<string>? TokenRef { get; set; }
 
         /// <summary>
         /// Username to use for authentication.

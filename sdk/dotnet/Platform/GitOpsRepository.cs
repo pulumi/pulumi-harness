@@ -10,47 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating Harness Gitops Repositories.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.GitOpsRepository("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         AccountId = "account_id",
-    ///         ProjectId = "project_id",
-    ///         OrgId = "org_id",
-    ///         AgentId = "agent_id",
-    ///         Repos = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.GitOpsRepositoryRepoArgs
-    ///             {
-    ///                 Repo = "https://github.com/willycoll/argocd-example-apps.git",
-    ///                 Name = "repo_name",
-    ///                 Insecure = true,
-    ///                 ConnectionType = "HTTPS_ANONYMOUS",
-    ///             },
-    ///         },
-    ///         Upsert = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// Resource for managing Harness Gitops Repository.
     /// 
     /// ## Import
     /// 
-    /// Import a Account level Gitops Repository
+    /// Import an Account level Gitops Repository
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;agent_id&gt;/&lt;respository_id&gt;
+    /// ```
+    /// 
+    /// Import an Org level Gitops Repository
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsRepository:GitOpsRepository example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;respository_id&gt;
     /// ```
     /// 
     /// Import a Project level Gitops Repository
@@ -81,6 +54,25 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> CredsOnly { get; private set; } = null!;
 
         /// <summary>
+        /// ECR access token generator specific configuration.
+        /// </summary>
+        [Output("ecrGen")]
+        public Output<Outputs.GitOpsRepositoryEcrGen?> EcrGen { get; private set; } = null!;
+
+        /// <summary>
+        /// GCR access token generator specific configuration.
+        /// </summary>
+        [Output("gcrGen")]
+        public Output<Outputs.GitOpsRepositoryGcrGen?> GcrGen { get; private set; } = null!;
+
+        /// <summary>
+        /// Default: "UNSET"
+        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// </summary>
+        [Output("genType")]
+        public Output<string?> GenType { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier of the GitOps repository.
         /// </summary>
         [Output("identifier")]
@@ -99,22 +91,10 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates to force refresh query for repository.
+        /// For OCI repos, this is the interval to refresh the token to access the registry.
         /// </summary>
-        [Output("queryForceRefresh")]
-        public Output<bool?> QueryForceRefresh { get; private set; } = null!;
-
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        [Output("queryProject")]
-        public Output<string?> QueryProject { get; private set; } = null!;
-
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        [Output("queryRepo")]
-        public Output<string?> QueryRepo { get; private set; } = null!;
+        [Output("refreshInterval")]
+        public Output<string?> RefreshInterval { get; private set; } = null!;
 
         /// <summary>
         /// Repo details holding application configurations.
@@ -200,6 +180,25 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? CredsOnly { get; set; }
 
         /// <summary>
+        /// ECR access token generator specific configuration.
+        /// </summary>
+        [Input("ecrGen")]
+        public Input<Inputs.GitOpsRepositoryEcrGenArgs>? EcrGen { get; set; }
+
+        /// <summary>
+        /// GCR access token generator specific configuration.
+        /// </summary>
+        [Input("gcrGen")]
+        public Input<Inputs.GitOpsRepositoryGcrGenArgs>? GcrGen { get; set; }
+
+        /// <summary>
+        /// Default: "UNSET"
+        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// </summary>
+        [Input("genType")]
+        public Input<string>? GenType { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier", required: true)]
@@ -218,22 +217,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Indicates to force refresh query for repository.
+        /// For OCI repos, this is the interval to refresh the token to access the registry.
         /// </summary>
-        [Input("queryForceRefresh")]
-        public Input<bool>? QueryForceRefresh { get; set; }
-
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        [Input("queryProject")]
-        public Input<string>? QueryProject { get; set; }
-
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        [Input("queryRepo")]
-        public Input<string>? QueryRepo { get; set; }
+        [Input("refreshInterval")]
+        public Input<string>? RefreshInterval { get; set; }
 
         [Input("repos", required: true)]
         private InputList<Inputs.GitOpsRepositoryRepoArgs>? _repos;
@@ -292,6 +279,25 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? CredsOnly { get; set; }
 
         /// <summary>
+        /// ECR access token generator specific configuration.
+        /// </summary>
+        [Input("ecrGen")]
+        public Input<Inputs.GitOpsRepositoryEcrGenGetArgs>? EcrGen { get; set; }
+
+        /// <summary>
+        /// GCR access token generator specific configuration.
+        /// </summary>
+        [Input("gcrGen")]
+        public Input<Inputs.GitOpsRepositoryGcrGenGetArgs>? GcrGen { get; set; }
+
+        /// <summary>
+        /// Default: "UNSET"
+        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// </summary>
+        [Input("genType")]
+        public Input<string>? GenType { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier")]
@@ -310,22 +316,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Indicates to force refresh query for repository.
+        /// For OCI repos, this is the interval to refresh the token to access the registry.
         /// </summary>
-        [Input("queryForceRefresh")]
-        public Input<bool>? QueryForceRefresh { get; set; }
-
-        /// <summary>
-        /// Project to query for the GitOps repo.
-        /// </summary>
-        [Input("queryProject")]
-        public Input<string>? QueryProject { get; set; }
-
-        /// <summary>
-        /// GitOps repository to query.
-        /// </summary>
-        [Input("queryRepo")]
-        public Input<string>? QueryRepo { get; set; }
+        [Input("refreshInterval")]
+        public Input<string>? RefreshInterval { get; set; }
 
         [Input("repos")]
         private InputList<Inputs.GitOpsRepositoryRepoGetArgs>? _repos;

@@ -23,19 +23,19 @@ class PlatformApiKeyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a PlatformApiKey resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_type: Type of the API Key
-        :param pulumi.Input[str] identifier: Identifier of the API Key
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
         :param pulumi.Input[int] default_time_to_expire_token: Default expiration time of the Token within API Key
-        :param pulumi.Input[str] description: Description of the API Key
-        :param pulumi.Input[str] name: Name of the API Key
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the API Key
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "apikey_type", apikey_type)
@@ -82,7 +82,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        Identifier of the API Key
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -118,7 +118,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the API Key
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -130,7 +130,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the API Key
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -142,7 +142,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -154,7 +154,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -164,14 +164,14 @@ class PlatformApiKeyArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the API Key
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -187,19 +187,19 @@ class _PlatformApiKeyState:
                  org_id: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering PlatformApiKey resources.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_type: Type of the API Key
         :param pulumi.Input[int] default_time_to_expire_token: Default expiration time of the Token within API Key
-        :param pulumi.Input[str] description: Description of the API Key
-        :param pulumi.Input[str] identifier: Identifier of the API Key
-        :param pulumi.Input[str] name: Name of the API Key
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the API Key
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -262,7 +262,7 @@ class _PlatformApiKeyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the API Key
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -274,7 +274,7 @@ class _PlatformApiKeyState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the API Key
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -286,7 +286,7 @@ class _PlatformApiKeyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the API Key
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -298,7 +298,7 @@ class _PlatformApiKeyState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -322,7 +322,7 @@ class _PlatformApiKeyState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -332,14 +332,14 @@ class _PlatformApiKeyState:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for the API Key
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -357,22 +357,43 @@ class PlatformApiKey(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a PlatformApiKey resource with the given unique name, props, and options.
+        Resource for creating apikeys.
+
+        ## Import
+
+        Import account level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <parent_id>/<apikey_id>/<apikey_type>
+        ```
+
+        Import org level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<parent_id>/<apikey_id>/<apikey_type>
+        ```
+
+        Import project level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_type: Type of the API Key
         :param pulumi.Input[int] default_time_to_expire_token: Default expiration time of the Token within API Key
-        :param pulumi.Input[str] description: Description of the API Key
-        :param pulumi.Input[str] identifier: Identifier of the API Key
-        :param pulumi.Input[str] name: Name of the API Key
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the API Key
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
     @overload
@@ -381,7 +402,28 @@ class PlatformApiKey(pulumi.CustomResource):
                  args: PlatformApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PlatformApiKey resource with the given unique name, props, and options.
+        Resource for creating apikeys.
+
+        ## Import
+
+        Import account level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <parent_id>/<apikey_id>/<apikey_type>
+        ```
+
+        Import org level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<parent_id>/<apikey_id>/<apikey_type>
+        ```
+
+        Import project level apikey
+
+        ```sh
+        $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
+        ```
+
         :param str resource_name: The name of the resource.
         :param PlatformApiKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -406,7 +448,7 @@ class PlatformApiKey(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,7 +495,7 @@ class PlatformApiKey(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'PlatformApiKey':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'PlatformApiKey':
         """
         Get an existing PlatformApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -464,13 +506,13 @@ class PlatformApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[str] apikey_type: Type of the API Key
         :param pulumi.Input[int] default_time_to_expire_token: Default expiration time of the Token within API Key
-        :param pulumi.Input[str] description: Description of the API Key
-        :param pulumi.Input[str] identifier: Identifier of the API Key
-        :param pulumi.Input[str] name: Name of the API Key
-        :param pulumi.Input[str] org_id: Organization Identifier for the Entity
+        :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the API Key
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -516,7 +558,7 @@ class PlatformApiKey(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the API Key
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -524,7 +566,7 @@ class PlatformApiKey(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        Identifier of the API Key
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -532,7 +574,7 @@ class PlatformApiKey(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the API Key
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -540,7 +582,7 @@ class PlatformApiKey(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Organization Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -556,15 +598,15 @@ class PlatformApiKey(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags for the API Key
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 

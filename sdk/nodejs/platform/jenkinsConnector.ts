@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Jenkins connector.
- *
  * ## Import
  *
  * Import account level jenkins connector

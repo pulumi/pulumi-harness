@@ -14,8 +14,121 @@ import (
 
 // Resource for creating an Artifactory connector.
 //
-// ## Example Usage
+// ## Example to create Artifactory Connector at different levels (Org, Project, Account)
 //
+// ### Account Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Authentication mechanism as username and password
+//			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Authentication mechanism as anonymous
+//			_, err = platform.NewArtifactoryConnector(ctx, "test", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Url: pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Authentication mechanism as username and password
+//			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				OrgId: pulumi.Any(testHarnessPlatformProject.OrgId),
+//				Url:   pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Authentication mechanism as anonymous
+//			_, err = platform.NewArtifactoryConnector(ctx, "test", &platform.ArtifactoryConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				OrgId: pulumi.Any(testHarnessPlatformProject.OrgId),
+//				Url:   pulumi.String("https://artifactory.example.com"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
 // ```go
 // package main
 //

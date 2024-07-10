@@ -6,6 +6,8 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.TemplateGitDetailsArgs;
+import com.pulumi.harness.platform.inputs.TemplateGitImportDetailsArgs;
+import com.pulumi.harness.platform.inputs.TemplateTemplateImportRequestArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -57,14 +59,14 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable this flag for force deletion of template
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<String> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of template
+     * @return Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     public Optional<Output<String>> forceDelete() {
@@ -87,6 +89,21 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Import(name="gitImportDetails")
+    private @Nullable Output<TemplateGitImportDetailsArgs> gitImportDetails;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Optional<Output<TemplateGitImportDetailsArgs>> gitImportDetails() {
+        return Optional.ofNullable(this.gitImportDetails);
+    }
+
+    /**
      * Unique identifier of the resource
      * 
      */
@@ -99,6 +116,21 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Import(name="importFromGit")
+    private @Nullable Output<Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Optional<Output<Boolean>> importFromGit() {
+        return Optional.ofNullable(this.importFromGit);
     }
 
     /**
@@ -177,6 +209,21 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains parameters for importing template.
+     * 
+     */
+    @Import(name="templateImportRequest")
+    private @Nullable Output<TemplateTemplateImportRequestArgs> templateImportRequest;
+
+    /**
+     * @return Contains parameters for importing template.
+     * 
+     */
+    public Optional<Output<TemplateTemplateImportRequestArgs>> templateImportRequest() {
+        return Optional.ofNullable(this.templateImportRequest);
+    }
+
+    /**
      * Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
@@ -213,12 +260,15 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.forceDelete = $.forceDelete;
         this.gitDetails = $.gitDetails;
+        this.gitImportDetails = $.gitImportDetails;
         this.identifier = $.identifier;
+        this.importFromGit = $.importFromGit;
         this.isStable = $.isStable;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
+        this.templateImportRequest = $.templateImportRequest;
         this.templateYaml = $.templateYaml;
         this.version = $.version;
     }
@@ -292,7 +342,7 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of template
+         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
          * 
          * @return builder
          * 
@@ -303,7 +353,7 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of template
+         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
          * 
          * @return builder
          * 
@@ -334,6 +384,27 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitImportDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportDetails(@Nullable Output<TemplateGitImportDetailsArgs> gitImportDetails) {
+            $.gitImportDetails = gitImportDetails;
+            return this;
+        }
+
+        /**
+         * @param gitImportDetails Contains Git Information for importing entities from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImportDetails(TemplateGitImportDetailsArgs gitImportDetails) {
+            return gitImportDetails(Output.of(gitImportDetails));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource
          * 
          * @return builder
@@ -352,6 +423,27 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(@Nullable Output<Boolean> importFromGit) {
+            $.importFromGit = importFromGit;
+            return this;
+        }
+
+        /**
+         * @param importFromGit Flag to set if importing from Git
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFromGit(Boolean importFromGit) {
+            return importFromGit(Output.of(importFromGit));
         }
 
         /**
@@ -467,6 +559,27 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param templateImportRequest Contains parameters for importing template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateImportRequest(@Nullable Output<TemplateTemplateImportRequestArgs> templateImportRequest) {
+            $.templateImportRequest = templateImportRequest;
+            return this;
+        }
+
+        /**
+         * @param templateImportRequest Contains parameters for importing template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateImportRequest(TemplateTemplateImportRequestArgs templateImportRequest) {
+            return templateImportRequest(Output.of(templateImportRequest));
         }
 
         /**

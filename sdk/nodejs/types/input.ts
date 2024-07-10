@@ -892,6 +892,821 @@ export interface UserGroupSamlSettings {
      */
     ssoProviderId?: pulumi.Input<string>;
 }
+export namespace autostopping {
+    export interface AwsProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface AzureProxyCertificates {
+        /**
+         * ID of certificate secret uploaded to vault
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * ID of certificate key uploaded to vault
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GcpProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GetAwsProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface GetAwsProxyCertificatesArgs {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GetAzureProxyCertificates {
+        /**
+         * ID of certificate secret uploaded to vault
+         */
+        certSecretId: string;
+        /**
+         * ID of certificate key uploaded to vault
+         */
+        keySecretId: string;
+    }
+
+    export interface GetAzureProxyCertificatesArgs {
+        /**
+         * ID of certificate secret uploaded to vault
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * ID of certificate key uploaded to vault
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GetGcpProxyCertificates {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: string;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: string;
+    }
+
+    export interface GetGcpProxyCertificatesArgs {
+        /**
+         * Certificate secret ID
+         */
+        certSecretId: pulumi.Input<string>;
+        /**
+         * Private key secret ID
+         */
+        keySecretId: pulumi.Input<string>;
+    }
+
+    export interface GetRuleEcsContainer {
+        /**
+         * Name of cluster in which service belong to
+         */
+        cluster: string;
+        /**
+         * Region of cluster
+         */
+        region: string;
+        /**
+         * Name of service to be onboarded
+         */
+        service: string;
+        /**
+         * Desired number of tasks on warming up a rule
+         */
+        taskCount?: number;
+    }
+
+    export interface GetRuleEcsContainerArgs {
+        /**
+         * Name of cluster in which service belong to
+         */
+        cluster: pulumi.Input<string>;
+        /**
+         * Region of cluster
+         */
+        region: pulumi.Input<string>;
+        /**
+         * Name of service to be onboarded
+         */
+        service: pulumi.Input<string>;
+        /**
+         * Desired number of tasks on warming up a rule
+         */
+        taskCount?: pulumi.Input<number>;
+    }
+
+    export interface GetRuleEcsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleEcsDependArgs {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface GetRuleEcsHttp {
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+    }
+
+    export interface GetRuleEcsHttpArgs {
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+    }
+
+    export interface GetRuleRdsDatabase {
+        /**
+         * ID of the database
+         */
+        id: string;
+        /**
+         * Region to which database belong to
+         */
+        region: string;
+    }
+
+    export interface GetRuleRdsDatabaseArgs {
+        /**
+         * ID of the database
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Region to which database belong to
+         */
+        region: pulumi.Input<string>;
+    }
+
+    export interface GetRuleRdsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleRdsDependArgs {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface GetRuleRdsTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: inputs.autostopping.GetRuleRdsTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+    }
+
+    export interface GetRuleRdsTcpArgs {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsTcpForwardRuleArgs>[]>;
+        /**
+         * Id of the Proxy
+         */
+        proxyId: pulumi.Input<string>;
+    }
+
+    export interface GetRuleRdsTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface GetRuleRdsTcpForwardRuleArgs {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port: pulumi.Input<number>;
+    }
+
+    export interface GetRuleVmDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: number;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: number;
+    }
+
+    export interface GetRuleVmDependArgs {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface GetRuleVmFilter {
+        /**
+         * Regions of instances that needs to be managed using the AutoStopping rules
+         */
+        regions?: string[];
+        /**
+         * Tags of instances that needs to be managed using the AutoStopping rules
+         */
+        tags?: inputs.autostopping.GetRuleVmFilterTag[];
+        /**
+         * Ids of instances that needs to be managed using the AutoStopping rules
+         */
+        vmIds: string[];
+        /**
+         * Zones of instances that needs to be managed using the AutoStopping rules
+         */
+        zones?: string[];
+    }
+
+    export interface GetRuleVmFilterArgs {
+        /**
+         * Regions of instances that needs to be managed using the AutoStopping rules
+         */
+        regions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Tags of instances that needs to be managed using the AutoStopping rules
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmFilterTagArgs>[]>;
+        /**
+         * Ids of instances that needs to be managed using the AutoStopping rules
+         */
+        vmIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Zones of instances that needs to be managed using the AutoStopping rules
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRuleVmFilterTag {
+        key: string;
+        value: string;
+    }
+
+    export interface GetRuleVmFilterTagArgs {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetRuleVmHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: inputs.autostopping.GetRuleVmHttpHealth[];
+        /**
+         * Id of the proxy
+         */
+        proxyId: string;
+        /**
+         * Routing configuration used to access the instances
+         */
+        routings?: inputs.autostopping.GetRuleVmHttpRouting[];
+    }
+
+    export interface GetRuleVmHttpArgs {
+        /**
+         * Health Check Details
+         */
+        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpHealthArgs>[]>;
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * Routing configuration used to access the instances
+         */
+        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpRoutingArgs>[]>;
+    }
+
+    export interface GetRuleVmHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: string;
+        /**
+         * Health check port on the VM
+         */
+        port: number;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: string;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: number;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: number;
+        /**
+         * Health check timeout
+         */
+        timeout?: number;
+    }
+
+    export interface GetRuleVmHttpHealthArgs {
+        /**
+         * API path to use for health check
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Health check port on the VM
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: pulumi.Input<number>;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: pulumi.Input<number>;
+        /**
+         * Health check timeout
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface GetRuleVmHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: string;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: number;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: string;
+        /**
+         * Port on the VM
+         */
+        targetPort?: number;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: string;
+    }
+
+    export interface GetRuleVmHttpRoutingArgs {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: pulumi.Input<number>;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: pulumi.Input<string>;
+        /**
+         * Port on the VM
+         */
+        targetPort?: pulumi.Input<number>;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: pulumi.Input<string>;
+    }
+
+    export interface GetRuleVmTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: inputs.autostopping.GetRuleVmTcpForwardRule[];
+        /**
+         * Id of the Proxy
+         */
+        proxyId: string;
+        /**
+         * RDP configuration
+         */
+        rdps?: inputs.autostopping.GetRuleVmTcpRdp[];
+        /**
+         * SSH configuration
+         */
+        sshes?: inputs.autostopping.GetRuleVmTcpSsh[];
+    }
+
+    export interface GetRuleVmTcpArgs {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpForwardRuleArgs>[]>;
+        /**
+         * Id of the Proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * RDP configuration
+         */
+        rdps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpRdpArgs>[]>;
+        /**
+         * SSH configuration
+         */
+        sshes?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpSshArgs>[]>;
+    }
+
+    export interface GetRuleVmTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port: number;
+    }
+
+    export interface GetRuleVmTcpForwardRuleArgs {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port: pulumi.Input<number>;
+    }
+
+    export interface GetRuleVmTcpRdp {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface GetRuleVmTcpRdpArgs {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface GetRuleVmTcpSsh {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: number;
+        /**
+         * Port to listen on the vm
+         */
+        port?: number;
+    }
+
+    export interface GetRuleVmTcpSshArgs {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface RuleEcsContainer {
+        /**
+         * Name of cluster in which service belong to
+         */
+        cluster: pulumi.Input<string>;
+        /**
+         * Region of cluster
+         */
+        region: pulumi.Input<string>;
+        /**
+         * Name of service to be onboarded
+         */
+        service: pulumi.Input<string>;
+        /**
+         * Desired number of tasks on warming up a rule
+         */
+        taskCount?: pulumi.Input<number>;
+    }
+
+    export interface RuleEcsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface RuleEcsHttp {
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+    }
+
+    export interface RuleRdsDatabase {
+        /**
+         * ID of the database
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Region to which database belong to
+         */
+        region: pulumi.Input<string>;
+    }
+
+    export interface RuleRdsDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface RuleRdsTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsTcpForwardRule>[]>;
+        /**
+         * Id of the Proxy
+         */
+        proxyId: pulumi.Input<string>;
+    }
+
+    export interface RuleRdsTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port: pulumi.Input<number>;
+    }
+
+    export interface RuleVmDepend {
+        /**
+         * Number of seconds the rule should wait after warming up the dependent rule
+         */
+        delayInSec?: pulumi.Input<number>;
+        /**
+         * Rule id of the dependent rule
+         */
+        ruleId: pulumi.Input<number>;
+    }
+
+    export interface RuleVmFilter {
+        /**
+         * Regions of instances that needs to be managed using the AutoStopping rules
+         */
+        regions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Tags of instances that needs to be managed using the AutoStopping rules
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmFilterTag>[]>;
+        /**
+         * Ids of instances that needs to be managed using the AutoStopping rules
+         */
+        vmIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Zones of instances that needs to be managed using the AutoStopping rules
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleVmFilterTag {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface RuleVmHttp {
+        /**
+         * Health Check Details
+         */
+        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttpHealth>[]>;
+        /**
+         * Id of the proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * Routing configuration used to access the instances
+         */
+        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttpRouting>[]>;
+    }
+
+    export interface RuleVmHttpHealth {
+        /**
+         * API path to use for health check
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Health check port on the VM
+         */
+        port: pulumi.Input<number>;
+        /**
+         * Protocol can be http or https
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * Lower limit for acceptable status code
+         */
+        statusCodeFrom?: pulumi.Input<number>;
+        /**
+         * Upper limit for acceptable status code
+         */
+        statusCodeTo?: pulumi.Input<number>;
+        /**
+         * Health check timeout
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface RuleVmHttpRouting {
+        /**
+         * Organization Identifier for the Entity
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Port on the proxy
+         */
+        sourcePort?: pulumi.Input<number>;
+        /**
+         * Source protocol of the proxy can be http or https
+         */
+        sourceProtocol: pulumi.Input<string>;
+        /**
+         * Port on the VM
+         */
+        targetPort?: pulumi.Input<number>;
+        /**
+         * Target protocol of the instance can be http or https
+         */
+        targetProtocol: pulumi.Input<string>;
+    }
+
+    export interface RuleVmTcp {
+        /**
+         * Additional tcp forwarding rules
+         */
+        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcpForwardRule>[]>;
+        /**
+         * Id of the Proxy
+         */
+        proxyId: pulumi.Input<string>;
+        /**
+         * RDP configuration
+         */
+        rdps?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcpRdp>[]>;
+        /**
+         * SSH configuration
+         */
+        sshes?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcpSsh>[]>;
+    }
+
+    export interface RuleVmTcpForwardRule {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port: pulumi.Input<number>;
+    }
+
+    export interface RuleVmTcpRdp {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface RuleVmTcpSsh {
+        /**
+         * Port to listen on the proxy
+         */
+        connectOn?: pulumi.Input<number>;
+        /**
+         * Port to listen on the vm
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface ScheduleRepeat {
+        /**
+         * List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+         */
+        days: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Ending time of schedule action on the day. Defaults to 24:00Hrs unless specified. Accepted format is HH:MM. Eg : 20:00 for 8pm
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Starting time of schedule action on the day. Defaults to 00:00Hrs unless specified. Accepted format is HH:MM. Eg : 13:15 for 01:15pm
+         */
+        startTime?: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudprovider {
     export interface AwsAssumeCrossAccountRole {
         /**
@@ -1155,6 +1970,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: pulumi.Input<string>;
     }
 
     export interface AwsConnectorIrsa {
@@ -1162,6 +1981,10 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: pulumi.Input<string>;
     }
 
     export interface AwsConnectorManual {
@@ -1178,9 +2001,28 @@ export namespace platform {
          */
         delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Test Region to perform Connection test of AWS Connector.
+         */
+        region?: pulumi.Input<string>;
+        /**
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface AwsConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The IAM Role to assume the credentials from.
+         */
+        iamRoleArn: pulumi.Input<string>;
+        /**
+         * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        region?: pulumi.Input<string>;
     }
 
     export interface AwsKmsConnectorCredentials {
@@ -1256,9 +2098,13 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
+         * The plain text AWS access key.
+         */
+        accessKeyPlainText?: pulumi.Input<string>;
+        /**
          * The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        accessKeyRef: pulumi.Input<string>;
+        accessKeyRef?: pulumi.Input<string>;
         /**
          * The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
@@ -1420,9 +2266,82 @@ export namespace platform {
         sshKeyRef: pulumi.Input<string>;
     }
 
+    export interface ConnectorCustomSecretManagerTemplateInput {
+        environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable>[]>;
+    }
+
+    export interface ConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
+        default?: pulumi.Input<boolean>;
+        /**
+         * : Name of the resource.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+         */
+        type: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface ConnectorCustomhealthsourceHeader {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef?: pulumi.Input<string>;
+        /**
+         * Key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectorCustomhealthsourceParam {
+        /**
+         * Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        encryptedValueRef?: pulumi.Input<string>;
+        /**
+         * Key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value.
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Encrypted value.
+         */
+        valueEncrypted?: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectorPdcHost {
+        /**
+         * Host attributes with values. e.g. type, region, name, ip, etc.
+         */
+        attributes?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Hostname e.g. 87.23.66.11:80
+         */
+        hostname: pulumi.Input<string>;
+    }
+
+    export interface ConnectorRancherBearerToken {
+        /**
+         * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        bearerTokenRef: pulumi.Input<string>;
+    }
+
     export interface DockerConnectorCredentials {
         /**
-         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -1462,7 +2381,11 @@ export namespace platform {
 
     export interface EnvironmentClustersMappingCluster {
         /**
-         * account Identifier of the account
+         * agent identifier of the cluster (include scope prefix)
+         */
+        agentIdentifier?: pulumi.Input<string>;
+        /**
+         * identifier of the cluster
          */
         identifier?: pulumi.Input<string>;
         /**
@@ -1470,16 +2393,140 @@ export namespace platform {
          */
         name?: pulumi.Input<string>;
         /**
-         * scope at which the cluster exists in harness gitops, project vs org vs account
+         * scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          */
         scope?: pulumi.Input<string>;
     }
 
-    export interface FeatureFlagGitDetails {
+    export interface EnvironmentGitDetails {
         /**
-         * The commit message to use as part of a gitsync operation
+         * Name of the default branch (this checks out a new branch titled by branch_name).
          */
-        commitMsg: pulumi.Input<string>;
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * message for the commit in Git Repo.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * Flag to set if importing from Git
+         */
+        importFromGit?: pulumi.Input<boolean>;
+        /**
+         * Flag to set if force importing from Git
+         */
+        isForceImport?: pulumi.Input<boolean>;
+        /**
+         * If the gitProvider is HarnessCode
+         */
+        isHarnesscodeRepo?: pulumi.Input<boolean>;
+        /**
+         * If a new branch creation is requested.
+         */
+        isNewBranch?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Environment.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache?: pulumi.Input<string>;
+        /**
+         * Whether the file has to be get from fallback_branch.
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        parentEntityConnectorRef?: pulumi.Input<string>;
+        /**
+         * Name of the repository where parent entity lies.
+         */
+        parentEntityRepoName?: pulumi.Input<string>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * store type of the entity.
+         */
+        storeType?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFlagEnvironment {
+        /**
+         * The targeting rules for the flag
+         */
+        addTargetRules?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironmentAddTargetRule>[]>;
+        /**
+         * Default variation to be served when flag is 'off'
+         */
+        defaultOffVariation?: pulumi.Input<string>;
+        /**
+         * Default variation to be served when flag is 'on'
+         */
+        defaultOnVariation?: pulumi.Input<string>;
+        /**
+         * Identifier of the Environment
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * State of the flag in this environment. Possible values are 'on' and 'off'
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFlagEnvironmentAddTargetRule {
+        /**
+         * The targets of the rule
+         */
+        targets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The identifier of the variation. Valid values are `enabled`, `disabled`
+         */
+        variation?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFlagTag {
+        /**
+         * The identifier of the tag
+         */
+        identifier: pulumi.Input<string>;
+    }
+
+    export interface FeatureFlagTargetGroupRule {
+        /**
+         * The attribute to use in the clause.  This can be any target attribute
+         */
+        attribute?: pulumi.Input<string>;
+        /**
+         * Is the operation negated?
+         */
+        negate?: pulumi.Input<boolean>;
+        /**
+         * The type of operation such as equals, starts_with, contains
+         */
+        op?: pulumi.Input<string>;
+        /**
+         * The values that are compared against the operator
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FeatureFlagVariation {
@@ -1499,6 +2546,50 @@ export namespace platform {
          * The value of the variation
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface FileStoreFileCreatedBy {
+        /**
+         * User email
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface FileStoreFileLastModifiedBy {
+        /**
+         * User email
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface FileStoreFolderCreatedBy {
+        /**
+         * User email
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface FileStoreFolderLastModifiedBy {
+        /**
+         * User email
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        name?: pulumi.Input<string>;
     }
 
     export interface FiltersFilterProperties {
@@ -1541,876 +2632,132 @@ export namespace platform {
         secretKeyRef: pulumi.Input<string>;
     }
 
-    export interface GetGitopsApplicationsApplication {
+    export interface GetConnectorRancherBearerToken {
         /**
-         * Metadata corresponding to the resources. This includes all the objects a user must create.
+         * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        metadatas?: inputs.platform.GetGitopsApplicationsApplicationMetadata[];
+        passwordRef: string;
         /**
-         * Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+         * The URL of the Rancher cluster.
          */
-        specs?: inputs.platform.GetGitopsApplicationsApplicationSpec[];
+        rancherUrl: string;
     }
 
-    export interface GetGitopsApplicationsApplicationArgs {
+    export interface GetConnectorRancherBearerTokenArgs {
         /**
-         * Metadata corresponding to the resources. This includes all the objects a user must create.
+         * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationMetadataArgs>[]>;
+        passwordRef: pulumi.Input<string>;
         /**
-         * Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+         * The URL of the Rancher cluster.
          */
-        specs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecArgs>[]>;
+        rancherUrl: pulumi.Input<string>;
     }
 
-    export interface GetGitopsApplicationsApplicationMetadata {
+    export interface GetEnvironmentClustersMappingCluster {
         /**
-         * Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+         * agent identifier of the cluster (include scope prefix)
          */
-        annotations?: {[key: string]: string};
+        agentIdentifier?: string;
         /**
-         * Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+         * identifier of the cluster
          */
-        clusterName?: string;
+        identifier?: string;
         /**
-         * Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
-         */
-        finalizers?: string[];
-        /**
-         * An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
-         */
-        generateName?: string;
-        /**
-         * A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
-         */
-        generation?: string;
-        /**
-         * Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
-         */
-        labels?: {[key: string]: string};
-        /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+         * name of the cluster
          */
         name?: string;
         /**
-         * Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+         * scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          */
-        namespace?: string;
-        /**
-         * List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-         */
-        ownerReferences?: inputs.platform.GetGitopsApplicationsApplicationMetadataOwnerReference[];
-        /**
-         * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
-         */
-        uid?: string;
+        scope?: string;
     }
 
-    export interface GetGitopsApplicationsApplicationMetadataArgs {
+    export interface GetEnvironmentClustersMappingClusterArgs {
         /**
-         * Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+         * agent identifier of the cluster (include scope prefix)
          */
-        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        agentIdentifier?: pulumi.Input<string>;
         /**
-         * Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+         * identifier of the cluster
          */
-        clusterName?: pulumi.Input<string>;
+        identifier?: pulumi.Input<string>;
         /**
-         * Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
-         */
-        finalizers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
-         */
-        generateName?: pulumi.Input<string>;
-        /**
-         * A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
-         */
-        generation?: pulumi.Input<string>;
-        /**
-         * Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
-         */
-        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+         * name of the cluster
          */
         name?: pulumi.Input<string>;
         /**
-         * Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+         * scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
          */
-        namespace?: pulumi.Input<string>;
-        /**
-         * List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-         */
-        ownerReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs>[]>;
-        /**
-         * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
-         */
-        uid?: pulumi.Input<string>;
+        scope?: pulumi.Input<string>;
     }
 
-    export interface GetGitopsApplicationsApplicationMetadataOwnerReference {
+    export interface GetEnvironmentGitDetails {
         /**
-         * API version of the referent.
+         * Name of the branch.
          */
-        apiVersion?: string;
+        branch?: string;
         /**
-         * If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+         * Load environment yaml from fallback branch
          */
-        blockOwnerDeletion?: boolean;
+        loadFromFallbackBranch?: boolean;
         /**
-         * Indicates if the reference points to the managing controller.
+         * Repo name of remote environment
          */
-        controller?: boolean;
-        /**
-         * Kind of the referent.
-         */
-        kind?: string;
-        /**
-         * Name of the referent.
-         */
-        name?: string;
-        /**
-         * UID of the referent.
-         */
-        uid?: string;
+        repoName?: string;
     }
 
-    export interface GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs {
+    export interface GetEnvironmentGitDetailsArgs {
         /**
-         * API version of the referent.
+         * Name of the branch.
          */
-        apiVersion?: pulumi.Input<string>;
+        branch?: pulumi.Input<string>;
         /**
-         * If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+         * Load environment yaml from fallback branch
          */
-        blockOwnerDeletion?: pulumi.Input<boolean>;
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
         /**
-         * Indicates if the reference points to the managing controller.
+         * Repo name of remote environment
          */
-        controller?: pulumi.Input<boolean>;
-        /**
-         * Kind of the referent.
-         */
-        kind?: pulumi.Input<string>;
-        /**
-         * Name of the referent.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * UID of the referent.
-         */
-        uid?: pulumi.Input<string>;
+        repoName?: pulumi.Input<string>;
     }
 
-    export interface GetGitopsApplicationsApplicationSpec {
+    export interface GetGitopsAgentDeployYamlProxy {
         /**
-         * Information about the GitOps application's destination.
+         * HTTP proxy settings for the GitOps agent.
          */
-        destinations?: inputs.platform.GetGitopsApplicationsApplicationSpecDestination[];
+        http?: string;
         /**
-         * Contains all information about the source of a GitOps application.
+         * HTTPS proxy settings for the GitOps agent.
          */
-        sources?: inputs.platform.GetGitopsApplicationsApplicationSpecSource[];
+        https?: string;
         /**
-         * Controls when a sync will be performed in response to updates in git.
+         * Password for the proxy.
          */
-        syncPolicies?: inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicy[];
+        password?: string;
+        /**
+         * Username for the proxy.
+         */
+        username?: string;
     }
 
-    export interface GetGitopsApplicationsApplicationSpecArgs {
+    export interface GetGitopsAgentDeployYamlProxyArgs {
         /**
-         * Information about the GitOps application's destination.
+         * HTTP proxy settings for the GitOps agent.
          */
-        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecDestinationArgs>[]>;
+        http?: pulumi.Input<string>;
         /**
-         * Contains all information about the source of a GitOps application.
+         * HTTPS proxy settings for the GitOps agent.
          */
-        sources?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceArgs>[]>;
+        https?: pulumi.Input<string>;
         /**
-         * Controls when a sync will be performed in response to updates in git.
+         * Password for the proxy.
          */
-        syncPolicies?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyArgs>[]>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecDestination {
+        password?: pulumi.Input<string>;
         /**
-         * URL of the target cluster and must be set to the kubernetes control plane API.
+         * Username for the proxy.
          */
-        name?: string;
-        /**
-         * Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
-         */
-        namespace?: string;
-        /**
-         * Server of the destination of the GitOps application.
-         */
-        server?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecDestinationArgs {
-        /**
-         * URL of the target cluster and must be set to the kubernetes control plane API.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
-         */
-        namespace?: pulumi.Input<string>;
-        /**
-         * Server of the destination of the GitOps application.
-         */
-        server?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSource {
-        /**
-         * Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
-         */
-        chart?: string;
-        /**
-         * Options for applications of type plain YAML or Jsonnet.
-         */
-        directories?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectory[];
-        /**
-         * Holds helm specific options.
-         */
-        helms?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelm[];
-        /**
-         * Ksonnet specific options.
-         */
-        ksonnets?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnet[];
-        /**
-         * Options specific to a GitOps application source specific to Kustomize.
-         */
-        kustomizes?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceKustomize[];
-        /**
-         * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
-         */
-        path?: string;
-        /**
-         * Options specific to config management plugins.
-         */
-        plugins?: inputs.platform.GetGitopsApplicationsApplicationSpecSourcePlugin[];
-        /**
-         * URL to the repository (git or helm) that contains the GitOps application manifests.
-         */
-        repoUrl?: string;
-        /**
-         * Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
-         */
-        targetRevision?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceArgs {
-        /**
-         * Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
-         */
-        chart?: pulumi.Input<string>;
-        /**
-         * Options for applications of type plain YAML or Jsonnet.
-         */
-        directories?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryArgs>[]>;
-        /**
-         * Holds helm specific options.
-         */
-        helms?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmArgs>[]>;
-        /**
-         * Ksonnet specific options.
-         */
-        ksonnets?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetArgs>[]>;
-        /**
-         * Options specific to a GitOps application source specific to Kustomize.
-         */
-        kustomizes?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceKustomizeArgs>[]>;
-        /**
-         * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
-         */
-        path?: pulumi.Input<string>;
-        /**
-         * Options specific to config management plugins.
-         */
-        plugins?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginArgs>[]>;
-        /**
-         * URL to the repository (git or helm) that contains the GitOps application manifests.
-         */
-        repoUrl?: pulumi.Input<string>;
-        /**
-         * Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
-         */
-        targetRevision?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectory {
-        /**
-         * Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
-         */
-        exclude?: string;
-        /**
-         * Glob pattern to match paths against that should be explicitly included during manifest generation.
-         */
-        include?: string;
-        /**
-         * Options specific to applications of type Jsonnet.
-         */
-        jsonnets?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet[];
-        /**
-         * Indicates to scan a directory recursively for manifests.
-         */
-        recurse?: boolean;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryArgs {
-        /**
-         * Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
-         */
-        exclude?: pulumi.Input<string>;
-        /**
-         * Glob pattern to match paths against that should be explicitly included during manifest generation.
-         */
-        include?: pulumi.Input<string>;
-        /**
-         * Options specific to applications of type Jsonnet.
-         */
-        jsonnets?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs>[]>;
-        /**
-         * Indicates to scan a directory recursively for manifests.
-         */
-        recurse?: pulumi.Input<boolean>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
-        /**
-         * List of jsonnet external variables.
-         */
-        extVars?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar[];
-        /**
-         * Additional library search dirs.
-         */
-        libs?: string[];
-        /**
-         * List of jsonnet top-level arguments(TLAS).
-         */
-        tlas?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla[];
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs {
-        /**
-         * List of jsonnet external variables.
-         */
-        extVars?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs>[]>;
-        /**
-         * Additional library search dirs.
-         */
-        libs?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * List of jsonnet top-level arguments(TLAS).
-         */
-        tlas?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs>[]>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar {
-        /**
-         * Code of the external variables of jsonnet application.
-         */
-        code?: boolean;
-        /**
-         * Name of the external variables of jsonnet application.
-         */
-        name?: string;
-        /**
-         * Value of the external variables of jsonnet application.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs {
-        /**
-         * Code of the external variables of jsonnet application.
-         */
-        code?: pulumi.Input<boolean>;
-        /**
-         * Name of the external variables of jsonnet application.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the external variables of jsonnet application.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
-        /**
-         * Code of the TLAS of the jsonnet application.
-         */
-        code?: boolean;
-        /**
-         * Name of the TLAS of the jsonnet application.
-         */
-        name?: string;
-        /**
-         * Value of the TLAS of the jsonnet application.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs {
-        /**
-         * Code of the TLAS of the jsonnet application.
-         */
-        code?: pulumi.Input<boolean>;
-        /**
-         * Name of the TLAS of the jsonnet application.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the TLAS of the jsonnet application.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelm {
-        /**
-         * File parameters to the helm template.
-         */
-        fileParameters?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
-        /**
-         * List of helm parameters which are passed to the helm template command upon manifest generation.
-         */
-        parameters?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
-        /**
-         * Indicates if to pass credentials to all domains (helm's --pass-credentials)
-         */
-        passCredentials?: boolean;
-        /**
-         * Helm release name to use. If omitted it will use the GitOps application name.
-         */
-        releaseName?: string;
-        /**
-         * List of helm value files to use when generating a template.
-         */
-        valueFiles?: string[];
-        /**
-         * Helm values to be passed to helm template, typically defined as a block.
-         */
-        values?: string;
-        /**
-         * Helm version to use for templating (either "2" or "3")
-         */
-        version?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelmArgs {
-        /**
-         * File parameters to the helm template.
-         */
-        fileParameters?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs>[]>;
-        /**
-         * List of helm parameters which are passed to the helm template command upon manifest generation.
-         */
-        parameters?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs>[]>;
-        /**
-         * Indicates if to pass credentials to all domains (helm's --pass-credentials)
-         */
-        passCredentials?: pulumi.Input<boolean>;
-        /**
-         * Helm release name to use. If omitted it will use the GitOps application name.
-         */
-        releaseName?: pulumi.Input<string>;
-        /**
-         * List of helm value files to use when generating a template.
-         */
-        valueFiles?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Helm values to be passed to helm template, typically defined as a block.
-         */
-        values?: pulumi.Input<string>;
-        /**
-         * Helm version to use for templating (either "2" or "3")
-         */
-        version?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
-        /**
-         * Name of the helm parameter.
-         */
-        name?: string;
-        /**
-         * Path to the file containing the values of the helm parameter.
-         */
-        path?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs {
-        /**
-         * Name of the helm parameter.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Path to the file containing the values of the helm parameter.
-         */
-        path?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelmParameter {
-        /**
-         * Indicates if helm should interpret booleans and numbers as strings.
-         */
-        forceString?: boolean;
-        /**
-         * Name of the helm parameter.
-         */
-        name?: string;
-        /**
-         * Value of the helm parameter.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs {
-        /**
-         * Indicates if helm should interpret booleans and numbers as strings.
-         */
-        forceString?: pulumi.Input<boolean>;
-        /**
-         * Name of the helm parameter.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the helm parameter.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKsonnet {
-        /**
-         * Ksonnet application environment name.
-         */
-        environment?: string;
-        /**
-         * List of ksonnet component parameter override values.
-         */
-        parameters?: inputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter[];
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKsonnetArgs {
-        /**
-         * Ksonnet application environment name.
-         */
-        environment?: pulumi.Input<string>;
-        /**
-         * List of ksonnet component parameter override values.
-         */
-        parameters?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs>[]>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
-        /**
-         * Component of the parameter of the ksonnet application.
-         */
-        component?: string;
-        /**
-         * Name of the parameter of the ksonnet application.
-         */
-        name?: string;
-        /**
-         * Value of the parameter of the ksonnet application.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs {
-        /**
-         * Component of the parameter of the ksonnet application.
-         */
-        component?: pulumi.Input<string>;
-        /**
-         * Name of the parameter of the ksonnet application.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the parameter of the ksonnet application.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKustomize {
-        /**
-         * List of additional annotations to add to rendered manifests.
-         */
-        commonAnnotations?: {[key: string]: string};
-        /**
-         * List of additional labels to add to rendered manifests.
-         */
-        commonLabels?: {[key: string]: string};
-        /**
-         * Indicates if to force applying common annotations to resources for kustomize apps.
-         */
-        forceCommonAnnotations?: boolean;
-        /**
-         * Indicates if to force apply common labels to resources for kustomize apps.
-         */
-        forceCommonLabels?: boolean;
-        /**
-         * List of kustomize image override specifications.
-         */
-        images?: string[];
-        /**
-         * Prefix prepended to resources for kustomize apps.
-         */
-        namePrefix?: string;
-        /**
-         * Suffix appended to resources for kustomize apps.
-         */
-        nameSuffix?: string;
-        /**
-         * Version of kustomize to use for rendering manifests.
-         */
-        version?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourceKustomizeArgs {
-        /**
-         * List of additional annotations to add to rendered manifests.
-         */
-        commonAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * List of additional labels to add to rendered manifests.
-         */
-        commonLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * Indicates if to force applying common annotations to resources for kustomize apps.
-         */
-        forceCommonAnnotations?: pulumi.Input<boolean>;
-        /**
-         * Indicates if to force apply common labels to resources for kustomize apps.
-         */
-        forceCommonLabels?: pulumi.Input<boolean>;
-        /**
-         * List of kustomize image override specifications.
-         */
-        images?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Prefix prepended to resources for kustomize apps.
-         */
-        namePrefix?: pulumi.Input<string>;
-        /**
-         * Suffix appended to resources for kustomize apps.
-         */
-        nameSuffix?: pulumi.Input<string>;
-        /**
-         * Version of kustomize to use for rendering manifests.
-         */
-        version?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourcePlugin {
-        /**
-         * Entry in the GitOps application's environment.
-         */
-        envs?: inputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
-        /**
-         * Name of the plugin.
-         */
-        name?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourcePluginArgs {
-        /**
-         * Entry in the GitOps application's environment.
-         */
-        envs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs>[]>;
-        /**
-         * Name of the plugin.
-         */
-        name?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourcePluginEnv {
-        /**
-         * Name of the variable, usually expressed in uppercase.
-         */
-        name?: string;
-        /**
-         * Value of the variable.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs {
-        /**
-         * Name of the variable, usually expressed in uppercase.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the variable.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicy {
-        /**
-         * Controls the behavior of an automated sync.
-         */
-        automateds?: inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyAutomated[];
-        /**
-         * Contains information about the strategy to apply when a sync failed.
-         */
-        retries?: inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetry[];
-        /**
-         * Options allow you to specify whole app sync-options.
-         */
-        syncOptions?: string[];
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyArgs {
-        /**
-         * Controls the behavior of an automated sync.
-         */
-        automateds?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs>[]>;
-        /**
-         * Contains information about the strategy to apply when a sync failed.
-         */
-        retries?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs>[]>;
-        /**
-         * Options allow you to specify whole app sync-options.
-         */
-        syncOptions?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
-        /**
-         * Indicates to allows apps to have zero live resources (default: false).
-         */
-        allowEmpty?: boolean;
-        /**
-         * Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
-         */
-        prune?: boolean;
-        /**
-         * Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
-         */
-        selfHeal?: boolean;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs {
-        /**
-         * Indicates to allows apps to have zero live resources (default: false).
-         */
-        allowEmpty?: pulumi.Input<boolean>;
-        /**
-         * Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
-         */
-        prune?: pulumi.Input<boolean>;
-        /**
-         * Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
-         */
-        selfHeal?: pulumi.Input<boolean>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetry {
-        /**
-         * Backoff strategy to use on subsequent retries for failing syncs.
-         */
-        backoffs?: inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff[];
-        /**
-         * Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-         */
-        limit?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs {
-        /**
-         * Backoff strategy to use on subsequent retries for failing syncs.
-         */
-        backoffs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs>[]>;
-        /**
-         * Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-         */
-        limit?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoff {
-        /**
-         * Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
-         */
-        duration?: string;
-        /**
-         * Factor to multiply the base duration after each failed retry.
-         */
-        factor?: string;
-        /**
-         * Maximum amount of time allowed of the backoff strategy.
-         */
-        maxDuration?: string;
-    }
-
-    export interface GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs {
-        /**
-         * Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
-         */
-        duration?: pulumi.Input<string>;
-        /**
-         * Factor to multiply the base duration after each failed retry.
-         */
-        factor?: pulumi.Input<string>;
-        /**
-         * Maximum amount of time allowed of the backoff strategy.
-         */
-        maxDuration?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsClusterQuery {
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: inputs.platform.GetGitopsClusterQueryId[];
-        /**
-         * Name of the GitOps cluster.
-         */
-        name?: string;
-        /**
-         * Server of the GitOps cluster.
-         */
-        server?: string;
-    }
-
-    export interface GetGitopsClusterQueryArgs {
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsClusterQueryIdArgs>[]>;
-        /**
-         * Name of the GitOps cluster.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Server of the GitOps cluster.
-         */
-        server?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsClusterQueryId {
-        /**
-         * Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: string;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: string;
-    }
-
-    export interface GetGitopsClusterQueryIdArgs {
-        /**
-         * Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
     }
 
     export interface GetGitopsGnupgRequest {
@@ -2441,7 +2788,7 @@ export namespace platform {
          */
         fingerprint?: string;
         /**
-         * KeyData holds the raw key data, in base64 encoded format
+         * KeyData holds the raw key data, in base64 encoded format.
          */
         keyData?: string;
         /**
@@ -2468,7 +2815,7 @@ export namespace platform {
          */
         fingerprint?: pulumi.Input<string>;
         /**
-         * KeyData holds the raw key data, in base64 encoded format
+         * KeyData holds the raw key data, in base64 encoded format.
          */
         keyData?: pulumi.Input<string>;
         /**
@@ -2511,19 +2858,19 @@ export namespace platform {
          */
         githubAppPrivateKey?: string;
         /**
-         * Password for authenticating at the repo server.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: string;
         /**
-         * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: string;
         /**
-         * Specifies the TLS client cert data for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertData?: string;
         /**
-         * Specifies the TLS client cert key for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertKey?: string;
         /**
@@ -2531,11 +2878,11 @@ export namespace platform {
          */
         type?: string;
         /**
-         * url representing this object.
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
         url?: string;
         /**
-         * Username for authenticating at the repo server.
+         * Username to be used for authenticating the remote repository.
          */
         username?: string;
     }
@@ -2562,19 +2909,19 @@ export namespace platform {
          */
         githubAppPrivateKey?: pulumi.Input<string>;
         /**
-         * Password for authenticating at the repo server.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: pulumi.Input<string>;
         /**
-         * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: pulumi.Input<string>;
         /**
-         * Specifies the TLS client cert data for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertData?: pulumi.Input<string>;
         /**
-         * Specifies the TLS client cert key for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertKey?: pulumi.Input<string>;
         /**
@@ -2582,11 +2929,11 @@ export namespace platform {
          */
         type?: pulumi.Input<string>;
         /**
-         * url representing this object.
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
         url?: pulumi.Input<string>;
         /**
-         * Username for authenticating at the repo server.
+         * Username to be used for authenticating the remote repository.
          */
         username?: pulumi.Input<string>;
     }
@@ -2603,6 +2950,44 @@ export namespace platform {
          * The set of field mask paths.
          */
         paths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetInfrastructureGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch?: string;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache?: string;
+        /**
+         * Load Infrastructure yaml from fallback branch
+         */
+        loadFromFallbackBranch?: boolean;
+        /**
+         * Repo name of remote Infrastructure
+         */
+        repoName?: string;
+    }
+
+    export interface GetInfrastructureGitDetailsArgs {
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache?: pulumi.Input<string>;
+        /**
+         * Load Infrastructure yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Repo name of remote Infrastructure
+         */
+        repoName?: pulumi.Input<string>;
     }
 
     export interface GetInputSetGitDetails {
@@ -2799,6 +3184,282 @@ export namespace platform {
         severity: pulumi.Input<string>;
     }
 
+    export interface GetRepoRuleBranchBypass {
+        /**
+         * Allow users with repository edit permission to bypass.
+         */
+        repoOwners?: boolean;
+        /**
+         * List of user ids with who can bypass.
+         */
+        userIds?: string[];
+    }
+
+    export interface GetRepoRuleBranchBypassArgs {
+        /**
+         * Allow users with repository edit permission to bypass.
+         */
+        repoOwners?: pulumi.Input<boolean>;
+        /**
+         * List of user ids with who can bypass.
+         */
+        userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRepoRuleBranchPattern {
+        /**
+         * Should rule apply to default branch of the repository.
+         */
+        defaultBranch?: boolean;
+        /**
+         * Globstar branch patterns on which rules will NOT be applied.
+         */
+        excludes?: string[];
+        /**
+         * Globstar branch patterns on which rules will be applied.
+         */
+        includes?: string[];
+    }
+
+    export interface GetRepoRuleBranchPatternArgs {
+        /**
+         * Should rule apply to default branch of the repository.
+         */
+        defaultBranch?: pulumi.Input<boolean>;
+        /**
+         * Globstar branch patterns on which rules will NOT be applied.
+         */
+        excludes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Globstar branch patterns on which rules will be applied.
+         */
+        includes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRepoRuleBranchPolicy {
+        /**
+         * Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+         */
+        allowMergeStrategies?: string[];
+        /**
+         * Only allow users with bypass permission to create matching branches.
+         */
+        blockBranchCreation?: boolean;
+        /**
+         * Only allow users with bypass permission to delete matching branches.
+         */
+        blockBranchDeletion?: boolean;
+        /**
+         * Automatically delete the source branch of a pull request after it is merged.
+         */
+        deleteBranchOnMerge?: boolean;
+        /**
+         * Require approval on pull requests from one reviewer for each codeowner rule.
+         */
+        requireCodeOwners?: boolean;
+        /**
+         * Require re-approval when there are new changes in the pull request.
+         */
+        requireLatestCommitApproval?: boolean;
+        /**
+         * Require approval on pull requests from a minimum number of reviewers.
+         */
+        requireMinimumApprovalCount?: number;
+        /**
+         * Require all request for changes have been resolved.
+         */
+        requireNoChangeRequest?: boolean;
+        /**
+         * Do not allow any changes to matching branches without a pull request.
+         */
+        requirePullRequest?: boolean;
+        /**
+         * All comments on a pull request must be resolved before it can be merged.
+         */
+        requireResolveAllComments?: boolean;
+        /**
+         * Selected status checks must pass before a pull request can be merged.
+         */
+        requireStatusChecks?: string[];
+    }
+
+    export interface GetRepoRuleBranchPolicyArgs {
+        /**
+         * Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+         */
+        allowMergeStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only allow users with bypass permission to create matching branches.
+         */
+        blockBranchCreation?: pulumi.Input<boolean>;
+        /**
+         * Only allow users with bypass permission to delete matching branches.
+         */
+        blockBranchDeletion?: pulumi.Input<boolean>;
+        /**
+         * Automatically delete the source branch of a pull request after it is merged.
+         */
+        deleteBranchOnMerge?: pulumi.Input<boolean>;
+        /**
+         * Require approval on pull requests from one reviewer for each codeowner rule.
+         */
+        requireCodeOwners?: pulumi.Input<boolean>;
+        /**
+         * Require re-approval when there are new changes in the pull request.
+         */
+        requireLatestCommitApproval?: pulumi.Input<boolean>;
+        /**
+         * Require approval on pull requests from a minimum number of reviewers.
+         */
+        requireMinimumApprovalCount?: pulumi.Input<number>;
+        /**
+         * Require all request for changes have been resolved.
+         */
+        requireNoChangeRequest?: pulumi.Input<boolean>;
+        /**
+         * Do not allow any changes to matching branches without a pull request.
+         */
+        requirePullRequest?: pulumi.Input<boolean>;
+        /**
+         * All comments on a pull request must be resolved before it can be merged.
+         */
+        requireResolveAllComments?: pulumi.Input<boolean>;
+        /**
+         * Selected status checks must pass before a pull request can be merged.
+         */
+        requireStatusChecks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetRepoSource {
+        /**
+         * The host URL for the import source.
+         */
+        host?: string;
+        /**
+         * The password for authentication when importing.
+         */
+        password?: string;
+        /**
+         * The full identifier of the repository on the SCM provider's platform.
+         */
+        repo?: string;
+        /**
+         * The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+         */
+        type?: string;
+        /**
+         * The username for authentication when importing.
+         */
+        username?: string;
+    }
+
+    export interface GetRepoSourceArgs {
+        /**
+         * The host URL for the import source.
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * The password for authentication when importing.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * The full identifier of the repository on the SCM provider's platform.
+         */
+        repo?: pulumi.Input<string>;
+        /**
+         * The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The username for authentication when importing.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface GetSecretTextAdditionalMetadata {
+        values?: inputs.platform.GetSecretTextAdditionalMetadataValue[];
+    }
+
+    export interface GetSecretTextAdditionalMetadataArgs {
+        values?: pulumi.Input<pulumi.Input<inputs.platform.GetSecretTextAdditionalMetadataValueArgs>[]>;
+    }
+
+    export interface GetSecretTextAdditionalMetadataValue {
+        version?: string;
+    }
+
+    export interface GetSecretTextAdditionalMetadataValueArgs {
+        version?: pulumi.Input<string>;
+    }
+
+    export interface GetServiceGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch?: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: boolean;
+        /**
+         * Repo name of remote service
+         */
+        repoName?: string;
+    }
+
+    export interface GetServiceGitDetailsArgs {
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Repo name of remote service
+         */
+        repoName?: pulumi.Input<string>;
+    }
+
+    export interface GetServiceOverridesV2GitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch?: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache?: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: boolean;
+        /**
+         * Repo name of remote service override
+         */
+        repoName?: string;
+    }
+
+    export interface GetServiceOverridesV2GitDetailsArgs {
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache?: pulumi.Input<boolean>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Repo name of remote service override
+         */
+        repoName?: pulumi.Input<string>;
+    }
+
     export interface GetTemplateGitDetails {
         /**
          * Name of the branch.
@@ -2915,6 +3576,112 @@ export namespace platform {
         type?: pulumi.Input<string>;
     }
 
+    export interface GetWorkspaceEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key?: string;
+        /**
+         * value is the value of the variable
+         */
+        value?: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType?: string;
+    }
+
+    export interface GetWorkspaceEnvironmentVariableArgs {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * value is the value of the variable
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType?: pulumi.Input<string>;
+    }
+
+    export interface GetWorkspaceTerraformVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key?: string;
+        /**
+         * value is the value of the variable
+         */
+        value?: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType?: string;
+    }
+
+    export interface GetWorkspaceTerraformVariableArgs {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * value is the value of the variable
+         */
+        value?: pulumi.Input<string>;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType?: pulumi.Input<string>;
+    }
+
+    export interface GetWorkspaceTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository?: string;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         */
+        repositoryBranch?: string;
+        /**
+         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         */
+        repositoryCommit?: string;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector?: string;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: string;
+    }
+
+    export interface GetWorkspaceTerraformVariableFileArgs {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository?: pulumi.Input<string>;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         */
+        repositoryBranch?: pulumi.Input<string>;
+        /**
+         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         */
+        repositoryCommit?: pulumi.Input<string>;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector?: pulumi.Input<string>;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: pulumi.Input<string>;
+    }
+
     export interface GitConnectorCredentials {
         /**
          * Authenticate using Username and password over http(s) for the connection.
@@ -2950,11 +3717,15 @@ export namespace platform {
 
     export interface GitOpsAgentMetadata {
         /**
-         * Indicates if the deployment should be deployed using the deploy-ha.yaml
+         * Indicates if the agent is deployed in HA mode.
          */
         highAvailability?: pulumi.Input<boolean>;
         /**
-         * The k8s namespace that this agent resides in.
+         * Indicates if the agent is namespaced.
+         */
+        isNamespaced?: pulumi.Input<boolean>;
+        /**
+         * The kubernetes namespace where the agent should be installed.
          */
         namespace?: pulumi.Input<string>;
     }
@@ -2996,11 +3767,11 @@ export namespace platform {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+         * Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
          */
         name?: pulumi.Input<string>;
         /**
-         * Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+         * Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
          */
         namespace?: pulumi.Input<string>;
         /**
@@ -3008,7 +3779,7 @@ export namespace platform {
          */
         ownerReferences?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationMetadataOwnerReference>[]>;
         /**
-         * UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+         * UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
          */
         uid?: pulumi.Input<string>;
     }
@@ -3046,7 +3817,7 @@ export namespace platform {
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecDestination>[]>;
         /**
-         * Contains all information about the source of a GitOps application.
+         * Contains all information about the source of the GitOps application.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSource>[]>;
         /**
@@ -3065,7 +3836,7 @@ export namespace platform {
          */
         namespace?: pulumi.Input<string>;
         /**
-         * Server of the destination of the GitOps application.
+         * URL of the target cluster server for the GitOps application.
          */
         server?: pulumi.Input<string>;
     }
@@ -3094,7 +3865,7 @@ export namespace platform {
         /**
          * Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
          */
-        path: pulumi.Input<string>;
+        path?: pulumi.Input<string>;
         /**
          * Options specific to config management plugins.
          */
@@ -3369,49 +4140,15 @@ export namespace platform {
         maxDuration?: pulumi.Input<string>;
     }
 
-    export interface GitOpsClusterQuery {
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterQueryId>[]>;
-        /**
-         * Name of the GitOps cluster.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Server of the GitOps cluster.
-         */
-        server?: pulumi.Input<string>;
-    }
-
-    export interface GitOpsClusterQueryId {
-        /**
-         * Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: pulumi.Input<string>;
-    }
-
     export interface GitOpsClusterRequest {
         /**
          * GitOps cluster details.
          */
         clusters?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestCluster>[]>;
         /**
-         * Cluster server URL or the cluster name.
-         */
-        ids?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestId>[]>;
-        /**
-         * Tags associated with the clusters
+         * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Update mask of the GitOps cluster.
-         */
-        updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestUpdateMask>[]>;
         /**
          * Fields which are updated.
          */
@@ -3444,7 +4181,7 @@ export namespace platform {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Name of the cluster. If omitted, will use the server address.
+         * Name of the cluster. If omitted, the server address will be used.
          */
         name?: pulumi.Input<string>;
         /**
@@ -3452,7 +4189,7 @@ export namespace platform {
          */
         namespaces?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+         * The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
          */
         project?: pulumi.Input<string>;
         /**
@@ -3464,16 +4201,16 @@ export namespace platform {
          */
         server: pulumi.Input<string>;
         /**
-         * Shard number. Calculated on the fly by the application controller if not specified.
+         * Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
          */
         shard?: pulumi.Input<string>;
     }
 
     export interface GitOpsClusterRequestClusterConfig {
         /**
-         * IAM authentication configuration for AWS.
+         * AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
          */
-        awsAuthConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigAwsAuthConfig>[]>;
+        awsClusterName?: pulumi.Input<string>;
         /**
          * Bearer authentication token the cluster.
          */
@@ -3491,6 +4228,10 @@ export namespace platform {
          */
         password?: pulumi.Input<string>;
         /**
+         * Optional role ARN. If set then used for AWS IAM Authenticator.
+         */
+        roleARN?: pulumi.Input<string>;
+        /**
          * Settings to enable transport layer security.
          */
         tlsClientConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigTlsClientConfig>[]>;
@@ -3498,17 +4239,6 @@ export namespace platform {
          * Username of the server of the cluster.
          */
         username?: pulumi.Input<string>;
-    }
-
-    export interface GitOpsClusterRequestClusterConfigAwsAuthConfig {
-        /**
-         * AWS cluster name.
-         */
-        clusterName?: pulumi.Input<string>;
-        /**
-         * Optional role ARN. If set then used for AWS IAM Authenticator.
-         */
-        roleARN?: pulumi.Input<string>;
     }
 
     export interface GitOpsClusterRequestClusterConfigExecProviderConfig {
@@ -3536,11 +4266,11 @@ export namespace platform {
 
     export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
         /**
-         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
          */
         caData?: pulumi.Input<string>;
         /**
-         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         certData?: pulumi.Input<string>;
         /**
@@ -3548,11 +4278,11 @@ export namespace platform {
          */
         insecure?: pulumi.Input<boolean>;
         /**
-         * Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
          */
         keyData?: pulumi.Input<string>;
         /**
-         * Server name for SNI in the client to check server certificates against.
+         * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          */
         serverName?: pulumi.Input<string>;
     }
@@ -3632,24 +4362,6 @@ export namespace platform {
         seconds?: pulumi.Input<string>;
     }
 
-    export interface GitOpsClusterRequestId {
-        /**
-         * Type of the specified cluster identifier ( 'server' - default, 'name' ).
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * Cluster server URL or the cluster name.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface GitOpsClusterRequestUpdateMask {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
     export interface GitOpsGnupgRequest {
         /**
          * Public key details.
@@ -3667,7 +4379,7 @@ export namespace platform {
          */
         fingerprint?: pulumi.Input<string>;
         /**
-         * KeyData holds the raw key data, in base64 encoded format
+         * KeyData holds the raw key data, in base64 encoded format.
          */
         keyData: pulumi.Input<string>;
         /**
@@ -3694,7 +4406,7 @@ export namespace platform {
          */
         certificates?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCertRequestCertificate>[]>;
         /**
-         * if the Repository Certificates should be upserted.
+         * Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
          */
         upsert?: pulumi.Input<boolean>;
     }
@@ -3712,11 +4424,11 @@ export namespace platform {
 
     export interface GitOpsRepoCertRequestCertificateItem {
         /**
-         * CertData contains the actual certificate data, dependent on the certificate type.
+         * CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
          */
         certData?: pulumi.Input<string>;
         /**
-         * CertInfo will hold additional certificate info, depdendent on the certificate type .
+         * CertInfo will hold additional certificate info, dependent on the certificate type .
          */
         certInfo?: pulumi.Input<string>;
         /**
@@ -3743,7 +4455,7 @@ export namespace platform {
          */
         remainingItemCount?: pulumi.Input<string>;
         /**
-         * dentifies the server's internal version.
+         * Identifies the server's internal version.
          */
         resourceVersion?: pulumi.Input<string>;
         /**
@@ -3774,19 +4486,19 @@ export namespace platform {
          */
         githubAppPrivateKey?: pulumi.Input<string>;
         /**
-         * Password for authenticating at the repo server.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: pulumi.Input<string>;
         /**
-         * Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: pulumi.Input<string>;
         /**
-         * Specifies the TLS client cert data for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertData?: pulumi.Input<string>;
         /**
-         * Specifies the TLS client cert key for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
         tlsClientCertKey?: pulumi.Input<string>;
         /**
@@ -3794,18 +4506,112 @@ export namespace platform {
          */
         type?: pulumi.Input<string>;
         /**
-         * url representing this object.
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
         url?: pulumi.Input<string>;
         /**
-         * Username for authenticating at the repo server.
+         * Username to be used for authenticating the remote repository.
          */
         username?: pulumi.Input<string>;
     }
 
+    export interface GitOpsRepositoryEcrGen {
+        /**
+         * JWT authentication specific configuration.
+         */
+        jwtAuth?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGenJwtAuth>;
+        /**
+         * AWS region.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Secret reference to the AWS credentials.
+         */
+        secretRef?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGenSecretRef>;
+    }
+
+    export interface GitOpsRepositoryEcrGenJwtAuth {
+        /**
+         * Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+         */
+        audiences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the ServiceAccount resource being referred to.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsRepositoryEcrGenSecretRef {
+        /**
+         * AWS access key id.
+         */
+        awsAccessKeyId?: pulumi.Input<string>;
+        /**
+         * AWS secret access key.
+         */
+        awsSecretAccessKey?: pulumi.Input<string>;
+        /**
+         * AWS session token.
+         */
+        awsSessionToken?: pulumi.Input<string>;
+    }
+
+    export interface GitOpsRepositoryGcrGen {
+        /**
+         * GCP access key.
+         */
+        accessKey?: pulumi.Input<string>;
+        /**
+         * GCP project id.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * GCP workload identity.
+         */
+        workloadIdentity?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGenWorkloadIdentity>;
+    }
+
+    export interface GitOpsRepositoryGcrGenWorkloadIdentity {
+        /**
+         * Cluster location.
+         */
+        clusterLocation?: pulumi.Input<string>;
+        /**
+         * Cluster name.
+         */
+        clusterName?: pulumi.Input<string>;
+        /**
+         * Cluster project id.
+         */
+        clusterProjectId?: pulumi.Input<string>;
+        /**
+         * Service account reference.
+         */
+        serviceAccountRef?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef>;
+    }
+
+    export interface GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef {
+        /**
+         * Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+         */
+        audiences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the ServiceAccount resource being referred to.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
     export interface GitOpsRepositoryRepo {
         /**
-         * Identifies the authentication method used to connect to the repository.
+         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
          */
         connectionType: pulumi.Input<string>;
         /**
@@ -3833,7 +4639,7 @@ export namespace platform {
          */
         githubAppPrivateKey?: pulumi.Input<string>;
         /**
-         * Indicates if the credentials were inherited from a credential set.
+         * Indicates if the credentials were inherited from a repository credential.
          */
         inheritedCreds?: pulumi.Input<boolean>;
         /**
@@ -3841,7 +4647,7 @@ export namespace platform {
          */
         insecure?: pulumi.Input<boolean>;
         /**
-         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+         * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          */
         insecureIgnoreHostKey?: pulumi.Input<boolean>;
         /**
@@ -3849,11 +4655,11 @@ export namespace platform {
          */
         name?: pulumi.Input<string>;
         /**
-         * Password or PAT used for authenticating at the remote repository.
+         * Password or PAT to be used for authenticating the remote repository.
          */
         password?: pulumi.Input<string>;
         /**
-         * Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+         * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
         project?: pulumi.Input<string>;
         /**
@@ -3865,15 +4671,15 @@ export namespace platform {
          */
         repo: pulumi.Input<string>;
         /**
-         * PEM data for authenticating at the repo server. Only used with Git repos.
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
         sshPrivateKey?: pulumi.Input<string>;
         /**
-         * Certificate in PEM format for authenticating at the repo server.
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertData?: pulumi.Input<string>;
         /**
-         * Private key in PEM format for authenticating at the repo server.
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
         tlsClientCertKey?: pulumi.Input<string>;
         /**
@@ -3881,7 +4687,7 @@ export namespace platform {
          */
         type_?: pulumi.Input<string>;
         /**
-         * Username used for authenticating at the remote repository.
+         * Username to be used for authenticating the remote repository.
          */
         username?: pulumi.Input<string>;
     }
@@ -3940,9 +4746,17 @@ export namespace platform {
 
     export interface GithubConnectorCredentialsHttp {
         /**
+         * Configuration for using the http anonymous github for interacting with the github api.
+         */
+        anonymouses?: pulumi.Input<pulumi.Input<inputs.platform.GithubConnectorCredentialsHttpAnonymouse>[]>;
+        /**
+         * Configuration for using the github app for interacting with the github api.
+         */
+        githubApp?: pulumi.Input<inputs.platform.GithubConnectorCredentialsHttpGithubApp>;
+        /**
          * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        tokenRef: pulumi.Input<string>;
+        tokenRef?: pulumi.Input<string>;
         /**
          * Username to use for authentication.
          */
@@ -3951,6 +4765,32 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface GithubConnectorCredentialsHttpAnonymouse {
+    }
+
+    export interface GithubConnectorCredentialsHttpGithubApp {
+        /**
+         * Enter the GitHub App ID from the GitHub App General tab.
+         */
+        applicationId?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        applicationIdRef?: pulumi.Input<string>;
+        /**
+         * Enter the Installation ID located in the URL of the installed GitHub App.
+         */
+        installationId?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        installationIdRef?: pulumi.Input<string>;
+        /**
+         * Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        privateKeyRef: pulumi.Input<string>;
     }
 
     export interface GithubConnectorCredentialsSsh {
@@ -4019,6 +4859,77 @@ export namespace platform {
         usernameRef?: pulumi.Input<string>;
     }
 
+    export interface InfrastructureGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * message for the commit in Git Repo.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * Flag to set if importing from Git
+         */
+        importFromGit?: pulumi.Input<boolean>;
+        /**
+         * Flag to set if force importing from Git
+         */
+        isForceImport?: pulumi.Input<boolean>;
+        /**
+         * If the gitProvider is HarnessCode
+         */
+        isHarnesscodeRepo?: pulumi.Input<boolean>;
+        /**
+         * If a new branch creation is requested.
+         */
+        isNewBranch?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Infrastructures.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * If the Entity is to be fetched from cache
+         */
+        loadFromCache?: pulumi.Input<string>;
+        /**
+         * Whether the file has to be get from fallback_branch.
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        parentEntityConnectorRef?: pulumi.Input<string>;
+        /**
+         * Name of the repository where parent entity lies.
+         */
+        parentEntityRepoName?: pulumi.Input<string>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * store type of the entity.
+         */
+        storeType?: pulumi.Input<string>;
+    }
+
     export interface InputSetGitDetails {
         /**
          * Name of the default branch (this checks out a new branch titled by branch_name).
@@ -4066,6 +4977,37 @@ export namespace platform {
         storeType?: pulumi.Input<string>;
     }
 
+    export interface InputSetGitImportInfo {
+        /**
+         * Name of the branch.
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        isForceImport?: pulumi.Input<boolean>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+    }
+
+    export interface InputSetInputSetImportRequest {
+        /**
+         * Description of the input set.
+         */
+        inputSetDescription?: pulumi.Input<string>;
+        /**
+         * Name of the input set.
+         */
+        inputSetName?: pulumi.Input<string>;
+    }
+
     export interface JenkinsConnectorAuth {
         /**
          * Authenticate to App Dynamics using bearer token.
@@ -4090,7 +5032,7 @@ export namespace platform {
 
     export interface JenkinsConnectorAuthJenkinsUserNamePassword {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -4109,9 +5051,20 @@ export namespace platform {
          */
         authType: pulumi.Input<string>;
         /**
+         * Authenticate using personal access token.
+         */
+        personalAccessToken?: pulumi.Input<inputs.platform.JiraConnectorAuthPersonalAccessToken>;
+        /**
          * Authenticate using username password.
          */
         usernamePassword?: pulumi.Input<inputs.platform.JiraConnectorAuthUsernamePassword>;
+    }
+
+    export interface JiraConnectorAuthPersonalAccessToken {
+        /**
+         * Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        patRef: pulumi.Input<string>;
     }
 
     export interface JiraConnectorAuthUsernamePassword {
@@ -4199,6 +5152,10 @@ export namespace platform {
     }
 
     export interface KubernetesConnectorServiceAccount {
+        /**
+         * Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        caCertRef?: pulumi.Input<string>;
         /**
          * The URL of the Kubernetes cluster.
          */
@@ -4299,6 +5256,8 @@ export namespace platform {
         description?: pulumi.Input<string>;
         /**
          * Enable or disable the monitored service.
+         *
+         * @deprecated enabled field is deprecated
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -4402,6 +5361,10 @@ export namespace platform {
          * Type of the health source.
          */
         type: pulumi.Input<string>;
+        /**
+         * Version of the health source.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface MonitoredServiceRequestNotificationRuleRef {
@@ -4417,7 +5380,7 @@ export namespace platform {
 
     export interface NexusConnectorCredentials {
         /**
-         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
          */
         passwordRef: pulumi.Input<string>;
         /**
@@ -4447,13 +5410,108 @@ export namespace platform {
 
     export interface PipelineFiltersFilterProperties {
         /**
+         * description of the pipline filter.
+         */
+        description?: pulumi.Input<string>;
+        /**
          * Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
          */
         filterType: pulumi.Input<string>;
         /**
+         * module properties of the pipline filter.
+         */
+        moduleProperties?: pulumi.Input<inputs.platform.PipelineFiltersFilterPropertiesModuleProperties>;
+        /**
+         * Name of the pipeline filter.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Pipeline identifiers to filter on.
+         */
+        pipelineIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+         */
+        pipelineTags?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+        /**
          * Tags to associate with the resource. Tags should be in the form `name:value`.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModuleProperties {
+        /**
+         * CD related properties to be filtered on.
+         */
+        cd?: pulumi.Input<inputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCd>;
+        /**
+         * CI related properties to be filtered on.
+         */
+        ci?: pulumi.Input<inputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCi>;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCd {
+        /**
+         * Artifact display names of the CD pipeline.
+         */
+        artifactDisplayNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Deployment type of the CD pipeline, eg. Kubernetes
+         */
+        deploymentTypes?: pulumi.Input<string>;
+        /**
+         * Environment names of the CD pipeline.
+         */
+        environmentNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Service names of the CD pipeline.
+         */
+        serviceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCi {
+        /**
+         * Branch which was used while building.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Build type of the pipeline. Possible values: branch.
+         */
+        buildType?: pulumi.Input<string>;
+        /**
+         * CI execution info for the pipeline.
+         */
+        ciExecutionInfo?: pulumi.Input<inputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo>;
+        /**
+         * name of the repository used in the pipeline.
+         */
+        repoNames?: pulumi.Input<string>;
+        /**
+         * Tags to associate with the CI pipeline resource.
+         */
+        tag?: pulumi.Input<string>;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo {
+        /**
+         * Event for the ci execution, Possible values: pullRequest.
+         */
+        event?: pulumi.Input<string>;
+        /**
+         * The pull request details of the CI pipeline.
+         */
+        pullRequest?: pulumi.Input<inputs.platform.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest>;
+    }
+
+    export interface PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest {
+        /**
+         * Source branch of the pull request.
+         */
+        sourceBranch?: pulumi.Input<string>;
+        /**
+         * Target branch of the pull request.
+         */
+        targetBranch?: pulumi.Input<string>;
     }
 
     export interface PipelineGitDetails {
@@ -4495,6 +5553,36 @@ export namespace platform {
         storeType?: pulumi.Input<string>;
     }
 
+    export interface PipelineGitImportInfo {
+        /**
+         * Name of the branch.
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+    }
+
+    export interface PipelinePipelineImportRequest {
+        /**
+         * Description of the pipeline.
+         */
+        pipelineDescription?: pulumi.Input<string>;
+        /**
+         * Name of the pipeline.
+         */
+        pipelineName?: pulumi.Input<string>;
+    }
+
     export interface PolicySetPolicy {
         /**
          * Account Identifier of the account
@@ -4523,6 +5611,102 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: pulumi.Input<boolean>;
+    }
+
+    export interface RepoRuleBranchBypass {
+        /**
+         * Allow users with repository edit permission to bypass.
+         */
+        repoOwners?: pulumi.Input<boolean>;
+        /**
+         * List of user ids with who can bypass.
+         */
+        userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RepoRuleBranchPattern {
+        /**
+         * Should rule apply to default branch of the repository.
+         */
+        defaultBranch?: pulumi.Input<boolean>;
+        /**
+         * Globstar branch patterns on which rules will NOT be applied.
+         */
+        excludes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Globstar branch patterns on which rules will be applied.
+         */
+        includes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RepoRuleBranchPolicy {
+        /**
+         * Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+         */
+        allowMergeStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only allow users with bypass permission to create matching branches.
+         */
+        blockBranchCreation?: pulumi.Input<boolean>;
+        /**
+         * Only allow users with bypass permission to delete matching branches.
+         */
+        blockBranchDeletion?: pulumi.Input<boolean>;
+        /**
+         * Automatically delete the source branch of a pull request after it is merged.
+         */
+        deleteBranchOnMerge?: pulumi.Input<boolean>;
+        /**
+         * Require approval on pull requests from one reviewer for each codeowner rule.
+         */
+        requireCodeOwners?: pulumi.Input<boolean>;
+        /**
+         * Require re-approval when there are new changes in the pull request.
+         */
+        requireLatestCommitApproval?: pulumi.Input<boolean>;
+        /**
+         * Require approval on pull requests from a minimum number of reviewers.
+         */
+        requireMinimumApprovalCount?: pulumi.Input<number>;
+        /**
+         * Require all request for changes have been resolved.
+         */
+        requireNoChangeRequest?: pulumi.Input<boolean>;
+        /**
+         * Do not allow any changes to matching branches without a pull request.
+         */
+        requirePullRequest?: pulumi.Input<boolean>;
+        /**
+         * All comments on a pull request must be resolved before it can be merged.
+         */
+        requireResolveAllComments?: pulumi.Input<boolean>;
+        /**
+         * Selected status checks must pass before a pull request can be merged.
+         */
+        requireStatusChecks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RepoSource {
+        /**
+         * The host URL for the import source.
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * The password for authentication when importing.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * The full identifier of the repository on the SCM provider's platform.
+         */
+        repo?: pulumi.Input<string>;
+        /**
+         * The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The username for authentication when importing.
+         */
+        username?: pulumi.Input<string>;
     }
 
     export interface ResourceGroupIncludedScope {
@@ -4693,6 +5877,69 @@ export namespace platform {
         userName: pulumi.Input<string>;
     }
 
+    export interface SecretTextAdditionalMetadata {
+        values?: pulumi.Input<pulumi.Input<inputs.platform.SecretTextAdditionalMetadataValue>[]>;
+    }
+
+    export interface SecretTextAdditionalMetadataValue {
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ServiceGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache?: pulumi.Input<boolean>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType?: pulumi.Input<string>;
+    }
+
     export interface ServiceNowConnectorAuth {
         /**
          * Authenticate using adfs client credentials with certificate.
@@ -4702,6 +5949,10 @@ export namespace platform {
          * Authentication types for Jira connector
          */
         authType: pulumi.Input<string>;
+        /**
+         * Authenticate using refresh token grant type.
+         */
+        refreshToken?: pulumi.Input<inputs.platform.ServiceNowConnectorAuthRefreshToken>;
         /**
          * Authenticate using username password.
          */
@@ -4731,6 +5982,29 @@ export namespace platform {
         resourceIdRef: pulumi.Input<string>;
     }
 
+    export interface ServiceNowConnectorAuthRefreshToken {
+        /**
+         * Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientIdRef: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        clientSecretRef?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        refreshTokenRef: pulumi.Input<string>;
+        /**
+         * Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        scope?: pulumi.Input<string>;
+        /**
+         * Token url to use for authentication.
+         */
+        tokenUrl: pulumi.Input<string>;
+    }
+
     export interface ServiceNowConnectorAuthUsernamePassword {
         /**
          * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -4744,6 +6018,61 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface ServiceOverridesV2GitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating override.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache?: pulumi.Input<boolean>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType?: pulumi.Input<string>;
     }
 
     export interface SloRequest {
@@ -4851,6 +6180,10 @@ export namespace platform {
          */
         passwordRef: pulumi.Input<string>;
         /**
+         * Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+         */
+        referenceToken?: pulumi.Input<string>;
+        /**
          * Username to use for authentication.
          */
         username?: pulumi.Input<string>;
@@ -4908,6 +6241,41 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType?: pulumi.Input<string>;
+    }
+
+    export interface TemplateGitImportDetails {
+        /**
+         * Name of the branch.
+         */
+        branchName?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        isForceImport?: pulumi.Input<boolean>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+    }
+
+    export interface TemplateTemplateImportRequest {
+        /**
+         * Description of the template.
+         */
+        templateDescription?: pulumi.Input<string>;
+        /**
+         * Name of the template.
+         */
+        templateName?: pulumi.Input<string>;
+        /**
+         * Version of the template.
+         */
+        templateVersion?: pulumi.Input<string>;
     }
 
     export interface TerraformCloudConnectorCredentials {
@@ -4983,6 +6351,59 @@ export namespace platform {
          * Type of Value of the Variable. For now only FIXED is supported
          */
         valueType: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the workspace.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceTerraformVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the workspace.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository: pulumi.Input<string>;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         */
+        repositoryBranch?: pulumi.Input<string>;
+        /**
+         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         */
+        repositoryCommit?: pulumi.Input<string>;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector: pulumi.Input<string>;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: pulumi.Input<string>;
     }
 }
 

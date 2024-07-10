@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating tokens.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ApikeyType { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the Token
+        /// Description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -72,19 +72,19 @@ namespace Pulumi.Harness.Platform
         public Output<string?> EncodedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -108,10 +108,10 @@ namespace Pulumi.Harness.Platform
         public Output<int> ScheduledExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for the Token
+        /// Tags to associate with the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Name of the user who created the Token
@@ -137,6 +137,12 @@ namespace Pulumi.Harness.Platform
         [Output("validTo")]
         public Output<int> ValidTo { get; private set; } = null!;
 
+        /// <summary>
+        /// Value of the Token
+        /// </summary>
+        [Output("value")]
+        public Output<string> Value { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Token resource with the given unique name, arguments, and options.
@@ -161,6 +167,10 @@ namespace Pulumi.Harness.Platform
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi",
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -203,7 +213,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Description of the Token
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -221,19 +231,19 @@ namespace Pulumi.Harness.Platform
         public Input<string>? EncodedPassword { get; set; }
 
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -245,7 +255,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -257,14 +267,14 @@ namespace Pulumi.Harness.Platform
         public Input<int>? ScheduledExpireTime { get; set; }
 
         [Input("tags")]
-        private InputMap<string>? _tags;
+        private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the Token
+        /// Tags to associate with the resource.
         /// </summary>
-        public InputMap<string> Tags
+        public InputList<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<string>());
+            get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
@@ -319,7 +329,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ApikeyType { get; set; }
 
         /// <summary>
-        /// Description of the Token
+        /// Description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -337,19 +347,19 @@ namespace Pulumi.Harness.Platform
         public Input<string>? EncodedPassword { get; set; }
 
         /// <summary>
-        /// Identifier of the Token
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the Token
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
@@ -361,7 +371,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -373,14 +383,14 @@ namespace Pulumi.Harness.Platform
         public Input<int>? ScheduledExpireTime { get; set; }
 
         [Input("tags")]
-        private InputMap<string>? _tags;
+        private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for the Token
+        /// Tags to associate with the resource.
         /// </summary>
-        public InputMap<string> Tags
+        public InputList<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<string>());
+            get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
@@ -407,6 +417,22 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("validTo")]
         public Input<int>? ValidTo { get; set; }
+
+        [Input("value")]
+        private Input<string>? _value;
+
+        /// <summary>
+        /// Value of the Token
+        /// </summary>
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TokenState()
         {

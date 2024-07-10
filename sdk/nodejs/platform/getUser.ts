@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving the user based on the API key.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -90,8 +88,6 @@ export interface GetUserResult {
     readonly projectId?: string;
 }
 /**
- * Data source for retrieving the user based on the API key.
- *
  * ## Example Usage
  *
  * ```typescript

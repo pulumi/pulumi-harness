@@ -60,6 +60,12 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.AwsConnectorFixedDelayBackoffStrategy?> FixedDelayBackoffStrategy { get; private set; } = null!;
 
         /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Full Jitter BackOff Strategy.
         /// </summary>
         [Output("fullJitterBackoffStrategy")]
@@ -94,6 +100,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Output("oidcAuthentication")]
+        public Output<Outputs.AwsConnectorOidcAuthentication?> OidcAuthentication { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -185,6 +197,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.AwsConnectorFixedDelayBackoffStrategyArgs>? FixedDelayBackoffStrategy { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Full Jitter BackOff Strategy.
         /// </summary>
         [Input("fullJitterBackoffStrategy")]
@@ -219,6 +237,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Input("oidcAuthentication")]
+        public Input<Inputs.AwsConnectorOidcAuthenticationArgs>? OidcAuthentication { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -277,6 +301,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.AwsConnectorFixedDelayBackoffStrategyGetArgs>? FixedDelayBackoffStrategy { get; set; }
 
         /// <summary>
+        /// Enable this flag for force deletion of connector
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Full Jitter BackOff Strategy.
         /// </summary>
         [Input("fullJitterBackoffStrategy")]
@@ -311,6 +341,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Input("oidcAuthentication")]
+        public Input<Inputs.AwsConnectorOidcAuthenticationGetArgs>? OidcAuthentication { get; set; }
 
         /// <summary>
         /// Unique identifier of the organization.

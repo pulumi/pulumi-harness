@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a Docker connector.
 //
+// ## Example to create Docker Connector at different levels (Org, Project, Account)
+//
 // ## Import
 //
 // # Import account level docker connector
@@ -42,6 +44,8 @@ type DockerConnector struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -103,6 +107,8 @@ type dockerConnectorState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -126,6 +132,8 @@ type DockerConnectorState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -153,6 +161,8 @@ type dockerConnectorArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -177,6 +187,8 @@ type DockerConnectorArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -293,6 +305,11 @@ func (o DockerConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 // Description of the resource.
 func (o DockerConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Execute on delegate or not.
+func (o DockerConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
 }
 
 // Unique identifier of the resource.

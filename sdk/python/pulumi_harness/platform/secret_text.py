@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SecretTextArgs', 'SecretText']
 
@@ -16,29 +18,32 @@ class SecretTextArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  secret_manager_identifier: pulumi.Input[str],
-                 value: pulumi.Input[str],
                  value_type: pulumi.Input[str],
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecretText resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] secret_manager_identifier: Identifier of the Secret Manager used to manage the secret.
-        :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[str] value: Value of the Secret
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "secret_manager_identifier", secret_manager_identifier)
-        pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "value_type", value_type)
+        if additional_metadatas is not None:
+            pulumi.set(__self__, "additional_metadatas", additional_metadatas)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -49,6 +54,8 @@ class SecretTextArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -75,18 +82,6 @@ class SecretTextArgs:
         pulumi.set(self, "secret_manager_identifier", value)
 
     @property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
-        """
-        Value of the Secret
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[str]):
-        pulumi.set(self, "value", value)
-
-    @property
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Input[str]:
         """
@@ -97,6 +92,18 @@ class SecretTextArgs:
     @value_type.setter
     def value_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "value_type", value)
+
+    @property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
+
+    @additional_metadatas.setter
+    def additional_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]]):
+        pulumi.set(self, "additional_metadatas", value)
 
     @property
     @pulumi.getter
@@ -158,10 +165,23 @@ class SecretTextArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the Secret
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
 
 @pulumi.input_type
 class _SecretTextState:
     def __init__(__self__, *,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -173,6 +193,7 @@ class _SecretTextState:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecretText resources.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -183,6 +204,8 @@ class _SecretTextState:
         :param pulumi.Input[str] value: Value of the Secret
         :param pulumi.Input[str] value_type: This has details to specify if the secret value is Inline or Reference.
         """
+        if additional_metadatas is not None:
+            pulumi.set(__self__, "additional_metadatas", additional_metadatas)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if identifier is not None:
@@ -201,6 +224,18 @@ class _SecretTextState:
             pulumi.set(__self__, "value", value)
         if value_type is not None:
             pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
+
+    @additional_metadatas.setter
+    def additional_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataArgs']]]]):
+        pulumi.set(self, "additional_metadatas", value)
 
     @property
     @pulumi.getter
@@ -316,6 +351,7 @@ class SecretText(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -328,30 +364,6 @@ class SecretText(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating secret of type secret text
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        inline = harness.platform.SecretText("inline",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            secret_manager_identifier="harnessSecretManager",
-            value_type="Inline",
-            value="secret")
-        reference = harness.platform.SecretText("reference",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            secret_manager_identifier="azureSecretManager",
-            value_type="Reference",
-            value="secret")
-        ```
 
         ## Import
 
@@ -375,6 +387,7 @@ class SecretText(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -393,30 +406,6 @@ class SecretText(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating secret of type secret text
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        inline = harness.platform.SecretText("inline",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            secret_manager_identifier="harnessSecretManager",
-            value_type="Inline",
-            value="secret")
-        reference = harness.platform.SecretText("reference",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            secret_manager_identifier="azureSecretManager",
-            value_type="Reference",
-            value="secret")
-        ```
 
         ## Import
 
@@ -453,6 +442,7 @@ class SecretText(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -471,6 +461,7 @@ class SecretText(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretTextArgs.__new__(SecretTextArgs)
 
+            __props__.__dict__["additional_metadatas"] = additional_metadatas
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -482,8 +473,6 @@ class SecretText(pulumi.CustomResource):
                 raise TypeError("Missing required property 'secret_manager_identifier'")
             __props__.__dict__["secret_manager_identifier"] = secret_manager_identifier
             __props__.__dict__["tags"] = tags
-            if value is None and not opts.urn:
-                raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
             if value_type is None and not opts.urn:
                 raise TypeError("Missing required property 'value_type'")
@@ -500,6 +489,7 @@ class SecretText(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -516,6 +506,7 @@ class SecretText(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -530,6 +521,7 @@ class SecretText(pulumi.CustomResource):
 
         __props__ = _SecretTextState.__new__(_SecretTextState)
 
+        __props__.__dict__["additional_metadatas"] = additional_metadatas
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
@@ -540,6 +532,14 @@ class SecretText(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         __props__.__dict__["value_type"] = value_type
         return SecretText(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="additionalMetadatas")
+    def additional_metadatas(self) -> pulumi.Output[Optional[Sequence['outputs.SecretTextAdditionalMetadata']]]:
+        """
+        Additional Metadata for the Secret
+        """
+        return pulumi.get(self, "additional_metadatas")
 
     @property
     @pulumi.getter
@@ -599,7 +599,7 @@ class SecretText(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Output[str]:
+    def value(self) -> pulumi.Output[Optional[str]]:
         """
         Value of the Secret
         """

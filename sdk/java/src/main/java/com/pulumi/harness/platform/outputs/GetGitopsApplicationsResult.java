@@ -29,12 +29,12 @@ public final class GetGitopsApplicationsResult {
      * @return Definition of the GitOps application resource.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplication> applications;
+    private List<GetGitopsApplicationsApplication> applications;
     /**
      * @return Cluster identifier of the GitOps application.
      * 
      */
-    private @Nullable String clusterId;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -49,7 +49,7 @@ public final class GetGitopsApplicationsResult {
      * @return Kind of the GitOps application.
      * 
      */
-    private @Nullable String kind;
+    private String kind;
     /**
      * @return Name of the GitOps application.
      * 
@@ -59,47 +59,22 @@ public final class GetGitopsApplicationsResult {
      * @return Options to remove existing finalizers to delete the GitOps application.
      * 
      */
-    private @Nullable Boolean optionsRemoveExistingFinalizers;
+    private Boolean optionsRemoveExistingFinalizers;
     /**
      * @return Organization identifier of the GitOps application.
      * 
      */
     private String orgId;
     /**
-     * @return Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
-    private @Nullable String project;
+    private String project;
     /**
      * @return Project identifier of the GitOps application.
      * 
      */
     private String projectId;
-    /**
-     * @return Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    private @Nullable String queryProject;
-    /**
-     * @return Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    private @Nullable String queryRefresh;
-    /**
-     * @return Repo URL to restrict returned list applications.
-     * 
-     */
-    private @Nullable String queryRepo;
-    /**
-     * @return Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    private @Nullable String queryResourceVersion;
-    /**
-     * @return Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    private @Nullable String querySelector;
     /**
      * @return Repository identifier of the GitOps application.
      * 
@@ -109,27 +84,22 @@ public final class GetGitopsApplicationsResult {
      * @return Request cascade to delete the GitOps application.
      * 
      */
-    private @Nullable Boolean requestCascade;
-    /**
-     * @return Request name to delete the GitOps application.
-     * 
-     */
-    private @Nullable String requestName;
+    private Boolean requestCascade;
     /**
      * @return Request propagation policy to delete the GitOps application.
      * 
      */
-    private @Nullable String requestPropagationPolicy;
+    private String requestPropagationPolicy;
     /**
      * @return Indicates if the GitOps application should be updated if existing and inserted if not.
      * 
      */
-    private @Nullable Boolean upsert;
+    private Boolean upsert;
     /**
-     * @return Indicates if the GitOps application has to be validated.
+     * @return Indicates if the GitOps application yaml has to be validated.
      * 
      */
-    private @Nullable Boolean validate;
+    private Boolean validate;
 
     private GetGitopsApplicationsResult() {}
     /**
@@ -151,14 +121,14 @@ public final class GetGitopsApplicationsResult {
      * 
      */
     public List<GetGitopsApplicationsApplication> applications() {
-        return this.applications == null ? List.of() : this.applications;
+        return this.applications;
     }
     /**
      * @return Cluster identifier of the GitOps application.
      * 
      */
-    public Optional<String> clusterId() {
-        return Optional.ofNullable(this.clusterId);
+    public String clusterId() {
+        return this.clusterId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -178,8 +148,8 @@ public final class GetGitopsApplicationsResult {
      * @return Kind of the GitOps application.
      * 
      */
-    public Optional<String> kind() {
-        return Optional.ofNullable(this.kind);
+    public String kind() {
+        return this.kind;
     }
     /**
      * @return Name of the GitOps application.
@@ -192,8 +162,8 @@ public final class GetGitopsApplicationsResult {
      * @return Options to remove existing finalizers to delete the GitOps application.
      * 
      */
-    public Optional<Boolean> optionsRemoveExistingFinalizers() {
-        return Optional.ofNullable(this.optionsRemoveExistingFinalizers);
+    public Boolean optionsRemoveExistingFinalizers() {
+        return this.optionsRemoveExistingFinalizers;
     }
     /**
      * @return Organization identifier of the GitOps application.
@@ -203,11 +173,11 @@ public final class GetGitopsApplicationsResult {
         return this.orgId;
     }
     /**
-     * @return Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
-    public Optional<String> project() {
-        return Optional.ofNullable(this.project);
+    public String project() {
+        return this.project;
     }
     /**
      * @return Project identifier of the GitOps application.
@@ -215,41 +185,6 @@ public final class GetGitopsApplicationsResult {
      */
     public String projectId() {
         return this.projectId;
-    }
-    /**
-     * @return Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    public Optional<String> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-    /**
-     * @return Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    public Optional<String> queryRefresh() {
-        return Optional.ofNullable(this.queryRefresh);
-    }
-    /**
-     * @return Repo URL to restrict returned list applications.
-     * 
-     */
-    public Optional<String> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
-    }
-    /**
-     * @return Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    public Optional<String> queryResourceVersion() {
-        return Optional.ofNullable(this.queryResourceVersion);
-    }
-    /**
-     * @return Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    public Optional<String> querySelector() {
-        return Optional.ofNullable(this.querySelector);
     }
     /**
      * @return Repository identifier of the GitOps application.
@@ -262,36 +197,29 @@ public final class GetGitopsApplicationsResult {
      * @return Request cascade to delete the GitOps application.
      * 
      */
-    public Optional<Boolean> requestCascade() {
-        return Optional.ofNullable(this.requestCascade);
-    }
-    /**
-     * @return Request name to delete the GitOps application.
-     * 
-     */
-    public Optional<String> requestName() {
-        return Optional.ofNullable(this.requestName);
+    public Boolean requestCascade() {
+        return this.requestCascade;
     }
     /**
      * @return Request propagation policy to delete the GitOps application.
      * 
      */
-    public Optional<String> requestPropagationPolicy() {
-        return Optional.ofNullable(this.requestPropagationPolicy);
+    public String requestPropagationPolicy() {
+        return this.requestPropagationPolicy;
     }
     /**
      * @return Indicates if the GitOps application should be updated if existing and inserted if not.
      * 
      */
-    public Optional<Boolean> upsert() {
-        return Optional.ofNullable(this.upsert);
+    public Boolean upsert() {
+        return this.upsert;
     }
     /**
-     * @return Indicates if the GitOps application has to be validated.
+     * @return Indicates if the GitOps application yaml has to be validated.
      * 
      */
-    public Optional<Boolean> validate() {
-        return Optional.ofNullable(this.validate);
+    public Boolean validate() {
+        return this.validate;
     }
 
     public static Builder builder() {
@@ -305,27 +233,21 @@ public final class GetGitopsApplicationsResult {
     public static final class Builder {
         private String accountId;
         private String agentId;
-        private @Nullable List<GetGitopsApplicationsApplication> applications;
-        private @Nullable String clusterId;
+        private List<GetGitopsApplicationsApplication> applications;
+        private String clusterId;
         private String id;
         private @Nullable String identifier;
-        private @Nullable String kind;
+        private String kind;
         private String name;
-        private @Nullable Boolean optionsRemoveExistingFinalizers;
+        private Boolean optionsRemoveExistingFinalizers;
         private String orgId;
-        private @Nullable String project;
+        private String project;
         private String projectId;
-        private @Nullable String queryProject;
-        private @Nullable String queryRefresh;
-        private @Nullable String queryRepo;
-        private @Nullable String queryResourceVersion;
-        private @Nullable String querySelector;
         private String repoId;
-        private @Nullable Boolean requestCascade;
-        private @Nullable String requestName;
-        private @Nullable String requestPropagationPolicy;
-        private @Nullable Boolean upsert;
-        private @Nullable Boolean validate;
+        private Boolean requestCascade;
+        private String requestPropagationPolicy;
+        private Boolean upsert;
+        private Boolean validate;
         public Builder() {}
         public Builder(GetGitopsApplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -341,14 +263,8 @@ public final class GetGitopsApplicationsResult {
     	      this.orgId = defaults.orgId;
     	      this.project = defaults.project;
     	      this.projectId = defaults.projectId;
-    	      this.queryProject = defaults.queryProject;
-    	      this.queryRefresh = defaults.queryRefresh;
-    	      this.queryRepo = defaults.queryRepo;
-    	      this.queryResourceVersion = defaults.queryResourceVersion;
-    	      this.querySelector = defaults.querySelector;
     	      this.repoId = defaults.repoId;
     	      this.requestCascade = defaults.requestCascade;
-    	      this.requestName = defaults.requestName;
     	      this.requestPropagationPolicy = defaults.requestPropagationPolicy;
     	      this.upsert = defaults.upsert;
     	      this.validate = defaults.validate;
@@ -371,8 +287,10 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder applications(@Nullable List<GetGitopsApplicationsApplication> applications) {
-
+        public Builder applications(List<GetGitopsApplicationsApplication> applications) {
+            if (applications == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "applications");
+            }
             this.applications = applications;
             return this;
         }
@@ -380,8 +298,10 @@ public final class GetGitopsApplicationsResult {
             return applications(List.of(applications));
         }
         @CustomType.Setter
-        public Builder clusterId(@Nullable String clusterId) {
-
+        public Builder clusterId(String clusterId) {
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "clusterId");
+            }
             this.clusterId = clusterId;
             return this;
         }
@@ -400,8 +320,10 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder kind(@Nullable String kind) {
-
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "kind");
+            }
             this.kind = kind;
             return this;
         }
@@ -414,8 +336,10 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder optionsRemoveExistingFinalizers(@Nullable Boolean optionsRemoveExistingFinalizers) {
-
+        public Builder optionsRemoveExistingFinalizers(Boolean optionsRemoveExistingFinalizers) {
+            if (optionsRemoveExistingFinalizers == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "optionsRemoveExistingFinalizers");
+            }
             this.optionsRemoveExistingFinalizers = optionsRemoveExistingFinalizers;
             return this;
         }
@@ -428,8 +352,10 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(@Nullable String project) {
-
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "project");
+            }
             this.project = project;
             return this;
         }
@@ -442,36 +368,6 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder queryProject(@Nullable String queryProject) {
-
-            this.queryProject = queryProject;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryRefresh(@Nullable String queryRefresh) {
-
-            this.queryRefresh = queryRefresh;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryRepo(@Nullable String queryRepo) {
-
-            this.queryRepo = queryRepo;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryResourceVersion(@Nullable String queryResourceVersion) {
-
-            this.queryResourceVersion = queryResourceVersion;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder querySelector(@Nullable String querySelector) {
-
-            this.querySelector = querySelector;
-            return this;
-        }
-        @CustomType.Setter
         public Builder repoId(String repoId) {
             if (repoId == null) {
               throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "repoId");
@@ -480,32 +376,34 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder requestCascade(@Nullable Boolean requestCascade) {
-
+        public Builder requestCascade(Boolean requestCascade) {
+            if (requestCascade == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "requestCascade");
+            }
             this.requestCascade = requestCascade;
             return this;
         }
         @CustomType.Setter
-        public Builder requestName(@Nullable String requestName) {
-
-            this.requestName = requestName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder requestPropagationPolicy(@Nullable String requestPropagationPolicy) {
-
+        public Builder requestPropagationPolicy(String requestPropagationPolicy) {
+            if (requestPropagationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "requestPropagationPolicy");
+            }
             this.requestPropagationPolicy = requestPropagationPolicy;
             return this;
         }
         @CustomType.Setter
-        public Builder upsert(@Nullable Boolean upsert) {
-
+        public Builder upsert(Boolean upsert) {
+            if (upsert == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "upsert");
+            }
             this.upsert = upsert;
             return this;
         }
         @CustomType.Setter
-        public Builder validate(@Nullable Boolean validate) {
-
+        public Builder validate(Boolean validate) {
+            if (validate == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "validate");
+            }
             this.validate = validate;
             return this;
         }
@@ -523,14 +421,8 @@ public final class GetGitopsApplicationsResult {
             _resultValue.orgId = orgId;
             _resultValue.project = project;
             _resultValue.projectId = projectId;
-            _resultValue.queryProject = queryProject;
-            _resultValue.queryRefresh = queryRefresh;
-            _resultValue.queryRepo = queryRepo;
-            _resultValue.queryResourceVersion = queryResourceVersion;
-            _resultValue.querySelector = querySelector;
             _resultValue.repoId = repoId;
             _resultValue.requestCascade = requestCascade;
-            _resultValue.requestName = requestName;
             _resultValue.requestPropagationPolicy = requestPropagationPolicy;
             _resultValue.upsert = upsert;
             _resultValue.validate = validate;

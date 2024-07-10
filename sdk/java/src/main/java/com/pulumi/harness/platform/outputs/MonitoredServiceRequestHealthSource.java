@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitoredServiceRequestHealthSource {
@@ -30,6 +32,11 @@ public final class MonitoredServiceRequestHealthSource {
      * 
      */
     private String type;
+    /**
+     * @return Version of the health source.
+     * 
+     */
+    private @Nullable String version;
 
     private MonitoredServiceRequestHealthSource() {}
     /**
@@ -60,6 +67,13 @@ public final class MonitoredServiceRequestHealthSource {
     public String type() {
         return this.type;
     }
+    /**
+     * @return Version of the health source.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -74,6 +88,7 @@ public final class MonitoredServiceRequestHealthSource {
         private String name;
         private String spec;
         private String type;
+        private @Nullable String version;
         public Builder() {}
         public Builder(MonitoredServiceRequestHealthSource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +96,7 @@ public final class MonitoredServiceRequestHealthSource {
     	      this.name = defaults.name;
     	      this.spec = defaults.spec;
     	      this.type = defaults.type;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -115,12 +131,19 @@ public final class MonitoredServiceRequestHealthSource {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public MonitoredServiceRequestHealthSource build() {
             final var _resultValue = new MonitoredServiceRequestHealthSource();
             _resultValue.identifier = identifier;
             _resultValue.name = name;
             _resultValue.spec = spec;
             _resultValue.type = type;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -29,6 +29,11 @@ public final class AwsConnectorManual {
      */
     private @Nullable List<String> delegateSelectors;
     /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    private @Nullable String region;
+    /**
      * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -57,6 +62,13 @@ public final class AwsConnectorManual {
         return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
+     * @return Test Region to perform Connection test of AWS Connector.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+    /**
      * @return Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -76,6 +88,7 @@ public final class AwsConnectorManual {
         private @Nullable String accessKey;
         private @Nullable String accessKeyRef;
         private @Nullable List<String> delegateSelectors;
+        private @Nullable String region;
         private String secretKeyRef;
         public Builder() {}
         public Builder(AwsConnectorManual defaults) {
@@ -83,6 +96,7 @@ public final class AwsConnectorManual {
     	      this.accessKey = defaults.accessKey;
     	      this.accessKeyRef = defaults.accessKeyRef;
     	      this.delegateSelectors = defaults.delegateSelectors;
+    	      this.region = defaults.region;
     	      this.secretKeyRef = defaults.secretKeyRef;
         }
 
@@ -108,6 +122,12 @@ public final class AwsConnectorManual {
             return delegateSelectors(List.of(delegateSelectors));
         }
         @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secretKeyRef(String secretKeyRef) {
             if (secretKeyRef == null) {
               throw new MissingRequiredPropertyException("AwsConnectorManual", "secretKeyRef");
@@ -120,6 +140,7 @@ public final class AwsConnectorManual {
             _resultValue.accessKey = accessKey;
             _resultValue.accessKeyRef = accessKeyRef;
             _resultValue.delegateSelectors = delegateSelectors;
+            _resultValue.region = region;
             _resultValue.secretKeyRef = secretKeyRef;
             return _resultValue;
         }

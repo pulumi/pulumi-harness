@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsRepoCertRequestCertificate> Certificates;
         /// <summary>
-        /// if the Repository Certificates should be upserted.
+        /// Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
         /// </summary>
         public readonly bool? Upsert;
 

@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating an Azure key vault in Harness.
-//
 // ## Example Usage
 //
 // ```go

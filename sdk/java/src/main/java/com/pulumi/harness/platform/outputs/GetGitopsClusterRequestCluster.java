@@ -44,7 +44,7 @@ public final class GetGitopsClusterRequestCluster {
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return Name of the cluster. If omitted, will use the server address.
+     * @return Name of the cluster. If omitted, the server address will be used.
      * 
      */
     private @Nullable String name;
@@ -54,7 +54,7 @@ public final class GetGitopsClusterRequestCluster {
      */
     private @Nullable List<String> namespaces;
     /**
-     * @return Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+     * @return The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
      * 
      */
     private @Nullable String project;
@@ -69,7 +69,7 @@ public final class GetGitopsClusterRequestCluster {
      */
     private @Nullable String server;
     /**
-     * @return Shard number. Calculated on the fly by the application controller if not specified.
+     * @return Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
      * 
      */
     private @Nullable String shard;
@@ -111,7 +111,7 @@ public final class GetGitopsClusterRequestCluster {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return Name of the cluster. If omitted, will use the server address.
+     * @return Name of the cluster. If omitted, the server address will be used.
      * 
      */
     public Optional<String> name() {
@@ -125,7 +125,7 @@ public final class GetGitopsClusterRequestCluster {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
     /**
-     * @return Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+     * @return The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
      * 
      */
     public Optional<String> project() {
@@ -146,7 +146,7 @@ public final class GetGitopsClusterRequestCluster {
         return Optional.ofNullable(this.server);
     }
     /**
-     * @return Shard number. Calculated on the fly by the application controller if not specified.
+     * @return Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
      * 
      */
     public Optional<String> shard() {

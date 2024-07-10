@@ -17,14 +17,14 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
     public static final GetGitopsRepoCertArgs Empty = new GetGitopsRepoCertArgs();
 
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -47,14 +47,14 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -62,14 +62,14 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -104,7 +104,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId account identifier of the Repository Certificates.
+         * @param accountId Account identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId account identifier of the Repository Certificates.
+         * @param accountId Account identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param agentId agent identifier of the Repository Certificates.
+         * @param agentId Agent identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param agentId agent identifier of the Repository Certificates.
+         * @param agentId Agent identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orgId organization identifier of the Repository Certificates.
+         * @param orgId Organization identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orgId organization identifier of the Repository Certificates.
+         * @param orgId Organization identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param projectId project identifier of the Repository Certificates.
+         * @param projectId Project identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param projectId project identifier of the Repository Certificates.
+         * @param projectId Project identifier of the GitOps repository certificate.
          * 
          * @return builder
          * 

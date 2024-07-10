@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.InfrastructureGitDetailsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -74,6 +75,21 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<InfrastructureGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    public Optional<Output<InfrastructureGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     /**
@@ -152,14 +168,14 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
     public Optional<Output<String>> type() {
@@ -188,6 +204,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.envId = $.envId;
         this.forceDelete = $.forceDelete;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -297,6 +314,27 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
          */
         public Builder forceDelete(String forceDelete) {
             return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<InfrastructureGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(InfrastructureGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**
@@ -415,7 +453,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
          * 
          * @return builder
          * 
@@ -426,7 +464,7 @@ public final class InfrastructureState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
          * 
          * @return builder
          * 

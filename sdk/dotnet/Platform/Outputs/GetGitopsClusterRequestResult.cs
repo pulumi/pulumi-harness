@@ -18,17 +18,9 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsClusterRequestClusterResult> Clusters;
         /// <summary>
-        /// Cluster server URL or the cluster name.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGitopsClusterRequestIdResult> Ids;
-        /// <summary>
-        /// Tags associated with the clusters
+        /// Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
-        /// <summary>
-        /// Update mask of the GitOps cluster.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGitopsClusterRequestUpdateMaskResult> UpdateMasks;
         /// <summary>
         /// Fields which are updated.
         /// </summary>
@@ -42,20 +34,14 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetGitopsClusterRequestResult(
             ImmutableArray<Outputs.GetGitopsClusterRequestClusterResult> clusters,
 
-            ImmutableArray<Outputs.GetGitopsClusterRequestIdResult> ids,
-
             ImmutableArray<string> tags,
-
-            ImmutableArray<Outputs.GetGitopsClusterRequestUpdateMaskResult> updateMasks,
 
             ImmutableArray<string> updatedFields,
 
             bool? upsert)
         {
             Clusters = clusters;
-            Ids = ids;
             Tags = tags;
-            UpdateMasks = updateMasks;
             UpdatedFields = updatedFields;
             Upsert = upsert;
         }

@@ -430,6 +430,7 @@ class ServiceNowConnector(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Service Now connector.
+        ## Example to create ServiceNow Connector at different levels (Org, Project, Account)
 
         ## Import
 
@@ -474,6 +475,7 @@ class ServiceNowConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Service Now connector.
+        ## Example to create ServiceNow Connector at different levels (Org, Project, Account)
 
         ## Import
 

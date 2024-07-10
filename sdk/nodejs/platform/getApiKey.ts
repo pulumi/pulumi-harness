@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for retrieving a Harness ApiKey.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getApiKey({
+ *     identifier: "test_apikey",
+ *     name: "test_apikey",
+ *     parentId: "parent_id",
+ *     apikeyType: "USER",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getApiKey(args: GetApiKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetApiKeyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -11,13 +31,11 @@ export function getApiKey(args: GetApiKeyArgs, opts?: pulumi.InvokeOptions): Pro
         "accountId": args.accountId,
         "apikeyType": args.apikeyType,
         "defaultTimeToExpireToken": args.defaultTimeToExpireToken,
-        "description": args.description,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "parentId": args.parentId,
         "projectId": args.projectId,
-        "tags": args.tags,
     }, opts);
 }
 
@@ -25,37 +43,109 @@ export function getApiKey(args: GetApiKeyArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getApiKey.
  */
 export interface GetApiKeyArgs {
+    /**
+     * Account Identifier for the Entity
+     */
     accountId: string;
+    /**
+     * Type of the API Key
+     */
     apikeyType: string;
+    /**
+     * Default expiration time of the Token within API Key
+     */
     defaultTimeToExpireToken?: number;
-    description?: string;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier: string;
-    name: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Parent Entity Identifier of the API Key
+     */
     parentId: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
-    tags?: {[key: string]: string};
 }
 
 /**
  * A collection of values returned by getApiKey.
  */
 export interface GetApiKeyResult {
+    /**
+     * Account Identifier for the Entity
+     */
     readonly accountId: string;
+    /**
+     * Type of the API Key
+     */
     readonly apikeyType: string;
+    /**
+     * Default expiration time of the Token within API Key
+     */
     readonly defaultTimeToExpireToken?: number;
-    readonly description?: string;
+    /**
+     * Description of the resource.
+     */
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     readonly identifier: string;
-    readonly name: string;
+    /**
+     * Name of the resource.
+     */
+    readonly name?: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Parent Entity Identifier of the API Key
+     */
     readonly parentId: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
-    readonly tags?: {[key: string]: string};
+    /**
+     * Tags to associate with the resource.
+     */
+    readonly tags: string[];
 }
+/**
+ * Data source for retrieving a Harness ApiKey.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getApiKey({
+ *     identifier: "test_apikey",
+ *     name: "test_apikey",
+ *     parentId: "parent_id",
+ *     apikeyType: "USER",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
+ */
 export function getApiKeyOutput(args: GetApiKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiKeyResult> {
     return pulumi.output(args).apply((a: any) => getApiKey(a, opts))
 }
@@ -64,14 +154,36 @@ export function getApiKeyOutput(args: GetApiKeyOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getApiKey.
  */
 export interface GetApiKeyOutputArgs {
+    /**
+     * Account Identifier for the Entity
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * Type of the API Key
+     */
     apikeyType: pulumi.Input<string>;
+    /**
+     * Default expiration time of the Token within API Key
+     */
     defaultTimeToExpireToken?: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier: pulumi.Input<string>;
-    name: pulumi.Input<string>;
+    /**
+     * Name of the resource.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Parent Entity Identifier of the API Key
+     */
     parentId: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

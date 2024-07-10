@@ -118,11 +118,11 @@ export class AwsCCConnector extends pulumi.CustomResource {
     /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
-    public readonly reportName!: pulumi.Output<string>;
+    public readonly reportName!: pulumi.Output<string | undefined>;
     /**
      * The name of s3 bucket.
      */
-    public readonly s3Bucket!: pulumi.Output<string>;
+    public readonly s3Bucket!: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
@@ -165,12 +165,6 @@ export class AwsCCConnector extends pulumi.CustomResource {
             }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.reportName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'reportName'");
-            }
-            if ((!args || args.s3Bucket === undefined) && !opts.urn) {
-                throw new Error("Missing required property 's3Bucket'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["crossAccountAccess"] = args ? args.crossAccountAccess : undefined;
@@ -278,11 +272,11 @@ export interface AwsCCConnectorArgs {
     /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
-    reportName: pulumi.Input<string>;
+    reportName?: pulumi.Input<string>;
     /**
      * The name of s3 bucket.
      */
-    s3Bucket: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource.
      */

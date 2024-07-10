@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsRepoCertResult {
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     private String accountId;
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     private @Nullable String agentId;
@@ -28,26 +28,26 @@ public final class GetGitopsRepoCertResult {
      */
     private String id;
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     private @Nullable String projectId;
 
     private GetGitopsRepoCertResult() {}
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> agentId() {
@@ -61,14 +61,14 @@ public final class GetGitopsRepoCertResult {
         return this.id;
     }
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     public Optional<String> projectId() {

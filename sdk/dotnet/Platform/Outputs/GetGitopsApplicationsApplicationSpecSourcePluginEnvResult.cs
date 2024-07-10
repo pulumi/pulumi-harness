@@ -14,19 +14,19 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult
     {
         /// <summary>
-        /// Name of the variable, usually expressed in uppercase.
+        /// Name of the GitOps application.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Value of the variable.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(
-            string? name,
+            string name,
 
-            string? value)
+            string value)
         {
             Name = name;
             Value = value;

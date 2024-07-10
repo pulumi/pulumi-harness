@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Gitops Repositories Certificates.
+ * Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
  *
  * ## Example Usage
  *
@@ -20,9 +20,10 @@ import * as utilities from "../utilities";
  *         certificates: [{
  *             metadatas: [{}],
  *             items: [{
- *                 serverName: "serverName",
- *                 certType: "https",
- *                 certData: "yourcertdata",
+ *                 serverName: "github.com",
+ *                 certType: "ssh",
+ *                 certSubType: "ecdsa-sha2-nistp256",
+ *                 certData: "QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
  *             }],
  *         }],
  *         upsert: true,
@@ -34,10 +35,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import a Account level Gitops Repository Certificate
+ * Import an Account level Gitops Repository Certificate
  *
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <repocert_id>
+ * ```
+ *
+ * Import an Org level Gitops Repository Certificate
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<repocert_id>
+ * ```
+ *
+ * Import a Project level Gitops Repository Certificate
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example <organization_id>/<project_id>/<repocert_id>
  * ```
  */
 export class GitOpsRepoCert extends pulumi.CustomResource {
@@ -69,23 +82,23 @@ export class GitOpsRepoCert extends pulumi.CustomResource {
     }
 
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Repository Certificates create/Update request.
+     * Repository Certificate create/update request.
      */
     public readonly requests!: pulumi.Output<outputs.platform.GitOpsRepoCertRequest[]>;
 
@@ -134,23 +147,23 @@ export class GitOpsRepoCert extends pulumi.CustomResource {
  */
 export interface GitOpsRepoCertState {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Repository Certificates create/Update request.
+     * Repository Certificate create/update request.
      */
     requests?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCertRequest>[]>;
 }
@@ -160,23 +173,23 @@ export interface GitOpsRepoCertState {
  */
 export interface GitOpsRepoCertArgs {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      */
     accountId: pulumi.Input<string>;
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      */
     agentId: pulumi.Input<string>;
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Repository Certificates create/Update request.
+     * Repository Certificate create/update request.
      */
     requests: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepoCertRequest>[]>;
 }

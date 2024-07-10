@@ -10,10 +10,128 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness project.
+    /// Resource for creating a Harness service.
     /// 
-    /// ## Example Usage
+    /// ## Example to create Service at different levels (Org, Project, Account)
     /// 
+    /// ### Account Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Yaml = @"service:
+    ///   name: name
+    ///   identifier: identifier
+    ///   serviceDefinition:
+    ///     spec:
+    ///       manifests:
+    ///         - manifest:
+    ///             identifier: manifest1
+    ///             type: K8sManifest
+    ///             spec:
+    ///               store:
+    ///                 type: Github
+    ///                 spec:
+    ///                   connectorRef: &lt;+input&gt;
+    ///                   gitFetchType: Branch
+    ///                   paths:
+    ///                     - files1
+    ///                   repoName: &lt;+input&gt;
+    ///                   branch: master
+    ///               skipResourceVersioning: false
+    ///       configFiles:
+    ///         - configFile:
+    ///             identifier: configFile1
+    ///             spec:
+    ///               store:
+    ///                 type: Harness
+    ///                 spec:
+    ///                   files:
+    ///                     - &lt;+org.description&gt;
+    ///       variables:
+    ///         - name: var1
+    ///           type: String
+    ///           value: val1
+    ///         - name: var2
+    ///           type: String
+    ///           value: val2
+    ///     type: Kubernetes
+    ///   gitOpsEnabled: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         OrgId = "org_id",
+    ///         Yaml = @"service:
+    ///   name: name
+    ///   identifier: identifier
+    ///   serviceDefinition:
+    ///     spec:
+    ///       manifests:
+    ///         - manifest:
+    ///             identifier: manifest1
+    ///             type: K8sManifest
+    ///             spec:
+    ///               store:
+    ///                 type: Github
+    ///                 spec:
+    ///                   connectorRef: &lt;+input&gt;
+    ///                   gitFetchType: Branch
+    ///                   paths:
+    ///                     - files1
+    ///                   repoName: &lt;+input&gt;
+    ///                   branch: master
+    ///               skipResourceVersioning: false
+    ///       configFiles:
+    ///         - configFile:
+    ///             identifier: configFile1
+    ///             spec:
+    ///               store:
+    ///                 type: Harness
+    ///                 spec:
+    ///                   files:
+    ///                     - &lt;+org.description&gt;
+    ///       variables:
+    ///         - name: var1
+    ///           type: String
+    ///           value: val1
+    ///         - name: var2
+    ///           type: String
+    ///           value: val2
+    ///     type: Kubernetes
+    ///   gitOpsEnabled: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,6 +191,101 @@ namespace Pulumi.Harness.Platform
     /// });
     /// ```
     /// 
+    /// ### Creating Remote Service
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///         },
+    ///         Yaml = @"service:
+    ///   name: name
+    ///   identifier: identifier
+    ///   serviceDefinition:
+    ///     spec:
+    ///       manifests:
+    ///         - manifest:
+    ///             identifier: manifest1
+    ///             type: K8sManifest
+    ///             spec:
+    ///               store:
+    ///                 type: Github
+    ///                 spec:
+    ///                   connectorRef: &lt;+input&gt;
+    ///                   gitFetchType: Branch
+    ///                   paths:
+    ///                     - files1
+    ///                   repoName: &lt;+input&gt;
+    ///                   branch: master
+    ///               skipResourceVersioning: false
+    ///       configFiles:
+    ///         - configFile:
+    ///             identifier: configFile1
+    ///             spec:
+    ///               store:
+    ///                 type: Harness
+    ///                 spec:
+    ///                   files:
+    ///                     - &lt;+org.description&gt;
+    ///       variables:
+    ///         - name: var1
+    ///           type: String
+    ///           value: val1
+    ///         - name: var2
+    ///           type: String
+    ///           value: val2
+    ///     type: Kubernetes
+    ///   gitOpsEnabled: false
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Importing Service From Git
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Service("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         ImportFromGit = true,
+    ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Import account level service
@@ -103,16 +316,40 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// to fetch resoled service yaml
+        /// </summary>
+        [Output("fetchResolvedYaml")]
+        public Output<bool> FetchResolvedYaml { get; private set; } = null!;
+
+        /// <summary>
         /// Enable this flag for force deletion of service
         /// </summary>
         [Output("forceDelete")]
         public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
+        [Output("gitDetails")]
+        public Output<Outputs.ServiceGitDetails> GitDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// import service from git
+        /// </summary>
+        [Output("importFromGit")]
+        public Output<bool> ImportFromGit { get; private set; } = null!;
+
+        /// <summary>
+        /// force import service from remote even if same file path already exist
+        /// </summary>
+        [Output("isForceImport")]
+        public Output<bool> IsForceImport { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -139,7 +376,10 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -198,16 +438,40 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// to fetch resoled service yaml
+        /// </summary>
+        [Input("fetchResolvedYaml")]
+        public Input<bool>? FetchResolvedYaml { get; set; }
+
+        /// <summary>
         /// Enable this flag for force deletion of service
         /// </summary>
         [Input("forceDelete")]
         public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.ServiceGitDetailsArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        /// <summary>
+        /// import service from git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// force import service from remote even if same file path already exist
+        /// </summary>
+        [Input("isForceImport")]
+        public Input<bool>? IsForceImport { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -240,7 +504,10 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
@@ -260,16 +527,40 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// to fetch resoled service yaml
+        /// </summary>
+        [Input("fetchResolvedYaml")]
+        public Input<bool>? FetchResolvedYaml { get; set; }
+
+        /// <summary>
         /// Enable this flag for force deletion of service
         /// </summary>
         [Input("forceDelete")]
         public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.ServiceGitDetailsGetArgs>? GitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// import service from git
+        /// </summary>
+        [Input("importFromGit")]
+        public Input<bool>? ImportFromGit { get; set; }
+
+        /// <summary>
+        /// force import service from remote even if same file path already exist
+        /// </summary>
+        [Input("isForceImport")]
+        public Input<bool>? IsForceImport { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -302,7 +593,10 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
+        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
+        /// connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

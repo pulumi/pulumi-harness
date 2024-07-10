@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.PipelineFilters;
  * import com.pulumi.harness.platform.PipelineFiltersArgs;
  * import com.pulumi.harness.platform.inputs.PipelineFiltersFilterPropertiesArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineFiltersFilterPropertiesModulePropertiesCiArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,12 +52,56 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
- *             .type("PipelineExecution")
+ *             .type("PipelineSetup")
  *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
- *                 .tags("foo:bar")
- *                 .filterType("PipelineExecution")
+ *                 .name("pipeline_name")
+ *                 .description("pipeline_description")
+ *                 .pipelineIdentifiers(                
+ *                     "id1",
+ *                     "id2")
+ *                 .filterType("PipelineSetup")
  *                 .build())
  *             .filterVisibility("EveryOne")
+ *             .build());
+ * 
+ *         // pipeline filter with tags
+ *         var exampleWithTags = new PipelineFilters("exampleWithTags", PipelineFiltersArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .type("PipelineSetup")
+ *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
+ *                 .filterType("PipelineSetup")
+ *                 .pipelineTags(                
+ *                     Map.ofEntries(
+ *                         Map.entry("key", "tag1"),
+ *                         Map.entry("value", "123")
+ *                     ),
+ *                     Map.ofEntries(
+ *                         Map.entry("key", "tag2"),
+ *                         Map.entry("value", "456")
+ *                     ))
+ *                 .moduleProperties(PipelineFiltersFilterPropertiesModulePropertiesArgs.builder()
+ *                     .cd(PipelineFiltersFilterPropertiesModulePropertiesCdArgs.builder()
+ *                         .deploymentTypes("Kubernetes")
+ *                         .serviceNames(                        
+ *                             "service1",
+ *                             "service2")
+ *                         .environmentNames(                        
+ *                             "env1",
+ *                             "env2")
+ *                         .artifactDisplayNames(                        
+ *                             "artificatname1",
+ *                             "artifact2")
+ *                         .build())
+ *                     .ci(PipelineFiltersFilterPropertiesModulePropertiesCiArgs.builder()
+ *                         .buildType("branch")
+ *                         .branch("branch123")
+ *                         .repoNames("repo1234")
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -105,14 +152,14 @@ public class PipelineFilters extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="filterVisibility", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> filterVisibility;
+    private Output<String> filterVisibility;
 
     /**
      * @return This indicates visibility of filters. By default, everyone can view this filter.
      * 
      */
-    public Output<Optional<String>> filterVisibility() {
-        return Codegen.optional(this.filterVisibility);
+    public Output<String> filterVisibility() {
+        return this.filterVisibility;
     }
     /**
      * Unique identifier of the resource.

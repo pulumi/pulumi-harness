@@ -13,58 +13,12 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Datasource for fetching a Harness GitOps Application.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsApplications.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         ProjectId = "project_id",
-        ///         OrgId = "org_id",
-        ///         AgentId = "agent_id",
-        ///         RepoId = "repo_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetGitopsApplicationsResult> InvokeAsync(GetGitopsApplicationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness GitOps Application.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsApplications.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         ProjectId = "project_id",
-        ///         OrgId = "org_id",
-        ///         AgentId = "agent_id",
-        ///         RepoId = "repo_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());
@@ -85,35 +39,11 @@ namespace Pulumi.Harness.Platform
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
-        [Input("applications")]
-        private List<Inputs.GetGitopsApplicationsApplicationArgs>? _applications;
-
-        /// <summary>
-        /// Definition of the GitOps application resource.
-        /// </summary>
-        public List<Inputs.GetGitopsApplicationsApplicationArgs> Applications
-        {
-            get => _applications ?? (_applications = new List<Inputs.GetGitopsApplicationsApplicationArgs>());
-            set => _applications = value;
-        }
-
-        /// <summary>
-        /// Cluster identifier of the GitOps application.
-        /// </summary>
-        [Input("clusterId")]
-        public string? ClusterId { get; set; }
-
         /// <summary>
         /// Identifier of the GitOps application.
         /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
-
-        /// <summary>
-        /// Kind of the GitOps application.
-        /// </summary>
-        [Input("kind")]
-        public string? Kind { get; set; }
 
         /// <summary>
         /// Name of the GitOps application.
@@ -122,94 +52,16 @@ namespace Pulumi.Harness.Platform
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Options to remove existing finalizers to delete the GitOps application.
-        /// </summary>
-        [Input("optionsRemoveExistingFinalizers")]
-        public bool? OptionsRemoveExistingFinalizers { get; set; }
-
-        /// <summary>
         /// Organization identifier of the GitOps application.
         /// </summary>
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-        /// </summary>
-        [Input("project")]
-        public string? Project { get; set; }
-
-        /// <summary>
         /// Project identifier of the GitOps application.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
-
-        /// <summary>
-        /// Project names to filter the corresponding GitOps applications.
-        /// </summary>
-        [Input("queryProject")]
-        public string? QueryProject { get; set; }
-
-        /// <summary>
-        /// Forces the GitOps application to reconcile when set to true.
-        /// </summary>
-        [Input("queryRefresh")]
-        public string? QueryRefresh { get; set; }
-
-        /// <summary>
-        /// Repo URL to restrict returned list applications.
-        /// </summary>
-        [Input("queryRepo")]
-        public string? QueryRepo { get; set; }
-
-        /// <summary>
-        /// Shows modifications after a version that is specified with a watch call.
-        /// </summary>
-        [Input("queryResourceVersion")]
-        public string? QueryResourceVersion { get; set; }
-
-        /// <summary>
-        /// Filters GitOps applications corresponding to the labels.
-        /// </summary>
-        [Input("querySelector")]
-        public string? QuerySelector { get; set; }
-
-        /// <summary>
-        /// Repository identifier of the GitOps application.
-        /// </summary>
-        [Input("repoId", required: true)]
-        public string RepoId { get; set; } = null!;
-
-        /// <summary>
-        /// Request cascade to delete the GitOps application.
-        /// </summary>
-        [Input("requestCascade")]
-        public bool? RequestCascade { get; set; }
-
-        /// <summary>
-        /// Request name to delete the GitOps application.
-        /// </summary>
-        [Input("requestName")]
-        public string? RequestName { get; set; }
-
-        /// <summary>
-        /// Request propagation policy to delete the GitOps application.
-        /// </summary>
-        [Input("requestPropagationPolicy")]
-        public string? RequestPropagationPolicy { get; set; }
-
-        /// <summary>
-        /// Indicates if the GitOps application should be updated if existing and inserted if not.
-        /// </summary>
-        [Input("upsert")]
-        public bool? Upsert { get; set; }
-
-        /// <summary>
-        /// Indicates if the GitOps application has to be validated.
-        /// </summary>
-        [Input("validate")]
-        public bool? Validate { get; set; }
 
         public GetGitopsApplicationsArgs()
         {
@@ -231,35 +83,11 @@ namespace Pulumi.Harness.Platform
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
-        [Input("applications")]
-        private InputList<Inputs.GetGitopsApplicationsApplicationInputArgs>? _applications;
-
-        /// <summary>
-        /// Definition of the GitOps application resource.
-        /// </summary>
-        public InputList<Inputs.GetGitopsApplicationsApplicationInputArgs> Applications
-        {
-            get => _applications ?? (_applications = new InputList<Inputs.GetGitopsApplicationsApplicationInputArgs>());
-            set => _applications = value;
-        }
-
-        /// <summary>
-        /// Cluster identifier of the GitOps application.
-        /// </summary>
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
-
         /// <summary>
         /// Identifier of the GitOps application.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
-
-        /// <summary>
-        /// Kind of the GitOps application.
-        /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// Name of the GitOps application.
@@ -268,94 +96,16 @@ namespace Pulumi.Harness.Platform
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Options to remove existing finalizers to delete the GitOps application.
-        /// </summary>
-        [Input("optionsRemoveExistingFinalizers")]
-        public Input<bool>? OptionsRemoveExistingFinalizers { get; set; }
-
-        /// <summary>
         /// Organization identifier of the GitOps application.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
         /// Project identifier of the GitOps application.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
-
-        /// <summary>
-        /// Project names to filter the corresponding GitOps applications.
-        /// </summary>
-        [Input("queryProject")]
-        public Input<string>? QueryProject { get; set; }
-
-        /// <summary>
-        /// Forces the GitOps application to reconcile when set to true.
-        /// </summary>
-        [Input("queryRefresh")]
-        public Input<string>? QueryRefresh { get; set; }
-
-        /// <summary>
-        /// Repo URL to restrict returned list applications.
-        /// </summary>
-        [Input("queryRepo")]
-        public Input<string>? QueryRepo { get; set; }
-
-        /// <summary>
-        /// Shows modifications after a version that is specified with a watch call.
-        /// </summary>
-        [Input("queryResourceVersion")]
-        public Input<string>? QueryResourceVersion { get; set; }
-
-        /// <summary>
-        /// Filters GitOps applications corresponding to the labels.
-        /// </summary>
-        [Input("querySelector")]
-        public Input<string>? QuerySelector { get; set; }
-
-        /// <summary>
-        /// Repository identifier of the GitOps application.
-        /// </summary>
-        [Input("repoId", required: true)]
-        public Input<string> RepoId { get; set; } = null!;
-
-        /// <summary>
-        /// Request cascade to delete the GitOps application.
-        /// </summary>
-        [Input("requestCascade")]
-        public Input<bool>? RequestCascade { get; set; }
-
-        /// <summary>
-        /// Request name to delete the GitOps application.
-        /// </summary>
-        [Input("requestName")]
-        public Input<string>? RequestName { get; set; }
-
-        /// <summary>
-        /// Request propagation policy to delete the GitOps application.
-        /// </summary>
-        [Input("requestPropagationPolicy")]
-        public Input<string>? RequestPropagationPolicy { get; set; }
-
-        /// <summary>
-        /// Indicates if the GitOps application should be updated if existing and inserted if not.
-        /// </summary>
-        [Input("upsert")]
-        public Input<bool>? Upsert { get; set; }
-
-        /// <summary>
-        /// Indicates if the GitOps application has to be validated.
-        /// </summary>
-        [Input("validate")]
-        public Input<bool>? Validate { get; set; }
 
         public GetGitopsApplicationsInvokeArgs()
         {
@@ -382,7 +132,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Cluster identifier of the GitOps application.
         /// </summary>
-        public readonly string? ClusterId;
+        public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -394,7 +144,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Kind of the GitOps application.
         /// </summary>
-        public readonly string? Kind;
+        public readonly string Kind;
         /// <summary>
         /// Name of the GitOps application.
         /// </summary>
@@ -402,39 +152,19 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Options to remove existing finalizers to delete the GitOps application.
         /// </summary>
-        public readonly bool? OptionsRemoveExistingFinalizers;
+        public readonly bool OptionsRemoveExistingFinalizers;
         /// <summary>
         /// Organization identifier of the GitOps application.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
-        /// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
+        /// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         /// </summary>
-        public readonly string? Project;
+        public readonly string Project;
         /// <summary>
         /// Project identifier of the GitOps application.
         /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// Project names to filter the corresponding GitOps applications.
-        /// </summary>
-        public readonly string? QueryProject;
-        /// <summary>
-        /// Forces the GitOps application to reconcile when set to true.
-        /// </summary>
-        public readonly string? QueryRefresh;
-        /// <summary>
-        /// Repo URL to restrict returned list applications.
-        /// </summary>
-        public readonly string? QueryRepo;
-        /// <summary>
-        /// Shows modifications after a version that is specified with a watch call.
-        /// </summary>
-        public readonly string? QueryResourceVersion;
-        /// <summary>
-        /// Filters GitOps applications corresponding to the labels.
-        /// </summary>
-        public readonly string? QuerySelector;
         /// <summary>
         /// Repository identifier of the GitOps application.
         /// </summary>
@@ -442,23 +172,19 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Request cascade to delete the GitOps application.
         /// </summary>
-        public readonly bool? RequestCascade;
-        /// <summary>
-        /// Request name to delete the GitOps application.
-        /// </summary>
-        public readonly string? RequestName;
+        public readonly bool RequestCascade;
         /// <summary>
         /// Request propagation policy to delete the GitOps application.
         /// </summary>
-        public readonly string? RequestPropagationPolicy;
+        public readonly string RequestPropagationPolicy;
         /// <summary>
         /// Indicates if the GitOps application should be updated if existing and inserted if not.
         /// </summary>
-        public readonly bool? Upsert;
+        public readonly bool Upsert;
         /// <summary>
-        /// Indicates if the GitOps application has to be validated.
+        /// Indicates if the GitOps application yaml has to be validated.
         /// </summary>
-        public readonly bool? Validate;
+        public readonly bool Validate;
 
         [OutputConstructor]
         private GetGitopsApplicationsResult(
@@ -468,45 +194,33 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationResult> applications,
 
-            string? clusterId,
+            string clusterId,
 
             string id,
 
             string? identifier,
 
-            string? kind,
+            string kind,
 
             string name,
 
-            bool? optionsRemoveExistingFinalizers,
+            bool optionsRemoveExistingFinalizers,
 
             string orgId,
 
-            string? project,
+            string project,
 
             string projectId,
 
-            string? queryProject,
-
-            string? queryRefresh,
-
-            string? queryRepo,
-
-            string? queryResourceVersion,
-
-            string? querySelector,
-
             string repoId,
 
-            bool? requestCascade,
+            bool requestCascade,
 
-            string? requestName,
+            string requestPropagationPolicy,
 
-            string? requestPropagationPolicy,
+            bool upsert,
 
-            bool? upsert,
-
-            bool? validate)
+            bool validate)
         {
             AccountId = accountId;
             AgentId = agentId;
@@ -520,14 +234,8 @@ namespace Pulumi.Harness.Platform
             OrgId = orgId;
             Project = project;
             ProjectId = projectId;
-            QueryProject = queryProject;
-            QueryRefresh = queryRefresh;
-            QueryRepo = queryRepo;
-            QueryResourceVersion = queryResourceVersion;
-            QuerySelector = querySelector;
             RepoId = repoId;
             RequestCascade = requestCascade;
-            RequestName = requestName;
             RequestPropagationPolicy = requestPropagationPolicy;
             Upsert = upsert;
             Validate = validate;

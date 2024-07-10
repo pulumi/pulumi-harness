@@ -4,12 +4,12 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
@@ -17,17 +17,17 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
      * @return List of jsonnet external variables.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars;
+    private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars;
     /**
      * @return Additional library search dirs.
      * 
      */
-    private @Nullable List<String> libs;
+    private List<String> libs;
     /**
      * @return List of jsonnet top-level arguments(TLAS).
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas;
+    private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas;
 
     private GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet() {}
     /**
@@ -35,21 +35,21 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars() {
-        return this.extVars == null ? List.of() : this.extVars;
+        return this.extVars;
     }
     /**
      * @return Additional library search dirs.
      * 
      */
     public List<String> libs() {
-        return this.libs == null ? List.of() : this.libs;
+        return this.libs;
     }
     /**
      * @return List of jsonnet top-level arguments(TLAS).
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas() {
-        return this.tlas == null ? List.of() : this.tlas;
+        return this.tlas;
     }
 
     public static Builder builder() {
@@ -61,9 +61,9 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars;
-        private @Nullable List<String> libs;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas;
+        private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars;
+        private List<String> libs;
+        private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,8 +73,10 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
         }
 
         @CustomType.Setter
-        public Builder extVars(@Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars) {
-
+        public Builder extVars(List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar> extVars) {
+            if (extVars == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet", "extVars");
+            }
             this.extVars = extVars;
             return this;
         }
@@ -82,8 +84,10 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
             return extVars(List.of(extVars));
         }
         @CustomType.Setter
-        public Builder libs(@Nullable List<String> libs) {
-
+        public Builder libs(List<String> libs) {
+            if (libs == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet", "libs");
+            }
             this.libs = libs;
             return this;
         }
@@ -91,8 +95,10 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
             return libs(List.of(libs));
         }
         @CustomType.Setter
-        public Builder tlas(@Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas) {
-
+        public Builder tlas(List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla> tlas) {
+            if (tlas == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet", "tlas");
+            }
             this.tlas = tlas;
             return this;
         }

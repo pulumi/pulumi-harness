@@ -31,14 +31,14 @@ public final class GetGitopsGnupgRequestPublickeyArgs extends com.pulumi.resourc
     }
 
     /**
-     * KeyData holds the raw key data, in base64 encoded format
+     * KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     @Import(name="keyData")
     private @Nullable Output<String> keyData;
 
     /**
-     * @return KeyData holds the raw key data, in base64 encoded format
+     * @return KeyData holds the raw key data, in base64 encoded format.
      * 
      */
     public Optional<Output<String>> keyData() {
@@ -156,7 +156,7 @@ public final class GetGitopsGnupgRequestPublickeyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keyData KeyData holds the raw key data, in base64 encoded format
+         * @param keyData KeyData holds the raw key data, in base64 encoded format.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetGitopsGnupgRequestPublickeyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param keyData KeyData holds the raw key data, in base64 encoded format
+         * @param keyData KeyData holds the raw key data, in base64 encoded format.
          * 
          * @return builder
          * 

@@ -52,6 +52,7 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
+	GitDetails *GetServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -65,7 +66,8 @@ type LookupServiceArgs struct {
 // A collection of values returned by getService.
 type LookupServiceResult struct {
 	// Description of the resource.
-	Description string `pulumi:"description"`
+	Description string               `pulumi:"description"`
+	GitDetails  GetServiceGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -97,6 +99,7 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
+	GitDetails GetServiceGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -129,6 +132,10 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 // Description of the resource.
 func (o LookupServiceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) GitDetails() GetServiceGitDetailsOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceGitDetails { return v.GitDetails }).(GetServiceGitDetailsOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

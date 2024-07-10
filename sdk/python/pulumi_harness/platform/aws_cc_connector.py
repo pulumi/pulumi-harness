@@ -20,12 +20,12 @@ class AwsCCConnectorArgs:
                  cross_account_access: pulumi.Input['AwsCCConnectorCrossAccountAccessArgs'],
                  features_enableds: pulumi.Input[Sequence[pulumi.Input[str]]],
                  identifier: pulumi.Input[str],
-                 report_name: pulumi.Input[str],
-                 s3_bucket: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 report_name: Optional[pulumi.Input[str]] = None,
+                 s3_bucket: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AwsCCConnector resource.
@@ -33,20 +33,18 @@ class AwsCCConnectorArgs:
         :param pulumi.Input['AwsCCConnectorCrossAccountAccessArgs'] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-        :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        :param pulumi.Input[str] s3_bucket: The name of s3 bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "cross_account_access", cross_account_access)
         pulumi.set(__self__, "features_enableds", features_enableds)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "report_name", report_name)
-        pulumi.set(__self__, "s3_bucket", s3_bucket)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -55,6 +53,10 @@ class AwsCCConnectorArgs:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if report_name is not None:
+            pulumi.set(__self__, "report_name", report_name)
+        if s3_bucket is not None:
+            pulumi.set(__self__, "s3_bucket", s3_bucket)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -107,30 +109,6 @@ class AwsCCConnectorArgs:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="reportName")
-    def report_name(self) -> pulumi.Input[str]:
-        """
-        The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
-        """
-        return pulumi.get(self, "report_name")
-
-    @report_name.setter
-    def report_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "report_name", value)
-
-    @property
-    @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> pulumi.Input[str]:
-        """
-        The name of s3 bucket.
-        """
-        return pulumi.get(self, "s3_bucket")
-
-    @s3_bucket.setter
-    def s3_bucket(self, value: pulumi.Input[str]):
-        pulumi.set(self, "s3_bucket", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -177,6 +155,30 @@ class AwsCCConnectorArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="reportName")
+    def report_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        """
+        return pulumi.get(self, "report_name")
+
+    @report_name.setter
+    def report_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "report_name", value)
+
+    @property
+    @pulumi.getter(name="s3Bucket")
+    def s3_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of s3 bucket.
+        """
+        return pulumi.get(self, "s3_bucket")
+
+    @s3_bucket.setter
+    def s3_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_bucket", value)
 
     @property
     @pulumi.getter
@@ -559,11 +561,7 @@ class AwsCCConnector(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
-            if report_name is None and not opts.urn:
-                raise TypeError("Missing required property 'report_name'")
             __props__.__dict__["report_name"] = report_name
-            if s3_bucket is None and not opts.urn:
-                raise TypeError("Missing required property 's3_bucket'")
             __props__.__dict__["s3_bucket"] = s3_bucket
             __props__.__dict__["tags"] = tags
         super(AwsCCConnector, __self__).__init__(
@@ -689,7 +687,7 @@ class AwsCCConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="reportName")
-    def report_name(self) -> pulumi.Output[str]:
+    def report_name(self) -> pulumi.Output[Optional[str]]:
         """
         The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         """
@@ -697,7 +695,7 @@ class AwsCCConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> pulumi.Output[str]:
+    def s3_bucket(self) -> pulumi.Output[Optional[str]]:
         """
         The name of s3 bucket.
         """

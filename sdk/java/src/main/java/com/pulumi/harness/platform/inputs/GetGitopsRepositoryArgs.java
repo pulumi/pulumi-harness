@@ -50,18 +50,18 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Indicates if to operate on credential set instead of repository.
+     * Indicates if helm-oci support must be enabled for this repo.
      * 
      */
-    @Import(name="credsOnly")
-    private @Nullable Output<Boolean> credsOnly;
+    @Import(name="enableOci")
+    private @Nullable Output<Boolean> enableOci;
 
     /**
-     * @return Indicates if to operate on credential set instead of repository.
+     * @return Indicates if helm-oci support must be enabled for this repo.
      * 
      */
-    public Optional<Output<Boolean>> credsOnly() {
-        return Optional.ofNullable(this.credsOnly);
+    public Optional<Output<Boolean>> enableOci() {
+        return Optional.ofNullable(this.enableOci);
     }
 
     /**
@@ -110,51 +110,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Indicates to force refresh query for repository.
-     * 
-     */
-    @Import(name="queryForceRefresh")
-    private @Nullable Output<Boolean> queryForceRefresh;
-
-    /**
-     * @return Indicates to force refresh query for repository.
-     * 
-     */
-    public Optional<Output<Boolean>> queryForceRefresh() {
-        return Optional.ofNullable(this.queryForceRefresh);
-    }
-
-    /**
-     * Project to query for the GitOps repo.
-     * 
-     */
-    @Import(name="queryProject")
-    private @Nullable Output<String> queryProject;
-
-    /**
-     * @return Project to query for the GitOps repo.
-     * 
-     */
-    public Optional<Output<String>> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-
-    /**
-     * GitOps repository to query.
-     * 
-     */
-    @Import(name="queryRepo")
-    private @Nullable Output<String> queryRepo;
-
-    /**
-     * @return GitOps repository to query.
-     * 
-     */
-    public Optional<Output<String>> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
-    }
-
-    /**
      * Update mask of the repository.
      * 
      */
@@ -169,35 +124,16 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.updateMasks);
     }
 
-    /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
-     * 
-     */
-    @Import(name="upsert")
-    private @Nullable Output<Boolean> upsert;
-
-    /**
-     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
-     * 
-     */
-    public Optional<Output<Boolean>> upsert() {
-        return Optional.ofNullable(this.upsert);
-    }
-
     private GetGitopsRepositoryArgs() {}
 
     private GetGitopsRepositoryArgs(GetGitopsRepositoryArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.credsOnly = $.credsOnly;
+        this.enableOci = $.enableOci;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.queryForceRefresh = $.queryForceRefresh;
-        this.queryProject = $.queryProject;
-        this.queryRepo = $.queryRepo;
         this.updateMasks = $.updateMasks;
-        this.upsert = $.upsert;
     }
 
     public static Builder builder() {
@@ -261,24 +197,24 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param credsOnly Indicates if to operate on credential set instead of repository.
+         * @param enableOci Indicates if helm-oci support must be enabled for this repo.
          * 
          * @return builder
          * 
          */
-        public Builder credsOnly(@Nullable Output<Boolean> credsOnly) {
-            $.credsOnly = credsOnly;
+        public Builder enableOci(@Nullable Output<Boolean> enableOci) {
+            $.enableOci = enableOci;
             return this;
         }
 
         /**
-         * @param credsOnly Indicates if to operate on credential set instead of repository.
+         * @param enableOci Indicates if helm-oci support must be enabled for this repo.
          * 
          * @return builder
          * 
          */
-        public Builder credsOnly(Boolean credsOnly) {
-            return credsOnly(Output.of(credsOnly));
+        public Builder enableOci(Boolean enableOci) {
+            return enableOci(Output.of(enableOci));
         }
 
         /**
@@ -345,69 +281,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param queryForceRefresh Indicates to force refresh query for repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryForceRefresh(@Nullable Output<Boolean> queryForceRefresh) {
-            $.queryForceRefresh = queryForceRefresh;
-            return this;
-        }
-
-        /**
-         * @param queryForceRefresh Indicates to force refresh query for repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryForceRefresh(Boolean queryForceRefresh) {
-            return queryForceRefresh(Output.of(queryForceRefresh));
-        }
-
-        /**
-         * @param queryProject Project to query for the GitOps repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(@Nullable Output<String> queryProject) {
-            $.queryProject = queryProject;
-            return this;
-        }
-
-        /**
-         * @param queryProject Project to query for the GitOps repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryProject(String queryProject) {
-            return queryProject(Output.of(queryProject));
-        }
-
-        /**
-         * @param queryRepo GitOps repository to query.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(@Nullable Output<String> queryRepo) {
-            $.queryRepo = queryRepo;
-            return this;
-        }
-
-        /**
-         * @param queryRepo GitOps repository to query.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryRepo(String queryRepo) {
-            return queryRepo(Output.of(queryRepo));
-        }
-
-        /**
          * @param updateMasks Update mask of the repository.
          * 
          * @return builder
@@ -436,27 +309,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder updateMasks(GetGitopsRepositoryUpdateMaskArgs... updateMasks) {
             return updateMasks(List.of(updateMasks));
-        }
-
-        /**
-         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder upsert(@Nullable Output<Boolean> upsert) {
-            $.upsert = upsert;
-            return this;
-        }
-
-        /**
-         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder upsert(Boolean upsert) {
-            return upsert(Output.of(upsert));
         }
 
         public GetGitopsRepositoryArgs build() {

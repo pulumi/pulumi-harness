@@ -171,8 +171,6 @@ def get_aws_secret_manager_connector(identifier: Optional[str] = None,
                                      project_id: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsSecretManagerConnectorResult:
     """
-    Datasource for looking up an AWS Secret Manager connector.
-
     ## Example Usage
 
     ```python
@@ -217,8 +215,6 @@ def get_aws_secret_manager_connector_output(identifier: Optional[pulumi.Input[st
                                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsSecretManagerConnectorResult]:
     """
-    Datasource for looking up an AWS Secret Manager connector.
-
     ## Example Usage
 
     ```python

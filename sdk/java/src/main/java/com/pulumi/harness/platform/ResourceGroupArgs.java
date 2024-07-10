@@ -95,14 +95,14 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Included scopes
+     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
      * 
      */
     @Import(name="includedScopes")
     private @Nullable Output<List<ResourceGroupIncludedScopeArgs>> includedScopes;
 
     /**
-     * @return Included scopes
+     * @return Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
      * 
      */
     public Optional<Output<List<ResourceGroupIncludedScopeArgs>>> includedScopes() {
@@ -334,7 +334,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedScopes Included scopes
+         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedScopes Included scopes
+         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedScopes Included scopes
+         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
          * 
          * @return builder
          * 

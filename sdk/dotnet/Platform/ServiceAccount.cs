@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating service account.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

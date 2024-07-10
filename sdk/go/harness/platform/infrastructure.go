@@ -13,9 +13,106 @@ import (
 )
 
 // Resource for creating a Harness Infrastructure.
+// ## Example to create Infrastructure at different levels (Org, Project, Account)
 //
-// ## Example Usage
+// ### Account Level
+// ```go
+// package main
 //
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
+//				Identifier:     pulumi.String("identifier"),
+//				Name:           pulumi.String("name"),
+//				EnvId:          pulumi.String("environmentIdentifier"),
+//				Type:           pulumi.String("KubernetesDirect"),
+//				DeploymentType: pulumi.String("Kubernetes"),
+//				Yaml: pulumi.String(`infrastructureDefinition:
+//	 name: name
+//	 identifier: identifier
+//	 description: ""
+//	 tags:
+//	   asda: ""
+//	 orgIdentifier: orgIdentifer
+//	 projectIdentifier: projectIdentifier
+//	 environmentRef: environmentIdentifier
+//	 deploymentType: Kubernetes
+//	 type: KubernetesDirect
+//	 spec:
+//	  connectorRef: account.gfgf
+//	  namespace: asdasdsa
+//	  releaseName: release-<+INFRA_KEY>
+//	  allowSimultaneousDeployments: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
+//				Identifier:     pulumi.String("identifier"),
+//				Name:           pulumi.String("name"),
+//				OrgId:          pulumi.String("orgIdentifer"),
+//				EnvId:          pulumi.String("environmentIdentifier"),
+//				Type:           pulumi.String("KubernetesDirect"),
+//				DeploymentType: pulumi.String("Kubernetes"),
+//				Yaml: pulumi.String(`infrastructureDefinition:
+//	 name: name
+//	 identifier: identifier
+//	 description: ""
+//	 tags:
+//	   asda: ""
+//	 orgIdentifier: orgIdentifer
+//	 projectIdentifier: projectIdentifier
+//	 environmentRef: environmentIdentifier
+//	 deploymentType: Kubernetes
+//	 type: KubernetesDirect
+//	 spec:
+//	  connectorRef: account.gfgf
+//	  namespace: asdasdsa
+//	  releaseName: release-<+INFRA_KEY>
+//	  allowSimultaneousDeployments: false
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
 // ```go
 // package main
 //
@@ -65,6 +162,41 @@ import (
 //
 // ```
 //
+// ### Importing Infrastructure From Git
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewInfrastructure(ctx, "test", &platform.InfrastructureArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				EnvId:      pulumi.String("env_id"),
+//				GitDetails: &platform.InfrastructureGitDetailsArgs{
+//					StoreType:     pulumi.String("REMOTE"),
+//					ConnectorRef:  pulumi.String("connector_ref"),
+//					RepoName:      pulumi.String("repo_name"),
+//					FilePath:      pulumi.String("file_path"),
+//					Branch:        pulumi.String("branch"),
+//					ImportFromGit: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Import account level infrastructure
@@ -95,6 +227,8 @@ type Infrastructure struct {
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails InfrastructureGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -105,10 +239,10 @@ type Infrastructure struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-	Type pulumi.StringOutput `pulumi:"type"`
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml pulumi.StringOutput `pulumi:"yaml"`
+	Yaml pulumi.StringPtrOutput `pulumi:"yaml"`
 }
 
 // NewInfrastructure registers a new resource with the given unique name, arguments, and options.
@@ -123,12 +257,6 @@ func NewInfrastructure(ctx *pulumi.Context,
 	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
-	}
-	if args.Yaml == nil {
-		return nil, errors.New("invalid value for required argument 'Yaml'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Infrastructure
@@ -161,6 +289,8 @@ type infrastructureState struct {
 	EnvId *string `pulumi:"envId"`
 	// Enable this flag for force deletion of infrastructure
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -171,7 +301,7 @@ type infrastructureState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
 	Type *string `pulumi:"type"`
 	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
@@ -186,6 +316,8 @@ type InfrastructureState struct {
 	EnvId pulumi.StringPtrInput
 	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.StringPtrInput
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -196,7 +328,7 @@ type InfrastructureState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
 	Type pulumi.StringPtrInput
 	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
@@ -215,6 +347,8 @@ type infrastructureArgs struct {
 	EnvId string `pulumi:"envId"`
 	// Enable this flag for force deletion of infrastructure
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -225,10 +359,10 @@ type infrastructureArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-	Type string `pulumi:"type"`
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+	Type *string `pulumi:"type"`
 	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml string `pulumi:"yaml"`
+	Yaml *string `pulumi:"yaml"`
 }
 
 // The set of arguments for constructing a Infrastructure resource.
@@ -241,6 +375,8 @@ type InfrastructureArgs struct {
 	EnvId pulumi.StringInput
 	// Enable this flag for force deletion of infrastructure
 	ForceDelete pulumi.StringPtrInput
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -251,10 +387,10 @@ type InfrastructureArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-	Type pulumi.StringInput
+	// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+	Type pulumi.StringPtrInput
 	// Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	Yaml pulumi.StringInput
+	Yaml pulumi.StringPtrInput
 }
 
 func (InfrastructureArgs) ElementType() reflect.Type {
@@ -364,6 +500,11 @@ func (o InfrastructureOutput) ForceDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
 }
 
+// Contains Git Information for remote entities from Git for Create/Update/Import
+func (o InfrastructureOutput) GitDetails() InfrastructureGitDetailsOutput {
+	return o.ApplyT(func(v *Infrastructure) InfrastructureGitDetailsOutput { return v.GitDetails }).(InfrastructureGitDetailsOutput)
+}
+
 // Unique identifier of the resource.
 func (o InfrastructureOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -389,14 +530,14 @@ func (o InfrastructureOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
-func (o InfrastructureOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+// Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
+func (o InfrastructureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-func (o InfrastructureOutput) Yaml() pulumi.StringOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
+func (o InfrastructureOutput) Yaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.StringPtrOutput { return v.Yaml }).(pulumi.StringPtrOutput)
 }
 
 type InfrastructureArrayOutput struct{ *pulumi.OutputState }

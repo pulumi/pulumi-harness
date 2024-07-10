@@ -12,8 +12,9 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness environment.
     /// 
-    /// ## Example Usage
+    /// ## Example to create Environment at different levels (Org, Project, Account)
     /// 
+    /// ### Account Level
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,23 +27,20 @@ namespace Pulumi.Harness.Platform
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
-    ///             "baz",
+    ///             "bar:foo",
     ///         },
     ///         Type = "PreProduction",
+    ///         Description = "env description",
     ///         Yaml = @"environment:
     ///    name: name
     ///    identifier: identifier
-    ///    orgIdentifier: org_id
-    ///    projectIdentifier: project_id
     ///    type: PreProduction
     ///    tags:
     ///      foo: bar
-    ///      baz: """"
+    ///      bar: foo
     ///    variables:
     ///      - name: envVar1
     ///        type: String
@@ -78,6 +76,233 @@ namespace Pulumi.Harness.Platform
     ///                    - account:/Add-ons/svcOverrideTest
     ///                  secretFiles: []
     /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Org Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         Type = "PreProduction",
+    ///         Description = "env description",
+    ///         Yaml = @"environment:
+    ///    name: name
+    ///    identifier: identifier
+    ///    orgIdentifier: org_id
+    ///    type: PreProduction
+    ///    tags:
+    ///      foo: bar
+    ///      bar: foo
+    ///    variables:
+    ///      - name: envVar1
+    ///        type: String
+    ///        value: v1
+    ///        description: """"
+    ///      - name: envVar2
+    ///        type: String
+    ///        value: v2
+    ///        description: """"
+    ///    overrides:
+    ///      manifests:
+    ///        - manifest:
+    ///            identifier: manifestEnv
+    ///            type: Values
+    ///            spec:
+    ///              store:
+    ///                type: Git
+    ///                spec:
+    ///                  connectorRef: &lt;+input&gt;
+    ///                  gitFetchType: Branch
+    ///                  paths:
+    ///                    - file1
+    ///                  repoName: &lt;+input&gt;
+    ///                  branch: master
+    ///      configFiles:
+    ///        - configFile:
+    ///            identifier: configFileEnv
+    ///            spec:
+    ///              store:
+    ///                type: Harness
+    ///                spec:
+    ///                  files:
+    ///                    - account:/Add-ons/svcOverrideTest
+    ///                  secretFiles: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Project Level
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         Type = "PreProduction",
+    ///         Description = "env description",
+    ///         Yaml = @"environment:
+    ///    name: name
+    ///    identifier: identifier
+    ///    orgIdentifier: org_id
+    ///    projectIdentifier: project_id
+    ///    type: PreProduction
+    ///    tags:
+    ///      foo: bar
+    ///      bar: foo
+    ///    variables:
+    ///      - name: envVar1
+    ///        type: String
+    ///        value: v1
+    ///        description: """"
+    ///      - name: envVar2
+    ///        type: String
+    ///        value: v2
+    ///        description: """"
+    ///    overrides:
+    ///      manifests:
+    ///        - manifest:
+    ///            identifier: manifestEnv
+    ///            type: Values
+    ///            spec:
+    ///              store:
+    ///                type: Git
+    ///                spec:
+    ///                  connectorRef: &lt;+input&gt;
+    ///                  gitFetchType: Branch
+    ///                  paths:
+    ///                    - file1
+    ///                  repoName: &lt;+input&gt;
+    ///                  branch: master
+    ///      configFiles:
+    ///        - configFile:
+    ///            identifier: configFileEnv
+    ///            spec:
+    ///              store:
+    ///                type: Harness
+    ///                spec:
+    ///                  files:
+    ///                    - account:/Add-ons/svcOverrideTest
+    ///                  secretFiles: []
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating Remote Environment
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///         },
+    ///         Yaml = @"environment:
+    ///   name: env
+    ///   identifier: env
+    ///   tags:
+    ///     test: """"
+    ///   type: PreProduction
+    ///   orgIdentifier: default
+    ///   projectIdentifier: proj1
+    ///   variables:
+    ///     - name: var1
+    ///       type: String
+    ///       value: abc
+    ///       description: """"
+    ///       required: false
+    ///   overrides:
+    ///     manifests:
+    ///       - manifest:
+    ///           identifier: Manifest1
+    ///           type: Values
+    ///           spec:
+    ///             store:
+    ///               type: Github
+    ///               spec:
+    ///                 connectorRef: &lt;+input&gt;
+    ///                 gitFetchType: Branch
+    ///                 paths:
+    ///                   - .harness/
+    ///                 repoName: &lt;+input&gt;
+    ///                 branch: &lt;+input&gt;
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Importing Environment From Git
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.Environment("example", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Type = "PreProduction",
+    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
+    ///         {
+    ///             StoreType = "REMOTE",
+    ///             ConnectorRef = "connector_ref",
+    ///             RepoName = "repo_name",
+    ///             FilePath = "file_path",
+    ///             Branch = "branch",
+    ///             ImportFromGit = true,
+    ///         },
     ///     });
     /// 
     /// });
@@ -119,10 +344,16 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this flag for force deletion of environment
+        /// Enable this flag for force deletion of environments
         /// </summary>
         [Output("forceDelete")]
         public Output<string> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Output("gitDetails")]
+        public Output<Outputs.EnvironmentGitDetails> GitDetails { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -161,7 +392,8 @@ namespace Pulumi.Harness.Platform
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+        /// connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string?> Yaml { get; private set; } = null!;
@@ -226,10 +458,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of environment
+        /// Enable this flag for force deletion of environments
         /// </summary>
         [Input("forceDelete")]
         public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.EnvironmentGitDetailsArgs>? GitDetails { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -274,7 +512,8 @@ namespace Pulumi.Harness.Platform
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+        /// connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
@@ -300,10 +539,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of environment
+        /// Enable this flag for force deletion of environments
         /// </summary>
         [Input("forceDelete")]
         public Input<string>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// </summary>
+        [Input("gitDetails")]
+        public Input<Inputs.EnvironmentGitDetailsGetArgs>? GitDetails { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -348,7 +593,8 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+        /// connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

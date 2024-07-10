@@ -24,10 +24,11 @@ class FeatureFlagArgs:
                  permanent: pulumi.Input[bool],
                  project_id: pulumi.Input[str],
                  variations: pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]],
-                 archived: Optional[pulumi.Input[bool]] = None,
-                 git_details: Optional[pulumi.Input['FeatureFlagGitDetailsArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[str]] = None):
+                 owner: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
@@ -38,9 +39,11 @@ class FeatureFlagArgs:
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: The options available for your flag
-        :param pulumi.Input[bool] archived: Whether or not the flag is archived
+        :param pulumi.Input[str] description: Description of the Feature Flag
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]] environments: Environment Identifier
         :param pulumi.Input[str] name: Name of the Feature Flag
         :param pulumi.Input[str] owner: The owner of the flag
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]] tags: The tags for the flag
         """
         pulumi.set(__self__, "default_off_variation", default_off_variation)
         pulumi.set(__self__, "default_on_variation", default_on_variation)
@@ -50,14 +53,16 @@ class FeatureFlagArgs:
         pulumi.set(__self__, "permanent", permanent)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "variations", variations)
-        if archived is not None:
-            pulumi.set(__self__, "archived", archived)
-        if git_details is not None:
-            pulumi.set(__self__, "git_details", git_details)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="defaultOffVariation")
@@ -157,24 +162,27 @@ class FeatureFlagArgs:
 
     @property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[bool]]:
+    def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether or not the flag is archived
+        Description of the Feature Flag
         """
-        return pulumi.get(self, "archived")
+        return pulumi.get(self, "description")
 
-    @archived.setter
-    def archived(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "archived", value)
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['FeatureFlagGitDetailsArgs']]:
-        return pulumi.get(self, "git_details")
+    @pulumi.getter
+    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]]:
+        """
+        Environment Identifier
+        """
+        return pulumi.get(self, "environments")
 
-    @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['FeatureFlagGitDetailsArgs']]):
-        pulumi.set(self, "git_details", value)
+    @environments.setter
+    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]]):
+        pulumi.set(self, "environments", value)
 
     @property
     @pulumi.getter
@@ -200,14 +208,26 @@ class FeatureFlagArgs:
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]]:
+        """
+        The tags for the flag
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _FeatureFlagState:
     def __init__(__self__, *,
-                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input['FeatureFlagGitDetailsArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -215,12 +235,14 @@ class _FeatureFlagState:
                  owner: Optional[pulumi.Input[str]] = None,
                  permanent: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]] = None,
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlag resources.
-        :param pulumi.Input[bool] archived: Whether or not the flag is archived
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
+        :param pulumi.Input[str] description: Description of the Feature Flag
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]] environments: Environment Identifier
         :param pulumi.Input[str] identifier: Identifier of the Feature Flag
         :param pulumi.Input[str] kind: The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -228,16 +250,17 @@ class _FeatureFlagState:
         :param pulumi.Input[str] owner: The owner of the flag
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]] tags: The tags for the flag
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: The options available for your flag
         """
-        if archived is not None:
-            pulumi.set(__self__, "archived", archived)
         if default_off_variation is not None:
             pulumi.set(__self__, "default_off_variation", default_off_variation)
         if default_on_variation is not None:
             pulumi.set(__self__, "default_on_variation", default_on_variation)
-        if git_details is not None:
-            pulumi.set(__self__, "git_details", git_details)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if kind is not None:
@@ -252,20 +275,10 @@ class _FeatureFlagState:
             pulumi.set(__self__, "permanent", permanent)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if variations is not None:
             pulumi.set(__self__, "variations", variations)
-
-    @property
-    @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not the flag is archived
-        """
-        return pulumi.get(self, "archived")
-
-    @archived.setter
-    def archived(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "archived", value)
 
     @property
     @pulumi.getter(name="defaultOffVariation")
@@ -292,13 +305,28 @@ class _FeatureFlagState:
         pulumi.set(self, "default_on_variation", value)
 
     @property
-    @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['FeatureFlagGitDetailsArgs']]:
-        return pulumi.get(self, "git_details")
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the Feature Flag
+        """
+        return pulumi.get(self, "description")
 
-    @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['FeatureFlagGitDetailsArgs']]):
-        pulumi.set(self, "git_details", value)
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]]:
+        """
+        Environment Identifier
+        """
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]]):
+        pulumi.set(self, "environments", value)
 
     @property
     @pulumi.getter
@@ -386,6 +414,18 @@ class _FeatureFlagState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]]:
+        """
+        The tags for the flag
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def variations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]]:
         """
         The options available for your flag
@@ -402,10 +442,10 @@ class FeatureFlag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['FeatureFlagGitDetailsArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -413,78 +453,18 @@ class FeatureFlag(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  permanent: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None,
                  __props__=None):
         """
         Resource for managing Feature Flags.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        # Boolean Flag
-        mybooleanflag = harness.platform.FeatureFlag("mybooleanflag",
-            org_id="test",
-            project_id="testff",
-            kind="boolean",
-            name="MY_FEATURE",
-            identifier="MY_FEATURE",
-            permanent=False,
-            default_on_variation="Enabled",
-            default_off_variation="Disabled",
-            variations=[
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="Enabled",
-                    name="Enabled",
-                    description="The feature is enabled",
-                    value="true",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="Disabled",
-                    name="Disabled",
-                    description="The feature is disabled",
-                    value="false",
-                ),
-            ])
-        # Multivariate flag
-        mymultivariateflag = harness.platform.FeatureFlag("mymultivariateflag",
-            org_id="test",
-            project_id="testff",
-            kind="int",
-            name="FREE_TRIAL_DURATION",
-            identifier="FREE_TRIAL_DURATION",
-            permanent=False,
-            default_on_variation="trial7",
-            default_off_variation="trial20",
-            variations=[
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial7",
-                    name="7 days trial",
-                    description="Free trial period 7 days",
-                    value="7",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial14",
-                    name="14 days trial",
-                    description="Free trial period 14 days",
-                    value="14",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial20",
-                    name="20 days trial",
-                    description="Free trial period 20 days",
-                    value="20",
-                ),
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] archived: Whether or not the flag is archived
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
+        :param pulumi.Input[str] description: Description of the Feature Flag
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]] environments: Environment Identifier
         :param pulumi.Input[str] identifier: Identifier of the Feature Flag
         :param pulumi.Input[str] kind: The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -492,6 +472,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The owner of the flag
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]] tags: The tags for the flag
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]] variations: The options available for your flag
         """
         ...
@@ -502,68 +483,6 @@ class FeatureFlag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Feature Flags.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        # Boolean Flag
-        mybooleanflag = harness.platform.FeatureFlag("mybooleanflag",
-            org_id="test",
-            project_id="testff",
-            kind="boolean",
-            name="MY_FEATURE",
-            identifier="MY_FEATURE",
-            permanent=False,
-            default_on_variation="Enabled",
-            default_off_variation="Disabled",
-            variations=[
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="Enabled",
-                    name="Enabled",
-                    description="The feature is enabled",
-                    value="true",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="Disabled",
-                    name="Disabled",
-                    description="The feature is disabled",
-                    value="false",
-                ),
-            ])
-        # Multivariate flag
-        mymultivariateflag = harness.platform.FeatureFlag("mymultivariateflag",
-            org_id="test",
-            project_id="testff",
-            kind="int",
-            name="FREE_TRIAL_DURATION",
-            identifier="FREE_TRIAL_DURATION",
-            permanent=False,
-            default_on_variation="trial7",
-            default_off_variation="trial20",
-            variations=[
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial7",
-                    name="7 days trial",
-                    description="Free trial period 7 days",
-                    value="7",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial14",
-                    name="14 days trial",
-                    description="Free trial period 14 days",
-                    value="14",
-                ),
-                harness.platform.FeatureFlagVariationArgs(
-                    identifier="trial20",
-                    name="20 days trial",
-                    description="Free trial period 20 days",
-                    value="20",
-                ),
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param FeatureFlagArgs args: The arguments to use to populate this resource's properties.
@@ -580,10 +499,10 @@ class FeatureFlag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['FeatureFlagGitDetailsArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -591,6 +510,7 @@ class FeatureFlag(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  permanent: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -601,14 +521,14 @@ class FeatureFlag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureFlagArgs.__new__(FeatureFlagArgs)
 
-            __props__.__dict__["archived"] = archived
             if default_off_variation is None and not opts.urn:
                 raise TypeError("Missing required property 'default_off_variation'")
             __props__.__dict__["default_off_variation"] = default_off_variation
             if default_on_variation is None and not opts.urn:
                 raise TypeError("Missing required property 'default_on_variation'")
             __props__.__dict__["default_on_variation"] = default_on_variation
-            __props__.__dict__["git_details"] = git_details
+            __props__.__dict__["description"] = description
+            __props__.__dict__["environments"] = environments
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -626,6 +546,7 @@ class FeatureFlag(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["tags"] = tags
             if variations is None and not opts.urn:
                 raise TypeError("Missing required property 'variations'")
             __props__.__dict__["variations"] = variations
@@ -639,10 +560,10 @@ class FeatureFlag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archived: Optional[pulumi.Input[bool]] = None,
             default_off_variation: Optional[pulumi.Input[str]] = None,
             default_on_variation: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['FeatureFlagGitDetailsArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -650,6 +571,7 @@ class FeatureFlag(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             permanent: Optional[pulumi.Input[bool]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
             variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None) -> 'FeatureFlag':
         """
         Get an existing FeatureFlag resource's state with the given name, id, and optional extra
@@ -658,9 +580,10 @@ class FeatureFlag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] archived: Whether or not the flag is archived
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
+        :param pulumi.Input[str] description: Description of the Feature Flag
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]] environments: Environment Identifier
         :param pulumi.Input[str] identifier: Identifier of the Feature Flag
         :param pulumi.Input[str] kind: The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -668,16 +591,17 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The owner of the flag
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]] tags: The tags for the flag
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]] variations: The options available for your flag
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FeatureFlagState.__new__(_FeatureFlagState)
 
-        __props__.__dict__["archived"] = archived
         __props__.__dict__["default_off_variation"] = default_off_variation
         __props__.__dict__["default_on_variation"] = default_on_variation
-        __props__.__dict__["git_details"] = git_details
+        __props__.__dict__["description"] = description
+        __props__.__dict__["environments"] = environments
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
@@ -685,16 +609,9 @@ class FeatureFlag(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["permanent"] = permanent
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["variations"] = variations
         return FeatureFlag(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def archived(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not the flag is archived
-        """
-        return pulumi.get(self, "archived")
 
     @property
     @pulumi.getter(name="defaultOffVariation")
@@ -713,9 +630,20 @@ class FeatureFlag(pulumi.CustomResource):
         return pulumi.get(self, "default_on_variation")
 
     @property
-    @pulumi.getter(name="gitDetails")
-    def git_details(self) -> pulumi.Output[Optional['outputs.FeatureFlagGitDetails']]:
-        return pulumi.get(self, "git_details")
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description of the Feature Flag
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def environments(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagEnvironment']]]:
+        """
+        Environment Identifier
+        """
+        return pulumi.get(self, "environments")
 
     @property
     @pulumi.getter
@@ -772,6 +700,14 @@ class FeatureFlag(pulumi.CustomResource):
         Project Identifier
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagTag']]]:
+        """
+        The tags for the flag
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

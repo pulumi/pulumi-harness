@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetSecretTextAdditionalMetadata;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretTextResult {
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    private @Nullable List<GetSecretTextAdditionalMetadata> additionalMetadatas;
     /**
      * @return Description of the resource.
      * 
@@ -65,6 +71,13 @@ public final class GetSecretTextResult {
     private String valueType;
 
     private GetSecretTextResult() {}
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public List<GetSecretTextAdditionalMetadata> additionalMetadatas() {
+        return this.additionalMetadatas == null ? List.of() : this.additionalMetadatas;
+    }
     /**
      * @return Description of the resource.
      * 
@@ -145,6 +158,7 @@ public final class GetSecretTextResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetSecretTextAdditionalMetadata> additionalMetadatas;
         private String description;
         private String id;
         private String identifier;
@@ -158,6 +172,7 @@ public final class GetSecretTextResult {
         public Builder() {}
         public Builder(GetSecretTextResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalMetadatas = defaults.additionalMetadatas;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
@@ -170,6 +185,15 @@ public final class GetSecretTextResult {
     	      this.valueType = defaults.valueType;
         }
 
+        @CustomType.Setter
+        public Builder additionalMetadatas(@Nullable List<GetSecretTextAdditionalMetadata> additionalMetadatas) {
+
+            this.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+        public Builder additionalMetadatas(GetSecretTextAdditionalMetadata... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -249,6 +273,7 @@ public final class GetSecretTextResult {
         }
         public GetSecretTextResult build() {
             final var _resultValue = new GetSecretTextResult();
+            _resultValue.additionalMetadatas = additionalMetadatas;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;

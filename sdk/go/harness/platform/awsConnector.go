@@ -44,6 +44,8 @@ type AwsConnector struct {
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrOutput `pulumi:"equalJitterBackoffStrategy"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrOutput `pulumi:"fixedDelayBackoffStrategy"`
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Full Jitter BackOff Strategy.
 	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrOutput `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
@@ -56,6 +58,8 @@ type AwsConnector struct {
 	Manual AwsConnectorManualPtrOutput `pulumi:"manual"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentication AwsConnectorOidcAuthenticationPtrOutput `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -105,6 +109,8 @@ type awsConnectorState struct {
 	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Full Jitter BackOff Strategy.
 	FullJitterBackoffStrategy *AwsConnectorFullJitterBackoffStrategy `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
@@ -117,6 +123,8 @@ type awsConnectorState struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentication *AwsConnectorOidcAuthentication `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -134,6 +142,8 @@ type AwsConnectorState struct {
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Full Jitter BackOff Strategy.
 	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrInput
 	// Unique identifier of the resource.
@@ -146,6 +156,8 @@ type AwsConnectorState struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentication AwsConnectorOidcAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -167,6 +179,8 @@ type awsConnectorArgs struct {
 	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Full Jitter BackOff Strategy.
 	FullJitterBackoffStrategy *AwsConnectorFullJitterBackoffStrategy `pulumi:"fullJitterBackoffStrategy"`
 	// Unique identifier of the resource.
@@ -179,6 +193,8 @@ type awsConnectorArgs struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentication *AwsConnectorOidcAuthentication `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -197,6 +213,8 @@ type AwsConnectorArgs struct {
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Full Jitter BackOff Strategy.
 	FullJitterBackoffStrategy AwsConnectorFullJitterBackoffStrategyPtrInput
 	// Unique identifier of the resource.
@@ -209,6 +227,8 @@ type AwsConnectorArgs struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentication AwsConnectorOidcAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -328,6 +348,11 @@ func (o AwsConnectorOutput) FixedDelayBackoffStrategy() AwsConnectorFixedDelayBa
 	}).(AwsConnectorFixedDelayBackoffStrategyPtrOutput)
 }
 
+// Enable this flag for force deletion of connector
+func (o AwsConnectorOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AwsConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
+}
+
 // Full Jitter BackOff Strategy.
 func (o AwsConnectorOutput) FullJitterBackoffStrategy() AwsConnectorFullJitterBackoffStrategyPtrOutput {
 	return o.ApplyT(func(v *AwsConnector) AwsConnectorFullJitterBackoffStrategyPtrOutput {
@@ -358,6 +383,11 @@ func (o AwsConnectorOutput) Manual() AwsConnectorManualPtrOutput {
 // Name of the resource.
 func (o AwsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Authentication using harness oidc.
+func (o AwsConnectorOutput) OidcAuthentication() AwsConnectorOidcAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AwsConnector) AwsConnectorOidcAuthenticationPtrOutput { return v.OidcAuthentication }).(AwsConnectorOidcAuthenticationPtrOutput)
 }
 
 // Unique identifier of the organization.

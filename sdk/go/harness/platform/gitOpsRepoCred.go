@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating a Harness Gitops Repositories Credentials.
+// Resource for managing a Harness Gitops Repository Credentials.
 //
 // ## Example Usage
 //
@@ -36,9 +36,16 @@ import (
 //				OrgId:      pulumi.String("org_id"),
 //				Creds: platform.GitOpsRepoCredCredArray{
 //					&platform.GitOpsRepoCredCredArgs{
-//						Type:          pulumi.String("git"),
-//						Url:           pulumi.String("github.com"),
-//						SshPrivateKey: pulumi.String("yoursshprivatekey"),
+//						Type: pulumi.String("git"),
+//						Url:  pulumi.String("git@github.com:yourorg"),
+//						SshPrivateKey: pulumi.String(`----- BEGIN OPENSSH PRIVATE KEY-----
+//
+// XXXXX
+// XXXXX
+// XXXXX
+// -----END OPENSSH PRIVATE KEY -----
+// `),
+//
 //					},
 //				},
 //			})
@@ -53,10 +60,16 @@ import (
 //
 // ## Import
 //
-// # Import a Account level Gitops Repository Credentials
+// # Import an Account level Gitops Repository Credentials
 //
 // ```sh
 // $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
+// ```
+//
+// # Import an Org level Gitops Repository Credentials
+//
+// ```sh
+// $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<agent_id>/<repocred_id>
 // ```
 //
 // # Import a Project level Gitops Repository Credentials
@@ -67,19 +80,19 @@ import (
 type GitOpsRepoCred struct {
 	pulumi.CustomResourceState
 
-	// Account identifier of the Repository Credential.
+	// Account identifier of the Repository Credentials.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Agent identifier of the Repository Credential.
+	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// credential details.
 	Creds GitOpsRepoCredCredArrayOutput `pulumi:"creds"`
-	// Identifier of the Repository Credential.
+	// Identifier of the Repository Credentials.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Organization identifier of the Repository Credential.
+	// Organization identifier of the Repository Credentials.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Project identifier of the Repository Credential.
+	// Project identifier of the Repository Credentials.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// if the Repository credential should be upserted.
+	// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrOutput `pulumi:"upsert"`
 }
 
@@ -122,36 +135,36 @@ func GetGitOpsRepoCred(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitOpsRepoCred resources.
 type gitOpsRepoCredState struct {
-	// Account identifier of the Repository Credential.
+	// Account identifier of the Repository Credentials.
 	AccountId *string `pulumi:"accountId"`
-	// Agent identifier of the Repository Credential.
+	// Agent identifier of the Repository Credentials.
 	AgentId *string `pulumi:"agentId"`
 	// credential details.
 	Creds []GitOpsRepoCredCred `pulumi:"creds"`
-	// Identifier of the Repository Credential.
+	// Identifier of the Repository Credentials.
 	Identifier *string `pulumi:"identifier"`
-	// Organization identifier of the Repository Credential.
+	// Organization identifier of the Repository Credentials.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the Repository Credential.
+	// Project identifier of the Repository Credentials.
 	ProjectId *string `pulumi:"projectId"`
-	// if the Repository credential should be upserted.
+	// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 type GitOpsRepoCredState struct {
-	// Account identifier of the Repository Credential.
+	// Account identifier of the Repository Credentials.
 	AccountId pulumi.StringPtrInput
-	// Agent identifier of the Repository Credential.
+	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringPtrInput
 	// credential details.
 	Creds GitOpsRepoCredCredArrayInput
-	// Identifier of the Repository Credential.
+	// Identifier of the Repository Credentials.
 	Identifier pulumi.StringPtrInput
-	// Organization identifier of the Repository Credential.
+	// Organization identifier of the Repository Credentials.
 	OrgId pulumi.StringPtrInput
-	// Project identifier of the Repository Credential.
+	// Project identifier of the Repository Credentials.
 	ProjectId pulumi.StringPtrInput
-	// if the Repository credential should be upserted.
+	// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -160,37 +173,37 @@ func (GitOpsRepoCredState) ElementType() reflect.Type {
 }
 
 type gitOpsRepoCredArgs struct {
-	// Account identifier of the Repository Credential.
+	// Account identifier of the Repository Credentials.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the Repository Credential.
+	// Agent identifier of the Repository Credentials.
 	AgentId string `pulumi:"agentId"`
 	// credential details.
 	Creds []GitOpsRepoCredCred `pulumi:"creds"`
-	// Identifier of the Repository Credential.
+	// Identifier of the Repository Credentials.
 	Identifier string `pulumi:"identifier"`
-	// Organization identifier of the Repository Credential.
+	// Organization identifier of the Repository Credentials.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the Repository Credential.
+	// Project identifier of the Repository Credentials.
 	ProjectId *string `pulumi:"projectId"`
-	// if the Repository credential should be upserted.
+	// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 // The set of arguments for constructing a GitOpsRepoCred resource.
 type GitOpsRepoCredArgs struct {
-	// Account identifier of the Repository Credential.
+	// Account identifier of the Repository Credentials.
 	AccountId pulumi.StringInput
-	// Agent identifier of the Repository Credential.
+	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringInput
 	// credential details.
 	Creds GitOpsRepoCredCredArrayInput
-	// Identifier of the Repository Credential.
+	// Identifier of the Repository Credentials.
 	Identifier pulumi.StringInput
-	// Organization identifier of the Repository Credential.
+	// Organization identifier of the Repository Credentials.
 	OrgId pulumi.StringPtrInput
-	// Project identifier of the Repository Credential.
+	// Project identifier of the Repository Credentials.
 	ProjectId pulumi.StringPtrInput
-	// if the Repository credential should be upserted.
+	// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -281,12 +294,12 @@ func (o GitOpsRepoCredOutput) ToGitOpsRepoCredOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Account identifier of the Repository Credential.
+// Account identifier of the Repository Credentials.
 func (o GitOpsRepoCredOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Agent identifier of the Repository Credential.
+// Agent identifier of the Repository Credentials.
 func (o GitOpsRepoCredOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
@@ -296,22 +309,22 @@ func (o GitOpsRepoCredOutput) Creds() GitOpsRepoCredCredArrayOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) GitOpsRepoCredCredArrayOutput { return v.Creds }).(GitOpsRepoCredCredArrayOutput)
 }
 
-// Identifier of the Repository Credential.
+// Identifier of the Repository Credentials.
 func (o GitOpsRepoCredOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Organization identifier of the Repository Credential.
+// Organization identifier of the Repository Credentials.
 func (o GitOpsRepoCredOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Project identifier of the Repository Credential.
+// Project identifier of the Repository Credentials.
 func (o GitOpsRepoCredOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// if the Repository credential should be upserted.
+// Indicates if the GitOps repository credential should be updated if existing and inserted if not.
 func (o GitOpsRepoCredOutput) Upsert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.BoolPtrOutput { return v.Upsert }).(pulumi.BoolPtrOutput)
 }

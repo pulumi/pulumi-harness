@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving roles
- *
  * ## Example Usage
  *
  * ```typescript
@@ -105,8 +103,6 @@ export interface GetRolesResult {
     readonly tags: string[];
 }
 /**
- * Data source for retrieving roles
- *
  * ## Example Usage
  *
  * ```typescript

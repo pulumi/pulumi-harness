@@ -46,14 +46,14 @@ public final class GitOpsRepoCertRequestCertificateMetadataArgs extends com.pulu
     }
 
     /**
-     * dentifies the server&#39;s internal version.
+     * Identifies the server&#39;s internal version.
      * 
      */
     @Import(name="resourceVersion")
     private @Nullable Output<String> resourceVersion;
 
     /**
-     * @return dentifies the server&#39;s internal version.
+     * @return Identifies the server&#39;s internal version.
      * 
      */
     public Optional<Output<String>> resourceVersion() {
@@ -145,7 +145,7 @@ public final class GitOpsRepoCertRequestCertificateMetadataArgs extends com.pulu
         }
 
         /**
-         * @param resourceVersion dentifies the server&#39;s internal version.
+         * @param resourceVersion Identifies the server&#39;s internal version.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GitOpsRepoCertRequestCertificateMetadataArgs extends com.pulu
         }
 
         /**
-         * @param resourceVersion dentifies the server&#39;s internal version.
+         * @param resourceVersion Identifies the server&#39;s internal version.
          * 
          * @return builder
          * 

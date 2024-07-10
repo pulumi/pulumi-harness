@@ -13,10 +13,16 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class AwsSecretManagerConnectorCredentialsManualGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The plain text AWS access key.
+        /// </summary>
+        [Input("accessKeyPlainText")]
+        public Input<string>? AccessKeyPlainText { get; set; }
+
+        /// <summary>
         /// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("accessKeyRef", required: true)]
-        public Input<string> AccessKeyRef { get; set; } = null!;
+        [Input("accessKeyRef")]
+        public Input<string>? AccessKeyRef { get; set; }
 
         /// <summary>
         /// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

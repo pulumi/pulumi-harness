@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for fetching a Harness Gitops Agents.
+// Datasource for fetching a Harness GitOps Agent.
 //
 // ## Example Usage
 //
@@ -67,6 +67,8 @@ type GetGitopsAgentArgs struct {
 type GetGitopsAgentResult struct {
 	// Account identifier of the GitOps agent.
 	AccountId string `pulumi:"accountId"`
+	// Agent token to be used for authentication of the agent with Harness.
+	AgentToken string `pulumi:"agentToken"`
 	// Description of the GitOps agent.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -77,6 +79,8 @@ type GetGitopsAgentResult struct {
 	Metadatas []GetGitopsAgentMetadata `pulumi:"metadatas"`
 	// Name of the GitOps agent.
 	Name string `pulumi:"name"`
+	// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+	Operator string `pulumi:"operator"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
@@ -137,6 +141,11 @@ func (o GetGitopsAgentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Agent token to be used for authentication of the agent with Harness.
+func (o GetGitopsAgentResultOutput) AgentToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.AgentToken }).(pulumi.StringOutput)
+}
+
 // Description of the GitOps agent.
 func (o GetGitopsAgentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Description }).(pulumi.StringOutput)
@@ -160,6 +169,11 @@ func (o GetGitopsAgentResultOutput) Metadatas() GetGitopsAgentMetadataArrayOutpu
 // Name of the GitOps agent.
 func (o GetGitopsAgentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+func (o GetGitopsAgentResultOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Operator }).(pulumi.StringOutput)
 }
 
 // Organization identifier of the GitOps agent.

@@ -19,8 +19,136 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for Manual Deployment Freeze Window.
+ * ## Example to create Manual Freeze at different levels (Org, Project, Account)
  * 
- * ## Example Usage
+ * ### Account Level
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ManualFreeze;
+ * import com.pulumi.harness.platform.ManualFreezeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ManualFreeze("example", ManualFreezeArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("orgIdentifier")
+ *             .projectId("projectIdentifier")
+ *             .accountId("accountIdentifier")
+ *             .yaml("""
+ * freeze:
+ *   name: freezeName
+ *   identifier: identifier
+ *   entityConfigs:
+ *     - name: r1
+ *       entities:
+ *         - filterType: All
+ *           type: Org
+ *         - filterType: All
+ *           type: Project
+ *         - filterType: All
+ *           type: Service
+ *         - filterType: All
+ *           type: EnvType
+ *   status: Disabled
+ *   description: hi
+ *   windows:
+ *   - timeZone: Asia/Calcutta
+ *     startTime: 2023-05-03 04:16 PM
+ *     duration: 30m
+ *     recurrence:
+ *       type: Daily
+ *   notificationRules: []
+ *   tags: {}
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Org Level
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ManualFreeze;
+ * import com.pulumi.harness.platform.ManualFreezeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ManualFreeze("example", ManualFreezeArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("orgIdentifier")
+ *             .accountId("accountIdentifier")
+ *             .yaml("""
+ * freeze:
+ *   name: freezeName
+ *   identifier: identifier
+ *   entityConfigs:
+ *     - name: r1
+ *       entities:
+ *         - filterType: All
+ *           type: Org
+ *         - filterType: All
+ *           type: Project
+ *         - filterType: All
+ *           type: Service
+ *         - filterType: All
+ *           type: EnvType
+ *   status: Disabled
+ *   description: hi
+ *   windows:
+ *   - timeZone: Asia/Calcutta
+ *     startTime: 2023-05-03 04:16 PM
+ *     duration: 30m
+ *     recurrence:
+ *       type: Daily
+ *   notificationRules: []
+ *   tags: {}
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Project Level
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -72,7 +72,7 @@ class GetGitopsGnupgResult:
 
     @property
     @pulumi.getter
-    def identifier(self) -> Optional[str]:
+    def identifier(self) -> str:
         """
         Identifier for the GnuPG Key.
         """
@@ -96,7 +96,7 @@ class GetGitopsGnupgResult:
 
     @property
     @pulumi.getter
-    def requests(self) -> Optional[Sequence['outputs.GetGitopsGnupgRequestResult']]:
+    def requests(self) -> Sequence['outputs.GetGitopsGnupgRequestResult']:
         """
         GnuPGPublicKey is a representation of a GnuPG public key
         """
@@ -126,7 +126,7 @@ def get_gitops_gnupg(account_id: Optional[str] = None,
                      requests: Optional[Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsGnupgResult:
     """
-    Data source for retrieving a GPG public key in the server's configuration.
+    Data source for fetching a Harness GitOps GPG public key.
 
     ## Example Usage
 
@@ -170,13 +170,13 @@ def get_gitops_gnupg(account_id: Optional[str] = None,
 @_utilities.lift_output_func(get_gitops_gnupg)
 def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[str]] = None,
                             agent_id: Optional[pulumi.Input[str]] = None,
-                            identifier: Optional[pulumi.Input[Optional[str]]] = None,
+                            identifier: Optional[pulumi.Input[str]] = None,
                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
                             requests: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsGnupgResult]:
     """
-    Data source for retrieving a GPG public key in the server's configuration.
+    Data source for fetching a Harness GitOps GPG public key.
 
     ## Example Usage
 

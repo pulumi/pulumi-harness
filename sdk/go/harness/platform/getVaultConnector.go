@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// DataSource for looking up a Vault connector in Harness.
-//
 // ## Example Usage
 //
 // ```go

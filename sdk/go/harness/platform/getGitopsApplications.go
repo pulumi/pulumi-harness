@@ -12,37 +12,6 @@ import (
 )
 
 // Datasource for fetching a Harness GitOps Application.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetGitopsApplications(ctx, &platform.GetGitopsApplicationsArgs{
-//				Identifier: pulumi.StringRef("identifier"),
-//				AccountId:  "account_id",
-//				ProjectId:  "project_id",
-//				OrgId:      "org_id",
-//				AgentId:    "agent_id",
-//				RepoId:     "repo_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetGitopsApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsApplicationsResult
@@ -59,46 +28,14 @@ type GetGitopsApplicationsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId string `pulumi:"agentId"`
-	// Definition of the GitOps application resource.
-	Applications []GetGitopsApplicationsApplication `pulumi:"applications"`
-	// Cluster identifier of the GitOps application.
-	ClusterId *string `pulumi:"clusterId"`
 	// Identifier of the GitOps application.
 	Identifier *string `pulumi:"identifier"`
-	// Kind of the GitOps application.
-	Kind *string `pulumi:"kind"`
 	// Name of the GitOps application.
 	Name string `pulumi:"name"`
-	// Options to remove existing finalizers to delete the GitOps application.
-	OptionsRemoveExistingFinalizers *bool `pulumi:"optionsRemoveExistingFinalizers"`
 	// Organization identifier of the GitOps application.
 	OrgId string `pulumi:"orgId"`
-	// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-	Project *string `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
-	// Project names to filter the corresponding GitOps applications.
-	QueryProject *string `pulumi:"queryProject"`
-	// Forces the GitOps application to reconcile when set to true.
-	QueryRefresh *string `pulumi:"queryRefresh"`
-	// Repo URL to restrict returned list applications.
-	QueryRepo *string `pulumi:"queryRepo"`
-	// Shows modifications after a version that is specified with a watch call.
-	QueryResourceVersion *string `pulumi:"queryResourceVersion"`
-	// Filters GitOps applications corresponding to the labels.
-	QuerySelector *string `pulumi:"querySelector"`
-	// Repository identifier of the GitOps application.
-	RepoId string `pulumi:"repoId"`
-	// Request cascade to delete the GitOps application.
-	RequestCascade *bool `pulumi:"requestCascade"`
-	// Request name to delete the GitOps application.
-	RequestName *string `pulumi:"requestName"`
-	// Request propagation policy to delete the GitOps application.
-	RequestPropagationPolicy *string `pulumi:"requestPropagationPolicy"`
-	// Indicates if the GitOps application should be updated if existing and inserted if not.
-	Upsert *bool `pulumi:"upsert"`
-	// Indicates if the GitOps application has to be validated.
-	Validate *bool `pulumi:"validate"`
 }
 
 // A collection of values returned by getGitopsApplications.
@@ -110,45 +47,33 @@ type GetGitopsApplicationsResult struct {
 	// Definition of the GitOps application resource.
 	Applications []GetGitopsApplicationsApplication `pulumi:"applications"`
 	// Cluster identifier of the GitOps application.
-	ClusterId *string `pulumi:"clusterId"`
+	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier of the GitOps application.
 	Identifier *string `pulumi:"identifier"`
 	// Kind of the GitOps application.
-	Kind *string `pulumi:"kind"`
+	Kind string `pulumi:"kind"`
 	// Name of the GitOps application.
 	Name string `pulumi:"name"`
 	// Options to remove existing finalizers to delete the GitOps application.
-	OptionsRemoveExistingFinalizers *bool `pulumi:"optionsRemoveExistingFinalizers"`
+	OptionsRemoveExistingFinalizers bool `pulumi:"optionsRemoveExistingFinalizers"`
 	// Organization identifier of the GitOps application.
 	OrgId string `pulumi:"orgId"`
-	// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-	Project *string `pulumi:"project"`
+	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	Project string `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
-	// Project names to filter the corresponding GitOps applications.
-	QueryProject *string `pulumi:"queryProject"`
-	// Forces the GitOps application to reconcile when set to true.
-	QueryRefresh *string `pulumi:"queryRefresh"`
-	// Repo URL to restrict returned list applications.
-	QueryRepo *string `pulumi:"queryRepo"`
-	// Shows modifications after a version that is specified with a watch call.
-	QueryResourceVersion *string `pulumi:"queryResourceVersion"`
-	// Filters GitOps applications corresponding to the labels.
-	QuerySelector *string `pulumi:"querySelector"`
 	// Repository identifier of the GitOps application.
 	RepoId string `pulumi:"repoId"`
 	// Request cascade to delete the GitOps application.
-	RequestCascade *bool `pulumi:"requestCascade"`
-	// Request name to delete the GitOps application.
-	RequestName *string `pulumi:"requestName"`
+	RequestCascade bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
-	RequestPropagationPolicy *string `pulumi:"requestPropagationPolicy"`
+	RequestPropagationPolicy string `pulumi:"requestPropagationPolicy"`
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
-	Upsert *bool `pulumi:"upsert"`
-	// Indicates if the GitOps application has to be validated.
-	Validate *bool `pulumi:"validate"`
+	Upsert bool `pulumi:"upsert"`
+	// Indicates if the GitOps application yaml has to be validated.
+	Validate bool `pulumi:"validate"`
 }
 
 func GetGitopsApplicationsOutput(ctx *pulumi.Context, args GetGitopsApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetGitopsApplicationsResultOutput {
@@ -170,46 +95,14 @@ type GetGitopsApplicationsOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// Definition of the GitOps application resource.
-	Applications GetGitopsApplicationsApplicationArrayInput `pulumi:"applications"`
-	// Cluster identifier of the GitOps application.
-	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// Identifier of the GitOps application.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Kind of the GitOps application.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the GitOps application.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Options to remove existing finalizers to delete the GitOps application.
-	OptionsRemoveExistingFinalizers pulumi.BoolPtrInput `pulumi:"optionsRemoveExistingFinalizers"`
 	// Organization identifier of the GitOps application.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Project names to filter the corresponding GitOps applications.
-	QueryProject pulumi.StringPtrInput `pulumi:"queryProject"`
-	// Forces the GitOps application to reconcile when set to true.
-	QueryRefresh pulumi.StringPtrInput `pulumi:"queryRefresh"`
-	// Repo URL to restrict returned list applications.
-	QueryRepo pulumi.StringPtrInput `pulumi:"queryRepo"`
-	// Shows modifications after a version that is specified with a watch call.
-	QueryResourceVersion pulumi.StringPtrInput `pulumi:"queryResourceVersion"`
-	// Filters GitOps applications corresponding to the labels.
-	QuerySelector pulumi.StringPtrInput `pulumi:"querySelector"`
-	// Repository identifier of the GitOps application.
-	RepoId pulumi.StringInput `pulumi:"repoId"`
-	// Request cascade to delete the GitOps application.
-	RequestCascade pulumi.BoolPtrInput `pulumi:"requestCascade"`
-	// Request name to delete the GitOps application.
-	RequestName pulumi.StringPtrInput `pulumi:"requestName"`
-	// Request propagation policy to delete the GitOps application.
-	RequestPropagationPolicy pulumi.StringPtrInput `pulumi:"requestPropagationPolicy"`
-	// Indicates if the GitOps application should be updated if existing and inserted if not.
-	Upsert pulumi.BoolPtrInput `pulumi:"upsert"`
-	// Indicates if the GitOps application has to be validated.
-	Validate pulumi.BoolPtrInput `pulumi:"validate"`
 }
 
 func (GetGitopsApplicationsOutputArgs) ElementType() reflect.Type {
@@ -247,8 +140,8 @@ func (o GetGitopsApplicationsResultOutput) Applications() GetGitopsApplicationsA
 }
 
 // Cluster identifier of the GitOps application.
-func (o GetGitopsApplicationsResultOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+func (o GetGitopsApplicationsResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -262,8 +155,8 @@ func (o GetGitopsApplicationsResultOutput) Identifier() pulumi.StringPtrOutput {
 }
 
 // Kind of the GitOps application.
-func (o GetGitopsApplicationsResultOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o GetGitopsApplicationsResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Name of the GitOps application.
@@ -272,8 +165,8 @@ func (o GetGitopsApplicationsResultOutput) Name() pulumi.StringOutput {
 }
 
 // Options to remove existing finalizers to delete the GitOps application.
-func (o GetGitopsApplicationsResultOutput) OptionsRemoveExistingFinalizers() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *bool { return v.OptionsRemoveExistingFinalizers }).(pulumi.BoolPtrOutput)
+func (o GetGitopsApplicationsResultOutput) OptionsRemoveExistingFinalizers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) bool { return v.OptionsRemoveExistingFinalizers }).(pulumi.BoolOutput)
 }
 
 // Organization identifier of the GitOps application.
@@ -281,39 +174,14 @@ func (o GetGitopsApplicationsResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the 'default' project.
-func (o GetGitopsApplicationsResultOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+func (o GetGitopsApplicationsResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Project identifier of the GitOps application.
 func (o GetGitopsApplicationsResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// Project names to filter the corresponding GitOps applications.
-func (o GetGitopsApplicationsResultOutput) QueryProject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.QueryProject }).(pulumi.StringPtrOutput)
-}
-
-// Forces the GitOps application to reconcile when set to true.
-func (o GetGitopsApplicationsResultOutput) QueryRefresh() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.QueryRefresh }).(pulumi.StringPtrOutput)
-}
-
-// Repo URL to restrict returned list applications.
-func (o GetGitopsApplicationsResultOutput) QueryRepo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.QueryRepo }).(pulumi.StringPtrOutput)
-}
-
-// Shows modifications after a version that is specified with a watch call.
-func (o GetGitopsApplicationsResultOutput) QueryResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.QueryResourceVersion }).(pulumi.StringPtrOutput)
-}
-
-// Filters GitOps applications corresponding to the labels.
-func (o GetGitopsApplicationsResultOutput) QuerySelector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.QuerySelector }).(pulumi.StringPtrOutput)
 }
 
 // Repository identifier of the GitOps application.
@@ -322,28 +190,23 @@ func (o GetGitopsApplicationsResultOutput) RepoId() pulumi.StringOutput {
 }
 
 // Request cascade to delete the GitOps application.
-func (o GetGitopsApplicationsResultOutput) RequestCascade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *bool { return v.RequestCascade }).(pulumi.BoolPtrOutput)
-}
-
-// Request name to delete the GitOps application.
-func (o GetGitopsApplicationsResultOutput) RequestName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.RequestName }).(pulumi.StringPtrOutput)
+func (o GetGitopsApplicationsResultOutput) RequestCascade() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) bool { return v.RequestCascade }).(pulumi.BoolOutput)
 }
 
 // Request propagation policy to delete the GitOps application.
-func (o GetGitopsApplicationsResultOutput) RequestPropagationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.RequestPropagationPolicy }).(pulumi.StringPtrOutput)
+func (o GetGitopsApplicationsResultOutput) RequestPropagationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.RequestPropagationPolicy }).(pulumi.StringOutput)
 }
 
 // Indicates if the GitOps application should be updated if existing and inserted if not.
-func (o GetGitopsApplicationsResultOutput) Upsert() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *bool { return v.Upsert }).(pulumi.BoolPtrOutput)
+func (o GetGitopsApplicationsResultOutput) Upsert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) bool { return v.Upsert }).(pulumi.BoolOutput)
 }
 
-// Indicates if the GitOps application has to be validated.
-func (o GetGitopsApplicationsResultOutput) Validate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsResult) *bool { return v.Validate }).(pulumi.BoolPtrOutput)
+// Indicates if the GitOps application yaml has to be validated.
+func (o GetGitopsApplicationsResultOutput) Validate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) bool { return v.Validate }).(pulumi.BoolOutput)
 }
 
 func init() {

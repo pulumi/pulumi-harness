@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for looking up an Azure key vault connector.
-//
 // ## Example Usage
 //
 // ```go

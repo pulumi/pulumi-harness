@@ -7,14 +7,21 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsSecretManagerConnectorCredentialsManual {
     /**
+     * @return The plain text AWS access key.
+     * 
+     */
+    private @Nullable String accessKeyPlainText;
+    /**
      * @return The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    private String accessKeyRef;
+    private @Nullable String accessKeyRef;
     /**
      * @return The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -23,11 +30,18 @@ public final class AwsSecretManagerConnectorCredentialsManual {
 
     private AwsSecretManagerConnectorCredentialsManual() {}
     /**
+     * @return The plain text AWS access key.
+     * 
+     */
+    public Optional<String> accessKeyPlainText() {
+        return Optional.ofNullable(this.accessKeyPlainText);
+    }
+    /**
      * @return The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public String accessKeyRef() {
-        return this.accessKeyRef;
+    public Optional<String> accessKeyRef() {
+        return Optional.ofNullable(this.accessKeyRef);
     }
     /**
      * @return The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -46,20 +60,26 @@ public final class AwsSecretManagerConnectorCredentialsManual {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accessKeyRef;
+        private @Nullable String accessKeyPlainText;
+        private @Nullable String accessKeyRef;
         private String secretKeyRef;
         public Builder() {}
         public Builder(AwsSecretManagerConnectorCredentialsManual defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessKeyPlainText = defaults.accessKeyPlainText;
     	      this.accessKeyRef = defaults.accessKeyRef;
     	      this.secretKeyRef = defaults.secretKeyRef;
         }
 
         @CustomType.Setter
-        public Builder accessKeyRef(String accessKeyRef) {
-            if (accessKeyRef == null) {
-              throw new MissingRequiredPropertyException("AwsSecretManagerConnectorCredentialsManual", "accessKeyRef");
-            }
+        public Builder accessKeyPlainText(@Nullable String accessKeyPlainText) {
+
+            this.accessKeyPlainText = accessKeyPlainText;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessKeyRef(@Nullable String accessKeyRef) {
+
             this.accessKeyRef = accessKeyRef;
             return this;
         }
@@ -73,6 +93,7 @@ public final class AwsSecretManagerConnectorCredentialsManual {
         }
         public AwsSecretManagerConnectorCredentialsManual build() {
             final var _resultValue = new AwsSecretManagerConnectorCredentialsManual();
+            _resultValue.accessKeyPlainText = accessKeyPlainText;
             _resultValue.accessKeyRef = accessKeyRef;
             _resultValue.secretKeyRef = secretKeyRef;
             return _resultValue;

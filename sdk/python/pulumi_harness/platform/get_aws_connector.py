@@ -22,7 +22,7 @@ class GetAwsConnectorResult:
     """
     A collection of values returned by getAwsConnector.
     """
-    def __init__(__self__, cross_account_accesses=None, description=None, equal_jitter_backoff_strategies=None, fixed_delay_backoff_strategies=None, full_jitter_backoff_strategies=None, id=None, identifier=None, inherit_from_delegates=None, irsas=None, manuals=None, name=None, org_id=None, project_id=None, tags=None):
+    def __init__(__self__, cross_account_accesses=None, description=None, equal_jitter_backoff_strategies=None, fixed_delay_backoff_strategies=None, full_jitter_backoff_strategies=None, id=None, identifier=None, inherit_from_delegates=None, irsas=None, manuals=None, name=None, oidc_authentications=None, org_id=None, project_id=None, tags=None):
         if cross_account_accesses and not isinstance(cross_account_accesses, list):
             raise TypeError("Expected argument 'cross_account_accesses' to be a list")
         pulumi.set(__self__, "cross_account_accesses", cross_account_accesses)
@@ -56,6 +56,9 @@ class GetAwsConnectorResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if oidc_authentications and not isinstance(oidc_authentications, list):
+            raise TypeError("Expected argument 'oidc_authentications' to be a list")
+        pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -155,6 +158,14 @@ class GetAwsConnectorResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Sequence['outputs.GetAwsConnectorOidcAuthenticationResult']:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
@@ -196,6 +207,7 @@ class AwaitableGetAwsConnectorResult(GetAwsConnectorResult):
             irsas=self.irsas,
             manuals=self.manuals,
             name=self.name,
+            oidc_authentications=self.oidc_authentications,
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags)
@@ -244,6 +256,7 @@ def get_aws_connector(identifier: Optional[str] = None,
         irsas=pulumi.get(__ret__, 'irsas'),
         manuals=pulumi.get(__ret__, 'manuals'),
         name=pulumi.get(__ret__, 'name'),
+        oidc_authentications=pulumi.get(__ret__, 'oidc_authentications'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))

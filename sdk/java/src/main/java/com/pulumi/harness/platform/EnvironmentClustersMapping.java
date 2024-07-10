@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.EnvironmentClustersMapping;
  * import com.pulumi.harness.platform.EnvironmentClustersMappingArgs;
+ * import com.pulumi.harness.platform.inputs.EnvironmentClustersMappingClusterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,10 +45,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // mapping a cluster to a project level env
  *         var example = new EnvironmentClustersMapping("example", EnvironmentClustersMappingArgs.builder()
- *             .identifier("identifier")
+ *             .identifier("mycustomidentifier")
  *             .orgId("orgIdentifer")
  *             .projectId("projectIdentifier")
+ *             .envId("exampleEnvId")
+ *             .clusters(EnvironmentClustersMappingClusterArgs.builder()
+ *                 .identifier("incluster")
+ *                 .name("in-cluster")
+ *                 .agentIdentifier("account.gitopsagentdev")
+ *                 .scope("ACCOUNT")
+ *                 .build())
+ *             .build());
+ * 
+ *         // mapping two clusters to account level env
+ *         var example2 = new EnvironmentClustersMapping("example2", EnvironmentClustersMappingArgs.builder()
+ *             .identifier("mycustomidentifier")
+ *             .envId("env1")
+ *             .clusters(            
+ *                 EnvironmentClustersMappingClusterArgs.builder()
+ *                     .identifier("clusterA")
+ *                     .name("cluster-A")
+ *                     .agentIdentifier("account.gitopsagentprod")
+ *                     .scope("ACCOUNT")
+ *                     .build(),
+ *                 EnvironmentClustersMappingClusterArgs.builder()
+ *                     .identifier("clusterB")
+ *                     .name("cluster-B")
+ *                     .agentIdentifier("account.gitopsagentprod")
+ *                     .scope("ACCOUNT")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -58,11 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using the cluster.
- * 
- * ```sh
- * $ pulumi import harness:platform/environmentClustersMapping:EnvironmentClustersMapping example &lt;cluster_id&gt;
- * ```
+ * # 
  * 
  */
 @ResourceType(type="harness:platform/environmentClustersMapping:EnvironmentClustersMapping")
@@ -96,56 +120,56 @@ public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResou
         return this.envId;
     }
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * scope at which the cluster exists in harness gitops
+     * scope at which the environment exists in harness.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
-     * @return scope at which the cluster exists in harness gitops
+     * @return scope at which the environment exists in harness.
      * 
      */
     public Output<String> scope() {

@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsClusterRequestClusterConfigTlsClientConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
         /// </summary>
         [Input("caData")]
         public Input<string>? CaData { get; set; }
 
         /// <summary>
-        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
         [Input("certData")]
         public Input<string>? CertData { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<bool>? Insecure { get; set; }
 
         /// <summary>
-        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
         /// </summary>
         [Input("keyData")]
         public Input<string>? KeyData { get; set; }
 
         /// <summary>
-        /// Server name for SNI in the client to check server certificates against.
+        /// Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         /// </summary>
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }

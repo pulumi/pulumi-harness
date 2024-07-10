@@ -38,6 +38,10 @@ type GcpConnector struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolOutput `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Inherit configuration from delegate.
@@ -89,6 +93,10 @@ func GetGcpConnector(ctx *pulumi.Context,
 type gcpConnectorState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Inherit configuration from delegate.
@@ -108,6 +116,10 @@ type gcpConnectorState struct {
 type GcpConnectorState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Inherit configuration from delegate.
@@ -131,6 +143,10 @@ func (GcpConnectorState) ElementType() reflect.Type {
 type gcpConnectorArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Inherit configuration from delegate.
@@ -151,6 +167,10 @@ type gcpConnectorArgs struct {
 type GcpConnectorArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Inherit configuration from delegate.
@@ -257,6 +277,16 @@ func (o GcpConnectorOutput) ToGcpConnectorOutputWithContext(ctx context.Context)
 // Description of the resource.
 func (o GcpConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable this flag to execute on Delegate
+func (o GcpConnectorOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GcpConnector) pulumi.BoolOutput { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
+}
+
+// Enable this flag for force deletion of connector
+func (o GcpConnectorOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GcpConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the resource.

@@ -28,7 +28,7 @@ class TemplateFiltersArgs:
         :param pulumi.Input['TemplateFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] type: Type of template filters. Currently supported types are { Template}
-        :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
+        :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] name: Name of the template filters.
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity.
         :param pulumi.Input[str] project_id: Project Identifier for the Entity.
@@ -85,7 +85,7 @@ class TemplateFiltersArgs:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter.
+        Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -143,7 +143,7 @@ class _TemplateFiltersState:
         """
         Input properties used for looking up and filtering TemplateFilters resources.
         :param pulumi.Input['TemplateFiltersFilterPropertiesArgs'] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
+        :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the template filters.
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity.
@@ -181,7 +181,7 @@ class _TemplateFiltersState:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter.
+        Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -308,7 +308,7 @@ class TemplateFilters(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
+        :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the template filters.
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity.
@@ -432,7 +432,7 @@ class TemplateFilters(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
-        :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
+        :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the template filters.
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity.
@@ -464,7 +464,7 @@ class TemplateFilters(pulumi.CustomResource):
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> pulumi.Output[Optional[str]]:
         """
-        This indicates visibility of filters. By default, everyone can view this filter.
+        Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         """
         return pulumi.get(self, "filter_visibility")
 

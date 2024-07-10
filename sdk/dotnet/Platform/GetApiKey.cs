@@ -11,9 +11,63 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetApiKey
     {
+        /// <summary>
+        /// Data source for retrieving a Harness ApiKey.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
+        ///     {
+        ///         Identifier = "test_apikey",
+        ///         Name = "test_apikey",
+        ///         ParentId = "parent_id",
+        ///         ApikeyType = "USER",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetApiKeyResult> InvokeAsync(GetApiKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for retrieving a Harness ApiKey.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
+        ///     {
+        ///         Identifier = "test_apikey",
+        ///         Name = "test_apikey",
+        ///         ParentId = "parent_id",
+        ///         ApikeyType = "USER",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetApiKeyResult> Invoke(GetApiKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
     }
@@ -21,40 +75,53 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetApiKeyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Type of the API Key
+        /// </summary>
         [Input("apikeyType", required: true)]
         public string ApikeyType { get; set; } = null!;
 
+        /// <summary>
+        /// Default expiration time of the Token within API Key
+        /// </summary>
         [Input("defaultTimeToExpireToken")]
         public int? DefaultTimeToExpireToken { get; set; }
 
-        [Input("description")]
-        public string? Description { get; set; }
-
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Parent Entity Identifier of the API Key
+        /// </summary>
         [Input("parentId", required: true)]
         public string ParentId { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
-
-        [Input("tags")]
-        private Dictionary<string, string>? _tags;
-        public Dictionary<string, string> Tags
-        {
-            get => _tags ?? (_tags = new Dictionary<string, string>());
-            set => _tags = value;
-        }
 
         public GetApiKeyArgs()
         {
@@ -64,40 +131,53 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetApiKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Type of the API Key
+        /// </summary>
         [Input("apikeyType", required: true)]
         public Input<string> ApikeyType { get; set; } = null!;
 
+        /// <summary>
+        /// Default expiration time of the Token within API Key
+        /// </summary>
         [Input("defaultTimeToExpireToken")]
         public Input<int>? DefaultTimeToExpireToken { get; set; }
 
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Parent Entity Identifier of the API Key
+        /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        [Input("tags")]
-        private InputMap<string>? _tags;
-        public InputMap<string> Tags
-        {
-            get => _tags ?? (_tags = new InputMap<string>());
-            set => _tags = value;
-        }
 
         public GetApiKeyInvokeArgs()
         {
@@ -109,20 +189,50 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetApiKeyResult
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Type of the API Key
+        /// </summary>
         public readonly string ApikeyType;
+        /// <summary>
+        /// Default expiration time of the Token within API Key
+        /// </summary>
         public readonly int? DefaultTimeToExpireToken;
-        public readonly string? Description;
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
+        public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         public readonly string Identifier;
-        public readonly string Name;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Parent Entity Identifier of the API Key
+        /// </summary>
         public readonly string ParentId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
-        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private GetApiKeyResult(
@@ -132,13 +242,13 @@ namespace Pulumi.Harness.Platform
 
             int? defaultTimeToExpireToken,
 
-            string? description,
+            string description,
 
             string id,
 
             string identifier,
 
-            string name,
+            string? name,
 
             string? orgId,
 
@@ -146,7 +256,7 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableArray<string> tags)
         {
             AccountId = accountId;
             ApikeyType = apikeyType;

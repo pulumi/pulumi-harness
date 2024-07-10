@@ -12,8 +12,6 @@ namespace Pulumi.Harness.Platform
     public static class GetAwsSecretManagerConnector
     {
         /// <summary>
-        /// Datasource for looking up an AWS Secret Manager connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsSecretManagerConnectorResult>("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args ?? new GetAwsSecretManagerConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Datasource for looking up an AWS Secret Manager connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

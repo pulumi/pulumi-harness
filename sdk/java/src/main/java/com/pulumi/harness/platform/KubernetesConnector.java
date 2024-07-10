@@ -15,6 +15,7 @@ import com.pulumi.harness.platform.outputs.KubernetesConnectorInheritFromDelegat
 import com.pulumi.harness.platform.outputs.KubernetesConnectorOpenidConnect;
 import com.pulumi.harness.platform.outputs.KubernetesConnectorServiceAccount;
 import com.pulumi.harness.platform.outputs.KubernetesConnectorUsernamePassword;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -193,6 +194,20 @@ public class KubernetesConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Output<Boolean> forceDelete() {
+        return this.forceDelete;
     }
     /**
      * Unique identifier of the resource.

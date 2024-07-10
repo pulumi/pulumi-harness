@@ -22,10 +22,13 @@ class GetGitopsAgentResult:
     """
     A collection of values returned by getGitopsAgent.
     """
-    def __init__(__self__, account_id=None, description=None, id=None, identifier=None, metadatas=None, name=None, org_id=None, project_id=None, tags=None, type=None):
+    def __init__(__self__, account_id=None, agent_token=None, description=None, id=None, identifier=None, metadatas=None, name=None, operator=None, org_id=None, project_id=None, tags=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if agent_token and not isinstance(agent_token, str):
+            raise TypeError("Expected argument 'agent_token' to be a str")
+        pulumi.set(__self__, "agent_token", agent_token)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -41,6 +44,9 @@ class GetGitopsAgentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if operator and not isinstance(operator, str):
+            raise TypeError("Expected argument 'operator' to be a str")
+        pulumi.set(__self__, "operator", operator)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -61,6 +67,14 @@ class GetGitopsAgentResult:
         Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="agentToken")
+    def agent_token(self) -> str:
+        """
+        Agent token to be used for authentication of the agent with Harness.
+        """
+        return pulumi.get(self, "agent_token")
 
     @property
     @pulumi.getter
@@ -103,6 +117,14 @@ class GetGitopsAgentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+        """
+        return pulumi.get(self, "operator")
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
@@ -143,11 +165,13 @@ class AwaitableGetGitopsAgentResult(GetGitopsAgentResult):
             yield self
         return GetGitopsAgentResult(
             account_id=self.account_id,
+            agent_token=self.agent_token,
             description=self.description,
             id=self.id,
             identifier=self.identifier,
             metadatas=self.metadatas,
             name=self.name,
+            operator=self.operator,
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags,
@@ -160,7 +184,7 @@ def get_gitops_agent(account_id: Optional[str] = None,
                      project_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentResult:
     """
-    Datasource for fetching a Harness Gitops Agents.
+    Datasource for fetching a Harness GitOps Agent.
 
     ## Example Usage
 
@@ -190,11 +214,13 @@ def get_gitops_agent(account_id: Optional[str] = None,
 
     return AwaitableGetGitopsAgentResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        agent_token=pulumi.get(__ret__, 'agent_token'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
         name=pulumi.get(__ret__, 'name'),
+        operator=pulumi.get(__ret__, 'operator'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -208,7 +234,7 @@ def get_gitops_agent_output(account_id: Optional[pulumi.Input[str]] = None,
                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentResult]:
     """
-    Datasource for fetching a Harness Gitops Agents.
+    Datasource for fetching a Harness GitOps Agent.
 
     ## Example Usage
 

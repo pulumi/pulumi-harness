@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// Name of the cluster. If omitted, will use the server address.
+        /// Name of the cluster. If omitted, the server address will be used.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Namespaces;
         /// <summary>
-        /// Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+        /// The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
         /// </summary>
         public readonly string? Project;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// Shard number. Calculated on the fly by the application controller if not specified.
+        /// Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
         /// </summary>
         public readonly string? Shard;
 

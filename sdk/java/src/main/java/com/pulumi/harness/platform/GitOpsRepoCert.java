@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Gitops Repositories Certificates.
+ * Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
  * 
  * ## Example Usage
  * 
@@ -50,9 +50,10 @@ import javax.annotation.Nullable;
  *                 .certificates(GitOpsRepoCertRequestCertificateArgs.builder()
  *                     .metadatas()
  *                     .items(GitOpsRepoCertRequestCertificateItemArgs.builder()
- *                         .serverName("serverName")
- *                         .certType("https")
- *                         .certData("yourcertdata")
+ *                         .serverName("github.com")
+ *                         .certType("ssh")
+ *                         .certSubType("ecdsa-sha2-nistp256")
+ *                         .certData("QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=")
  *                         .build())
  *                     .build())
  *                 .upsert(true)
@@ -69,80 +70,92 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import a Account level Gitops Repository Certificate
+ * Import an Account level Gitops Repository Certificate
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;repocert_id&gt;
+ * ```
+ * 
+ * Import an Org level Gitops Repository Certificate
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;organization_id&gt;/&lt;repocert_id&gt;
+ * ```
+ * 
+ * Import a Project level Gitops Repository Certificate
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;repocert_id&gt;
  * ```
  * 
  */
 @ResourceType(type="harness:platform/gitOpsRepoCert:GitOpsRepoCert")
 public class GitOpsRepoCert extends com.pulumi.resources.CustomResource {
     /**
-     * account identifier of the Repository Certificates.
+     * Account identifier of the GitOps repository certificate.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return account identifier of the Repository Certificates.
+     * @return Account identifier of the GitOps repository certificate.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * agent identifier of the Repository Certificates.
+     * Agent identifier of the GitOps repository certificate.
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return agent identifier of the Repository Certificates.
+     * @return Agent identifier of the GitOps repository certificate.
      * 
      */
     public Output<String> agentId() {
         return this.agentId;
     }
     /**
-     * organization identifier of the Repository Certificates.
+     * Organization identifier of the GitOps repository certificate.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return organization identifier of the Repository Certificates.
+     * @return Organization identifier of the GitOps repository certificate.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * project identifier of the Repository Certificates.
+     * Project identifier of the GitOps repository certificate.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return project identifier of the Repository Certificates.
+     * @return Project identifier of the GitOps repository certificate.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Repository Certificates create/Update request.
+     * Repository Certificate create/update request.
      * 
      */
     @Export(name="requests", refs={List.class,GitOpsRepoCertRequest.class}, tree="[0,1]")
     private Output<List<GitOpsRepoCertRequest>> requests;
 
     /**
-     * @return Repository Certificates create/Update request.
+     * @return Repository Certificate create/update request.
      * 
      */
     public Output<List<GitOpsRepoCertRequest>> requests() {

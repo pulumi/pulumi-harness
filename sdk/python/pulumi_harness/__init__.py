@@ -40,6 +40,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_harness.autostopping as __autostopping
+    autostopping = __autostopping
     import pulumi_harness.cloudprovider as __cloudprovider
     cloudprovider = __cloudprovider
     import pulumi_harness.config as __config
@@ -49,6 +51,7 @@ if typing.TYPE_CHECKING:
     import pulumi_harness.service as __service
     service = __service
 else:
+    autostopping = _utilities.lazy_import('pulumi_harness.autostopping')
     cloudprovider = _utilities.lazy_import('pulumi_harness.cloudprovider')
     config = _utilities.lazy_import('pulumi_harness.config')
     platform = _utilities.lazy_import('pulumi_harness.platform')
@@ -57,6 +60,78 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "harness",
+  "mod": "autostopping/awsAlb",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/awsAlb:AwsAlb": "AwsAlb"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/awsProxy",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/awsProxy:AwsProxy": "AwsProxy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/azureGateway",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/azureGateway:AzureGateway": "AzureGateway"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/azureProxy",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/azureProxy:AzureProxy": "AzureProxy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/gcpProxy",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/gcpProxy:GcpProxy": "GcpProxy"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/ruleEcs",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/ruleEcs:RuleEcs": "RuleEcs"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/ruleRds",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/ruleRds:RuleRds": "RuleRds"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/ruleVm",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/ruleVm:RuleVm": "RuleVm"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "autostopping/schedule",
+  "fqn": "pulumi_harness.autostopping",
+  "classes": {
+   "harness:autostopping/schedule:Schedule": "Schedule"
+  }
+ },
  {
   "pkg": "harness",
   "mod": "cloudprovider/aws",
@@ -315,10 +390,50 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/connectorCustomSecretManager",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager": "ConnectorCustomSecretManager"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/connectorCustomhealthsource",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource": "ConnectorCustomhealthsource"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/connectorPdc",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorPdc:ConnectorPdc": "ConnectorPdc"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/connectorRancher",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorRancher:ConnectorRancher": "ConnectorRancher"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/datadogConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/datadogConnector:DatadogConnector": "DatadogConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/delegatetoken",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/delegatetoken:Delegatetoken": "Delegatetoken"
   }
  },
  {
@@ -391,6 +506,38 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/featureFlagApiKey:FeatureFlagApiKey": "FeatureFlagApiKey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/featureFlagTarget",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/featureFlagTarget:FeatureFlagTarget": "FeatureFlagTarget"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/featureFlagTargetGroup",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup": "FeatureFlagTargetGroup"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/fileStoreFile",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/fileStoreFile:FileStoreFile": "FileStoreFile"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/fileStoreFolder",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/fileStoreFolder:FileStoreFolder": "FileStoreFolder"
   }
  },
  {
@@ -507,10 +654,26 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/gitopsAppProjectMapping",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": "GitopsAppProjectMapping"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/helmConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/helmConnector:HelmConnector": "HelmConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/iacmDefaultPipeline",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline": "IacmDefaultPipeline"
   }
  },
  {
@@ -663,6 +826,30 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/prometheusConnector:PrometheusConnector": "PrometheusConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/repo",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/repo:Repo": "Repo"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/repoRuleBranch",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/repoRuleBranch:RepoRuleBranch": "RepoRuleBranch"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/repoWebhook",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/repoWebhook:RepoWebhook": "RepoWebhook"
   }
  },
  {
@@ -855,6 +1042,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/vaultConnector:VaultConnector": "VaultConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/workspace",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/workspace:Workspace": "Workspace"
   }
  },
  {

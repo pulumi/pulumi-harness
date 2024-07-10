@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -170,14 +170,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.roleBindings);
     }
     /**
-     * The user group of the user. Cannot be updated.
+     * The user group of the user.
      * 
      */
     @Export(name="userGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userGroups;
 
     /**
-     * @return The user group of the user. Cannot be updated.
+     * @return The user group of the user.
      * 
      */
     public Output<List<String>> userGroups() {

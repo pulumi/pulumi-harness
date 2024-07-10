@@ -10,6 +10,7 @@ import com.pulumi.harness.platform.inputs.KubernetesConnectorInheritFromDelegate
 import com.pulumi.harness.platform.inputs.KubernetesConnectorOpenidConnectArgs;
 import com.pulumi.harness.platform.inputs.KubernetesConnectorServiceAccountArgs;
 import com.pulumi.harness.platform.inputs.KubernetesConnectorUsernamePasswordArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,6 +65,21 @@ public final class KubernetesConnectorState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Enable this flag for force deletion of connector
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Enable this flag for force deletion of connector
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -207,6 +223,7 @@ public final class KubernetesConnectorState extends com.pulumi.resources.Resourc
         this.clientKeyCert = $.clientKeyCert;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.inheritFromDelegate = $.inheritFromDelegate;
         this.name = $.name;
@@ -307,6 +324,27 @@ public final class KubernetesConnectorState extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Enable this flag for force deletion of connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

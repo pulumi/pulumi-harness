@@ -885,6 +885,336 @@ import (
 //	  EOT
 //	}
 //
+// ### Creating Multiple Versions of a Template
+// ##Stable version of the Template
+//
+//	resource "platform.Template" "templateV1" {
+//	  identifier    = "temp"
+//	  orgId        = harness_platform_project.test.org_id
+//	  name          = "temp"
+//	  comments      = "comments"
+//	  version       = "v1"
+//	  isStable     = true
+//	  forceDelete  = true
+//	  templateYaml = <<-EOT
+//				template:
+//	      name: "temp"
+//	      identifier: "temp"
+//	      versionLabel: v1
+//	      type: Pipeline
+//	      orgIdentifier: ${harness_platform_organization.test.id}
+//	      tags: {}
+//	      spec:
+//	        stages:
+//	          - stage:
+//	              name: dvvdvd
+//	              identifier: dvvdvd
+//	              description: ""
+//	              type: Deployment
+//	              spec:
+//	                deploymentType: Kubernetes
+//	                service:
+//	                  serviceRef: <+input>
+//	                  serviceInputs: <+input>
+//	                environment:
+//	                  environmentRef: <+input>
+//	                  deployToAll: false
+//	                  environmentInputs: <+input>
+//	                  serviceOverrideInputs: <+input>
+//	                  infrastructureDefinitions: <+input>
+//	                execution:
+//	                  steps:
+//	                    - step:
+//	                        name: Rollout Deployment
+//	                        identifier: rolloutDeployment
+//	                        type: K8sRollingDeploy
+//	                        timeout: 10m
+//	                        spec:
+//	                          skipDryRun: false
+//	                          pruningEnabled: false
+//	                  rollbackSteps:
+//	                    - step:
+//	                        name: Rollback Rollout Deployment
+//	                        identifier: rollbackRolloutDeployment
+//	                        type: K8sRollingRollback
+//	                        timeout: 10m
+//	                        spec:
+//	                          pruningEnabled: false
+//	              tags: {}
+//	              failureStrategies:
+//	                - onFailure:
+//	                    errors:
+//	                      - AllErrors
+//	                    action:
+//	                      type: StageRollback
+//
+//	      EOT
+//	}
+//
+// ##Unstable version of the Template
+//
+//	resource "platform.Template" "templateV2" {
+//	  identifier    = "temp"
+//	  orgId        = harness_platform_organization.test.id
+//	  name          = "temp"
+//	  comments      = "comments"
+//	  version       = "v2"
+//	  isStable     = false
+//	  forceDelete  = true
+//	  templateYaml = <<-EOT
+//				template:
+//	      name: "temp"
+//	      identifier: "temp"
+//	      versionLabel: v2
+//	      type: Pipeline
+//	      orgIdentifier: ${harness_platform_organization.test.id}
+//	      tags: {}
+//	      spec:
+//	        stages:
+//	          - stage:
+//	              name: dvvdvd
+//	              identifier: dvvdvd
+//	              description: ""
+//	              type: Deployment
+//	              spec:
+//	                deploymentType: Kubernetes
+//	                service:
+//	                  serviceRef: <+input>
+//	                  serviceInputs: <+input>
+//	                environment:
+//	                  environmentRef: <+input>
+//	                  deployToAll: false
+//	                  environmentInputs: <+input>
+//	                  serviceOverrideInputs: <+input>
+//	                  infrastructureDefinitions: <+input>
+//	                execution:
+//	                  steps:
+//	                    - step:
+//	                        name: Rollout Deployment
+//	                        identifier: rolloutDeployment
+//	                        type: K8sRollingDeploy
+//	                        timeout: 10m
+//	                        spec:
+//	                          skipDryRun: false
+//	                          pruningEnabled: false
+//	                  rollbackSteps:
+//	                    - step:
+//	                        name: Rollback Rollout Deployment
+//	                        identifier: rollbackRolloutDeployment
+//	                        type: K8sRollingRollback
+//	                        timeout: 10m
+//	                        spec:
+//	                          pruningEnabled: false
+//	              tags: {}
+//	              failureStrategies:
+//	                - onFailure:
+//	                    errors:
+//	                      - AllErrors
+//	                    action:
+//	                      type: StageRollback
+//	      EOT
+//	}
+//
+// ##Updating the Stable Version of the Template from v1 to v2.
+//
+//	resource "platform.Template" "templateV2" {
+//	  identifier    = "temp"
+//	  orgId        = harness_platform_organization.test.id
+//	  name          = "temp"
+//	  comments      = "comments"
+//	  version       = "v2"
+//	  isStable     = true
+//	  forceDelete  = true
+//	  templateYaml = <<-EOT
+//				template:
+//	      name: "temp"
+//	      identifier: "temp"
+//	      versionLabel: v2
+//	      type: Pipeline
+//	      orgIdentifier: ${harness_platform_organization.test.id}
+//	      tags: {}
+//	      spec:
+//	        stages:
+//	          - stage:
+//	              name: dvvdvd
+//	              identifier: dvvdvd
+//	              description: ""
+//	              type: Deployment
+//	              spec:
+//	                deploymentType: Kubernetes
+//	                service:
+//	                  serviceRef: <+input>
+//	                  serviceInputs: <+input>
+//	                environment:
+//	                  environmentRef: <+input>
+//	                  deployToAll: false
+//	                  environmentInputs: <+input>
+//	                  serviceOverrideInputs: <+input>
+//	                  infrastructureDefinitions: <+input>
+//	                execution:
+//	                  steps:
+//	                    - step:
+//	                        name: Rollout Deployment
+//	                        identifier: rolloutDeployment
+//	                        type: K8sRollingDeploy
+//	                        timeout: 10m
+//	                        spec:
+//	                          skipDryRun: false
+//	                          pruningEnabled: false
+//	                  rollbackSteps:
+//	                    - step:
+//	                        name: Rollback Rollout Deployment
+//	                        identifier: rollbackRolloutDeployment
+//	                        type: K8sRollingRollback
+//	                        timeout: 10m
+//	                        spec:
+//	                          pruningEnabled: false
+//	              tags: {}
+//	              failureStrategies:
+//	                - onFailure:
+//	                    errors:
+//	                      - AllErrors
+//	                    action:
+//	                      type: StageRollback
+//	      EOT
+//	}
+//
+//	resource "platform.Template" "templateV1" {
+//	  identifier    = "temp"
+//	  orgId        = harness_platform_organization.test.id
+//	  name          = "temp"
+//	  comments      = "comments"
+//	  version       = "v1"
+//	  isStable     = false
+//	  forceDelete  = true
+//	  templateYaml = <<-EOT
+//				template:
+//	      name: "temp"
+//	      identifier: "temp"
+//	      versionLabel: v1
+//	      type: Pipeline
+//	      orgIdentifier: ${harness_platform_organization.test.id}
+//	      tags: {}
+//	      spec:
+//	        stages:
+//	          - stage:
+//	              name: dvvdvd
+//	              identifier: dvvdvd
+//	              description: ""
+//	              type: Deployment
+//	              spec:
+//	                deploymentType: Kubernetes
+//	                service:
+//	                  serviceRef: <+input>
+//	                  serviceInputs: <+input>
+//	                environment:
+//	                  environmentRef: <+input>
+//	                  deployToAll: false
+//	                  environmentInputs: <+input>
+//	                  serviceOverrideInputs: <+input>
+//	                  infrastructureDefinitions: <+input>
+//	                execution:
+//	                  steps:
+//	                    - step:
+//	                        name: Rollout Deployment
+//	                        identifier: rolloutDeployment
+//	                        type: K8sRollingDeploy
+//	                        timeout: 10m
+//	                        spec:
+//	                          skipDryRun: false
+//	                          pruningEnabled: false
+//	                  rollbackSteps:
+//	                    - step:
+//	                        name: Rollback Rollout Deployment
+//	                        identifier: rollbackRolloutDeployment
+//	                        type: K8sRollingRollback
+//	                        timeout: 10m
+//	                        spec:
+//	                          pruningEnabled: false
+//	              tags: {}
+//	              failureStrategies:
+//	                - onFailure:
+//	                    errors:
+//	                      - AllErrors
+//	                    action:
+//	                      type: StageRollback
+//
+//	      EOT
+//
+//	  dependsOn = [time_sleep.wait_10_seconds]
+//	}
+//
+//	resource "timeSleep" "wait10Seconds" {
+//	  dependsOn       = [harness_platform_template.test2]
+//	  destroyDuration = "10s"
+//	}
+//
+// ##Importing Account Level Templates
+//
+//	resource "platform.Template" "test" {
+//	  identifier      = "accounttemplate"
+//	  name            = "accounttemplate"
+//	  version         = "v2"
+//	  isStable       = false
+//	  importFromGit = true
+//	  gitImportDetails {
+//	    branchName   = "main"
+//	    filePath     = ".harness/accounttemplate.yaml"
+//	    connectorRef = "account.DoNotDeleteGithub"
+//	    repoName     = "open-repo"
+//	  }
+//	  templateImportRequest {
+//	    templateName        = "accounttemplate"
+//	    templateVersion     = "v2"
+//	    templateDescription = ""
+//	  }
+//	}
+//
+// ##Importing Org Level Templates
+//
+//	resource "platform.Template" "test" {
+//	  identifier      = "orgtemplate"
+//	  name            = "orgtemplate"
+//	  orgId          = "org"
+//	  version         = "v2"
+//	  isStable       = false
+//	  importFromGit = true
+//	  gitImportDetails {
+//	    branchName   = "main"
+//	    filePath     = ".harness/orgtemplate.yaml"
+//	    connectorRef = "account.DoNotDeleteGithub"
+//	    repoName     = "open-repo"
+//	  }
+//	  templateImportRequest {
+//	    templateName        = "orgtemplate"
+//	    templateVersion     = "v2"
+//	    templateDescription = ""
+//	  }
+//	}
+//
+// ##Importing Project Level Templates
+//
+//	resource "platform.Template" "test" {
+//	  identifier      = "projecttemplate"
+//	  name            = "projecttemplate"
+//	  orgId          = "org"
+//	  projectId      = "project"
+//	  version         = "v2"
+//	  isStable       = false
+//	  importFromGit = true
+//	  gitImportDetails {
+//	    branchName   = "main"
+//	    filePath     = ".harness/projecttemplate.yaml"
+//	    connectorRef = "account.DoNotDeleteGithub"
+//	    repoName     = "open-repo"
+//	  }
+//	  templateImportRequest {
+//	    templateName        = "projecttemplate"
+//	    templateVersion     = "v2"
+//	    templateDescription = ""
+//	  }
+//	}
+//
 // # Import org level template
 //
 // ```sh
@@ -905,14 +1235,18 @@ type Template struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enable this flag for force deletion of template
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsOutput `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportDetails TemplateGitImportDetailsPtrOutput `pulumi:"gitImportDetails"`
 	// Unique identifier of the resource
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrOutput `pulumi:"importFromGit"`
 	// True if given version for template to be set as stable.
-	IsStable pulumi.BoolPtrOutput `pulumi:"isStable"`
+	IsStable pulumi.BoolOutput `pulumi:"isStable"`
 	// Name of the Variable
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Organization Identifier for the Entity
@@ -921,6 +1255,8 @@ type Template struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Contains parameters for importing template.
+	TemplateImportRequest TemplateTemplateImportRequestPtrOutput `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringOutput `pulumi:"templateYaml"`
 	// Version Label for Template.
@@ -936,9 +1272,6 @@ func NewTemplate(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.TemplateYaml == nil {
-		return nil, errors.New("invalid value for required argument 'TemplateYaml'")
 	}
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
@@ -972,12 +1305,16 @@ type templateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of template
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete *string `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
 	// Unique identifier of the resource
 	Identifier *string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// True if given version for template to be set as stable.
 	IsStable *bool `pulumi:"isStable"`
 	// Name of the Variable
@@ -988,6 +1325,8 @@ type templateState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Contains parameters for importing template.
+	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml *string `pulumi:"templateYaml"`
 	// Version Label for Template.
@@ -1001,12 +1340,16 @@ type TemplateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of template
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportDetails TemplateGitImportDetailsPtrInput
 	// Unique identifier of the resource
 	Identifier pulumi.StringPtrInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// True if given version for template to be set as stable.
 	IsStable pulumi.BoolPtrInput
 	// Name of the Variable
@@ -1017,6 +1360,8 @@ type TemplateState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Contains parameters for importing template.
+	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringPtrInput
 	// Version Label for Template.
@@ -1034,12 +1379,16 @@ type templateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of template
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete *string `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
+	// Contains Git Information for importing entities from Git
+	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
 	// Unique identifier of the resource
 	Identifier string `pulumi:"identifier"`
+	// Flag to set if importing from Git
+	ImportFromGit *bool `pulumi:"importFromGit"`
 	// True if given version for template to be set as stable.
 	IsStable *bool `pulumi:"isStable"`
 	// Name of the Variable
@@ -1050,8 +1399,10 @@ type templateArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Contains parameters for importing template.
+	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	TemplateYaml string `pulumi:"templateYaml"`
+	TemplateYaml *string `pulumi:"templateYaml"`
 	// Version Label for Template.
 	Version string `pulumi:"version"`
 }
@@ -1064,12 +1415,16 @@ type TemplateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of template
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.StringPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
+	// Contains Git Information for importing entities from Git
+	GitImportDetails TemplateGitImportDetailsPtrInput
 	// Unique identifier of the resource
 	Identifier pulumi.StringInput
+	// Flag to set if importing from Git
+	ImportFromGit pulumi.BoolPtrInput
 	// True if given version for template to be set as stable.
 	IsStable pulumi.BoolPtrInput
 	// Name of the Variable
@@ -1080,8 +1435,10 @@ type TemplateArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Contains parameters for importing template.
+	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-	TemplateYaml pulumi.StringInput
+	TemplateYaml pulumi.StringPtrInput
 	// Version Label for Template.
 	Version pulumi.StringInput
 }
@@ -1185,7 +1542,7 @@ func (o TemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enable this flag for force deletion of template
+// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 func (o TemplateOutput) ForceDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
 }
@@ -1195,14 +1552,24 @@ func (o TemplateOutput) GitDetails() TemplateGitDetailsOutput {
 	return o.ApplyT(func(v *Template) TemplateGitDetailsOutput { return v.GitDetails }).(TemplateGitDetailsOutput)
 }
 
+// Contains Git Information for importing entities from Git
+func (o TemplateOutput) GitImportDetails() TemplateGitImportDetailsPtrOutput {
+	return o.ApplyT(func(v *Template) TemplateGitImportDetailsPtrOutput { return v.GitImportDetails }).(TemplateGitImportDetailsPtrOutput)
+}
+
 // Unique identifier of the resource
 func (o TemplateOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Flag to set if importing from Git
+func (o TemplateOutput) ImportFromGit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Template) pulumi.BoolPtrOutput { return v.ImportFromGit }).(pulumi.BoolPtrOutput)
+}
+
 // True if given version for template to be set as stable.
-func (o TemplateOutput) IsStable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Template) pulumi.BoolPtrOutput { return v.IsStable }).(pulumi.BoolPtrOutput)
+func (o TemplateOutput) IsStable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Template) pulumi.BoolOutput { return v.IsStable }).(pulumi.BoolOutput)
 }
 
 // Name of the Variable
@@ -1223,6 +1590,11 @@ func (o TemplateOutput) ProjectId() pulumi.StringPtrOutput {
 // Tags to associate with the resource.
 func (o TemplateOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Contains parameters for importing template.
+func (o TemplateOutput) TemplateImportRequest() TemplateTemplateImportRequestPtrOutput {
+	return o.ApplyT(func(v *Template) TemplateTemplateImportRequestPtrOutput { return v.TemplateImportRequest }).(TemplateTemplateImportRequestPtrOutput)
 }
 
 // Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.

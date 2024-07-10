@@ -67,6 +67,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
+        [Input("gitDetails")]
+        public Inputs.GetServiceGitDetailsArgs? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -99,6 +102,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("gitDetails")]
+        public Input<Inputs.GetServiceGitDetailsInputArgs>? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -137,6 +143,7 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        public readonly Outputs.GetServiceGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -170,6 +177,8 @@ namespace Pulumi.Harness.Platform
         private GetServiceResult(
             string description,
 
+            Outputs.GetServiceGitDetailsResult gitDetails,
+
             string id,
 
             string identifier,
@@ -185,6 +194,7 @@ namespace Pulumi.Harness.Platform
             string yaml)
         {
             Description = description;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Name = name;

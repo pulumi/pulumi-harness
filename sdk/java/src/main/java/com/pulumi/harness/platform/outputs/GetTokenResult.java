@@ -8,7 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,10 +31,10 @@ public final class GetTokenResult {
      */
     private String apikeyType;
     /**
-     * @return Description of the Token
+     * @return Description of the resource.
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return Email Id of the user who created the Token
      * 
@@ -51,17 +51,17 @@ public final class GetTokenResult {
      */
     private String id;
     /**
-     * @return Identifier of the Token
+     * @return Unique identifier of the resource.
      * 
      */
     private String identifier;
     /**
-     * @return Name of the Token
+     * @return Name of the resource.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
@@ -71,7 +71,7 @@ public final class GetTokenResult {
      */
     private String parentId;
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
@@ -81,10 +81,10 @@ public final class GetTokenResult {
      */
     private @Nullable Integer scheduledExpireTime;
     /**
-     * @return Tags for the Token
+     * @return Tags to associate with the resource.
      * 
      */
-    private @Nullable Map<String,String> tags;
+    private List<String> tags;
     /**
      * @return Name of the user who created the Token
      * 
@@ -129,11 +129,11 @@ public final class GetTokenResult {
         return this.apikeyType;
     }
     /**
-     * @return Description of the Token
+     * @return Description of the resource.
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return Email Id of the user who created the Token
@@ -157,21 +157,21 @@ public final class GetTokenResult {
         return this.id;
     }
     /**
-     * @return Identifier of the Token
+     * @return Unique identifier of the resource.
      * 
      */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return Name of the Token
+     * @return Name of the resource.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
@@ -185,7 +185,7 @@ public final class GetTokenResult {
         return this.parentId;
     }
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -199,11 +199,11 @@ public final class GetTokenResult {
         return Optional.ofNullable(this.scheduledExpireTime);
     }
     /**
-     * @return Tags for the Token
+     * @return Tags to associate with the resource.
      * 
      */
-    public Map<String,String> tags() {
-        return this.tags == null ? Map.of() : this.tags;
+    public List<String> tags() {
+        return this.tags;
     }
     /**
      * @return Name of the user who created the Token
@@ -246,17 +246,17 @@ public final class GetTokenResult {
         private String accountId;
         private String apikeyId;
         private String apikeyType;
-        private @Nullable String description;
+        private String description;
         private @Nullable String email;
         private @Nullable String encodedPassword;
         private String id;
         private String identifier;
-        private String name;
+        private @Nullable String name;
         private @Nullable String orgId;
         private String parentId;
         private @Nullable String projectId;
         private @Nullable Integer scheduledExpireTime;
-        private @Nullable Map<String,String> tags;
+        private List<String> tags;
         private @Nullable String username;
         private @Nullable Boolean valid;
         private @Nullable Integer validFrom;
@@ -309,8 +309,10 @@ public final class GetTokenResult {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTokenResult", "description");
+            }
             this.description = description;
             return this;
         }
@@ -343,10 +345,8 @@ public final class GetTokenResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetTokenResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
@@ -377,10 +377,15 @@ public final class GetTokenResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(@Nullable Map<String,String> tags) {
-
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTokenResult", "tags");
+            }
             this.tags = tags;
             return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {

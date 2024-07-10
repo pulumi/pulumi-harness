@@ -24,40 +24,16 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _clusters = value;
         }
 
-        [Input("ids")]
-        private InputList<Inputs.GitOpsClusterRequestIdGetArgs>? _ids;
-
-        /// <summary>
-        /// Cluster server URL or the cluster name.
-        /// </summary>
-        public InputList<Inputs.GitOpsClusterRequestIdGetArgs> Ids
-        {
-            get => _ids ?? (_ids = new InputList<Inputs.GitOpsClusterRequestIdGetArgs>());
-            set => _ids = value;
-        }
-
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags associated with the clusters
+        /// Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
-        }
-
-        [Input("updateMasks")]
-        private InputList<Inputs.GitOpsClusterRequestUpdateMaskGetArgs>? _updateMasks;
-
-        /// <summary>
-        /// Update mask of the GitOps cluster.
-        /// </summary>
-        public InputList<Inputs.GitOpsClusterRequestUpdateMaskGetArgs> UpdateMasks
-        {
-            get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GitOpsClusterRequestUpdateMaskGetArgs>());
-            set => _updateMasks = value;
         }
 
         [Input("updatedFields")]

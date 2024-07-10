@@ -6,7 +6,6 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GitOpsClusterQueryArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestArgs;
 import java.lang.String;
 import java.util.List;
@@ -95,21 +94,6 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Query for the GitOps cluster resources.
-     * 
-     */
-    @Import(name="queries")
-    private @Nullable Output<List<GitOpsClusterQueryArgs>> queries;
-
-    /**
-     * @return Query for the GitOps cluster resources.
-     * 
-     */
-    public Optional<Output<List<GitOpsClusterQueryArgs>>> queries() {
-        return Optional.ofNullable(this.queries);
-    }
-
-    /**
      * Cluster create or update request.
      * 
      */
@@ -132,7 +116,6 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.queries = $.queries;
         this.requests = $.requests;
     }
 
@@ -257,37 +240,6 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        /**
-         * @param queries Query for the GitOps cluster resources.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queries(@Nullable Output<List<GitOpsClusterQueryArgs>> queries) {
-            $.queries = queries;
-            return this;
-        }
-
-        /**
-         * @param queries Query for the GitOps cluster resources.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queries(List<GitOpsClusterQueryArgs> queries) {
-            return queries(Output.of(queries));
-        }
-
-        /**
-         * @param queries Query for the GitOps cluster resources.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queries(GitOpsClusterQueryArgs... queries) {
-            return queries(List.of(queries));
         }
 
         /**

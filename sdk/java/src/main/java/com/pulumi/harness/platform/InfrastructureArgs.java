@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.InfrastructureGitDetailsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,21 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    @Import(name="gitDetails")
+    private @Nullable Output<InfrastructureGitDetailsArgs> gitDetails;
+
+    /**
+     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * 
+     */
+    public Optional<Output<InfrastructureGitDetailsArgs>> gitDetails() {
+        return Optional.ofNullable(this.gitDetails);
     }
 
     /**
@@ -153,33 +169,33 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
      * Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    @Import(name="yaml", required=true)
-    private Output<String> yaml;
+    @Import(name="yaml")
+    private @Nullable Output<String> yaml;
 
     /**
      * @return Infrastructure YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
-    public Output<String> yaml() {
-        return this.yaml;
+    public Optional<Output<String>> yaml() {
+        return Optional.ofNullable(this.yaml);
     }
 
     private InfrastructureArgs() {}
@@ -189,6 +205,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         this.description = $.description;
         this.envId = $.envId;
         this.forceDelete = $.forceDelete;
+        this.gitDetails = $.gitDetails;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -298,6 +315,27 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder forceDelete(String forceDelete) {
             return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(@Nullable Output<InfrastructureGitDetailsArgs> gitDetails) {
+            $.gitDetails = gitDetails;
+            return this;
+        }
+
+        /**
+         * @param gitDetails Contains Git Information for remote entities from Git for Create/Update/Import
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitDetails(InfrastructureGitDetailsArgs gitDetails) {
+            return gitDetails(Output.of(gitDetails));
         }
 
         /**
@@ -416,18 +454,18 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+         * @param type Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
          * 
          * @return builder
          * 
@@ -442,7 +480,7 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder yaml(Output<String> yaml) {
+        public Builder yaml(@Nullable Output<String> yaml) {
             $.yaml = yaml;
             return this;
         }
@@ -463,12 +501,6 @@ public final class InfrastructureArgs extends com.pulumi.resources.ResourceArgs 
             }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("InfrastructureArgs", "identifier");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("InfrastructureArgs", "type");
-            }
-            if ($.yaml == null) {
-                throw new MissingRequiredPropertyException("InfrastructureArgs", "yaml");
             }
             return $;
         }

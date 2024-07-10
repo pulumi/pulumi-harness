@@ -15,6 +15,165 @@
             "harness_application_gitsync": {
                 "current": "harness:index/applicationGitSync:ApplicationGitSync"
             },
+            "harness_autostopping_aws_alb": {
+                "current": "harness:autostopping/awsAlb:AwsAlb",
+                "fields": {
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_aws_proxy": {
+                "current": "harness:autostopping/awsProxy:AwsProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_azure_gateway": {
+                "current": "harness:autostopping/azureGateway:AzureGateway"
+            },
+            "harness_autostopping_azure_proxy": {
+                "current": "harness:autostopping/azureProxy:AzureProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_gcp_proxy": {
+                "current": "harness:autostopping/gcpProxy:GcpProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_ecs": {
+                "current": "harness:autostopping/ruleEcs:RuleEcs",
+                "fields": {
+                    "container": {
+                        "maxItemsOne": true
+                    },
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "http": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_rds": {
+                "current": "harness:autostopping/ruleRds:RuleRds",
+                "fields": {
+                    "database": {
+                        "maxItemsOne": true
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "tcp": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_rule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_autostopping_rule_vm": {
+                "current": "harness:autostopping/ruleVm:RuleVm",
+                "fields": {
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "regions": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "zones": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "http": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "health": {
+                                    "maxItemsOne": false
+                                },
+                                "routing": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_rule": {
+                                    "maxItemsOne": false
+                                },
+                                "rdp": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_autostopping_schedule": {
+                "current": "harness:autostopping/schedule:Schedule",
+                "fields": {
+                    "repeats": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_cloudprovider_aws": {
                 "current": "harness:cloudprovider/aws:Aws",
                 "fields": {
@@ -236,7 +395,12 @@
                 }
             },
             "harness_platform_apikey": {
-                "current": "harness:index/platformApiKey:PlatformApiKey"
+                "current": "harness:index/platformApiKey:PlatformApiKey",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_ccm_filters": {
                 "current": "harness:index/platformCcmFilters:PlatformCcmFilters",
@@ -320,6 +484,16 @@
                         }
                     },
                     "manual": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_authentication": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
@@ -503,6 +677,44 @@
                     }
                 }
             },
+            "harness_platform_connector_custom_secret_manager": {
+                "current": "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template_inputs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "environment_variable": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_connector_customhealthsource": {
+                "current": "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "headers": {
+                        "maxItemsOne": false
+                    },
+                    "params": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_datadog": {
                 "current": "harness:platform/datadogConnector:DatadogConnector",
                 "fields": {
@@ -654,7 +866,17 @@
                         "elem": {
                             "fields": {
                                 "http": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous": {
+                                                "maxItemsOne": false
+                                            },
+                                            "github_app": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "ssh": {
                                     "maxItemsOne": true
@@ -742,6 +964,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "personal_access_token": {
+                                    "maxItemsOne": true
+                                },
                                 "username_password": {
                                     "maxItemsOne": true
                                 }
@@ -857,6 +1082,20 @@
                     }
                 }
             },
+            "harness_platform_connector_pdc": {
+                "current": "harness:platform/connectorPdc:ConnectorPdc",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "host": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_prometheus": {
                 "current": "harness:platform/prometheusConnector:PrometheusConnector",
                 "fields": {
@@ -864,6 +1103,20 @@
                         "maxItemsOne": false
                     },
                     "headers": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_rancher": {
+                "current": "harness:platform/connectorRancher:ConnectorRancher",
+                "fields": {
+                    "bearer_token": {
+                        "maxItemsOne": true
+                    },
+                    "delegate_selectors": {
                         "maxItemsOne": false
                     },
                     "tags": {
@@ -879,6 +1132,9 @@
                         "elem": {
                             "fields": {
                                 "adfs": {
+                                    "maxItemsOne": true
+                                },
+                                "refresh_token": {
                                     "maxItemsOne": true
                                 },
                                 "username_password": {
@@ -988,9 +1244,15 @@
                     }
                 }
             },
+            "harness_platform_delegatetoken": {
+                "current": "harness:platform/delegatetoken:Delegatetoken"
+            },
             "harness_platform_environment": {
                 "current": "harness:platform/environment:Environment",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1013,16 +1275,85 @@
             "harness_platform_feature_flag": {
                 "current": "harness:platform/featureFlag:FeatureFlag",
                 "fields": {
-                    "git_details": {
-                        "maxItemsOne": true
+                    "environment": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "add_target_rule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "targets": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     },
                     "variation": {
                         "maxItemsOne": false
                     }
                 }
             },
+            "harness_platform_feature_flag_target": {
+                "current": "harness:platform/featureFlagTarget:FeatureFlagTarget"
+            },
+            "harness_platform_feature_flag_target_group": {
+                "current": "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup",
+                "fields": {
+                    "excluded": {
+                        "maxItemsOne": false
+                    },
+                    "included": {
+                        "maxItemsOne": false
+                    },
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_ff_api_key": {
                 "current": "harness:platform/featureFlagApiKey:FeatureFlagApiKey"
+            },
+            "harness_platform_file_store_file": {
+                "current": "harness:platform/fileStoreFile:FileStoreFile",
+                "fields": {
+                    "created_by": {
+                        "maxItemsOne": false
+                    },
+                    "last_modified_by": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_file_store_folder": {
+                "current": "harness:platform/fileStoreFolder:FileStoreFolder",
+                "fields": {
+                    "created_by": {
+                        "maxItemsOne": false
+                    },
+                    "last_modified_by": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_filters": {
                 "current": "harness:platform/filters:Filters",
@@ -1046,6 +1377,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "harness_platform_gitops_app_project_mapping": {
+                "current": "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping"
             },
             "harness_platform_gitops_applications": {
                 "current": "harness:platform/gitOpsApplications:GitOpsApplications",
@@ -1184,16 +1518,6 @@
             "harness_platform_gitops_cluster": {
                 "current": "harness:platform/gitOpsCluster:GitOpsCluster",
                 "fields": {
-                    "query": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "id": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
                     "request": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1206,9 +1530,6 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "aws_auth_config": {
-                                                            "maxItemsOne": false
-                                                        },
                                                         "exec_provider_config": {
                                                             "maxItemsOne": false,
                                                             "elem": {
@@ -1257,21 +1578,8 @@
                                         }
                                     }
                                 },
-                                "id": {
-                                    "maxItemsOne": false
-                                },
                                 "tags": {
                                     "maxItemsOne": false
-                                },
-                                "update_mask": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "paths": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
                                 },
                                 "updated_fields": {
                                     "maxItemsOne": false
@@ -1332,6 +1640,50 @@
             "harness_platform_gitops_repository": {
                 "current": "harness:platform/gitOpsRepository:GitOpsRepository",
                 "fields": {
+                    "ecr_gen": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "jwt_auth": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "audiences": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "secret_ref": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "gcr_gen": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "workload_identity": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "service_account_ref": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "audiences": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "repo": {
                         "maxItemsOne": false
                     },
@@ -1347,9 +1699,15 @@
                     }
                 }
             },
+            "harness_platform_iacm_default_pipeline": {
+                "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
+            },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/infrastructure:Infrastructure",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1359,6 +1717,12 @@
                 "current": "harness:platform/inputSet:InputSet",
                 "fields": {
                     "git_details": {
+                        "maxItemsOne": true
+                    },
+                    "git_import_info": {
+                        "maxItemsOne": true
+                    },
+                    "input_set_import_request": {
                         "maxItemsOne": true
                     },
                     "tags": {
@@ -1438,6 +1802,12 @@
                     "git_details": {
                         "maxItemsOne": true
                     },
+                    "git_import_info": {
+                        "maxItemsOne": true
+                    },
+                    "pipeline_import_request": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1450,6 +1820,52 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "module_properties": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cd": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "artifact_display_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "environment_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "service_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ci": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ci_execution_info": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "pull_request": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "pipeline_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "pipeline_tags": {
+                                    "maxItemsOne": false
+                                },
                                 "tags": {
                                     "maxItemsOne": false
                                 }
@@ -1484,6 +1900,63 @@
                         "maxItemsOne": false
                     },
                     "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_repo": {
+                "current": "harness:platform/repo:Repo",
+                "fields": {
+                    "source": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_repo_rule_branch": {
+                "current": "harness:platform/repoRuleBranch:RepoRuleBranch",
+                "fields": {
+                    "bypass": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "user_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pattern": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "exclude": {
+                                    "maxItemsOne": false
+                                },
+                                "include": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allow_merge_strategies": {
+                                    "maxItemsOne": false
+                                },
+                                "require_status_checks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_repo_webhook": {
+                "current": "harness:platform/repoWebhook:RepoWebhook",
+                "fields": {
+                    "triggers": {
                         "maxItemsOne": false
                     }
                 }
@@ -1599,6 +2072,16 @@
             "harness_platform_secret_text": {
                 "current": "harness:platform/secretText:SecretText",
                 "fields": {
+                    "additional_metadata": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1607,6 +2090,9 @@
             "harness_platform_service": {
                 "current": "harness:platform/service:Service",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1621,7 +2107,12 @@
                 }
             },
             "harness_platform_service_overrides_v2": {
-                "current": "harness:platform/serviceOverridesV2:ServiceOverridesV2"
+                "current": "harness:platform/serviceOverridesV2:ServiceOverridesV2",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "harness_platform_slo": {
                 "current": "harness:platform/slo:Slo",
@@ -1653,8 +2144,14 @@
                     "git_details": {
                         "maxItemsOne": true
                     },
+                    "git_import_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "template_import_request": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1674,7 +2171,12 @@
                 }
             },
             "harness_platform_token": {
-                "current": "harness:platform/token:Token"
+                "current": "harness:platform/token:Token",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_triggers": {
                 "current": "harness:platform/triggers:Triggers",
@@ -1717,6 +2219,23 @@
                 "fields": {
                     "spec": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "harness_platform_workspace": {
+                "current": "harness:platform/workspace:Workspace",
+                "fields": {
+                    "environment_variable": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable_file": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2163,6 +2682,165 @@
             "harness_application": {
                 "current": "harness:index/getApplication:getApplication"
             },
+            "harness_autostopping_aws_alb": {
+                "current": "harness:autostopping/getAwsAlb:getAwsAlb",
+                "fields": {
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_aws_proxy": {
+                "current": "harness:autostopping/getAwsProxy:getAwsProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_azure_gateway": {
+                "current": "harness:autostopping/getAzureGateway:getAzureGateway"
+            },
+            "harness_autostopping_azure_proxy": {
+                "current": "harness:autostopping/getAzureProxy:getAzureProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_gcp_proxy": {
+                "current": "harness:autostopping/getGcpProxy:getGcpProxy",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": true
+                    },
+                    "security_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_ecs": {
+                "current": "harness:autostopping/getRuleEcs:getRuleEcs",
+                "fields": {
+                    "container": {
+                        "maxItemsOne": true
+                    },
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "http": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_autostopping_rule_rds": {
+                "current": "harness:autostopping/getRuleRds:getRuleRds",
+                "fields": {
+                    "database": {
+                        "maxItemsOne": true
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "tcp": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_rule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_autostopping_rule_vm": {
+                "current": "harness:autostopping/getRuleVm:getRuleVm",
+                "fields": {
+                    "custom_domains": {
+                        "maxItemsOne": false
+                    },
+                    "depends": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "regions": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "zones": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "http": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "health": {
+                                    "maxItemsOne": false
+                                },
+                                "routing": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tcp": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "forward_rule": {
+                                    "maxItemsOne": false
+                                },
+                                "rdp": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_autostopping_schedule": {
+                "current": "harness:autostopping/getSchedule:getSchedule",
+                "fields": {
+                    "repeats": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_current_account": {
                 "current": "harness:index/getCurrentAccount:getCurrentAccount"
             },
@@ -2205,7 +2883,12 @@
                 }
             },
             "harness_platform_apikey": {
-                "current": "harness:platform/getApiKey:getApiKey"
+                "current": "harness:platform/getApiKey:getApiKey",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_ccm_filters": {
                 "current": "harness:platform/getCcmFilters:getCcmFilters",
@@ -2289,6 +2972,16 @@
                         }
                     },
                     "manual": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_authentication": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
@@ -2472,6 +3165,44 @@
                     }
                 }
             },
+            "harness_platform_connector_custom_secret_manager": {
+                "current": "harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template_inputs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "environment_variable": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_connector_customhealthsource": {
+                "current": "harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "headers": {
+                        "maxItemsOne": false
+                    },
+                    "params": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_datadog": {
                 "current": "harness:platform/getDatadogConnector:getDatadogConnector",
                 "fields": {
@@ -2620,7 +3351,17 @@
                         "elem": {
                             "fields": {
                                 "http": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous": {
+                                                "maxItemsOne": false
+                                            },
+                                            "github_app": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "ssh": {
                                     "maxItemsOne": false
@@ -2708,6 +3449,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "personal_access_token": {
+                                    "maxItemsOne": false
+                                },
                                 "username_password": {
                                     "maxItemsOne": false
                                 }
@@ -2812,6 +3556,20 @@
                     }
                 }
             },
+            "harness_platform_connector_pdc": {
+                "current": "harness:platform/getConnectorPdc:getConnectorPdc",
+                "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "host": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_prometheus": {
                 "current": "harness:platform/getPrometheusConnector:getPrometheusConnector",
                 "fields": {
@@ -2819,6 +3577,20 @@
                         "maxItemsOne": false
                     },
                     "headers": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_rancher": {
+                "current": "harness:platform/getConnectorRancher:getConnectorRancher",
+                "fields": {
+                    "bearer_token": {
+                        "maxItemsOne": true
+                    },
+                    "delegate_selectors": {
                         "maxItemsOne": false
                     },
                     "tags": {
@@ -2834,6 +3606,9 @@
                         "elem": {
                             "fields": {
                                 "adfs": {
+                                    "maxItemsOne": false
+                                },
+                                "refresh_token": {
                                     "maxItemsOne": false
                                 },
                                 "username_password": {
@@ -2943,25 +3718,75 @@
                     }
                 }
             },
+            "harness_platform_current_account": {
+                "current": "harness:platform/getCurrentAccount:getCurrentAccount"
+            },
             "harness_platform_current_user": {
                 "current": "harness:platform/getCurrentUser:getCurrentUser"
+            },
+            "harness_platform_delegatetoken": {
+                "current": "harness:platform/getDelegatetoken:getDelegatetoken"
             },
             "harness_platform_environment": {
                 "current": "harness:platform/getEnvironment:getEnvironment",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
                 }
             },
             "harness_platform_environment_clusters_mapping": {
-                "current": "harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping"
+                "current": "harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping",
+                "fields": {
+                    "clusters": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_environment_group": {
                 "current": "harness:platform/getEnvironmentGroup:getEnvironmentGroup"
             },
+            "harness_platform_environment_list": {
+                "current": "harness:platform/getEnvironmentList:getEnvironmentList",
+                "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_environment_service_overrides": {
                 "current": "harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides"
+            },
+            "harness_platform_file_store_file": {
+                "current": "harness:platform/getFileStoreFile:getFileStoreFile",
+                "fields": {
+                    "created_by": {
+                        "maxItemsOne": false
+                    },
+                    "last_modified_by": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_file_store_folder": {
+                "current": "harness:platform/getFileStoreFolder:getFileStoreFolder",
+                "fields": {
+                    "created_by": {
+                        "maxItemsOne": false
+                    },
+                    "last_modified_by": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_filters": {
                 "current": "harness:platform/getFilters:getFilters",
@@ -2987,7 +3812,15 @@
                 }
             },
             "harness_platform_gitops_agent_deploy_yaml": {
-                "current": "harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml"
+                "current": "harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml",
+                "fields": {
+                    "proxy": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_gitops_app_project_mapping": {
+                "current": "harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping"
             },
             "harness_platform_gitops_applications": {
                 "current": "harness:platform/getGitopsApplications:getGitopsApplications",
@@ -3126,16 +3959,6 @@
             "harness_platform_gitops_cluster": {
                 "current": "harness:platform/getGitopsCluster:getGitopsCluster",
                 "fields": {
-                    "query": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "id": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
                     "request": {
                         "maxItemsOne": false,
                         "elem": {
@@ -3148,9 +3971,6 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "aws_auth_config": {
-                                                            "maxItemsOne": false
-                                                        },
                                                         "exec_provider_config": {
                                                             "maxItemsOne": false,
                                                             "elem": {
@@ -3199,24 +4019,8 @@
                                         }
                                     }
                                 },
-                                "id": {
-                                    "maxItemsOne": false
-                                },
                                 "tags": {
                                     "maxItemsOne": false
-                                },
-                                "update_mask": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "paths": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
                                 },
                                 "updated_fields": {
                                     "maxItemsOne": false
@@ -3270,9 +4074,15 @@
                     }
                 }
             },
+            "harness_platform_iacm_default_pipeline": {
+                "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
+            },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/getInfrastructure:getInfrastructure",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3361,11 +4171,68 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "module_properties": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cd": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "artifact_display_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "environment_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "service_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ci": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ci_execution_info": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "pull_request": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "pipeline_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "pipeline_tags": {
+                                    "maxItemsOne": false
+                                },
                                 "tags": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "harness_platform_pipeline_list": {
+                "current": "harness:platform/getPipelineList:getPipelineList",
+                "fields": {
+                    "pipelines": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3395,6 +4262,74 @@
                         "maxItemsOne": false
                     },
                     "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_project_list": {
+                "current": "harness:platform/getProjectList:getProjectList",
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_repo": {
+                "current": "harness:platform/getRepo:getRepo",
+                "fields": {
+                    "source": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_repo_rule_branch": {
+                "current": "harness:platform/getRepoRuleBranch:getRepoRuleBranch",
+                "fields": {
+                    "bypass": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "user_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "pattern": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "exclude": {
+                                    "maxItemsOne": false
+                                },
+                                "include": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allow_merge_strategies": {
+                                    "maxItemsOne": false
+                                },
+                                "require_status_checks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_repo_webhook": {
+                "current": "harness:platform/getRepoWebhook:getRepoWebhook",
+                "fields": {
+                    "triggers": {
                         "maxItemsOne": false
                     }
                 }
@@ -3510,6 +4445,16 @@
             "harness_platform_secret_text": {
                 "current": "harness:platform/getSecretText:getSecretText",
                 "fields": {
+                    "additional_metadata": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3518,6 +4463,9 @@
             "harness_platform_service": {
                 "current": "harness:platform/getService:getService",
                 "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3531,8 +4479,21 @@
                     }
                 }
             },
+            "harness_platform_service_list": {
+                "current": "harness:platform/getServiceList:getServiceList",
+                "fields": {
+                    "services": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_service_overrides_v2": {
-                "current": "harness:platform/getServiceOverridesV2:getServiceOverridesV2"
+                "current": "harness:platform/getServiceOverridesV2:getServiceOverridesV2",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "harness_platform_slo": {
                 "current": "harness:platform/getSlo:getSlo"
@@ -3564,7 +4525,12 @@
                 }
             },
             "harness_platform_token": {
-                "current": "harness:platform/getToken:getToken"
+                "current": "harness:platform/getToken:getToken",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_triggers": {
                 "current": "harness:platform/getTriggers:getTriggers",
@@ -3595,6 +4561,28 @@
                 "current": "harness:platform/getVariables:getVariables",
                 "fields": {
                     "spec": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_workspace": {
+                "current": "harness:platform/getWorkspace:getWorkspace",
+                "fields": {
+                    "environment_variable": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable_file": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_workspace_output": {
+                "current": "harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue",
+                "fields": {
+                    "outputs": {
                         "maxItemsOne": false
                     }
                 }

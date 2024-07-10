@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Authenticate using refresh token grant type.
+        /// </summary>
+        public readonly Outputs.ServiceNowConnectorAuthRefreshToken? RefreshToken;
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         public readonly Outputs.ServiceNowConnectorAuthUsernamePassword? UsernamePassword;
@@ -32,10 +36,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string authType,
 
+            Outputs.ServiceNowConnectorAuthRefreshToken? refreshToken,
+
             Outputs.ServiceNowConnectorAuthUsernamePassword? usernamePassword)
         {
             Adfs = adfs;
             AuthType = authType;
+            RefreshToken = refreshToken;
             UsernamePassword = usernamePassword;
         }
     }

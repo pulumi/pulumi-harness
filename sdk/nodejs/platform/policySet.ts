@@ -72,7 +72,7 @@ export class PolicySet extends pulumi.CustomResource {
     /**
      * List of policy identifiers / severity for the policyset.
      */
-    public readonly policies!: pulumi.Output<outputs.platform.PolicySetPolicy[] | undefined>;
+    public readonly policies!: pulumi.Output<outputs.platform.PolicySetPolicy[]>;
     /**
      * Unique identifier of the project.
      */

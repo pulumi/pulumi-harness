@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating an AWS KMS connector.
+// ## Example Usage
 //
 // ## Import
 //

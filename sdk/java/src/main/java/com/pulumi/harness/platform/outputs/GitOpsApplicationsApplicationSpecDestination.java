@@ -22,7 +22,7 @@ public final class GitOpsApplicationsApplicationSpecDestination {
      */
     private @Nullable String namespace;
     /**
-     * @return Server of the destination of the GitOps application.
+     * @return URL of the target cluster server for the GitOps application.
      * 
      */
     private @Nullable String server;
@@ -43,7 +43,7 @@ public final class GitOpsApplicationsApplicationSpecDestination {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return Server of the destination of the GitOps application.
+     * @return URL of the target cluster server for the GitOps application.
      * 
      */
     public Optional<String> server() {

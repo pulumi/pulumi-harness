@@ -19,8 +19,121 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating an Artifactory connector.
  * 
- * ## Example Usage
+ * ## Example to create Artifactory Connector at different levels (Org, Project, Account)
  * 
+ * ### Account Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ArtifactoryConnector;
+ * import com.pulumi.harness.platform.ArtifactoryConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.ArtifactoryConnectorCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Authentication mechanism as username and password
+ *         var example = new ArtifactoryConnector("example", ArtifactoryConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://artifactory.example.com")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username("admin")
+ *                 .passwordRef("account.secret_id")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Authentication mechanism as anonymous
+ *         var test = new ArtifactoryConnector("test", ArtifactoryConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://artifactory.example.com")
+ *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Org Level
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.ArtifactoryConnector;
+ * import com.pulumi.harness.platform.ArtifactoryConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.ArtifactoryConnectorCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Authentication mechanism as username and password
+ *         var example = new ArtifactoryConnector("example", ArtifactoryConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .orgId(testHarnessPlatformProject.orgId())
+ *             .url("https://artifactory.example.com")
+ *             .delegateSelectors("harness-delegate")
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username("admin")
+ *                 .passwordRef("account.secret_id")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Authentication mechanism as anonymous
+ *         var test = new ArtifactoryConnector("test", ArtifactoryConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .orgId(testHarnessPlatformProject.orgId())
+ *             .url("https://artifactory.example.com")
+ *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

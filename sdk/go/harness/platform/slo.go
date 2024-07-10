@@ -14,6 +14,100 @@ import (
 
 // Resource for creating an SLO.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "Monthly",
+//				"spec": map[string]interface{}{
+//					"dayOfMonth": 5,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"monitoredServiceRef":       "monitoredServiceRef",
+//				"serviceLevelIndicatorType": "Availability",
+//				"serviceLevelIndicators": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":       "name",
+//						"identifier": "identifier",
+//						"type":       "Window",
+//						"spec": map[string]interface{}{
+//							"type": "Threshold",
+//							"spec": map[string]interface{}{
+//								"metric1":        "metric1",
+//								"thresholdValue": 10,
+//								"thresholdType":  ">",
+//							},
+//							"sliMissingDataType": "Good",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = platform.NewSlo(ctx, "example", &platform.SloArgs{
+//				OrgId:      pulumi.String("default"),
+//				ProjectId:  pulumi.String("default_project"),
+//				Identifier: pulumi.String("TerraformSLO"),
+//				Request: &platform.SloRequestArgs{
+//					Name:        pulumi.String("TSLO"),
+//					Description: pulumi.String("description"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("foo:bar"),
+//						pulumi.String("bar:foo"),
+//					},
+//					UserJourneyRefs: pulumi.StringArray{
+//						pulumi.String("one"),
+//						pulumi.String("two"),
+//					},
+//					SloTarget: &platform.SloRequestSloTargetArgs{
+//						Type:                pulumi.String("Calender"),
+//						SloTargetPercentage: pulumi.Float64(10),
+//						Spec:                pulumi.String(json0),
+//					},
+//					Type: pulumi.String("Simple"),
+//					Spec: pulumi.String(json1),
+//					NotificationRuleRefs: platform.SloRequestNotificationRuleRefArray{
+//						&platform.SloRequestNotificationRuleRefArgs{
+//							NotificationRuleRef: pulumi.String("notification_rule_ref"),
+//							Enabled:             pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Note the above example is for "Threshold" SLI type, if you want to use
+// "Ratio", the SLI should be changed appropriately.
+// Here's an example of SLO target and Spec for "Ratio" based SLI and
+// "Rolling" SLO target.
+//
 // ## Import
 //
 // # Import account level SLO

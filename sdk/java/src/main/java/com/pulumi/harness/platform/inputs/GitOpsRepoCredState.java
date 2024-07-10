@@ -19,14 +19,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     public static final GitOpsRepoCredState Empty = new GitOpsRepoCredState();
 
     /**
-     * Account identifier of the Repository Credential.
+     * Account identifier of the Repository Credentials.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account identifier of the Repository Credential.
+     * @return Account identifier of the Repository Credentials.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,14 +34,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Agent identifier of the Repository Credential.
+     * Agent identifier of the Repository Credentials.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return Agent identifier of the Repository Credential.
+     * @return Agent identifier of the Repository Credentials.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -64,14 +64,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Identifier of the Repository Credential.
+     * Identifier of the Repository Credentials.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Identifier of the Repository Credential.
+     * @return Identifier of the Repository Credentials.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -79,14 +79,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization identifier of the Repository Credential.
+     * @return Organization identifier of the Repository Credentials.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -94,14 +94,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier of the Repository Credential.
+     * @return Project identifier of the Repository Credentials.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -109,14 +109,14 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * if the Repository credential should be upserted.
+     * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      * 
      */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
     /**
-     * @return if the Repository credential should be upserted.
+     * @return Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      * 
      */
     public Optional<Output<Boolean>> upsert() {
@@ -154,7 +154,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account identifier of the Repository Credential.
+         * @param accountId Account identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account identifier of the Repository Credential.
+         * @param accountId Account identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param agentId Agent identifier of the Repository Credential.
+         * @param agentId Agent identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param agentId Agent identifier of the Repository Credential.
+         * @param agentId Agent identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param identifier Identifier of the Repository Credential.
+         * @param identifier Identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param identifier Identifier of the Repository Credential.
+         * @param identifier Identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Organization identifier of the Repository Credential.
+         * @param orgId Organization identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param orgId Organization identifier of the Repository Credential.
+         * @param orgId Organization identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Project identifier of the Repository Credential.
+         * @param projectId Project identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param projectId Project identifier of the Repository Credential.
+         * @param projectId Project identifier of the Repository Credentials.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param upsert if the Repository credential should be upserted.
+         * @param upsert Indicates if the GitOps repository credential should be updated if existing and inserted if not.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GitOpsRepoCredState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param upsert if the Repository credential should be upserted.
+         * @param upsert Indicates if the GitOps repository credential should be updated if existing and inserted if not.
          * 
          * @return builder
          * 

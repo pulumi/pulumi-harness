@@ -8,70 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing Feature Flags.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * // Boolean Flag
- * const mybooleanflag = new harness.platform.FeatureFlag("mybooleanflag", {
- *     orgId: "test",
- *     projectId: "testff",
- *     kind: "boolean",
- *     name: "MY_FEATURE",
- *     identifier: "MY_FEATURE",
- *     permanent: false,
- *     defaultOnVariation: "Enabled",
- *     defaultOffVariation: "Disabled",
- *     variations: [
- *         {
- *             identifier: "Enabled",
- *             name: "Enabled",
- *             description: "The feature is enabled",
- *             value: "true",
- *         },
- *         {
- *             identifier: "Disabled",
- *             name: "Disabled",
- *             description: "The feature is disabled",
- *             value: "false",
- *         },
- *     ],
- * });
- * // Multivariate flag
- * const mymultivariateflag = new harness.platform.FeatureFlag("mymultivariateflag", {
- *     orgId: "test",
- *     projectId: "testff",
- *     kind: "int",
- *     name: "FREE_TRIAL_DURATION",
- *     identifier: "FREE_TRIAL_DURATION",
- *     permanent: false,
- *     defaultOnVariation: "trial7",
- *     defaultOffVariation: "trial20",
- *     variations: [
- *         {
- *             identifier: "trial7",
- *             name: "7 days trial",
- *             description: "Free trial period 7 days",
- *             value: "7",
- *         },
- *         {
- *             identifier: "trial14",
- *             name: "14 days trial",
- *             description: "Free trial period 14 days",
- *             value: "14",
- *         },
- *         {
- *             identifier: "trial20",
- *             name: "20 days trial",
- *             description: "Free trial period 20 days",
- *             value: "20",
- *         },
- *     ],
- * });
- * ```
  */
 export class FeatureFlag extends pulumi.CustomResource {
     /**
@@ -102,10 +38,6 @@ export class FeatureFlag extends pulumi.CustomResource {
     }
 
     /**
-     * Whether or not the flag is archived
-     */
-    public readonly archived!: pulumi.Output<boolean | undefined>;
-    /**
      * Which of the variations to use when the flag is toggled to off state
      */
     public readonly defaultOffVariation!: pulumi.Output<string>;
@@ -113,7 +45,14 @@ export class FeatureFlag extends pulumi.CustomResource {
      * Which of the variations to use when the flag is toggled to on state
      */
     public readonly defaultOnVariation!: pulumi.Output<string>;
-    public readonly gitDetails!: pulumi.Output<outputs.platform.FeatureFlagGitDetails | undefined>;
+    /**
+     * Description of the Feature Flag
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Environment Identifier
+     */
+    public readonly environments!: pulumi.Output<outputs.platform.FeatureFlagEnvironment[] | undefined>;
     /**
      * Identifier of the Feature Flag
      */
@@ -143,6 +82,10 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
+     * The tags for the flag
+     */
+    public readonly tags!: pulumi.Output<outputs.platform.FeatureFlagTag[] | undefined>;
+    /**
      * The options available for your flag
      */
     public readonly variations!: pulumi.Output<outputs.platform.FeatureFlagVariation[]>;
@@ -160,10 +103,10 @@ export class FeatureFlag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
-            resourceInputs["archived"] = state ? state.archived : undefined;
             resourceInputs["defaultOffVariation"] = state ? state.defaultOffVariation : undefined;
             resourceInputs["defaultOnVariation"] = state ? state.defaultOnVariation : undefined;
-            resourceInputs["gitDetails"] = state ? state.gitDetails : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environments"] = state ? state.environments : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -171,6 +114,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["permanent"] = state ? state.permanent : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["variations"] = state ? state.variations : undefined;
         } else {
             const args = argsOrState as FeatureFlagArgs | undefined;
@@ -198,10 +142,10 @@ export class FeatureFlag extends pulumi.CustomResource {
             if ((!args || args.variations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'variations'");
             }
-            resourceInputs["archived"] = args ? args.archived : undefined;
             resourceInputs["defaultOffVariation"] = args ? args.defaultOffVariation : undefined;
             resourceInputs["defaultOnVariation"] = args ? args.defaultOnVariation : undefined;
-            resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -209,6 +153,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["permanent"] = args ? args.permanent : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["variations"] = args ? args.variations : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -221,10 +166,6 @@ export class FeatureFlag extends pulumi.CustomResource {
  */
 export interface FeatureFlagState {
     /**
-     * Whether or not the flag is archived
-     */
-    archived?: pulumi.Input<boolean>;
-    /**
      * Which of the variations to use when the flag is toggled to off state
      */
     defaultOffVariation?: pulumi.Input<string>;
@@ -232,7 +173,14 @@ export interface FeatureFlagState {
      * Which of the variations to use when the flag is toggled to on state
      */
     defaultOnVariation?: pulumi.Input<string>;
-    gitDetails?: pulumi.Input<inputs.platform.FeatureFlagGitDetails>;
+    /**
+     * Description of the Feature Flag
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Environment Identifier
+     */
+    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[]>;
     /**
      * Identifier of the Feature Flag
      */
@@ -262,6 +210,10 @@ export interface FeatureFlagState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * The tags for the flag
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[]>;
+    /**
      * The options available for your flag
      */
     variations?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagVariation>[]>;
@@ -272,10 +224,6 @@ export interface FeatureFlagState {
  */
 export interface FeatureFlagArgs {
     /**
-     * Whether or not the flag is archived
-     */
-    archived?: pulumi.Input<boolean>;
-    /**
      * Which of the variations to use when the flag is toggled to off state
      */
     defaultOffVariation: pulumi.Input<string>;
@@ -283,7 +231,14 @@ export interface FeatureFlagArgs {
      * Which of the variations to use when the flag is toggled to on state
      */
     defaultOnVariation: pulumi.Input<string>;
-    gitDetails?: pulumi.Input<inputs.platform.FeatureFlagGitDetails>;
+    /**
+     * Description of the Feature Flag
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Environment Identifier
+     */
+    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[]>;
     /**
      * Identifier of the Feature Flag
      */
@@ -312,6 +267,10 @@ export interface FeatureFlagArgs {
      * Project Identifier
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The tags for the flag
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[]>;
     /**
      * The options available for your flag
      */

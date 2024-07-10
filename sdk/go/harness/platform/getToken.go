@@ -61,26 +61,22 @@ type LookupTokenArgs struct {
 	ApikeyId string `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType string `pulumi:"apikeyType"`
-	// Description of the Token
-	Description *string `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email *string `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword *string `pulumi:"encodedPassword"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the Token
-	Name string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime *int `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags map[string]string `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username *string `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -99,28 +95,28 @@ type LookupTokenResult struct {
 	ApikeyId string `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType string `pulumi:"apikeyType"`
-	// Description of the Token
-	Description *string `pulumi:"description"`
+	// Description of the resource.
+	Description string `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email *string `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword *string `pulumi:"encodedPassword"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the Token
-	Name string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime *int `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags map[string]string `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username *string `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -152,26 +148,22 @@ type LookupTokenOutputArgs struct {
 	ApikeyId pulumi.StringInput `pulumi:"apikeyId"`
 	// Type of the API Key
 	ApikeyType pulumi.StringInput `pulumi:"apikeyType"`
-	// Description of the Token
-	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Email Id of the user who created the Token
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// Encoded password of the Token
 	EncodedPassword pulumi.StringPtrInput `pulumi:"encodedPassword"`
-	// Identifier of the Token
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// Name of the Token
-	Name pulumi.StringInput `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringInput `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Scheduled expiry time in milliseconds
 	ScheduledExpireTime pulumi.IntPtrInput `pulumi:"scheduledExpireTime"`
-	// Tags for the Token
-	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Name of the user who created the Token
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// Boolean value to indicate if Token is valid or not.
@@ -216,9 +208,9 @@ func (o LookupTokenResultOutput) ApikeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTokenResult) string { return v.ApikeyType }).(pulumi.StringOutput)
 }
 
-// Description of the Token
-func (o LookupTokenResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTokenResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+// Description of the resource.
+func (o LookupTokenResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTokenResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Email Id of the user who created the Token
@@ -236,17 +228,17 @@ func (o LookupTokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the Token
+// Unique identifier of the resource.
 func (o LookupTokenResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTokenResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the Token
-func (o LookupTokenResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTokenResult) string { return v.Name }).(pulumi.StringOutput)
+// Name of the resource.
+func (o LookupTokenResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTokenResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Organization Identifier for the Entity
+// Unique identifier of the organization.
 func (o LookupTokenResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTokenResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -256,7 +248,7 @@ func (o LookupTokenResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTokenResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Project Identifier for the Entity
+// Unique identifier of the project.
 func (o LookupTokenResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTokenResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -266,9 +258,9 @@ func (o LookupTokenResultOutput) ScheduledExpireTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupTokenResult) *int { return v.ScheduledExpireTime }).(pulumi.IntPtrOutput)
 }
 
-// Tags for the Token
-func (o LookupTokenResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupTokenResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+// Tags to associate with the resource.
+func (o LookupTokenResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTokenResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Name of the user who created the Token

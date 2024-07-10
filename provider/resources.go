@@ -27,6 +27,7 @@ const (
 	cloudProviderMod = "cloudprovider"
 	platformMod      = "platform"
 	serviceMod       = "service"
+	autostoppingMod  = "autostopping"
 )
 
 var namespaceMap = map[string]string{
@@ -37,6 +38,7 @@ var moduleMap = map[string]string{
 	"cloudprovider": cloudProviderMod,
 	"platform":      platformMod,
 	"service":       serviceMod,
+	"autostopping":  autostoppingMod,
 }
 
 // harnessMember manufactures a type token for the Harness package and the given module and type.
@@ -185,6 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessResource(platformMod, "EnvironmentServiceOverrides")},
 			"harness_platform_environment_group":   {Tok: harnessResource(platformMod, "EnvironmentGroup")},
+			"harness_platform_delegatetoken":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_feature_flag":        {Tok: harnessResource(platformMod, "FeatureFlag")},
 			"harness_platform_ff_api_key":          {Tok: harnessResource(platformMod, "FeatureFlagApiKey")},
 			"harness_platform_filters":             {Tok: harnessResource(platformMod, "Filters")},
@@ -307,7 +310,9 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_sumologic": {
 				Tok: harnessDataSource(platformMod, "getSumologicConnector")},
 			"harness_platform_connector_vault": {Tok: harnessDataSource(platformMod, "getVaultConnector")},
+			"harness_platform_current_account": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_current_user":    {Tok: harnessDataSource(platformMod, "getCurrentUser")},
+			"harness_platform_delegatetoken":   {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides")},
 			"harness_platform_filters": {Tok: harnessDataSource(platformMod, "getFilters")},
@@ -357,14 +362,22 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_service_account":   {Tok: harnessDataSource(platformMod, "getServiceAccount")},
 			"harness_platform_triggers":          {Tok: harnessDataSource(platformMod, "getTriggers")},
 			"harness_platform_usergroup":         {Tok: harnessDataSource(platformMod, "getUsergroup")},
-			"harness_secret_manager":             {Tok: harnessDataSource(mainMod, "getSecretManager")},
-			"harness_service":                    {Tok: harnessDataSource(mainMod, "getService")},
-			"harness_ssh_credential":             {Tok: harnessDataSource(mainMod, "getSshCredential")},
-			"harness_sso_provider":               {Tok: harnessDataSource(mainMod, "getSsoProvider")},
-			"harness_user":                       {Tok: harnessDataSource(mainMod, "getUser")},
-			"harness_user_group":                 {Tok: harnessDataSource(mainMod, "getUserGroup")},
-			"harness_trigger":                    {Tok: harnessDataSource(mainMod, "getTrigger")},
-			"harness_yaml_config":                {Tok: harnessDataSource(mainMod, "getYamlConfig")},
+			// note this is renamed as it produces a conflict with the other datasource.
+			"harness_platform_workspace_output": {
+				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputValue"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"outputs": {Name: "outputValues"},
+				},
+			},
+			"harness_secret_manager": {Tok: harnessDataSource(mainMod, "getSecretManager")},
+			"harness_service":        {Tok: harnessDataSource(mainMod, "getService")},
+			"harness_ssh_credential": {Tok: harnessDataSource(mainMod, "getSshCredential")},
+			"harness_sso_provider":   {Tok: harnessDataSource(mainMod, "getSsoProvider")},
+			"harness_user":           {Tok: harnessDataSource(mainMod, "getUser")},
+			"harness_user_group":     {Tok: harnessDataSource(mainMod, "getUserGroup")},
+			"harness_trigger":        {Tok: harnessDataSource(mainMod, "getTrigger")},
+			"harness_yaml_config":    {Tok: harnessDataSource(mainMod, "getYamlConfig")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

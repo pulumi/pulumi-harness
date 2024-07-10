@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetDockerConnectorCredentialResult
     {
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
@@ -28,12 +32,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetDockerConnectorCredentialResult(
+            bool executeOnDelegate,
+
             string passwordRef,
 
             string username,
 
             string usernameRef)
         {
+            ExecuteOnDelegate = executeOnDelegate;
             PasswordRef = passwordRef;
             Username = username;
             UsernameRef = usernameRef;

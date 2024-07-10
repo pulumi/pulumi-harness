@@ -67,7 +67,7 @@ class GetEnvironmentGroupResult:
 
     @property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
+    def org_id(self) -> Optional[str]:
         """
         org_id of the environment group.
         """
@@ -75,7 +75,7 @@ class GetEnvironmentGroupResult:
 
     @property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    def project_id(self) -> Optional[str]:
         """
         project_id of the environment group.
         """
@@ -149,8 +149,8 @@ def get_environment_group(color: Optional[str] = None,
 @_utilities.lift_output_func(get_environment_group)
 def get_environment_group_output(color: Optional[pulumi.Input[Optional[str]]] = None,
                                  identifier: Optional[pulumi.Input[str]] = None,
-                                 org_id: Optional[pulumi.Input[str]] = None,
-                                 project_id: Optional[pulumi.Input[str]] = None,
+                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentGroupResult]:
     """
     Data source for retrieving a Harness environment group.

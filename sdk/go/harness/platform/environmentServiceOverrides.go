@@ -13,9 +13,130 @@ import (
 )
 
 // Resource for creating a Harness environment service overrides.
+// ## Example to create Environment Service Override at different levels (Org, Project, Account)
 //
-// ## Example Usage
+// ### Account Level
+// ```go
+// package main
 //
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironmentServiceOverrides(ctx, "example", &platform.EnvironmentServiceOverridesArgs{
+//				EnvId:     pulumi.String("environmentIdentifier"),
+//				ServiceId: pulumi.String("serviceIdentifier"),
+//				Yaml: pulumi.String(`serviceOverrides:
+//	  environmentRef: environmentIdentifier
+//	  serviceRef: serviceIdentifier
+//	  variables:
+//	   - name: asda
+//	     type: String
+//	     value: asddad
+//	  manifests:
+//	     - manifest:
+//	         identifier: manifestEnv
+//	         type: Values
+//	         spec:
+//	           store:
+//	             type: Git
+//	             spec:
+//	               connectorRef: <+input>
+//	               gitFetchType: Branch
+//	               paths:
+//	                 - file1
+//	               repoName: <+input>
+//	               branch: master
+//	  configFiles:
+//	     - configFile:
+//	         identifier: configFileEnv
+//	         spec:
+//	           store:
+//	             type: Harness
+//	             spec:
+//	               files:
+//	                 - account:/Add-ons/svcOverrideTest
+//	               secretFiles: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironmentServiceOverrides(ctx, "example", &platform.EnvironmentServiceOverridesArgs{
+//				OrgId:     pulumi.String("orgIdentifier"),
+//				EnvId:     pulumi.String("environmentIdentifier"),
+//				ServiceId: pulumi.String("serviceIdentifier"),
+//				Yaml: pulumi.String(`serviceOverrides:
+//	  environmentRef: environmentIdentifier
+//	  serviceRef: serviceIdentifier
+//	  variables:
+//	   - name: asda
+//	     type: String
+//	     value: asddad
+//	  manifests:
+//	     - manifest:
+//	         identifier: manifestEnv
+//	         type: Values
+//	         spec:
+//	           store:
+//	             type: Git
+//	             spec:
+//	               connectorRef: <+input>
+//	               gitFetchType: Branch
+//	               paths:
+//	                 - file1
+//	               repoName: <+input>
+//	               branch: master
+//	  configFiles:
+//	     - configFile:
+//	         identifier: configFileEnv
+//	         spec:
+//	           store:
+//	             type: Harness
+//	             spec:
+//	               files:
+//	                 - account:/Add-ons/svcOverrideTest
+//	               secretFiles: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
 // ```go
 // package main
 //
@@ -79,10 +200,22 @@ import (
 //
 // ## Import
 //
-// # Import using serviceoverride id
+// # Import list of account level service overrides using the env id associated with them
 //
 // ```sh
-// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <env_id>
+// ```
+//
+// # Import list of org level service overrides using the env id associated with them
+//
+// ```sh
+// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<env_id>
+// ```
+//
+// # Import list of project level service overrides using the env id associated with them
+//
+// ```sh
+// $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
 // ```
 type EnvironmentServiceOverrides struct {
 	pulumi.CustomResourceState

@@ -102,6 +102,10 @@ export interface GetAwsConnectorResult {
      */
     readonly name?: string;
     /**
+     * Authentication using harness oidc.
+     */
+    readonly oidcAuthentications: outputs.platform.GetAwsConnectorOidcAuthentication[];
+    /**
      * Unique identifier of the organization.
      */
     readonly orgId?: string;

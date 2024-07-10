@@ -67,6 +67,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentArgs : global::Pulumi.InvokeArgs
     {
+        [Input("gitDetails")]
+        public Inputs.GetEnvironmentGitDetailsArgs? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -99,6 +102,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetEnvironmentInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("gitDetails")]
+        public Input<Inputs.GetEnvironmentGitDetailsInputArgs>? GitDetails { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -141,6 +147,7 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        public readonly Outputs.GetEnvironmentGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -170,7 +177,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Input Set YAML
+        /// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         public readonly string Yaml;
 
@@ -179,6 +186,8 @@ namespace Pulumi.Harness.Platform
             string color,
 
             string description,
+
+            Outputs.GetEnvironmentGitDetailsResult gitDetails,
 
             string id,
 
@@ -198,6 +207,7 @@ namespace Pulumi.Harness.Platform
         {
             Color = color;
             Description = description;
+            GitDetails = gitDetails;
             Id = id;
             Identifier = identifier;
             Name = name;

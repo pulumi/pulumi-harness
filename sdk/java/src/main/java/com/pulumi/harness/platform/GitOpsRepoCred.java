@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Gitops Repositories Credentials.
+ * Resource for managing a Harness Gitops Repository Credentials.
  * 
  * ## Example Usage
  * 
@@ -54,8 +54,14 @@ import javax.annotation.Nullable;
  *             .orgId("org_id")
  *             .creds(GitOpsRepoCredCredArgs.builder()
  *                 .type("git")
- *                 .url("github.com")
- *                 .sshPrivateKey("yoursshprivatekey")
+ *                 .url("git{@literal @}github.com:yourorg")
+ *                 .sshPrivateKey("""
+ * ----- BEGIN OPENSSH PRIVATE KEY-----
+ * XXXXX
+ * XXXXX
+ * XXXXX
+ * -----END OPENSSH PRIVATE KEY -----
+ *                 """)
  *                 .build())
  *             .build());
  * 
@@ -67,10 +73,16 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import a Account level Gitops Repository Credentials
+ * Import an Account level Gitops Repository Credentials
  * 
  * ```sh
  * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example &lt;agent_id&gt;/&lt;repocred_id&gt;
+ * ```
+ * 
+ * Import an Org level Gitops Repository Credentials
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;repocred_id&gt;
  * ```
  * 
  * Import a Project level Gitops Repository Credentials
@@ -83,28 +95,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/gitOpsRepoCred:GitOpsRepoCred")
 public class GitOpsRepoCred extends com.pulumi.resources.CustomResource {
     /**
-     * Account identifier of the Repository Credential.
+     * Account identifier of the Repository Credentials.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account identifier of the Repository Credential.
+     * @return Account identifier of the Repository Credentials.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Agent identifier of the Repository Credential.
+     * Agent identifier of the Repository Credentials.
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the Repository Credential.
+     * @return Agent identifier of the Repository Credentials.
      * 
      */
     public Output<String> agentId() {
@@ -125,56 +137,56 @@ public class GitOpsRepoCred extends com.pulumi.resources.CustomResource {
         return this.creds;
     }
     /**
-     * Identifier of the Repository Credential.
+     * Identifier of the Repository Credentials.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Identifier of the Repository Credential.
+     * @return Identifier of the Repository Credentials.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Organization identifier of the Repository Credential.
+     * @return Organization identifier of the Repository Credentials.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Project identifier of the Repository Credential.
+     * @return Project identifier of the Repository Credentials.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * if the Repository credential should be upserted.
+     * Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      * 
      */
     @Export(name="upsert", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upsert;
 
     /**
-     * @return if the Repository credential should be upserted.
+     * @return Indicates if the GitOps repository credential should be updated if existing and inserted if not.
      * 
      */
     public Output<Optional<Boolean>> upsert() {

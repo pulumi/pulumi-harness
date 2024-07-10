@@ -22,6 +22,7 @@ __all__ = [
     'AwsConnectorInheritFromDelegate',
     'AwsConnectorIrsa',
     'AwsConnectorManual',
+    'AwsConnectorOidcAuthentication',
     'AwsKmsConnectorCredentials',
     'AwsKmsConnectorCredentialsAssumeRole',
     'AwsKmsConnectorCredentialsManual',
@@ -41,13 +42,27 @@ __all__ = [
     'BitbucketConnectorCredentials',
     'BitbucketConnectorCredentialsHttp',
     'BitbucketConnectorCredentialsSsh',
+    'ConnectorCustomSecretManagerTemplateInput',
+    'ConnectorCustomSecretManagerTemplateInputEnvironmentVariable',
+    'ConnectorCustomhealthsourceHeader',
+    'ConnectorCustomhealthsourceParam',
+    'ConnectorPdcHost',
+    'ConnectorRancherBearerToken',
     'DockerConnectorCredentials',
     'ElasticsearchConnectorApiToken',
     'ElasticsearchConnectorNoAuthentication',
     'ElasticsearchConnectorUsernamePassword',
     'EnvironmentClustersMappingCluster',
-    'FeatureFlagGitDetails',
+    'EnvironmentGitDetails',
+    'FeatureFlagEnvironment',
+    'FeatureFlagEnvironmentAddTargetRule',
+    'FeatureFlagTag',
+    'FeatureFlagTargetGroupRule',
     'FeatureFlagVariation',
+    'FileStoreFileCreatedBy',
+    'FileStoreFileLastModifiedBy',
+    'FileStoreFolderCreatedBy',
+    'FileStoreFolderLastModifiedBy',
     'FiltersFilterProperties',
     'GcpCloudCostConnectorBillingExportSpec',
     'GcpConnectorInheritFromDelegate',
@@ -78,12 +93,9 @@ __all__ = [
     'GitOpsApplicationsApplicationSpecSyncPolicyAutomated',
     'GitOpsApplicationsApplicationSpecSyncPolicyRetry',
     'GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff',
-    'GitOpsClusterQuery',
-    'GitOpsClusterQueryId',
     'GitOpsClusterRequest',
     'GitOpsClusterRequestCluster',
     'GitOpsClusterRequestClusterConfig',
-    'GitOpsClusterRequestClusterConfigAwsAuthConfig',
     'GitOpsClusterRequestClusterConfigExecProviderConfig',
     'GitOpsClusterRequestClusterConfigTlsClientConfig',
     'GitOpsClusterRequestClusterInfo',
@@ -91,8 +103,6 @@ __all__ = [
     'GitOpsClusterRequestClusterInfoConnectionState',
     'GitOpsClusterRequestClusterInfoConnectionStateAttemptedAt',
     'GitOpsClusterRequestClusterRefreshRequestedAt',
-    'GitOpsClusterRequestId',
-    'GitOpsClusterRequestUpdateMask',
     'GitOpsGnupgRequest',
     'GitOpsGnupgRequestPublickey',
     'GitOpsRepoCertRequest',
@@ -100,23 +110,35 @@ __all__ = [
     'GitOpsRepoCertRequestCertificateItem',
     'GitOpsRepoCertRequestCertificateMetadata',
     'GitOpsRepoCredCred',
+    'GitOpsRepositoryEcrGen',
+    'GitOpsRepositoryEcrGenJwtAuth',
+    'GitOpsRepositoryEcrGenSecretRef',
+    'GitOpsRepositoryGcrGen',
+    'GitOpsRepositoryGcrGenWorkloadIdentity',
+    'GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef',
     'GitOpsRepositoryRepo',
     'GitOpsRepositoryUpdateMask',
     'GithubConnectorApiAuthentication',
     'GithubConnectorApiAuthenticationGithubApp',
     'GithubConnectorCredentials',
     'GithubConnectorCredentialsHttp',
+    'GithubConnectorCredentialsHttpAnonymouse',
+    'GithubConnectorCredentialsHttpGithubApp',
     'GithubConnectorCredentialsSsh',
     'GitlabConnectorApiAuthentication',
     'GitlabConnectorCredentials',
     'GitlabConnectorCredentialsHttp',
     'GitlabConnectorCredentialsSsh',
     'HelmConnectorCredentials',
+    'InfrastructureGitDetails',
     'InputSetGitDetails',
+    'InputSetGitImportInfo',
+    'InputSetInputSetImportRequest',
     'JenkinsConnectorAuth',
     'JenkinsConnectorAuthJenkinsBearerToken',
     'JenkinsConnectorAuthJenkinsUserNamePassword',
     'JiraConnectorAuth',
+    'JiraConnectorAuthPersonalAccessToken',
     'JiraConnectorAuthUsernamePassword',
     'KubernetesConnectorClientKeyCert',
     'KubernetesConnectorInheritFromDelegate',
@@ -135,9 +157,20 @@ __all__ = [
     'NexusConnectorCredentials',
     'OciHelmConnectorCredentials',
     'PipelineFiltersFilterProperties',
+    'PipelineFiltersFilterPropertiesModuleProperties',
+    'PipelineFiltersFilterPropertiesModulePropertiesCd',
+    'PipelineFiltersFilterPropertiesModulePropertiesCi',
+    'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo',
+    'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest',
     'PipelineGitDetails',
+    'PipelineGitImportInfo',
+    'PipelinePipelineImportRequest',
     'PolicySetPolicy',
     'PrometheusConnectorHeader',
+    'RepoRuleBranchBypass',
+    'RepoRuleBranchPattern',
+    'RepoRuleBranchPolicy',
+    'RepoSource',
     'ResourceGroupIncludedScope',
     'ResourceGroupResourceFilter',
     'ResourceGroupResourceFilterResource',
@@ -150,9 +183,14 @@ __all__ = [
     'SecretSshkeySshSshPasswordCredential',
     'SecretSshkeySshSshkeyPathCredential',
     'SecretSshkeySshSshkeyReferenceCredential',
+    'SecretTextAdditionalMetadata',
+    'SecretTextAdditionalMetadataValue',
+    'ServiceGitDetails',
     'ServiceNowConnectorAuth',
     'ServiceNowConnectorAuthAdfs',
+    'ServiceNowConnectorAuthRefreshToken',
     'ServiceNowConnectorAuthUsernamePassword',
+    'ServiceOverridesV2GitDetails',
     'SloRequest',
     'SloRequestNotificationRuleRef',
     'SloRequestSloTarget',
@@ -161,11 +199,16 @@ __all__ = [
     'TasConnectorCredentialsTasManualDetails',
     'TemplateFiltersFilterProperties',
     'TemplateGitDetails',
+    'TemplateGitImportDetails',
+    'TemplateTemplateImportRequest',
     'TerraformCloudConnectorCredentials',
     'TerraformCloudConnectorCredentialsApiToken',
     'UserRoleBinding',
     'UsergroupNotificationConfig',
     'VariablesSpec',
+    'WorkspaceEnvironmentVariable',
+    'WorkspaceTerraformVariable',
+    'WorkspaceTerraformVariableFile',
     'GetAppDynamicsConnectorApiTokenResult',
     'GetAppDynamicsConnectorUsernamePasswordResult',
     'GetArtifactoryConnectorCredentialResult',
@@ -177,6 +220,7 @@ __all__ = [
     'GetAwsConnectorInheritFromDelegateResult',
     'GetAwsConnectorIrsaResult',
     'GetAwsConnectorManualResult',
+    'GetAwsConnectorOidcAuthenticationResult',
     'GetAwsKmsConnectorCredentialResult',
     'GetAwsKmsConnectorCredentialAssumeRoleResult',
     'GetAwsKmsConnectorCredentialManualResult',
@@ -197,9 +241,22 @@ __all__ = [
     'GetBitbucketConnectorCredentialHttpResult',
     'GetBitbucketConnectorCredentialSshResult',
     'GetCcmFiltersFilterPropertyResult',
+    'GetConnectorCustomSecretManagerTemplateInputResult',
+    'GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult',
+    'GetConnectorCustomhealthsourceHeaderResult',
+    'GetConnectorCustomhealthsourceParamResult',
+    'GetConnectorPdcHostResult',
+    'GetConnectorRancherBearerTokenResult',
     'GetDockerConnectorCredentialResult',
     'GetElasticsearchConnectorApiTokenResult',
     'GetElasticsearchConnectorUsernamePasswordResult',
+    'GetEnvironmentClustersMappingClusterResult',
+    'GetEnvironmentGitDetailsResult',
+    'GetEnvironmentListEnvironmentResult',
+    'GetFileStoreFileCreatedByResult',
+    'GetFileStoreFileLastModifiedByResult',
+    'GetFileStoreFolderCreatedByResult',
+    'GetFileStoreFolderLastModifiedByResult',
     'GetFiltersFilterPropertyResult',
     'GetGcpCloudCostConnectorBillingExportSpecResult',
     'GetGcpConnectorInheritFromDelegateResult',
@@ -211,11 +268,14 @@ __all__ = [
     'GetGithubConnectorApiAuthenticationGithubAppResult',
     'GetGithubConnectorCredentialResult',
     'GetGithubConnectorCredentialHttpResult',
+    'GetGithubConnectorCredentialHttpAnonymouseResult',
+    'GetGithubConnectorCredentialHttpGithubAppResult',
     'GetGithubConnectorCredentialSshResult',
     'GetGitlabConnectorApiAuthenticationResult',
     'GetGitlabConnectorCredentialResult',
     'GetGitlabConnectorCredentialHttpResult',
     'GetGitlabConnectorCredentialSshResult',
+    'GetGitopsAgentDeployYamlProxyResult',
     'GetGitopsAgentMetadataResult',
     'GetGitopsApplicationsApplicationResult',
     'GetGitopsApplicationsApplicationMetadataResult',
@@ -239,12 +299,9 @@ __all__ = [
     'GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult',
     'GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult',
     'GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult',
-    'GetGitopsClusterQueryResult',
-    'GetGitopsClusterQueryIdResult',
     'GetGitopsClusterRequestResult',
     'GetGitopsClusterRequestClusterResult',
     'GetGitopsClusterRequestClusterConfigResult',
-    'GetGitopsClusterRequestClusterConfigAwsAuthConfigResult',
     'GetGitopsClusterRequestClusterConfigExecProviderConfigResult',
     'GetGitopsClusterRequestClusterConfigTlsClientConfigResult',
     'GetGitopsClusterRequestClusterInfoResult',
@@ -252,19 +309,19 @@ __all__ = [
     'GetGitopsClusterRequestClusterInfoConnectionStateResult',
     'GetGitopsClusterRequestClusterInfoConnectionStateAttemptedAtResult',
     'GetGitopsClusterRequestClusterRefreshRequestedAtResult',
-    'GetGitopsClusterRequestIdResult',
-    'GetGitopsClusterRequestUpdateMaskResult',
     'GetGitopsGnupgRequestResult',
     'GetGitopsGnupgRequestPublickeyResult',
     'GetGitopsRepoCredCredResult',
     'GetGitopsRepositoryRepoResult',
     'GetGitopsRepositoryUpdateMaskResult',
     'GetHelmConnectorCredentialResult',
+    'GetInfrastructureGitDetailsResult',
     'GetInputSetGitDetailsResult',
     'GetJenkinsConnectorAuthResult',
     'GetJenkinsConnectorAuthJenkinsBearerTokenResult',
     'GetJenkinsConnectorAuthJenkinsUserNamePasswordResult',
     'GetJiraConnectorAuthResult',
+    'GetJiraConnectorAuthPersonalAccessTokenResult',
     'GetJiraConnectorAuthUsernamePasswordResult',
     'GetKubernetesConnectorClientKeyCertResult',
     'GetKubernetesConnectorInheritFromDelegateResult',
@@ -279,9 +336,20 @@ __all__ = [
     'GetOciHelmConnectorCredentialResult',
     'GetPermissionsPermissionResult',
     'GetPipelineFiltersFilterPropertyResult',
+    'GetPipelineFiltersFilterPropertyModulePropertiesResult',
+    'GetPipelineFiltersFilterPropertyModulePropertiesCdResult',
+    'GetPipelineFiltersFilterPropertyModulePropertiesCiResult',
+    'GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoResult',
+    'GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequestResult',
     'GetPipelineGitDetailsResult',
+    'GetPipelineListPipelineResult',
     'GetPolicySetPolicyResult',
+    'GetProjectListProjectResult',
     'GetPrometheusConnectorHeaderResult',
+    'GetRepoRuleBranchBypassResult',
+    'GetRepoRuleBranchPatternResult',
+    'GetRepoRuleBranchPolicyResult',
+    'GetRepoSourceResult',
     'GetResourceGroupIncludedScopeResult',
     'GetResourceGroupResourceFilterResult',
     'GetResourceGroupResourceFilterResourceResult',
@@ -294,9 +362,15 @@ __all__ = [
     'GetSecretSshkeySshSshPasswordCredentialResult',
     'GetSecretSshkeySshSshkeyPathCredentialResult',
     'GetSecretSshkeySshSshkeyReferenceCredentialResult',
+    'GetSecretTextAdditionalMetadataResult',
+    'GetSecretTextAdditionalMetadataValueResult',
+    'GetServiceGitDetailsResult',
+    'GetServiceListServiceResult',
     'GetServiceNowConnectorAuthResult',
     'GetServiceNowConnectorAuthAdfResult',
+    'GetServiceNowConnectorAuthRefreshTokenResult',
     'GetServiceNowConnectorAuthUsernamePasswordResult',
+    'GetServiceOverridesV2GitDetailsResult',
     'GetSpotConnectorPermanentTokenResult',
     'GetTasConnectorCredentialResult',
     'GetTasConnectorCredentialTasManualDetailResult',
@@ -306,6 +380,10 @@ __all__ = [
     'GetTerraformCloudConnectorCredentialApiTokenResult',
     'GetUsergroupNotificationConfigResult',
     'GetVariablesSpecResult',
+    'GetWorkspaceEnvironmentVariableResult',
+    'GetWorkspaceOutputValueOutputValueResult',
+    'GetWorkspaceTerraformVariableResult',
+    'GetWorkspaceTerraformVariableFileResult',
 ]
 
 @pulumi.output_type
@@ -758,11 +836,15 @@ class AwsConnectorInheritFromDelegate(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 delegate_selectors: Sequence[str]):
+                 delegate_selectors: Sequence[str],
+                 region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str region: Test Region to perform Connection test of AWS Connector.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -771,6 +853,14 @@ class AwsConnectorInheritFromDelegate(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -793,11 +883,15 @@ class AwsConnectorIrsa(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 delegate_selectors: Sequence[str]):
+                 delegate_selectors: Sequence[str],
+                 region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str region: Test Region to perform Connection test of AWS Connector.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -806,6 +900,14 @@ class AwsConnectorIrsa(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -837,12 +939,14 @@ class AwsConnectorManual(dict):
                  secret_key_ref: str,
                  access_key: Optional[str] = None,
                  access_key_ref: Optional[str] = None,
-                 delegate_selectors: Optional[Sequence[str]] = None):
+                 delegate_selectors: Optional[Sequence[str]] = None,
+                 region: Optional[str] = None):
         """
         :param str secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str access_key: AWS access key.
         :param str access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param Sequence[str] delegate_selectors: Connect only use delegates with these tags.
+        :param str region: Test Region to perform Connection test of AWS Connector.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
         if access_key is not None:
@@ -851,6 +955,8 @@ class AwsConnectorManual(dict):
             pulumi.set(__self__, "access_key_ref", access_key_ref)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -883,6 +989,74 @@ class AwsConnectorManual(dict):
         Connect only use delegates with these tags.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class AwsConnectorOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+        elif key == "iamRoleArn":
+            suggest = "iam_role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsConnectorOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsConnectorOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsConnectorOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 iam_role_arn: str,
+                 region: Optional[str] = None):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str iam_role_arn: The IAM Role to assume the credentials from.
+        :param str region: Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The IAM Role to assume the credentials from.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -1182,10 +1356,12 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessKeyRef":
-            suggest = "access_key_ref"
-        elif key == "secretKeyRef":
+        if key == "secretKeyRef":
             suggest = "secret_key_ref"
+        elif key == "accessKeyPlainText":
+            suggest = "access_key_plain_text"
+        elif key == "accessKeyRef":
+            suggest = "access_key_ref"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentialsManual. Access the value via the '{suggest}' property getter instead.")
@@ -1199,22 +1375,19 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_key_ref: str,
-                 secret_key_ref: str):
+                 secret_key_ref: str,
+                 access_key_plain_text: Optional[str] = None,
+                 access_key_ref: Optional[str] = None):
         """
-        :param str access_key_ref: The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str secret_key_ref: The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str access_key_plain_text: The plain text AWS access key.
+        :param str access_key_ref: The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
-        pulumi.set(__self__, "access_key_ref", access_key_ref)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="accessKeyRef")
-    def access_key_ref(self) -> str:
-        """
-        The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        """
-        return pulumi.get(self, "access_key_ref")
+        if access_key_plain_text is not None:
+            pulumi.set(__self__, "access_key_plain_text", access_key_plain_text)
+        if access_key_ref is not None:
+            pulumi.set(__self__, "access_key_ref", access_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -1223,6 +1396,22 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
         The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
+
+    @property
+    @pulumi.getter(name="accessKeyPlainText")
+    def access_key_plain_text(self) -> Optional[str]:
+        """
+        The plain text AWS access key.
+        """
+        return pulumi.get(self, "access_key_plain_text")
+
+    @property
+    @pulumi.getter(name="accessKeyRef")
+    def access_key_ref(self) -> Optional[str]:
+        """
+        The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "access_key_ref")
 
 
 @pulumi.output_type
@@ -1861,6 +2050,291 @@ class BitbucketConnectorCredentialsSsh(dict):
 
 
 @pulumi.output_type
+class ConnectorCustomSecretManagerTemplateInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVariables":
+            suggest = "environment_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCustomSecretManagerTemplateInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCustomSecretManagerTemplateInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCustomSecretManagerTemplateInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_variables: Optional[Sequence['outputs.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable']] = None):
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[Sequence['outputs.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable']]:
+        return pulumi.get(self, "environment_variables")
+
+
+@pulumi.output_type
+class ConnectorCustomSecretManagerTemplateInputEnvironmentVariable(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str,
+                 value: str,
+                 default: Optional[bool] = None):
+        """
+        :param str name: : Name of the resource.
+        :param str type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        : Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[bool]:
+        return pulumi.get(self, "default")
+
+
+@pulumi.output_type
+class ConnectorCustomhealthsourceHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptedValueRef":
+            suggest = "encrypted_value_ref"
+        elif key == "valueEncrypted":
+            suggest = "value_encrypted"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCustomhealthsourceHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCustomhealthsourceHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCustomhealthsourceHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 encrypted_value_ref: Optional[str] = None,
+                 value: Optional[str] = None,
+                 value_encrypted: Optional[bool] = None):
+        """
+        :param str key: Key.
+        :param str encrypted_value_ref: Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str value: Value.
+        :param bool value_encrypted: Encrypted value.
+        """
+        pulumi.set(__self__, "key", key)
+        if encrypted_value_ref is not None:
+            pulumi.set(__self__, "encrypted_value_ref", encrypted_value_ref)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_encrypted is not None:
+            pulumi.set(__self__, "value_encrypted", value_encrypted)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="encryptedValueRef")
+    def encrypted_value_ref(self) -> Optional[str]:
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "encrypted_value_ref")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueEncrypted")
+    def value_encrypted(self) -> Optional[bool]:
+        """
+        Encrypted value.
+        """
+        return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class ConnectorCustomhealthsourceParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptedValueRef":
+            suggest = "encrypted_value_ref"
+        elif key == "valueEncrypted":
+            suggest = "value_encrypted"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorCustomhealthsourceParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorCustomhealthsourceParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorCustomhealthsourceParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 encrypted_value_ref: Optional[str] = None,
+                 value: Optional[str] = None,
+                 value_encrypted: Optional[bool] = None):
+        """
+        :param str key: Key.
+        :param str encrypted_value_ref: Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str value: Value.
+        :param bool value_encrypted: Encrypted value.
+        """
+        pulumi.set(__self__, "key", key)
+        if encrypted_value_ref is not None:
+            pulumi.set(__self__, "encrypted_value_ref", encrypted_value_ref)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_encrypted is not None:
+            pulumi.set(__self__, "value_encrypted", value_encrypted)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="encryptedValueRef")
+    def encrypted_value_ref(self) -> Optional[str]:
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "encrypted_value_ref")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueEncrypted")
+    def value_encrypted(self) -> Optional[bool]:
+        """
+        Encrypted value.
+        """
+        return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class ConnectorPdcHost(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 attributes: Optional[Mapping[str, Any]] = None):
+        """
+        :param str hostname: Hostname e.g. 87.23.66.11:80
+        :param Mapping[str, Any] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname e.g. 87.23.66.11:80
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, Any]]:
+        """
+        Host attributes with values. e.g. type, region, name, ip, etc.
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class ConnectorRancherBearerToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bearerTokenRef":
+            suggest = "bearer_token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorRancherBearerToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorRancherBearerToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorRancherBearerToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bearer_token_ref: str):
+        """
+        :param str bearer_token_ref: Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "bearer_token_ref", bearer_token_ref)
+
+    @property
+    @pulumi.getter(name="bearerTokenRef")
+    def bearer_token_ref(self) -> str:
+        """
+        Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "bearer_token_ref")
+
+
+@pulumi.output_type
 class DockerConnectorCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1886,7 +2360,7 @@ class DockerConnectorCredentials(dict):
                  username: Optional[str] = None,
                  username_ref: Optional[str] = None):
         """
-        :param str password_ref: The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str password_ref: The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
         :param str username: The username to use for the docker registry.
         :param str username_ref: The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
@@ -1900,7 +2374,7 @@ class DockerConnectorCredentials(dict):
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> str:
         """
-        The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
         """
         return pulumi.get(self, "password_ref")
 
@@ -2023,15 +2497,36 @@ class ElasticsearchConnectorUsernamePassword(dict):
 
 @pulumi.output_type
 class EnvironmentClustersMappingCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentIdentifier":
+            suggest = "agent_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentClustersMappingCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentClustersMappingCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentClustersMappingCluster.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 agent_identifier: Optional[str] = None,
                  identifier: Optional[str] = None,
                  name: Optional[str] = None,
                  scope: Optional[str] = None):
         """
-        :param str identifier: account Identifier of the account
+        :param str agent_identifier: agent identifier of the cluster (include scope prefix)
+        :param str identifier: identifier of the cluster
         :param str name: name of the cluster
-        :param str scope: scope at which the cluster exists in harness gitops, project vs org vs account
+        :param str scope: scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
         """
+        if agent_identifier is not None:
+            pulumi.set(__self__, "agent_identifier", agent_identifier)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -2040,10 +2535,18 @@ class EnvironmentClustersMappingCluster(dict):
             pulumi.set(__self__, "scope", scope)
 
     @property
+    @pulumi.getter(name="agentIdentifier")
+    def agent_identifier(self) -> Optional[str]:
+        """
+        agent identifier of the cluster (include scope prefix)
+        """
+        return pulumi.get(self, "agent_identifier")
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[str]:
         """
-        account Identifier of the account
+        identifier of the cluster
         """
         return pulumi.get(self, "identifier")
 
@@ -2059,44 +2562,458 @@ class EnvironmentClustersMappingCluster(dict):
     @pulumi.getter
     def scope(self) -> Optional[str]:
         """
-        scope at which the cluster exists in harness gitops, project vs org vs account
+        scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
         """
         return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
-class FeatureFlagGitDetails(dict):
+class EnvironmentGitDetails(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "commitMsg":
-            suggest = "commit_msg"
+        if key == "baseBranch":
+            suggest = "base_branch"
+        elif key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "importFromGit":
+            suggest = "import_from_git"
+        elif key == "isForceImport":
+            suggest = "is_force_import"
+        elif key == "isHarnesscodeRepo":
+            suggest = "is_harnesscode_repo"
+        elif key == "isNewBranch":
+            suggest = "is_new_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "lastObjectId":
+            suggest = "last_object_id"
+        elif key == "loadFromCache":
+            suggest = "load_from_cache"
+        elif key == "loadFromFallbackBranch":
+            suggest = "load_from_fallback_branch"
+        elif key == "parentEntityConnectorRef":
+            suggest = "parent_entity_connector_ref"
+        elif key == "parentEntityRepoName":
+            suggest = "parent_entity_repo_name"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "storeType":
+            suggest = "store_type"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FeatureFlagGitDetails. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentGitDetails. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FeatureFlagGitDetails.__key_warning(key)
+        EnvironmentGitDetails.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FeatureFlagGitDetails.__key_warning(key)
+        EnvironmentGitDetails.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 commit_msg: str):
+                 base_branch: Optional[str] = None,
+                 branch: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 import_from_git: Optional[bool] = None,
+                 is_force_import: Optional[bool] = None,
+                 is_harnesscode_repo: Optional[bool] = None,
+                 is_new_branch: Optional[bool] = None,
+                 last_commit_id: Optional[str] = None,
+                 last_object_id: Optional[str] = None,
+                 load_from_cache: Optional[str] = None,
+                 load_from_fallback_branch: Optional[bool] = None,
+                 parent_entity_connector_ref: Optional[str] = None,
+                 parent_entity_repo_name: Optional[str] = None,
+                 repo_name: Optional[str] = None,
+                 store_type: Optional[str] = None):
         """
-        :param str commit_msg: The commit message to use as part of a gitsync operation
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch: Name of the branch.
+        :param str commit_message: message for the commit in Git Repo.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param bool import_from_git: Flag to set if importing from Git
+        :param bool is_force_import: Flag to set if force importing from Git
+        :param bool is_harnesscode_repo: If the gitProvider is HarnessCode
+        :param bool is_new_branch: If a new branch creation is requested.
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Environment.
+        :param str load_from_cache: If the Entity is to be fetched from cache
+        :param bool load_from_fallback_branch: Whether the file has to be get from fallback_branch.
+        :param str parent_entity_connector_ref: Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str parent_entity_repo_name: Name of the repository where parent entity lies.
+        :param str repo_name: Name of the repository.
+        :param str store_type: store type of the entity.
         """
-        pulumi.set(__self__, "commit_msg", commit_msg)
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
+        if is_harnesscode_repo is not None:
+            pulumi.set(__self__, "is_harnesscode_repo", is_harnesscode_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if parent_entity_connector_ref is not None:
+            pulumi.set(__self__, "parent_entity_connector_ref", parent_entity_connector_ref)
+        if parent_entity_repo_name is not None:
+            pulumi.set(__self__, "parent_entity_repo_name", parent_entity_repo_name)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
 
     @property
-    @pulumi.getter(name="commitMsg")
-    def commit_msg(self) -> str:
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[str]:
         """
-        The commit message to use as part of a gitsync operation
+        Name of the default branch (this checks out a new branch titled by branch_name).
         """
-        return pulumi.get(self, "commit_msg")
+        return pulumi.get(self, "base_branch")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        message for the commit in Git Repo.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[bool]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[bool]:
+        """
+        Flag to set if force importing from Git
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @property
+    @pulumi.getter(name="isHarnesscodeRepo")
+    def is_harnesscode_repo(self) -> Optional[bool]:
+        """
+        If the gitProvider is HarnessCode
+        """
+        return pulumi.get(self, "is_harnesscode_repo")
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[bool]:
+        """
+        If a new branch creation is requested.
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[str]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[str]:
+        """
+        Last object identifier (for Github). To be provided only when updating Environment.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[str]:
+        """
+        If the Entity is to be fetched from cache
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[bool]:
+        """
+        Whether the file has to be get from fallback_branch.
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="parentEntityConnectorRef")
+    def parent_entity_connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "parent_entity_connector_ref")
+
+    @property
+    @pulumi.getter(name="parentEntityRepoName")
+    def parent_entity_repo_name(self) -> Optional[str]:
+        """
+        Name of the repository where parent entity lies.
+        """
+        return pulumi.get(self, "parent_entity_repo_name")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        store type of the entity.
+        """
+        return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
+class FeatureFlagEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addTargetRules":
+            suggest = "add_target_rules"
+        elif key == "defaultOffVariation":
+            suggest = "default_off_variation"
+        elif key == "defaultOnVariation":
+            suggest = "default_on_variation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFlagEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFlagEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFlagEnvironment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifier: str,
+                 add_target_rules: Optional[Sequence['outputs.FeatureFlagEnvironmentAddTargetRule']] = None,
+                 default_off_variation: Optional[str] = None,
+                 default_on_variation: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str identifier: Identifier of the Environment
+        :param Sequence['FeatureFlagEnvironmentAddTargetRuleArgs'] add_target_rules: The targeting rules for the flag
+        :param str default_off_variation: Default variation to be served when flag is 'off'
+        :param str default_on_variation: Default variation to be served when flag is 'on'
+        :param str state: State of the flag in this environment. Possible values are 'on' and 'off'
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if add_target_rules is not None:
+            pulumi.set(__self__, "add_target_rules", add_target_rules)
+        if default_off_variation is not None:
+            pulumi.set(__self__, "default_off_variation", default_off_variation)
+        if default_on_variation is not None:
+            pulumi.set(__self__, "default_on_variation", default_on_variation)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        Identifier of the Environment
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="addTargetRules")
+    def add_target_rules(self) -> Optional[Sequence['outputs.FeatureFlagEnvironmentAddTargetRule']]:
+        """
+        The targeting rules for the flag
+        """
+        return pulumi.get(self, "add_target_rules")
+
+    @property
+    @pulumi.getter(name="defaultOffVariation")
+    def default_off_variation(self) -> Optional[str]:
+        """
+        Default variation to be served when flag is 'off'
+        """
+        return pulumi.get(self, "default_off_variation")
+
+    @property
+    @pulumi.getter(name="defaultOnVariation")
+    def default_on_variation(self) -> Optional[str]:
+        """
+        Default variation to be served when flag is 'on'
+        """
+        return pulumi.get(self, "default_on_variation")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the flag in this environment. Possible values are 'on' and 'off'
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class FeatureFlagEnvironmentAddTargetRule(dict):
+    def __init__(__self__, *,
+                 targets: Optional[Sequence[str]] = None,
+                 variation: Optional[str] = None):
+        """
+        :param Sequence[str] targets: The targets of the rule
+        :param str variation: The identifier of the variation. Valid values are `enabled`, `disabled`
+        """
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+        if variation is not None:
+            pulumi.set(__self__, "variation", variation)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Optional[Sequence[str]]:
+        """
+        The targets of the rule
+        """
+        return pulumi.get(self, "targets")
+
+    @property
+    @pulumi.getter
+    def variation(self) -> Optional[str]:
+        """
+        The identifier of the variation. Valid values are `enabled`, `disabled`
+        """
+        return pulumi.get(self, "variation")
+
+
+@pulumi.output_type
+class FeatureFlagTag(dict):
+    def __init__(__self__, *,
+                 identifier: str):
+        """
+        :param str identifier: The identifier of the tag
+        """
+        pulumi.set(__self__, "identifier", identifier)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        The identifier of the tag
+        """
+        return pulumi.get(self, "identifier")
+
+
+@pulumi.output_type
+class FeatureFlagTargetGroupRule(dict):
+    def __init__(__self__, *,
+                 attribute: Optional[str] = None,
+                 negate: Optional[bool] = None,
+                 op: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str attribute: The attribute to use in the clause.  This can be any target attribute
+        :param bool negate: Is the operation negated?
+        :param str op: The type of operation such as equals, starts_with, contains
+        :param Sequence[str] values: The values that are compared against the operator
+        """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if negate is not None:
+            pulumi.set(__self__, "negate", negate)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[str]:
+        """
+        The attribute to use in the clause.  This can be any target attribute
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def negate(self) -> Optional[bool]:
+        """
+        Is the operation negated?
+        """
+        return pulumi.get(self, "negate")
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[str]:
+        """
+        The type of operation such as equals, starts_with, contains
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        The values that are compared against the operator
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -2148,6 +3065,130 @@ class FeatureFlagVariation(dict):
         The value of the variation
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FileStoreFileCreatedBy(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FileStoreFileLastModifiedBy(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FileStoreFolderCreatedBy(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FileStoreFolderLastModifiedBy(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -2462,6 +3503,8 @@ class GitOpsAgentMetadata(dict):
         suggest = None
         if key == "highAvailability":
             suggest = "high_availability"
+        elif key == "isNamespaced":
+            suggest = "is_namespaced"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GitOpsAgentMetadata. Access the value via the '{suggest}' property getter instead.")
@@ -2476,13 +3519,17 @@ class GitOpsAgentMetadata(dict):
 
     def __init__(__self__, *,
                  high_availability: Optional[bool] = None,
+                 is_namespaced: Optional[bool] = None,
                  namespace: Optional[str] = None):
         """
-        :param bool high_availability: Indicates if the deployment should be deployed using the deploy-ha.yaml
-        :param str namespace: The k8s namespace that this agent resides in.
+        :param bool high_availability: Indicates if the agent is deployed in HA mode.
+        :param bool is_namespaced: Indicates if the agent is namespaced.
+        :param str namespace: The kubernetes namespace where the agent should be installed.
         """
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
+        if is_namespaced is not None:
+            pulumi.set(__self__, "is_namespaced", is_namespaced)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
 
@@ -2490,15 +3537,23 @@ class GitOpsAgentMetadata(dict):
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[bool]:
         """
-        Indicates if the deployment should be deployed using the deploy-ha.yaml
+        Indicates if the agent is deployed in HA mode.
         """
         return pulumi.get(self, "high_availability")
+
+    @property
+    @pulumi.getter(name="isNamespaced")
+    def is_namespaced(self) -> Optional[bool]:
+        """
+        Indicates if the agent is namespaced.
+        """
+        return pulumi.get(self, "is_namespaced")
 
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        The k8s namespace that this agent resides in.
+        The kubernetes namespace where the agent should be installed.
         """
         return pulumi.get(self, "namespace")
 
@@ -2574,10 +3629,10 @@ class GitOpsApplicationsApplicationMetadata(dict):
         :param str generate_name: An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
         :param str generation: A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
-        :param str name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
-        :param str namespace: Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+        :param str name: Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        :param str namespace: Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
         :param Sequence['GitOpsApplicationsApplicationMetadataOwnerReferenceArgs'] owner_references: List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
-        :param str uid: UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+        :param str uid: UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -2652,7 +3707,7 @@ class GitOpsApplicationsApplicationMetadata(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
         """
         return pulumi.get(self, "name")
 
@@ -2660,7 +3715,7 @@ class GitOpsApplicationsApplicationMetadata(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
+        Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
         """
         return pulumi.get(self, "namespace")
 
@@ -2676,7 +3731,7 @@ class GitOpsApplicationsApplicationMetadata(dict):
     @pulumi.getter
     def uid(self) -> Optional[str]:
         """
-        UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+        UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
         """
         return pulumi.get(self, "uid")
 
@@ -2804,7 +3859,7 @@ class GitOpsApplicationsApplicationSpec(dict):
                  sync_policies: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSyncPolicy']] = None):
         """
         :param Sequence['GitOpsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
-        :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
+        :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of the GitOps application.
         :param Sequence['GitOpsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
         if destinations is not None:
@@ -2826,7 +3881,7 @@ class GitOpsApplicationsApplicationSpec(dict):
     @pulumi.getter
     def sources(self) -> Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']]:
         """
-        Contains all information about the source of a GitOps application.
+        Contains all information about the source of the GitOps application.
         """
         return pulumi.get(self, "sources")
 
@@ -2848,7 +3903,7 @@ class GitOpsApplicationsApplicationSpecDestination(dict):
         """
         :param str name: URL of the target cluster and must be set to the kubernetes control plane API.
         :param str namespace: Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
-        :param str server: Server of the destination of the GitOps application.
+        :param str server: URL of the target cluster server for the GitOps application.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2877,7 +3932,7 @@ class GitOpsApplicationsApplicationSpecDestination(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        Server of the destination of the GitOps application.
+        URL of the target cluster server for the GitOps application.
         """
         return pulumi.get(self, "server")
 
@@ -2904,7 +3959,6 @@ class GitOpsApplicationsApplicationSpecSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 path: str,
                  repo_url: str,
                  target_revision: str,
                  chart: Optional[str] = None,
@@ -2912,9 +3966,9 @@ class GitOpsApplicationsApplicationSpecSource(dict):
                  helms: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourceHelm']] = None,
                  ksonnets: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourceKsonnet']] = None,
                  kustomizes: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourceKustomize']] = None,
+                 path: Optional[str] = None,
                  plugins: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourcePlugin']] = None):
         """
-        :param str path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param str repo_url: URL to the repository (git or helm) that contains the GitOps application manifests.
         :param str target_revision: Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
         :param str chart: Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
@@ -2922,9 +3976,9 @@ class GitOpsApplicationsApplicationSpecSource(dict):
         :param Sequence['GitOpsApplicationsApplicationSpecSourceHelmArgs'] helms: Holds helm specific options.
         :param Sequence['GitOpsApplicationsApplicationSpecSourceKsonnetArgs'] ksonnets: Ksonnet specific options.
         :param Sequence['GitOpsApplicationsApplicationSpecSourceKustomizeArgs'] kustomizes: Options specific to a GitOps application source specific to Kustomize.
+        :param str path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param Sequence['GitOpsApplicationsApplicationSpecSourcePluginArgs'] plugins: Options specific to config management plugins.
         """
-        pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_url", repo_url)
         pulumi.set(__self__, "target_revision", target_revision)
         if chart is not None:
@@ -2937,16 +3991,10 @@ class GitOpsApplicationsApplicationSpecSource(dict):
             pulumi.set(__self__, "ksonnets", ksonnets)
         if kustomizes is not None:
             pulumi.set(__self__, "kustomizes", kustomizes)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if plugins is not None:
             pulumi.set(__self__, "plugins", plugins)
-
-    @property
-    @pulumi.getter
-    def path(self) -> str:
-        """
-        Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
-        """
-        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="repoUrl")
@@ -3003,6 +4051,14 @@ class GitOpsApplicationsApplicationSpecSource(dict):
         Options specific to a GitOps application source specific to Kustomize.
         """
         return pulumi.get(self, "kustomizes")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+        """
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
@@ -3899,87 +4955,11 @@ class GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoff(dict):
 
 
 @pulumi.output_type
-class GitOpsClusterQuery(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence['outputs.GitOpsClusterQueryId']] = None,
-                 name: Optional[str] = None,
-                 server: Optional[str] = None):
-        """
-        :param Sequence['GitOpsClusterQueryIdArgs'] ids: Cluster server URL or the cluster name.
-        :param str name: Name of the GitOps cluster.
-        :param str server: Server of the GitOps cluster.
-        """
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence['outputs.GitOpsClusterQueryId']]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name of the GitOps cluster.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[str]:
-        """
-        Server of the GitOps cluster.
-        """
-        return pulumi.get(self, "server")
-
-
-@pulumi.output_type
-class GitOpsClusterQueryId(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str type: Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-        :param str value: Cluster server URL or the cluster name.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GitOpsClusterRequest(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "updateMasks":
-            suggest = "update_masks"
-        elif key == "updatedFields":
+        if key == "updatedFields":
             suggest = "updated_fields"
 
         if suggest:
@@ -3995,27 +4975,19 @@ class GitOpsClusterRequest(dict):
 
     def __init__(__self__, *,
                  clusters: Optional[Sequence['outputs.GitOpsClusterRequestCluster']] = None,
-                 ids: Optional[Sequence['outputs.GitOpsClusterRequestId']] = None,
                  tags: Optional[Sequence[str]] = None,
-                 update_masks: Optional[Sequence['outputs.GitOpsClusterRequestUpdateMask']] = None,
                  updated_fields: Optional[Sequence[str]] = None,
                  upsert: Optional[bool] = None):
         """
         :param Sequence['GitOpsClusterRequestClusterArgs'] clusters: GitOps cluster details.
-        :param Sequence['GitOpsClusterRequestIdArgs'] ids: Cluster server URL or the cluster name.
-        :param Sequence[str] tags: Tags associated with the clusters
-        :param Sequence['GitOpsClusterRequestUpdateMaskArgs'] update_masks: Update mask of the GitOps cluster.
+        :param Sequence[str] tags: Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         :param Sequence[str] updated_fields: Fields which are updated.
         :param bool upsert: Indicates if the GitOps cluster should be updated if existing and inserted if not.
         """
         if clusters is not None:
             pulumi.set(__self__, "clusters", clusters)
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if update_masks is not None:
-            pulumi.set(__self__, "update_masks", update_masks)
         if updated_fields is not None:
             pulumi.set(__self__, "updated_fields", updated_fields)
         if upsert is not None:
@@ -4031,27 +5003,11 @@ class GitOpsClusterRequest(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[Sequence['outputs.GitOpsClusterRequestId']]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        Tags associated with the clusters
+        Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         """
         return pulumi.get(self, "tags")
-
-    @property
-    @pulumi.getter(name="updateMasks")
-    def update_masks(self) -> Optional[Sequence['outputs.GitOpsClusterRequestUpdateMask']]:
-        """
-        Update mask of the GitOps cluster.
-        """
-        return pulumi.get(self, "update_masks")
 
     @property
     @pulumi.getter(name="updatedFields")
@@ -4110,11 +5066,11 @@ class GitOpsClusterRequestCluster(dict):
         :param bool cluster_resources: Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
         :param Sequence['GitOpsClusterRequestClusterInfoArgs'] infos: Information about cluster cache and state.
         :param Mapping[str, str] labels: Labels for cluster secret metadata.
-        :param str name: Name of the cluster. If omitted, will use the server address.
+        :param str name: Name of the cluster. If omitted, the server address will be used.
         :param Sequence[str] namespaces: List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
-        :param str project: Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+        :param str project: The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
         :param Sequence['GitOpsClusterRequestClusterRefreshRequestedAtArgs'] refresh_requested_ats: Time when cluster cache refresh has been requested.
-        :param str shard: Shard number. Calculated on the fly by the application controller if not specified.
+        :param str shard: Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
         """
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "server", server)
@@ -4189,7 +5145,7 @@ class GitOpsClusterRequestCluster(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the cluster. If omitted, will use the server address.
+        Name of the cluster. If omitted, the server address will be used.
         """
         return pulumi.get(self, "name")
 
@@ -4205,7 +5161,7 @@ class GitOpsClusterRequestCluster(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+        The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -4221,7 +5177,7 @@ class GitOpsClusterRequestCluster(dict):
     @pulumi.getter
     def shard(self) -> Optional[str]:
         """
-        Shard number. Calculated on the fly by the application controller if not specified.
+        Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
         """
         return pulumi.get(self, "shard")
 
@@ -4231,14 +5187,16 @@ class GitOpsClusterRequestClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsAuthConfigs":
-            suggest = "aws_auth_configs"
+        if key == "awsClusterName":
+            suggest = "aws_cluster_name"
         elif key == "bearerToken":
             suggest = "bearer_token"
         elif key == "clusterConnectionType":
             suggest = "cluster_connection_type"
         elif key == "execProviderConfigs":
             suggest = "exec_provider_configs"
+        elif key == "roleARN":
+            suggest = "role_arn"
         elif key == "tlsClientConfigs":
             suggest = "tls_client_configs"
 
@@ -4254,24 +5212,26 @@ class GitOpsClusterRequestClusterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 aws_auth_configs: Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigAwsAuthConfig']] = None,
+                 aws_cluster_name: Optional[str] = None,
                  bearer_token: Optional[str] = None,
                  cluster_connection_type: Optional[str] = None,
                  exec_provider_configs: Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigExecProviderConfig']] = None,
                  password: Optional[str] = None,
+                 role_arn: Optional[str] = None,
                  tls_client_configs: Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigTlsClientConfig']] = None,
                  username: Optional[str] = None):
         """
-        :param Sequence['GitOpsClusterRequestClusterConfigAwsAuthConfigArgs'] aws_auth_configs: IAM authentication configuration for AWS.
+        :param str aws_cluster_name: AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         :param str bearer_token: Bearer authentication token the cluster.
         :param str cluster_connection_type: Identifies the authentication method used to connect to the cluster.
         :param Sequence['GitOpsClusterRequestClusterConfigExecProviderConfigArgs'] exec_provider_configs: Configuration for an exec provider.
         :param str password: Password of the server of the cluster.
+        :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
         :param Sequence['GitOpsClusterRequestClusterConfigTlsClientConfigArgs'] tls_client_configs: Settings to enable transport layer security.
         :param str username: Username of the server of the cluster.
         """
-        if aws_auth_configs is not None:
-            pulumi.set(__self__, "aws_auth_configs", aws_auth_configs)
+        if aws_cluster_name is not None:
+            pulumi.set(__self__, "aws_cluster_name", aws_cluster_name)
         if bearer_token is not None:
             pulumi.set(__self__, "bearer_token", bearer_token)
         if cluster_connection_type is not None:
@@ -4280,18 +5240,20 @@ class GitOpsClusterRequestClusterConfig(dict):
             pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if tls_client_configs is not None:
             pulumi.set(__self__, "tls_client_configs", tls_client_configs)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
     @property
-    @pulumi.getter(name="awsAuthConfigs")
-    def aws_auth_configs(self) -> Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigAwsAuthConfig']]:
+    @pulumi.getter(name="awsClusterName")
+    def aws_cluster_name(self) -> Optional[str]:
         """
-        IAM authentication configuration for AWS.
+        AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         """
-        return pulumi.get(self, "aws_auth_configs")
+        return pulumi.get(self, "aws_cluster_name")
 
     @property
     @pulumi.getter(name="bearerToken")
@@ -4326,6 +5288,14 @@ class GitOpsClusterRequestClusterConfig(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="roleARN")
+    def role_arn(self) -> Optional[str]:
+        """
+        Optional role ARN. If set then used for AWS IAM Authenticator.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
     @pulumi.getter(name="tlsClientConfigs")
     def tls_client_configs(self) -> Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigTlsClientConfig']]:
         """
@@ -4340,56 +5310,6 @@ class GitOpsClusterRequestClusterConfig(dict):
         Username of the server of the cluster.
         """
         return pulumi.get(self, "username")
-
-
-@pulumi.output_type
-class GitOpsClusterRequestClusterConfigAwsAuthConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "clusterName":
-            suggest = "cluster_name"
-        elif key == "roleARN":
-            suggest = "role_arn"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GitOpsClusterRequestClusterConfigAwsAuthConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GitOpsClusterRequestClusterConfigAwsAuthConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GitOpsClusterRequestClusterConfigAwsAuthConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 cluster_name: Optional[str] = None,
-                 role_arn: Optional[str] = None):
-        """
-        :param str cluster_name: AWS cluster name.
-        :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
-        """
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[str]:
-        """
-        AWS cluster name.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @property
-    @pulumi.getter(name="roleARN")
-    def role_arn(self) -> Optional[str]:
-        """
-        Optional role ARN. If set then used for AWS IAM Authenticator.
-        """
-        return pulumi.get(self, "role_arn")
 
 
 @pulumi.output_type
@@ -4510,11 +5430,11 @@ class GitOpsClusterRequestClusterConfigTlsClientConfig(dict):
                  key_data: Optional[str] = None,
                  server_name: Optional[str] = None):
         """
-        :param str ca_data: CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
-        :param str cert_data: Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        :param str ca_data: CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+        :param str cert_data: Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         :param bool insecure: Indicates if the TLS connection to the cluster should be insecure.
-        :param str key_data: Key data holds PEM-encoded bytes (typically read from a client certificate key file).
-        :param str server_name: Server name for SNI in the client to check server certificates against.
+        :param str key_data: Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+        :param str server_name: Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         """
         if ca_data is not None:
             pulumi.set(__self__, "ca_data", ca_data)
@@ -4531,7 +5451,7 @@ class GitOpsClusterRequestClusterConfigTlsClientConfig(dict):
     @pulumi.getter(name="caData")
     def ca_data(self) -> Optional[str]:
         """
-        CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+        CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
         """
         return pulumi.get(self, "ca_data")
 
@@ -4539,7 +5459,7 @@ class GitOpsClusterRequestClusterConfigTlsClientConfig(dict):
     @pulumi.getter(name="certData")
     def cert_data(self) -> Optional[str]:
         """
-        Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "cert_data")
 
@@ -4555,7 +5475,7 @@ class GitOpsClusterRequestClusterConfigTlsClientConfig(dict):
     @pulumi.getter(name="keyData")
     def key_data(self) -> Optional[str]:
         """
-        Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+        Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "key_data")
 
@@ -4563,7 +5483,7 @@ class GitOpsClusterRequestClusterConfigTlsClientConfig(dict):
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[str]:
         """
-        Server name for SNI in the client to check server certificates against.
+        Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         """
         return pulumi.get(self, "server_name")
 
@@ -4847,56 +5767,6 @@ class GitOpsClusterRequestClusterRefreshRequestedAt(dict):
 
 
 @pulumi.output_type
-class GitOpsClusterRequestId(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str type: Type of the specified cluster identifier ( 'server' - default, 'name' ).
-        :param str value: Cluster server URL or the cluster name.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type of the specified cluster identifier ( 'server' - default, 'name' ).
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GitOpsClusterRequestUpdateMask(dict):
-    def __init__(__self__, *,
-                 paths: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] paths: The set of field mask paths.
-        """
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[Sequence[str]]:
-        """
-        The set of field mask paths.
-        """
-        return pulumi.get(self, "paths")
-
-
-@pulumi.output_type
 class GitOpsGnupgRequest(dict):
     def __init__(__self__, *,
                  upsert: bool,
@@ -4957,7 +5827,7 @@ class GitOpsGnupgRequestPublickey(dict):
                  sub_type: Optional[str] = None,
                  trust: Optional[str] = None):
         """
-        :param str key_data: KeyData holds the raw key data, in base64 encoded format
+        :param str key_data: KeyData holds the raw key data, in base64 encoded format.
         :param str fingerprint: Fingerprint is the fingerprint of the key
         :param str key_id: KeyID specifies the key ID, in hexadecimal string format.
         :param str owner: Owner holds the owner identification, e.g. a name and e-mail address
@@ -4980,7 +5850,7 @@ class GitOpsGnupgRequestPublickey(dict):
     @pulumi.getter(name="keyData")
     def key_data(self) -> str:
         """
-        KeyData holds the raw key data, in base64 encoded format
+        KeyData holds the raw key data, in base64 encoded format.
         """
         return pulumi.get(self, "key_data")
 
@@ -5032,7 +5902,7 @@ class GitOpsRepoCertRequest(dict):
                  upsert: Optional[bool] = None):
         """
         :param Sequence['GitOpsRepoCertRequestCertificateArgs'] certificates: certificates details.
-        :param bool upsert: if the Repository Certificates should be upserted.
+        :param bool upsert: Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
         """
         if certificates is not None:
             pulumi.set(__self__, "certificates", certificates)
@@ -5051,7 +5921,7 @@ class GitOpsRepoCertRequest(dict):
     @pulumi.getter
     def upsert(self) -> Optional[bool]:
         """
-        if the Repository Certificates should be upserted.
+        Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
@@ -5121,8 +5991,8 @@ class GitOpsRepoCertRequestCertificateItem(dict):
                  cert_type: Optional[str] = None,
                  server_name: Optional[str] = None):
         """
-        :param str cert_data: CertData contains the actual certificate data, dependent on the certificate type.
-        :param str cert_info: CertInfo will hold additional certificate info, depdendent on the certificate type .
+        :param str cert_data: CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
+        :param str cert_info: CertInfo will hold additional certificate info, dependent on the certificate type .
         :param str cert_sub_type: CertSubType specifies the sub type of the cert, i.e. ssh-rsa.
         :param str cert_type: CertType specifies the type of the certificate - currently one of https or ssh.
         :param str server_name: ServerName specifies the DNS name of the server this certificate is intended.
@@ -5142,7 +6012,7 @@ class GitOpsRepoCertRequestCertificateItem(dict):
     @pulumi.getter(name="certData")
     def cert_data(self) -> Optional[str]:
         """
-        CertData contains the actual certificate data, dependent on the certificate type.
+        CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
         """
         return pulumi.get(self, "cert_data")
 
@@ -5150,7 +6020,7 @@ class GitOpsRepoCertRequestCertificateItem(dict):
     @pulumi.getter(name="certInfo")
     def cert_info(self) -> Optional[str]:
         """
-        CertInfo will hold additional certificate info, depdendent on the certificate type .
+        CertInfo will hold additional certificate info, dependent on the certificate type .
         """
         return pulumi.get(self, "cert_info")
 
@@ -5212,7 +6082,7 @@ class GitOpsRepoCertRequestCertificateMetadata(dict):
         """
         :param str continue_: continue may be set if the user set a limit on the number of items returned.
         :param str remaining_item_count: subsequent items in the list.
-        :param str resource_version: dentifies the server's internal version.
+        :param str resource_version: Identifies the server's internal version.
         :param str self_link: selfLink is a URL representing this object.
         """
         if continue_ is not None:
@@ -5244,7 +6114,7 @@ class GitOpsRepoCertRequestCertificateMetadata(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> Optional[str]:
         """
-        dentifies the server's internal version.
+        Identifies the server's internal version.
         """
         return pulumi.get(self, "resource_version")
 
@@ -5309,13 +6179,13 @@ class GitOpsRepoCredCred(dict):
         :param str github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         :param str github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
         :param str github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-        :param str password: Password for authenticating at the repo server.
-        :param str ssh_private_key: Contains the private key data for authenticating at the repo server using SSH (only Git repos).
-        :param str tls_client_cert_data: Specifies the TLS client cert data for authenticating at the repo server.
-        :param str tls_client_cert_key: Specifies the TLS client cert key for authenticating at the repo server.
+        :param str password: Password or PAT to be used for authenticating the remote repository.
+        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         :param str type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-        :param str url: url representing this object.
-        :param str username: Username for authenticating at the repo server.
+        :param str url: URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        :param str username: Username to be used for authenticating the remote repository.
         """
         if enable_oci is not None:
             pulumi.set(__self__, "enable_oci", enable_oci)
@@ -5386,7 +6256,7 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        Password for authenticating at the repo server.
+        Password or PAT to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "password")
 
@@ -5394,7 +6264,7 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[str]:
         """
-        Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
         return pulumi.get(self, "ssh_private_key")
 
@@ -5402,7 +6272,7 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[str]:
         """
-        Specifies the TLS client cert data for authenticating at the repo server.
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         """
         return pulumi.get(self, "tls_client_cert_data")
 
@@ -5410,7 +6280,7 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[str]:
         """
-        Specifies the TLS client cert key for authenticating at the repo server.
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         """
         return pulumi.get(self, "tls_client_cert_key")
 
@@ -5426,7 +6296,7 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         """
-        url representing this object.
+        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         """
         return pulumi.get(self, "url")
 
@@ -5434,9 +6304,363 @@ class GitOpsRepoCredCred(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        Username for authenticating at the repo server.
+        Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GitOpsRepositoryEcrGen(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jwtAuth":
+            suggest = "jwt_auth"
+        elif key == "secretRef":
+            suggest = "secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitOpsRepositoryEcrGen. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitOpsRepositoryEcrGen.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitOpsRepositoryEcrGen.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jwt_auth: Optional['outputs.GitOpsRepositoryEcrGenJwtAuth'] = None,
+                 region: Optional[str] = None,
+                 secret_ref: Optional['outputs.GitOpsRepositoryEcrGenSecretRef'] = None):
+        """
+        :param 'GitOpsRepositoryEcrGenJwtAuthArgs' jwt_auth: JWT authentication specific configuration.
+        :param str region: AWS region.
+        :param 'GitOpsRepositoryEcrGenSecretRefArgs' secret_ref: Secret reference to the AWS credentials.
+        """
+        if jwt_auth is not None:
+            pulumi.set(__self__, "jwt_auth", jwt_auth)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+
+    @property
+    @pulumi.getter(name="jwtAuth")
+    def jwt_auth(self) -> Optional['outputs.GitOpsRepositoryEcrGenJwtAuth']:
+        """
+        JWT authentication specific configuration.
+        """
+        return pulumi.get(self, "jwt_auth")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        AWS region.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional['outputs.GitOpsRepositoryEcrGenSecretRef']:
+        """
+        Secret reference to the AWS credentials.
+        """
+        return pulumi.get(self, "secret_ref")
+
+
+@pulumi.output_type
+class GitOpsRepositoryEcrGenJwtAuth(dict):
+    def __init__(__self__, *,
+                 audiences: Optional[Sequence[str]] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param Sequence[str] audiences: Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        :param str name: The name of the ServiceAccount resource being referred to.
+        :param str namespace: Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[Sequence[str]]:
+        """
+        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        """
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the ServiceAccount resource being referred to.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GitOpsRepositoryEcrGenSecretRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsAccessKeyId":
+            suggest = "aws_access_key_id"
+        elif key == "awsSecretAccessKey":
+            suggest = "aws_secret_access_key"
+        elif key == "awsSessionToken":
+            suggest = "aws_session_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitOpsRepositoryEcrGenSecretRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitOpsRepositoryEcrGenSecretRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitOpsRepositoryEcrGenSecretRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_session_token: Optional[str] = None):
+        """
+        :param str aws_access_key_id: AWS access key id.
+        :param str aws_secret_access_key: AWS secret access key.
+        :param str aws_session_token: AWS session token.
+        """
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        """
+        AWS access key id.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        """
+        AWS secret access key.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[str]:
+        """
+        AWS session token.
+        """
+        return pulumi.get(self, "aws_session_token")
+
+
+@pulumi.output_type
+class GitOpsRepositoryGcrGen(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "workloadIdentity":
+            suggest = "workload_identity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitOpsRepositoryGcrGen. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitOpsRepositoryGcrGen.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitOpsRepositoryGcrGen.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 workload_identity: Optional['outputs.GitOpsRepositoryGcrGenWorkloadIdentity'] = None):
+        """
+        :param str access_key: GCP access key.
+        :param str project_id: GCP project id.
+        :param 'GitOpsRepositoryGcrGenWorkloadIdentityArgs' workload_identity: GCP workload identity.
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if workload_identity is not None:
+            pulumi.set(__self__, "workload_identity", workload_identity)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        """
+        GCP access key.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        GCP project id.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="workloadIdentity")
+    def workload_identity(self) -> Optional['outputs.GitOpsRepositoryGcrGenWorkloadIdentity']:
+        """
+        GCP workload identity.
+        """
+        return pulumi.get(self, "workload_identity")
+
+
+@pulumi.output_type
+class GitOpsRepositoryGcrGenWorkloadIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterLocation":
+            suggest = "cluster_location"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "clusterProjectId":
+            suggest = "cluster_project_id"
+        elif key == "serviceAccountRef":
+            suggest = "service_account_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitOpsRepositoryGcrGenWorkloadIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitOpsRepositoryGcrGenWorkloadIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitOpsRepositoryGcrGenWorkloadIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_location: Optional[str] = None,
+                 cluster_name: Optional[str] = None,
+                 cluster_project_id: Optional[str] = None,
+                 service_account_ref: Optional['outputs.GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef'] = None):
+        """
+        :param str cluster_location: Cluster location.
+        :param str cluster_name: Cluster name.
+        :param str cluster_project_id: Cluster project id.
+        :param 'GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgs' service_account_ref: Service account reference.
+        """
+        if cluster_location is not None:
+            pulumi.set(__self__, "cluster_location", cluster_location)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_project_id is not None:
+            pulumi.set(__self__, "cluster_project_id", cluster_project_id)
+        if service_account_ref is not None:
+            pulumi.set(__self__, "service_account_ref", service_account_ref)
+
+    @property
+    @pulumi.getter(name="clusterLocation")
+    def cluster_location(self) -> Optional[str]:
+        """
+        Cluster location.
+        """
+        return pulumi.get(self, "cluster_location")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        """
+        Cluster name.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterProjectId")
+    def cluster_project_id(self) -> Optional[str]:
+        """
+        Cluster project id.
+        """
+        return pulumi.get(self, "cluster_project_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountRef")
+    def service_account_ref(self) -> Optional['outputs.GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef']:
+        """
+        Service account reference.
+        """
+        return pulumi.get(self, "service_account_ref")
+
+
+@pulumi.output_type
+class GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRef(dict):
+    def __init__(__self__, *,
+                 audiences: Optional[Sequence[str]] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param Sequence[str] audiences: Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        :param str name: The name of the ServiceAccount resource being referred to.
+        :param str namespace: Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[Sequence[str]]:
+        """
+        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        """
+        return pulumi.get(self, "audiences")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the ServiceAccount resource being referred to.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+        return pulumi.get(self, "namespace")
 
 
 @pulumi.output_type
@@ -5502,7 +6726,7 @@ class GitOpsRepositoryRepo(dict):
                  type_: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param str connection_type: Identifies the authentication method used to connect to the repository.
+        :param str connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
         :param str repo: URL to the remote repository.
         :param bool enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
@@ -5510,18 +6734,18 @@ class GitOpsRepositoryRepo(dict):
         :param str github_app_id: Id of the GitHub app used to access the repo.
         :param str github_app_installation_id: Installation id of the GitHub app used to access the repo.
         :param str github_app_private_key: GitHub app private key PEM data.
-        :param bool inherited_creds: Indicates if the credentials were inherited from a credential set.
+        :param bool inherited_creds: Indicates if the credentials were inherited from a repository credential.
         :param bool insecure: Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-        :param bool insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        :param bool insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         :param str name: Name to be used for this repo. Only used with Helm repos.
-        :param str password: Password or PAT used for authenticating at the remote repository.
-        :param str project: Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        :param str password: Password or PAT to be used for authenticating the remote repository.
+        :param str project: The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         :param str proxy: The HTTP/HTTPS proxy used to access the repo.
-        :param str ssh_private_key: PEM data for authenticating at the repo server. Only used with Git repos.
-        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server.
-        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server.
+        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         :param str type_: Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
-        :param str username: Username used for authenticating at the remote repository.
+        :param str username: Username to be used for authenticating the remote repository.
         """
         pulumi.set(__self__, "connection_type", connection_type)
         pulumi.set(__self__, "repo", repo)
@@ -5566,7 +6790,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> str:
         """
-        Identifies the authentication method used to connect to the repository.
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
         """
         return pulumi.get(self, "connection_type")
 
@@ -5630,7 +6854,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="inheritedCreds")
     def inherited_creds(self) -> Optional[bool]:
         """
-        Indicates if the credentials were inherited from a credential set.
+        Indicates if the credentials were inherited from a repository credential.
         """
         return pulumi.get(self, "inherited_creds")
 
@@ -5646,7 +6870,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="insecureIgnoreHostKey")
     def insecure_ignore_host_key(self) -> Optional[bool]:
         """
-        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         """
         return pulumi.get(self, "insecure_ignore_host_key")
 
@@ -5662,7 +6886,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        Password or PAT used for authenticating at the remote repository.
+        Password or PAT to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "password")
 
@@ -5670,7 +6894,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -5686,7 +6910,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[str]:
         """
-        PEM data for authenticating at the repo server. Only used with Git repos.
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
         return pulumi.get(self, "ssh_private_key")
 
@@ -5694,7 +6918,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[str]:
         """
-        Certificate in PEM format for authenticating at the repo server.
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "tls_client_cert_data")
 
@@ -5702,7 +6926,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[str]:
         """
-        Private key in PEM format for authenticating at the repo server.
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "tls_client_cert_key")
 
@@ -5718,7 +6942,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        Username used for authenticating at the remote repository.
+        Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
 
@@ -5919,7 +7143,9 @@ class GithubConnectorCredentialsHttp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "tokenRef":
+        if key == "githubApp":
+            suggest = "github_app"
+        elif key == "tokenRef":
             suggest = "token_ref"
         elif key == "usernameRef":
             suggest = "username_ref"
@@ -5936,23 +7162,48 @@ class GithubConnectorCredentialsHttp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 token_ref: str,
+                 anonymouses: Optional[Sequence['outputs.GithubConnectorCredentialsHttpAnonymouse']] = None,
+                 github_app: Optional['outputs.GithubConnectorCredentialsHttpGithubApp'] = None,
+                 token_ref: Optional[str] = None,
                  username: Optional[str] = None,
                  username_ref: Optional[str] = None):
         """
+        :param Sequence['GithubConnectorCredentialsHttpAnonymouseArgs'] anonymouses: Configuration for using the http anonymous github for interacting with the github api.
+        :param 'GithubConnectorCredentialsHttpGithubAppArgs' github_app: Configuration for using the github app for interacting with the github api.
         :param str token_ref: Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str username: Username to use for authentication.
         :param str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
-        pulumi.set(__self__, "token_ref", token_ref)
+        if anonymouses is not None:
+            pulumi.set(__self__, "anonymouses", anonymouses)
+        if github_app is not None:
+            pulumi.set(__self__, "github_app", github_app)
+        if token_ref is not None:
+            pulumi.set(__self__, "token_ref", token_ref)
         if username is not None:
             pulumi.set(__self__, "username", username)
         if username_ref is not None:
             pulumi.set(__self__, "username_ref", username_ref)
 
     @property
+    @pulumi.getter
+    def anonymouses(self) -> Optional[Sequence['outputs.GithubConnectorCredentialsHttpAnonymouse']]:
+        """
+        Configuration for using the http anonymous github for interacting with the github api.
+        """
+        return pulumi.get(self, "anonymouses")
+
+    @property
+    @pulumi.getter(name="githubApp")
+    def github_app(self) -> Optional['outputs.GithubConnectorCredentialsHttpGithubApp']:
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        return pulumi.get(self, "github_app")
+
+    @property
     @pulumi.getter(name="tokenRef")
-    def token_ref(self) -> str:
+    def token_ref(self) -> Optional[str]:
         """
         Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
@@ -5973,6 +7224,103 @@ class GithubConnectorCredentialsHttp(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GithubConnectorCredentialsHttpAnonymouse(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GithubConnectorCredentialsHttpGithubApp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKeyRef":
+            suggest = "private_key_ref"
+        elif key == "applicationId":
+            suggest = "application_id"
+        elif key == "applicationIdRef":
+            suggest = "application_id_ref"
+        elif key == "installationId":
+            suggest = "installation_id"
+        elif key == "installationIdRef":
+            suggest = "installation_id_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GithubConnectorCredentialsHttpGithubApp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GithubConnectorCredentialsHttpGithubApp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GithubConnectorCredentialsHttpGithubApp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key_ref: str,
+                 application_id: Optional[str] = None,
+                 application_id_ref: Optional[str] = None,
+                 installation_id: Optional[str] = None,
+                 installation_id_ref: Optional[str] = None):
+        """
+        :param str private_key_ref: Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str application_id: Enter the GitHub App ID from the GitHub App General tab.
+        :param str application_id_ref: Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str installation_id: Enter the Installation ID located in the URL of the installed GitHub App.
+        :param str installation_id_ref: Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if application_id_ref is not None:
+            pulumi.set(__self__, "application_id_ref", application_id_ref)
+        if installation_id is not None:
+            pulumi.set(__self__, "installation_id", installation_id)
+        if installation_id_ref is not None:
+            pulumi.set(__self__, "installation_id_ref", installation_id_ref)
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> str:
+        """
+        Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "private_key_ref")
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[str]:
+        """
+        Enter the GitHub App ID from the GitHub App General tab.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="applicationIdRef")
+    def application_id_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "application_id_ref")
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> Optional[str]:
+        """
+        Enter the Installation ID located in the URL of the installed GitHub App.
+        """
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="installationIdRef")
+    def installation_id_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "installation_id_ref")
 
 
 @pulumi.output_type
@@ -6249,6 +7597,264 @@ class HelmConnectorCredentials(dict):
 
 
 @pulumi.output_type
+class InfrastructureGitDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseBranch":
+            suggest = "base_branch"
+        elif key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "importFromGit":
+            suggest = "import_from_git"
+        elif key == "isForceImport":
+            suggest = "is_force_import"
+        elif key == "isHarnesscodeRepo":
+            suggest = "is_harnesscode_repo"
+        elif key == "isNewBranch":
+            suggest = "is_new_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "lastObjectId":
+            suggest = "last_object_id"
+        elif key == "loadFromCache":
+            suggest = "load_from_cache"
+        elif key == "loadFromFallbackBranch":
+            suggest = "load_from_fallback_branch"
+        elif key == "parentEntityConnectorRef":
+            suggest = "parent_entity_connector_ref"
+        elif key == "parentEntityRepoName":
+            suggest = "parent_entity_repo_name"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "storeType":
+            suggest = "store_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfrastructureGitDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfrastructureGitDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfrastructureGitDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_branch: Optional[str] = None,
+                 branch: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 import_from_git: Optional[bool] = None,
+                 is_force_import: Optional[bool] = None,
+                 is_harnesscode_repo: Optional[bool] = None,
+                 is_new_branch: Optional[bool] = None,
+                 last_commit_id: Optional[str] = None,
+                 last_object_id: Optional[str] = None,
+                 load_from_cache: Optional[str] = None,
+                 load_from_fallback_branch: Optional[bool] = None,
+                 parent_entity_connector_ref: Optional[str] = None,
+                 parent_entity_repo_name: Optional[str] = None,
+                 repo_name: Optional[str] = None,
+                 store_type: Optional[str] = None):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch: Name of the branch.
+        :param str commit_message: message for the commit in Git Repo.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param bool import_from_git: Flag to set if importing from Git
+        :param bool is_force_import: Flag to set if force importing from Git
+        :param bool is_harnesscode_repo: If the gitProvider is HarnessCode
+        :param bool is_new_branch: If a new branch creation is requested.
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Infrastructures.
+        :param str load_from_cache: If the Entity is to be fetched from cache
+        :param bool load_from_fallback_branch: Whether the file has to be get from fallback_branch.
+        :param str parent_entity_connector_ref: Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str parent_entity_repo_name: Name of the repository where parent entity lies.
+        :param str repo_name: Name of the repository.
+        :param str store_type: store type of the entity.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if import_from_git is not None:
+            pulumi.set(__self__, "import_from_git", import_from_git)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
+        if is_harnesscode_repo is not None:
+            pulumi.set(__self__, "is_harnesscode_repo", is_harnesscode_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if parent_entity_connector_ref is not None:
+            pulumi.set(__self__, "parent_entity_connector_ref", parent_entity_connector_ref)
+        if parent_entity_repo_name is not None:
+            pulumi.set(__self__, "parent_entity_repo_name", parent_entity_repo_name)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[str]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        message for the commit in Git Repo.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="importFromGit")
+    def import_from_git(self) -> Optional[bool]:
+        """
+        Flag to set if importing from Git
+        """
+        return pulumi.get(self, "import_from_git")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[bool]:
+        """
+        Flag to set if force importing from Git
+        """
+        return pulumi.get(self, "is_force_import")
+
+    @property
+    @pulumi.getter(name="isHarnesscodeRepo")
+    def is_harnesscode_repo(self) -> Optional[bool]:
+        """
+        If the gitProvider is HarnessCode
+        """
+        return pulumi.get(self, "is_harnesscode_repo")
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[bool]:
+        """
+        If a new branch creation is requested.
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[str]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[str]:
+        """
+        Last object identifier (for Github). To be provided only when updating Infrastructures.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[str]:
+        """
+        If the Entity is to be fetched from cache
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[bool]:
+        """
+        Whether the file has to be get from fallback_branch.
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="parentEntityConnectorRef")
+    def parent_entity_connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "parent_entity_connector_ref")
+
+    @property
+    @pulumi.getter(name="parentEntityRepoName")
+    def parent_entity_repo_name(self) -> Optional[str]:
+        """
+        Name of the repository where parent entity lies.
+        """
+        return pulumi.get(self, "parent_entity_repo_name")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        store type of the entity.
+        """
+        return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
 class InputSetGitDetails(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6425,6 +8031,144 @@ class InputSetGitDetails(dict):
 
 
 @pulumi.output_type
+class InputSetGitImportInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "isForceImport":
+            suggest = "is_force_import"
+        elif key == "repoName":
+            suggest = "repo_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InputSetGitImportInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InputSetGitImportInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InputSetGitImportInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_name: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 is_force_import: Optional[bool] = None,
+                 repo_name: Optional[str] = None):
+        """
+        :param str branch_name: Name of the branch.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param str repo_name: Name of the repository.
+        """
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[bool]:
+        return pulumi.get(self, "is_force_import")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class InputSetInputSetImportRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputSetDescription":
+            suggest = "input_set_description"
+        elif key == "inputSetName":
+            suggest = "input_set_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InputSetInputSetImportRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InputSetInputSetImportRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InputSetInputSetImportRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_set_description: Optional[str] = None,
+                 input_set_name: Optional[str] = None):
+        """
+        :param str input_set_description: Description of the input set.
+        :param str input_set_name: Name of the input set.
+        """
+        if input_set_description is not None:
+            pulumi.set(__self__, "input_set_description", input_set_description)
+        if input_set_name is not None:
+            pulumi.set(__self__, "input_set_name", input_set_name)
+
+    @property
+    @pulumi.getter(name="inputSetDescription")
+    def input_set_description(self) -> Optional[str]:
+        """
+        Description of the input set.
+        """
+        return pulumi.get(self, "input_set_description")
+
+    @property
+    @pulumi.getter(name="inputSetName")
+    def input_set_name(self) -> Optional[str]:
+        """
+        Name of the input set.
+        """
+        return pulumi.get(self, "input_set_name")
+
+
+@pulumi.output_type
 class JenkinsConnectorAuth(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6546,7 +8290,7 @@ class JenkinsConnectorAuthJenkinsUserNamePassword(dict):
                  username: Optional[str] = None,
                  username_ref: Optional[str] = None):
         """
-        :param str password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
         :param str username: Username to use for authentication.
         :param str username_ref: Username reference to use for authentication.
         """
@@ -6560,7 +8304,7 @@ class JenkinsConnectorAuthJenkinsUserNamePassword(dict):
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> str:
         """
-        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
         """
         return pulumi.get(self, "password_ref")
 
@@ -6588,6 +8332,8 @@ class JiraConnectorAuth(dict):
         suggest = None
         if key == "authType":
             suggest = "auth_type"
+        elif key == "personalAccessToken":
+            suggest = "personal_access_token"
         elif key == "usernamePassword":
             suggest = "username_password"
 
@@ -6604,12 +8350,16 @@ class JiraConnectorAuth(dict):
 
     def __init__(__self__, *,
                  auth_type: str,
+                 personal_access_token: Optional['outputs.JiraConnectorAuthPersonalAccessToken'] = None,
                  username_password: Optional['outputs.JiraConnectorAuthUsernamePassword'] = None):
         """
         :param str auth_type: Authentication types for Jira connector
+        :param 'JiraConnectorAuthPersonalAccessTokenArgs' personal_access_token: Authenticate using personal access token.
         :param 'JiraConnectorAuthUsernamePasswordArgs' username_password: Authenticate using username password.
         """
         pulumi.set(__self__, "auth_type", auth_type)
+        if personal_access_token is not None:
+            pulumi.set(__self__, "personal_access_token", personal_access_token)
         if username_password is not None:
             pulumi.set(__self__, "username_password", username_password)
 
@@ -6622,12 +8372,55 @@ class JiraConnectorAuth(dict):
         return pulumi.get(self, "auth_type")
 
     @property
+    @pulumi.getter(name="personalAccessToken")
+    def personal_access_token(self) -> Optional['outputs.JiraConnectorAuthPersonalAccessToken']:
+        """
+        Authenticate using personal access token.
+        """
+        return pulumi.get(self, "personal_access_token")
+
+    @property
     @pulumi.getter(name="usernamePassword")
     def username_password(self) -> Optional['outputs.JiraConnectorAuthUsernamePassword']:
         """
         Authenticate using username password.
         """
         return pulumi.get(self, "username_password")
+
+
+@pulumi.output_type
+class JiraConnectorAuthPersonalAccessToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "patRef":
+            suggest = "pat_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JiraConnectorAuthPersonalAccessToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JiraConnectorAuthPersonalAccessToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JiraConnectorAuthPersonalAccessToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pat_ref: str):
+        """
+        :param str pat_ref: Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "pat_ref", pat_ref)
+
+    @property
+    @pulumi.getter(name="patRef")
+    def pat_ref(self) -> str:
+        """
+        Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "pat_ref")
 
 
 @pulumi.output_type
@@ -6963,6 +8756,8 @@ class KubernetesConnectorServiceAccount(dict):
             suggest = "master_url"
         elif key == "serviceAccountTokenRef":
             suggest = "service_account_token_ref"
+        elif key == "caCertRef":
+            suggest = "ca_cert_ref"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in KubernetesConnectorServiceAccount. Access the value via the '{suggest}' property getter instead.")
@@ -6977,13 +8772,17 @@ class KubernetesConnectorServiceAccount(dict):
 
     def __init__(__self__, *,
                  master_url: str,
-                 service_account_token_ref: str):
+                 service_account_token_ref: str,
+                 ca_cert_ref: Optional[str] = None):
         """
         :param str master_url: The URL of the Kubernetes cluster.
         :param str service_account_token_ref: Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str ca_cert_ref: Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "master_url", master_url)
         pulumi.set(__self__, "service_account_token_ref", service_account_token_ref)
+        if ca_cert_ref is not None:
+            pulumi.set(__self__, "ca_cert_ref", ca_cert_ref)
 
     @property
     @pulumi.getter(name="masterUrl")
@@ -7000,6 +8799,14 @@ class KubernetesConnectorServiceAccount(dict):
         Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "service_account_token_ref")
+
+    @property
+    @pulumi.getter(name="caCertRef")
+    def ca_cert_ref(self) -> Optional[str]:
+        """
+        Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "ca_cert_ref")
 
 
 @pulumi.output_type
@@ -7440,6 +9247,7 @@ class MonitoredServiceRequest(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""enabled field is deprecated""")
     def enabled(self) -> Optional[bool]:
         """
         Enable or disable the monitored service.
@@ -7636,17 +9444,21 @@ class MonitoredServiceRequestHealthSource(dict):
                  identifier: str,
                  name: str,
                  spec: str,
-                 type: str):
+                 type: str,
+                 version: Optional[str] = None):
         """
         :param str identifier: Identifier of the health source.
         :param str name: Name of the health source.
         :param str spec: Specification of the health source. Depends on the type of the health source.
         :param str type: Type of the health source.
+        :param str version: Version of the health source.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "spec", spec)
         pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -7679,6 +9491,14 @@ class MonitoredServiceRequestHealthSource(dict):
         Type of the health source.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the health source.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -7753,7 +9573,7 @@ class NexusConnectorCredentials(dict):
                  username: Optional[str] = None,
                  username_ref: Optional[str] = None):
         """
-        :param str password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
         :param str username: Username to use for authentication.
         :param str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
@@ -7767,7 +9587,7 @@ class NexusConnectorCredentials(dict):
     @pulumi.getter(name="passwordRef")
     def password_ref(self) -> str:
         """
-        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
         """
         return pulumi.get(self, "password_ref")
 
@@ -7856,6 +9676,12 @@ class PipelineFiltersFilterProperties(dict):
         suggest = None
         if key == "filterType":
             suggest = "filter_type"
+        elif key == "moduleProperties":
+            suggest = "module_properties"
+        elif key == "pipelineIdentifiers":
+            suggest = "pipeline_identifiers"
+        elif key == "pipelineTags":
+            suggest = "pipeline_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineFiltersFilterProperties. Access the value via the '{suggest}' property getter instead.")
@@ -7870,12 +9696,32 @@ class PipelineFiltersFilterProperties(dict):
 
     def __init__(__self__, *,
                  filter_type: str,
+                 description: Optional[str] = None,
+                 module_properties: Optional['outputs.PipelineFiltersFilterPropertiesModuleProperties'] = None,
+                 name: Optional[str] = None,
+                 pipeline_identifiers: Optional[Sequence[str]] = None,
+                 pipeline_tags: Optional[Sequence[Mapping[str, str]]] = None,
                  tags: Optional[Sequence[str]] = None):
         """
         :param str filter_type: Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+        :param str description: description of the pipline filter.
+        :param 'PipelineFiltersFilterPropertiesModulePropertiesArgs' module_properties: module properties of the pipline filter.
+        :param str name: Name of the pipeline filter.
+        :param Sequence[str] pipeline_identifiers: Pipeline identifiers to filter on.
+        :param Sequence[Mapping[str, str]] pipeline_tags: Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
         :param Sequence[str] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         pulumi.set(__self__, "filter_type", filter_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if module_properties is not None:
+            pulumi.set(__self__, "module_properties", module_properties)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pipeline_identifiers is not None:
+            pulumi.set(__self__, "pipeline_identifiers", pipeline_identifiers)
+        if pipeline_tags is not None:
+            pulumi.set(__self__, "pipeline_tags", pipeline_tags)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -7889,11 +9735,346 @@ class PipelineFiltersFilterProperties(dict):
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        description of the pipline filter.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="moduleProperties")
+    def module_properties(self) -> Optional['outputs.PipelineFiltersFilterPropertiesModuleProperties']:
+        """
+        module properties of the pipline filter.
+        """
+        return pulumi.get(self, "module_properties")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the pipeline filter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pipelineIdentifiers")
+    def pipeline_identifiers(self) -> Optional[Sequence[str]]:
+        """
+        Pipeline identifiers to filter on.
+        """
+        return pulumi.get(self, "pipeline_identifiers")
+
+    @property
+    @pulumi.getter(name="pipelineTags")
+    def pipeline_tags(self) -> Optional[Sequence[Mapping[str, str]]]:
+        """
+        Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+        """
+        return pulumi.get(self, "pipeline_tags")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class PipelineFiltersFilterPropertiesModuleProperties(dict):
+    def __init__(__self__, *,
+                 cd: Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCd'] = None,
+                 ci: Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCi'] = None):
+        """
+        :param 'PipelineFiltersFilterPropertiesModulePropertiesCdArgs' cd: CD related properties to be filtered on.
+        :param 'PipelineFiltersFilterPropertiesModulePropertiesCiArgs' ci: CI related properties to be filtered on.
+        """
+        if cd is not None:
+            pulumi.set(__self__, "cd", cd)
+        if ci is not None:
+            pulumi.set(__self__, "ci", ci)
+
+    @property
+    @pulumi.getter
+    def cd(self) -> Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCd']:
+        """
+        CD related properties to be filtered on.
+        """
+        return pulumi.get(self, "cd")
+
+    @property
+    @pulumi.getter
+    def ci(self) -> Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCi']:
+        """
+        CI related properties to be filtered on.
+        """
+        return pulumi.get(self, "ci")
+
+
+@pulumi.output_type
+class PipelineFiltersFilterPropertiesModulePropertiesCd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactDisplayNames":
+            suggest = "artifact_display_names"
+        elif key == "deploymentTypes":
+            suggest = "deployment_types"
+        elif key == "environmentNames":
+            suggest = "environment_names"
+        elif key == "serviceNames":
+            suggest = "service_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineFiltersFilterPropertiesModulePropertiesCd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_display_names: Optional[Sequence[str]] = None,
+                 deployment_types: Optional[str] = None,
+                 environment_names: Optional[Sequence[str]] = None,
+                 service_names: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] artifact_display_names: Artifact display names of the CD pipeline.
+        :param str deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
+        :param Sequence[str] environment_names: Environment names of the CD pipeline.
+        :param Sequence[str] service_names: Service names of the CD pipeline.
+        """
+        if artifact_display_names is not None:
+            pulumi.set(__self__, "artifact_display_names", artifact_display_names)
+        if deployment_types is not None:
+            pulumi.set(__self__, "deployment_types", deployment_types)
+        if environment_names is not None:
+            pulumi.set(__self__, "environment_names", environment_names)
+        if service_names is not None:
+            pulumi.set(__self__, "service_names", service_names)
+
+    @property
+    @pulumi.getter(name="artifactDisplayNames")
+    def artifact_display_names(self) -> Optional[Sequence[str]]:
+        """
+        Artifact display names of the CD pipeline.
+        """
+        return pulumi.get(self, "artifact_display_names")
+
+    @property
+    @pulumi.getter(name="deploymentTypes")
+    def deployment_types(self) -> Optional[str]:
+        """
+        Deployment type of the CD pipeline, eg. Kubernetes
+        """
+        return pulumi.get(self, "deployment_types")
+
+    @property
+    @pulumi.getter(name="environmentNames")
+    def environment_names(self) -> Optional[Sequence[str]]:
+        """
+        Environment names of the CD pipeline.
+        """
+        return pulumi.get(self, "environment_names")
+
+    @property
+    @pulumi.getter(name="serviceNames")
+    def service_names(self) -> Optional[Sequence[str]]:
+        """
+        Service names of the CD pipeline.
+        """
+        return pulumi.get(self, "service_names")
+
+
+@pulumi.output_type
+class PipelineFiltersFilterPropertiesModulePropertiesCi(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildType":
+            suggest = "build_type"
+        elif key == "ciExecutionInfo":
+            suggest = "ci_execution_info"
+        elif key == "repoNames":
+            suggest = "repo_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineFiltersFilterPropertiesModulePropertiesCi. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCi.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCi.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 build_type: Optional[str] = None,
+                 ci_execution_info: Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo'] = None,
+                 repo_names: Optional[str] = None,
+                 tag: Optional[str] = None):
+        """
+        :param str branch: Branch which was used while building.
+        :param str build_type: Build type of the pipeline. Possible values: branch.
+        :param 'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgs' ci_execution_info: CI execution info for the pipeline.
+        :param str repo_names: name of the repository used in the pipeline.
+        :param str tag: Tags to associate with the CI pipeline resource.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if build_type is not None:
+            pulumi.set(__self__, "build_type", build_type)
+        if ci_execution_info is not None:
+            pulumi.set(__self__, "ci_execution_info", ci_execution_info)
+        if repo_names is not None:
+            pulumi.set(__self__, "repo_names", repo_names)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Branch which was used while building.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> Optional[str]:
+        """
+        Build type of the pipeline. Possible values: branch.
+        """
+        return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter(name="ciExecutionInfo")
+    def ci_execution_info(self) -> Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo']:
+        """
+        CI execution info for the pipeline.
+        """
+        return pulumi.get(self, "ci_execution_info")
+
+    @property
+    @pulumi.getter(name="repoNames")
+    def repo_names(self) -> Optional[str]:
+        """
+        name of the repository used in the pipeline.
+        """
+        return pulumi.get(self, "repo_names")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        Tags to associate with the CI pipeline resource.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pullRequest":
+            suggest = "pull_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event: Optional[str] = None,
+                 pull_request: Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest'] = None):
+        """
+        :param str event: Event for the ci execution, Possible values: pullRequest.
+        :param 'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgs' pull_request: The pull request details of the CI pipeline.
+        """
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if pull_request is not None:
+            pulumi.set(__self__, "pull_request", pull_request)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[str]:
+        """
+        Event for the ci execution, Possible values: pullRequest.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> Optional['outputs.PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest']:
+        """
+        The pull request details of the CI pipeline.
+        """
+        return pulumi.get(self, "pull_request")
+
+
+@pulumi.output_type
+class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceBranch":
+            suggest = "source_branch"
+        elif key == "targetBranch":
+            suggest = "target_branch"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_branch: Optional[str] = None,
+                 target_branch: Optional[str] = None):
+        """
+        :param str source_branch: Source branch of the pull request.
+        :param str target_branch: Target branch of the pull request.
+        """
+        if source_branch is not None:
+            pulumi.set(__self__, "source_branch", source_branch)
+        if target_branch is not None:
+            pulumi.set(__self__, "target_branch", target_branch)
+
+    @property
+    @pulumi.getter(name="sourceBranch")
+    def source_branch(self) -> Optional[str]:
+        """
+        Source branch of the pull request.
+        """
+        return pulumi.get(self, "source_branch")
+
+    @property
+    @pulumi.getter(name="targetBranch")
+    def target_branch(self) -> Optional[str]:
+        """
+        Target branch of the pull request.
+        """
+        return pulumi.get(self, "target_branch")
 
 
 @pulumi.output_type
@@ -8045,6 +10226,134 @@ class PipelineGitDetails(dict):
 
 
 @pulumi.output_type
+class PipelineGitImportInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "repoName":
+            suggest = "repo_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineGitImportInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineGitImportInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineGitImportInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_name: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 repo_name: Optional[str] = None):
+        """
+        :param str branch_name: Name of the branch.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param str repo_name: Name of the repository.
+        """
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class PipelinePipelineImportRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pipelineDescription":
+            suggest = "pipeline_description"
+        elif key == "pipelineName":
+            suggest = "pipeline_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelinePipelineImportRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelinePipelineImportRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelinePipelineImportRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pipeline_description: Optional[str] = None,
+                 pipeline_name: Optional[str] = None):
+        """
+        :param str pipeline_description: Description of the pipeline.
+        :param str pipeline_name: Name of the pipeline.
+        """
+        if pipeline_description is not None:
+            pulumi.set(__self__, "pipeline_description", pipeline_description)
+        if pipeline_name is not None:
+            pulumi.set(__self__, "pipeline_name", pipeline_name)
+
+    @property
+    @pulumi.getter(name="pipelineDescription")
+    def pipeline_description(self) -> Optional[str]:
+        """
+        Description of the pipeline.
+        """
+        return pulumi.get(self, "pipeline_description")
+
+    @property
+    @pulumi.getter(name="pipelineName")
+    def pipeline_name(self) -> Optional[str]:
+        """
+        Name of the pipeline.
+        """
+        return pulumi.get(self, "pipeline_name")
+
+
+@pulumi.output_type
 class PolicySetPolicy(dict):
     def __init__(__self__, *,
                  identifier: str,
@@ -8144,6 +10453,359 @@ class PrometheusConnectorHeader(dict):
         Encrypted value.
         """
         return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class RepoRuleBranchBypass(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoOwners":
+            suggest = "repo_owners"
+        elif key == "userIds":
+            suggest = "user_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepoRuleBranchBypass. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepoRuleBranchBypass.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepoRuleBranchBypass.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repo_owners: Optional[bool] = None,
+                 user_ids: Optional[Sequence[str]] = None):
+        """
+        :param bool repo_owners: Allow users with repository edit permission to bypass.
+        :param Sequence[str] user_ids: List of user ids with who can bypass.
+        """
+        if repo_owners is not None:
+            pulumi.set(__self__, "repo_owners", repo_owners)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
+
+    @property
+    @pulumi.getter(name="repoOwners")
+    def repo_owners(self) -> Optional[bool]:
+        """
+        Allow users with repository edit permission to bypass.
+        """
+        return pulumi.get(self, "repo_owners")
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[Sequence[str]]:
+        """
+        List of user ids with who can bypass.
+        """
+        return pulumi.get(self, "user_ids")
+
+
+@pulumi.output_type
+class RepoRuleBranchPattern(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultBranch":
+            suggest = "default_branch"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepoRuleBranchPattern. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepoRuleBranchPattern.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepoRuleBranchPattern.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_branch: Optional[bool] = None,
+                 excludes: Optional[Sequence[str]] = None,
+                 includes: Optional[Sequence[str]] = None):
+        """
+        :param bool default_branch: Should rule apply to default branch of the repository.
+        :param Sequence[str] excludes: Globstar branch patterns on which rules will NOT be applied.
+        :param Sequence[str] includes: Globstar branch patterns on which rules will be applied.
+        """
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[bool]:
+        """
+        Should rule apply to default branch of the repository.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @property
+    @pulumi.getter
+    def excludes(self) -> Optional[Sequence[str]]:
+        """
+        Globstar branch patterns on which rules will NOT be applied.
+        """
+        return pulumi.get(self, "excludes")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Optional[Sequence[str]]:
+        """
+        Globstar branch patterns on which rules will be applied.
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class RepoRuleBranchPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowMergeStrategies":
+            suggest = "allow_merge_strategies"
+        elif key == "blockBranchCreation":
+            suggest = "block_branch_creation"
+        elif key == "blockBranchDeletion":
+            suggest = "block_branch_deletion"
+        elif key == "deleteBranchOnMerge":
+            suggest = "delete_branch_on_merge"
+        elif key == "requireCodeOwners":
+            suggest = "require_code_owners"
+        elif key == "requireLatestCommitApproval":
+            suggest = "require_latest_commit_approval"
+        elif key == "requireMinimumApprovalCount":
+            suggest = "require_minimum_approval_count"
+        elif key == "requireNoChangeRequest":
+            suggest = "require_no_change_request"
+        elif key == "requirePullRequest":
+            suggest = "require_pull_request"
+        elif key == "requireResolveAllComments":
+            suggest = "require_resolve_all_comments"
+        elif key == "requireStatusChecks":
+            suggest = "require_status_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepoRuleBranchPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepoRuleBranchPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepoRuleBranchPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_merge_strategies: Optional[Sequence[str]] = None,
+                 block_branch_creation: Optional[bool] = None,
+                 block_branch_deletion: Optional[bool] = None,
+                 delete_branch_on_merge: Optional[bool] = None,
+                 require_code_owners: Optional[bool] = None,
+                 require_latest_commit_approval: Optional[bool] = None,
+                 require_minimum_approval_count: Optional[int] = None,
+                 require_no_change_request: Optional[bool] = None,
+                 require_pull_request: Optional[bool] = None,
+                 require_resolve_all_comments: Optional[bool] = None,
+                 require_status_checks: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allow_merge_strategies: Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        :param bool block_branch_creation: Only allow users with bypass permission to create matching branches.
+        :param bool block_branch_deletion: Only allow users with bypass permission to delete matching branches.
+        :param bool delete_branch_on_merge: Automatically delete the source branch of a pull request after it is merged.
+        :param bool require_code_owners: Require approval on pull requests from one reviewer for each codeowner rule.
+        :param bool require_latest_commit_approval: Require re-approval when there are new changes in the pull request.
+        :param int require_minimum_approval_count: Require approval on pull requests from a minimum number of reviewers.
+        :param bool require_no_change_request: Require all request for changes have been resolved.
+        :param bool require_pull_request: Do not allow any changes to matching branches without a pull request.
+        :param bool require_resolve_all_comments: All comments on a pull request must be resolved before it can be merged.
+        :param Sequence[str] require_status_checks: Selected status checks must pass before a pull request can be merged.
+        """
+        if allow_merge_strategies is not None:
+            pulumi.set(__self__, "allow_merge_strategies", allow_merge_strategies)
+        if block_branch_creation is not None:
+            pulumi.set(__self__, "block_branch_creation", block_branch_creation)
+        if block_branch_deletion is not None:
+            pulumi.set(__self__, "block_branch_deletion", block_branch_deletion)
+        if delete_branch_on_merge is not None:
+            pulumi.set(__self__, "delete_branch_on_merge", delete_branch_on_merge)
+        if require_code_owners is not None:
+            pulumi.set(__self__, "require_code_owners", require_code_owners)
+        if require_latest_commit_approval is not None:
+            pulumi.set(__self__, "require_latest_commit_approval", require_latest_commit_approval)
+        if require_minimum_approval_count is not None:
+            pulumi.set(__self__, "require_minimum_approval_count", require_minimum_approval_count)
+        if require_no_change_request is not None:
+            pulumi.set(__self__, "require_no_change_request", require_no_change_request)
+        if require_pull_request is not None:
+            pulumi.set(__self__, "require_pull_request", require_pull_request)
+        if require_resolve_all_comments is not None:
+            pulumi.set(__self__, "require_resolve_all_comments", require_resolve_all_comments)
+        if require_status_checks is not None:
+            pulumi.set(__self__, "require_status_checks", require_status_checks)
+
+    @property
+    @pulumi.getter(name="allowMergeStrategies")
+    def allow_merge_strategies(self) -> Optional[Sequence[str]]:
+        """
+        Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        """
+        return pulumi.get(self, "allow_merge_strategies")
+
+    @property
+    @pulumi.getter(name="blockBranchCreation")
+    def block_branch_creation(self) -> Optional[bool]:
+        """
+        Only allow users with bypass permission to create matching branches.
+        """
+        return pulumi.get(self, "block_branch_creation")
+
+    @property
+    @pulumi.getter(name="blockBranchDeletion")
+    def block_branch_deletion(self) -> Optional[bool]:
+        """
+        Only allow users with bypass permission to delete matching branches.
+        """
+        return pulumi.get(self, "block_branch_deletion")
+
+    @property
+    @pulumi.getter(name="deleteBranchOnMerge")
+    def delete_branch_on_merge(self) -> Optional[bool]:
+        """
+        Automatically delete the source branch of a pull request after it is merged.
+        """
+        return pulumi.get(self, "delete_branch_on_merge")
+
+    @property
+    @pulumi.getter(name="requireCodeOwners")
+    def require_code_owners(self) -> Optional[bool]:
+        """
+        Require approval on pull requests from one reviewer for each codeowner rule.
+        """
+        return pulumi.get(self, "require_code_owners")
+
+    @property
+    @pulumi.getter(name="requireLatestCommitApproval")
+    def require_latest_commit_approval(self) -> Optional[bool]:
+        """
+        Require re-approval when there are new changes in the pull request.
+        """
+        return pulumi.get(self, "require_latest_commit_approval")
+
+    @property
+    @pulumi.getter(name="requireMinimumApprovalCount")
+    def require_minimum_approval_count(self) -> Optional[int]:
+        """
+        Require approval on pull requests from a minimum number of reviewers.
+        """
+        return pulumi.get(self, "require_minimum_approval_count")
+
+    @property
+    @pulumi.getter(name="requireNoChangeRequest")
+    def require_no_change_request(self) -> Optional[bool]:
+        """
+        Require all request for changes have been resolved.
+        """
+        return pulumi.get(self, "require_no_change_request")
+
+    @property
+    @pulumi.getter(name="requirePullRequest")
+    def require_pull_request(self) -> Optional[bool]:
+        """
+        Do not allow any changes to matching branches without a pull request.
+        """
+        return pulumi.get(self, "require_pull_request")
+
+    @property
+    @pulumi.getter(name="requireResolveAllComments")
+    def require_resolve_all_comments(self) -> Optional[bool]:
+        """
+        All comments on a pull request must be resolved before it can be merged.
+        """
+        return pulumi.get(self, "require_resolve_all_comments")
+
+    @property
+    @pulumi.getter(name="requireStatusChecks")
+    def require_status_checks(self) -> Optional[Sequence[str]]:
+        """
+        Selected status checks must pass before a pull request can be merged.
+        """
+        return pulumi.get(self, "require_status_checks")
+
+
+@pulumi.output_type
+class RepoSource(dict):
+    def __init__(__self__, *,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 repo: Optional[str] = None,
+                 type: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str host: The host URL for the import source.
+        :param str password: The password for authentication when importing.
+        :param str repo: The full identifier of the repository on the SCM provider's platform.
+        :param str type: The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        :param str username: The username for authentication when importing.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The host URL for the import source.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password for authentication when importing.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The full identifier of the repository on the SCM provider's platform.
+        """
+        return pulumi.get(self, "repo")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username for authentication when importing.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -8826,12 +11488,242 @@ class SecretSshkeySshSshkeyReferenceCredential(dict):
 
 
 @pulumi.output_type
+class SecretTextAdditionalMetadata(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.SecretTextAdditionalMetadataValue']] = None):
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.SecretTextAdditionalMetadataValue']]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class SecretTextAdditionalMetadataValue(dict):
+    def __init__(__self__, *,
+                 version: Optional[str] = None):
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ServiceGitDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseBranch":
+            suggest = "base_branch"
+        elif key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "isHarnessCodeRepo":
+            suggest = "is_harness_code_repo"
+        elif key == "isNewBranch":
+            suggest = "is_new_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "lastObjectId":
+            suggest = "last_object_id"
+        elif key == "loadFromCache":
+            suggest = "load_from_cache"
+        elif key == "loadFromFallbackBranch":
+            suggest = "load_from_fallback_branch"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "storeType":
+            suggest = "store_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceGitDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceGitDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceGitDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_branch: Optional[str] = None,
+                 branch: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 is_harness_code_repo: Optional[bool] = None,
+                 is_new_branch: Optional[bool] = None,
+                 last_commit_id: Optional[str] = None,
+                 last_object_id: Optional[str] = None,
+                 load_from_cache: Optional[bool] = None,
+                 load_from_fallback_branch: Optional[bool] = None,
+                 repo_name: Optional[str] = None,
+                 store_type: Optional[str] = None):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch: Name of the branch.
+        :param str commit_message: Commit message used for the merge commit.
+        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param bool is_harness_code_repo: If the repo is in harness code
+        :param bool is_new_branch: If the branch being created is new
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param bool load_from_cache: Load service yaml from catch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Name of the repository.
+        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[str]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[bool]:
+        """
+        If the repo is in harness code
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[bool]:
+        """
+        If the branch being created is new
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[str]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[str]:
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[bool]:
+        """
+        Load service yaml from catch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[bool]:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
 class ServiceNowConnectorAuth(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "authType":
             suggest = "auth_type"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
         elif key == "usernamePassword":
             suggest = "username_password"
 
@@ -8849,15 +11741,19 @@ class ServiceNowConnectorAuth(dict):
     def __init__(__self__, *,
                  auth_type: str,
                  adfs: Optional['outputs.ServiceNowConnectorAuthAdfs'] = None,
+                 refresh_token: Optional['outputs.ServiceNowConnectorAuthRefreshToken'] = None,
                  username_password: Optional['outputs.ServiceNowConnectorAuthUsernamePassword'] = None):
         """
         :param str auth_type: Authentication types for Jira connector
         :param 'ServiceNowConnectorAuthAdfsArgs' adfs: Authenticate using adfs client credentials with certificate.
+        :param 'ServiceNowConnectorAuthRefreshTokenArgs' refresh_token: Authenticate using refresh token grant type.
         :param 'ServiceNowConnectorAuthUsernamePasswordArgs' username_password: Authenticate using username password.
         """
         pulumi.set(__self__, "auth_type", auth_type)
         if adfs is not None:
             pulumi.set(__self__, "adfs", adfs)
+        if refresh_token is not None:
+            pulumi.set(__self__, "refresh_token", refresh_token)
         if username_password is not None:
             pulumi.set(__self__, "username_password", username_password)
 
@@ -8876,6 +11772,14 @@ class ServiceNowConnectorAuth(dict):
         Authenticate using adfs client credentials with certificate.
         """
         return pulumi.get(self, "adfs")
+
+    @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> Optional['outputs.ServiceNowConnectorAuthRefreshToken']:
+        """
+        Authenticate using refresh token grant type.
+        """
+        return pulumi.get(self, "refresh_token")
 
     @property
     @pulumi.getter(name="usernamePassword")
@@ -8974,6 +11878,93 @@ class ServiceNowConnectorAuthAdfs(dict):
 
 
 @pulumi.output_type
+class ServiceNowConnectorAuthRefreshToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientIdRef":
+            suggest = "client_id_ref"
+        elif key == "refreshTokenRef":
+            suggest = "refresh_token_ref"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+        elif key == "clientSecretRef":
+            suggest = "client_secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceNowConnectorAuthRefreshToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceNowConnectorAuthRefreshToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceNowConnectorAuthRefreshToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id_ref: str,
+                 refresh_token_ref: str,
+                 token_url: str,
+                 client_secret_ref: Optional[str] = None,
+                 scope: Optional[str] = None):
+        """
+        :param str client_id_ref: Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str refresh_token_ref: Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str token_url: Token url to use for authentication.
+        :param str client_secret_ref: Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str scope: Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "refresh_token_ref", refresh_token_ref)
+        pulumi.set(__self__, "token_url", token_url)
+        if client_secret_ref is not None:
+            pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> str:
+        """
+        Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "client_id_ref")
+
+    @property
+    @pulumi.getter(name="refreshTokenRef")
+    def refresh_token_ref(self) -> str:
+        """
+        Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "refresh_token_ref")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> str:
+        """
+        Token url to use for authentication.
+        """
+        return pulumi.get(self, "token_url")
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> Optional[str]:
+        """
+        Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
 class ServiceNowConnectorAuthUsernamePassword(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9032,6 +12023,208 @@ class ServiceNowConnectorAuthUsernamePassword(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class ServiceOverridesV2GitDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseBranch":
+            suggest = "base_branch"
+        elif key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "isHarnessCodeRepo":
+            suggest = "is_harness_code_repo"
+        elif key == "isNewBranch":
+            suggest = "is_new_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "lastObjectId":
+            suggest = "last_object_id"
+        elif key == "loadFromCache":
+            suggest = "load_from_cache"
+        elif key == "loadFromFallbackBranch":
+            suggest = "load_from_fallback_branch"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "storeType":
+            suggest = "store_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceOverridesV2GitDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceOverridesV2GitDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceOverridesV2GitDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_branch: Optional[str] = None,
+                 branch: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 is_harness_code_repo: Optional[bool] = None,
+                 is_new_branch: Optional[bool] = None,
+                 last_commit_id: Optional[str] = None,
+                 last_object_id: Optional[str] = None,
+                 load_from_cache: Optional[bool] = None,
+                 load_from_fallback_branch: Optional[bool] = None,
+                 repo_name: Optional[str] = None,
+                 store_type: Optional[str] = None):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch: Name of the branch.
+        :param str commit_message: Commit message used for the merge commit.
+        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param bool is_harness_code_repo: If the repo is in harness code
+        :param bool is_new_branch: If the branch being created is new
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating override.
+        :param bool load_from_cache: Load service yaml from catch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Name of the repository.
+        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[str]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[bool]:
+        """
+        If the repo is in harness code
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[bool]:
+        """
+        If the branch being created is new
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[str]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[str]:
+        """
+        Last object identifier (for Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[bool]:
+        """
+        Load service yaml from catch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[bool]:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
 
 
 @pulumi.output_type
@@ -9402,6 +12595,8 @@ class TasConnectorCredentialsTasManualDetails(dict):
             suggest = "endpoint_url"
         elif key == "passwordRef":
             suggest = "password_ref"
+        elif key == "referenceToken":
+            suggest = "reference_token"
         elif key == "usernameRef":
             suggest = "username_ref"
 
@@ -9419,16 +12614,20 @@ class TasConnectorCredentialsTasManualDetails(dict):
     def __init__(__self__, *,
                  endpoint_url: str,
                  password_ref: str,
+                 reference_token: Optional[str] = None,
                  username: Optional[str] = None,
                  username_ref: Optional[str] = None):
         """
         :param str endpoint_url: URL of the Tas server.
         :param str password_ref: Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str reference_token: Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
         :param str username: Username to use for authentication.
         :param str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "endpoint_url", endpoint_url)
         pulumi.set(__self__, "password_ref", password_ref)
+        if reference_token is not None:
+            pulumi.set(__self__, "reference_token", reference_token)
         if username is not None:
             pulumi.set(__self__, "username", username)
         if username_ref is not None:
@@ -9449,6 +12648,14 @@ class TasConnectorCredentialsTasManualDetails(dict):
         Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter(name="referenceToken")
+    def reference_token(self) -> Optional[str]:
+        """
+        Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+        return pulumi.get(self, "reference_token")
 
     @property
     @pulumi.getter
@@ -9660,6 +12867,158 @@ class TemplateGitDetails(dict):
         Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
         """
         return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
+class TemplateGitImportDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "isForceImport":
+            suggest = "is_force_import"
+        elif key == "repoName":
+            suggest = "repo_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateGitImportDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateGitImportDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateGitImportDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_name: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 is_force_import: Optional[bool] = None,
+                 repo_name: Optional[str] = None):
+        """
+        :param str branch_name: Name of the branch.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param str repo_name: Name of the repository.
+        """
+        if branch_name is not None:
+            pulumi.set(__self__, "branch_name", branch_name)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_force_import is not None:
+            pulumi.set(__self__, "is_force_import", is_force_import)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="isForceImport")
+    def is_force_import(self) -> Optional[bool]:
+        return pulumi.get(self, "is_force_import")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class TemplateTemplateImportRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateDescription":
+            suggest = "template_description"
+        elif key == "templateName":
+            suggest = "template_name"
+        elif key == "templateVersion":
+            suggest = "template_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateTemplateImportRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateTemplateImportRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateTemplateImportRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_description: Optional[str] = None,
+                 template_name: Optional[str] = None,
+                 template_version: Optional[str] = None):
+        """
+        :param str template_description: Description of the template.
+        :param str template_name: Name of the template.
+        :param str template_version: Version of the template.
+        """
+        if template_description is not None:
+            pulumi.set(__self__, "template_description", template_description)
+        if template_name is not None:
+            pulumi.set(__self__, "template_name", template_name)
+        if template_version is not None:
+            pulumi.set(__self__, "template_version", template_version)
+
+    @property
+    @pulumi.getter(name="templateDescription")
+    def template_description(self) -> Optional[str]:
+        """
+        Description of the template.
+        """
+        return pulumi.get(self, "template_description")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> Optional[str]:
+        """
+        Name of the template.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> Optional[str]:
+        """
+        Version of the template.
+        """
+        return pulumi.get(self, "template_version")
 
 
 @pulumi.output_type
@@ -9977,6 +13336,208 @@ class VariablesSpec(dict):
 
 
 @pulumi.output_type
+class WorkspaceEnvironmentVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceEnvironmentVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceEnvironmentVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceEnvironmentVariable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable. Must be unique within the workspace.
+        :param str value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        :param str value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable. Must be unique within the workspace.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class WorkspaceTerraformVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceTerraformVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceTerraformVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceTerraformVariable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable. Must be unique within the workspace.
+        :param str value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        :param str value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable. Must be unique within the workspace.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class WorkspaceTerraformVariableFile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repositoryConnector":
+            suggest = "repository_connector"
+        elif key == "repositoryBranch":
+            suggest = "repository_branch"
+        elif key == "repositoryCommit":
+            suggest = "repository_commit"
+        elif key == "repositoryPath":
+            suggest = "repository_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceTerraformVariableFile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceTerraformVariableFile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceTerraformVariableFile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repository: str,
+                 repository_connector: str,
+                 repository_branch: Optional[str] = None,
+                 repository_commit: Optional[str] = None,
+                 repository_path: Optional[str] = None):
+        """
+        :param str repository: Repository is the name of the repository to fetch the code from.
+        :param str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
+        :param str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        :param str repository_commit: Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        :param str repository_path: Repository path is the path in which the variables reside.
+        """
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_connector", repository_connector)
+        if repository_branch is not None:
+            pulumi.set(__self__, "repository_branch", repository_branch)
+        if repository_commit is not None:
+            pulumi.set(__self__, "repository_commit", repository_commit)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter(name="repositoryConnector")
+    def repository_connector(self) -> str:
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        return pulumi.get(self, "repository_connector")
+
+    @property
+    @pulumi.getter(name="repositoryBranch")
+    def repository_branch(self) -> Optional[str]:
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        """
+        return pulumi.get(self, "repository_branch")
+
+    @property
+    @pulumi.getter(name="repositoryCommit")
+    def repository_commit(self) -> Optional[str]:
+        """
+        Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        """
+        return pulumi.get(self, "repository_commit")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> Optional[str]:
+        """
+        Repository path is the path in which the variables reside.
+        """
+        return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
 class GetAppDynamicsConnectorApiTokenResult(dict):
     def __init__(__self__, *,
                  client_id: str,
@@ -10244,11 +13805,15 @@ class GetAwsConnectorFullJitterBackoffStrategyResult(dict):
 @pulumi.output_type
 class GetAwsConnectorInheritFromDelegateResult(dict):
     def __init__(__self__, *,
-                 delegate_selectors: Sequence[str]):
+                 delegate_selectors: Sequence[str],
+                 region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str region: AWS Region to perform Connection test of Connector.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -10257,16 +13822,28 @@ class GetAwsConnectorInheritFromDelegateResult(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        AWS Region to perform Connection test of Connector.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
 class GetAwsConnectorIrsaResult(dict):
     def __init__(__self__, *,
-                 delegate_selectors: Sequence[str]):
+                 delegate_selectors: Sequence[str],
+                 region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str region: AWS Region to perform Connection test of Connector.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="delegateSelectors")
@@ -10275,6 +13852,14 @@ class GetAwsConnectorIrsaResult(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        AWS Region to perform Connection test of Connector.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -10283,17 +13868,25 @@ class GetAwsConnectorManualResult(dict):
                  access_key: str,
                  access_key_ref: str,
                  delegate_selectors: Sequence[str],
-                 secret_key_ref: str):
+                 secret_key_ref: str,
+                 access_key_plain_text: Optional[str] = None,
+                 region: Optional[str] = None):
         """
         :param str access_key: AWS access key.
         :param str access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param Sequence[str] delegate_selectors: Connect only use delegates with these tags.
         :param str secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str access_key_plain_text: The plain text AWS access key.
+        :param str region: AWS Region to perform Connection test of Connector.
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "access_key_ref", access_key_ref)
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+        if access_key_plain_text is not None:
+            pulumi.set(__self__, "access_key_plain_text", access_key_plain_text)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -10326,6 +13919,63 @@ class GetAwsConnectorManualResult(dict):
         Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
+
+    @property
+    @pulumi.getter(name="accessKeyPlainText")
+    def access_key_plain_text(self) -> Optional[str]:
+        """
+        The plain text AWS access key.
+        """
+        return pulumi.get(self, "access_key_plain_text")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        AWS Region to perform Connection test of Connector.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetAwsConnectorOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 iam_role_arn: str,
+                 region: Optional[str] = None):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str iam_role_arn: The IAM Role to assume the credentials from.
+        :param str region: AWS Region to perform Connection test of Connector.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The IAM Role to assume the credentials from.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        AWS Region to perform Connection test of Connector.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -10986,19 +14636,246 @@ class GetCcmFiltersFilterPropertyResult(dict):
 
 
 @pulumi.output_type
+class GetConnectorCustomSecretManagerTemplateInputResult(dict):
+    def __init__(__self__, *,
+                 environment_variables: Sequence['outputs.GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult']):
+        pulumi.set(__self__, "environment_variables", environment_variables)
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Sequence['outputs.GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult']:
+        return pulumi.get(self, "environment_variables")
+
+
+@pulumi.output_type
+class GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult(dict):
+    def __init__(__self__, *,
+                 default: bool,
+                 name: str,
+                 type: str,
+                 value: str):
+        """
+        :param str name: : Name of the resource.
+        :param str type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        : Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetConnectorCustomhealthsourceHeaderResult(dict):
+    def __init__(__self__, *,
+                 encrypted_value_ref: str,
+                 key: str,
+                 value: str,
+                 value_encrypted: bool):
+        """
+        :param str encrypted_value_ref: Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str key: Key.
+        :param str value: Value.
+        :param bool value_encrypted: Encrypted value.
+        """
+        pulumi.set(__self__, "encrypted_value_ref", encrypted_value_ref)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_encrypted", value_encrypted)
+
+    @property
+    @pulumi.getter(name="encryptedValueRef")
+    def encrypted_value_ref(self) -> str:
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "encrypted_value_ref")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueEncrypted")
+    def value_encrypted(self) -> bool:
+        """
+        Encrypted value.
+        """
+        return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class GetConnectorCustomhealthsourceParamResult(dict):
+    def __init__(__self__, *,
+                 encrypted_value_ref: str,
+                 key: str,
+                 value: str,
+                 value_encrypted: bool):
+        """
+        :param str encrypted_value_ref: Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str key: Key.
+        :param str value: Value.
+        :param bool value_encrypted: Encrypted value.
+        """
+        pulumi.set(__self__, "encrypted_value_ref", encrypted_value_ref)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_encrypted", value_encrypted)
+
+    @property
+    @pulumi.getter(name="encryptedValueRef")
+    def encrypted_value_ref(self) -> str:
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "encrypted_value_ref")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueEncrypted")
+    def value_encrypted(self) -> bool:
+        """
+        Encrypted value.
+        """
+        return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class GetConnectorPdcHostResult(dict):
+    def __init__(__self__, *,
+                 hostname: str,
+                 attributes: Optional[Mapping[str, Any]] = None):
+        """
+        :param str hostname: Hostname e.g. 87.23.66.11:80
+        :param Mapping[str, Any] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname e.g. 87.23.66.11:80
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, Any]]:
+        """
+        Host attributes with values. e.g. type, region, name, ip, etc.
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class GetConnectorRancherBearerTokenResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 rancher_url: str):
+        """
+        :param str password_ref: Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str rancher_url: The URL of the Rancher cluster.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "rancher_url", rancher_url)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter(name="rancherUrl")
+    def rancher_url(self) -> str:
+        """
+        The URL of the Rancher cluster.
+        """
+        return pulumi.get(self, "rancher_url")
+
+
+@pulumi.output_type
 class GetDockerConnectorCredentialResult(dict):
     def __init__(__self__, *,
+                 execute_on_delegate: bool,
                  password_ref: str,
                  username: str,
                  username_ref: str):
         """
+        :param bool execute_on_delegate: Execute on delegate or not.
         :param str password_ref: The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str username: The username to use for the docker registry.
         :param str username_ref: The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         pulumi.set(__self__, "password_ref", password_ref)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter(name="passwordRef")
@@ -11081,6 +14958,236 @@ class GetElasticsearchConnectorUsernamePasswordResult(dict):
         Username to use for authentication.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetEnvironmentClustersMappingClusterResult(dict):
+    def __init__(__self__, *,
+                 agent_identifier: Optional[str] = None,
+                 identifier: Optional[str] = None,
+                 name: Optional[str] = None,
+                 scope: Optional[str] = None):
+        """
+        :param str agent_identifier: agent identifier of the cluster (include scope prefix)
+        :param str identifier: identifier of the cluster
+        :param str name: name of the cluster
+        :param str scope: scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
+        """
+        if agent_identifier is not None:
+            pulumi.set(__self__, "agent_identifier", agent_identifier)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="agentIdentifier")
+    def agent_identifier(self) -> Optional[str]:
+        """
+        agent identifier of the cluster (include scope prefix)
+        """
+        return pulumi.get(self, "agent_identifier")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[str]:
+        """
+        identifier of the cluster
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        name of the cluster
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetEnvironmentGitDetailsResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param bool load_from_fallback_branch: Load environment yaml from fallback branch
+        :param str repo_name: Repo name of remote environment
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load environment yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote environment
+        """
+        return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class GetEnvironmentListEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 name: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFileStoreFileCreatedByResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 name: str):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFileStoreFileLastModifiedByResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 name: str):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFileStoreFolderCreatedByResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 name: str):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetFileStoreFolderLastModifiedByResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 name: str):
+        """
+        :param str email: User email
+        :param str name: User name
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        User email
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -11398,17 +15505,39 @@ class GetGithubConnectorCredentialResult(dict):
 @pulumi.output_type
 class GetGithubConnectorCredentialHttpResult(dict):
     def __init__(__self__, *,
+                 anonymouses: Sequence['outputs.GetGithubConnectorCredentialHttpAnonymouseResult'],
+                 github_apps: Sequence['outputs.GetGithubConnectorCredentialHttpGithubAppResult'],
                  token_ref: str,
                  username: str,
                  username_ref: str):
         """
+        :param Sequence['GetGithubConnectorCredentialHttpAnonymouseArgs'] anonymouses: Configuration for using the github http anonymous for interacting with the github api.
+        :param Sequence['GetGithubConnectorCredentialHttpGithubAppArgs'] github_apps: Configuration for using the github app for interacting with the github api.
         :param str token_ref: Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str username: Username to use for authentication.
         :param str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
+        pulumi.set(__self__, "anonymouses", anonymouses)
+        pulumi.set(__self__, "github_apps", github_apps)
         pulumi.set(__self__, "token_ref", token_ref)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter
+    def anonymouses(self) -> Sequence['outputs.GetGithubConnectorCredentialHttpAnonymouseResult']:
+        """
+        Configuration for using the github http anonymous for interacting with the github api.
+        """
+        return pulumi.get(self, "anonymouses")
+
+    @property
+    @pulumi.getter(name="githubApps")
+    def github_apps(self) -> Sequence['outputs.GetGithubConnectorCredentialHttpGithubAppResult']:
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        return pulumi.get(self, "github_apps")
 
     @property
     @pulumi.getter(name="tokenRef")
@@ -11433,6 +15562,74 @@ class GetGithubConnectorCredentialHttpResult(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetGithubConnectorCredentialHttpAnonymouseResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetGithubConnectorCredentialHttpGithubAppResult(dict):
+    def __init__(__self__, *,
+                 application_id: str,
+                 application_id_ref: str,
+                 installation_id: str,
+                 installation_id_ref: str,
+                 private_key_ref: str):
+        """
+        :param str application_id: Enter the GitHub App ID from the GitHub App General tab.
+        :param str application_id_ref: Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str installation_id: Enter the Installation ID located in the URL of the installed GitHub App.
+        :param str installation_id_ref: Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str private_key_ref: Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_id_ref", application_id_ref)
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "installation_id_ref", installation_id_ref)
+        pulumi.set(__self__, "private_key_ref", private_key_ref)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        """
+        Enter the GitHub App ID from the GitHub App General tab.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="applicationIdRef")
+    def application_id_ref(self) -> str:
+        """
+        Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "application_id_ref")
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> str:
+        """
+        Enter the Installation ID located in the URL of the installed GitHub App.
+        """
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="installationIdRef")
+    def installation_id_ref(self) -> str:
+        """
+        Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "installation_id_ref")
+
+    @property
+    @pulumi.getter(name="privateKeyRef")
+    def private_key_ref(self) -> str:
+        """
+        Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "private_key_ref")
 
 
 @pulumi.output_type
@@ -11570,22 +15767,81 @@ class GetGitlabConnectorCredentialSshResult(dict):
 
 
 @pulumi.output_type
+class GetGitopsAgentDeployYamlProxyResult(dict):
+    def __init__(__self__, *,
+                 http: Optional[str] = None,
+                 https: Optional[str] = None,
+                 password: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str http: HTTP proxy settings for the GitOps agent.
+        :param str https: HTTPS proxy settings for the GitOps agent.
+        :param str password: Password for the proxy.
+        :param str username: Username for the proxy.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if https is not None:
+            pulumi.set(__self__, "https", https)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[str]:
+        """
+        HTTP proxy settings for the GitOps agent.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def https(self) -> Optional[str]:
+        """
+        HTTPS proxy settings for the GitOps agent.
+        """
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for the proxy.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username for the proxy.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
 class GetGitopsAgentMetadataResult(dict):
     def __init__(__self__, *,
                  high_availability: bool,
-                 namespace: str):
+                 namespace: str,
+                 is_namespaced: Optional[bool] = None):
         """
-        :param bool high_availability: Indicates if the deployment should be deployed using the deploy-ha.yaml
-        :param str namespace: The k8s namespace that this agent resides in.
+        :param bool high_availability: Indicates if the agent is deployed in HA mode.
+        :param str namespace: The kubernetes namespace where the agent should be installed.
+        :param bool is_namespaced: Indicates if the agent is namespaced.
         """
         pulumi.set(__self__, "high_availability", high_availability)
         pulumi.set(__self__, "namespace", namespace)
+        if is_namespaced is not None:
+            pulumi.set(__self__, "is_namespaced", is_namespaced)
 
     @property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> bool:
         """
-        Indicates if the deployment should be deployed using the deploy-ha.yaml
+        Indicates if the agent is deployed in HA mode.
         """
         return pulumi.get(self, "high_availability")
 
@@ -11593,24 +15849,39 @@ class GetGitopsAgentMetadataResult(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        The k8s namespace that this agent resides in.
+        The kubernetes namespace where the agent should be installed.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="isNamespaced")
+    def is_namespaced(self) -> Optional[bool]:
+        """
+        Indicates if the agent is namespaced.
+        """
+        return pulumi.get(self, "is_namespaced")
 
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationResult(dict):
     def __init__(__self__, *,
-                 metadatas: Optional[Sequence['outputs.GetGitopsApplicationsApplicationMetadataResult']] = None,
-                 specs: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecResult']] = None):
+                 specs: Sequence['outputs.GetGitopsApplicationsApplicationSpecResult'],
+                 metadatas: Optional[Sequence['outputs.GetGitopsApplicationsApplicationMetadataResult']] = None):
         """
-        :param Sequence['GetGitopsApplicationsApplicationMetadataArgs'] metadatas: Metadata corresponding to the resources. This includes all the objects a user must create.
         :param Sequence['GetGitopsApplicationsApplicationSpecArgs'] specs: Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        :param Sequence['GetGitopsApplicationsApplicationMetadataArgs'] metadatas: Metadata corresponding to the resources. This includes all the objects a user must create.
         """
+        pulumi.set(__self__, "specs", specs)
         if metadatas is not None:
             pulumi.set(__self__, "metadatas", metadatas)
-        if specs is not None:
-            pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecResult']:
+        """
+        Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+        return pulumi.get(self, "specs")
 
     @property
     @pulumi.getter
@@ -11620,54 +15891,42 @@ class GetGitopsApplicationsApplicationResult(dict):
         """
         return pulumi.get(self, "metadatas")
 
-    @property
-    @pulumi.getter
-    def specs(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecResult']]:
-        """
-        Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
-        """
-        return pulumi.get(self, "specs")
-
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationMetadataResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
+                 cluster_name: str,
                  finalizers: Sequence[str],
+                 generate_name: str,
                  generation: str,
                  labels: Mapping[str, str],
+                 name: str,
                  namespace: str,
-                 uid: str,
-                 cluster_name: Optional[str] = None,
-                 generate_name: Optional[str] = None,
-                 name: Optional[str] = None,
-                 owner_references: Optional[Sequence['outputs.GetGitopsApplicationsApplicationMetadataOwnerReferenceResult']] = None):
+                 owner_references: Sequence['outputs.GetGitopsApplicationsApplicationMetadataOwnerReferenceResult'],
+                 uid: str):
         """
         :param Mapping[str, str] annotations: Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+        :param str cluster_name: Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
         :param Sequence[str] finalizers: Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+        :param str generate_name: An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
         :param str generation: A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
-        :param str namespace: Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
-        :param str uid: UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
-        :param str cluster_name: Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
-        :param str generate_name: An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
-        :param str name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        :param str name: Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        :param str namespace: Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
         :param Sequence['GetGitopsApplicationsApplicationMetadataOwnerReferenceArgs'] owner_references: List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
+        :param str uid: UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
         """
         pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "finalizers", finalizers)
+        pulumi.set(__self__, "generate_name", generate_name)
         pulumi.set(__self__, "generation", generation)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "owner_references", owner_references)
         pulumi.set(__self__, "uid", uid)
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-        if generate_name is not None:
-            pulumi.set(__self__, "generate_name", generate_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if owner_references is not None:
-            pulumi.set(__self__, "owner_references", owner_references)
 
     @property
     @pulumi.getter
@@ -11678,12 +15937,28 @@ class GetGitopsApplicationsApplicationMetadataResult(dict):
         return pulumi.get(self, "annotations")
 
     @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
     @pulumi.getter
     def finalizers(self) -> Sequence[str]:
         """
         Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
         """
         return pulumi.get(self, "finalizers")
+
+    @property
+    @pulumi.getter(name="generateName")
+    def generate_name(self) -> str:
+        """
+        An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+        """
+        return pulumi.get(self, "generate_name")
 
     @property
     @pulumi.getter
@@ -11703,62 +15978,46 @@ class GetGitopsApplicationsApplicationMetadataResult(dict):
 
     @property
     @pulumi.getter
-    def namespace(self) -> str:
+    def name(self) -> str:
         """
-        Namespace of the GitOps application. An empty namespace is equivalent to the "default" namespace.
-        """
-        return pulumi.get(self, "namespace")
-
-    @property
-    @pulumi.getter
-    def uid(self) -> str:
-        """
-        UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
-        """
-        return pulumi.get(self, "uid")
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[str]:
-        """
-        Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @property
-    @pulumi.getter(name="generateName")
-    def generate_name(self) -> Optional[str]:
-        """
-        An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
-        """
-        return pulumi.get(self, "generate_name")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
         """
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
     @pulumi.getter(name="ownerReferences")
-    def owner_references(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationMetadataOwnerReferenceResult']]:
+    def owner_references(self) -> Sequence['outputs.GetGitopsApplicationsApplicationMetadataOwnerReferenceResult']:
         """
         List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
         """
         return pulumi.get(self, "owner_references")
 
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+        """
+        return pulumi.get(self, "uid")
+
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
     def __init__(__self__, *,
-                 api_version: Optional[str] = None,
-                 block_owner_deletion: Optional[bool] = None,
-                 controller: Optional[bool] = None,
-                 kind: Optional[str] = None,
-                 name: Optional[str] = None,
-                 uid: Optional[str] = None):
+                 api_version: str,
+                 block_owner_deletion: bool,
+                 controller: bool,
+                 kind: str,
+                 name: str,
+                 uid: str):
         """
         :param str api_version: API version of the referent.
         :param bool block_owner_deletion: If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
@@ -11767,22 +16026,16 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
         :param str name: Name of the referent.
         :param str uid: UID of the referent.
         """
-        if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
-        if block_owner_deletion is not None:
-            pulumi.set(__self__, "block_owner_deletion", block_owner_deletion)
-        if controller is not None:
-            pulumi.set(__self__, "controller", controller)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if uid is not None:
-            pulumi.set(__self__, "uid", uid)
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "block_owner_deletion", block_owner_deletion)
+        pulumi.set(__self__, "controller", controller)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[str]:
+    def api_version(self) -> str:
         """
         API version of the referent.
         """
@@ -11790,7 +16043,7 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 
     @property
     @pulumi.getter(name="blockOwnerDeletion")
-    def block_owner_deletion(self) -> Optional[bool]:
+    def block_owner_deletion(self) -> bool:
         """
         If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
         """
@@ -11798,7 +16051,7 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 
     @property
     @pulumi.getter
-    def controller(self) -> Optional[bool]:
+    def controller(self) -> bool:
         """
         Indicates if the reference points to the managing controller.
         """
@@ -11806,7 +16059,7 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[str]:
+    def kind(self) -> str:
         """
         Kind of the referent.
         """
@@ -11814,7 +16067,7 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         Name of the referent.
         """
@@ -11822,7 +16075,7 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 
     @property
     @pulumi.getter
-    def uid(self) -> Optional[str]:
+    def uid(self) -> str:
         """
         UID of the referent.
         """
@@ -11832,28 +16085,34 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecResult(dict):
     def __init__(__self__, *,
-                 destinations: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult']] = None,
-                 sources: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']] = None,
-                 sync_policies: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult']] = None):
+                 destinations: Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult'],
+                 sync_policies: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult'],
+                 sources: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
-        :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
+        :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
         """
-        if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "sync_policies", sync_policies)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
-        if sync_policies is not None:
-            pulumi.set(__self__, "sync_policies", sync_policies)
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult']]:
+    def destinations(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult']:
         """
         Information about the GitOps application's destination.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="syncPolicies")
+    def sync_policies(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult']:
+        """
+        Controls when a sync will be performed in response to updates in git.
+        """
+        return pulumi.get(self, "sync_policies")
 
     @property
     @pulumi.getter
@@ -11863,36 +16122,25 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
         """
         return pulumi.get(self, "sources")
 
-    @property
-    @pulumi.getter(name="syncPolicies")
-    def sync_policies(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult']]:
-        """
-        Controls when a sync will be performed in response to updates in git.
-        """
-        return pulumi.get(self, "sync_policies")
-
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecDestinationResult(dict):
     def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 namespace: Optional[str] = None,
-                 server: Optional[str] = None):
+                 name: str,
+                 namespace: str,
+                 server: str):
         """
         :param str name: URL of the target cluster and must be set to the kubernetes control plane API.
         :param str namespace: Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
-        :param str server: Server of the destination of the GitOps application.
+        :param str server: URL of the target cluster server for the GitOps application.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "server", server)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         URL of the target cluster and must be set to the kubernetes control plane API.
         """
@@ -11900,7 +16148,7 @@ class GetGitopsApplicationsApplicationSpecDestinationResult(dict):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> str:
         """
         Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
         """
@@ -11908,9 +16156,9 @@ class GetGitopsApplicationsApplicationSpecDestinationResult(dict):
 
     @property
     @pulumi.getter
-    def server(self) -> Optional[str]:
+    def server(self) -> str:
         """
-        Server of the destination of the GitOps application.
+        URL of the target cluster server for the GitOps application.
         """
         return pulumi.get(self, "server")
 
@@ -11918,48 +16166,40 @@ class GetGitopsApplicationsApplicationSpecDestinationResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceResult(dict):
     def __init__(__self__, *,
-                 chart: Optional[str] = None,
-                 directories: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult']] = None,
-                 helms: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult']] = None,
-                 ksonnets: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetResult']] = None,
-                 kustomizes: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult']] = None,
-                 path: Optional[str] = None,
-                 plugins: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult']] = None,
-                 repo_url: Optional[str] = None,
-                 target_revision: Optional[str] = None):
+                 chart: str,
+                 directories: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult'],
+                 ksonnets: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetResult'],
+                 kustomizes: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult'],
+                 path: str,
+                 plugins: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult'],
+                 repo_url: str,
+                 target_revision: str,
+                 helms: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult']] = None):
         """
         :param str chart: Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryArgs'] directories: Options for applications of type plain YAML or Jsonnet.
-        :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs'] helms: Holds helm specific options.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetArgs'] ksonnets: Ksonnet specific options.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKustomizeArgs'] kustomizes: Options specific to a GitOps application source specific to Kustomize.
         :param str path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginArgs'] plugins: Options specific to config management plugins.
         :param str repo_url: URL to the repository (git or helm) that contains the GitOps application manifests.
         :param str target_revision: Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+        :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs'] helms: Holds helm specific options.
         """
-        if chart is not None:
-            pulumi.set(__self__, "chart", chart)
-        if directories is not None:
-            pulumi.set(__self__, "directories", directories)
+        pulumi.set(__self__, "chart", chart)
+        pulumi.set(__self__, "directories", directories)
+        pulumi.set(__self__, "ksonnets", ksonnets)
+        pulumi.set(__self__, "kustomizes", kustomizes)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "plugins", plugins)
+        pulumi.set(__self__, "repo_url", repo_url)
+        pulumi.set(__self__, "target_revision", target_revision)
         if helms is not None:
             pulumi.set(__self__, "helms", helms)
-        if ksonnets is not None:
-            pulumi.set(__self__, "ksonnets", ksonnets)
-        if kustomizes is not None:
-            pulumi.set(__self__, "kustomizes", kustomizes)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if plugins is not None:
-            pulumi.set(__self__, "plugins", plugins)
-        if repo_url is not None:
-            pulumi.set(__self__, "repo_url", repo_url)
-        if target_revision is not None:
-            pulumi.set(__self__, "target_revision", target_revision)
 
     @property
     @pulumi.getter
-    def chart(self) -> Optional[str]:
+    def chart(self) -> str:
         """
         Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
         """
@@ -11967,11 +16207,59 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
 
     @property
     @pulumi.getter
-    def directories(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult']]:
+    def directories(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult']:
         """
         Options for applications of type plain YAML or Jsonnet.
         """
         return pulumi.get(self, "directories")
+
+    @property
+    @pulumi.getter
+    def ksonnets(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetResult']:
+        """
+        Ksonnet specific options.
+        """
+        return pulumi.get(self, "ksonnets")
+
+    @property
+    @pulumi.getter
+    def kustomizes(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult']:
+        """
+        Options specific to a GitOps application source specific to Kustomize.
+        """
+        return pulumi.get(self, "kustomizes")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def plugins(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult']:
+        """
+        Options specific to config management plugins.
+        """
+        return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter(name="repoUrl")
+    def repo_url(self) -> str:
+        """
+        URL to the repository (git or helm) that contains the GitOps application manifests.
+        """
+        return pulumi.get(self, "repo_url")
+
+    @property
+    @pulumi.getter(name="targetRevision")
+    def target_revision(self) -> str:
+        """
+        Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+        """
+        return pulumi.get(self, "target_revision")
 
     @property
     @pulumi.getter
@@ -11981,80 +16269,28 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
         """
         return pulumi.get(self, "helms")
 
-    @property
-    @pulumi.getter
-    def ksonnets(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetResult']]:
-        """
-        Ksonnet specific options.
-        """
-        return pulumi.get(self, "ksonnets")
-
-    @property
-    @pulumi.getter
-    def kustomizes(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult']]:
-        """
-        Options specific to a GitOps application source specific to Kustomize.
-        """
-        return pulumi.get(self, "kustomizes")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        """
-        Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
-        """
-        return pulumi.get(self, "path")
-
-    @property
-    @pulumi.getter
-    def plugins(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult']]:
-        """
-        Options specific to config management plugins.
-        """
-        return pulumi.get(self, "plugins")
-
-    @property
-    @pulumi.getter(name="repoUrl")
-    def repo_url(self) -> Optional[str]:
-        """
-        URL to the repository (git or helm) that contains the GitOps application manifests.
-        """
-        return pulumi.get(self, "repo_url")
-
-    @property
-    @pulumi.getter(name="targetRevision")
-    def target_revision(self) -> Optional[str]:
-        """
-        Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
-        """
-        return pulumi.get(self, "target_revision")
-
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
     def __init__(__self__, *,
-                 exclude: Optional[str] = None,
-                 include: Optional[str] = None,
-                 jsonnets: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']] = None,
-                 recurse: Optional[bool] = None):
+                 exclude: str,
+                 include: str,
+                 jsonnets: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult'],
+                 recurse: bool):
         """
         :param str exclude: Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
         :param str include: Glob pattern to match paths against that should be explicitly included during manifest generation.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs'] jsonnets: Options specific to applications of type Jsonnet.
         :param bool recurse: Indicates to scan a directory recursively for manifests.
         """
-        if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
-        if include is not None:
-            pulumi.set(__self__, "include", include)
-        if jsonnets is not None:
-            pulumi.set(__self__, "jsonnets", jsonnets)
-        if recurse is not None:
-            pulumi.set(__self__, "recurse", recurse)
+        pulumi.set(__self__, "exclude", exclude)
+        pulumi.set(__self__, "include", include)
+        pulumi.set(__self__, "jsonnets", jsonnets)
+        pulumi.set(__self__, "recurse", recurse)
 
     @property
     @pulumi.getter
-    def exclude(self) -> Optional[str]:
+    def exclude(self) -> str:
         """
         Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
         """
@@ -12062,7 +16298,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def include(self) -> Optional[str]:
+    def include(self) -> str:
         """
         Glob pattern to match paths against that should be explicitly included during manifest generation.
         """
@@ -12070,7 +16306,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def jsonnets(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']]:
+    def jsonnets(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']:
         """
         Options specific to applications of type Jsonnet.
         """
@@ -12078,7 +16314,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def recurse(self) -> Optional[bool]:
+    def recurse(self) -> bool:
         """
         Indicates to scan a directory recursively for manifests.
         """
@@ -12088,24 +16324,21 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
     def __init__(__self__, *,
-                 ext_vars: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']] = None,
-                 libs: Optional[Sequence[str]] = None,
-                 tlas: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']] = None):
+                 ext_vars: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult'],
+                 libs: Sequence[str],
+                 tlas: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs'] ext_vars: List of jsonnet external variables.
         :param Sequence[str] libs: Additional library search dirs.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs'] tlas: List of jsonnet top-level arguments(TLAS).
         """
-        if ext_vars is not None:
-            pulumi.set(__self__, "ext_vars", ext_vars)
-        if libs is not None:
-            pulumi.set(__self__, "libs", libs)
-        if tlas is not None:
-            pulumi.set(__self__, "tlas", tlas)
+        pulumi.set(__self__, "ext_vars", ext_vars)
+        pulumi.set(__self__, "libs", libs)
+        pulumi.set(__self__, "tlas", tlas)
 
     @property
     @pulumi.getter(name="extVars")
-    def ext_vars(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']]:
+    def ext_vars(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']:
         """
         List of jsonnet external variables.
         """
@@ -12113,7 +16346,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def libs(self) -> Optional[Sequence[str]]:
+    def libs(self) -> Sequence[str]:
         """
         Additional library search dirs.
         """
@@ -12121,7 +16354,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def tlas(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']]:
+    def tlas(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']:
         """
         List of jsonnet top-level arguments(TLAS).
         """
@@ -12131,24 +16364,21 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dict):
     def __init__(__self__, *,
-                 code: Optional[bool] = None,
-                 name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 code: bool,
+                 name: str,
+                 value: str):
         """
         :param bool code: Code of the external variables of jsonnet application.
-        :param str name: Name of the external variables of jsonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the external variables of jsonnet application.
         """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def code(self) -> Optional[bool]:
+    def code(self) -> bool:
         """
         Code of the external variables of jsonnet application.
         """
@@ -12156,15 +16386,15 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the external variables of jsonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> str:
         """
         Value of the external variables of jsonnet application.
         """
@@ -12174,24 +16404,21 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
     def __init__(__self__, *,
-                 code: Optional[bool] = None,
-                 name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 code: bool,
+                 name: str,
+                 value: str):
         """
         :param bool code: Code of the TLAS of the jsonnet application.
-        :param str name: Name of the TLAS of the jsonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the TLAS of the jsonnet application.
         """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def code(self) -> Optional[bool]:
+    def code(self) -> bool:
         """
         Code of the TLAS of the jsonnet application.
         """
@@ -12199,15 +16426,15 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the TLAS of the jsonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> str:
         """
         Value of the TLAS of the jsonnet application.
         """
@@ -12217,13 +16444,13 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
     def __init__(__self__, *,
-                 file_parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']] = None,
-                 parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']] = None,
-                 pass_credentials: Optional[bool] = None,
-                 release_name: Optional[str] = None,
-                 value_files: Optional[Sequence[str]] = None,
-                 values: Optional[str] = None,
-                 version: Optional[str] = None):
+                 file_parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult'],
+                 parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult'],
+                 pass_credentials: bool,
+                 release_name: str,
+                 value_files: Sequence[str],
+                 values: str,
+                 version: str):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs'] file_parameters: File parameters to the helm template.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs'] parameters: List of helm parameters which are passed to the helm template command upon manifest generation.
@@ -12233,24 +16460,17 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
         :param str values: Helm values to be passed to helm template, typically defined as a block.
         :param str version: Helm version to use for templating (either "2" or "3")
         """
-        if file_parameters is not None:
-            pulumi.set(__self__, "file_parameters", file_parameters)
-        if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
-        if pass_credentials is not None:
-            pulumi.set(__self__, "pass_credentials", pass_credentials)
-        if release_name is not None:
-            pulumi.set(__self__, "release_name", release_name)
-        if value_files is not None:
-            pulumi.set(__self__, "value_files", value_files)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "file_parameters", file_parameters)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "pass_credentials", pass_credentials)
+        pulumi.set(__self__, "release_name", release_name)
+        pulumi.set(__self__, "value_files", value_files)
+        pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="fileParameters")
-    def file_parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']]:
+    def file_parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']:
         """
         File parameters to the helm template.
         """
@@ -12258,7 +16478,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']]:
+    def parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']:
         """
         List of helm parameters which are passed to the helm template command upon manifest generation.
         """
@@ -12266,7 +16486,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="passCredentials")
-    def pass_credentials(self) -> Optional[bool]:
+    def pass_credentials(self) -> bool:
         """
         Indicates if to pass credentials to all domains (helm's --pass-credentials)
         """
@@ -12274,7 +16494,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="releaseName")
-    def release_name(self) -> Optional[str]:
+    def release_name(self) -> str:
         """
         Helm release name to use. If omitted it will use the GitOps application name.
         """
@@ -12282,7 +16502,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="valueFiles")
-    def value_files(self) -> Optional[Sequence[str]]:
+    def value_files(self) -> Sequence[str]:
         """
         List of helm value files to use when generating a template.
         """
@@ -12290,7 +16510,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[str]:
+    def values(self) -> str:
         """
         Helm values to be passed to helm template, typically defined as a block.
         """
@@ -12298,7 +16518,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> str:
         """
         Helm version to use for templating (either "2" or "3")
         """
@@ -12308,28 +16528,26 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
     def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 path: Optional[str] = None):
+                 name: str,
+                 path: str):
         """
-        :param str name: Name of the helm parameter.
+        :param str name: Name of the GitOps application.
         :param str path: Path to the file containing the values of the helm parameter.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the helm parameter.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[str]:
+    def path(self) -> str:
         """
         Path to the file containing the values of the helm parameter.
         """
@@ -12339,24 +16557,21 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
     def __init__(__self__, *,
-                 force_string: Optional[bool] = None,
-                 name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 force_string: bool,
+                 name: str,
+                 value: str):
         """
         :param bool force_string: Indicates if helm should interpret booleans and numbers as strings.
-        :param str name: Name of the helm parameter.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the helm parameter.
         """
-        if force_string is not None:
-            pulumi.set(__self__, "force_string", force_string)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "force_string", force_string)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="forceString")
-    def force_string(self) -> Optional[bool]:
+    def force_string(self) -> bool:
         """
         Indicates if helm should interpret booleans and numbers as strings.
         """
@@ -12364,15 +16579,15 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the helm parameter.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> str:
         """
         Value of the helm parameter.
         """
@@ -12382,20 +16597,18 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
     def __init__(__self__, *,
-                 environment: Optional[str] = None,
-                 parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']] = None):
+                 environment: str,
+                 parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']):
         """
         :param str environment: Ksonnet application environment name.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs'] parameters: List of ksonnet component parameter override values.
         """
-        if environment is not None:
-            pulumi.set(__self__, "environment", environment)
-        if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[str]:
+    def environment(self) -> str:
         """
         Ksonnet application environment name.
         """
@@ -12403,7 +16616,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']]:
+    def parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']:
         """
         List of ksonnet component parameter override values.
         """
@@ -12413,24 +16626,21 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
     def __init__(__self__, *,
-                 component: Optional[str] = None,
-                 name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 component: str,
+                 name: str,
+                 value: str):
         """
         :param str component: Component of the parameter of the ksonnet application.
-        :param str name: Name of the parameter of the ksonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the parameter of the ksonnet application.
         """
-        if component is not None:
-            pulumi.set(__self__, "component", component)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def component(self) -> Optional[str]:
+    def component(self) -> str:
         """
         Component of the parameter of the ksonnet application.
         """
@@ -12438,15 +16648,15 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the parameter of the ksonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> str:
         """
         Value of the parameter of the ksonnet application.
         """
@@ -12456,14 +16666,14 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
     def __init__(__self__, *,
-                 common_annotations: Optional[Mapping[str, str]] = None,
-                 common_labels: Optional[Mapping[str, str]] = None,
-                 force_common_annotations: Optional[bool] = None,
-                 force_common_labels: Optional[bool] = None,
-                 images: Optional[Sequence[str]] = None,
-                 name_prefix: Optional[str] = None,
-                 name_suffix: Optional[str] = None,
-                 version: Optional[str] = None):
+                 common_annotations: Mapping[str, str],
+                 common_labels: Mapping[str, str],
+                 force_common_annotations: bool,
+                 force_common_labels: bool,
+                 images: Sequence[str],
+                 name_prefix: str,
+                 name_suffix: str,
+                 version: str):
         """
         :param Mapping[str, str] common_annotations: List of additional annotations to add to rendered manifests.
         :param Mapping[str, str] common_labels: List of additional labels to add to rendered manifests.
@@ -12474,26 +16684,18 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
         :param str name_suffix: Suffix appended to resources for kustomize apps.
         :param str version: Version of kustomize to use for rendering manifests.
         """
-        if common_annotations is not None:
-            pulumi.set(__self__, "common_annotations", common_annotations)
-        if common_labels is not None:
-            pulumi.set(__self__, "common_labels", common_labels)
-        if force_common_annotations is not None:
-            pulumi.set(__self__, "force_common_annotations", force_common_annotations)
-        if force_common_labels is not None:
-            pulumi.set(__self__, "force_common_labels", force_common_labels)
-        if images is not None:
-            pulumi.set(__self__, "images", images)
-        if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
-        if name_suffix is not None:
-            pulumi.set(__self__, "name_suffix", name_suffix)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "common_annotations", common_annotations)
+        pulumi.set(__self__, "common_labels", common_labels)
+        pulumi.set(__self__, "force_common_annotations", force_common_annotations)
+        pulumi.set(__self__, "force_common_labels", force_common_labels)
+        pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "name_prefix", name_prefix)
+        pulumi.set(__self__, "name_suffix", name_suffix)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="commonAnnotations")
-    def common_annotations(self) -> Optional[Mapping[str, str]]:
+    def common_annotations(self) -> Mapping[str, str]:
         """
         List of additional annotations to add to rendered manifests.
         """
@@ -12501,7 +16703,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="commonLabels")
-    def common_labels(self) -> Optional[Mapping[str, str]]:
+    def common_labels(self) -> Mapping[str, str]:
         """
         List of additional labels to add to rendered manifests.
         """
@@ -12509,7 +16711,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="forceCommonAnnotations")
-    def force_common_annotations(self) -> Optional[bool]:
+    def force_common_annotations(self) -> bool:
         """
         Indicates if to force applying common annotations to resources for kustomize apps.
         """
@@ -12517,7 +16719,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="forceCommonLabels")
-    def force_common_labels(self) -> Optional[bool]:
+    def force_common_labels(self) -> bool:
         """
         Indicates if to force apply common labels to resources for kustomize apps.
         """
@@ -12525,7 +16727,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> Optional[Sequence[str]]:
+    def images(self) -> Sequence[str]:
         """
         List of kustomize image override specifications.
         """
@@ -12533,7 +16735,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[str]:
+    def name_prefix(self) -> str:
         """
         Prefix prepended to resources for kustomize apps.
         """
@@ -12541,7 +16743,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="nameSuffix")
-    def name_suffix(self) -> Optional[str]:
+    def name_suffix(self) -> str:
         """
         Suffix appended to resources for kustomize apps.
         """
@@ -12549,7 +16751,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> Optional[str]:
+    def version(self) -> str:
         """
         Version of kustomize to use for rendering manifests.
         """
@@ -12559,20 +16761,18 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
     def __init__(__self__, *,
-                 envs: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']] = None,
-                 name: Optional[str] = None):
+                 envs: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult'],
+                 name: str):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs'] envs: Entry in the GitOps application's environment.
-        :param str name: Name of the plugin.
+        :param str name: Name of the GitOps application.
         """
-        if envs is not None:
-            pulumi.set(__self__, "envs", envs)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "envs", envs)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def envs(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']]:
+    def envs(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']:
         """
         Entry in the GitOps application's environment.
         """
@@ -12580,9 +16780,9 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the plugin.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
@@ -12590,28 +16790,26 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
     def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 value: Optional[str] = None):
+                 name: str,
+                 value: str):
         """
-        :param str name: Name of the variable, usually expressed in uppercase.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the variable.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
-        Name of the variable, usually expressed in uppercase.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[str]:
+    def value(self) -> str:
         """
         Value of the variable.
         """
@@ -12621,24 +16819,21 @@ class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSyncPolicyResult(dict):
     def __init__(__self__, *,
-                 automateds: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult']] = None,
-                 retries: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult']] = None,
-                 sync_options: Optional[Sequence[str]] = None):
+                 automateds: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult'],
+                 retries: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult'],
+                 sync_options: Sequence[str]):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedArgs'] automateds: Controls the behavior of an automated sync.
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryArgs'] retries: Contains information about the strategy to apply when a sync failed.
         :param Sequence[str] sync_options: Options allow you to specify whole app sync-options.
         """
-        if automateds is not None:
-            pulumi.set(__self__, "automateds", automateds)
-        if retries is not None:
-            pulumi.set(__self__, "retries", retries)
-        if sync_options is not None:
-            pulumi.set(__self__, "sync_options", sync_options)
+        pulumi.set(__self__, "automateds", automateds)
+        pulumi.set(__self__, "retries", retries)
+        pulumi.set(__self__, "sync_options", sync_options)
 
     @property
     @pulumi.getter
-    def automateds(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult']]:
+    def automateds(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult']:
         """
         Controls the behavior of an automated sync.
         """
@@ -12646,7 +16841,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyResult(dict):
 
     @property
     @pulumi.getter
-    def retries(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult']]:
+    def retries(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult']:
         """
         Contains information about the strategy to apply when a sync failed.
         """
@@ -12654,7 +16849,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyResult(dict):
 
     @property
     @pulumi.getter(name="syncOptions")
-    def sync_options(self) -> Optional[Sequence[str]]:
+    def sync_options(self) -> Sequence[str]:
         """
         Options allow you to specify whole app sync-options.
         """
@@ -12664,24 +16859,21 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult(dict):
     def __init__(__self__, *,
-                 allow_empty: Optional[bool] = None,
-                 prune: Optional[bool] = None,
-                 self_heal: Optional[bool] = None):
+                 allow_empty: bool,
+                 prune: bool,
+                 self_heal: bool):
         """
         :param bool allow_empty: Indicates to allows apps to have zero live resources (default: false).
         :param bool prune: Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
         :param bool self_heal: Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
         """
-        if allow_empty is not None:
-            pulumi.set(__self__, "allow_empty", allow_empty)
-        if prune is not None:
-            pulumi.set(__self__, "prune", prune)
-        if self_heal is not None:
-            pulumi.set(__self__, "self_heal", self_heal)
+        pulumi.set(__self__, "allow_empty", allow_empty)
+        pulumi.set(__self__, "prune", prune)
+        pulumi.set(__self__, "self_heal", self_heal)
 
     @property
     @pulumi.getter(name="allowEmpty")
-    def allow_empty(self) -> Optional[bool]:
+    def allow_empty(self) -> bool:
         """
         Indicates to allows apps to have zero live resources (default: false).
         """
@@ -12689,7 +16881,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult(dict):
 
     @property
     @pulumi.getter
-    def prune(self) -> Optional[bool]:
+    def prune(self) -> bool:
         """
         Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
         """
@@ -12697,7 +16889,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult(dict):
 
     @property
     @pulumi.getter(name="selfHeal")
-    def self_heal(self) -> Optional[bool]:
+    def self_heal(self) -> bool:
         """
         Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
         """
@@ -12707,20 +16899,18 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult(dict):
     def __init__(__self__, *,
-                 backoffs: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult']] = None,
-                 limit: Optional[str] = None):
+                 backoffs: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult'],
+                 limit: str):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs'] backoffs: Backoff strategy to use on subsequent retries for failing syncs.
         :param str limit: Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
         """
-        if backoffs is not None:
-            pulumi.set(__self__, "backoffs", backoffs)
-        if limit is not None:
-            pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "backoffs", backoffs)
+        pulumi.set(__self__, "limit", limit)
 
     @property
     @pulumi.getter
-    def backoffs(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult']]:
+    def backoffs(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult']:
         """
         Backoff strategy to use on subsequent retries for failing syncs.
         """
@@ -12728,7 +16918,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult(dict):
 
     @property
     @pulumi.getter
-    def limit(self) -> Optional[str]:
+    def limit(self) -> str:
         """
         Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
         """
@@ -12738,24 +16928,21 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyRetryResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult(dict):
     def __init__(__self__, *,
-                 duration: Optional[str] = None,
-                 factor: Optional[str] = None,
-                 max_duration: Optional[str] = None):
+                 duration: str,
+                 factor: str,
+                 max_duration: str):
         """
         :param str duration: Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
         :param str factor: Factor to multiply the base duration after each failed retry.
         :param str max_duration: Maximum amount of time allowed of the backoff strategy.
         """
-        if duration is not None:
-            pulumi.set(__self__, "duration", duration)
-        if factor is not None:
-            pulumi.set(__self__, "factor", factor)
-        if max_duration is not None:
-            pulumi.set(__self__, "max_duration", max_duration)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "factor", factor)
+        pulumi.set(__self__, "max_duration", max_duration)
 
     @property
     @pulumi.getter
-    def duration(self) -> Optional[str]:
+    def duration(self) -> str:
         """
         Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
         """
@@ -12763,7 +16950,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult(dict):
 
     @property
     @pulumi.getter
-    def factor(self) -> Optional[str]:
+    def factor(self) -> str:
         """
         Factor to multiply the base duration after each failed retry.
         """
@@ -12771,7 +16958,7 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult(dict):
 
     @property
     @pulumi.getter(name="maxDuration")
-    def max_duration(self) -> Optional[str]:
+    def max_duration(self) -> str:
         """
         Maximum amount of time allowed of the backoff strategy.
         """
@@ -12779,103 +16966,21 @@ class GetGitopsApplicationsApplicationSpecSyncPolicyRetryBackoffResult(dict):
 
 
 @pulumi.output_type
-class GetGitopsClusterQueryResult(dict):
-    def __init__(__self__, *,
-                 ids: Optional[Sequence['outputs.GetGitopsClusterQueryIdResult']] = None,
-                 name: Optional[str] = None,
-                 server: Optional[str] = None):
-        """
-        :param Sequence['GetGitopsClusterQueryIdArgs'] ids: Cluster server URL or the cluster name.
-        :param str name: Name of the GitOps cluster.
-        :param str server: Server of the GitOps cluster.
-        """
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence['outputs.GetGitopsClusterQueryIdResult']]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name of the GitOps cluster.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[str]:
-        """
-        Server of the GitOps cluster.
-        """
-        return pulumi.get(self, "server")
-
-
-@pulumi.output_type
-class GetGitopsClusterQueryIdResult(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str type: Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-        :param str value: Cluster server URL or the cluster name.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type of the specified GitOps cluster identifier ( 'server' - default, 'name' ).
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GetGitopsClusterRequestResult(dict):
     def __init__(__self__, *,
                  tags: Sequence[str],
                  clusters: Optional[Sequence['outputs.GetGitopsClusterRequestClusterResult']] = None,
-                 ids: Optional[Sequence['outputs.GetGitopsClusterRequestIdResult']] = None,
-                 update_masks: Optional[Sequence['outputs.GetGitopsClusterRequestUpdateMaskResult']] = None,
                  updated_fields: Optional[Sequence[str]] = None,
                  upsert: Optional[bool] = None):
         """
-        :param Sequence[str] tags: Tags associated with the clusters
+        :param Sequence[str] tags: Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         :param Sequence['GetGitopsClusterRequestClusterArgs'] clusters: GitOps cluster details.
-        :param Sequence['GetGitopsClusterRequestIdArgs'] ids: Cluster server URL or the cluster name.
-        :param Sequence['GetGitopsClusterRequestUpdateMaskArgs'] update_masks: Update mask of the GitOps cluster.
         :param Sequence[str] updated_fields: Fields which are updated.
         :param bool upsert: Indicates if the GitOps cluster should be updated if existing and inserted if not.
         """
         pulumi.set(__self__, "tags", tags)
         if clusters is not None:
             pulumi.set(__self__, "clusters", clusters)
-        if ids is not None:
-            pulumi.set(__self__, "ids", ids)
-        if update_masks is not None:
-            pulumi.set(__self__, "update_masks", update_masks)
         if updated_fields is not None:
             pulumi.set(__self__, "updated_fields", updated_fields)
         if upsert is not None:
@@ -12885,7 +16990,7 @@ class GetGitopsClusterRequestResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Tags associated with the clusters
+        Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         """
         return pulumi.get(self, "tags")
 
@@ -12896,22 +17001,6 @@ class GetGitopsClusterRequestResult(dict):
         GitOps cluster details.
         """
         return pulumi.get(self, "clusters")
-
-    @property
-    @pulumi.getter
-    def ids(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestIdResult']]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter(name="updateMasks")
-    def update_masks(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestUpdateMaskResult']]:
-        """
-        Update mask of the GitOps cluster.
-        """
-        return pulumi.get(self, "update_masks")
 
     @property
     @pulumi.getter(name="updatedFields")
@@ -12950,12 +17039,12 @@ class GetGitopsClusterRequestClusterResult(dict):
         :param bool cluster_resources: Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
         :param Sequence['GetGitopsClusterRequestClusterConfigArgs'] configs: GitOps cluster config.
         :param Mapping[str, str] labels: Labels for cluster secret metadata.
-        :param str name: Name of the cluster. If omitted, will use the server address.
+        :param str name: Name of the cluster. If omitted, the server address will be used.
         :param Sequence[str] namespaces: List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
-        :param str project: Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+        :param str project: The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
         :param Sequence['GetGitopsClusterRequestClusterRefreshRequestedAtArgs'] refresh_requested_ats: Time when cluster cache refresh has been requested.
         :param str server: API server URL of the kubernetes cluster.
-        :param str shard: Shard number. Calculated on the fly by the application controller if not specified.
+        :param str shard: Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
         """
         pulumi.set(__self__, "infos", infos)
         if annotations is not None:
@@ -13023,7 +17112,7 @@ class GetGitopsClusterRequestClusterResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the cluster. If omitted, will use the server address.
+        Name of the cluster. If omitted, the server address will be used.
         """
         return pulumi.get(self, "name")
 
@@ -13039,7 +17128,7 @@ class GetGitopsClusterRequestClusterResult(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        Reference between project and cluster that allow you automatically to be added as item inside Destinations project entity.
+        The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -13063,7 +17152,7 @@ class GetGitopsClusterRequestClusterResult(dict):
     @pulumi.getter
     def shard(self) -> Optional[str]:
         """
-        Shard number. Calculated on the fly by the application controller if not specified.
+        Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
         """
         return pulumi.get(self, "shard")
 
@@ -13071,24 +17160,26 @@ class GetGitopsClusterRequestClusterResult(dict):
 @pulumi.output_type
 class GetGitopsClusterRequestClusterConfigResult(dict):
     def __init__(__self__, *,
-                 aws_auth_configs: Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigAwsAuthConfigResult']] = None,
+                 aws_cluster_name: Optional[str] = None,
                  bearer_token: Optional[str] = None,
                  cluster_connection_type: Optional[str] = None,
                  exec_provider_configs: Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigExecProviderConfigResult']] = None,
                  password: Optional[str] = None,
+                 role_arn: Optional[str] = None,
                  tls_client_configs: Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigTlsClientConfigResult']] = None,
                  username: Optional[str] = None):
         """
-        :param Sequence['GetGitopsClusterRequestClusterConfigAwsAuthConfigArgs'] aws_auth_configs: IAM authentication configuration for AWS.
+        :param str aws_cluster_name: AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         :param str bearer_token: Bearer authentication token the cluster.
         :param str cluster_connection_type: Identifies the authentication method used to connect to the cluster.
         :param Sequence['GetGitopsClusterRequestClusterConfigExecProviderConfigArgs'] exec_provider_configs: Configuration for an exec provider.
         :param str password: Password of the server of the cluster.
+        :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
         :param Sequence['GetGitopsClusterRequestClusterConfigTlsClientConfigArgs'] tls_client_configs: Settings to enable transport layer security.
         :param str username: Username of the server of the cluster.
         """
-        if aws_auth_configs is not None:
-            pulumi.set(__self__, "aws_auth_configs", aws_auth_configs)
+        if aws_cluster_name is not None:
+            pulumi.set(__self__, "aws_cluster_name", aws_cluster_name)
         if bearer_token is not None:
             pulumi.set(__self__, "bearer_token", bearer_token)
         if cluster_connection_type is not None:
@@ -13097,18 +17188,20 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
             pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if tls_client_configs is not None:
             pulumi.set(__self__, "tls_client_configs", tls_client_configs)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
     @property
-    @pulumi.getter(name="awsAuthConfigs")
-    def aws_auth_configs(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigAwsAuthConfigResult']]:
+    @pulumi.getter(name="awsClusterName")
+    def aws_cluster_name(self) -> Optional[str]:
         """
-        IAM authentication configuration for AWS.
+        AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         """
-        return pulumi.get(self, "aws_auth_configs")
+        return pulumi.get(self, "aws_cluster_name")
 
     @property
     @pulumi.getter(name="bearerToken")
@@ -13143,6 +17236,14 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="roleARN")
+    def role_arn(self) -> Optional[str]:
+        """
+        Optional role ARN. If set then used for AWS IAM Authenticator.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
     @pulumi.getter(name="tlsClientConfigs")
     def tls_client_configs(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigTlsClientConfigResult']]:
         """
@@ -13157,37 +17258,6 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
         Username of the server of the cluster.
         """
         return pulumi.get(self, "username")
-
-
-@pulumi.output_type
-class GetGitopsClusterRequestClusterConfigAwsAuthConfigResult(dict):
-    def __init__(__self__, *,
-                 cluster_name: Optional[str] = None,
-                 role_arn: Optional[str] = None):
-        """
-        :param str cluster_name: AWS cluster name.
-        :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
-        """
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[str]:
-        """
-        AWS cluster name.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @property
-    @pulumi.getter(name="roleARN")
-    def role_arn(self) -> Optional[str]:
-        """
-        Optional role ARN. If set then used for AWS IAM Authenticator.
-        """
-        return pulumi.get(self, "role_arn")
 
 
 @pulumi.output_type
@@ -13266,11 +17336,11 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigResult(dict):
                  key_data: Optional[str] = None,
                  server_name: Optional[str] = None):
         """
-        :param str ca_data: CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
-        :param str cert_data: Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        :param str ca_data: CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+        :param str cert_data: Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         :param bool insecure: Indicates if the TLS connection to the cluster should be insecure.
-        :param str key_data: Key data holds PEM-encoded bytes (typically read from a client certificate key file).
-        :param str server_name: Server name for SNI in the client to check server certificates against.
+        :param str key_data: Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+        :param str server_name: Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         """
         if ca_data is not None:
             pulumi.set(__self__, "ca_data", ca_data)
@@ -13287,7 +17357,7 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigResult(dict):
     @pulumi.getter(name="caData")
     def ca_data(self) -> Optional[str]:
         """
-        CA data holds PEM-encoded bytes (typically read from a root certificates bundle).
+        CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
         """
         return pulumi.get(self, "ca_data")
 
@@ -13295,7 +17365,7 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigResult(dict):
     @pulumi.getter(name="certData")
     def cert_data(self) -> Optional[str]:
         """
-        Certificate data holds PEM-encoded bytes (typically read from a client certificate file).
+        Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "cert_data")
 
@@ -13311,7 +17381,7 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigResult(dict):
     @pulumi.getter(name="keyData")
     def key_data(self) -> Optional[str]:
         """
-        Key data holds PEM-encoded bytes (typically read from a client certificate key file).
+        Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "key_data")
 
@@ -13319,7 +17389,7 @@ class GetGitopsClusterRequestClusterConfigTlsClientConfigResult(dict):
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[str]:
         """
-        Server name for SNI in the client to check server certificates against.
+        Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         """
         return pulumi.get(self, "server_name")
 
@@ -13535,56 +17605,6 @@ class GetGitopsClusterRequestClusterRefreshRequestedAtResult(dict):
 
 
 @pulumi.output_type
-class GetGitopsClusterRequestIdResult(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str type: Type of the specified cluster identifier ( 'server' - default, 'name' ).
-        :param str value: Cluster server URL or the cluster name.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type of the specified cluster identifier ( 'server' - default, 'name' ).
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        Cluster server URL or the cluster name.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetGitopsClusterRequestUpdateMaskResult(dict):
-    def __init__(__self__, *,
-                 paths: Optional[Sequence[Sequence[Any]]] = None):
-        """
-        :param Sequence[Sequence[Any]] paths: The set of field mask paths.
-        """
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[Sequence[Sequence[Any]]]:
-        """
-        The set of field mask paths.
-        """
-        return pulumi.get(self, "paths")
-
-
-@pulumi.output_type
 class GetGitopsGnupgRequestResult(dict):
     def __init__(__self__, *,
                  publickeys: Optional[Sequence['outputs.GetGitopsGnupgRequestPublickeyResult']] = None,
@@ -13626,7 +17646,7 @@ class GetGitopsGnupgRequestPublickeyResult(dict):
                  trust: Optional[str] = None):
         """
         :param str fingerprint: Fingerprint is the fingerprint of the key
-        :param str key_data: KeyData holds the raw key data, in base64 encoded format
+        :param str key_data: KeyData holds the raw key data, in base64 encoded format.
         :param str key_id: KeyID specifies the key ID, in hexadecimal string format.
         :param str owner: Owner holds the owner identification, e.g. a name and e-mail address
         :param str sub_type: SubType holds the key's sub type
@@ -13657,7 +17677,7 @@ class GetGitopsGnupgRequestPublickeyResult(dict):
     @pulumi.getter(name="keyData")
     def key_data(self) -> Optional[str]:
         """
-        KeyData holds the raw key data, in base64 encoded format
+        KeyData holds the raw key data, in base64 encoded format.
         """
         return pulumi.get(self, "key_data")
 
@@ -13715,13 +17735,13 @@ class GetGitopsRepoCredCredResult(dict):
         :param str github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         :param str github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
         :param str github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-        :param str password: Password for authenticating at the repo server.
-        :param str ssh_private_key: Contains the private key data for authenticating at the repo server using SSH (only Git repos).
-        :param str tls_client_cert_data: Specifies the TLS client cert data for authenticating at the repo server.
-        :param str tls_client_cert_key: Specifies the TLS client cert key for authenticating at the repo server.
+        :param str password: Password or PAT to be used for authenticating the remote repository.
+        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         :param str type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-        :param str url: url representing this object.
-        :param str username: Username for authenticating at the repo server.
+        :param str url: URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        :param str username: Username to be used for authenticating the remote repository.
         """
         if enable_oci is not None:
             pulumi.set(__self__, "enable_oci", enable_oci)
@@ -13792,7 +17812,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        Password for authenticating at the repo server.
+        Password or PAT to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "password")
 
@@ -13800,7 +17820,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[str]:
         """
-        Contains the private key data for authenticating at the repo server using SSH (only Git repos).
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
         return pulumi.get(self, "ssh_private_key")
 
@@ -13808,7 +17828,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[str]:
         """
-        Specifies the TLS client cert data for authenticating at the repo server.
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         """
         return pulumi.get(self, "tls_client_cert_data")
 
@@ -13816,7 +17836,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[str]:
         """
-        Specifies the TLS client cert key for authenticating at the repo server.
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         """
         return pulumi.get(self, "tls_client_cert_key")
 
@@ -13832,7 +17852,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter
     def url(self) -> Optional[str]:
         """
-        url representing this object.
+        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         """
         return pulumi.get(self, "url")
 
@@ -13840,7 +17860,7 @@ class GetGitopsRepoCredCredResult(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        Username for authenticating at the repo server.
+        Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
 
@@ -13869,26 +17889,26 @@ class GetGitopsRepositoryRepoResult(dict):
                  tls_client_cert_key: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param str project: Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        :param str project: The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         :param str type_: Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
-        :param str connection_type: Identifies the authentication method used to connect to the repository.
+        :param str connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
         :param bool enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
         :param str github_app_enterprise_base_url: Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
         :param str github_app_id: Id of the GitHub app used to access the repo.
         :param str github_app_installation_id: Installation id of the GitHub app used to access the repo.
         :param str github_app_private_key: GitHub app private key PEM data.
-        :param bool inherited_creds: Indicates if the credentials were inherited from a credential set.
+        :param bool inherited_creds: Indicates if the credentials were inherited from a repository credential.
         :param bool insecure: Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-        :param bool insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        :param bool insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         :param str name: Name to be used for this repo. Only used with Helm repos.
-        :param str password: Password or PAT used for authenticating at the remote repository.
+        :param str password: Password or PAT to be used for authenticating the remote repository.
         :param str proxy: The HTTP/HTTPS proxy used to access the repo.
         :param str repo: URL to the remote repository.
-        :param str ssh_private_key: PEM data for authenticating at the repo server. Only used with Git repos.
-        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server.
-        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server.
-        :param str username: Username used for authenticating at the remote repository.
+        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        :param str username: Username to be used for authenticating the remote repository.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type_", type_)
@@ -13933,7 +17953,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+        The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         """
         return pulumi.get(self, "project")
 
@@ -13949,7 +17969,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[str]:
         """
-        Identifies the authentication method used to connect to the repository.
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
         """
         return pulumi.get(self, "connection_type")
 
@@ -14005,7 +18025,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="inheritedCreds")
     def inherited_creds(self) -> Optional[bool]:
         """
-        Indicates if the credentials were inherited from a credential set.
+        Indicates if the credentials were inherited from a repository credential.
         """
         return pulumi.get(self, "inherited_creds")
 
@@ -14021,7 +18041,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="insecureIgnoreHostKey")
     def insecure_ignore_host_key(self) -> Optional[bool]:
         """
-        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         """
         return pulumi.get(self, "insecure_ignore_host_key")
 
@@ -14037,7 +18057,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        Password or PAT used for authenticating at the remote repository.
+        Password or PAT to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "password")
 
@@ -14061,7 +18081,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="sshPrivateKey")
     def ssh_private_key(self) -> Optional[str]:
         """
-        PEM data for authenticating at the repo server. Only used with Git repos.
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
         return pulumi.get(self, "ssh_private_key")
 
@@ -14069,7 +18089,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="tlsClientCertData")
     def tls_client_cert_data(self) -> Optional[str]:
         """
-        Certificate in PEM format for authenticating at the repo server.
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "tls_client_cert_data")
 
@@ -14077,7 +18097,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter(name="tlsClientCertKey")
     def tls_client_cert_key(self) -> Optional[str]:
         """
-        Private key in PEM format for authenticating at the repo server.
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
         return pulumi.get(self, "tls_client_cert_key")
 
@@ -14085,7 +18105,7 @@ class GetGitopsRepositoryRepoResult(dict):
     @pulumi.getter
     def username(self) -> Optional[str]:
         """
-        Username used for authenticating at the remote repository.
+        Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
 
@@ -14147,6 +18167,57 @@ class GetHelmConnectorCredentialResult(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetInfrastructureGitDetailsResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_cache: str,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param str load_from_cache: If the Entity is to be fetched from cache
+        :param bool load_from_fallback_branch: Load Infrastructure yaml from fallback branch
+        :param str repo_name: Repo name of remote Infrastructure
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_cache", load_from_cache)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> str:
+        """
+        If the Entity is to be fetched from cache
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load Infrastructure yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote Infrastructure
+        """
+        return pulumi.get(self, "repo_name")
 
 
 @pulumi.output_type
@@ -14379,12 +18450,15 @@ class GetJenkinsConnectorAuthJenkinsUserNamePasswordResult(dict):
 class GetJiraConnectorAuthResult(dict):
     def __init__(__self__, *,
                  auth_type: str,
+                 personal_access_tokens: Sequence['outputs.GetJiraConnectorAuthPersonalAccessTokenResult'],
                  username_passwords: Sequence['outputs.GetJiraConnectorAuthUsernamePasswordResult']):
         """
         :param str auth_type: Authentication types for Jira connector
+        :param Sequence['GetJiraConnectorAuthPersonalAccessTokenArgs'] personal_access_tokens: Authenticate using personal access token.
         :param Sequence['GetJiraConnectorAuthUsernamePasswordArgs'] username_passwords: Authenticate using username password.
         """
         pulumi.set(__self__, "auth_type", auth_type)
+        pulumi.set(__self__, "personal_access_tokens", personal_access_tokens)
         pulumi.set(__self__, "username_passwords", username_passwords)
 
     @property
@@ -14396,12 +18470,38 @@ class GetJiraConnectorAuthResult(dict):
         return pulumi.get(self, "auth_type")
 
     @property
+    @pulumi.getter(name="personalAccessTokens")
+    def personal_access_tokens(self) -> Sequence['outputs.GetJiraConnectorAuthPersonalAccessTokenResult']:
+        """
+        Authenticate using personal access token.
+        """
+        return pulumi.get(self, "personal_access_tokens")
+
+    @property
     @pulumi.getter(name="usernamePasswords")
     def username_passwords(self) -> Sequence['outputs.GetJiraConnectorAuthUsernamePasswordResult']:
         """
         Authenticate using username password.
         """
         return pulumi.get(self, "username_passwords")
+
+
+@pulumi.output_type
+class GetJiraConnectorAuthPersonalAccessTokenResult(dict):
+    def __init__(__self__, *,
+                 pat_ref: str):
+        """
+        :param str pat_ref: Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "pat_ref", pat_ref)
+
+    @property
+    @pulumi.getter(name="patRef")
+    def pat_ref(self) -> str:
+        """
+        Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "pat_ref")
 
 
 @pulumi.output_type
@@ -15026,14 +19126,37 @@ class GetPermissionsPermissionResult(dict):
 @pulumi.output_type
 class GetPipelineFiltersFilterPropertyResult(dict):
     def __init__(__self__, *,
+                 description: str,
                  filter_type: str,
+                 module_properties: 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesResult',
+                 name: str,
+                 pipeline_identifiers: Sequence[str],
+                 pipeline_tags: Sequence[Mapping[str, str]],
                  tags: Sequence[str]):
         """
+        :param str description: description of the pipline filter.
         :param str filter_type: Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+        :param 'GetPipelineFiltersFilterPropertyModulePropertiesArgs' module_properties: module properties of the pipline filter.
+        :param str name: Name of the pipeline filter.
+        :param Sequence[str] pipeline_identifiers: Pipeline identifiers to filter on.
+        :param Sequence[Mapping[str, str]] pipeline_tags: Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
         :param Sequence[str] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "module_properties", module_properties)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pipeline_identifiers", pipeline_identifiers)
+        pulumi.set(__self__, "pipeline_tags", pipeline_tags)
         pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        description of the pipline filter.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="filterType")
@@ -15044,12 +19167,244 @@ class GetPipelineFiltersFilterPropertyResult(dict):
         return pulumi.get(self, "filter_type")
 
     @property
+    @pulumi.getter(name="moduleProperties")
+    def module_properties(self) -> 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesResult':
+        """
+        module properties of the pipline filter.
+        """
+        return pulumi.get(self, "module_properties")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the pipeline filter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pipelineIdentifiers")
+    def pipeline_identifiers(self) -> Sequence[str]:
+        """
+        Pipeline identifiers to filter on.
+        """
+        return pulumi.get(self, "pipeline_identifiers")
+
+    @property
+    @pulumi.getter(name="pipelineTags")
+    def pipeline_tags(self) -> Sequence[Mapping[str, str]]:
+        """
+        Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+        """
+        return pulumi.get(self, "pipeline_tags")
+
+    @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetPipelineFiltersFilterPropertyModulePropertiesResult(dict):
+    def __init__(__self__, *,
+                 cd: 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCdResult',
+                 ci: 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiResult'):
+        """
+        :param 'GetPipelineFiltersFilterPropertyModulePropertiesCdArgs' cd: CD related properties to be filtered on.
+        :param 'GetPipelineFiltersFilterPropertyModulePropertiesCiArgs' ci: CI related properties to be filtered on.
+        """
+        pulumi.set(__self__, "cd", cd)
+        pulumi.set(__self__, "ci", ci)
+
+    @property
+    @pulumi.getter
+    def cd(self) -> 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCdResult':
+        """
+        CD related properties to be filtered on.
+        """
+        return pulumi.get(self, "cd")
+
+    @property
+    @pulumi.getter
+    def ci(self) -> 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiResult':
+        """
+        CI related properties to be filtered on.
+        """
+        return pulumi.get(self, "ci")
+
+
+@pulumi.output_type
+class GetPipelineFiltersFilterPropertyModulePropertiesCdResult(dict):
+    def __init__(__self__, *,
+                 artifact_display_names: Sequence[str],
+                 deployment_types: str,
+                 environment_names: Sequence[str],
+                 service_names: Sequence[str]):
+        """
+        :param Sequence[str] artifact_display_names: Artifact display names of the CD pipeline.
+        :param str deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
+        :param Sequence[str] environment_names: Environment names of the CD pipeline.
+        :param Sequence[str] service_names: Service names of the CD pipeline.
+        """
+        pulumi.set(__self__, "artifact_display_names", artifact_display_names)
+        pulumi.set(__self__, "deployment_types", deployment_types)
+        pulumi.set(__self__, "environment_names", environment_names)
+        pulumi.set(__self__, "service_names", service_names)
+
+    @property
+    @pulumi.getter(name="artifactDisplayNames")
+    def artifact_display_names(self) -> Sequence[str]:
+        """
+        Artifact display names of the CD pipeline.
+        """
+        return pulumi.get(self, "artifact_display_names")
+
+    @property
+    @pulumi.getter(name="deploymentTypes")
+    def deployment_types(self) -> str:
+        """
+        Deployment type of the CD pipeline, eg. Kubernetes
+        """
+        return pulumi.get(self, "deployment_types")
+
+    @property
+    @pulumi.getter(name="environmentNames")
+    def environment_names(self) -> Sequence[str]:
+        """
+        Environment names of the CD pipeline.
+        """
+        return pulumi.get(self, "environment_names")
+
+    @property
+    @pulumi.getter(name="serviceNames")
+    def service_names(self) -> Sequence[str]:
+        """
+        Service names of the CD pipeline.
+        """
+        return pulumi.get(self, "service_names")
+
+
+@pulumi.output_type
+class GetPipelineFiltersFilterPropertyModulePropertiesCiResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 build_type: str,
+                 ci_execution_info: 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoResult',
+                 repo_names: str,
+                 tag: str):
+        """
+        :param str branch: Branch which was used while building.
+        :param str build_type: Build type of the pipeline. Possible values: branch.
+        :param 'GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoArgs' ci_execution_info: CI execution info for the pipeline.
+        :param str repo_names: name of the repository used in the pipeline.
+        :param str tag: Tags to associate with the CI pipeline resource.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "build_type", build_type)
+        pulumi.set(__self__, "ci_execution_info", ci_execution_info)
+        pulumi.set(__self__, "repo_names", repo_names)
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Branch which was used while building.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="buildType")
+    def build_type(self) -> str:
+        """
+        Build type of the pipeline. Possible values: branch.
+        """
+        return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter(name="ciExecutionInfo")
+    def ci_execution_info(self) -> 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoResult':
+        """
+        CI execution info for the pipeline.
+        """
+        return pulumi.get(self, "ci_execution_info")
+
+    @property
+    @pulumi.getter(name="repoNames")
+    def repo_names(self) -> str:
+        """
+        name of the repository used in the pipeline.
+        """
+        return pulumi.get(self, "repo_names")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        """
+        Tags to associate with the CI pipeline resource.
+        """
+        return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoResult(dict):
+    def __init__(__self__, *,
+                 event: str,
+                 pull_request: 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequestResult'):
+        """
+        :param str event: Event for the ci execution, Possible values: pullRequest.
+        :param 'GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequestArgs' pull_request: The pull request details of the CI pipeline.
+        """
+        pulumi.set(__self__, "event", event)
+        pulumi.set(__self__, "pull_request", pull_request)
+
+    @property
+    @pulumi.getter
+    def event(self) -> str:
+        """
+        Event for the ci execution, Possible values: pullRequest.
+        """
+        return pulumi.get(self, "event")
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> 'outputs.GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequestResult':
+        """
+        The pull request details of the CI pipeline.
+        """
+        return pulumi.get(self, "pull_request")
+
+
+@pulumi.output_type
+class GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullRequestResult(dict):
+    def __init__(__self__, *,
+                 source_branch: str,
+                 target_branch: str):
+        """
+        :param str source_branch: Source branch of the pull request.
+        :param str target_branch: Target branch of the pull request.
+        """
+        pulumi.set(__self__, "source_branch", source_branch)
+        pulumi.set(__self__, "target_branch", target_branch)
+
+    @property
+    @pulumi.getter(name="sourceBranch")
+    def source_branch(self) -> str:
+        """
+        Source branch of the pull request.
+        """
+        return pulumi.get(self, "source_branch")
+
+    @property
+    @pulumi.getter(name="targetBranch")
+    def target_branch(self) -> str:
+        """
+        Target branch of the pull request.
+        """
+        return pulumi.get(self, "target_branch")
 
 
 @pulumi.output_type
@@ -15159,6 +19514,25 @@ class GetPipelineGitDetailsResult(dict):
 
 
 @pulumi.output_type
+class GetPipelineListPipelineResult(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 name: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetPolicySetPolicyResult(dict):
     def __init__(__self__, *,
                  identifier: str,
@@ -15185,6 +19559,25 @@ class GetPolicySetPolicyResult(dict):
         Policy failure response - 'warning' for continuation, 'error' for exit
         """
         return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class GetProjectListProjectResult(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 name: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -15236,6 +19629,286 @@ class GetPrometheusConnectorHeaderResult(dict):
         Encrypted value.
         """
         return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class GetRepoRuleBranchBypassResult(dict):
+    def __init__(__self__, *,
+                 repo_owners: Optional[bool] = None,
+                 user_ids: Optional[Sequence[str]] = None):
+        """
+        :param bool repo_owners: Allow users with repository edit permission to bypass.
+        :param Sequence[str] user_ids: List of user ids with who can bypass.
+        """
+        if repo_owners is not None:
+            pulumi.set(__self__, "repo_owners", repo_owners)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
+
+    @property
+    @pulumi.getter(name="repoOwners")
+    def repo_owners(self) -> Optional[bool]:
+        """
+        Allow users with repository edit permission to bypass.
+        """
+        return pulumi.get(self, "repo_owners")
+
+    @property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[Sequence[str]]:
+        """
+        List of user ids with who can bypass.
+        """
+        return pulumi.get(self, "user_ids")
+
+
+@pulumi.output_type
+class GetRepoRuleBranchPatternResult(dict):
+    def __init__(__self__, *,
+                 default_branch: Optional[bool] = None,
+                 excludes: Optional[Sequence[str]] = None,
+                 includes: Optional[Sequence[str]] = None):
+        """
+        :param bool default_branch: Should rule apply to default branch of the repository.
+        :param Sequence[str] excludes: Globstar branch patterns on which rules will NOT be applied.
+        :param Sequence[str] includes: Globstar branch patterns on which rules will be applied.
+        """
+        if default_branch is not None:
+            pulumi.set(__self__, "default_branch", default_branch)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
+
+    @property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> Optional[bool]:
+        """
+        Should rule apply to default branch of the repository.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @property
+    @pulumi.getter
+    def excludes(self) -> Optional[Sequence[str]]:
+        """
+        Globstar branch patterns on which rules will NOT be applied.
+        """
+        return pulumi.get(self, "excludes")
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Optional[Sequence[str]]:
+        """
+        Globstar branch patterns on which rules will be applied.
+        """
+        return pulumi.get(self, "includes")
+
+
+@pulumi.output_type
+class GetRepoRuleBranchPolicyResult(dict):
+    def __init__(__self__, *,
+                 allow_merge_strategies: Optional[Sequence[str]] = None,
+                 block_branch_creation: Optional[bool] = None,
+                 block_branch_deletion: Optional[bool] = None,
+                 delete_branch_on_merge: Optional[bool] = None,
+                 require_code_owners: Optional[bool] = None,
+                 require_latest_commit_approval: Optional[bool] = None,
+                 require_minimum_approval_count: Optional[int] = None,
+                 require_no_change_request: Optional[bool] = None,
+                 require_pull_request: Optional[bool] = None,
+                 require_resolve_all_comments: Optional[bool] = None,
+                 require_status_checks: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allow_merge_strategies: Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        :param bool block_branch_creation: Only allow users with bypass permission to create matching branches.
+        :param bool block_branch_deletion: Only allow users with bypass permission to delete matching branches.
+        :param bool delete_branch_on_merge: Automatically delete the source branch of a pull request after it is merged.
+        :param bool require_code_owners: Require approval on pull requests from one reviewer for each codeowner rule.
+        :param bool require_latest_commit_approval: Require re-approval when there are new changes in the pull request.
+        :param int require_minimum_approval_count: Require approval on pull requests from a minimum number of reviewers.
+        :param bool require_no_change_request: Require all request for changes have been resolved.
+        :param bool require_pull_request: Do not allow any changes to matching branches without a pull request.
+        :param bool require_resolve_all_comments: All comments on a pull request must be resolved before it can be merged.
+        :param Sequence[str] require_status_checks: Selected status checks must pass before a pull request can be merged.
+        """
+        if allow_merge_strategies is not None:
+            pulumi.set(__self__, "allow_merge_strategies", allow_merge_strategies)
+        if block_branch_creation is not None:
+            pulumi.set(__self__, "block_branch_creation", block_branch_creation)
+        if block_branch_deletion is not None:
+            pulumi.set(__self__, "block_branch_deletion", block_branch_deletion)
+        if delete_branch_on_merge is not None:
+            pulumi.set(__self__, "delete_branch_on_merge", delete_branch_on_merge)
+        if require_code_owners is not None:
+            pulumi.set(__self__, "require_code_owners", require_code_owners)
+        if require_latest_commit_approval is not None:
+            pulumi.set(__self__, "require_latest_commit_approval", require_latest_commit_approval)
+        if require_minimum_approval_count is not None:
+            pulumi.set(__self__, "require_minimum_approval_count", require_minimum_approval_count)
+        if require_no_change_request is not None:
+            pulumi.set(__self__, "require_no_change_request", require_no_change_request)
+        if require_pull_request is not None:
+            pulumi.set(__self__, "require_pull_request", require_pull_request)
+        if require_resolve_all_comments is not None:
+            pulumi.set(__self__, "require_resolve_all_comments", require_resolve_all_comments)
+        if require_status_checks is not None:
+            pulumi.set(__self__, "require_status_checks", require_status_checks)
+
+    @property
+    @pulumi.getter(name="allowMergeStrategies")
+    def allow_merge_strategies(self) -> Optional[Sequence[str]]:
+        """
+        Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        """
+        return pulumi.get(self, "allow_merge_strategies")
+
+    @property
+    @pulumi.getter(name="blockBranchCreation")
+    def block_branch_creation(self) -> Optional[bool]:
+        """
+        Only allow users with bypass permission to create matching branches.
+        """
+        return pulumi.get(self, "block_branch_creation")
+
+    @property
+    @pulumi.getter(name="blockBranchDeletion")
+    def block_branch_deletion(self) -> Optional[bool]:
+        """
+        Only allow users with bypass permission to delete matching branches.
+        """
+        return pulumi.get(self, "block_branch_deletion")
+
+    @property
+    @pulumi.getter(name="deleteBranchOnMerge")
+    def delete_branch_on_merge(self) -> Optional[bool]:
+        """
+        Automatically delete the source branch of a pull request after it is merged.
+        """
+        return pulumi.get(self, "delete_branch_on_merge")
+
+    @property
+    @pulumi.getter(name="requireCodeOwners")
+    def require_code_owners(self) -> Optional[bool]:
+        """
+        Require approval on pull requests from one reviewer for each codeowner rule.
+        """
+        return pulumi.get(self, "require_code_owners")
+
+    @property
+    @pulumi.getter(name="requireLatestCommitApproval")
+    def require_latest_commit_approval(self) -> Optional[bool]:
+        """
+        Require re-approval when there are new changes in the pull request.
+        """
+        return pulumi.get(self, "require_latest_commit_approval")
+
+    @property
+    @pulumi.getter(name="requireMinimumApprovalCount")
+    def require_minimum_approval_count(self) -> Optional[int]:
+        """
+        Require approval on pull requests from a minimum number of reviewers.
+        """
+        return pulumi.get(self, "require_minimum_approval_count")
+
+    @property
+    @pulumi.getter(name="requireNoChangeRequest")
+    def require_no_change_request(self) -> Optional[bool]:
+        """
+        Require all request for changes have been resolved.
+        """
+        return pulumi.get(self, "require_no_change_request")
+
+    @property
+    @pulumi.getter(name="requirePullRequest")
+    def require_pull_request(self) -> Optional[bool]:
+        """
+        Do not allow any changes to matching branches without a pull request.
+        """
+        return pulumi.get(self, "require_pull_request")
+
+    @property
+    @pulumi.getter(name="requireResolveAllComments")
+    def require_resolve_all_comments(self) -> Optional[bool]:
+        """
+        All comments on a pull request must be resolved before it can be merged.
+        """
+        return pulumi.get(self, "require_resolve_all_comments")
+
+    @property
+    @pulumi.getter(name="requireStatusChecks")
+    def require_status_checks(self) -> Optional[Sequence[str]]:
+        """
+        Selected status checks must pass before a pull request can be merged.
+        """
+        return pulumi.get(self, "require_status_checks")
+
+
+@pulumi.output_type
+class GetRepoSourceResult(dict):
+    def __init__(__self__, *,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 repo: Optional[str] = None,
+                 type: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str host: The host URL for the import source.
+        :param str password: The password for authentication when importing.
+        :param str repo: The full identifier of the repository on the SCM provider's platform.
+        :param str type: The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        :param str username: The username for authentication when importing.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The host URL for the import source.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password for authentication when importing.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The full identifier of the repository on the SCM provider's platform.
+        """
+        return pulumi.get(self, "repo")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username for authentication when importing.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -15686,18 +20359,106 @@ class GetSecretSshkeySshSshkeyReferenceCredentialResult(dict):
 
 
 @pulumi.output_type
+class GetSecretTextAdditionalMetadataResult(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.GetSecretTextAdditionalMetadataValueResult']] = None):
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.GetSecretTextAdditionalMetadataValueResult']]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetSecretTextAdditionalMetadataValueResult(dict):
+    def __init__(__self__, *,
+                 version: Optional[str] = None):
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetServiceGitDetailsResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Repo name of remote service
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote service
+        """
+        return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class GetServiceListServiceResult(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 name: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetServiceNowConnectorAuthResult(dict):
     def __init__(__self__, *,
                  adfs: Sequence['outputs.GetServiceNowConnectorAuthAdfResult'],
                  auth_type: str,
+                 refresh_tokens: Sequence['outputs.GetServiceNowConnectorAuthRefreshTokenResult'],
                  username_passwords: Sequence['outputs.GetServiceNowConnectorAuthUsernamePasswordResult']):
         """
         :param Sequence['GetServiceNowConnectorAuthAdfArgs'] adfs: Authenticate using adfs client credentials with certificate.
         :param str auth_type: Authentication types for Jira connector
+        :param Sequence['GetServiceNowConnectorAuthRefreshTokenArgs'] refresh_tokens: Authenticate using refresh token grant type.
         :param Sequence['GetServiceNowConnectorAuthUsernamePasswordArgs'] username_passwords: Authenticate using username password.
         """
         pulumi.set(__self__, "adfs", adfs)
         pulumi.set(__self__, "auth_type", auth_type)
+        pulumi.set(__self__, "refresh_tokens", refresh_tokens)
         pulumi.set(__self__, "username_passwords", username_passwords)
 
     @property
@@ -15715,6 +20476,14 @@ class GetServiceNowConnectorAuthResult(dict):
         Authentication types for Jira connector
         """
         return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="refreshTokens")
+    def refresh_tokens(self) -> Sequence['outputs.GetServiceNowConnectorAuthRefreshTokenResult']:
+        """
+        Authenticate using refresh token grant type.
+        """
+        return pulumi.get(self, "refresh_tokens")
 
     @property
     @pulumi.getter(name="usernamePasswords")
@@ -15788,6 +20557,68 @@ class GetServiceNowConnectorAuthAdfResult(dict):
 
 
 @pulumi.output_type
+class GetServiceNowConnectorAuthRefreshTokenResult(dict):
+    def __init__(__self__, *,
+                 client_id_ref: str,
+                 client_secret_ref: str,
+                 refresh_token_ref: str,
+                 scope: str,
+                 token_url: str):
+        """
+        :param str client_id_ref: Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str client_secret_ref: Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str refresh_token_ref: Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str scope: Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str token_url: Token url to use for authentication.
+        """
+        pulumi.set(__self__, "client_id_ref", client_id_ref)
+        pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+        pulumi.set(__self__, "refresh_token_ref", refresh_token_ref)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="clientIdRef")
+    def client_id_ref(self) -> str:
+        """
+        Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "client_id_ref")
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> str:
+        """
+        Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+    @property
+    @pulumi.getter(name="refreshTokenRef")
+    def refresh_token_ref(self) -> str:
+        """
+        Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "refresh_token_ref")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> str:
+        """
+        Token url to use for authentication.
+        """
+        return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
 class GetServiceNowConnectorAuthUsernamePasswordResult(dict):
     def __init__(__self__, *,
                  password_ref: str,
@@ -15825,6 +20656,57 @@ class GetServiceNowConnectorAuthUsernamePasswordResult(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetServiceOverridesV2GitDetailsResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_cache: bool,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param bool load_from_cache: Load service yaml from fallback branch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Repo name of remote service override
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_cache", load_from_cache)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote service override
+        """
+        return pulumi.get(self, "repo_name")
 
 
 @pulumi.output_type
@@ -16223,5 +21105,187 @@ class GetVariablesSpecResult(dict):
         Type of Value of the Variable. For now only FIXED is supported
         """
         return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class GetWorkspaceEnvironmentVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable`
+        :param str value: value is the value of the variable
+        :param str value_type: Value type indicates the value type of the variable, text or secret
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable`
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        value is the value of the variable
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class GetWorkspaceOutputValueOutputValueResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 sensitive: bool,
+                 value: str):
+        """
+        :param str name: Name associated with the output.
+        :param bool sensitive: Indicates if the output is sensitive.
+        :param str value: Value of the output.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sensitive", sensitive)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name associated with the output.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def sensitive(self) -> bool:
+        """
+        Indicates if the output is sensitive.
+        """
+        return pulumi.get(self, "sensitive")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of the output.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetWorkspaceTerraformVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable`
+        :param str value: value is the value of the variable
+        :param str value_type: Value type indicates the value type of the variable, text or secret
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable`
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        value is the value of the variable
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class GetWorkspaceTerraformVariableFileResult(dict):
+    def __init__(__self__, *,
+                 repository: str,
+                 repository_branch: str,
+                 repository_commit: str,
+                 repository_connector: str,
+                 repository_path: str):
+        """
+        :param str repository: Repository is the name of the repository to fetch the code from.
+        :param str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        :param str repository_commit: Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        :param str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
+        :param str repository_path: Repository path is the path in which the variables reside.
+        """
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_branch", repository_branch)
+        pulumi.set(__self__, "repository_commit", repository_commit)
+        pulumi.set(__self__, "repository_connector", repository_connector)
+        pulumi.set(__self__, "repository_path", repository_path)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter(name="repositoryBranch")
+    def repository_branch(self) -> str:
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        """
+        return pulumi.get(self, "repository_branch")
+
+    @property
+    @pulumi.getter(name="repositoryCommit")
+    def repository_commit(self) -> str:
+        """
+        Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        """
+        return pulumi.get(self, "repository_commit")
+
+    @property
+    @pulumi.getter(name="repositoryConnector")
+    def repository_connector(self) -> str:
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        return pulumi.get(self, "repository_connector")
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> str:
+        """
+        Repository path is the path in which the variables reside.
+        """
+        return pulumi.get(self, "repository_path")
 
 

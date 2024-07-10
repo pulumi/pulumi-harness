@@ -29,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupEnvironmentGroup(ctx, &platform.LookupEnvironmentGroupArgs{
 //				Identifier: "identifier",
-//				OrgId:      "org_id",
-//				ProjectId:  "project_id",
+//				OrgId:      pulumi.StringRef("org_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,9 +57,9 @@ type LookupEnvironmentGroupArgs struct {
 	// identifier of the environment group.
 	Identifier string `pulumi:"identifier"`
 	// org_id of the environment group.
-	OrgId string `pulumi:"orgId"`
+	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getEnvironmentGroup.
@@ -71,9 +71,9 @@ type LookupEnvironmentGroupResult struct {
 	// identifier of the environment group.
 	Identifier string `pulumi:"identifier"`
 	// org_id of the environment group.
-	OrgId string `pulumi:"orgId"`
+	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// Input Set YAML
 	Yaml string `pulumi:"yaml"`
 }
@@ -98,9 +98,9 @@ type LookupEnvironmentGroupOutputArgs struct {
 	// identifier of the environment group.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// org_id of the environment group.
-	OrgId pulumi.StringInput `pulumi:"orgId"`
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// project_id of the environment group.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (LookupEnvironmentGroupOutputArgs) ElementType() reflect.Type {
@@ -138,13 +138,13 @@ func (o LookupEnvironmentGroupResultOutput) Identifier() pulumi.StringOutput {
 }
 
 // org_id of the environment group.
-func (o LookupEnvironmentGroupResultOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentGroupResult) string { return v.OrgId }).(pulumi.StringOutput)
+func (o LookupEnvironmentGroupResultOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnvironmentGroupResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
 // project_id of the environment group.
-func (o LookupEnvironmentGroupResultOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEnvironmentGroupResult) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o LookupEnvironmentGroupResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEnvironmentGroupResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Input Set YAML

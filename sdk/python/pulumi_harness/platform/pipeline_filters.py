@@ -277,12 +277,59 @@ class PipelineFilters(pulumi.CustomResource):
             name="name",
             org_id="org_id",
             project_id="project_id",
-            type="PipelineExecution",
+            type="PipelineSetup",
             filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="PipelineExecution",
+                name="pipeline_name",
+                description="pipeline_description",
+                pipeline_identifiers=[
+                    "id1",
+                    "id2",
+                ],
+                filter_type="PipelineSetup",
             ),
             filter_visibility="EveryOne")
+        # pipeline filter with tags
+        example_with_tags = harness.platform.PipelineFilters("example_with_tags",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            type="PipelineSetup",
+            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
+                filter_type="PipelineSetup",
+                pipeline_tags=[
+                    {
+                        "key": "tag1",
+                        "value": "123",
+                    },
+                    {
+                        "key": "tag2",
+                        "value": "456",
+                    },
+                ],
+                module_properties=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesArgs(
+                    cd=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs(
+                        deployment_types="Kubernetes",
+                        service_names=[
+                            "service1",
+                            "service2",
+                        ],
+                        environment_names=[
+                            "env1",
+                            "env2",
+                        ],
+                        artifact_display_names=[
+                            "artificatname1",
+                            "artifact2",
+                        ],
+                    ),
+                    ci=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCiArgs(
+                        build_type="branch",
+                        branch="branch123",
+                        repo_names="repo1234",
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -335,12 +382,59 @@ class PipelineFilters(pulumi.CustomResource):
             name="name",
             org_id="org_id",
             project_id="project_id",
-            type="PipelineExecution",
+            type="PipelineSetup",
             filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="PipelineExecution",
+                name="pipeline_name",
+                description="pipeline_description",
+                pipeline_identifiers=[
+                    "id1",
+                    "id2",
+                ],
+                filter_type="PipelineSetup",
             ),
             filter_visibility="EveryOne")
+        # pipeline filter with tags
+        example_with_tags = harness.platform.PipelineFilters("example_with_tags",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            type="PipelineSetup",
+            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
+                filter_type="PipelineSetup",
+                pipeline_tags=[
+                    {
+                        "key": "tag1",
+                        "value": "123",
+                    },
+                    {
+                        "key": "tag2",
+                        "value": "456",
+                    },
+                ],
+                module_properties=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesArgs(
+                    cd=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs(
+                        deployment_types="Kubernetes",
+                        service_names=[
+                            "service1",
+                            "service2",
+                        ],
+                        environment_names=[
+                            "env1",
+                            "env2",
+                        ],
+                        artifact_display_names=[
+                            "artificatname1",
+                            "artifact2",
+                        ],
+                    ),
+                    ci=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCiArgs(
+                        build_type="branch",
+                        branch="branch123",
+                        repo_names="repo1234",
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -462,7 +556,7 @@ class PipelineFilters(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filterVisibility")
-    def filter_visibility(self) -> pulumi.Output[Optional[str]]:
+    def filter_visibility(self) -> pulumi.Output[str]:
         """
         This indicates visibility of filters. By default, everyone can view this filter.
         """

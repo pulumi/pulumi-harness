@@ -12,17 +12,11 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GitOpsClusterRequestClusterConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("awsAuthConfigs")]
-        private InputList<Inputs.GitOpsClusterRequestClusterConfigAwsAuthConfigArgs>? _awsAuthConfigs;
-
         /// <summary>
-        /// IAM authentication configuration for AWS.
+        /// AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         /// </summary>
-        public InputList<Inputs.GitOpsClusterRequestClusterConfigAwsAuthConfigArgs> AwsAuthConfigs
-        {
-            get => _awsAuthConfigs ?? (_awsAuthConfigs = new InputList<Inputs.GitOpsClusterRequestClusterConfigAwsAuthConfigArgs>());
-            set => _awsAuthConfigs = value;
-        }
+        [Input("awsClusterName")]
+        public Input<string>? AwsClusterName { get; set; }
 
         /// <summary>
         /// Bearer authentication token the cluster.
@@ -53,6 +47,12 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Optional role ARN. If set then used for AWS IAM Authenticator.
+        /// </summary>
+        [Input("roleARN")]
+        public Input<string>? RoleARN { get; set; }
 
         [Input("tlsClientConfigs")]
         private InputList<Inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs>? _tlsClientConfigs;

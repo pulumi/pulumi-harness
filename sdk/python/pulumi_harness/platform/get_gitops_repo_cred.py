@@ -23,7 +23,7 @@ class GetGitopsRepoCredResult:
     """
     A collection of values returned by getGitopsRepoCred.
     """
-    def __init__(__self__, account_id=None, agent_id=None, creds=None, id=None, identifier=None, org_id=None, project_id=None, upsert=None):
+    def __init__(__self__, account_id=None, agent_id=None, creds=None, id=None, identifier=None, org_id=None, project_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -45,15 +45,12 @@ class GetGitopsRepoCredResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
-        if upsert and not isinstance(upsert, bool):
-            raise TypeError("Expected argument 'upsert' to be a bool")
-        pulumi.set(__self__, "upsert", upsert)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        account identifier of the Repository Credentials.
+        Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
@@ -61,7 +58,7 @@ class GetGitopsRepoCredResult:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> str:
         """
-        agent identifier of the Repository Credentials.
+        Agent identifier of the Repository Credentials.
         """
         return pulumi.get(self, "agent_id")
 
@@ -93,7 +90,7 @@ class GetGitopsRepoCredResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Organization identifier of the Repository Credential.
+        Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
@@ -101,17 +98,9 @@ class GetGitopsRepoCredResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Project identifier of the Repository Credential.
+        Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
-
-    @property
-    @pulumi.getter
-    def upsert(self) -> Optional[bool]:
-        """
-        if the Repository credential should be upserted.
-        """
-        return pulumi.get(self, "upsert")
 
 
 class AwaitableGetGitopsRepoCredResult(GetGitopsRepoCredResult):
@@ -126,8 +115,7 @@ class AwaitableGetGitopsRepoCredResult(GetGitopsRepoCredResult):
             id=self.id,
             identifier=self.identifier,
             org_id=self.org_id,
-            project_id=self.project_id,
-            upsert=self.upsert)
+            project_id=self.project_id)
 
 
 def get_gitops_repo_cred(account_id: Optional[str] = None,
@@ -136,10 +124,9 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
                          identifier: Optional[str] = None,
                          org_id: Optional[str] = None,
                          project_id: Optional[str] = None,
-                         upsert: Optional[bool] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsRepoCredResult:
     """
-    Data source for retrieving a GitOps RepoCred.
+    Data source for fetching a GitOps Repository Credentials.
 
     ## Example Usage
 
@@ -155,13 +142,12 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
     ```
 
 
-    :param str account_id: account identifier of the Repository Credentials.
-    :param str agent_id: agent identifier of the Repository Credentials.
+    :param str account_id: Account identifier of the Repository Credentials.
+    :param str agent_id: Agent identifier of the Repository Credentials.
     :param Sequence[pulumi.InputType['GetGitopsRepoCredCredArgs']] creds: credential details.
     :param str identifier: Identifier of the Repository Credentials.
-    :param str org_id: Organization identifier of the Repository Credential.
-    :param str project_id: Project identifier of the Repository Credential.
-    :param bool upsert: if the Repository credential should be upserted.
+    :param str org_id: Organization identifier of the Repository Credentials.
+    :param str project_id: Project identifier of the Repository Credentials.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -170,7 +156,6 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['upsert'] = upsert
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsRepoCred:getGitopsRepoCred', __args__, opts=opts, typ=GetGitopsRepoCredResult).value
 
@@ -181,8 +166,7 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        project_id=pulumi.get(__ret__, 'project_id'),
-        upsert=pulumi.get(__ret__, 'upsert'))
+        project_id=pulumi.get(__ret__, 'project_id'))
 
 
 @_utilities.lift_output_func(get_gitops_repo_cred)
@@ -192,10 +176,9 @@ def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[str]] = None,
                                 identifier: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                upsert: Optional[pulumi.Input[Optional[bool]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepoCredResult]:
     """
-    Data source for retrieving a GitOps RepoCred.
+    Data source for fetching a GitOps Repository Credentials.
 
     ## Example Usage
 
@@ -211,12 +194,11 @@ def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str account_id: account identifier of the Repository Credentials.
-    :param str agent_id: agent identifier of the Repository Credentials.
+    :param str account_id: Account identifier of the Repository Credentials.
+    :param str agent_id: Agent identifier of the Repository Credentials.
     :param Sequence[pulumi.InputType['GetGitopsRepoCredCredArgs']] creds: credential details.
     :param str identifier: Identifier of the Repository Credentials.
-    :param str org_id: Organization identifier of the Repository Credential.
-    :param str project_id: Project identifier of the Repository Credential.
-    :param bool upsert: if the Repository credential should be upserted.
+    :param str org_id: Organization identifier of the Repository Credentials.
+    :param str project_id: Project identifier of the Repository Credentials.
     """
     ...

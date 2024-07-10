@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Gitops Agents.
+ * Resource for managing a Harness GitOps Agent.
  *
  * ## Example Usage
  *
@@ -31,10 +31,16 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import a Account level Gitops Agent
+ * Import an Account level Gitops Agent
  *
  * ```sh
  * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <agent_id>
+ * ```
+ *
+ * Import an Org level Gitops Agent
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitOpsAgent:GitOpsAgent example <organization_id>/<agent_id>
  * ```
  *
  * Import a Project level Gitops Agent
@@ -76,6 +82,10 @@ export class GitOpsAgent extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * Agent token to be used for authentication of the agent with Harness.
+     */
+    public /*out*/ readonly agentToken!: pulumi.Output<string>;
+    /**
      * Description of the GitOps agent.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -91,6 +101,10 @@ export class GitOpsAgent extends pulumi.CustomResource {
      * Name of the GitOps agent.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+     */
+    public readonly operator!: pulumi.Output<string | undefined>;
     /**
      * Organization identifier of the GitOps agent.
      */
@@ -123,10 +137,12 @@ export class GitOpsAgent extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GitOpsAgentState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["agentToken"] = state ? state.agentToken : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -147,10 +163,12 @@ export class GitOpsAgent extends pulumi.CustomResource {
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["operator"] = args ? args.operator : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["agentToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitOpsAgent.__pulumiType, name, resourceInputs, opts);
@@ -165,6 +183,10 @@ export interface GitOpsAgentState {
      * Account identifier of the GitOps agent.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Agent token to be used for authentication of the agent with Harness.
+     */
+    agentToken?: pulumi.Input<string>;
     /**
      * Description of the GitOps agent.
      */
@@ -181,6 +203,10 @@ export interface GitOpsAgentState {
      * Name of the GitOps agent.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+     */
+    operator?: pulumi.Input<string>;
     /**
      * Organization identifier of the GitOps agent.
      */
@@ -224,6 +250,10 @@ export interface GitOpsAgentArgs {
      * Name of the GitOps agent.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
+     */
+    operator?: pulumi.Input<string>;
     /**
      * Organization identifier of the GitOps agent.
      */

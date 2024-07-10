@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Authenticate using refresh token grant type.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceNowConnectorAuthRefreshTokenResult> RefreshTokens;
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceNowConnectorAuthUsernamePasswordResult> UsernamePasswords;
@@ -32,10 +36,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string authType,
 
+            ImmutableArray<Outputs.GetServiceNowConnectorAuthRefreshTokenResult> refreshTokens,
+
             ImmutableArray<Outputs.GetServiceNowConnectorAuthUsernamePasswordResult> usernamePasswords)
         {
             Adfs = adfs;
             AuthType = authType;
+            RefreshTokens = refreshTokens;
             UsernamePasswords = usernamePasswords;
         }
     }

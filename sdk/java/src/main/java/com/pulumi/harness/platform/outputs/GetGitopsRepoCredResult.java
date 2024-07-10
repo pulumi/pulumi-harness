@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredCred;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsRepoCredResult {
     /**
-     * @return account identifier of the Repository Credentials.
+     * @return Account identifier of the Repository Credentials.
      * 
      */
     private String accountId;
     /**
-     * @return agent identifier of the Repository Credentials.
+     * @return Agent identifier of the Repository Credentials.
      * 
      */
     private String agentId;
@@ -41,31 +40,26 @@ public final class GetGitopsRepoCredResult {
      */
     private String identifier;
     /**
-     * @return Organization identifier of the Repository Credential.
+     * @return Organization identifier of the Repository Credentials.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Project identifier of the Repository Credential.
+     * @return Project identifier of the Repository Credentials.
      * 
      */
     private @Nullable String projectId;
-    /**
-     * @return if the Repository credential should be upserted.
-     * 
-     */
-    private @Nullable Boolean upsert;
 
     private GetGitopsRepoCredResult() {}
     /**
-     * @return account identifier of the Repository Credentials.
+     * @return Account identifier of the Repository Credentials.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return agent identifier of the Repository Credentials.
+     * @return Agent identifier of the Repository Credentials.
      * 
      */
     public String agentId() {
@@ -93,25 +87,18 @@ public final class GetGitopsRepoCredResult {
         return this.identifier;
     }
     /**
-     * @return Organization identifier of the Repository Credential.
+     * @return Organization identifier of the Repository Credentials.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Project identifier of the Repository Credential.
+     * @return Project identifier of the Repository Credentials.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
-    }
-    /**
-     * @return if the Repository credential should be upserted.
-     * 
-     */
-    public Optional<Boolean> upsert() {
-        return Optional.ofNullable(this.upsert);
     }
 
     public static Builder builder() {
@@ -130,7 +117,6 @@ public final class GetGitopsRepoCredResult {
         private String identifier;
         private @Nullable String orgId;
         private @Nullable String projectId;
-        private @Nullable Boolean upsert;
         public Builder() {}
         public Builder(GetGitopsRepoCredResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -141,7 +127,6 @@ public final class GetGitopsRepoCredResult {
     	      this.identifier = defaults.identifier;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
-    	      this.upsert = defaults.upsert;
         }
 
         @CustomType.Setter
@@ -199,12 +184,6 @@ public final class GetGitopsRepoCredResult {
             this.projectId = projectId;
             return this;
         }
-        @CustomType.Setter
-        public Builder upsert(@Nullable Boolean upsert) {
-
-            this.upsert = upsert;
-            return this;
-        }
         public GetGitopsRepoCredResult build() {
             final var _resultValue = new GetGitopsRepoCredResult();
             _resultValue.accountId = accountId;
@@ -214,7 +193,6 @@ public final class GetGitopsRepoCredResult {
             _resultValue.identifier = identifier;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
-            _resultValue.upsert = upsert;
             return _resultValue;
         }
     }

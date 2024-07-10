@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Variable.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -88,8 +86,6 @@ export interface GetVariablesResult {
     readonly type: string;
 }
 /**
- * Data source for retrieving a Harness Variable.
- *
  * ## Example Usage
  *
  * ```typescript

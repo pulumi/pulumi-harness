@@ -13,7 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class EnvironmentClustersMappingClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account Identifier of the account
+        /// agent identifier of the cluster (include scope prefix)
+        /// </summary>
+        [Input("agentIdentifier")]
+        public Input<string>? AgentIdentifier { get; set; }
+
+        /// <summary>
+        /// identifier of the cluster
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
@@ -25,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// scope at which the cluster exists in harness gitops, project vs org vs account
+        /// scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

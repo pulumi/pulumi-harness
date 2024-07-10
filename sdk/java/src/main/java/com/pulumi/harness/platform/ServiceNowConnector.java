@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Service Now connector.
+ * ## Example to create ServiceNow Connector at different levels (Org, Project, Account)
  * 
  * ## Import
  * 

@@ -218,8 +218,6 @@ def get_azure_key_vault_connector(identifier: Optional[str] = None,
                                   project_id: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzureKeyVaultConnectorResult:
     """
-    Data source for looking up an Azure key vault connector.
-
     ## Example Usage
 
     ```python
@@ -268,8 +266,6 @@ def get_azure_key_vault_connector_output(identifier: Optional[pulumi.Input[str]]
                                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureKeyVaultConnectorResult]:
     """
-    Data source for looking up an Azure key vault connector.
-
     ## Example Usage
 
     ```python

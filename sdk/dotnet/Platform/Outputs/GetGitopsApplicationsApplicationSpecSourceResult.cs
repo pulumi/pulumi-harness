@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
         /// </summary>
-        public readonly string? Chart;
+        public readonly string Chart;
         /// <summary>
         /// Options for applications of type plain YAML or Jsonnet.
         /// </summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         /// </summary>
-        public readonly string? Path;
+        public readonly string Path;
         /// <summary>
         /// Options specific to config management plugins.
         /// </summary>
@@ -44,15 +44,15 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// URL to the repository (git or helm) that contains the GitOps application manifests.
         /// </summary>
-        public readonly string? RepoUrl;
+        public readonly string RepoUrl;
         /// <summary>
         /// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
         /// </summary>
-        public readonly string? TargetRevision;
+        public readonly string TargetRevision;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceResult(
-            string? chart,
+            string chart,
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult> directories,
 
@@ -62,13 +62,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult> kustomizes,
 
-            string? path,
+            string path,
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult> plugins,
 
-            string? repoUrl,
+            string repoUrl,
 
-            string? targetRevision)
+            string targetRevision)
         {
             Chart = chart;
             Directories = directories;

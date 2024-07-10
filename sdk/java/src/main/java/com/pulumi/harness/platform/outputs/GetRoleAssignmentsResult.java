@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRoleAssignmentsResult {
     /**
-     * @return Disabled or not.
+     * @return The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
      * 
      */
     private Boolean disabled;
@@ -31,7 +31,7 @@ public final class GetRoleAssignmentsResult {
      */
     private String identifier;
     /**
-     * @return Managed or not.
+     * @return Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
      * 
      */
     private Boolean managed;
@@ -63,7 +63,7 @@ public final class GetRoleAssignmentsResult {
 
     private GetRoleAssignmentsResult() {}
     /**
-     * @return Disabled or not.
+     * @return The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
      * 
      */
     public Boolean disabled() {
@@ -84,7 +84,7 @@ public final class GetRoleAssignmentsResult {
         return this.identifier;
     }
     /**
-     * @return Managed or not.
+     * @return Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
      * 
      */
     public Boolean managed() {

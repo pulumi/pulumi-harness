@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating role assignments in Harness.
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/roleAssignments:RoleAssignments")
 public class RoleAssignments extends com.pulumi.resources.CustomResource {
     /**
-     * Disabled or not.
+     * The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Disabled or not.
+     * @return The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity&#39;s permissions and action capabilities. Default value should be `false`.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
@@ -72,14 +72,14 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
-     * Managed or not.
+     * Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
      * 
      */
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> managed;
 
     /**
-     * @return Managed or not.
+     * @return Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
      * 
      */
     public Output<Optional<Boolean>> managed() {

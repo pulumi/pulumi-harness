@@ -490,8 +490,6 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  vault_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for creating an Azure key vault in Harness.
-
         ## Example Usage
 
         ```python
@@ -556,8 +554,6 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  args: AzureKeyVaultConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating an Azure key vault in Harness.
-
         ## Example Usage
 
         ```python

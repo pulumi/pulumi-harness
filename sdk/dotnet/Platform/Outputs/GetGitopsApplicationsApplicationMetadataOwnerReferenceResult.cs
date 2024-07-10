@@ -16,41 +16,41 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// API version of the referent.
         /// </summary>
-        public readonly string? ApiVersion;
+        public readonly string ApiVersion;
         /// <summary>
         /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
         /// </summary>
-        public readonly bool? BlockOwnerDeletion;
+        public readonly bool BlockOwnerDeletion;
         /// <summary>
         /// Indicates if the reference points to the managing controller.
         /// </summary>
-        public readonly bool? Controller;
+        public readonly bool Controller;
         /// <summary>
         /// Kind of the referent.
         /// </summary>
-        public readonly string? Kind;
+        public readonly string Kind;
         /// <summary>
         /// Name of the referent.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// UID of the referent.
         /// </summary>
-        public readonly string? Uid;
+        public readonly string Uid;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(
-            string? apiVersion,
+            string apiVersion,
 
-            bool? blockOwnerDeletion,
+            bool blockOwnerDeletion,
 
-            bool? controller,
+            bool controller,
 
-            string? kind,
+            string kind,
 
-            string? name,
+            string name,
 
-            string? uid)
+            string uid)
         {
             ApiVersion = apiVersion;
             BlockOwnerDeletion = blockOwnerDeletion;

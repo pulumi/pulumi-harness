@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.SecretTextAdditionalMetadataArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretTextArgs Empty = new SecretTextArgs();
+
+    /**
+     * Additional Metadata for the Secret
+     * 
+     */
+    @Import(name="additionalMetadatas")
+    private @Nullable Output<List<SecretTextAdditionalMetadataArgs>> additionalMetadatas;
+
+    /**
+     * @return Additional Metadata for the Secret
+     * 
+     */
+    public Optional<Output<List<SecretTextAdditionalMetadataArgs>>> additionalMetadatas() {
+        return Optional.ofNullable(this.additionalMetadatas);
+    }
 
     /**
      * Description of the resource.
@@ -126,15 +142,15 @@ public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
      * Value of the Secret
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
      * @return Value of the Secret
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     /**
@@ -155,6 +171,7 @@ public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
     private SecretTextArgs() {}
 
     private SecretTextArgs(SecretTextArgs $) {
+        this.additionalMetadatas = $.additionalMetadatas;
         this.description = $.description;
         this.identifier = $.identifier;
         this.name = $.name;
@@ -182,6 +199,37 @@ public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SecretTextArgs defaults) {
             $ = new SecretTextArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(@Nullable Output<List<SecretTextAdditionalMetadataArgs>> additionalMetadatas) {
+            $.additionalMetadatas = additionalMetadatas;
+            return this;
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(List<SecretTextAdditionalMetadataArgs> additionalMetadatas) {
+            return additionalMetadatas(Output.of(additionalMetadatas));
+        }
+
+        /**
+         * @param additionalMetadatas Additional Metadata for the Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalMetadatas(SecretTextAdditionalMetadataArgs... additionalMetadatas) {
+            return additionalMetadatas(List.of(additionalMetadatas));
         }
 
         /**
@@ -347,7 +395,7 @@ public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -389,9 +437,6 @@ public final class SecretTextArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.secretManagerIdentifier == null) {
                 throw new MissingRequiredPropertyException("SecretTextArgs", "secretManagerIdentifier");
-            }
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("SecretTextArgs", "value");
             }
             if ($.valueType == null) {
                 throw new MissingRequiredPropertyException("SecretTextArgs", "valueType");

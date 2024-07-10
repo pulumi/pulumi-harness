@@ -18,14 +18,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     public static final GitOpsRepositoryRepoArgs Empty = new GitOpsRepositoryRepoArgs();
 
     /**
-     * Identifies the authentication method used to connect to the repository.
+     * Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
      * 
      */
     @Import(name="connectionType", required=true)
     private Output<String> connectionType;
 
     /**
-     * @return Identifies the authentication method used to connect to the repository.
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
      * 
      */
     public Output<String> connectionType() {
@@ -123,14 +123,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Indicates if the credentials were inherited from a credential set.
+     * Indicates if the credentials were inherited from a repository credential.
      * 
      */
     @Import(name="inheritedCreds")
     private @Nullable Output<Boolean> inheritedCreds;
 
     /**
-     * @return Indicates if the credentials were inherited from a credential set.
+     * @return Indicates if the credentials were inherited from a repository credential.
      * 
      */
     public Optional<Output<Boolean>> inheritedCreds() {
@@ -153,14 +153,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
      * 
      */
     @Import(name="insecureIgnoreHostKey")
     private @Nullable Output<Boolean> insecureIgnoreHostKey;
 
     /**
-     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+     * @return Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
      * 
      */
     public Optional<Output<Boolean>> insecureIgnoreHostKey() {
@@ -183,14 +183,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Password or PAT used for authenticating at the remote repository.
+     * Password or PAT to be used for authenticating the remote repository.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password or PAT used for authenticating at the remote repository.
+     * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
     public Optional<Output<String>> password() {
@@ -198,14 +198,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+     * @return The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
      * 
      */
     public Optional<Output<String>> project() {
@@ -243,14 +243,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * PEM data for authenticating at the repo server. Only used with Git repos.
+     * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     @Import(name="sshPrivateKey")
     private @Nullable Output<String> sshPrivateKey;
 
     /**
-     * @return PEM data for authenticating at the repo server. Only used with Git repos.
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
     public Optional<Output<String>> sshPrivateKey() {
@@ -258,14 +258,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Certificate in PEM format for authenticating at the repo server.
+     * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     @Import(name="tlsClientCertData")
     private @Nullable Output<String> tlsClientCertData;
 
     /**
-     * @return Certificate in PEM format for authenticating at the repo server.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<Output<String>> tlsClientCertData() {
@@ -273,14 +273,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Private key in PEM format for authenticating at the repo server.
+     * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     @Import(name="tlsClientCertKey")
     private @Nullable Output<String> tlsClientCertKey;
 
     /**
-     * @return Private key in PEM format for authenticating at the repo server.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
      * 
      */
     public Optional<Output<String>> tlsClientCertKey() {
@@ -303,14 +303,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Username used for authenticating at the remote repository.
+     * Username to be used for authenticating the remote repository.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username used for authenticating at the remote repository.
+     * @return Username to be used for authenticating the remote repository.
      * 
      */
     public Optional<Output<String>> username() {
@@ -361,7 +361,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionType Identifies the authentication method used to connect to the repository.
+         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionType Identifies the authentication method used to connect to the repository.
+         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inheritedCreds Indicates if the credentials were inherited from a credential set.
+         * @param inheritedCreds Indicates if the credentials were inherited from a repository credential.
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inheritedCreds Indicates if the credentials were inherited from a credential set.
+         * @param inheritedCreds Indicates if the credentials were inherited from a repository credential.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param insecureIgnoreHostKey Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+         * @param insecureIgnoreHostKey Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param insecureIgnoreHostKey Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos.
+         * @param insecureIgnoreHostKey Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password Password or PAT used for authenticating at the remote repository.
+         * @param password Password or PAT to be used for authenticating the remote repository.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password Password or PAT used for authenticating at the remote repository.
+         * @param password Password or PAT to be used for authenticating the remote repository.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+         * @param project The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project Reference between project and repository that allow you automatically to be added as item inside SourceRepos project entity.
+         * @param project The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sshPrivateKey PEM data for authenticating at the repo server. Only used with Git repos.
+         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sshPrivateKey PEM data for authenticating at the repo server. Only used with Git repos.
+         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server.
+         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server.
+         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -718,7 +718,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server.
+         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server.
+         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          * 
          * @return builder
          * 
@@ -760,7 +760,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param username Username used for authenticating at the remote repository.
+         * @param username Username to be used for authenticating the remote repository.
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param username Username used for authenticating at the remote repository.
+         * @param username Username to be used for authenticating the remote repository.
          * 
          * @return builder
          * 

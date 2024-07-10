@@ -12,6 +12,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating apikeys.
+//
+// ## Import
+//
+// # Import account level apikey
+//
+// ```sh
+// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <parent_id>/<apikey_id>/<apikey_type>
+// ```
+//
+// # Import org level apikey
+//
+// ```sh
+// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<parent_id>/<apikey_id>/<apikey_type>
+// ```
+//
+// # Import project level apikey
+//
+// ```sh
+// $ pulumi import harness:index/platformApiKey:PlatformApiKey harness_platform_apikey <org_id>/<project_id>/<parent_id>/<apikey_id>/<apikey_type>
+// ```
 type PlatformApiKey struct {
 	pulumi.CustomResourceState
 
@@ -21,20 +42,20 @@ type PlatformApiKey struct {
 	ApikeyType pulumi.StringOutput `pulumi:"apikeyType"`
 	// Default expiration time of the Token within API Key
 	DefaultTimeToExpireToken pulumi.IntPtrOutput `pulumi:"defaultTimeToExpireToken"`
-	// Description of the API Key
+	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Identifier of the API Key
+	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Name of the API Key
+	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Tags for the API Key
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
 // NewPlatformApiKey registers a new resource with the given unique name, arguments, and options.
@@ -85,20 +106,20 @@ type platformApiKeyState struct {
 	ApikeyType *string `pulumi:"apikeyType"`
 	// Default expiration time of the Token within API Key
 	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
-	// Description of the API Key
+	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Identifier of the API Key
+	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Name of the API Key
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId *string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags for the API Key
-	Tags map[string]string `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 }
 
 type PlatformApiKeyState struct {
@@ -108,20 +129,20 @@ type PlatformApiKeyState struct {
 	ApikeyType pulumi.StringPtrInput
 	// Default expiration time of the Token within API Key
 	DefaultTimeToExpireToken pulumi.IntPtrInput
-	// Description of the API Key
+	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Identifier of the API Key
+	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// Name of the API Key
+	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringPtrInput
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags for the API Key
-	Tags pulumi.StringMapInput
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayInput
 }
 
 func (PlatformApiKeyState) ElementType() reflect.Type {
@@ -135,20 +156,20 @@ type platformApiKeyArgs struct {
 	ApikeyType string `pulumi:"apikeyType"`
 	// Default expiration time of the Token within API Key
 	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
-	// Description of the API Key
+	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Identifier of the API Key
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Name of the API Key
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Parent Entity Identifier of the API Key
 	ParentId string `pulumi:"parentId"`
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags for the API Key
-	Tags map[string]string `pulumi:"tags"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PlatformApiKey resource.
@@ -159,20 +180,20 @@ type PlatformApiKeyArgs struct {
 	ApikeyType pulumi.StringInput
 	// Default expiration time of the Token within API Key
 	DefaultTimeToExpireToken pulumi.IntPtrInput
-	// Description of the API Key
+	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Identifier of the API Key
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// Name of the API Key
+	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Organization Identifier for the Entity
+	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Parent Entity Identifier of the API Key
 	ParentId pulumi.StringInput
-	// Project Identifier for the Entity
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Tags for the API Key
-	Tags pulumi.StringMapInput
+	// Tags to associate with the resource.
+	Tags pulumi.StringArrayInput
 }
 
 func (PlatformApiKeyArgs) ElementType() reflect.Type {
@@ -277,22 +298,22 @@ func (o PlatformApiKeyOutput) DefaultTimeToExpireToken() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.IntPtrOutput { return v.DefaultTimeToExpireToken }).(pulumi.IntPtrOutput)
 }
 
-// Description of the API Key
+// Description of the resource.
 func (o PlatformApiKeyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the API Key
+// Unique identifier of the resource.
 func (o PlatformApiKeyOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the API Key
+// Name of the resource.
 func (o PlatformApiKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Organization Identifier for the Entity
+// Unique identifier of the organization.
 func (o PlatformApiKeyOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
@@ -302,14 +323,14 @@ func (o PlatformApiKeyOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Project Identifier for the Entity
+// Unique identifier of the project.
 func (o PlatformApiKeyOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags for the API Key
-func (o PlatformApiKeyOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+// Tags to associate with the resource.
+func (o PlatformApiKeyOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type PlatformApiKeyArrayOutput struct{ *pulumi.OutputState }

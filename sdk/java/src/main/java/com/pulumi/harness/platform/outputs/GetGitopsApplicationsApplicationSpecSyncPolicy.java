@@ -4,12 +4,12 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSyncPolicyAutomated;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSyncPolicyRetry;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
@@ -17,17 +17,17 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
      * @return Controls the behavior of an automated sync.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds;
+    private List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds;
     /**
      * @return Contains information about the strategy to apply when a sync failed.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries;
+    private List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries;
     /**
      * @return Options allow you to specify whole app sync-options.
      * 
      */
-    private @Nullable List<String> syncOptions;
+    private List<String> syncOptions;
 
     private GetGitopsApplicationsApplicationSpecSyncPolicy() {}
     /**
@@ -35,21 +35,21 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds() {
-        return this.automateds == null ? List.of() : this.automateds;
+        return this.automateds;
     }
     /**
      * @return Contains information about the strategy to apply when a sync failed.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries() {
-        return this.retries == null ? List.of() : this.retries;
+        return this.retries;
     }
     /**
      * @return Options allow you to specify whole app sync-options.
      * 
      */
     public List<String> syncOptions() {
-        return this.syncOptions == null ? List.of() : this.syncOptions;
+        return this.syncOptions;
     }
 
     public static Builder builder() {
@@ -61,9 +61,9 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries;
-        private @Nullable List<String> syncOptions;
+        private List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds;
+        private List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries;
+        private List<String> syncOptions;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSyncPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,8 +73,10 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
         }
 
         @CustomType.Setter
-        public Builder automateds(@Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds) {
-
+        public Builder automateds(List<GetGitopsApplicationsApplicationSpecSyncPolicyAutomated> automateds) {
+            if (automateds == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicy", "automateds");
+            }
             this.automateds = automateds;
             return this;
         }
@@ -82,8 +84,10 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
             return automateds(List.of(automateds));
         }
         @CustomType.Setter
-        public Builder retries(@Nullable List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries) {
-
+        public Builder retries(List<GetGitopsApplicationsApplicationSpecSyncPolicyRetry> retries) {
+            if (retries == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicy", "retries");
+            }
             this.retries = retries;
             return this;
         }
@@ -91,8 +95,10 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicy {
             return retries(List.of(retries));
         }
         @CustomType.Setter
-        public Builder syncOptions(@Nullable List<String> syncOptions) {
-
+        public Builder syncOptions(List<String> syncOptions) {
+            if (syncOptions == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicy", "syncOptions");
+            }
             this.syncOptions = syncOptions;
             return this;
         }

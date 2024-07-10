@@ -8,7 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -64,14 +64,14 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description of the API Key
+     * Description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the API Key
+     * @return Description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +79,14 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Identifier of the API Key
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Identifier of the API Key
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
@@ -94,14 +94,14 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the API Key
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the API Key
+     * @return Name of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -109,14 +109,14 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Organization Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -139,14 +139,14 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -154,17 +154,17 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Tags for the API Key
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<Map<String,String>> tags;
+    private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for the API Key
+     * @return Tags to associate with the resource.
      * 
      */
-    public Optional<Output<Map<String,String>>> tags() {
+    public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -265,7 +265,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the API Key
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the API Key
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identifier Identifier of the API Key
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identifier Identifier of the API Key
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the API Key
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the API Key
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Organization Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Organization Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -391,24 +391,34 @@ public final class PlatformApiKeyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags Tags for the API Key
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+        public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param tags Tags for the API Key
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
          */
-        public Builder tags(Map<String,String> tags) {
+        public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         public PlatformApiKeyArgs build() {

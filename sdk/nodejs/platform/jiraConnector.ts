@@ -8,29 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Jira connector.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.platform.JiraConnector("test", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     url: "https://jira.com",
- *     delegateSelectors: ["harness-delegate"],
- *     auth: {
- *         authType: "UsernamePassword",
- *         usernamePassword: {
- *             username: "admin",
- *             passwordRef: "account.secret_id",
- *         },
- *     },
- * });
- * ```
+ * ## Example to create Jira Connector at different levels (Org, Project, Account)
  *
  * ## Import
  *

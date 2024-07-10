@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a GPG public key in the server's configuration.
+ * Data source for fetching a Harness GitOps GPG public key.
  *
  * ## Example Usage
  *
@@ -50,7 +50,7 @@ export interface GetGitopsGnupgArgs {
     /**
      * Identifier for the GnuPG Key.
      */
-    identifier?: string;
+    identifier: string;
     /**
      * Organization Identifier for the GnuPG Key.
      */
@@ -84,7 +84,7 @@ export interface GetGitopsGnupgResult {
     /**
      * Identifier for the GnuPG Key.
      */
-    readonly identifier?: string;
+    readonly identifier: string;
     /**
      * Organization Identifier for the GnuPG Key.
      */
@@ -96,10 +96,10 @@ export interface GetGitopsGnupgResult {
     /**
      * GnuPGPublicKey is a representation of a GnuPG public key
      */
-    readonly requests?: outputs.platform.GetGitopsGnupgRequest[];
+    readonly requests: outputs.platform.GetGitopsGnupgRequest[];
 }
 /**
- * Data source for retrieving a GPG public key in the server's configuration.
+ * Data source for fetching a Harness GitOps GPG public key.
  *
  * ## Example Usage
  *
@@ -133,7 +133,7 @@ export interface GetGitopsGnupgOutputArgs {
     /**
      * Identifier for the GnuPG Key.
      */
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * Organization Identifier for the GnuPG Key.
      */

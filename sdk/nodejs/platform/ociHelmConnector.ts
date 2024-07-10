@@ -70,6 +70,10 @@ export class OciHelmConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    public readonly forceDelete!: pulumi.Output<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -110,6 +114,7 @@ export class OciHelmConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = state ? state.credentials : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -127,6 +132,7 @@ export class OciHelmConnector extends pulumi.CustomResource {
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -155,6 +161,10 @@ export interface OciHelmConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -197,6 +207,10 @@ export interface OciHelmConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

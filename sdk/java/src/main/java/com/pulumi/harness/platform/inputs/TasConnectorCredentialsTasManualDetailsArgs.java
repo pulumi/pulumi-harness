@@ -47,6 +47,21 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
     }
 
     /**
+     * Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * 
+     */
+    @Import(name="referenceToken")
+    private @Nullable Output<String> referenceToken;
+
+    /**
+     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * 
+     */
+    public Optional<Output<String>> referenceToken() {
+        return Optional.ofNullable(this.referenceToken);
+    }
+
+    /**
      * Username to use for authentication.
      * 
      */
@@ -81,6 +96,7 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
     private TasConnectorCredentialsTasManualDetailsArgs(TasConnectorCredentialsTasManualDetailsArgs $) {
         this.endpointUrl = $.endpointUrl;
         this.passwordRef = $.passwordRef;
+        this.referenceToken = $.referenceToken;
         this.username = $.username;
         this.usernameRef = $.usernameRef;
     }
@@ -143,6 +159,27 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
          */
         public Builder passwordRef(String passwordRef) {
             return passwordRef(Output.of(passwordRef));
+        }
+
+        /**
+         * @param referenceToken Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder referenceToken(@Nullable Output<String> referenceToken) {
+            $.referenceToken = referenceToken;
+            return this;
+        }
+
+        /**
+         * @param referenceToken Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder referenceToken(String referenceToken) {
+            return referenceToken(Output.of(referenceToken));
         }
 
         /**

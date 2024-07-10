@@ -146,8 +146,6 @@ def get_service_account(identifier: Optional[str] = None,
                         project_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceAccountResult:
     """
-    Data source for retrieving service account.
-
     ## Example Usage
 
     ```python
@@ -190,8 +188,6 @@ def get_service_account_output(identifier: Optional[pulumi.Input[Optional[str]]]
                                project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAccountResult]:
     """
-    Data source for retrieving service account.
-
     ## Example Usage
 
     ```python

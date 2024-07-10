@@ -174,6 +174,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAwsConnectorOidcAuthenticationResult> OidcAuthentications;
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
@@ -210,6 +214,8 @@ namespace Pulumi.Harness.Platform
 
             string? name,
 
+            ImmutableArray<Outputs.GetAwsConnectorOidcAuthenticationResult> oidcAuthentications,
+
             string? orgId,
 
             string? projectId,
@@ -227,6 +233,7 @@ namespace Pulumi.Harness.Platform
             Irsas = irsas;
             Manuals = manuals;
             Name = name;
+            OidcAuthentications = oidcAuthentications;
             OrgId = orgId;
             ProjectId = projectId;
             Tags = tags;

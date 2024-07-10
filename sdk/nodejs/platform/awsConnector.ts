@@ -74,6 +74,10 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly fixedDelayBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    public readonly forceDelete!: pulumi.Output<boolean>;
+    /**
      * Full Jitter BackOff Strategy.
      */
     public readonly fullJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
@@ -97,6 +101,10 @@ export class AwsConnector extends pulumi.CustomResource {
      * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Authentication using harness oidc.
+     */
+    public readonly oidcAuthentication!: pulumi.Output<outputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -127,12 +135,14 @@ export class AwsConnector extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["equalJitterBackoffStrategy"] = state ? state.equalJitterBackoffStrategy : undefined;
             resourceInputs["fixedDelayBackoffStrategy"] = state ? state.fixedDelayBackoffStrategy : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["fullJitterBackoffStrategy"] = state ? state.fullJitterBackoffStrategy : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = state ? state.inheritFromDelegate : undefined;
             resourceInputs["irsa"] = state ? state.irsa : undefined;
             resourceInputs["manual"] = state ? state.manual : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oidcAuthentication"] = state ? state.oidcAuthentication : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -145,12 +155,14 @@ export class AwsConnector extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["equalJitterBackoffStrategy"] = args ? args.equalJitterBackoffStrategy : undefined;
             resourceInputs["fixedDelayBackoffStrategy"] = args ? args.fixedDelayBackoffStrategy : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["fullJitterBackoffStrategy"] = args ? args.fullJitterBackoffStrategy : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["inheritFromDelegate"] = args ? args.inheritFromDelegate : undefined;
             resourceInputs["irsa"] = args ? args.irsa : undefined;
             resourceInputs["manual"] = args ? args.manual : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oidcAuthentication"] = args ? args.oidcAuthentication : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -181,6 +193,10 @@ export interface AwsConnectorState {
      */
     fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
+    /**
      * Full Jitter BackOff Strategy.
      */
     fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
@@ -204,6 +220,10 @@ export interface AwsConnectorState {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Authentication using harness oidc.
+     */
+    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**
      * Unique identifier of the organization.
      */
@@ -239,6 +259,10 @@ export interface AwsConnectorArgs {
      */
     fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
     /**
+     * Enable this flag for force deletion of connector
+     */
+    forceDelete?: pulumi.Input<boolean>;
+    /**
      * Full Jitter BackOff Strategy.
      */
     fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
@@ -262,6 +286,10 @@ export interface AwsConnectorArgs {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Authentication using harness oidc.
+     */
+    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**
      * Unique identifier of the organization.
      */

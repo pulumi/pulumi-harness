@@ -42,6 +42,8 @@ type OciHelmConnector struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -98,6 +100,8 @@ type ociHelmConnectorState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -119,6 +123,8 @@ type OciHelmConnectorState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -144,6 +150,8 @@ type ociHelmConnectorArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag for force deletion of connector
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -166,6 +174,8 @@ type OciHelmConnectorArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag for force deletion of connector
+	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -280,6 +290,11 @@ func (o OciHelmConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 // Description of the resource.
 func (o OciHelmConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OciHelmConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable this flag for force deletion of connector
+func (o OciHelmConnectorOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OciHelmConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the resource.

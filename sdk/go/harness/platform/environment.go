@@ -14,8 +14,9 @@ import (
 
 // Resource for creating a Harness environment.
 //
-// ## Example Usage
+// ## Example to create Environment at different levels (Org, Project, Account)
 //
+// ### Account Level
 // ```go
 // package main
 //
@@ -31,22 +32,19 @@ import (
 //			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
 //				Identifier: pulumi.String("identifier"),
 //				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
-//					pulumi.String("baz"),
+//					pulumi.String("bar:foo"),
 //				},
-//				Type: pulumi.String("PreProduction"),
+//				Type:        pulumi.String("PreProduction"),
+//				Description: pulumi.String("env description"),
 //				Yaml: pulumi.String(`environment:
 //	   name: name
 //	   identifier: identifier
-//	   orgIdentifier: org_id
-//	   projectIdentifier: project_id
 //	   type: PreProduction
 //	   tags:
 //	     foo: bar
-//	     baz: ""
+//	     bar: foo
 //	   variables:
 //	     - name: envVar1
 //	       type: String
@@ -94,6 +92,267 @@ import (
 //
 // ```
 //
+// ### Org Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				Type:        pulumi.String("PreProduction"),
+//				Description: pulumi.String("env description"),
+//				Yaml: pulumi.String(`environment:
+//	   name: name
+//	   identifier: identifier
+//	   orgIdentifier: org_id
+//	   type: PreProduction
+//	   tags:
+//	     foo: bar
+//	     bar: foo
+//	   variables:
+//	     - name: envVar1
+//	       type: String
+//	       value: v1
+//	       description: ""
+//	     - name: envVar2
+//	       type: String
+//	       value: v2
+//	       description: ""
+//	   overrides:
+//	     manifests:
+//	       - manifest:
+//	           identifier: manifestEnv
+//	           type: Values
+//	           spec:
+//	             store:
+//	               type: Git
+//	               spec:
+//	                 connectorRef: <+input>
+//	                 gitFetchType: Branch
+//	                 paths:
+//	                   - file1
+//	                 repoName: <+input>
+//	                 branch: master
+//	     configFiles:
+//	       - configFile:
+//	           identifier: configFileEnv
+//	           spec:
+//	             store:
+//	               type: Harness
+//	               spec:
+//	                 files:
+//	                   - account:/Add-ons/svcOverrideTest
+//	                 secretFiles: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Project Level
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				Type:        pulumi.String("PreProduction"),
+//				Description: pulumi.String("env description"),
+//				Yaml: pulumi.String(`environment:
+//	   name: name
+//	   identifier: identifier
+//	   orgIdentifier: org_id
+//	   projectIdentifier: project_id
+//	   type: PreProduction
+//	   tags:
+//	     foo: bar
+//	     bar: foo
+//	   variables:
+//	     - name: envVar1
+//	       type: String
+//	       value: v1
+//	       description: ""
+//	     - name: envVar2
+//	       type: String
+//	       value: v2
+//	       description: ""
+//	   overrides:
+//	     manifests:
+//	       - manifest:
+//	           identifier: manifestEnv
+//	           type: Values
+//	           spec:
+//	             store:
+//	               type: Git
+//	               spec:
+//	                 connectorRef: <+input>
+//	                 gitFetchType: Branch
+//	                 paths:
+//	                   - file1
+//	                 repoName: <+input>
+//	                 branch: master
+//	     configFiles:
+//	       - configFile:
+//	           identifier: configFileEnv
+//	           spec:
+//	             store:
+//	               type: Harness
+//	               spec:
+//	                 files:
+//	                   - account:/Add-ons/svcOverrideTest
+//	                 secretFiles: []
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating Remote Environment
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				OrgId:       pulumi.String("org_id"),
+//				ProjectId:   pulumi.String("project_id"),
+//				GitDetails: &platform.EnvironmentGitDetailsArgs{
+//					StoreType:    pulumi.String("REMOTE"),
+//					ConnectorRef: pulumi.String("connector_ref"),
+//					RepoName:     pulumi.String("repo_name"),
+//					FilePath:     pulumi.String("file_path"),
+//					Branch:       pulumi.String("branch"),
+//				},
+//				Yaml: pulumi.String(`environment:
+//	  name: env
+//	  identifier: env
+//	  tags:
+//	    test: ""
+//	  type: PreProduction
+//	  orgIdentifier: default
+//	  projectIdentifier: proj1
+//	  variables:
+//	    - name: var1
+//	      type: String
+//	      value: abc
+//	      description: ""
+//	      required: false
+//	  overrides:
+//	    manifests:
+//	      - manifest:
+//	          identifier: Manifest1
+//	          type: Values
+//	          spec:
+//	            store:
+//	              type: Github
+//	              spec:
+//	                connectorRef: <+input>
+//	                gitFetchType: Branch
+//	                paths:
+//	                  - .harness/
+//	                repoName: <+input>
+//	                branch: <+input>
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Importing Environment From Git
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Type:       pulumi.String("PreProduction"),
+//				GitDetails: &platform.EnvironmentGitDetailsArgs{
+//					StoreType:     pulumi.String("REMOTE"),
+//					ConnectorRef:  pulumi.String("connector_ref"),
+//					RepoName:      pulumi.String("repo_name"),
+//					FilePath:      pulumi.String("file_path"),
+//					Branch:        pulumi.String("branch"),
+//					ImportFromGit: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Import account level environment id
@@ -120,8 +379,10 @@ type Environment struct {
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enable this flag for force deletion of environment
+	// Enable this flag for force deletion of environments
 	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails EnvironmentGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -134,7 +395,8 @@ type Environment struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+	// connectorId.
 	Yaml pulumi.StringPtrOutput `pulumi:"yaml"`
 }
 
@@ -178,8 +440,10 @@ type environmentState struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of environment
+	// Enable this flag for force deletion of environments
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails *EnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -192,7 +456,8 @@ type environmentState struct {
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type *string `pulumi:"type"`
-	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+	// connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -201,8 +466,10 @@ type EnvironmentState struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of environment
+	// Enable this flag for force deletion of environments
 	ForceDelete pulumi.StringPtrInput
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails EnvironmentGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -215,7 +482,8 @@ type EnvironmentState struct {
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringPtrInput
-	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+	// connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -228,8 +496,10 @@ type environmentArgs struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of environment
+	// Enable this flag for force deletion of environments
 	ForceDelete *string `pulumi:"forceDelete"`
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails *EnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -242,7 +512,8 @@ type environmentArgs struct {
 	Tags []string `pulumi:"tags"`
 	// The type of environment. Valid values are PreProduction, Production
 	Type string `pulumi:"type"`
-	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+	// connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -252,8 +523,10 @@ type EnvironmentArgs struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of environment
+	// Enable this flag for force deletion of environments
 	ForceDelete pulumi.StringPtrInput
+	// Contains Git Information for remote entities from Git for Create/Update/Import
+	GitDetails EnvironmentGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -266,7 +539,8 @@ type EnvironmentArgs struct {
 	Tags pulumi.StringArrayInput
 	// The type of environment. Valid values are PreProduction, Production
 	Type pulumi.StringInput
-	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+	// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+	// connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -367,9 +641,14 @@ func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enable this flag for force deletion of environment
+// Enable this flag for force deletion of environments
 func (o EnvironmentOutput) ForceDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+}
+
+// Contains Git Information for remote entities from Git for Create/Update/Import
+func (o EnvironmentOutput) GitDetails() EnvironmentGitDetailsOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentGitDetailsOutput { return v.GitDetails }).(EnvironmentGitDetailsOutput)
 }
 
 // Unique identifier of the resource.
@@ -402,7 +681,8 @@ func (o EnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+// Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
+// connectorId.
 func (o EnvironmentOutput) Yaml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Yaml }).(pulumi.StringPtrOutput)
 }

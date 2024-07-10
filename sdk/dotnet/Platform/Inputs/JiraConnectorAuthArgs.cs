@@ -19,6 +19,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> AuthType { get; set; } = null!;
 
         /// <summary>
+        /// Authenticate using personal access token.
+        /// </summary>
+        [Input("personalAccessToken")]
+        public Input<Inputs.JiraConnectorAuthPersonalAccessTokenArgs>? PersonalAccessToken { get; set; }
+
+        /// <summary>
         /// Authenticate using username password.
         /// </summary>
         [Input("usernamePassword")]

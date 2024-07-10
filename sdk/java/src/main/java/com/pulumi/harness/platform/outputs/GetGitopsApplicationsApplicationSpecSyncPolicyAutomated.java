@@ -4,10 +4,9 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
@@ -15,39 +14,39 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
      * @return Indicates to allows apps to have zero live resources (default: false).
      * 
      */
-    private @Nullable Boolean allowEmpty;
+    private Boolean allowEmpty;
     /**
      * @return Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
      * 
      */
-    private @Nullable Boolean prune;
+    private Boolean prune;
     /**
      * @return Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
      * 
      */
-    private @Nullable Boolean selfHeal;
+    private Boolean selfHeal;
 
     private GetGitopsApplicationsApplicationSpecSyncPolicyAutomated() {}
     /**
      * @return Indicates to allows apps to have zero live resources (default: false).
      * 
      */
-    public Optional<Boolean> allowEmpty() {
-        return Optional.ofNullable(this.allowEmpty);
+    public Boolean allowEmpty() {
+        return this.allowEmpty;
     }
     /**
      * @return Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
      * 
      */
-    public Optional<Boolean> prune() {
-        return Optional.ofNullable(this.prune);
+    public Boolean prune() {
+        return this.prune;
     }
     /**
      * @return Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
      * 
      */
-    public Optional<Boolean> selfHeal() {
-        return Optional.ofNullable(this.selfHeal);
+    public Boolean selfHeal() {
+        return this.selfHeal;
     }
 
     public static Builder builder() {
@@ -59,9 +58,9 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean allowEmpty;
-        private @Nullable Boolean prune;
-        private @Nullable Boolean selfHeal;
+        private Boolean allowEmpty;
+        private Boolean prune;
+        private Boolean selfHeal;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSyncPolicyAutomated defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,20 +70,26 @@ public final class GetGitopsApplicationsApplicationSpecSyncPolicyAutomated {
         }
 
         @CustomType.Setter
-        public Builder allowEmpty(@Nullable Boolean allowEmpty) {
-
+        public Builder allowEmpty(Boolean allowEmpty) {
+            if (allowEmpty == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyAutomated", "allowEmpty");
+            }
             this.allowEmpty = allowEmpty;
             return this;
         }
         @CustomType.Setter
-        public Builder prune(@Nullable Boolean prune) {
-
+        public Builder prune(Boolean prune) {
+            if (prune == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyAutomated", "prune");
+            }
             this.prune = prune;
             return this;
         }
         @CustomType.Setter
-        public Builder selfHeal(@Nullable Boolean selfHeal) {
-
+        public Builder selfHeal(Boolean selfHeal) {
+            if (selfHeal == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSyncPolicyAutomated", "selfHeal");
+            }
             this.selfHeal = selfHeal;
             return this;
         }

@@ -26,6 +26,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
+        /// Test Region to perform Connection test of AWS Connector.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string SecretKeyRef;
@@ -38,11 +42,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<string> delegateSelectors,
 
+            string? region,
+
             string secretKeyRef)
         {
             AccessKey = accessKey;
             AccessKeyRef = accessKeyRef;
             DelegateSelectors = delegateSelectors;
+            Region = region;
             SecretKeyRef = secretKeyRef;
         }
     }

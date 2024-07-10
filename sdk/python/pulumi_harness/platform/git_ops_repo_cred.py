@@ -25,13 +25,13 @@ class GitOpsRepoCredArgs:
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCred resource.
-        :param pulumi.Input[str] account_id: Account identifier of the Repository Credential.
-        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credential.
-        :param pulumi.Input[str] identifier: Identifier of the Repository Credential.
+        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
+        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credentials.
+        :param pulumi.Input[str] identifier: Identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]] creds: credential details.
-        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credential.
-        :param pulumi.Input[str] project_id: Project identifier of the Repository Credential.
-        :param pulumi.Input[bool] upsert: if the Repository credential should be upserted.
+        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credentials.
+        :param pulumi.Input[str] project_id: Project identifier of the Repository Credentials.
+        :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
@@ -49,7 +49,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account identifier of the Repository Credential.
+        Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
@@ -61,7 +61,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[str]:
         """
-        Agent identifier of the Repository Credential.
+        Agent identifier of the Repository Credentials.
         """
         return pulumi.get(self, "agent_id")
 
@@ -73,7 +73,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        Identifier of the Repository Credential.
+        Identifier of the Repository Credentials.
         """
         return pulumi.get(self, "identifier")
 
@@ -97,7 +97,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization identifier of the Repository Credential.
+        Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
@@ -109,7 +109,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project identifier of the Repository Credential.
+        Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
 
@@ -121,7 +121,7 @@ class GitOpsRepoCredArgs:
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the Repository credential should be upserted.
+        Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
@@ -142,13 +142,13 @@ class _GitOpsRepoCredState:
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering GitOpsRepoCred resources.
-        :param pulumi.Input[str] account_id: Account identifier of the Repository Credential.
-        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credential.
+        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
+        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]] creds: credential details.
-        :param pulumi.Input[str] identifier: Identifier of the Repository Credential.
-        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credential.
-        :param pulumi.Input[str] project_id: Project identifier of the Repository Credential.
-        :param pulumi.Input[bool] upsert: if the Repository credential should be upserted.
+        :param pulumi.Input[str] identifier: Identifier of the Repository Credentials.
+        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credentials.
+        :param pulumi.Input[str] project_id: Project identifier of the Repository Credentials.
+        :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -169,7 +169,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account identifier of the Repository Credential.
+        Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
@@ -181,7 +181,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Agent identifier of the Repository Credential.
+        Agent identifier of the Repository Credentials.
         """
         return pulumi.get(self, "agent_id")
 
@@ -205,7 +205,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the Repository Credential.
+        Identifier of the Repository Credentials.
         """
         return pulumi.get(self, "identifier")
 
@@ -217,7 +217,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization identifier of the Repository Credential.
+        Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
@@ -229,7 +229,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project identifier of the Repository Credential.
+        Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
 
@@ -241,7 +241,7 @@ class _GitOpsRepoCredState:
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the Repository credential should be upserted.
+        Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
@@ -264,7 +264,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
                  upsert: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness Gitops Repositories Credentials.
+        Resource for managing a Harness Gitops Repository Credentials.
 
         ## Example Usage
 
@@ -280,17 +280,28 @@ class GitOpsRepoCred(pulumi.CustomResource):
             org_id="org_id",
             creds=[harness.platform.GitOpsRepoCredCredArgs(
                 type="git",
-                url="github.com",
-                ssh_private_key="yoursshprivatekey",
+                url="git@github.com:yourorg",
+                ssh_private_key=\"\"\"----- BEGIN OPENSSH PRIVATE KEY-----
+        XXXXX
+        XXXXX
+        XXXXX
+        -----END OPENSSH PRIVATE KEY -----
+        \"\"\",
             )])
         ```
 
         ## Import
 
-        Import a Account level Gitops Repository Credentials
+        Import an Account level Gitops Repository Credentials
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
+        ```
+
+        Import an Org level Gitops Repository Credentials
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<agent_id>/<repocred_id>
         ```
 
         Import a Project level Gitops Repository Credentials
@@ -301,13 +312,13 @@ class GitOpsRepoCred(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier of the Repository Credential.
-        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credential.
+        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
+        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCredCredArgs']]]] creds: credential details.
-        :param pulumi.Input[str] identifier: Identifier of the Repository Credential.
-        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credential.
-        :param pulumi.Input[str] project_id: Project identifier of the Repository Credential.
-        :param pulumi.Input[bool] upsert: if the Repository credential should be upserted.
+        :param pulumi.Input[str] identifier: Identifier of the Repository Credentials.
+        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credentials.
+        :param pulumi.Input[str] project_id: Project identifier of the Repository Credentials.
+        :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         ...
     @overload
@@ -316,7 +327,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
                  args: GitOpsRepoCredArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness Gitops Repositories Credentials.
+        Resource for managing a Harness Gitops Repository Credentials.
 
         ## Example Usage
 
@@ -332,17 +343,28 @@ class GitOpsRepoCred(pulumi.CustomResource):
             org_id="org_id",
             creds=[harness.platform.GitOpsRepoCredCredArgs(
                 type="git",
-                url="github.com",
-                ssh_private_key="yoursshprivatekey",
+                url="git@github.com:yourorg",
+                ssh_private_key=\"\"\"----- BEGIN OPENSSH PRIVATE KEY-----
+        XXXXX
+        XXXXX
+        XXXXX
+        -----END OPENSSH PRIVATE KEY -----
+        \"\"\",
             )])
         ```
 
         ## Import
 
-        Import a Account level Gitops Repository Credentials
+        Import an Account level Gitops Repository Credentials
 
         ```sh
         $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <agent_id>/<repocred_id>
+        ```
+
+        Import an Org level Gitops Repository Credentials
+
+        ```sh
+        $ pulumi import harness:platform/gitOpsRepoCred:GitOpsRepoCred example <organization_id>/<agent_id>/<repocred_id>
         ```
 
         Import a Project level Gitops Repository Credentials
@@ -419,13 +441,13 @@ class GitOpsRepoCred(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier of the Repository Credential.
-        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credential.
+        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
+        :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsRepoCredCredArgs']]]] creds: credential details.
-        :param pulumi.Input[str] identifier: Identifier of the Repository Credential.
-        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credential.
-        :param pulumi.Input[str] project_id: Project identifier of the Repository Credential.
-        :param pulumi.Input[bool] upsert: if the Repository credential should be upserted.
+        :param pulumi.Input[str] identifier: Identifier of the Repository Credentials.
+        :param pulumi.Input[str] org_id: Organization identifier of the Repository Credentials.
+        :param pulumi.Input[str] project_id: Project identifier of the Repository Credentials.
+        :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -444,7 +466,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account identifier of the Repository Credential.
+        Account identifier of the Repository Credentials.
         """
         return pulumi.get(self, "account_id")
 
@@ -452,7 +474,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[str]:
         """
-        Agent identifier of the Repository Credential.
+        Agent identifier of the Repository Credentials.
         """
         return pulumi.get(self, "agent_id")
 
@@ -468,7 +490,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        Identifier of the Repository Credential.
+        Identifier of the Repository Credentials.
         """
         return pulumi.get(self, "identifier")
 
@@ -476,7 +498,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Organization identifier of the Repository Credential.
+        Organization identifier of the Repository Credentials.
         """
         return pulumi.get(self, "org_id")
 
@@ -484,7 +506,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Project identifier of the Repository Credential.
+        Project identifier of the Repository Credentials.
         """
         return pulumi.get(self, "project_id")
 
@@ -492,7 +514,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
     @pulumi.getter
     def upsert(self) -> pulumi.Output[Optional[bool]]:
         """
-        if the Repository credential should be upserted.
+        Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 

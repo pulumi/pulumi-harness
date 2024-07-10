@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsRepoCertRequestCertificateItemGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CertData contains the actual certificate data, dependent on the certificate type.
+        /// CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
         /// </summary>
         [Input("certData")]
         public Input<string>? CertData { get; set; }
 
         /// <summary>
-        /// CertInfo will hold additional certificate info, depdendent on the certificate type .
+        /// CertInfo will hold additional certificate info, dependent on the certificate type .
         /// </summary>
         [Input("certInfo")]
         public Input<string>? CertInfo { get; set; }

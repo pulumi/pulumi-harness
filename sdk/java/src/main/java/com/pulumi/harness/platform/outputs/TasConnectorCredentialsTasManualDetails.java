@@ -23,6 +23,11 @@ public final class TasConnectorCredentialsTasManualDetails {
      */
     private String passwordRef;
     /**
+     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * 
+     */
+    private @Nullable String referenceToken;
+    /**
      * @return Username to use for authentication.
      * 
      */
@@ -47,6 +52,13 @@ public final class TasConnectorCredentialsTasManualDetails {
      */
     public String passwordRef() {
         return this.passwordRef;
+    }
+    /**
+     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * 
+     */
+    public Optional<String> referenceToken() {
+        return Optional.ofNullable(this.referenceToken);
     }
     /**
      * @return Username to use for authentication.
@@ -74,6 +86,7 @@ public final class TasConnectorCredentialsTasManualDetails {
     public static final class Builder {
         private String endpointUrl;
         private String passwordRef;
+        private @Nullable String referenceToken;
         private @Nullable String username;
         private @Nullable String usernameRef;
         public Builder() {}
@@ -81,6 +94,7 @@ public final class TasConnectorCredentialsTasManualDetails {
     	      Objects.requireNonNull(defaults);
     	      this.endpointUrl = defaults.endpointUrl;
     	      this.passwordRef = defaults.passwordRef;
+    	      this.referenceToken = defaults.referenceToken;
     	      this.username = defaults.username;
     	      this.usernameRef = defaults.usernameRef;
         }
@@ -102,6 +116,12 @@ public final class TasConnectorCredentialsTasManualDetails {
             return this;
         }
         @CustomType.Setter
+        public Builder referenceToken(@Nullable String referenceToken) {
+
+            this.referenceToken = referenceToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
 
             this.username = username;
@@ -117,6 +137,7 @@ public final class TasConnectorCredentialsTasManualDetails {
             final var _resultValue = new TasConnectorCredentialsTasManualDetails();
             _resultValue.endpointUrl = endpointUrl;
             _resultValue.passwordRef = passwordRef;
+            _resultValue.referenceToken = referenceToken;
             _resultValue.username = username;
             _resultValue.usernameRef = usernameRef;
             return _resultValue;

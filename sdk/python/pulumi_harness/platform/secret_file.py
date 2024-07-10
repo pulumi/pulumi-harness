@@ -295,8 +295,6 @@ class SecretFile(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a secret of type secret file in Harness.
-
         ## Example Usage
 
         ```python
@@ -350,8 +348,6 @@ class SecretFile(pulumi.CustomResource):
                  args: SecretFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a secret of type secret file in Harness.
-
         ## Example Usage
 
         ```python

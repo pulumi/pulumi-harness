@@ -24,6 +24,12 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _delegateSelectors = value;
         }
 
+        /// <summary>
+        /// Test Region to perform Connection test of AWS Connector.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public AwsConnectorIrsaArgs()
         {
         }

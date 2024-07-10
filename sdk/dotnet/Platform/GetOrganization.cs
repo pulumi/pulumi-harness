@@ -12,8 +12,6 @@ namespace Pulumi.Harness.Platform
     public static class GetOrganization
     {
         /// <summary>
-        /// Data source for retrieving a Harness organization
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("harness:platform/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness organization
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

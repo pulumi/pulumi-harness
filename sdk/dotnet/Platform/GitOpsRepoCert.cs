@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Harness Gitops Repositories Certificates.
+    /// Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
     /// 
     /// ## Example Usage
     /// 
@@ -40,9 +40,10 @@ namespace Pulumi.Harness.Platform
     ///                         {
     ///                             new Harness.Platform.Inputs.GitOpsRepoCertRequestCertificateItemArgs
     ///                             {
-    ///                                 ServerName = "serverName",
-    ///                                 CertType = "https",
-    ///                                 CertData = "yourcertdata",
+    ///                                 ServerName = "github.com",
+    ///                                 CertType = "ssh",
+    ///                                 CertSubType = "ecdsa-sha2-nistp256",
+    ///                                 CertData = "QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
     ///                             },
     ///                         },
     ///                     },
@@ -59,41 +60,53 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import a Account level Gitops Repository Certificate
+    /// Import an Account level Gitops Repository Certificate
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;repocert_id&gt;
+    /// ```
+    /// 
+    /// Import an Org level Gitops Repository Certificate
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;organization_id&gt;/&lt;repocert_id&gt;
+    /// ```
+    /// 
+    /// Import a Project level Gitops Repository Certificate
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitOpsRepoCert:GitOpsRepoCert example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;repocert_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/gitOpsRepoCert:GitOpsRepoCert")]
     public partial class GitOpsRepoCert : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// account identifier of the Repository Certificates.
+        /// Account identifier of the GitOps repository certificate.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// agent identifier of the Repository Certificates.
+        /// Agent identifier of the GitOps repository certificate.
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// organization identifier of the Repository Certificates.
+        /// Organization identifier of the GitOps repository certificate.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// project identifier of the Repository Certificates.
+        /// Project identifier of the GitOps repository certificate.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Repository Certificates create/Update request.
+        /// Repository Certificate create/update request.
         /// </summary>
         [Output("requests")]
         public Output<ImmutableArray<Outputs.GitOpsRepoCertRequest>> Requests { get; private set; } = null!;
@@ -146,25 +159,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitOpsRepoCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the Repository Certificates.
+        /// Account identifier of the GitOps repository certificate.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// agent identifier of the Repository Certificates.
+        /// Agent identifier of the GitOps repository certificate.
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// organization identifier of the Repository Certificates.
+        /// Organization identifier of the GitOps repository certificate.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the Repository Certificates.
+        /// Project identifier of the GitOps repository certificate.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -173,7 +186,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GitOpsRepoCertRequestArgs>? _requests;
 
         /// <summary>
-        /// Repository Certificates create/Update request.
+        /// Repository Certificate create/update request.
         /// </summary>
         public InputList<Inputs.GitOpsRepoCertRequestArgs> Requests
         {
@@ -190,25 +203,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitOpsRepoCertState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// account identifier of the Repository Certificates.
+        /// Account identifier of the GitOps repository certificate.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// agent identifier of the Repository Certificates.
+        /// Agent identifier of the GitOps repository certificate.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// organization identifier of the Repository Certificates.
+        /// Organization identifier of the GitOps repository certificate.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// project identifier of the Repository Certificates.
+        /// Project identifier of the GitOps repository certificate.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -217,7 +230,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GitOpsRepoCertRequestGetArgs>? _requests;
 
         /// <summary>
-        /// Repository Certificates create/Update request.
+        /// Repository Certificate create/update request.
         /// </summary>
         public InputList<Inputs.GitOpsRepoCertRequestGetArgs> Requests
         {

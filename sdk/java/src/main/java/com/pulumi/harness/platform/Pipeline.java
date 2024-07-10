@@ -11,6 +11,8 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.PipelineArgs;
 import com.pulumi.harness.platform.inputs.PipelineState;
 import com.pulumi.harness.platform.outputs.PipelineGitDetails;
+import com.pulumi.harness.platform.outputs.PipelineGitImportInfo;
+import com.pulumi.harness.platform.outputs.PipelinePipelineImportRequest;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,6 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.Pipeline;
  * import com.pulumi.harness.platform.PipelineArgs;
  * import com.pulumi.harness.platform.inputs.PipelineGitDetailsArgs;
+ * import com.pulumi.harness.platform.Organization;
+ * import com.pulumi.harness.platform.OrganizationArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineGitImportInfoArgs;
+ * import com.pulumi.harness.platform.inputs.PipelinePipelineImportRequestArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,6 +65,7 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
+ *             .tags()
  *             .yaml("""
  * pipeline:
  *     name: name
@@ -148,6 +155,30 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
+ *         //## Importing Pipeline from Git
+ *         var test = new Organization("test", OrganizationArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .build());
+ * 
+ *         var testPipeline = new Pipeline("testPipeline", PipelineArgs.builder()
+ *             .identifier("gitx")
+ *             .orgId("default")
+ *             .projectId("V")
+ *             .name("gitx")
+ *             .importFromGit(true)
+ *             .gitImportInfo(PipelineGitImportInfoArgs.builder()
+ *                 .branchName("main")
+ *                 .filePath(".harness/gitx.yaml")
+ *                 .connectorRef("account.DoNotDeleteGithub")
+ *                 .repoName("open-repo")
+ *                 .build())
+ *             .pipelineImportRequest(PipelinePipelineImportRequestArgs.builder()
+ *                 .pipelineName("gitx")
+ *                 .pipelineDescription("Pipeline Description")
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -184,14 +215,28 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gitDetails", refs={PipelineGitDetails.class}, tree="[0]")
-    private Output</* @Nullable */ PipelineGitDetails> gitDetails;
+    private Output<PipelineGitDetails> gitDetails;
 
     /**
      * @return Contains parameters related to creating an Entity for Git Experience.
      * 
      */
-    public Output<Optional<PipelineGitDetails>> gitDetails() {
-        return Codegen.optional(this.gitDetails);
+    public Output<PipelineGitDetails> gitDetails() {
+        return this.gitDetails;
+    }
+    /**
+     * Contains Git Information for importing entities from Git
+     * 
+     */
+    @Export(name="gitImportInfo", refs={PipelineGitImportInfo.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineGitImportInfo> gitImportInfo;
+
+    /**
+     * @return Contains Git Information for importing entities from Git
+     * 
+     */
+    public Output<Optional<PipelineGitImportInfo>> gitImportInfo() {
+        return Codegen.optional(this.gitImportInfo);
     }
     /**
      * Unique identifier of the resource.
@@ -206,6 +251,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * Flag to set if importing from Git
+     * 
+     */
+    @Export(name="importFromGit", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> importFromGit;
+
+    /**
+     * @return Flag to set if importing from Git
+     * 
+     */
+    public Output<Optional<Boolean>> importFromGit() {
+        return Codegen.optional(this.importFromGit);
     }
     /**
      * Name of the resource.
@@ -236,6 +295,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
+     * Contains parameters for importing a pipeline
+     * 
+     */
+    @Export(name="pipelineImportRequest", refs={PipelinePipelineImportRequest.class}, tree="[0]")
+    private Output</* @Nullable */ PipelinePipelineImportRequest> pipelineImportRequest;
+
+    /**
+     * @return Contains parameters for importing a pipeline
+     * 
+     */
+    public Output<Optional<PipelinePipelineImportRequest>> pipelineImportRequest() {
+        return Codegen.optional(this.pipelineImportRequest);
+    }
+    /**
      * Unique identifier of the project.
      * 
      */
@@ -250,14 +323,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Tags to associate with the resource.
+     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource.
+     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
      * 
      */
     public Output<Optional<List<String>>> tags() {

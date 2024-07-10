@@ -42,7 +42,7 @@ class GetGitopsRepoCertResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        account identifier of the Repository Certificates.
+        Account identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "account_id")
 
@@ -50,7 +50,7 @@ class GetGitopsRepoCertResult:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[str]:
         """
-        agent identifier of the Repository Certificates.
+        Agent identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "agent_id")
 
@@ -66,7 +66,7 @@ class GetGitopsRepoCertResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        organization identifier of the Repository Certificates.
+        Organization identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "org_id")
 
@@ -74,7 +74,7 @@ class GetGitopsRepoCertResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        project identifier of the Repository Certificates.
+        Project identifier of the GitOps repository certificate.
         """
         return pulumi.get(self, "project_id")
 
@@ -98,13 +98,13 @@ def get_gitops_repo_cert(account_id: Optional[str] = None,
                          project_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsRepoCertResult:
     """
-    Data source for retrieving a GitOps RepoCert.
+    Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 
 
-    :param str account_id: account identifier of the Repository Certificates.
-    :param str agent_id: agent identifier of the Repository Certificates.
-    :param str org_id: organization identifier of the Repository Certificates.
-    :param str project_id: project identifier of the Repository Certificates.
+    :param str account_id: Account identifier of the GitOps repository certificate.
+    :param str agent_id: Agent identifier of the GitOps repository certificate.
+    :param str org_id: Organization identifier of the GitOps repository certificate.
+    :param str project_id: Project identifier of the GitOps repository certificate.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -129,12 +129,12 @@ def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[str]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepoCertResult]:
     """
-    Data source for retrieving a GitOps RepoCert.
+    Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 
 
-    :param str account_id: account identifier of the Repository Certificates.
-    :param str agent_id: agent identifier of the Repository Certificates.
-    :param str org_id: organization identifier of the Repository Certificates.
-    :param str project_id: project identifier of the Repository Certificates.
+    :param str account_id: Account identifier of the GitOps repository certificate.
+    :param str agent_id: Agent identifier of the GitOps repository certificate.
+    :param str org_id: Organization identifier of the GitOps repository certificate.
+    :param str project_id: Project identifier of the GitOps repository certificate.
     """
     ...

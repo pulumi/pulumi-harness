@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating a Harness Gitops Application.
+ * Resource for managing a Harness Gitops Application.
  * 
  * ## Example Usage
  * 
@@ -233,14 +233,14 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> project;
 
     /**
-     * @return Reference to the project corresponding to this GitOps application. An empty string means that the GitOps application belongs to the &#39;default&#39; project.
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
     public Output<Optional<String>> project() {
@@ -259,76 +259,6 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
-    }
-    /**
-     * Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    @Export(name="queryProject", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryProject;
-
-    /**
-     * @return Project names to filter the corresponding GitOps applications.
-     * 
-     */
-    public Output<Optional<String>> queryProject() {
-        return Codegen.optional(this.queryProject);
-    }
-    /**
-     * Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    @Export(name="queryRefresh", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryRefresh;
-
-    /**
-     * @return Forces the GitOps application to reconcile when set to true.
-     * 
-     */
-    public Output<Optional<String>> queryRefresh() {
-        return Codegen.optional(this.queryRefresh);
-    }
-    /**
-     * Repo URL to restrict returned list applications.
-     * 
-     */
-    @Export(name="queryRepo", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryRepo;
-
-    /**
-     * @return Repo URL to restrict returned list applications.
-     * 
-     */
-    public Output<Optional<String>> queryRepo() {
-        return Codegen.optional(this.queryRepo);
-    }
-    /**
-     * Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    @Export(name="queryResourceVersion", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryResourceVersion;
-
-    /**
-     * @return Shows modifications after a version that is specified with a watch call.
-     * 
-     */
-    public Output<Optional<String>> queryResourceVersion() {
-        return Codegen.optional(this.queryResourceVersion);
-    }
-    /**
-     * Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    @Export(name="querySelector", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> querySelector;
-
-    /**
-     * @return Filters GitOps applications corresponding to the labels.
-     * 
-     */
-    public Output<Optional<String>> querySelector() {
-        return Codegen.optional(this.querySelector);
     }
     /**
      * Repository identifier of the GitOps application.
@@ -359,20 +289,6 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requestCascade);
     }
     /**
-     * Request name to delete the GitOps application.
-     * 
-     */
-    @Export(name="requestName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> requestName;
-
-    /**
-     * @return Request name to delete the GitOps application.
-     * 
-     */
-    public Output<Optional<String>> requestName() {
-        return Codegen.optional(this.requestName);
-    }
-    /**
      * Request propagation policy to delete the GitOps application.
      * 
      */
@@ -401,14 +317,14 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.upsert);
     }
     /**
-     * Indicates if the GitOps application has to be validated.
+     * Indicates if the GitOps application yaml has to be validated.
      * 
      */
     @Export(name="validate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> validate;
 
     /**
-     * @return Indicates if the GitOps application has to be validated.
+     * @return Indicates if the GitOps application yaml has to be validated.
      * 
      */
     public Output<Optional<Boolean>> validate() {

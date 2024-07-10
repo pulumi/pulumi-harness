@@ -13,6 +13,12 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class KubernetesConnectorServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// </summary>
+        [Input("caCertRef")]
+        public Input<string>? CaCertRef { get; set; }
+
+        /// <summary>
         /// The URL of the Kubernetes cluster.
         /// </summary>
         [Input("masterUrl", required: true)]

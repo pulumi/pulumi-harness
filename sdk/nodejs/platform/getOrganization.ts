@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness organization
- *
  * ## Example Usage
  *
  * ```typescript
@@ -68,8 +66,6 @@ export interface GetOrganizationResult {
     readonly tags: string[];
 }
 /**
- * Data source for retrieving a Harness organization
- *
  * ## Example Usage
  *
  * ```typescript

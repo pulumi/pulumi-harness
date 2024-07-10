@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetInfrastructureGitDetails;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,7 @@ public final class GetInfrastructureResult {
      * 
      */
     private String envId;
+    private GetInfrastructureGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,7 +61,7 @@ public final class GetInfrastructureResult {
      */
     private List<String> tags;
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
     private String type;
@@ -90,6 +92,9 @@ public final class GetInfrastructureResult {
      */
     public String envId() {
         return this.envId;
+    }
+    public GetInfrastructureGitDetails gitDetails() {
+        return this.gitDetails;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -134,7 +139,7 @@ public final class GetInfrastructureResult {
         return this.tags;
     }
     /**
-     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+     * @return Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
      * 
      */
     public String type() {
@@ -160,6 +165,7 @@ public final class GetInfrastructureResult {
         private String deploymentType;
         private String description;
         private String envId;
+        private GetInfrastructureGitDetails gitDetails;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -174,6 +180,7 @@ public final class GetInfrastructureResult {
     	      this.deploymentType = defaults.deploymentType;
     	      this.description = defaults.description;
     	      this.envId = defaults.envId;
+    	      this.gitDetails = defaults.gitDetails;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -206,6 +213,14 @@ public final class GetInfrastructureResult {
               throw new MissingRequiredPropertyException("GetInfrastructureResult", "envId");
             }
             this.envId = envId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitDetails(GetInfrastructureGitDetails gitDetails) {
+            if (gitDetails == null) {
+              throw new MissingRequiredPropertyException("GetInfrastructureResult", "gitDetails");
+            }
+            this.gitDetails = gitDetails;
             return this;
         }
         @CustomType.Setter
@@ -274,6 +289,7 @@ public final class GetInfrastructureResult {
             _resultValue.deploymentType = deploymentType;
             _resultValue.description = description;
             _resultValue.envId = envId;
+            _resultValue.gitDetails = gitDetails;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

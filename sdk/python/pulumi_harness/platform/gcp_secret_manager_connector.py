@@ -329,8 +329,6 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a GCP Secret Manager connector.
-
         ## Example Usage
 
         ```python
@@ -385,8 +383,6 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  args: GcpSecretManagerConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a GCP Secret Manager connector.
-
         ## Example Usage
 
         ```python

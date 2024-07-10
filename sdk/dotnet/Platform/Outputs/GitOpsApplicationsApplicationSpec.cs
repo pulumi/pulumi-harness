@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecDestination> Destinations;
         /// <summary>
-        /// Contains all information about the source of a GitOps application.
+        /// Contains all information about the source of the GitOps application.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> Sources;
         /// <summary>

@@ -165,8 +165,6 @@ class Organization(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness organization.
-
         ## Example Usage
 
         ```python
@@ -205,8 +203,6 @@ class Organization(pulumi.CustomResource):
                  args: OrganizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness organization.
-
         ## Example Usage
 
         ```python

@@ -12,47 +12,6 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating secret of type secret text
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var inline = new Harness.Platform.SecretText("inline", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         SecretManagerIdentifier = "harnessSecretManager",
-    ///         ValueType = "Inline",
-    ///         Value = "secret",
-    ///     });
-    /// 
-    ///     var reference = new Harness.Platform.SecretText("reference", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         SecretManagerIdentifier = "azureSecretManager",
-    ///         ValueType = "Reference",
-    ///         Value = "secret",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Import account level secret text
@@ -76,6 +35,12 @@ namespace Pulumi.Harness.Platform
     [HarnessResourceType("harness:platform/secretText:SecretText")]
     public partial class SecretText : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        [Output("additionalMetadatas")]
+        public Output<ImmutableArray<Outputs.SecretTextAdditionalMetadata>> AdditionalMetadatas { get; private set; } = null!;
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -122,7 +87,7 @@ namespace Pulumi.Harness.Platform
         /// Value of the Secret
         /// </summary>
         [Output("value")]
-        public Output<string> Value { get; private set; } = null!;
+        public Output<string?> Value { get; private set; } = null!;
 
         /// <summary>
         /// This has details to specify if the secret value is Inline or Reference.
@@ -181,6 +146,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class SecretTextArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.SecretTextAdditionalMetadataArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.SecretTextAdditionalMetadataArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.SecretTextAdditionalMetadataArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -229,7 +206,7 @@ namespace Pulumi.Harness.Platform
             set => _tags = value;
         }
 
-        [Input("value", required: true)]
+        [Input("value")]
         private Input<string>? _value;
 
         /// <summary>
@@ -259,6 +236,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class SecretTextState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.SecretTextAdditionalMetadataGetArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.SecretTextAdditionalMetadataGetArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.SecretTextAdditionalMetadataGetArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Description of the resource.
         /// </summary>

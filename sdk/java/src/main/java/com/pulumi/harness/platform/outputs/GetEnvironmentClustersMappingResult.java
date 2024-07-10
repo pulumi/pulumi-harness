@@ -5,7 +5,9 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetEnvironmentClustersMappingCluster;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,7 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEnvironmentClustersMappingResult {
     /**
-     * @return environment identifier of the cluster.
+     * @return list of cluster identifiers and names
+     * 
+     */
+    private @Nullable List<GetEnvironmentClustersMappingCluster> clusters;
+    /**
+     * @return environment identifier.
      * 
      */
     private String envId;
@@ -23,29 +30,36 @@ public final class GetEnvironmentClustersMappingResult {
      */
     private String id;
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     private String identifier;
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return scope at which the cluster exists in harness gitops
+     * @return scope at which the environment exists in harness.
      * 
      */
     private String scope;
 
     private GetEnvironmentClustersMappingResult() {}
     /**
-     * @return environment identifier of the cluster.
+     * @return list of cluster identifiers and names
+     * 
+     */
+    public List<GetEnvironmentClustersMappingCluster> clusters() {
+        return this.clusters == null ? List.of() : this.clusters;
+    }
+    /**
+     * @return environment identifier.
      * 
      */
     public String envId() {
@@ -59,28 +73,28 @@ public final class GetEnvironmentClustersMappingResult {
         return this.id;
     }
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return scope at which the cluster exists in harness gitops
+     * @return scope at which the environment exists in harness.
      * 
      */
     public String scope() {
@@ -96,6 +110,7 @@ public final class GetEnvironmentClustersMappingResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetEnvironmentClustersMappingCluster> clusters;
         private String envId;
         private String id;
         private String identifier;
@@ -105,6 +120,7 @@ public final class GetEnvironmentClustersMappingResult {
         public Builder() {}
         public Builder(GetEnvironmentClustersMappingResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clusters = defaults.clusters;
     	      this.envId = defaults.envId;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
@@ -113,6 +129,15 @@ public final class GetEnvironmentClustersMappingResult {
     	      this.scope = defaults.scope;
         }
 
+        @CustomType.Setter
+        public Builder clusters(@Nullable List<GetEnvironmentClustersMappingCluster> clusters) {
+
+            this.clusters = clusters;
+            return this;
+        }
+        public Builder clusters(GetEnvironmentClustersMappingCluster... clusters) {
+            return clusters(List.of(clusters));
+        }
         @CustomType.Setter
         public Builder envId(String envId) {
             if (envId == null) {
@@ -159,6 +184,7 @@ public final class GetEnvironmentClustersMappingResult {
         }
         public GetEnvironmentClustersMappingResult build() {
             final var _resultValue = new GetEnvironmentClustersMappingResult();
+            _resultValue.clusters = clusters;
             _resultValue.envId = envId;
             _resultValue.id = id;
             _resultValue.identifier = identifier;

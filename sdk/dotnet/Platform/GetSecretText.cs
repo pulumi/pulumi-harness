@@ -63,6 +63,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetSecretTextArgs : global::Pulumi.InvokeArgs
     {
+        [Input("additionalMetadatas")]
+        private List<Inputs.GetSecretTextAdditionalMetadataArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public List<Inputs.GetSecretTextAdditionalMetadataArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new List<Inputs.GetSecretTextAdditionalMetadataArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -95,6 +107,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetSecretTextInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("additionalMetadatas")]
+        private InputList<Inputs.GetSecretTextAdditionalMetadataInputArgs>? _additionalMetadatas;
+
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public InputList<Inputs.GetSecretTextAdditionalMetadataInputArgs> AdditionalMetadatas
+        {
+            get => _additionalMetadatas ?? (_additionalMetadatas = new InputList<Inputs.GetSecretTextAdditionalMetadataInputArgs>());
+            set => _additionalMetadatas = value;
+        }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -129,6 +153,10 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetSecretTextResult
     {
+        /// <summary>
+        /// Additional Metadata for the Secret
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSecretTextAdditionalMetadataResult> AdditionalMetadatas;
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -172,6 +200,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetSecretTextResult(
+            ImmutableArray<Outputs.GetSecretTextAdditionalMetadataResult> additionalMetadatas,
+
             string description,
 
             string id,
@@ -192,6 +222,7 @@ namespace Pulumi.Harness.Platform
 
             string valueType)
         {
+            AdditionalMetadatas = additionalMetadatas;
             Description = description;
             Id = id;
             Identifier = identifier;

@@ -27,10 +27,10 @@ public final class GetGitopsRepositoryResult {
      */
     private String agentId;
     /**
-     * @return Indicates if to operate on credential set instead of repository.
+     * @return Indicates if helm-oci support must be enabled for this repo.
      * 
      */
-    private @Nullable Boolean credsOnly;
+    private Boolean enableOci;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -52,21 +52,6 @@ public final class GetGitopsRepositoryResult {
      */
     private @Nullable String projectId;
     /**
-     * @return Indicates to force refresh query for repository.
-     * 
-     */
-    private @Nullable Boolean queryForceRefresh;
-    /**
-     * @return Project to query for the GitOps repo.
-     * 
-     */
-    private @Nullable String queryProject;
-    /**
-     * @return GitOps repository to query.
-     * 
-     */
-    private @Nullable String queryRepo;
-    /**
      * @return Repo details holding application configurations.
      * 
      */
@@ -75,12 +60,7 @@ public final class GetGitopsRepositoryResult {
      * @return Update mask of the repository.
      * 
      */
-    private @Nullable List<GetGitopsRepositoryUpdateMask> updateMasks;
-    /**
-     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
-     * 
-     */
-    private @Nullable Boolean upsert;
+    private List<GetGitopsRepositoryUpdateMask> updateMasks;
 
     private GetGitopsRepositoryResult() {}
     /**
@@ -98,11 +78,11 @@ public final class GetGitopsRepositoryResult {
         return this.agentId;
     }
     /**
-     * @return Indicates if to operate on credential set instead of repository.
+     * @return Indicates if helm-oci support must be enabled for this repo.
      * 
      */
-    public Optional<Boolean> credsOnly() {
-        return Optional.ofNullable(this.credsOnly);
+    public Boolean enableOci() {
+        return this.enableOci;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -133,27 +113,6 @@ public final class GetGitopsRepositoryResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Indicates to force refresh query for repository.
-     * 
-     */
-    public Optional<Boolean> queryForceRefresh() {
-        return Optional.ofNullable(this.queryForceRefresh);
-    }
-    /**
-     * @return Project to query for the GitOps repo.
-     * 
-     */
-    public Optional<String> queryProject() {
-        return Optional.ofNullable(this.queryProject);
-    }
-    /**
-     * @return GitOps repository to query.
-     * 
-     */
-    public Optional<String> queryRepo() {
-        return Optional.ofNullable(this.queryRepo);
-    }
-    /**
      * @return Repo details holding application configurations.
      * 
      */
@@ -165,14 +124,7 @@ public final class GetGitopsRepositoryResult {
      * 
      */
     public List<GetGitopsRepositoryUpdateMask> updateMasks() {
-        return this.updateMasks == null ? List.of() : this.updateMasks;
-    }
-    /**
-     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
-     * 
-     */
-    public Optional<Boolean> upsert() {
-        return Optional.ofNullable(this.upsert);
+        return this.updateMasks;
     }
 
     public static Builder builder() {
@@ -186,33 +138,25 @@ public final class GetGitopsRepositoryResult {
     public static final class Builder {
         private String accountId;
         private String agentId;
-        private @Nullable Boolean credsOnly;
+        private Boolean enableOci;
         private String id;
         private String identifier;
         private @Nullable String orgId;
         private @Nullable String projectId;
-        private @Nullable Boolean queryForceRefresh;
-        private @Nullable String queryProject;
-        private @Nullable String queryRepo;
         private List<GetGitopsRepositoryRepo> repos;
-        private @Nullable List<GetGitopsRepositoryUpdateMask> updateMasks;
-        private @Nullable Boolean upsert;
+        private List<GetGitopsRepositoryUpdateMask> updateMasks;
         public Builder() {}
         public Builder(GetGitopsRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.agentId = defaults.agentId;
-    	      this.credsOnly = defaults.credsOnly;
+    	      this.enableOci = defaults.enableOci;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
-    	      this.queryForceRefresh = defaults.queryForceRefresh;
-    	      this.queryProject = defaults.queryProject;
-    	      this.queryRepo = defaults.queryRepo;
     	      this.repos = defaults.repos;
     	      this.updateMasks = defaults.updateMasks;
-    	      this.upsert = defaults.upsert;
         }
 
         @CustomType.Setter
@@ -232,9 +176,11 @@ public final class GetGitopsRepositoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder credsOnly(@Nullable Boolean credsOnly) {
-
-            this.credsOnly = credsOnly;
+        public Builder enableOci(Boolean enableOci) {
+            if (enableOci == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepositoryResult", "enableOci");
+            }
+            this.enableOci = enableOci;
             return this;
         }
         @CustomType.Setter
@@ -266,24 +212,6 @@ public final class GetGitopsRepositoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder queryForceRefresh(@Nullable Boolean queryForceRefresh) {
-
-            this.queryForceRefresh = queryForceRefresh;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryProject(@Nullable String queryProject) {
-
-            this.queryProject = queryProject;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryRepo(@Nullable String queryRepo) {
-
-            this.queryRepo = queryRepo;
-            return this;
-        }
-        @CustomType.Setter
         public Builder repos(List<GetGitopsRepositoryRepo> repos) {
             if (repos == null) {
               throw new MissingRequiredPropertyException("GetGitopsRepositoryResult", "repos");
@@ -295,35 +223,27 @@ public final class GetGitopsRepositoryResult {
             return repos(List.of(repos));
         }
         @CustomType.Setter
-        public Builder updateMasks(@Nullable List<GetGitopsRepositoryUpdateMask> updateMasks) {
-
+        public Builder updateMasks(List<GetGitopsRepositoryUpdateMask> updateMasks) {
+            if (updateMasks == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepositoryResult", "updateMasks");
+            }
             this.updateMasks = updateMasks;
             return this;
         }
         public Builder updateMasks(GetGitopsRepositoryUpdateMask... updateMasks) {
             return updateMasks(List.of(updateMasks));
         }
-        @CustomType.Setter
-        public Builder upsert(@Nullable Boolean upsert) {
-
-            this.upsert = upsert;
-            return this;
-        }
         public GetGitopsRepositoryResult build() {
             final var _resultValue = new GetGitopsRepositoryResult();
             _resultValue.accountId = accountId;
             _resultValue.agentId = agentId;
-            _resultValue.credsOnly = credsOnly;
+            _resultValue.enableOci = enableOci;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
-            _resultValue.queryForceRefresh = queryForceRefresh;
-            _resultValue.queryProject = queryProject;
-            _resultValue.queryRepo = queryRepo;
             _resultValue.repos = repos;
             _resultValue.updateMasks = updateMasks;
-            _resultValue.upsert = upsert;
             return _resultValue;
         }
     }

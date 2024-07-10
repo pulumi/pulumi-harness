@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationMetadata;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpec;
 import java.util.List;
@@ -21,7 +22,7 @@ public final class GetGitopsApplicationsApplication {
      * @return Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpec> specs;
+    private List<GetGitopsApplicationsApplicationSpec> specs;
 
     private GetGitopsApplicationsApplication() {}
     /**
@@ -36,7 +37,7 @@ public final class GetGitopsApplicationsApplication {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpec> specs() {
-        return this.specs == null ? List.of() : this.specs;
+        return this.specs;
     }
 
     public static Builder builder() {
@@ -49,7 +50,7 @@ public final class GetGitopsApplicationsApplication {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetGitopsApplicationsApplicationMetadata> metadatas;
-        private @Nullable List<GetGitopsApplicationsApplicationSpec> specs;
+        private List<GetGitopsApplicationsApplicationSpec> specs;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +68,10 @@ public final class GetGitopsApplicationsApplication {
             return metadatas(List.of(metadatas));
         }
         @CustomType.Setter
-        public Builder specs(@Nullable List<GetGitopsApplicationsApplicationSpec> specs) {
-
+        public Builder specs(List<GetGitopsApplicationsApplicationSpec> specs) {
+            if (specs == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplication", "specs");
+            }
             this.specs = specs;
             return this;
         }

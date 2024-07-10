@@ -48,14 +48,14 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
     }
 
     /**
-     * identifier of the cluster.
+     * identifier for the cluster mapping(can be given any value).
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return identifier of the cluster.
+     * @return identifier for the cluster mapping(can be given any value).
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -63,14 +63,14 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
     }
 
     /**
-     * org_id of the cluster.
+     * org_id of the environment.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return org_id of the cluster.
+     * @return org_id of the environment.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -78,14 +78,14 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
     }
 
     /**
-     * project_id of the cluster.
+     * project_id of the environment.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return project_id of the cluster.
+     * @return project_id of the environment.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -93,14 +93,14 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
     }
 
     /**
-     * scope at which the cluster exists in harness gitops
+     * scope at which the environment exists in harness.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return scope at which the cluster exists in harness gitops
+     * @return scope at which the environment exists in harness.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -189,7 +189,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier identifier for the cluster mapping(can be given any value).
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param identifier identifier of the cluster.
+         * @param identifier identifier for the cluster mapping(can be given any value).
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param orgId org_id of the cluster.
+         * @param orgId org_id of the environment.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param orgId org_id of the cluster.
+         * @param orgId org_id of the environment.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId project_id of the cluster.
+         * @param projectId project_id of the environment.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param projectId project_id of the cluster.
+         * @param projectId project_id of the environment.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param scope scope at which the cluster exists in harness gitops
+         * @param scope scope at which the environment exists in harness.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class EnvironmentClustersMappingState extends com.pulumi.resources.
         }
 
         /**
-         * @param scope scope at which the cluster exists in harness gitops
+         * @param scope scope at which the environment exists in harness.
          * 
          * @return builder
          * 

@@ -46,11 +46,11 @@ export interface GetEnvironmentGroupArgs {
     /**
      * org_id of the environment group.
      */
-    orgId: string;
+    orgId?: string;
     /**
      * project_id of the environment group.
      */
-    projectId: string;
+    projectId?: string;
 }
 
 /**
@@ -72,11 +72,11 @@ export interface GetEnvironmentGroupResult {
     /**
      * org_id of the environment group.
      */
-    readonly orgId: string;
+    readonly orgId?: string;
     /**
      * project_id of the environment group.
      */
-    readonly projectId: string;
+    readonly projectId?: string;
     /**
      * Input Set YAML
      */
@@ -117,9 +117,9 @@ export interface GetEnvironmentGroupOutputArgs {
     /**
      * org_id of the environment group.
      */
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * project_id of the environment group.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
 }

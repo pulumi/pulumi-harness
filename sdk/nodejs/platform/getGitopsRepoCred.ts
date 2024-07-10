@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a GitOps RepoCred.
+ * Data source for fetching a GitOps Repository Credentials.
  *
  * ## Example Usage
  *
@@ -34,7 +34,6 @@ export function getGitopsRepoCred(args: GetGitopsRepoCredArgs, opts?: pulumi.Inv
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "upsert": args.upsert,
     }, opts);
 }
 
@@ -43,11 +42,11 @@ export function getGitopsRepoCred(args: GetGitopsRepoCredArgs, opts?: pulumi.Inv
  */
 export interface GetGitopsRepoCredArgs {
     /**
-     * account identifier of the Repository Credentials.
+     * Account identifier of the Repository Credentials.
      */
     accountId: string;
     /**
-     * agent identifier of the Repository Credentials.
+     * Agent identifier of the Repository Credentials.
      */
     agentId: string;
     /**
@@ -59,17 +58,13 @@ export interface GetGitopsRepoCredArgs {
      */
     identifier: string;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     orgId?: string;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     projectId?: string;
-    /**
-     * if the Repository credential should be upserted.
-     */
-    upsert?: boolean;
 }
 
 /**
@@ -77,11 +72,11 @@ export interface GetGitopsRepoCredArgs {
  */
 export interface GetGitopsRepoCredResult {
     /**
-     * account identifier of the Repository Credentials.
+     * Account identifier of the Repository Credentials.
      */
     readonly accountId: string;
     /**
-     * agent identifier of the Repository Credentials.
+     * Agent identifier of the Repository Credentials.
      */
     readonly agentId: string;
     /**
@@ -97,20 +92,16 @@ export interface GetGitopsRepoCredResult {
      */
     readonly identifier: string;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     readonly orgId?: string;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     readonly projectId?: string;
-    /**
-     * if the Repository credential should be upserted.
-     */
-    readonly upsert?: boolean;
 }
 /**
- * Data source for retrieving a GitOps RepoCred.
+ * Data source for fetching a GitOps Repository Credentials.
  *
  * ## Example Usage
  *
@@ -136,11 +127,11 @@ export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?
  */
 export interface GetGitopsRepoCredOutputArgs {
     /**
-     * account identifier of the Repository Credentials.
+     * Account identifier of the Repository Credentials.
      */
     accountId: pulumi.Input<string>;
     /**
-     * agent identifier of the Repository Credentials.
+     * Agent identifier of the Repository Credentials.
      */
     agentId: pulumi.Input<string>;
     /**
@@ -152,15 +143,11 @@ export interface GetGitopsRepoCredOutputArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * Organization identifier of the Repository Credential.
+     * Organization identifier of the Repository Credentials.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the Repository Credential.
+     * Project identifier of the Repository Credentials.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * if the Repository credential should be upserted.
-     */
-    upsert?: pulumi.Input<boolean>;
 }

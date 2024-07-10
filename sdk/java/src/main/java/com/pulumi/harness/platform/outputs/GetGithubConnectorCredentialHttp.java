@@ -5,11 +5,24 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetGithubConnectorCredentialHttpAnonymouse;
+import com.pulumi.harness.platform.outputs.GetGithubConnectorCredentialHttpGithubApp;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetGithubConnectorCredentialHttp {
+    /**
+     * @return Configuration for using the github http anonymous for interacting with the github api.
+     * 
+     */
+    private List<GetGithubConnectorCredentialHttpAnonymouse> anonymouses;
+    /**
+     * @return Configuration for using the github app for interacting with the github api.
+     * 
+     */
+    private List<GetGithubConnectorCredentialHttpGithubApp> githubApps;
     /**
      * @return Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -27,6 +40,20 @@ public final class GetGithubConnectorCredentialHttp {
     private String usernameRef;
 
     private GetGithubConnectorCredentialHttp() {}
+    /**
+     * @return Configuration for using the github http anonymous for interacting with the github api.
+     * 
+     */
+    public List<GetGithubConnectorCredentialHttpAnonymouse> anonymouses() {
+        return this.anonymouses;
+    }
+    /**
+     * @return Configuration for using the github app for interacting with the github api.
+     * 
+     */
+    public List<GetGithubConnectorCredentialHttpGithubApp> githubApps() {
+        return this.githubApps;
+    }
     /**
      * @return Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -58,17 +85,43 @@ public final class GetGithubConnectorCredentialHttp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetGithubConnectorCredentialHttpAnonymouse> anonymouses;
+        private List<GetGithubConnectorCredentialHttpGithubApp> githubApps;
         private String tokenRef;
         private String username;
         private String usernameRef;
         public Builder() {}
         public Builder(GetGithubConnectorCredentialHttp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.anonymouses = defaults.anonymouses;
+    	      this.githubApps = defaults.githubApps;
     	      this.tokenRef = defaults.tokenRef;
     	      this.username = defaults.username;
     	      this.usernameRef = defaults.usernameRef;
         }
 
+        @CustomType.Setter
+        public Builder anonymouses(List<GetGithubConnectorCredentialHttpAnonymouse> anonymouses) {
+            if (anonymouses == null) {
+              throw new MissingRequiredPropertyException("GetGithubConnectorCredentialHttp", "anonymouses");
+            }
+            this.anonymouses = anonymouses;
+            return this;
+        }
+        public Builder anonymouses(GetGithubConnectorCredentialHttpAnonymouse... anonymouses) {
+            return anonymouses(List.of(anonymouses));
+        }
+        @CustomType.Setter
+        public Builder githubApps(List<GetGithubConnectorCredentialHttpGithubApp> githubApps) {
+            if (githubApps == null) {
+              throw new MissingRequiredPropertyException("GetGithubConnectorCredentialHttp", "githubApps");
+            }
+            this.githubApps = githubApps;
+            return this;
+        }
+        public Builder githubApps(GetGithubConnectorCredentialHttpGithubApp... githubApps) {
+            return githubApps(List.of(githubApps));
+        }
         @CustomType.Setter
         public Builder tokenRef(String tokenRef) {
             if (tokenRef == null) {
@@ -95,6 +148,8 @@ public final class GetGithubConnectorCredentialHttp {
         }
         public GetGithubConnectorCredentialHttp build() {
             final var _resultValue = new GetGithubConnectorCredentialHttp();
+            _resultValue.anonymouses = anonymouses;
+            _resultValue.githubApps = githubApps;
             _resultValue.tokenRef = tokenRef;
             _resultValue.username = username;
             _resultValue.usernameRef = usernameRef;

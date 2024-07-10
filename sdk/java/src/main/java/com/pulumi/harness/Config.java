@@ -14,8 +14,8 @@ public final class Config {
  * The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
  * 
  */
-    public String accountId() {
-        return Codegen.stringProp("accountId").config(config).env("HARNESS_ACCOUNT_ID").require();
+    public Optional<String> accountId() {
+        return Codegen.stringProp("accountId").config(config).env("HARNESS_ACCOUNT_ID").get();
     }
 /**
  * The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to
@@ -30,8 +30,8 @@ public final class Config {
  * `HARNESS_ENDPOINT` environment variable.
  * 
  */
-    public String endpoint() {
-        return Codegen.stringProp("endpoint").config(config).env("HARNESS_ENDPOINT").require();
+    public Optional<String> endpoint() {
+        return Codegen.stringProp("endpoint").config(config).env("HARNESS_ENDPOINT").get();
     }
 /**
  * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment

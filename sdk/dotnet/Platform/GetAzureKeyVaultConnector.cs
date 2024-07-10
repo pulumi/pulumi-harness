@@ -12,8 +12,6 @@ namespace Pulumi.Harness.Platform
     public static class GetAzureKeyVaultConnector
     {
         /// <summary>
-        /// Data source for looking up an Azure key vault connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureKeyVaultConnectorResult>("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args ?? new GetAzureKeyVaultConnectorArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for looking up an Azure key vault connector.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

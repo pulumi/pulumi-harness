@@ -230,9 +230,94 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness environment service overrides.
+        ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
+        example = harness.platform.EnvironmentServiceOverrides("example",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            yaml=\"\"\"serviceOverrides:
+          environmentRef: environmentIdentifier
+          serviceRef: serviceIdentifier
+          variables:
+           - name: asda
+             type: String
+             value: asddad
+          manifests:
+             - manifest:
+                 identifier: manifestEnv
+                 type: Values
+                 spec:
+                   store:
+                     type: Git
+                     spec:
+                       connectorRef: <+input>
+                       gitFetchType: Branch
+                       paths:
+                         - file1
+                       repoName: <+input>
+                       branch: master
+          configFiles:
+             - configFile:
+                 identifier: configFileEnv
+                 spec:
+                   store:
+                     type: Harness
+                     spec:
+                       files:
+                         - account:/Add-ons/svcOverrideTest
+                       secretFiles: []
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.EnvironmentServiceOverrides("example",
+            org_id="orgIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            yaml=\"\"\"serviceOverrides:
+          environmentRef: environmentIdentifier
+          serviceRef: serviceIdentifier
+          variables:
+           - name: asda
+             type: String
+             value: asddad
+          manifests:
+             - manifest:
+                 identifier: manifestEnv
+                 type: Values
+                 spec:
+                   store:
+                     type: Git
+                     spec:
+                       connectorRef: <+input>
+                       gitFetchType: Branch
+                       paths:
+                         - file1
+                       repoName: <+input>
+                       branch: master
+          configFiles:
+             - configFile:
+                 identifier: configFileEnv
+                 spec:
+                   store:
+                     type: Harness
+                     spec:
+                       files:
+                         - account:/Add-ons/svcOverrideTest
+                       secretFiles: []
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -278,10 +363,22 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
 
         ## Import
 
-        Import using serviceoverride id
+        Import list of account level service overrides using the env id associated with them
 
         ```sh
-        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <env_id>
+        ```
+
+        Import list of org level service overrides using the env id associated with them
+
+        ```sh
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<env_id>
+        ```
+
+        Import list of project level service overrides using the env id associated with them
+
+        ```sh
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -301,9 +398,94 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness environment service overrides.
+        ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
-        ## Example Usage
+        ### Account Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
+        example = harness.platform.EnvironmentServiceOverrides("example",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            yaml=\"\"\"serviceOverrides:
+          environmentRef: environmentIdentifier
+          serviceRef: serviceIdentifier
+          variables:
+           - name: asda
+             type: String
+             value: asddad
+          manifests:
+             - manifest:
+                 identifier: manifestEnv
+                 type: Values
+                 spec:
+                   store:
+                     type: Git
+                     spec:
+                       connectorRef: <+input>
+                       gitFetchType: Branch
+                       paths:
+                         - file1
+                       repoName: <+input>
+                       branch: master
+          configFiles:
+             - configFile:
+                 identifier: configFileEnv
+                 spec:
+                   store:
+                     type: Harness
+                     spec:
+                       files:
+                         - account:/Add-ons/svcOverrideTest
+                       secretFiles: []
+        \"\"\")
+        ```
+
+        ### Org Level
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        example = harness.platform.EnvironmentServiceOverrides("example",
+            org_id="orgIdentifier",
+            env_id="environmentIdentifier",
+            service_id="serviceIdentifier",
+            yaml=\"\"\"serviceOverrides:
+          environmentRef: environmentIdentifier
+          serviceRef: serviceIdentifier
+          variables:
+           - name: asda
+             type: String
+             value: asddad
+          manifests:
+             - manifest:
+                 identifier: manifestEnv
+                 type: Values
+                 spec:
+                   store:
+                     type: Git
+                     spec:
+                       connectorRef: <+input>
+                       gitFetchType: Branch
+                       paths:
+                         - file1
+                       repoName: <+input>
+                       branch: master
+          configFiles:
+             - configFile:
+                 identifier: configFileEnv
+                 spec:
+                   store:
+                     type: Harness
+                     spec:
+                       files:
+                         - account:/Add-ons/svcOverrideTest
+                       secretFiles: []
+        \"\"\")
+        ```
+
+        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -349,10 +531,22 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
 
         ## Import
 
-        Import using serviceoverride id
+        Import list of account level service overrides using the env id associated with them
 
         ```sh
-        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <serviceoverride_id>
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <env_id>
+        ```
+
+        Import list of org level service overrides using the env id associated with them
+
+        ```sh
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<env_id>
+        ```
+
+        Import list of project level service overrides using the env id associated with them
+
+        ```sh
+        $ pulumi import harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides example <org_id>/<project_id>/<env_id>
         ```
 
         :param str resource_name: The name of the resource.

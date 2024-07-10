@@ -73,7 +73,7 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.TemplateFiltersFilterProperties> FilterProperties { get; private set; } = null!;
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter.
+        /// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         /// </summary>
         [Output("filterVisibility")]
         public Output<string?> FilterVisibility { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateFiltersFilterPropertiesArgs> FilterProperties { get; set; } = null!;
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter.
+        /// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         /// </summary>
         [Input("filterVisibility")]
         public Input<string>? FilterVisibility { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateFiltersFilterPropertiesGetArgs>? FilterProperties { get; set; }
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter.
+        /// Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         /// </summary>
         [Input("filterVisibility")]
         public Input<string>? FilterVisibility { get; set; }

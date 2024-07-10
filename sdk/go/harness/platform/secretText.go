@@ -14,54 +14,6 @@ import (
 
 // Resource for creating secret of type secret text
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewSecretText(ctx, "inline", &platform.SecretTextArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
-//				ValueType:               pulumi.String("Inline"),
-//				Value:                   pulumi.String("secret"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewSecretText(ctx, "reference", &platform.SecretTextArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				SecretManagerIdentifier: pulumi.String("azureSecretManager"),
-//				ValueType:               pulumi.String("Reference"),
-//				Value:                   pulumi.String("secret"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Import account level secret text
@@ -84,6 +36,8 @@ import (
 type SecretText struct {
 	pulumi.CustomResourceState
 
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretTextAdditionalMetadataArrayOutput `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -99,7 +53,7 @@ type SecretText struct {
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Value of the Secret
-	Value pulumi.StringOutput `pulumi:"value"`
+	Value pulumi.StringPtrOutput `pulumi:"value"`
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
@@ -117,14 +71,11 @@ func NewSecretText(ctx *pulumi.Context,
 	if args.SecretManagerIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'SecretManagerIdentifier'")
 	}
-	if args.Value == nil {
-		return nil, errors.New("invalid value for required argument 'Value'")
-	}
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
 	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"value",
@@ -153,6 +104,8 @@ func GetSecretText(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretText resources.
 type secretTextState struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []SecretTextAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -174,6 +127,8 @@ type secretTextState struct {
 }
 
 type SecretTextState struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretTextAdditionalMetadataArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
@@ -199,6 +154,8 @@ func (SecretTextState) ElementType() reflect.Type {
 }
 
 type secretTextArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas []SecretTextAdditionalMetadata `pulumi:"additionalMetadatas"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -214,13 +171,15 @@ type secretTextArgs struct {
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 	// Value of the Secret
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType string `pulumi:"valueType"`
 }
 
 // The set of arguments for constructing a SecretText resource.
 type SecretTextArgs struct {
+	// Additional Metadata for the Secret
+	AdditionalMetadatas SecretTextAdditionalMetadataArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
@@ -236,7 +195,7 @@ type SecretTextArgs struct {
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
 	// Value of the Secret
-	Value pulumi.StringInput
+	Value pulumi.StringPtrInput
 	// This has details to specify if the secret value is Inline or Reference.
 	ValueType pulumi.StringInput
 }
@@ -328,6 +287,11 @@ func (o SecretTextOutput) ToSecretTextOutputWithContext(ctx context.Context) Sec
 	return o
 }
 
+// Additional Metadata for the Secret
+func (o SecretTextOutput) AdditionalMetadatas() SecretTextAdditionalMetadataArrayOutput {
+	return o.ApplyT(func(v *SecretText) SecretTextAdditionalMetadataArrayOutput { return v.AdditionalMetadatas }).(SecretTextAdditionalMetadataArrayOutput)
+}
+
 // Description of the resource.
 func (o SecretTextOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -364,8 +328,8 @@ func (o SecretTextOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // Value of the Secret
-func (o SecretTextOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecretText) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+func (o SecretTextOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretText) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // This has details to specify if the secret value is Inline or Reference.

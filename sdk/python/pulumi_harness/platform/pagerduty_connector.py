@@ -296,8 +296,6 @@ class PagerdutyConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Resource for creating a PagerDuty connector.
-
         ## Example Usage
 
         ```python
@@ -351,8 +349,6 @@ class PagerdutyConnector(pulumi.CustomResource):
                  args: PagerdutyConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a PagerDuty connector.
-
         ## Example Usage
 
         ```python

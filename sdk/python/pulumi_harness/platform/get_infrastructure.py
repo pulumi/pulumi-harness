@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetInfrastructureResult',
@@ -21,7 +23,7 @@ class GetInfrastructureResult:
     """
     A collection of values returned by getInfrastructure.
     """
-    def __init__(__self__, deployment_type=None, description=None, env_id=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, type=None, yaml=None):
+    def __init__(__self__, deployment_type=None, description=None, env_id=None, git_details=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, type=None, yaml=None):
         if deployment_type and not isinstance(deployment_type, str):
             raise TypeError("Expected argument 'deployment_type' to be a str")
         pulumi.set(__self__, "deployment_type", deployment_type)
@@ -31,6 +33,9 @@ class GetInfrastructureResult:
         if env_id and not isinstance(env_id, str):
             raise TypeError("Expected argument 'env_id' to be a str")
         pulumi.set(__self__, "env_id", env_id)
+        if git_details and not isinstance(git_details, dict):
+            raise TypeError("Expected argument 'git_details' to be a dict")
+        pulumi.set(__self__, "git_details", git_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -79,6 +84,11 @@ class GetInfrastructureResult:
         environment identifier.
         """
         return pulumi.get(self, "env_id")
+
+    @property
+    @pulumi.getter(name="gitDetails")
+    def git_details(self) -> 'outputs.GetInfrastructureGitDetailsResult':
+        return pulumi.get(self, "git_details")
 
     @property
     @pulumi.getter
@@ -132,7 +142,7 @@ class GetInfrastructureResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS.
+        Type of Infrastructure. Valid values are KubernetesDirect, KubernetesGcp, ServerlessAwsLambda, Pdc, KubernetesAzure, SshWinRmAzure, SshWinRmAws, AzureWebApp, ECS, GitOps, CustomDeployment, TAS, KubernetesRancher, AWS_SAM.
         """
         return pulumi.get(self, "type")
 
@@ -154,6 +164,7 @@ class AwaitableGetInfrastructureResult(GetInfrastructureResult):
             deployment_type=self.deployment_type,
             description=self.description,
             env_id=self.env_id,
+            git_details=self.git_details,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -165,6 +176,7 @@ class AwaitableGetInfrastructureResult(GetInfrastructureResult):
 
 
 def get_infrastructure(env_id: Optional[str] = None,
+                       git_details: Optional[pulumi.InputType['GetInfrastructureGitDetailsArgs']] = None,
                        identifier: Optional[str] = None,
                        name: Optional[str] = None,
                        org_id: Optional[str] = None,
@@ -195,6 +207,7 @@ def get_infrastructure(env_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['envId'] = env_id
+    __args__['gitDetails'] = git_details
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
@@ -206,6 +219,7 @@ def get_infrastructure(env_id: Optional[str] = None,
         deployment_type=pulumi.get(__ret__, 'deployment_type'),
         description=pulumi.get(__ret__, 'description'),
         env_id=pulumi.get(__ret__, 'env_id'),
+        git_details=pulumi.get(__ret__, 'git_details'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -218,6 +232,7 @@ def get_infrastructure(env_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_infrastructure)
 def get_infrastructure_output(env_id: Optional[pulumi.Input[str]] = None,
+                              git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetInfrastructureGitDetailsArgs']]]] = None,
                               identifier: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               org_id: Optional[pulumi.Input[Optional[str]]] = None,

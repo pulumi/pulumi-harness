@@ -14,9 +14,13 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class AwsSecretManagerConnectorCredentialsManual
     {
         /// <summary>
+        /// The plain text AWS access key.
+        /// </summary>
+        public readonly string? AccessKeyPlainText;
+        /// <summary>
         /// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        public readonly string AccessKeyRef;
+        public readonly string? AccessKeyRef;
         /// <summary>
         /// The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
@@ -24,10 +28,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private AwsSecretManagerConnectorCredentialsManual(
-            string accessKeyRef,
+            string? accessKeyPlainText,
+
+            string? accessKeyRef,
 
             string secretKeyRef)
         {
+            AccessKeyPlainText = accessKeyPlainText;
             AccessKeyRef = accessKeyRef;
             SecretKeyRef = secretKeyRef;
         }

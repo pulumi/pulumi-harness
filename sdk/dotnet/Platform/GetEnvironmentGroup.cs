@@ -82,14 +82,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// org_id of the environment group.
         /// </summary>
-        [Input("orgId", required: true)]
-        public string OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public string? OrgId { get; set; }
 
         /// <summary>
         /// project_id of the environment group.
         /// </summary>
-        [Input("projectId", required: true)]
-        public string ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         public GetEnvironmentGroupArgs()
         {
@@ -114,14 +114,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// org_id of the environment group.
         /// </summary>
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
         /// <summary>
         /// project_id of the environment group.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         public GetEnvironmentGroupInvokeArgs()
         {
@@ -148,11 +148,11 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// org_id of the environment group.
         /// </summary>
-        public readonly string OrgId;
+        public readonly string? OrgId;
         /// <summary>
         /// project_id of the environment group.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string? ProjectId;
         /// <summary>
         /// Input Set YAML
         /// </summary>
@@ -166,9 +166,9 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
-            string orgId,
+            string? orgId,
 
-            string projectId,
+            string? projectId,
 
             string yaml)
         {

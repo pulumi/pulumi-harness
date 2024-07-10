@@ -11,96 +11,10 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for managing Feature Flags.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Boolean Flag
-    ///     var mybooleanflag = new Harness.Platform.FeatureFlag("mybooleanflag", new()
-    ///     {
-    ///         OrgId = "test",
-    ///         ProjectId = "testff",
-    ///         Kind = "boolean",
-    ///         Name = "MY_FEATURE",
-    ///         Identifier = "MY_FEATURE",
-    ///         Permanent = false,
-    ///         DefaultOnVariation = "Enabled",
-    ///         DefaultOffVariation = "Disabled",
-    ///         Variations = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.FeatureFlagVariationArgs
-    ///             {
-    ///                 Identifier = "Enabled",
-    ///                 Name = "Enabled",
-    ///                 Description = "The feature is enabled",
-    ///                 Value = "true",
-    ///             },
-    ///             new Harness.Platform.Inputs.FeatureFlagVariationArgs
-    ///             {
-    ///                 Identifier = "Disabled",
-    ///                 Name = "Disabled",
-    ///                 Description = "The feature is disabled",
-    ///                 Value = "false",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Multivariate flag
-    ///     var mymultivariateflag = new Harness.Platform.FeatureFlag("mymultivariateflag", new()
-    ///     {
-    ///         OrgId = "test",
-    ///         ProjectId = "testff",
-    ///         Kind = "int",
-    ///         Name = "FREE_TRIAL_DURATION",
-    ///         Identifier = "FREE_TRIAL_DURATION",
-    ///         Permanent = false,
-    ///         DefaultOnVariation = "trial7",
-    ///         DefaultOffVariation = "trial20",
-    ///         Variations = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.FeatureFlagVariationArgs
-    ///             {
-    ///                 Identifier = "trial7",
-    ///                 Name = "7 days trial",
-    ///                 Description = "Free trial period 7 days",
-    ///                 Value = "7",
-    ///             },
-    ///             new Harness.Platform.Inputs.FeatureFlagVariationArgs
-    ///             {
-    ///                 Identifier = "trial14",
-    ///                 Name = "14 days trial",
-    ///                 Description = "Free trial period 14 days",
-    ///                 Value = "14",
-    ///             },
-    ///             new Harness.Platform.Inputs.FeatureFlagVariationArgs
-    ///             {
-    ///                 Identifier = "trial20",
-    ///                 Name = "20 days trial",
-    ///                 Description = "Free trial period 20 days",
-    ///                 Value = "20",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/featureFlag:FeatureFlag")]
     public partial class FeatureFlag : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether or not the flag is archived
-        /// </summary>
-        [Output("archived")]
-        public Output<bool?> Archived { get; private set; } = null!;
-
         /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>
@@ -113,8 +27,17 @@ namespace Pulumi.Harness.Platform
         [Output("defaultOnVariation")]
         public Output<string> DefaultOnVariation { get; private set; } = null!;
 
-        [Output("gitDetails")]
-        public Output<Outputs.FeatureFlagGitDetails?> GitDetails { get; private set; } = null!;
+        /// <summary>
+        /// Description of the Feature Flag
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment Identifier
+        /// </summary>
+        [Output("environments")]
+        public Output<ImmutableArray<Outputs.FeatureFlagEnvironment>> Environments { get; private set; } = null!;
 
         /// <summary>
         /// Identifier of the Feature Flag
@@ -157,6 +80,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags for the flag
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.FeatureFlagTag>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The options available for your flag
@@ -212,12 +141,6 @@ namespace Pulumi.Harness.Platform
     public sealed class FeatureFlagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the flag is archived
-        /// </summary>
-        [Input("archived")]
-        public Input<bool>? Archived { get; set; }
-
-        /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>
         [Input("defaultOffVariation", required: true)]
@@ -229,8 +152,23 @@ namespace Pulumi.Harness.Platform
         [Input("defaultOnVariation", required: true)]
         public Input<string> DefaultOnVariation { get; set; } = null!;
 
-        [Input("gitDetails")]
-        public Input<Inputs.FeatureFlagGitDetailsArgs>? GitDetails { get; set; }
+        /// <summary>
+        /// Description of the Feature Flag
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("environments")]
+        private InputList<Inputs.FeatureFlagEnvironmentArgs>? _environments;
+
+        /// <summary>
+        /// Environment Identifier
+        /// </summary>
+        public InputList<Inputs.FeatureFlagEnvironmentArgs> Environments
+        {
+            get => _environments ?? (_environments = new InputList<Inputs.FeatureFlagEnvironmentArgs>());
+            set => _environments = value;
+        }
 
         /// <summary>
         /// Identifier of the Feature Flag
@@ -274,6 +212,18 @@ namespace Pulumi.Harness.Platform
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<Inputs.FeatureFlagTagArgs>? _tags;
+
+        /// <summary>
+        /// The tags for the flag
+        /// </summary>
+        public InputList<Inputs.FeatureFlagTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.FeatureFlagTagArgs>());
+            set => _tags = value;
+        }
+
         [Input("variations", required: true)]
         private InputList<Inputs.FeatureFlagVariationArgs>? _variations;
 
@@ -295,12 +245,6 @@ namespace Pulumi.Harness.Platform
     public sealed class FeatureFlagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the flag is archived
-        /// </summary>
-        [Input("archived")]
-        public Input<bool>? Archived { get; set; }
-
-        /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>
         [Input("defaultOffVariation")]
@@ -312,8 +256,23 @@ namespace Pulumi.Harness.Platform
         [Input("defaultOnVariation")]
         public Input<string>? DefaultOnVariation { get; set; }
 
-        [Input("gitDetails")]
-        public Input<Inputs.FeatureFlagGitDetailsGetArgs>? GitDetails { get; set; }
+        /// <summary>
+        /// Description of the Feature Flag
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("environments")]
+        private InputList<Inputs.FeatureFlagEnvironmentGetArgs>? _environments;
+
+        /// <summary>
+        /// Environment Identifier
+        /// </summary>
+        public InputList<Inputs.FeatureFlagEnvironmentGetArgs> Environments
+        {
+            get => _environments ?? (_environments = new InputList<Inputs.FeatureFlagEnvironmentGetArgs>());
+            set => _environments = value;
+        }
 
         /// <summary>
         /// Identifier of the Feature Flag
@@ -356,6 +315,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.FeatureFlagTagGetArgs>? _tags;
+
+        /// <summary>
+        /// The tags for the flag
+        /// </summary>
+        public InputList<Inputs.FeatureFlagTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.FeatureFlagTagGetArgs>());
+            set => _tags = value;
+        }
 
         [Input("variations")]
         private InputList<Inputs.FeatureFlagVariationGetArgs>? _variations;

@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating a Harness Resource Group
- *
  * ## Example Usage
  *
  * ```typescript
@@ -108,7 +106,7 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Included scopes
+     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
      */
     public readonly includedScopes!: pulumi.Output<outputs.platform.ResourceGroupIncludedScope[] | undefined>;
     /**
@@ -206,7 +204,7 @@ export interface ResourceGroupState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Included scopes
+     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
      */
     includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**
@@ -256,7 +254,7 @@ export interface ResourceGroupArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * Included scopes
+     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
      */
     includedScopes?: pulumi.Input<pulumi.Input<inputs.platform.ResourceGroupIncludedScope>[]>;
     /**

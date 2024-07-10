@@ -446,8 +446,6 @@ def get_vault_connector(identifier: Optional[str] = None,
                         project_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVaultConnectorResult:
     """
-    DataSource for looking up a Vault connector in Harness.
-
     ## Example Usage
 
     ```python
@@ -515,8 +513,6 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVaultConnectorResult]:
     """
-    DataSource for looking up a Vault connector in Harness.
-
     ## Example Usage
 
     ```python

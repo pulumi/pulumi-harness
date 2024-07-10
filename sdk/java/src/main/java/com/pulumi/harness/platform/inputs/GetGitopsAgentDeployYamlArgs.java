@@ -6,7 +6,9 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlProxyArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,21 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * CA data of the GitOps agent, base64 encoded content of ca chain.
+     * 
+     */
+    @Import(name="caData")
+    private @Nullable Output<String> caData;
+
+    /**
+     * @return CA data of the GitOps agent, base64 encoded content of ca chain.
+     * 
+     */
+    public Optional<Output<String>> caData() {
+        return Optional.ofNullable(this.caData);
+    }
+
+    /**
      * Identifier of the GitOps agent.
      * 
      */
@@ -47,14 +64,14 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The k8s namespace that the GitOps agent resides in.
+     * The kubernetes namespace where the agent is installed.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return The k8s namespace that the GitOps agent resides in.
+     * @return The kubernetes namespace where the agent is installed.
      * 
      */
     public Output<String> namespace() {
@@ -91,14 +108,31 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Proxy settings for the GitOps agent.
+     * 
+     */
+    @Import(name="proxies")
+    private @Nullable Output<List<GetGitopsAgentDeployYamlProxyArgs>> proxies;
+
+    /**
+     * @return Proxy settings for the GitOps agent.
+     * 
+     */
+    public Optional<Output<List<GetGitopsAgentDeployYamlProxyArgs>>> proxies() {
+        return Optional.ofNullable(this.proxies);
+    }
+
     private GetGitopsAgentDeployYamlArgs() {}
 
     private GetGitopsAgentDeployYamlArgs(GetGitopsAgentDeployYamlArgs $) {
         this.accountId = $.accountId;
+        this.caData = $.caData;
         this.identifier = $.identifier;
         this.namespace = $.namespace;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.proxies = $.proxies;
     }
 
     public static Builder builder() {
@@ -141,6 +175,27 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
         }
 
         /**
+         * @param caData CA data of the GitOps agent, base64 encoded content of ca chain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caData(@Nullable Output<String> caData) {
+            $.caData = caData;
+            return this;
+        }
+
+        /**
+         * @param caData CA data of the GitOps agent, base64 encoded content of ca chain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caData(String caData) {
+            return caData(Output.of(caData));
+        }
+
+        /**
          * @param identifier Identifier of the GitOps agent.
          * 
          * @return builder
@@ -162,7 +217,7 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param namespace The k8s namespace that the GitOps agent resides in.
+         * @param namespace The kubernetes namespace where the agent is installed.
          * 
          * @return builder
          * 
@@ -173,7 +228,7 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param namespace The k8s namespace that the GitOps agent resides in.
+         * @param namespace The kubernetes namespace where the agent is installed.
          * 
          * @return builder
          * 
@@ -222,6 +277,37 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param proxies Proxy settings for the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxies(@Nullable Output<List<GetGitopsAgentDeployYamlProxyArgs>> proxies) {
+            $.proxies = proxies;
+            return this;
+        }
+
+        /**
+         * @param proxies Proxy settings for the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxies(List<GetGitopsAgentDeployYamlProxyArgs> proxies) {
+            return proxies(Output.of(proxies));
+        }
+
+        /**
+         * @param proxies Proxy settings for the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxies(GetGitopsAgentDeployYamlProxyArgs... proxies) {
+            return proxies(List.of(proxies));
         }
 
         public GetGitopsAgentDeployYamlArgs build() {

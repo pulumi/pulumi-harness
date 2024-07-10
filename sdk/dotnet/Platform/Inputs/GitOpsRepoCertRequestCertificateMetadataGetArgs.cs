@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? RemainingItemCount { get; set; }
 
         /// <summary>
-        /// dentifies the server's internal version.
+        /// Identifies the server's internal version.
         /// </summary>
         [Input("resourceVersion")]
         public Input<string>? ResourceVersion { get; set; }

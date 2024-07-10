@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Indicates to allows apps to have zero live resources (default: false).
         /// </summary>
-        public readonly bool? AllowEmpty;
+        public readonly bool AllowEmpty;
         /// <summary>
         /// Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
         /// </summary>
-        public readonly bool? Prune;
+        public readonly bool Prune;
         /// <summary>
         /// Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
         /// </summary>
-        public readonly bool? SelfHeal;
+        public readonly bool SelfHeal;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSyncPolicyAutomatedResult(
-            bool? allowEmpty,
+            bool allowEmpty,
 
-            bool? prune,
+            bool prune,
 
-            bool? selfHeal)
+            bool selfHeal)
         {
             AllowEmpty = allowEmpty;
             Prune = prune;

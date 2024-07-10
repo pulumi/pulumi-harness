@@ -36,6 +36,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Version of the health source.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public MonitoredServiceRequestHealthSourceGetArgs()
         {
         }

@@ -13,98 +13,17 @@ import (
 )
 
 // Resource for managing Feature Flags.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Boolean Flag
-//			_, err := platform.NewFeatureFlag(ctx, "mybooleanflag", &platform.FeatureFlagArgs{
-//				OrgId:               pulumi.String("test"),
-//				ProjectId:           pulumi.String("testff"),
-//				Kind:                pulumi.String("boolean"),
-//				Name:                pulumi.String("MY_FEATURE"),
-//				Identifier:          pulumi.String("MY_FEATURE"),
-//				Permanent:           pulumi.Bool(false),
-//				DefaultOnVariation:  pulumi.String("Enabled"),
-//				DefaultOffVariation: pulumi.String("Disabled"),
-//				Variations: platform.FeatureFlagVariationArray{
-//					&platform.FeatureFlagVariationArgs{
-//						Identifier:  pulumi.String("Enabled"),
-//						Name:        pulumi.String("Enabled"),
-//						Description: pulumi.String("The feature is enabled"),
-//						Value:       pulumi.String("true"),
-//					},
-//					&platform.FeatureFlagVariationArgs{
-//						Identifier:  pulumi.String("Disabled"),
-//						Name:        pulumi.String("Disabled"),
-//						Description: pulumi.String("The feature is disabled"),
-//						Value:       pulumi.String("false"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Multivariate flag
-//			_, err = platform.NewFeatureFlag(ctx, "mymultivariateflag", &platform.FeatureFlagArgs{
-//				OrgId:               pulumi.String("test"),
-//				ProjectId:           pulumi.String("testff"),
-//				Kind:                pulumi.String("int"),
-//				Name:                pulumi.String("FREE_TRIAL_DURATION"),
-//				Identifier:          pulumi.String("FREE_TRIAL_DURATION"),
-//				Permanent:           pulumi.Bool(false),
-//				DefaultOnVariation:  pulumi.String("trial7"),
-//				DefaultOffVariation: pulumi.String("trial20"),
-//				Variations: platform.FeatureFlagVariationArray{
-//					&platform.FeatureFlagVariationArgs{
-//						Identifier:  pulumi.String("trial7"),
-//						Name:        pulumi.String("7 days trial"),
-//						Description: pulumi.String("Free trial period 7 days"),
-//						Value:       pulumi.String("7"),
-//					},
-//					&platform.FeatureFlagVariationArgs{
-//						Identifier:  pulumi.String("trial14"),
-//						Name:        pulumi.String("14 days trial"),
-//						Description: pulumi.String("Free trial period 14 days"),
-//						Value:       pulumi.String("14"),
-//					},
-//					&platform.FeatureFlagVariationArgs{
-//						Identifier:  pulumi.String("trial20"),
-//						Name:        pulumi.String("20 days trial"),
-//						Description: pulumi.String("Free trial period 20 days"),
-//						Value:       pulumi.String("20"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FeatureFlag struct {
 	pulumi.CustomResourceState
 
-	// Whether or not the flag is archived
-	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringOutput `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
-	DefaultOnVariation pulumi.StringOutput            `pulumi:"defaultOnVariation"`
-	GitDetails         FeatureFlagGitDetailsPtrOutput `pulumi:"gitDetails"`
+	DefaultOnVariation pulumi.StringOutput `pulumi:"defaultOnVariation"`
+	// Description of the Feature Flag
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Environment Identifier
+	Environments FeatureFlagEnvironmentArrayOutput `pulumi:"environments"`
 	// Identifier of the Feature Flag
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
@@ -119,6 +38,8 @@ type FeatureFlag struct {
 	Permanent pulumi.BoolOutput `pulumi:"permanent"`
 	// Project Identifier
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The tags for the flag
+	Tags FeatureFlagTagArrayOutput `pulumi:"tags"`
 	// The options available for your flag
 	Variations FeatureFlagVariationArrayOutput `pulumi:"variations"`
 }
@@ -177,13 +98,14 @@ func GetFeatureFlag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureFlag resources.
 type featureFlagState struct {
-	// Whether or not the flag is archived
-	Archived *bool `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation *string `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
-	DefaultOnVariation *string                `pulumi:"defaultOnVariation"`
-	GitDetails         *FeatureFlagGitDetails `pulumi:"gitDetails"`
+	DefaultOnVariation *string `pulumi:"defaultOnVariation"`
+	// Description of the Feature Flag
+	Description *string `pulumi:"description"`
+	// Environment Identifier
+	Environments []FeatureFlagEnvironment `pulumi:"environments"`
 	// Identifier of the Feature Flag
 	Identifier *string `pulumi:"identifier"`
 	// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
@@ -198,18 +120,21 @@ type featureFlagState struct {
 	Permanent *bool `pulumi:"permanent"`
 	// Project Identifier
 	ProjectId *string `pulumi:"projectId"`
+	// The tags for the flag
+	Tags []FeatureFlagTag `pulumi:"tags"`
 	// The options available for your flag
 	Variations []FeatureFlagVariation `pulumi:"variations"`
 }
 
 type FeatureFlagState struct {
-	// Whether or not the flag is archived
-	Archived pulumi.BoolPtrInput
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringPtrInput
 	// Which of the variations to use when the flag is toggled to on state
 	DefaultOnVariation pulumi.StringPtrInput
-	GitDetails         FeatureFlagGitDetailsPtrInput
+	// Description of the Feature Flag
+	Description pulumi.StringPtrInput
+	// Environment Identifier
+	Environments FeatureFlagEnvironmentArrayInput
 	// Identifier of the Feature Flag
 	Identifier pulumi.StringPtrInput
 	// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
@@ -224,6 +149,8 @@ type FeatureFlagState struct {
 	Permanent pulumi.BoolPtrInput
 	// Project Identifier
 	ProjectId pulumi.StringPtrInput
+	// The tags for the flag
+	Tags FeatureFlagTagArrayInput
 	// The options available for your flag
 	Variations FeatureFlagVariationArrayInput
 }
@@ -233,13 +160,14 @@ func (FeatureFlagState) ElementType() reflect.Type {
 }
 
 type featureFlagArgs struct {
-	// Whether or not the flag is archived
-	Archived *bool `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation string `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
-	DefaultOnVariation string                 `pulumi:"defaultOnVariation"`
-	GitDetails         *FeatureFlagGitDetails `pulumi:"gitDetails"`
+	DefaultOnVariation string `pulumi:"defaultOnVariation"`
+	// Description of the Feature Flag
+	Description *string `pulumi:"description"`
+	// Environment Identifier
+	Environments []FeatureFlagEnvironment `pulumi:"environments"`
 	// Identifier of the Feature Flag
 	Identifier string `pulumi:"identifier"`
 	// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
@@ -254,19 +182,22 @@ type featureFlagArgs struct {
 	Permanent bool `pulumi:"permanent"`
 	// Project Identifier
 	ProjectId string `pulumi:"projectId"`
+	// The tags for the flag
+	Tags []FeatureFlagTag `pulumi:"tags"`
 	// The options available for your flag
 	Variations []FeatureFlagVariation `pulumi:"variations"`
 }
 
 // The set of arguments for constructing a FeatureFlag resource.
 type FeatureFlagArgs struct {
-	// Whether or not the flag is archived
-	Archived pulumi.BoolPtrInput
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringInput
 	// Which of the variations to use when the flag is toggled to on state
 	DefaultOnVariation pulumi.StringInput
-	GitDetails         FeatureFlagGitDetailsPtrInput
+	// Description of the Feature Flag
+	Description pulumi.StringPtrInput
+	// Environment Identifier
+	Environments FeatureFlagEnvironmentArrayInput
 	// Identifier of the Feature Flag
 	Identifier pulumi.StringInput
 	// The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
@@ -281,6 +212,8 @@ type FeatureFlagArgs struct {
 	Permanent pulumi.BoolInput
 	// Project Identifier
 	ProjectId pulumi.StringInput
+	// The tags for the flag
+	Tags FeatureFlagTagArrayInput
 	// The options available for your flag
 	Variations FeatureFlagVariationArrayInput
 }
@@ -372,11 +305,6 @@ func (o FeatureFlagOutput) ToFeatureFlagOutputWithContext(ctx context.Context) F
 	return o
 }
 
-// Whether or not the flag is archived
-func (o FeatureFlagOutput) Archived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolPtrOutput { return v.Archived }).(pulumi.BoolPtrOutput)
-}
-
 // Which of the variations to use when the flag is toggled to off state
 func (o FeatureFlagOutput) DefaultOffVariation() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.DefaultOffVariation }).(pulumi.StringOutput)
@@ -387,8 +315,14 @@ func (o FeatureFlagOutput) DefaultOnVariation() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.DefaultOnVariation }).(pulumi.StringOutput)
 }
 
-func (o FeatureFlagOutput) GitDetails() FeatureFlagGitDetailsPtrOutput {
-	return o.ApplyT(func(v *FeatureFlag) FeatureFlagGitDetailsPtrOutput { return v.GitDetails }).(FeatureFlagGitDetailsPtrOutput)
+// Description of the Feature Flag
+func (o FeatureFlagOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFlag) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Environment Identifier
+func (o FeatureFlagOutput) Environments() FeatureFlagEnvironmentArrayOutput {
+	return o.ApplyT(func(v *FeatureFlag) FeatureFlagEnvironmentArrayOutput { return v.Environments }).(FeatureFlagEnvironmentArrayOutput)
 }
 
 // Identifier of the Feature Flag
@@ -424,6 +358,11 @@ func (o FeatureFlagOutput) Permanent() pulumi.BoolOutput {
 // Project Identifier
 func (o FeatureFlagOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The tags for the flag
+func (o FeatureFlagOutput) Tags() FeatureFlagTagArrayOutput {
+	return o.ApplyT(func(v *FeatureFlag) FeatureFlagTagArrayOutput { return v.Tags }).(FeatureFlagTagArrayOutput)
 }
 
 // The options available for your flag

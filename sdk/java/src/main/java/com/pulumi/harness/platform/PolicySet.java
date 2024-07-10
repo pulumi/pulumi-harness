@@ -120,14 +120,14 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="policies", refs={List.class,PolicySetPolicy.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<PolicySetPolicy>> policies;
+    private Output<List<PolicySetPolicy>> policies;
 
     /**
      * @return List of policy identifiers / severity for the policyset.
      * 
      */
-    public Output<Optional<List<PolicySetPolicy>>> policies() {
-        return Codegen.optional(this.policies);
+    public Output<List<PolicySetPolicy>> policies() {
+        return this.policies;
     }
     /**
      * Unique identifier of the project.
